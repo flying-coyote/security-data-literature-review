@@ -1,0 +1,58 @@
+{
+  "allowedTools": [
+    {
+      "tool": "Read",
+      "pattern": "file_path",
+      "regex": "^//home/jerem/security-data-literature-review/.*$",
+      "comment": "Auto-approve reading any file in security-data-literature-review repository"
+    },
+    {
+      "tool": "Bash",
+      "pattern": "command",
+      "regex": "^git status.*$",
+      "comment": "Check git status anytime"
+    },
+    {
+      "tool": "Bash",
+      "pattern": "command",
+      "regex": "^git log.*$",
+      "comment": "View git history"
+    },
+    {
+      "tool": "Bash",
+      "pattern": "command",
+      "regex": "^git diff.*$",
+      "comment": "View git diffs"
+    },
+    {
+      "tool": "Bash",
+      "pattern": "command",
+      "regex": "^git add.*$",
+      "comment": "Stage files for commit"
+    },
+    {
+      "tool": "Bash",
+      "pattern": "command",
+      "regex": "^git commit.*$",
+      "comment": "Create commits"
+    },
+    {
+      "tool": "WebFetch",
+      "pattern": "domain",
+      "regex": "^github\\.com$",
+      "comment": "Fetch from GitHub for documentation and reference"
+    },
+    {
+      "tool": "WebFetch",
+      "pattern": "domain",
+      "regex": "^scholar\\.google\\.com$",
+      "comment": "Research academic sources"
+    },
+    {
+      "tool": "WebFetch",
+      "pattern": "domain",
+      "regex": "^docs\\.anthropic\\.com$",
+      "comment": "Claude documentation for development guidance"
+    }
+  ]
+}

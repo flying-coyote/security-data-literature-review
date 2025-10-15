@@ -1,0 +1,21 @@
+# Session archives (local only - don't track in git)
+.archive/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+
+# Platform-specific
+.env
+.env.local
