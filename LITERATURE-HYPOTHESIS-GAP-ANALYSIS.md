@@ -31,9 +31,14 @@
 ### Well-Validated Existing Hypotheses
 
 **H-ARCH-01: Apache Iceberg Dominance**
-- ✅ **Strong Validation**: SK Telecom (52.7TB in 3.39s), widespread adoption
-- **Literature Support**: Footnotes [^3], [^131], [^132]
-- **Status**: VALIDATED
+- ✅ **Strong Validation**: Industry consensus as de facto standard
+  - **Dremio 2024 survey**: 29% planning Iceberg vs 23% Delta Lake (next 3 years)
+  - **Universal vendor support**: AWS, Google, Snowflake, Databricks, Microsoft
+  - **Production validation**: SK Telecom (52.7TB in 3.39s, 97% query time reduction)
+  - **Apache governance**: 300+ contributors across 100+ organizations
+- **Literature Support**: Footnotes [^3], [^131], [^132], [^243-249]
+- **Note**: Original "76% adoption" claim not found in validation searches (Oct 2025). Updated to "industry consensus" with Dremio survey + vendor support evidence. Confidence remains Strong (⭐⭐⭐⭐⭐).
+- **Status**: STRONGLY VALIDATED
 
 **H3-PERFORMANCE-01: ClickHouse OLAP Performance**
 - ✅ **Strong Validation**: Cloudflare (96% <1s), Shell (57TB/day), multiple benchmarks
