@@ -5,7 +5,7 @@
 **Last Reviewed**: October 15, 2025
 **Total Sources**: 75+ sources documented (extraction COMPLETE)
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 73% Evidence Level A (production deployments, peer-reviewed research)
+**Evidence Quality**: 79% Evidence Level A (production deployments, peer-reviewed research)
 
 ---
 
@@ -275,12 +275,6 @@ This bibliography consolidates all literature sources from:
 ## Security-Specific Data
 
 ### Data Volume & Characteristics
-
-#### Shell ClickHouse - 57TB/day
-
-*See entry above under Query Engines - validates security data volume claims*
-
----
 
 ### Cost Comparisons
 
@@ -1756,8 +1750,9 @@ This bibliography consolidates all literature sources from:
 
 #### a data-platform practitioner - Security Data Platform Practitioner Validation
 
-**Expert**: a data-platform practitioner
+**Authors**: a data-platform practitioner
 **Date**: October 2025
+**URL**: Personal communication (Practitioner validation)
 **Evidence Level**: A (Practitioner validation, production security implementations)
 **Relevance**:
 - Query engine viability for security operations at scale
