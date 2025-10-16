@@ -7,6 +7,42 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.6.1] - 2025-10-16 - Quality Enhancements & Expert Interview Preparation
+
+### Added
+- **EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md**: Comprehensive interview guide for Lisa Chao (Datastrato/Gravitino)
+  - 75-minute structured interview focused on catalog adoption, XTable production status, multi-catalog management
+  - Hypothesis validation targets: H-ARCH-03 (catalog patterns), XTable maturity assessment
+  - Evidence collection for technology decision tree and implementation reality bundles
+- **EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md**: Comprehensive interview guide for Jake Thomas (Okta/DuckDB)
+  - 75-80 minute structured interview focused on DuckDB edge processing, security data volumes, production architecture
+  - Hypothesis validation targets: H-EDGE-01 (DuckDB), H1-VOLUME-07 (mid-market volumes), cost economics
+  - Performance benchmarks, implementation timelines, edge vs central trade-offs
+
+### Changed
+- **MASTER-BIBLIOGRAPHY.md**: Evidence Level A percentage corrected from 73% to 79%
+  - Recalculation: 57 Level A sources out of 72 total = 79.2%
+  - Deleted duplicate Shell ClickHouse cross-reference entry (Line 279-282)
+  - Fixed Matthew Mullins entry: Changed "Expert:" to "Authors:", added URL field
+- **.claude/CLAUDE.md**: Updated all references from 73% to 79% Evidence Level A
+- **REPOSITORY-STATUS.md**: Updated all Evidence Level A statistics (73% → 79%, 55 → 57 sources)
+
+### Purpose
+Prepare for expert network validation interviews (Week 3) and correct evidence quality metrics to accurately reflect repository's exceptional source quality.
+
+### Impact
+- **Evidence Quality**: Repository actually exceeds documented targets (79% vs 73% claimed)
+- **Expert Interview Readiness**: Structured guides ensure systematic hypothesis validation and evidence collection
+- **Academic Publication**: Corrected metrics strengthen publication case (79% Level A exceptional for systematic reviews)
+
+### Quality Metrics
+- Evidence Level A: 57 of 72 sources (79.2%)
+- Evidence Level B: 15 of 72 sources (20.8%)
+- Evidence Level C/D: 0 sources (0%)
+- Metadata completeness: 97% (70 of 72 entries have all required fields)
+
+---
+
 ## [1.6.0] - 2025-10-15 - Integration & Application (Blog + Book)
 
 ### Added

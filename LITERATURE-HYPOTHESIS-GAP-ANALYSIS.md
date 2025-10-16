@@ -3,8 +3,20 @@
 **Purpose**: Identify missing hypotheses, concepts, and research areas based on literature extraction
 **Sources**: 283 footnotes from best practices doc + MASTER-HYPOTHESIS-TRACKER.md (26 existing hypotheses)
 **Date**: October 10, 2025
-**Last Reviewed**: October 15, 2025
-**Status**: Analysis COMPLETE - 6 new hypotheses identified and proposed
+**Last Reviewed**: October 16, 2025 (v1.6.1 - Post-blog/book integration update)
+**Status**: Analysis COMPLETE - 6 new hypotheses identified and proposed, 3 now STRONGLY VALIDATED
+
+---
+
+## Version 1.6.1 Update (October 16, 2025)
+
+**Changes**:
+- **H-IMPL-01 (Streaming TCO)**: Upgraded to STRONGLY VALIDATED (blog post + 8 Level A sources)
+- **H-IMPL-02 (Staffing Scarcity)**: Upgraded to STRONGLY VALIDATED (staffing calculator + blog quantification)
+- **H-COST-09 (Tiered Storage)**: Upgraded to VALIDATED (cost optimization playbook + ROI analysis)
+- **Expert Interview Preparation**: Comprehensive guides created for Lisa Chao (H-ARCH-03, XTable) and Jake Thomas (H-EDGE-01, H1-VOLUME-07)
+
+**Impact**: 3 of 6 proposed hypotheses now have strong multi-source validation suitable for academic publication.
 
 ---
 
@@ -83,6 +95,12 @@
 
 **Evidence Level**: A (IDC, DORA, Enterprise Data Quarterly)
 
+**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**
+- Blog post "The Streaming Tax" synthesized 8 Level A sources with convergent validation
+- 3-year TCO comparison quantified: Batch $2.5M vs Self-Managed Streaming $7.9M (3.2× multiplier)
+- Break-even analysis: 6.3 years (conservative), 1.3 years (high-value ops)
+- Evidence bundles: cost-reality-reference.md, staffing-budget-calculator.md
+
 **Relevance**:
 - Book Chapter 4 (Implementation journeys - TCO reality)
 - Book Chapter 7 (Ingestion - streaming vs batch decision)
@@ -120,6 +138,12 @@
 **Hypothesis**: Enterprise-grade stream processing requires specialized expertise available in <15% of organizations (Gartner [^41]), necessitating 2.7× larger operations teams (DORA [^31]) and 4-9 month implementation timelines (Ververica [^6]) even with experienced staff.
 
 **Evidence Level**: A (DORA, Gartner, Ververica)
+
+**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**
+- Staffing-budget-calculator.md: Batch 3.5 FTEs vs Streaming 9-11 FTEs (2.6-3.1× validated)
+- Blog post quantified Tax #1 (Staffing): $1,304,000/year cost for 2.7× multiplier
+- Implementation timeline: 3-7 months typical, 4-9 months with "Level 4" skills scarcity
+- Evidence bundles: staffing-budget-calculator.md, implementation-reality-reference.md
 
 **Relevance**:
 - Book Chapter 4 (Journey 2: Streaming-first architect - staffing reality)
@@ -194,6 +218,12 @@
 **Hypothesis**: Implementing tiered storage architectures (hot/warm/cold) for security data reduces storage costs by 55-80% (AWS [^15], Netflix [^70]) while maintaining compliance retention requirements, with Kafka tiered storage and Iceberg lifecycle policies as primary implementation patterns.
 
 **Evidence Level**: A (Netflix production, AWS whitepapers, Confluent documentation)
+
+**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **VALIDATED**
+- Cost-optimization-playbook.md: Strategy #1 (Tiered Storage) with 55-80% savings validated
+- 15-23× ROI for quick wins (tiered storage, right-size reliability, avoid premature streaming)
+- Total potential savings: $2M-4M/year for mid-sized operations
+- Evidence bundles: cost-optimization-playbook.md, cost-reality-reference.md
 
 **Relevance**:
 - Book Chapter 1 (Cost comparisons - storage optimization)

@@ -1,4 +1,18 @@
 {
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Read(//home/jerem/modern-data-stack-for-cybersecurity-book/part-2-decision-framework/**)",
+      "Bash(git add:*)",
+      "Read(//home/jerem/modern-data-stack-for-cybersecurity-book/**)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Read(//home/jerem/security-data-commons-blog/**)",
+      "Bash(git show:*)",
+      "Bash(python3:*)",
+      "Bash(cat:*)"
+    ]
+  },
   "allowedTools": [
     {
       "tool": "Read",
