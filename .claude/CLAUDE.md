@@ -103,6 +103,54 @@ This project inherits quality standards from [second-brain](https://github.com/f
 - Confidence levels explicitly stated
 - Contradictions documented and analyzed
 
+## Claude Skills
+
+### Project-Specific Skills (1 skill)
+This project has 1 specialized Claude Skill that activates automatically during literature review work:
+
+**evidence-tier-classifier**:
+- **Activates**: When adding sources, citing papers, updating bibliography, or validating evidence quality
+- **Classifies**: Tier 1-5 evidence classification with detailed rationale (Tier 1=Production, Tier 2=Peer-reviewed, Tier 3=Expert consensus, Tier 4=Vendor claims, Tier 5=Speculation)
+- **Validates**: Maintains 79% Evidence Level A (Tier 1-2) quality standard, tracks distribution, links evidence to hypotheses
+- **Purpose**: Systematic quality management for 75+ sources, ensures academic rigor
+- **Location**: `.claude/skills/evidence-tier-classifier/SKILL.md`
+
+### Personal Skills (6 universal skills)
+All personal skills from `~/.claude/skills/` are available:
+- **academic-citation-manager**: General citation management and bibliography formatting
+- **voice-consistency-enforcer**: Maintains intellectual honesty and balanced academic perspective
+- **ultrathink-analyst**: FRAME-ANALYZE-SYNTHESIZE for deep research methodology analysis
+- **git-workflow-helper**: Version control for literature updates and CHANGELOG tracking
+- **systematic-debugger**: Debug bibliography generation scripts
+- **tdd-enforcer**: Test extraction automation scripts
+
+### Workflow Integration
+
+**Research Source Addition Workflow**:
+1. User finds research source
+2. **evidence-tier-classifier** classifies Tier 1-5 with rationale
+3. **academic-citation-manager** (personal) adds to bibliography with proper formatting
+4. **research-synthesis-extractor** (project1) extracts concepts
+5. **hypothesis-validator** (project1) links to hypotheses
+6. **git-workflow-helper** commits updates to CHANGELOG.md
+
+**Hypothesis Validation Workflow**:
+1. Identify hypothesis to validate
+2. **evidence-tier-classifier** assesses evidence quality across sources
+3. **academic-citation-manager** ensures proper citation format
+4. **voice-consistency-enforcer** validates balanced assessment (acknowledges limitations)
+5. Update MASTER-BIBLIOGRAPHY.md with validation status
+
+**Quarterly Update Workflow** (Phase 2):
+1. IT Harvest data refresh + platform updates
+2. **evidence-tier-classifier** classifies new sources
+3. **ultrathink-analyst** synthesizes trends and insights
+4. **voice-consistency-enforcer** ensures academic objectivity
+5. Create YYYY-QX-update.md versioned snapshot
+6. **git-workflow-helper** updates CHANGELOG.md
+
+**Documentation**: See `.claude/skills/README.md` for complete skill descriptions and workflow patterns.
+
 ## Git Workflow
 
 ### Commit Message Conventions

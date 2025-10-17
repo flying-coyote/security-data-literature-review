@@ -2,7 +2,7 @@
 
 **Project**: Living Literature Review for "Modern Data Stack for Cybersecurity"
 **Status**: Phase 1-2C Complete (76+ sources, 79% Tier 1-2)
-**Skills**: 1 project-specific + 5 personal skills
+**Skills**: 1 project-specific + 6 personal skills
 **Last Updated**: 2025-10-17
 
 ---
@@ -33,6 +33,7 @@ From `~/.claude/skills/` (shared across all projects):
 3. **ultrathink-analyst**: Deep analysis of research methodologies
 4. **systematic-debugger**: Debug bibliography generation scripts
 5. **tdd-enforcer**: Test extraction automation
+6. **voice-consistency-enforcer**: Maintains intellectual honesty, pragmatic specificity, conversational authority
 
 ---
 
