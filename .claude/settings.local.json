@@ -1,72 +1,79 @@
 {
   "permissions": {
-    "allow": [
-      "WebSearch",
-      "Read(//home/USER/modern-data-stack-for-cybersecurity-book/part-2-decision-framework/**)",
-      "Bash(git add:*)",
-      "Read(//home/USER/modern-data-stack-for-cybersecurity-book/**)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Read(//home/USER/security-data-commons-blog/**)",
-      "Bash(git show:*)",
-      "Bash(python3:*)",
-      "Bash(cat:*)"
-    ]
+    "allow": [],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ],
+    "ask": []
   },
   "allowedTools": [
     {
       "tool": "Read",
       "pattern": "file_path",
-      "regex": "^//home/USER/security-data-literature-review/.*$",
-      "comment": "Auto-approve reading any file in security-data-literature-review repository"
+      "regex": "^/home/USER/security-data-literature-review/.*$",
+      "comment": "Auto-approve reading literature review repository files"
+    },
+    {
+      "tool": "Read",
+      "pattern": "file_path",
+      "regex": "^/home/USER/(modern-data-stack-for-cybersecurity-book|security-data-commons-blog)/.*$",
+      "comment": "Cross-reference book and blog for citation validation"
     },
     {
       "tool": "Bash",
       "pattern": "command",
-      "regex": "^git status.*$",
-      "comment": "Check git status anytime"
+      "regex": "^git (status|log|diff|show|branch|remote).*$",
+      "comment": "Git read-only operations"
     },
     {
       "tool": "Bash",
       "pattern": "command",
-      "regex": "^git log.*$",
-      "comment": "View git history"
+      "regex": "^git (add|commit|push|pull|fetch).*$",
+      "comment": "Git write operations"
     },
     {
       "tool": "Bash",
       "pattern": "command",
-      "regex": "^git diff.*$",
-      "comment": "View git diffs"
+      "regex": "^(ls|tree|pwd|cat|head|tail|wc|grep|find).*$",
+      "comment": "File system navigation"
     },
     {
       "tool": "Bash",
       "pattern": "command",
-      "regex": "^git add.*$",
-      "comment": "Stage files for commit"
+      "regex": "^python3?.*$",
+      "comment": "Bibliography management scripts"
     },
     {
-      "tool": "Bash",
-      "pattern": "command",
-      "regex": "^git commit.*$",
-      "comment": "Create commits"
+      "tool": "WebSearch",
+      "pattern": "query",
+      "regex": ".*",
+      "comment": "Academic literature search"
     },
     {
       "tool": "WebFetch",
       "pattern": "domain",
-      "regex": "^github\\.com$",
-      "comment": "Fetch from GitHub for documentation and reference"
+      "regex": "^(github\\.com|docs\\.anthropic\\.com)$",
+      "comment": "Development documentation"
     },
     {
       "tool": "WebFetch",
       "pattern": "domain",
-      "regex": "^scholar\\.google\\.com$",
-      "comment": "Research academic sources"
+      "regex": "^(scholar\\.google\\.com|arxiv\\.org|dl\\.acm\\.org|ieeexplore\\.ieee\\.org|researchgate\\.net)$",
+      "comment": "Academic research databases"
     },
     {
       "tool": "WebFetch",
       "pattern": "domain",
-      "regex": "^docs\\.anthropic\\.com$",
-      "comment": "Claude documentation for development guidance"
+      "regex": "^(dblp\\.org|semanticscholar\\.org|pubmed\\.ncbi\\.nlm\\.nih\\.gov)$",
+      "comment": "Additional academic search engines"
+    },
+    {
+      "tool": "WebFetch",
+      "pattern": "domain",
+      "regex": "^(schema\\.ocsf\\.io|d3fend\\.mitre\\.org|attack\\.mitre\\.org|nist\\.gov)$",
+      "comment": "Security standards and frameworks"
     }
   ]
 }
