@@ -5,6 +5,12 @@ Comprehensive living literature review supporting the book "Modern Data Stack fo
 
 ## Key Documentation Files
 
+### PROJECT-BRIEF.md
+**Purpose**: Complete project context using Memory Prompts Prompt 3 format - confirmed facts vs. assumptions, scope, constraints, risks
+**Update Trigger**: Phase transitions, major milestones (IT Harvest partnership, quarterly updates), expert interview results
+**Lifecycle**: PROJECT-SCOPED (12+ months active, quarterly updates planned)
+**Note**: Separates canonical facts from assumptions requiring verification - critical for AI context
+
 ### MASTER-BIBLIOGRAPHY.md
 **Purpose**: Complete bibliography with 75+ sources, evidence levels (A/B/C/D), hypothesis validation
 **Update Trigger**: New sources added, hypothesis validation updates, evidence level adjustments
