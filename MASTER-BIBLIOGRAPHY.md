@@ -71,6 +71,149 @@ This bibliography consolidates all literature sources from:
 
 ### Query Engines
 
+#### Starburst - Official Documentation
+
+**Authors**: Starburst Data
+**Date**: 2024 (continuously updated)
+**URL**: https://docs.starburst.io
+**Evidence Level**: B (Vendor documentation, technical authority)
+**Relevance**:
+- Blog post: "Starburst vs Dremio vs AWS Athena: Core Differences"
+- Book Chapter 9 (Query Engines - federated query)
+- Trino-based enterprise platform
+
+**Key Findings**:
+- Trino (formerly PrestoSQL) enterprise distribution
+- Federated query across multiple data sources
+- Security features (RBAC, data masking, audit logging)
+- Query optimization and performance tuning
+
+**Citations**: Blog query engine comparison, Chapter 9 Starburst capabilities
+**Notes**: Commercial Trino distribution with enterprise security features
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Starburst - AWS Athena Integration Guide
+
+**Authors**: Starburst Data
+**Date**: 2024
+**URL**: https://www.starburst.io/platform/starburst-enterprise/aws-athena/
+**Evidence Level**: B (Vendor integration documentation)
+**Relevance**:
+- Blog post: "Starburst vs Dremio vs AWS Athena"
+- Book Chapter 9 (Query Engines - hybrid deployment)
+- AWS ecosystem integration
+
+**Key Findings**:
+- Starburst + AWS Athena federation patterns
+- Hybrid query engine architectures
+- Cost optimization strategies
+
+**Citations**: Blog query engine comparison, Chapter 9 hybrid architectures
+**Notes**: Practical guide for AWS security data architectures
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Trino: The Definitive Guide (O'Reilly Book)
+
+**Authors**: Matt Fuller, Manfred Moser, Martin Traverso
+**Date**: 2021 (published), updated 2023
+**URL**: https://www.oreilly.com/library/view/trino-the-definitive/9781098137245/
+**Evidence Level**: A (Authoritative technical book, O'Reilly publication)
+**Relevance**:
+- Blog post: "Starburst vs Dremio vs AWS Athena"
+- Book Chapter 9 (Query Engines - Trino architecture)
+- Foundational federated query engine understanding
+
+**Key Findings**:
+- Trino architecture and internals
+- Query optimization techniques
+- Federation patterns for security data
+- Production deployment best practices
+
+**Citations**: Blog query engine deep-dive, Chapter 9 Trino fundamentals
+**Notes**: **CRITICAL** - Authoritative Trino reference, Matt Fuller = Starburst co-founder
+
+**Validation Status**: ✅ Active URL (O'Reilly publication)
+
+---
+
+#### Dremio - Official Documentation
+
+**Authors**: Dremio Corporation
+**Date**: 2024 (continuously updated)
+**URL**: https://docs.dremio.com
+**Evidence Level**: B (Vendor documentation, technical authority)
+**Relevance**:
+- Blog post: "Starburst vs Dremio vs AWS Athena"
+- Book Chapter 9 (Query Engines - semantic layer)
+- Data lakehouse query acceleration
+
+**Key Findings**:
+- Reflections (materialized views) for query acceleration
+- Apache Arrow-based columnar execution
+- Self-service data catalog
+- Iceberg table format integration
+
+**Citations**: Blog query engine comparison, Chapter 9 Dremio capabilities
+**Notes**: Semantic layer approach to data lakehouse architecture
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Dremio - Data Lakehouse Architecture Guide
+
+**Authors**: Dremio Corporation (Alex Merced, contributor)
+**Date**: 2024
+**URL**: https://www.dremio.com/blog/what-is-a-data-lakehouse/
+**Evidence Level**: B (Vendor thought leadership, educational)
+**Relevance**:
+- Blog post: "Starburst vs Dremio vs AWS Athena"
+- Book Chapter 2 (Data Engineering Foundation - lakehouse architecture)
+- Foundational architecture understanding
+
+**Key Findings**:
+- Data lakehouse architecture principles
+- Separation of storage and compute
+- Open table formats (Iceberg, Delta, Hudi)
+- Query engine layer architecture
+
+**Citations**: Blog query engine context, Chapter 2 lakehouse fundamentals
+**Notes**: Educational resource from Dremio, vendor perspective
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Alex Merced - Dremio YouTube Channel
+
+**Authors**: Alex Merced (Dremio Developer Advocate)
+**Date**: 2023-2024 (ongoing series)
+**URL**: https://www.youtube.com/@alexmercedcoder
+**Evidence Level**: B (Vendor educational content, practitioner tutorials)
+**Relevance**:
+- Blog post: "Starburst vs Dremio vs AWS Athena"
+- Book Chapter 9 (Query Engines - practical tutorials)
+- Hands-on query engine learning
+
+**Key Findings**:
+- Data lakehouse architecture tutorials
+- Apache Iceberg hands-on guides
+- Dremio query optimization
+- Practical security data examples
+
+**Citations**: Blog query engine resources, Chapter 9 learning resources
+**Notes**: Educational YouTube channel, vendor-affiliated but practical
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
 #### ClickHouse at Cloudflare - 6M Requests/Second
 
 **Authors**: Cloudflare Engineering Blog
@@ -625,6 +768,103 @@ This bibliography consolidates all literature sources from:
 **Notes**: **CRITICAL** - Security-specific performance advantage
 
 **Validation Status**: ✅ Active URL
+
+---
+
+#### ClickHouse - Compression Codecs Documentation
+
+**Authors**: ClickHouse Documentation Team
+**Date**: 2024 (continuously updated)
+**URL**: https://clickhouse.com/docs/en/sql-reference/statements/create/table#compression-codecs
+**Evidence Level**: A (Vendor technical documentation)
+**Relevance**:
+- Blog post: "ClickHouse Compression Reality: Vendor Claims vs Production Testing"
+- Book Chapter 9 (Query Engines - ClickHouse)
+- Compression optimization for security data
+
+**Key Findings**:
+- LZ4, ZSTD, Delta, DoubleDelta, T64, Gorilla compression codecs
+- Codec selection impacts compression ratios (3-14×)
+- Security telemetry optimization guidance
+
+**Citations**: Blog compression deep-dive, Chapter 9 storage optimization
+**Notes**: Technical reference for compression codec selection
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### ClickHouse - Performance Optimization Guide
+
+**Authors**: ClickHouse Documentation Team
+**Date**: 2024 (continuously updated)
+**URL**: https://clickhouse.com/docs/en/operations/optimizing-performance
+**Evidence Level**: A (Vendor technical documentation)
+**Relevance**:
+- Blog post: "ClickHouse Compression Reality"
+- Book Chapter 9 (Query Engines)
+- Security data performance tuning
+
+**Key Findings**:
+- Query optimization techniques
+- Index strategies for security workloads
+- Partitioning and clustering best practices
+
+**Citations**: Blog compression testing methodology, Chapter 9 performance tuning
+**Notes**: Comprehensive performance optimization reference
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Huntress - ClickHouse Migration Case Study
+
+**Authors**: Huntress / ClickHouse
+**Date**: 2024
+**URL**: https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse
+**Evidence Level**: A (Production deployment, validated metrics)
+**Relevance**:
+- Blog post: "Sparking an Architecture: RSA Conversations"
+- Blog post: "LIGER Stack Reference Architecture"
+- Book Chapter 9 (Query Engines - ClickHouse)
+- Hypothesis H-IMPL-01 (TCO Reality)
+
+**Key Findings**:
+- 93% cost reduction: $70K → $5K monthly infrastructure
+- Migrated from Elastic to ClickHouse
+- 16 billion events/day processed
+- 3 million endpoints monitored
+- 1 million EPS on 3× 16-core 16GB RAM servers
+- 20-50× compression ratios achieved
+
+**Citations**: **CRITICAL** - Blog RSA conversations, H-IMPL-01 TCO validation
+**Notes**: Production security deployment, Chris Bisnett (CTO) validation at RSA 2025
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Chris Bisnett - Huntress ClickHouse Migration (Video)
+
+**Authors**: Chris Bisnett (Huntress CTO)
+**Date**: 2024
+**URL**: https://www.youtube.com/watch?v=lhsWNofOcdk
+**Evidence Level**: A (Production deployment presentation)
+**Relevance**:
+- Blog post: "Sparking an Architecture: RSA Conversations"
+- Hypothesis H-IMPL-01 (TCO Reality)
+- Production ClickHouse validation
+
+**Key Findings**:
+- First-hand account of Elastic → ClickHouse migration
+- 93% cost reduction validation
+- 3M endpoint scale operational insights
+- Security data compression and performance
+
+**Citations**: Blog RSA conversations, practitioner validation
+**Notes**: Video presentation from Huntress CTO, RSA 2025 field validation
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
 
 ---
 
@@ -1347,6 +1587,78 @@ This bibliography consolidates all literature sources from:
 **Notes**: Community strength = long-term viability
 
 **Validation Status**: ✅ Active URL
+
+---
+
+#### Apache Iceberg - Official Documentation
+
+**Authors**: Apache Iceberg Community
+**Date**: 2024 (continuously updated)
+**URL**: https://iceberg.apache.org/
+**Evidence Level**: A (Official open-source project documentation)
+**Relevance**:
+- Blog post: "Apache Iceberg - Yes, It's Important to Security"
+- Book Chapter 8 (Storage Formats)
+- Hypothesis H-ARCH-01 (Iceberg dominance)
+
+**Key Findings**:
+- Table format specification and architecture
+- Schema evolution, time travel, ACID transactions
+- Multi-engine query support (Spark, Trino, Dremio, Flink, etc.)
+- Hidden partitioning for security analyst accessibility
+
+**Citations**: Blog Iceberg deep-dive, Chapter 8 table format fundamentals
+**Notes**: Authoritative technical reference for Iceberg architecture
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Apache Iceberg - Maintenance Documentation
+
+**Authors**: Apache Iceberg Community
+**Date**: 2024 (continuously updated)
+**URL**: https://iceberg.apache.org/docs/latest/maintenance/
+**Evidence Level**: A (Official documentation)
+**Relevance**:
+- Blog post: "Spark Persistence Reality: Hybrid Architectures"
+- Book Chapter 8 (Storage Formats - operational considerations)
+- Table maintenance procedures
+
+**Key Findings**:
+- Expire snapshots procedure
+- Rewrite data files optimization
+- Remove orphan files cleanup
+- Compact data files for query performance
+
+**Citations**: Blog Spark hybrid architectures, Chapter 8 operational maintenance
+**Notes**: Critical for production security data lake operations
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
+
+---
+
+#### Apache Iceberg - Spark Procedures Documentation
+
+**Authors**: Apache Iceberg Community
+**Date**: 2024 (continuously updated)
+**URL**: https://iceberg.apache.org/docs/latest/spark-procedures/
+**Evidence Level**: A (Official documentation)
+**Relevance**:
+- Blog post: "Spark Persistence Reality: Hybrid Architectures"
+- Book Chapter 8 (Storage Formats - Spark integration)
+- Production maintenance workflows
+
+**Key Findings**:
+- Spark SQL procedure syntax for maintenance
+- Snapshot management procedures
+- Metadata operations
+- Table optimization commands
+
+**Citations**: Blog Spark procedures, Chapter 8 Spark + Iceberg integration
+**Notes**: Practical reference for security data engineers using Spark
+
+**Validation Status**: ✅ Active URL (verified Oct 2025)
 
 ---
 
