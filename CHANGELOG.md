@@ -7,6 +7,66 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.6.2] - 2025-10-19 - Blog Reference Integration
+
+### Added
+- **MASTER-BIBLIOGRAPHY.md**: Added 14 new sources from security-data-commons-blog references
+  - **ClickHouse sources (5)**:
+    - Huntress ClickHouse migration case study ($70K → $5K monthly, 93% cost reduction)
+    - Chris Bisnett Huntress video presentation (RSA 2025 validation)
+    - ClickHouse compression codecs documentation
+    - ClickHouse performance optimization guide
+    - Total ClickHouse sources: 9 (comprehensive coverage)
+  - **Apache Iceberg sources (3)**:
+    - Official Iceberg documentation (table format fundamentals)
+    - Iceberg maintenance documentation (operational procedures)
+    - Iceberg Spark procedures documentation (integration reference)
+    - Total Iceberg sources: 7 (complete architecture + operations)
+  - **Query Engine sources (6)**:
+    - Starburst official documentation (Trino enterprise)
+    - Starburst AWS Athena integration guide
+    - Trino: The Definitive Guide (O'Reilly book - authoritative reference)
+    - Dremio official documentation (semantic layer)
+    - Dremio data lakehouse architecture guide
+    - Alex Merced YouTube channel (educational tutorials)
+  - **Evidence Level Distribution**: 12 Level A (86%), 2 Level B (14%)
+  - **Blog Integration**: All sources link to specific blog posts (published + drafted)
+  - **Total Sources**: 76+ → 90+ sources documented
+
+### Purpose
+Integrate all reference links from security-data-commons-blog (published and drafted posts) into the literature review to create bidirectional traceability between blog content and research evidence. Enables readers to explore source material and validates blog claims with documented evidence.
+
+### Impact
+- **Comprehensive Coverage**: Query engines (Starburst, Dremio, Trino) now fully documented
+- **Blog-Literature Integration**: All blog references traceable to MASTER-BIBLIOGRAPHY.md
+- **Practitioner Validation**: Huntress production deployment (RSA 2025) adds critical TCO evidence
+- **Evidence Quality Maintained**: 86% Evidence Level A for new sources (exceeds 79% repository target)
+
+### Quality Metrics
+- 14 new sources added from blog posts
+- Evidence Level A: 12 of 14 sources (86%)
+- 100% blog-to-bibliography traceability achieved
+- All sources validated and active URLs (verified Oct 2025)
+- Total repository sources: 90+ (up from 76+)
+- Repository Evidence Level A: ~80% (maintained above 79% target)
+
+### Blog Post Integration
+**Published posts (3)**:
+- "Security Architects Need to be Wrong on the Internet" - foundational
+- "A Security Architect Walks Into a Data Engineering Conference" - principles
+- "Sparking an Architecture: RSA Conversations" - Huntress validation
+
+**Drafted posts referencing new sources (7)**:
+- "Apache Iceberg - Yes, It's Important to Security" (Iceberg docs)
+- "ClickHouse Compression Reality: Vendor Claims vs Production Testing" (compression docs)
+- "Starburst vs Dremio vs AWS Athena: Core Differences" (query engine docs + O'Reilly book)
+- "Spark Persistence Reality: Hybrid Architectures" (Iceberg maintenance docs)
+- "LIGER Stack Reference Architecture" (Huntress case study)
+- "From 80 Vendors to 3 Finalists: MCP Decision Tool" (decision framework)
+- "Why Modern Data Stacks Haven't Replaced SIEMs" (barriers analysis)
+
+---
+
 ## [1.6.1] - 2025-10-16 - Quality Enhancements & Expert Interview Preparation
 
 ### Added
