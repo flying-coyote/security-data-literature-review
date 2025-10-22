@@ -1,0 +1,172 @@
+% Figure 1: PRISMA Literature Extraction Flowchart
+% LaTeX TikZ code for publication-quality flowchart
+%
+% Usage:
+% 1. Compile this file as standalone: pdflatex figure1_prisma_flowchart.tex
+% 2. Or include in main manuscript: \input{figure1_prisma_flowchart.tex}
+%
+% Requirements: \usepackage{tikz}, \usetikzlibrary{shapes,arrows,positioning,calc}
+
+\documentclass[tikz,border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc,fit}
+\usepackage{xcolor}
+
+% Define colors
+\definecolor{identification}{RGB}{144,202,249}  % Light blue
+\definecolor{screening}{RGB}{255,224,178}        % Light orange
+\definecolor{eligibility}{RGB}{255,245,157}      % Light yellow
+\definecolor{included}{RGB}{165,214,167}         % Light green
+\definecolor{bordercolor}{RGB}{33,33,33}         % Dark gray
+
+% Define styles
+\tikzstyle{stage} = [rectangle, rounded corners, minimum width=10cm, minimum height=1.5cm,
+                     text centered, draw=bordercolor, line width=1.2pt, font=\bfseries\large]
+\tikzstyle{box} = [rectangle, minimum width=9cm, minimum height=3cm,
+                   text width=8.5cm, text centered, draw=bordercolor, line width=0.8pt, font=\small]
+\tikzstyle{arrow} = [thick,->,>=stealth,line width=1.5pt]
+\tikzstyle{label} = [font=\footnotesize\itshape]
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm]
+
+% ==================== IDENTIFICATION ====================
+\node (stage1) [stage, fill=identification] {IDENTIFICATION};
+
+\node (id-box) [box, below=0.3cm of stage1, fill=identification!30] {
+    \textbf{Source Documents Identified:}\\[0.2cm]
+    \begin{itemize}
+        \item Best Practices Document: 283 footnotes (2024-04-15)
+        \item Archive Manuscripts: 74 files assessed
+    \end{itemize}
+    \vspace{0.2cm}
+    \textbf{Supplementary Sources:}\\[0.1cm]
+    \begin{itemize}
+        \item Expert network validation
+        \item Blog integration (security-data-commons)
+        \item Vendor documentation (official technical docs)
+        \item Government standards (CISA, MITRE, DARPA, NSA, SANS)
+        \item Industry analysts (Gartner, IDC, Forrester)
+    \end{itemize}
+};
+
+% ==================== SCREENING ====================
+\node (stage2) [stage, fill=screening, below=0.8cm of id-box] {SCREENING};
+
+\node (screen-box) [box, below=0.3cm of stage2, fill=screening!30] {
+    \textbf{Citations Extracted: 283}\\[0.2cm]
+    \begin{itemize}
+        \item Automated URL extraction from markdown footnotes
+        \item Manual review of vendor documentation references
+        \item Performance benchmark identification
+        \item Expert quote attribution verification
+    \end{itemize}
+    \vspace{0.3cm}
+    \textbf{Archive Assessment Result:}\\[0.1cm]
+    \begin{itemize}
+        \item 74 manuscripts reference best practices document
+        \item No independent citations found beyond 283 footnotes
+        \item \textit{Best practices document = primary extraction target}
+    \end{itemize}
+};
+
+% ==================== ELIGIBILITY ====================
+\node (stage3) [stage, fill=eligibility, below=0.8cm of screen-box] {ELIGIBILITY};
+
+\node (elig-box) [box, below=0.3cm of stage3, fill=eligibility!30] {
+    \textbf{Duplicates Consolidated:}\\[0.1cm]
+    \begin{itemize}
+        \item Multiple citations to same source merged
+        \item Example: Cloudflare blog posts consolidated
+    \end{itemize}
+    \vspace{0.2cm}
+    \textbf{Quality Assessment Applied:}\\[0.1cm]
+    \textit{Inclusion criteria}: Production deployments, peer-reviewed research,\\
+    industry analyst reports, government/standards publications\\[0.1cm]
+    \textit{Exclusion criteria}: Marketing materials, unverified claims,\\
+    speculation, duplicate coverage
+    \vspace{0.2cm}
+    \textbf{Evidence Level Classification:}\\[0.1cm]
+    \begin{itemize}
+        \item \textbf{Level A}: Production deployments, peer-reviewed research, government standards
+        \item \textbf{Level B}: Industry analyst reports, expert validation, vendor docs (if production-validated)
+        \item \textbf{Level C/D}: Rejected (marketing materials, speculation)
+    \end{itemize}
+};
+
+% ==================== INCLUDED ====================
+\node (stage4) [stage, fill=included, below=0.8cm of elig-box] {INCLUDED};
+
+\node (incl-box) [box, below=0.3cm of stage4, fill=included!30, minimum height=5cm] {
+    \textbf{Total Unique Sources: 75+}\\[0.3cm]
+
+    \textbf{Evidence Level Distribution:}\\[0.1cm]
+    \begin{itemize}
+        \item \textbf{Level A: 57 sources (79\%)} ✓ \textbf{EXCEEDS 73\% target}
+        \item Level B: 15 sources (21\%)
+        \item Level C: 0 sources (0\%)
+        \item Level D: 0 sources (0\%)
+    \end{itemize}
+    \vspace{0.2cm}
+
+    \textbf{Source Type Distribution:}\\[0.1cm]
+    • Production deployments: 18+ organizations\\
+    • Government/Standards: 8 sources\\
+    • Industry analysts: 10 sources\\
+    • Academic/Research: 6 sources\\
+    • Vendor documentation: 33 sources (technical depth)
+    \vspace{0.2cm}
+
+    \textbf{Geographic/Organizational Diversity:}\\[0.1cm]
+    • Regions: US, Europe, Asia-Pacific (SK Telecom)\\
+    • Organization types: Tech giants, enterprises, startups, government, standards\\
+    • Industries: Technology, telecom, retail, energy, finance
+    \vspace{0.2cm}
+
+    \textbf{URL Validation:}\\[0.1cm]
+    • Active URLs: 16 of 22 (73\%)\\
+    • \textbf{Hypothesis-critical: 16 of 16 (100\%)} ✓\\
+    • Paywalls (expected): 3 sources (Gartner, IDC, Forrester)\\
+    • Placeholders with corroboration: 3 sources (non-critical)
+    \vspace{0.2cm}
+
+    \textbf{Hypotheses Validated: 7}\\[0.1cm]
+    • Strongly Validated (⭐⭐⭐⭐⭐): 3 hypotheses\\
+    • High Confidence (⭐⭐⭐⭐): 3 hypotheses\\
+    • Moderate Confidence (⭐⭐⭐): 1 hypothesis\\
+    • Average sources per hypothesis: 4.1\\
+    • Average Evidence Level A: 94\%
+};
+
+% ==================== ARROWS ====================
+\draw [arrow] (id-box) -- (stage2);
+\draw [arrow] (screen-box) -- (stage3);
+\draw [arrow] (elig-box) -- (stage4);
+\draw [arrow] (incl-box.south) -- +(0,-0.5);
+
+% ==================== SIDE NOTES ====================
+% Exclusions (right side)
+\node (excl1) [label, right=0.5cm of screen-box.east, text width=3cm, align=left]
+    {Archive manuscripts:\\No independent\\sources found\\(n=74 files)};
+
+\node (excl2) [label, right=0.5cm of elig-box.east, text width=3cm, align=left]
+    {Marketing materials\\excluded\\(n=unknown)\\[0.2cm]Speculation\\excluded\\(n=unknown)};
+
+% Connect exclusions with dashed lines
+\draw [dashed, gray, thick] (screen-box.east) -- (excl1.west);
+\draw [dashed, gray, thick] (elig-box.east) -- (excl2.west);
+
+% ==================== TITLE ====================
+\node [above=0.5cm of stage1, font=\LARGE\bfseries] (title) {
+    Figure 1: PRISMA-Aligned Systematic Literature Review Flowchart
+};
+
+% ==================== CAPTION ====================
+\node [below=0.5cm of incl-box.south, font=\small, text width=13cm, text centered] (caption) {
+    \textit{PRISMA-aligned systematic literature review flowchart showing extraction of 283 footnotes from best practices document and 74 archive manuscripts, consolidation of duplicates, quality assessment with evidence level classification, and final inclusion of 75+ sources achieving 79\% Evidence Level A (exceeding 73\% target). Hypothesis validation achieved 86\% High or Strong confidence across 7 hypotheses with average 4.1 sources per hypothesis.}
+};
+
+\end{tikzpicture}
+
+\end{document}

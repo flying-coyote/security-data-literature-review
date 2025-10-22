@@ -1,0 +1,9 @@
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Generated outputs (tracked for now, can exclude later if preferred)
+# *.png
+# *.pdf

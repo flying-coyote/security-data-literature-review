@@ -1,0 +1,18 @@
+# Python dependencies for publication-quality graphics generation
+# Install with: pip install -r requirements.txt
+
+# Core visualization libraries
+matplotlib>=3.7.0
+numpy>=1.24.0
+
+# Optional: Enhanced styling (uncomment if needed)
+# seaborn>=0.12.0
+
+# LaTeX rendering for matplotlib (optional, requires system LaTeX)
+# If you want LaTeX-rendered text in matplotlib figures:
+# 1. Install LaTeX on your system (texlive-full on Ubuntu/Debian, MacTeX on macOS)
+# 2. Uncomment the line below
+# latex>=0.7.0
+
+# Version checking
+packaging>=21.0
