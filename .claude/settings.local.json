@@ -1,6 +1,10 @@
 {
   "permissions": {
-    "allow": [],
+    "allow": [
+      "Bash(git commit:*)",
+      "WebFetch(domain:securitydatacommons.substack.com)",
+      "Skill(ultrathink-analyst)"
+    ],
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
