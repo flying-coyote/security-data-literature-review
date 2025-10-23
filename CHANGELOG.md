@@ -7,6 +7,56 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.8.0] - 2025-10-23 - MCP Vendor Database Integration
+
+### Added
+- **Phase 2F: MCP Vendor Database Integration** - 71-vendor baseline with enterprise-grade evidence (84% Tier A)
+  - 110 evidence sources (92 Tier A, 18 Tier B, 0 Tier C/D marketing)
+  - 46.5% analyst coverage (33 vendors with Gartner MQ/Forrester Wave)
+  - 35.2% production validation (25 OSS vendors with Fortune 500 deployments)
+  - Automated maintenance (weekly refresh + monthly GitHub metrics tracking)
+- **vendor-landscape/MCP-VENDOR-INTEGRATION-SUMMARY.md** - Comprehensive integration summary (~25 KB)
+  - 71-vendor category coverage (9 categories detailed)
+  - Evidence tier classification alignment (Tier A/B/C/D ↔ Level A/B/C/D)
+  - 6 vendor additions documented (Gurucul, Palo Alto XSIAM, SentinelOne, Apache Impala, Apache Paimon, Starburst)
+  - Automation architecture (weekly refresh + monthly GitHub metrics)
+  - Integration benefits (IT Harvest partnership acceleration, quarterly update efficiency)
+
+### Changed
+- **REPOSITORY-STATUS.md** - Added Phase 2F completion status with MCP vendor database metrics
+  - Updated overall phase: Phase 1-2F COMPLETE (was Phase 1-2E)
+  - Added Phase 2F section (completed October 23, 2025)
+  - Updated recent achievements with MCP integration (Version 1.8.0)
+  - Updated next actions to reference MCP baseline acceleration
+- **vendor-landscape/README.md** - Updated partnership status to reflect MCP baseline availability (see Update vendor-landscape/README.md task)
+
+### Integration Impact
+- **IT Harvest Partnership**: 10 query engine vendors already documented (pilot project accelerator)
+- **First Quarterly Update**: ~60% effort reduction (baseline data + evidence exists)
+- **Academic Publication**: 110 evidence sources validate practitioner tool claims
+- **Vendor Landscape**: vendor-database.json seeds vendor-landscape/ directory population
+
+**Files Modified**:
+- REPOSITORY-STATUS.md (Phase 2F added, overall status updated)
+- vendor-landscape/MCP-VENDOR-INTEGRATION-SUMMARY.md (new file, ~25 KB)
+- CHANGELOG.md (this entry)
+
+**Cross-Repository Reference**:
+- MCP Server: `security-architect-mcp-server/data/vendor_database.json`
+- Quality Review: `security-architect-mcp-server/docs/QUALITY-REVIEW-FINAL-SESSION-2.md` (Grade A - 92.7/100)
+- Session Archive: `security-architect-mcp-server/docs/SESSION-2025-10-23-SESSION-2-VENDOR-EXPANSION.md`
+- Literature Review Integration Recommendations: `security-architect-mcp-server/docs/LITERATURE-REVIEW-UPDATE-RECOMMENDATIONS.md`
+
+**Database Metrics**:
+- 71 vendors (toward 80-vendor goal = 89%)
+- 110 evidence sources (84% Tier A = 92 Tier A sources, 18 Tier B)
+- Zero Tier D (marketing) sources maintained across all vendors
+- 9 capability categories (SIEM 18, Query Engine 10, Streaming 10, Lakehouse 7, ETL/ELT 6, Observability 5, Object Storage 5, Data Catalog 5, Data Virtualization 4)
+
+**Quality Grade**: A (Excellent) - 92.7/100 (comprehensive quality review conducted)
+
+---
+
 ## [1.7.1] - 2025-10-22 - Substack Post Sync (Evening Update)
 
 ### Changed

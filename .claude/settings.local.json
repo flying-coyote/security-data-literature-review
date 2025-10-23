@@ -3,7 +3,9 @@
     "allow": [
       "Bash(git commit:*)",
       "WebFetch(domain:securitydatacommons.substack.com)",
-      "Skill(ultrathink-analyst)"
+      "Skill(ultrathink-analyst)",
+      "Bash(git add:*)",
+      "Bash(git push)"
     ],
     "deny": [
       "Read(./.env)",
