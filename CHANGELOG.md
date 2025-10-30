@@ -7,6 +7,178 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.9.0] - 2025-10-30 - Strategic Realignment: Hybrid Update Model & Online-First Publication
+
+### Changed
+- **PROJECT-BRIEF.md** - Comprehensive strategic realignment from quarterly/journal to hybrid/online-first
+  - **Fact 7**: Changed from "Quarterly Update Process Planned" → **"Hybrid Update Model - Monthly Rolling + Quarterly Deep Synthesis"**
+    - Monthly rolling updates: New sources, corrections, community feedback (~6-8 hours/month)
+    - Quarterly deep dives: Comprehensive reviews, expert validation, versioned snapshots (~24 hours/quarter)
+    - Average effort: ~18 hours/month (sustainable with MCP automation)
+    - Publication venue: Online (Substack) as primary, academic journal deferred to mid-2026
+    - Philosophy: "Being wrong publicly" - rapid iteration, intellectual honesty, collaborative corrections
+  - **Assumption 4**: Revised from "Academic Publication (ACM CSUR) Will Accept" → **"Academic Publication Deferred to 2026 (Online-First Strategy)"**
+    - Primary venue: Substack (Oct 22, 2025), 38,000 words, openly accessible
+    - Academic journal submission deferred to mid-2026 after community validation
+    - Trade-off: Broader practitioner reach (Substack) vs academic credibility (journal deferred)
+  - **Assumption 5**: Changed from "79% Evidence Level A with Quarterly Updates" → **"75%+ Evidence Level A with Monthly Rolling Updates"**
+    - Monthly target: ≥75% Evidence Level A (slight degradation from 79% acceptable for currency)
+    - Quarterly deep dives restore rigor: 77-79% Evidence Level A maintained
+    - 3-month trial (Nov 2025 - Jan 2026) validates sustainability
+    - Decision point (Feb 2026): Continue monthly, adjust to bi-monthly, or revert to quarterly
+  - **Scope & Boundaries**: Added blog philosophy and hybrid model to in-scope items
+    - "Being wrong publicly" philosophy, rapid iteration, collaborative corrections
+    - Hybrid update model: Monthly rolling + quarterly deep synthesis
+    - Community engagement: Reader feedback, corrections, contributions
+  - **Decision 3**: Updated from "Quarterly Update Cycle" → **"Hybrid Update Model (Monthly Rolling + Quarterly Deep Synthesis)"**
+    - Aligns with published blog justification ("monthly refresh cycles")
+    - Philosophy fit: "Being wrong publicly" requires rapid iteration (monthly) balanced with quality (quarterly)
+    - Online-first: Substack supports rolling updates, quarterly snapshots for citation stability
+    - Reversible: 3-month trial (Nov-Jan 2026), decision point Feb 2026
+  - **Pending Decision 2**: Resolved - **"Academic Publication Timing Deferred to Mid-2026"**
+    - Sequencing: Substack (Oct 2025) → Community feedback (6-12 months) → Refined manuscript → Journal submission (mid-2026)
+    - Journals: ACM CSUR, USENIX Security, or IEEE S&P (Q2-Q3 2026 target)
+    - Positioning: Cite Substack as "preprint" demonstrating community validation
+  - **Pending Decision 3**: Resolved - **"Evidence Level A Target 75%+ Acceptable with Monthly Updates"**
+    - Currency vs quality trade-off: 79% → 75-77% expected with monthly updates
+    - MCP automation baseline: 84% Tier A quality anchors vendor landscape
+    - Quarterly deep dives act as quality checkpoints (prevent degradation)
+  - **Blocker 1**: **IT Harvest Partnership NOW OPTIONAL** (MCP baseline sufficient)
+    - Status: NO LONGER BLOCKING - MCP vendor database provides sufficient baseline
+    - Resolution date: October 30, 2025 (71 vendors, 84% Tier A quality)
+  - **Blocker 2**: **Automated Vendor Data Ingestion RESOLVED** (MCP integration)
+    - MCP automation: Weekly refresh + monthly GitHub metrics (75-90% burden reduction)
+    - Enables monthly rolling updates without proportional effort increase
+  - **Integration with Blog**: Changed to **PRIMARY DRIVER**
+    - Feedback loop: Blog posts → Reader feedback → New sources → Literature updates
+    - Update alignment: Monthly rolling updates support 3x/week blog output
+    - Repository: https://github.com/flying-coyote/security-data-commons-blog
+  - **Integration with IT Harvest**: Changed to **OPTIONAL ENHANCEMENT**
+    - MCP baseline sufficient, partnership deferred/optional
+  - **Success Metrics**: Revised Phase 2 from "IT Harvest partnership" → **"Hybrid Model Trial"**
+    - First monthly rolling update (November 2025)
+    - 3-month trial validated (Nov-Jan 2026, quality ≥75%, time ≤10 hours/month)
+    - First quarterly deep dive (Q1 2026 - January)
+    - Academic publication submitted (mid-2026)
+  - **Timeline Milestones**: Updated from quarterly to hybrid model trial
+    - November 2025: First monthly rolling update
+    - December 2025: Second monthly update
+    - January 2026: Third monthly update + First quarterly deep dive
+    - February 2026: Decision point (continue, adjust, or revert)
+  - **Status**: Updated from "Phase 2 pending IT Harvest partnership" → **"Phase 2 active (hybrid model)"**
+    - Next Action: First monthly rolling update (November 2025)
+    - Priority: PRIMARY driver for blog (3x/week), foundation for book, academic publication deferred to 2026
+    - Updated: October 30, 2025 (strategic realignment)
+
+- **CLAUDE.md** - Added blog philosophy, updated all references to hybrid model
+  - **Project Purpose**: Added blog philosophy, online-first strategy, hybrid update model
+    - Living literature review published on Substack (primary venue)
+    - "Being wrong publicly" philosophy: rapid iteration, intellectual honesty, collaborative corrections
+    - Hybrid update model: Monthly rolling + quarterly deep synthesis
+    - Online-first strategy prioritizes practitioner engagement, journal deferred to mid-2026
+  - **Current Phase**: Changed from "Phase 2 (Vendor Landscape) PENDING" → **"Phase 2 (Hybrid Model Trial) ACTIVE"**
+    - Focus: Monthly rolling updates + quarterly deep synthesis (3-month trial: Nov 2025 - Jan 2026)
+    - Published: Substack (Oct 22, 2025), 38,000 words, 75+ sources, 79% Evidence Level A
+  - **Phase 2 Active**: Updated from "Planned" to detailed hybrid model description
+    - Monthly rolling updates (~6-8 hours) + quarterly deep synthesis (~24 hours/quarter)
+    - MCP vendor database: 71 vendors, 84% Tier A, automated (replaces IT Harvest dependency)
+    - 3-month trial: Nov 2025 - Jan 2026 (quality ≥75%, time ≤10 hours/month)
+    - Community engagement: Reader feedback, corrections, collaborative source identification
+  - **Quality Standards**: **Added "Blog Philosophy: Being Wrong Publicly" section**
+    - Intellectual Honesty: Transparent contradictions, uncertainty acknowledgment, invite corrections
+    - Rapid Iteration: Monthly rolling updates prioritize currency over perfection
+    - Collaborative Learning: Reader feedback drives source identification, community corrections improve quality
+    - Pragmatic Specificity: Name vendors/costs/deployments, production > marketing claims
+  - **Current Priorities**: Updated all sections to reflect hybrid model trial
+    - **Immediate**: First monthly rolling update (Nov 2025), track metrics, community engagement, blog support
+    - **Short-term**: Q1 2026 quarterly deep dive (expert interviews, versioned snapshot, synthesis blog post)
+    - **Long-term**: Sustain hybrid model, academic journal submission (mid-2026), blog-literature feedback loop
+  - **Next Session Priorities**: Updated from "Expert Interviews" → **"First Monthly Rolling Update"**
+    - First monthly rolling update (November 2025)
+    - Track metrics (Evidence Level A, time investment, blog support)
+    - Community engagement (Substack reader feedback, corrections)
+    - Blog support (3x/week output with current evidence)
+    - Prepare for Q1 deep dive (January 2026)
+  - **Integration Points**: Added **"Blog (PRIMARY DRIVER)"** section
+    - Literature review published online (Substack, Oct 22, 2025)
+    - Evidence foundation for blog (4-6× writing speedup demonstrated)
+    - Feedback loop: Blog posts → Reader feedback → New sources → Literature updates
+    - Philosophy alignment: "Being wrong publicly"
+    - Update alignment: Monthly rolling updates support blog's need for current evidence
+  - **Integration Points**: Added **"MCP Vendor Database (AUTOMATION FOUNDATION)"** section
+    - 71 vendors, 84% Tier A quality, 110 evidence sources
+    - Automated maintenance: Weekly refresh + monthly GitHub metrics (75-90% burden reduction)
+    - Replaces IT Harvest dependency: Partnership now optional
+    - Enables hybrid model: Automation makes monthly updates sustainable
+  - **Integration Points**: Updated **"IT Harvest Partnership"** to **"OPTIONAL ENHANCEMENT"**
+    - Status: Deferred/optional - MCP baseline sufficient
+    - Future consideration: Partnership may add deeper insights, but not critical path
+  - **Success Metrics**: Completely revised Phase 2 and added Hybrid Model Metrics
+    - **Phase 2 (ACTIVE)**: 3-month trial (Nov-Jan 2026), quality ≥75%, time ≤10 hours/month, blog support sustained
+    - **Hybrid Model Metrics**: 12 monthly updates + 4 quarterly deep dives per year, 75%+ Level A monthly, 77-79% quarterly, time sustainability, blog integration, community engagement, citation stability
+  - **Last Updated**: October 30, 2025 (Strategic realignment: Hybrid update model, online-first publication, IT Harvest optional, Version 1.9.0)
+
+- **REPOSITORY-STATUS.md** - Updated phase status, next actions, and timelines
+  - **Header**: Updated from "Phase 2F complete" → **"Strategic realignment: Hybrid update model, online-first publication"**
+    - Purpose: Living literature review published on Substack, supporting blog (3x/week) and book
+  - **Current Status**: Updated from "Phase 2G-3 PENDING" → **"Phase 2G ACTIVE (Hybrid Model Trial)"**
+    - Recent Achievement: Strategic Realignment (Version 1.9.0), published online (Substack), MCP vendor database, blog integration, IT Harvest optional
+    - Next Actions: First monthly rolling update (Nov 2025), track metrics, community engagement, Q1 deep dive (Jan 2026), decision point (Feb 2026)
+  - **Phase 2G**: Changed from "Journal Submission ⏳ PENDING" → **"Hybrid Model Trial 🔄 ACTIVE"**
+    - Timeline: November 2025 - January 2026 (3-month validation trial)
+    - Objectives: Validate monthly sustainability, support blog, track community engagement, execute Q1 deep dive
+    - Actions in Progress: First monthly update (Nov), quality metrics tracking, community engagement workflow, prepare for Q1 deep dive
+    - Decision Point (Feb 2026): Continue monthly (if quality ≥75%, time ≤10 hours), adjust to bi-monthly, or revert to quarterly
+  - **Phase 3**: **ADDED - "Hybrid Model Maturity & Academic Publication ⏳ PLANNED (2026+)"**
+    - Objectives: Sustain hybrid model at scale (12 monthly + 4 quarterly per year), submit journal manuscript (mid-2026), maintain blog-literature feedback loop, establish citation stability
+    - Planned Deliverables: 12 monthly updates/year, 4 quarterly deep dives/year, academic journal submission, IT Harvest partnership evaluation (optional)
+    - Success Criteria: Quality (75%+ monthly, 77-79% quarterly), time sustainability (≤10 hours/month), blog support (4-6× speedup sustained), community engagement, academic acceptance
+  - **Next Steps**: Completely revised for hybrid model trial
+    - **Immediate (November 2025)**: First monthly update, track metrics, community engagement, blog support, document workflow
+    - **Short-Term (Dec 2025 - Jan 2026)**: Second monthly update, third monthly update + Q1 deep dive (expert interviews, versioned snapshot, synthesis blog post), calculate trial results
+    - **Medium-Term (Feb-Apr 2026)**: Decision point (Feb), second quarterly deep dive (Apr), academic journal submission (Q2-Q3 2026), IT Harvest evaluation
+  - **Success Criteria**: Updated Phase 2G and Phase 3 criteria
+    - Phase 2G: First 3 monthly updates, expert interviews in Q1 deep dive, versioned snapshot (2025-Q4-v1.0), decision point (Feb 2026)
+    - Phase 3: Sustain hybrid model (12 monthly + 4 quarterly/year), academic journal submission (mid-2026), quarterly git tags, IT Harvest evaluation, academic publication acceptance
+
+### Integration Impact
+- **Blog-Driven Model**: Literature review now serves as primary evidence foundation for 3x/week blog output (not book-centric)
+- **Practitioner Engagement**: Online-first strategy prioritizes rapid community feedback over academic credibility signal
+- **Automation Enables Sustainability**: MCP vendor database (71 vendors, 84% Tier A, automated) makes monthly updates feasible for solo practitioner
+- **IT Harvest Optional**: MCP baseline sufficient, partnership deferred/optional (was critical blocker, now enhancement)
+- **Academic Publication Deferred**: Mid-2026 journal submission after 6-12 months community validation (was Q4 2025 immediate submission)
+
+### Rationale
+Strategic realignment addresses misalignment between published blog commitments and project documentation:
+- **Published blog states**: "Monthly refresh cycles" (not quarterly), "online open resource" (not journal submission)
+- **Blog philosophy**: "Being wrong publicly" - rapid iteration, intellectual honesty, collaborative corrections
+- **MCP automation**: 75-90% burden reduction enables monthly sustainability without IT Harvest dependency
+- **Practitioner audience**: Security architects, SOC managers (not academic researchers)
+- **3-month trial**: Validate hybrid model (Nov-Jan 2026), adjust if quality <75% or time >12 hours/month
+
+### Quality Safeguards
+- **Monthly target**: ≥75% Evidence Level A (slight degradation from 79% acceptable for currency)
+- **Quarterly deep dives**: Restore rigor to 77-79% Evidence Level A (prevent "slippery slope")
+- **Decision trigger**: IF quality <75% for 2 consecutive months → Reduce to bi-monthly or quarterly
+- **Time sustainability**: ≤10 hours/month for monthly updates (manageable for solo practitioner)
+- **MCP automation baseline**: 84% Tier A quality anchors vendor landscape (prevents quality erosion)
+
+**Files Modified**:
+- PROJECT-BRIEF.md (comprehensive realignment: facts, assumptions, decisions, blockers, integration, success metrics, timeline, status)
+- CLAUDE.md (project purpose, phase status, quality standards, priorities, integration points, success metrics, last updated)
+- REPOSITORY-STATUS.md (header, current status, Phase 2G/3, next steps, success criteria)
+- CHANGELOG.md (this entry)
+
+**Cross-Reference**:
+- Published Substack post: https://securitydatacommons.substack.com/p/modern-data-architecture-for-cybersecurity (Oct 22, 2025, 38,000 words)
+- Blog philosophy post: https://securitydatacommons.substack.com/p/security-architects-need-to-be-wrong
+- Blog justification post: https://securitydatacommons.substack.com/p/why-i-built-a-living-literature-review
+- Blog repository: https://github.com/flying-coyote/security-data-commons-blog
+
+**Strategic Decision Date**: October 30, 2025 (UltraThink analysis of blog-documentation alignment)
+
+---
+
 ## [1.8.0] - 2025-10-23 - MCP Vendor Database Integration
 
 ### Added

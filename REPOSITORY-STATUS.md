@@ -1,29 +1,29 @@
 # Repository Status Report
 
 **Repository**: security-data-literature-review
-**Last Updated**: October 23, 2025 (Phase 2F: MCP Vendor Database Integration complete)
+**Last Updated**: October 30, 2025 (Strategic realignment: Hybrid update model, online-first publication)
 **Maintained By**: Jeremy Wiley
-**Purpose**: Living literature review for "Modern Data Stack for Cybersecurity" book
+**Purpose**: Living literature review published on Substack, supporting blog (3x/week) and book (115,500 words)
 
 ---
 
 ## Current Status
 
-**Overall Phase**: ✅ **Phase 1-2F COMPLETE** (Publication Ready + Vendor Baseline) | 🔄 **Phase 2G-3 PENDING** (Journal Submission & Quarterly Updates)
+**Overall Phase**: ✅ **Phase 1-2F COMPLETE** (Publication + Vendor Baseline) | 🔄 **Phase 2G ACTIVE** (Hybrid Model Trial: Nov 2025 - Jan 2026)
 
 **Recent Achievement**:
-- ✅ Complete publication manuscript with all references, figures, and appendices (Version 1.7.0)
-- ✅ Published Substack post verified and complete draft created
-- ✅ 159 KB complete manuscript (~38,000 words) ready for academic journal submission
-- ✅ Repository synchronized with live Substack post (Version 1.7.1)
-- ✅ **MCP Vendor Database Integration** (Version 1.8.0) - 71 vendors, 110 evidence sources, 84% Tier A quality
+- ✅ **Strategic Realignment** (Version 1.9.0) - Hybrid update model adopted, online-first publication strategy
+- ✅ Published online (Substack, Oct 22, 2025) - 38,000 words, 75+ sources, 79% Evidence Level A, openly accessible
+- ✅ **MCP Vendor Database** (Version 1.8.0) - 71 vendors, 110 evidence sources, 84% Tier A quality, automated maintenance
+- ✅ **Blog integration demonstrated** - 4-6× writing speedup, supports 3x/week practitioner content
+- ✅ **IT Harvest partnership now optional** - MCP baseline sufficient, partnership deferred
 
 **Next Actions**:
-1. Execute expert interviews (pending finalization)
-2. Journal submission to ACM Computing Surveys (Q4 2025 target)
-3. Establish vendor landscape partnership for Phase 3 quarterly updates (accelerated by MCP baseline)
-4. Reference MCP vendor database in first quarterly update (Q4 2025 or Q1 2026)
-5. Create visual graphics for 5 figures (optional enhancement)
+1. **First monthly rolling update (November 2025)** - New sources, community feedback, MCP vendor refresh
+2. **Track quality metrics** - Evidence Level A percentage, time investment (target: ≤8 hours), blog support
+3. **Community engagement** - Respond to Substack reader feedback, incorporate corrections
+4. **First quarterly deep dive (January 2026)** - Expert interviews, hypothesis validation, versioned snapshot (2025-Q4-v1.0)
+5. **Decision point (February 2026)** - Continue monthly, adjust to bi-monthly, or revert to quarterly
 
 ---
 
@@ -197,16 +197,49 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 
 ---
 
-### Phase 2G: Journal Submission ⏳ PENDING
-**Target**: Q4 2025
+### Phase 2G: Hybrid Model Trial (Monthly Rolling + Quarterly Deep Dives) 🔄 ACTIVE
+**Timeline**: November 2025 - January 2026 (3-month validation trial)
 
-**Pending Actions**:
-- Execute expert interviews (pending finalization)
-- Incorporate expert feedback into manuscript
-- Compile Figure 1 PRISMA flowchart (LaTeX compilation if needed)
-- Update Substack post with complete content
-- Final manuscript review and journal formatting
-- Submit to ACM Computing Surveys (Q4 2025 target)
+**Objectives**:
+- Validate monthly rolling update sustainability (quality ≥75%, time ≤10 hours/month)
+- Support blog output (3x/week practitioner content with current evidence)
+- Track community engagement (reader feedback, corrections, source contributions)
+- Execute first quarterly deep dive (January 2026: expert interviews, hypothesis validation, versioned snapshot)
+
+**Actions in Progress**:
+- ⏳ First monthly rolling update (November 2025): New sources, community feedback, MCP vendor database refresh
+- ⏳ Quality metrics tracking: Evidence Level A percentage, time investment, blog integration effectiveness
+- ⏳ Community engagement workflow: Respond to Substack reader feedback, incorporate corrections
+- ⏳ Prepare for Q1 2026 deep dive: Expert interview scheduling (Lisa Chao, Jake Thomas), hypothesis validation planning
+
+**Decision Point** (February 2026):
+- **IF** quality ≥75% AND time ≤10 hours/month → Continue monthly rolling updates
+- **IF** quality <75% OR time >12 hours/month → Adjust to bi-monthly or revert to quarterly
+- **IF** community engagement high → Monthly cadence justified, continue hybrid model
+
+---
+
+### Phase 3: Hybrid Model Maturity & Academic Publication ⏳ PLANNED (2026+)
+**Timeline**: February 2026+ (post-trial validation)
+
+**Objectives**:
+- Sustain hybrid model at scale (12 monthly updates + 4 quarterly deep dives per year)
+- Submit academic journal manuscript (mid-2026: ACM CSUR, USENIX Security, or IEEE S&P)
+- Maintain blog-literature feedback loop (reader contributions, collaborative source identification)
+- Establish version control and citation stability (quarterly git tags: 2026-Q1-v1.0, 2026-Q2-v1.0, etc.)
+
+**Planned Deliverables**:
+- ⏳ 12 monthly rolling updates per year (new sources, corrections, community feedback)
+- ⏳ 4 quarterly deep dives per year (comprehensive reviews, expert validation, versioned snapshots)
+- ⏳ Academic journal submission (mid-2026): Community-validated manuscript, cite Substack as "preprint"
+- ⏳ IT Harvest partnership evaluation (optional): Assess if MCP baseline sufficient or partnership adds value
+
+**Success Criteria**:
+- Quality: 75%+ Evidence Level A monthly, 77-79% quarterly (deep dives restore rigor)
+- Time sustainability: ≤10 hours/month average (manageable for solo practitioner)
+- Blog support: 4-6× writing speedup sustained, 3x/week blog output
+- Community engagement: Active reader feedback, corrections, source contributions
+- Academic acceptance: Journal publication validates research quality
 
 ---
 
@@ -286,22 +319,27 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 
 ## Next Steps
 
-### Immediate (Next 1-2 Weeks)
-1. **Execute expert interviews** - Lisa Chao (catalogs), Jake Thomas (DuckDB/edge)
-2. **Integrate interview findings** - Update MASTER-BIBLIOGRAPHY.md with new evidence
-3. **URL validation** - Resolve remaining 6 placeholder URLs or document corroborating evidence
+### Immediate (November 2025 - First Monthly Rolling Update)
+1. **Execute first monthly update** - New sources from blog feedback, community corrections, MCP vendor database refresh
+2. **Track quality metrics** - Evidence Level A percentage, time investment (target: ≤8 hours)
+3. **Community engagement** - Respond to Substack reader feedback, incorporate corrections, document source contributions
+4. **Blog support** - Sustain 3x/week practitioner content with current evidence (4-6× speedup)
+5. **Document workflow** - What took time? What was automated? What was manual? (inform Feb 2026 decision)
 
-### Short-Term (Next 1 Month)
-1. **Academic publication preparation**:
-   - Restructure MASTER-BIBLIOGRAPHY.md into synthesized narrative
-   - Create PRISMA methodology flowchart
-   - Develop figures and tables for journal submission
-   - Draft abstract and cover letter for ACM Computing Surveys
+### Short-Term (December 2025 - January 2026 - Trial Validation)
+1. **Second monthly update (December)** - Continue rolling updates, track metrics
+2. **Third monthly update + Q1 2026 deep dive (January)**:
+   - Rolling update: New sources, corrections, community feedback
+   - **Quarterly deep dive**: Expert interviews (Lisa Chao, Jake Thomas), hypothesis validation, comprehensive review
+   - **Versioned snapshot**: Tag repository with 2025-Q4-v1.0 for citation stability
+   - **Quarterly synthesis blog post**: Publish comprehensive findings from Q4 2025 review
+3. **Calculate trial results**: Average time investment, quality metrics, blog acceleration effectiveness
 
-### Medium-Term (Next 3 Months)
-1. **IT Harvest partnership** - Establish vendor data integration (Charles Wells)
-2. **Academic publication** - Submit to CSUR (Q4 2025 target)
-3. **Quarterly updates** - First vendor landscape update (Q4 2025 or Q1 2026)
+### Medium-Term (February - April 2026 - Decision Point & Continuation)
+1. **Decision point (February 2026)**: Continue monthly (if quality ≥75%, time ≤10 hours), adjust to bi-monthly, or revert to quarterly
+2. **Second quarterly deep dive (Q2 2026 - April)**: Comprehensive review, hypothesis updates, versioned snapshot (2026-Q1-v1.0)
+3. **Academic journal submission (Q2-Q3 2026)**: ACM CSUR, USENIX Security, or IEEE S&P after community validation
+4. **IT Harvest partnership evaluation**: Assess if MCP baseline sufficient or partnership adds value
 
 ---
 
@@ -391,17 +429,20 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - [x] FIGURES-AND-TABLES.md created (5 figures + 5 tables)
 - [x] Publication graphics generated (Python scripts + LaTeX TikZ + PNG/PDF outputs)
 
-### Phase 2E (IN PROGRESS) 🔄
-- [ ] Execute expert interviews (Lisa Chao, Jake Thomas - Week 3)
-- [ ] Incorporate expert feedback into manuscript
-- [ ] Compile Figure 1 PRISMA flowchart (LaTeX)
-- [ ] Submit to ACM Computing Surveys (Q4 2025 target)
+### Phase 2G (ACTIVE - 3-Month Trial) 🔄
+- [ ] First monthly rolling update (November 2025)
+- [ ] Second monthly update (December 2025)
+- [ ] Third monthly update + Q1 2026 quarterly deep dive (January 2026)
+- [ ] Expert interviews (Lisa Chao, Jake Thomas - Q1 2026 deep dive)
+- [ ] Versioned snapshot (2025-Q4-v1.0 tag - January 2026)
+- [ ] Decision point (February 2026): Continue monthly, adjust to bi-monthly, or revert to quarterly
 
-### Future Phases (PENDING) ⏳
-- [ ] IT Harvest partnership established
-- [ ] First quarterly update published (Q4 2025 or Q1 2026)
-- [ ] Academic publication acceptance
-- [ ] Quarterly update cadence (4 updates/year)
+### Phase 3 (PLANNED - Post-Trial) ⏳
+- [ ] Sustain hybrid model (12 monthly updates + 4 quarterly deep dives per year)
+- [ ] Academic journal submission (mid-2026: ACM CSUR, USENIX Security, or IEEE S&P)
+- [ ] Quarterly git tags for citation stability (2026-Q1-v1.0, 2026-Q2-v1.0, etc.)
+- [ ] IT Harvest partnership evaluation (optional enhancement)
+- [ ] Academic publication acceptance (12-18 month review cycle)
 
 ---
 
