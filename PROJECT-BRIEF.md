@@ -60,14 +60,15 @@
 - Version control via CHANGELOG.md for academic citation stability
 - **Source**: README.md lines 36-37, CLAUDE.md lines 73-77
 
-### Fact 7: Quarterly Update Process Planned (Not Yet Active) ✅
-**CONFIRMED**: Phase 2 quarterly update process designed
-- Quarterly cycle: Jan, Apr, Jul, Oct
-- Month 1: IT Harvest data refresh + platform updates
-- Month 2: Expert validation + blog synthesis
-- Month 3: Publication + citation updates
-- Versioned snapshots (YYYY-QX-update.md) for citation stability
-- **Source**: README.md lines 80-95, CLAUDE.md lines 217-233
+### Fact 7: Hybrid Update Model - Monthly Rolling + Quarterly Deep Synthesis ✅
+**CONFIRMED**: Blog-aligned hybrid update strategy for living literature review
+- **Monthly rolling updates**: New sources, corrections, community feedback (~6-8 hours/month)
+- **Quarterly deep synthesis**: Comprehensive reviews, hypothesis validation, expert interviews (~24 hours/quarter)
+- **Average effort**: ~18 hours/month (sustainable for solo practitioner with MCP automation)
+- **Publication venue**: Online (Substack) as openly accessible resource, academic journal deferred to 2026
+- **Versioning**: Rolling updates via git commits, quarterly snapshots (YYYY-QX-v1.0 tags) for citation stability
+- **Philosophy**: "Being wrong publicly" - rapid iteration, intellectual honesty, collaborative corrections
+- **Source**: Substack justification post (Oct 22, 2025), CLAUDE.md, MCP vendor database automation
 
 ### Fact 8: Directory Structure Planned for Phase 2 ✅
 **CONFIRMED**: Future structure designed for vendor landscape integration
@@ -117,19 +118,23 @@
 - **Impact if false**: Downgrade hypothesis confidence from "STRONGLY VALIDATED" to "VALIDATED" or "PRELIMINARY", add caveats
 - **Source**: README.md line 22, EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md, EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md
 
-### Assumption 4: Academic Publication (ACM CSUR) Will Accept Literature Review ⚠️
-**ASSUMPTION**: Literature review quality sufficient for ACM Computing Surveys publication
-- **Verification needed**: Peer review submission, acceptance (12-18 month timeline)
-- **Impact if false**: Adjust publication venue (IEEE Security & Privacy, conferences instead), still suitable for blog/book
-- **Evidence gap**: No submission yet, PUBLICATION-VENUE-RECOMMENDATIONS.md provides strategy
-- **Source**: README.md line 26, PUBLICATION-VENUE-RECOMMENDATIONS.md
+### Assumption 4: Academic Publication Deferred to 2026 (Online-First Strategy) ✅ REVISED
+**REVISED STRATEGY**: Online publication (Substack) is primary venue, academic journal deferred
+- **Current approach**: Published openly on Substack (Oct 22, 2025), 38,000 words, 75+ sources
+- **Academic publication**: Deferred to mid-2026 after community validation and refinement
+- **Rationale**: "Being wrong publicly" philosophy prioritizes rapid iteration and practitioner engagement over academic credibility signal
+- **Future path**: Community-validated Substack version → Refined manuscript → Journal submission (ACM CSUR, USENIX, IEEE S&P) in 2026
+- **Trade-off**: Broader practitioner reach (Substack) vs academic credibility (journal), online-first chosen
+- **Source**: Substack blog posts (Oct 22, 2025), blog philosophy ("Security Architects Need to Be Wrong")
 
-### Assumption 5: 79% Evidence Level A Can Be Maintained with Quarterly Updates ⚠️
-**ASSUMPTION**: Quarterly vendor landscape updates will maintain 79% Evidence Level A quality
-- **Verification needed**: First quarterly update completed, evidence levels re-assessed
-- **Impact if false**: Accept lower evidence quality (70-75% Level A), focus on Level B vendor documentation
-- **Risk**: IT Harvest data may be Level B (vendor-provided), not Level A (production deployments)
-- **Source**: README.md lines 119-122, CLAUDE.md lines 87-93
+### Assumption 5: 75%+ Evidence Level A Achievable with Monthly Rolling Updates ⚠️
+**ASSUMPTION**: Monthly rolling updates can maintain ≥75% Evidence Level A (slight degradation from 79% acceptable)
+- **Verification needed**: 3-month trial (Nov 2025 - Jan 2026), track quality metrics monthly
+- **Impact if true**: Monthly updates sustainable, supports blog cadence, validates hybrid model
+- **Impact if false**: Reduce to bi-monthly or quarterly, accept slower blog evidence refresh
+- **Mitigation**: MCP vendor database automation (84% Tier A), evidence-tier-classifier skill, quarterly deep dives maintain rigor
+- **Decision point**: February 2026 - Continue monthly (if quality ≥75%), adjust to bi-monthly/quarterly (if <75%)
+- **Source**: MCP vendor database integration (84% Tier A automated), UltraThink analysis (Oct 30, 2025)
 
 ### Assumption 6: Blog Will Continue Driving Source Identification ⚠️
 **ASSUMPTION**: 3x/week blog cadence will consistently identify new sources for literature review
@@ -143,13 +148,15 @@
 ## PART 3: SCOPE & BOUNDARIES
 
 **In Scope**:
-- Literature review supporting "Modern Data Stack for Cybersecurity" book
-- Evidence foundation for 11 book chapters + 5 appendices
+- Living literature review published openly on Substack (primary venue)
+- Evidence foundation for book (115,500 words) and blog (3x/week practitioner content)
 - Hypothesis validation (32 hypotheses total, 7 validated so far)
-- Quarterly updates for vendor landscape (Phase 2, pending IT Harvest)
-- Academic quality suitable for peer review (ACM CSUR, IEEE S&P targets)
-- Blog integration (source identification, evidence-based writing)
+- **Hybrid update model**: Monthly rolling updates + quarterly deep synthesis
+- **Blog philosophy**: "Being wrong publicly" - rapid iteration, intellectual honesty, collaborative corrections
+- Academic quality maintained (79%→75%+ Evidence Level A) for eventual journal submission (2026)
+- Blog integration (4-6× writing speedup, source identification feedback loop)
 - Expert network validation (Lisa Cao, Jake Thomas, Matthew Mullins, Paul Agbabian)
+- Community engagement (reader feedback, corrections, contributions)
 
 **Out of Scope**:
 - Not a comprehensive systematic review of ALL cybersecurity literature (focused on modern data stack)
@@ -188,15 +195,17 @@
 **Made by**: Jeremy (Project Lead)
 **Reversible?**: Partially (could adjust to 70-75% if quarterly updates dilute quality)
 
-### Decision 3: Quarterly Update Cycle (Jan/Apr/Jul/Oct)
-**Decision**: Quarterly updates (not monthly or annual) for Phase 2 vendor landscape
+### Decision 3: Hybrid Update Model (Monthly Rolling + Quarterly Deep Synthesis)
+**Decision**: Monthly rolling updates + quarterly deep dives (not purely quarterly or purely monthly)
 **Rationale**:
-- Quarterly balances currency vs maintenance burden
-- Aligns with book revision cycles (quarterly feedback incorporation)
-- Supports blog cadence (3x/week can draw from quarterly research)
-- IT Harvest partnership model (assuming Charles Wells collaboration)
-**Made by**: Jeremy (Project Lead)
-**Reversible?**: Yes (could adjust to bi-annual if quarterly proves too frequent)
+- **Monthly rolling updates** (~6-8 hours): New sources, corrections, community feedback - supports blog cadence (3x/week)
+- **Quarterly deep synthesis** (~24 hours): Comprehensive reviews, hypothesis validation, expert interviews - maintains academic rigor
+- **Total effort sustainable**: ~18 hours/month average with MCP automation (71 vendors, 84% Tier A automated)
+- **Aligns with blog commitment**: Published Substack justification states "monthly refresh cycles"
+- **Philosophy fit**: "Being wrong publicly" requires rapid iteration (monthly) balanced with quality (quarterly deep dives)
+- **Online-first**: Substack publication venue supports rolling updates, quarterly snapshots for citation stability
+**Made by**: Jeremy (Project Lead), informed by UltraThink analysis (Oct 30, 2025)
+**Reversible?**: Yes (3-month trial Nov-Jan 2026, decision point Feb 2026 to continue/adjust/revert based on quality metrics)
 
 ### Decision 4: Versioned Snapshots (YYYY-QX-update.md)
 **Decision**: Create versioned snapshots for each quarterly update (not edit existing files)
@@ -257,35 +266,34 @@
 **Decision timeline**: Week 4-5 (after expert interviews complete)
 **Blocking**: Phase 2 cannot start without partnership model
 
-### Pending Decision 2: Academic Publication Timing
-**Decision needed**: When to submit literature review for academic publication (ACM CSUR, IEEE S&P)
-**Options**:
-1. **Immediate** (Q4 2025): Submit Phase 1 literature review now
-2. **After Q1 2026 update**: Include first quarterly update for stronger contribution
-3. **After book publication** (mid-2026): Avoid competing with book, submit after book published
-4. **No academic publication**: Focus on blog/book only (faster iteration)
-**Trade-offs**:
-- Immediate: Establishes academic credibility early, but Phase 1 only (no vendor landscape)
-- After Q1 update: Stronger contribution (quarterly update process documented), but delayed
-- After book: Avoids competition, but academic publication delayed 12+ months
-- No publication: Faster iteration, but loses academic credibility signal
-**Decision timeline**: Month 2 (after first quarterly update if IT Harvest partnership succeeds)
-**Blocking**: Not blocking other work (can proceed with blog/book regardless)
+### Pending Decision 2: Academic Publication Timing ✅ RESOLVED (Deferred to Mid-2026)
+**Decision**: Academic journal submission deferred to mid-2026 (online-first strategy)
+**Rationale**:
+- **Primary venue**: Substack (openly accessible, published Oct 22, 2025)
+- **Philosophy alignment**: "Being wrong publicly" prioritizes practitioner engagement and rapid iteration over academic credibility signal
+- **Community validation**: 6-12 months of monthly updates + reader feedback → Refined, validated manuscript
+- **Sequencing**: Substack (Oct 2025) → Community feedback (Nov 2025 - Jun 2026) → Refined manuscript → Journal submission (mid-2026)
+- **Journals**: ACM Computing Surveys, USENIX Security, IEEE S&P (submission target: Q2-Q3 2026)
+- **Positioning**: Cite Substack as "preprint" demonstrating community validation and practitioner impact
+**Trade-offs accepted**:
+- Online-first: Broader practitioner reach, faster iteration, collaborative corrections
+- Academic later: Credibility signal deferred, but manuscript quality improved through community engagement
+**Decision made**: October 30, 2025 (UltraThink analysis)
+**Reversible?**: Yes (if community engagement low, could submit earlier; if engagement high, defer further)
 
-### Pending Decision 3: Evidence Level A Target for Phase 2
-**Decision needed**: Maintain 79% Level A with quarterly updates, or accept 70-75%?
-**Options**:
-1. **Maintain 79%**: Strict quality standard (production deployments only)
-2. **Accept 70-75%**: Allow more Level B vendor documentation (IT Harvest data)
-3. **Separate standards**: 79% for core hypotheses, 70% for vendor landscape
-4. **Adaptive**: Adjust target based on Phase 2 data availability
-**Trade-offs**:
-- Maintain 79%: Academic credibility, but may limit vendor landscape coverage
-- Accept 70-75%: Broader coverage, but lower evidence quality
-- Separate standards: Pragmatic, but adds complexity
-- Adaptive: Flexible, but risks "slippery slope" quality degradation
-**Decision timeline**: After first quarterly update (evaluate IT Harvest data quality)
-**Blocking**: Not blocking Phase 2 start (can adjust target retroactively)
+### Pending Decision 3: Evidence Level A Target with Monthly Updates ✅ RESOLVED (75%+ Acceptable)
+**Decision**: Accept 75%+ Evidence Level A with monthly rolling updates (from 79% baseline)
+**Rationale**:
+- **Currency vs quality trade-off**: Monthly updates prioritize practitioner currency, slight quality degradation (79% → 75%) acceptable
+- **MCP automation baseline**: 71 vendors, 84% Tier A quality automated → Anchors vendor landscape at high quality
+- **Quarterly deep dives**: Comprehensive reviews every 3 months maintain rigor, prevent "slippery slope" degradation
+- **Validation approach**: 3-month trial (Nov 2025 - Jan 2026) tracks quality monthly
+- **Decision trigger**: IF quality drops <75% for 2 consecutive months → Reduce to bi-monthly or quarterly
+**Trade-offs accepted**:
+- Slight quality degradation (79% → 75-77% expected) for monthly currency
+- Quarterly deep dives act as quality checkpoints (prevent further degradation)
+**Decision made**: October 30, 2025 (UltraThink analysis)
+**Blocking**: Not blocking (3-month trial validates assumption, can adjust if quality degrades)
 
 ### Pending Decision 4: Paul Agbabian Expert Interview
 **Decision needed**: Should Paul Agbabian be interviewed for OCSF production deployment validation?
@@ -359,15 +367,19 @@
 
 ### Blockers
 
-**Blocker 1: IT Harvest Partnership Required for Phase 2**
-- **Blocking**: All Phase 2 vendor landscape work
-- **Resolution timeline**: Week 4-5 (Charles Wells outreach, partnership model agreement)
-- **Impact**: ~50% of Phase 2 work blocked (vendor landscape), 50% can proceed (expert interviews, blog integration)
+**Blocker 1: IT Harvest Partnership (NOW OPTIONAL - MCP Baseline Sufficient) ✅ RESOLVED**
+- **Status**: NO LONGER BLOCKING - MCP vendor database (71 vendors, 84% Tier A) provides sufficient baseline
+- **Revised approach**: MCP automation covers vendor landscape needs, IT Harvest partnership becomes optional enhancement
+- **Impact**: Phase 2 vendor landscape work can proceed with MCP baseline, IT Harvest partnership deferred or deprioritized
+- **Future consideration**: Partnership may add value for deeper vendor insights, but not critical path for literature review updates
+- **Resolution date**: October 30, 2025 (MCP integration complete, 71 vendors documented)
 
-**Blocker 2: No Automated Vendor Data Ingestion**
-- **Blocking**: Quarterly update scalability (manual curation doesn't scale)
-- **Resolution timeline**: Month 2-3 (build automation scripts, API integration if available)
-- **Impact**: Quarterly updates labor-intensive without automation (may force bi-annual cadence)
+**Blocker 2: Automated Vendor Data Ingestion ✅ RESOLVED (MCP Integration)**
+- **Status**: RESOLVED - MCP vendor database automation operational (weekly refresh, GitHub metrics)
+- **Capability**: 71 vendors, 110 evidence sources, automated weekly refresh + monthly GitHub metrics
+- **Burden reduction**: 75-90% reduction in manual vendor curation effort
+- **Impact**: Monthly rolling updates now sustainable, automation enables hybrid model scalability
+- **Resolution date**: October 23, 2025 (MCP vendor database integration, Phase 2F complete)
 
 ---
 
@@ -379,11 +391,13 @@
 - **Future**: Chapter 9 "Technology State Assessment" requires quarterly vendor landscape updates (Phase 2)
 - **Repository**: https://github.com/flying-coyote/modern-data-stack-for-cybersecurity-book
 
-### Integration with Blog
-- **Dependency**: Blog posts cite literature review sources (4-6× speedup for evidence-based writing)
-- **Status**: ✅ 1 post published demonstrating integration, ongoing 3x/week cadence
-- **Future**: Blog posts drive new source identification (feedback loop for literature review)
-- **Repository**: https://github.com/flying-coyote/security-data-commons
+### Integration with Blog (PRIMARY DRIVER)
+- **Dependency**: Literature review provides evidence foundation for blog (4-6× speedup demonstrated)
+- **Status**: ✅ Published online (Substack, Oct 22, 2025), 3x/week blog cadence active
+- **Feedback loop**: Blog posts → Reader feedback → New sources → Literature updates → Improved blog evidence
+- **Update alignment**: Monthly rolling updates support blog's need for current evidence (3x/week output)
+- **Philosophy**: "Being wrong publicly" - blog and literature review share rapid iteration, collaborative corrections approach
+- **Repository**: https://github.com/flying-coyote/security-data-commons-blog
 
 ### Integration with Expert Network
 - **Dependency**: Expert interviews validate quantitative claims (Lisa Cao, Jake Thomas, Paul Agbabian)
@@ -391,11 +405,12 @@
 - **Future**: Quarterly updates include expert validation cycle (Month 2 of each quarter)
 - **Source**: second-brain expert network (1,444 thought leaders mapped, 45 actively tracked)
 
-### Integration with IT Harvest Partnership
-- **Dependency**: Vendor landscape data for Chapter 9, quarterly updates
-- **Status**: ⏳ Partnership pending (Charles Wells collaboration)
-- **Future**: Query engines pilot → Full vendor landscape integration
-- **Impact**: ~50% of Phase 2 work (vendor-landscape/ directory, quarterly updates)
+### Integration with IT Harvest Partnership (OPTIONAL ENHANCEMENT)
+- **Dependency**: REVISED - MCP vendor database (71 vendors) provides sufficient baseline, IT Harvest optional
+- **Status**: ⏳ Partnership deferred/optional (MCP automation reduces urgency)
+- **MCP baseline**: 71 vendors, 84% Tier A quality, automated weekly refresh + monthly GitHub metrics
+- **Future consideration**: Partnership may provide deeper vendor insights, but not critical path
+- **Impact**: Minimal - MCP covers vendor landscape needs, IT Harvest would be enhancement (not requirement)
 
 ---
 
@@ -409,19 +424,22 @@
 - ✅ All book chapters have supporting citations
 - ✅ Blog integration demonstrated (1 post, 4-6× speedup)
 
-### Phase 2 Success Metrics (PENDING)
-- ⏳ IT Harvest partnership established
-- ⏳ Query engines pilot completed (first quarterly update)
-- ⏳ Directory structure implemented (platforms/, infrastructure/, security-specific/, vendor-landscape/)
-- ⏳ First quarterly update published (Q4 2025 or Q1 2026)
-- ⏳ Expert interviews completed (Lisa Cao, Jake Thomas validation)
-- ⏳ Academic publication submitted (ACM CSUR or IEEE S&P)
+### Phase 2 Success Metrics (REVISED - Hybrid Model)
+- ✅ MCP vendor database operational (71 vendors, 84% Tier A, automated) - COMPLETE
+- ⏳ First monthly rolling update (November 2025 target)
+- ⏳ 3-month trial validated (Nov 2025 - Jan 2026, quality ≥75% maintained)
+- ⏳ First quarterly deep dive (Q1 2026 - January, expert interviews, hypothesis validation)
+- ⏳ Versioned snapshot published (2025-Q4-v1.0 tag for citation stability)
+- ⏳ Academic publication submitted (mid-2026, ACM CSUR or USENIX or IEEE S&P)
 
-### Ongoing Quality Metrics
-- **Maintain**: 79% Evidence Level A (production deployments, peer-reviewed research)
-- **Maintain**: 97% metadata completeness (70 of 72 entries)
-- **Increase**: Government/standards sources (currently 8, target 12+ with quarterly updates)
-- **Increase**: Production deployments (currently 18, target 25+ with vendor landscape)
+### Ongoing Quality Metrics (REVISED - Hybrid Model)
+- **Baseline**: 79% Evidence Level A achieved (Phase 1 complete)
+- **Monthly target**: ≥75% Evidence Level A (slight degradation acceptable for currency)
+- **Quarterly target**: 77-79% Evidence Level A (deep dives restore rigor)
+- **Metadata completeness**: Maintain 97%
+- **Blog integration**: 4-6× writing speedup sustained (3x/week blog output)
+- **Community engagement**: Track reader feedback, corrections submitted, new sources contributed
+- **Time sustainability**: ≤10 hours/month for monthly updates (if >12 hours, reduce frequency)
 
 ---
 
@@ -433,20 +451,22 @@
 - **October 16, 2025**: Blog integration demonstrated (1 post published)
 - **October 16, 2025**: Expert interview guides prepared (Lisa Cao, Jake Thomas)
 
-### Upcoming Milestones (Next 4 Weeks)
-- **Week 3 (Oct 21-25)**: Expert interviews (Lisa Cao, Jake Thomas)
-- **Week 4 (Oct 28-Nov 1)**: IT Harvest partnership outreach (Charles Wells)
-- **Week 4-5**: Blog launch (Oct 28), literature review sources cited in posts
+### Upcoming Milestones (Next 3 Months - Hybrid Model Trial)
+- **November 2025**: First monthly rolling update (new sources, community feedback, MCP vendor database refresh)
+- **December 2025**: Second monthly update (track time investment, quality metrics)
+- **January 2026**: Third monthly update + **First quarterly deep dive** (comprehensive review, expert interviews, versioned snapshot)
+- **February 2026**: Decision point - Continue monthly (if quality ≥75%), adjust to bi-monthly, or revert to quarterly
 
-### Phase 2 Milestones (Next 3-6 Months)
-- **Month 2 (Nov 2025)**: IT Harvest partnership established, query engines pilot started
-- **Month 3 (Dec 2025)**: First quarterly update published (Q4 2025 if partnership ready, else Q1 2026)
-- **Month 4-6 (Jan-Mar 2026)**: Directory structure implemented, quarterly update process refined
+### Phase 2-3 Milestones (Next 6-12 Months)
+- **Q1 2026 (January)**: First quarterly deep dive (Lisa Cao/Jake Thomas interviews, hypothesis validation, 2025-Q4-v1.0 tag)
+- **Q2 2026 (April)**: Second quarterly deep dive (comprehensive review, quarterly synthesis blog post)
+- **Q2-Q3 2026 (Mid-2026)**: Academic journal submission (ACM CSUR, USENIX Security, or IEEE S&P)
 
-### Long-Term Milestones (6-18 Months)
-- **Month 6 (Apr 2026)**: Academic publication submitted (ACM CSUR or IEEE S&P)
-- **Month 12 (Oct 2026)**: 4 quarterly updates completed, blog-literature feedback loop established
-- **Month 18 (Apr 2027)**: Academic publication accepted (optimistic), book published with quarterly-updated literature review
+### Long-Term Milestones (6-18 Months - Hybrid Model Maturity)
+- **Month 6 (Apr 2026)**: 6 monthly updates + 2 quarterly deep dives completed, quality metrics validated
+- **Mid-2026 (Q2-Q3)**: Academic journal submission (ACM CSUR, USENIX Security, or IEEE S&P)
+- **Month 12 (Oct 2026)**: 12 monthly updates + 4 quarterly deep dives completed, hybrid model proven sustainable
+- **Month 18 (Apr 2027)**: Academic publication accepted (optimistic), book published with living literature review
 
 ---
 
@@ -511,7 +531,8 @@
 
 ---
 
-**Status**: Phase 1 complete, Phase 2 pending IT Harvest partnership
-**Next Action**: Week 3 expert interviews (Lisa Cao, Jake Thomas validation)
-**Priority**: HIGH - Foundation for book + blog, academic credibility signal
+**Status**: Phase 1 complete, Phase 2 active (hybrid model - monthly rolling + quarterly deep dives)
+**Next Action**: First monthly rolling update (November 2025) - 3-month trial to validate sustainability
+**Priority**: HIGH - Primary driver for blog (3x/week), foundation for book, academic publication deferred to 2026
 **Owner**: Jeremy Wiley (Project Lead)
+**Updated**: October 30, 2025 (strategic realignment: quarterly → monthly/hybrid, journal → online-first)
