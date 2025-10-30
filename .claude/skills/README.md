@@ -35,6 +35,8 @@ From `~/.claude/skills/` (shared across all projects):
 5. **tdd-enforcer**: Test extraction automation
 6. **voice-consistency-enforcer**: Maintains intellectual honesty, pragmatic specificity, conversational authority
 
+**⚠️ Note**: Personal skills live in `~/.claude/skills/` (user home directory) and are **NOT included in this repository**. These are user-specific preferences that work across all projects. If you clone this repository, you can use your own personal skills or create these skills based on the [Anthropic Skills documentation](https://docs.claude.com/en/docs/claude-code/skills).
+
 ---
 
 ## Evidence Tier System
