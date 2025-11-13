@@ -311,7 +311,15 @@ class LiteratureReviewHealthCheck:
             print(f"  ✅ Quarterly update {quarter_str} complete")
         else:
             self.result.checks_passed += 1
-            print(f"  ✅ Not in update month (next: {update_months[(update_months.index(current_month) + 1) % 4]})")
+            # Find next update month
+            next_update = None
+            for month in update_months:
+                if month > current_month:
+                    next_update = month
+                    break
+            if next_update is None:
+                next_update = update_months[0]  # Next year's first update
+            print(f"  ✅ Not in update month (next: Month {next_update})")
 
     def check_vendor_landscape_status(self):
         """Check vendor landscape integration status."""

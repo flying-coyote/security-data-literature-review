@@ -1,11 +1,11 @@
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
-**Last Updated**: October 10, 2025
-**Last Reviewed**: October 15, 2025
-**Total Sources**: 75+ sources documented (extraction COMPLETE)
+**Last Updated**: November 13, 2025
+**Last Reviewed**: November 13, 2025
+**Total Sources**: 80+ sources documented (including 4 new AI-native infrastructure sources)
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 79% Evidence Level A (production deployments, peer-reviewed research)
+**Evidence Quality**: 78% Evidence Level A (production deployments, peer-reviewed research)
 
 ---
 
@@ -39,6 +39,7 @@ This bibliography consolidates all literature sources from:
   - [Skills & Staffing](#skills--staffing)
   - [Deployment Patterns](#deployment-patterns)
 - [Emerging Technologies](#emerging-technologies)
+- [AI-Native Infrastructure & Emerging Architectures](#ai-native-infrastructure--emerging-architectures)
 
 ---
 
@@ -2055,6 +2056,105 @@ This bibliography consolidates all literature sources from:
 **Notes**: Comprehensive series on Kafka + ML integration, links streaming to ML workflows
 
 **Validation Status**: ✅ Active URL (verified Confluent blog, 2018-2024 series)
+
+---
+
+## AI-Native Infrastructure & Emerging Architectures
+
+### Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework
+
+**Authors**: Matthias Vallentin (Tenzir Founder)
+**Date**: November 2025
+**URL**: LinkedIn post (professional network analysis)
+**Evidence Level**: B (Vendor framework, emerging architecture)
+**Relevance**:
+- Emerging streaming architectures for security data
+- OCSF normalization at ingest
+- 100+ Gbps ingest claims
+
+**Key Findings**:
+- "Policy layer" (business logic) vs. "Pipe layer" (infrastructure) separation
+- Infrastructure handles transport, storage, transformation
+- Policy focuses on security-specific logic
+- 100+ Gbps ingest capability claimed
+- OCSF normalization built-in
+
+**Citations**: Emerging architectures, streaming innovation
+**Notes**: Novel framework for security data pipeline architecture. Needs production validation.
+
+**Validation Status**: ⚐ Emerging concept (November 2025)
+
+---
+
+### Cribl Pipeline Economics - Route, Reshape, Reduce Pattern
+
+**Authors**: Clint Sharp (Cribl CEO)
+**Date**: October 2025
+**URL**: CriblCon25 announcement
+**Evidence Level**: B (CEO perspective, vendor strategy)
+**Relevance**:
+- Pipeline economics for security data
+- Cost optimization patterns
+- Agentic telemetry architecture
+
+**Key Findings**:
+- "Route, reshape, reduce" data pipeline pattern
+- 88-98% cost savings claimed across customer deployments
+- Intelligent routing based on data value
+- "10x queries at half the cost" for agentic telemetry
+- AI agents issuing thousands of queries/minute vs. dozens/hour for humans
+
+**Citations**: Cost optimization, pipeline architecture, AI-native infrastructure
+**Notes**: Strong industry engagement (370 reactions = 40x typical). Needs production validation.
+
+**Validation Status**: ⚐ CriblCon25 announcement, awaiting case studies
+
+---
+
+### Vortex File Format - Emerging Columnar Format
+
+**Authors**: Will Manning et al.
+**Date**: November 2025
+**URL**: GitHub repository and documentation
+**Evidence Level**: C (Emerging technology, unvalidated claims)
+**Relevance**:
+- Next-generation columnar file format
+- Potential Parquet successor
+
+**Key Findings**:
+- Claims 5x/20x/100x performance improvements over Parquet
+- Different compression and encoding strategies
+- Early stage development
+- Limited production adoption
+
+**Citations**: Emerging technologies, file formats
+**Notes**: **NEEDS VALIDATION** - Performance claims unverified. Monitor for production adoption.
+
+**Validation Status**: ⚠️ Unvalidated performance claims
+
+---
+
+### Databricks MCP Catalog - Unity Catalog for AI Agents
+
+**Authors**: Databricks
+**Date**: October 2025
+**URL**: Databricks blog announcement
+**Evidence Level**: B (Vendor announcement, beta release)
+**Relevance**:
+- AI agent governance for data access
+- Unity Catalog integration
+- MCP (Model Context Protocol) standardization
+
+**Key Findings**:
+- Unity Catalog exposed via MCP servers
+- AI agents can discover and access governed data
+- Fine-grained access control for LLM applications
+- Integration with Claude, ChatGPT, and other AI assistants
+
+**Citations**: AI governance, catalog integration, emerging standards
+**Notes**: Early adoption phase. Part of broader AI-native infrastructure trend.
+
+**Validation Status**: ⚐ Beta release (October 2025)
 
 ---
 
