@@ -5,7 +5,11 @@
       "WebFetch(domain:securitydatacommons.substack.com)",
       "Skill(ultrathink-analyst)",
       "Bash(git add:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\n🔧 Add .claude/settings.local.json to .gitignore\n\n- Prevents local Claude settings from being tracked\n- Allows local configuration without affecting repository\n\nGenerated with [Claude Code](https://claude.ai/code)\nvia [Happy](https://happy.engineering)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nCo-Authored-By: Happy <yesreply@happy.engineering>\nEOF\n)\")",
+      "Read(//home/jerem/.claude/skills/ultrathink-analyst/**)"
     ],
     "deny": [
       "Read(./.env)",
