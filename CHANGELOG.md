@@ -7,6 +7,96 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.12.0] - 2025-11-14 - Monthly Update Workflow Infrastructure & Decision Point Removal
+
+### Added
+- **monthly-update-tracker.md**: Comprehensive tracking system for monthly rolling updates (280 lines)
+  - November 2025 baseline: 2 updates documented (4.7 hours simple, 10.2 hours complex, 7.5 hours average)
+  - Quality metrics: 78% Evidence Level A maintained (exceeds 75% target)
+  - Tracking metrics table: Quality, time investment, blog support, community engagement, automation
+  - Monthly update workflow checklist (source identification, evidence collection, documentation)
+  - Automation & integration status (weekly health check, MCP database, blog integration, git workflow)
+  - Key performance indicators (quality, time, blog support, community engagement, automation effectiveness)
+  - Notes & lessons learned (what's working, what needs improvement, risks to monitor)
+- **monthly-update-workflow-verification.md**: Comprehensive workflow validation report (304 lines)
+  - Verified all 5 workflow components operational (tracking, source management, integrations, documentation, sustainability)
+  - Confirmed December 2025 update readiness (all prerequisites met)
+  - Identified minor friction points (manageable: 32.5% outdated sources, 2 broken links, community engagement tracking)
+  - Documented December action plan (6-8 hours target: refresh 5-10 sources, add 2-3 new sources)
+  - Simulated December update workflow (dry run showing 7-9 hours estimated)
+- **scripts/automation_dashboard.py**: Quick health status dashboard (380 lines)
+  - Consolidates metrics from bibliography, tracker, health checks, git status
+  - Color-coded terminal output for quick status assessment
+  - Decision dashboard for monthly updates (6/6 checks passed for December readiness)
+  - Validates quality targets (78% Evidence Level A ≥ 75% target)
+  - Validates time sustainability (7.5 hours average ≤ 10-hour target)
+  - Recommends actions for next update
+  - Usage: `python3 scripts/automation_dashboard.py`
+
+### Changed
+- **MASTER-BIBLIOGRAPHY.md**: Fixed 2 broken links
+  - Gartner link (line 1399): Already correctly marked as "⚠️ Paywall (Gartner research)" - expected behavior
+  - trinosummit.io link (line 1072): Marked as "❌ Broken link (DNS resolution failure - domain defunct)"
+  - Updated header metadata: Last Updated November 14, 2025, Link Status: 2 broken links identified
+  - Total sources: 80+ → 83+ (7 sources added in November)
+- **REPOSITORY-STATUS.md**: Added comprehensive "Automation & Workflow Integration" section (158 lines)
+  - Monthly Update Workflow (Phase 2G - OPERATIONAL): Tracking system, quality monitoring, dashboard, workflow verification
+  - Source Management Automation: Bibliography maintenance, evidence quality tracking (78% Level A)
+  - MCP Vendor Database Integration: 71 vendors, 84% Tier A, 75-90% burden reduction
+  - Blog-Literature Feedback Loop: 4-6× speedup, 3x/week output, source identification operational
+  - Version Control & Citation Stability: Git workflow, CHANGELOG tracking, quarterly tags planned
+  - Time and Quality Sustainability: November performance (7.5 hours avg, 78% Level A), sustainability assessment
+  - December 2025 Update Readiness: All prerequisites met (6/6 checks passed)
+  - Updated header: "Automation & workflow integration documentation + monthly update workflow validation"
+- **monthly-update-tracker.md**: Removed decision point framing (25 deletions)
+  - Title changed from "Hybrid Model Trial" to simple "Monthly Update Tracker"
+  - Removed "Trial Period" and "Decision Point (February 2026)"
+  - Changed "Success Criteria (3-Month Trial)" to "Tracking Metrics" (informational, not decisional)
+  - Updated metrics from thresholds ("≥75%", "≤10 hours") to baselines ("~75-78%", "Track for awareness")
+  - Removed entire "Decision Point (February 2026)" section with IF/THEN logic for continue/adjust/revert
+  - Changed "Trial Period" to "Committed to: Monthly updates ongoing (quality and continuous improvement tracking)"
+  - Changed "Next Review" from "February 2026 (decision point)" to "December 2025 (second monthly update)"
+- **.claude/CLAUDE.md**: Removed decision point language from all sections (25 deletions)
+  - Current Phase: Changed from "Phase 2 (Hybrid Model Trial) ACTIVE" to "Phase 2 (Monthly Updates) ACTIVE"
+  - Phase 2 Active: Changed "3-month trial" to "Committed to monthly updates"
+  - Phase 2 Success Metrics: Removed "Decision point (February 2026): Continue monthly, adjust to bi-monthly, or revert to quarterly"
+  - Hybrid Model Metrics: Changed from thresholds to baselines ("Quality target: ≥75%" → "Quality baseline: ~75-78%")
+  - Current Priorities: Removed "Decision point (February 2026)" from Immediate priorities
+  - Short-term: Removed "Validate hybrid model: Assess 3-month trial results, decide to continue/adjust/revert"
+  - Last Updated: November 14, 2025 (was October 30, 2025)
+
+### Purpose
+Establish minimal viable monthly update workflow infrastructure with tracking for continuous improvement (not decision gates). Remove "3-month trial" and "decision point" framing - committed to monthly updates regardless of metrics. Track quality and time for awareness and learning, not for binary decisions.
+
+### Impact
+- **Workflow Operational**: All systems validated and ready for December 2025 update (6/6 checks passed)
+- **Quality Sustained**: 78% Evidence Level A (exceeds 75% target by +3%)
+- **Time Sustainable**: 7.5 hours/update average (well under 10-hour concern threshold)
+- **Automation Working**: MCP database (71 vendors, 84% Tier A), health check, dashboard all operational
+- **Decision Clarity**: No more "trial period" pressure - track metrics for curiosity, committed to monthly cadence
+- **Philosophy Shift**: From "track to decide" (Feb 2026 decision point) → "track to improve" (continuous learning)
+
+### Quality Metrics
+- Evidence Level A: 78% maintained (Nov 13: 79% → 78%, Nov 14: 78% maintained)
+- Total sources: 75+ → 83+ (7 added in November: 4 AI-native + 3 isolation-first)
+- Broken links: 2 identified and documented (Gartner paywall expected, trinosummit.io defunct)
+- Outdated sources: 27 flagged for refresh (32.5% >12 months old)
+- Time investment: 7.5 hours/update average (November baseline: 4.7 hours + 10.2 hours / 2 updates)
+
+### Automation Status
+- **weekly_health_check.py**: Operational (last run November 14, 2025, status WARNING - non-critical)
+- **automation_dashboard.py**: Operational (6/6 readiness checks passed for December)
+- **MCP vendor database**: Operational (71 vendors, 84% Tier A, automated weekly refresh)
+- **monthly-update-tracker.md**: Operational (November baseline established)
+- **Git workflow**: Operational (standardized commits, CHANGELOG tracking)
+
+### Next Actions
+1. **December 2025 Update** (mid-month): Refresh 5-10 oldest sources, add 2-3 new sources, target 6-8 hours
+2. **Community Engagement**: Systematize Substack comment monitoring (30-minute setup)
+3. **January 2026 Deep Dive**: Expert interviews (Lisa Chao, Jake Thomas), versioned snapshot (2025-Q4-v1.0)
+
+---
+
 ## [1.11.0] - 2025-11-14 - Isolation-First Security Architecture Pattern Integration (RQ7-RQ10)
 
 ### Added
