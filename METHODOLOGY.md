@@ -3,7 +3,7 @@
 **Purpose**: Academic methodology documentation for "Modern Data Stack for Cybersecurity" literature review
 **Framework**: PRISMA-aligned systematic extraction and quality assessment
 **Review Type**: Living literature review with quarterly updates
-**Last Updated**: October 21, 2025
+**Last Updated**: November 14, 2025
 
 ---
 
@@ -214,8 +214,9 @@ Sources organized into topical categories aligned with book structure:
 The literature review validates quantitative hypotheses derived from:
 1. **Book manuscript claims** (29 hypotheses): Performance assertions, cost estimates, adoption rates
 2. **Literature gap analysis** (3 hypotheses): Patterns identified during extraction not previously formalized
+3. **Isolation-first security pattern** (4 research questions): RQ7-RQ10 examining isolation-based architecture patterns
 
-**Total Hypotheses**: 32 (29 from book, 3 from literature review)
+**Total Hypotheses**: 36 (29 from book, 3 from literature review, 4 from isolation-first security research)
 
 ### 5.2 Hypothesis Validation Framework
 
@@ -265,6 +266,44 @@ Each hypothesis is classified using a 5-level confidence scale:
 - Quantitative evidence in all 7 hypotheses: 100%
 - Production deployment validation: 6 of 7 hypotheses (86%)
 - Government/standards validation: 2 of 7 hypotheses (29%)
+
+### 5.4 Isolation-First Security Research Questions (November 2025)
+
+Four new research questions (RQ7-RQ10) examine isolation-first security architecture patterns, where security data lives on dedicated infrastructure (isolated VPC/VNet) separate from corporate data platforms:
+
+**RQ7: Isolation Patterns and Performance**
+- **Question**: How do isolation patterns affect security data architecture performance?
+- **Hypothesis**: Network isolation + IAM provides sufficient security boundary, eliminating need for fine-grained catalog access (RLS, column masking, metadata encryption) and achieving 15-50% faster query performance
+- **Validation Metrics**: Query latency comparison, TCO comparison, operational hours
+- **Data Sources**: Netflix (isolated VPC), Huntress (isolated AWS), Okta (Jake Thomas), Unity Catalog benchmarks, Iceberg metadata encryption overhead
+- **Evidence Tier Target**: B
+
+**RQ8: Compliance Trade-offs of Isolation-First Architecture**
+- **Question**: Does isolation-first security meet SOC 2, ISO 27001, NIST CSF requirements without fine-grained catalog access?
+- **Hypothesis**: Network isolation as primary security control meets compliance requirements for most enterprise security teams, with exceptions for multi-tenant MSSPs and federated global teams
+- **Validation Metrics**: Compliance framework coverage, audit trail completeness, regulatory acceptance, gap analysis
+- **Data Sources**: Netflix compliance (SOC 2 with Polaris), Financial services SOC deployments, CISA zero-trust guidance, Paul Agbabian OCSF deployments, ISO 27001/NIST CSF mappings
+- **Evidence Tier Target**: B
+
+**RQ9: Multi-Tenant MSSP vs Isolation-First Architecture Decision Thresholds**
+- **Question**: What are the architectural decision thresholds for multi-tenant MSSP platforms vs single-tenant enterprise SOCs?
+- **Hypothesis**: Multi-tenant MSSPs require row-level security (Unity Catalog), while single-tenant enterprise SOCs (500TB - 5PB scale) benefit from isolation-first architecture (Polaris/Nessie + table-level RBAC)
+- **Validation Metrics**: Tenant isolation patterns, cost per tenant, operational complexity, scale thresholds
+- **Data Sources**: MSSP case studies (Arctic Wolf, Expel, Red Canary), Enterprise SOCs (Netflix, Huntress, Okta), Unity Catalog multi-tenant patterns, AWS multi-tenant SaaS guidance, IT Harvest MSSP landscape
+- **Evidence Tier Target**: B/C
+
+**RQ10: Isolation Patterns Influence on Catalog Governance Decisions**
+- **Question**: Does isolation-first security elevate Polaris and Nessie to top-tier catalog choices by changing selection criteria from "fine-grained access" to "vendor neutrality" and "version control"?
+- **Hypothesis**: Isolated security platforms prioritize different catalog features: Unity Catalog wins for shared platforms (fine-grained access essential), Polaris (vendor neutrality) or Nessie (Git workflows) win for isolated platforms (table-level RBAC sufficient)
+- **Validation Metrics**: Catalog adoption patterns, feature prioritization, migration patterns, decision criteria ranking
+- **Data Sources**: Netflix Polaris adoption rationale, Unity Catalog case studies, Nessie production deployments, Lisa Cao Gravitino interviews, Jake Thomas Okta validation, catalog feature comparison matrices
+- **Evidence Tier Target**: B
+
+**Integration with Existing Research**:
+- RQ7 extends H3-PERFORMANCE-01 (ClickHouse performance) with isolation pattern analysis
+- RQ8 connects to compliance requirements from CISA, MITRE, NIST sources
+- RQ9 addresses architectural decision framework from Chapter 4 (Implementation Journeys)
+- RQ10 examines catalog selection criteria previously analyzed for shared platforms only
 
 ---
 
@@ -448,6 +487,6 @@ This systematic literature review employs a PRISMA-aligned methodology to consol
 
 **Maintained by**: Jeremy Wiley
 **Project Repository**: https://github.com/flying-coyote/security-data-literature-review
-**Last Updated**: October 21, 2025
-**Version**: 1.0 (Phase 1 Complete)
+**Last Updated**: November 14, 2025 (Isolation-First Security Research Questions RQ7-RQ10 Added)
+**Version**: 1.1 (Phase 1 Complete + RQ7-RQ10 Isolation-First Security)
 **Next Review**: Q1 2026 (First Quarterly Update)

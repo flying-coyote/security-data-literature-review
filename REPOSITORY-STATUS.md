@@ -1,7 +1,7 @@
 # Repository Status Report
 
 **Repository**: security-data-literature-review
-**Last Updated**: November 13, 2025 (November monthly update: AI-native infrastructure sources)
+**Last Updated**: November 14, 2025 (Isolation-first security pattern integration: RQ7-RQ10 added)
 **Maintained By**: Jeremy Wiley
 **Purpose**: Living literature review published on Substack, supporting blog (3x/week) and book (115,500 words)
 
@@ -12,6 +12,7 @@
 **Overall Phase**: ✅ **Phase 1-2F COMPLETE** (Publication + Vendor Baseline) | 🔄 **Phase 2G ACTIVE** (Hybrid Model Trial: Nov 2025 - Jan 2026)
 
 **Recent Achievement**:
+- ✅ **Isolation-First Security Integration** (November 14, 2025) - Added RQ7-RQ10 research questions, 3 case studies (Netflix Polaris, Huntress, Okta), tracking document
 - ✅ **November Monthly Update** (Version 1.10.0) - Added 4 AI-native infrastructure sources from LinkedIn monitoring
 - ✅ **Strategic Realignment** (Version 1.9.0) - Hybrid update model adopted, online-first publication strategy
 - ✅ Published online (Substack, Oct 22, 2025) - 38,000 words, 80+ sources, 78% Evidence Level A, openly accessible
@@ -20,11 +21,12 @@
 - ✅ **Automation verified** - weekly_health_check.py fixed for November handling
 
 **Next Actions**:
-1. **Second monthly rolling update (December 2025)** - Continue tracking emerging architectures
-2. **Track quality metrics** - Evidence Level A at 78% (slight decrease due to emerging tech)
-3. **Community engagement** - Monitor feedback on AI-native infrastructure concepts
-4. **First quarterly deep dive (January 2026)** - Expert interviews, hypothesis validation, versioned snapshot (2025-Q4-v1.0)
-5. **Decision point (February 2026)** - Continue monthly, adjust to bi-monthly, or revert to quarterly
+1. **Isolation-first security evidence collection** - Performance benchmarks, compliance framework mapping, MSSP case studies
+2. **Second monthly rolling update (December 2025)** - Continue tracking emerging architectures + isolation-first validation
+3. **Track quality metrics** - Evidence Level A at 78% (slight decrease due to emerging tech)
+4. **Community engagement** - Monitor feedback on AI-native infrastructure concepts + isolation-first patterns
+5. **First quarterly deep dive (January 2026)** - Expert interviews (Jake Thomas isolation-first validation), hypothesis validation, versioned snapshot (2025-Q4-v1.0)
+6. **Decision point (February 2026)** - Continue monthly, adjust to bi-monthly, or revert to quarterly
 
 ---
 
@@ -209,18 +211,61 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 
 **Actions Completed**:
 - ✅ First monthly rolling update (November 2025): Added 4 AI-native infrastructure sources
+- ✅ **Isolation-First Security Integration** (November 14, 2025): Added RQ7-RQ10 research questions, 3 production case studies, tracking document
 - ✅ Automation verified: Fixed weekly_health_check.py for November handling
 - ✅ Quality metrics tracking: Evidence Level A at 78% (acceptable for emerging tech)
 
 **Actions in Progress**:
-- ⏳ Second monthly rolling update (December 2025): Continue emerging architecture tracking
-- ⏳ Community engagement workflow: Monitor feedback on new AI concepts
-- ⏳ Prepare for Q1 2026 deep dive: Expert interview scheduling (Lisa Chao, Jake Thomas), hypothesis validation planning
+- ⏳ Isolation-first security evidence collection: Performance benchmarks, compliance framework mapping, MSSP case studies
+- ⏳ Second monthly rolling update (December 2025): Continue emerging architecture tracking + isolation-first validation
+- ⏳ Community engagement workflow: Monitor feedback on new AI concepts + isolation-first patterns
+- ⏳ Prepare for Q1 2026 deep dive: Expert interview scheduling (Lisa Chao, Jake Thomas for isolation-first validation), hypothesis validation planning
 
 **Decision Point** (February 2026):
 - **IF** quality ≥75% AND time ≤10 hours/month → Continue monthly rolling updates
 - **IF** quality <75% OR time >12 hours/month → Adjust to bi-monthly or revert to quarterly
 - **IF** community engagement high → Monthly cadence justified, continue hybrid model
+
+---
+
+### Phase 2H: Isolation-First Security Research Questions (RQ7-RQ10) 🔄 ACTIVE
+**Timeline**: November 2025 - Q1 2026 (evidence collection + validation)
+
+**Context**: Security data on dedicated infrastructure (isolated VPC/VNet) simplifies architectural decisions by eliminating need for fine-grained catalog access (RLS, column masking, metadata encryption).
+
+**Research Questions**:
+1. **RQ7: Isolation Patterns and Performance** - Network isolation + IAM achieves 15-50% faster query performance vs fine-grained catalog access
+2. **RQ8: Compliance Trade-offs** - Network isolation as primary control meets SOC 2/ISO 27001/NIST CSF for most enterprise security teams
+3. **RQ9: Multi-Tenant MSSP vs Isolation-First** - Multi-tenant MSSPs require RLS (Unity Catalog), single-tenant SOCs benefit from isolation-first (Polaris/Nessie)
+4. **RQ10: Catalog Governance Influence** - Isolation-first elevates Polaris/Nessie to top-tier (vendor neutrality, Git workflows prioritized over fine-grained access)
+
+**Deliverables Completed**:
+- ✅ **RQ7-RQ10 added to METHODOLOGY.md** (Section 5.4 - Isolation-First Security Research Questions)
+- ✅ **Gap 9 added to LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** (Comprehensive hypothesis formulation)
+- ✅ **3 production case studies documented** in MASTER-BIBLIOGRAPHY.md:
+  - Netflix Security Observability (ClickHouse + Iceberg, isolated VPC, Polaris table-level RBAC, SOC 2/ISO 27001 compliance)
+  - Huntress EDR Data Lake (Iceberg, isolated AWS, 93% cost reduction, 3M endpoints)
+  - Okta Security Analytics (DuckDB + Iceberg, isolated platform, Jake Thomas validation)
+- ✅ **isolation-first-security-tracking.md** created (comprehensive evidence collection plan)
+
+**Evidence Collection in Progress**:
+- [ ] Performance benchmarks: Unity Catalog RLS overhead (5-30%), Iceberg metadata encryption (10-20%), column masking (3-10%)
+- [ ] Compliance framework mapping: ISO 27001, SOC 2, NIST CSF network segmentation controls
+- [ ] MSSP case studies: Arctic Wolf, Expel, Red Canary multi-tenant architecture patterns
+- [ ] Catalog comparison matrix: Unity vs Polaris vs Nessie for isolation vs shared platforms
+
+**Integration Points**:
+- **Blog Posts #11-12**: Iceberg vs Delta, Unity vs Polaris vs Nessie (isolation-first architectural advantages)
+- **MCP Server**: Isolation pattern decision logic, catalog selection based on isolation vs shared context
+- **Book Chapters 8-9**: Catalog selection, query engine performance benefits in isolated architectures
+- **Q1 2026 Quarterly Deep Dive**: Jake Thomas interview validates isolation-first pattern for Okta
+
+**Evidence Tier Target**: Tier B (production case studies + benchmarks + expert validation)
+
+**Success Metrics**:
+- November 2025: Case studies documented (✅ COMPLETE), tracking document created (✅ COMPLETE)
+- December 2025: Performance benchmarks collected (3 data points minimum)
+- January 2026: Expert validation (Jake Thomas interview), Evidence Tier B achieved for RQ7/RQ10
 
 ---
 
@@ -260,7 +305,9 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - **Production Deployments**: 18 sources (Netflix, Uber, LinkedIn, Cloudflare, Shell, etc.)
 - **URL Validation**: 73% overall, 100% hypothesis-critical
 
-### Validated Hypotheses (7 total)
+### Validated Hypotheses (7 total) + Research Questions (4 new)
+
+**Validated Hypotheses**:
 
 | Hypothesis ID | Description | Status | Sources | Confidence |
 |--------------|-------------|--------|---------|------------|
@@ -271,6 +318,15 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 | H-COST-09 | Tiered Storage (55-80% savings) | VALIDATED | 3 | ⭐⭐⭐⭐⭐ |
 | H3-PERFORMANCE-01 | ClickHouse OLAP Performance | VALIDATED | 4 | ⭐⭐⭐⭐ |
 | H-STREAM-01 | Kafka Streams Security Patterns | VALIDATED | 3 | ⭐⭐⭐⭐ |
+
+**New Research Questions (November 2025)**:
+
+| Research Question | Description | Status | Case Studies | Evidence Tier |
+|------------------|-------------|--------|--------------|---------------|
+| RQ7 | Isolation Patterns and Performance | EVIDENCE COLLECTION | 3 (Netflix, Huntress, Okta) | Target: B |
+| RQ8 | Compliance Trade-offs | EVIDENCE COLLECTION | 1 (Netflix) | Target: B |
+| RQ9 | Multi-Tenant MSSP vs Isolation-First | EVIDENCE COLLECTION | 0 MSSP case studies | Target: B/C |
+| RQ10 | Catalog Governance Influence | EVIDENCE COLLECTION | 1 (Netflix Polaris) | Target: B |
 
 ### Key Quantitative Findings
 
