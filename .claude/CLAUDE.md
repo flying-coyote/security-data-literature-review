@@ -36,9 +36,9 @@ Living literature review published openly on Substack, supporting blog (3x/week 
 **Update Trigger**: Phase transitions, major milestones
 
 ## Current Phase
-**Status**: Phase 1 (Literature Extraction) COMPLETE ✅ | Phase 2 (Hybrid Model Trial) ACTIVE 🔄
-**Last Updated**: October 30, 2025
-**Focus**: Monthly rolling updates + quarterly deep synthesis (3-month trial: Nov 2025 - Jan 2026)
+**Status**: Phase 1 (Literature Extraction) COMPLETE ✅ | Phase 2 (Monthly Updates) ACTIVE 🔄
+**Last Updated**: November 14, 2025
+**Focus**: Monthly rolling updates + quarterly deep synthesis (committed to ongoing monthly cadence)
 **Published**: Substack (Oct 22, 2025), 38,000 words, 75+ sources, 79% Evidence Level A
 
 **Phase 1 Accomplishments** ✅:
@@ -52,7 +52,7 @@ Living literature review published openly on Substack, supporting blog (3x/week 
 **Phase 2 Active** 🔄:
 - **Hybrid update model**: Monthly rolling updates (~6-8 hours) + quarterly deep synthesis (~24 hours/quarter)
 - **MCP vendor database**: 71 vendors, 84% Tier A, automated weekly refresh (replaces IT Harvest dependency)
-- **3-month trial**: Nov 2025 - Jan 2026 to validate sustainability (quality ≥75%, time ≤10 hours/month)
+- **Committed to monthly updates**: Tracking quality and time for continuous improvement
 - **Quarterly deep dives**: Comprehensive reviews, expert interviews (Lisa Chao, Jake Thomas), versioned snapshots
 - **Community engagement**: Reader feedback, corrections, collaborative source identification
 
@@ -319,38 +319,34 @@ Co-Authored-By: Claude <noreply@anthropic.com>  # If AI-assisted
 - [x] All book chapters cited
 - [x] Published online (Substack, Oct 22, 2025) - 38,000 words, openly accessible
 
-### Phase 2 (ACTIVE - Hybrid Model Trial: Nov 2025 - Jan 2026) 🔄
+### Phase 2 (ACTIVE - Monthly Updates Ongoing) 🔄
 - [x] MCP vendor database operational (71 vendors, 84% Tier A, automated) - COMPLETE
-- [ ] First monthly rolling update (November 2025)
-- [ ] 3-month trial validated (quality ≥75%, time ≤10 hours/month)
+- [ ] Monthly rolling updates ongoing (November 2025+)
 - [ ] First quarterly deep dive (Q1 2026 - January, expert interviews, versioned snapshot)
-- [ ] Decision point (February 2026): Continue monthly, adjust to bi-monthly, or revert to quarterly
 - [ ] Blog support sustained (3x/week practitioner content with current evidence)
 
 ### Hybrid Model Metrics (Phase 2-3 - Ongoing)
 - **Monthly rolling updates**: 12x per year (new sources, corrections, community feedback)
 - **Quarterly deep dives**: 4x per year (comprehensive reviews, expert validation, versioned snapshots)
-- **Quality target**: ≥75% Evidence Level A monthly, 77-79% quarterly
-- **Time sustainability**: ≤10 hours/month (if >12 hours, reduce frequency)
+- **Quality baseline**: ~75-78% Evidence Level A (track for continuous improvement)
+- **Time tracking**: Monitor for awareness, typical range 6-10 hours/month
 - **Blog integration**: 4-6× writing speedup sustained, 3x/week blog output
 - **Community engagement**: Track reader feedback, corrections, source contributions
 - **Citation stability**: Quarterly git tags (YYYY-QX-v1.0) for academic citations
 
 ## Current Priorities
 
-### Immediate (Phase 2 - Hybrid Model Trial: Nov 2025 - Jan 2026)
-1. **First monthly rolling update (November 2025)**: New sources, community feedback, MCP vendor database refresh
-2. **Track quality metrics**: Evidence Level A percentage, time investment, blog integration effectiveness
+### Immediate (Phase 2 - Monthly Updates Ongoing: Nov 2025+)
+1. **Monthly rolling updates**: New sources, community feedback, MCP vendor database refresh
+2. **Track quality metrics**: Evidence Level A percentage, time investment for continuous improvement
 3. **Sustain blog output**: 3x/week practitioner content supported by current evidence base
-4. **Decision point (February 2026)**: Continue monthly (if quality ≥75%, time ≤10 hours), adjust to bi-monthly, or revert to quarterly
-5. **Community engagement**: Respond to reader feedback, incorporate corrections, document source contributions
+4. **Community engagement**: Respond to reader feedback, incorporate corrections, document source contributions
 
 ### Short-term (Phase 2 - First Quarterly Deep Dive: January 2026)
 1. **Execute expert interviews** (Lisa Chao, Jake Thomas - deferred to Q1 2026 quarterly deep dive)
 2. **Comprehensive review** of Oct-Dec 2025 monthly updates (hypothesis validation, evidence synthesis)
 3. **Versioned snapshot**: Tag repository with 2025-Q4-v1.0 for citation stability
 4. **Quarterly synthesis blog post**: Publish comprehensive findings from Q4 2025 review
-5. **Validate hybrid model**: Assess 3-month trial results, decide to continue/adjust/revert
 
 ### Long-term (Phase 3 - Hybrid Model Maturity: 2026+)
 1. **Sustain hybrid model**: 12 monthly updates + 4 quarterly deep dives per year
@@ -363,8 +359,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>  # If AI-assisted
 
 When resuming work on this project, focus on:
 
-1. **First Monthly Rolling Update** (November 2025) - New sources, community feedback, MCP vendor refresh
-2. **Track Metrics** - Evidence Level A percentage, time investment (target: ≤8 hours), blog support
+1. **Monthly Rolling Updates** - New sources, community feedback, MCP vendor refresh
+2. **Track Metrics** - Evidence Level A percentage, time investment for awareness
 3. **Community Engagement** - Respond to Substack reader feedback, incorporate corrections
 4. **Blog Support** - Sustain 3x/week output with current evidence (4-6× speedup demonstrated)
 5. **Prepare for Q1 Deep Dive** (January 2026) - Expert interviews, hypothesis validation, versioned snapshot
