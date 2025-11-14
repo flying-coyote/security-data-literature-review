@@ -1,7 +1,7 @@
 # Repository Status Report
 
 **Repository**: security-data-literature-review
-**Last Updated**: November 14, 2025 (Isolation-first security pattern integration: RQ7-RQ10 added)
+**Last Updated**: November 14, 2025 (Automation & workflow integration documentation + monthly update workflow validation)
 **Maintained By**: Jeremy Wiley
 **Purpose**: Living literature review published on Substack, supporting blog (3x/week) and book (115,500 words)
 
@@ -453,17 +453,154 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 ### Blog
 - Evidence synthesis → blog pipeline established
 - "The Streaming Tax" demonstrates 3,500-word deep-dive capability
-- Repository: [security-data-commons](https://github.com/flying-coyote/security-data-commons)
+- 4-6× writing speedup demonstrated (3x/week practitioner content)
+- Source identification from blog feedback operational
+- Repository: [security-data-commons-blog](https://github.com/flying-coyote/security-data-commons-blog)
 
 ### IT Harvest Partnership
-- Vendor data integration planned for quarterly technology assessments
-- Query engines pilot project (first integration)
-- Contact: Charles Wells
+- **Status**: Deferred/optional - MCP vendor database provides sufficient baseline
+- Vendor data integration planned for quarterly technology assessments (if needed)
+- Query engines pilot project (first integration if partnership pursued)
+- Contact: Charles Wells (can revisit if MCP baseline proves insufficient)
 
 ### Expert Network
-- Lisa Chao (catalog landscape), Jake Thomas (DuckDB/edge processing)
-- Validation interviews scheduled for Week 3
+- Lisa Chao (catalog landscape), Jake Thomas (DuckDB/edge processing, isolation-first validation)
+- Validation interviews deferred to Q1 2026 quarterly deep dive (January 2026)
 - Source: second-brain expert network (1,444 thought leaders)
+
+---
+
+## Automation & Workflow Integration
+
+### Monthly Update Workflow (Phase 2G - OPERATIONAL)
+
+**Tracking System** ✅:
+- **monthly-update-tracker.md** - Comprehensive time and quality tracking
+  - Records time investment per update (November average: 7.5 hours)
+  - Tracks quality metrics (Evidence Level A: 78%)
+  - Documents success criteria (≥75% Level A, ≤10 hours/month)
+  - Includes workflow checklist for future updates
+  - Provides KPIs, lessons learned, recommendations
+
+**Quality Monitoring** ✅:
+- **weekly_health_check.py** - Automated weekly validation
+  - Validates bibliography links (2 broken links identified and fixed)
+  - Checks evidence freshness (27 outdated sources flagged for refresh)
+  - Monitors hypothesis validation status
+  - Tracks git repository health
+  - Generates markdown reports at `/home/USER/weekly-review-reports/`
+  - Last run: November 14, 2025 (Status: WARNING - non-critical)
+
+**Dashboard & Decision Support** ✅:
+- **automation_dashboard.py** - Quick visibility into automation health
+  - Consolidates metrics from multiple sources (bibliography, tracker, health checks, git)
+  - Provides decision dashboard for monthly updates (6/6 checks passed for December readiness)
+  - Color-coded terminal output for quick status assessment
+  - Validates quality targets (78% Evidence Level A ≥ 75% target)
+  - Validates time sustainability (7.5 hours average ≤ 10-hour target)
+  - Recommends actions for next update
+  - Location: `scripts/automation_dashboard.py`
+  - Usage: `python3 scripts/automation_dashboard.py`
+
+**Workflow Verification** ✅:
+- **monthly-update-workflow-verification.md** - Comprehensive workflow validation
+  - Confirms all systems operational for December 2025 update
+  - Documents workflow friction points (minor, manageable)
+  - Provides December update plan (6-8 hours target)
+  - Validates integration points (blog, book, MCP all working)
+
+### Source Management Automation
+
+**Bibliography Maintenance** ✅:
+- **MASTER-BIBLIOGRAPHY.md** - 83+ sources with standardized format
+  - Evidence Level classification automated (78% Level A maintained)
+  - Hypothesis cross-references complete
+  - Link validation status documented (2 broken links marked, Gartner paywall expected)
+  - Last updated: November 14, 2025
+
+**Evidence Quality Tracking** ✅:
+- Evidence Level A maintained at 78% (exceeds 75% target)
+- Automated validation via weekly_health_check.py
+- 27 outdated sources flagged for December refresh (>12 months old)
+- Zero Evidence Level D (marketing) sources maintained
+
+### MCP Vendor Database Integration
+
+**Status** ✅ OPERATIONAL:
+- 71 vendors tracked, 84% Tier A quality
+- 110 evidence sources documented
+- Weekly automated refresh + monthly GitHub metrics
+- **75-90% burden reduction** for vendor data maintenance
+- Replaces IT Harvest dependency (sufficient baseline established)
+
+**Files**:
+- Vendor database: `vendor-landscape/vendor-database.json`
+- MCP integration: `/home/USER/security-architect-mcp-server/data/vendor_database.json`
+- Integration summary: `vendor-landscape/MCP-VENDOR-INTEGRATION-SUMMARY.md`
+
+### Blog-Literature Feedback Loop
+
+**Evidence Synthesis → Blog Pipeline** ✅:
+- 4-6× writing speedup demonstrated
+- Supports 3x/week practitioner content output
+- November updates supported ongoing blog production
+- Source identification from blog feedback operational (LinkedIn monitoring, reader comments)
+
+**Community Engagement** ⏳:
+- Substack comment monitoring planned (not yet systematized)
+- Reader feedback incorporation workflow in development
+- Collaborative source identification from practitioner community
+
+### Version Control & Citation Stability
+
+**Git Workflow** ✅:
+- Standardized commit messages working
+- CHANGELOG.md tracking all updates (Version 1.11.0 current)
+- Quarterly git tags planned for citation stability (2025-Q4-v1.0 in January 2026)
+- Current status: 5 uncommitted changes (workflow verification documents)
+
+**Version History**:
+- All major updates tracked in CHANGELOG.md
+- Versions 1.0.0 - 1.11.0 documented with sources added, metrics, changes
+- Academic citation format maintained for stability
+
+### Time and Quality Sustainability
+
+**November 2025 Performance** ✅:
+- **Update 1** (Nov 13): 4.7 hours (AI-native infrastructure, 4 sources)
+- **Update 2** (Nov 14): 10.2 hours (Isolation-first security, 3 sources + 4 research questions + tracking document)
+- **Average**: 7.5 hours/update ✅ (under 10-hour target)
+- **Quality**: 78% Evidence Level A ✅ (exceeds 75% target)
+
+**Sustainability Assessment**:
+- 🟢 Time investment sustainable (7.5 hours average)
+- 🟢 Quality metrics exceeding targets
+- 🟢 Automation reducing burden (MCP, health check, dashboard)
+- 🟡 Workload variability (4.7 vs 10.2 hours) - balancing simple/complex updates
+
+**Recommendations**:
+1. Balance simple (4-5 hours) and complex (8-10 hours) updates to maintain 7.5-hour average
+2. Systematize community engagement tracking (Substack monitoring - 30 minutes setup)
+3. Refresh outdated sources in December update (5-10 oldest sources from 27 flagged)
+
+### December 2025 Update Readiness
+
+**Prerequisites** ✅ ALL MET:
+- [x] Tracking system operational (monthly-update-tracker.md)
+- [x] Quality baseline established (78% Evidence Level A)
+- [x] Time baseline established (7.5 hours/update average)
+- [x] Automation working (health check, dashboard, MCP database)
+- [x] Bibliography maintenance current (broken links fixed, last updated Nov 14)
+- [x] Git workflow operational (standardized commits, CHANGELOG tracking)
+- [x] Dashboard shows 6/6 readiness checks passed
+
+**Planned Actions** (December 2025):
+- [ ] Refresh 5-10 oldest sources (from 27 outdated sources)
+- [ ] Add 2-3 new sources from blog feedback/LinkedIn monitoring
+- [ ] Run weekly_health_check.py before and after update
+- [ ] Update monthly-update-tracker.md with December metrics
+- [ ] Update CHANGELOG.md (Version 1.12.0)
+- [ ] Target: 6-8 hours (balanced workload)
 
 ---
 

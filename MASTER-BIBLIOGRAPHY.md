@@ -1,11 +1,12 @@
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
-**Last Updated**: November 13, 2025
-**Last Reviewed**: November 13, 2025
-**Total Sources**: 80+ sources documented (including 4 new AI-native infrastructure sources)
+**Last Updated**: November 14, 2025
+**Last Reviewed**: November 14, 2025
+**Total Sources**: 83+ sources documented (including 7 sources from Nov 2025 updates)
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: 78% Evidence Level A (production deployments, peer-reviewed research)
+**Link Status**: 2 broken links identified and documented (Gartner paywall expected, trinosummit.io defunct)
 
 ---
 
@@ -1069,7 +1070,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Trino Summit
 **Date**: 2024
-**URL**: https://trinosummit.io/sessions/data-contracts/
+**URL**: https://trinosummit.io/sessions/data-contracts/ ⚠️ **BROKEN LINK** (Domain no longer accessible)
 **Evidence Level**: B (Conference presentation)
 **Relevance**:
 - Data quality framework
@@ -1082,9 +1083,9 @@ This bibliography consolidates all literature sources from:
 - Metadata-driven quality enforcement
 
 **Citations**: Chapter 11 data quality patterns
-**Notes**: Security-specific data reliability improvements
+**Notes**: Security-specific data reliability improvements. **SOURCE NO LONGER AVAILABLE** - trinosummit.io domain defunct as of November 2025.
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ❌ Broken link (DNS resolution failure - domain defunct)
 
 ---
 
