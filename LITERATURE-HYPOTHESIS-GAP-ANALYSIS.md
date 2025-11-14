@@ -465,17 +465,91 @@
 
 ---
 
+## Gap 9: Isolation-First Security Architecture Patterns (NEW - November 2025)
+
+### Literature Evidence
+
+**Source 1**: Netflix Security Observability Platform
+- **Finding**: ClickHouse + Iceberg on isolated VPC with Polaris (table-level RBAC only)
+- **Implication**: No row-level security, column masking, or metadata encryption needed
+- **Evidence Level**: A (Production deployment at scale)
+
+**Source 2**: Huntress EDR Data Lake
+- **Finding**: Iceberg on isolated AWS infrastructure, table-level RBAC
+- **Implication**: Simplified security posture, avoided Unity Catalog complexity
+- **Evidence Level**: A (Production case study, 93% cost reduction)
+
+**Source 3**: Okta Security Analytics
+- **Finding**: DuckDB + Iceberg on isolated platform (Jake Thomas validation)
+- **Implication**: Performance-first approach without fine-grained access overhead
+- **Evidence Level**: B (Expert validation)
+
+**Source 4**: Databricks Unity Catalog Overhead
+- **Finding**: Row-level security, column masking, metadata encryption add query overhead
+- **Implication**: 15-50% performance penalty when isolation could suffice
+- **Evidence Level**: B (Vendor documentation, benchmarks needed)
+
+**Source 5**: Alex Merced (Dremio) - Iceberg Metadata Encryption
+- **Finding**: Metadata encryption adds 10-20% query latency overhead
+- **Implication**: Avoidable for isolated security platforms
+- **Evidence Level**: B (Vendor expert, quantitative estimates)
+
+### Proposed Research Questions
+
+**RQ7: Isolation Patterns and Performance**
+- **Hypothesis**: Network isolation + IAM provides sufficient security boundary, achieving 15-50% faster query performance vs fine-grained catalog access
+- **Evidence Level**: B (production validation needed)
+- **Relevance**: Book Chapter 8 (Storage formats - Iceberg), Chapter 9 (Query engines - catalog selection)
+- **Validation Needed**:
+  - [ ] Query latency benchmarks: Unity Catalog RLS vs Polaris table-level RBAC
+  - [ ] TCO comparison: Polaris/Nessie (open-source) vs Unity Catalog (licensed)
+  - [ ] Operational hours: RLS policy management vs table-level permissions
+
+**RQ8: Compliance Trade-offs of Isolation-First Architecture**
+- **Hypothesis**: Network isolation as primary control meets SOC 2/ISO 27001/NIST CSF for most enterprise security teams
+- **Evidence Level**: B (compliance framework mapping needed)
+- **Relevance**: Book Chapter 11 (Governance), compliance guidance
+- **Validation Needed**:
+  - [ ] ISO 27001 control mapping: Network isolation vs catalog RLS
+  - [ ] SOC 2 audit acceptance: CloudTrail (table-level) vs Unity Catalog (row-level)
+  - [ ] Regulatory gap analysis: When is fine-grained access still required?
+
+**RQ9: Multi-Tenant MSSP vs Isolation-First Architecture**
+- **Hypothesis**: Multi-tenant MSSPs require row-level security, single-tenant SOCs benefit from isolation-first
+- **Evidence Level**: B/C (MSSP case studies needed)
+- **Relevance**: Book Chapter 4 (Architectural decision framework), MSSP market landscape
+- **Validation Needed**:
+  - [ ] MSSP case studies: Arctic Wolf, Expel, Red Canary architecture patterns
+  - [ ] Cost per tenant: Unity Catalog DBU costs vs dedicated VPC per customer
+  - [ ] Scale thresholds: When does multi-tenant become more cost-effective?
+
+**RQ10: Isolation Patterns Influence on Catalog Governance**
+- **Hypothesis**: Isolation-first elevates Polaris/Nessie to top-tier (vendor neutrality, Git workflows prioritized over fine-grained access)
+- **Evidence Level**: B (catalog adoption patterns)
+- **Relevance**: Book Chapter 8 (Storage formats - catalog selection), Chapter 9 (Query engines)
+- **Validation Needed**:
+  - [ ] Netflix Polaris adoption rationale (vendor-neutral, isolated platform)
+  - [ ] Unity Catalog → Polaris migration patterns (when isolating infrastructure)
+  - [ ] Decision criteria ranking: Fine-grained access vs vendor lock-in vs version control
+
+**Impact**: **HIGH** - Foundational architectural pattern affecting catalog selection, TCO, performance, and compliance decisions across all security data architectures.
+
+---
+
 ## Summary
 
-**Finding**: Literature extraction reveals **6 critical hypothesis gaps** requiring immediate formalization, primarily around operational reality (TCO, staffing, timelines) and cost optimization (tiered storage).
+**Finding**: Literature extraction reveals **10 critical hypothesis gaps** (6 original + 4 isolation-first security), primarily around operational reality (TCO, staffing, timelines), cost optimization (tiered storage), and architectural patterns (isolation-first security).
 
-**Strategic Importance**: These gaps address the **"hidden costs"** and **"implementation reality"** that differentiate security-specific data architecture from general data engineering - critical for book credibility and practitioner utility.
+**Strategic Importance**: These gaps address the **"hidden costs"**, **"implementation reality"**, and **"architectural decision patterns"** that differentiate security-specific data architecture from general data engineering - critical for book credibility and practitioner utility.
 
-**Next Action**: Add 6 hypotheses to MASTER-HYPOTHESIS-TRACKER.md with literature evidence links.
+**Next Action**:
+1. ✅ Add 6 original hypotheses to MASTER-HYPOTHESIS-TRACKER.md (COMPLETE)
+2. ✅ Add RQ7-RQ10 to METHODOLOGY.md (COMPLETE - November 2025)
+3. Track isolation-first security evidence collection (November 2025 monthly update)
 
 ---
 
 **Author**: Jeremy Wiley
-**Date**: October 10, 2025
-**Sources**: 150 footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed
-**Status**: Ready for hypothesis formalization
+**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security integration)
+**Sources**: 150 footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from security-data-commons-blog
+**Status**: Ready for hypothesis formalization + isolation-first security evidence collection
