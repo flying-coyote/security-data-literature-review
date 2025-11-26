@@ -349,7 +349,7 @@
 
 **Long-Term (Continuous)**:
 1. Monitor security-data-commons-blog for new source validation opportunities
-2. Expert interviews (Lisa Chao, Jake Thomas) for hypothesis validation
+2. Expert interviews (Lisa Cao, Jake Thomas) for hypothesis validation
 3. IT Harvest partnership coordination for Phase 2 vendor landscape
 
 ---

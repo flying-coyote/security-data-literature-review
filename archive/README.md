@@ -30,7 +30,7 @@ Historical session documentation from Phase 1 completion and Phase 2A-2C executi
 
 4. **SESSION-2025-10-16-VERSION-1.6.1-QUALITY-ENHANCEMENTS.md** (476 lines)
    - Documented Version 1.6.1: Expert interview preparation + bibliography quality fixes
-   - 2 expert interview guides created (Lisa Chao, Jake Thomas)
+   - 2 expert interview guides created (Lisa Cao, Jake Thomas)
    - Bibliography quality: 79% Evidence Level A (exceeds 73% target)
    - Key findings integrated into: EXPERT-INTERVIEW-GUIDE-*.md files, REPOSITORY-STATUS.md, CHANGELOG.md
 

@@ -285,7 +285,7 @@
 - Blog: security-data-commons
 
 **Expert Network** (for quarterly validation):
-- Lisa Chao (Catalog landscape)
+- Lisa Cao (Catalog landscape)
 - Jake Thomas (DuckDB, edge processing)
 - Additional experts as needed
 

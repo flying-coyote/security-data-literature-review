@@ -14,7 +14,7 @@
 **Starting State**:
 - Version 1.6.0 complete (Integration & Application - blog + book)
 - MASTER-BIBLIOGRAPHY.md with claimed "73% Evidence Level A"
-- No structured expert interview guides for Lisa Chao or Jake Thomas
+- No structured expert interview guides for Lisa Cao or Jake Thomas
 - Gap Analysis needing post-v1.6.0 hypothesis validation updates
 
 **Ending State**:
@@ -49,7 +49,7 @@
   - Catalog selection criteria (quantitative thresholds)
   - Format convergence trends (Iceberg vs Delta vs Hudi 3-5 year forecast)
 - **Post-interview actions**:
-  - Update MASTER-BIBLIOGRAPHY.md with Lisa Chao evidence
+  - Update MASTER-BIBLIOGRAPHY.md with Lisa Cao evidence
   - Formalize H-ARCH-03 if sufficient validation
   - Update technology-decision-tree.md with catalog guidance
   - Potential blog post: "Catalog Management for Security Operations"
@@ -197,7 +197,7 @@
 - **Confidence**: High (Netflix 70-80% production, AWS 55% whitepapers, Confluent documentation)
 
 **5. Expert Interview Preparation Noted**:
-- Lisa Chao guide created for H-ARCH-03 validation (catalog adoption patterns)
+- Lisa Cao guide created for H-ARCH-03 validation (catalog adoption patterns)
 - Jake Thomas guide created for H-EDGE-01 validation (DuckDB edge processing)
 - Week 3 interviews will provide additional production validation
 
@@ -253,7 +253,7 @@
 - **Total Progress**: 3 of 6 proposed hypotheses upgraded to validated/strongly validated status
 
 ### Expert Interview Readiness:
-- **Lisa Chao Guide**: 75 minutes structured, 5 sections, 27 questions, H-ARCH-03 validation
+- **Lisa Cao Guide**: 75 minutes structured, 5 sections, 27 questions, H-ARCH-03 validation
 - **Jake Thomas Guide**: 75-80 minutes structured, 7 sections, 35 questions, H-EDGE-01 validation
 - **Total Preparation**: 32,000 words interview guides (comprehensive, hypothesis-driven)
 
@@ -290,7 +290,7 @@
 
 **Remaining Work** (Optional, non-blocking):
 - Resolve 7 URL placeholders (AWS, SRE Book, Uptime Institute, FinSec)
-- Execute Lisa Chao and Jake Thomas interviews (Week 3)
+- Execute Lisa Cao and Jake Thomas interviews (Week 3)
 - Formalize H-ARCH-03 based on Lisa interview
 - Validate H-EDGE-01 based on Jake interview
 
@@ -298,7 +298,7 @@
 
 ### Expert Interview Preparation: ✅ **COMPREHENSIVE**
 
-**Lisa Chao (Gravitino/Catalogs)**:
+**Lisa Cao (Gravitino/Catalogs)**:
 - **Hypothesis Targets**: H-ARCH-03 (catalog adoption patterns), XTable maturity
 - **Evidence Goals**: Gravitino production metrics, catalog selection criteria, format convergence trends
 - **Expected Evidence Level**: A (practitioner validation, production metrics)
@@ -336,7 +336,7 @@
 - Gap Analysis updated to reflect validation progress
 
 **Remaining Validation Work**:
-- Execute Lisa Chao interview → Formalize H-ARCH-03
+- Execute Lisa Cao interview → Formalize H-ARCH-03
 - Execute Jake Thomas interview → Validate H-EDGE-01
 - H-IMPL-03 (Security Timeline Premium) → Needs additional validation
 - H-STREAM-01 (Kafka Streams) → Needs production security use case validation
@@ -347,7 +347,7 @@
 
 ### Immediate (Week 3 - Oct 21-25, 2025):
 1. **Execute Expert Interviews**:
-   - Lisa Chao: Gravitino adoption, XTable production status, catalog landscape
+   - Lisa Cao: Gravitino adoption, XTable production status, catalog landscape
    - Jake Thomas: DuckDB edge processing, security data volumes, production architecture
 2. **Post-Interview Processing** (Within 24 hours):
    - Transcribe interviews with key quotes, quantitative data
@@ -440,7 +440,7 @@
 - [x] Expert interview preparation (2 comprehensive guides)
 
 ### v1.6.1 Session Goals:
-- [x] Expert interview guides created (Lisa Chao, Jake Thomas)
+- [x] Expert interview guides created (Lisa Cao, Jake Thomas)
 - [x] MASTER-BIBLIOGRAPHY enhanced (79% evidence level corrected)
 - [x] Gap Analysis updated (3 hypotheses upgraded to validated/strongly validated)
 - [x] Documentation synchronized (all metrics corrected across 4 files)

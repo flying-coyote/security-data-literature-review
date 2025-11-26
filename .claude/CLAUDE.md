@@ -53,7 +53,7 @@ Living literature review published openly on Substack, supporting blog (3x/week 
 - **Hybrid update model**: Monthly rolling updates (~6-8 hours) + quarterly deep synthesis (~24 hours/quarter)
 - **MCP vendor database**: 71 vendors, 84% Tier A, automated weekly refresh (replaces IT Harvest dependency)
 - **Committed to monthly updates**: Tracking quality and time for continuous improvement
-- **Quarterly deep dives**: Comprehensive reviews, expert interviews (Lisa Chao, Jake Thomas), versioned snapshots
+- **Quarterly deep dives**: Comprehensive reviews, expert interviews (Lisa Cao, Jake Thomas), versioned snapshots
 - **Community engagement**: Reader feedback, corrections, collaborative source identification
 
 ## Quality Standards
@@ -261,7 +261,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>  # If AI-assisted
 **Sources**:
 1. IT Harvest vendor data (primary - partnership pending)
 2. Blog post insights (ongoing from security-data-commons-blog)
-3. Expert network validation (Lisa Chao, Jake Thomas, Paul Agbabian, etc.)
+3. Expert network validation (Lisa Cao, Jake Thomas, Paul Agbabian, etc.)
 4. Matthew Mullins + practitioner feedback
 
 ## Integration Points
@@ -346,7 +346,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>  # If AI-assisted
 4. **Community engagement**: Respond to reader feedback, incorporate corrections, document source contributions
 
 ### Short-term (Phase 2 - First Quarterly Deep Dive: January 2026)
-1. **Execute expert interviews** (Lisa Chao, Jake Thomas - deferred to Q1 2026 quarterly deep dive)
+1. **Execute expert interviews** (Lisa Cao, Jake Thomas - deferred to Q1 2026 quarterly deep dive)
 2. **Comprehensive review** of Oct-Dec 2025 monthly updates (hypothesis validation, evidence synthesis)
 3. **Versioned snapshot**: Tag repository with 2025-Q4-v1.0 for citation stability
 4. **Quarterly synthesis blog post**: Publish comprehensive findings from Q4 2025 review

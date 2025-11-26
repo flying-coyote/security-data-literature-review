@@ -37,7 +37,7 @@ Track security-specific technologies including detection platforms, threat intel
 2. **Security Practitioners**: Shell SIEM team, SK Telecom, production deployments
 3. **Security Vendors**: Vendor documentation (Level B evidence)
 4. **Blog Integration**: security-data-commons-blog security deep-dives
-5. **Expert Network**: Lisa Chao, Jake Thomas, Paul Agbabian validation
+5. **Expert Network**: Lisa Cao, Jake Thomas, Paul Agbabian validation
 
 ## Integration with Book
 Supports:

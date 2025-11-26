@@ -72,7 +72,7 @@ and this project adheres to semantic versioning for documentation releases.
 
 ### Next Actions
 1. **January 2026 Update**: Third monthly rolling update + Q1 2026 quarterly deep dive
-   - Expert interviews (Lisa Chao, Jake Thomas for isolation-first validation)
+   - Expert interviews (Lisa Cao, Jake Thomas for isolation-first validation)
    - Comprehensive hypothesis validation review
    - Versioned snapshot: Tag repository 2025-Q4-v1.0
    - Quarterly synthesis blog post
@@ -195,7 +195,7 @@ Establish minimal viable monthly update workflow infrastructure with tracking fo
 ### Next Actions
 1. **December 2025 Update** (mid-month): Refresh 5-10 oldest sources, add 2-3 new sources, target 6-8 hours
 2. **Community Engagement**: Systematize Substack comment monitoring (30-minute setup)
-3. **January 2026 Deep Dive**: Expert interviews (Lisa Chao, Jake Thomas), versioned snapshot (2025-Q4-v1.0)
+3. **January 2026 Deep Dive**: Expert interviews (Lisa Cao, Jake Thomas), versioned snapshot (2025-Q4-v1.0)
 
 ---
 
@@ -746,7 +746,7 @@ Integrate all reference links from security-data-commons-blog (published and dra
 ## [1.6.1] - 2025-10-16 - Quality Enhancements & Expert Interview Preparation
 
 ### Added
-- **EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md**: Comprehensive interview guide for Lisa Chao (Datastrato/Gravitino)
+- **EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md**: Comprehensive interview guide for Lisa Cao (Datastrato/Gravitino)
   - 75-minute structured interview focused on catalog adoption, XTable production status, multi-catalog management
   - Hypothesis validation targets: H-ARCH-03 (catalog patterns), XTable maturity assessment
   - Evidence collection for technology decision tree and implementation reality bundles
@@ -832,7 +832,7 @@ Demonstrates complete workflow: Research → Evidence Synthesis → Content Crea
   - **Part 4: Evidence Level Upgrade Opportunities** - 4 identified
     - Matthew Mullins (added immediately)
     - Jake Thomas (pending Week 3 interview)
-    - Lisa Chao (pending Week 3 interview)
+    - Lisa Cao (pending Week 3 interview)
     - IT Harvest (pending partnership)
 - **MASTER-BIBLIOGRAPHY.md**: Added Matthew Mullins practitioner validation
   - Evidence Level A (production security implementations)
@@ -1068,7 +1068,7 @@ Evidence bundles transform scattered MASTER-BIBLIOGRAPHY.md sources (1,944 lines
 
 ### [2.1.0] - TBD - Expert Network Validation
 **Planned additions:**
-- Lisa Chao interview integration (Gravitino, catalog management)
+- Lisa Cao interview integration (Gravitino, catalog management)
 - Jake Thomas interview integration (DuckDB, edge processing)
 - Additional hypothesis validation from expert network
 - Emerging technology pattern validation

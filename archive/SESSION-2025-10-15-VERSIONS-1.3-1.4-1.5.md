@@ -280,7 +280,7 @@
    - Production DuckDB for defensive cyber operations
    - H-EDGE-01 hypothesis validation (DuckDB edge processing)
 
-3. **Lisa Chao (Datastrato)** - ⏳ PENDING Week 3 Interview
+3. **Lisa Cao (Datastrato)** - ⏳ PENDING Week 3 Interview
    - Expected: Evidence Level A if production metrics available
    - Gravitino adoption metrics (catalog management)
    - Table format interoperability insights (Apache XTable)
@@ -466,7 +466,7 @@
 
 ### Immediate (Week 3)
 - [ ] Jake Thomas interview (DuckDB production validation)
-- [ ] Lisa Chao interview (Gravitino adoption metrics)
+- [ ] Lisa Cao interview (Gravitino adoption metrics)
 - [ ] Add 2 practitioner validations to MASTER-BIBLIOGRAPHY.md (Evidence Level A)
 
 ### Short-term (Q4 2025/Q1 2026)

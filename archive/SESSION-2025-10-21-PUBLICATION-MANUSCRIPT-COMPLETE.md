@@ -18,7 +18,7 @@ This session completed the academic publication manuscript for "Modern Data Arch
 4. ✅ **FIGURES-AND-TABLES.md** (5 figures + 5 tables) - Detailed specifications
 5. ✅ **publication-graphics/** - Python scripts + LaTeX TikZ + generated PNG/PDF outputs
 
-**Manuscript Status**: Ready for expert validation (Lisa Chao, Jake Thomas interviews) and journal submission (Q4 2025 target)
+**Manuscript Status**: Ready for expert validation (Lisa Cao, Jake Thomas interviews) and journal submission (Q4 2025 target)
 
 ---
 
@@ -202,7 +202,7 @@ This session completed the academic publication manuscript for "Modern Data Arch
   - Phase 2: Evidence Gap Exploration (20-30 min)
   - Phase 3: Emerging Pattern Identification (10-20 min)
 - Expert interview schedule:
-  - Lisa Chao (catalog landscape, XTable, Iceberg ecosystem)
+  - Lisa Cao (catalog landscape, XTable, Iceberg ecosystem)
   - Jake Thomas (DuckDB edge processing, data volumes)
   - Matthew Mullins (completed - Starburst/Athena validation)
 - Documentation procedures (pre/during/post interview)
@@ -453,7 +453,7 @@ This session completed the academic publication manuscript for "Modern Data Arch
 
 ### Immediate (Week 3)
 1. **Execute expert interviews**:
-   - Lisa Chao (catalog landscape, XTable validation, H-ARCH-01)
+   - Lisa Cao (catalog landscape, XTable validation, H-ARCH-01)
    - Jake Thomas (DuckDB edge processing, H-EDGE-01, data volumes)
 2. **Incorporate expert feedback** into PUBLICATION-MANUSCRIPT.md
 3. **Compile Figure 1 PRISMA flowchart**: Install LaTeX (if not available) and run `pdflatex figure1_prisma_flowchart.tex`

@@ -14,7 +14,7 @@
 - **H-IMPL-01 (Streaming TCO)**: Upgraded to STRONGLY VALIDATED (blog post + 8 Level A sources)
 - **H-IMPL-02 (Staffing Scarcity)**: Upgraded to STRONGLY VALIDATED (staffing calculator + blog quantification)
 - **H-COST-09 (Tiered Storage)**: Upgraded to VALIDATED (cost optimization playbook + ROI analysis)
-- **Expert Interview Preparation**: Comprehensive guides created for Lisa Chao (H-ARCH-03, XTable) and Jake Thomas (H-EDGE-01, H1-VOLUME-07)
+- **Expert Interview Preparation**: Comprehensive guides created for Lisa Cao (H-ARCH-03, XTable) and Jake Thomas (H-EDGE-01, H1-VOLUME-07)
 
 **Impact**: 3 of 6 proposed hypotheses now have strong multi-source validation suitable for academic publication.
 
@@ -151,7 +151,7 @@
 
 **Validation Needed**:
 - [ ] Security-specific staffing surveys
-- [ ] Expert interviews (Lisa Chao, Jake Thomas on team composition)
+- [ ] Expert interviews (Lisa Cao, Jake Thomas on team composition)
 - [ ] Quantify skills gap in security domain
 
 **Impact**: **HIGH** - Affects staffing plans, implementation timelines, architectural choices
@@ -344,10 +344,10 @@
 **Rationale**:
 - Emerging standard (incubator)
 - Adoption unclear (Gartner survey shows interest, not production usage)
-- Lisa Chao interview (Week 3) may provide adoption insights
+- Lisa Cao interview (Week 3) may provide adoption insights
 
 **Action**:
-- [ ] Lisa Chao validation: Gravitino + XTable relationship
+- [ ] Lisa Cao validation: Gravitino + XTable relationship
 - [ ] Monitor Apache XTable graduation status
 - [ ] Track production adoption (6-12 month timeline)
 
@@ -415,7 +415,7 @@
 
 ### Expert Network Validation (Week 3)
 
-**Lisa Chao Interview**:
+**Lisa Cao Interview**:
 - [ ] Gravitino adoption metrics (Gap 3 in master tracker)
 - [ ] Table format interoperability (XTable) - production usage?
 - [ ] Catalog proliferation management
@@ -430,7 +430,7 @@
 **Completed Actions**:
 - ✅ All 283 footnotes extraction complete (October 10, 2025)
 - ✅ Archive manuscript parts 1-5 assessed (no independent sources)
-- ⏳ Expert network interviews scheduled (Lisa Chao, Jake Thomas - Week 3)
+- ⏳ Expert network interviews scheduled (Lisa Cao, Jake Thomas - Week 3)
 
 **Future Gap Monitoring**:
 - Expert network interviews may reveal additional hypothesis gaps

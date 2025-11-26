@@ -193,7 +193,7 @@ This appendix documents the evidence classification system used to assess source
 **Peer Review Process**:
 1. Initial classification by primary researcher
 2. Cross-validation against established standards (PRISMA, EBM guidelines)
-3. Expert validation protocol (Lisa Chao, Jake Thomas interviews)
+3. Expert validation protocol (Lisa Cao, Jake Thomas interviews)
 4. Hypothesis validation testing (all 7 hypotheses required Level A sources)
 
 **Reliability Checks**:
@@ -460,7 +460,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 4. **Reproducibility**: Scoring methodology published for peer review
 
 **Expert Validation**:
-- Pending: Lisa Chao interview (H-ARCH-01 XTable validation, catalog adoption)
+- Pending: Lisa Cao interview (H-ARCH-01 XTable validation, catalog adoption)
 - Pending: Jake Thomas interview (H-EDGE-01 DuckDB edge processing, data volumes)
 - Expert feedback will refine confidence scores for emerging technology hypotheses
 
@@ -500,7 +500,7 @@ This appendix documents the structured expert validation protocol used to valida
 4. **Edge Case Identification**: "Are there scenarios where this hypothesis does not hold?"
 5. **Confidence Adjustment**: "On a scale of 1-5, how confident are you in this hypothesis?"
 
-**Example (H-ARCH-01 with Lisa Chao)**:
+**Example (H-ARCH-01 with Lisa Cao)**:
 - Hypothesis: Apache Iceberg emerging as industry consensus for open table formats
 - Literature Evidence: Dremio survey (29% Iceberg vs 23% Delta), universal vendor support, SK Telecom production validation
 - Validation Question: "In your catalog work (Gravitino, Polaris, Unity, Nessie), which table formats are you seeing most adoption? Does Iceberg dominance align with your observations?"
@@ -542,7 +542,7 @@ This appendix documents the structured expert validation protocol used to valida
 
 ## C.4 Expert Interview Schedule
 
-### Interview 1: Lisa Chao (Planned)
+### Interview 1: Lisa Cao (Planned)
 
 **Expertise**: Catalog landscape (Gravitino, Polaris, Unity, Nessie), XTable interoperability, Apache Iceberg ecosystem
 
@@ -664,8 +664,8 @@ This appendix documents the structured expert validation protocol used to valida
 
 **Example**:
 - H-ARCH-01 current confidence: ⭐⭐⭐⭐⭐ (23/25 points)
-- Lisa Chao validation (production catalog data): +2 points → 25/25 points (maximum confidence)
-- Lisa Chao identifies Databricks preference for Delta Lake: Note edge case limitation, maintain confidence
+- Lisa Cao validation (production catalog data): +2 points → 25/25 points (maximum confidence)
+- Lisa Cao identifies Databricks preference for Delta Lake: Note edge case limitation, maintain confidence
 
 ---
 

@@ -352,7 +352,7 @@
 6. **Book Integration**: Add edge processing section to Chapter 9 (Emerging Patterns)
 
 ### Follow-up Validation
-7. **Cross-Reference**: Compare Jake's insights with Lisa Chao (catalog/format implications for edge)
+7. **Cross-Reference**: Compare Jake's insights with Lisa Cao (catalog/format implications for edge)
 8. **Additional Practitioners**: Contact any DuckDB practitioners Jake recommends
 9. **Vendor Validation**: Follow up with MotherDuck or DuckDB Labs for product roadmap insights
 

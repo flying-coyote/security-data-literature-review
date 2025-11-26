@@ -25,7 +25,7 @@
 2. **Isolation-first security evidence collection** - Performance benchmarks, compliance framework mapping, MSSP case studies
 3. **Track quality metrics** - Evidence Level A at 78% (track for continuous improvement)
 4. **Community engagement** - Monitor Substack feedback, systematize reader corrections workflow
-5. **First quarterly deep dive (January 2026)** - Expert interviews (Lisa Chao, Jake Thomas), hypothesis validation, versioned snapshot (2025-Q4-v1.0)
+5. **First quarterly deep dive (January 2026)** - Expert interviews (Lisa Cao, Jake Thomas), hypothesis validation, versioned snapshot (2025-Q4-v1.0)
 6. **README documentation sync** - Update from 1.7.0 to 1.12.0 (completed November 26, 2025)
 
 ---
@@ -222,7 +222,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - ⏳ December 2025 monthly rolling update: Performance benchmarks for RQ7, refresh 5-10 oldest sources, fix 2 broken links
 - ⏳ Isolation-first security evidence collection: Performance benchmarks, compliance framework mapping, MSSP case studies
 - ⏳ Community engagement workflow: Set up Substack monitoring, systematize reader corrections process
-- ⏳ Prepare for Q1 2026 deep dive: Expert interview scheduling (Lisa Chao, Jake Thomas), versioned snapshot (2025-Q4-v1.0)
+- ⏳ Prepare for Q1 2026 deep dive: Expert interview scheduling (Lisa Cao, Jake Thomas), versioned snapshot (2025-Q4-v1.0)
 
 ---
 
@@ -391,7 +391,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 1. **Second monthly update (December)** - Performance benchmarks for RQ7, refresh 5-10 oldest sources, fix 2 broken links
 2. **Third monthly update + Q1 2026 deep dive (January)**:
    - Rolling update: New sources, corrections, community feedback
-   - **Quarterly deep dive**: Expert interviews (Lisa Chao, Jake Thomas), hypothesis validation, comprehensive review
+   - **Quarterly deep dive**: Expert interviews (Lisa Cao, Jake Thomas), hypothesis validation, comprehensive review
    - **Versioned snapshot**: Tag repository with 2025-Q4-v1.0 for citation stability
    - **Quarterly synthesis blog post**: Publish comprehensive findings from Q4 2025 review
 3. **Track metrics**: Quality (78% baseline), time (7.5 hours average), blog support, community engagement
@@ -462,7 +462,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - Contact: Charles Wells (can revisit if MCP baseline proves insufficient)
 
 ### Expert Network
-- Lisa Chao (catalog landscape), Jake Thomas (DuckDB/edge processing, isolation-first validation)
+- Lisa Cao (catalog landscape), Jake Thomas (DuckDB/edge processing, isolation-first validation)
 - Validation interviews deferred to Q1 2026 quarterly deep dive (January 2026)
 - Source: second-brain expert network (1,444 thought leaders)
 
@@ -634,7 +634,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - [x] README documentation sync (November 2025) - Version 1.12.1: Updated from 1.7.0 to 1.12.0
 - [ ] Third monthly update (December 2025) - Performance benchmarks for RQ7, source refresh
 - [ ] Fourth monthly update + Q1 2026 quarterly deep dive (January 2026)
-- [ ] Expert interviews (Lisa Chao, Jake Thomas - Q1 2026 deep dive)
+- [ ] Expert interviews (Lisa Cao, Jake Thomas - Q1 2026 deep dive)
 - [ ] Versioned snapshot (2025-Q4-v1.0 tag - January 2026)
 
 ### Phase 3 (PLANNED - Hybrid Model Maturity) ⏳

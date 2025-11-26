@@ -92,7 +92,7 @@ Current: 79% ✅
 - Tier 3 (Expert consensus): [documented]
 
 **Analysis Bundles**: 9 completed (170,100 words)
-**Expert Interviews**: Week 3 scheduled (Lisa Chao, Jake Thomas)
+**Expert Interviews**: Week 3 scheduled (Lisa Cao, Jake Thomas)
 **Target**: 100+ sources, maintain 70%+ Tier 1-2
 
 ---

@@ -212,7 +212,7 @@
 - [ ] Evidence collection for RQ7-RQ10
 
 **Quarterly Deep Dive** (~24 hours):
-- [ ] Expert interviews (Lisa Chao, Jake Thomas)
+- [ ] Expert interviews (Lisa Cao, Jake Thomas)
 - [ ] Comprehensive hypothesis validation review
 - [ ] Versioned snapshot: Tag repository 2025-Q4-v1.0
 - [ ] Quarterly synthesis blog post
