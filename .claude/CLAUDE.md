@@ -12,7 +12,7 @@ Living literature review published openly on Substack, supporting blog (3x/week 
 **Note**: Separates canonical facts from assumptions requiring verification - critical for AI context
 
 ### MASTER-BIBLIOGRAPHY.md
-**Purpose**: Complete bibliography with 75+ sources, evidence levels (A/B/C/D), hypothesis validation
+**Purpose**: Complete bibliography with 83+ sources, evidence levels (A/B/C/D), hypothesis validation
 **Update Trigger**: New sources added, hypothesis validation updates, evidence level adjustments
 
 ### LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md
@@ -37,14 +37,14 @@ Living literature review published openly on Substack, supporting blog (3x/week 
 
 ## Current Phase
 **Status**: Phase 1 (Literature Extraction) COMPLETE ✅ | Phase 2 (Monthly Updates) ACTIVE 🔄
-**Last Updated**: November 14, 2025
+**Last Updated**: November 26, 2025
 **Focus**: Monthly rolling updates + quarterly deep synthesis (committed to ongoing monthly cadence)
-**Published**: Substack (Oct 22, 2025), 38,000 words, 75+ sources, 79% Evidence Level A
+**Published**: Substack (Oct 22, 2025), 38,000 words, 83+ sources, 78% Evidence Level A
 
 **Phase 1 Accomplishments** ✅:
 - 283 footnotes extracted from best practices document
-- 75+ sources documented with standardized format
-- 79% Evidence Level A (production/academic sources)
+- 83+ sources documented with standardized format
+- 78% Evidence Level A (production/academic sources, maintained through November updates)
 - 7 hypotheses validated with quantitative evidence
 - 16 of 22 URLs validated (73% overall, 100% hypothesis-critical)
 - All book chapters have supporting source citations
@@ -143,8 +143,8 @@ This project has 1 specialized Claude Skill that activates automatically during 
 **evidence-tier-classifier**:
 - **Activates**: When adding sources, citing papers, updating bibliography, or validating evidence quality
 - **Classifies**: Tier 1-5 evidence classification with detailed rationale (Tier 1=Production, Tier 2=Peer-reviewed, Tier 3=Expert consensus, Tier 4=Vendor claims, Tier 5=Speculation)
-- **Validates**: Maintains 79% Evidence Level A (Tier 1-2) quality standard, tracks distribution, links evidence to hypotheses
-- **Purpose**: Systematic quality management for 75+ sources, ensures academic rigor
+- **Validates**: Maintains 78% Evidence Level A (Tier 1-2) quality standard, tracks distribution, links evidence to hypotheses
+- **Purpose**: Systematic quality management for 83+ sources, ensures academic rigor
 - **Location**: `.claude/skills/evidence-tier-classifier/SKILL.md`
 
 ### Personal Skills (6 universal skills)
@@ -312,8 +312,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>  # If AI-assisted
 
 ### Phase 1 (COMPLETE) ✅
 - [x] 283 footnotes extracted
-- [x] 75+ sources documented
-- [x] 79% Evidence Level A (exceeded 73% target)
+- [x] 83+ sources documented (November 2025: 7 sources added)
+- [x] 78% Evidence Level A (maintained quality baseline)
 - [x] 7 hypotheses validated with quantitative evidence
 - [x] 16/22 URLs validated (100% hypothesis-critical)
 - [x] All book chapters cited
@@ -321,9 +321,12 @@ Co-Authored-By: Claude <noreply@anthropic.com>  # If AI-assisted
 
 ### Phase 2 (ACTIVE - Monthly Updates Ongoing) 🔄
 - [x] MCP vendor database operational (71 vendors, 84% Tier A, automated) - COMPLETE
-- [ ] Monthly rolling updates ongoing (November 2025+)
+- [x] Two monthly rolling updates COMPLETE (November 2025: Versions 1.10.0, 1.11.0, 1.12.0)
+- [x] Monthly workflow infrastructure operational (Version 1.12.0: tracking, automation, dashboard)
+- [x] README documentation sync complete (Version 1.12.1: updated from 1.7.0 to 1.12.0)
+- [ ] December monthly rolling update (performance benchmarks, source refresh)
 - [ ] First quarterly deep dive (Q1 2026 - January, expert interviews, versioned snapshot)
-- [ ] Blog support sustained (3x/week practitioner content with current evidence)
+- [ ] Blog support sustained (3x/week practitioner content with current evidence - ongoing)
 
 ### Hybrid Model Metrics (Phase 2-3 - Ongoing)
 - **Monthly rolling updates**: 12x per year (new sources, corrections, community feedback)
@@ -369,4 +372,4 @@ When resuming work on this project, focus on:
 
 **Usage**: This file is loaded in every Claude Code conversation to provide consistent project context. Update when phase transitions occur or major research findings are added.
 
-**Last Updated**: October 30, 2025 (Strategic realignment: Hybrid update model adopted, online-first publication strategy, IT Harvest partnership optional, Version 1.9.0)
+**Last Updated**: November 26, 2025 (README documentation sync complete, trial/decision point language removed from all docs, Version 1.12.1)

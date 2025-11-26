@@ -1,7 +1,7 @@
 # Repository Status Report
 
 **Repository**: security-data-literature-review
-**Last Updated**: November 14, 2025 (Automation & workflow integration documentation + monthly update workflow validation)
+**Last Updated**: November 26, 2025 (README documentation sync + trial/decision point language removal)
 **Maintained By**: Jeremy Wiley
 **Purpose**: Living literature review published on Substack, supporting blog (3x/week) and book (115,500 words)
 
@@ -9,7 +9,7 @@
 
 ## Current Status
 
-**Overall Phase**: ✅ **Phase 1-2F COMPLETE** (Publication + Vendor Baseline) | 🔄 **Phase 2G ACTIVE** (Hybrid Model Trial: Nov 2025 - Jan 2026)
+**Overall Phase**: ✅ **Phase 1-2F COMPLETE** (Publication + Vendor Baseline) | 🔄 **Phase 2G ACTIVE** (Hybrid Model: Monthly Updates + Quarterly Deep Dives)
 
 **Recent Achievement**:
 - ✅ **Isolation-First Security Integration** (November 14, 2025) - Added RQ7-RQ10 research questions, 3 case studies (Netflix Polaris, Huntress, Okta), tracking document
@@ -21,12 +21,12 @@
 - ✅ **Automation verified** - weekly_health_check.py fixed for November handling
 
 **Next Actions**:
-1. **Isolation-first security evidence collection** - Performance benchmarks, compliance framework mapping, MSSP case studies
-2. **Second monthly rolling update (December 2025)** - Continue tracking emerging architectures + isolation-first validation
-3. **Track quality metrics** - Evidence Level A at 78% (slight decrease due to emerging tech)
-4. **Community engagement** - Monitor feedback on AI-native infrastructure concepts + isolation-first patterns
-5. **First quarterly deep dive (January 2026)** - Expert interviews (Jake Thomas isolation-first validation), hypothesis validation, versioned snapshot (2025-Q4-v1.0)
-6. **Decision point (February 2026)** - Continue monthly, adjust to bi-monthly, or revert to quarterly
+1. **December 2025 monthly rolling update** - Performance benchmarks for RQ7, refresh 5-10 oldest sources, fix 2 broken links
+2. **Isolation-first security evidence collection** - Performance benchmarks, compliance framework mapping, MSSP case studies
+3. **Track quality metrics** - Evidence Level A at 78% (track for continuous improvement)
+4. **Community engagement** - Monitor Substack feedback, systematize reader corrections workflow
+5. **First quarterly deep dive (January 2026)** - Expert interviews (Lisa Chao, Jake Thomas), hypothesis validation, versioned snapshot (2025-Q4-v1.0)
+6. **README documentation sync** - Update from 1.7.0 to 1.12.0 (completed November 26, 2025)
 
 ---
 
@@ -200,31 +200,29 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 
 ---
 
-### Phase 2G: Hybrid Model Trial (Monthly Rolling + Quarterly Deep Dives) 🔄 ACTIVE
-**Timeline**: November 2025 - January 2026 (3-month validation trial)
+### Phase 2G: Hybrid Model (Monthly Rolling + Quarterly Deep Dives) 🔄 ACTIVE
+**Timeline**: November 2025 - Ongoing (committed to monthly cadence)
 
 **Objectives**:
-- Validate monthly rolling update sustainability (quality ≥75%, time ≤10 hours/month)
+- Sustain monthly rolling updates (quality baseline ~75-78%, time tracked for awareness)
 - Support blog output (3x/week practitioner content with current evidence)
 - Track community engagement (reader feedback, corrections, source contributions)
-- Execute first quarterly deep dive (January 2026: expert interviews, hypothesis validation, versioned snapshot)
+- Execute quarterly deep dives (January 2026: expert interviews, hypothesis validation, versioned snapshot)
 
 **Actions Completed**:
-- ✅ First monthly rolling update (November 2025): Added 4 AI-native infrastructure sources
-- ✅ **Isolation-First Security Integration** (November 14, 2025): Added RQ7-RQ10 research questions, 3 production case studies, tracking document
-- ✅ Automation verified: Fixed weekly_health_check.py for November handling
-- ✅ Quality metrics tracking: Evidence Level A at 78% (acceptable for emerging tech)
+- ✅ **Two monthly rolling updates COMPLETE** (November 2025): 7.5 hours average, sustainable
+- ✅ **November Update 1** (Version 1.10.0): Added 4 AI-native infrastructure sources (4.7 hours)
+- ✅ **November Update 2** (Version 1.11.0): Isolation-first security integration, RQ7-RQ10, 3 production case studies (10.2 hours)
+- ✅ **Monthly workflow infrastructure** (Version 1.12.0): Tracking system, automation dashboard, decision point framing removed
+- ✅ Automation verified: weekly_health_check.py operational, MCP vendor database (71 vendors, 84% Tier A)
+- ✅ Quality maintained: Evidence Level A at 78% (maintains quality baseline)
+- ✅ **README documentation sync** (Version 1.12.1, November 26, 2025): Updated from 1.7.0 to 1.12.0
 
 **Actions in Progress**:
+- ⏳ December 2025 monthly rolling update: Performance benchmarks for RQ7, refresh 5-10 oldest sources, fix 2 broken links
 - ⏳ Isolation-first security evidence collection: Performance benchmarks, compliance framework mapping, MSSP case studies
-- ⏳ Second monthly rolling update (December 2025): Continue emerging architecture tracking + isolation-first validation
-- ⏳ Community engagement workflow: Monitor feedback on new AI concepts + isolation-first patterns
-- ⏳ Prepare for Q1 2026 deep dive: Expert interview scheduling (Lisa Chao, Jake Thomas for isolation-first validation), hypothesis validation planning
-
-**Decision Point** (February 2026):
-- **IF** quality ≥75% AND time ≤10 hours/month → Continue monthly rolling updates
-- **IF** quality <75% OR time >12 hours/month → Adjust to bi-monthly or revert to quarterly
-- **IF** community engagement high → Monthly cadence justified, continue hybrid model
+- ⏳ Community engagement workflow: Set up Substack monitoring, systematize reader corrections process
+- ⏳ Prepare for Q1 2026 deep dive: Expert interview scheduling (Lisa Chao, Jake Thomas), versioned snapshot (2025-Q4-v1.0)
 
 ---
 
@@ -270,7 +268,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 ---
 
 ### Phase 3: Hybrid Model Maturity & Academic Publication ⏳ PLANNED (2026+)
-**Timeline**: February 2026+ (post-trial validation)
+**Timeline**: 2026+ (hybrid model maturity)
 
 **Objectives**:
 - Sustain hybrid model at scale (12 monthly updates + 4 quarterly deep dives per year)
@@ -387,19 +385,19 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 2. **Track quality metrics** - Evidence Level A percentage, time investment (target: ≤8 hours)
 3. **Community engagement** - Respond to Substack reader feedback, incorporate corrections, document source contributions
 4. **Blog support** - Sustain 3x/week practitioner content with current evidence (4-6× speedup)
-5. **Document workflow** - What took time? What was automated? What was manual? (inform Feb 2026 decision)
+5. **Document workflow** - What took time? What was automated? What was manual? (track for continuous improvement)
 
-### Short-Term (December 2025 - January 2026 - Trial Validation)
-1. **Second monthly update (December)** - Continue rolling updates, track metrics
+### Short-Term (December 2025 - January 2026)
+1. **Second monthly update (December)** - Performance benchmarks for RQ7, refresh 5-10 oldest sources, fix 2 broken links
 2. **Third monthly update + Q1 2026 deep dive (January)**:
    - Rolling update: New sources, corrections, community feedback
    - **Quarterly deep dive**: Expert interviews (Lisa Chao, Jake Thomas), hypothesis validation, comprehensive review
    - **Versioned snapshot**: Tag repository with 2025-Q4-v1.0 for citation stability
    - **Quarterly synthesis blog post**: Publish comprehensive findings from Q4 2025 review
-3. **Calculate trial results**: Average time investment, quality metrics, blog acceleration effectiveness
+3. **Track metrics**: Quality (78% baseline), time (7.5 hours average), blog support, community engagement
 
-### Medium-Term (February - April 2026 - Decision Point & Continuation)
-1. **Decision point (February 2026)**: Continue monthly (if quality ≥75%, time ≤10 hours), adjust to bi-monthly, or revert to quarterly
+### Medium-Term (February - April 2026)
+1. **Continue monthly updates** (February, March): Ongoing rolling updates committed to monthly cadence
 2. **Second quarterly deep dive (Q2 2026 - April)**: Comprehensive review, hypothesis updates, versioned snapshot (2026-Q1-v1.0)
 3. **Academic journal submission (Q2-Q3 2026)**: ACM CSUR, USENIX Security, or IEEE S&P after community validation
 4. **IT Harvest partnership evaluation**: Assess if MCP baseline sufficient or partnership adds value
@@ -629,15 +627,17 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - [x] FIGURES-AND-TABLES.md created (5 figures + 5 tables)
 - [x] Publication graphics generated (Python scripts + LaTeX TikZ + PNG/PDF outputs)
 
-### Phase 2G (ACTIVE - 3-Month Trial) 🔄
-- [ ] First monthly rolling update (November 2025)
-- [ ] Second monthly update (December 2025)
-- [ ] Third monthly update + Q1 2026 quarterly deep dive (January 2026)
+### Phase 2G (ACTIVE - Hybrid Model) 🔄
+- [x] First monthly rolling update (November 2025) - Version 1.10.0: AI-native infrastructure
+- [x] Second monthly rolling update (November 2025) - Version 1.11.0: Isolation-first security (RQ7-RQ10)
+- [x] Monthly workflow infrastructure (November 2025) - Version 1.12.0: Tracking, automation, dashboard
+- [x] README documentation sync (November 2025) - Version 1.12.1: Updated from 1.7.0 to 1.12.0
+- [ ] Third monthly update (December 2025) - Performance benchmarks for RQ7, source refresh
+- [ ] Fourth monthly update + Q1 2026 quarterly deep dive (January 2026)
 - [ ] Expert interviews (Lisa Chao, Jake Thomas - Q1 2026 deep dive)
 - [ ] Versioned snapshot (2025-Q4-v1.0 tag - January 2026)
-- [ ] Decision point (February 2026): Continue monthly, adjust to bi-monthly, or revert to quarterly
 
-### Phase 3 (PLANNED - Post-Trial) ⏳
+### Phase 3 (PLANNED - Hybrid Model Maturity) ⏳
 - [ ] Sustain hybrid model (12 monthly updates + 4 quarterly deep dives per year)
 - [ ] Academic journal submission (mid-2026: ACM CSUR, USENIX Security, or IEEE S&P)
 - [ ] Quarterly git tags for citation stability (2026-Q1-v1.0, 2026-Q2-v1.0, etc.)
@@ -651,9 +651,12 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 Current version and recent updates tracked in **CHANGELOG.md**
 
 **Recent Versions**:
-- **1.7.1** (Oct 22, 2025): Substack post sync (evening update) - repository matches live publication
+- **1.12.1** (Nov 26, 2025): README documentation sync - updated from 1.7.0 to 1.12.0, resolved 3-version documentation debt
+- **1.12.0** (Nov 14, 2025): Monthly update workflow infrastructure - tracking system, automation dashboard, decision point framing removed
+- **1.11.0** (Nov 14, 2025): Isolation-first security architecture integration - RQ7-RQ10, 3 production case studies
+- **1.10.0** (Nov 13, 2025): AI-native infrastructure integration - 4 sources (Tenzir, Cribl, Vortex, Databricks MCP)
+- **1.7.1** (Oct 22, 2025): Substack post sync - repository matches live publication
 - **1.7.0** (Oct 22, 2025): Publication manuscript complete with references, appendices, graphics
-- **1.6.1** (Oct 16, 2025): Expert interview preparation + bibliography quality enhancements
 - **1.5.0** (Oct 15, 2025): Blog and book integration
 - **1.4.0** (Oct 15, 2025): Practitioner tools creation
 
