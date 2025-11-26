@@ -7,6 +7,36 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.12.1] - 2025-11-26 - README Documentation Sync
+
+### Changed
+- **README.md**: Updated from Version 1.7.0 (October 21) to Version 1.12.0 (November 14) - comprehensive sync
+  - Header: Updated to Phase 2G ACTIVE (Hybrid Model) from Phase 2D COMPLETE
+  - Metrics: Updated to 83+ sources (from 76+), 78% Evidence Level A (from 79%)
+  - Executive Summary: Added "November 2025 Achievements" section documenting Versions 1.10.0, 1.11.0, 1.12.0
+  - Current Repository Contents: Added METHODOLOGY.md reference with RQ7-RQ10, updated bibliography metrics
+  - Added "Monthly Update Tracking" section: Documented new tracking files (monthly-update-tracker.md, isolation-first-security-tracking.md, automation scripts)
+  - Hybrid Model Evolution: Restructured from "Proposed Future Structure" to active hybrid model (monthly + quarterly)
+  - Quarterly Deep Dive Process: Updated from "Planned" to "Active" with detailed cycle documentation
+  - Integration Points: Added Substack publication (Oct 22, 2025), MCP vendor database (71 vendors, 84% Tier A), blog as primary driver
+  - Key Research Findings: Added RQ7-RQ10 research questions (isolation-first security), updated quality metrics with November case studies
+  - Next Actions: Updated to December 2025 monthly update focus (was "IT Harvest partnership pending")
+
+### Purpose
+Resolve 3-version documentation debt (README was at 1.7.0 while project had progressed to 1.12.0). Synchronize user-facing documentation with internal tracking documents (REPOSITORY-STATUS.md, CHANGELOG.md) to accurately reflect November achievements and Phase 2G hybrid model status.
+
+### Impact
+- **Documentation Alignment**: README now current with November 14, 2025 project status (was October 21, 2025)
+- **User Communication**: External visitors see accurate Phase 2G hybrid model, not outdated Phase 2D/2E references
+- **Next Steps Clear**: December monthly update priorities visible, not obsolete IT Harvest partnership language
+- **Achievements Visible**: November 2025 work (RQ7-RQ10, monthly workflow, automation) now documented in README
+- **Quality Metrics Accurate**: 83+ sources and 78% Evidence Level A correctly reported
+
+### Files Modified
+- README.md: 144 insertions, 65 deletions (net +79 lines)
+
+---
+
 ## [1.12.0] - 2025-11-14 - Monthly Update Workflow Infrastructure & Decision Point Removal
 
 ### Added
