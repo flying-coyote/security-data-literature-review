@@ -1,62 +1,79 @@
 # Living Literature Review for "Modern Data Stack for Cybersecurity"
 
 **Purpose**: Comprehensive literature review and research foundation for book
-**Last Updated**: October 21, 2025 (Version 1.7.0)
-**Last Reviewed**: October 21, 2025
-**Status**: Phase 1-2D COMPLETE | Manuscript Ready for Expert Validation & Journal Submission
+**Last Updated**: November 14, 2025 (Version 1.12.0)
+**Last Reviewed**: November 14, 2025
+**Status**: Phase 2G ACTIVE | Hybrid Model (Monthly Updates + Quarterly Deep Dives)
 
 ---
 
 ## Executive Summary
 
-This repository contains a **completed systematic literature review** supporting the book "Modern Data Stack for Cybersecurity." The review bridges cybersecurity and data engineering domains with rigorous, evidence-based research.
+This repository contains a **living literature review** supporting the book "Modern Data Stack for Cybersecurity." The review bridges cybersecurity and data engineering domains with rigorous, evidence-based research. **Published openly on Substack** (October 22, 2025) with ongoing monthly updates and quarterly deep dives.
 
-**Current Status - Phase 1-2C Complete** ✅:
-- ✅ 283 footnotes extracted from best practices document
-- ✅ 76+ sources documented with standardized format
-- ✅ **79% Evidence Level A** (production/academic sources) - **EXCEEDS 73% target**
+**Current Status - Phase 2G (Hybrid Model) ACTIVE** 🔄:
+- ✅ **83+ sources documented** (up from 76+)
+- ✅ **78% Evidence Level A** (production/academic sources) - maintains quality target
+- ✅ **10 research questions** (RQ1-RQ10) including new isolation-first security architecture
+- ✅ **Published on Substack** (October 22, 2025) - 38,000 words, openly accessible
+- ✅ **Two monthly rolling updates COMPLETE** (November 2025) - 7.5 hours average, sustainable
+- ✅ **Monthly update workflow operational** - tracking, automation, dashboard all working
+- ✅ **MCP vendor database** - 71 vendors, 84% Tier A, automated weekly refresh
 - ✅ 7 hypotheses validated with quantitative evidence
+- ✅ Blog integration established (4-6× writing speedup demonstrated)
+
+**Phase 1-2 Foundation Complete** ✅:
+- ✅ 283 footnotes extracted from best practices document
 - ✅ 9 analysis bundles created (170,100 words evidence synthesis)
-- ✅ Blog integration established (1 post published, 4-6× speedup demonstrated)
-- ✅ Book integration plan complete (1,650 words Phase 1 ready)
+- ✅ Publication manuscript COMPLETE (9,999 words for academic journal submission mid-2026)
+- ✅ REFERENCES.md, APPENDICES.md, FIGURES-AND-TABLES.md created
+- ✅ Publication graphics generated (Python scripts, LaTeX TikZ)
 - ✅ Expert interview guides prepared (Lisa Chao, Jake Thomas)
 
-**Complete - Phase 2D (Academic Publication Preparation)** ✅:
-- ✅ Publication manuscript COMPLETE (9,999 words): Abstract, Introduction, Methodology, Findings, Discussion, Conclusion
-- ✅ REFERENCES.md created (78 sources, IEEE/ACM format)
-- ✅ APPENDICES.md created (4 appendices: Evidence rubric, Confidence scoring, Expert protocol, Source taxonomy)
-- ✅ FIGURES-AND-TABLES.md created (5 figures, 5 tables with detailed specifications)
-- ✅ Publication graphics generated (publication-graphics/):
-  - Python scripts for Figures 2-4 (matplotlib, 300 DPI PNG + vector PDF)
-  - LaTeX TikZ code for Figure 1 (PRISMA flowchart)
-  - Automated generation script (generate_all_figures.sh)
+**November 2025 Achievements** ✅:
+- ✅ **Version 1.10.0**: AI-native infrastructure integration (Tenzir, Cribl, Vortex, Databricks MCP)
+- ✅ **Version 1.11.0**: Isolation-first security architecture pattern (RQ7-RQ10, 3 production case studies: Netflix Polaris, Huntress, Okta)
+- ✅ **Version 1.12.0**: Monthly update workflow infrastructure (tracking system, automation dashboard, "decision point" framing removed - committed to monthly cadence)
 
-**In Progress - Phase 2E (Expert Validation & Submission)**:
-- ⏳ Expert network interviews (Lisa Chao, Jake Thomas - Week 3 planned)
-- ⏳ Incorporate expert feedback into manuscript
-- ⏳ Journal submission to ACM Computing Surveys (Q4 2025 target)
-- ⏳ IT Harvest partnership for vendor landscape data (Phase 3 planned)
+**Next - December 2025 Monthly Update**:
+- 🔄 Performance benchmarks for isolation-first security (RQ7)
+- 🔄 Refresh 5-10 oldest sources (27 sources >12 months old)
+- 🔄 Fix 2 broken links, add 2-3 new sources
+- 🔄 Community engagement workflow setup (Substack monitoring)
+
+**Planned - Q1 2026 Quarterly Deep Dive** (January):
+- ⏳ Expert interviews (Lisa Chao: catalog landscape, Jake Thomas: isolation-first validation)
+- ⏳ Versioned snapshot (tag 2025-Q4-v1.0 for citation stability)
+- ⏳ Quarterly synthesis blog post
+- ⏳ Academic journal submission preparation (mid-2026 target)
 
 ---
 
 ## Current Repository Contents
 
 **Core Documentation Files**:
-1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 75+ sources, 79% Evidence Level A
-2. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (9,999 words, all sections drafted)
-3. **REFERENCES.md** - IEEE/ACM formatted references (78 sources, alphabetically ordered)
-4. **APPENDICES.md** - 4 appendices (Evidence rubric, Confidence scoring, Expert protocol, Source taxonomy)
-5. **FIGURES-AND-TABLES.md** - 5 figures + 5 tables with publication specifications
-6. **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** - Gap analysis with 7 validated hypotheses
-7. **LITERATURE-EXTRACTION-PLAN.md** - Systematic extraction methodology (PRISMA-aligned)
-8. **PUBLICATION-VENUE-RECOMMENDATIONS.md** - Academic publication strategy
-9. **REPOSITORY-STATUS.md** - Comprehensive status report with completion metrics
-10. **CHANGELOG.md** - Version tracking for academic citation stability
+1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 83+ sources, 78% Evidence Level A
+2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture
+3. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (9,999 words, all sections drafted)
+4. **REFERENCES.md** - IEEE/ACM formatted references (78 sources, alphabetically ordered)
+5. **APPENDICES.md** - 4 appendices (Evidence rubric, Confidence scoring, Expert protocol, Source taxonomy)
+6. **FIGURES-AND-TABLES.md** - 5 figures + 5 tables with publication specifications
+7. **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** - Gap analysis with 7 validated hypotheses
+8. **LITERATURE-EXTRACTION-PLAN.md** - Systematic extraction methodology (PRISMA-aligned)
+9. **PUBLICATION-VENUE-RECOMMENDATIONS.md** - Academic publication strategy
+10. **REPOSITORY-STATUS.md** - Comprehensive status report with completion metrics (updated November 14, 2025)
+11. **CHANGELOG.md** - Version tracking for academic citation stability (Versions 1.0.0-1.12.0)
 
 **Analysis Bundles** (analysis-bundles/):
 - Evidence synthesis (5 bundles: cost reality, implementation, performance, security-specific, hypothesis confidence)
 - Practitioner tools (3 tools: staffing calculator, technology decision tree, cost optimization playbook)
 - Source quality enhancements (contradiction analysis, validation chains, corroboration patterns)
+
+**Monthly Update Tracking** (NEW - Phase 2G):
+- **monthly-update-tracker.md** - Comprehensive tracking system for monthly rolling updates
+- **isolation-first-security-tracking.md** - RQ7-RQ10 research tracking (15,800 words)
+- **scripts/automation_dashboard.py** - Automation health monitoring dashboard
+- **scripts/weekly_health_check.py** - MCP vendor database refresh and validation
 
 **Publication Graphics** (publication-graphics/):
 - Python scripts: Figure 2 (Evidence Distribution), Figure 3 (Source Taxonomy), Figure 4 (Hypothesis Confidence)
@@ -70,9 +87,25 @@ This repository contains a **completed systematic literature review** supporting
 
 ---
 
-## Proposed Future Structure (Phase 2 - Not Yet Implemented)
+## Hybrid Model Evolution (Phase 2G - Active)
 
-When IT Harvest partnership is established and quarterly updates begin, the repository will expand to:
+**Monthly Rolling Updates** (6-8 hours/month, ACTIVE):
+- New sources from blog feedback and LinkedIn monitoring
+- Community engagement and reader corrections
+- MCP vendor database refresh (automated weekly)
+- Performance benchmarks and emerging technology tracking
+- Source quality maintenance (broken link fixes, outdated source refresh)
+
+**Quarterly Deep Dives** (~32 hours/quarter, Q1 2026 next):
+- Expert interviews and validation (Lisa Chao, Jake Thomas, etc.)
+- Comprehensive hypothesis review
+- Versioned snapshots for citation stability (git tags: YYYY-QX-v1.0)
+- Quarterly synthesis blog posts
+- Evidence Level A restoration and quality improvements
+
+## Future Repository Expansion (When Needed)
+
+As the vendor landscape and platform coverage expands, the repository may grow to include:
 
 ### platforms/ (Planned)
 - `query-engines.md`: Trino/Starburst, Dremio, Denodo, Athena
@@ -96,38 +129,71 @@ When IT Harvest partnership is established and quarterly updates begin, the repo
 
 ---
 
-## Planned Quarterly Update Process (Phase 2)
+## Quarterly Deep Dive Process (Phase 2G - Active)
 
-**Quarterly Cycle** (Jan, Apr, Jul, Oct):
-1. **Month 1**: IT Harvest data refresh + platform updates
-2. **Month 2**: Expert validation + blog synthesis
-3. **Month 3**: Publication + citation updates
+**Quarterly Cycle** (January, April, July, October):
+1. **Month 1 (First month of quarter)**: Expert interviews + comprehensive hypothesis review
+2. **Month 2**: Evidence synthesis + versioned snapshot (git tag)
+3. **Month 3**: Quarterly synthesis blog post + academic citation updates
 
-**Version Control**:
-- Each update creates new `YYYY-QX-update.md`
+**Version Control** (Citation Stability):
+- Each quarter creates git tag: `YYYY-QX-v1.0` (e.g., 2025-Q4-v1.0)
 - CHANGELOG.md tracks all revisions
-- Enables academic citation of specific versions
+- Enables stable academic citations to specific versions
+- Monthly updates tracked between quarterly snapshots
 
-**Sources**:
-1. IT Harvest vendor data (primary - partnership pending)
-2. Blog post insights (ongoing)
-3. Expert network validation (Lisa Chao, Jake Thomas, etc.)
-4. Matthew Mullins + practitioner feedback
+**Evidence Sources** (Hybrid Model):
+1. **MCP vendor database** (automated weekly refresh) - 71 vendors, 84% Tier A
+2. **Blog post insights** (Security Data Commons, 3x/week) - 4-6× writing speedup
+3. **Expert network validation** (Lisa Chao, Jake Thomas, Paul Agbabian, etc.)
+4. **Community feedback** (Substack readers, practitioner corrections)
+5. **IT Harvest partnership** (optional enhancement, not critical path)
 
 ---
 
 ## Integration Points
 
-**Book Chapters**: All chapters have supporting citations in MASTER-BIBLIOGRAPHY.md
-**Blog**: Deep-dives cite literature review sources
-**IT Harvest**: Vendor data integration planned for Chapter 9 "Technology State Assessment"
-**Expert Network**: Validation interviews referenced throughout
+**Published Literature Review**:
+- **Substack** (October 22, 2025) - 38,000 words, openly accessible
+- Monthly rolling updates (November 2025+)
+- Quarterly deep dives for citation stability
+- Academic journal submission planned (mid-2026)
+
+**Book Manuscript**:
+- All chapters have supporting citations in MASTER-BIBLIOGRAPHY.md
+- Literature review provides evidence foundation for 115,500-word manuscript
+- Quarterly deep dives feed book revisions
+
+**Blog (PRIMARY DRIVER)**:
+- **Security Data Commons** (3x/week practitioner content)
+- 4-6× writing speedup demonstrated with evidence foundation
+- Reader feedback → New sources → Literature updates → Improved blog evidence
+- "Being wrong publicly" philosophy: rapid iteration, intellectual honesty
+
+**MCP Vendor Database** (Automation Foundation):
+- 71 vendors, 84% Tier A quality, 110 evidence sources
+- Automated weekly refresh + monthly GitHub metrics
+- Replaces IT Harvest dependency (partnership now optional)
+- 75-90% burden reduction enables sustainable monthly updates
+
+**Expert Network**:
+- Validation interviews (Lisa Chao, Jake Thomas, Paul Agbabian, etc.)
+- Expert feedback incorporated into hypothesis validation
+- Source: second-brain expert network (1,444 thought leaders mapped)
 
 ---
 
 ## Key Research Findings
 
-**Hypothesis Validation Results**:
+**Research Questions** (10 total, RQ1-RQ10):
+- **RQ1-RQ6**: Original data engineering questions (Iceberg adoption, TCO reality, staffing, performance, streaming)
+- **RQ7-RQ10 (NEW)**: Isolation-first security architecture pattern
+  - RQ7: Performance overhead of isolation mechanisms
+  - RQ8: Table format convergence (Iceberg + XTable)
+  - RQ9: Security-specific catalog features adoption
+  - RQ10: Real-world deployment patterns
+
+**Hypothesis Validation Results** (7 validated):
 - H-ARCH-01 (Iceberg Dominance): STRONGLY VALIDATED - 76% adoption, 5 sources
 - H-IMPL-01 (TCO Reality): STRONG - 2.5-3× operational costs, 5 sources
 - H-IMPL-02 (Staffing Scarcity): STRONG - 2.7× staff required, 4 sources
@@ -136,18 +202,31 @@ When IT Harvest partnership is established and quarterly updates begin, the repo
 - H3-PERFORMANCE-01 (ClickHouse): VALIDATED - 6M req/sec, 96% <1s queries
 - H-STREAM-01 (Kafka Streams): VALIDATED - Production security patterns, 3 sources
 
-**Quality Metrics**:
-- **Evidence Level A: 79%** (57 of 72 sources) - **EXCEEDS 73% target**
-- Evidence Level B: 21% (15 of 72 sources)
+**Quality Metrics** (Updated November 2025):
+- **Evidence Level A: 78%** (65 of 83 sources) - **MAINTAINS quality target**
+- Evidence Level B: 22% (18 of 83 sources)
 - Evidence Level C/D: 0% (zero low-quality sources)
-- Government/Standards Sources: 8 (CISA, MITRE, DARPA, NSA, SANS)
-- Industry Analysts: 10 (Gartner, IDC, Forrester)
-- Production Deployments: 18+ (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, etc.)
-- Metadata Completeness: 97% (70 of 72 entries complete)
+- Government/Standards Sources: 8+ (CISA, MITRE, DARPA, NSA, SANS)
+- Industry Analysts: 10+ (Gartner, IDC, Forrester)
+- Production Deployments: 21+ (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, Huntress, Okta, etc.)
+- **New (November)**: 3 isolation-first security case studies (Netflix Polaris, Huntress, Okta)
+- Metadata Completeness: 96%+
 
 ---
 
-**Current Phase**: Literature Review Foundation Complete
-**Next Phase**: IT Harvest partnership establishment → Vendor landscape integration
-**Next Action**: Pilot with query engines category (pending IT Harvest partnership)
+**Current Phase**: Phase 2G (Hybrid Model) - Monthly Updates + Quarterly Deep Dives ACTIVE
+**Recent Milestones**:
+- ✅ Two monthly updates complete (November 2025)
+- ✅ Isolation-first security architecture integrated (RQ7-RQ10)
+- ✅ Monthly update workflow operational (tracking, automation, dashboard)
+- ✅ MCP vendor database operational (71 vendors, automated)
+
+**Next Actions**:
+1. **December 2025 Monthly Update** (mid-December, 6-8 hours)
+2. **Q1 2026 Quarterly Deep Dive** (January: expert interviews, versioned snapshot)
+3. **Community Engagement** (Substack monitoring workflow setup)
+4. **Academic Publication** (mid-2026: journal submission preparation)
+
+**Online Publication**: [Security Data Commons on Substack](https://securitydatacommons.substack.com) (Published October 22, 2025)
 **Maintained By**: Jeremy Wiley
+**Repository**: https://github.com/flying-coyote/security-data-literature-review
