@@ -408,7 +408,7 @@ Level 5 (Time-Series Optimization):
 
 ---
 
-### Upgrade 3: Lisa Chao (Datastrato) - Gravitino Adoption
+### Upgrade 3: Lisa Cao (Datastrato) - Gravitino Adoption
 
 **Current Status**: Referenced in expert network, interview scheduled (Week 3 per PLAN.md)
 
@@ -454,11 +454,11 @@ Level 5 (Time-Series Optimization):
 2. ✅ Map 4 validation chains (Iceberg, Streaming TCO, Tiered Storage, ClickHouse)
 3. ✅ Identify 3 corroboration patterns (convergence, production scale, triangulation)
 4. ⏳ Add a data-platform practitioner formal citation (Evidence Level A)
-5. ⏳ Prepare Jake Thomas + Lisa Chao citation templates (pending interviews)
+5. ⏳ Prepare Jake Thomas + Lisa Cao citation templates (pending interviews)
 
 **Future Actions** (Post-Interview):
 - Add Jake Thomas formal citation after Week 3 interview (Evidence Level A)
-- Add Lisa Chao formal citation after Week 3 interview (Evidence Level A)
+- Add Lisa Cao formal citation after Week 3 interview (Evidence Level A)
 - IT Harvest partnership integration (20-30 additional Evidence Level A sources)
 
 ### Target State (Post-Enhancement)
@@ -513,7 +513,7 @@ Level 5 (Time-Series Optimization):
 
 ### Medium Priority (Week 3)
 4. **Jake Thomas Interview** - Add formal citation after interview (Evidence Level A)
-5. **Lisa Chao Interview** - Add formal citation after interview (Evidence Level A)
+5. **Lisa Cao Interview** - Add formal citation after interview (Evidence Level A)
 
 ### Low Priority (Q4 2025/Q1 2026)
 6. **IT Harvest Partnership** - 20-30 additional Evidence Level A sources

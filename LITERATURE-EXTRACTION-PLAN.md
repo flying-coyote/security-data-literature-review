@@ -243,7 +243,7 @@ living-literature-review/
 - ✅ Complete MASTER-BIBLIOGRAPHY.md (75+ sources documented)
 
 ### Week 3 (Oct 28-Nov 1) - Planned
-- ⏳ Expert interview integration (Lisa Chao, Jake Thomas - scheduled)
+- ⏳ Expert interview integration (Lisa Cao, Jake Thomas - scheduled)
 - ✅ Validate evidence levels for all sources (73% Evidence Level A achieved)
 
 ### Week 4 (Nov 4-8) - Planned

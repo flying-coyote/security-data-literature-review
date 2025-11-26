@@ -28,7 +28,7 @@ This repository contains a **living literature review** supporting the book "Mod
 - ✅ Publication manuscript COMPLETE (9,999 words for academic journal submission mid-2026)
 - ✅ REFERENCES.md, APPENDICES.md, FIGURES-AND-TABLES.md created
 - ✅ Publication graphics generated (Python scripts, LaTeX TikZ)
-- ✅ Expert interview guides prepared (Lisa Chao, Jake Thomas)
+- ✅ Expert interview guides prepared (Lisa Cao, Jake Thomas)
 
 **November 2025 Achievements** ✅:
 - ✅ **Version 1.10.0**: AI-native infrastructure integration (Tenzir, Cribl, Vortex, Databricks MCP)
@@ -42,7 +42,7 @@ This repository contains a **living literature review** supporting the book "Mod
 - 🔄 Community engagement workflow setup (Substack monitoring)
 
 **Planned - Q1 2026 Quarterly Deep Dive** (January):
-- ⏳ Expert interviews (Lisa Chao: catalog landscape, Jake Thomas: isolation-first validation)
+- ⏳ Expert interviews (Lisa Cao: catalog landscape, Jake Thomas: isolation-first validation)
 - ⏳ Versioned snapshot (tag 2025-Q4-v1.0 for citation stability)
 - ⏳ Quarterly synthesis blog post
 - ⏳ Academic journal submission preparation (mid-2026 target)
@@ -97,7 +97,7 @@ This repository contains a **living literature review** supporting the book "Mod
 - Source quality maintenance (broken link fixes, outdated source refresh)
 
 **Quarterly Deep Dives** (~32 hours/quarter, Q1 2026 next):
-- Expert interviews and validation (Lisa Chao, Jake Thomas, etc.)
+- Expert interviews and validation (Lisa Cao, Jake Thomas, etc.)
 - Comprehensive hypothesis review
 - Versioned snapshots for citation stability (git tags: YYYY-QX-v1.0)
 - Quarterly synthesis blog posts
@@ -145,7 +145,7 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 **Evidence Sources** (Hybrid Model):
 1. **MCP vendor database** (automated weekly refresh) - 71 vendors, 84% Tier A
 2. **Blog post insights** (Security Data Commons, 3x/week) - 4-6× writing speedup
-3. **Expert network validation** (Lisa Chao, Jake Thomas, Paul Agbabian, etc.)
+3. **Expert network validation** (Lisa Cao, Jake Thomas, Paul Agbabian, etc.)
 4. **Community feedback** (Substack readers, practitioner corrections)
 5. **IT Harvest partnership** (optional enhancement, not critical path)
 
@@ -177,7 +177,7 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - 75-90% burden reduction enables sustainable monthly updates
 
 **Expert Network**:
-- Validation interviews (Lisa Chao, Jake Thomas, Paul Agbabian, etc.)
+- Validation interviews (Lisa Cao, Jake Thomas, Paul Agbabian, etc.)
 - Expert feedback incorporated into hypothesis validation
 - Source: second-brain expert network (1,444 thought leaders mapped)
 

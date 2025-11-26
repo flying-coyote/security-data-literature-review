@@ -475,7 +475,7 @@ Confluent:      4.5M events/second on 9-node clusters
 - C.1 Overview
 - C.2 Expert Selection Criteria
 - C.3 Interview Structure (3 phases: Hypothesis Validation, Evidence Gap Exploration, Emerging Pattern Identification)
-- C.4 Expert Interview Schedule (Lisa Chao, Jake Thomas, a data-platform practitioner)
+- C.4 Expert Interview Schedule (Lisa Cao, Jake Thomas, a data-platform practitioner)
 - C.5 Interview Documentation
 - C.6 Ethical Considerations
 - C.7 Integration with Literature Review

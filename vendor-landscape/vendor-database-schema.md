@@ -180,7 +180,7 @@ Before committing new/updated vendor entries:
 4. Evidence source validation (check for broken links, outdated info)
 
 ### Month 2: Expert Validation
-1. Expert network review (Lisa Chao, Jake Thomas, etc.)
+1. Expert network review (Lisa Cao, Jake Thomas, etc.)
 2. Contradiction resolution
 3. Confidence level adjustments
 4. Blog synthesis integration

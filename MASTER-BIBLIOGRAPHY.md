@@ -15,7 +15,7 @@
 This bibliography consolidates all literature sources from:
 1. Best practices document (2024-04-15) - **283 footnotes extracted** (COMPLETE)
 2. Archived manuscript (74 files assessed - citations reference best practices doc footnotes)
-3. Expert network validation (Lisa Chao, Jake Thomas interviews)
+3. Expert network validation (Lisa Cao, Jake Thomas interviews)
 4. Ongoing research (2024-2025)
 
 **Format**: Organized by topic with standardized entries including evidence level, relevance to book chapters/hypotheses, and validation status.

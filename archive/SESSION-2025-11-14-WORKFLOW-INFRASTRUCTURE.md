@@ -330,7 +330,7 @@ Philosophy: Track metrics for curiosity and improvement, not for decision gates.
 - [ ] Document reader contributions in tracker
 
 ### January 2026 Quarterly Deep Dive
-- [ ] Expert interviews (Lisa Chao, Jake Thomas for isolation-first validation)
+- [ ] Expert interviews (Lisa Cao, Jake Thomas for isolation-first validation)
 - [ ] Comprehensive hypothesis validation review
 - [ ] Versioned snapshot: Tag repository 2025-Q4-v1.0
 - [ ] Quarterly synthesis blog post

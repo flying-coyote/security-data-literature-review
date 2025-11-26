@@ -1,6 +1,6 @@
-# Expert Interview Guide: Lisa Chao (Datastrato)
+# Expert Interview Guide: Lisa Cao (Datastrato)
 
-**Interviewee**: Lisa Chao
+**Interviewee**: Lisa Cao
 **Affiliation**: Datastrato (Gravitino project)
 **Expertise**: Catalog management, table format interoperability, data lakehouse infrastructure
 **Interview Focus**: Gravitino adoption, catalog landscape, XTable/format portability
@@ -234,7 +234,7 @@
 
 ### Immediate (Within 24 hours)
 1. **Transcribe Interview**: Key quotes, quantitative data, production examples
-2. **Update MASTER-BIBLIOGRAPHY.md**: Add Lisa Chao as evidence source
+2. **Update MASTER-BIBLIOGRAPHY.md**: Add Lisa Cao as evidence source
 3. **Hypothesis Updates**:
    - Formalize H-ARCH-03 if sufficient evidence gathered
    - Update XTable status in Gap Analysis (production-ready vs emerging)
@@ -257,7 +257,7 @@
 
 **Recording**:
 - [ ] Request permission to record (for accuracy, not publication)
-- [ ] Clarify attribution: "Lisa Chao, Datastrato" vs "industry expert" vs anonymous
+- [ ] Clarify attribution: "Lisa Cao, Datastrato" vs "industry expert" vs anonymous
 
 **Consent for Use**:
 - [ ] Academic publication (journal articles)

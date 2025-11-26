@@ -153,7 +153,7 @@ Archive manuscripts were evaluated and found to reference footnotes centralized 
 
 Beyond primary extraction, sources were supplemented through:
 
-1. **Expert Network Validation**: Practitioner interviews (Lisa Chao - Dremio, Jake Thomas - Okta, a data-platform practitioner, Paul Agbabian) providing production deployment validation
+1. **Expert Network Validation**: Practitioner interviews (Lisa Cao - Dremio, Jake Thomas - Okta, a data-platform practitioner, Paul Agbabian) providing production deployment validation
 2. **Blog Integration**: Ongoing source identification through security-data-commons blog (3×/week cadence)
 3. **Vendor Documentation**: Official technical documentation from Apache Software Foundation, AWS, Microsoft, Google, Confluent, Databricks
 4. **Government Standards**: CISA, MITRE, DARPA, NSA, SANS Institute publications
@@ -394,7 +394,7 @@ Wiley, J. (2025). Modern Data Stack for Cybersecurity: Living Literature Review
 **Threats to Validity**:
 
 *Internal Validity*: Single extractor (Jeremy Wiley) introduces potential bias
-   - *Mitigation*: Expert network review (Lisa Chao, Jake Thomas, a data-platform practitioner) provides validation
+   - *Mitigation*: Expert network review (Lisa Cao, Jake Thomas, a data-platform practitioner) provides validation
 
 *External Validity*: Large enterprise focus may not generalize to mid-market
    - *Acknowledged*: Findings most applicable to organizations with similar scale/resources
@@ -638,7 +638,7 @@ Seven hypotheses received quantitative validation with varying confidence levels
 
 3. **DuckDB Edge Processing** (H-EDGE-01): Emerging pattern for security analytics at edge with limited production security deployments documented. Requires expert validation (Jake Thomas interview pending).
 
-4. **XTable Interoperability**: Cross-format table interoperability (Iceberg ↔ Delta ↔ Hudi) claims from vendors lack production use case validation. Requires expert validation (Lisa Chao interview pending).
+4. **XTable Interoperability**: Cross-format table interoperability (Iceberg ↔ Delta ↔ Hudi) claims from vendors lack production use case validation. Requires expert validation (Lisa Cao interview pending).
 
 5. **Catalog Adoption Metrics**: Gravitino meta-catalog and multi-catalog management patterns lack quantitative adoption data beyond anecdotal reports.
 
@@ -646,7 +646,7 @@ Seven hypotheses received quantitative validation with varying confidence levels
 
 **No Contradictions Identified**: Cross-source validation revealed convergent evidence without contradictions. Examples: IDC 2.5-3× operational costs converges with DORA 2.7× staffing (independent validation); AWS 55% tiered storage savings aligns with Netflix 70-80% (use-case difference: general vs multi-year Kafka). Apparent discrepancies resolved through use-case analysis rather than representing true contradictions.
 
-**Mitigation for Gaps**: Expert interview protocol addresses DuckDB (Jake Thomas) and catalog adoption (Lisa Chao) gaps. IT Harvest partnership (pending) will provide vendor landscape data for catalog/platform adoption metrics. Mid-market validation requires targeted case study identification in future quarterly updates.
+**Mitigation for Gaps**: Expert interview protocol addresses DuckDB (Jake Thomas) and catalog adoption (Lisa Cao) gaps. IT Harvest partnership (pending) will provide vendor landscape data for catalog/platform adoption metrics. Mid-market validation requires targeted case study identification in future quarterly updates.
 
 ---
 
@@ -714,7 +714,7 @@ This systematic review makes four theoretical contributions to knowledge:
 
 **2. Mid-Market Validation**: Target 50-200TB security operations for quantitative validation of staffing, cost, timeline claims. Current evidence validates TB-PB enterprise scale; extrapolation to mid-market requires empirical validation, not assumption of linear scaling.
 
-**3. Emerging Technology Validation**: DuckDB edge processing (H-EDGE-01), XTable table format interoperability, and Gravitino meta-catalog adoption require production security deployment case studies. Expert interviews (Lisa Chao - catalogs, Jake Thomas - DuckDB) address immediate gaps; quarterly updates track maturation.
+**3. Emerging Technology Validation**: DuckDB edge processing (H-EDGE-01), XTable table format interoperability, and Gravitino meta-catalog adoption require production security deployment case studies. Expert interviews (Lisa Cao - catalogs, Jake Thomas - DuckDB) address immediate gaps; quarterly updates track maturation.
 
 **4. Comparative Performance Studies**: Head-to-head benchmarks (ClickHouse vs Druid vs Elasticsearch; Kafka Streams vs Flink vs Spark Streaming) with identical security workloads (not vendor-optimized benchmarks). Security-specific benchmark suite (TPC-like for security analytics) would enable vendor-neutral comparison.
 
@@ -734,7 +734,7 @@ Production validation across 18+ organizations (Netflix, Uber, LinkedIn, Cloudfl
 
 Practitioner guidance synthesizes findings into actionable recommendations: Start with batch architectures using SQL-friendly platforms (ClickHouse, Trino, Iceberg) leveraging existing analyst skills; add selective streaming for highest-value real-time use cases after validating business impact justifies 2.5-3× operational cost premium; implement tiered storage (55-80% savings) for multi-year compliance retention; right-size reliability targets (three nines for storage, four nines for detection engines) reclaiming 30-50% infrastructure costs from over-provisioning; plan realistic timelines (5.5 months implementation + 6-12 months proficiency) rather than vendor claims ("deploy in weeks"); and invest in Level 4 expertise (upskill internal team, hire external talent, or outsource via managed services) before committing to streaming architectures.
 
-This living literature review establishes foundation for ongoing evidence synthesis supporting quarterly technology updates. Planned IT Harvest partnership enables systematic vendor landscape tracking with versioned snapshots (YYYY-QX-update.md) solving citation stability problem while maintaining practitioner currency. Expert interviews (Lisa Chao - catalog landscape, Jake Thomas - DuckDB edge processing) address immediate evidence gaps. Future research priorities include mid-market validation (50-200TB workloads), comparative performance benchmarks (security-specific test suites), failure analysis overcoming publication bias, and economic impact studies quantifying MTTD reduction and analyst productivity gains justifying streaming cost premiums with business impact rather than architectural preference.
+This living literature review establishes foundation for ongoing evidence synthesis supporting quarterly technology updates. Planned IT Harvest partnership enables systematic vendor landscape tracking with versioned snapshots (YYYY-QX-update.md) solving citation stability problem while maintaining practitioner currency. Expert interviews (Lisa Cao - catalog landscape, Jake Thomas - DuckDB edge processing) address immediate evidence gaps. Future research priorities include mid-market validation (50-200TB workloads), comparative performance benchmarks (security-specific test suites), failure analysis overcoming publication bias, and economic impact studies quantifying MTTD reduction and analyst productivity gains justifying streaming cost premiums with business impact rather than architectural preference.
 
 Security practitioners can now make evidence-based architecture decisions with quantified cost/staffing/performance trade-offs, moving from vendor marketing claims to production-validated patterns. Organizations implementing modern data stacks for security operations have systematic evidence base replacing fragmented anecdotes, enabling realistic budgets (accounting for operational cost dominance), achievable timelines (5.5 months + proficiency period), and staffing plans (2.7× for streaming, Level 4 skills requirement). The gap between cybersecurity and data engineering literatures is bridged, providing security practitioners with rigorous operational guidance previously unavailable in either domain independently.
 
@@ -744,7 +744,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 
 [TO BE DRAFTED]
 
-- Expert network contributors: Lisa Chao (catalog landscape), Jake Thomas (DuckDB/edge processing)
+- Expert network contributors: Lisa Cao (catalog landscape), Jake Thomas (DuckDB/edge processing)
 - Practitioner validation: a data-platform practitioner (security data platform practitioner)
 - IT Harvest partnership (if established): Charles Wells (vendor landscape data)
 
@@ -901,7 +901,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 4. Draft Discussion (Section 4)
 5. Create figures and tables
 6. Generate references from MASTER-BIBLIOGRAPHY.md
-7. Expert review (Lisa Chao, Jake Thomas)
+7. Expert review (Lisa Cao, Jake Thomas)
 8. Finalize abstract and conclusion
 
 ---

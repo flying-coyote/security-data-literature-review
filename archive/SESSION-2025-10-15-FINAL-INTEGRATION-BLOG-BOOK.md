@@ -470,7 +470,7 @@ Using remaining evidence bundles:
 
 **Pending Interviews**:
 - **Jake Thomas (Okta)**: DuckDB production validation
-- **Lisa Chao (Datastrato)**: Gravitino adoption metrics
+- **Lisa Cao (Datastrato)**: Gravitino adoption metrics
 
 **Expected Output**:
 - 2 additional Evidence Level A practitioner validations
@@ -595,7 +595,7 @@ Using remaining evidence bundles:
 
 ### Medium-term (Content Creation)
 1. Create 3-4 additional blog posts using remaining evidence bundles
-2. Expert interviews (Jake Thomas, Lisa Chao - Week 3)
+2. Expert interviews (Jake Thomas, Lisa Cao - Week 3)
 3. IT Harvest partnership coordination (Charles Wells)
 
 ### Long-term (Quarterly Updates)

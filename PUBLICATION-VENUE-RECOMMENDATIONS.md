@@ -346,7 +346,7 @@
 5. **Create PRISMA flowchart**: Document systematic extraction methodology
 6. **Develop figures/tables**: Quantitative summaries and visualizations
 7. **Draft abstract**: 150-250 words positioning contribution
-8. **Identify co-authors**: Consider Lisa Chao, Jake Thomas, Paul Agbabian (expert validation contributors)
+8. **Identify co-authors**: Consider Lisa Cao, Jake Thomas, Paul Agbabian (expert validation contributors)
 
 ---
 

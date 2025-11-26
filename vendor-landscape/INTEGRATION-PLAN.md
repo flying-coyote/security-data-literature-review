@@ -196,7 +196,7 @@ Once integration is complete, quarterly updates follow this process:
 4. Add new vendors (target: 5-10 per quarter → 80+ by end 2026)
 
 **Week 3: Expert Validation**
-1. Expert network review (Lisa Chao, Jake Thomas)
+1. Expert network review (Lisa Cao, Jake Thomas)
 2. Hypothesis validation updates
 3. Contradiction resolution
 4. Confidence level adjustments

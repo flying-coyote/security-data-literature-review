@@ -41,7 +41,8 @@
       "Bash(for:*)",
       "Bash(do echo -n \"$repo: \")",
       "Bash(wc:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(git mv:*)"
     ],
     "deny": [],
     "ask": []
