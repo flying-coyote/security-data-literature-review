@@ -549,7 +549,64 @@
 
 ---
 
+## Gap 10: AI/Agent Architectures for Security Analytics (NEW - December 2025)
+
+### Literature Evidence
+
+**Source 1**: AI Governance Maturity Gate (Rogojan, Wernfeldt - Dec 2025)
+- **Finding**: AI initiatives fail at orgs with poor data governance (<5% success at Level 1)
+- **Implication**: AI amplifies existing governance gaps by 10×
+- **Evidence Level**: B (Practitioner consensus)
+
+**Source 2**: RAPTOR Framework (Gadi Evron - Dec 2025)
+- **Finding**: "Duct tape MVP" AI agent successfully patches vulnerabilities
+- **Implication**: Practical AI security automation possible with simple infrastructure
+- **Evidence Level**: B (Production demonstration)
+
+**Source 3**: NANDA Infrastructure (MIT Media Lab - 2024-2025)
+- **Finding**: "DNS for AI agents" enabling trillions of agent interactions
+- **Implication**: Agent-to-agent coordination requires foundational infrastructure
+- **Evidence Level**: A (MIT research, 10 years development)
+
+**Source 4**: AI-Generated Parsers (Tenzir - Nov-Dec 2025)
+- **Finding**: AI generates complete OCSF parsers from log samples
+- **Implication**: Shifts integration control from vendors to customers
+- **Evidence Level**: B (Production validation)
+
+### Proposed Research Questions
+
+**RQ11: AI/Agent Governance Prerequisites**
+- **Hypothesis**: AI security initiatives require data governance maturity Level 3+ for >40% success rate
+- **Evidence Level**: B (practitioner validation needed)
+- **Relevance**: Book Chapter 17 (Future predictions), AI readiness assessment
+- **Validation Needed**:
+  - [ ] Case studies: Failed vs successful AI security projects
+  - [ ] Governance maturity assessment framework
+  - [ ] ROI analysis: Governance investment vs AI success rate
+
+**RQ12: Agentic Security Automation Patterns**
+- **Hypothesis**: Production AI agents can automate 20-40% of Level 1 SOC tasks (parsing, patching, initial triage)
+- **Evidence Level**: B/C (early production examples)
+- **Relevance**: Book Chapter 17 (Future predictions), automation patterns
+- **Validation Needed**:
+  - [ ] RAPTOR framework evaluation
+  - [ ] Task automation taxonomy
+  - [ ] Human-in-the-loop requirements
+
+**RQ13: Agent Infrastructure Requirements**
+- **Hypothesis**: Security agent ecosystems require decentralized infrastructure (NANDA) vs centralized orchestration
+- **Evidence Level**: B (architectural patterns emerging)
+- **Relevance**: Book Chapter 17 (Future predictions), agent architecture
+- **Validation Needed**:
+  - [ ] NANDA adoption in security use cases
+  - [ ] Agent authentication patterns
+  - [ ] Scale requirements (thousands vs trillions)
+
+**Impact**: **EMERGING HIGH** - Foundational for next-generation security architectures
+
+---
+
 **Author**: Jeremy Wiley
-**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security integration)
-**Sources**: 150 footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from security-data-commons-blog
-**Status**: Ready for hypothesis formalization + isolation-first security evidence collection
+**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures)
+**Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from project1
+**Status**: Ready for hypothesis formalization + AI/agent architecture evidence collection

@@ -7,6 +7,46 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.14.0] - 2025-12-06 - AI/Agent Architecture Sources Integration
+
+### Added
+- **MASTER-BIBLIOGRAPHY.md**: Added 4 new AI/agent architecture sources
+  - **AI Governance Maturity Gate** (Rogojan, Wernfeldt, Dec 2025) - Evidence Level B
+    - AI initiatives fail at organizations with poor data governance
+    - <5% success rate at Maturity Level 1, 70-85% at Level 4
+    - AI amplifies governance gaps by 10×
+  - **RAPTOR Security Automation Framework** (Gadi Evron, Dec 2025) - Evidence Level B
+    - "Duct tape MVP" successfully patches vulnerabilities
+    - First public example of AI agent patching production code
+    - Represents "Perl/CGI era" of AI security
+  - **NANDA Infrastructure** (MIT Media Lab, 2024-2025) - Evidence Level A
+    - "DNS for AI agents" - decentralized registry for trillions of agents
+    - 10 years development, 1,000+ agents registered
+    - Builds on Anthropic MCP and Google A2A protocols
+  - **AI-Generated Security Parsers** (Tenzir, Nov-Dec 2025) - Evidence Level B
+    - AI generates complete OCSF parsers from log samples
+    - "100% hands-off keyboard" implementation
+    - Production validated, shifts integration control to customers
+
+### Updated
+- **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md**: Added Gap 10 - AI/Agent Architectures
+  - Proposed RQ11: AI/Agent Governance Prerequisites
+  - Proposed RQ12: Agentic Security Automation Patterns
+  - Proposed RQ13: Agent Infrastructure Requirements
+  - Impact assessment: EMERGING HIGH for next-generation architectures
+
+### Changed
+- **Total Sources**: 83 → 87 (4 new AI/agent sources)
+- **Evidence Quality**: 78% → 77% Evidence Level A (slight decrease due to emerging tech)
+- **New Section**: "AI Governance & Agent Architectures" under AI-Native Infrastructure
+
+### Integration Notes
+- Sources identified from project1 knowledge base (December 2025 updates)
+- Addresses emerging AI/agent patterns critical for future security architectures
+- Supports Book Chapter 17 (Future predictions) and automation patterns
+
+---
+
 ## [1.13.0] - 2025-11-26 - December Monthly Update - Source Refresh & Isolation-First Evidence
 
 ### Changed
