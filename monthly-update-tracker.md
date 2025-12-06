@@ -202,6 +202,50 @@
 
 ---
 
+## December 2025 Update (Continued - AI/Agent Architecture Integration)
+
+**Update 4: AI/Agent Architecture Sources (Dec 6, 2025 - Version 1.14.0)**
+
+**Time Investment**:
+- ⏱️ Project1 knowledge base review: ~1.5 hours (4 concepts identified)
+- ⏱️ Source extraction and documentation: ~2 hours (reading, extracting key findings)
+- ⏱️ Bibliography formatting: ~1 hour (standardized entries, evidence classification)
+- ⏱️ Gap analysis update: ~30 minutes (added RQ11-RQ13)
+- ⏱️ CHANGELOG update: ~20 minutes
+- ⏱️ Monthly tracker update: ~20 minutes
+- ⏱️ Git commit/push: ~10 minutes
+- **Total: ~5.5 hours** ✅ (Well under 8-hour target)
+
+**Sources Added** (4 AI/agent architecture sources):
+1. **AI Governance Maturity Gate** (Rogojan, Wernfeldt, Dec 2025) - Evidence Level B
+   - <5% AI success at Maturity Level 1, 70-85% at Level 4
+   - AI amplifies governance gaps by 10×
+2. **RAPTOR Framework** (Gadi Evron, Dec 2025) - Evidence Level B
+   - "Duct tape MVP" patches vulnerabilities successfully
+   - First public AI agent patching example
+3. **NANDA Infrastructure** (MIT Media Lab, 2024-2025) - Evidence Level A
+   - "DNS for AI agents" - 1,000+ agents registered
+   - 10 years development, builds on MCP/A2A protocols
+4. **AI-Generated Parsers** (Tenzir, Nov-Dec 2025) - Evidence Level B
+   - AI generates complete OCSF parsers from log samples
+   - Production validated, shifts control to customers
+
+**Research Questions Added**: RQ11-RQ13 (Total: 36 → 39)
+- RQ11: AI/Agent Governance Prerequisites
+- RQ12: Agentic Security Automation Patterns
+- RQ13: Agent Infrastructure Requirements
+
+**Quality Metrics**:
+- Evidence Level A: 78% → 77% (slight decrease with emerging tech)
+- Total sources: 85+ → 87+
+- Total hypotheses/RQs: 36 → 39
+
+**December 2025 Combined Time**: 11.6 hours (6.1 + 5.5)
+- Still sustainable when split across the month
+- Average for November-December: 7.9 hours/update
+
+---
+
 ## January 2026 Update (Planned - Third Monthly Update + Q1 Quarterly Deep Dive)
 
 **Target Date**: Mid-January 2026

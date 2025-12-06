@@ -1,11 +1,11 @@
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
-**Last Updated**: November 14, 2025
-**Last Reviewed**: November 14, 2025
-**Total Sources**: 83+ sources documented (including 7 sources from Nov 2025 updates)
+**Last Updated**: December 6, 2025
+**Last Reviewed**: December 6, 2025
+**Total Sources**: 87+ sources documented (including 4 AI/agent sources from Dec 2025)
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 78% Evidence Level A (production deployments, peer-reviewed research)
+**Evidence Quality**: 77% Evidence Level A (production deployments, peer-reviewed research)
 **Link Status**: 2 broken links identified and documented (Gartner paywall expected, trinosummit.io defunct)
 
 ---
@@ -41,6 +41,7 @@ This bibliography consolidates all literature sources from:
   - [Deployment Patterns](#deployment-patterns)
 - [Emerging Technologies](#emerging-technologies)
 - [AI-Native Infrastructure & Emerging Architectures](#ai-native-infrastructure--emerging-architectures)
+  - [AI Governance & Agent Architectures](#ai-governance--agent-architectures)
 
 ---
 
@@ -2159,6 +2160,110 @@ This bibliography consolidates all literature sources from:
 ---
 
 ## AI-Native Infrastructure & Emerging Architectures
+
+### AI Governance & Agent Architectures
+
+#### AI Governance Maturity Gate - Prerequisites for AI Success
+
+**Authors**: Benjamin Rogojan (Seattle Data Guy), John Wernfeldt
+**Date**: December 2025
+**URL**: LinkedIn professional discourse
+**Evidence Level**: B (Practitioner consensus, multiple independent sources)
+**Relevance**:
+- AI initiative failure patterns
+- Data governance prerequisites
+- Organizational readiness assessment
+
+**Key Findings**:
+- AI initiatives fail at organizations already struggling with data governance
+- AI amplifies governance gaps by 10× (poor data quality → hallucinations at scale)
+- Organizations at Maturity Level 1 (Chaos) have <5% AI success rate
+- Level 4 (Managed) achieves 70-85% success rate
+- "If you're not ready to wait 6 months to fix governance, you're not ready for AI"
+
+**Citations**: AI implementation reality, governance prerequisites
+**Notes**: Converging practitioner consensus from independent sources. Filters hype-driven initiatives.
+
+**Validation Status**: ⚐ Practitioner validation (December 2025)
+
+---
+
+#### RAPTOR Security Automation Framework - Production AI Patching
+
+**Authors**: Gadi Evron
+**Date**: December 2025
+**URL**: LinkedIn announcement
+**Evidence Level**: B (Production demonstration, "duct tape MVP")
+**Relevance**:
+- Agentic security automation
+- Vulnerability remediation
+- Practical AI deployment
+
+**Key Findings**:
+- Successfully generated and tested working FFmpeg vulnerability patch
+- Openly acknowledges "duct tape MVP" architecture
+- Demonstrates practical AI agent implementation for security
+- "Embarrassingly simple" infrastructure that actually works
+- Represents "Perl/CGI era" of AI security automation
+
+**Citations**: Agentic security patterns, practical AI deployment
+**Notes**: Refreshing honesty about MVP nature vs. vendor hype. First public example of AI successfully patching vulnerabilities.
+
+**Validation Status**: ⚐ Public demonstration (December 2025)
+
+---
+
+#### NANDA - Infrastructure for Internet of AI Agents
+
+**Authors**: Ramesh Raskar (MIT Media Lab)
+**Date**: 2024-2025
+**URL**: https://nanda.media.mit.edu/, https://arxiv.org/pdf/2507.14263
+**Evidence Level**: A (MIT research, 10 years development, arXiv paper)
+**Relevance**:
+- Agent infrastructure for security operations
+- Decentralized agent registry ("DNS for agents")
+- Agent authentication and discovery
+
+**Key Findings**:
+- Provides foundational infrastructure for trillions of AI agents
+- Decentralized registry solving identity, discovery, coordination at scale
+- 1,000+ agents registered via Join39 developer onboarding
+- Builds on Anthropic MCP and Google A2A protocols
+- Open governance model with modular stack
+- MLflow + NANDA integration (Databricks validation)
+
+**Citations**: Agent infrastructure, security architecture for AI systems
+**Notes**: **CRITICAL** - Security operations will require agent-to-agent coordination. NANDA provides infrastructure layer.
+
+**Validation Status**: ✅ Active URLs (MIT, arXiv, GitHub)
+
+---
+
+#### AI-Generated Security Parsers - Tenzir MCP Implementation
+
+**Authors**: Tenzir (Matthias Vallentin)
+**Date**: November-December 2025
+**URL**: https://tenzir.com/blog/mcp-server
+**Evidence Level**: B (Production demonstration, vendor implementation)
+**Relevance**:
+- Automated parser generation
+- OCSF normalization automation
+- Vendor independence
+
+**Key Findings**:
+- AI generates complete security data parsers from log samples
+- Includes OCSF schema mapping, test suites, deployable packages
+- "100% hands-off keyboard" implementation
+- Shifts power dynamic from vendors to customers
+- Commoditizes parser development
+- Production deployment validated (December 2025)
+
+**Citations**: AI automation, OCSF integration, parser generation
+**Notes**: Validated in production. Eliminates vendor roadmap dependency for integrations.
+
+**Validation Status**: ✅ Production validated (December 2025)
+
+---
 
 ### Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework
 
