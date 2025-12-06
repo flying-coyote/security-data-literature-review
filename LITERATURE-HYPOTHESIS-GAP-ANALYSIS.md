@@ -573,40 +573,150 @@
 - **Implication**: Shifts integration control from vendors to customers
 - **Evidence Level**: B (Production validation)
 
-### Proposed Research Questions
+### Gap 10 Summary
 
-**RQ11: AI/Agent Governance Prerequisites**
-- **Hypothesis**: AI security initiatives require data governance maturity Level 3+ for >40% success rate
-- **Evidence Level**: B (practitioner validation needed)
-- **Relevance**: Book Chapter 17 (Future predictions), AI readiness assessment
-- **Validation Needed**:
-  - [ ] Case studies: Failed vs successful AI security projects
-  - [ ] Governance maturity assessment framework
-  - [ ] ROI analysis: Governance investment vs AI success rate
-
-**RQ12: Agentic Security Automation Patterns**
-- **Hypothesis**: Production AI agents can automate 20-40% of Level 1 SOC tasks (parsing, patching, initial triage)
-- **Evidence Level**: B/C (early production examples)
-- **Relevance**: Book Chapter 17 (Future predictions), automation patterns
-- **Validation Needed**:
-  - [ ] RAPTOR framework evaluation
-  - [ ] Task automation taxonomy
-  - [ ] Human-in-the-loop requirements
-
-**RQ13: Agent Infrastructure Requirements**
-- **Hypothesis**: Security agent ecosystems require decentralized infrastructure (NANDA) vs centralized orchestration
-- **Evidence Level**: B (architectural patterns emerging)
-- **Relevance**: Book Chapter 17 (Future predictions), agent architecture
-- **Validation Needed**:
-  - [ ] NANDA adoption in security use cases
-  - [ ] Agent authentication patterns
-  - [ ] Scale requirements (thousands vs trillions)
+The emergence of AI/agent architectures requires formal research questions to be addressed in Gap 11.
 
 **Impact**: **EMERGING HIGH** - Foundational for next-generation security architectures
 
 ---
 
+## Gap 11: Formal Research Questions RQ11-RQ14 (December 2025)
+
+### RQ11: LIGER Stack vs Traditional SIEM Architecture
+
+**Research Question**: Can the LIGER Stack architecture achieve 70-90% cost reduction vs traditional SIEMs while maintaining comparable security detection and investigation capabilities?
+
+**Hypothesis**: The LIGER Stack (Lakehouse + Index + Graph + Engine + Route) reduces total cost of ownership by 70-90% compared to traditional SIEMs through:
+- Storage/compute separation ($0.023/GB/month S3 vs bundled SIEM pricing)
+- 10-12× compression (Parquet/ZSTD)
+- Fixed compute costs (no per-query charges)
+- Vendor-neutral architecture (avoiding lock-in premiums)
+
+**Evidence Level**: A (Production validation in blog post)
+
+**Current Evidence**:
+- LIGER: $3,560/month for 500GB/day with 365-day retention
+- Azure Sentinel: $31,000-35,000/month (same volume/retention)
+- Splunk Enterprise TCO: $54,167-100,000/month
+- Compression validated: 10-12× (Huntress, Shell, Cloudflare cases)
+
+**Validation Metrics**:
+- [ ] TCO comparison across 10+ production deployments
+- [ ] Query performance benchmarks (P50, P95, P99)
+- [ ] Detection coverage comparison (rules ported successfully)
+- [ ] Analyst satisfaction scores (usability study)
+- [ ] Migration effort quantification (person-months)
+
+**Relevance**: Book Chapters 1 (Reality Check), 9 (Security Architecture), 16 (Business Case)
+
+---
+
+### RQ12: AI/Agent Governance Maturity Gates
+
+**Research Question**: What is the minimum data governance maturity level required for successful AI/agent deployment in security operations?
+
+**Hypothesis**: Organizations require Data Governance Maturity Level 3+ (Defined) to achieve >40% success rate with AI security initiatives, with failure rates of:
+- Level 1 (Chaos): <5% success
+- Level 2 (Awareness): 15-25% success
+- Level 3 (Defined): 40-60% success
+- Level 4 (Managed): 70-85% success
+- Level 5 (Optimized): >90% success
+
+**Evidence Level**: B (Practitioner consensus from AI Governance Maturity Gate)
+
+**Current Evidence**:
+- AI amplifies governance gaps by 10× (poor data → hallucinations)
+- Multiple practitioner validation (Rogojan, Wernfeldt)
+- "6-month rule": Organizations not willing to fix governance first will fail
+
+**Validation Metrics**:
+- [ ] Survey 50+ organizations on governance level vs AI success
+- [ ] Develop formal maturity assessment framework
+- [ ] Quantify failure costs (wasted investment analysis)
+- [ ] Document success patterns at each maturity level
+- [ ] ROI model: Governance investment vs AI returns
+
+**Relevance**: Book Chapter 17 (Future Predictions), Appendix D (Readiness Assessment)
+
+---
+
+### RQ13: Pipeline vs Query-Based Detection Economics
+
+**Research Question**: Under what conditions does pipeline-based detection provide superior economics compared to query-based detection for security operations?
+
+**Hypothesis**: Pipeline-based detection achieves 10-50× cost reduction when:
+- Detection logic can be defined upfront (known patterns)
+- Real-time alerting required (<1 minute latency)
+- High-volume, low-value data sources (DNS, web logs, Windows events)
+- Limited investigation requirements (detection-heavy vs investigation-heavy SOC)
+
+**Evidence Level**: B (LIGER Stack documentation, Tenzir validation)
+
+**Current Evidence**:
+- Pipeline detection: Store signals only (100× data reduction possible)
+- Query-based: Store everything (10× compression only)
+- Hybrid approach: High-value sources stored, high-volume sampled
+- Cost difference: $700/month (pipeline) vs $7,000/month (query-based) for 1TB/day
+
+**Validation Metrics**:
+- [ ] Cost modeling across 5 detection strategies
+- [ ] False positive/negative rates for pipeline vs query
+- [ ] Investigation impact analysis (sampled vs complete data)
+- [ ] Regulatory compliance verification
+- [ ] Performance benchmarks (latency, throughput)
+
+**Relevance**: Book Chapters 6 (Stream Processing), 9 (Security Architecture), 13 (Detection Engineering)
+
+---
+
+### RQ14: Agentic Security Automation ROI
+
+**Research Question**: What is the return on investment for deploying AI agents in security operations, and what tasks can be successfully automated?
+
+**Hypothesis**: AI agents can successfully automate 20-40% of Level 1 SOC tasks with positive ROI within 12 months, specifically:
+- Parser generation (100% automation via Tenzir MCP)
+- Vulnerability patching (RAPTOR framework validation)
+- Initial triage and enrichment (30-40% reduction in analyst time)
+- OCSF normalization (80% automation achievable)
+
+**Evidence Level**: B/C (Early production examples)
+
+**Current Evidence**:
+- RAPTOR: Successfully patches vulnerabilities ("duct tape MVP" works)
+- Tenzir: AI generates complete OCSF parsers from samples
+- NANDA: 1,000+ agents registered, infrastructure emerging
+- Practitioner reports: AI assists but doesn't replace analysts
+
+**Validation Metrics**:
+- [ ] Time-to-value measurements (parser generation: manual vs AI)
+- [ ] Task automation taxonomy (what can/cannot be automated)
+- [ ] Error rates and human oversight requirements
+- [ ] Training data requirements and costs
+- [ ] 12-month ROI calculation including implementation costs
+
+**Relevance**: Book Chapter 17 (Future Predictions), Chapter 13 (Detection Engineering)
+
+---
+
+## Summary of RQ11-RQ14
+
+These formal research questions address critical gaps in the literature:
+
+1. **RQ11 (LIGER Stack)**: Validates complete reference architecture with 70-90% cost reduction claims
+2. **RQ12 (AI Governance)**: Establishes prerequisites for AI success in security operations
+3. **RQ13 (Detection Economics)**: Quantifies pipeline vs query-based detection trade-offs
+4. **RQ14 (Agent ROI)**: Documents practical automation opportunities and returns
+
+**Total Research Questions**: RQ1-RQ10 (existing) + RQ11-RQ14 (new) = 14 formal research questions
+
+**Evidence Collection Priority**:
+- **HIGH**: RQ11 (LIGER validation), RQ12 (AI governance gates)
+- **MEDIUM**: RQ13 (detection economics), RQ14 (agent ROI)
+
+---
+
 **Author**: Jeremy Wiley
-**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures)
-**Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from project1
-**Status**: Ready for hypothesis formalization + AI/agent architecture evidence collection
+**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14)
+**Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from project1, LIGER Stack reference architecture
+**Status**: RQ11-RQ14 formalized, ready for evidence collection and validation
