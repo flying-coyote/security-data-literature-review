@@ -1,7 +1,7 @@
 # Repository Status Report
 
 **Repository**: security-data-literature-review
-**Last Updated**: November 26, 2025 (README documentation sync + trial/decision point language removal)
+**Last Updated**: December 6, 2025 (Version 1.15.0 - LIGER Stack + RQ11-RQ14)
 **Maintained By**: Jeremy Wiley
 **Purpose**: Living literature review published on Substack, supporting blog (3x/week) and book (115,500 words)
 
@@ -9,24 +9,40 @@
 
 ## Current Status
 
-**Overall Phase**: ✅ **Phase 1-2F COMPLETE** (Publication + Vendor Baseline) | 🔄 **Phase 2G ACTIVE** (Hybrid Model: Monthly Updates + Quarterly Deep Dives)
+**Overall Phase**: 🔄 **Phase 2G ACTIVE** (Hybrid Model: Monthly Updates + Quarterly Deep Dives)
 
-**Recent Achievement**:
-- ✅ **Isolation-First Security Integration** (November 14, 2025) - Added RQ7-RQ10 research questions, 3 case studies (Netflix Polaris, Huntress, Okta), tracking document
-- ✅ **November Monthly Update** (Version 1.10.0) - Added 4 AI-native infrastructure sources from LinkedIn monitoring
-- ✅ **Strategic Realignment** (Version 1.9.0) - Hybrid update model adopted, online-first publication strategy
-- ✅ Published online (Substack, Oct 22, 2025) - 38,000 words, 80+ sources, 78% Evidence Level A, openly accessible
-- ✅ **MCP Vendor Database** (Version 1.8.0) - 71 vendors, 110 evidence sources, 84% Tier A quality, automated maintenance
-- ✅ **Blog integration demonstrated** - 4-6× writing speedup, supports 3x/week practitioner content
-- ✅ **Automation verified** - weekly_health_check.py fixed for November handling
+**Latest Updates** (December 6, 2025):
+- ✅ **Version 1.14.0**: Added 4 AI/agent architecture sources from project1 (AI Governance Maturity Gate, RAPTOR, NANDA, AI-Generated Parsers)
+- ✅ **Version 1.15.0**: Integrated LIGER Stack reference architecture + created formal RQ11-RQ14
+- **Total Sources**: 88 (up from 83)
+- **Research Questions**: 14 formal RQs (added RQ11-RQ14 for AI/agents, LIGER, detection economics)
+- **Evidence Quality**: 77% Level A (slight decrease due to emerging tech additions)
 
-**Next Actions**:
-1. **December 2025 monthly rolling update** - Performance benchmarks for RQ7, refresh 5-10 oldest sources, fix 2 broken links
-2. **Isolation-first security evidence collection** - Performance benchmarks, compliance framework mapping, MSSP case studies
-3. **Track quality metrics** - Evidence Level A at 78% (track for continuous improvement)
-4. **Community engagement** - Monitor Substack feedback, systematize reader corrections workflow
-5. **First quarterly deep dive (January 2026)** - Expert interviews (Lisa Cao, Jake Thomas), hypothesis validation, versioned snapshot (2025-Q4-v1.0)
-6. **README documentation sync** - Update from 1.7.0 to 1.12.0 (completed November 26, 2025)
+## Current Priorities (December 2025 - January 2026)
+
+### Immediate Actions
+1. **Complete RQ11-RQ14 Evidence Collection**
+   - [ ] LIGER Stack production validation (10+ deployments)
+   - [ ] AI governance maturity case studies
+   - [ ] Pipeline vs query detection benchmarks
+   - [ ] Agent automation ROI calculations
+
+2. **January 2026 Q1 Quarterly Deep Dive**
+   - [ ] Schedule expert interviews (Lisa Cao - Gravitino/catalogs, Jake Thomas - Okta/DuckDB)
+   - [ ] Comprehensive hypothesis validation review
+   - [ ] Create versioned snapshot (2025-Q4-v1.0)
+   - [ ] Publish quarterly synthesis blog post
+
+3. **Community Engagement**
+   - [ ] Systematize Substack feedback monitoring
+   - [ ] Track LIGER Stack adoption from blog post
+   - [ ] Incorporate reader corrections and new sources
+
+### Upcoming Milestones
+- **January 2026**: Q1 2026 Quarterly Deep Dive (24 hours allocated)
+- **February-March 2026**: Continue monthly rolling updates
+- **April 2026**: Q2 2026 Quarterly Deep Dive
+- **Mid-2026**: Academic journal submission (ACM CSUR, USENIX Security, or IEEE S&P)
 
 ---
 
@@ -293,38 +309,28 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 
 ## Key Metrics
 
-### Source Quality (MASTER-BIBLIOGRAPHY.md)
-- **Total Sources**: 80+ (4 new AI-native infrastructure sources added)
-- **Evidence Level A**: 57 sources (78%) - slight decrease due to emerging tech additions
-- **Evidence Level B**: 22 sources (including new vendor/emerging sources)
-- **Evidence Level C**: 1 source (Vortex - unvalidated claims)
-- **Government/Standards**: 8 sources (CISA, MITRE, DARPA, NSA, SANS)
-- **Industry Analysts**: 10 sources (Gartner, IDC, Forrester)
-- **Production Deployments**: 18 sources (Netflix, Uber, LinkedIn, Cloudflare, Shell, etc.)
-- **URL Validation**: 73% overall, 100% hypothesis-critical
+## Key Metrics (December 2025)
 
-### Validated Hypotheses (7 total) + Research Questions (4 new)
+### Source Quality
+- **Total Sources**: 88 (up from 83 in November)
+- **Evidence Level A**: 68 sources (77%)
+- **Evidence Level B**: 19 sources
+- **Evidence Level C**: 1 source
+- **New This Month**: 5 sources (4 AI/agent + 1 LIGER Stack)
 
-**Validated Hypotheses**:
+### Research Questions (14 Total)
 
-| Hypothesis ID | Description | Status | Sources | Confidence |
-|--------------|-------------|--------|---------|------------|
-| H-ARCH-01 | Apache Iceberg Dominance | STRONGLY VALIDATED | 5 | ⭐⭐⭐⭐⭐ |
-| H-IMPL-01 | Streaming Hidden Costs (2.5-3× ops) | STRONGLY VALIDATED | 5 | ⭐⭐⭐⭐⭐ |
-| H-IMPL-02 | Staffing Scarcity (2.7× staff) | STRONGLY VALIDATED | 4 | ⭐⭐⭐⭐⭐ |
-| H-IMPL-03 | Timeline Premium (5.5 months) | VALIDATED | 3 | ⭐⭐⭐ |
-| H-COST-09 | Tiered Storage (55-80% savings) | VALIDATED | 3 | ⭐⭐⭐⭐⭐ |
-| H3-PERFORMANCE-01 | ClickHouse OLAP Performance | VALIDATED | 4 | ⭐⭐⭐⭐ |
-| H-STREAM-01 | Kafka Streams Security Patterns | VALIDATED | 3 | ⭐⭐⭐⭐ |
+**Active Evidence Collection (RQ7-RQ14)**:
 
-**New Research Questions (November 2025)**:
+| RQ | Topic | Priority | Evidence Status |
+|----|-------|----------|-----------------|
+| RQ7-10 | Isolation-First Security | HIGH | 3 case studies collected |
+| RQ11 | LIGER Stack TCO | HIGH | Initial validation complete |
+| RQ12 | AI Governance Maturity | HIGH | Practitioner consensus |
+| RQ13 | Pipeline Detection Economics | MEDIUM | LIGER documentation |
+| RQ14 | Agent Automation ROI | MEDIUM | Early examples (RAPTOR, Tenzir) |
 
-| Research Question | Description | Status | Case Studies | Evidence Tier |
-|------------------|-------------|--------|--------------|---------------|
-| RQ7 | Isolation Patterns and Performance | EVIDENCE COLLECTION | 3 (Netflix, Huntress, Okta) | Target: B |
-| RQ8 | Compliance Trade-offs | EVIDENCE COLLECTION | 1 (Netflix) | Target: B |
-| RQ9 | Multi-Tenant MSSP vs Isolation-First | EVIDENCE COLLECTION | 0 MSSP case studies | Target: B/C |
-| RQ10 | Catalog Governance Influence | EVIDENCE COLLECTION | 1 (Netflix Polaris) | Target: B |
+**Previously Validated (7 Hypotheses)**: H-ARCH-01, H-IMPL-01/02/03, H-COST-09, H3-PERFORMANCE-01, H-STREAM-01
 
 ### Key Quantitative Findings
 

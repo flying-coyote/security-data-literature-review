@@ -1,8 +1,8 @@
 # Living Literature Review for "Modern Data Stack for Cybersecurity"
 
 **Purpose**: Comprehensive literature review and research foundation for book
-**Last Updated**: November 14, 2025 (Version 1.12.0)
-**Last Reviewed**: November 14, 2025
+**Last Updated**: December 6, 2025 (Version 1.15.0)
+**Last Reviewed**: December 6, 2025
 **Status**: Phase 2G ACTIVE | Hybrid Model (Monthly Updates + Quarterly Deep Dives)
 
 ---
@@ -11,16 +11,17 @@
 
 This repository contains a **living literature review** supporting the book "Modern Data Stack for Cybersecurity." The review bridges cybersecurity and data engineering domains with rigorous, evidence-based research. **Published openly on Substack** (October 22, 2025) with ongoing monthly updates and quarterly deep dives.
 
-**Current Status - Phase 2G (Hybrid Model) ACTIVE** 🔄:
-- ✅ **83+ sources documented** (up from 76+)
-- ✅ **78% Evidence Level A** (production/academic sources) - maintains quality target
-- ✅ **10 research questions** (RQ1-RQ10) including new isolation-first security architecture
-- ✅ **Published on Substack** (October 22, 2025) - 38,000 words, openly accessible
-- ✅ **Two monthly rolling updates COMPLETE** (November 2025) - 7.5 hours average, sustainable
-- ✅ **Monthly update workflow operational** - tracking, automation, dashboard all working
-- ✅ **MCP vendor database** - 71 vendors, 84% Tier A, automated weekly refresh
-- ✅ 7 hypotheses validated with quantitative evidence
-- ✅ Blog integration established (4-6× writing speedup demonstrated)
+**Current Status - December 2025** 🔄:
+- **88 sources documented** (added 5 in December: 4 AI/agent + LIGER Stack)
+- **77% Evidence Level A** (slight decrease due to emerging tech additions)
+- **14 research questions** (RQ1-RQ14) including AI/agent architectures and LIGER Stack
+- **Published on Substack** (October 22, 2025) - 38,000 words, openly accessible with monthly updates
+
+**Latest Updates (Version 1.14.0 & 1.15.0)**:
+- ✅ Added AI/agent architecture sources (AI Governance Maturity, RAPTOR, NANDA, AI Parsers)
+- ✅ Integrated LIGER Stack reference architecture (70-90% cost reduction validation)
+- ✅ Created formal RQ11-RQ14 (LIGER TCO, AI governance, detection economics, agent ROI)
+- ✅ Monthly update workflow operational - sustainable 7-8 hours/update average
 
 **Phase 1-2 Foundation Complete** ✅:
 - ✅ 283 footnotes extracted from best practices document
@@ -30,16 +31,14 @@ This repository contains a **living literature review** supporting the book "Mod
 - ✅ Publication graphics generated (Python scripts, LaTeX TikZ)
 - ✅ Expert interview guides prepared (Lisa Cao, Jake Thomas)
 
-**November 2025 Achievements** ✅:
-- ✅ **Version 1.10.0**: AI-native infrastructure integration (Tenzir, Cribl, Vortex, Databricks MCP)
-- ✅ **Version 1.11.0**: Isolation-first security architecture pattern (RQ7-RQ10, 3 production case studies: Netflix Polaris, Huntress, Okta)
-- ✅ **Version 1.12.0**: Monthly update workflow infrastructure (tracking system, automation dashboard, "decision point" framing removed - committed to monthly cadence)
+## Current Priorities
 
-**Next - December 2025 Monthly Update**:
-- 🔄 Performance benchmarks for isolation-first security (RQ7)
-- 🔄 Refresh 5-10 oldest sources (27 sources >12 months old)
-- 🔄 Fix 2 broken links, add 2-3 new sources
-- 🔄 Community engagement workflow setup (Substack monitoring)
+**Active Evidence Collection (RQ11-RQ14)**:
+- [ ] LIGER Stack production validation (10+ deployments)
+- [ ] AI governance maturity case studies
+- [ ] Pipeline vs query detection benchmarks
+- [ ] Agent automation ROI calculations
+- [ ] Isolation-first security performance benchmarks
 
 **Planned - Q1 2026 Quarterly Deep Dive** (January):
 - ⏳ Expert interviews (Lisa Cao: catalog landscape, Jake Thomas: isolation-first validation)
