@@ -3,7 +3,7 @@
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
 **Last Updated**: December 6, 2025
 **Last Reviewed**: December 6, 2025
-**Total Sources**: 87+ sources documented (including 4 AI/agent sources from Dec 2025)
+**Total Sources**: 88+ sources documented (including LIGER Stack + 4 AI/agent sources from Dec 2025)
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: 77% Evidence Level A (production deployments, peer-reviewed research)
 **Link Status**: 2 broken links identified and documented (Gartner paywall expected, trinosummit.io defunct)
@@ -2160,6 +2160,48 @@ This bibliography consolidates all literature sources from:
 ---
 
 ## AI-Native Infrastructure & Emerging Architectures
+
+### Reference Architectures & Implementation Patterns
+
+#### LIGER Stack - Security Data Lakehouse Reference Architecture
+
+**Authors**: Jeremy Wiley
+**Date**: October 2025
+**URL**: https://securitydatacommons.substack.com/p/liger-stack-security-data-lakehouse
+**Evidence Level**: A (Production validation, detailed cost analysis, implementation roadmap)
+**Relevance**:
+- Complete reference architecture for security data lakehouse
+- Alternative to traditional SIEM platforms
+- Cost reduction strategies
+
+**Key Findings**:
+- **L**akehouse (Iceberg) + **I**ndex (Polaris) + **G**raph (Grafana) + **E**ngine (StarRocks) + **R**oute (Cribl/Tenzir)
+- 70-90% cost reduction vs traditional SIEMs ($3,560/month vs $31-100K/month for 500GB/day)
+- 10-12× compression with Parquet/ZSTD reducing 1TB/day to <$700/month storage
+- Separation of storage ($0.023/GB/month S3) and compute (scale independently)
+- Vendor-neutral architecture (20+ query engines supported via Iceberg)
+- Fixed compute costs regardless of query volume (vs per-query SIEM charges)
+- Supports both pipeline-based detection (real-time, 10-50× cost reduction) and query-based (retroactive analysis)
+
+**Design Principles**:
+1. Vendor-neutral data layer (open table formats)
+2. Separation of storage and compute
+3. Compression-first design (10-12× typical)
+4. Schema evolution without breaking changes
+5. Query engine specialization (right tool for workload)
+
+**Implementation Timeline**: 12 months across 4 phases
+- Phase 1 (Months 1-3): Lakehouse foundation
+- Phase 2 (Months 4-6): Real-time engine
+- Phase 3 (Months 7-9): Transformation pipeline
+- Phase 4 (Months 10-12): Semantic layer (optional)
+
+**Citations**: Reference architecture, cost optimization, SIEM replacement
+**Notes**: **CRITICAL** - First complete, production-validated security data lakehouse architecture with detailed cost modeling
+
+**Validation Status**: ✅ Production deployments referenced
+
+---
 
 ### AI Governance & Agent Architectures
 

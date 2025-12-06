@@ -7,6 +7,40 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.15.0] - 2025-12-06 - LIGER Stack Integration & Formal Research Questions RQ11-RQ14
+
+### Added
+- **MASTER-BIBLIOGRAPHY.md**: Added LIGER Stack reference architecture
+  - **LIGER Stack** (Jeremy Wiley, Oct 2025) - Evidence Level A
+    - Complete security data lakehouse reference architecture
+    - 70-90% cost reduction vs traditional SIEMs ($3,560/month vs $31-100K/month for 500GB/day)
+    - 10-12× compression with Parquet/ZSTD
+    - Vendor-neutral architecture with 20+ query engines supported
+    - Detailed implementation roadmap (12 months, 4 phases)
+
+- **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md**: Added formal Research Questions RQ11-RQ14
+  - **RQ11**: LIGER Stack vs Traditional SIEM Architecture (70-90% cost reduction validation)
+  - **RQ12**: AI/Agent Governance Maturity Gates (Level 3+ required for >40% success)
+  - **RQ13**: Pipeline vs Query-Based Detection Economics (10-50× cost reduction conditions)
+  - **RQ14**: Agentic Security Automation ROI (20-40% Level 1 SOC task automation)
+
+### Updated
+- **Gap Analysis Structure**: Reorganized AI/agent content from Gap 10 into formal RQ framework
+- **Research Question Framework**: Now 14 formal RQs (RQ1-RQ10 existing + RQ11-RQ14 new)
+- **Bibliography Organization**: Added "Reference Architectures & Implementation Patterns" section
+
+### Changed
+- **Total Sources**: 87 → 88 (added LIGER Stack)
+- **Evidence Quality**: Maintained at 77% Evidence Level A
+- **Research Questions**: Total now 14 formal RQs with clear validation metrics
+
+### Integration Notes
+- LIGER Stack from security-data-commons-blog provides first complete reference architecture
+- RQ11-RQ14 formalize critical gaps in cost modeling, AI governance, and detection economics
+- Supports Book Chapters 1, 9, 13, 16, 17 and Appendix D
+
+---
+
 ## [1.14.0] - 2025-12-06 - AI/Agent Architecture Sources Integration
 
 ### Added
