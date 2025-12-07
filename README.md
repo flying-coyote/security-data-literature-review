@@ -1,9 +1,9 @@
 # Living Literature Review for "Modern Data Stack for Cybersecurity"
 
 **Purpose**: Comprehensive literature review and research foundation for book
-**Last Updated**: December 6, 2025 (Version 1.15.0)
+**Last Updated**: December 6, 2025 (Version 1.17.0)
 **Last Reviewed**: December 6, 2025
-**Status**: Phase 2G ACTIVE | Hybrid Model (Monthly Updates + Quarterly Deep Dives)
+**Status**: Phase 2 ACTIVE | Monthly Updates + Quarterly Deep Dives
 
 ---
 
@@ -12,39 +12,24 @@
 This repository contains a **living literature review** supporting the book "Modern Data Stack for Cybersecurity." The review bridges cybersecurity and data engineering domains with rigorous, evidence-based research. **Published openly on Substack** (October 22, 2025) with ongoing monthly updates and quarterly deep dives.
 
 **Current Status - December 2025** 🔄:
-- **88 sources documented** (added 5 in December: 4 AI/agent + LIGER Stack)
-- **77% Evidence Level A** (slight decrease due to emerging tech additions)
-- **14 research questions** (RQ1-RQ14) including AI/agent architectures and LIGER Stack
-- **Published on Substack** (October 22, 2025) - 38,000 words, openly accessible with monthly updates
-
-**Latest Updates (Version 1.14.0 & 1.15.0)**:
-- ✅ Added AI/agent architecture sources (AI Governance Maturity, RAPTOR, NANDA, AI Parsers)
-- ✅ Integrated LIGER Stack reference architecture (70-90% cost reduction validation)
-- ✅ Created formal RQ11-RQ14 (LIGER TCO, AI governance, detection economics, agent ROI)
-- ✅ Monthly update workflow operational - sustainable 7-8 hours/update average
-
-**Phase 1-2 Foundation Complete** ✅:
-- ✅ 283 footnotes extracted from best practices document
-- ✅ 9 analysis bundles created (170,100 words evidence synthesis)
-- ✅ Publication manuscript COMPLETE (9,999 words for academic journal submission mid-2026)
-- ✅ REFERENCES.md, APPENDICES.md, FIGURES-AND-TABLES.md created
-- ✅ Publication graphics generated (Python scripts, LaTeX TikZ)
-- ✅ Expert interview guides prepared (Lisa Cao, Jake Thomas)
+- **97 sources documented** (78% Evidence Level A maintained)
+- **14 research questions** (RQ1-RQ14) with production validation
+- **Monthly updates sustainable** (7-8 hours average)
+- **Q1 2026 Deep Dive planned** (January - expert interviews)
 
 ## Current Priorities
 
-**Active Evidence Collection (RQ11-RQ14)**:
-- [ ] LIGER Stack production validation (10+ deployments)
-- [ ] AI governance maturity case studies
-- [ ] Pipeline vs query detection benchmarks
-- [ ] Agent automation ROI calculations
-- [ ] Isolation-first security performance benchmarks
+**Q1 2026 Quarterly Deep Dive** (January):
+- Expert interviews (Lisa Cao: catalog landscape, Jake Thomas: isolation-first validation)
+- Versioned snapshot (tag 2025-Q4-v1.0 for citation stability)
+- Quarterly synthesis blog post
+- Comprehensive hypothesis validation review
 
-**Planned - Q1 2026 Quarterly Deep Dive** (January):
-- ⏳ Expert interviews (Lisa Cao: catalog landscape, Jake Thomas: isolation-first validation)
-- ⏳ Versioned snapshot (tag 2025-Q4-v1.0 for citation stability)
-- ⏳ Quarterly synthesis blog post
-- ⏳ Academic journal submission preparation (mid-2026 target)
+**Ongoing Evidence Collection**:
+- LIGER Stack production deployments
+- AI governance maturity case studies
+- Pipeline vs query detection benchmarks
+- Agent automation ROI metrics
 
 ---
 
