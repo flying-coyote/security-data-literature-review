@@ -799,6 +799,37 @@ This bibliography consolidates all literature sources from:
 
 ---
 
+#### Splunk DB Connect Benchmark - Multi-Engine Performance Comparison
+
+**Authors**: Jeremy Wiley
+**Date**: December 2025
+**URL**: https://github.com/flying-coyote/splunk-db-connect-benchmark
+**Evidence Level**: A (Tier 1 production benchmark, 10M OCSF events)
+**Relevance**:
+- Hypothesis H3-PERFORMANCE-01 (ClickHouse 145x faster than Splunk)
+- Hypothesis H3-PERFORMANCE-02 (StarRocks vs Dremio comparison)
+- Hypothesis H3-PERFORMANCE-03 (Compression optimization 4.6-8.2x)
+- Hypothesis H-ARCH-02 (Multi-engine Iceberg validation)
+- Book Chapter 8 (Query Engine Selection)
+- Blog Post #28 (Splunk Integration with LIGER Stack)
+
+**Key Findings**:
+- ClickHouse MergeTree: 0.19s avg (145x faster than Splunk 27.52s)
+- Dremio Iceberg + Reflections: 1.00s avg (28x faster than Splunk)
+- ClickHouse Iceberg: 1.17s avg (24x faster than Splunk)
+- Dremio Iceberg raw: 1.23s avg (22x faster than Splunk)
+- StarRocks Iceberg: 1.50s avg (18x faster than Splunk)
+- Trino Iceberg: 2.67s avg (10x faster than Splunk)
+- Splunk scaling: 8x degradation from 1M→10M events
+- Compression: 4.6x default (LZ4), 8.2x optimized (ZSTD-22)
+
+**Citations**: All 4 hypotheses, Book Ch 8, Blog Post #28
+**Notes**: **CRITICAL** - First independent multi-engine benchmark on identical OCSF data
+
+**Validation Status**: ✅ Active Repository (December 2025)
+
+---
+
 #### ClickHouse - Compression Codecs Documentation
 
 **Authors**: ClickHouse Documentation Team
