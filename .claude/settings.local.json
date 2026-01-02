@@ -47,7 +47,8 @@
     "deny": [],
     "ask": []
   },
-  "enableAllProjectMcpServers": true,
+  "enableAllProjectMcpServers": false,
+  "_mcpSecurityNote": "MCP servers disabled by default for security. Playwright tools explicitly allowed in allowedTools. Add specific MCP servers to .mcp.json if needed.",
   "allowedTools": [
     {
       "tool": "Read",

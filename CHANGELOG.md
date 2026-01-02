@@ -7,6 +7,60 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.19.0] - 2026-01-02 - Best Practices Audit and Claude Code Infrastructure
+
+### Added
+- **AUDIT-REPORT-BEST-PRACTICES.md**: Comprehensive project audit against claude-code-project-best-practices
+  - Initial score: 78/100 (Good)
+  - Final score: 92/100 (Excellent) after implementations
+  - Framework: claude-code-project-best-practices AUDIT-EXISTING-PROJECT.md
+
+- **Session Hooks** (`.claude/hooks/`):
+  - `SessionStart.sh`: Displays git status, recent commits, current version at session start
+  - `PreCommit.sh`: Advisory reminder to update CHANGELOG.md for significant changes
+
+- **Custom Slash Commands** (`.claude/commands/`):
+  - `monthly-update.md`: Comprehensive monthly rolling update workflow checklist
+  - `add-source.md`: Source addition workflow with evidence tier classification
+  - `validate-evidence.md`: Evidence quality validation checklist with remediation actions
+  - `quarterly-deep-dive.md`: Q1 2026 quarterly deep dive workflow for expert interviews
+
+- **Documentation**:
+  - `.claude/commands/README.md`: Documents available slash commands
+  - `.claude/hooks/README.md`: Documents session hooks and their purpose
+
+### Changed
+- **`.claude/settings.local.json`**: Security hardening
+  - Set `enableAllProjectMcpServers: false` (was `true`)
+  - Added `_mcpSecurityNote` documenting MCP security configuration
+  - Playwright tools remain explicitly allowed in `allowedTools`
+
+- **`.claude/skills/evidence-tier-classifier/SKILL.md`**: Token optimization
+  - Reduced from 429 lines to 95 lines (~78% reduction)
+  - Maintained all essential functionality
+  - Updated metrics to current values (101 sources, 78% Level A)
+
+- **`.claude/skills/README.md`**: Updated metrics
+  - Sources: 76 → 101
+  - Status: "Phase 1-2C Complete" → "Phase 2 Active"
+  - Research Questions: Added RQ1-RQ14 reference
+
+- **CLAUDE.md**: Added hooks and commands documentation section
+
+### Quality Metrics
+- **Audit Score**: 78/100 → 92/100 (+14 points)
+- **Claude Code Infrastructure**: 7/10 → 10/10 (hooks + commands added)
+- **Security Posture**: 8/10 → 9/10 (MCP scoped)
+- **Cross-Platform Compatibility**: 9/10 → 10/10 (skill optimized)
+- **Version Control Practices**: 9/10 → 10/10 (pre-commit hook)
+
+### Framework
+- Audit conducted against: claude-code-project-best-practices
+- All HIGH and MEDIUM priority recommendations implemented
+- Only L2 (architecture diagram) deferred as low priority
+
+---
+
 ## [1.18.0] - 2025-12-06 - Architecture Patterns and Benchmarks
 
 ### Added
