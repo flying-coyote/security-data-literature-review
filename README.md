@@ -206,10 +206,15 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - ✅ MCP vendor database operational (71 vendors, automated)
 
 **Next Actions**:
-1. **December 2025 Monthly Update** (mid-December, 6-8 hours)
-2. **Q1 2026 Quarterly Deep Dive** (January: expert interviews, versioned snapshot)
-3. **Community Engagement** (Substack monitoring workflow setup)
+1. **Expert Interviews** (January 2026) - Lisa Cao and Jake Thomas scheduled for Q1 quarterly deep dive
+2. **January Monthly Update** (mid-January, 6-8 hours) - New sources, refresh outdated sources
+3. **Quarterly Synthesis** - Comprehensive blog post on Q4 2025 findings
 4. **Academic Publication** (mid-2026: journal submission preparation)
+
+**Recently Completed** (January 2, 2026):
+- ✅ Git tag 2025-Q4-v1.0 created for citation stability
+- ✅ Best practices audit completed (Score: 92/100)
+- ✅ Completed phases archived
 
 **Online Publication**: [Security Data Commons on Substack](https://securitydatacommons.substack.com) (Published October 22, 2025)
 **Maintained By**: Jeremy Wiley
