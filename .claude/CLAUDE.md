@@ -37,9 +37,10 @@ Living literature review published openly on Substack, supporting blog (3x/week 
 
 ## Current Phase
 **Status**: Phase 2 (Monthly Updates + Quarterly Deep Dives) ACTIVE 🔄
-**Last Updated**: December 6, 2025 (Version 1.18.0)
+**Last Updated**: January 2, 2026 (Version 1.19.0)
 **Focus**: Q1 2026 Quarterly Deep Dive preparation (January - expert interviews)
 **Published**: Substack (Oct 22, 2025), 38,000 words, now 101 sources, 78% Evidence Level A
+**Audit Score**: 92/100 (Best Practices Audit completed January 2, 2026)
 
 **Phase 1 Accomplishments** ✅:
 - 283 footnotes extracted from best practices document
@@ -206,6 +207,28 @@ All personal skills from `~/.claude/skills/` are available:
 
 Co-Authored-By: Claude <noreply@anthropic.com>  # If AI-assisted
 ```
+
+## Session Hooks and Commands
+
+### Session Hooks (`.claude/hooks/`)
+Automated scripts that execute at defined trigger points:
+
+| Hook | Trigger | Purpose |
+|------|---------|---------|
+| `SessionStart.sh` | Session begins | Display git status, recent commits, current version |
+| `PreCommit.sh` | Before git commit | Remind to update CHANGELOG.md for significant changes |
+
+### Custom Slash Commands (`.claude/commands/`)
+Invoke with `/<command-name>` for structured workflows:
+
+| Command | Purpose | When to Use |
+|---------|---------|-------------|
+| `/monthly-update` | Monthly rolling update checklist | Monthly updates (6-8 hours) |
+| `/add-source` | Add source with evidence classification | Adding any new source |
+| `/validate-evidence` | Evidence quality validation | Quality concerns or monthly checks |
+| `/quarterly-deep-dive` | Quarterly deep dive workflow | Jan, Apr, Jul, Oct (24 hours) |
+
+**Documentation**: See `.claude/commands/README.md` and `.claude/hooks/README.md` for details.
 
 ## Research Findings Summary
 
