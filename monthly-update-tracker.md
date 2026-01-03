@@ -405,5 +405,5 @@
 ---
 
 **Maintained By**: Jeremy Wiley
-**Last Updated**: November 26, 2025
-**Next Update**: January 2026 (third monthly update + Q1 2026 quarterly deep dive)
+**Last Updated**: January 3, 2026
+**Next Update**: Mid-January 2026 (monthly rolling update + Q1 2026 quarterly deep dive preparation)
