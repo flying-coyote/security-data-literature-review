@@ -22,3 +22,4 @@ Thumbs.db
 # Platform-specific
 .env
 .env.local
+__pycache__/
