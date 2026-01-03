@@ -2980,3 +2980,81 @@ This bibliography consolidates all literature sources from:
 **Notes**: Strong validation for pipeline-based detection economics
 **Validation Status**: ✅ 2025 Data Streaming Report (4,000+ respondents)
 
+
+---
+
+## Reading Queue (Pending Analysis)
+
+The following papers have been identified for future analysis:
+
+#### Hyperscan: A Fast Multi-pattern Regex Matcher
+
+**Authors**: Intel Labs / branchfree.org
+**Date**: TBD (academic paper)
+**URL**: https://branchfree.org (exact URL pending)
+**Evidence Level**: A (Academic research - pending verification)
+**Relevance**:
+- Query engine performance
+- Pattern matching for log analytics
+- Security detection engine optimization
+- Book Chapter 10 (Query Engines)
+
+**Key Findings**: (Pending reading)
+- High-performance regex matching
+- Multi-pattern simultaneous matching
+- Relevance to log search/SIEM performance
+
+**Source**: Identified via "Humio Clone" reference collection (December 2025)
+**Status**: 📚 QUEUED - Not yet read
+**Added**: 2026-01-02
+
+---
+
+#### DBSP: Incremental Computation for Streaming Databases
+
+**Authors**: Academic paper
+**Date**: TBD
+**URL**: https://github.com/feldera/feldera (implementation)
+**Evidence Level**: A (Academic research - pending verification)
+**Relevance**:
+- Streaming database patterns
+- Incremental computation
+- Real-time analytics foundations
+- Validates RisingWave, Materialize patterns
+- Book Chapter 7 (Streaming Architectures)
+
+**Key Findings**: (Pending reading)
+- Database operations as streaming primitives
+- Incremental view maintenance
+- Mathematical foundations for stream processing
+
+**Source**: Identified via "Humio Clone" reference collection (December 2025)
+**Status**: 📚 QUEUED - Not yet read
+**Added**: 2026-01-02
+
+---
+
+#### Xor Filters: Faster and Smaller than Bloom Filters
+
+**Authors**: Academic paper
+**Date**: TBD
+**URL**: https://arxiv.org/abs/1912.08258
+**Evidence Level**: A (Academic research - pending verification)
+**Relevance**:
+- Indexing optimization
+- Log analytics performance
+- Probabilistic data structures
+- Alternative to Bloom filters for membership testing
+- Book Chapter 8 (Storage Optimization)
+
+**Key Findings**: (Pending reading)
+- Faster lookup than Bloom filters
+- Smaller memory footprint
+- Immutable filter construction
+- Relevance to log indexing optimization
+
+**Source**: Identified via "Humio Clone" reference collection (December 2025)
+**Status**: 📚 QUEUED - Not yet read
+**Added**: 2026-01-02
+
+---
