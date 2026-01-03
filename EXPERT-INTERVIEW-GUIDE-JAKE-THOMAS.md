@@ -456,8 +456,43 @@
 
 ---
 
+---
+
+## January 2026 Context Update: AI Governance & Isolation-First Research
+
+### CSA/Google Cloud AI Security and Governance Study (December 2025)
+
+**Key Findings to Discuss** (relevant for isolation-first security and AI readiness):
+- **Only 26%** of organizations have comprehensive AI security governance
+- **Governance maturity is the strongest predictor of AI readiness**
+- Organizations with comprehensive policies: **46%** early agentic AI adoption
+- Organizations with policies in development: only **12%** adoption (3.8× difference)
+- **60%** plan to use agentic AI within 12 months
+
+**Potential Discussion Points for Jake**:
+- How does Okta's isolation-first architecture enable AI/ML security initiatives?
+- Does simplified catalog governance (table-level RBAC vs RLS) correlate with AI success?
+- What governance features matter most for AI-driven security at Okta scale?
+
+### Isolation-First Security Evidence (RQ7-RQ10)
+
+**January 2026 Research Findings**:
+- DuckDB 1.0 released June 2024 (stable storage format, production-ready)
+- 6+ million monthly DuckDB downloads
+- Used at Facebook, Google, Airbnb
+- Gravitino adopted by Uber, Apple, Intel, Pinterest (multi-catalog management)
+
+**Questions for Jake on Isolation-First Validation**:
+- Does Okta use network isolation + IAM as primary security controls (vs fine-grained catalog)?
+- What's the performance advantage of table-level RBAC vs row-level security for your workloads?
+- Has the isolation-first approach simplified compliance (SOC 2/ISO 27001)?
+
+**Source**: CSA/Google Cloud "The State of AI Security and Governance" (Dec 2025)
+
+---
+
 **Prepared By**: Claude (AI Assistant) + Jeremy Wiley
-**Date**: October 16, 2025
+**Date**: October 16, 2025 (updated January 3, 2026 with AI governance + isolation-first findings)
 **Status**: Ready for scheduling
 **Estimated Interview Duration**: 75-80 minutes
 **Format**: Video call (Zoom/Google Meet) with recording

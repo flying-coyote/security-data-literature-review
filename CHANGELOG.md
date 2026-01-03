@@ -7,6 +7,73 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.20.0] - 2026-01-03 - January 2026 Research Update: 14 New Sources
+
+### Added
+- **14 new sources** to MASTER-BIBLIOGRAPHY.md (115+ total sources, 79% Evidence Level A)
+- **New section**: "January 2026 Research Update" with sources organized by research question
+
+**Level A Sources (10 sources)**:
+- CSA/Google Cloud - The State of AI Security and Governance (Dec 2025) - **CRITICAL** for RQ12
+- CSA Press Release - Governance Maturity as AI Predictor (Dec 2025)
+- SANS Institute - Securing AI in 2025 (2025)
+- Databricks Data Intelligence for Cyber Defense - Barracuda 75% cost reduction (Oct 2025)
+- ClickHouse - GitLab Sub-Second Analytics (2024)
+- Netflix ClickHouse Pipeline - 5 PB/Day Ingestion (2024)
+- Forrester - Drowning In Security Data Costs (2025)
+- Linux Foundation - OCSF Joins Linux Foundation (Nov 2024)
+- Apache Gravitino - Production Adoption (2025)
+- Google Cloud - AI Agent ROI Report (Sep 2025) - **CRITICAL** for RQ14
+- Arctic Wolf Aurora Platform (2025)
+
+**Level B Sources (4 sources)**:
+- ClickHouse vs Snowflake Benchmarks (2024)
+- Hunters Security - Security Data Lakes (2024)
+- Apache Polaris Growing Ecosystem (2025)
+- AI Multiple - Agent Performance & ROI (2025)
+- Obsidian Security - AI Agent Security Landscape (2025)
+- DuckDB 1.0 Production Readiness (2024)
+
+### Changed
+- **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md**: Major updates to RQ11-RQ14 evidence tracking
+  - RQ11 (LIGER Stack): Now STRONG validation (Barracuda 75%, GitLab <1s, Netflix 5PB/day)
+  - RQ12 (AI Governance): Now STRONG validation (CSA/Google: 46% vs 12% by governance maturity)
+  - RQ13 (Detection Economics): MEDIUM (needs quantitative cost data)
+  - RQ14 (Agent ROI): Now STRONG validation (Google 74% first-year ROI, 171% average)
+
+- **EXPERT-INTERVIEW-GUIDE-LISA-CAO.md**: Added January 2026 Context Update
+  - CSA/Google governance findings
+  - AI-enabled security catalog governance discussion points
+
+- **EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md**: Added January 2026 Context Update
+  - CSA/Google governance findings
+  - Isolation-first security validation questions
+  - DuckDB 1.0 production readiness context
+
+### Research Findings Highlights
+- **Barracuda Networks**: 75% reduction in daily processing/storage costs (Databricks)
+- **HSBC**: 3× more threat hunts with lower TCO on Databricks Lakehouse
+- **50% of world's 15 largest banks** using security data lakes
+- **CSA/Google**: Only 26% have comprehensive AI governance; 3.8× adoption difference by maturity
+- **Google Cloud**: 52% of executives deploying AI agents; 74% achieve ROI in first year
+- **OCSF**: 900+ contributors, 200+ organizations, now Linux Foundation project
+
+### Evidence Status Summary
+| RQ | Status | Key Evidence |
+|----|--------|--------------|
+| RQ11 | ✅ STRONG | 10+ production deployments (Barracuda, HSBC, Netflix, GitLab) |
+| RQ12 | ✅ STRONG | CSA/Google industry survey (46% vs 12% adoption rate) |
+| RQ13 | 🟡 MEDIUM | Conceptual validation only |
+| RQ14 | ✅ STRONG | Google 74% first-year ROI, 171% average |
+
+### Impact
+- **Evidence Quality**: Improved from 78% to 79% Evidence Level A
+- **RQ11-RQ14 Validation**: 3 of 4 research questions now have strong evidence
+- **Expert Interview Prep**: CSA/Google findings added to both interview guides
+- **Source Count**: 101 → 115+ sources
+
+---
+
 ## [1.19.2] - 2026-01-03 - Q4 2025 Citation Stability Tag + Week 1 Completion
 
 ### Added

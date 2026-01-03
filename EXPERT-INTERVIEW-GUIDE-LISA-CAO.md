@@ -315,8 +315,30 @@
 
 ---
 
+---
+
+## January 2026 Context Update: AI Governance Research
+
+### CSA/Google Cloud AI Security and Governance Study (December 2025)
+
+**Key Findings to Discuss** (relevant for catalog governance in AI-enabled security):
+- **Only 26%** of organizations have comprehensive AI security governance
+- **Governance maturity is the strongest predictor of AI readiness**
+- Organizations with comprehensive policies: **46%** early agentic AI adoption
+- Organizations with policies in development: only **12%** adoption (3.8× difference)
+- **60%** plan to use agentic AI within 12 months
+
+**Potential Discussion Points**:
+- How does catalog governance (Gravitino) enable or constrain AI/ML security initiatives?
+- Are organizations with better data catalog governance more successful with AI security tools?
+- What catalog features matter most for AI-driven security analytics?
+
+**Source**: CSA/Google Cloud "The State of AI Security and Governance" (Dec 2025)
+
+---
+
 **Prepared By**: Claude (AI Assistant) + Jeremy Wiley
-**Date**: October 16, 2025
+**Date**: October 16, 2025 (updated January 3, 2026 with AI governance findings)
 **Status**: Ready for scheduling
 **Estimated Interview Duration**: 75 minutes
 **Format**: Video call (Zoom/Google Meet) with recording
