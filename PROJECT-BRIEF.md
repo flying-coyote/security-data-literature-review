@@ -111,12 +111,12 @@
 - **Source**: README.md line 130, CLAUDE.md line 302
 
 ### Assumption 3: Expert Interviews Will Validate All Quantitative Claims ⚠️
-**ASSUMPTION**: Week 3 expert interviews (Lisa Cao, Jake Thomas) will confirm quantitative claims
+**ASSUMPTION**: Q1 2026 expert interviews (Lisa Cao, Jake Thomas) will confirm quantitative claims
 - **Lisa Cao**: Catalog adoption rates, XTable validation, H-ARCH-03 (Gravitino meta-catalog)
-- **Jake Thomas**: DuckDB deployment data (7.5T records, 1.5-50 TB/day), H-EDGE-01 (edge processing viability)
-- **Verification needed**: Conduct 2 interviews Week 3 (October 21-25, 2025)
+- **Jake Thomas**: DuckDB deployment data (7.5T records, 1.5-50 TB/day), H-EDGE-01 (edge processing viability), isolation-first validation (RQ7)
+- **Verification needed**: Conduct 2 interviews as part of Q1 2026 quarterly deep dive (January 2026)
 - **Impact if false**: Downgrade hypothesis confidence from "STRONGLY VALIDATED" to "VALIDATED" or "PRELIMINARY", add caveats
-- **Source**: README.md line 22, EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md, EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md
+- **Source**: README.md, EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md, EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md
 
 ### Assumption 4: Academic Publication Deferred to 2026 (Online-First Strategy) ✅ REVISED
 **REVISED STRATEGY**: Online publication (Substack) is primary venue, academic journal deferred
@@ -240,12 +240,12 @@
 ### Decision 7: Expert Interviews for Quantitative Validation
 **Decision**: Conduct expert interviews (Lisa Cao, Jake Thomas) to validate quantitative claims
 **Rationale**:
-- 7 hypotheses have quantitative claims (76% adoption, 2.5-3× costs, 2.7× staffing)
+- 7 hypotheses + 14 research questions have quantitative claims (76% adoption, 2.5-3× costs, 2.7× staffing)
 - Expert validation strengthens evidence (personal communication = additional source)
 - Interview guides ensure systematic, reproducible questioning
-- Aligns with Week 3 expert interview schedule (October 21-25, 2025)
+- Scheduled for Q1 2026 quarterly deep dive (January 2026)
 **Made by**: Jeremy (Project Lead)
-**Reversible?**: No (interviews already scheduled)
+**Reversible?**: Yes (interviews can be rescheduled if needed)
 
 ---
 
@@ -401,7 +401,7 @@
 
 ### Integration with Expert Network
 - **Dependency**: Expert interviews validate quantitative claims (Lisa Cao, Jake Thomas, Paul Agbabian)
-- **Status**: 🔄 Week 3 interviews scheduled (October 21-25, 2025)
+- **Status**: ⏳ Interviews planned for Q1 2026 quarterly deep dive (January 2026)
 - **Future**: Quarterly updates include expert validation cycle (Month 2 of each quarter)
 - **Source**: second-brain expert network (1,444 thought leaders mapped, 45 actively tracked)
 
