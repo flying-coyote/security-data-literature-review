@@ -98,20 +98,23 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Starburst - AWS Athena Integration Guide
+#### Starburst - AWS Athena Comparison
 
 **Authors**: Starburst Data
-**Date**: 2024
-**URL**: https://www.starburst.io/platform/starburst-enterprise/aws-athena/
-**Evidence Level**: B (Vendor integration documentation)
+**Date**: 2024 (updated)
+**URL**: https://www.starburst.io/aws-athena/
+**Evidence Level**: B (Vendor comparison documentation)
 **Relevance**:
 - Blog post: "Starburst vs Dremio vs AWS Athena"
 - Book Chapter 9 (Query Engines - hybrid deployment)
 - AWS ecosystem integration
 
 **Key Findings**:
-- Starburst + AWS Athena federation patterns
+- Starburst Galaxy vs AWS Athena capabilities
+- Trino-based federation patterns
 - Hybrid query engine architectures
+
+**Note**: URL updated 2026-01-03 (original enterprise integration page restructured)
 - Cost optimization strategies
 
 **Citations**: Blog query engine comparison, Chapter 9 hybrid architectures
@@ -531,19 +534,23 @@ This bibliography consolidates all literature sources from:
 
 ## Survey & Industry Reports
 
-### Confluent 2024 State of Data Architecture
+### Confluent Data Streaming Report (2024/2025)
 
-**Authors**: Confluent
-**Date**: 2024
-**URL**: https://www.confluent.io/resources/report/2024-state-of-data-architecture-report/
-**Evidence Level**: B (Vendor survey, large sample)
+**Authors**: Confluent (with Freeform Dynamics, Radma Research)
+**Date**: 2024-2025
+**URL**: https://report.confluent.io/
+**Evidence Level**: B (Vendor survey, 4,175 IT leaders, 12 countries)
 **Relevance**:
 - Book Chapter 7 (Industry trends)
 - Best Practices Doc footnotes [^18], [^23]
 
 **Key Findings**:
-- 76% of security ops teams prioritize real-time detection
-- Trend toward consolidating batch and stream processing
+- 86% of IT leaders prioritize data streaming investments (2025)
+- 89% see DSPs easing AI adoption via data access/quality/governance
+- 90% plan to increase DSP investments in 2025
+- Real-time data essential for competitive edge
+
+**Note**: URL updated 2026-01-03 (superseded by annual Data Streaming Report)
 
 **Citations**: Chapter 7 industry validation
 **Notes**: Vendor survey but comprehensive scope
@@ -1433,9 +1440,10 @@ This bibliography consolidates all literature sources from:
 
 #### Databricks TCO - Lakehouse vs Traditional Platforms
 
-**Authors**: Databricks Engineering Blog
-**Date**: 2022
-**URL**: https://www.databricks.com/blog/2022/11/16/tco-analysis-lakehouse-vs-traditional-data-platforms.html
+**Authors**: Databricks / Lovelytics
+**Date**: 2022-2023
+**URL**: https://www.databricks.com/blog/2021/02/04/how-data-lakehouses-solve-common-issues-with-data-warehouses.html
+**Alt URL**: https://lovelytics.com/the-databricks-lakehouse-tkos-the-competition-on-tco/
 **Evidence Level**: B (Vendor analysis with quantitative data)
 **Relevance**:
 - Cost comparisons
@@ -1443,8 +1451,12 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^189]
 
 **Key Findings**:
-- 35-40% licensing costs of TCO
-- 15-20% implementation services
+- 30-50% TCO reduction vs traditional warehouses
+- Eliminates redundant data copies (operational DB + lake + warehouse)
+- Platform consolidation reduces admin overhead
+- Storage + sync costs compounded by 3-copy architecture
+
+**Note**: URL updated 2026-01-03 (original 2022 blog archived, replaced with related sources)
 - 500TB security data deployment costs
 
 **Citations**: Chapter 1 lakehouse economics
