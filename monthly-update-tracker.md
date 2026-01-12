@@ -9,8 +9,8 @@
 
 | Metric | Baseline/Goal | Status |
 |--------|--------|--------|
-| **Quality**: Evidence Level A | ~75-78% | 🟢 78% (Nov 2025) |
-| **Time Investment**: Monthly effort | Track for awareness | ⏳ 7.5 hours/update avg |
+| **Quality**: Evidence Level A | ~75-78% | 🟢 79% (Jan 2026) |
+| **Time Investment**: Monthly effort | Track for awareness | ⏳ 6.3 hours/update avg |
 | **Blog Support**: Writing speedup | 4-6× sustained | 🟢 Demonstrated |
 | **Community Engagement**: Feedback/corrections | Develop workflow | ⏳ Tracking started |
 | **Automation**: Time savings | 75-90% for vendor data | 🟢 MCP baseline |
@@ -277,23 +277,84 @@
 
 ---
 
-### Remaining January 2026 Tasks (Mid-Month)
+### Update 6: Source Refresh & Link Maintenance (Jan 11, 2026 - Versions 1.20.1, 1.20.2, 1.20.3)
 
-**Monthly Rolling Update** (6-8 hours):
+**Time Investment**:
+- ⏱️ Health check + automation dashboard: ~15 minutes
+- ⏱️ Broken link fix (Microsoft TechCommunity): ~20 minutes
+- ⏱️ Source refresh (5 critical sources): ~1.5 hours
+- ⏱️ Broken link fixes (Arrow Flight, Trino book, SK Telecom): ~1 hour
+- ⏱️ CHANGELOG updates: ~20 minutes
+- ⏱️ Monthly tracker update: ~15 minutes
+- ⏱️ Git commits/push (3 commits): ~10 minutes
+- **Total: ~3.5 hours** ✅ (Efficient maintenance session)
+
+**Broken Links Fixed** (4 total):
+1. ✅ **Microsoft TechCommunity** (v1.20.1): URL format changed `/blog/` → `/t5/.../ba-p/`
+2. ✅ **Apache Arrow Flight SQL** (v1.20.3): Summit 2024 link (404) → Official Arrow docs
+3. ✅ **Trino Definitive Guide** (v1.20.3): Corrected to 2nd Edition URL (ISBN 9781098137229)
+4. ✅ **SK Telecom Iceberg** (v1.20.3): Medium link (403) → Trino Summit 2022 recap
+
+**Sources Refreshed** (5 hypothesis-critical sources with 2025-2026 data):
+1. **ClickHouse Vectorized Query Execution**
+   - Added: 400M rows/sec, 5× lower compute vs PostgreSQL (2026 benchmarks)
+   - 2026 observability guide validates "sub-second queries on petabytes"
+2. **Apache Iceberg Industry Consensus**
+   - Added: Gartner upgrade to "transformational", V3 spec finalized, streaming-first 2026
+   - 2025 Year in Review confirms open lakehouse maturity
+3. **Kafka Performance Benchmark**
+   - Added: Confluent Cloud 12× faster than self-managed, 1M msg/sec fanout
+   - Kafkorama benchmark: 1.6B messages in 30 minutes
+4. **OCSF Linux Foundation**
+   - Added: 2025-2026 GitHub activity, 80%+ industry support, SentinelOne/AWS adoption
+5. **Databricks TCO Analysis**
+   - Added: 2025 TCO formula, 9× ETL cost advantage, AMN Healthcare counterpoint
+   - Evidence Level upgraded: B → A (independent benchmarks added)
+
+**Files Updated** (across 3 versions):
+- MASTER-BIBLIOGRAPHY.md (9 entries updated)
+- REFERENCES.md (3 entries)
+- published/*.md (4 entries)
+- vendor-landscape/vendor-database.json (4 entries)
+- CHANGELOG.md (3 version entries)
+
+**Quality Metrics**:
+- Evidence Level A: 79% maintained ✅
+- Broken links: 4 fixed (0 remaining from health check sample)
+- Source freshness: 5 critical sources refreshed with 2025-2026 data
+- Databricks TCO upgraded B → A (adds to quality baseline)
+
+**Automation Leverage**:
+- ✅ Health check identified broken links and outdated sources
+- ✅ Automation dashboard confirmed 6/6 readiness checks
+- ✅ Web search enabled rapid source refresh with current data
+
+**Lessons Learned**:
+- ✅ 3.5-hour maintenance session highly efficient
+- ✅ Combining link fixes + source refresh maximizes session value
+- ✅ Health check sampling catches different links each run (good coverage over time)
+- ⚠️ Medium.com links may become unreliable (403 blocks) - prefer primary sources
+
+---
+
+### Remaining January 2026 Tasks (Week 3-4)
+
+**Monthly Rolling Update** (remaining ~2-4 hours):
+- [x] Refresh 5 outdated sources ✅ (completed Jan 11)
+- [x] Fix broken links ✅ (4 fixed Jan 11)
 - [ ] New sources from blog feedback
-- [ ] Community corrections
+- [ ] Community corrections (if any)
 - [ ] Evidence collection for RQ7-RQ10
-- [ ] Refresh 5-10 outdated sources
 
 **Quarterly Deep Dive** (~24 hours):
 - [ ] Schedule expert interviews (Lisa Cao, Jake Thomas)
 - [ ] Conduct expert interviews
 - [ ] Comprehensive hypothesis validation review
-- [ ] Versioned snapshot: Create git tag 2025-Q4-v1.0
+- [x] Versioned snapshot: Create git tag 2025-Q4-v1.0 ✅ (completed Jan 2)
 - [ ] Quarterly synthesis blog post
 - [ ] Evidence Level A quality maintenance (target: 77-79%)
 
-**Total Estimated**: ~30-38 hours (monthly + quarterly)
+**Total Estimated**: ~26-32 hours (remaining monthly + quarterly)
 
 ---
 
@@ -354,13 +415,13 @@
 
 ### Quality (Monthly)
 - **Target**: ≥75% Evidence Level A
-- **Current**: 78% ✅
-- **Trend**: Stable (79% → 78% with emerging tech additions acceptable)
+- **Current**: 79% ✅
+- **Trend**: Stable (78% → 79% with Databricks TCO upgrade B→A)
 
 ### Time Investment (Monthly)
 - **Target**: ≤10 hours/month average
-- **Current**: 7.0 hours/update ✅ (improved from 7.5 hours/update)
-- **Trend**: Variable (4.7-6.1 hours simple/medium, 10.2 hours complex) - successfully balancing
+- **Current**: 6.3 hours/update ✅ (improved from 7.0 hours/update)
+- **Trend**: Variable (3.5-6.5 hours maintenance, 10.2 hours complex research) - successfully balancing
 
 ### Blog Support (Ongoing)
 - **Target**: 4-6× writing speedup sustained
@@ -390,10 +451,10 @@
 
 ### What Needs Improvement ⚠️
 1. **Community engagement tracking**: Need systematic Substack comment monitoring
-2. **Workload balancing**: Mix simple (4.7 hours) and complex (10.2 hours) updates
-3. **Outdated sources**: 32.5% >12 months old (exceeds 20% threshold) - need refresh plan
-4. **Broken link management**: 2 broken links detected - need quarterly validation
-5. **Time tracking granularity**: Track source ID vs documentation vs integration separately
+2. **Workload balancing**: Mix simple (3.5-6.5 hours) and complex (10.2 hours) updates ✅ improving
+3. **Outdated sources**: Improved from 32.5% → ~20% ✅ (5 critical sources refreshed Jan 11)
+4. **Broken link management**: 4 links fixed (Jan 11) - health check sampling working well ✅
+5. **Medium.com reliability**: Some Medium links return 403 - prefer primary sources
 
 ### Risks to Monitor 🔴
 1. **Scope creep**: Creating 15,800-word tracking documents pushes time limits
@@ -405,5 +466,5 @@
 ---
 
 **Maintained By**: Jeremy Wiley
-**Last Updated**: January 3, 2026
-**Next Update**: Mid-January 2026 (monthly rolling update + Q1 2026 quarterly deep dive preparation)
+**Last Updated**: January 11, 2026
+**Next Update**: Late January 2026 (expert interview scheduling + quarterly synthesis)
