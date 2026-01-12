@@ -2156,7 +2156,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Microsoft Azure Machine Learning Team & Research
 **Date**: 2022-2024
-**URL**: https://techcommunity.microsoft.com/blog/fasttrackforazureblog/identifying-drift-in-ml-models-best-practices-for-generating-consistent-reliable/4040531
+**URL**: https://techcommunity.microsoft.com/t5/fasttrack-for-azure/identifying-drift-in-ml-models-best-practices-for-generating/ba-p/4040531
 **Evidence Level**: A (Research + production platform capabilities)
 **Relevance**:
 - ML model maintenance and monitoring

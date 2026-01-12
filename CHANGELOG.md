@@ -7,6 +7,19 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.20.1] - 2026-01-11 - Link Maintenance
+
+### Fixed
+- **Microsoft TechCommunity URL**: Updated from deprecated `/blog/` format to current `/t5/.../ba-p/` format
+  - Affected files: MASTER-BIBLIOGRAPHY.md, REFERENCES.md, published/*.md
+  - Source: "Identifying Drift in ML Models" (Reference [60])
+
+### Notes
+- Netflix TechBlog URL verified as correct (SSL certificate issue is temporary/local, not a broken link)
+- Health check run to verify fixes
+
+---
+
 ## [1.20.0] - 2026-01-03 - January 2026 Research Update: 14 New Sources
 
 ### Added
