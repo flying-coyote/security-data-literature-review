@@ -70,12 +70,15 @@ These tasks require interaction with external parties.
 - XTable production status
 - H-ARCH-03 validation
 - Multi-catalog management patterns
+- **NEW**: AI governance maturity observations (RQ12 - CSA survey context)
 
 **Jake Thomas (Okta)**:
-- Isolation-first architecture validation (RQ7)
+- Isolation-first architecture validation (RQ7-RQ9)
 - DuckDB + Iceberg production details
 - H-EDGE-01 validation
 - Security data volumes
+- **NEW**: Pipeline vs query-based detection economics (RQ13 - primary evidence gap)
+- **NEW**: Agent automation ROI observations (RQ14 - practitioner validation)
 
 ### Community Engagement
 
@@ -101,15 +104,20 @@ These require extended timelines or significant prerequisites.
 | Submission to ACM CSUR / USENIX / IEEE S&P | Manuscript ready | June-July 2026 |
 | Peer review process | Submission accepted | 6-12 months |
 
-### Evidence Collection (Ongoing)
+### Evidence Collection (Ongoing) - Updated January 11, 2026
 
-| Research Area | Current State | Target |
-|---------------|---------------|--------|
-| Isolation-first security (RQ7-RQ10) | 3 case studies | 5+ case studies |
-| LIGER Stack adoption (RQ11) | Initial validation | Production benchmarks |
-| AI Governance maturity (RQ12) | Practitioner consensus | Framework adoption data |
-| Pipeline detection economics (RQ13) | Early evidence | TCO comparisons |
-| Agent automation ROI (RQ14) | Early examples | MTTR metrics |
+| Research Area | Current State | Target | Status |
+|---------------|---------------|--------|--------|
+| Isolation-first security (RQ7-RQ10) | 3 case studies (Netflix, Okta, Huntress) | 5+ case studies | 🟡 Need 2 more |
+| LIGER Stack adoption (RQ11) | ✅ STRONG: Barracuda 75%, HSBC 3×, GitLab <1s, Netflix 5PB/day | Production benchmarks | 🟢 Validated |
+| AI Governance maturity (RQ12) | ✅ STRONG: CSA/Google survey (46% vs 12% by maturity) | Framework adoption data | 🟢 Validated |
+| Pipeline detection economics (RQ13) | Conceptual validation only | TCO comparisons | 🔴 Need data |
+| Agent automation ROI (RQ14) | ✅ STRONG: 74% first-year ROI, 171% avg (Google Cloud) | MTTR metrics | 🟢 Validated |
+
+**January 2026 Validation Summary**:
+- **3 of 5 research areas now have strong validation** (RQ11, RQ12, RQ14)
+- **RQ7-RQ10** (isolation-first): Expert interviews with Jake Thomas will strengthen
+- **RQ13** (detection economics): Primary gap - needs quantitative cost modeling
 
 ### Optional Enhancements
 
