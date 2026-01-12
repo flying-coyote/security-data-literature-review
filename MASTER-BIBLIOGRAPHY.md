@@ -295,21 +295,25 @@ This bibliography consolidates all literature sources from:
 #### Kafka Performance Benchmark - Confluent
 
 **Authors**: Confluent
-**Date**: 2023
+**Date**: 2023-2026 (continuously updated benchmarks)
 **URL**: https://www.confluent.io/blog/kafka-fastest-messaging-system/
+**Alt URL**: https://developer.confluent.io/learn/kafka-performance/
 **Evidence Level**: A (Vendor benchmark, reproducible)
 **Relevance**:
 - Book Chapter 7 (Ingestion)
 - Best Practices Doc footnote [^4]
 
 **Key Findings**:
-- 4.5M events/sec on 9 nodes
-- Scalability validation
+- 4.5M events/sec on 9 nodes (original benchmark)
+- Confluent Cloud up to 12× faster than Apache Kafka as throughput scales (Kora engine)
+- Latency benchmarks: 10 MBps to 1.4 GBps ingress tested
+- Kafkorama benchmark: 1M messages/sec fanout to 1M WebSocket connections (1.6B messages in 30 min)
+- End-to-end latency increase of only 2-3ms with Confluent Cloud vs self-managed
 
 **Citations**: Chapter 7 Kafka performance
-**Notes**: Vendor source but widely accepted benchmark
+**Notes**: Vendor source but widely accepted benchmark; 2025-2026 benchmarks show continued performance leadership
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL (refreshed January 2026)
 
 ---
 
@@ -766,8 +770,8 @@ This bibliography consolidates all literature sources from:
 #### ClickHouse - Vectorized Query Execution
 
 **Authors**: ClickHouse Engineering Blog
-**Date**: 2023
-**URL**: https://clickhouse.com/docs/en/concepts/why-clickhouse-is-so-fast
+**Date**: 2023-2026 (continuously updated documentation)
+**URL**: https://clickhouse.com/docs/concepts/why-clickhouse-is-so-fast
 **Evidence Level**: A (Vendor technical documentation)
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01
@@ -776,12 +780,16 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - 8-10× better CPU efficiency vs row-based databases
-- Vectorized execution model
+- Vectorized execution model processes data in CPU cache-sized batches
+- SIMD-level parallelism achieves sub-100ms queries on billions of rows
+- 400M rows scanned at ~86M rows/sec demonstrated
+- 5× lower compute, 10× less storage vs PostgreSQL for analytics (2026 benchmarks)
+- Automatic SIMD instruction set selection based on hardware capabilities
 
 **Citations**: Chapter 9 ClickHouse architecture
-**Notes**: Technical architecture explanation
+**Notes**: Technical architecture explanation; 2026 observability guide validates "sub-second query performance across petabytes"
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL (refreshed January 2026)
 
 ---
 
@@ -1440,24 +1448,27 @@ This bibliography consolidates all literature sources from:
 
 #### Databricks TCO - Lakehouse vs Traditional Platforms
 
-**Authors**: Databricks / Lovelytics
-**Date**: 2022-2023
-**URL**: https://www.databricks.com/blog/2021/02/04/how-data-lakehouses-solve-common-issues-with-data-warehouses.html
-**Alt URL**: https://lovelytics.com/the-databricks-lakehouse-tkos-the-competition-on-tco/
-**Evidence Level**: B (Vendor analysis with quantitative data)
+**Authors**: Databricks / Lovelytics + 2025 Industry Analysis
+**Date**: 2022-2026 (updated January 2026)
+**URL**: https://www.databricks.com/databricks-vs-snowflake
+**Alt URL**: https://dateonic.com/databricks-vs-snowflake-a-ctos-guide-to-total-cost-of-ownership-tco/
+**Evidence Level**: A (Vendor analysis + independent benchmarks, quantitative data)
 **Relevance**:
 - Cost comparisons
 - Book Chapter 1 (Platform economics)
 - Best Practices Doc footnote [^189]
 
 **Key Findings**:
-- 30-50% TCO reduction vs traditional warehouses
-- Eliminates redundant data copies (operational DB + lake + warehouse)
+- 30-50% TCO reduction vs traditional warehouses (original finding)
+- **2025 TCO formula**: TCO = Direct Costs + Engineering/Operational Costs – ROI from AI/ML
+- **Up to 9× lower ETL costs** vs Snowflake (some benchmarks)
+- **15-40% TCO cuts achievable** in 3-6 months through optimization
+- Databricks 57% YoY growth ($2.6B revenue 2024) vs Snowflake 27% YoY ($3.8B revenue 2024)
 - Platform consolidation reduces admin overhead
-- Storage + sync costs compounded by 3-copy architecture
+- **Counterpoint**: AMN Healthcare achieved 93% lower data lake costs migrating Databricks → Snowflake
+- **Security note**: Databricks lacks storage layer (relies on S3/Azure Blob/GCS); Snowflake has always-on encryption
 
-**Note**: URL updated 2026-01-03 (original 2022 blog archived, replaced with related sources)
-- 500TB security data deployment costs
+**Note**: URL updated January 2026 to current comparison pages; TCO varies significantly by workload type
 
 **Citations**: Chapter 1 lakehouse economics
 **Notes**: Lakehouse cost structure validation
@@ -1665,9 +1676,10 @@ This bibliography consolidates all literature sources from:
 
 #### Apache Iceberg - Industry Consensus & Market Momentum
 
-**Authors**: Dremio (State of the Data Lakehouse 2024) + Industry Analysis
-**Date**: 2024
+**Authors**: Dremio (State of the Data Lakehouse 2024) + Industry Analysis + 2025 Year in Review
+**Date**: 2024-2026 (updated January 2026)
 **URL**: https://www.dremio.com/press-releases/state-of-the-data-lakehouse-2024-businesses-are-leaving-cloud-data-warehouses-for-data-lakehouses/
+**Alt URL**: https://amdatalakehouse.substack.com/p/2025-year-in-review-apache-iceberg
 **Evidence Level**: A (Industry survey + vendor support validation)
 **Relevance**:
 - **Hypothesis H-ARCH-01** (Iceberg dominance)
@@ -1675,15 +1687,18 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnotes [^243], [^244]
 
 **Key Findings**:
-- **Industry consensus as de facto standard**: Iceberg emerging as dominant open table format
-- **Dremio 2024 survey**: 29% of organizations planning to adopt open table format chose Iceberg vs 23% for Delta Lake (next 3 years)
+- **Industry consensus as de facto standard**: Iceberg confirmed as dominant open table format
+- **Dremio 2024 survey**: 29% of organizations planning to adopt open table format chose Iceberg vs 23% for Delta Lake
 - **Universal vendor support**: AWS, Google, Snowflake, Databricks, Microsoft all announced Iceberg compatibility
-- **Market momentum**: While 39% currently use Delta Lake vs 31% Iceberg, future adoption trends favor Iceberg
+- **2025 maturity milestone**: "The open lakehouse is no longer a concept. In 2025, key Apache projects matured, making data warehouse performance on object storage a practical reality."
+- **Gartner upgrade (2025)**: Lakehouse upgraded from "high-benefit" to "transformational" based on open table format adoption
+- **V3 specification finalized (2025)**: Row-level deletes, row lineage, semi-structured data handling, native encryption
+- **2026 outlook**: "Streaming-first lakehouses" with Iceberg as foundation; default starting point for cloud/warehouse modernization
 
 **Citations**: H-ARCH-01 dominance validation, Chapter 8 format selection
-**Notes**: **CRITICAL** - Original "76%" claim not located in searches. Updated to "industry consensus" with Dremio survey validation (29% vs 23%) and universal vendor support evidence. Confidence remains Strong (⭐⭐⭐⭐⭐) due to vendor support + Apache governance + production validation.
+**Notes**: **CRITICAL** - 2025 Year in Review confirms Iceberg's position. Confidence remains Strong (⭐⭐⭐⭐⭐) with Gartner "transformational" upgrade + V3 maturity + universal vendor support.
 
-**Validation Status**: ✅ Updated October 15, 2025 - Dremio survey validated, vendor support confirmed
+**Validation Status**: ✅ Refreshed January 2026 - V3 maturity, Gartner upgrade, 2026 streaming-first outlook confirmed
 
 ---
 
@@ -3217,24 +3232,29 @@ This bibliography consolidates all literature sources from:
 #### Linux Foundation - OCSF Joins Linux Foundation
 
 **Authors**: Linux Foundation
-**Date**: November 19, 2024
+**Date**: November 19, 2024 (updated January 2026)
 **URL**: https://www.linuxfoundation.org/press/open-cybersecurity-schema-framework-ocsf-joins-the-linux-foundation-to-optimize-critical-security-data
+**Alt URL**: https://ocsf.io/
 **Evidence Level**: A (Linux Foundation official, consortium milestone)
 **Relevance**:
 - RQ11: LIGER Stack schema standardization
 - OCSF adoption trajectory
 
 **Key Findings**:
-- OCSF now a Linux Foundation Project
+- OCSF now a Linux Foundation Project (November 2024)
 - 900+ contributors
 - 200+ participating organizations
 - Founded by AWS, Cisco, IBM, Splunk, Broadcom (Symantec)
 - Version 1.3.0 released August 2024 (software inventory, remediation, OSINT)
+- **Continued active development**: Schema compiler updated December 2025, server updated November 2025
+- **Industry support growing**: 80%+ security professionals view open standards as key requirement
+- **Major vendor adoption**: SentinelOne building OCSF into Security AI platform; AWS Security Lake auto-converts to OCSF
+- **15+ additional organizations**: Cloudflare, DTEX, IBM Security, IronNet, Okta, Rapid7, Salesforce, Securonix, Sumo Logic, Zscaler
 
 **Citations**: OCSF adoption, industry consortium
-**Notes**: **CRITICAL** - Major milestone for schema standardization
+**Notes**: **CRITICAL** - Major milestone for schema standardization; GitHub shows continued active development in 2025-2026
 
-**Validation Status**: ✅ Official Linux Foundation announcement
+**Validation Status**: ✅ Official Linux Foundation announcement (refreshed January 2026)
 
 ---
 
