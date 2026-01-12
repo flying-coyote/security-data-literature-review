@@ -201,7 +201,7 @@
               {
                 "id": "trino-definitive-guide",
                 "description": "O'Reilly book: Authoritative Trino reference",
-                "url": "https://www.oreilly.com/library/view/trino-the-definitive/9781098137245/",
+                "url": "https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/",
                 "evidence_tier": "A",
                 "type": "book",
                 "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#trino-definitive-guide"
@@ -329,7 +329,7 @@
           "type": "book",
           "capability_context": "query_performance",
           "last_updated": "2025-10-23T07:28:42.137843+00:00",
-          "url": "https://www.oreilly.com/library/view/trino-the-definitive/9781098137245/"
+          "url": "https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/"
         },
         {
           "id": "trino-federation-trino-connectors-docs",
@@ -710,7 +710,7 @@
               {
                 "id": "sk-telecom-iceberg-performance",
                 "description": "SK Telecom production: 97% query time reduction, 52.7TB processed in 3.39 seconds",
-                "url": "https://medium.com/sk-telecom-tech-blog/apache-iceberg-performance-tuning-for-querying-52tb-data-in-3-39-seconds-af52bf01e0b0",
+                "url": "https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html",
                 "evidence_tier": "A",
                 "type": "production_deployment",
                 "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#apache-iceberg-performance-tuning-sk-telecom"
@@ -872,7 +872,7 @@
           "type": "production_deployment",
           "capability_context": "production_scale_performance",
           "last_updated": "2025-10-23T07:28:42.137884+00:00",
-          "url": "https://medium.com/sk-telecom-tech-blog/apache-iceberg-performance-tuning-for-querying-52tb-data-in-3-39-seconds-af52bf01e0b0"
+          "url": "https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html"
         },
         {
           "id": "apache-iceberg-production_scale_performance-netflix-iceberg-architecture",

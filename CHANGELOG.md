@@ -7,6 +7,30 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.20.3] - 2026-01-11 - Fix 3 Additional Broken Links
+
+### Fixed
+- **Apache Arrow Flight SQL** (Reference [6]): Arrow Summit 2024 link (404) → Official Apache Arrow documentation
+  - New URL: https://arrow.apache.org/docs/format/Flight.html
+  - Added 2025 ADBC v17 release information
+
+- **Trino: The Definitive Guide** (O'Reilly): Corrected to 2nd Edition URL
+  - New URL: https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/
+  - Added ISBN and 2nd Edition coverage details (Kubernetes, Iceberg/Delta connectors)
+
+- **SK Telecom Iceberg Performance** (Reference [71]): Medium link (403 blocked) → Trino Summit 2022 recap
+  - New URL: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
+  - Added presentation slides link, additional performance findings
+
+### Files Updated
+- MASTER-BIBLIOGRAPHY.md (3 entries + 1 duplicate)
+- REFERENCES.md (2 entries)
+- published/modern-data-architecture-for-cybersecurity-2025-10-22.md (2 entries)
+- published/COMPLETE-DRAFT-2025-10-22.md (2 entries)
+- vendor-landscape/vendor-database.json (2 entries)
+
+---
+
 ## [1.20.2] - 2026-01-11 - Source Refresh: 5 Critical Sources Updated
 
 ### Changed

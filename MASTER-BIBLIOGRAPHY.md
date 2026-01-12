@@ -51,9 +51,10 @@ This bibliography consolidates all literature sources from:
 
 #### Apache Iceberg Performance Tuning - SK Telecom
 
-**Authors**: SK Telecom Tech Blog
-**Date**: 2024
-**URL**: https://medium.com/sk-telecom-tech-blog/apache-iceberg-performance-tuning-for-querying-52tb-data-in-3-39-seconds-af52bf01e0b0
+**Authors**: SK Telecom Tech Blog (Jaechang Song, Jennifer Oh)
+**Date**: 2022-2024
+**URL**: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
+**Alt URL**: https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf (presentation slides)
 **Evidence Level**: A (Production deployment, quantitative benchmarks)
 **Relevance**:
 - Hypothesis H-ARCH-01 (Iceberg dominance)
@@ -64,11 +65,14 @@ This bibliography consolidates all literature sources from:
 - 97% query time reduction with Iceberg optimizations
 - Processed 52.7TB in 3.39 seconds
 - Production validation at scale
+- Input data reduced "on the order of hundreds, down to under ten gigabytes"
+- Query planning optimized to 70ms at optimal partition configuration
+- Metadata indexing and snapshot isolation key to performance gains
 
 **Citations**: Chapter 8 performance benchmarks
-**Notes**: High-credibility source, production deployment, quantitative data
+**Notes**: High-credibility source, production deployment, quantitative data; Medium URL returns 403, replaced with Trino Summit recap
 
-**Validation Status**: ✅ Active URL, 2024 data still relevant
+**Validation Status**: ✅ Updated January 2026 - Trino blog recap (Medium link blocked)
 
 ---
 
@@ -127,8 +131,9 @@ This bibliography consolidates all literature sources from:
 #### Trino: The Definitive Guide (O'Reilly Book)
 
 **Authors**: Matt Fuller, Manfred Moser, Martin Traverso
-**Date**: 2021 (published), updated 2023
-**URL**: https://www.oreilly.com/library/view/trino-the-definitive/9781098137245/
+**Date**: October 2022 (2nd Edition)
+**URL**: https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/
+**Alt URL**: https://trino.io/trino-the-definitive-guide.html
 **Evidence Level**: A (Authoritative technical book, O'Reilly publication)
 **Relevance**:
 - Blog post: "Starburst vs Dremio vs AWS Athena"
@@ -140,11 +145,12 @@ This bibliography consolidates all literature sources from:
 - Query optimization techniques
 - Federation patterns for security data
 - Production deployment best practices
+- 2nd Edition covers: Kubernetes deployment (Helm), Iceberg/Delta Lake connectors, fault-tolerant execution, Java 17
 
 **Citations**: Blog query engine deep-dive, Chapter 9 Trino fundamentals
-**Notes**: **CRITICAL** - Authoritative Trino reference, Matt Fuller = Starburst co-founder
+**Notes**: **CRITICAL** - Authoritative Trino reference, Matt Fuller = Starburst co-founder; ISBN 978-1-098-13723-6
 
-**Validation Status**: ✅ Active URL (O'Reilly publication)
+**Validation Status**: ✅ Updated January 2026 - Corrected to 2nd Edition URL
 
 ---
 
@@ -1090,10 +1096,11 @@ This bibliography consolidates all literature sources from:
 
 #### Apache Arrow Flight SQL - High-Performance Query Connectivity
 
-**Authors**: Arrow Summit
-**Date**: 2024
-**URL**: https://arrow.apache.org/summit/2024/sessions/high-performance-analytics-with-flight-sql
-**Evidence Level**: A (Benchmark testing, production validation)
+**Authors**: Apache Arrow Community
+**Date**: 2022-2025 (ongoing development)
+**URL**: https://arrow.apache.org/docs/format/Flight.html
+**Alt URL**: https://arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/
+**Evidence Level**: A (Official documentation, benchmark testing, production validation)
 **Relevance**:
 - Emerging Technologies section
 - Book Chapter 10 (Integration patterns)
@@ -1101,13 +1108,15 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - 20× faster than JDBC/ODBC for query result retrieval
-- Columnar data format eliminates row-based serialization overhead
-- Production validation with ClickHouse integration
+- Columnar data format eliminates row-based serialization overhead (60-90% of transfer time saved)
+- Production validation with ClickHouse, DuckDB, Dremio, StarRocks integrations
+- Zero-copy transmission with Arrow in-memory columnar format
+- ADBC libraries v17 released March 2025 (18 resolved issues, 13 contributors)
 
 **Citations**: Chapter 10 federated query performance
-**Notes**: Critical for multi-engine security architectures
+**Notes**: Critical for multi-engine security architectures; original Summit 2024 link archived, replaced with official docs
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Updated January 2026 - Official Apache Arrow documentation
 
 ---
 
@@ -1823,8 +1832,8 @@ This bibliography consolidates all literature sources from:
 #### SK Telecom - Iceberg Performance Validation
 
 **Authors**: SK Telecom (duplicate entry for cross-reference)
-**Date**: 2024
-**URL**: https://medium.com/sk-telecom-tech-blog/apache-iceberg-performance-tuning-for-querying-52tb-data-in-3-39-seconds-af52bf01e0b0
+**Date**: 2022-2024
+**URL**: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
 **Evidence Level**: A (Production deployment)
 **Relevance**:
 - Hypothesis H-ARCH-01 (Performance advantage)
