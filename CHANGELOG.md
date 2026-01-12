@@ -7,6 +7,38 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.20.2] - 2026-01-11 - Source Refresh: 5 Critical Sources Updated
+
+### Changed
+- **Refreshed 5 hypothesis-critical sources** with 2025-2026 data:
+
+1. **ClickHouse Vectorized Query Execution**
+   - Added: 400M rows/sec at 86M rows/sec benchmark, 5× lower compute vs PostgreSQL (2026)
+   - Source: Continuous documentation updates + 2026 observability guide
+
+2. **Apache Iceberg Industry Consensus**
+   - Added: Gartner upgrade to "transformational", V3 specification finalized, 2026 streaming-first outlook
+   - Source: 2025 Year in Review (Alex Merced/Dremio)
+
+3. **Kafka Performance Benchmark**
+   - Added: Confluent Cloud 12× faster than self-managed, 1M msg/sec fanout benchmark
+   - Source: Kafkorama benchmark, Confluent developer portal
+
+4. **OCSF Linux Foundation**
+   - Added: Continued 2025-2026 GitHub development, 80%+ industry support, SentinelOne/AWS adoption
+   - Source: OCSF GitHub, vendor announcements
+
+5. **Databricks TCO Analysis**
+   - Added: 2025 TCO formula, 9× ETL cost advantage claim, AMN Healthcare counterpoint (93% savings switching away)
+   - Evidence Level upgraded: B → A (independent benchmarks added)
+
+### Impact
+- Hypothesis validation strengthened with 2025-2026 evidence
+- All 5 sources now have "refreshed January 2026" status
+- No changes to hypothesis confidence levels (already Strong)
+
+---
+
 ## [1.20.1] - 2026-01-11 - Link Maintenance
 
 ### Fixed
