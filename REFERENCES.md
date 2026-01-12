@@ -127,7 +127,7 @@
 
 [59] Microsoft Azure Blog, "Processing Trillions of Events per Day with Apache Kafka on Azure," 2024. [Online]. Available: https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/
 
-[60] Microsoft Azure Machine Learning Team, "Identifying Drift in ML Models," Microsoft Tech Community, 2024. [Online]. Available: https://techcommunity.microsoft.com/blog/fasttrackforazureblog/identifying-drift-in-ml-models-best-practices-for-generating-consistent-reliable/4040531
+[60] Microsoft Azure Machine Learning Team, "Identifying Drift in ML Models," Microsoft Tech Community, 2024. [Online]. Available: https://techcommunity.microsoft.com/t5/fasttrack-for-azure/identifying-drift-in-ml-models-best-practices-for-generating/ba-p/4040531
 
 [61] Microsoft Learn, "Microsoft Purview - Security Data Retention," 2024. [Online]. Available: https://learn.microsoft.com/en-us/purview/retention
 
