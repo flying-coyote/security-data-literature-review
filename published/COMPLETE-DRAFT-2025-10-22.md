@@ -963,7 +963,7 @@ Shows:
 
 [5] Apache Arrow Community, "Arrow Powered By," Apache Arrow, 2023-2024. [Online]. Available: https://arrow.apache.org/powered_by/
 
-[6] Apache Arrow Summit, "High-Performance Analytics with Flight SQL," Arrow Summit 2024. [Online]. Available: https://arrow.apache.org/summit/2024/sessions/high-performance-analytics-with-flight-sql
+[6] Apache Arrow Community, "Arrow Flight RPC," Apache Arrow Documentation, 2022-2025. [Online]. Available: https://arrow.apache.org/docs/format/Flight.html
 
 [7] Apache Flink Documentation, "Checkpointing," Apache Flink, 2024. [Online]. Available: https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/fault-tolerance/checkpointing/
 
@@ -1093,7 +1093,7 @@ Shows:
 
 [70] SANS Institute, "Security Analytics Implementation Timelines," SANS Reading Room, 2023.
 
-[71] SK Telecom Tech Blog, "Apache Iceberg Performance Tuning for Querying 52TB Data in 3.39 Seconds," Medium, 2024. [Online]. Available: https://medium.com/sk-telecom-tech-blog/apache-iceberg-performance-tuning-for-querying-52tb-data-in-3-39-seconds-af52bf01e0b0
+[71] SK Telecom Tech Blog, "Journey to Iceberg with Trino," Trino Summit 2022, Dec. 2022. [Online]. Available: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
 
 [72] Starburst Data, "AWS Athena Integration Guide," 2024. [Online]. Available: https://www.starburst.io/platform/starburst-enterprise/aws-athena/
 
