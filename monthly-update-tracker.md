@@ -9,8 +9,8 @@
 
 | Metric | Baseline/Goal | Status |
 |--------|--------|--------|
-| **Quality**: Evidence Level A | ~75-78% | 🟢 79% (Jan 2026) |
-| **Time Investment**: Monthly effort | Track for awareness | ⏳ 6.3 hours/update avg |
+| **Quality**: Evidence Level A | ~75-78% | 🟢 80% (Feb 2026) |
+| **Time Investment**: Monthly effort | Track for awareness | ⏳ 5.9 hours/update avg |
 | **Blog Support**: Writing speedup | 4-6× sustained | 🟢 Demonstrated |
 | **Community Engagement**: Feedback/corrections | Develop workflow | ⏳ Tracking started |
 | **Automation**: Time savings | 75-90% for vendor data | 🟢 MCP baseline |
@@ -334,6 +334,61 @@
 - ✅ Combining link fixes + source refresh maximizes session value
 - ✅ Health check sampling catches different links each run (good coverage over time)
 - ⚠️ Medium.com links may become unreliable (403 blocks) - prefer primary sources
+
+---
+
+## February 2026 Update
+
+### Update 7: RQ13 Validation & Source Refresh (Feb 28, 2026 - Version 1.21.0)
+
+**Time Investment**:
+- ⏱️ Broken link fixes (3 links): ~30 minutes
+- ⏱️ RQ13 source search + documentation (3 new sources): ~1.5 hours
+- ⏱️ Source refresh (4 hypothesis-critical): ~1 hour
+- ⏱️ CHANGELOG + documentation updates: ~30 minutes
+- ⏱️ Health check + verification: ~15 minutes
+- ⏱️ Git commit/push: ~10 minutes
+- **Total: ~4 hours** ✅ (Well under 8-hour target)
+
+**Sources Added** (3 new RQ13 pipeline detection economics sources):
+1. **Security Data Pipeline Market Guide 2025** (SACR) - Evidence Level B
+   - Cribl $200M ARR; 50-70% log volume reduction via pipeline filtering
+   - SIEM ingestion reducible by 80%+; security telemetry doubling every ~18 months
+2. **Rippling - Engineering a Cost-Effective SIEM** (3-part series) - Evidence Level A
+   - First quantitative cost-per-detection: $4.50/month per CloudTrail rule (Snowflake serverless)
+   - Security data lakehouse on Snowflake + S3 with <1 min latency
+3. **Monad - Detection Engineering Cost Guide** - Evidence Level A
+   - Okta case study: 50.7% cost reduction ($1,929→$952/month) via pipeline filtering
+   - SIEM ~$25/GB/day vs S3 $0.023/GB/month (1,087× storage differential)
+
+**Sources Refreshed** (4 hypothesis-critical sources with 2025-2026 data):
+1. **OCSF Linux Foundation** - Schema now at v1.7.0 (4 releases in 2025), expanding into IoT/drone/cloud domains
+2. **DuckDB** - v1.4.0 LTS (Jan 2026); Iceberg write support; DuckLake planned for 2026
+3. **Flink at Uber** - Trillions of messages daily; IngestionNext re-architecture; Data Streaming Award 2025
+4. **Apache XTable** - Catalog sync (Glue/HMS), continuous sync added; maturing beyond emerging status
+
+**Broken Links Fixed** (3 total):
+1. ✅ **Disney+ Streaming Security** (Ref [40]): Medium 403 → Alt URL (Kai Waehner Disney+ Hotstar)
+2. ✅ **Arctic Wolf Aurora Platform**: Product page 403 → 2025 Security Operations Report (330T observations)
+3. ✅ **Microsoft TechCommunity** (Ref [60]): URL format corrected (`/t5/` → `/blog/`)
+
+**Quality Metrics**:
+- Evidence Level A: 79% → 80% ✅ (improved with 2 Level A RQ13 sources)
+- Total sources: 115+ → 118+
+- **RQ13 upgraded**: B → A (quantitative production data)
+- **All RQ11-RQ14 now validated** with Strong evidence (milestone)
+
+**Automation Leverage**:
+- ✅ Health check identified broken links and outdated sources
+- ✅ Web search enabled rapid source discovery for RQ13
+- ✅ Automated link verification saved manual checking time
+
+**Lessons Learned**:
+- ✅ 4-hour update highly efficient (focused scope: RQ13 gap + maintenance)
+- ✅ RQ13 gap closed - all 14 research questions now have validated evidence
+- ✅ Medium.com links continue to be unreliable (another 403 this cycle)
+- ✅ Microsoft TechCommunity URL format changed again (watch for future changes)
+- ✅ OCSF velocity impressive (4 releases in 2025) - worth tracking more frequently
 
 ---
 

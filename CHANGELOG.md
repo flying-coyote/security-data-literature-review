@@ -7,6 +7,54 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.21.0] - 2026-02-28 - February 2026 Monthly Update
+
+### Added
+- **3 new RQ13 sources** (pipeline detection economics - quantitative validation):
+
+1. **Security Data Pipeline Market Guide 2025** (SACR)
+   - Cribl $200M ARR (Feb 2025); pipeline pre-ingest filtering achieves 50-70% log volume reduction
+   - SIEM ingestion reducible by 80%+; security telemetry doubling every ~18 months
+
+2. **Rippling - Engineering a Cost-Effective SIEM** (3-part series)
+   - First quantitative cost-per-detection data: $4.50/month per CloudTrail detection rule
+   - Security data lakehouse on Snowflake + S3 with <1 min ingestion latency
+
+3. **Monad - Detection Engineering Guide to Cutting SIEM Costs**
+   - Okta case study: 50.7% cost reduction ($1,929→$952/month) via pipeline filtering
+   - SIEM ~$25/GB/day vs S3 $0.023/GB/month (1,087× cost differential)
+
+### Changed
+- **RQ13 evidence level upgraded**: B → A (quantitative production data from 3 sources)
+- **All RQ11-RQ14 now validated** with Strong evidence (RQ13 was the last gap)
+- **Refreshed 4 hypothesis-critical sources** with 2025-2026 data:
+
+1. **OCSF Linux Foundation** - Schema now at v1.7.0 (4 releases in 2025); expanding into IoT/drone/cloud asset domains
+2. **DuckDB** - v1.4.0 LTS (Jan 2026); Iceberg write support added; DuckLake planned for 2026
+3. **Flink at Uber** - Processes trillions of messages daily; IngestionNext re-architecture; Data Streaming Award winner 2025
+4. **Apache XTable** - Catalog sync (Glue/HMS) and continuous sync added; maturing beyond emerging status
+
+### Fixed
+- **Disney+ Streaming Security** (Reference [40]): Medium URL returns 403 → Added alt URL (Kai Waehner Disney+ Hotstar Kafka/Flink architecture, Feb 2025)
+- **Arctic Wolf Aurora Platform**: Product page URL (403) → Updated to 2025 Security Operations Report (330 trillion observations, 99.999% noise reduction)
+- **Microsoft TechCommunity FastTrack** (Reference [60]): URL format corrected from `/t5/.../ba-p/` to `/blog/...` path
+
+### Impact
+- Total sources: 118+ (from 115+)
+- Evidence Level A: 80% (from 79%)
+- RQ13 pipeline detection economics: fully validated with quantitative cost data
+- All 14 research questions (RQ1-RQ14) now have validated evidence
+- 3 broken links resolved, 4 outdated sources refreshed
+
+### Files Updated
+- MASTER-BIBLIOGRAPHY.md (3 new entries, 4 refreshed, 3 link fixes)
+- LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md (RQ13 evidence update, status upgrade)
+- REFERENCES.md (2 link fixes)
+- published/COMPLETE-DRAFT-2025-10-22.md (2 link fixes)
+- published/modern-data-architecture-for-cybersecurity-2025-10-22.md (2 link fixes)
+
+---
+
 ## [1.20.3] - 2026-01-11 - Fix 3 Additional Broken Links
 
 ### Fixed

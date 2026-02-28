@@ -1031,7 +1031,7 @@ Shows:
 
 [39] DevOps Research and Assessment (DORA), "2024 State of DevOps Report," 2024. [Online]. Available: https://www.devops-research.com/research.html
 
-[40] Disney Streaming Tech Blog, "How Disney+ Built Scalable Real-Time Security Analytics," Medium, 2023. [Online]. Available: https://medium.com/disney-streaming/how-disney-built-scalable-real-time-security-analytics-1112d0ec7c48
+[40] Disney Streaming Tech Blog, "How Disney+ Built Scalable Real-Time Security Analytics," Medium, 2023 (archived - Medium 403). [Online]. Alt: https://www.kai-waehner.de/blog/2025/02/28/data-streaming-with-apache-kafka-and-flink-in-the-media-industry-disney-hotstar-and-jiocinema/
 
 [41] Dremio Corporation, "Data Lakehouse Architecture Guide," 2024. [Online]. Available: https://www.dremio.com/blog/what-is-a-data-lakehouse/
 
@@ -1071,7 +1071,7 @@ Shows:
 
 [59] Microsoft Azure Blog, "Processing Trillions of Events per Day with Apache Kafka on Azure," 2024. [Online]. Available: https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/
 
-[60] Microsoft Azure Machine Learning Team, "Identifying Drift in ML Models," Microsoft Tech Community, 2024. [Online]. Available: https://techcommunity.microsoft.com/t5/fasttrack-for-azure/identifying-drift-in-ml-models-best-practices-for-generating/ba-p/4040531
+[60] Microsoft Azure Machine Learning Team, "Identifying Drift in ML Models," Microsoft Tech Community, 2024. [Online]. Available: https://techcommunity.microsoft.com/blog/fasttrackforazureblog/identifying-drift-in-ml-models-best-practices-for-generating-consistent-reliable/4040531
 
 [61] Microsoft Learn, "Microsoft Purview - Security Data Retention," 2024. [Online]. Available: https://learn.microsoft.com/en-us/purview/retention
 
