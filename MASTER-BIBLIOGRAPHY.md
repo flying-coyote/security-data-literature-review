@@ -1,12 +1,12 @@
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
-**Last Updated**: January 3, 2026 (Version 1.20.0 - January 2026 Research Update)
-**Last Reviewed**: January 3, 2026
-**Total Sources**: 115+ sources documented (added 14 sources from January 2026 research)
+**Last Updated**: February 28, 2026 (Version 1.21.0 - February 2026 Monthly Update)
+**Last Reviewed**: February 28, 2026
+**Total Sources**: 118+ sources documented (added 3 RQ13 sources, refreshed 4 sources)
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 79% Evidence Level A (improved with CSA/Google governance study, production deployments)
-**Link Status**: 2 broken links identified and documented (Gartner paywall expected, trinosummit.io defunct)
+**Evidence Quality**: 80% Evidence Level A (RQ13 pipeline economics validated with quantitative data)
+**Link Status**: 3 broken links fixed (Disney+ Medium 403, Arctic Wolf 403, Microsoft TechCommunity 400)
 
 ---
 
@@ -349,8 +349,9 @@ This bibliography consolidates all literature sources from:
 #### Flink at Uber - Real-Time Security Analytics
 
 **Authors**: Uber Engineering
-**Date**: 2023
+**Date**: 2023 (updated February 2026)
 **URL**: https://eng.uber.com/real-time-security-analytics-with-apache-flink/
+**Alt URL**: https://current.confluent.io/post-conference-videos-2025/inside-ubers-large-scale-real-time-analytics-platform-bng25
 **Evidence Level**: A (Production security deployment)
 **Relevance**:
 - Book Chapter 7 (Ingestion)
@@ -360,11 +361,17 @@ This bibliography consolidates all literature sources from:
 - Unified streaming approach for security
 - Reduced detection latency
 - Operational overhead reduction
+- **2025 update**: Processes trillions of messages and dozens of PB daily via Kafka+Flink
+- **IngestionNext**: Re-architected ingestion on Flink for fresher data at lower cost
+- **FlinkSQL**: SQL layer on Flink making stream processing accessible to analysts
+- Serves 10s of thousands of queries/sec, millions of writes/sec
+- Petabyte-scale Pinot datasets for real-time analytics
+- **Data Streaming Award winner** (Confluent Current 2025)
 
-**Citations**: Chapter 7 Flink for security
-**Notes**: Directly relevant - security use case at scale
+**Citations**: Chapter 7 Flink for security, streaming architecture at extreme scale
+**Notes**: Directly relevant - security use case at scale; 2025 updates validate continued Flink investment at Uber; IngestionNext represents streaming-first migration pattern
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Refreshed February 2026 - Confluent Current 2025 presentation
 
 ---
 
@@ -372,7 +379,8 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Disney Streaming Tech Blog
 **Date**: 2023
-**URL**: https://medium.com/disney-streaming/how-disney-built-scalable-real-time-security-analytics-1112d0ec7c48
+**URL**: https://medium.com/disney-streaming/how-disney-built-scalable-real-time-security-analytics-1112d0ec7c48 (archived - Medium 403)
+**Alt URL**: https://www.kai-waehner.de/blog/2025/02/28/data-streaming-with-apache-kafka-and-flink-in-the-media-industry-disney-hotstar-and-jiocinema/ (Disney+ Hotstar Kafka/Flink architecture)
 **Evidence Level**: A (Production security deployment)
 **Relevance**:
 - Book Chapter 7 (Ingestion)
@@ -381,11 +389,13 @@ This bibliography consolidates all literature sources from:
 **Key Findings**:
 - Unified processing logic for security
 - Development efficiency gains
+- Disney+ Hotstar: 15 Kafka Connect clusters, 2,000+ connectors, millions of interactions/sec
+- PII masking and schema validation via Single Message Transforms
 
 **Citations**: Chapter 7 streaming security patterns
-**Notes**: Enterprise security streaming validation
+**Notes**: Original Medium article returns 403; Disney+ Hotstar Kafka/Flink case study (Kai Waehner, Feb 2025) validates same streaming security patterns at scale
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ⚠️ Original URL archived (Medium 403), alt URL active (February 2026)
 
 ---
 
@@ -1075,22 +1085,29 @@ This bibliography consolidates all literature sources from:
 
 #### Apache XTable - Format Interoperability
 
-**Authors**: Apache Software Foundation
-**Date**: 2023
-**URL**: https://xtable.apache.org/docs/overview/
-**Evidence Level**: B (Emerging standard)
+**Authors**: Apache Software Foundation (Incubating)
+**Date**: 2023-2025 (updated February 2026)
+**URL**: https://xtable.apache.org/
+**Alt URL**: https://github.com/apache/incubator-xtable
+**Evidence Level**: B (Apache Incubator project, active development)
 **Relevance**:
 - Book Chapter 8 (Table formats)
 - Best Practices Doc footnotes [^140], [^146]
 
 **Key Findings**:
-- Table format interoperability layer
-- Reduces vendor lock-in risk
+- Table format interoperability layer (renamed from OneTable)
+- Omni-directional metadata translation: Iceberg ↔ Delta ↔ Hudi ↔ Paimon
+- Not a new format - reads existing metadata, writes metadata for other formats
+- **2025 updates**: CatalogSyncClient/CatalogSync interfaces added
+- Glue and HMS catalog sync for all three formats
+- Continuous sync via RunSync for real-time interop
+- Restore/rollback sync during conversion
+- Active development with Iceberg version support in pull requests
 
-**Citations**: Chapter 8 format portability
-**Notes**: Emerging - adoption unclear
+**Citations**: Chapter 8 format portability, catalog interoperability
+**Notes**: Maturing beyond "emerging" - catalog sync and continuous sync features show production readiness trajectory; reduces vendor lock-in for security data lake implementations
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Refreshed February 2026 - Active Apache Incubator project
 
 ---
 
@@ -2180,7 +2197,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Microsoft Azure Machine Learning Team & Research
 **Date**: 2022-2024
-**URL**: https://techcommunity.microsoft.com/t5/fasttrack-for-azure/identifying-drift-in-ml-models-best-practices-for-generating/ba-p/4040531
+**URL**: https://techcommunity.microsoft.com/blog/fasttrackforazureblog/identifying-drift-in-ml-models-best-practices-for-generating-consistent-reliable/4040531
 **Evidence Level**: A (Research + production platform capabilities)
 **Relevance**:
 - ML model maintenance and monitoring
@@ -2197,7 +2214,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Advanced analytics, model maintenance, MLOps
 **Notes**: Security-specific drift characteristics well-documented in both Microsoft and academic research
 
-**Validation Status**: ✅ Active URL (verified Microsoft Tech Community, 2024)
+**Validation Status**: ✅ Updated February 2026 - URL format corrected to /blog/ path
 
 ---
 
@@ -2474,6 +2491,89 @@ This bibliography consolidates all literature sources from:
 **Notes**: Validates RQ13 pipeline vs query detection economics hypothesis
 
 **Validation Status**: ✅ Production deployments documented
+
+---
+
+#### Security Data Pipeline Market Guide 2025
+
+**Authors**: Software Analyst Cyber Research (SACR)
+**Date**: February 2025
+**URL**: https://softwareanalyst.substack.com/p/market-guide-2025-the-rise-of-security
+**Evidence Level**: B (Industry analyst report with vendor data)
+**Relevance**:
+- RQ13: Pipeline vs query detection economics
+- Security data pipeline market sizing
+- SIEM cost pressure quantification
+
+**Key Findings**:
+- Cribl crossed $200M ARR in Feb 2025 (one of fastest to $100M ARR behind only Wiz, HashiCorp, Snowflake)
+- Pipeline pre-ingest filtering achieves 50-70% log volume reduction without losing visibility
+- SIEM ingestion volume reducible by 80%+ with pipeline processing
+- Security telemetry doubling every ~18 months; organizations use 40-50+ security tools
+- SIEMs evolving from monolithic to modular "query layer" with separate storage
+- Pipelines becoming "control plane" of modern SOC architecture
+- Traditional volume-based SIEM pricing "economically unsustainable"
+
+**Citations**: Pipeline detection economics, SIEM cost reduction, market evolution
+**Notes**: Validates RQ13 hypothesis - quantifies why pipeline-first approach wins economically; Cribl's $200M ARR validates market demand; Tier B because analyst report (not peer-reviewed) but well-sourced with vendor data
+
+**Validation Status**: ✅ Added February 2026
+
+---
+
+#### Rippling - Engineering a Cost-Effective SIEM (3-Part Series)
+
+**Authors**: Rippling Security Engineering Team
+**Date**: 2025
+**URL**: https://www.rippling.com/blog/engineering-siem-part-3
+**Alt URLs**: https://www.rippling.com/blog/engineering-siem-part-1, https://www.rippling.com/blog/engineering-siem-part-2
+**Evidence Level**: A (Production deployment with quantitative cost data)
+**Relevance**:
+- RQ13: Pipeline vs query detection economics
+- Security data lakehouse architecture
+- Cost-per-detection quantification
+
+**Key Findings**:
+- CloudTrail detection cost: $4.50/month (1.8 Snowflake credits) per detection rule
+- Detection scans 50-70 MB every 5 minutes via log clustering optimization
+- 75GB/month log ingestion: $31-34/month (Snowpipe + AWS combined)
+- Ingestion latency <1 minute via Snowpipe near-real-time delivery
+- Serverless detection eliminates pre-provisioned warehouse overhead
+- Adding a new detection = "nominal expense increase" via serverless architecture
+- Search optimization reduces query time by "several dozen times" on VARIANT columns
+- Security data lakehouse on Snowflake + S3 for extended retention
+
+**Citations**: Detection cost modeling, serverless SIEM architecture, pipeline economics
+**Notes**: First quantitative cost-per-detection data found for RQ13; validates query-based approach with Snowflake serverless can be cost-effective at $4.50/month/rule; counterpoint to pipeline-first hypothesis
+
+**Validation Status**: ✅ Added February 2026
+
+---
+
+#### Monad - Detection Engineering Guide to Cutting SIEM Costs
+
+**Authors**: Monad Security Team
+**Date**: 2025
+**URL**: https://www.monad.com/blog/a-detection-engineers-guide-to-cutting-siem-costs
+**Evidence Level**: A (Quantitative cost analysis with production data)
+**Relevance**:
+- RQ13: Pipeline vs query detection economics
+- SIEM cost optimization
+- Data pipeline filtering economics
+
+**Key Findings**:
+- Okta case study: 50.7% cost reduction ($1,929→$952/month) via pipeline filtering
+- Annual savings of $11,721 per 1M daily Okta events
+- Event size reduction: 2,570→1,545 bytes (40% field reduction)
+- 180,000 low-value events/day filtered from SIEM (18% of 1M total)
+- SIEM ingestion: ~$25/GB/day vs S3 archival: $0.023/GB/month (1,087× cost differential)
+- 3-year savings: $35,181 per log source optimized
+- Pipeline filtering preserves investigation capability via S3 archival
+
+**Citations**: Detection engineering cost optimization, pipeline filtering ROI
+**Notes**: Validates RQ13 hybrid approach - pipeline filtering + tiered storage achieves 50%+ cost reduction per log source while maintaining compliance; quantitative production data strengthens evidence
+
+**Validation Status**: ✅ Added February 2026
 
 ---
 
@@ -3241,7 +3341,7 @@ This bibliography consolidates all literature sources from:
 #### Linux Foundation - OCSF Joins Linux Foundation
 
 **Authors**: Linux Foundation
-**Date**: November 19, 2024 (updated January 2026)
+**Date**: November 19, 2024 (updated February 2026)
 **URL**: https://www.linuxfoundation.org/press/open-cybersecurity-schema-framework-ocsf-joins-the-linux-foundation-to-optimize-critical-security-data
 **Alt URL**: https://ocsf.io/
 **Evidence Level**: A (Linux Foundation official, consortium milestone)
@@ -3254,16 +3354,19 @@ This bibliography consolidates all literature sources from:
 - 900+ contributors
 - 200+ participating organizations
 - Founded by AWS, Cisco, IBM, Splunk, Broadcom (Symantec)
-- Version 1.3.0 released August 2024 (software inventory, remediation, OSINT)
-- **Continued active development**: Schema compiler updated December 2025, server updated November 2025
+- **Schema velocity**: 3 releases in 2025 alone (v1.5.0 Apr, v1.6.0 Aug, v1.7.0 Nov)
+- **v1.7.0** (Nov 2025): Peripheral Activity class, function invocation objects, Windows extensions
+- **v1.6.0**: IAM Analysis Finding class, programmatic credential objects
+- **v1.5.0**: Application Security Posture Finding, live evidence, malware scan objects
+- **v1.4.0** (2025): Unmanned Systems category (drone/ADS-B), Cloud Resource Inventory Info class, 140+ net-new changes
 - **Industry support growing**: 80%+ security professionals view open standards as key requirement
 - **Major vendor adoption**: SentinelOne building OCSF into Security AI platform; AWS Security Lake auto-converts to OCSF
 - **15+ additional organizations**: Cloudflare, DTEX, IBM Security, IronNet, Okta, Rapid7, Salesforce, Securonix, Sumo Logic, Zscaler
 
-**Citations**: OCSF adoption, industry consortium
-**Notes**: **CRITICAL** - Major milestone for schema standardization; GitHub shows continued active development in 2025-2026
+**Citations**: OCSF adoption, industry consortium, schema evolution velocity
+**Notes**: **CRITICAL** - 4 schema releases in 2025 demonstrates rapid evolution; now at v1.7.0 (up from v1.3.0 in Aug 2024); expanding beyond traditional security into IoT/drone/cloud asset domains
 
-**Validation Status**: ✅ Official Linux Foundation announcement (refreshed January 2026)
+**Validation Status**: ✅ Refreshed February 2026 - v1.7.0 current, 3 releases in 2025
 
 ---
 
@@ -3396,33 +3499,36 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Arctic Wolf
 **Date**: 2025
-**URL**: https://arcticwolf.com/security-operations-platform/
+**URL**: https://arcticwolf.com/resources/press-releases/arctic-wolf-2025-security-operations-report-reveals-threat-landscape-acceleration-majority-of-security-alerts-now-occur-outside-working-hours/
+**Alt URL**: https://arcticwolf.com/resources/blog/2025-year-in-review/
 **Evidence Level**: A (Production platform, quantitative metrics)
 **Relevance**:
 - RQ9: Multi-tenant MSSP architecture
 - OCSF integration patterns
 
 **Key Findings**:
-- Processes 9 trillion events per week
+- Analyzed 330 trillion security observations from 10,000+ organizations
+- Reduced to 8.6 million alerts (99.999% noise reduction)
+- Aug-Oct 2025: 116 trillion raw data points → 20 trillion analyzed observations
 - Supports OCSF for unified data normalization
 - Multi-tenant portal with risk remediation guidance
-- Security-optimized data architecture with dynamic scaling
-- Customizable rules engine for tenant-specific needs
+- Aurora Endpoint Security launched 2025; Sevco Security acquired Feb 2026
 
 **Citations**: MSSP architecture, multi-tenant patterns
-**Notes**: Validates multi-tenant requirements vs isolation-first
+**Notes**: Original product page URL (403) replaced with 2025 Security Operations Report; validates multi-tenant at massive scale
 
-**Validation Status**: ✅ Production platform documentation
+**Validation Status**: ✅ Updated February 2026 - 2025 Security Operations Report
 
 ---
 
 ### DuckDB & Edge Processing (Supporting RQ7)
 
-#### DuckDB 1.0 Production Readiness
+#### DuckDB 1.0-1.4 Production Readiness & LTS
 
 **Authors**: DEV Community, DuckDB Labs
-**Date**: 2024-2025
+**Date**: 2024-2026 (updated February 2026)
 **URL**: https://dev.to/emiroberti/duckdb-the-analytics-database-revolution-a-comprehensive-guide-442b
+**Alt URL**: https://duckdb.org/2025/09/16/announcing-duckdb-140
 **Evidence Level**: B (Community analysis, official release notes)
 **Relevance**:
 - RQ7: Isolation-first performance
@@ -3433,12 +3539,17 @@ This bibliography consolidates all literature sources from:
 - Stable on-disk storage format with backward compatibility
 - 6+ million monthly downloads
 - Used at Facebook, Google, Airbnb
-- Focus on stability over new features for 1.0 release
+- **v1.4.0 LTS** (Jan 2026): First Long-Term Support release, 1-year support window
+- **Iceberg write support** added in v1.4.0 (copy data from DuckDB to Iceberg)
+- In-memory checkpointing enables 5-10× performance improvements for some queries
+- Rewritten k-way merge sort reduces data movement in sorting/window functions
+- 3,500+ commits by 90+ contributors since v1.3.2
+- **DuckLake**: ACID-compliant lakehouse format planned for v1.0 in 2026
 
-**Citations**: DuckDB production readiness, adoption metrics
-**Notes**: Validates DuckDB for Jake Thomas interview prep (Okta use case)
+**Citations**: DuckDB production readiness, adoption metrics, Iceberg integration
+**Notes**: v1.4.0 LTS + Iceberg write support validates DuckDB as serious lakehouse component; DuckLake may create new architecture options for isolated SOC deployments
 
-**Validation Status**: ✅ Official release (June 2024)
+**Validation Status**: ✅ Refreshed February 2026 - v1.4.0 LTS current
 
 ---
 
