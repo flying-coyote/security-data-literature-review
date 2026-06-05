@@ -254,6 +254,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Refreshed February 2026 - Oct 2025 quadrillion-row blog
 
+**⚠️ Validation (2026-06-05)**: "96.3% under 1s" is in NEITHER cited source — disregard. The "1,000+ replicas / 96-trillion-events-in-<2s" figures are real but belong to the Oct-2025 ClickHouse blog (Alt URL), not the Cloudflare post. Keep: 6M (peak 8M) req/sec, ~3× replication over 36 nodes, −50% latency from index tuning.
 ---
 
 #### ClickHouse Log Analytics - Cloudflare
@@ -303,6 +304,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (refreshed January 2026)
 
+**⚠️ Validation (2026-06-05)**: "4.5M events/sec on 9 nodes" is not in the cited blog (a 2014 LinkedIn-era figure) — disregard. Keep: 605 MB/s peak across 3 brokers, 15× RabbitMQ, 2× Pulsar.
 ---
 
 #### Questioning the Lambda Architecture - Jay Kreps
@@ -450,6 +452,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (AWS docs)
 
+**⚠️ Validation (2026-06-05)**: the cited PDF is a deprecated empty stub and "55% average savings" is unsupported — disregard. AWS publishes tier-banded figures on the S3 Intelligent-Tiering page (up to 40% IA / 68% Archive Instant / 95% Deep Archive); cite that with a tier-specific "up to" figure, not a single average.
 ---
 
 ## Implementation & Organizational
@@ -510,6 +513,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active (verified Feb 2026), annual authoritative report
 
+**⚠️ Validation (2026-06-05)**: the "2.7× staff / 3.2× incidents / Level-4 top-5%" streaming-vs-batch figures are absent (DORA doesn't study streaming-vs-batch) — disregard. Keep DORA's real findings (AI lifts productivity, dents delivery stability; platform engineering; transformational leadership).
 ---
 
 ## Survey & Industry Reports
@@ -616,6 +620,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Refreshed February 2026
 
+**⚠️ Validation (2026-06-05)**: URL re-sourced to the LinkedIn Northguard blog — verbatim 32T records/day, 17 PB/day, 400K topics, 10K+ machines, 150 clusters. Drop "production security implementation" (Northguard is general infra). The Confluent course remains a secondary cite for Kafka-Streams stateful mechanics only.
 ---
 
 #### Netflix - Kafka Tiered Storage
@@ -642,6 +647,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready
 
+**⚠️ Validation (2026-06-05)**: the "70-80% / 90%+" cost-reduction percentages are not Netflix-published — disregard. "2T messages/day" is real (Netflix Keystone: netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb). Cite Apache (not Confluent docs) for Kafka 3.9.0 tiered-storage GA.
 ---
 
 ## Performance Benchmarks (Additional)
@@ -672,6 +678,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (refreshed January 2026)
 
+**⚠️ Validation (2026-06-05)**: "8-10× CPU efficiency" and "400M rows at ~86M rows/sec" are not in the source (conceptual page, no throughput numbers) — disregard. Keep: vectorized batch/SIMD execution description.
 ---
 
 #### ClickHouse - IP Address Types Performance
@@ -693,6 +700,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL
 
+**⚠️ Validation (2026-06-05)**: the "50-100× faster CIDR" multiplier is not in the source and not findable — disregard. Keep: native IPv4/IPv6 fixed-width types (16-byte UInt128) are storage-efficient vs strings (qualitative only).
 ---
 
 #### Splunk DB Connect Benchmark - Multi-Engine Performance Comparison
@@ -748,6 +756,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active (verified Feb 2026)
 
+**⚠️ Validation (2026-06-05)**: "3-14×" is not on the cited page — disregard. Keep the codec list. For real per-codec ratios cite ClickHouse's "Database compression: encodings, codecs and ratios" engineering page (LZ4 2-4×, ZSTD 3-6×).
 ---
 
 #### ClickHouse - Performance Optimization Guide
@@ -803,6 +812,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active (verified Feb 2026)
 
+**⚠️ Validation (2026-06-05)**: "1M EPS / 3×16-core servers" and "20-50× compression" are unsupported — disregard. "16 billion events/day" is real but from the ClickHouse Huntress VIDEO (clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse). Keep: 93% cost cut ($70K→$5K), 3M+ endpoints, >1M M365 identities, up to 200K records/sec (use instead of "1M EPS").
 ---
 
 #### Chris Bisnett - Huntress ClickHouse Migration (Video)
@@ -959,6 +969,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Updated January 2026 - Official Apache Arrow documentation
 
+**⚠️ Validation (2026-06-05)**: the "20×" is real but belongs to the Arrow blog (Alt URL: arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/), not the spec page. "60-90% transfer time saved" is unsupported — disregard.
 ---
 
 #### Anyscale Ray Serve - Production AI Deployment Platform
@@ -986,6 +997,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified Anyscale blog, 2024)
 
+**⚠️ Validation (2026-06-05)**: URL re-sourced to the "tackling-the-cost-and-complexity" post (600% growth, 99.9% availability, 5000+ replicas). The "56% replica compaction" is from the Ray Summit 2024 press release; "60% elastic-training reduction" is unsupported — disregard.
 ---
 
 #### Cloudera Impala + Iceberg Performance
@@ -1032,6 +1044,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL
 
+**⚠️ Validation (2026-06-05)**: "30-60s interval for security" and "sub-2min recovery" are not in the generic Flink doc (which declines to prescribe intervals) — disregard, and drop the "for security" framing. Keep: checkpoint-interval / RocksDB-backend / frequency-vs-overhead tradeoff.
 ---
 
 #### Microsoft Purview - Security Data Retention
@@ -1055,6 +1068,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL
 
+**⚠️ Validation (2026-06-05)**: the "24h sessions / 30-90d entity profiles / NIST 800-61" claims are not in the M365 retention doc (UEBA concepts) — disregard. Keep only as a generic retention-policy/label reference; retitle away from "Security Data Retention".
 ---
 
 #### Confluent Customer Success - Implementation Roadmap
@@ -1078,6 +1092,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL
 
+**⚠️ Validation (2026-06-05)**: "4-month / 4-6 month" deployment timelines are not in the cited Kafka-101 course or any findable source — disregard. Source supports only that Confluent publishes a structured learning path.
 ---
 
 #### Gartner - Security Data Lakehouse Implementation
@@ -1101,6 +1116,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL
 
+**⚠️ Validation (2026-06-05)**: MISLABELED — the URL is a phData blog with no Gartner attribution, and "5.5 month / 6-12 months" appear nowhere — disregard both numbers and drop "Gartner". Keep only as a Tier-C phData opinion blog arguing iterative, use-case-first delivery.
 ---
 
 #### Brooks - The Mythical Man-Month (Throwaway Prototype)
@@ -1175,6 +1191,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ⚐ Conference presentation (2024 QCon), awaiting published case study or blog post
 
+**⚠️ Validation (2026-06-05)**: the Polaris/table-RBAC/"0% RLS overhead"/VPC-isolation/compliance claims are unsupported (real Daniel Muino source is a general observability platform) — disregard, and drop the "security/isolation-first" framing. Re-source to clickhouse.com/blog/netflix-petabyte-scale-logging (ClickHouse hot + Iceberg cold, ~5 PB/day). LIKELY DUPLICATE of "Netflix ClickHouse Pipeline - 5 PB/Day" — consider merging.
 ---
 
 #### Cloudera Total Economic Impact (Forrester TEI 2024)
@@ -1225,6 +1242,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL
 
+**⚠️ Validation (2026-06-05)**: "45-55% of TCO = ops+talent" is not in the source — soften to the qualitative claim it supports (operational complexity + specialized talent dominate self-managed Kafka TCO). For a number, Confluent cites "up to 40%/60% TCO reduction" on its TCO page.
 ---
 
 #### Databricks TCO - Lakehouse vs Traditional Platforms
@@ -1315,6 +1333,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ⚠️ Placeholder (CloudZero source not found, supported by related sources)
 
+**⚠️ Validation (2026-06-05)**: "2.8-3.6×" is unsourceable (CloudZero source not located) — soften to the qualitative real-time-premium claim, leaning on the IDC/Confluent footnotes.
 ---
 
 #### AWS Well-Architected - Compute Optimization
@@ -1338,6 +1357,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ URL available (AWS docs)
 
+**⚠️ Validation (2026-06-05)**: "22% average savings" is CloudZero's figure, not AWS — fix attribution. Keep the AWS Cost-Optimization pillar URL (docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html); soften to right-sizing recovers ~15-25%.
 ---
 
 #### AWS Storage Optimization - Tiered Storage
@@ -1361,6 +1381,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ URL available (AWS docs)
 
+**⚠️ Validation (2026-06-05)**: re-source to the S3 Intelligent-Tiering page (aws.amazon.com/s3/storage-classes/intelligent-tiering/) — AWS's own "~35% average savings" for non-optimized buckets.
 ---
 
 #### Google SRE - Reliability Economics (Exponential Cost of Nines)
@@ -1384,6 +1405,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ SRE book available
 
+**⚠️ Validation (2026-06-05)**: re-source to sre.google/sre-book/embracing-risk/ — BUT the book says ~100× per increment, NOT "10×". Correct the multiplier.
 ---
 
 #### Gartner - Reliability Overinvestment Analysis
@@ -1407,6 +1429,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ⚠️ Paywall (Gartner research)
 
+**⚠️ Validation (2026-06-05)**: "70% overspend" is not in any findable Gartner source — soften to "Gartner advises aligning resilience to business need to avoid overspend" (topic anchor: Gartner doc 3906266, paywalled).
 ---
 
 #### Uptime Institute - Reliability Tier Economics
@@ -1430,6 +1453,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ⚠️ URL needed (Uptime Institute)
 
+**⚠️ Validation (2026-06-05)**: "98% cannot justify beyond four nines" is not findable — soften to the tier-classification cost-benefit point (uptimeinstitute.com/tiers).
 ---
 
 #### Apache Iceberg - Industry Consensus & Market Momentum
@@ -1481,6 +1505,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Multiple public announcements
 
+**⚠️ Validation (2026-06-05)**: claim true as of 2025 (not 2024) — cite theregister.com/2024/10/14/apache_iceberg_feature_announcements/ + databricks.com/blog/announcing-full-apache-iceberg-support-databricks (Databricks closed the gap in 2025). Fix date.
 ---
 
 #### Apache Iceberg Foundation - Governance & Contributors
@@ -1599,6 +1624,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL
 
+**⚠️ Validation (2026-06-05)**: numbers real but CONFLATED. The deck (trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf) shows Case 1: elapsed 97.2s→3.39s (−96.5%), read data −97% (209GB→6.11GB), on a 52.7TB Iceberg table — NOT "52.7TB in 3.39s". Reword to "−97% read data size; elapsed 97.2s→3.39s on a 52.7TB table (Case 1)"; headline −80%.
 ---
 
 #### ClickHouse vs Elasticsearch - Storage Efficiency
@@ -1646,6 +1672,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified 2024)
 
+**⚠️ Validation (2026-06-05)**: "37% of ML detection failures" and "20,000+ features" are not in the blog — disregard. Keep: ">95% onboarding-time reduction" (real) + feature-store training/serving consistency.
 ---
 
 #### DARPA XAI - Explainable Artificial Intelligence Program
@@ -1671,6 +1698,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified DARPA official site)
 
+**⚠️ Validation (2026-06-05)**: "$75M budget" and "highest explainability among AI domains" are unsupported — disregard. Keep: 2017-2021, ~11 teams, David Gunning PM, Applied AI Letters retrospective (Gunning 2021, doi 10.1002/ail2.61).
 ---
 
 #### SANS Institute - AI Survey & SOC Automation Research
@@ -1750,6 +1778,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified MITRE official site, 2024 data)
 
+**⚠️ Validation (2026-06-05)**: "18-24mo optimal / 2.3× detection / 5,000+ cases" are invented — disregard. "47 techniques / 29 sub-techniques" IS real — cite MITRE Engenuity Insider Threat Knowledge Base 2.0. Keep: 15+ years program, Bi-Directional Loyalty.
 ---
 
 #### Microsoft Security - Threat Modeling & Data Security for AI/ML
@@ -1775,6 +1804,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified Microsoft Learn documentation)
 
+**⚠️ Validation (2026-06-05)**: doc is November 2019, not 2024 — fix the date. "40% had AI incidents 2024, up from 27% 2023" is absent — disregard. Keep: the 11-category AI/ML threat taxonomy (adversarial perturbation, data poisoning, model inversion/inference/stealing, supply-chain, backdoor).
 ---
 
 #### Apache Arrow - Columnar Analytics Performance
@@ -1802,6 +1832,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified Apache Arrow official site)
 
+**⚠️ Validation (2026-06-05)**: all multipliers (10-100×/20-30×/12×/5×/15×) are not on the cited powered_by list and not findable together — disregard. Keep as an adoption reference only.
 ---
 
 #### Champion-Challenger Model Pattern (MLOps Industry Standard)
@@ -1827,6 +1858,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified DataRobot MLOps pattern documentation)
 
+**⚠️ Validation (2026-06-05)**: "42% false-positive reduction" is not in the DataRobot blog (no Capital One source) — disregard. Keep: the champion/challenger concept (Tier B).
 ---
 
 #### Open Cybersecurity Alliance - Standards & Interoperability
@@ -1906,6 +1938,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Updated February 2026 - URL format corrected to /blog/ path
 
+**⚠️ Validation (2026-06-05)**: "security drifts 2-3× faster than business ML" is not in the article or the literature — disregard. Keep: the qualitative non-stationarity point + the four drift varieties + arXiv 2206.07581 (real).
 ---
 
 #### Confluent - Machine Learning with Apache Kafka
@@ -1964,6 +1997,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Refreshed February 2026 - Active production service with expanding partner ecosystem
 
+**⚠️ Validation (2026-06-05)**: the "3× query / 10× TPS" figures describe Amazon S3 Tables (aws .../2024/12/amazon-s3-tables...), not Security Lake — attribute there. "AppFabric auto-normalization / 25+ partners" are not in the cited Feb-2024 post — disregard or source separately. Keep: Security Lake OCSF 1.1.0 + Iceberg + Athena/Redshift/Spark query.
 ---
 
 #### StarRocks vs ClickHouse Production Benchmarks
@@ -1989,6 +2023,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Multiple independent benchmarks
 
+**⚠️ Validation (2026-06-05)**: "1.87× SSB" verified on StarRocks' own SSB doc (docs.starrocks.io/docs/benchmarking/SSB_Benchmarking/) — vendor-run, Tier B, flag bias. "3-5× on TPC-H vs ClickHouse" is weaker (their TPC-H doc benchmarks vs Trino/Spark) — soften.
 ---
 
 #### MOAR Stack - Security Data Lakehouse Reference Architecture
@@ -2058,6 +2093,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Survey data from 2024-2025
 
+**⚠️ Validation (2026-06-05)**: the specific figures don't trace to any Gartner publication, and "42% abandoned" is a 2025 S&P Global stat misattributed to Gartner-2024 — disregard. The one real Gartner claim: ~30% of GenAI projects abandoned after PoC by end-2025 (Gartner July-2024 prediction).
 ---
 
 #### AI Governance Maturity Gate - Prerequisites for AI Success
@@ -2187,6 +2223,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Production deployments documented
 
+**⚠️ Validation (2026-06-05)**: "30% lower TCO" is real but MIS-BASELINED — the source says vs Cribl's pipeline-plus-separate-SIEM model, NOT "vs query-based architectures". Fix the baseline. Tier-C vendor self-claim, no methodology.
 ---
 
 #### Security Data Pipeline Market Guide 2025
@@ -2296,6 +2333,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Industry survey data 2024-2025
 
+**⚠️ Validation (2026-06-05)**: Prophet "40% of alerts uninvestigated" is real (securityinfowatch.com/.../prophet-security-report...); SOAR "$2.3B by 2025" is real but CAGR is 16.3% (not 15.6%). Fortinet "11 min" and KPMG "24%" are unverifiable — disregard.
 ---
 
 ### Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework
@@ -2690,6 +2728,7 @@ This bibliography consolidates all literature sources from:
 **Notes**: Industry consensus on Iceberg leadership despite write performance gaps
 **Validation Status**: ✅ Multiple independent sources (2025)
 
+**⚠️ Validation (2026-06-05)**: the "10× over Hive" is in the official Iceberg performance docs (iceberg.apache.org/docs/latest/performance/) — cite that. "50% scan reduction" is vendor-soft — frame qualitatively (metadata pruning skips large fractions of files).
 ---
 
 #### SANS AI Security Controls Framework
@@ -2714,7 +2753,7 @@ This bibliography consolidates all literature sources from:
 **Notes**: Industry standard emerging for AI agent governance
 **Validation Status**: ✅ Active framework (2025)
 
-
+**⚠️ Validation (2026-06-05)**: "SEC/OCC audits 2025" and "non-repudiable tamper-evident logs required" are not in the blog — disregard. Keep: Critical AI Security Guidelines v1.1, three principles, six control categories.
 ---
 
 #### Security Data Lakehouse Implementation Patterns
@@ -2762,6 +2801,7 @@ This bibliography consolidates all literature sources from:
 **Notes**: Critical for catalog selection in isolation-first architectures
 **Validation Status**: ✅ Active competition and adoption (2025)
 
+**⚠️ Validation (2026-06-05)**: re-source the RBAC comparison to onehouse.ai/blog/comprehensive-data-catalog-comparison (Unity/Polaris/Gravitino offer granular RBAC; Nessie is versioning, not access control).
 ---
 
 #### Row-Level Security Performance Impact Studies
@@ -2811,7 +2851,7 @@ This bibliography consolidates all literature sources from:
 **Notes**: Strong validation for pipeline-based detection economics
 **Validation Status**: ✅ 2025 Data Streaming Report (4,000+ respondents)
 
-
+**⚠️ Validation (2026-06-05)**: re-source to the Confluent 2025 Data Streaming Report (confluent.io/resources/report/2025-data-streaming-report/) — 86% top-investment, 44% report 5× ROI match. The other bullets (70% managed-Kafka TCO, "Kinesis 90% faster", "batch wastes 30-70%") are NOT from this report — flag separately.
 ---
 
 ## January 2026 Research Update
@@ -3006,6 +3046,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Forrester blog (2025)
 
+**⚠️ Validation (2026-06-05)**: the 3 findings ("CISOs voting with budget", "immediate ROI", "SIEM unsustainable") are not in the post — disregard. Real content (Allie Mellen, 2025-07-22): a store-vs-access two-tier strategy; MS Sentinel lake tier priced <15% of analytics-tier logs.
 ---
 
 #### Hunters Security - Why Companies Are Adopting Security Data Lakes
@@ -3090,6 +3131,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Production deployments documented
 
+**⚠️ Validation (2026-06-05)**: claims real but the cited Medium page only names Pinterest. Re-source: adopter list → gravitino.apache.org/blog/gravitino-top-level-project/; ChatSlide 100K→150K → chatslide.ai/pages/apache-gravitino-data-catalog; Bilibili ~70% → Gravitino "OneMeta" writeup. Verify Roku/Cloudflare/Yahoo before keeping.
 ---
 
 #### Apache Polaris - Growing Ecosystem
@@ -3114,6 +3156,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active development (2024-2025)
 
+**⚠️ Validation (2026-06-05)**: version specifics (1.0 Jul / 1.1 Sep / 1.2 Oct 2025; 1.2.0 fine-grained authz + event persistence) are real but on dremio.com/blog/whats-new-in-apache-polaris-1-2-0..., not the cited ecosystem page. Fix "released 2024" → 2025.
 ---
 
 ### Agent Automation & ROI (RQ14)
@@ -3162,6 +3205,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Research compilation (2025)
 
+**⚠️ Validation (2026-06-05)**: URL re-sourced to the PagerDuty 2025 Agentic-AI ROI Survey (n=1,000): 171% avg ROI, 62% expect >100%, US ~192%. "Up to 70% cost reduction" is unsupported — disregard. Vendor survey, flag bias.
 ---
 
 #### Obsidian Security - 2025 AI Agent Security Landscape
@@ -3186,6 +3230,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active analysis (2025)
 
+**⚠️ Validation (2026-06-05)**: the "<5min MTTD / <10min MTTR / <2% FP" thresholds are invented (the blog names these as metrics to "monitor and tune", no targets) — soften to "recommends monitoring MTTD/MTTR/FP rate".
 ---
 
 ### MSSP Multi-Tenant Architecture (RQ9)
@@ -3246,6 +3291,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Refreshed February 2026 - v1.4.0 LTS current
 
+**⚠️ Validation (2026-06-05)**: URL re-sourced to duckdb.org 1.4.0 announcement. Corrections: LTS shipped Sept 16 2025 (not Jan 2026); codename "Snow Duck" (two words); downloads "millions/month" (not "6M+"). Other specifics confirmed on duckdb.org.
 ---
 
 ## Reading Queue (Pending Analysis)
@@ -3273,6 +3319,7 @@ The following papers have been identified for future analysis:
 **Status**: 📚 QUEUED - Not yet read
 **Added**: 2026-01-02
 
+**⚠️ Validation (2026-06-05)**: re-sourced to USENIX NSDI'19. Geoff Langdale is a CO-author (Wang/Hong/Chang/Park/Langdale/Hu/Zhu), not sole author; venue NSDI '19, date 2019.
 ---
 
 #### DBSP: Incremental Computation for Streaming Databases
