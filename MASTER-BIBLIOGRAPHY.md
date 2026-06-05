@@ -597,7 +597,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: LinkedIn Engineering / Confluent
 **Date**: 2023 (updated February 2026)
-**URL**: https://developer.confluent.io/courses/kafka-streams/stateful-operations/
+**URL**: https://www.linkedin.com/blog/engineering/infrastructure/introducing-northguard-and-xinfra
 **Evidence Level**: A (Production deployment at scale)
 **Relevance**:
 - Book Chapter 7 (Ingestion - streaming)
@@ -754,7 +754,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: ClickHouse Documentation Team
 **Date**: 2024-2026 (continuously updated)
-**URL**: https://clickhouse.com/docs/en/operations/optimizing-performance
+**URL**: https://clickhouse.com/docs/guides/best-practices/query-optimization
 **Evidence Level**: A (Vendor technical documentation)
 **Relevance**:
 - Blog post: "ClickHouse Compression Reality"
@@ -829,27 +829,6 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Altinity - ClickHouse Ingest Performance
-
-**Authors**: Altinity Technical Report
-**Date**: 2024
-**URL**: https://clickhouse.com/benchmark
-**Evidence Level**: A (Independent benchmark)
-**Relevance**:
-- Book Chapter 9 (ClickHouse performance)
-- Best Practices Doc footnote [^104]
-
-**Key Findings**:
-- 1.8-2.2 million events/sec per node
-- Production ingest benchmarks
-
-**Citations**: Chapter 9 performance benchmarks
-**Notes**: Validates ingestion claims
-
-**Validation Status**: ✅ Active URL
-
----
-
 ### Kafka Performance (Additional)
 
 #### Azure - Kafka at Trillion Events/Day
@@ -868,27 +847,6 @@ This bibliography consolidates all literature sources from:
 
 **Citations**: Chapter 7 Kafka scale claims
 **Notes**: Validates massive scale Kafka deployments
-
-**Validation Status**: ✅ Active URL
-
----
-
-#### Uber - Real-Time Security Views with Kafka Streams
-
-**Authors**: Uber Engineering / Confluent
-**Date**: 2023
-**URL**: https://www.confluent.io/blog/configure-kafka-to-minimize-latency/
-**Evidence Level**: A (Production security deployment)
-**Relevance**:
-- Book Chapter 7 (Kafka Streams for security)
-- Best Practices Doc footnote [^69]
-
-**Key Findings**:
-- Thousands of real-time security views
-- Sub-second refresh rates
-
-**Citations**: Chapter 7 security streaming patterns
-**Notes**: **CRITICAL** - Security use case at scale
 
 **Validation Status**: ✅ Active URL
 
@@ -1007,7 +965,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Anyscale
 **Date**: 2024
-**URL**: https://www.anyscale.com/blog/building-production-ai-applications-with-ray-serve
+**URL**: https://www.anyscale.com/blog/tackling-the-cost-and-complexity-of-serving-ai-in-production-ray-serve
 **Evidence Level**: B (Vendor platform with production validation)
 **Relevance**:
 - Emerging Technologies section
@@ -1034,7 +992,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Cloudera Engineering Blog
 **Date**: 2024
-**URL**: https://blog.cloudera.com/apache-iceberg-with-cloudera-data-platform/
+**URL**: https://www.cloudera.com/blog/technical/introducing-apache-iceberg-in-cloudera-data-platform.html
 **Evidence Level**: A (Production benchmarks)
 **Relevance**:
 - Hypothesis H-ARCH-01 (Iceberg dominance)
@@ -1149,7 +1107,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Frederick P. Brooks Jr.
 **Date**: 1995 (Anniversary Edition)
-**URL**: https://www.pearson.com/en-us/subject-catalog/p/mythical-man-month-essays-on-software-engineering-anniversary-edition-the/P200000003037
+**URL**: https://www.pearson.com/en-us/subject-catalog/p/mythical-man-month-essays-on-software-engineering-anniversary-edition-the/P200000000149
 **Evidence Level**: A (Seminal work, widely cited)
 **Relevance**:
 - Implementation patterns
@@ -1425,29 +1383,6 @@ This bibliography consolidates all literature sources from:
 **Notes**: Authoritative source for reliability cost modeling
 
 **Validation Status**: ✅ SRE book available
-
----
-
-#### Financial Services - Reliability Overinvestment Study
-
-**Authors**: Industry Research (Financial Services Security Teams)
-**Date**: 2024
-**URL**: [Source needed - FinSec research]
-**Evidence Level**: A (Industry study with quantitative data)
-**Relevance**:
-- Security infrastructure cost optimization
-- Book Chapter 1 (Cost patterns)
-- Best Practices Doc footnote [^228]
-
-**Key Findings**:
-- Five nines = 37× cost vs three nines
-- Equivalent security effectiveness possible with lower availability
-- Tiered reliability model validation
-
-**Citations**: Chapter 1 cost modeling, reliability tiers
-**Notes**: **CRITICAL** - Security-specific reliability economics
-
-**Validation Status**: ⚠️ URL needed (financial services research)
 
 ---
 
@@ -1814,31 +1749,6 @@ This bibliography consolidates all literature sources from:
 **Notes**: MITRE = definitive authority on insider threat research, multi-disciplinary InT Lab
 
 **Validation Status**: ✅ Active URL (verified MITRE official site, 2024 data)
-
----
-
-#### Cloud Security Alliance - ML for Cybersecurity
-
-**Authors**: Cloud Security Alliance
-**Date**: 2023
-**URL**: https://cloudsecurityalliance.org/research/topics/artificial-intelligence
-**Evidence Level**: A (Industry consortium)
-**Relevance**:
-- ML training data strategies
-- Book Chapter (Advanced analytics)
-- Best Practices Doc footnote [^263]
-
-**Key Findings**:
-- Machine learning for threat classification (2023 article)
-- Class imbalance techniques for security data
-- UNSW-NB15 dataset demonstrations
-- Explainability and modeling best practices
-- AI Safety Initiative for Generative AI
-
-**Citations**: Advanced analytics, data retention strategies, ML best practices
-**Notes**: CSA = leading industry consortium on cloud security standards
-
-**Validation Status**: ✅ Active URL (verified CSA research page)
 
 ---
 
@@ -3235,7 +3145,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: AI Multiple Research
 **Date**: 2025
-**URL**: https://research.aimultiple.com/ai-agent-performance/
+**URL**: https://www.pagerduty.com/resources/ai/learn/companies-expecting-agentic-ai-roi-2025/
 **Evidence Level**: B (Industry research aggregation)
 **Relevance**:
 - RQ14: Agent automation ROI metrics
@@ -3312,7 +3222,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: DEV Community, DuckDB Labs
 **Date**: 2024-2026 (updated February 2026)
-**URL**: https://dev.to/emiroberti/duckdb-the-analytics-database-revolution-a-comprehensive-guide-442b
+**URL**: https://duckdb.org/2025/09/16/announcing-duckdb-140
 **Alt URL**: https://duckdb.org/2025/09/16/announcing-duckdb-140
 **Evidence Level**: B (Community analysis, official release notes)
 **Relevance**:
@@ -3346,7 +3256,7 @@ The following papers have been identified for future analysis:
 
 **Authors**: Intel Labs / branchfree.org
 **Date**: TBD (academic paper)
-**URL**: https://branchfree.org (exact URL pending)
+**URL**: https://www.usenix.org/conference/nsdi19/presentation/wang-xiang (exact URL pending)
 **Evidence Level**: A (Academic research - pending verification)
 **Relevance**:
 - Query engine performance
