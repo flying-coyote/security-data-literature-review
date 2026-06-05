@@ -97,7 +97,10 @@ def notify(result, escalate, reasons, monthly):
 
 def main():
     today = datetime.now()
-    hc = LiteratureReviewHealthCheck()
+    # Locate the repo relative to this script so the check works wherever the repo is
+    # checked out (local working tree or a fresh clone in a scheduled remote routine),
+    # not only at the health check's hardcoded ~/security-data-literature-review default.
+    hc = LiteratureReviewHealthCheck(repo_path=os.path.join(HERE, ".."))
     result = hc.run_all_checks()
     # The health check leaves tier_a_percentage unset (0.0); compute it live so the
     # notification and the Level-A floor check use the real number, not a misleading 0%.
