@@ -102,7 +102,10 @@ def get_latest_health_report():
     if not os.path.exists(reports_dir):
         return None
 
-    reports = [f for f in os.listdir(reports_dir) if f.endswith('.md')]
+    # Only the dated health reports. A stray SETUP.md/README.md sorts lexically AFTER the
+    # "2026-*" names, so the old `endswith('.md')` filter picked it and every count defaulted
+    # to 0 — which is how a 96-day lapse stayed invisible behind an all-green dashboard.
+    reports = [f for f in os.listdir(reports_dir) if f.endswith('-literature-review-health.md')]
     if not reports:
         return None
 
@@ -202,7 +205,7 @@ def print_dashboard():
 
     # MCP vendor database
     print(f"\nMCP Vendor Database: {Colors.GREEN}✅ OPERATIONAL{Colors.END}")
-    print(f"  Status: 71 vendors tracked, 84% Tier A quality")
+    print(f"  Status: ~90 vendors tracked (snapshot; lives in security-architect-mcp-server)")
     print(f"  Refresh: Weekly automated maintenance")
     print(f"  Burden Reduction: 75-90% for vendor data")
 
@@ -217,17 +220,17 @@ def print_dashboard():
     # 4. INTEGRATION STATUS
     print_section("🔗 Integration Status")
 
-    print(f"Blog (security-data-commons-blog): {Colors.GREEN}✅ ACTIVE{Colors.END}")
-    print(f"  Writing Speedup: 4-6× demonstrated")
-    print(f"  Output: 3x/week practitioner content")
-    print(f"  Source Identification: Active from blog feedback")
+    print(f"Website (securitydataworks.com): {Colors.GREEN}✅ ACTIVE{Colors.END}")
+    print(f"  Channel: /writing (essays), /research (evidence), /lab (first-party benchmarks)")
+    print(f"  Source Identification: from /writing feedback + LinkedIn signal-radar")
+    print(f"  Note: Security Data Commons Substack retired 2026-05-24 — do not poll it")
 
     print(f"\nBook (modern-data-stack-for-cybersecurity-book): {Colors.GREEN}✅ SUPPORTED{Colors.END}")
     print(f"  Manuscript: 115,500 words with citations")
     print(f"  Evidence Foundation: All chapters supported")
 
     print(f"\nMCP Vendor Database: {Colors.GREEN}✅ OPERATIONAL{Colors.END}")
-    print(f"  Vendors: 71 tracked, 84% Tier A")
+    print(f"  Vendors: ~90 tracked, 84% Tier A")
     print(f"  Replaces: IT Harvest dependency")
 
     # 5. VERSION CONTROL
@@ -242,35 +245,37 @@ def print_dashboard():
         print(f"{Colors.RED}❌ Could not check git status: {git_status['error']}{Colors.END}")
 
     # 6. DECISION DASHBOARD
-    print_section("🎯 December 2025 Update - Decision Dashboard")
+    print_section("🎯 Update Readiness — Decision Dashboard")
 
     # Calculate readiness score
     ready_count = 0
     total_checks = 6
 
-    if biblio and biblio['evidence_quality'] >= 75:
-        print(f"{Colors.GREEN}✅ Quality Target Met{Colors.END} (78% ≥ 75%)")
+    if biblio and biblio['evidence_quality'] and biblio['evidence_quality'] >= 75:
+        print(f"{Colors.GREEN}✅ Quality Target Met{Colors.END} ({biblio['evidence_quality']}% ≥ 75%)")
         ready_count += 1
     else:
         print(f"{Colors.RED}❌ Quality Below Target{Colors.END}")
 
     if tracker and tracker['average_time'] <= 10:
-        print(f"{Colors.GREEN}✅ Time Sustainable{Colors.END} (7.5 hours ≤ 10 hours)")
+        print(f"{Colors.GREEN}✅ Time Sustainable{Colors.END} ({tracker['average_time']} hours ≤ 10 hours)")
         ready_count += 1
     else:
         print(f"{Colors.RED}❌ Time Unsustainable{Colors.END}")
 
     if health_report and health_report['broken_links'] <= 2:
-        print(f"{Colors.GREEN}✅ Link Health Acceptable{Colors.END} (2 broken links)")
+        print(f"{Colors.GREEN}✅ Link Health Acceptable{Colors.END} ({health_report['broken_links']} broken links)")
         ready_count += 1
     else:
-        print(f"{Colors.YELLOW}⚠️  Link Health Needs Attention{Colors.END}")
+        n = health_report['broken_links'] if health_report else '?'
+        print(f"{Colors.YELLOW}⚠️  Link Health Needs Attention{Colors.END} ({n} broken links sampled)")
 
     if health_report and health_report['outdated_evidence'] <= 30:
-        print(f"{Colors.GREEN}✅ Evidence Freshness Acceptable{Colors.END} (27 outdated sources)")
+        print(f"{Colors.GREEN}✅ Evidence Freshness Acceptable{Colors.END} ({health_report['outdated_evidence']} outdated sources)")
         ready_count += 1
     else:
-        print(f"{Colors.YELLOW}⚠️  Evidence Refresh Recommended{Colors.END}")
+        n = health_report['outdated_evidence'] if health_report else '?'
+        print(f"{Colors.YELLOW}⚠️  Evidence Refresh Recommended{Colors.END} ({n} sources >12 months old)")
 
     if tracker_exists:
         print(f"{Colors.GREEN}✅ Tracking System Operational{Colors.END}")
@@ -287,29 +292,29 @@ def print_dashboard():
     # Overall readiness
     print(f"\n{Colors.BOLD}Overall Readiness: {ready_count}/{total_checks} checks passed{Colors.END}")
     if ready_count >= 5:
-        print(f"{Colors.GREEN}✅ READY FOR DECEMBER UPDATE{Colors.END}")
+        print(f"{Colors.GREEN}✅ READY FOR NEXT UPDATE{Colors.END}")
     elif ready_count >= 3:
         print(f"{Colors.YELLOW}⚠️  PARTIALLY READY - Minor improvements needed{Colors.END}")
     else:
         print(f"{Colors.RED}❌ NOT READY - Significant work required{Colors.END}")
 
     # 7. RECOMMENDED ACTIONS
-    print_section("📋 Recommended Actions for December Update")
+    print_section("📋 Recommended Actions for Next Update")
 
     if health_report and health_report['outdated_evidence'] > 20:
-        print(f"1. {Colors.YELLOW}⚠️{Colors.END}  Refresh 5-10 oldest sources (27 sources >12 months old)")
+        print(f"1. {Colors.YELLOW}⚠️{Colors.END}  Refresh oldest sources ({health_report['outdated_evidence']} sources >12 months old)")
 
     if health_report and health_report['broken_links'] > 0:
-        print(f"2. {Colors.YELLOW}⚠️{Colors.END}  Review broken links (2 identified, already documented)")
+        print(f"2. {Colors.YELLOW}⚠️{Colors.END}  Fix broken links ({health_report['broken_links']} found by health check)")
 
-    print(f"3. {Colors.GREEN}✅{Colors.END}  Add 2-3 new sources from blog feedback/LinkedIn")
+    print(f"3. {Colors.GREEN}✅{Colors.END}  Add new sources from /writing feedback + LinkedIn signal-radar")
     print(f"4. {Colors.GREEN}✅{Colors.END}  Run weekly_health_check.py before and after update")
-    print(f"5. {Colors.GREEN}✅{Colors.END}  Update monthly-update-tracker.md with December metrics")
+    print(f"5. {Colors.GREEN}✅{Colors.END}  Update monthly-update-tracker.md with this update's metrics")
 
     # 8. FOOTER
     print_header("END OF DASHBOARD")
-    print(f"{Colors.BOLD}Next Update:{Colors.END} December 2025 (mid-month)")
-    print(f"{Colors.BOLD}Decision Point:{Colors.END} February 2026 (continue monthly, adjust, or revert)")
+    print(f"{Colors.BOLD}Last lit-review update:{Colors.END} {biblio['last_updated'] if biblio else 'Unknown'}")
+    print(f"{Colors.BOLD}Cadence:{Colors.END} see REVIEW-AND-PLAN-2026-06.md (cadence + scheduling under decision)")
     print(f"\n{Colors.CYAN}Run 'python3 scripts/weekly_health_check.py' for detailed health report{Colors.END}\n")
 
 def main():

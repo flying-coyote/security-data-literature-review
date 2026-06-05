@@ -22,9 +22,13 @@ Verify:
 - All readiness checks pass
 
 ### 3. Review External Inputs
-- [ ] Check Substack comments for reader feedback
-- [ ] Review LinkedIn monitoring for new sources
-- [ ] Check blog posts for citation opportunities
+- [ ] Review securitydataworks.com/writing feedback and comments for reader-surfaced sources
+- [ ] Review LinkedIn monitoring for new sources (project1 signal-radar)
+- [ ] Check the Lab benchmarks (securitydataworks.com/lab) for new first-party measured evidence to cite
+- [ ] Check published essays for citation opportunities
+
+> Note: the old Security Data Commons Substack was retired 2026-05-24; the live channel is
+> securitydataworks.com (`/writing`, `/research`, `/lab`). Do not look for Substack feedback.
 
 ## Update Tasks (4-6 hours)
 
