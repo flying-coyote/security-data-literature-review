@@ -5,7 +5,7 @@
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
 **Total Sources**: ~141 catalogued entries (124 prior + 22 merged from the Second Brain bibliography − 10 fabricated/unsalvageable removed 2026-06-05; see CHANGELOG 1.22.0 + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: ~46% Evidence Level A (live: 65 of 141 entries marked `**Evidence Level**: A`; 76 B, 9 C). This is the honest post-fold baseline: the 2026-06-05 audit re-tiered ~25 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number). The freshness sweep + 2026 production-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Evidence Quality**: ~45% Evidence Level A (live: 64 of 141 entries marked `**Evidence Level**: A`; 77 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number). The freshness sweep + 2026 production-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done over all 148 URLs (5 fixed, 1 re-homed, 6 fabricated removed, 1 marked private). Content freshness sweep of the ~92 sources >12 months old is in progress.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -330,57 +330,52 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Flink at Uber - Real-Time Security Analytics
+#### Uber - Real-Time Analytics Platform (Kafka/Flink/Pinot)
 
-**Authors**: Uber Engineering
-**Date**: 2023 (updated February 2026)
-**URL**: https://eng.uber.com/real-time-security-analytics-with-apache-flink/
-**⚠️ VERIFICATION (2026-06-05)**: URL dead; not carried in the eng.uber.com -> uber.com/blog migration; no Wayback snapshot (2026-06-05). UNVERIFIED — do not cite.
-**Alt URL**: https://current.confluent.io/post-conference-videos-2025/inside-ubers-large-scale-real-time-analytics-platform-bng25
-**Evidence Level**: A (Production security deployment)
+**Authors**: Uber Engineering (Confluent Current 2025 session)
+**Date**: 2025 (Confluent Current 2025; re-verified 2026-06-05)
+**URL**: https://current.confluent.io/post-conference-videos-2025/inside-ubers-large-scale-real-time-analytics-platform-bng25
+**Evidence Level**: A (Production platform, public conference talk with specific scale figures)
 **Relevance**:
-- Book Chapter 7 (Ingestion)
+- Book Chapter 7 (Ingestion) — streaming-at-scale example (general analytics, not security-specific)
 - Best Practices Doc footnote [^19]
 
 **Key Findings**:
-- Unified streaming approach for security
-- Reduced detection latency
-- Operational overhead reduction
-- **2025 update**: Processes trillions of messages and dozens of PB daily via Kafka+Flink
-- **IngestionNext**: Re-architected ingestion on Flink for fresher data at lower cost
+- Processes trillions of messages and dozens of PB daily via Kafka + Flink
+- **IngestionNext**: streaming-first data-lake ingestion on Kafka + Flink + Apache Hudi; latency hours→minutes, ~25% less compute (corroborated by InfoQ, Mar 2026)
 - **FlinkSQL**: SQL layer on Flink making stream processing accessible to analysts
-- Serves 10s of thousands of queries/sec, millions of writes/sec
-- Petabyte-scale Pinot datasets for real-time analytics
+- Serves 10s of thousands of queries/sec, several million writes/sec
+- Tens-of-petabytes Pinot datasets for real-time analytics
 - **Data Streaming Award winner** (Confluent Current 2025)
 
-**Citations**: Chapter 7 Flink for security, streaming architecture at extreme scale
-**Notes**: Directly relevant - security use case at scale; 2025 updates validate continued Flink investment at Uber; IngestionNext represents streaming-first migration pattern
+**Citations**: Chapter 7 streaming architecture at extreme scale
+**Notes**: The original eng.uber.com "real-time security analytics with Flink" URL is dead (not carried in the eng.uber.com→uber.com/blog migration, no Wayback snapshot 2026-06-05), and its security-specific framing was never independently verifiable. Re-pointed to the live Confluent Current 2025 session, which supports the scale figures but describes Uber's **general** real-time analytics platform (EVA), not a security deployment. Cite as a streaming-at-scale example, not a security case study.
 
-**Validation Status**: ✅ Refreshed February 2026 - Confluent Current 2025 presentation
+**Validation Status**: ✅ Re-verified 2026-06-05 — live source confirms scale figures (WebSearch; page 403s automated fetch)
+**Validation (2026-06-05, folded)**: dead security URL retired, re-pointed to verified general-analytics source, security framing removed; provenance in RESEARCH-JOURNAL.md.
 
 ---
 
-#### Disney+ Real-Time Security Analytics
+#### Disney+ Hotstar - Kafka/Flink Streaming at Scale
 
-**Authors**: Disney Streaming Tech Blog
-**Date**: 2023
-**URL**: https://medium.com/disney-streaming/how-disney-built-scalable-real-time-security-analytics-1112d0ec7c48 (archived - Medium 403)
-**Alt URL**: https://www.kai-waehner.de/blog/2025/02/28/data-streaming-with-apache-kafka-and-flink-in-the-media-industry-disney-hotstar-and-jiocinema/ (Disney+ Hotstar Kafka/Flink architecture)
-**Evidence Level**: A (Production security deployment)
+**Authors**: Kai Waehner (citing Disney+ Hotstar, Kafka Summit 2021)
+**Date**: 2025 (Kai Waehner blog, Feb 2025; underlying figures from Kafka Summit 2021; re-verified 2026-06-05)
+**URL**: https://www.kai-waehner.de/blog/2025/02/28/data-streaming-with-apache-kafka-and-flink-in-the-media-industry-disney-hotstar-and-jiocinema/
+**Evidence Level**: B (Vendor-aligned expert secondary source citing a Kafka Summit production talk)
 **Relevance**:
-- Book Chapter 7 (Ingestion)
+- Book Chapter 7 (Ingestion) — streaming-at-scale example (general media pipeline; PII handling is the security-adjacent angle)
 - Best Practices Doc footnote [^20]
 
 **Key Findings**:
-- Unified processing logic for security
-- Development efficiency gains
-- Disney+ Hotstar: 15 Kafka Connect clusters, 2,000+ connectors, millions of interactions/sec
-- PII masking and schema validation via Single Message Transforms
+- Disney+ Hotstar: ~15 Kafka Connect clusters, 2,000+ connectors, auto-scaling on traffic
+- Handles millions of messages/sec; scaled to tens of millions of concurrent viewers (IPL seasons)
+- Single Message Transforms (SMT) used for PII masking/filtering, sampling, and schema validation/enforcement
 
-**Citations**: Chapter 7 streaming security patterns
-**Notes**: Original Medium article returns 403; Disney+ Hotstar Kafka/Flink case study (Kai Waehner, Feb 2025) validates same streaming security patterns at scale
+**Citations**: Chapter 7 streaming ingestion + PII-handling patterns
+**Notes**: The original Disney Streaming "scalable real-time security analytics" Medium article 403s and its security-analytics claims were never independently verifiable — retired. Re-pointed to Kai Waehner's Disney+ Hotstar/JioCinema case study (Feb 2025), which is a **general media streaming** pipeline, not a security deployment; the PII-masking-via-SMT detail is the only security-adjacent element. Re-tiered A→B: this is a Confluent-aligned expert's secondary write-up of a 2021 conference talk, not a primary production-security source.
 
-**Validation Status**: ⚠️ Original URL archived (Medium 403), alt URL active (February 2026)
+**Validation Status**: ✅ Re-verified 2026-06-05 — live source confirms the Hotstar figures (WebSearch; page 403s automated fetch)
+**Validation (2026-06-05, folded)**: dead security URL retired, re-pointed + reframed to the verified general-streaming source, re-tiered A→B; provenance in RESEARCH-JOURNAL.md.
 
 ---
 

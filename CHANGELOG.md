@@ -49,6 +49,18 @@ report on it, and reconciles the source count across every surface that states i
   (~68% self-reported → ~46% live). Dated point-in-time "Key Metrics" blocks were left intact as history.
 - Corrected the retired-Substack reference in `README.md` to securitydataworks.com.
 
+### Fixed (freshness sweep — started, Phase 3)
+- Resolved the two long-DEAD entries (the journal's remaining DEAD list). "Flink at Uber — Real-Time
+  Security Analytics" (dead eng.uber.com URL) re-sourced to the live Confluent Current 2025 session and
+  retitled "Uber — Real-Time Analytics Platform" — the verified source is Uber's *general* analytics
+  platform, so the unsupported security framing was removed (kept A). "Disney+ Real-Time Security
+  Analytics" (dead Medium URL) re-sourced to Kai Waehner's Disney+ Hotstar case study, reframed as
+  general media streaming, and re-tiered A→B (vendor-aligned secondary source). Verified via WebSearch.
+- Net Level-A 46% → ~45% (64/141); 0 DEAD entries remain from the journal's list.
+- Documented an environment limitation for the rest of the sweep: WebFetch 403s on many publisher domains
+  (bot-blocking, not dead); WebSearch works. Recorded in RESEARCH-JOURNAL.md so the next session plans
+  around it.
+
 ### Flagged (not changed — needs a content decision)
 - **Validated-hypothesis count is unreconciled**: CLAUDE.md/README say 7, the Oct-2025 gap analysis says
   "3 strongly validated / 6 proposed", and the health-check's regex over-counts (31 — it matches every
