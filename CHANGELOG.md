@@ -7,6 +7,42 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [Unreleased] - Mechanism honesty + count reconciliation
+
+Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
+report on it, and reconciles the source count across every surface that states it.
+
+### Fixed (health-check mechanism)
+- `weekly_health_check.py` crashed on any direct run: its default `repo_path` was the author's hardcoded
+  `~/security-data-literature-review`, which it `chdir`'d into. Now it resolves the repo relative to the
+  script, so it runs wherever the repo is checked out (local tree or a fresh remote clone).
+- `total_sources` counted `**URL**:` lines (125), not catalogued entries. It now counts `#### ` entries
+  (141) — the canonical number every other surface cites.
+- Link checker no longer false-flags live-but-bot-blocked sites as broken. It sends a real User-Agent,
+  retries with a ranged GET when a server refuses HEAD, treats 403/405/429/999 as *reachable*, and only
+  counts a definitive 404/410 (or persistent 5xx) as **broken**. A connection/DNS/timeout failure is now
+  classified **unreachable (inconclusive)** — reported but never counted as broken, so a restricted-egress
+  sandbox can't manufacture a false red. (The prior run's "9 broken" were all bot-blocks; real count: 0.)
+- Overall status can now actually go red: a confirmed-dead link is a failure (→ critical), and any staleness
+  or unreachable link is a warning. The old ">3 warnings" gate let real degradation keep reading as
+  "healthy" — the same can't-go-red disease the dashboard fix in 1.22.0 addressed. Freshness threshold
+  aligned to 40% to match `weekly_scheduled_check.OUTDATED_FRACTION_RED` so the two surfaces agree.
+- `SessionStart.sh` reported `Bibliography Sources: ~0` — its `^**"` parser matched nothing. Fixed to
+  count `#### ` entries; now reports 141.
+
+### Changed (count reconciliation — Phase 2)
+- Reconciled the canonical source count (141) and the honest live Evidence-Level-A figure (~64%, 90/141)
+  across the surfaces that *state current status*: `.claude/CLAUDE.md` (was 118 / 80% / v1.21.0),
+  `README.md` (was 101 / 78%), `REPOSITORY-STATUS.md` header, and the `MASTER-BIBLIOGRAPHY.md` header
+  (~68% → ~64%). Dated point-in-time "Key Metrics" blocks were left intact as history, not rewritten.
+- Corrected the retired-Substack reference in `README.md` to securitydataworks.com.
+
+### Flagged (not changed — needs a content decision)
+- **Validated-hypothesis count is unreconciled**: CLAUDE.md/README say 7, the Oct-2025 gap analysis says
+  "3 strongly validated / 6 proposed", and the health-check's regex over-counts (31 — it matches every
+  "VALIDATED" in prose). This is a research-judgment call, not a mechanical count, so no number was
+  stamped; CLAUDE.md now carries a "needs review" note instead.
+
 ## [1.22.0] - 2026-06-05 - Revival: honesty, Second Brain merge, fabricated-source removal
 
 After a 96-day lapse (the manual monthly checklist had no scheduler and the dashboard was masking

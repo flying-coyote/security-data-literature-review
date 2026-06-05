@@ -1,15 +1,17 @@
 # Repository Status Report
 
 **Repository**: security-data-literature-review
-**Last Updated**: January 2, 2026 (Version 1.19.0 - Best Practices Audit + Project Review)
+**Last Updated**: June 5, 2026 (Version 1.22.0 - Revival: audit, Second Brain merge, mechanism honesty)
 **Maintained By**: Jeremy Wiley
-**Purpose**: Living literature review published on Substack, supporting blog (3x/week) and book (115,500 words)
+**Purpose**: Living literature review (repo is the literature source of truth), supporting writing at securitydataworks.com (3x/week) and the book (115,500 words)
 
 ---
 
 ## Current Status
 
 **Overall Phase**: 🔄 **Phase 2 ACTIVE** (Monthly Updates + Quarterly Deep Dives)
+
+**Current metrics (June 2026, live-computed — see `scripts/weekly_health_check.py`)**: 141 sources · ~64% Evidence Level A (90/141, honest post-merge baseline) · ~91/141 sources >12mo (freshness sweep in progress). Older dated "Key Metrics" blocks below are point-in-time records, kept as history — not current.
 
 **January 2, 2026 Session Complete**:
 - ✅ **Best practices audit** completed (Score: 78/100 → 92/100)

@@ -8,9 +8,14 @@
 ```
 
 ## Current Status
-**Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.21.0
-**Sources**: 118 | **Evidence Level A**: 80% | **Hypotheses Validated**: 7
+**Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.22.0
+**Sources**: 141 | **Evidence Level A**: ~64% (live, 90/141) | **Hypotheses Validated**: 7 (needs review — see note)
 See `PROJECT-BRIEF.md` for scope and `REPOSITORY-STATUS.md` for tracking.
+> Counts are live-computed: sources = `#### ` entries, Level-A = `**Evidence Level**: A` / entries.
+> The 80% Level-A figure was self-reported; 64% is the honest post-merge baseline (the freshness sweep
+> + 2026 production sources are expected to lift it back toward the 75% target). The validated-hypothesis
+> count is unreconciled across docs (7 here, "3 strongly validated/6 proposed" in the Oct-2025 gap
+> analysis) and needs a real review, not a mechanical count.
 
 ## Evidence Tiers
 | Tier | Type | Target |
