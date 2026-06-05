@@ -1,12 +1,13 @@
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
-**Last Updated**: February 28, 2026 (Version 1.21.0 - February 2026 Monthly Update)
-**Last Reviewed**: February 28, 2026
-**Total Sources**: 118+ sources documented (added 3 RQ13 sources, refreshed 4 sources)
+**Last Updated**: June 5, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
+**Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
+**Total Sources**: ~146 catalogued entries (124 prior + 22 merged from the private Second Brain bibliography — academic, frameworks/standards, practitioner publications). This repo is now the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 80% Evidence Level A (RQ13 pipeline economics validated with quantitative data)
-**Link Status**: 3 broken links fixed (Disney+ Medium 403, Arctic Wolf 403, Microsoft TechCommunity 400)
+**Evidence Quality**: 80% Evidence Level A (Feb 2026 measure; to be recomputed after the freshness sweep)
+**Link Status**: ⚠️ Full freshness sweep in progress — health check (2026-06-05) found 5/10 sampled links broken + 92 sources >12 months old; fixes tracked in the revival plan. Merged-in URLs status-checked at merge time (✅ verified 2026-06-05) where marked.
+**Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
 
 ---
 
@@ -3653,5 +3654,367 @@ The following papers have been identified for future analysis:
 **Source**: Identified via "Humio Clone" reference collection (December 2025)
 **Status**: 📚 QUEUED - Not yet read
 **Added**: 2026-01-02
+
+---
+
+## Sources Merged from the Second Brain Corpus (June 2026)
+
+Literature citations reconciled in from `project1/01-knowledge-base/MASTER-BIBLIOGRAPHY.md` (the
+private Second Brain bibliography), which held academic, framework/standards, and practitioner
+publications this book-focused bibliography lacked. Only the published works are merged here — the
+private relationship and communication-status tracking that accompanied them in the source (outreach
+state, availability, partnership posture) is deliberately kept in the private repo and is not
+reproduced. URLs marked *verified 2026-06-05* were status-checked at merge time; the rest are carried
+from the Second Brain entry pending the freshness sweep.
+
+### Academic & Peer-Reviewed
+
+#### Matryoshka: Semantic-Aware Log Parsing
+
+**Authors**: Julien Piet (UC Berkeley EECS)
+**Date**: 2024
+**URL**: https://people.eecs.berkeley.edu/~julien.piet/matryoshka.pdf
+**Evidence Level**: A (peer-reviewed academic research)
+**Relevance**:
+- Semantic-aware parsing methodology directly applicable to Zeek → OCSF transformation
+- Book Chapter 8 (OCSF mapping), Appendix F (mapping implementation)
+- Grounds the parsing-fidelity argument that field mapping is a semantic problem, not a syntactic one
+
+**Citations**: Piet, J. (2024). *Matryoshka: Semantic-Aware Log Parsing*. UC Berkeley EECS.
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### Mining Temporal Attack Patterns from Cyberthreat Intelligence Reports
+
+**Authors**: (ArXiv preprint)
+**Date**: 2024
+**URL**: https://arxiv.org/abs/2401.01883
+**Evidence Level**: A (academic research, preprint)
+**Relevance**:
+- Temporal attack-pattern detection from CTI narrative reports
+- Threat-modeling and detection-engineering research foundation
+
+**Citations**: *Mining Temporal Attack Patterns from Cyberthreat Intelligence Reports* (2024). arXiv:2401.01883.
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### F3: The Open-Source Data File Format for the Future
+
+**Authors**: Xinyu Zeng, Ruijun Meng, Martin Prammer, Wes McKinney, Jignesh M. Patel, Andrew Pavlo, Huanchen Zhang (CMU Database Group + Wisconsin-Madison + Apache Arrow)
+**Date**: September 2025 (SIGMOD)
+**URL**: https://db.cs.cmu.edu/papers/2025/zeng-sigmod2025.pdf
+**Alt URL**: https://github.com/future-file-format/f3
+**Evidence Level**: A (peer-reviewed, SIGMOD 2025)
+**Relevance**:
+- WebAssembly-embedded decoders for self-describing, platform-independent columnar files
+- Addresses Parquet row-group layout limitations; next-generation columnar format research
+- Book Chapter 9 (format war), long-term forensic data preservation
+- Research prototype, not production-ready (label accordingly)
+
+**Citations**: Zeng, X., Meng, R., Prammer, M., McKinney, W., Patel, J. M., Pavlo, A., & Zhang, H. (2025). *F3: The Open-Source Data File Format for the Future*. Proc. ACM Manag. Data, 3(4).
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+### Frameworks & Standards
+
+#### MITRE D3FEND Framework & Ontology
+
+**Authors**: MITRE
+**Date**: 2024-2026 (ongoing; v1.4.0 line)
+**URL**: https://d3fend.mitre.org/
+**Evidence Level**: A (framework authority, formal ontology)
+**Relevance**:
+- Defensive-technique ontology; the defensive counterpart to ATT&CK
+- The OCSF ↔ D3FEND grounding chain (D3FEND → CCO → BFO) central to the grounding work — Chapter 3, Chapter 8, Appendix F
+- Digital-artifact / offense-defense inferred matrix; semantic compliance mapping
+
+**Citations**: MITRE. *D3FEND: A Knowledge Graph of Cybersecurity Countermeasures*. https://d3fend.mitre.org/
+**Notes**: A glaring prior gap — absent from this bibliography despite being central to the current grounding research.
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### MITRE ATLAS (Adversarial Threat Landscape for AI Systems)
+
+**Authors**: MITRE
+**Date**: 2024-2025 (AI-agent techniques added Oct 2024)
+**URL**: https://atlas.mitre.org/
+**Evidence Level**: A (framework authority)
+**Relevance**:
+- AI/ML version of ATT&CK; threat taxonomy for AI-powered tools and agents
+- New AI-agent techniques: AML.T0080 (context poisoning), AML.T0082 (RAG credential harvesting), AML.T0084, AML.T0086
+- Detection engineering for AI-security
+
+**Citations**: MITRE. *ATLAS: Adversarial Threat Landscape for Artificial-Intelligence Systems*. https://atlas.mitre.org/
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### Secure Controls Framework (SCF)
+
+**Authors**: Secure Controls Framework Council
+**Date**: 2024-2026 (continuously updated)
+**URL**: https://www.securecontrolsframework.com/
+**Evidence Level**: C (framework; independent validation advised)
+**Relevance**:
+- 1,200+ controls mapped to 150+ compliance frameworks
+- D3FEND ↔ SCF control mapping; compliance-control reconciliation
+
+**Citations**: Secure Controls Framework Council. *Secure Controls Framework*. https://www.securecontrolsframework.com/
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### NIST Cybersecurity Framework (CSF 2.0)
+
+**Authors**: NIST
+**Date**: 2024 (CSF 2.0)
+**URL**: https://www.nist.gov/cyberframework
+**Evidence Level**: A (official government standard)
+**Relevance**:
+- Compliance-framework baseline; control-mapping reference
+- Vendor-filtering and capability-mapping (NIST CSF 2.0 functions)
+
+**Citations**: NIST. *Cybersecurity Framework 2.0* (2024). https://www.nist.gov/cyberframework
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### CISA / ICS-CERT Industrial Control Systems Guidance
+
+**Authors**: CISA (Cybersecurity and Infrastructure Security Agency)
+**Date**: ongoing
+**URL**: https://www.cisa.gov/topics/industrial-control-systems
+**Evidence Level**: B (government guidance)
+**Relevance**:
+- OT/ICS security; OT-IT convergence
+- Critical-infrastructure security framing for the OT chapters/sections
+
+**Citations**: CISA. *Industrial Control Systems*. https://www.cisa.gov/topics/industrial-control-systems
+**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+
+---
+
+#### CoSAI — Coalition for Secure AI (OASIS)
+
+**Authors**: OASIS / CoSAI
+**Date**: 2024-2025
+**URL**: https://github.com/cosai-oasis/ws2-defenders
+**Evidence Level**: B (industry consortium)
+**Relevance**:
+- WS2 — preparing defenders for a changing cybersecurity landscape
+- AI-security best practices and defender readiness
+
+**Citations**: OASIS CoSAI. *WS2: Preparing Defenders*. https://github.com/cosai-oasis/ws2-defenders
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+### Technical Documentation
+
+#### Zeek Network Security Monitor — Documentation
+
+**Authors**: The Zeek Project
+**Date**: 2024-2026 (continuously updated)
+**URL**: https://docs.zeek.org/
+**Evidence Level**: B (official open-source documentation)
+**Relevance**:
+- Network-log transformation and OCSF mapping; the open-source NSM whose logs anchor much of the book's parsing/mapping discussion
+- Chapter 8 (OCSF mapping), Appendix F
+
+**Citations**: The Zeek Project. *Zeek Documentation*. https://docs.zeek.org/
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### Microsoft Power Query M — Language Reference
+
+**Authors**: Microsoft
+**Date**: continuously updated
+**URL**: https://learn.microsoft.com/en-us/powerquery-m/
+**Evidence Level**: B (official vendor documentation)
+**Relevance**:
+- The transformation language behind the CISA Zeek-OCSF M-code mapping referenced in the manuscript
+- Reference for the validated transformation-pattern library
+
+**Citations**: Microsoft. *Power Query M Formula Language Reference*. https://learn.microsoft.com/en-us/powerquery-m/
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+### Emerging Projects
+
+#### Apache DataFusion Ballista
+
+**Authors**: Apache DataFusion project
+**Date**: 2024-2026 (active development)
+**URL**: https://datafusion.apache.org/ballista/
+**Evidence Level**: B (Apache open-source project; limited production case studies)
+**Relevance**:
+- Rust + Arrow distributed query execution; emerging alternative to Spark/Trino
+- Chapter 9 (query-engine comparison) as an emerging option; not yet production-proven for security data lakes (label accordingly)
+
+**Citations**: Apache DataFusion Project. *Ballista Documentation*. https://datafusion.apache.org/ballista/
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### Lakekeeper — Apache Iceberg REST Catalog (Rust)
+
+**Authors**: Lakekeeper project
+**Date**: 2024-2026 (pre-1.0, active development)
+**URL**: https://docs.lakekeeper.io/
+**Evidence Level**: B (open-source project; limited production case studies)
+**Relevance**:
+- Stateless, single-binary Iceberg REST catalog; lightweight alternative to Polaris (Java) and Nessie (Git-like versioning)
+- Chapter 6 (catalog selection); prototype/POC-appropriate, await 1.0 for production (label accordingly)
+
+**Citations**: Lakekeeper Project. *Lakekeeper Documentation*. https://docs.lakekeeper.io/
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+### Practitioner Publications
+
+*(Published works cited as literature; any relationship/communication status from the source entry is intentionally omitted.)*
+
+#### Architecting an Apache Iceberg Lakehouse — Alex Merced
+
+**Authors**: Alex Merced (Dremio)
+**Date**: 2025 (MEAP v1)
+**URL**: https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse
+**Evidence Level**: B (practitioner book; Manning MEAP)
+**Relevance**:
+- 5-layer lakehouse architecture (Storage → Ingestion → Catalog → Federation → Consumption); modular, vendor-neutral design
+- Production cost-optimization patterns (Insider: 90% S3 cost reduction with Iceberg)
+- Chapters 2, 6, 9 (Iceberg fundamentals, decision framework, cost)
+
+**Citations**: Merced, A. (2025). *Architecting an Apache Iceberg Lakehouse* (MEAP v1). Manning.
+**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+
+---
+
+#### Kafka to Iceberg: A Comparison of 9 Solutions — Tom Scott (Streambased)
+
+**Authors**: Tom Scott (Streambased)
+**Date**: October 2024
+**URL**: https://blog.streambased.io/
+**Evidence Level**: B (practitioner analysis)
+**Relevance**:
+- Streaming-lakehouse architecture; zero-copy vs copy-based trade-offs across Confluent, Redpanda, AutoMQ, Streambased, Aiven, StreamNative, Bufstream, Apache Fluss
+- Chapter 9 (Kafka → Iceberg integration patterns)
+
+**Citations**: Scott, T. (2024). *Kafka to Iceberg: A Comparison of 9 Solutions*. ZeroCopy Blog, Streambased.
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### Okta's Multi-Engine Data Stack — Julien Hurault
+
+**Authors**: Julien Hurault (Ju Data Engineering Newsletter)
+**Date**: May 1, 2024
+**URL**: https://juhache.substack.com/
+**Evidence Level**: A (Tier-1 production validation, named deployment with metrics)
+**Relevance**:
+- Okta serverless DuckDB: 1M Lambda invocations/day, 250 GB/min peak; AWS Lambda + DuckDB + Snowflake + S3
+- Upstream preprocessing to cut warehouse compute; Chapter 10 (cost), Chapter 9 (serverless patterns)
+
+**Citations**: Hurault, J. (2024, May 1). *Okta's Multi-Engine Data Stack*. Ju Data Engineering Newsletter.
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### SOC Modernization & AI — Anton Chuvakin
+
+**Authors**: Anton Chuvakin (Google Cloud Security)
+**Date**: 2024-2025
+**URL**: https://cloud.withgoogle.com/cloudsecurity/podcast/
+**Evidence Level**: B (industry thought-leadership, published)
+**Relevance**:
+- "Accelerated SIEM Journey: A SOC Leader's Playbook for Modernization and AI" (Cloud Security Podcast ep. 236); "How Google Does It: Building AI agents for cybersecurity"
+- SOC evolution, SIEM modernization, AI-in-SOC readiness
+
+**Citations**: Chuvakin, A. (2024-2025). *Accelerated SIEM Journey* and related, Google Cloud Security Podcast.
+**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+
+---
+
+#### Building AI for Cyber Defenders + Claude-Assisted Intrusion Report — Anthropic
+
+**Authors**: Anthropic
+**Date**: 2024-2025
+**URL**: https://www.anthropic.com/research
+**Evidence Level**: B (vendor research, named publications)
+**Relevance**:
+- "Building AI for Cyber Defenders"; the November 2024 report on a state-sponsored actor using Claude for a largely-autonomous intrusion (required human assistance at 4+ stages)
+- Validates "AI amplification, not replacement"; AI threat-intelligence reference
+
+**Citations**: Anthropic (2024-2025). *Building AI for Cyber Defenders*; *Disrupting AI-orchestrated cyber operations*. anthropic.com/research
+**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+
+---
+
+#### We've Been Thinking About AI All Wrong / ITEM Framework — Daniel Miessler
+
+**Authors**: Daniel Miessler
+**Date**: 2025
+**URL**: https://danielmiessler.com/blog/weve-been-thinking-about-ai-all-wrong
+**Evidence Level**: C (practitioner blog; anti-hype perspective)
+**Relevance**:
+- ITEM Framework (Knowledge, Intelligence, Speed, Accuracy, Cost) for intelligence-task automation
+- Realistic AI-adoption expectations for security operations; AI-maturity hypothesis input
+
+**Citations**: Miessler, D. (2025). *We've Been Thinking About AI All Wrong*; ITEM Framework. danielmiessler.com.
+**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+
+---
+
+#### We Hijacked a Claude Skill and the Weapon is a PDF — Josh Devon
+
+**Authors**: Josh Devon (Secure Trajectories)
+**Date**: October 2024
+**URL**: https://securetrajectories.substack.com
+**Evidence Level**: B (independent security research, published)
+**Relevance**:
+- PDF-based prompt injection against AI agents (Claude Skills); maps to MITRE ATLAS AML.T0080 (context poisoning)
+- AI-agent security vulnerabilities and defenses
+
+**Citations**: Devon, J. (2024). *We Hijacked a Claude Skill and the Weapon is a PDF*. Secure Trajectories.
+**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+
+---
+
+#### AI Engineering — Chip Huyen
+
+**Authors**: Chip Huyen
+**Date**: 2025
+**URL**: https://github.com/chiphuyen/aie-book
+**Evidence Level**: B (practitioner book)
+**Relevance**:
+- AI-engineering best practices applicable to security AI/ML systems
+- Reference for AI/ML implementation guidance
+
+**Citations**: Huyen, C. (2025). *AI Engineering*. O'Reilly.
+**Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+### Books
+
+#### Kingpin: How One Hacker Took Over the Billion-Dollar Cybercrime Underground
+
+**Authors**: Kevin Poulsen
+**Date**: 2011
+**URL**: (print) ISBN 978-0307588685, Crown
+**Evidence Level**: B (non-fiction, investigative)
+**Relevance**:
+- Attack-surface economics; attackers optimize for ROI, not capability (Max Butler abandoned exploitable bank-network access for faster carding monetization)
+- Threat-actor behavior and monetization patterns
+
+**Citations**: Poulsen, K. (2011). *Kingpin*. Crown.
+**Validation Status**: N/A (print book)
 
 ---
