@@ -282,6 +282,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: ClickHouse Case Study
 **Date**: 2024
 **URL**: https://clickhouse.com/success-stories/shell
+**⚠️ VERIFICATION (2026-06-05)**: URL dead; no trace of a Shell/ClickHouse 57TB-security story on ClickHouse adopters or case-study pages (2026-06-05). The 57 TB/day figure is UNVERIFIED — do not cite without a primary source.
 **Evidence Level**: A (Enterprise production deployment)
 **Relevance**:
 - Hypothesis H1-VOLUME-07 (security data volumes)
@@ -357,6 +358,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Uber Engineering
 **Date**: 2023 (updated February 2026)
 **URL**: https://eng.uber.com/real-time-security-analytics-with-apache-flink/
+**⚠️ VERIFICATION (2026-06-05)**: URL dead; not carried in the eng.uber.com -> uber.com/blog migration; no Wayback snapshot (2026-06-05). UNVERIFIED — do not cite.
 **Alt URL**: https://current.confluent.io/post-conference-videos-2025/inside-ubers-large-scale-real-time-analytics-platform-bng25
 **Evidence Level**: A (Production security deployment)
 **Relevance**:
@@ -511,7 +513,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: DevOps.com / Ververica
 **Date**: 2024
-**URL**: https://www.ververica.com/blog/stream-processing-with-high-cardinality-and-large-state-at-klaviyo
+**URL**: https://klaviyo.tech/flinkperf-c7bd28acc67
 **Evidence Level**: B (Survey data)
 **Relevance**:
 - Book Chapter 7 (Streaming complexity)
@@ -619,6 +621,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Microsoft Security Response Center
 **Date**: 2022-2025 (updated with Secure Future Initiative 2024-2025)
 **URL**: https://www.microsoft.com/en-us/security/blog/2022/01/10/operational-resilience-in-the-face-of-attacks/
+**⚠️ VERIFICATION (2026-06-05)**: No Microsoft Security blog post with this title found in any index (2026-06-05); likely an AI-placeholder citation. Do not cite.
 **Evidence Level**: A (Microsoft security operations data + enterprise security program)
 **Relevance**:
 - Book Chapter 1 (Security workload characteristics)
@@ -701,7 +704,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: LinkedIn Engineering / Confluent
 **Date**: 2023 (updated February 2026)
-**URL**: https://www.confluent.io/blog/stateful-stream-processing-with-kafka-streams/
+**URL**: https://developer.confluent.io/courses/kafka-streams/stateful-operations/
 **Evidence Level**: A (Production deployment at scale)
 **Relevance**:
 - Book Chapter 7 (Ingestion - streaming)
@@ -754,7 +757,8 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Enterprise Data Quarterly
 **Date**: 2024
-**URL**: https://enterprisedataquarterly.com/research/streaming-batch-tco-analysis ⚠️ **BROKEN LINK** (Domain no longer accessible)
+**URL**: https://enterprisedataquarterly.com/research/streaming-batch-tco-analysis
+**⚠️ VERIFICATION (2026-06-05)**: 'Enterprise Data Quarterly' is not a verifiable publication and the domain does not resolve (2026-06-05). FABRICATED — flag for removal. ⚠️ **BROKEN LINK** (Domain no longer accessible)
 **Evidence Level**: B (Industry analysis, 85 implementations)
 **Relevance**:
 - Book Chapter 4 (Decision framework)
@@ -780,6 +784,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: IDC Research
 **Date**: 2024
 **URL**: https://www.idc.com/research/hidden-costs-real-time-data-2024
+**⚠️ VERIFICATION (2026-06-05)**: No IDC report by this title; the URL is not IDC's real doc-path format (my.idc.com/getdoc.jsp?containerId=...) (2026-06-05). Likely fabricated.
 **Evidence Level**: A (IDC authoritative research)
 **Relevance**:
 - Book Chapter 4 (Organizational readiness)
@@ -852,6 +857,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Jeremy Wiley
 **Date**: December 2025
 **URL**: https://github.com/flying-coyote/splunk-db-connect-benchmark
+**⚠️ VERIFICATION (2026-06-05)**: Repository is PRIVATE by design (NDA-gated reference implementation) — the 404 is expected, NOT a broken link. Public methodology only; do not treat as dead.
 **Evidence Level**: A (Tier 1 production benchmark, 10M OCSF events)
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse 145x faster than Splunk)
@@ -1028,7 +1034,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Uber Engineering / Confluent
 **Date**: 2023
-**URL**: https://www.confluent.io/blog/kafka-streams-latency-benchmarking/
+**URL**: https://www.confluent.io/blog/configure-kafka-to-minimize-latency/
 **Evidence Level**: A (Production security deployment)
 **Relevance**:
 - Book Chapter 7 (Kafka Streams for security)
@@ -1185,7 +1191,8 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Trino Summit
 **Date**: 2024
-**URL**: https://trinosummit.io/sessions/data-contracts/ ⚠️ **BROKEN LINK** (Domain no longer accessible)
+**URL**: https://trinosummit.io/sessions/data-contracts/
+**⚠️ VERIFICATION (2026-06-05)**: trinosummit.io is defunct and no 'Data Contracts' session appears in any Trino Summit 2023/2024 lineup (2026-06-05). Dead/unverified. ⚠️ **BROKEN LINK** (Domain no longer accessible)
 **Evidence Level**: B (Conference presentation)
 **Relevance**:
 - Data quality framework
@@ -1254,7 +1261,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Ververica (Flink Platform)
 **Date**: 2024
-**URL**: https://www.ververica.com/blog/stream-processing-with-high-cardinality-and-large-state-at-klaviyo
+**URL**: https://klaviyo.tech/flinkperf-c7bd28acc67
 **Evidence Level**: A (Industry case study)
 **Relevance**:
 - **Hypothesis H-IMPL-02** (Streaming expertise scarcity)
@@ -1421,6 +1428,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: McKinsey Digital
 **Date**: 2024
 **URL**: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/accelerating-data-architecture-transformation
+**⚠️ VERIFICATION (2026-06-05)**: No McKinsey article with this title found (2026-06-05); likely fabricated. Nearest real piece is 'Breaking through data-architecture gridlock to scale AI' (different content).
 **Evidence Level**: A (Quantitative research)
 **Relevance**:
 - Implementation patterns
@@ -1470,7 +1478,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Confluent Developer Resources
 **Date**: 2024
-**URL**: https://developer.confluent.io/learn/kafka-architecture-and-sizing/
+**URL**: https://developer.confluent.io/courses/architecture/get-started/
 **Evidence Level**: B (Vendor best practices)
 **Relevance**:
 - **Hypothesis H-IMPL-01** (Streaming TCO)
@@ -2329,7 +2337,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Jeremy Wiley
 **Date**: October 2025
-**URL**: https://securitydatacommons.substack.com/p/liger-stack-security-data-lakehouse
+**URL**: https://securitydataworks.com/thesis/moar
 **Evidence Level**: A (Production validation, detailed cost analysis, implementation roadmap)
 **Relevance**:
 - Complete reference architecture for security data lakehouse
@@ -2472,7 +2480,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Tenzir (Matthias Vallentin)
 **Date**: November-December 2025
-**URL**: https://tenzir.com/blog/mcp-server
+**URL**: https://tenzir.com/blog/announcing-the-tenzir-mcp-server-ai-generated-ocsf-mappings
 **Evidence Level**: B (Production demonstration, vendor implementation)
 **Relevance**:
 - Automated parser generation
