@@ -29,6 +29,9 @@ report on it, and reconciles the source count across every surface that states i
   aligned to 40% to match `weekly_scheduled_check.OUTDATED_FRACTION_RED` so the two surfaces agree.
 - `SessionStart.sh` reported `Bibliography Sources: ~0` — its `^**"` parser matched nothing. Fixed to
   count `#### ` entries; now reports 141.
+- `SCHEDULING.md` was out of sync with the code: it stated a 75% Level-A red threshold (the code uses the
+  recalibrated 60% `TIER_A_FLOOR`), referenced the old revival branch, and assumed the hardcoded home
+  path the scripts no longer need. Synced to the code.
 
 ### Changed (count reconciliation — Phase 2)
 - Reconciled the canonical source count (141) and the honest live Evidence-Level-A figure (~64%, 90/141)
