@@ -50,34 +50,56 @@ lapse didn't surface. This is a mechanism bug, not just stale data.
   health check) instead of echoing zeros, and drop the "Blog ACTIVE / Security Data Commons" integration
   line. A dashboard that can't go red is worse than no dashboard.
 - Pick one canonical source count and reconcile every surface to it (see Phase 2).
-- **DECISION 1 — cadence + scheduling.** Monthly proved unsustainable to run by hand (it lapsed). Options:
-  quarterly (the health check's own schedule logic already thinks in quarters; next is "Month 7" = July),
-  monthly with a real scheduled agent so it can't silently lapse, or on-demand tied to book/website pushes.
-  My lean: quarterly cadence, enforced by a scheduled remote agent (`/schedule`) that runs the health check
-  and opens the update, so a lapse becomes a notification instead of silence.
+- **DECISION 1 (Jeremy, 2026-06-05) = weekly + scheduled agent.** Wire a recurring scheduled agent
+  (`/schedule`) that runs `weekly_health_check.py` weekly and opens the update so a lapse becomes a
+  notification instead of silence. Weekly is aggressive — the agent should do the light weekly pass (link
+  health + flag new sources) and escalate to a fuller refresh when the health check goes red, rather than a
+  full ~7h update every week. (task #64)
 
-### Phase 2 — fix integration / pick a source of truth (one decision)
-- **DECISION 2 — which MASTER-BIBLIOGRAPHY is canonical.** My lean: this repo's is SoT (richer, newer,
-  has the automation around it); `~/project1/01-knowledge-base/MASTER-BIBLIOGRAPHY.md` becomes a short
-  pointer to it rather than a second divergent copy.
+### Phase 2 — fix integration / pick a source of truth (DECIDED: merge-first, repo = SoT)
+- **DECISION 2 (Jeremy, 2026-06-05) = merge first, then this repo is SoT.** ✅ project1 → repo literature
+  merge DONE (commit d8a35a4): 22 published works folded in (D3FEND + ontology, MITRE ATLAS, Matryoshka,
+  F3/SIGMOD, Zeek, Power Query M, SCF, NIST CSF, CoSAI, Ballista, Lakekeeper, + practitioner pubs).
+- **Public/private boundary (Jeremy, 2026-06-05).** This repo is PUBLIC. There's a difference between a
+  *literature review* (the published work — paper/book/framework/post — which belongs here) and
+  *relationship / communication-status tracking* (outreach state, availability, partnership posture, the
+  "expert contact identified / active monitoring / $N investment" notes — which stays PRIVATE in project1).
+  Port the literature; never the relationship status. A person's publication is fine; their comms status isn't.
+- **Third merge source: the website.** securitydataworks.com `/writing` + `/research` cite **159 distinct
+  external URLs**; many are tool homepages already covered, but a real citable set is not yet catalogued
+  (ACM/arXiv/USENIX papers, Ryan Stillions detection-maturity blog, the CrowdStrike/SentinelOne investor
+  filings behind the FSI hypothesis, NIST CSRC). Triage these 159 against the 146-entry bibliography and fold
+  in the genuine sources. Sized as its own pass (see task #70).
 - Reconcile the count + Level-A % to the canonical number and propagate to: book about-the-author (75+/73%
-  → current), project1 training docs (115+), the dashboard, the README.
+  → current ~146), project1 training docs (115+), the dashboard, the README. Make project1's bibliography a
+  pointer to this repo for *literature*, while it keeps its private relationship tracking.
 - Add the lit-review/methodology linkage to the website `/research/methodology` so the evidence base the
   site's claims rest on is actually reachable (the book Tier-1 re-home already points readers there).
 
-### Phase 3 — the extensive content update (the big one; needs web research + evidence judgment)
-- Fix/replace the broken links the health check found.
-- Refresh the 92 stale sources, hypothesis-critical first (31 hypotheses are validated against this corpus).
+### Phase 3 — the extensive content update (DECIDED: full freshness sweep; the big one)
+- **DECISION 3 (Jeremy, 2026-06-05) = full freshness sweep of all 92 stale sources + broad new sourcing.**
+  Multi-session by design.
+- Fix/replace the broken links the health check found (5/10 sampled).
+- Refresh all 92 stale sources, hypothesis-critical first (31 hypotheses are validated against this corpus).
 - Add the March–June 2026 sources the rest of the estate already moved on without: Iceberg V3/V4 + Variant +
   DuckLake, the OCSF↔D3FEND grounding work, the economics trilogy, the agentic/NANDA/Kimball thread, Splunk
   Platform 10.4 + Cisco Data Fabric. Each classified through the evidence-tier rubric.
-- **DECISION 3 — depth.** How many new sources and how much web-research effort for this catch-up (a focused
-  ~15-source refresh vs a full 92-source freshness sweep).
 
 ### Phase 4 — re-verify and prove the cadence fires
 Run the health check, confirm freshness recovered and Level A held, commit in clean units, and confirm the
 scheduled agent actually fires once so "periodic" is demonstrated, not assumed.
 
-## Status
-- Phase 1 dead-input + dashboard-honesty fixes: starting now (bounded, no decision needed for those parts).
-- Decisions 1–3 above are Jeremy's; everything downstream of them waits on the answers.
+## Status (2026-06-05)
+Decisions 1–3 made by Jeremy. Done so far, on branch `lit-review-revival-2026-06` (main untouched):
+- ✅ Phase 1: dashboard honesty fix + dead-input fix + this plan (commit eb4c720)
+- ✅ Recovered the stranded Feb-2026 bibliography refresh (commit b4d227d)
+- ✅ Phase 2 merge: project1 → repo literature merge, repo is now SoT, public/private boundary held (d8a35a4)
+
+Remaining (in order):
+1. Weekly scheduled agent (task #64) — Decision 1.
+2. Fix 5 broken links (task #65).
+3. Full freshness sweep of all 92 stale sources (task #66) — Decision 3; multi-session.
+4. Add March–June 2026 sources (task #67).
+5. Website-citation merge — triage 159 external URLs, fold in the genuine sources (task #70).
+6. Propagate canonical count + website /research linkage + make project1's a literature-pointer (task #68).
+7. Re-verify health check, confirm freshness recovered + schedule fires, commit (task #69).
