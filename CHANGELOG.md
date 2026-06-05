@@ -33,11 +33,20 @@ report on it, and reconciles the source count across every surface that states i
   recalibrated 60% `TIER_A_FLOOR`), referenced the old revival branch, and assumed the hardcoded home
   path the scripts no longer need. Synced to the code.
 
+### Changed (validation-note fold + re-tier)
+- The 49 audit-flagged entries had their `⚠️ Validation (2026-06-05)` correction notes **folded into the
+  entry prose and re-tiered** (4 parallel agents on disjoint blocks; provenance in RESEARCH-JOURNAL.md).
+  Unsupported headline statistics were removed from Key Findings, supported claims re-sourced, and the
+  verbose note replaced with a compact `Validation (2026-06-05, folded)` marker. 0 verbose notes remain.
+- **Evidence-Level-A dropped 64% → 46%** (90/141 → 65/141; now 65 A / 76 B / 9 C). ~25 entries moved off
+  Tier A because their headline number was not in the cited source — the honest baseline, no longer
+  masked. The freshness sweep + 2026 production sourcing is the path back toward the 75% target.
+
 ### Changed (count reconciliation — Phase 2)
-- Reconciled the canonical source count (141) and the honest live Evidence-Level-A figure (~64%, 90/141)
+- Reconciled the canonical source count (141) and the honest live Evidence-Level-A figure (~46%, 65/141)
   across the surfaces that *state current status*: `.claude/CLAUDE.md` (was 118 / 80% / v1.21.0),
   `README.md` (was 101 / 78%), `REPOSITORY-STATUS.md` header, and the `MASTER-BIBLIOGRAPHY.md` header
-  (~68% → ~64%). Dated point-in-time "Key Metrics" blocks were left intact as history, not rewritten.
+  (~68% self-reported → ~46% live). Dated point-in-time "Key Metrics" blocks were left intact as history.
 - Corrected the retired-Substack reference in `README.md` to securitydataworks.com.
 
 ### Flagged (not changed — needs a content decision)

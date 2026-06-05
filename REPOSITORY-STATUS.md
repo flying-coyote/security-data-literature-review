@@ -11,7 +11,7 @@
 
 **Overall Phase**: 🔄 **Phase 2 ACTIVE** (Monthly Updates + Quarterly Deep Dives)
 
-**Current metrics (June 2026, live-computed — see `scripts/weekly_health_check.py`)**: 141 sources · ~64% Evidence Level A (90/141, honest post-merge baseline) · ~91/141 sources >12mo (freshness sweep in progress). Older dated "Key Metrics" blocks below are point-in-time records, kept as history — not current.
+**Current metrics (June 2026, live-computed — see `scripts/weekly_health_check.py`)**: 141 sources · ~46% Evidence Level A (65/141 A, 76 B, 9 C — honest post-audit baseline after the 2026-06-05 fold re-tiered ~25 entries off A) · ~91/141 sources >12mo (freshness sweep in progress). Older dated "Key Metrics" blocks below are point-in-time records, kept as history — not current.
 
 **January 2, 2026 Session Complete**:
 - ✅ **Best practices audit** completed (Score: 78/100 → 92/100)
