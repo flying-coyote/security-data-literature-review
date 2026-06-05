@@ -2285,26 +2285,24 @@ This bibliography consolidates all literature sources from:
 **Authors**: KPMG, Fortinet, Prophet Security
 **Date**: 2024-2025
 **URL**: Multiple industry reports
-**Evidence Level**: A (Industry surveys and production metrics)
+**Evidence Level**: B (Partial industry-survey support; two headline stats unverifiable)
 **Relevance**:
 - SOC automation return on investment
 - AI implementation challenges
 - Level 1 analyst task automation
 
 **Key Findings**:
-- 24% of organizations struggle to demonstrate AI ROI in SOCs (KPMG 2024)
-- Average incident investigation/remediation: 11 minutes with AI (Fortinet)
-- 40% of alerts go uninvestigated without automation (Prophet Security)
-- AI triage can boost effectiveness by 30% in mature setups
-- SOAR market reaching $2.3 billion by 2025 (15.6% CAGR)
+- 40% of alerts go uninvestigated without automation (Prophet Security, via securityinfowatch.com)
+- SOAR market reaching $2.3 billion by 2025 (16.3% CAGR)
+- AI triage can boost effectiveness in mature SOC deployments
 - Autonomous SOC adoption expected standard within 1-2 years
 
 **Citations**: SOC automation metrics, AI implementation challenges, ROI data
-**Notes**: Validates RQ14 agent automation ROI hypothesis
+**Notes**: Validates RQ14 agent automation ROI hypothesis. Fortinet "11 min" and KPMG "24%" claims could not be verified in primary sources and have been removed.
 
 **Validation Status**: ✅ Industry survey data 2024-2025
 
-**⚠️ Validation (2026-06-05)**: Prophet "40% of alerts uninvestigated" is real (securityinfowatch.com/.../prophet-security-report...); SOAR "$2.3B by 2025" is real but CAGR is 16.3% (not 15.6%). Fortinet "11 min" and KPMG "24%" are unverifiable — disregard.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ### Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework
@@ -2680,33 +2678,33 @@ This bibliography consolidates all literature sources from:
 #### Apache Iceberg 2025 Performance Analysis
 **Authors**: Multiple vendors and analysts
 **Date**: 2025
-**URL**: Various (ProCogia, Streamkap, AutoMQ, Starburst)
-**Evidence Level**: B (Multiple vendor analyses with disclosed methodology)
+**URL**: Various (ProCogia, Streamkap, AutoMQ, Starburst); primary: https://iceberg.apache.org/docs/latest/performance/
+**Evidence Level**: B (Multiple vendor analyses with disclosed methodology; primary Iceberg docs support core claim)
 **Relevance**:
 - RQ11: LIGER Stack validation (Lakehouse component)
 - Apache Iceberg production readiness
 - Performance vs Delta/Hudi comparison
 
 **Key Findings**:
-- 10× performance improvements over Hive when properly managed
-- 50% scan time reduction for large datasets via metadata pruning
+- 10× performance improvements over Hive when properly managed (Apache Iceberg official performance docs)
+- Metadata pruning skips large fractions of scanned files, substantially reducing scan costs for large datasets
 - Nanosecond-precision timestamps support for finance/telco (2025 feature)
 - Sub-second latency with CDC and streaming (Kafka, Flink)
 - Industry-wide adoption as de facto standard (AWS, Google, Microsoft, Databricks)
 - Performance considerations: Delta/Hudi faster for write-heavy workloads
 
 **Citations**: Iceberg performance, production deployment, streaming integration
-**Notes**: Industry consensus on Iceberg leadership despite write performance gaps
+**Notes**: Industry consensus on Iceberg leadership despite write performance gaps. "50% scan reduction" figure was vendor-soft and replaced with qualitative framing.
 **Validation Status**: ✅ Multiple independent sources (2025)
 
-**⚠️ Validation (2026-06-05)**: the "10× over Hive" is in the official Iceberg performance docs (iceberg.apache.org/docs/latest/performance/) — cite that. "50% scan reduction" is vendor-soft — frame qualitatively (metadata pruning skips large fractions of files).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### SANS AI Security Controls Framework
 **Authors**: SANS Institute
 **Date**: 2025
 **URL**: https://www.sans.org/blog/securing-ai-in-2025-a-risk-based-approach-to-ai-controls-and-governance
-**Evidence Level**: A (Industry standard organization, practitioner framework)
+**Evidence Level**: B (Expert-consensus practitioner framework; regulatory-audit and logging-requirement claims not in source)
 **Relevance**:
 - RQ12: AI governance maturity
 - Security controls for AI agents
@@ -2717,14 +2715,12 @@ This bibliography consolidates all literature sources from:
 - Three bedrock principles: security controls, governance/compliance, risk-based approach
 - Six key control categories including access controls, audit logging, continuous monitoring
 - Phased implementation approach for production
-- Early adopters seeing regulatory audits (SEC, OCC) in 2025
-- Non-repudiable tamper-evident logs required for compliance
 
 **Citations**: AI governance framework, security controls, audit requirements
-**Notes**: Industry standard emerging for AI agent governance
+**Notes**: Industry standard emerging for AI agent governance. Regulatory-audit (SEC/OCC) and tamper-evident-log-requirement bullets were not present in the source and have been removed.
 **Validation Status**: ✅ Active framework (2025)
 
-**⚠️ Validation (2026-06-05)**: "SEC/OCC audits 2025" and "non-repudiable tamper-evident logs required" are not in the blog — disregard. Keep: Critical AI Security Guidelines v1.1, three principles, six control categories.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Security Data Lakehouse Implementation Patterns
@@ -2751,7 +2747,7 @@ This bibliography consolidates all literature sources from:
 ---
 
 #### Data Catalog Wars 2025 - Polaris vs Unity vs Nessie vs Gravitino
-**Authors**: E6Data, Dremio, Medium contributors
+**Authors**: E6Data, Dremio, Medium contributors; RBAC comparison via onehouse.ai/blog/comprehensive-data-catalog-comparison
 **Date**: 2025
 **URL**: Various catalog comparison articles
 **Evidence Level**: B (Vendor analyses and community reviews)
@@ -2761,18 +2757,18 @@ This bibliography consolidates all literature sources from:
 - Enterprise deployment patterns
 
 **Key Findings**:
-- Nessie: Most mature open-source option with Git-like versioning
-- Unity Catalog: Now fully open-source, strong within Databricks ecosystem
-- Polaris: REST-based interoperability, backed by Snowflake and Dremio
-- Gravitino: Emerging with AI/unstructured data features
-- Only Unity, Polaris, and Gravitino offer granular RBAC
+- Nessie: Most mature open-source option with Git-like versioning; does not provide access-control features
+- Unity Catalog: Now fully open-source, strong within Databricks ecosystem; offers granular RBAC
+- Polaris: REST-based interoperability, backed by Snowflake and Dremio; offers granular RBAC
+- Gravitino: Emerging with AI/unstructured data features; offers granular RBAC
+- Unity, Polaris, and Gravitino provide fine-grained access control; Nessie focuses on versioning only (source: onehouse.ai comprehensive catalog comparison)
 - "Catalog wars" intensifying in 2025 with vendor competition
 
 **Citations**: Catalog comparison, governance features, production adoption
 **Notes**: Critical for catalog selection in isolation-first architectures
 **Validation Status**: ✅ Active competition and adoption (2025)
 
-**⚠️ Validation (2026-06-05)**: re-source the RBAC comparison to onehouse.ai/blog/comprehensive-data-catalog-comparison (Unity/Polaris/Gravitino offer granular RBAC; Nessie is versioning, not access control).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Row-Level Security Performance Impact Studies
@@ -2802,27 +2798,25 @@ This bibliography consolidates all literature sources from:
 #### Streaming vs Batch Cost Analysis 2025
 **Authors**: Confluent, Redpanda, AWS, industry analysts
 **Date**: 2025
-**URL**: Various (Confluent blog, Redpanda guides, industry reports)
-**Evidence Level**: A (Industry survey with 4,000+ IT leaders)
+**URL**: Confluent 2025 Data Streaming Report (confluent.io/resources/report/2025-data-streaming-report/); supplementary vendor sources
+**Evidence Level**: B (Primary survey data from Confluent report confirmed; several cost-ratio bullets lack primary-source backing)
 **Relevance**:
 - RQ13: Pipeline vs query detection economics
 - Streaming infrastructure costs
 - TCO comparison methodology
 
 **Key Findings**:
-- 86% cite streaming as top strategic investment (2025 survey)
-- 44% report 5× ROI or greater from streaming
-- Managed Kafka delivers 70% lower TCO vs self-managed
-- Batch jobs waste 30-70% compute due to idle executors
+- 86% cite streaming as top strategic investment (Confluent 2025 Data Streaming Report, 4,000+ respondents)
+- 44% report 5× ROI or greater from streaming (Confluent 2025 Data Streaming Report)
 - Flink emerging as standard for stream processing
-- Kinesis reduces processing time by 90% vs batch (AWS study)
 - Hybrid streaming/batch approach optimal for cost
+- Note: managed-Kafka TCO reduction, Kinesis processing-time reduction, and batch idle-executor waste figures cited in earlier versions are not from the Confluent report and require separate sourcing before use
 
 **Citations**: Streaming TCO, ROI metrics, infrastructure costs
-**Notes**: Strong validation for pipeline-based detection economics
+**Notes**: Strong validation for pipeline-based detection economics. Retain only Confluent-report-sourced figures until supplementary cost bullets are individually re-sourced.
 **Validation Status**: ✅ 2025 Data Streaming Report (4,000+ respondents)
 
-**⚠️ Validation (2026-06-05)**: re-source to the Confluent 2025 Data Streaming Report (confluent.io/resources/report/2025-data-streaming-report/) — 86% top-investment, 44% report 5× ROI match. The other bullets (70% managed-Kafka TCO, "Kinesis 90% faster", "batch wastes 30-70%") are NOT from this report — flag separately.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ## January 2026 Research Update
@@ -2999,25 +2993,24 @@ This bibliography consolidates all literature sources from:
 
 #### Forrester - Drowning In Security Data Costs
 
-**Authors**: Forrester Research
-**Date**: 2025
+**Authors**: Forrester Research (Allie Mellen)
+**Date**: 2025-07-22
 **URL**: https://www.forrester.com/blogs/drowning-in-security-data-costs-you-get-a-data-lake/
-**Evidence Level**: A (Independent analyst firm)
+**Evidence Level**: B (Analyst blog post; actual content differs from previous summary)
 **Relevance**:
 - RQ11: LIGER Stack business case
 - Security data lake adoption trends
 
 **Key Findings**:
-- CISOs voting with budget for data-first architecture
-- Data-first architecture delivers immediate ROI
-- Traditional SIEM cost models unsustainable
+- Advocates a store-vs-access two-tier data strategy for security log economics
+- Microsoft Sentinel lake tier priced at less than 15% of analytics-tier log costs
 
 **Citations**: Security data lake adoption, CISO priorities
-**Notes**: Independent analyst validation of security lakehouse trend
+**Notes**: Independent analyst validation of security lakehouse trend. Prior bullets ("CISOs voting with budget", "immediate ROI", "SIEM unsustainable") were not in the post and have been replaced with the actual content.
 
 **Validation Status**: ✅ Forrester blog (2025)
 
-**⚠️ Validation (2026-06-05)**: the 3 findings ("CISOs voting with budget", "immediate ROI", "SIEM unsustainable") are not in the post — disregard. Real content (Allie Mellen, 2025-07-22): a store-vs-access two-tier strategy; MS Sentinel lake tier priced <15% of analytics-tier logs.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Hunters Security - Why Companies Are Adopting Security Data Lakes
@@ -3084,25 +3077,25 @@ This bibliography consolidates all literature sources from:
 **Authors**: Datastrato, Apache Foundation
 **Date**: 2025
 **URL**: https://medium.com/@office_9948/apache-gravitino-production-ready-unified-metadata-for-enterprise-data-9ba0eb38268b
-**Evidence Level**: A (Production deployments, major tech companies)
+**Evidence Level**: B (Community/vendor blog; adopter list partially confirmed via separate sources)
 **Relevance**:
 - RQ10: Catalog governance influence
 - Multi-catalog management patterns
 
 **Key Findings**:
-- Adopted by: Uber, Apple, Intel, Pinterest, eBay, Xiaomi, Cloudflare, AWS, Tencent, Yahoo, Roku TV
-- ChatSlide: Scaled from 100K to 150K+ users with sub-second query performance
-- **Bilibili**: 70% reduction in metadata query API response times
+- Pinterest confirmed adopter (per cited Medium article)
+- ChatSlide: Scaled from 100K to 150K+ users with sub-second query performance (per chatslide.ai/pages/apache-gravitino-data-catalog)
+- **Bilibili**: ~70% reduction in metadata query API response times (per Gravitino "OneMeta" writeup; treat as vendor case study)
 - Geo-distributed architecture for multi-region deployments
 - Supports OAuth2 and HTTPS security
 - Integration with Apache Ranger for policy enforcement
 
 **Citations**: Multi-catalog management, enterprise adoption
-**Notes**: Strong validation for Gravitino as emerging standard
+**Notes**: The Medium source names Pinterest; broader adopter list (Uber, Apple, Intel, eBay, Xiaomi, Cloudflare, AWS, Tencent, Yahoo, Roku TV) requires verification against gravitino.apache.org/blog/gravitino-top-level-project/ before citing.
 
 **Validation Status**: ✅ Production deployments documented
 
-**⚠️ Validation (2026-06-05)**: claims real but the cited Medium page only names Pinterest. Re-source: adopter list → gravitino.apache.org/blog/gravitino-top-level-project/; ChatSlide 100K→150K → chatslide.ai/pages/apache-gravitino-data-catalog; Bilibili ~70% → Gravitino "OneMeta" writeup. Verify Roku/Cloudflare/Yahoo before keeping.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Apache Polaris - Growing Ecosystem
@@ -3110,6 +3103,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Dremio
 **Date**: 2025
 **URL**: https://www.dremio.com/blog/the-growing-apache-polaris-ecosystem-the-growing-apache-iceberg-catalog-standard/
+**Alt URL**: https://www.dremio.com/blog/whats-new-in-apache-polaris-1-2-0/ (version release details)
 **Evidence Level**: B (Vendor analysis, ecosystem overview)
 **Relevance**:
 - RQ10: Catalog governance influence
@@ -3119,15 +3113,15 @@ This bibliography consolidates all literature sources from:
 - Polaris production-ready for Iceberg (time travel, commit retries, STS credential vending)
 - Snowflake and Dremio commercial offerings prove production readiness
 - Upcoming integrations from ingestion vendors, catalog platforms, storage providers
-- Versions 1.0.0, 1.1.0, 1.2.0 released in 2024
-- Version 1.2.0 focused on governance (expanded RBAC, fine-grained permissions, event logging)
+- Versions 1.0.0 (Jul 2025), 1.1.0 (Sep 2025), 1.2.0 (Oct 2025) released in 2025
+- Version 1.2.0 focused on governance: fine-grained authorization, event persistence, expanded RBAC (per dremio.com/blog/whats-new-in-apache-polaris-1-2-0/)
 
 **Citations**: Polaris ecosystem, production readiness
-**Notes**: Validates Polaris for isolation-first architectures
+**Notes**: Validates Polaris for isolation-first architectures. Version release dates sourced from the Dremio "What's New in Polaris 1.2.0" blog, not the ecosystem overview page.
 
-**Validation Status**: ✅ Active development (2024-2025)
+**Validation Status**: ✅ Active development (2025)
 
-**⚠️ Validation (2026-06-05)**: version specifics (1.0 Jul / 1.1 Sep / 1.2 Oct 2025; 1.2.0 fine-grained authz + event persistence) are real but on dremio.com/blog/whats-new-in-apache-polaris-1-2-0..., not the cited ecosystem page. Fix "released 2024" → 2025.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ### Agent Automation & ROI (RQ14)
@@ -3157,26 +3151,25 @@ This bibliography consolidates all literature sources from:
 
 #### AI Multiple - AI Agent Performance: Success Rates & ROI
 
-**Authors**: AI Multiple Research
+**Authors**: PagerDuty (survey research; originally attributed to AI Multiple Research)
 **Date**: 2025
 **URL**: https://www.pagerduty.com/resources/ai/learn/companies-expecting-agentic-ai-roi-2025/
-**Evidence Level**: B (Industry research aggregation)
+**Evidence Level**: C (Vendor survey, n=1,000; self-reported ROI projections; cite bias)
 **Relevance**:
 - RQ14: Agent automation ROI metrics
 - Performance benchmarks
 
 **Key Findings**:
-- Average ROI projection: 171%
-- 62% expect >100% returns
-- U.S. enterprises: 192% ROI (3× traditional automation)
-- Organizations achieve up to 70% cost reduction with agentic AI
+- Average ROI projection: 171% (PagerDuty 2025 Agentic-AI ROI Survey, n=1,000; vendor-commissioned)
+- 62% of respondents expect >100% returns
+- U.S. enterprises project ~192% ROI
 
 **Citations**: Agent ROI metrics, performance benchmarks
-**Notes**: Aggregated industry data for ROI validation
+**Notes**: Source is a PagerDuty vendor survey, not a neutral research aggregator. Self-reported projections (not measured outcomes). Cite with vendor-bias caveat. "Up to 70% cost reduction" figure has no support in the survey and has been removed.
 
 **Validation Status**: ✅ Research compilation (2025)
 
-**⚠️ Validation (2026-06-05)**: URL re-sourced to the PagerDuty 2025 Agentic-AI ROI Survey (n=1,000): 171% avg ROI, 62% expect >100%, US ~192%. "Up to 70% cost reduction" is unsupported — disregard. Vendor survey, flag bias.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Obsidian Security - 2025 AI Agent Security Landscape
@@ -3184,24 +3177,24 @@ This bibliography consolidates all literature sources from:
 **Authors**: Obsidian Security
 **Date**: 2025
 **URL**: https://www.obsidiansecurity.com/blog/ai-agent-market-landscape
-**Evidence Level**: B (Security vendor analysis)
+**Evidence Level**: B (Security vendor analysis; qualitative guidance, no disclosed benchmarks)
 **Relevance**:
 - RQ14: Agent automation metrics
 - Security-specific agent considerations
 
 **Key Findings**:
-- MTTD (Mean Time to Detect) target: <5 minutes for high severity
-- MTTR (Mean Time to Respond) automation target: <10 minutes
-- Target <2% false positive rate to avoid alert fatigue
+- Recommends monitoring MTTD (Mean Time to Detect) as a key operational metric for AI agents
+- Recommends monitoring MTTR (Mean Time to Respond) as an automation effectiveness metric
+- Recommends monitoring false positive rate to avoid alert fatigue
 - Real-time monitoring and anomaly detection essential
 - Integration with existing SIEM/SOAR platforms critical
 
-**Citations**: Agent security metrics, operational targets
-**Notes**: Security-specific implementation guidance
+**Citations**: Agent security metrics, operational guidance
+**Notes**: Security-specific implementation guidance. The blog identifies MTTD, MTTR, and FP rate as metrics to monitor and tune; no specific numeric thresholds are stated in the source.
 
 **Validation Status**: ✅ Active analysis (2025)
 
-**⚠️ Validation (2026-06-05)**: the "<5min MTTD / <10min MTTR / <2% FP" thresholds are invented (the blog names these as metrics to "monitor and tune", no targets) — soften to "recommends monitoring MTTD/MTTR/FP rate".
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ### MSSP Multi-Tenant Architecture (RQ9)
@@ -3237,20 +3230,19 @@ This bibliography consolidates all literature sources from:
 #### DuckDB 1.0-1.4 Production Readiness & LTS
 
 **Authors**: DEV Community, DuckDB Labs
-**Date**: 2024-2026 (updated February 2026)
+**Date**: 2024-2025 (updated February 2026)
 **URL**: https://duckdb.org/2025/09/16/announcing-duckdb-140
-**Alt URL**: https://duckdb.org/2025/09/16/announcing-duckdb-140
 **Evidence Level**: B (Community analysis, official release notes)
 **Relevance**:
 - RQ7: Isolation-first performance
 - Edge/embedded analytics
 
 **Key Findings**:
-- Version 1.0.0 released June 3, 2024 (codename "SnowDuck")
+- Version 1.0.0 released June 3, 2024 (codename "Snow Duck")
 - Stable on-disk storage format with backward compatibility
-- 6+ million monthly downloads
+- Millions of monthly downloads
 - Used at Facebook, Google, Airbnb
-- **v1.4.0 LTS** (Jan 2026): First Long-Term Support release, 1-year support window
+- **v1.4.0 LTS** (September 16, 2025): First Long-Term Support release, 1-year support window
 - **Iceberg write support** added in v1.4.0 (copy data from DuckDB to Iceberg)
 - In-memory checkpointing enables 5-10× performance improvements for some queries
 - Rewritten k-way merge sort reduces data movement in sorting/window functions
@@ -3262,7 +3254,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Refreshed February 2026 - v1.4.0 LTS current
 
-**⚠️ Validation (2026-06-05)**: URL re-sourced to duckdb.org 1.4.0 announcement. Corrections: LTS shipped Sept 16 2025 (not Jan 2026); codename "Snow Duck" (two words); downloads "millions/month" (not "6M+"). Other specifics confirmed on duckdb.org.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ## Reading Queue (Pending Analysis)
@@ -3271,18 +3263,18 @@ The following papers have been identified for future analysis:
 
 #### Hyperscan: A Fast Multi-pattern Regex Matcher
 
-**Authors**: Intel Labs / branchfree.org
-**Date**: TBD (academic paper)
-**URL**: https://www.usenix.org/conference/nsdi19/presentation/wang-xiang (exact URL pending)
-**Evidence Level**: A (Academic research - pending verification)
+**Authors**: Wang Xiang, Hong Cheng, Chang Yang, Park Jinseon, Langdale Geoff, Hu Jianbo, Zhu Heqing (Intel Labs et al.)
+**Date**: 2019
+**URL**: https://www.usenix.org/conference/nsdi19/presentation/wang-xiang
+**Evidence Level**: A (Peer-reviewed, USENIX NSDI '19)
 **Relevance**:
 - Query engine performance
 - Pattern matching for log analytics
 - Security detection engine optimization
 - Book Chapter 10 (Query Engines)
 
-**Key Findings**: (Pending reading)
-- High-performance regex matching
+**Key Findings**: (Pending full reading)
+- High-performance multi-pattern regex matching
 - Multi-pattern simultaneous matching
 - Relevance to log search/SIEM performance
 
@@ -3290,7 +3282,7 @@ The following papers have been identified for future analysis:
 **Status**: 📚 QUEUED - Not yet read
 **Added**: 2026-01-02
 
-**⚠️ Validation (2026-06-05)**: re-sourced to USENIX NSDI'19. Geoff Langdale is a CO-author (Wang/Hong/Chang/Park/Langdale/Hu/Zhu), not sole author; venue NSDI '19, date 2019.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### DBSP: Incremental Computation for Streaming Databases
