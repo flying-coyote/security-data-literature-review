@@ -7,6 +7,66 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [Unreleased] - Mechanism honesty + count reconciliation
+
+Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
+report on it, and reconciles the source count across every surface that states it.
+
+### Fixed (health-check mechanism)
+- `weekly_health_check.py` crashed on any direct run: its default `repo_path` was the author's hardcoded
+  `~/security-data-literature-review`, which it `chdir`'d into. Now it resolves the repo relative to the
+  script, so it runs wherever the repo is checked out (local tree or a fresh remote clone).
+- `total_sources` counted `**URL**:` lines (125), not catalogued entries. It now counts `#### ` entries
+  (141) — the canonical number every other surface cites.
+- Link checker no longer false-flags live-but-bot-blocked sites as broken. It sends a real User-Agent,
+  retries with a ranged GET when a server refuses HEAD, treats 403/405/429/999 as *reachable*, and only
+  counts a definitive 404/410 (or persistent 5xx) as **broken**. A connection/DNS/timeout failure is now
+  classified **unreachable (inconclusive)** — reported but never counted as broken, so a restricted-egress
+  sandbox can't manufacture a false red. (The prior run's "9 broken" were all bot-blocks; real count: 0.)
+- Overall status can now actually go red: a confirmed-dead link is a failure (→ critical), and any staleness
+  or unreachable link is a warning. The old ">3 warnings" gate let real degradation keep reading as
+  "healthy" — the same can't-go-red disease the dashboard fix in 1.22.0 addressed. Freshness threshold
+  aligned to 40% to match `weekly_scheduled_check.OUTDATED_FRACTION_RED` so the two surfaces agree.
+- `SessionStart.sh` reported `Bibliography Sources: ~0` — its `^**"` parser matched nothing. Fixed to
+  count `#### ` entries; now reports 141.
+- `SCHEDULING.md` was out of sync with the code: it stated a 75% Level-A red threshold (the code uses the
+  recalibrated 60% `TIER_A_FLOOR`), referenced the old revival branch, and assumed the hardcoded home
+  path the scripts no longer need. Synced to the code.
+
+### Changed (validation-note fold + re-tier)
+- The 49 audit-flagged entries had their `⚠️ Validation (2026-06-05)` correction notes **folded into the
+  entry prose and re-tiered** (4 parallel agents on disjoint blocks; provenance in RESEARCH-JOURNAL.md).
+  Unsupported headline statistics were removed from Key Findings, supported claims re-sourced, and the
+  verbose note replaced with a compact `Validation (2026-06-05, folded)` marker. 0 verbose notes remain.
+- **Evidence-Level-A dropped 64% → 46%** (90/141 → 65/141; now 65 A / 76 B / 9 C). ~25 entries moved off
+  Tier A because their headline number was not in the cited source — the honest baseline, no longer
+  masked. The freshness sweep + 2026 production sourcing is the path back toward the 75% target.
+
+### Changed (count reconciliation — Phase 2)
+- Reconciled the canonical source count (141) and the honest live Evidence-Level-A figure (~46%, 65/141)
+  across the surfaces that *state current status*: `.claude/CLAUDE.md` (was 118 / 80% / v1.21.0),
+  `README.md` (was 101 / 78%), `REPOSITORY-STATUS.md` header, and the `MASTER-BIBLIOGRAPHY.md` header
+  (~68% self-reported → ~46% live). Dated point-in-time "Key Metrics" blocks were left intact as history.
+- Corrected the retired-Substack reference in `README.md` to securitydataworks.com.
+
+### Fixed (freshness sweep — started, Phase 3)
+- Resolved the two long-DEAD entries (the journal's remaining DEAD list). "Flink at Uber — Real-Time
+  Security Analytics" (dead eng.uber.com URL) re-sourced to the live Confluent Current 2025 session and
+  retitled "Uber — Real-Time Analytics Platform" — the verified source is Uber's *general* analytics
+  platform, so the unsupported security framing was removed (kept A). "Disney+ Real-Time Security
+  Analytics" (dead Medium URL) re-sourced to Kai Waehner's Disney+ Hotstar case study, reframed as
+  general media streaming, and re-tiered A→B (vendor-aligned secondary source). Verified via WebSearch.
+- Net Level-A 46% → ~45% (64/141); 0 DEAD entries remain from the journal's list.
+- Documented an environment limitation for the rest of the sweep: WebFetch 403s on many publisher domains
+  (bot-blocking, not dead); WebSearch works. Recorded in RESEARCH-JOURNAL.md so the next session plans
+  around it.
+
+### Flagged (not changed — needs a content decision)
+- **Validated-hypothesis count is unreconciled**: CLAUDE.md/README say 7, the Oct-2025 gap analysis says
+  "3 strongly validated / 6 proposed", and the health-check's regex over-counts (31 — it matches every
+  "VALIDATED" in prose). This is a research-judgment call, not a mechanical count, so no number was
+  stamped; CLAUDE.md now carries a "needs review" note instead.
+
 ## [1.22.0] - 2026-06-05 - Revival: honesty, Second Brain merge, fabricated-source removal
 
 After a 96-day lapse (the manual monthly checklist had no scheduler and the dashboard was masking

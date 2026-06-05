@@ -8,9 +8,15 @@
 ```
 
 ## Current Status
-**Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.21.0
-**Sources**: 118 | **Evidence Level A**: 80% | **Hypotheses Validated**: 7
+**Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.22.0
+**Sources**: 141 | **Evidence Level A**: ~45% (live, 64/141) | **Hypotheses Validated**: 7 (needs review — see note)
 See `PROJECT-BRIEF.md` for scope and `REPOSITORY-STATUS.md` for tracking.
+> Counts are live-computed: sources = `#### ` entries, Level-A = `**Evidence Level**: A` / entries.
+> The 80% Level-A figure was self-reported; the honest live number is ~46% after the 2026-06-05 audit
+> folded corrections in and re-tiered ~25 entries off A (their headline stats weren't in the cited
+> source). The freshness sweep + 2026 production sources are the path back toward the 75% target — the
+> gap is now visible, not masked. The validated-hypothesis count is unreconciled across docs (7 here,
+> "3 strongly validated/6 proposed" in the Oct-2025 gap analysis) and needs a real review.
 
 ## Evidence Tiers
 | Tier | Type | Target |

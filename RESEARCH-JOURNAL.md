@@ -207,5 +207,55 @@ cosmetic, the facts are now correct + sourced. Entry count 145 → 141.
 
 ---
 
+## 2026-06-05 (later still) — fold + re-tier pass (4 parallel agents, disjoint blocks)
+
+The 49 `⚠️ Validation (2026-06-05)` correction notes were **folded into entry prose and re-tiered**, so
+each entry now stands on its own without the appended note governing it. Four agents each owned a disjoint
+block of the bibliography (entries 1-13 / 14-25 / 26-37 / 38-49), edited in isolated worktrees, and the
+commits were cherry-picked in (clean — disjoint regions). Each folded entry keeps a compact
+`Validation (2026-06-05, folded)` marker pointing here.
+
+**Method**: for each flagged entry — delete/correct the bullets stating a figure the audit found
+unsupported; keep and re-source the supported claims; re-tier honestly (A only if a production/peer-
+reviewed result whose *retained* claims are actually in the source; B for analyst/vendor-methodology or
+where the production *metric* was the unsupported part; C for vendor self-claim with no methodology).
+
+**Headline**: Evidence-Level-A dropped **64% → 46%** (90/141 → 65/141; now 65 A / 76 B / 9 C). ~25 entries
+moved off A because their headline statistic was not in the cited source (real source, wrong/absent number)
+— the classic MISMATCH pattern. This is the honest baseline; the gap to the 75% target is now visible
+rather than masked by self-reported numbers. Representative re-tiers: ClickHouse Vectorized/IP/Compression
+A→B (conceptual pages publish no benchmarks); Kafka-Confluent + Netflix-Tiered-Storage A→B (vendor
+benchmark / figure needs a separate primary cite); Google-SRE / Gartner-Reliability A→B and Uptime-
+Institute A→C (placeholder/unfindable stats); Gravitino + Gartner-AI-Maturity A→B, Tenzir + AI-Multiple
+→C (vendor self-claim). Kept A: DORA, LinkedIn-Northguard, Huntress, Arrow-Flight-SQL, SK-Telecom,
+Amazon-Security-Lake, Iceberg-Universal-Support, Hyperscan (USENIX NSDI'19, peer-reviewed).
+
+Net: 0 verbose notes remain; 49 folded markers. The MISMATCH/WEAK worklist from the earlier passes is now
+resolved in-prose, not just correction-noted.
+
+---
+
+## 2026-06-05 (freshness increment) — the two DEAD entries, re-sourced + reframed
+
+Started the freshness sweep (Phase 3) on the two entries the earlier passes left DEAD. **Method**: WebSearch
+to confirm the candidate sources exist and to read their stated figures (WebFetch 403s on these publishers —
+see limitation below), then `claim↔source` against the search result.
+
+| Entry | Verdict | Finding |
+|---|---|---|
+| Flink at Uber — Real-Time Security Analytics | RE-SOURCED + RETITLED | Original eng.uber.com URL dead. The live Confluent Current 2025 session ("Inside Uber's Large-Scale Real-Time Analytics Platform") confirms the scale figures (trillions msgs/dozens-PB daily, 10s-of-thousands queries/sec, several-M writes/sec, tens-of-PB Pinot; IngestionNext = Kafka+Flink+**Hudi**, latency hours→min, ~25% less compute — corroborated by InfoQ Mar-2026). BUT it is Uber's **general** analytics platform (EVA), not a security deployment. Retitled "Uber — Real-Time Analytics Platform"; dropped the unverifiable security framing; kept A (production platform, public talk with figures). |
+| Disney+ Real-Time Security Analytics | RE-SOURCED + RETITLED + A→B | Original Disney Streaming Medium "security analytics" article 403/gone, claims unverifiable. Re-pointed to Kai Waehner's Disney+ Hotstar/JioCinema case study (Feb 2025): ~15 Kafka Connect clusters / 2,000+ connectors / millions msgs/sec / SMT for PII-masking+schema-validation — figures trace to a Kafka Summit 2021 Hotstar talk. It's a **general media streaming** pipeline (PII-masking is the only security-adjacent bit), and a Confluent-aligned expert's secondary write-up, not a primary security source → re-tiered A→B. |
+
+Net Level-A 46% → 45% (65→64 A; Disney downgrade). 2 DEAD entries resolved (0 DEAD remain from the journal's list).
+
+**⚠️ Environment limitation for the sweep**: `WebFetch` returns **403** on many publisher domains
+(Confluent, kai-waehner.de, d3fend.mitre.org, anthropic.com…) — bot-blocking, not dead pages. `WebSearch`
+works and surfaces the stated figures, so claim↔source verification is possible via search excerpts, but
+direct full-page fetch is not. A complete freshness sweep of the remaining ~90 stale entries should plan
+around this: prefer WebSearch + archive.org, or run the sweep from an environment/tool that can fetch
+these pages, rather than treating a 403 as a dead link (the link checker already encodes this distinction).
+
+---
+
 *Next validation due with the cadence (`SCHEDULING.md`). When the worklist items above are re-sourced or
 stripped, append a dated row moving each to VERIFIED or removing it — do not silently re-litigate settled rows.*

@@ -23,8 +23,9 @@ fi
 
 # Quick metrics
 if [ -f "MASTER-BIBLIOGRAPHY.md" ]; then
-    SOURCE_COUNT=$(grep -c "^\*\*\"" MASTER-BIBLIOGRAPHY.md 2>/dev/null || echo "0")
-    echo "Bibliography Sources: ~$SOURCE_COUNT"
+    # Entries are "#### Title" headings; the old "^**\"" pattern matched nothing (always 0).
+    SOURCE_COUNT=$(grep -c "^#### " MASTER-BIBLIOGRAPHY.md 2>/dev/null || echo "0")
+    echo "Bibliography Sources: $SOURCE_COUNT"
 fi
 
 echo ""
