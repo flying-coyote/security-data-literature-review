@@ -207,5 +207,33 @@ cosmetic, the facts are now correct + sourced. Entry count 145 → 141.
 
 ---
 
+## 2026-06-05 (later still) — fold + re-tier pass (4 parallel agents, disjoint blocks)
+
+The 49 `⚠️ Validation (2026-06-05)` correction notes were **folded into entry prose and re-tiered**, so
+each entry now stands on its own without the appended note governing it. Four agents each owned a disjoint
+block of the bibliography (entries 1-13 / 14-25 / 26-37 / 38-49), edited in isolated worktrees, and the
+commits were cherry-picked in (clean — disjoint regions). Each folded entry keeps a compact
+`Validation (2026-06-05, folded)` marker pointing here.
+
+**Method**: for each flagged entry — delete/correct the bullets stating a figure the audit found
+unsupported; keep and re-source the supported claims; re-tier honestly (A only if a production/peer-
+reviewed result whose *retained* claims are actually in the source; B for analyst/vendor-methodology or
+where the production *metric* was the unsupported part; C for vendor self-claim with no methodology).
+
+**Headline**: Evidence-Level-A dropped **64% → 46%** (90/141 → 65/141; now 65 A / 76 B / 9 C). ~25 entries
+moved off A because their headline statistic was not in the cited source (real source, wrong/absent number)
+— the classic MISMATCH pattern. This is the honest baseline; the gap to the 75% target is now visible
+rather than masked by self-reported numbers. Representative re-tiers: ClickHouse Vectorized/IP/Compression
+A→B (conceptual pages publish no benchmarks); Kafka-Confluent + Netflix-Tiered-Storage A→B (vendor
+benchmark / figure needs a separate primary cite); Google-SRE / Gartner-Reliability A→B and Uptime-
+Institute A→C (placeholder/unfindable stats); Gravitino + Gartner-AI-Maturity A→B, Tenzir + AI-Multiple
+→C (vendor self-claim). Kept A: DORA, LinkedIn-Northguard, Huntress, Arrow-Flight-SQL, SK-Telecom,
+Amazon-Security-Lake, Iceberg-Universal-Support, Hyperscan (USENIX NSDI'19, peer-reviewed).
+
+Net: 0 verbose notes remain; 49 folded markers. The MISMATCH/WEAK worklist from the earlier passes is now
+resolved in-prose, not just correction-noted.
+
+---
+
 *Next validation due with the cadence (`SCHEDULING.md`). When the worklist items above are re-sourced or
 stripped, append a dated row moving each to VERIFIED or removing it — do not silently re-litigate settled rows.*

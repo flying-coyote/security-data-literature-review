@@ -28,12 +28,14 @@ sys.path.insert(0, HERE)
 from weekly_health_check import LiteratureReviewHealthCheck  # noqa: E402
 
 # Escalation thresholds
-# TIER_A_FLOOR recalibrated 2026-06-05: the old 75% target was set against an inflated
-# self-reported "80%" header; the honest live computation is ~65% (the corpus is legitimately
-# heavy on Tier-B vendor/practitioner/framework sources), so 75% would escalate every week
-# regardless of real health. 60% is a real floor the honest corpus clears with headroom — a
-# breach now means a genuine quality slide, not a measurement artifact.
-TIER_A_FLOOR = 60.0          # % Evidence Level A floor (recalibrated to the honest baseline)
+# TIER_A_FLOOR = 60%. History: the old 75% target was set against an inflated self-reported "80%"
+# header. A first honest recompute put it ~64-65%, and 60% was chosen as a floor that baseline cleared.
+# Then the 2026-06-05 fold/re-tier pass (claim-vs-source audit) dropped the *real* Level-A to ~46% by
+# moving ~25 entries off Tier A whose headline stats weren't in their sources. So the floor is currently
+# BREACHED on purpose: 46% < 60% correctly escalates every run until the freshness sweep + 2026 primary
+# sourcing restore genuine Tier-A quality. Do NOT lower the floor to silence this — a breach that reflects
+# real corpus quality is the dashboard working, not failing. Revisit 60% only after the sweep.
+TIER_A_FLOOR = 60.0          # % Evidence Level A floor (target-aligned; currently breached at ~46%)
 OUTDATED_FRACTION_RED = 0.40  # >40% of sources >12mo is a red-line freshness failure
 MONTHLY_WINDOW_DAYS = 7       # the weekly run within the first N days of a month triggers monthly refresh
 
