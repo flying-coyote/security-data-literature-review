@@ -37,6 +37,7 @@ class HealthCheckResult:
 
     # Specific findings
     broken_links: List[str] = field(default_factory=list)
+    unreachable_links: List[str] = field(default_factory=list)  # inconclusive (egress/DNS), not counted as broken
     outdated_evidence: List[str] = field(default_factory=list)
     missing_bibliography: List[str] = field(default_factory=list)
     stale_hypotheses: List[str] = field(default_factory=list)
@@ -57,8 +58,14 @@ class HealthCheckResult:
 class LiteratureReviewHealthCheck:
     """Weekly health check for literature review repository."""
 
-    def __init__(self, repo_path: str = "~/security-data-literature-review"):
-        self.repo_path = Path(repo_path).expanduser()
+    def __init__(self, repo_path: str = None):
+        # Resolve the repo relative to this script by default so a direct run works
+        # wherever the repo is checked out (local tree, or a fresh clone in a remote
+        # scheduled routine). The old hardcoded ~/security-data-literature-review
+        # default crashed on any machine that wasn't the original author's laptop.
+        if repo_path is None:
+            repo_path = Path(__file__).resolve().parent.parent
+        self.repo_path = Path(repo_path).expanduser().resolve()
         self.result = HealthCheckResult(
             timestamp=datetime.now().isoformat(),
             status="healthy"
@@ -143,41 +150,71 @@ class LiteratureReviewHealthCheck:
             print(f"  ❌ MASTER-BIBLIOGRAPHY.md not found")
             return
 
-        # Extract URLs from markdown
-        url_pattern = re.compile(r'\*\*URL\*\*:\s*(https?://[^\s\)]+)')
-
         with open(bib_path, 'r') as f:
             content = f.read()
-            urls = url_pattern.findall(content)
 
-        self.result.total_sources = len(urls)
-        print(f"  📚 Found {len(urls)} sources")
+        # total_sources is the count of catalogued ENTRIES ("#### Title"), which is the
+        # canonical number every other surface cites — not the URL count, which differs
+        # because some entries carry several URLs or none (placeholder/"Various" sources).
+        self.result.total_sources = len(re.findall(r'^#### ', content, re.MULTILINE))
+        urls = re.findall(r'\*\*URL\*\*:\s*(https?://[^\s\)]+)', content)
+        print(f"  📚 {self.result.total_sources} entries · {len(urls)} URLs to sample")
 
-        # Check a sample of URLs (checking all 76+ would be slow)
-        # Check 10 random URLs or all if fewer than 10
+        # Check a sample of URLs (checking all of them every run would be slow).
         import random
         sample_size = min(10, len(urls))
         sample_urls = random.sample(urls, sample_size) if urls else []
 
-        broken = []
+        broken, unreachable = [], []
         for url in sample_urls:
-            try:
-                response = requests.head(url, timeout=5, allow_redirects=True)
-                if response.status_code >= 400:
-                    broken.append(url)
-                    print(f"  ❌ Broken: {url} (status {response.status_code})")
-            except Exception as e:
+            verdict, code = self._classify_url(url)
+            if verdict == "broken":
                 broken.append(url)
-                print(f"  ❌ Error checking {url}: {e}")
+                print(f"  ❌ Broken: {url} (status {code})")
+            elif verdict == "unreachable":
+                unreachable.append(url)
+                print(f"  ⚠️  Unreachable (inconclusive): {url} ({code})")
 
         self.result.broken_links = broken
+        self.result.unreachable_links = unreachable
 
         if broken:
+            # A confirmed dead link (404/410) is a real failure, not a soft warning —
+            # this is what lets the overall status actually go red.
+            self.result.checks_failed += 1
+            print(f"  ❌ {len(broken)}/{sample_size} sampled links confirmed broken")
+        elif unreachable:
             self.result.checks_warning += 1
-            print(f"  ⚠️  {len(broken)}/{sample_size} sampled links broken")
+            print(f"  ⚠️  {len(unreachable)}/{sample_size} unreachable from here (not counted as broken)")
         else:
             self.result.checks_passed += 1
-            print(f"  ✅ All {sample_size} sampled links valid")
+            print(f"  ✅ All {sample_size} sampled links reachable")
+
+    @staticmethod
+    def _classify_url(url):
+        """Classify a URL as 'ok', 'broken', or 'unreachable'.
+
+        Only a definitive 404/410 (and a persistent 5xx) counts as 'broken'. A live server
+        that refuses a bot — 403/405/429/999 — is reachable, not broken, so we retry with a
+        real-UA ranged GET before judging. A connection/DNS/timeout error is 'unreachable':
+        inconclusive (could be restricted egress in a sandbox), so it is reported but never
+        counted as broken — false reds are as corrosive to trust as false greens.
+        """
+        ua = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
+        bot_blocked = {403, 405, 406, 429, 999}
+        try:
+            r = requests.head(url, timeout=8, allow_redirects=True, headers={"User-Agent": ua})
+            if r.status_code in bot_blocked or r.status_code >= 500:
+                r = requests.get(url, timeout=10, allow_redirects=True, stream=True,
+                                 headers={"User-Agent": ua, "Range": "bytes=0-2047"})
+            if r.status_code in (404, 410):
+                return "broken", r.status_code
+            if r.status_code >= 500:
+                return "broken", r.status_code  # persistent server error after GET retry
+            return "ok", r.status_code
+        except requests.RequestException as e:
+            return "unreachable", type(e).__name__
 
     def check_evidence_freshness(self):
         """Check for outdated evidence sources (>12 months)."""
@@ -202,7 +239,9 @@ class LiteratureReviewHealthCheck:
 
         self.result.outdated_evidence = [f"Year {d}" for d in outdated]
 
-        if len(outdated) > len(dates) * 0.2:  # More than 20% outdated
+        # 40% matches weekly_scheduled_check.OUTDATED_FRACTION_RED so the two surfaces
+        # agree on what "too stale" means; some staleness is normal for a living review.
+        if dates and len(outdated) > len(dates) * 0.4:
             self.result.checks_warning += 1
             print(f"  ⚠️  {len(outdated)}/{len(dates)} sources >12 months old")
         else:
@@ -343,9 +382,13 @@ class LiteratureReviewHealthCheck:
 
     def calculate_overall_status(self):
         """Calculate overall health status."""
+        # A confirmed-dead link or a missing core file is critical. Anything that needs
+        # attention — a stale corpus, links we couldn't reach — is a warning. The old
+        # ">3 warnings" gate is what let real degradation keep reading as "healthy"; a
+        # dashboard that can't go red is worse than no dashboard.
         if self.result.checks_failed > 0:
             self.result.status = "critical"
-        elif self.result.checks_warning > 3:
+        elif self.result.checks_warning > 0 or self.result.unreachable_links:
             self.result.status = "warning"
         else:
             self.result.status = "healthy"
@@ -382,6 +425,18 @@ class LiteratureReviewHealthCheck:
                 report += f"- ❌ {link}\n"
         else:
             report += "_No broken links detected_\n"
+
+        report += f"""
+### Unreachable Links — inconclusive ({len(self.result.unreachable_links)})
+
+_Could not be reached from the run host (restricted egress, DNS, or timeout). Not counted as broken — re-check from a networked host before treating as dead._
+
+"""
+        if self.result.unreachable_links:
+            for link in self.result.unreachable_links:
+                report += f"- ⚠️ {link}\n"
+        else:
+            report += "_All sampled links reachable_\n"
 
         report += f"""
 ### Outdated Evidence ({len(self.result.outdated_evidence)})
