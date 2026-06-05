@@ -1035,28 +1035,28 @@ This bibliography consolidates all literature sources from:
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
-#### Microsoft Purview - Security Data Retention
+#### Microsoft Purview - Retention Policies and Labels
 
 **Authors**: Microsoft Learn
 **Date**: 2024
 **URL**: https://learn.microsoft.com/en-us/purview/retention
-**Evidence Level**: A (Vendor documentation, NIST-aligned)
+**Evidence Level**: C (Vendor documentation — general retention-policy/label reference only)
 **Relevance**:
 - Compliance retention requirements
 - Book Chapter 11 (Governance)
 - Best Practices Doc footnote [^168]
 
 **Key Findings**:
-- 24 hours for user sessions (state expiration)
-- 30-90 days for entity behavior profiles
-- NIST SP 800-61 alignment
+- Microsoft Purview provides retention policies and labels for governing data lifecycle across M365 services
+- Supports configuring retention periods and disposal actions at the policy and per-label level
+- Reference for understanding retention-framework mechanics, not security-specific UEBA thresholds
 
 **Citations**: Chapter 11 compliance patterns
-**Notes**: Security-specific retention guidance
+**Notes**: Generic retention-policy/label reference. Security-specific figures (session durations, entity-profile windows, NIST alignment) are not present in this source and have been removed.
 
 **Validation Status**: ✅ Active URL
 
-**⚠️ Validation (2026-06-05)**: the "24h sessions / 30-90d entity profiles / NIST 800-61" claims are not in the M365 retention doc (UEBA concepts) — disregard. Keep only as a generic retention-policy/label reference; retitle away from "Security Data Retention".
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Confluent Customer Success - Implementation Roadmap
@@ -1064,47 +1064,47 @@ This bibliography consolidates all literature sources from:
 **Authors**: Confluent Developer Resources
 **Date**: 2024
 **URL**: https://developer.confluent.io/courses/apache-kafka/
-**Evidence Level**: B (Vendor methodology)
+**Evidence Level**: C (Vendor learning-path resource — no deployment-timeline data disclosed)
 **Relevance**:
 - Hypothesis H-IMPL-03 (Implementation timelines)
 - Book Chapter 4 (Journey timelines)
 - Best Practices Doc footnotes [^170], [^171]
 
 **Key Findings**:
-- 4-month production readiness roadmap
-- Methodical path to streaming maturity
-- 4-6 months for comprehensive enterprise deployment
+- Confluent publishes a structured, multi-stage learning path for Apache Kafka adoption
+- The course covers core concepts, producers/consumers, and cluster operations as a methodical progression toward streaming maturity
+- No specific deployment-timeline figures are disclosed in this source; specific month estimates have been removed
 
 **Citations**: Chapter 4 streaming implementation journey
-**Notes**: Validates security-specific timeline premium
+**Notes**: Supports the qualitative point that vendor-structured learning paths exist; not a source for quantitative timeline claims.
 
 **Validation Status**: ✅ Active URL
 
-**⚠️ Validation (2026-06-05)**: "4-month / 4-6 month" deployment timelines are not in the cited Kafka-101 course or any findable source — disregard. Source supports only that Confluent publishes a structured learning path.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
-#### Gartner - Security Data Lakehouse Implementation
+#### phData - Data Platform Implementation (Iterative Delivery)
 
-**Authors**: Gartner Research / phData Implementation Guide
+**Authors**: phData Implementation Guide
 **Date**: 2024
 **URL**: https://www.phdata.io/blog/how-to-implement-a-data-platform/
-**Evidence Level**: B (Industry research + practitioner)
+**Evidence Level**: C (Vendor opinion blog — iterative/use-case-first delivery argument, no quantitative timeline data)
 **Relevance**:
 - **Hypothesis H-IMPL-03** (Security timeline premium)
 - Book Chapter 4 (Implementation timelines)
 - Best Practices Doc footnotes [^172], [^173]
 
 **Key Findings**:
-- 5.5 month average for security-focused lakehouse
-- 6-12 months for team proficiency
-- Security-specific constraints vs general data engineering
+- phData argues for iterative, use-case-first delivery over big-bang data platform implementations
+- Recommends phased rollout to reduce risk and accelerate time-to-value
+- No Gartner attribution; no specific month-based timeline figures appear in the source
 
-**Citations**: H-IMPL-03 validation, Chapter 4 timeline expectations
-**Notes**: **CRITICAL** - Supports security timeline hypothesis
+**Citations**: H-IMPL-03 qualitative support, Chapter 4 implementation approach
+**Notes**: Previously mislabeled as Gartner research. Specific numeric timelines (5.5 months, 6-12 months) are not present in this source and have been removed. Cite with vendor-blog bias caveat.
 
 **Validation Status**: ✅ Active URL
 
-**⚠️ Validation (2026-06-05)**: MISLABELED — the URL is a phData blog with no Gartner attribution, and "5.5 month / 6-12 months" appear nowhere — disregard both numbers and drop "Gartner". Keep only as a Tier-C phData opinion blog arguing iterative, use-case-first delivery.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Brooks - The Mythical Man-Month (Throwaway Prototype)
@@ -1158,28 +1158,25 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Daniel Muino (Netflix)
 **Date**: 2024
-**URL**: https://qconferences.com/ (QCon presentation)
-**Evidence Level**: A (Production deployment at scale, public conference talk)
+**URL**: https://clickhouse.com/blog/netflix-petabyte-scale-logging
+**Evidence Level**: B (Public blog post describing a production architecture; primary source is a general observability platform, not a security-specific deployment)
 **Relevance**:
 - **Research Question RQ7** (Isolation patterns and performance)
 - **Research Question RQ10** (Catalog governance decisions)
 - Book Chapter 8 (Storage formats - catalog selection)
 - Book Chapter 9 (Query engines - ClickHouse architecture)
-- Isolation-first security architecture pattern
 
 **Key Findings**:
-- ClickHouse (hot tier) + Iceberg (cold tier) on dedicated VPC
-- Polaris catalog with table-level RBAC only (no row-level security, column masking, or metadata encryption)
-- SOC 2/ISO 27001 compliance via network isolation + CloudTrail audit logs
-- 0% RLS overhead - table-level permissions only
-- Vendor-neutral catalog choice (Polaris) for isolated security platform
+- Netflix logging platform uses ClickHouse (hot tier) + Apache Iceberg (cold tier), handling ~5 PB/day
+- Architecture is a general observability platform; security-specific isolation/compliance framing is not established by this source
+- Polaris catalog, table-level RBAC, RLS overhead figures, VPC-isolation, and SOC 2/ISO 27001 compliance claims are not supported and have been removed
 
-**Citations**: **CRITICAL** - RQ7 isolation-first performance validation, RQ10 catalog selection for isolated platforms
-**Notes**: Production validation of isolation-first security pattern at scale. Network isolation as primary security boundary eliminates need for fine-grained catalog access controls.
+**Citations**: RQ7/RQ10 qualitative architecture reference, Chapter 8/9 ClickHouse + Iceberg pattern
+**Notes**: Likely duplicate of "Netflix ClickHouse Pipeline - 5 PB/Day" — consider merging. Security/isolation-first framing removed; cite as a ClickHouse + Iceberg production scale example only.
 
-**Validation Status**: ⚐ Conference presentation (2024 QCon), awaiting published case study or blog post
+**Validation Status**: ⚐ Re-sourced to ClickHouse blog post; original QCon claims not substantiated
 
-**⚠️ Validation (2026-06-05)**: the Polaris/table-RBAC/"0% RLS overhead"/VPC-isolation/compliance claims are unsupported (real Daniel Muino source is a general observability platform) — disregard, and drop the "security/isolation-first" framing. Re-source to clickhouse.com/blog/netflix-petabyte-scale-logging (ClickHouse hot + Iceberg cold, ~5 PB/day). LIKELY DUPLICATE of "Netflix ClickHouse Pipeline - 5 PB/Day" — consider merging.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Cloudera Total Economic Impact (Forrester TEI 2024)
@@ -1221,16 +1218,16 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^188]
 
 **Key Findings**:
-- 45-55% of TCO = operational complexity + specialized talent
-- Sizing methodology
-- Infrastructure cost benchmarks
+- Operational complexity and specialized talent dominate self-managed Kafka TCO (qualitative consensus; specific 45-55% figure is not in this source)
+- Sizing methodology covering partition counts, replication, and broker capacity
+- Infrastructure cost benchmarks for capacity planning
 
 **Citations**: H-IMPL-01 TCO validation, Chapter 7 capacity planning
-**Notes**: **CRITICAL** - Streaming operational cost driver
+**Notes**: **CRITICAL** - Streaming operational cost driver. The "45-55% of TCO" figure has been removed as unsupported by this source. For a quantified reduction claim, Confluent's TCO page cites "up to 40-60% TCO reduction" with managed Kafka.
 
 **Validation Status**: ✅ Active URL
 
-**⚠️ Validation (2026-06-05)**: "45-55% of TCO = ops+talent" is not in the source — soften to the qualitative claim it supports (operational complexity + specialized talent dominate self-managed Kafka TCO). For a number, Confluent cites "up to 40%/60% TCO reduction" on its TCO page.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Databricks TCO - Lakehouse vs Traditional Platforms
@@ -1302,146 +1299,145 @@ This bibliography consolidates all literature sources from:
 **Authors**: Industry Research (Multiple Sources)
 **Date**: 2023-2024
 **URL**: [Placeholder - specific CloudZero research not located]
-**Evidence Level**: B (Industry consensus from multiple sources)
+**Evidence Level**: B (Industry consensus from corroborating sources; no single primary source for this entry)
 **Relevance**:
 - **Hypothesis H-IMPL-01** (Streaming costs)
 - Book Chapter 1 (Cost comparisons)
 - Best Practices Doc footnotes [^191], [^192]
 
 **Key Findings**:
-- 2.8-3.6× infrastructure cost for streaming vs batch (referenced estimate)
-- Supported by related findings:
+- Real-time streaming infrastructure carries a meaningful cost premium over equivalent batch processing — a consistent qualitative finding across industry sources (specific 2.8-3.6× figure is not verifiably sourced and has been removed)
+- Supporting corroboration from adjacent citations:
   - IDC: 2.5-3× operational staffing costs (footnote [^59])
   - Enterprise Data Quarterly: 1.5-2× infrastructure costs (footnote [^57])
-  - Confluent sizing: 45-55% of TCO = operational complexity (footnote [^188])
-- Real-time processing premium consistent across sources
+  - Confluent architecture guidance: operational complexity and talent dominate self-managed Kafka TCO (footnote [^188])
 
 **Citations**: H-IMPL-01 TCO validation, Chapter 1 cost differential
-**Notes**: Specific CloudZero source not located, but estimate consistent with IDC/Confluent data
+**Notes**: CloudZero primary source not located. Entry retained as an industry-consensus placeholder supported by IDC/Confluent corroboration; do not cite specific multipliers without a primary source.
 
 **Validation Status**: ⚠️ Placeholder (CloudZero source not found, supported by related sources)
 
-**⚠️ Validation (2026-06-05)**: "2.8-3.6×" is unsourceable (CloudZero source not located) — soften to the qualitative real-time-premium claim, leaning on the IDC/Confluent footnotes.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### AWS Well-Architected - Compute Optimization
 
 **Authors**: Amazon Web Services
 **Date**: 2024
-**URL**: [AWS Well-Architected Framework - Cost Optimization Pillar]
-**Evidence Level**: A (Cloud provider best practices)
+**URL**: https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html
+**Evidence Level**: B (Cloud provider framework guidance — prescriptive methodology without a specific quantified savings figure)
 **Relevance**:
 - Cost optimization patterns
 - Book Chapter 1 (Cost reduction strategies)
 - Best Practices Doc footnotes [^194], [^198]
 
 **Key Findings**:
-- 22% average compute savings through right-sizing
-- 15-25% savings range for security workloads
-- Workload-appropriate instance selection
+- AWS Well-Architected Cost Optimization Pillar prescribes right-sizing compute to workload demand as a primary cost-reduction mechanism
+- Industry estimates for right-sizing savings range approximately 15-25%; the specific "22% average" figure cited previously originates from CloudZero, not this AWS source, and has been removed
+- Workload-appropriate instance selection (e.g., Graviton, Spot, Savings Plans) covered as complementary levers
 
 **Citations**: Chapter 1 cost optimization tactics
-**Notes**: Cloud cost optimization baseline
+**Notes**: Cloud cost optimization baseline. The 22% figure has been removed; use the 15-25% range as a conservative industry estimate or cite CloudZero separately for the specific number.
 
 **Validation Status**: ✅ URL available (AWS docs)
 
-**⚠️ Validation (2026-06-05)**: "22% average savings" is CloudZero's figure, not AWS — fix attribution. Keep the AWS Cost-Optimization pillar URL (docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html); soften to right-sizing recovers ~15-25%.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### AWS Storage Optimization - Tiered Storage
 
-**Authors**: Amazon Web Services Whitepapers
+**Authors**: Amazon Web Services
 **Date**: 2024
-**URL**: [AWS Storage Optimization Whitepaper]
-**Evidence Level**: A (Cloud provider quantitative guidance)
+**URL**: https://aws.amazon.com/s3/storage-classes/intelligent-tiering/
+**Evidence Level**: B (Cloud provider quantitative claim from vendor product page; methodology not independently audited)
 **Relevance**:
 - **Hypothesis H-COST-09** (Tiered storage economics)
 - Book Chapter 8 (Storage lifecycle)
 - Best Practices Doc footnotes [^196], [^200]
 
 **Key Findings**:
-- 35% average savings with tiered storage
-- 30-40% savings range
-- Hot/warm/cold lifecycle patterns
+- AWS S3 Intelligent-Tiering reports ~35% average storage savings for non-optimized buckets by automatically moving objects between access tiers
+- 30-40% savings range consistent with hot/warm/cold lifecycle patterns
+- Hot/warm/cold tiering mechanics covered; cold/archive tiers (Glacier) offer steeper savings for infrequently accessed data
 
 **Citations**: H-COST-09 validation, Chapter 8 tiered storage economics
-**Notes**: **CRITICAL** - Validates tiered storage hypothesis (55-80% combined with Netflix)
+**Notes**: **CRITICAL** - Validates tiered storage hypothesis. Re-sourced from placeholder whitepaper URL to the S3 Intelligent-Tiering product page, which is AWS's primary public reference for the ~35% savings figure.
 
-**Validation Status**: ✅ URL available (AWS docs)
+**Validation Status**: ✅ URL updated to S3 Intelligent-Tiering page
 
-**⚠️ Validation (2026-06-05)**: re-source to the S3 Intelligent-Tiering page (aws.amazon.com/s3/storage-classes/intelligent-tiering/) — AWS's own "~35% average savings" for non-optimized buckets.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Google SRE - Reliability Economics (Exponential Cost of Nines)
 
 **Authors**: Google Site Reliability Engineering Team
 **Date**: 2024
-**URL**: [SRE Book - Reliability Engineering Economics]
-**Evidence Level**: A (Industry authority, quantitative)
+**URL**: https://sre.google/sre-book/embracing-risk/
+**Evidence Level**: B (Authoritative public text; bracketed placeholder URL corrected — cite as expert-consensus reference, not a quantified production study)
 **Relevance**:
 - Cost modeling for security infrastructure
 - Book Chapter 1 (Cost comparisons - reliability tradeoffs)
 - Best Practices Doc footnote [^222]
 
 **Key Findings**:
-- Each additional "nine" = 10× cost increase
-- Exponential scaling across infrastructure + ops
-- Security-specific reliability guidance
+- Each additional "nine" of availability costs approximately ~100× more than the previous increment (not 10×), per Google SRE's Embracing Risk chapter
+- Exponential scaling applies across infrastructure and operations
+- Industry-consensus guidance: match reliability target to business need rather than pursuing maximum possible uptime
 
 **Citations**: Chapter 1 reliability economics, cost optimization
-**Notes**: Authoritative source for reliability cost modeling
+**Notes**: URL updated to sre.google/sre-book/embracing-risk/. The original "10×" multiplier was incorrect; the SRE book describes ~100× per increment. Security-specific reliability guidance is not in this source; remove that framing.
 
 **Validation Status**: ✅ SRE book available
 
-**⚠️ Validation (2026-06-05)**: re-source to sre.google/sre-book/embracing-risk/ — BUT the book says ~100× per increment, NOT "10×". Correct the multiplier.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Gartner - Reliability Overinvestment Analysis
 
 **Authors**: Gartner Research
 **Date**: 2024
-**URL**: [Gartner reliability research]
-**Evidence Level**: A (Industry analyst, quantitative)
+**URL**: [Gartner reliability research — doc 3906266, paywalled]
+**Evidence Level**: B (Analyst advisory; specific "70% overspend" statistic is not findable in any Gartner source — entry retained as paywalled-analyst-consensus reference only)
 **Relevance**:
 - Infrastructure investment optimization
 - Book Chapter 1 (Cost optimization patterns)
 - Best Practices Doc footnote [^237]
 
 **Key Findings**:
-- 70% of orgs overspend on reliability
-- Exceed actual business requirements
-- Resources diverted from higher-value security initiatives
+- Gartner advises aligning resilience investment to actual business need to avoid overspend on reliability that exceeds genuine requirements
+- Resources committed to excess reliability headroom are unavailable for higher-value security initiatives
+- Tiered reliability targets, matched to workload criticality, are the recommended approach (topic anchor: Gartner doc 3906266)
 
 **Citations**: Chapter 1 optimization recommendations
-**Notes**: Industry validation of tiered approach
+**Notes**: The specific "70% of orgs overspend" figure is not verifiably sourced in any Gartner publication and has been removed. Cite this entry as paywalled-analyst guidance only.
 
 **Validation Status**: ⚠️ Paywall (Gartner research)
 
-**⚠️ Validation (2026-06-05)**: "70% overspend" is not in any findable Gartner source — soften to "Gartner advises aligning resilience to business need to avoid overspend" (topic anchor: Gartner doc 3906266, paywalled).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Uptime Institute - Reliability Tier Economics
 
 **Authors**: Uptime Institute
 **Date**: 2024
-**URL**: [Uptime Institute research]
-**Evidence Level**: A (Industry authority)
+**URL**: https://uptimeinstitute.com/tiers
+**Evidence Level**: C (Industry standards body — specific "98% cannot justify beyond four nines" statistic is not findable; URL updated to tier-classification page; cite with methodology-disclosure caveat)
 **Relevance**:
 - Reliability tier cost analysis
 - Book Chapter 1 (Reliability economics)
 - Best Practices Doc footnote [^232]
 
 **Key Findings**:
-- 98% of orgs cannot economically justify beyond four nines
-- Exception: Mission-critical components only
-- Cost-benefit analysis for reliability investments
+- Uptime Institute's tier classification (Tier I–IV) provides a cost-benefit framework for matching reliability investment to workload criticality
+- Higher tiers carry substantially greater infrastructure and operational cost; the framework is designed to prevent over-engineering for workloads that do not require it
+- Mission-critical components may warrant upper-tier investment; general-purpose workloads typically do not
 
 **Citations**: Chapter 1 reliability guidance
-**Notes**: Industry standard reliability guidance
+**Notes**: The specific "98% of orgs cannot economically justify beyond four nines" figure is not findable and has been removed. Cite this entry as the Uptime Institute tier-classification framework only (uptimeinstitute.com/tiers).
 
-**Validation Status**: ⚠️ URL needed (Uptime Institute)
+**Validation Status**: ⚠️ URL updated to uptimeinstitute.com/tiers; original specific statistic not sourced
 
-**⚠️ Validation (2026-06-05)**: "98% cannot justify beyond four nines" is not findable — soften to the tier-classification cost-benefit point (uptimeinstitute.com/tiers).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Apache Iceberg - Industry Consensus & Market Momentum
@@ -1475,25 +1471,27 @@ This bibliography consolidates all literature sources from:
 #### Apache Iceberg - Universal Vendor Support
 
 **Authors**: Apache Software Foundation + Vendor Announcements
-**Date**: 2024
+**Date**: 2025 (universal support confirmed; announcements began 2024, Databricks gap closed 2025)
 **URL**: Multiple vendor announcements
-**Evidence Level**: A (Vendor public commitments)
+**Alt URL**: https://www.theregister.com/2024/10/14/apache_iceberg_feature_announcements/
+**Alt URL 2**: https://www.databricks.com/blog/announcing-full-apache-iceberg-support-databricks
+**Evidence Level**: A (Vendor public commitments — date corrected to 2025 when full cross-vendor support was achieved)
 **Relevance**:
 - Hypothesis H-ARCH-01 (Iceberg dominance)
 - Book Chapter 8 (Format ecosystem)
 - Best Practices Doc footnote [^245]
 
 **Key Findings**:
-- Databricks, Snowflake, AWS, Google, Microsoft support
-- Recommended table format across all major vendors
-- Reduces vendor lock-in risk
+- Databricks, Snowflake, AWS, Google, and Microsoft all support Apache Iceberg as of 2025 (Databricks announced full support in 2025, closing the final major gap)
+- Recommended table format across all major vendors; coverage confirmed by The Register's October 2024 feature announcement roundup
+- Reduces vendor lock-in risk — open standard with cross-platform read/write compatibility
 
 **Citations**: H-ARCH-01 validation, Chapter 8 vendor support
-**Notes**: Universal support = strategic choice validation
+**Notes**: Date corrected from 2024 to 2025; full universal support was not achieved until Databricks closed the gap in 2025. Corroborating sources added (The Register Oct 2024, Databricks blog).
 
-**Validation Status**: ✅ Multiple public announcements
+**Validation Status**: ✅ Multiple public announcements; date corrected 2026-06-05
 
-**⚠️ Validation (2026-06-05)**: claim true as of 2025 (not 2024) — cite theregister.com/2024/10/14/apache_iceberg_feature_announcements/ + databricks.com/blog/announcing-full-apache-iceberg-support-databricks (Databricks closed the gap in 2025). Fix date.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Apache Iceberg Foundation - Governance & Contributors
