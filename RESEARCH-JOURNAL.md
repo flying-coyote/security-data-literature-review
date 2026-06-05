@@ -184,5 +184,28 @@ primary sources (Iceberg v3 spec, v4 milestone #58, DuckLake v1.0, Variant, OCSF
 
 ---
 
+## 2026-06-05 (later) — re-sourcing pass (6 parallel agents)
+
+Worked the MISMATCH + WEAK lists above. Key finding: **most flagged entries had real numbers attached to
+the wrong URL** — re-sourceable, not fabricated. Dispositions applied to `MASTER-BIBLIOGRAPHY.md`:
+
+- **Removed 4** (no salvageable content): Altinity ingest, Uber Real-Time Security Views, CSA ML-for-
+  Cybersecurity, Financial-Services Reliability (commit 41d346c).
+- **Re-sourced 8 URLs** to where the real number lives (commit 41d346c): ClickHouse Perf-Guide, Cloudera
+  Impala-Iceberg (10× verbatim), Mythical Man-Month (Pearson code), Ray Serve, DuckDB LTS (→duckdb.org),
+  Hyperscan (→USENIX NSDI'19), AI-Multiple ROI (→PagerDuty 2025), LinkedIn Kafka Streams (→Northguard blog).
+- **49 entries carry an authoritative `⚠️ Validation (2026-06-05)` correction** (commit ec5b41d): the real
+  source/number where re-sourceable, and the specific inline figures to disregard where fabricated. That
+  line governs the entry until the prose is polished. Highlights: SK-Telecom conflation untangled; SRE
+  cost-of-nines corrected to ~100× (was 10×); Gravitino/Polaris/Iceberg-2025/Catalog-Wars/Streaming-2025/
+  StarRocks re-sourced; DARPA-$75M / MITRE-2.3× / Champion-Challenger-42% / Drift-2-3× / Uber-Palette-37% /
+  DORA-2.7× marked unsupported; Gartner-Lakehouse is actually phData; MS-Threat-Modeling is 2019.
+
+Net: the MISMATCH/WEAK worklist is resolved — every entry is removed, re-sourced, or correction-noted with
+the real disposition. Remaining polish: fold each validation note into the entry prose and re-tier; that's
+cosmetic, the facts are now correct + sourced. Entry count 145 → 141.
+
+---
+
 *Next validation due with the cadence (`SCHEDULING.md`). When the worklist items above are re-sourced or
 stripped, append a dated row moving each to VERIFIED or removing it — do not silently re-litigate settled rows.*

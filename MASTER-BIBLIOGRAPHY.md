@@ -3,7 +3,7 @@
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
 **Last Updated**: June 5, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: ~140 catalogued entries (124 prior + 22 merged from the private Second Brain bibliography − 6 fabricated entries removed 2026-06-05, all traced to the initial 2025-10-15 commit; see CHANGELOG 1.22.0). This repo is now the source of truth for literature citations.
+**Total Sources**: ~141 catalogued entries (124 prior + 22 merged from the Second Brain bibliography − 10 fabricated/unsalvageable removed 2026-06-05; see CHANGELOG 1.22.0 + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced and 49 carry a ⚠️ Validation correction. This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: ~68% Evidence Level A (live, post-merge; the merge added Tier-B/C framework + practitioner sources — the freshness sweep + 2026 production-source additions are expected to lift it back above the 75% floor)
 **Link Status**: Broken-link sweep done over all 148 URLs (5 fixed, 1 re-homed, 6 fabricated removed, 1 marked private). Content freshness sweep of the ~92 sources >12 months old is in progress.
