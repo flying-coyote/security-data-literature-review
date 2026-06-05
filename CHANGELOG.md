@@ -7,6 +7,47 @@ and this project adheres to semantic versioning for documentation releases.
 
 ---
 
+## [1.22.0] - 2026-06-05 - Revival: honesty, Second Brain merge, fabricated-source removal
+
+After a 96-day lapse (the manual monthly checklist had no scheduler and the dashboard was masking
+the lapse), the periodic-update mechanism was revived and the corpus audited.
+
+### Mechanism
+- Fixed `automation_dashboard.py`: it read a stray `SETUP.md` instead of the latest health report,
+  so it always printed `0 broken / 0 outdated` and showed the retired Substack as active. Now honest.
+- Re-pointed the update checklist's dead Substack inputs to securitydataworks.com.
+- Added `weekly_scheduled_check.py` + `SCHEDULING.md`: light weekly health-check-and-notify that
+  escalates to a refresh monthly or when the corpus goes red. Wired to a weekly remote routine.
+
+### Added (merge)
+- 22 published works merged in from the private Second Brain bibliography (repo is now the literature
+  SoT): MITRE D3FEND + ontology, MITRE ATLAS, Matryoshka (Berkeley), F3/SIGMOD-2025, Zeek, Power
+  Query M, SCF, NIST CSF 2.0, CoSAI, Ballista, Lakekeeper, and practitioner publications. Only
+  published works merged; private relationship/communication-status tracking was not ported.
+- Recovered a stranded Feb-2026 refresh that had sat uncommitted for 96 days.
+
+### Removed (fabricated)
+- Removed 6 fabricated/unverifiable sources, all traced to the **initial commit (2025-10-15)** — they
+  were baked into the original bulk-generated bibliography and never verified: Microsoft "Operational
+  resilience in the face of attacks" (no such post), McKinsey "Accelerating data architecture
+  transformation" (no such article), "Enterprise Data Quarterly" (not a real publication), IDC "Hidden
+  Costs of Real-Time Data 2024" (no such report), Trino Summit "Data Contracts" session (not in any
+  lineup), and "ClickHouse at Shell — 57TB/day security telemetry" (no trace; figure unsupported).
+- Caveat: a link check only catches fabrications with dead URLs. Since the source was bulk-generated,
+  other entries with live-but-mismatched URLs may warrant content verification in the freshness sweep.
+
+### Fixed
+- Broken-link sweep over all 148 URLs: 5 vendor-moved links repointed, the LIGER post re-homed off the
+  retired Substack to securitydataworks.com/thesis/moar, and the NDA-gated splunk-db-connect repo
+  marked private-by-design (its 404 is expected, not broken).
+
+### Quality Metrics
+- ~140 catalogued entries (124 prior + 22 merged − 6 fabricated).
+- Evidence Level A ~68% (live) — the merge added Tier-B/C framework and practitioner sources; the
+  freshness sweep and 2026 production-source additions are expected to lift it back above the 75% floor.
+
+---
+
 ## [1.21.0] - 2026-02-28 - February 2026 Monthly Update
 
 ### Added

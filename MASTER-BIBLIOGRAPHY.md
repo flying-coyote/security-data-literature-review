@@ -3,10 +3,10 @@
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
 **Last Updated**: June 5, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: ~146 catalogued entries (124 prior + 22 merged from the private Second Brain bibliography — academic, frameworks/standards, practitioner publications). This repo is now the source of truth for literature citations.
+**Total Sources**: ~140 catalogued entries (124 prior + 22 merged from the private Second Brain bibliography − 6 fabricated entries removed 2026-06-05, all traced to the initial 2025-10-15 commit; see CHANGELOG 1.22.0). This repo is now the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 80% Evidence Level A (Feb 2026 measure; to be recomputed after the freshness sweep)
-**Link Status**: ⚠️ Full freshness sweep in progress — health check (2026-06-05) found 5/10 sampled links broken + 92 sources >12 months old; fixes tracked in the revival plan. Merged-in URLs status-checked at merge time (✅ verified 2026-06-05) where marked.
+**Evidence Quality**: ~68% Evidence Level A (live, post-merge; the merge added Tier-B/C framework + practitioner sources — the freshness sweep + 2026 production-source additions are expected to lift it back above the 75% floor)
+**Link Status**: Broken-link sweep done over all 148 URLs (5 fixed, 1 re-homed, 6 fabricated removed, 1 marked private). Content freshness sweep of the ~92 sources >12 months old is in progress.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
 
 ---
@@ -274,32 +274,6 @@ This bibliography consolidates all literature sources from:
 **Notes**: Validates compression claims
 
 **Validation Status**: ✅ Active URL
-
----
-
-#### ClickHouse at Shell - 57TB/day Security Telemetry
-
-**Authors**: ClickHouse Case Study
-**Date**: 2024
-**URL**: https://clickhouse.com/success-stories/shell
-**⚠️ VERIFICATION (2026-06-05)**: URL dead; no trace of a Shell/ClickHouse 57TB-security story on ClickHouse adopters or case-study pages (2026-06-05). The 57 TB/day figure is UNVERIFIED — do not cite without a primary source.
-**Evidence Level**: A (Enterprise production deployment)
-**Relevance**:
-- Hypothesis H1-VOLUME-07 (security data volumes)
-- Hypothesis H3-PERFORMANCE-01 (ClickHouse performance)
-- Book Chapter 1 (Why Cybersecurity Data is Different)
-- Book Chapter 9 (Query Engines)
-- Best Practices Doc footnote [^11]
-
-**Key Findings**:
-- 57TB/day security telemetry processed
-- Sub-second query performance at scale
-- Enterprise security use case
-
-**Citations**: Chapter 1 volume validation, Chapter 9 performance benchmarks
-**Notes**: **CRITICAL SOURCE** - Validates both volume claims and performance. Enterprise security deployment.
-
-**Validation Status**: ✅ Active URL, vendor case study (credible)
 
 ---
 
@@ -614,36 +588,6 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-## Operational Security
-
-### Microsoft Security Response Center - Operational Resilience & Secure Future Initiative
-
-**Authors**: Microsoft Security Response Center
-**Date**: 2022-2025 (updated with Secure Future Initiative 2024-2025)
-**URL**: https://www.microsoft.com/en-us/security/blog/2022/01/10/operational-resilience-in-the-face-of-attacks/
-**⚠️ VERIFICATION (2026-06-05)**: No Microsoft Security blog post with this title found in any index (2026-06-05); likely an AI-placeholder citation. Do not cite.
-**Evidence Level**: A (Microsoft security operations data + enterprise security program)
-**Relevance**:
-- Book Chapter 1 (Security workload characteristics)
-- Best Practices Doc footnote [^14]
-
-**Key Findings**:
-- **2022 Operational Data**:
-  - 350% average traffic surge during security incidents
-  - Operational resilience requirements
-- **2024-2025 Secure Future Initiative**:
-  - 200+ additional detections against top TTPs
-  - Security Development Lifecycle: Secure by Design, Secure by Default, Secure Operations
-  - Accelerating innovation and strengthening resilience
-  - Clear governance, tested communication strategies, practiced coordination
-
-**Citations**: Chapter 1 velocity characteristics, operational resilience patterns
-**Notes**: Validates burst capacity needs + comprehensive security program context
-
-**Validation Status**: ✅ Active (verified Feb 2026)
-
----
-
 ## Extraction Summary - COMPLETE
 
 **Final Status**: ✅ Extraction Complete (October 10, 2025)
@@ -748,56 +692,6 @@ This bibliography consolidates all literature sources from:
 **Notes**: **CRITICAL** - Validates cost claims for long-term security data retention; Kafka 3.9.0 production-ready status removes previous "emerging feature" caveat
 
 **Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready
-
----
-
-### TCO & Cost Analysis
-
-#### Enterprise Data Quarterly - Streaming vs Batch TCO
-
-**Authors**: Enterprise Data Quarterly
-**Date**: 2024
-**URL**: https://enterprisedataquarterly.com/research/streaming-batch-tco-analysis
-**⚠️ VERIFICATION (2026-06-05)**: 'Enterprise Data Quarterly' is not a verifiable publication and the domain does not resolve (2026-06-05). FABRICATED — flag for removal. ⚠️ **BROKEN LINK** (Domain no longer accessible)
-**Evidence Level**: B (Industry analysis, 85 implementations)
-**Relevance**:
-- Book Chapter 4 (Decision framework)
-- Book Chapter 7 (Streaming considerations)
-- Best Practices Doc footnote [^57]
-
-**Key Findings**:
-- 1.5-2× higher infrastructure costs for streaming vs batch
-- Quantifies hidden costs
-- Supported by related findings:
-  - IDC: 2.5-3× operational staffing costs (footnote [^59])
-  - Confluent sizing: 45-55% of TCO = operational complexity (footnote [^188])
-
-**Citations**: Chapter 4 TCO considerations, Chapter 7 cost reality
-**Notes**: **SOURCE NO LONGER AVAILABLE** - enterprisedataquarterly.com domain defunct as of November 2025. Cost differential estimate consistent with IDC/Confluent data.
-
-**Validation Status**: ❌ Broken link (DNS resolution failure - domain defunct)
-
----
-
-#### IDC - Hidden Costs of Real-Time Data
-
-**Authors**: IDC Research
-**Date**: 2024
-**URL**: https://www.idc.com/research/hidden-costs-real-time-data-2024
-**⚠️ VERIFICATION (2026-06-05)**: No IDC report by this title; the URL is not IDC's real doc-path format (my.idc.com/getdoc.jsp?containerId=...) (2026-06-05). Likely fabricated.
-**Evidence Level**: A (IDC authoritative research)
-**Relevance**:
-- Book Chapter 4 (Organizational readiness)
-- Best Practices Doc footnote [^59]
-
-**Key Findings**:
-- 2.5-3× higher operational staffing costs for streaming
-- Specialized expertise requirements
-
-**Citations**: Chapter 4 staffing reality
-**Notes**: **CRITICAL** - Quantifies operational cost differential
-
-**Validation Status**: To validate
 
 ---
 
@@ -1187,30 +1081,6 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Trino Data Contracts - Security Data Quality
-
-**Authors**: Trino Summit
-**Date**: 2024
-**URL**: https://trinosummit.io/sessions/data-contracts/
-**⚠️ VERIFICATION (2026-06-05)**: trinosummit.io is defunct and no 'Data Contracts' session appears in any Trino Summit 2023/2024 lineup (2026-06-05). Dead/unverified. ⚠️ **BROKEN LINK** (Domain no longer accessible)
-**Evidence Level**: B (Conference presentation)
-**Relevance**:
-- Data quality framework
-- Book Chapter 11 (Governance)
-- Best Practices Doc footnotes [^155], [^156]
-
-**Key Findings**:
-- 45% reduction in data-related security investigation errors
-- Declarative validation across federated sources
-- Metadata-driven quality enforcement
-
-**Citations**: Chapter 11 data quality patterns
-**Notes**: Security-specific data reliability improvements. **SOURCE NO LONGER AVAILABLE** - trinosummit.io domain defunct as of November 2025.
-
-**Validation Status**: ❌ Broken link (DNS resolution failure - domain defunct)
-
----
-
 #### Cloudera Impala + Iceberg Performance
 
 **Authors**: Cloudera Engineering Blog
@@ -1420,30 +1290,6 @@ This bibliography consolidates all literature sources from:
 **Notes**: Production validation of isolation-first security pattern at scale. Network isolation as primary security boundary eliminates need for fine-grained catalog access controls.
 
 **Validation Status**: ⚐ Conference presentation (2024 QCon), awaiting published case study or blog post
-
----
-
-#### McKinsey - Tiger Teams for Data Architecture
-
-**Authors**: McKinsey Digital
-**Date**: 2024
-**URL**: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/accelerating-data-architecture-transformation
-**⚠️ VERIFICATION (2026-06-05)**: No McKinsey article with this title found (2026-06-05); likely fabricated. Nearest real piece is 'Breaking through data-architecture gridlock to scale AI' (different content).
-**Evidence Level**: A (Quantitative research)
-**Relevance**:
-- Implementation patterns
-- Book Chapter 4 (Team composition)
-- Best Practices Doc footnote [^186]
-
-**Key Findings**:
-- 35-40% implementation acceleration
-- Cross-functional expert teams
-- Risk reduction through focused expertise
-
-**Citations**: Chapter 4 staffing patterns
-**Notes**: Complements H-IMPL-02 staffing findings
-
-**Validation Status**: ✅ Active URL
 
 ---
 
@@ -1914,30 +1760,6 @@ This bibliography consolidates all literature sources from:
 **Notes**: Direct performance comparison for security logs
 
 **Validation Status**: ✅ Active URL
-
----
-
-#### Microsoft Security Response Center - Operational Resilience (Duplicate Reference)
-
-**Authors**: Microsoft Security Response Center
-**Date**: 2022-2025 (updated with Secure Future Initiative 2024-2025)
-**URL**: https://www.microsoft.com/en-us/security/blog/2022/01/10/operational-resilience-in-the-face-of-attacks/
-**Evidence Level**: A (Security vendor operational data + enterprise security program)
-**Relevance**:
-- Security data volume planning
-- Book Chapter 2 (Volume patterns)
-- Best Practices Doc footnote [^206]
-
-**Key Findings**:
-- 350% average traffic surge during security incidents
-- Validates 200-500% temporary increase estimates
-- Operational resilience planning
-- 2024-2025: Secure Future Initiative with 200+ additional detections
-
-**Citations**: Chapter 2 capacity planning, burst handling
-**Notes**: Security-specific volume surge validation (See primary entry in Operational Security section)
-
-**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
