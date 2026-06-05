@@ -3848,3 +3848,139 @@ from the Second Brain entry pending the freshness sweep.
 **Validation Status**: N/A (print book)
 
 ---
+
+## 2026 Format & Standards Developments (added June 2026)
+
+Primary sources for the developments that postdate the book's March-2026 snapshot. Each URL was
+fetched and confirmed live, and each claim checked against the primary page (2026-06-05).
+
+#### Apache Iceberg v3 — Table Format Specification
+
+**Authors**: Apache Iceberg project (Apache Software Foundation)
+**Date**: v3 complete and adopted (spec current on the 1.11.0 release line)
+**URL**: https://iceberg.apache.org/spec/
+**Alt URL**: https://raw.githubusercontent.com/apache/iceberg/main/format/spec.md
+**Evidence Level**: A (official standard)
+**Relevance**:
+- The V3 shift the book is mostly pre-: binary deletion vectors, the Variant type, row-lineage tracking, default-value support, nanosecond timestamps, geometry/geography types
+- Chapter 9 (format war), Chapter 2 (table-format fundamentals); closes the H-SEC-CATALOG row-lineage audit-trail gap
+
+**Key Findings**: spec states "Versions 1, 2 and 3 ... are complete and adopted." V3 additions include deletion vectors, Variant, row lineage, default values, multi-argument transforms, table encryption keys.
+**Citations**: Apache Iceberg. *Table Format Specification* (v3). https://iceberg.apache.org/spec/
+**Validation Status**: ✅ Active (verified 2026-06-05; cite the raw spec.md as the fetchable primary)
+
+---
+
+#### Apache Iceberg v4 — Spec Effort (Milestone #58)
+
+**Authors**: Apache Iceberg project (GitHub)
+**Date**: Open / proposal-stage as of 2026-06-05
+**URL**: https://github.com/apache/iceberg/milestone/58
+**Evidence Level**: A (official project tracker)
+**Relevance**:
+- The V4 format effort the book tracks as a milestone; proposal-stage, NOT adopted
+- Chapter 9; user's top format-war tracking priority
+
+**Key Findings**: Milestone Open, 2 tracked proposals — #13153 Column Stats Improvements, #13141 Relative Path Support. The wider V4 wishlist (single-file commits, Parquet-not-Avro metadata) circulates in secondary blogs only — do not cite as settled.
+**Citations**: Apache Iceberg. *V4 Spec — Milestone #58*. https://github.com/apache/iceberg/milestone/58
+**Validation Status**: ✅ Active (verified 2026-06-05)
+
+---
+
+#### DuckLake v1.0: The Lakehouse Format Built on SQL
+
+**Authors**: The DuckDB team
+**Date**: April 13, 2026
+**URL**: https://duckdb.org/2026/04/13/ducklake-10
+**Alt URL**: https://ducklake.select/2026/04/13/ducklake-10/
+**Evidence Level**: B (project/vendor authoritative)
+**Relevance**:
+- The DuckLake-vs-Iceberg comparison the book and Lab track; v1.0 is production-ready (stable spec, shipped with DuckDB v1.5.2)
+- Chapter 9, Chapter 12; the SQL-as-catalog-metadata alternative to Iceberg's file-based metadata
+
+**Key Findings**: all table metadata in a SQL catalog (SQLite/PostgreSQL/DuckDB); v1.0 adds data inlining (small DML in the catalog, no new files), sorted tables, murmur3 bucket partitioning (Iceberg-compatible), GEOMETRY + Variant, and experimental Iceberg-v3-compatible deletion vectors via Puffin.
+**Citations**: DuckDB team (2026, Apr 13). *DuckLake v1.0*. https://duckdb.org/2026/04/13/ducklake-10
+**Validation Status**: ✅ Active (verified 2026-06-05)
+
+---
+
+#### Introducing Variant — Open Standard for Semi-Structured Data
+
+**Authors**: Databricks — Gene Pang, David Cashman, Ryan Blue, Aniruth Narayanan
+**Date**: October 10, 2025
+**URL**: https://www.databricks.com/blog/introducing-variant-new-open-standard-semi-structured-data-apache-parquettm-delta-lake
+**Evidence Level**: B (vendor authoritative; co-authored by Iceberg co-creator Ryan Blue)
+**Relevance**:
+- The open Variant type now in Parquet (2.12.0 / Parquet-Java 1.16.0), Iceberg v3, Delta, Spark — the semi-structured path for CloudTrail/JSON security logs (the MFA absence-as-NULL flattening problem)
+- Chapter 8 (OCSF/flattening), Appendix B
+
+**Key Findings**: Variant "ratified in the Apache Parquet community" with Delta/Iceberg/Spark support. Shredding (columnarizing common fields) improves read 8× vs regular Variant / 30× vs string; writes 20-50% slower — *vendor's own benchmark, treat the multiples as Tier C*.
+**Citations**: Pang, G., Cashman, D., Blue, R., Narayanan, A. (2025, Oct 10). *Introducing Variant*. Databricks.
+**Validation Status**: ✅ Active (verified 2026-06-05)
+
+---
+
+#### OCSF Schema v1.8.0
+
+**Authors**: Open Cybersecurity Schema Framework (Linux Foundation)
+**Date**: March 2026 (exact day approximate — confirm against the v1.8.0 git tag)
+**URL**: https://github.com/ocsf/ocsf-schema/releases
+**Alt URL**: https://schema.ocsf.io/
+**Evidence Level**: A (official schema standard)
+**Relevance**:
+- Current OCSF schema version (the book's OCSF analysis predates it); the six-schemas crosswalk corpus targets 1.8.0
+- Chapter 8, Appendix F
+
+**Key Findings**: v1.8.0 is the latest release (cadence: v1.5.0 Apr 2025, v1.6.0 Aug 2025, v1.7.0 Nov 2025, v1.8.0 Mar 2026). 1.8.0 adds an `ai_operation` profile (`ai_model`/`message_context`), privilege-analysis objects with MITRE ATT&CK mapping, and a macOS process extension.
+**Citations**: OCSF (2026). *OCSF Schema v1.8.0*. https://github.com/ocsf/ocsf-schema/releases
+**Validation Status**: ✅ Active (verified 2026-06-05; day-of-month unconfirmed)
+
+---
+
+#### Using the NANDA Index Architecture in Practice
+
+**Authors**: Sichao Wang, Ramesh Raskar (MIT Media Lab), Mahesh Lambe, Pradyumna Chari, Rekha Singhal, Shailja Gupta, Rajesh Ranjan, Ken Huang
+**Date**: August 5, 2025
+**URL**: https://arxiv.org/abs/2508.03101
+**Evidence Level**: B (preprint, not peer-reviewed; MIT-affiliated)
+**Relevance**:
+- The actual NANDA primary source: agent discovery, authentication, capability attestation (Agent-Facts), cross-protocol interoperability (MCP/A2A/NLWeb) for an "Internet of Agents"
+- Chapter 12 (agent-native architecture) — as infrastructure, not a SOC-automation benchmark
+
+**⚠️ VERIFICATION (2026-06-05)**: the "≈98.7% SOC automation" figure attached to NANDA across the book (ch12) and the website essay ("The 98.7% Solution") is **NOT in this paper** and no primary source for it could be found — NANDA is agent-internet infrastructure, not a SOC system, and the abstract reports no percentage metrics. Cite this paper for the architecture only; the 98.7% figure needs a real source or should be dropped. FLAGGED for Jeremy.
+**Citations**: Wang, S., Raskar, R., et al. (2025, Aug 5). *Using the NANDA Index Architecture in Practice*. arXiv:2508.03101.
+**Validation Status**: ✅ Active (verified 2026-06-05); ⚠️ the 98.7% claim is unsupported
+
+---
+
+#### Splunk Platform 10.4 + Cisco Data Fabric — Federated Search
+
+**Authors**: Splunk (Cisco) — Aqib Kazi, Michelle Corpora
+**Date**: May 18, 2026
+**URL**: https://www.splunk.com/en_us/blog/platform/splunk-cloud-platform-10-4-and-splunk-enterprise-10-4.html
+**Evidence Level**: B (vendor product announcement)
+**Relevance**:
+- The current Splunk picture (the book's Splunk analysis is on the 2024 product): Federated Search GA, "core pillar of the Cisco Data Fabric," SPL2, BYO catalogs
+- Chapter 6 (when Splunk wins / federation)
+
+**Key Findings**: Splunk Cloud Platform 10.4 + Enterprise 10.4 ship Federated Search (search distributed data in place across hybrid/multi-cloud); Federated Search for Snowflake reaches GA July 2026; bundles Splunk AI Assistant 2.0.
+**Citations**: Kazi, A., Corpora, M. (2026, May 18). *Splunk Cloud Platform 10.4 and Enterprise 10.4: Federated Search*. Splunk.
+**Validation Status**: ✅ Active (verified 2026-06-05)
+
+---
+
+#### Amazon S3 Tables — Native Apache Iceberg in Object Storage
+
+**Authors**: Amazon Web Services
+**Date**: December 3, 2024 (GA; REST Catalog APIs March 2025; auto-replication December 2025)
+**URL**: https://aws.amazon.com/about-aws/whats-new/2024/12/amazon-s3-tables-apache-iceberg-tables-analytics-workloads/
+**Evidence Level**: B (vendor GA announcement)
+**Relevance**:
+- The strongest single "Iceberg is the standard" anchor — a hyperscaler building Iceberg natively into object storage; Chapter 1, Chapter 9
+- Iceberg adoption / vendor-convergence evidence
+
+**Key Findings**: "first cloud object store with built-in Apache Iceberg support"; AWS claims up to 3× query throughput / 10× transactions vs self-managed Iceberg (*vendor benchmark, Tier C*); Iceberg REST Catalog APIs added March 2025.
+**Citations**: AWS (2024, Dec 3). *Amazon S3 Tables — fully managed Apache Iceberg tables*. aws.amazon.com.
+**Validation Status**: ✅ Active (verified 2026-06-05)
+
+---
