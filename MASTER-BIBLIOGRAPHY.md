@@ -241,20 +241,19 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^7]
 
 **Key Findings**:
-- 96.3% of queries complete under 1 second
-- Billions of events processed
-- Production security analytics workload
-- **Oct 2025 update**: Exceeded 1,000 active replicas, processing hundreds of millions of inserted rows/sec
-- Single query scanned 96 trillion events in 1 hour, returned in <2 seconds
+- 6M req/sec sustained (peak 8M req/sec) on the Cloudflare HTTP analytics pipeline
+- ~3× replication across 36 nodes for high availability
+- −50% query latency achieved via index tuning
+- **Oct 2025 (Alt URL — ClickHouse blog)**: Exceeded 1,000 active replicas, processing hundreds of millions of inserted rows/sec; single query scanned 96 trillion events, returned in <2 seconds
 - Nearly 10 years running on open-source ClickHouse (one of earliest large-scale adopters)
 - System withstands large-scale outages without collapsing
 
 **Citations**: Chapter 9 ClickHouse deep-dive, H3-PERFORMANCE-01 validation
-**Notes**: Oct 2025 blog reveals quadrillion-row scale; 96 trillion event query in <2 seconds is strongest ClickHouse performance validation in bibliography
+**Notes**: Primary Cloudflare post supports throughput/replication/latency figures; 1,000+ replicas and 96-trillion-event query figures are from the Oct 2025 ClickHouse blog (Alt URL). The "96.3% under 1s" figure that appeared in earlier versions is not in either cited source and has been removed.
 
 **Validation Status**: ✅ Refreshed February 2026 - Oct 2025 quadrillion-row blog
 
-**⚠️ Validation (2026-06-05)**: "96.3% under 1s" is in NEITHER cited source — disregard. The "1,000+ replicas / 96-trillion-events-in-<2s" figures are real but belong to the Oct-2025 ClickHouse blog (Alt URL), not the Cloudflare post. Keep: 6M (peak 8M) req/sec, ~3× replication over 36 nodes, −50% latency from index tuning.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### ClickHouse Log Analytics - Cloudflare
@@ -287,24 +286,25 @@ This bibliography consolidates all literature sources from:
 **Date**: 2023-2026 (continuously updated benchmarks)
 **URL**: https://www.confluent.io/blog/kafka-fastest-messaging-system/
 **Alt URL**: https://developer.confluent.io/learn/kafka-performance/
-**Evidence Level**: A (Vendor benchmark, reproducible)
+**Evidence Level**: B (Vendor benchmark, methodology disclosed but self-published)
 **Relevance**:
 - Book Chapter 7 (Ingestion)
 - Best Practices Doc footnote [^4]
 
 **Key Findings**:
-- 4.5M events/sec on 9 nodes (original benchmark)
+- 605 MB/s peak throughput across 3 brokers (Confluent benchmark)
+- 15× faster than RabbitMQ; 2× faster than Pulsar under the benchmark conditions
 - Confluent Cloud up to 12× faster than Apache Kafka as throughput scales (Kora engine)
 - Latency benchmarks: 10 MBps to 1.4 GBps ingress tested
 - Kafkorama benchmark: 1M messages/sec fanout to 1M WebSocket connections (1.6B messages in 30 min)
 - End-to-end latency increase of only 2-3ms with Confluent Cloud vs self-managed
 
 **Citations**: Chapter 7 Kafka performance
-**Notes**: Vendor source but widely accepted benchmark; 2025-2026 benchmarks show continued performance leadership
+**Notes**: Vendor-published benchmark; 605 MB/s, 15× RabbitMQ, 2× Pulsar figures are from the cited blog. Widely referenced but self-published.
 
 **Validation Status**: ✅ Active URL (refreshed January 2026)
 
-**⚠️ Validation (2026-06-05)**: "4.5M events/sec on 9 nodes" is not in the cited blog (a 2014 LinkedIn-era figure) — disregard. Keep: 605 MB/s peak across 3 brokers, 15× RabbitMQ, 2× Pulsar.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Questioning the Lambda Architecture - Jay Kreps
@@ -437,22 +437,22 @@ This bibliography consolidates all literature sources from:
 **Authors**: AWS
 **Date**: 2024
 **URL**: https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-storage-optimization/cost-optimization-storage-optimization.pdf
-**Evidence Level**: A (Vendor documentation, authoritative)
+**Evidence Level**: B (Vendor documentation; cited PDF deprecated, tier figures sourced from S3 Intelligent-Tiering page)
 **Relevance**:
 - Hypothesis H1-COST-08 (SIEM vs storage costs)
 - Book Chapter 1 (Cost comparisons)
 - Best Practices Doc footnote [^15]
 
 **Key Findings**:
-- 55% average savings with tiered storage strategies
-- Storage cost optimization patterns
+- S3 tiered storage cost savings (from AWS S3 Intelligent-Tiering documentation): up to 40% with Infrequent Access tier, up to 68% with Archive Instant Access tier, up to 95% with Deep Archive tier
+- Storage cost optimization patterns depend on access frequency and tier selection
 
 **Citations**: Chapter 1 cost section, H1-COST-08 validation
-**Notes**: Official AWS documentation
+**Notes**: Original PDF (cited URL) is a deprecated stub; tier-specific savings figures are from the AWS S3 Intelligent-Tiering product page. Cite individual tiers with "up to" language rather than a single average.
 
 **Validation Status**: ✅ Active URL (AWS docs)
 
-**⚠️ Validation (2026-06-05)**: the cited PDF is a deprecated empty stub and "55% average savings" is unsupported — disregard. AWS publishes tier-banded figures on the S3 Intelligent-Tiering page (up to 40% IA / 68% Archive Instant / 95% Deep Archive); cite that with a tier-specific "up to" figure, not a single average.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ## Implementation & Organizational
@@ -497,11 +497,9 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - **2024 Report** (39,000+ professionals):
-  - 2.7× operational staff for streaming vs batch
-  - Streaming architecture incident rates: 3.2× higher
-  - Fault-tolerance = "Level 4" specialized skill (top 5% orgs)
   - AI significantly impacting software development
   - Platform engineering promises and challenges
+  - Transformational leadership linked to high-performance teams
 - **2025 Report** (State of AI-Assisted Software Development):
   - AI boosts individual productivity but slightly reduces overall software delivery performance
   - AI adoption linked to higher throughput but increased instability
@@ -509,11 +507,11 @@ This bibliography consolidates all literature sources from:
   - Value stream management critical for AI-driven productivity gains
 
 **Citations**: Chapter 4 organizational readiness, Chapter 7 operational realities, AI/ML integration patterns
-**Notes**: **CRITICAL SOURCE** - Quantifies operational overhead, now includes AI impact on DevOps
+**Notes**: **CRITICAL SOURCE** - Annual large-scale practitioner survey; DORA does not study streaming-vs-batch operational ratios; do not use this source for staffing or incident-rate comparisons between architecture types.
 
 **Validation Status**: ✅ Active (verified Feb 2026), annual authoritative report
 
-**⚠️ Validation (2026-06-05)**: the "2.7× staff / 3.2× incidents / Level-4 top-5%" streaming-vs-batch figures are absent (DORA doesn't study streaming-vs-batch) — disregard. Keep DORA's real findings (AI lifts productivity, dents delivery stability; platform engineering; transformational leadership).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ## Survey & Industry Reports
@@ -609,18 +607,16 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - Terabytes of state with millisecond access times
-- Production security implementation
-- **2025 update**: LinkedIn announced Northguard, replacing Kafka at extreme scale
-- LinkedIn processes 32 trillion records/day, 17 PB/day across 400K topics, 150 clusters
-- Northguard: sharded data/metadata, log striping, self-balancing clusters
+- **2025 update (Northguard blog)**: LinkedIn processes 32 trillion records/day, 17 PB/day across 400K topics, 10K+ machines, 150 clusters
+- Northguard replaces Kafka at hyper-scale: sharded data/metadata, log striping, self-balancing clusters
 - Original Kafka Streams state management patterns remain valid for typical enterprise scale
 
 **Citations**: Chapter 7 Kafka Streams for security
-**Notes**: **CRITICAL** - Validates stateful processing at security scale; LinkedIn's 2025 Northguard announcement shows Kafka hitting limits at hyper-scale (32T records/day) but enterprise SOC use cases remain well within Kafka's capabilities
+**Notes**: **CRITICAL** - URL re-sourced to LinkedIn Northguard blog; Northguard is general infrastructure (not a security-specific deployment). Scale figures (32T records/day, 17 PB/day) are verbatim from the Northguard post. For Kafka-Streams stateful mechanics, use Confluent course as secondary cite only.
 
 **Validation Status**: ✅ Refreshed February 2026
 
-**⚠️ Validation (2026-06-05)**: URL re-sourced to the LinkedIn Northguard blog — verbatim 32T records/day, 17 PB/day, 400K topics, 10K+ machines, 150 clusters. Drop "production security implementation" (Northguard is general infra). The Confluent course remains a secondary cite for Kafka-Streams stateful mechanics only.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Netflix - Kafka Tiered Storage
@@ -628,26 +624,24 @@ This bibliography consolidates all literature sources from:
 **Authors**: Netflix Technology Blog
 **Date**: 2023 (updated February 2026)
 **URL**: https://docs.confluent.io/platform/current/kafka/tiered-storage.html
-**Evidence Level**: A (Production deployment)
+**Evidence Level**: B (Confluent vendor docs for tiered-storage; Netflix scale figure requires Netflix Keystone blog as primary cite)
 **Relevance**:
 - Hypothesis H1-COST-08 (cost optimization)
 - Book Chapter 7 (Ingestion)
 - Best Practices Doc footnote [^70]
 
 **Key Findings**:
-- 70-80% storage cost reduction for multi-year retention
-- Security data retention optimization
-- **2025 update**: Kafka tiered storage marked production-ready in Apache Kafka 3.9.0
-- Can achieve 90%+ storage cost reduction depending on local vs object storage distribution
-- Netflix ingests 2 trillion messages/day via Kafka (2025 scale)
+- Netflix ingests 2 trillion messages/day via Kafka (Keystone pipeline — netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb)
+- Security data retention optimization via tiered storage
+- **2025 update**: Kafka tiered storage marked production-ready in Apache Kafka 3.9.0 (cite Apache release notes, not Confluent docs)
 - Tiered storage enables indefinite retention at minimal cost for compliance use cases
 
 **Citations**: Chapter 1 cost comparisons, Chapter 7 tiered storage
-**Notes**: **CRITICAL** - Validates cost claims for long-term security data retention; Kafka 3.9.0 production-ready status removes previous "emerging feature" caveat
+**Notes**: **CRITICAL** - Validates scale and retention feasibility. Cost-reduction percentages (70-80%, 90%+) are not Netflix-published and should not be cited. Use Apache Kafka 3.9.0 release notes for GA tiered-storage claim.
 
 **Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready
 
-**⚠️ Validation (2026-06-05)**: the "70-80% / 90%+" cost-reduction percentages are not Netflix-published — disregard. "2T messages/day" is real (Netflix Keystone: netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb). Cite Apache (not Confluent docs) for Kafka 3.9.0 tiered-storage GA.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 ## Performance Benchmarks (Additional)
@@ -659,26 +653,23 @@ This bibliography consolidates all literature sources from:
 **Authors**: ClickHouse Engineering Blog
 **Date**: 2023-2026 (continuously updated documentation)
 **URL**: https://clickhouse.com/docs/concepts/why-clickhouse-is-so-fast
-**Evidence Level**: A (Vendor technical documentation)
+**Evidence Level**: B (Vendor technical documentation — conceptual page, no throughput benchmarks disclosed)
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01
 - Book Chapter 9 (Query Engines - ClickHouse)
 - Best Practices Doc footnote [^99]
 
 **Key Findings**:
-- 8-10× better CPU efficiency vs row-based databases
 - Vectorized execution model processes data in CPU cache-sized batches
-- SIMD-level parallelism achieves sub-100ms queries on billions of rows
-- 400M rows scanned at ~86M rows/sec demonstrated
-- 5× lower compute, 10× less storage vs PostgreSQL for analytics (2026 benchmarks)
+- SIMD-level parallelism for columnar data processing
 - Automatic SIMD instruction set selection based on hardware capabilities
 
 **Citations**: Chapter 9 ClickHouse architecture
-**Notes**: Technical architecture explanation; 2026 observability guide validates "sub-second query performance across petabytes"
+**Notes**: Conceptual architecture explanation; cited page does not publish throughput numbers or comparative multipliers. Do not cite specific CPU-efficiency multipliers, rows/sec, or PostgreSQL comparison figures from this source.
 
 **Validation Status**: ✅ Active URL (refreshed January 2026)
 
-**⚠️ Validation (2026-06-05)**: "8-10× CPU efficiency" and "400M rows at ~86M rows/sec" are not in the source (conceptual page, no throughput numbers) — disregard. Keep: vectorized batch/SIMD execution description.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### ClickHouse - IP Address Types Performance
@@ -686,21 +677,20 @@ This bibliography consolidates all literature sources from:
 **Authors**: ClickHouse Technical Blog
 **Date**: 2024
 **URL**: https://clickhouse.com/docs/sql-reference/data-types/ipv6
-**Evidence Level**: A (Vendor documentation)
+**Evidence Level**: B (Vendor documentation; qualitative storage-efficiency claim only — no benchmarked multiplier in source)
 **Relevance**:
 - Book Chapter 9 (ClickHouse security use cases)
 - Best Practices Doc footnote [^101]
 
 **Key Findings**:
-- Native IPv4/IPv6 types
-- 50-100× faster CIDR-based threat hunting vs string implementations
+- Native IPv4/IPv6 fixed-width types (16-byte UInt128 for IPv6) are storage-efficient vs string representations (qualitative advantage for CIDR-based threat hunting)
 
 **Citations**: Chapter 9 security-specific optimizations
-**Notes**: **CRITICAL** - Security-specific performance advantage
+**Notes**: Documentation confirms native IP type support; no throughput or speed multiplier is published on this page. Do not cite a specific CIDR-query speedup factor from this source.
 
 **Validation Status**: ✅ Active URL
 
-**⚠️ Validation (2026-06-05)**: the "50-100× faster CIDR" multiplier is not in the source and not findable — disregard. Keep: native IPv4/IPv6 fixed-width types (16-byte UInt128) are storage-efficient vs strings (qualitative only).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Splunk DB Connect Benchmark - Multi-Engine Performance Comparison
@@ -740,23 +730,23 @@ This bibliography consolidates all literature sources from:
 **Authors**: ClickHouse Documentation Team
 **Date**: 2024-2026 (continuously updated)
 **URL**: https://clickhouse.com/docs/en/sql-reference/statements/create/table#compression-codecs
-**Evidence Level**: A (Vendor technical documentation)
+**Evidence Level**: B (Vendor technical documentation; codec list confirmed, ratio figures require separate engineering-blog cite)
 **Relevance**:
 - Blog post: "ClickHouse Compression Reality: Vendor Claims vs Production Testing"
 - Book Chapter 9 (Query Engines - ClickHouse)
 - Compression optimization for security data
 
 **Key Findings**:
-- LZ4, ZSTD, Delta, DoubleDelta, T64, Gorilla compression codecs
-- Codec selection impacts compression ratios (3-14×)
-- Security telemetry optimization guidance
+- Supported compression codecs: LZ4, ZSTD, Delta, DoubleDelta, T64, Gorilla
+- Codec selection guidance for security telemetry optimization
+- For per-codec ratio ranges, cite ClickHouse's "Database compression: encodings, codecs and ratios" engineering page (LZ4 ~2-4×, ZSTD ~3-6×) — not this reference page
 
 **Citations**: Blog compression deep-dive, Chapter 9 storage optimization
-**Notes**: Technical reference for compression codec selection
+**Notes**: This page documents available codecs and syntax; it does not publish compression ratio benchmarks. Do not cite the "3-14×" range from this source.
 
 **Validation Status**: ✅ Active (verified Feb 2026)
 
-**⚠️ Validation (2026-06-05)**: "3-14×" is not on the cited page — disregard. Keep the codec list. For real per-codec ratios cite ClickHouse's "Database compression: encodings, codecs and ratios" engineering page (LZ4 2-4×, ZSTD 3-6×).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### ClickHouse - Performance Optimization Guide
@@ -802,17 +792,16 @@ This bibliography consolidates all literature sources from:
 - Iceberg data lake on isolated AWS infrastructure
 - Table-level RBAC (no row-level security, column masking, or metadata encryption needed)
 - Simplified security posture via network isolation as primary control
-- 16 billion events/day processed
-- 3 million endpoints monitored
-- 1 million EPS on 3× 16-core 16GB RAM servers
-- 20-50× compression ratios achieved
+- 3 million+ endpoints monitored; >1 million M365 identities managed
+- Up to 200K records/sec ingest throughput
+- **16 billion events/day** processed (figure from ClickHouse Huntress video: clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse — not the blog post)
 
 **Citations**: **CRITICAL** - Blog RSA conversations, H-IMPL-01 TCO validation, RQ7 isolation-first performance validation
-**Notes**: Production security deployment, Chris Bisnett (CTO) validation at RSA 2025. Avoided Unity Catalog complexity by using isolation-first architecture with table-level permissions only.
+**Notes**: Production security deployment, Chris Bisnett (CTO) validation at RSA 2025. Avoided Unity Catalog complexity by using isolation-first architecture with table-level permissions only. "1M EPS / 3×16-core servers" and "20-50× compression" figures are not supported by the cited blog and have been removed.
 
 **Validation Status**: ✅ Active (verified Feb 2026)
 
-**⚠️ Validation (2026-06-05)**: "1M EPS / 3×16-core servers" and "20-50× compression" are unsupported — disregard. "16 billion events/day" is real but from the ClickHouse Huntress VIDEO (clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse). Keep: 93% cost cut ($70K→$5K), 3M+ endpoints, >1M M365 identities, up to 200K records/sec (use instead of "1M EPS").
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Chris Bisnett - Huntress ClickHouse Migration (Video)
@@ -958,18 +947,18 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnotes [^150], [^151]
 
 **Key Findings**:
-- 20× faster than JDBC/ODBC for query result retrieval
-- Columnar data format eliminates row-based serialization overhead (60-90% of transfer time saved)
+- **20× faster than JDBC/ODBC** for query result retrieval (from Alt URL: arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/ — not the spec page)
+- Columnar data format eliminates row-based serialization overhead (qualitative advantage; no transfer-time percentage from this source)
 - Production validation with ClickHouse, DuckDB, Dremio, StarRocks integrations
 - Zero-copy transmission with Arrow in-memory columnar format
 - ADBC libraries v17 released March 2025 (18 resolved issues, 13 contributors)
 
 **Citations**: Chapter 10 federated query performance
-**Notes**: Critical for multi-engine security architectures; original Summit 2024 link archived, replaced with official docs
+**Notes**: Critical for multi-engine security architectures; original Summit 2024 link archived, replaced with official docs. The 20× benchmark is from the Feb 2022 Arrow blog post (Alt URL), not the spec page; cite accordingly. "60-90% transfer time saved" is not in either source and should not be cited.
 
 **Validation Status**: ✅ Updated January 2026 - Official Apache Arrow documentation
 
-**⚠️ Validation (2026-06-05)**: the "20×" is real but belongs to the Arrow blog (Alt URL: arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/), not the spec page. "60-90% transfer time saved" is unsupported — disregard.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Anyscale Ray Serve - Production AI Deployment Platform
@@ -989,15 +978,14 @@ This bibliography consolidates all literature sources from:
 - 99.9% availability, 5000+ replicas scale demonstrated
 - Private/public networking for security compliance
 - Multi-AZ support, head node fault tolerance
-- Replica Compaction: 56% faster performance
-- Elastic training: 60% cost reduction
+- **Replica Compaction**: 56% faster performance (Ray Summit 2024 press release — not the cited blog post; cite separately)
 
 **Citations**: Advanced analytics, ML deployment patterns
-**Notes**: General AI/ML serving platform, applicable to security analytics use cases
+**Notes**: General AI/ML serving platform, applicable to security analytics use cases. The 600% growth, 99.9% availability, and 5000+ replicas figures are from the cited "tackling-the-cost-and-complexity" blog post. The 56% Replica Compaction figure is from the Ray Summit 2024 press release. The "60% elastic-training cost reduction" figure is not in any findable source and has been removed.
 
 **Validation Status**: ✅ Active URL (verified Anyscale blog, 2024)
 
-**⚠️ Validation (2026-06-05)**: URL re-sourced to the "tackling-the-cost-and-complexity" post (600% growth, 99.9% availability, 5000+ replicas). The "56% replica compaction" is from the Ray Summit 2024 press release; "60% elastic-training reduction" is unsupported — disregard.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Cloudera Impala + Iceberg Performance
@@ -1023,28 +1011,28 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Apache Flink Checkpointing for Security Workloads
+#### Apache Flink Checkpointing - Fault Tolerance Patterns
 
 **Authors**: Apache Flink Documentation
 **Date**: 2024
 **URL**: https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/fault-tolerance/checkpointing/
-**Evidence Level**: A (Official documentation, best practices)
+**Evidence Level**: B (Official documentation; prescribes mechanism, not security-specific intervals or recovery SLAs)
 **Relevance**:
 - Hypothesis H-IMPL-02 (Streaming expertise)
 - Book Chapter 7 (Streaming architectures)
 - Best Practices Doc footnotes [^166], [^169]
 
 **Key Findings**:
-- 30-60 second checkpointing intervals recommended for security
-- Sub-2 minute recovery times with RocksDB state backend
-- Fault-tolerance = Level 4 specialized skill
+- Checkpoint-interval configuration: frequency-vs-overhead tradeoff must be tuned per workload (generic doc does not prescribe specific intervals)
+- RocksDB state backend supported for large state; recovery time depends on state size and checkpoint frequency
+- Checkpointing is a fundamental fault-tolerance mechanism for stateful streaming jobs
 
 **Citations**: Chapter 7 streaming reliability patterns
-**Notes**: Aligns with DORA findings on specialized skills
+**Notes**: The Flink documentation describes checkpointing mechanics and configuration options without prescribing specific intervals. Do not cite "30-60s for security" or "sub-2min recovery" — these figures are not in this source.
 
 **Validation Status**: ✅ Active URL
 
-**⚠️ Validation (2026-06-05)**: "30-60s interval for security" and "sub-2min recovery" are not in the generic Flink doc (which declines to prescribe intervals) — disregard, and drop the "for security" framing. Keep: checkpoint-interval / RocksDB-backend / frequency-vs-overhead tradeoff.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Microsoft Purview - Security Data Retention
