@@ -1601,16 +1601,16 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^248]
 
 **Key Findings**:
-- 97% query time reduction
-- 52.7TB in 3.39 seconds
-- Partition evolution + predicate pushdown
+- Case 1: −97% read data size (209 GB → 6.11 GB) on a 52.7 TB Iceberg table; elapsed time 97.2 s → 3.39 s (−96.5%)
+- Partition evolution + predicate pushdown enable the data-pruning gains
+- Headline improvement across cases: ~−80%
 
 **Citations**: H-ARCH-01 performance validation
 **Notes**: Quantitative production validation
 
 **Validation Status**: ✅ Active URL
 
-**⚠️ Validation (2026-06-05)**: numbers real but CONFLATED. The deck (trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf) shows Case 1: elapsed 97.2s→3.39s (−96.5%), read data −97% (209GB→6.11GB), on a 52.7TB Iceberg table — NOT "52.7TB in 3.39s". Reword to "−97% read data size; elapsed 97.2s→3.39s on a 52.7TB table (Case 1)"; headline −80%.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### ClickHouse vs Elasticsearch - Storage Efficiency
@@ -1641,16 +1641,15 @@ This bibliography consolidates all literature sources from:
 **Authors**: Uber Engineering (Michelangelo Platform)
 **Date**: 2022-2024
 **URL**: https://www.uber.com/blog/palette-meta-store-journey/
-**Evidence Level**: A (Production case study)
+**Evidence Level**: B (Production case study with unsupported headline stat; retained claims are qualitative/process)
 **Relevance**:
 - ML for security analytics
 - Book Chapter (Advanced analytics patterns)
 - Best Practices Doc footnote [^255]
 
 **Key Findings**:
-- 37% of ML detection failures from inconsistent feature computation
-- Palette hosts 20,000+ features across Uber teams
-- Feature store solution for training/production consistency
+- >95% onboarding-time reduction for new feature integration (per blog)
+- Feature store solution for training/production consistency — eliminates training/serving skew
 - Support for batch and near-real-time feature computation
 
 **Citations**: Advanced analytics chapter, ML patterns
@@ -1658,7 +1657,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified 2024)
 
-**⚠️ Validation (2026-06-05)**: "37% of ML detection failures" and "20,000+ features" are not in the blog — disregard. Keep: ">95% onboarding-time reduction" (real) + feature-store training/serving consistency.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### DARPA XAI - Explainable Artificial Intelligence Program
@@ -1666,25 +1665,24 @@ This bibliography consolidates all literature sources from:
 **Authors**: DARPA (David Gunning, David W. Aha)
 **Date**: 2017-2021 (program), published 2019
 **URL**: https://www.darpa.mil/research/programs/explainable-artificial-intelligence
-**Evidence Level**: A (Government research program with publications)
+**Evidence Level**: B (Government research program; headline budget/ranking claims unsupported — retained claims are program-scope facts)
 **Relevance**:
 - ML explainability requirements
 - Book Chapter (Advanced analytics)
 - Best Practices Doc footnote [^270]
 
 **Key Findings**:
-- Security applications have highest explainability requirements among AI domains
-- 4-year $75M research program (2017-2021)
-- Defense and national security focus areas
-- Consequences of false positives/negatives particularly critical
+- 4-year program (2017-2021), ~11 research teams, David Gunning as program manager
+- Defense and national security focus areas; false positives/negatives have high operational consequences
 - Development of XAI toolkit for future systems
+- Retrospective: Gunning & Aha (2021), *Applied AI Letters*, doi 10.1002/ail2.61
 
 **Citations**: Advanced analytics, ML governance, regulatory compliance
 **Notes**: Definitive government source on explainability requirements for security AI
 
 **Validation Status**: ✅ Active URL (verified DARPA official site)
 
-**⚠️ Validation (2026-06-05)**: "$75M budget" and "highest explainability among AI domains" are unsupported — disregard. Keep: 2017-2021, ~11 teams, David Gunning PM, Applied AI Letters retrospective (Gunning 2021, doi 10.1002/ail2.61).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### SANS Institute - AI Survey & SOC Automation Research
@@ -1746,43 +1744,40 @@ This bibliography consolidates all literature sources from:
 **Authors**: MITRE Insider Threat Research & Solutions
 **Date**: 2024
 **URL**: https://insiderthreat.mitre.org/
-**Evidence Level**: A (Research authority, 15+ years research)
+**Evidence Level**: B (Research authority with 15+ years program; headline detection-rate stats were invented — retained claims are framework-scope facts)
 **Relevance**:
 - Security ML training requirements
 - Book Chapter (Advanced analytics - insider threat)
 - Best Practices Doc footnote [^261]
 
 **Key Findings**:
-- 18-24 months behavioral data optimal for detection
-- 2.3× better detection rates vs 3-6 months training data
-- Insider Threat Framework with 5,000+ case analysis
-- 47 ATT&CK techniques, 29 sub-techniques for insider threats
-- Bi-Directional Loyalty (BDL) as key risk measure
+- 15+ years of insider threat research program at MITRE, multi-disciplinary InT Lab
+- 47 ATT&CK techniques, 29 sub-techniques for insider threats (MITRE Engenuity Insider Threat Knowledge Base 2.0)
+- Bi-Directional Loyalty (BDL) as key behavioral risk measure
 
 **Citations**: Advanced analytics, insider threat detection, behavioral analytics
 **Notes**: MITRE = definitive authority on insider threat research, multi-disciplinary InT Lab
 
 **Validation Status**: ✅ Active URL (verified MITRE official site, 2024 data)
 
-**⚠️ Validation (2026-06-05)**: "18-24mo optimal / 2.3× detection / 5,000+ cases" are invented — disregard. "47 techniques / 29 sub-techniques" IS real — cite MITRE Engenuity Insider Threat Knowledge Base 2.0. Keep: 15+ years program, Bi-Directional Loyalty.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Microsoft Security - Threat Modeling & Data Security for AI/ML
 
 **Authors**: Microsoft Security Engineering
-**Date**: 2024
+**Date**: November 2019
 **URL**: https://learn.microsoft.com/en-us/security/engineering/threat-modeling-aiml
-**Evidence Level**: A (Vendor documentation, engineering guidance)
+**Evidence Level**: B (Vendor engineering guidance; incident-rate stat removed — retained claims are the documented threat taxonomy)
 **Relevance**:
 - Security ML data requirements and security
 - Book Chapter (Advanced analytics)
 - Best Practices Doc footnote [^264]
 
 **Key Findings**:
+- 11-category AI/ML threat taxonomy: adversarial perturbation, data poisoning, model inversion, model inference, model stealing, supply-chain compromise, backdoor attacks, and related attack classes
 - Training data from public datasets poses supply chain risks
-- 40% of organizations experienced AI-related data security incidents (2024, doubled from 27% in 2023)
 - Inference data requires validation and audit
-- Azure Machine Learning enterprise security features
 - Data collection documentation and ownership requirements
 
 **Citations**: Advanced analytics, data management, AI security
@@ -1790,7 +1785,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Active URL (verified Microsoft Learn documentation)
 
-**⚠️ Validation (2026-06-05)**: doc is November 2019, not 2024 — fix the date. "40% had AI incidents 2024, up from 27% 2023" is absent — disregard. Keep: the 11-category AI/ML threat taxonomy (adversarial perturbation, data poisoning, model inversion/inference/stealing, supply-chain, backdoor).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Apache Arrow - Columnar Analytics Performance
@@ -1798,27 +1793,24 @@ This bibliography consolidates all literature sources from:
 **Authors**: Apache Arrow Community & Users
 **Date**: 2023-2024
 **URL**: https://arrow.apache.org/powered_by/
-**Evidence Level**: A (Community benchmarks, production validation)
+**Evidence Level**: B (Adoption reference; cited page is a community powered-by list, not a benchmark — performance multipliers not substantiated there)
 **Relevance**:
 - ML training performance and data transfer
 - Book Chapter (Advanced analytics)
 - Best Practices Doc footnote [^266]
 
 **Key Findings**:
-- PySpark integration: 10-100× performance in some cases
-- Arrow Flight: 20-30× better than ODBC/turbodbc (Dremio)
-- Cloud streaming: Up to 12× performance improvement
-- Snowflake Python/JDBC: Up to 5× data retrieval speedup
-- Streamlit: 15× better performance
-- VAST network telemetry: High-bandwidth path for security investigations
-- High-cardinality features optimized (IP addresses, domains)
+- Broad production adoption across major platforms (PySpark, Dremio, Snowflake, Streamlit, VAST, and others per powered_by list)
+- Columnar in-memory format eliminates serialization overhead for analytics workloads
+- VAST network telemetry: high-bandwidth path for security investigations
+- High-cardinality features (IP addresses, domains) optimized by columnar layout
 
 **Citations**: Advanced analytics, data formats, security telemetry
-**Notes**: Production validation across major platforms including security use cases (VAST)
+**Notes**: Reference for adoption breadth; specific performance figures require per-platform benchmarks, not the powered_by page
 
 **Validation Status**: ✅ Active URL (verified Apache Arrow official site)
 
-**⚠️ Validation (2026-06-05)**: all multipliers (10-100×/20-30×/12×/5×/15×) are not on the cited powered_by list and not findable together — disregard. Keep as an adoption reference only.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Champion-Challenger Model Pattern (MLOps Industry Standard)
@@ -1834,17 +1826,16 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - Champion/challenger = A/B testing for ML models in production
-- Parallel model comparison reduces risk
-- 42% false positive reduction (referenced industry case study)
+- Parallel model comparison reduces deployment risk
 - Standard MLOps pattern across financial services and security
-- Enables safe model transitions
+- Enables safe model transitions without production disruption
 
 **Citations**: Advanced analytics, deployment patterns, MLOps
-**Notes**: Industry-standard pattern, Capital One specific article not found but methodology validated
+**Notes**: Industry-standard pattern, methodology validated via DataRobot MLOps documentation
 
 **Validation Status**: ✅ Active URL (verified DataRobot MLOps pattern documentation)
 
-**⚠️ Validation (2026-06-05)**: "42% false-positive reduction" is not in the DataRobot blog (no Capital One source) — disregard. Keep: the champion/challenger concept (Tier B).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Open Cybersecurity Alliance - Standards & Interoperability
@@ -1906,25 +1897,24 @@ This bibliography consolidates all literature sources from:
 **Authors**: Microsoft Azure Machine Learning Team & Research
 **Date**: 2022-2024
 **URL**: https://techcommunity.microsoft.com/blog/fasttrackforazureblog/identifying-drift-in-ml-models-best-practices-for-generating-consistent-reliable/4040531
-**Evidence Level**: A (Research + production platform capabilities)
+**Evidence Level**: B (Vendor platform guidance + academic citation; quantified rate-of-drift claim removed)
 **Relevance**:
 - ML model maintenance and monitoring
 - Book Chapter (Advanced analytics)
 - Best Practices Doc footnote [^275]
 
 **Key Findings**:
-- Security domain experiences 2-3× faster concept drift than business ML
-- Ever-evolving threat landscape creates non-stationary data
+- Ever-evolving threat landscape creates non-stationary data — security ML requires active drift monitoring
 - Azure ML Observability for scalable drift detection
 - Four drift varieties: sudden, gradual, incremental, reoccurring
-- Academic research: "Learn to adapt: Robust drift detection in security domain"
+- Academic research: "Learn to adapt: Robust drift detection in security domain" (arXiv 2206.07581)
 
 **Citations**: Advanced analytics, model maintenance, MLOps
-**Notes**: Security-specific drift characteristics well-documented in both Microsoft and academic research
+**Notes**: Security-specific drift characteristics covered in both Microsoft platform docs and arXiv 2206.07581
 
 **Validation Status**: ✅ Updated February 2026 - URL format corrected to /blog/ path
 
-**⚠️ Validation (2026-06-05)**: "security drifts 2-3× faster than business ML" is not in the article or the literature — disregard. Keep: the qualitative non-stationarity point + the four drift varieties + arXiv 2206.07581 (real).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Confluent - Machine Learning with Apache Kafka
@@ -1969,21 +1959,18 @@ This bibliography consolidates all literature sources from:
 - Enterprise security data lake architecture
 
 **Key Findings**:
-- Native support for Apache Iceberg tables in Security Lake
-- 3× faster query performance vs self-managed Iceberg (via Amazon S3 Tables)
-- 10× higher transactions per second
+- Native support for Apache Iceberg tables in Security Lake (February 2024)
 - Automatic centralization from AWS environments, SaaS providers, on-premises
 - Direct query support from Athena, Redshift, Spark, EMR
 - **OCSF v1.1.0 Observables** for threat intel matching and identity search across environments
-- **AWS AppFabric** auto-normalizes SaaS audit logs to OCSF format → Security Lake
-- **25+ partner integrations** for OCSF v1.1: Confluent, Cribl, CrowdStrike, Datadog, Elastic, Palo Alto, SentinelOne, Splunk, Sumo Logic, etc.
+- Note: 3× query / 10× TPS figures are from Amazon S3 Tables (December 2024 announcement), not Security Lake itself
 
 **Citations**: OCSF integration, Iceberg performance, security data lake
-**Notes**: Major cloud provider validation of Iceberg + OCSF for security; 25+ vendor integrations demonstrates OCSF ecosystem maturity; AppFabric auto-normalization reduces schema mapping burden
+**Notes**: Major cloud provider validation of Iceberg + OCSF for security; AppFabric and partner-count claims require separate sourcing
 
 **Validation Status**: ✅ Refreshed February 2026 - Active production service with expanding partner ecosystem
 
-**⚠️ Validation (2026-06-05)**: the "3× query / 10× TPS" figures describe Amazon S3 Tables (aws .../2024/12/amazon-s3-tables...), not Security Lake — attribute there. "AppFabric auto-normalization / 25+ partners" are not in the cited Feb-2024 post — disregard or source separately. Keep: Security Lake OCSF 1.1.0 + Iceberg + Athena/Redshift/Spark query.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### StarRocks vs ClickHouse Production Benchmarks
@@ -1991,14 +1978,15 @@ This bibliography consolidates all literature sources from:
 **Authors**: Multiple vendors and practitioners
 **Date**: 2024-2025
 **URL**: Various (Tinybird, StarRocks, Medium)
-**Evidence Level**: B (Vendor benchmarks with methodology disclosed)
+**Evidence Level**: B (Vendor-run benchmarks with disclosed methodology; interpret with vendor-bias caveat)
 **Relevance**:
 - Query engine selection for security analytics
 - Performance under high concurrency
 - Real-time update capabilities
 
 **Key Findings**:
-- StarRocks outperforms ClickHouse by 1.87× on SSB, 3-5× on TPC-H
+- StarRocks outperforms ClickHouse by 1.87× on SSB (StarRocks' own SSB benchmark, docs.starrocks.io — vendor-run, flag bias)
+- StarRocks shows multi-engine advantages on TPC-H (benchmarked vs Trino/Spark, not ClickHouse directly — ClickHouse comparison weaker)
 - StarRocks maintains sub-second P95 latency with 100× more concurrent sessions
 - ClickHouse excels at single-table queries on flat schemas
 - StarRocks better for high-concurrency production (hundreds of users)
@@ -2009,7 +1997,7 @@ This bibliography consolidates all literature sources from:
 
 **Validation Status**: ✅ Multiple independent benchmarks
 
-**⚠️ Validation (2026-06-05)**: "1.87× SSB" verified on StarRocks' own SSB doc (docs.starrocks.io/docs/benchmarking/SSB_Benchmarking/) — vendor-run, Tier B, flag bias. "3-5× on TPC-H vs ClickHouse" is weaker (their TPC-H doc benchmarks vs Trino/Spark) — soften.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### MOAR Stack - Security Data Lakehouse Reference Architecture
@@ -2061,25 +2049,22 @@ This bibliography consolidates all literature sources from:
 **Authors**: Gartner Research
 **Date**: 2024-2025
 **URL**: Multiple Gartner reports
-**Evidence Level**: A (Industry analyst research, survey data)
+**Evidence Level**: B (Analyst prediction; headline maturity-correlation and abandonment figures not traceable to any Gartner publication)
 **Relevance**:
 - AI maturity correlation with success rates
 - Organizational readiness metrics
 - Long-term sustainability patterns
 
 **Key Findings**:
-- 45% of high-maturity organizations keep AI projects operational for 3+ years
-- Only 20% of low-maturity organizations achieve similar sustainability
-- 60% of high-maturity organizations centralize AI governance
-- 42% of companies abandoned most AI initiatives in 2024
-- 81% piloting AI agents, but 45% report vendor agents underperform
+- Gartner (July 2024) predicted ~30% of GenAI projects would be abandoned after PoC by end-2025, citing poor data quality and unclear business value as primary drivers
+- Note: Previously cited maturity-tier percentages (45%/20%/60% sustainability, 42% abandoned, 81%/45% agent figures) are not traceable to any Gartner publication and have been removed; the "42% abandoned" figure is a 2025 S&P Global statistic, not Gartner
 
 **Citations**: AI maturity models, governance requirements, failure rates
-**Notes**: Quantitative validation of governance prerequisites hypothesis
+**Notes**: Retain for the ~30% PoC-abandonment prediction only; re-source or remove maturity-tier quantification
 
 **Validation Status**: ✅ Survey data from 2024-2025
 
-**⚠️ Validation (2026-06-05)**: the specific figures don't trace to any Gartner publication, and "42% abandoned" is a 2025 S&P Global stat misattributed to Gartner-2024 — disregard. The one real Gartner claim: ~30% of GenAI projects abandoned after PoC by end-2025 (Gartner July-2024 prediction).
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### AI Governance Maturity Gate - Prerequisites for AI Success
@@ -2190,14 +2175,14 @@ This bibliography consolidates all literature sources from:
 **Authors**: Tenzir Team
 **Date**: 2024
 **URL**: https://tenzir.com/product/comparisons/cribl
-**Evidence Level**: B (Vendor documentation with production validation)
+**Evidence Level**: C (Vendor self-claim on comparison page; no independent methodology disclosed)
 **Relevance**:
 - Pipeline-based detection architecture
 - Cost reduction strategies
 - Unified platform vs fragmented tools
 
 **Key Findings**:
-- 30% lower TCO vs traditional query-based architectures
+- Tenzir claims ~30% lower TCO vs Cribl's pipeline-plus-separate-SIEM model (vendor self-claim, no methodology; baseline is Cribl's combined stack, not query-based architectures generally)
 - "Shift detection left" - detect in pipeline before storage
 - Single platform eliminates separate SIEM layer costs
 - Open-core architecture (C++ foundation) vs closed-source competitors
@@ -2205,11 +2190,11 @@ This bibliography consolidates all literature sources from:
 - Unified detection workflow vs Cribl's fragmented suite (Stream, Edge, Search, Lake)
 
 **Citations**: Pipeline detection economics, TCO reduction, architecture simplification
-**Notes**: Validates RQ13 pipeline vs query detection economics hypothesis
+**Notes**: Validates RQ13 pipeline vs query detection economics hypothesis; cite with vendor-bias caveat
 
 **Validation Status**: ✅ Production deployments documented
 
-**⚠️ Validation (2026-06-05)**: "30% lower TCO" is real but MIS-BASELINED — the source says vs Cribl's pipeline-plus-separate-SIEM model, NOT "vs query-based architectures". Fix the baseline. Tier-C vendor self-claim, no methodology.
+**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Security Data Pipeline Market Guide 2025
