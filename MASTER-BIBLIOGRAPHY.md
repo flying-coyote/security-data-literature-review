@@ -7,6 +7,7 @@
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: ~68% Evidence Level A (live, post-merge; the merge added Tier-B/C framework + practitioner sources — the freshness sweep + 2026 production-source additions are expected to lift it back above the 75% floor)
 **Link Status**: Broken-link sweep done over all 148 URLs (5 fixed, 1 re-homed, 6 fabricated removed, 1 marked private). Content freshness sweep of the ~92 sources >12 months old is in progress.
+**Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. Tracking + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
 
 ---
@@ -481,29 +482,6 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-### Skills & Staffing
-
-#### Flink Implementation Staffing - DevOps.com
-
-**Authors**: DevOps.com / Ververica
-**Date**: 2024
-**URL**: https://klaviyo.tech/flinkperf-c7bd28acc67
-**Evidence Level**: B (Survey data)
-**Relevance**:
-- Book Chapter 7 (Streaming complexity)
-- Best Practices Doc footnotes [^5], [^6]
-
-**Key Findings**:
-- 3.2 average FTEs required for Flink streaming pipelines
-- 4-9 month implementation timelines for enterprise deployments
-
-**Citations**: Chapter 7 operational considerations
-**Notes**: Realistic staffing expectations
-
-**Validation Status**: ✅ Active URL
-
----
-
 #### 2024-2025 State of DevOps Report - DORA
 
 **Authors**: DevOps Research and Assessment (DORA) / Google Cloud
@@ -612,35 +590,6 @@ This bibliography consolidates all literature sources from:
 - Government/Standards: 8 sources (CISA, MITRE, DARPA, NSA, SANS)
 - Industry Analysts: 10 sources (Gartner, IDC, Forrester)
 - Production Deployments: 18 sources (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, etc.)
-
----
-
-**Maintained by**: Jeremy Wiley
-**Update Cadence**: Quarterly updates planned (pending IT Harvest partnership for vendor landscape)
-**Integration**: Book citations complete, blog references active, IT Harvest collaboration planned
-
-## Implementation & Organizational (Continued)
-
-### Implementation Timelines & Staffing
-
-#### SANS Institute - Security Analytics Implementation Timelines
-
-**Authors**: SANS Institute
-**Date**: 2023
-**URL**: https://www.sans.org/reading-room/whitepapers/security-analytics-implementation-timelines
-**Evidence Level**: A (SANS authoritative, security-specific)
-**Relevance**:
-- Book Chapter 4 (Implementation journeys)
-- Best Practices Doc footnote [^51]
-
-**Key Findings**:
-- Security-specific implementation timeline validation
-- Differs from general data engineering timelines
-
-**Citations**: Chapter 4 realistic timeline expectations
-**Notes**: **CRITICAL** - Security-specific, not general data engineering
-
-**Validation Status**: To validate
 
 ---
 
@@ -1122,29 +1071,6 @@ This bibliography consolidates all literature sources from:
 
 **Citations**: Chapter 7 streaming reliability patterns
 **Notes**: Aligns with DORA findings on specialized skills
-
-**Validation Status**: ✅ Active URL
-
----
-
-#### Ververica - Streaming Staffing Requirements
-
-**Authors**: Ververica (Flink Platform)
-**Date**: 2024
-**URL**: https://klaviyo.tech/flinkperf-c7bd28acc67
-**Evidence Level**: A (Industry case study)
-**Relevance**:
-- **Hypothesis H-IMPL-02** (Streaming expertise scarcity)
-- Book Chapter 4 (Implementation journeys)
-- Best Practices Doc footnote [^167]
-
-**Key Findings**:
-- 3.2 average FTEs required for production Flink pipelines
-- 4-9 month implementation timelines
-- High-cardinality state management challenges
-
-**Citations**: H-IMPL-02 validation, Chapter 4 staffing reality
-**Notes**: **CRITICAL** - Validates H-IMPL-02 staffing hypothesis
 
 **Validation Status**: ✅ Active URL
 
@@ -2155,12 +2081,14 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### LIGER Stack - Security Data Lakehouse Reference Architecture
+#### MOAR Stack - Security Data Lakehouse Reference Architecture
 
-**Authors**: Jeremy Wiley
-**Date**: October 2025
+**Authors**: Jeremy Wiley (FIRST-PARTY — Jeremy's own reference architecture + cost model, not third-party evidence)
+**Date**: October 2025 (renamed from "LIGER" → "MOAR", an intentional rebrand)
 **URL**: https://securitydataworks.com/thesis/moar
-**Evidence Level**: A (Production validation, detailed cost analysis, implementation roadmap)
+**Cost-model source**: https://securitydataworks.com/engagements/moar-architecture-design/economics — the transparent $3,560/mo-at-500GB/day cost model with its assumptions stated (the cost figures below live HERE, not on /thesis/moar)
+**Evidence Level**: B (first-party model with disclosed assumptions; relabeled from A — self-authored, not external validation)
+**⚠️ Update needed (2026-06-05)**: the L-I-G-E-R 5-letter component breakdown below is the retired naming; reconcile to the current MOAR component model on /thesis/moar.
 **Relevance**:
 - Complete reference architecture for security data lakehouse
 - Alternative to traditional SIEM platforms
@@ -2310,9 +2238,8 @@ This bibliography consolidates all literature sources from:
 - Vendor independence
 
 **Key Findings**:
-- AI generates complete security data parsers from log samples
-- Includes OCSF schema mapping, test suites, deployable packages
-- "100% hands-off keyboard" implementation
+- AI generates security data parsers / OCSF mappings from log samples
+- Tenzir's announcement describes the generated mappings as "100% schema-conforming" (the earlier "100% hands-off keyboard" quote and the "test suites / deployable packages" claims were NOT in the source — corrected 2026-06-05)
 - Shifts power dynamic from vendors to customers
 - Commoditizes parser development
 - Production deployment validated (December 2025)
