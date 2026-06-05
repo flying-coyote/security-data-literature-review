@@ -4,6 +4,9 @@
 # Claude local settings (local only - don't track in git)
 .claude/settings.local.json
 
+# Claude agent worktrees (temporary, isolated subagent worktrees - never commit)
+.claude/worktrees/
+
 # OS files
 .DS_Store
 Thumbs.db
