@@ -81,7 +81,7 @@ This bibliography consolidates all literature sources from:
 #### Starburst - Official Documentation
 
 **Authors**: Starburst Data
-**Date**: 2024 (continuously updated)
+**Date**: 2024-2026 (continuously updated)
 **URL**: https://docs.starburst.io
 **Evidence Level**: B (Vendor documentation, technical authority)
 **Relevance**:
@@ -98,14 +98,14 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog query engine comparison, Chapter 9 Starburst capabilities
 **Notes**: Commercial Trino distribution with enterprise security features
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
 #### Starburst - AWS Athena Comparison
 
 **Authors**: Starburst Data
-**Date**: 2024 (updated)
+**Date**: 2024-2026 (updated)
 **URL**: https://www.starburst.io/aws-athena/
 **Evidence Level**: B (Vendor comparison documentation)
 **Relevance**:
@@ -124,7 +124,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog query engine comparison, Chapter 9 hybrid architectures
 **Notes**: Practical guide for AWS security data architectures
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -157,7 +157,7 @@ This bibliography consolidates all literature sources from:
 #### Dremio - Official Documentation
 
 **Authors**: Dremio Corporation
-**Date**: 2024 (continuously updated)
+**Date**: 2024-2026 (continuously updated)
 **URL**: https://docs.dremio.com
 **Evidence Level**: B (Vendor documentation, technical authority)
 **Relevance**:
@@ -174,7 +174,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog query engine comparison, Chapter 9 Dremio capabilities
 **Notes**: Semantic layer approach to data lakehouse architecture
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -198,7 +198,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog query engine context, Chapter 2 lakehouse fundamentals
 **Notes**: Educational resource from Dremio, vendor perspective
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -222,15 +222,16 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog query engine resources, Chapter 9 learning resources
 **Notes**: Educational YouTube channel, vendor-affiliated but practical
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
 #### ClickHouse at Cloudflare - 6M Requests/Second
 
 **Authors**: Cloudflare Engineering Blog
-**Date**: 2024
+**Date**: 2024-2025 (updated February 2026)
 **URL**: https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/
+**Alt URL**: https://clickhouse.com/blog/cloudflare
 **Evidence Level**: A (Production deployment at massive scale)
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse OLAP performance)
@@ -241,11 +242,15 @@ This bibliography consolidates all literature sources from:
 - 96.3% of queries complete under 1 second
 - Billions of events processed
 - Production security analytics workload
+- **Oct 2025 update**: Exceeded 1,000 active replicas, processing hundreds of millions of inserted rows/sec
+- Single query scanned 96 trillion events in 1 hour, returned in <2 seconds
+- Nearly 10 years running on open-source ClickHouse (one of earliest large-scale adopters)
+- System withstands large-scale outages without collapsing
 
 **Citations**: Chapter 9 ClickHouse deep-dive, H3-PERFORMANCE-01 validation
-**Notes**: Highly relevant for security use case, exceptional credibility
+**Notes**: Oct 2025 blog reveals quadrillion-row scale; 96 trillion event query in <2 seconds is strongest ClickHouse performance validation in bibliography
 
-**Validation Status**: ✅ Active URL, Cloudflare = authoritative source
+**Validation Status**: ✅ Refreshed February 2026 - Oct 2025 quadrillion-row blog
 
 ---
 
@@ -495,7 +500,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 4 organizational readiness, implementation best practices
 **Notes**: Industry-standard change management source, 12th edition reflects latest research
 
-**Validation Status**: ✅ Active URL (verified Nov 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -548,34 +553,37 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 4 organizational readiness, Chapter 7 operational realities, AI/ML integration patterns
 **Notes**: **CRITICAL SOURCE** - Quantifies operational overhead, now includes AI impact on DevOps
 
-**Validation Status**: ✅ Active URL (verified Nov 2025), annual authoritative report
+**Validation Status**: ✅ Active (verified Feb 2026), annual authoritative report
 
 ---
 
 ## Survey & Industry Reports
 
-### Confluent Data Streaming Report (2024/2025)
+### Confluent Data Streaming Report (2025)
 
 **Authors**: Confluent (with Freeform Dynamics, Radma Research)
-**Date**: 2024-2025
-**URL**: https://report.confluent.io/
+**Date**: 2025 (May 2025 report, updated February 2026)
+**URL**: https://www.confluent.io/resources/report/2025-data-streaming-report/
+**Alt URL**: https://report.confluent.io/
 **Evidence Level**: B (Vendor survey, 4,175 IT leaders, 12 countries)
 **Relevance**:
 - Book Chapter 7 (Industry trends)
+- RQ13: Pipeline vs query detection economics
 - Best Practices Doc footnotes [^18], [^23]
 
 **Key Findings**:
 - 86% of IT leaders prioritize data streaming investments (2025)
 - 89% see DSPs easing AI adoption via data access/quality/governance
 - 90% plan to increase DSP investments in 2025
+- **44% report 5× returns** on data streaming investments
+- **93%** cite 4+ benefits of shift-left approach (detect/enrich earlier in pipeline)
+- **25%** now at Level 1 maturity (up from 8% in 2024 — 3× growth)
 - Real-time data essential for competitive edge
 
-**Note**: URL updated 2026-01-03 (superseded by annual Data Streaming Report)
+**Citations**: Chapter 7 industry validation, RQ13 pipeline economics
+**Notes**: Vendor survey but comprehensive scope; 44% reporting 5× ROI strengthens pipeline-first economics; shift-left aligns with RQ13 pipeline detection hypothesis
 
-**Citations**: Chapter 7 industry validation
-**Notes**: Vendor survey but comprehensive scope
-
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Refreshed February 2026 - 2025 report
 
 ---
 
@@ -599,7 +607,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 7 technology adoption trends, AI/ML integration patterns
 **Notes**: Updated URL (original 404), comprehensive data engineering + AI trends
 
-**Validation Status**: ✅ Active URL (verified Nov 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -628,7 +636,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 1 velocity characteristics, operational resilience patterns
 **Notes**: Validates burst capacity needs + comprehensive security program context
 
-**Validation Status**: ✅ Active URL (verified Nov 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -691,7 +699,7 @@ This bibliography consolidates all literature sources from:
 #### LinkedIn Security - Kafka Streams State Management
 
 **Authors**: LinkedIn Engineering / Confluent
-**Date**: 2023
+**Date**: 2023 (updated February 2026)
 **URL**: https://www.confluent.io/blog/stateful-stream-processing-with-kafka-streams/
 **Evidence Level**: A (Production deployment at scale)
 **Relevance**:
@@ -701,18 +709,22 @@ This bibliography consolidates all literature sources from:
 **Key Findings**:
 - Terabytes of state with millisecond access times
 - Production security implementation
+- **2025 update**: LinkedIn announced Northguard, replacing Kafka at extreme scale
+- LinkedIn processes 32 trillion records/day, 17 PB/day across 400K topics, 150 clusters
+- Northguard: sharded data/metadata, log striping, self-balancing clusters
+- Original Kafka Streams state management patterns remain valid for typical enterprise scale
 
 **Citations**: Chapter 7 Kafka Streams for security
-**Notes**: **CRITICAL** - Validates stateful processing at security scale
+**Notes**: **CRITICAL** - Validates stateful processing at security scale; LinkedIn's 2025 Northguard announcement shows Kafka hitting limits at hyper-scale (32T records/day) but enterprise SOC use cases remain well within Kafka's capabilities
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Refreshed February 2026
 
 ---
 
 #### Netflix - Kafka Tiered Storage
 
 **Authors**: Netflix Technology Blog
-**Date**: 2023
+**Date**: 2023 (updated February 2026)
 **URL**: https://docs.confluent.io/platform/current/kafka/tiered-storage.html
 **Evidence Level**: A (Production deployment)
 **Relevance**:
@@ -723,11 +735,15 @@ This bibliography consolidates all literature sources from:
 **Key Findings**:
 - 70-80% storage cost reduction for multi-year retention
 - Security data retention optimization
+- **2025 update**: Kafka tiered storage marked production-ready in Apache Kafka 3.9.0
+- Can achieve 90%+ storage cost reduction depending on local vs object storage distribution
+- Netflix ingests 2 trillion messages/day via Kafka (2025 scale)
+- Tiered storage enables indefinite retention at minimal cost for compliance use cases
 
 **Citations**: Chapter 1 cost comparisons, Chapter 7 tiered storage
-**Notes**: **CRITICAL** - Validates cost claims for long-term security data retention
+**Notes**: **CRITICAL** - Validates cost claims for long-term security data retention; Kafka 3.9.0 production-ready status removes previous "emerging feature" caveat
 
-**Validation Status**: ✅ Active URL (Confluent docs)
+**Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready
 
 ---
 
@@ -813,7 +829,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: ClickHouse Technical Blog
 **Date**: 2024
-**URL**: https://clickhouse.com/docs/en/sql-reference/data-types/domains/ipv4
+**URL**: https://clickhouse.com/docs/sql-reference/data-types/ipv6
 **Evidence Level**: A (Vendor documentation)
 **Relevance**:
 - Book Chapter 9 (ClickHouse security use cases)
@@ -864,7 +880,7 @@ This bibliography consolidates all literature sources from:
 #### ClickHouse - Compression Codecs Documentation
 
 **Authors**: ClickHouse Documentation Team
-**Date**: 2024 (continuously updated)
+**Date**: 2024-2026 (continuously updated)
 **URL**: https://clickhouse.com/docs/en/sql-reference/statements/create/table#compression-codecs
 **Evidence Level**: A (Vendor technical documentation)
 **Relevance**:
@@ -880,14 +896,14 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog compression deep-dive, Chapter 9 storage optimization
 **Notes**: Technical reference for compression codec selection
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
 #### ClickHouse - Performance Optimization Guide
 
 **Authors**: ClickHouse Documentation Team
-**Date**: 2024 (continuously updated)
+**Date**: 2024-2026 (continuously updated)
 **URL**: https://clickhouse.com/docs/en/operations/optimizing-performance
 **Evidence Level**: A (Vendor technical documentation)
 **Relevance**:
@@ -903,7 +919,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog compression testing methodology, Chapter 9 performance tuning
 **Notes**: Comprehensive performance optimization reference
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -935,7 +951,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: **CRITICAL** - Blog RSA conversations, H-IMPL-01 TCO validation, RQ7 isolation-first performance validation
 **Notes**: Production security deployment, Chris Bisnett (CTO) validation at RSA 2025. Avoided Unity Catalog complexity by using isolation-first architecture with table-level permissions only.
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -959,7 +975,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog RSA conversations, practitioner validation
 **Notes**: Video presentation from Huntress CTO, RSA 2025 field validation
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -1445,7 +1461,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: H-IMPL-01 TCO reality, Chapter 1 cost modeling
 **Notes**: **CRITICAL** - Validates operational cost distribution, updated 2024 Forrester study
 
-**Validation Status**: ✅ Active URL (verified Nov 2025, interactive TEI study)
+**Validation Status**: ✅ Active (verified Feb 2026, interactive TEI study)
 
 ---
 
@@ -1503,11 +1519,12 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Gartner - Security Data Growth Rates & Spending Forecast 2024-2028
+#### Gartner - Security Data Growth Rates & Spending Forecast 2024-2029
 
 **Authors**: Gartner Security & Risk Management
-**Date**: 2024-2025 (Q4 2024 forecast update)
-**URL**: https://www.gartner.com/en/newsroom/press-releases/2024-08-28-gartner-forecasts-global-information-security-spending-to-grow-15-percent-in-2025
+**Date**: 2024-2026 (updated February 2026)
+**URL**: https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025
+**Alt URL**: https://www.gartner.com/en/newsroom/press-releases/2024-08-28-gartner-forecasts-global-information-security-spending-to-grow-15-percent-in-2025
 **Evidence Level**: A (Authoritative industry research)
 **Relevance**:
 - Hypothesis H1-VOLUME-07 (Data volume claims)
@@ -1515,24 +1532,23 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^190]
 
 **Key Findings**:
-- **Overall Market Growth**:
-  - $183B (2024) → $212B (2025) → $292B (2028)
-  - 11.7% CAGR 2023-2028
-  - 15.1% growth rate 2024-2025
-- **Fastest-Growing Segments 2024-2028**:
+- **Updated 2025 Forecast** (July 2025 revision):
+  - $193B (2024) → $213B (2025) → $244B (2026) → $323B (2029)
+  - 13.3% growth rate 2025-2026
+  - AI and GenAI driving both internal adoption and attacker capabilities
+- **AI-Amplified Security Market**: $49B (2025) → $160B (2029)
+- **Security Software**: $95B (2024) → $106B (2025) → $121B (2026)
+- **Previous Forecast Segments 2024-2028**:
   - Cloud security: 25.9% CAGR ($9.0B → $22.6B)
   - Managed security services: 15.0% CAGR ($24.1B → $42.1B)
   - Enterprise security software: 14.1% CAGR ($78.8B → $132.4B)
   - Infrastructure protection: 13.1% CAGR ($31.3B → $51.2B)
-- **2024 Highlights**:
-  - Data privacy and cloud security: >24% YoY growth
-  - 25-35% annual volume growth typical
-  - Multi-year volume planning requirements
+- 25-35% annual volume growth typical; multi-year volume planning requirements
 
 **Citations**: H1-VOLUME-07 validation, Chapter 2 volume projections, market trends
-**Notes**: Industry-standard growth benchmark, updated with comprehensive 2024-2028 forecast
+**Notes**: July 2025 update raised 2025 forecast from $212B to $213B; extended to 2029 ($323B); AI-amplified security segment ($49B→$160B) is entirely new category
 
-**Validation Status**: ✅ Active URL (verified Nov 2025, public press release)
+**Validation Status**: ✅ Refreshed February 2026 - July 2025 forecast update
 
 ---
 
@@ -1777,7 +1793,7 @@ This bibliography consolidates all literature sources from:
 #### Apache Iceberg - Official Documentation
 
 **Authors**: Apache Iceberg Community
-**Date**: 2024 (continuously updated)
+**Date**: 2024-2026 (continuously updated)
 **URL**: https://iceberg.apache.org/
 **Evidence Level**: A (Official open-source project documentation)
 **Relevance**:
@@ -1794,14 +1810,14 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog Iceberg deep-dive, Chapter 8 table format fundamentals
 **Notes**: Authoritative technical reference for Iceberg architecture
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
 #### Apache Iceberg - Maintenance Documentation
 
 **Authors**: Apache Iceberg Community
-**Date**: 2024 (continuously updated)
+**Date**: 2024-2026 (continuously updated)
 **URL**: https://iceberg.apache.org/docs/latest/maintenance/
 **Evidence Level**: A (Official documentation)
 **Relevance**:
@@ -1818,14 +1834,14 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog Spark hybrid architectures, Chapter 8 operational maintenance
 **Notes**: Critical for production security data lake operations
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
 #### Apache Iceberg - Spark Procedures Documentation
 
 **Authors**: Apache Iceberg Community
-**Date**: 2024 (continuously updated)
+**Date**: 2024-2026 (continuously updated)
 **URL**: https://iceberg.apache.org/docs/latest/spark-procedures/
 **Evidence Level**: A (Official documentation)
 **Relevance**:
@@ -1842,7 +1858,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Blog Spark procedures, Chapter 8 Spark + Iceberg integration
 **Notes**: Practical reference for security data engineers using Spark
 
-**Validation Status**: ✅ Active URL (verified Oct 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -1912,7 +1928,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 2 capacity planning, burst handling
 **Notes**: Security-specific volume surge validation (See primary entry in Operational Security section)
 
-**Validation Status**: ✅ Active URL (verified Nov 2025)
+**Validation Status**: ✅ Active (verified Feb 2026)
 
 ---
 
@@ -1967,9 +1983,10 @@ This bibliography consolidates all literature sources from:
 
 #### SANS Institute - AI Survey & SOC Automation Research
 
-**Authors**: SANS Institute
-**Date**: 2024
+**Authors**: SANS Institute (Ahmed Abugharbia, Brandon Evans, Chris Crowley)
+**Date**: 2024-2025 (updated February 2026)
 **URL**: https://www.sans.org/white-papers/sans-2024-ai-survey-ai-growing-role-cybersecurity-lessons-learned-path-forward
+**Alt URL**: https://www.sans.org/white-papers/sans-2025-soc-survey
 **Evidence Level**: A (Security research authority, industry survey)
 **Relevance**:
 - Security ML operations and automation
@@ -1978,14 +1995,18 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - AI reshaping cybersecurity landscape (2024 survey)
-- Real-world applications, challenges, and evolution
 - SOC automation and detection/response capabilities
-- Automated retraining improving threat detection
+- **2025 AI Survey**: 100% of organizations plan GenAI adoption within 1 year
+- 50% currently use AI for cybersecurity tasks, but autonomous SOC deployment lagging
+- **2025 SOC Survey**: 79% operate 24/7 but 69% still rely on manual reporting
+- 62% say organizations aren't doing enough to retain talent
+- 40% use AI/ML tools but satisfaction ranks dead last among SOC capabilities
+- Staff shortages and overwhelming data volumes persist as top challenges
 
 **Citations**: Advanced analytics, MLOps, SOC operations
-**Notes**: SANS 2024 AI Survey provides comprehensive industry data on ML/automation
+**Notes**: 2025 surveys show paradox: universal AI intent (100% plan GenAI) vs. low satisfaction with existing AI tools (ranked last); staff retention crisis (62%) validates H-IMPL-02 streaming expertise scarcity
 
-**Validation Status**: ✅ Active URL (verified SANS white paper, published Sept 2024)
+**Validation Status**: ✅ Refreshed February 2026 - 2025 AI + SOC surveys
 
 ---
 
@@ -2169,8 +2190,9 @@ This bibliography consolidates all literature sources from:
 #### MITRE Engenuity - ATT&CK Evaluations Framework
 
 **Authors**: MITRE Engenuity
-**Date**: 2019-2024 (ongoing program)
-**URL**: https://attackevals.mitre-engenuity.org/
+**Date**: 2019-2025 (ongoing program, updated February 2026)
+**URL**: https://evals.mitre.org/
+**Alt URL**: https://evals.mitre.org/enterprise/er7
 **Evidence Level**: A (Framework authority, rigorous methodology)
 **Relevance**:
 - ML model evaluation standards and threat coverage
@@ -2183,13 +2205,14 @@ This bibliography consolidates all literature sources from:
 - ML capabilities tested (memory attacks, behavioral detection)
 - Freely published results and emulation plans
 - 76% of enterprises use ATT&CK for security product evaluation
-- Automated assessment against adversary TTPs
-- Vendor-neutral, collaborative approach
+- **2025 Enterprise Evaluation**: 11 vendors tested against Scattered Spider and Mustang Panda scenarios
+- **Cloud/hybrid** environments added alongside traditional endpoints (identity abuse, cloud service misuse)
+- Multiple vendors achieved 100% detection rates (CrowdStrike, Sophos, Cybereason)
 
 **Citations**: Advanced analytics, evaluation frameworks, threat coverage validation
-**Notes**: Gold standard for security product evaluations including ML/AI capabilities
+**Notes**: Gold standard for security product evaluations; 2025 round added cloud/hybrid and identity-centric attack scenarios — reflects modern SOC requirements
 
-**Validation Status**: ✅ Active URL (verified MITRE Engenuity official evaluations site)
+**Validation Status**: ✅ Refreshed February 2026 - Enterprise 2025 results published
 
 ---
 
@@ -2250,8 +2273,9 @@ This bibliography consolidates all literature sources from:
 #### Amazon Security Lake with Apache Iceberg
 
 **Authors**: AWS Security Team
-**Date**: February 2024
+**Date**: February 2024 (updated February 2026)
 **URL**: https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-analytics-ocsf-iceberg/
+**Alt URL**: https://aws.amazon.com/security-lake/features/
 **Evidence Level**: A (AWS production service, enterprise deployment)
 **Relevance**:
 - OCSF v1.1.0 integration with Apache Iceberg
@@ -2264,11 +2288,14 @@ This bibliography consolidates all literature sources from:
 - 10× higher transactions per second
 - Automatic centralization from AWS environments, SaaS providers, on-premises
 - Direct query support from Athena, Redshift, Spark, EMR
+- **OCSF v1.1.0 Observables** for threat intel matching and identity search across environments
+- **AWS AppFabric** auto-normalizes SaaS audit logs to OCSF format → Security Lake
+- **25+ partner integrations** for OCSF v1.1: Confluent, Cribl, CrowdStrike, Datadog, Elastic, Palo Alto, SentinelOne, Splunk, Sumo Logic, etc.
 
 **Citations**: OCSF integration, Iceberg performance, security data lake
-**Notes**: Major cloud provider validation of Iceberg for security use cases
+**Notes**: Major cloud provider validation of Iceberg + OCSF for security; 25+ vendor integrations demonstrates OCSF ecosystem maturity; AppFabric auto-normalization reduces schema mapping burden
 
-**Validation Status**: ✅ Active production service (2024-2025)
+**Validation Status**: ✅ Refreshed February 2026 - Active production service with expanding partner ecosystem
 
 ---
 
@@ -2722,7 +2749,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: **CRITICAL** - RQ7 and RQ10 isolation-first catalog validation
 **Notes**: Production validation of vendor-neutral catalog choice for isolated security platforms. Complements Netflix and Huntress isolation-first architecture patterns.
 
-**Validation Status**: ✅ Active URL (verified Nov 2025, Apache project)
+**Validation Status**: ✅ Active (verified Feb 2026, Apache project)
 
 ---
 
@@ -2747,7 +2774,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: RQ7 isolation-first performance validation
 **Notes**: Supports isolation-first architecture pattern - network isolation with table-level permissions avoids Unity Catalog overhead. Relevant for Huntress, Okta, Netflix patterns.
 
-**Validation Status**: ✅ Active URL (verified Nov 2025, official Databricks docs)
+**Validation Status**: ✅ Active (verified Feb 2026, official Databricks docs)
 
 ---
 
