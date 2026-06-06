@@ -3,10 +3,10 @@
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
 **Last Updated**: June 5, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: ~141 catalogued entries (124 prior + 22 merged from the Second Brain bibliography − 10 fabricated/unsalvageable removed 2026-06-05; see CHANGELOG 1.22.0 + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
+**Total Sources**: 144 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: ~45% Evidence Level A (live: 64 of 141 entries marked `**Evidence Level**: A`; 77 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number). The freshness sweep + 2026 production-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
-**Link Status**: Broken-link sweep done over all 148 URLs (5 fixed, 1 re-homed, 6 fabricated removed, 1 marked private). Content freshness sweep of the ~92 sources >12 months old is in progress.
+**Evidence Quality**: ~47% Evidence Level A (live: 67 of 144 entries marked `**Evidence Level**: A`; 77 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 14 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
 
@@ -274,7 +274,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 9 compression discussion
 **Notes**: Validates compression claims
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date 2024 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (~10-12× compression supported). Stale-by-date, not by content.
 
 ---
 
@@ -748,22 +748,22 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: ClickHouse Documentation Team
 **Date**: 2024-2026 (continuously updated)
-**URL**: https://clickhouse.com/docs/guides/best-practices/query-optimization
-**Evidence Level**: A (Vendor technical documentation)
+**URL**: https://clickhouse.com/docs/optimize/query-optimization
+**Evidence Level**: A (Vendor technical documentation) — *tier note (2026-06-05): vendor product docs usually score B under the re-tier discipline (no independent benchmark on the page); kept A pending Jeremy's call, FLAGGED.*
 **Relevance**:
 - Blog post: "ClickHouse Compression Reality"
 - Book Chapter 9 (Query Engines)
 - Security data performance tuning
 
 **Key Findings**:
-- Query optimization techniques
+- Query optimization techniques (ORDER BY / primary-key selection as the highest-leverage lever)
 - Index strategies for security workloads
 - Partitioning and clustering best practices
 
 **Citations**: Blog compression testing methodology, Chapter 9 performance tuning
 **Notes**: Comprehensive performance optimization reference
 
-**Validation Status**: ✅ Active (verified Feb 2026)
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): the prior URL `/docs/guides/best-practices/query-optimization` returned 404 (docs path reorganized); re-pointed to the current `/docs/optimize/query-optimization` (WebFetch-confirmed live, "A simple guide for query optimization").
 
 ---
 
@@ -842,7 +842,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 7 Kafka scale claims
 **Notes**: Validates massive scale Kafka deployments
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (Siphon blog supports ~3T/day, 30M/sec). Stale-by-date, not by content.
 
 ---
 
@@ -869,7 +869,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter on emerging patterns, Jake Thomas interview
 **Notes**: **HIGH PRIORITY** - Jake Thomas validation in progress
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md ("Why DuckDB" supports the OLAP positioning). Stale-by-date, not by content.
 
 ---
 
@@ -1002,7 +1002,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 8 Iceberg performance validation
 **Notes**: Enterprise platform validation
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — re-sourced 2026-06-05 (10× over Hive verbatim on the live page); see RESEARCH-JOURNAL.md. Stale-by-date, not by content.
 
 ---
 
@@ -1121,7 +1121,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 4 implementation methodology
 **Notes**: Classic reference, data architecture applicability
 
-**Validation Status**: ✅ Active URL (book available)
+**Validation Status**: ✅ Active URL (book available) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — re-sourced 2026-06-05 (Pearson product code corrected — the prior URL resolved to a different book); see RESEARCH-JOURNAL.md. Stale-by-date, not by content.
 
 ---
 
@@ -1508,7 +1508,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: H-ARCH-01 sustainability validation
 **Notes**: Community strength = long-term viability
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (live ASF page; contributor scale uncontroversial). Stale-by-date, not by content.
 
 ---
 
@@ -1627,7 +1627,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: H3-PERFORMANCE-01 extension, Chapter 9 ELK migration
 **Notes**: Direct performance comparison for security logs
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (ClickHouse advantage supported; entry's 5-10× is conservative vs source 9-19×). Stale-by-date, not by content.
 
 ---
 
@@ -1730,7 +1730,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Advanced analytics chapter, data retention, threat detection
 **Notes**: Government authority on security monitoring practices, joint CISA/FBI guidance
 
-**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023)
+**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (advisory aa23-193a real; the "24-36mo retention" figure is embellished beyond the ~12mo in the source — disregard). Stale-by-date, not by content.
 
 ---
 
@@ -1854,7 +1854,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Advanced analytics, deployment standards, tool integration
 **Notes**: OCA = OASIS project for cybersecurity interoperability standards
 
-**Validation Status**: ✅ Active URL (verified OCA official site)
+**Validation Status**: ✅ Active URL (verified OCA official site) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (site real; interop framing holds). Stale-by-date, not by content.
 
 ---
 
@@ -1933,7 +1933,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 7 + Advanced analytics integration, streaming ML architecture
 **Notes**: Comprehensive series on Kafka + ML integration, links streaming to ML workflows
 
-**Validation Status**: ✅ Active URL (verified Confluent blog, 2018-2024 series)
+**Validation Status**: ✅ Active URL (verified Confluent blog, 2018-2024 series) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (KSQL / embedded-ML confirmed). Stale-by-date, not by content.
 
 ---
 
@@ -2937,7 +2937,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: ClickHouse performance, production deployment patterns
 **Notes**: Strong validation for ClickHouse in high-scale analytics
 
-**Validation Status**: ✅ Production case study
+**Validation Status**: ✅ Production case study · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (30-40s→<1s, 50M users confirmed). Stale-by-date, not by content.
 
 ---
 
@@ -2959,7 +2959,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Query engine TCO, performance comparison
 **Notes**: Vendor benchmark but methodology disclosed; cross-validate with independent sources
 
-**Validation Status**: ✅ Published benchmark (2024)
+**Validation Status**: ✅ Published benchmark (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (3-5× cost / 2× faster verbatim). Stale-by-date, not by content.
 
 ---
 
@@ -2982,7 +2982,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: High-volume ingestion, ClickHouse production patterns
 **Notes**: Validates ClickHouse for extreme-scale security data
 
-**Validation Status**: ✅ Production validation (Netflix)
+**Validation Status**: ✅ Production validation (Netflix) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (5 PB/day + 10.6M events/sec confirmed on page; flagged-suspect, holds). Stale-by-date, not by content.
 
 ---
 
@@ -3027,7 +3027,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Enterprise adoption, banking sector case studies
 **Notes**: HSBC case study provides strong production validation
 
-**Validation Status**: ✅ Industry data (2024)
+**Validation Status**: ✅ Industry data (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (half of 15 largest banks, HSBC confirmed). Stale-by-date, not by content.
 
 ---
 
@@ -3394,18 +3394,19 @@ from the Second Brain entry pending the freshness sweep.
 
 #### MITRE D3FEND Framework & Ontology
 
-**Authors**: MITRE
-**Date**: 2024-2026 (ongoing; v1.4.0 line)
+**Authors**: MITRE (funded by NSA and OUSD)
+**Date**: 2024-2026 (ongoing). Milestones: v1.0 launched 2025-01-16 (research-project → production ontology); OT extension + v1.3.0 line 2025-12 (267 techniques, 7 tactical categories). See the dedicated "MITRE D3FEND for OT" entry in the 2026 Format & Standards section.
 **URL**: https://d3fend.mitre.org/
-**Evidence Level**: A (framework authority, formal ontology)
+**Alt URL**: https://d3fend.mitre.org/changelog/ (release history) · https://www.mitre.org/news-insights/news-release/mitre-launches-d3fend-10-milestone-cybersecurity-ontology (v1.0 launch)
+**Evidence Level**: A (framework authority, formal ontology — OWL 2 DL)
 **Relevance**:
 - Defensive-technique ontology; the defensive counterpart to ATT&CK
 - The OCSF ↔ D3FEND grounding chain (D3FEND → CCO → BFO) central to the grounding work — Chapter 3, Chapter 8, Appendix F
 - Digital-artifact / offense-defense inferred matrix; semantic compliance mapping
 
 **Citations**: MITRE. *D3FEND: A Knowledge Graph of Cybersecurity Countermeasures*. https://d3fend.mitre.org/
-**Notes**: A glaring prior gap — absent from this bibliography despite being central to the current grounding research.
-**Validation Status**: ✅ Active URL (verified 2026-06-05)
+**Notes**: A glaring prior gap — absent from this bibliography despite being central to the current grounding research. *Version-line note (2026-06-05): public WebSearch confirms the v1.0 (Jan 2025) launch and the v1.3.0 (Dec 2025) OT line; the prior "v1.4.0 line" annotation (from the project1 reference_d3fend_data_api memory note, citing d3fend.ttl 1.4.0) was not reconfirmed against the changelog in this pass — verify v1.4.0 vs v1.3.0 against d3fend.mitre.org/changelog before quoting a version. FLAGGED for Jeremy.*
+**Validation Status**: ✅ Active URL (verified 2026-06-05); v1.0/OT milestones verified via WebSearch; exact current version line needs a changelog check
 
 ---
 
@@ -3707,7 +3708,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 - The V3 shift the book is mostly pre-: binary deletion vectors, the Variant type, row-lineage tracking, default-value support, nanosecond timestamps, geometry/geography types
 - Chapter 9 (format war), Chapter 2 (table-format fundamentals); closes the H-SEC-CATALOG row-lineage audit-trail gap
 
-**Key Findings**: spec states "Versions 1, 2 and 3 ... are complete and adopted." V3 additions include deletion vectors, Variant, row lineage, default values, multi-argument transforms, table encryption keys.
+**Key Findings**: spec states "Versions 1, 2 and 3 ... are complete and adopted." V3 additions include deletion vectors, Variant, row lineage, default values, multi-argument transforms, table encryption keys. (V3 stabilizes in the 1.11.0 release — see the dedicated Iceberg 1.11.0 entry below.)
 **Citations**: Apache Iceberg. *Table Format Specification* (v3). https://iceberg.apache.org/spec/
 **Validation Status**: ✅ Active (verified 2026-06-05; cite the raw spec.md as the fetchable primary)
 
@@ -3765,7 +3766,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 #### OCSF Schema v1.8.0
 
 **Authors**: Open Cybersecurity Schema Framework (Linux Foundation)
-**Date**: March 2026 (exact day approximate — confirm against the v1.8.0 git tag)
+**Date**: March 18, 2026 (v1.8.0 release tag — confirmed; cadence: v1.6.0 2025-08-01, v1.7.0 2025-11-14, v1.8.0 2026-03-18)
 **URL**: https://github.com/ocsf/ocsf-schema/releases
 **Alt URL**: https://schema.ocsf.io/
 **Evidence Level**: A (official schema standard)
@@ -3824,5 +3825,55 @@ fetched and confirmed live, and each claim checked against the primary page (202
 **Key Findings**: "first cloud object store with built-in Apache Iceberg support"; AWS claims up to 3× query throughput / 10× transactions vs self-managed Iceberg (*vendor benchmark, Tier C*); Iceberg REST Catalog APIs added March 2025.
 **Citations**: AWS (2024, Dec 3). *Amazon S3 Tables — fully managed Apache Iceberg tables*. aws.amazon.com.
 **Validation Status**: ✅ Active (verified 2026-06-05)
+
+---
+
+#### Apache Iceberg 1.11.0 — Release (V3 stabilization)
+
+**Authors**: Apache Iceberg project (Apache Software Foundation)
+**Date**: May 19, 2026
+**URL**: https://opensource.googleblog.com/2026/05/announcing-apache-iceberg-1110.html
+**Alt URL**: https://iceberg.apache.org/releases/ (official releases index; 1.11.0 is latest)
+**Evidence Level**: A (official ASF release)
+**Relevance**:
+- The latest Iceberg release; matters because it is where the V3 feature set (deletion vectors, Variant, geospatial types, nanosecond timestamps) moves from experimental to stable defaults — the practical line between "V3 spec exists" and "V3 is what you get". Pairs with the Iceberg-v3-spec entry above.
+- Chapter 9 (format war); user's top format-war tracking priority
+
+**Key Findings**: 1.11.0 (2026-05-19) is the release that matures the V3 spec — all V3 features (manifest-list encryption, deletion vectors, Variant, geospatial geometry/geography, nanosecond timestamps) now require format-version-3 tables and are stabilized rather than experimental. Predecessor 1.10.0 (2025-09-11) was the first release to "close" the V3 table spec; Snowflake reached Iceberg-v3 GA 2026-05-07 (catalog-side adoption, separate from the engine release).
+**Citations**: Apache Iceberg (2026, May 19). *Announcing Apache Iceberg 1.11.0*. Google Open Source Blog / iceberg.apache.org/releases.
+**Validation Status**: ✅ Active (verified 2026-06-05 via WebSearch — official release date and V3-stabilization framing confirmed across Google OSS Blog + Dremio + Snowflake release notes; WebFetch of iceberg.apache.org/releases confirms 1.11.0 is the current latest tag)
+
+---
+
+#### OCSF Achieves ITU Support — Toward an International Standard
+
+**Authors**: Rod Wallace (Director of Security Services, AWS); reporting an ITU / OCSF (Linux Foundation) development
+**Date**: March 24, 2026 (article); ITU member-state support December 2025; ratification slated by June 2026
+**URL**: https://aws.amazon.com/blogs/opensource/ocsf-achieves-itu-support-powering-ai-ready-security-operations/
+**Evidence Level**: A (official standards-body milestone — ITU is the UN's telecommunication standards body; report is from the AWS Open Source team, an OCSF founding contributor)
+**Relevance**:
+- The standards-tier step-change for OCSF: in December 2025 ITU member states unanimously supported OCSF for ratification as an ITU X-series ("x.***") international standard, slated for June 2026. This moves OCSF from an industry-consortium schema (its Linux Foundation status, already catalogued) toward a formally ratified international standard that governments fold into national cyber policy.
+- Chapter 8 (OCSF / schema standards); strengthens the "OCSF as lingua franca" thread the book and the crosswalk corpus track (cite alongside the bearish-on-lingua-franca caveat — ITU ratification is governance momentum, not field-level adoption).
+
+**Key Findings**: ITU member states unanimously supported OCSF for ratification as an international standard (Dec 2025); ratification as an ITU x.*** standard slated by June 2026; the article frames standardization as "a global necessity" governments will incorporate into national cybersecurity policy. The supporting standardization claim is corroborated by DevOps.com's republication ("Future Proofing the Foundation for AI-Ready Security Operations").
+**Citations**: Wallace, R. (2026, Mar 24). *OCSF Achieves ITU Support: Powering AI-Ready Security Operations*. AWS Open Source Blog.
+**Validation Status**: ✅ Active (verified 2026-06-05 via WebFetch of the AWS post — date, author, Dec-2025 ITU member-state support, and June-2026 ratification timeline all confirmed on the page)
+
+---
+
+#### MITRE D3FEND for OT — Operational Technology Extension (v1.3.0)
+
+**Authors**: MITRE (D3FEND project; funded by NSA and OUSD)
+**Date**: December 16, 2025 (OT extension; shipped in the D3FEND v1.3.0 release line, December 2025)
+**URL**: https://www.mitre.org/news-insights/news-release/mitre-extends-d3fend-ontology-operational-technology-cybersecurity
+**Alt URL**: https://d3fend.mitre.org/domain/ot/
+**Evidence Level**: A (official MITRE release; formal OWL 2 DL ontology extension)
+**Relevance**:
+- Extends the D3FEND defensive ontology (already catalogued for the OCSF↔D3FEND grounding work) to cyber-physical / industrial-control-system defense — relevant to the OT-estate anecdotes and the isolation-first / OT thread. The OT domain is a distinct, separately-citable artifact from the base ATT&CK-mapped enterprise ontology.
+- Chapter 8/grounding work; complements the existing "MITRE D3FEND Framework & Ontology" entry, which now reflects the v1.0 (2025-01-16) → v1.3.0 (Dec 2025) line.
+
+**Key Findings**: MITRE extended D3FEND to OT on 2025-12-16, building a structured knowledge base for defending cyber-physical systems; the v1.3.0 release (Dec 2025) contains 267 defensive techniques across seven tactical categories and includes the OT extension, with additional ICS artifacts and implementation guidance expected through 2026. D3FEND remains built on OWL 2 DL with Core Classes aligning to upper ontologies.
+**Citations**: MITRE (2025, Dec 16). *MITRE Extends D3FEND Ontology to Operational Technology Cybersecurity*. mitre.org news release.
+**Validation Status**: ✅ Active (verified 2026-06-05 via WebSearch — MITRE news release, v1.3.0 technique count, and 2025-12-16 OT-extension date confirmed across MITRE + Industrial Cyber + vendor coverage)
 
 ---

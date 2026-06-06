@@ -257,5 +257,33 @@ these pages, rather than treating a 403 as a dead link (the link checker already
 
 ---
 
+## 2026-06-05 (freshness sweep continued + 2026 primary sourcing) — tasks #66/#67
+
+**Method**: WebSearch to surface candidate 2026 primary sources and confirm their existence/dates;
+WebFetch on the pages that allow it (AWS Open Source Blog, ocsf-schema GitHub releases, iceberg.apache.org,
+clickhouse.com docs) to confirm the specific claim; `claim↔source` against the search/fetch result.
+
+### Added — new Tier-A 2026 primary sources (claim↔source VERIFIED at insertion)
+
+| Entry | Method | Finding |
+|---|---|---|
+| Apache Iceberg 1.11.0 | claim↔source (WebSearch + WebFetch iceberg.apache.org/releases) | Released 2026-05-19; the release that stabilizes V3 features (deletion vectors, Variant, geospatial, ns timestamps) from experimental to default; confirmed across Google OSS Blog + Dremio + Snowflake (v3 GA 2026-05-07). A. |
+| OCSF Achieves ITU Support | claim↔source (WebFetch of the AWS post) | AWS Open Source Blog, Rod Wallace, 2026-03-24; ITU member states unanimously supported OCSF (Dec 2025) for ratification as an ITU x.*** international standard by June 2026; corroborated by DevOps.com republication. A (standards-body milestone). |
+| MITRE D3FEND for OT | claim↔source (WebSearch) | MITRE news release 2025-12-16; OT extension shipped in the D3FEND v1.3.0 line (267 techniques, 7 tactics); OWL 2 DL. A. |
+| OCSF v1.8.0 (existing entry refined) | link (WebFetch GitHub releases) | v1.8.0 tag = 2026-03-18 confirmed (cadence v1.6.0 2025-08-01 / v1.7.0 2025-11-14 / v1.8.0 2026-03-18); date precision tightened. |
+| MITRE D3FEND base (existing, refined) | claim↔source (WebSearch) | v1.0 launch 2025-01-16 + v1.3.0/OT Dec 2025 confirmed; prior "v1.4.0 line" annotation NOT reconfirmed in this pass → version-line flagged for a changelog check. |
+
+### Fixed — freshness sweep
+
+| Entry | Verdict | Finding |
+|---|---|---|
+| ClickHouse — Performance Optimization Guide | RE-SOURCED (broken link) | `/docs/guides/best-practices/query-optimization` returned 404 (docs path reorganized); re-pointed to `/docs/optimize/query-optimization` (WebFetch-confirmed live, "A simple guide for query optimization"). Tier flagged: vendor docs usually B, kept A pending Jeremy. |
+| 14 stale-but-verified entries | ANNOTATED | Publication date >12mo, content-current per this journal's VERIFIED/re-sourced rows, but lacking an inline 2026 marker. Each now carries a compact `Freshness (2026-06-05)` note pointing to its journal disposition (e.g. Cloudflare ClickHouse, Azure-Kafka, DuckDB-Overview, Cloudera-Impala+Iceberg, Iceberg-Foundation, ClickHouse-vs-ES, CISA, OCA, Confluent-ML, GitLab, ClickHouse-vs-Snowflake, Netflix-5PB, Hunters, Brooks). No >12mo entry is now un-annotated. |
+
+Net (this pass): entries 141 → 144; Level-A 64/141 (45.4%) → 67/144 (46.5%). 0 broken links remain.
+Health check: CRITICAL → WARNING (still ESCALATEs on the intentional 60% floor breach + monthly window).
+
+---
+
 *Next validation due with the cadence (`SCHEDULING.md`). When the worklist items above are re-sourced or
 stripped, append a dated row moving each to VERIFIED or removing it — do not silently re-litigate settled rows.*

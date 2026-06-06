@@ -9,7 +9,7 @@
 
 ## Current Status
 **Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.22.0
-**Sources**: 141 | **Evidence Level A**: ~45% (live, 64/141) | **Hypotheses Validated**: 7 (needs review — see note)
+**Sources**: 144 | **Evidence Level A**: ~47% (live, 67/144) | **Hypotheses Validated**: 7 (needs review — see note)
 See `PROJECT-BRIEF.md` for scope and `REPOSITORY-STATUS.md` for tracking.
 > Counts are live-computed: sources = `#### ` entries, Level-A = `**Evidence Level**: A` / entries.
 > The 80% Level-A figure was self-reported; the honest live number is ~46% after the 2026-06-05 audit

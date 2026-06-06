@@ -28,13 +28,12 @@ python3 scripts/weekly_scheduled_check.py   # prints the notification; exits 10 
 
 ## Activating the weekly schedule
 
-The schedule runs against `main` on GitHub, so this has to be true first:
+The schedule runs against `main` on GitHub. Precondition (now satisfied): the revival work is merged to
+`main` (PR #6, `claude/project-maturation-opportunities-6Un1L`), so `weekly_scheduled_check.py` and the
+fixed `weekly_health_check.py` exist on `main`. The weekly remote routine has been created (see the live-
+routine note above: `trig_01XkVDZSc4nyMiUT5p7Ft2zr`, cron `33 12 * * 1`).
 
-1. The revival work (currently on `claude/project-maturation-opportunities-6Un1L`, building on the
-   earlier revival branch) is merged to `main` and pushed, so `weekly_scheduled_check.py` and the
-   fixed `weekly_health_check.py` exist on `main`.
-
-Then create a weekly remote routine (via `/schedule`) that runs the check from the repo root:
+To recreate or update it (via `/schedule`), run the check from the repo root:
 
 ```
 git pull --quiet && python3 scripts/weekly_scheduled_check.py
@@ -43,9 +42,14 @@ git pull --quiet && python3 scripts/weekly_scheduled_check.py
 (The scripts now self-locate the repo relative to their own path, so the routine only needs to be in
 the repo working tree — no hardcoded home-directory path required.)
 
-on a weekly cron (e.g. `33 8 * * 1` — Mondays ~08:33 local, off the :00 mark), and relays the printed
-notification. On `VERDICT: ESCALATE`, the routine should surface "refresh due — run `/monthly-update`"
-rather than attempt the refresh itself.
+on a weekly cron and relays the printed notification. On `VERDICT: ESCALATE`, the routine should surface
+"refresh due — run `/monthly-update`" rather than attempt the refresh itself.
+
+**Live routine (created 2026-06-05, task #64):** trigger `trig_01XkVDZSc4nyMiUT5p7Ft2zr`, cron
+`33 12 * * 1` (Mondays 12:33 UTC ≈ 08:33 EDT), read-only tools (Bash/Read/Grep — it cannot edit the SoT),
+repo `security-data-literature-review`, first scheduled run Mon 2026-06-08; a validation run fired at
+creation. (The earlier draft of this note suggested `33 8 * * 1` local; the routine as actually created
+runs `33 12 * * 1` — this is the authoritative value.)
 
 > Note on tooling: the in-session `CronCreate` is session-only and auto-expires after 7 days, so it is
 > not suitable for this forever-weekly cadence — use a `/schedule` remote routine, which persists and

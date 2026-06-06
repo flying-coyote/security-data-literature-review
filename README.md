@@ -12,7 +12,7 @@
 This repository contains a **living literature review** supporting the book "Modern Data Stack for Cybersecurity." The review bridges cybersecurity and data engineering domains with rigorous, evidence-based research. Published openly (first released October 22, 2025; the original Substack was retired 2026-05-24 and writing moved to securitydataworks.com) with ongoing monthly updates and quarterly deep dives.
 
 **Current Status - June 2026** 🔄:
-- **141 sources documented** (~45% Evidence Level A, live — honest post-audit baseline; freshness sweep in progress — see RESEARCH-JOURNAL.md)
+- **144 sources documented** (~47% Evidence Level A, live — 67/144; honest post-audit baseline + first 2026 Tier-A primary sources; freshness sweep substantially complete — see RESEARCH-JOURNAL.md)
 - **14 research questions** (RQ1-RQ14) with comprehensive validation
 - **Best practices audit complete** (Version 1.19.0 - Score: 92/100)
 - **Q1 2026 Deep Dive active** (January - expert interviews, versioned snapshot)
@@ -36,7 +36,7 @@ This repository contains a **living literature review** supporting the book "Mod
 ## Current Repository Contents
 
 **Core Documentation Files**:
-1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 141 sources, ~45% Evidence Level A (live)
+1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 144 sources, ~47% Evidence Level A (live, 67/144)
 2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture
 3. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (9,999 words, all sections drafted)
 4. **REFERENCES.md** - IEEE/ACM formatted references (78 sources, alphabetically ordered)

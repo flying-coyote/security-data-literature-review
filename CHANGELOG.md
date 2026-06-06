@@ -67,6 +67,54 @@ report on it, and reconciles the source count across every surface that states i
   "VALIDATED" in prose). This is a research-judgment call, not a mechanical count, so no number was
   stamped; CLAUDE.md now carries a "needs review" note instead.
 
+### Added (2026 primary sources — task #67)
+- Three new Tier-A 2026/late-2025 primary sources, each verified via WebSearch/WebFetch before adding,
+  in the "2026 Format & Standards Developments" section:
+  - **Apache Iceberg 1.11.0** (ASF, 2026-05-19) — the release that stabilizes the V3 feature set from
+    experimental to default (Google OSS Blog announcement + iceberg.apache.org/releases).
+  - **OCSF Achieves ITU Support** (Rod Wallace / AWS Open Source Blog, 2026-03-24) — ITU member states
+    unanimously supported OCSF (Dec 2025) for ratification as an ITU X-series international standard,
+    slated by June 2026. Standards-body milestone.
+  - **MITRE D3FEND for OT** (MITRE news release, 2025-12-16) — OT extension in the D3FEND v1.3.0 line
+    (267 techniques, 7 tactical categories); formal OWL 2 DL ontology.
+- Refined two existing entries with verified precise dates: OCSF v1.8.0 → 2026-03-18 (release-tag
+  confirmed); D3FEND base entry annotated with the v1.0 (2025-01-16) and v1.3.0/OT (Dec 2025) milestones.
+  Flagged a version-line ambiguity (prior "v1.4.0 line" from a project1 memory note vs. the v1.3.0 the
+  WebSearch confirmed) for a changelog check.
+
+### Fixed (freshness sweep — task #66)
+- Fixed 1 broken link: ClickHouse query-optimization docs `/docs/guides/best-practices/query-optimization`
+  returned 404 (docs path reorganized) → re-pointed to the current `/docs/optimize/query-optimization`
+  (WebFetch-confirmed live).
+- Annotated the 14 stale-but-verified entries (publication date >12mo, no inline 2026 marker) with a
+  compact `Freshness (2026-06-05)` note recording each one's RESEARCH-JOURNAL.md disposition. Combined
+  with the 37 stale entries already carrying `Validation (2026-06-05)` markers from the earlier passes,
+  no >12mo entry is now un-annotated.
+
+### Changed (count reconciliation — task #68)
+- New canonical count: **144 entries · ~47% Evidence Level A (67/144; 77 B, 9 C)** (was 141 / ~45%,
+  64/141). Propagated to README, REPOSITORY-STATUS, `.claude/CLAUDE.md` (headline), and the
+  MASTER-BIBLIOGRAPHY header. `SessionStart.sh` computes live and now reports 144. Dated historical
+  "Key Metrics" blocks left as point-in-time history per convention.
+- **Website /research linkage — prepared, NOT deployed.** `~/securitydataworks/src/pages/research/
+  methodology.astro` line 85 ("…produced 150+ primary sources…") is the anchor for a link to this public
+  repo; the page currently has zero links to it. Suggested edit and the site/repo number mismatch
+  (site "150+ / 25 hypotheses" vs repo "144 / 31 validated") recorded in REVIEW-AND-PLAN-2026-06.md for
+  Jeremy + the publish-gate. Not edited (no deploy in scope).
+
+### Verified (cadence — task #69)
+- Re-ran the health check: status improved CRITICAL → WARNING (0 broken links; 144 sources; ~46% Level A).
+  Still ESCALATEs on the deliberately-breached 60% Level-A floor + monthly window — the dashboard working
+  as intended, not a regression.
+- Confirmed the weekly remote routine config is present and correct: trigger `trig_01XkVDZSc4nyMiUT5p7Ft2zr`,
+  cron `33 12 * * 1`, read-only tools, repo `security-data-literature-review`. Synced `SCHEDULING.md` to
+  this (it had drafted `33 8 * * 1`) and marked the merged-to-main precondition satisfied. Routine not
+  triggered (verify-only).
+- Flagged a health-check limitation: the freshness regex `**Date**:\s*(\d{4})` only matches dates that
+  START with a 4-digit year, so the ~41 entries with prose dates ("May 19, 2026", "March 18, 2026") —
+  including most 2026 sources — are invisible to the freshness count, understating how current the corpus
+  is. Left the script unchanged (not gaming the metric); flagged for Jeremy.
+
 ## [1.22.0] - 2026-06-05 - Revival: honesty, Second Brain merge, fabricated-source removal
 
 After a 96-day lapse (the manual monthly checklist had no scheduler and the dashboard was masking

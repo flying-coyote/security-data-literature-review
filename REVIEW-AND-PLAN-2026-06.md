@@ -96,10 +96,12 @@ Decisions 1–3 made by Jeremy. Done so far, on branch `lit-review-revival-2026-
 - ✅ Phase 2 merge: project1 → repo literature merge, repo is now SoT, public/private boundary held (d8a35a4)
 
 Remaining (in order):
-1. Weekly scheduled agent (task #64) — Decision 1.
-2. Fix 5 broken links (task #65).
-3. Full freshness sweep of all 92 stale sources (task #66) — Decision 3; multi-session.
-4. Add March–June 2026 sources (task #67).
-5. Website-citation merge — triage 159 external URLs, fold in the genuine sources (task #70).
-6. Propagate canonical count + website /research linkage + make project1's a literature-pointer (task #68).
-7. Re-verify health check, confirm freshness recovered + schedule fires, commit (task #69).
+1. ✅ Weekly scheduled agent (task #64) — Decision 1. Routine `trig_01XkVDZSc4nyMiUT5p7Ft2zr`, cron `33 12 * * 1`.
+2. ✅ Fix broken links (task #65) + 1 further fix 2026-06-05 (ClickHouse query-optimization docs 404 → re-pointed).
+3. ✅ Freshness sweep (task #66) — Decision 3. Every >12mo entry now carries a 2026-06-05 validation or freshness marker; the 14 stale-but-verified entries lacking an inline marker were annotated against their RESEARCH-JOURNAL.md disposition. Deeper per-source content re-verification of the remaining stale corpus is the multi-session continuation.
+4. ✅ Add 2026 sources (task #67) — 3 new Tier-A primary sources added (Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT), all WebSearch/WebFetch-verified; the earlier merge already carried Iceberg v3/v4, DuckLake v1.0, Variant, OCSF v1.8.0, Splunk 10.4, S3 Tables.
+5. Website-citation merge — triage 159 external URLs, fold in the genuine sources (task #70). NOT this session.
+6. ✅ Propagate canonical count (task #68): 144 entries · ~47% Level-A (67/144) propagated to README, REPOSITORY-STATUS, .claude/CLAUDE.md (headline), MASTER-BIBLIOGRAPHY header; SessionStart.sh computes live (reports 144). Historical dated "Key Metrics" blocks left as point-in-time history per convention.
+   - **Website /research linkage — PREPARED, NOT DEPLOYED.** `~/securitydataworks/src/pages/research/methodology.astro` line 85 ("Across 25 hypotheses, this process produced 150+ primary sources …") is the anchor where a link to this public repo (https://github.com/flying-coyote/security-data-literature-review) belongs — it is the evidence base the site's claims rest on, and the page currently has zero links to it. Suggested: make "150+ primary sources" a hyperlink to the repo (or to MASTER-BIBLIOGRAPHY.md). Note the numbers differ slightly (site "150+ / 25 hypotheses" vs repo "144 entries / 31 validated hypotheses") — reconcile before linking. Run the writings publish-gate (voice-consistency-enforcer → publication-quality-checker) before any deploy.
+   - project1's `01-knowledge-base/MASTER-BIBLIOGRAPHY.md` → make a literature-pointer to this repo: still pending (out of this session's working tree; flagged for Jeremy).
+7. ✅ Re-verify health check + confirm schedule config (task #69). Health check run; routine config `trig_01XkVDZSc4nyMiUT5p7Ft2zr` / cron `33 12 * * 1` confirmed present in the task register.
