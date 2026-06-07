@@ -397,7 +397,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 | Source Count | 4/5 | 4 sources (Cloudflare 6M req/sec, Shell 57TB/day, ClickHouse vs Elasticsearch, Native IP types) |
 | Evidence Quality | 5/5 | 100% Evidence Level A (all production deployments or official benchmarks) |
 | Source Diversity | 4/5 | 3 source types (production deployments Cloudflare/Shell, benchmark study, vendor technical docs) |
-| Quantitative Precision | 5/5 | Specific metrics (6M req/sec, 96.3% <1s, 57TB/day, 5-10× vs Elasticsearch, 50-100× CIDR hunting) |
+| Quantitative Precision | 5/5 | Specific metrics (6M req/sec, 96.3% <1s, 57TB/day, 5-10× vs Elasticsearch, 50-100× CIDR hunting—borrowed, at larger scale; first-party probe ~13-17× at 20M rows on a single host, below the band, ~2.9× IPv4-vs-String storage) |
 | Geographic/Organizational Diversity | 3/5 | US/Europe (Cloudflare US, Shell enterprise, ClickHouse global) with multiple org types (tech giant, enterprise, vendor) |
 | **TOTAL** | **21/25** | **HIGH CONFIDENCE** |
 
@@ -405,7 +405,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 - Cloudflare: 6M requests/second, 96.3% queries <1 second, 10-12× compression
 - Shell: 57TB/day security telemetry, sub-second queries, enterprise SIEM replacement
 - ClickHouse vs Elasticsearch: 5-10× storage efficiency for security logs
-- Native IPv4/IPv6 types: 50-100× faster CIDR-based threat hunting vs string implementations
+- Native IPv4/IPv6 types: 50-100× faster CIDR-based threat hunting vs string implementations (borrowed, at larger scale; a first-party CIDR probe—MOAR reference stack, 20M rows, single host, `lab/cidr_probe.py`, 2026-06-07—measured ~13-17× warm, which lands below the borrowed band, with ~2.9× IPv4-vs-String storage savings, 65.4 MiB vs 188.1 MiB)
 
 **Why High**: Security-specific validation (Cloudflare, Shell), 100% Level A evidence, quantitative performance metrics.
 
@@ -705,7 +705,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - [19] ClickHouse: Compression codecs documentation (Level A)
 - [20] ClickHouse: Vectorized query execution (8-10× CPU efficiency) (Level A)
 - [21] ClickHouse: Performance optimization guide (Level A)
-- [22] ClickHouse: Native IP types (50-100× CIDR hunting speedup) (Level A)
+- [22] ClickHouse: Native IP types (50-100× CIDR hunting speedup) (Level A) — borrowed, at larger scale; first-party probe ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings
 - [51] Huntress: 93% cost reduction ($70K → $5K monthly), 16 billion events/day (Level A)
 - [13] Chris Bisnett: Huntress migration video (Level A)
 - [1] Altinity: 1.8-2.2M events/sec per node (Level A)
