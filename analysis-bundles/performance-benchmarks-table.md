@@ -3,8 +3,9 @@
 **Purpose**: Side-by-side technology performance comparison for quantitative selection decisions
 **Target Chapters**: Chapter 9 (Query Engines), Chapter 8 (Storage Formats), Chapter 7 (Streaming)
 **Created**: October 15, 2025
-**Sources**: All citations reference MASTER-BIBLIOGRAPHY.md entries
-**Evidence Quality**: 12 of 12 sources = Level A (100%)
+**Updated**: June 7, 2026 (added first-party MOAR reference-stack measurements; FOIL substituted into the ClickHouse-vs-Elasticsearch storage cell)
+**Sources**: Borrowed-source citations reference MASTER-BIBLIOGRAPHY.md entries; first-party citations reference the SDW MOAR reference stack
+**Evidence Quality**: 12 of 12 borrowed sources = Level A (100%), plus first-party lab measurements (distinct evidence tier — identical-workload, answer-equality-gated, reproducible, single host)
 
 ---
 
@@ -66,12 +67,14 @@ Performance claims are ubiquitous in vendor marketing. This reference consolidat
 **ClickHouse vs Elasticsearch - Billion Row Comparison**
 📍 MASTER-BIBLIOGRAPHY.md:1382-1401
 
-**Storage Efficiency**: **5-10× better** than Elasticsearch for security logs
-**Workload**: Billion-row performance comparison
+**Storage Efficiency**: **measured ~7.0× on first-party OCSF data via the MOAR FOIL** (lands inside the borrowed 5-10× band)
+**Workload**: Billion-row performance comparison (borrowed); 200,000 OCSF events (first-party FOIL)
 **Format**: Security log optimization
 
-**Evidence Level**: A (Benchmark study)
+**Evidence Level**: A (borrowed benchmark study) + **FIRST-PARTY lab measurement** (2026-06-07, MOAR reference stack, single host)
 **Confidence**: High - Direct performance comparison for security use case
+
+**FIRST-PARTY measurement (2026-06-07, MOAR reference stack, single host)**: The borrowed "5-10×" is now grounded by a first-party FOIL probe (lakehouse vs an OpenSearch SIEM) over 200,000 OCSF events: the SIEM index footprint was 11.5 MB against a columnar Parquet footprint of 1.6 MB, so the SIEM index is **~7.0× the columnar footprint** — inside the borrowed band rather than at its edge. Answers agreed across the engines before the ratio was read, and the lakehouse was faster on 3/3 query trials. HEDGE: single host, OpenSearch over HTTP vs DuckDB in-process; the term-index advantage at larger scale is not isolated, so the robust first-party findings are the answer-equality and the ~7.0× storage ratio, not the latency. This is a distinct (and, for the storage ratio, higher) evidence tier than the borrowed billion-row benchmark — we ran an identical-workload comparison on our own OCSF data — and it is reported alongside the borrowed number, not in place of it.
 
 ---
 
@@ -118,12 +121,40 @@ Performance claims are ubiquitous in vendor marketing. This reference consolidat
 | **Ingestion Throughput** | 1.8-2.2M events/sec/node | Altinity | A |
 | **Query Latency (P95)** | <1 second (96% of queries) | Cloudflare | A |
 | **Compression Ratio** | 10-12× (columnar storage) | Cloudflare | A |
-| **Storage Efficiency** | 5-10× vs Elasticsearch | ClickHouse benchmark | A |
+| **Storage Efficiency** | 5-10× vs Elasticsearch (borrowed); **~7.0× measured first-party** on OCSF data (FOIL) † | ClickHouse benchmark + MOAR FOIL (2026-06-07) | A + **first-party** |
 | **CIDR Threat Hunting** | 50-100× faster (native IP types) | ClickHouse docs | A |
 | **CPU Efficiency** | 8-10× vs row-based DB | ClickHouse architecture | A |
 | **Production Scale** | 57 TB/day (Shell), 6M req/sec (Cloudflare) | Production cases | A |
 
 **Security Use Case Validation**: ✅ **Exceptional** - Multiple production security deployments (Shell, Cloudflare)
+
+† **First-party note**: the storage-efficiency row now carries a first-party measurement (~7.0× on OCSF data, MOAR FOIL, 2026-06-07, single host) inside the borrowed 5-10× band. See §1.1 and the four-engine first-party subsection (§1.3) below.
+
+---
+
+### 1.3 Four-Engine Identical-Workload Latency (First-Party)
+
+**MOAR reference stack** — 2026-06-07, single host (Ryzen 5800H, WSL2)
+🔬 First-party lab measurement (SDW MOAR "Modular Open Architecture" reference stack)
+
+This is a distinct evidence tier from the production-deployment rows above: rather than a borrowed single-operator number, this is a vendor-neutral, identical-workload comparison run on one shared Apache Iceberg table holding OCSF events, with an **answer-equality gate** applied first — DuckDB, Trino, ClickHouse and StarRocks all agree on `count(*)`, the needle (`dst_port=3389`) and the `group-by dst_port` before any latency is read. (A fifth engine, Dremio, was configured but not brought up this run, so this is a four-engine measured result.)
+
+**Workload × engine latency** — 1,000,000-row OCSF `network_activity`, median of 4 trials, milliseconds (CV% in parentheses):
+
+| Workload | DuckDB | Trino | ClickHouse | StarRocks |
+|----------|--------|-------|------------|-----------|
+| `count(*)` | **2.4** (10) | 68.5 (10) | 18.2 (11) | 39.9 (1) |
+| needle `dst_port=3389` | **5.7** (3) | 97.5 (6) | 22.1 (8) | 45.3 (1) |
+| group-by `dst_port` | **12.1** (7) | 96.6 (7) | 30.1 (5) | 55.3 (11) |
+| distinct `src_ip` (latency-only; ClickHouse approx) | 139.7 (14) | 427.9 (17) | 168.7 (6) | **97.7** (2) |
+
+**Reading**: on a single host, DuckDB is fastest on the gated small-batch workloads (count, needle, group-by) while StarRocks wins the high-cardinality `distinct src_ip`. No single engine wins everything — specialization is a scale-and-concurrency property, and the **relative pattern is the finding, not the absolute milliseconds**. The `distinct` row is latency-only (ClickHouse computes an approximate distinct), so it is read as a latency comparison rather than an exact-count claim.
+
+**Evidence Level**: **First-party lab measurement** (reproducible; fixed seed/data). Scope limit: single host — in-process DuckDB has a structural edge over the networked engines at this scale, so the small-batch sweep is expected to narrow or invert with concurrency and data volume. No datacenter, concurrency, or TCO claim.
+
+**Confidence**: High for the relative pattern and the answer-equality gate; the absolute milliseconds are bounded to this apparatus.
+
+**See also**: hypothesis-confidence-matrix.md → H-ENGINE-ANSWER-EQUIVALENCE-01 and H-ARCH-02.
 
 ---
 
@@ -350,7 +381,7 @@ Performance claims are ubiquitous in vendor marketing. This reference consolidat
 
 | Platform | Throughput (events/sec) | Query Latency (P95) | Compression | Storage Efficiency | Security-Specific Features |
 |----------|------------------------|---------------------|-------------|-------------------|---------------------------|
-| **ClickHouse** | 1.8-2.2M/node | <1s (96%) | 10-12× | 5-10× vs Elasticsearch | Native IP types (50-100× CIDR hunting) |
+| **ClickHouse** | 1.8-2.2M/node | <1s (96%) | 10-12× | 5-10× vs Elasticsearch (**~7.0× measured first-party** on OCSF data, FOIL) | Native IP types (50-100× CIDR hunting) |
 | **Elasticsearch** | ~500K-1M/node (typical) | 1-5s (varies) | 3-5× | Baseline | Full-text search optimized |
 | **Trino** | N/A (query engine, not storage) | Varies (federated) | Depends on storage | Federated (no storage) | SQL federation across sources |
 | **Athena** | N/A (serverless) | 5-30s (varies) | Depends on Parquet | Pay-per-query | Serverless, no ops overhead |

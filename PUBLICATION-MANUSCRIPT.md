@@ -644,6 +644,8 @@ Seven hypotheses received quantitative validation with varying confidence levels
 
 6. **Security-Specific Benchmark Suites**: TPC-like benchmarks exist for general analytics (TPC-H, TPC-DS); security workloads lack standardized benchmark suite for vendor-neutral performance comparison.
 
+   *Partial first-party answer (2026-06-07)*: the SDW MOAR reference stack now provides a first-party, identical-workload starting point against this gap — one shared Apache Iceberg table holding OCSF events, queried by four engines (DuckDB, Trino, ClickHouse, StarRocks) with an answer-equality gate applied before any latency or storage figure is read, so the comparison rests on a verified correctness floor rather than vendor-optimized configurations. The headline first-party readings: no single engine wins every workload (DuckDB leads gated small-batch, StarRocks leads high-cardinality distinct), and a FOIL probe measured a schema-on-read SIEM index at ~7.0× the columnar footprint on OCSF data. This does not close the gap — it is a single-host apparatus (Ryzen 5800H, WSL2), so organizational/TCO claims and streaming-throughput claims remain out of its reach, and the absolute latencies are bounded to that host (the relative pattern is the finding). A standardized, multi-node, concurrency-aware security benchmark suite is still future work; the contribution here is a reproducible identical-workload method with a correctness gate, not a datacenter benchmark.
+
 **No Contradictions Identified**: Cross-source validation revealed convergent evidence without contradictions. Examples: IDC 2.5-3× operational costs converges with DORA 2.7× staffing (independent validation); AWS 55% tiered storage savings aligns with Netflix 70-80% (use-case difference: general vs multi-year Kafka). Apparent discrepancies resolved through use-case analysis rather than representing true contradictions.
 
 **Mitigation for Gaps**: Expert interview protocol addresses DuckDB (Jake Thomas) and catalog adoption (Lisa Cao) gaps. IT Harvest partnership (pending) will provide vendor landscape data for catalog/platform adoption metrics. Mid-market validation requires targeted case study identification in future quarterly updates.
@@ -716,7 +718,7 @@ This systematic review makes four theoretical contributions to knowledge:
 
 **3. Emerging Technology Validation**: DuckDB edge processing (H-EDGE-01), XTable table format interoperability, and Gravitino meta-catalog adoption require production security deployment case studies. Expert interviews (Lisa Cao - catalogs, Jake Thomas - DuckDB) address immediate gaps; quarterly updates track maturation.
 
-**4. Comparative Performance Studies**: Head-to-head benchmarks (ClickHouse vs Druid vs Elasticsearch; Kafka Streams vs Flink vs Spark Streaming) with identical security workloads (not vendor-optimized benchmarks). Security-specific benchmark suite (TPC-like for security analytics) would enable vendor-neutral comparison.
+**4. Comparative Performance Studies**: Head-to-head benchmarks (ClickHouse vs Druid vs Elasticsearch; Kafka Streams vs Flink vs Spark Streaming) with identical security workloads (not vendor-optimized benchmarks). Security-specific benchmark suite (TPC-like for security analytics) would enable vendor-neutral comparison. A first-party step in this direction now exists: the SDW MOAR reference stack runs four engines (DuckDB, Trino, ClickHouse, StarRocks) over one shared Iceberg/OCSF table with an answer-equality gate, producing an identical-workload comparison on first-party data (2026-06-07). It is deliberately scoped as a single-host apparatus, so it informs the relative engine pattern and a measured ~7.0× SIEM-index storage ratio but not multi-node throughput, concurrency, or organizational TCO — those remain the open work this future direction names.
 
 **5. Failure Analysis**: Systematic study of failed implementations overcoming publication bias. What streaming deployments were abandoned? What drove rollback from lakehouse to traditional SIEM? What organizational factors predict success/failure? Requires confidential case study access or retrospective practitioner surveys.
 
@@ -862,7 +864,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 | DuckDB edge processing | Emerging, no production | H-EDGE-01 lacks validation | Production deployment data |
 | XTable interoperability | Vendor claims only | Cross-format maturity unclear | Production use cases |
 | Catalog adoption | Anecdotal | Gravitino adoption unknown | Quantitative adoption metrics |
-| Security benchmarks | General analytics proxy | TPC-like security benchmarks missing | Security-specific benchmark suite |
+| Security benchmarks | General analytics proxy; **first-party MOAR reference stack now provides one identical-workload, answer-equality-gated comparison** (4 engines, one Iceberg/OCSF table, 2026-06-07) | TPC-like security benchmarks missing; first-party answer is single-host only (no multi-node / concurrency / TCO) | Standardized multi-node, concurrency-aware security benchmark suite |
 
 ---
 

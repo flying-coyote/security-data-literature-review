@@ -1,10 +1,13 @@
 # Hypothesis Validation Confidence Assessment
 
-**Purpose**: Transparent confidence scoring for 7 validated hypotheses with methodological rigor
+**Purpose**: Transparent confidence scoring for 7 borrowed-source hypotheses plus 6 first-party (lab-measured) hypotheses, with methodological rigor
 **Target Use**: Book confidence statements, academic publication, honest claim evaluation
 **Created**: October 15, 2025
-**Sources**: All citations reference MASTER-BIBLIOGRAPHY.md entries
+**Updated**: June 7, 2026 (added first-party MOAR reference-stack measurements; re-grounded two borrowed cells)
+**Sources**: Borrowed-source citations reference MASTER-BIBLIOGRAPHY.md entries; first-party citations reference the SDW MOAR reference stack and the public lab benchmark repository
 **Methodology**: Evidence-based confidence rubric (source count, evidence level, validation type)
+
+> **Evidence-tier note**: The original 7 hypotheses are validated by *borrowed* third-party production numbers (Cloudflare, Shell, SK Telecom, Netflix and the like), which top out at Evidence Level A as reported-by-the-operator. The 6 hypotheses added in the June 2026 revision are backed by *first-party lab measurements* taken on the SDW MOAR reference stack (the "Modular Open Architecture" stack), which is a distinct and, for the specific claim measured, higher tier: the workload, the data, the engines and the comparison are ours, the run is reproducible, and an answer-equality gate is applied before any latency or storage number is read. Where a first-party measurement and a borrowed production number speak to the same claim, both legs are kept and labeled, because each answers a different question — the borrowed number says it holds at production scale on someone else's workload, the first-party number says we ran an identical-workload comparison ourselves and can show the apparatus. The first-party legs carry an explicit single-host scope limit (Ryzen 5800H, WSL2); they do not claim datacenter scale, concurrency, or TCO.
 
 ---
 
@@ -14,15 +17,26 @@
 
 | Hypothesis | Confidence | Source Count | Evidence Level A % | Key Validation |
 |------------|-----------|--------------|-------------------|----------------|
-| **H-ARCH-01** (Iceberg) | ⭐⭐⭐⭐⭐ Strong | 5 | 100% | Industry consensus, universal vendor support |
+| **H-ARCH-01** (Iceberg) | ⭐⭐⭐⭐⭐ Strong | 5 (+1 first-party) | 100% | Industry consensus, universal vendor support; FIRST-PARTY answer-equality on one Iceberg/OCSF table |
 | **H-IMPL-01** (TCO) | ⭐⭐⭐⭐ High | 5 | 80% | IDC, DORA, Confluent convergence |
 | **H-IMPL-02** (Staffing) | ⭐⭐⭐⭐⭐ Strong | 4 | 100% | DORA 2.7×, IDC 2.5-3×, Ververica 3.2 FTEs |
 | **H-IMPL-03** (Timeline) | ⭐⭐⭐ Moderate | 3 | 67% | Gartner 5.5 months, SANS premium validated |
 | **H-COST-09** (Tiered Storage) | ⭐⭐⭐⭐⭐ Strong | 3 | 100% | AWS 55%, Netflix 70-80%, production validated |
-| **H3-PERFORMANCE-01** (ClickHouse) | ⭐⭐⭐⭐ High | 4 | 100% | Cloudflare 6M req/sec, Shell 57TB/day |
+| **H3-PERFORMANCE-01** (ClickHouse) | ⭐⭐⭐⭐ High | 4 (+1 first-party) | 100% | Cloudflare 6M req/sec, Shell 57TB/day; FIRST-PARTY ~7.0× storage on OCSF data (FOIL) |
 | **H-STREAM-01** (Kafka Streams) | ⭐⭐⭐⭐ High | 3 | 100% | LinkedIn, Uber production security |
 
-**Key Insight**: **Hypothesis validation strength correlates with source diversity** (government + industry + production), not just source count. H-IMPL-02 (staffing) has **strongest validation** despite only 4 sources because: DORA (industry research) + IDC (analyst) + Ververica (production) + McKinsey (consulting) represent **4 independent validation types**.
+**FIRST-PARTY hypotheses (lab-measured, MOAR reference stack, 2026-06-07, single host):**
+
+| Hypothesis | Confidence | Source Count | Evidence Tier | Key Measurement |
+|------------|-----------|--------------|---------------|-----------------|
+| **H-ENGINE-ANSWER-EQUIVALENCE-01** (four engines, one table) | ⭐⭐⭐⭐ High | 1 (first-party, multi-engine) | First-party lab | DuckDB, Trino, ClickHouse, StarRocks agree on count / needle / group-by over one Iceberg/OCSF table |
+| **H-ARCH-02** (no single engine wins) | ⭐⭐⭐⭐ High | 1 (first-party, 4 engines × 4 workloads) | First-party lab | DuckDB sweeps small-batch single-host; StarRocks wins high-cardinality distinct |
+| **H-OCSF-CONTEXT-COLLAPSE-01** (flattening fidelity) | ⭐⭐⭐⭐ High | 1 (published lab artifact) | First-party lab (public) | BENCH-A flattening-fidelity delta +0.719; published, reproducible |
+| **H-SEC-CATALOG-01** (catalog portability) | ⭐⭐⭐ Moderate | 1 (first-party, 5 open catalogs) | First-party lab | swap-catalog across REST/Polaris/Nessie/Lakekeeper/Gravitino; Unity Catalog leg NOT reproducible |
+| **H-DUCKLAKE-02** (swap-format read-neutral) | ⭐⭐⭐⭐ High | 1 (first-party, identical bytes) | First-party lab | Iceberg↔DuckLake read-neutral on byte-identical data |
+| **H-NDR-FEDERATION-01** (cross-source correlation) | ⭐⭐⭐⭐ High | 1 (first-party, 2-source join) | First-party lab | Join surfaces attacker 198.51.100.66 (lateral movement) no single source reveals |
+
+**Key Insight**: **Hypothesis validation strength correlates with source diversity** (government + industry + production), not just source count. H-IMPL-02 (staffing) has **strongest validation** despite only 4 sources because: DORA (industry research) + IDC (analyst) + Ververica (production) + McKinsey (consulting) represent **4 independent validation types**. The first-party hypotheses score differently: a single source, but a source we control end-to-end, so the discriminating dimensions are reproducibility and the answer-equality gate rather than independent-source count. A first-party run cannot manufacture source diversity, and we do not pretend it does; its claim is narrower and better-controlled, which is why several of these sit at High rather than Strong despite being measured rather than borrowed.
 
 ---
 
@@ -79,12 +93,13 @@
 
 #### Confidence Scoring
 
-**Source Count**: 5 points (5 sources)
+**Source Count**: 5 points (5 borrowed sources) + 1 first-party leg
 - SK Telecom production deployment
 - Apache Iceberg Foundation (300+ contributors, 100+ orgs)
 - Universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)
 - Cloudera production validation
 - Dremio 2024 survey (29% planning Iceberg vs 23% Delta)
+- **FIRST-PARTY (lab-measured, 2026-06-07, MOAR reference stack, single host)**: an Iceberg/OCSF table is read by four independent engines (DuckDB, Trino, ClickHouse, StarRocks) that all agree on count / needle / group-by, and the same logical data round-trips Iceberg↔DuckLake read-neutral on byte-identical files — direct evidence that Iceberg functions as a vendor-neutral, engine-portable table format, not merely that vendors announced support. This is the answer-equality + swap-format leg the borrowed sources cannot supply; it is a distinct evidence tier (we ran it) and is reported alongside, not in place of, the borrowed production validation.
 
 **Evidence Level Quality**: 5 points (100% Level A)
 - All 5 sources = Level A (production deployments, official ASF metrics, vendor announcements)
@@ -116,6 +131,7 @@
 ✅ **Apache Software Foundation governance**: Open, vendor-neutral governance (vs Delta = Databricks-led)
 ✅ **Production validation at scale**: SK Telecom (52.7 TB in 3.39s), Cloudera (10× vs Hive)
 ✅ **Community strength**: 300+ contributors across 100+ organizations
+✅ **FIRST-PARTY engine portability (lab-measured, 2026-06-07)**: four engines return identical answers over one Iceberg/OCSF table, and the data swaps Iceberg↔DuckLake read-neutral on identical bytes — we verified the format's vendor-neutrality ourselves rather than inferring it from vendor announcements (single-host apparatus; see H-ENGINE-ANSWER-EQUIVALENCE-01 and H-DUCKLAKE-02)
 
 ---
 
@@ -423,11 +439,12 @@
 
 #### Confidence Scoring
 
-**Source Count**: 5 points (4 sources)
+**Source Count**: 5 points (4 borrowed sources) + 1 first-party leg
 - Cloudflare: 6M req/sec, 96% <1s queries
 - Cloudflare: 10-12× compression
 - Shell: 57TB/day security telemetry
 - ClickHouse vs Elasticsearch: 5-10× storage efficiency
+- **FIRST-PARTY (lab-measured, 2026-06-07, MOAR reference stack, single host)**: the FOIL probe (lakehouse vs an OpenSearch SIEM) over 200,000 OCSF events measured a SIEM index footprint of 11.5 MB against a columnar Parquet footprint of 1.6 MB — the SIEM index is ~7.0× the columnar footprint, which lands inside the borrowed "5-10×" band rather than at its edge, and answers agreed across the engines before the ratio was read. HEDGE: single host, OpenSearch over HTTP vs DuckDB in-process; the term-index advantage at larger scale is not isolated, so the robust first-party findings here are the answer-equality and the ~7.0× storage ratio, not a latency claim.
 
 **Evidence Level Quality**: 5 points (100% Level A)
 - All 4 sources = Level A (production deployments, benchmark study)
@@ -456,6 +473,7 @@
 ✅ **Quantitative precision**: Not "fast," but "6M req/sec" and "96% <1s"
 ✅ **Security-specific**: Shell 57TB/day is **enterprise security deployment** (not general analytics)
 ✅ **100% Evidence Level A**: Exceptional
+✅ **FIRST-PARTY storage measurement (lab-measured, 2026-06-07)**: our FOIL probe measured a SIEM index at ~7.0× the columnar Parquet footprint on first-party OCSF data (11.5 MB vs 1.6 MB over 200,000 events), inside the borrowed 5-10× band, with answers agreeing across engines — a measured leg under the borrowed benchmark, scoped to a single host (term-index advantage at larger scale not isolated)
 
 ---
 
@@ -541,6 +559,166 @@
 
 ---
 
+## First-Party Hypotheses (Lab-Measured)
+
+These six hypotheses are validated by first-party measurements on the SDW MOAR reference stack ("Modular Open Architecture"), run 2026-06-07 on a single host (Ryzen 5800H, WSL2). They are a distinct evidence tier from the borrowed-source hypotheses above: the data, the workload, the engines and the comparison are ours, the run is reproducible, and an answer-equality gate is applied before any latency or storage number is read. The scoring rubric above rewards independent-source diversity, which a single-apparatus run cannot supply, so these are scored on what they actually demonstrate — reproducibility, the answer-equality gate, and an identical-workload comparison — and they carry an explicit single-host scope limit. None of them claims datacenter scale, concurrency behavior, or organizational TCO; the relative pattern across engines is the finding, not the absolute milliseconds.
+
+The five engines configured were DuckDB, Trino, ClickHouse, StarRocks, and Dremio; Dremio was not brought up for this run, so every engine claim below is a **four-engine** measured result.
+
+---
+
+### H-ENGINE-ANSWER-EQUIVALENCE-01: Four Engines Return Identical Answers
+
+**Hypothesis**: "Four independent query engines, reading one shared Apache Iceberg table holding OCSF-shaped events, return the same answers for the same questions."
+
+**Validation Status**: ✅ **VALIDATED (first-party, single host)**
+
+**Evidence Tier**: First-party lab measurement (2026-06-07, MOAR reference stack). Distinct from — and for this specific claim, stronger than — the borrowed production numbers, because answer-equality across engines is something the literature's single-operator deployments never test (each runs one engine).
+
+**Measurement**: DuckDB, Trino, ClickHouse and StarRocks each query the same Iceberg/OCSF table and agree on all three probes — `count(*)`, the needle (`dst_port = 3389`), and the `group-by dst_port`. Answer-equality is the gate: latency numbers (recorded under H-ARCH-02) are only read once the engines are shown to be computing the same thing.
+
+**Confidence Drivers**:
+✅ Cross-engine agreement on count, needle and group-by over identical bytes — the correctness floor under every later performance comparison
+✅ Reproducible (fixed seed, fixed data) on the documented apparatus
+✅ Establishes that an open table format (Iceberg) + open schema (OCSF) lets engines be swapped without changing the answer
+
+**Confidence Limiters**:
+⚠️ Single host; four engines (Dremio configured but not brought up this run)
+⚠️ One table, OCSF `network_activity`; broader schema coverage not yet exercised
+⚠️ Equivalence demonstrated on three query shapes, not an exhaustive query surface
+
+**Recommended Language**:
+> "On the MOAR reference stack, four engines — DuckDB, Trino, ClickHouse, StarRocks — reading one shared Iceberg/OCSF table returned identical answers for count, a needle lookup (dst_port=3389), and a group-by. The answer-equality gate is applied before any latency is reported, so the performance comparison rests on a verified correctness floor (first-party, single host, 2026-06-07)."
+
+---
+
+### H-ARCH-02: No Single Engine Wins
+
+**Hypothesis**: "On one shared Iceberg/OCSF table, no single engine wins every workload — engine choice is a workload-and-scale property, not a global ranking."
+
+**Validation Status**: ✅ **VALIDATED (first-party, single host)**
+
+**Evidence Tier**: First-party lab measurement (2026-06-07, MOAR reference stack). The literature has no vendor-neutral identical-workload engine comparison (it is one of the review's named gaps); this is a first-party answer to it, bounded to a single host.
+
+**Measurement**: 1,000,000-row OCSF `network_activity` table, median of 4 trials, milliseconds (CV% in parentheses):
+
+| Workload | DuckDB | Trino | ClickHouse | StarRocks |
+|----------|--------|-------|------------|-----------|
+| `count(*)` | **2.4** (10) | 68.5 (10) | 18.2 (11) | 39.9 (1) |
+| needle `dst_port=3389` | **5.7** (3) | 97.5 (6) | 22.1 (8) | 45.3 (1) |
+| group-by `dst_port` | **12.1** (7) | 96.6 (7) | 30.1 (5) | 55.3 (11) |
+| distinct `src_ip` (latency-only; ClickHouse approx) | 139.7 (14) | 427.9 (17) | 168.7 (6) | **97.7** (2) |
+
+**Reading**: on a single host, DuckDB is fastest on the gated small-batch workloads (count, needle, group-by), while StarRocks wins the high-cardinality `distinct src_ip`. Engine specialization is a scale-and-concurrency property; the relative pattern is the finding, not the absolute milliseconds. The `distinct` row is latency-only (ClickHouse uses an approximate distinct), so it is read as a latency comparison, not an exact-count claim.
+
+**Confidence Drivers**:
+✅ Four engines × four workloads, all on one shared table — the comparison is identical-workload by construction
+✅ Answers gated by H-ENGINE-ANSWER-EQUIVALENCE-01 before latency is read (the `distinct` row excepted, marked latency-only)
+✅ Median of 4 trials with CV% reported, so trial-to-trial spread is visible (e.g. distinct src_ip CV 6-17%)
+
+**Confidence Limiters**:
+⚠️ Single host; in-process DuckDB has a structural advantage over the networked engines at this scale, so the small-batch sweep is expected to narrow or invert with concurrency and data volume
+⚠️ A 1M-row table is small; the pattern is a direction, not a scaling law
+⚠️ ClickHouse `distinct` is approximate; that row is latency-only
+
+**Recommended Language**:
+> "On a single host over a 1M-row OCSF table, no engine won every workload: DuckDB led the gated small-batch queries (count 2.4 ms, needle 5.7 ms, group-by 12.1 ms median of 4 trials) while StarRocks led high-cardinality distinct (97.7 ms vs DuckDB's 139.7 ms). The finding is the relative pattern — specialization is a scale-and-concurrency property — not the absolute milliseconds, which are bounded to this apparatus (first-party, single host, 2026-06-07)."
+
+---
+
+### H-OCSF-CONTEXT-COLLAPSE-01: Flattening-Fidelity Loss
+
+**Hypothesis**: "Flattening OCSF events into a tabular layout collapses context, and the loss is measurable."
+
+**Validation Status**: ✅ **VALIDATED (first-party, published lab artifact)**
+
+**Evidence Tier**: First-party lab measurement, and the only one of the six already published as a public Tier-B artifact — the BENCH-A context-collapse / flattening-fidelity benchmark in the public lab repository (`github.com/flying-coyote/sdw-lab-benchmarks`, `flattening-fidelity/`; the standalone `ocsf-flattening-benchmark` repo is archived and forwards there). Cite it as the worked, reproducible first-party measurement rather than re-deriving it here.
+
+**Measurement**: BENCH-A reports a flattening-fidelity delta of **+0.719** — the published, reproducible context-collapse result. (See the artifact for the per-mechanism breakdown; this matrix cites the headline delta and the published method.)
+
+**Confidence Drivers**:
+✅ Published, externally inspectable, reproducible (fixed seed, documented method)
+✅ Security-specific by construction (OCSF events, the flattening problem security log pipelines actually hit)
+✅ A measured fidelity delta, not a directional "flattening loses information" assertion
+
+**Confidence Limiters**:
+⚠️ The published artifact is the modular 3-mechanism version, not the larger pre-registered battery (still a Tier-A target); the +0.719 delta is scoped to the mechanisms measured
+⚠️ Single-host lab apparatus
+
+**Recommended Language**:
+> "The flattening-fidelity loss is measured, not asserted: the published BENCH-A context-collapse benchmark reports a fidelity delta of +0.719 on OCSF data (first-party, reproducible; github.com/flying-coyote/sdw-lab-benchmarks, flattening-fidelity/)."
+
+---
+
+### H-SEC-CATALOG-01: Catalog Portability
+
+**Hypothesis**: "A lakehouse table is portable across catalog implementations — the same data can be served from different catalogs by swapping the catalog, not rewriting the table."
+
+**Validation Status**: ✅ **VALIDATED for open catalogs (first-party); ⚠️ Unity Catalog leg NOT reproducible**
+
+**Evidence Tier**: First-party lab measurement (2026-06-07, MOAR reference stack).
+
+**Measurement**: the swap-catalog probe ran the same table across five open catalog implementations — a REST catalog, Polaris, Nessie, Lakekeeper and Gravitino — and served the data from each. The **open-catalog legs are the reproducible result.** The Unity Catalog leg is **NOT reproducible** in this apparatus and is reported as a negative/limitation, not a success — the portability claim holds for the open-catalog set, and stops at the boundary of a vendor-governed catalog we could not bring up.
+
+**Confidence Drivers**:
+✅ Five independent open catalog implementations served the same table (REST, Polaris, Nessie, Lakekeeper, Gravitino)
+✅ Honest negative: the Unity Catalog leg is recorded as not-reproducible rather than quietly dropped
+
+**Confidence Limiters**:
+⚠️ Unity Catalog NOT reproducible in this apparatus — portability is demonstrated for open catalogs only
+⚠️ Single host; functional portability shown, not catalog performance or concurrency under load
+
+**Recommended Language**:
+> "The same lakehouse table was served from five open catalogs — REST, Polaris, Nessie, Lakekeeper, Gravitino — by swapping the catalog, demonstrating catalog portability across the open set. The Unity Catalog leg was not reproducible in this apparatus, so the claim is scoped to open catalogs and stops at the vendor-governed boundary (first-party, single host, 2026-06-07)."
+
+---
+
+### H-DUCKLAKE-02: Swap-Format Read-Neutral
+
+**Hypothesis**: "Reading the same logical data is format-neutral between Iceberg and DuckLake when the underlying bytes are identical."
+
+**Validation Status**: ✅ **VALIDATED (first-party, single host)**
+
+**Evidence Tier**: First-party lab measurement (2026-06-07, MOAR reference stack). Controls the writer confound by reading byte-identical data into both formats rather than comparing two separately-written copies.
+
+**Measurement**: the swap-format probe registered the same byte-identical files into both an Iceberg table and a DuckLake table and read both; the read was **format-neutral** — Iceberg↔DuckLake showed no read advantage on identical bytes. The control is that the bytes are the same, so any difference would be the format layer, not the writer/encoder.
+
+**Confidence Drivers**:
+✅ Byte-identical underlying data isolates the format layer from the writer confound
+✅ Read-neutrality is the measured result, not an assumed equivalence
+
+**Confidence Limiters**:
+⚠️ Single host; read-neutrality measured, not write-path or maintenance-operation behavior
+⚠️ Bounded to the read patterns exercised, not a full workload surface
+
+**Recommended Language**:
+> "Reading byte-identical data registered into both an Iceberg and a DuckLake table was format-neutral on a single host — no read advantage either way — which isolates the format layer from the writer confound (first-party, 2026-06-07)."
+
+---
+
+### H-NDR-FEDERATION-01: Cross-Source Correlation
+
+**Hypothesis**: "Joining two security telemetry sources surfaces an attacker that neither source reveals on its own."
+
+**Validation Status**: ✅ **VALIDATED (first-party, single host)**
+
+**Evidence Tier**: First-party lab measurement (2026-06-07, MOAR reference stack). Demonstrates federation value on a controlled cross-source join rather than asserting it.
+
+**Measurement**: the correlate probe joined two OCSF sources on `src_ip` and surfaced attacker `198.51.100.66` exhibiting 8 failed authentications plus 5 RDP connections — a lateral-movement pattern visible only in the join. Neither source alone shows the pattern; the cross-source correlation is what makes it legible.
+
+**Confidence Drivers**:
+✅ The lateral-movement pattern (8 failed auths + 5 RDP connections) is present only after the join, demonstrating federation value concretely
+✅ Controlled, reproducible join on a known schema key (`src_ip`)
+
+**Confidence Limiters**:
+⚠️ Single host; constructed two-source scenario, not a production NDR estate
+⚠️ Demonstrates the join surfaces the pattern; does not measure detection rate, false-positive cost, or scale behavior
+
+**Recommended Language**:
+> "Joining two OCSF sources on src_ip surfaced attacker 198.51.100.66 (8 failed auths + 5 RDP connections, a lateral-movement pattern) that neither source revealed alone — federation value shown on a controlled join, not asserted (first-party, single host, 2026-06-07)."
+
+---
+
 ## Consolidated Confidence Assessment
 
 ### Overall Validation Strength
@@ -552,8 +730,19 @@
 | **H-IMPL-02** | ⭐⭐⭐⭐⭐ | **2.7× staffing, Level 4 skills** - strongest validation, lead with this |
 | **H-IMPL-03** | ⭐⭐⭐ | **5.5 months, 15-30% premium** - moderate confidence, add caveat |
 | **H-COST-09** | ⭐⭐⭐⭐⭐ | **55-80% tiered storage savings** - strong, cite AWS + Netflix |
-| **H3-PERFORMANCE-01** | ⭐⭐⭐⭐ | **6M req/sec, 96% <1s** - high confidence, cite Cloudflare + Shell |
+| **H3-PERFORMANCE-01** | ⭐⭐⭐⭐ | **6M req/sec, 96% <1s** - high confidence, cite Cloudflare + Shell; FIRST-PARTY ~7.0× storage (FOIL) added |
 | **H-STREAM-01** | ⭐⭐⭐⭐ | **Terabytes of state, sub-second views** - high confidence, cite LinkedIn + Uber |
+
+**First-party (lab-measured, MOAR reference stack, 2026-06-07, single host):**
+
+| Hypothesis | Confidence | Recommendation for Book |
+|------------|-----------|------------------------|
+| **H-ENGINE-ANSWER-EQUIVALENCE-01** | ⭐⭐⭐⭐ | **Four engines agree on one Iceberg/OCSF table** - lead the apparatus with the answer-equality gate |
+| **H-ARCH-02** | ⭐⭐⭐⭐ | **No single engine wins** - cite the workload×engine table; relative pattern, single host |
+| **H-OCSF-CONTEXT-COLLAPSE-01** | ⭐⭐⭐⭐ | **+0.719 fidelity delta** - cite the published BENCH-A artifact, don't re-derive |
+| **H-SEC-CATALOG-01** | ⭐⭐⭐ | **Portable across 5 open catalogs** - state the Unity Catalog leg as not-reproducible |
+| **H-DUCKLAKE-02** | ⭐⭐⭐⭐ | **Iceberg↔DuckLake read-neutral on identical bytes** - note the writer-confound control |
+| **H-NDR-FEDERATION-01** | ⭐⭐⭐⭐ | **Join surfaces 198.51.100.66 lateral movement** - federation value on a controlled join |
 
 ---
 
