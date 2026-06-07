@@ -67,6 +67,11 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 
+% ── Figures / images ─────────────────────────────────────────────────────────
+\usepackage{graphicx}
+% Safety: if pandoc does not emit a width attribute, cap images at \linewidth.
+\setkeys{Gin}{width=\linewidth,keepaspectratio}
+
 % ── Glyph fallback (DM Sans text subset lacks some symbols) ──────────────────
 \usepackage{newunicodechar}
 \newfontfamily{\symbolfont}{DejaVu Sans}

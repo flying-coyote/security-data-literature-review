@@ -768,7 +768,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 
 ### Figure 1: PRISMA Literature Extraction Flowchart
 
-[TO BE CREATED]
+![Figure 1: PRISMA-aligned systematic literature review flowchart showing extraction of 283 footnotes from best practices document and 74 archive manuscripts, consolidation of duplicates, quality assessment with evidence level classification, and final inclusion of 75+ sources achieving 79% Evidence Level A.](publication-graphics/figure1_prisma_flowchart.pdf){ width=85% }
 
 **Shows**:
 - Source materials identified: Best practices document (283 footnotes), 74 archived manuscripts
@@ -779,7 +779,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 
 ### Figure 2: Evidence Level Distribution
 
-[TO BE CREATED]
+![Figure 2: Evidence level distribution — 79% Level A (production deployments, peer-reviewed research, government standards) exceeds the 70% Level A target; 21% Level B (industry analysts, expert validation).](publication-graphics/figure2_evidence_distribution.png){ width=85% }
 
 **Shows**:
 - Pie chart or bar chart of evidence levels (A: 79%, B: 21%)
@@ -787,7 +787,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 
 ### Figure 3: Source Type Taxonomy
 
-[TO BE CREATED]
+![Figure 3: Source type taxonomy across 75+ sources: production deployments (18+ organizations), vendor documentation (33), industry analysts (10), government/standards (8), and academic/research (6).](publication-graphics/figure3_source_taxonomy.png){ width=85% }
 
 **Shows**:
 - Production deployments: 18+
@@ -798,7 +798,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 
 ### Figure 4: Hypothesis Validation Confidence Levels
 
-[TO BE CREATED]
+![Figure 4: Hypothesis validation confidence levels for all 7 validated hypotheses, grouped by strength — 3 strongly validated (5-star), 3 high confidence (4-star), 1 moderate confidence (3-star).](publication-graphics/figure4_hypothesis_confidence.png){ width=85% }
 
 **Shows**:
 - Bar chart of 7 hypotheses with confidence scores (⭐⭐⭐⭐⭐ to ⭐⭐⭐)
@@ -806,12 +806,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 
 ### Figure 5: Technology Adoption Trends
 
-[TO BE CREATED]
-
-**Shows**:
-- Iceberg: 76% adoption
-- ClickHouse adoption in security (sources: Cloudflare, Shell, Uber)
-- Kafka Streams production deployments
+*(Not yet produced — omitted from this build.)*
 
 ---
 

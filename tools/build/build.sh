@@ -21,6 +21,9 @@ pagebreak() { printf '\n```{=latex}\n\\newpage\n```\n\n'; }
   # carry [TO BE …] placeholders — the real content lives in the other files).
   sed -n '/^## ABSTRACT/,/^## ACKNOWLEDGMENTS/p' "$SRC_M" | sed '/^## ACKNOWLEDGMENTS/d' | decr
   pagebreak
+  # Figures (real images now embedded in the manuscript FIGURES section).
+  awk '/^## FIGURES/{f=1} /^## TABLES/{f=0} f' "$SRC_M" | decr
+  pagebreak
   # Tables (real GFM tables embedded in the manuscript).
   awk '/^## TABLES/{f=1} /^## APPENDICES/{f=0} f' "$SRC_M" | decr
   pagebreak
