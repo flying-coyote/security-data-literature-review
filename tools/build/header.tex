@@ -1,0 +1,94 @@
+% ── Security Data Works brand preamble (xelatex) ─────────────────────────────
+% Brand fonts: DM Sans (body + headings, weight 600 for headings) + JetBrains Mono.
+% Static TTFs instanced from the website's variable woff2 into tools/build/fonts/.
+\usepackage{fontspec}
+\setmainfont{DMSans}[
+  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Extension=.ttf, UprightFont=*-400, BoldFont=*-700, ItalicFont=*-400i, BoldItalicFont=*-700i]
+\setsansfont{DMSans}[
+  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Extension=.ttf, UprightFont=*-400, BoldFont=*-700, ItalicFont=*-400i, BoldItalicFont=*-700i]
+\setmonofont{JetBrainsMono}[
+  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Extension=.ttf, UprightFont=*-400, BoldFont=*-700, Scale=0.86]
+\newfontfamily{\headingfont}{DMSans}[
+  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Extension=.ttf, UprightFont=*-600, BoldFont=*-700]
+
+\usepackage{microtype}
+\usepackage[none]{hyphenat}
+\sloppy
+\emergencystretch=3em
+\setlength{\parskip}{0.5\baselineskip}
+\setlength{\parindent}{0pt}
+\linespread{1.05}
+
+\usepackage{fvextra}
+\fvset{breaklines=true,breakanywhere=true}
+
+% ── Brand palette (from securitydataworks global.css @theme tokens) ──────────
+\usepackage[dvipsnames,svgnames]{xcolor}
+\definecolor{sdwdisplay}{HTML}{0C1620}  % headings / display ink
+\definecolor{sdwprimary}{HTML}{1F2933}  % body ink
+\definecolor{sdwaccent}{HTML}{36608F}   % teal-600: rules, accents
+\definecolor{sdwlink}{HTML}{5C8DC5}     % teal-400: links
+\definecolor{sdwmuted}{HTML}{67768A}    % muted / secondary
+\color{sdwprimary}
+
+% Headings carry their own manual numbers (1., 1.1, A.1); no LaTeX auto-numbering.
+\setcounter{secnumdepth}{0}
+
+% ── Branded section headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\section}
+  {\headingfont\color{sdwdisplay}\fontsize{16}{20}\selectfont}{}{0pt}{}
+  [\vspace{2pt}{\color{sdwaccent}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{1.6em}{0.7em}
+\titleformat{\subsection}
+  {\headingfont\color{sdwdisplay}\fontsize{13}{17}\selectfont}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.5em}
+\titleformat{\subsubsection}
+  {\headingfont\color{sdwaccent}\fontsize{11.5}{15}\selectfont}{}{0pt}{}
+
+% ── Branded title block ──────────────────────────────────────────────────────
+\usepackage{titling}
+\pretitle{\begin{flushleft}\headingfont\color{sdwdisplay}\fontsize{26}{30}\selectfont}
+\posttitle{\par\vskip6pt{\color{sdwaccent}\rule{\linewidth}{1.4pt}}\end{flushleft}\vskip2pt}
+\preauthor{\begin{flushleft}\large\color{sdwmuted}}
+\postauthor{\end{flushleft}}
+\predate{\begin{flushleft}\color{sdwmuted}}
+\postdate{\end{flushleft}}
+
+% ── Links ────────────────────────────────────────────────────────────────────
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=sdwaccent, urlcolor=sdwlink, citecolor=sdwaccent}
+
+% ── Tables ───────────────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% ── Glyph fallback (DM Sans text subset lacks some symbols) ──────────────────
+\usepackage{newunicodechar}
+\newfontfamily{\symbolfont}{DejaVu Sans}
+\newunicodechar{✓}{{\symbolfont ✓}}
+\newunicodechar{✗}{{\symbolfont ✗}}
+\newunicodechar{⚠}{{\symbolfont ⚠}}
+\newunicodechar{≈}{{\symbolfont ≈}}
+\newunicodechar{×}{{\symbolfont ×}}
+\newunicodechar{→}{{\symbolfont →}}
+\newunicodechar{≥}{{\symbolfont ≥}}
+\newunicodechar{≤}{{\symbolfont ≤}}
+\newunicodechar{–}{{\symbolfont –}}
+\newunicodechar{—}{{\symbolfont —}}
+\newunicodechar{⭐}{{\symbolfont ★}}
+\newunicodechar{★}{{\symbolfont ★}}
+\newunicodechar{✅}{{\symbolfont ✓}}
+\newunicodechar{↔}{{\symbolfont ↔}}
+\newunicodechar{●}{{\symbolfont ●}}
+\newunicodechar{•}{{\symbolfont •}}
+\newunicodechar{▪}{{\symbolfont ▪}}
+\newunicodechar{◆}{{\symbolfont ◆}}
+\newunicodechar{❌}{{\symbolfont ✗}}
+\newunicodechar{^^^^fe0f}{}
+\newunicodechar{“}{{\symbolfont “}}
+\newunicodechar{”}{{\symbolfont ”}}

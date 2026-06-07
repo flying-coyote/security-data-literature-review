@@ -22,6 +22,9 @@ Thumbs.db
 *.tmp
 *.bak
 
+# PDF/EPUB build output (reproducible via tools/build/build.sh; tooling + fonts ARE tracked)
+/build/
+
 # Platform-specific
 .env
 .env.local

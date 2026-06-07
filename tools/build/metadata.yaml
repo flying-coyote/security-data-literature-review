@@ -1,0 +1,17 @@
+---
+title: "Modern Data Architecture for Cybersecurity Operations"
+subtitle: "A Systematic Literature Review"
+author: "Jeremy Wiley · Security Data Works"
+date: "2026"
+lang: en-US
+documentclass: article
+classoption: [11pt]
+geometry:
+  - paperwidth=8.5in
+  - paperheight=11in
+  - top=1in
+  - bottom=1in
+  - left=1.1in
+  - right=1.1in
+toc-title: "Contents"
+---
