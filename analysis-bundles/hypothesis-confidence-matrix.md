@@ -33,7 +33,7 @@
 | **H-ARCH-02** (no single engine wins) | ⭐⭐⭐⭐ High | 1 (first-party, 4 engines, 1M→100M) | First-party lab | At 100M the crossover appears: ClickHouse wins full-scan count, DuckDB wins needle + group-by (DuckDB had swept at 1M/10M) |
 | **H-OCSF-CONTEXT-COLLAPSE-01** (flattening fidelity) | ⭐⭐⭐⭐ High | 1 (published lab artifact) | First-party lab (public) | BENCH-A flattening-fidelity delta +0.719; published, reproducible |
 | **H-SEC-CATALOG-01** (catalog portability) | ⭐⭐⭐ Moderate | 1 (first-party, 5 open catalogs) | First-party lab | swap-catalog across REST/Polaris/Nessie/Lakekeeper/Gravitino; Unity Catalog leg NOT reproducible |
-| **H-DUCKLAKE-02** (swap-format read-neutral) | ⭐⭐⭐⭐ High | 1 (first-party, identical bytes) | First-party lab | Iceberg↔DuckLake read-neutral on byte-identical data |
+| **H-DUCKLAKE-02** (swap-format read-neutral + commit-tax) | ⭐⭐⭐⭐ High | 1 (first-party, two legs: identical bytes + streaming commits) | First-party lab | Iceberg↔DuckLake read-neutral on byte-identical data; under a 100-commit stream Iceberg ingest ~37×, metadata footprint ~515×, planning ~21×, while DuckLake planning stays flat (~7 ms) — the write-contract complement to read-neutrality |
 | **H-NDR-FEDERATION-01** (cross-source correlation) | ⭐⭐⭐⭐ High | 1 (first-party, 2-source join) | First-party lab | Join surfaces attacker 198.51.100.66 (lateral movement) no single source reveals |
 
 **Key Insight**: **Hypothesis validation strength correlates with source diversity** (government + industry + production), not just source count. H-IMPL-02 (staffing) has **strongest validation** despite only 4 sources because: DORA (industry research) + IDC (analyst) + Ververica (production) + McKinsey (consulting) represent **4 independent validation types**. The first-party hypotheses score differently: a single source, but a source we control end-to-end, so the discriminating dimensions are reproducibility and the answer-equality gate rather than independent-source count. A first-party run cannot manufacture source diversity, and we do not pretend it does; its claim is narrower and better-controlled, which is why several of these sit at High rather than Strong despite being measured rather than borrowed.
@@ -685,26 +685,31 @@ At 100M the fastest engine differs by workload: ClickHouse wins the full-scan `c
 
 ---
 
-### H-DUCKLAKE-02: Swap-Format Read-Neutral
+### H-DUCKLAKE-02: Swap-Format Read-Neutral + Streaming Commit-Tax
 
-**Hypothesis**: "Reading the same logical data is format-neutral between Iceberg and DuckLake when the underlying bytes are identical."
+**Hypothesis**: "Reading the same logical data is format-neutral between Iceberg and DuckLake when the underlying bytes are identical; the format choice for security telemetry turns instead on the write/commit contract under a tiny-frequent-commit cadence."
 
 **Validation Status**: ✅ **VALIDATED (first-party, single host)**
 
-**Evidence Tier**: First-party lab measurement (2026-06-07, MOAR reference stack). Controls the writer confound by reading byte-identical data into both formats rather than comparing two separately-written copies.
+**Evidence Tier**: First-party lab measurement (2026-06-07, MOAR reference stack). Two complementary legs: a read-path leg that controls the writer confound by reading byte-identical data into both formats, and a write-path leg that measures the commit-tax directly under streaming cadence.
 
-**Measurement**: the swap-format probe registered the same byte-identical files into both an Iceberg table and a DuckLake table and read both; the read was **format-neutral** — Iceberg↔DuckLake showed no read advantage on identical bytes. The control is that the bytes are the same, so any difference would be the format layer, not the writer/encoder.
+**Measurement (leg 1 — read-neutrality)**: the swap-format probe registered the same byte-identical files into both an Iceberg table and a DuckLake table and read both; the read was **format-neutral** — Iceberg↔DuckLake showed no read advantage on identical bytes. The control is that the bytes are the same, so any difference would be the format layer, not the writer/encoder.
+
+**Measurement (leg 2 — streaming commit-tax, the write-contract complement)**: because reads are at parity on byte-identical data, the format choice for security telemetry — whose cadence is many tiny frequent commits — turns on the write/commit contract, which `lab/commit_tax.py` measures directly (MinIO object store, single host). Writing 100,000 rows as one batch commit versus 100 streaming commits, Iceberg pays a steep per-commit tax as cadence rises: ingest 0.44 s → 16.3 s (~37×), data files 1 → 100 (the file-per-commit floor), metadata files 4 → 301, metadata footprint 8.9 KB → 4,579 KB (~515×), and query-planning latency 8.7 ms → 181 ms (~21×, from walking the lengthening manifest list). DuckLake on the same 100-commit stream keeps its metadata in the catalog DB, so planning stays flat (~7 ms regardless of cadence), and with inlining enabled it writes 0 per-commit Parquet files. So the leg that actually distinguishes the two formats for security's commit pattern is the write contract, not the read path — leg 1 establishes read parity, leg 2 shows where the parity ends.
 
 **Confidence Drivers**:
-✅ Byte-identical underlying data isolates the format layer from the writer confound
-✅ Read-neutrality is the measured result, not an assumed equivalence
+✅ Byte-identical underlying data isolates the format layer from the writer confound (leg 1)
+✅ Read-neutrality is the measured result, not an assumed equivalence (leg 1)
+✅ The commit-tax is measured under the tiny-frequent-commit cadence that matches security telemetry, not assumed (leg 2)
+✅ The write-path leg and the read-path leg are complementary: reads at parity on identical bytes, writes diverging sharply under streaming cadence, so the format decision is located on the write contract directly
 
 **Confidence Limiters**:
-⚠️ Single host; read-neutrality measured, not write-path or maintenance-operation behavior
-⚠️ Bounded to the read patterns exercised, not a full workload surface
+⚠️ Single host (MinIO object store); the *shape* of the tax is the finding, not a production-scale magnitude
+⚠️ Leg 1 measures read-neutrality, leg 2 the streaming write/commit path; neither covers maintenance-operation behavior (compaction, expiry) at scale
+⚠️ Iceberg's per-commit floor is sensitive to commit batching and table-maintenance settings; the 100-commit stream is a deliberate worst-case for the file-per-commit floor
 
 **Recommended Language**:
-> "Reading byte-identical data registered into both an Iceberg and a DuckLake table was format-neutral on a single host — no read advantage either way — which isolates the format layer from the writer confound (first-party, 2026-06-07)."
+> "Reading byte-identical data registered into both an Iceberg and a DuckLake table was format-neutral on a single host — no read advantage either way — which isolates the format layer from the writer confound. The write contract is where they diverge: under a 100-commit stream of 100,000 rows, Iceberg's ingest went 0.44 s → 16.3 s (~37×), its metadata footprint 8.9 KB → 4,579 KB (~515×), and query-planning 8.7 ms → 181 ms (~21×) as it walked a lengthening manifest list, while DuckLake kept planning flat (~7 ms) by holding metadata in the catalog DB and wrote 0 per-commit Parquet files with inlining on. So for security telemetry's tiny-frequent-commit cadence, reads are at parity and the format choice turns on the commit contract (first-party, MinIO, single host, 2026-06-07)."
 
 ---
 
@@ -753,7 +758,7 @@ At 100M the fastest engine differs by workload: ClickHouse wins the full-scan `c
 | **H-ARCH-02** | ⭐⭐⭐⭐ | **No single engine wins** - lead with the measured 100M crossover (ClickHouse full-scan count, DuckDB needle + group-by); note DuckDB swept at 1M/10M, so specialization is a scale property; relative pattern, single host |
 | **H-OCSF-CONTEXT-COLLAPSE-01** | ⭐⭐⭐⭐ | **+0.719 fidelity delta** - cite the published BENCH-A artifact, don't re-derive |
 | **H-SEC-CATALOG-01** | ⭐⭐⭐ | **Portable across 5 open catalogs** - state the Unity Catalog leg as not-reproducible |
-| **H-DUCKLAKE-02** | ⭐⭐⭐⭐ | **Iceberg↔DuckLake read-neutral on identical bytes** - note the writer-confound control |
+| **H-DUCKLAKE-02** | ⭐⭐⭐⭐ | **Iceberg↔DuckLake read-neutral on identical bytes; commit-tax diverges under streaming** - reads at parity (writer-confound control), but a 100-commit stream costs Iceberg ~37× ingest / ~515× metadata footprint / ~21× planning while DuckLake stays flat; lead with the write-contract complement for security's tiny-frequent-commit cadence |
 | **H-NDR-FEDERATION-01** | ⭐⭐⭐⭐ | **Join surfaces 198.51.100.66 lateral movement** - federation value on a controlled join |
 
 ---
