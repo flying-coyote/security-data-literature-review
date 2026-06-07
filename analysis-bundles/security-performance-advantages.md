@@ -3,8 +3,9 @@
 **Purpose**: Isolate performance advantages unique to security workloads (not general analytics)
 **Target Chapters**: Chapter 1 (Why Security is Different), Chapter 9 (Query Engines)
 **Created**: October 15, 2025
-**Sources**: All citations reference MASTER-BIBLIOGRAPHY.md entries
-**Evidence Quality**: 8 of 8 sources = Level A (100%)
+**Updated**: June 7, 2026 (added a first-party MOAR reference-stack CIDR measurement as a measured leg in §1.1; it lands below the borrowed 50-100× band, and all borrowed sources are retained)
+**Sources**: Borrowed citations reference MASTER-BIBLIOGRAPHY.md entries; the first-party leg references the SDW MOAR reference stack (`lab/cidr_probe.py`)
+**Evidence Quality**: 8 of 8 borrowed sources = Level A (100%), plus a first-party lab measurement (distinct evidence tier — identical-workload, answer-equality-gated, reproducible, single host)
 
 ---
 
@@ -54,8 +55,22 @@
 | **Elasticsearch** (string-based) | VARCHAR | 60-120 seconds | Full table scan, string parsing per row |
 | **Splunk** (string-based) | String index | 30-90 seconds | String indexing helps, still parsing overhead |
 | **ClickHouse** (native IP types) | UInt32/UInt128 | **0.5-1.5 seconds** | Integer range comparisons, highly optimized |
+| **ClickHouse** (native IPv4, first-party) ‡ | IPv4 (UInt32) | **~0.010 s warm / 0.017 s cold** | First-party MOAR probe, 20M rows, single host |
 
-**Speedup**: **50-100× faster** for CIDR-based threat hunting
+‡ First-party measured leg (2026-06-07, MOAR reference stack, `lab/cidr_probe.py`): the native IPv4 vs per-row String comparison ran ~13-17× — **below** the borrowed 50-100× band because it is a single host at 20M rows rather than 100,000 CIDR blocks across a billion events. See §1.1 for the full measurement and hedge.
+
+**Speedup**: **50-100× faster** for CIDR-based threat hunting (borrowed); **~13-17× measured first-party** on a single host at 20M rows (below the borrowed band — see §1.1)
+
+---
+
+**FIRST-PARTY measurement (2026-06-07, MOAR reference stack, single host)**:
+
+The borrowed 50-100× headline is now grounded by a first-party CIDR probe on the SDW MOAR ("Modular Open Architecture") reference stack — ClickHouse, one host, 20,000,000 rows, runnable as `lab/cidr_probe.py`. The query counts IPs inside `10.5.0.0/16`: the native IPv4 column with an integer range comparison ran in **~0.010 s warm (0.017 s cold)** against **~0.166 s warm (0.213 s cold)** for a String column parsed per row, so the native type was **~13-17× faster**. Both representations returned the identical answer (78,211 of 20M) before the ratio was read. Storage: the String column occupied **188.1 MiB** against **65.4 MiB** for the IPv4 type, **~2.9× smaller**.
+
+HEDGE: ~13-17× on a single host at 20M rows lands **below** the borrowed 50-100× band, which is measured at larger scale and/or different query shapes (100,000 CIDR blocks across a billion events in the table above), so the durable first-party findings are the measured direction (native IPv4 integer comparison beats per-row String parsing) and the ~2.9× storage ratio, not the magnitude. This is a distinct (and, for the storage ratio, higher) evidence tier than the borrowed vendor-documentation figure — we ran an identical-workload, answer-equality-gated comparison on our own data — and it is reported alongside the borrowed number, not in place of it.
+
+**Evidence Level**: borrowed = A (vendor documentation); first-party = **lab measurement** (identical-workload, answer-equality-gated, reproducible, single host)
+**Confidence**: High for the measured direction and the ~2.9× storage ratio (bounded to this apparatus); the 50-100× magnitude remains the borrowed claim at larger scale
 
 ---
 
@@ -299,7 +314,7 @@
 
 | Requirement | General Analytics | Security Analytics | Optimized Platform |
 |-------------|------------------|-------------------|-------------------|
-| **IP/CIDR Queries** | Rare (not a pattern) | Constant (core workflow) | ClickHouse native IP types (50-100× speedup) |
+| **IP/CIDR Queries** | Rare (not a pattern) | Constant (core workflow) | ClickHouse native IP types (50-100× speedup borrowed; ~13-17× measured first-party at 20M rows, below the band — §1.1) |
 | **Burst Capacity** | Predictable load | 350% incident surges | Cloud elastic (Athena, ClickHouse Cloud) |
 | **Stateful Entities** | Aggregate (GROUP BY) | Per-entity tracking | Kafka Streams (terabytes of state) |
 | **Multi-Year Retention** | Archive offline (cold) | Queryable (compliance) | Iceberg + Trino (52.7 TB in 3.39s) |
@@ -327,7 +342,7 @@
 
 | Security Pattern | Generic Approach (Baseline) | Security-Optimized | Improvement | Source |
 |-----------------|----------------------------|-------------------|-------------|--------|
-| **CIDR-Based Hunting** | String-based IP storage | ClickHouse native IP types | **50-100× faster** | MASTER-BIBLIOGRAPHY.md:616-634 |
+| **CIDR-Based Hunting** | String-based IP storage | ClickHouse native IP types | **50-100× faster** (borrowed); **~13-17× measured first-party** at 20M rows on a single host, below the borrowed band, **storage ~2.9× smaller** (IPv4 vs String) | MASTER-BIBLIOGRAPHY.md:616-634 + MOAR `lab/cidr_probe.py` (2026-06-07) |
 | **Incident Burst Handling** | Fixed capacity (over-provisioned 4×) | Cloud elastic auto-scaling | **70-80% cost savings** (pay only during bursts) | Microsoft MSRC + cloud economics |
 | **Entity Behavior Tracking** | Batch re-processing (daily) | Kafka Streams stateful | **Sub-second vs hours** (real-time materialized views) | LinkedIn, Uber validated |
 | **Multi-Year Historical Queries** | Cold archive (restore wait) | Iceberg + Trino | **52.7 TB in 3.39s** vs hours | SK Telecom |
@@ -449,7 +464,7 @@
 
 | Claim | Confidence | Rationale |
 |-------|-----------|-----------|
-| 50-100× CIDR hunting speedup | **High** | ClickHouse documentation + architecture validation |
+| 50-100× CIDR hunting speedup | **High** | ClickHouse documentation + architecture validation; first-party MOAR probe (2026-06-07) measures ~13-17× at 20M rows on a single host (below the borrowed band) and ~2.9× storage — direction and storage ratio are the durable first-party findings, magnitude stays the borrowed claim at larger scale |
 | 350% incident traffic surges | **High** | Microsoft MSRC authoritative data |
 | Terabytes of state, ms access | **High** | LinkedIn production validation |
 | 18-24 months optimal retention | **High** | MITRE 15+ years research authority |
@@ -462,6 +477,7 @@
 | Version | Date | Changes | Sources Updated |
 |---------|------|---------|-----------------|
 | 1.0 | 2025-10-15 | Initial synthesis | 8 sources consolidated |
+| 1.1 | 2026-06-07 | Added first-party MOAR-stack CIDR measurement (`lab/cidr_probe.py`: ~13-17× native IPv4 vs per-row String parsing at 20M rows on a single host, below the borrowed 50-100× band; ~2.9× storage) to §1.1 and threaded it through the §1.1 table, §6.1, §7.1, §10 tables. Borrowed sources retained. | + first-party lab measurement |
 
 ---
 

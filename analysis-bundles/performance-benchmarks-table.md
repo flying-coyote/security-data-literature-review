@@ -100,6 +100,8 @@ Performance claims are ubiquitous in vendor marketing. This reference consolidat
 **Evidence Level**: A (Vendor documentation, security-specific)
 **Confidence**: High - **CRITICAL** security-specific performance advantage
 
+**FIRST-PARTY measurement (2026-06-07, MOAR reference stack, single host)**: The borrowed 50-100× is now grounded by a first-party CIDR probe on the MOAR reference stack — ClickHouse, one host, 20,000,000 rows, runnable as `lab/cidr_probe.py`. Counting IPs inside `10.5.0.0/16`, the native IPv4 column with an integer range comparison ran in **~0.010 s warm (0.017 s cold)** against **~0.166 s warm (0.213 s cold)** for a String column parsed per row, so the native type was **~13-17× faster**; both returned the identical answer (78,211 of 20M) before the ratio was read. Storage: the String column held **188.1 MiB** against **65.4 MiB** for the IPv4 type, **~2.9× smaller**. HEDGE: ~13-17× on a single host at 20M rows lands **below** the borrowed 50-100× band (which is at larger scale and/or different query shapes), so the durable first-party findings are the measured direction and the ~2.9× storage ratio, not the magnitude. Distinct (and, for storage, higher) evidence tier than the borrowed vendor figure — identical-workload, answer-equality-gated, reproducible — reported alongside the borrowed number, not in place of it.
+
 ---
 
 **Altinity - ClickHouse Ingest Performance**
@@ -122,13 +124,15 @@ Performance claims are ubiquitous in vendor marketing. This reference consolidat
 | **Query Latency (P95)** | <1 second (96% of queries) | Cloudflare | A |
 | **Compression Ratio** | 10-12× (columnar storage) | Cloudflare | A |
 | **Storage Efficiency** | 5-10× vs Elasticsearch (borrowed); **~7.0× measured first-party** on OCSF data (FOIL) † | ClickHouse benchmark + MOAR FOIL (2026-06-07) | A + **first-party** |
-| **CIDR Threat Hunting** | 50-100× faster (native IP types) | ClickHouse docs | A |
+| **CIDR Threat Hunting** | 50-100× faster (native IP types, borrowed); **~13-17× measured first-party** at 20M rows on a single host (below the band), **storage ~2.9× smaller** (IPv4 vs String) ‡ | ClickHouse docs + MOAR `lab/cidr_probe.py` (2026-06-07) | A + **first-party** |
 | **CPU Efficiency** | 8-10× vs row-based DB | ClickHouse architecture | A |
 | **Production Scale** | 57 TB/day (Shell), 6M req/sec (Cloudflare) | Production cases | A |
 
 **Security Use Case Validation**: ✅ **Exceptional** - Multiple production security deployments (Shell, Cloudflare)
 
 † **First-party note**: the storage-efficiency row now carries a first-party measurement (~7.0× on OCSF data, MOAR FOIL, 2026-06-07, single host) inside the borrowed 5-10× band. See §1.1 and the four-engine first-party subsection (§1.3) below.
+
+‡ **First-party note**: the CIDR row now carries a first-party measurement (~13-17× native IPv4 vs per-row String parsing, MOAR `lab/cidr_probe.py`, 2026-06-07, 20M rows, single host) that lands **below** the borrowed 50-100× band, plus a ~2.9× storage ratio (IPv4 vs String). The measured direction and storage ratio are the durable findings; the 50-100× magnitude stays the borrowed claim at larger scale. See §1.1.
 
 ---
 
@@ -381,7 +385,7 @@ This is a distinct evidence tier from the production-deployment rows above: rath
 
 | Platform | Throughput (events/sec) | Query Latency (P95) | Compression | Storage Efficiency | Security-Specific Features |
 |----------|------------------------|---------------------|-------------|-------------------|---------------------------|
-| **ClickHouse** | 1.8-2.2M/node | <1s (96%) | 10-12× | 5-10× vs Elasticsearch (**~7.0× measured first-party** on OCSF data, FOIL) | Native IP types (50-100× CIDR hunting) |
+| **ClickHouse** | 1.8-2.2M/node | <1s (96%) | 10-12× | 5-10× vs Elasticsearch (**~7.0× measured first-party** on OCSF data, FOIL) | Native IP types (50-100× CIDR hunting borrowed; **~13-17× measured first-party** at 20M rows, single host — below the band — plus ~2.9× storage, §1.1) |
 | **Elasticsearch** | ~500K-1M/node (typical) | 1-5s (varies) | 3-5× | Baseline | Full-text search optimized |
 | **Trino** | N/A (query engine, not storage) | Varies (federated) | Depends on storage | Federated (no storage) | SQL federation across sources |
 | **Athena** | N/A (serverless) | 5-30s (varies) | Depends on Parquet | Pay-per-query | Serverless, no ops overhead |
@@ -458,7 +462,7 @@ This is a distinct evidence tier from the production-deployment rows above: rath
 | Workload Type | Performance Requirement | Relevant Benchmark | Platform Recommendation |
 |---------------|------------------------|-------------------|------------------------|
 | **Real-Time Detection** | Sub-second latency, stateful processing | Kafka Streams (Uber, LinkedIn) | Kafka + ClickHouse |
-| **Threat Hunting** | CIDR-based IP queries, billion-row scans | ClickHouse IP types (50-100× speedup) | ClickHouse |
+| **Threat Hunting** | CIDR-based IP queries, billion-row scans | ClickHouse IP types (50-100× speedup borrowed; ~13-17× measured first-party at 20M rows, single host, below the band — §1.1) | ClickHouse |
 | **Incident Investigation** | Multi-year retention, fast historical queries | Iceberg (52.7 TB in 3.39s) | Iceberg + Trino/ClickHouse |
 | **Compliance Queries** | Multi-year queryable retention | Tiered storage (70-80% cost savings) | Iceberg + S3 tiered storage |
 | **Log Aggregation** | High ingestion throughput, compression | ClickHouse (1.8-2.2M/sec/node, 10-12× compression) | ClickHouse |
@@ -491,7 +495,7 @@ This is a distinct evidence tier from the production-deployment rows above: rath
 
 | Optimization | Performance Improvement | Cost Impact | ROI Timeline |
 |--------------|------------------------|-------------|--------------|
-| **Native IP Types (ClickHouse)** | 50-100× CIDR hunting speedup | Free (feature, not add-on) | Immediate |
+| **Native IP Types (ClickHouse)** | 50-100× CIDR hunting speedup (borrowed); ~13-17× measured first-party at 20M rows on a single host (below the band), plus ~2.9× storage (IPv4 vs String) | Free (feature, not add-on) | Immediate |
 | **Iceberg Table Format** | 10-30× query speedup | Free (open format) | Immediate |
 | **Tiered Storage (Kafka)** | Minimal perf impact (cold data) | 70-80% storage savings | Immediate |
 | **Arrow Flight SQL** | 20× result retrieval speedup | Free (open protocol) | Immediate |
@@ -575,6 +579,7 @@ This is a distinct evidence tier from the production-deployment rows above: rath
 
 4. **"ClickHouse native IP types provide 50-100× performance improvement for CIDR-based threat hunting vs string-based implementations"**
    - Citation: MASTER-BIBLIOGRAPHY.md:616-634 (security-specific optimization)
+   - First-party caveat: a MOAR-stack probe (2026-06-07, 20M rows, single host, `lab/cidr_probe.py`) measured ~13-17× native IPv4 vs per-row String parsing — below the borrowed band at this scale — with a ~2.9× storage saving; cite the measured direction and storage ratio as first-party, keep 50-100× as the borrowed claim at larger scale (§1.1)
 
 5. **"Kafka Streams enables stateful entity tracking at scale: LinkedIn maintains terabytes of state with millisecond access times, Uber operates thousands of real-time security views with sub-second refresh rates"**
    - Citations: MASTER-BIBLIOGRAPHY.md:502-520 (LinkedIn), MASTER-BIBLIOGRAPHY.md:681-699 (Uber)
@@ -608,7 +613,7 @@ This is a distinct evidence tier from the production-deployment rows above: rath
 
 | Technology | Benchmark Confidence | Production Validation | Security-Specific Validation |
 |-----------|---------------------|----------------------|----------------------------|
-| **ClickHouse** | High | ✅ Strong (Shell, Cloudflare) | ✅ Strong (IP types, 57TB/day) |
+| **ClickHouse** | High | ✅ Strong (Shell, Cloudflare) | ✅ Strong (IP types, 57TB/day); first-party CIDR probe (2026-06-07) measures ~13-17× + ~2.9× storage at 20M rows, single host — below the borrowed 50-100× band (§1.1) |
 | **Kafka** | High | ✅ Strong (Uber, LinkedIn, Azure) | ✅ Strong (Uber, LinkedIn security) |
 | **Iceberg** | High | ✅ Strong (SK Telecom, Cloudera) | ⚠️ Moderate (general analytics) |
 | **Arrow** | High | ✅ Strong (multiple platforms) | ✅ Moderate (VAST network telemetry) |
@@ -621,6 +626,7 @@ This is a distinct evidence tier from the production-deployment rows above: rath
 | Version | Date | Changes | Sources Updated |
 |---------|------|---------|-----------------|
 | 1.0 | 2025-10-15 | Initial synthesis | 12 sources consolidated |
+| 1.1 | 2026-06-07 | Added first-party MOAR-stack legs: FOIL storage (~7.0× on OCSF), four-engine identical-workload latency (§1.3), and a CIDR probe (`lab/cidr_probe.py`: ~13-17× native IPv4 vs String, below the borrowed 50-100× band; ~2.9× storage). Borrowed sources retained. | + first-party lab measurements |
 
 ---
 
