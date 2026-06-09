@@ -133,6 +133,22 @@ report on it, and reconciles the source count across every surface that states i
   77 → 79 Tier-B. Updated MASTER-BIBLIOGRAPHY.md header, README.md, REPOSITORY-STATUS.md; validation trail
   appended to RESEARCH-JOURNAL.md (2026-06-09 row).
 
+### Fixed (self-description + freshness regex — 2026-06-09)
+- **Repo self-description broadened off book-only framing.** The README H1/intro and the bibliography
+  Purpose line described the repo as "for the *Modern Data Stack for Cybersecurity* book" — a stale,
+  pre-rebrand book title, and book-only scope. The repo is now the shared evidence backbone for the whole
+  Security Data Works program (the rebranded book *Modular Open Architecture (MOAr) for Cybersecurity Data*,
+  the securitydataworks.com essays/research, and the applied-bridge positioning, which publicly links here).
+  Updated README.md (title + executive summary + purpose) and MASTER-BIBLIOGRAPHY.md:3.
+- **Freshness regex now reads prose dates.** `weekly_health_check.py` matched only a 4-digit year at the
+  START of the `**Date**:` value (`\*\*Date\*\*:\s*(\d{4})`), so 37 prose-dated entries ("May 19, 2026",
+  "October 2022") were invisible to the freshness count and ranges ("2022-2024") were mis-aged to their
+  oldest year. Now it captures the full Date value and resolves to its most-recent 4-digit year. Honest
+  effect: the metric was reporting a **false 79.5% stale** (89/112 — it caught the first year of ranges and
+  missed the 2026 prose dates); the true figure is **40.9% (61/149)**, driven mostly by legitimately-aged
+  2024 entries. The check now WARNs on an accurate ~41% rather than a spurious 79.5%. Not a metric-game —
+  it reads dates the old regex couldn't parse and ages ranges by their newest year, which is the honest read.
+
 ## [1.22.0] - 2026-06-05 - Revival: honesty, Second Brain merge, fabricated-source removal
 
 After a 96-day lapse (the manual monthly checklist had no scheduler and the dashboard was masking

@@ -1,6 +1,6 @@
 # Master Bibliography - Living Literature Review
 
-**Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
+**Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
 **Last Updated**: June 5, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
 **Total Sources**: 146 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.

@@ -224,14 +224,28 @@ class LiteratureReviewHealthCheck:
         if not bib_path.exists():
             return
 
-        # Extract dates and validation status
-        date_pattern = re.compile(r'\*\*Date\*\*:\s*(\d{4})')
+        # Extract dates and validation status.
+        # Capture the FULL Date value, then resolve it to its most-recent 4-digit
+        # year. The old r'\*\*Date\*\*:\s*(\d{4})' only matched a year at the START
+        # of the value, so prose dates ("May 19, 2026", "October 2022") were missed
+        # entirely and ranges ("2022-2024") were mis-aged to their oldest year.
+        # Reading every 19xx/20xx year in the value and taking the max is the honest
+        # reading: an entry dated "2022-2024" is current as of 2024.
+        date_line_pattern = re.compile(r'\*\*Date\*\*:\s*([^\n]+)')
+        year_pattern = re.compile(r'\b(?:19|20)\d{2}\b')
         validation_pattern = re.compile(r'\*\*Validation Status\*\*:\s*([^\\n]+)')
 
         with open(bib_path, 'r') as f:
             content = f.read()
-            dates = date_pattern.findall(content)
+            date_values = date_line_pattern.findall(content)
             validations = validation_pattern.findall(content)
+
+        # Resolve each Date line to its most-recent year (prose, range, or Month YYYY).
+        dates = []
+        for _val in date_values:
+            _years = year_pattern.findall(_val)
+            if _years:
+                dates.append(str(max(int(y) for y in _years)))
 
         # Check for sources older than 12 months
         current_year = datetime.now().year
