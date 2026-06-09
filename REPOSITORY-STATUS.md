@@ -11,7 +11,7 @@
 
 **Overall Phase**: 🔄 **Phase 2 ACTIVE** (Monthly Updates + Quarterly Deep Dives)
 
-**Current metrics (June 2026, live-computed — see `scripts/weekly_health_check.py`)**: 144 sources · ~47% Evidence Level A (67/144 A, 77 B, 9 C — honest post-audit baseline after the 2026-06-05 fold re-tiered ~26 entries off A, plus 3 new 2026 Tier-A primary sources: Iceberg 1.11.0, OCSF–ITU support, D3FEND-for-OT) · stale-source freshness sweep substantially complete (every >12mo entry now carries a 2026-06-05 validation or freshness marker; 1 broken link fixed 2026-06-05). Older dated "Key Metrics" blocks below are point-in-time records, kept as history — not current.
+**Current metrics (June 2026, live-computed — see `scripts/weekly_health_check.py`)**: 146 sources · ~46% Evidence Level A (67/146 A, 79 B, 9 C — honest post-audit baseline after the 2026-06-05 fold re-tiered ~26 entries off A, plus 3 new 2026 Tier-A primary sources: Iceberg 1.11.0, OCSF–ITU support, D3FEND-for-OT; plus 2 Tier-B bridge-framing sources 2026-06-09: Reis *Fundamentals of Data Engineering*, McComb data-centric / incremental-stealth-modernization) · stale-source freshness sweep substantially complete (every >12mo entry now carries a 2026-06-05 validation or freshness marker; 1 broken link fixed 2026-06-05). Older dated "Key Metrics" blocks below are point-in-time records, kept as history — not current.
 
 **January 2, 2026 Session Complete**:
 - ✅ **Best practices audit** completed (Score: 78/100 → 92/100)

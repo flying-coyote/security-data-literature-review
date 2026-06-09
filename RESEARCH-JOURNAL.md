@@ -285,5 +285,18 @@ Health check: CRITICAL → WARNING (still ESCALATEs on the intentional 60% floor
 
 ---
 
+## 2026-06-09 — Bridge framing sources (conceptual anchors; no quantitative claim catalogued)
+
+Added the two framing sources the applied-bridge positioning rests on, which the corpus lacked. These ground *framing*, not numbers — neither carries a headline statistic, so neither is exposed to the stat-mismatch audit. Both verified at insertion via WebSearch (publisher + author listings).
+
+| Entry | Method | Finding |
+|---|---|---|
+| Fundamentals of Data Engineering (Reis & Housley) | claim↔source (WebSearch: O'Reilly + Amazon/Google Books) | O'Reilly Media, published 2022-07-26, ISBN-13 978-1098108304; the **data-engineering lifecycle** (generation/storage/ingestion/transformation/serving) confirmed as the book's central framework. **Tier B** (authoritative practitioner book; A reserved for peer-reviewed/standards). Grounds the bridge's *inclusion* move ("you're already doing data engineering"). Filed under Foundational Architecture → Data Engineering Foundations. |
+| The Data-Centric Revolution + Incremental Stealth Legacy Modernization (McComb) | claim↔source (WebSearch: TDAN.com + Semantic Arts + Technics Publications) | Dave McComb (Semantic Arts); *The Data-Centric Revolution* (Technics, 2019) for the single extensible/data-centric model, and "Incremental Stealth Legacy Modernization" (TDAN.com column + named Semantic Arts method) for the gradual, no-green-light migration path. **Tier B** (conceptual framing, no statistic). Grounds the bridge's two *relief* moves — compose-don't-build + incremental-not-big-bang. Filed under Implementation & Organizational → Change Management. |
+
+Net (this pass): entries 144 → 146; Level-A held at 67 (67/146 = 45.9% ≈ 46% as the denominator grew); +2 Tier-B (77 → 79 B). 0 broken links added (both URLs WebFetch/WebSearch-live at insertion). Rationale: the realigned securitydataworks.com/thesis publicly links this repo as its evidence backbone, and a reader following that link should find the foundational citations for the framing they just read.
+
+---
+
 *Next validation due with the cadence (`SCHEDULING.md`). When the worklist items above are re-sourced or
 stripped, append a dated row moving each to VERIFIED or removing it — do not silently re-litigate settled rows.*

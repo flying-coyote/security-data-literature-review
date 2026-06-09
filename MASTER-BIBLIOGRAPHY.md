@@ -3,9 +3,9 @@
 **Purpose**: Comprehensive source tracking for Modern Data Stack for Cybersecurity book
 **Last Updated**: June 5, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 144 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
+**Total Sources**: 146 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: ~47% Evidence Level A (live: 67 of 144 entries marked `**Evidence Level**: A`; 77 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Evidence Quality**: ~46% Evidence Level A (live: 67 of 146 entries marked `**Evidence Level**: A`; 79 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 14 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -48,6 +48,32 @@ This bibliography consolidates all literature sources from:
 ---
 
 ## Foundational Architecture
+
+### Data Engineering Foundations
+
+#### Fundamentals of Data Engineering (O'Reilly Book)
+
+**Authors**: Joe Reis, Matt Housley
+**Date**: July 2022 (1st Edition)
+**URL**: https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/
+**Alt URL**: https://www.amazon.com/Fundamentals-Data-Engineering-Robust-Systems/dp/1098108302 (ISBN-13 978-1098108304)
+**Evidence Level**: B (Authoritative practitioner reference; conceptual framing, not a quantitative source)
+**Relevance**:
+- Book Chapters 1–2 (the applied-bridge thesis: security's platform problem is largely a data-engineering problem)
+- Grounds the bridge's *inclusion* move — the data-engineering lifecycle is what security analysts, threat hunters, and especially detection engineers already perform ad hoc when they pull data out of the SIEM and wrangle it in tools they understand
+- The modern-data-stack framing the bridge uses to place security roughly a decade behind the data-engineering field
+
+**Key Findings**:
+- The **data engineering lifecycle** — generation, storage, ingestion, transformation, serving — as the durable spine that has "remained essentially unchanged despite the rise and fall of specific technologies and vendor products"
+- Treats the lifecycle as independent of any specific tool or vendor — the principle the bridge carries into security: open formats and modular engines outlast the monolith
+- Defines data engineering as a discipline in its own right, which is the practice the bridge argues security teams are already doing without naming it
+
+**Citations**: Applied-bridge framing (the relabel + inclusion moves); the modern-data-stack maturation narrative; Joe Reis is the "modern data stack" voice in the origin narrative's cold open (securitydataworks.com/thesis/origin)
+**Notes**: Framing/conceptual anchor for the applied-bridge positioning (securitydataworks.com/thesis). Carries no headline statistic — catalogued for the lifecycle framework, not a number, so it is not exposed to the 2026 stat-mismatch audit. Tier B under Jeremy's strict tiers (authoritative practitioner book; A is reserved for peer-reviewed research / official standards).
+
+**Validation Status**: ✅ Verified 2026-06-09 (WebSearch: O'Reilly Media, published 2022-07-26, ISBN-13 978-1098108304, Joe Reis & Matt Housley; the data-engineering-lifecycle framework confirmed against the publisher and author listings).
+
+---
 
 ### Table Formats
 
@@ -453,6 +479,29 @@ This bibliography consolidates all literature sources from:
 ## Implementation & Organizational
 
 ### Change Management
+
+#### The Data-Centric Revolution + Incremental Stealth Legacy Modernization (Dave McComb)
+
+**Authors**: Dave McComb (President / co-founder, Semantic Arts)
+**Date**: 2019 (*The Data-Centric Revolution*, Technics Publications); "Incremental Stealth Legacy Modernization" (TDAN.com column / Semantic Arts method)
+**URL**: https://technicspub.com/software_wasteland/ (Technics Publications page for *Software Wasteland* + *The Data-Centric Revolution*)
+**Alt URL**: https://tdan.com/the-data-centric-revolution-incremental-stealth-legacy-modernization/29181 (the incremental-modernization method)
+**Evidence Level**: B (Authoritative practitioner; conceptual framing, not a quantitative source)
+**Relevance**:
+- Book Chapter 4 (Implementation journeys — migrating off a legacy SIEM one workload at a time)
+- Grounds the bridge's two *relief* moves: **compose, don't build** (the single canonical, extensible, data-centric model — data as the durable, reusable, interoperable asset rather than application-centric silos) and **incremental, not big-bang** (the stealth-modernization method: fix the broken pieces, no rip-and-replace, no green-light megaproject)
+
+**Key Findings**:
+- **Single extensible data model / data-centric architecture**: data as the durable asset the applications come and go around — the principle behind composing maintained open-standard parts (Iceberg, Arrow, OCSF) instead of building a stack from scratch or buying one vendor's monolith
+- **Incremental Stealth Legacy Modernization**: a deliberately safe, gradual path — move some data first, prove it, then move more data and functionality — created precisely because "no one is going to get the green light to take this on directly"; the SIEM parallel is that the legacy keeps running while the lakehouse takes the workloads it wins
+- Application-centric sprawl (*Software Wasteland*, 2018) as the failure mode the data-centric model is meant to avoid
+
+**Citations**: The bridge relief moves (compose-don't-build, incremental-not-big-bang); the migration-as-a-sequence framing in the origin narrative and the Subsurface talk
+**Notes**: Framing/conceptual anchor for the applied-bridge positioning (securitydataworks.com/thesis). Carries no headline statistic — catalogued for the method and the data-centric model, not a number, so it is not exposed to the stat-mismatch audit. McComb has authored *The Data-Centric Revolution*, *Software Wasteland*, and *Semantics in Business Systems*; Semantic Arts has been Data-Centric-focused since 2000.
+
+**Validation Status**: ✅ Verified 2026-06-09 (WebSearch: McComb authorship of the three books confirmed; "Incremental Stealth Legacy Modernization" confirmed as a TDAN.com column and a named Semantic Arts method).
+
+---
 
 #### Prosci Change Management Best Practices (12th Edition)
 

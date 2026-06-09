@@ -115,6 +115,24 @@ report on it, and reconciles the source count across every surface that states i
   including most 2026 sources — are invisible to the freshness count, understating how current the corpus
   is. Left the script unchanged (not gaming the metric); flagged for Jeremy.
 
+### Added (bridge framing sources — 2026-06-09)
+- Catalogued the two framing sources the applied-bridge positioning rests on, which the corpus lacked
+  (the realigned `securitydataworks.com/thesis` now publicly links this repo as its evidence backbone, so a
+  reader following that link should find the foundations for the framing they just read):
+  - **Fundamentals of Data Engineering** (Joe Reis & Matt Housley, O'Reilly 2022-07-26, ISBN-13
+    978-1098108304) under Foundational Architecture → Data Engineering Foundations. Grounds the bridge's
+    *inclusion* move ("you're already doing data engineering" — the data-engineering lifecycle).
+  - **The Data-Centric Revolution + Incremental Stealth Legacy Modernization** (Dave McComb, Technics 2019 +
+    TDAN.com / Semantic Arts) under Implementation & Organizational → Change Management. Grounds the two
+    *relief* moves — compose-don't-build (single extensible data-centric model) + incremental-not-big-bang
+    (stealth modernization).
+- Both **Tier B** (authoritative practitioner works; A reserved for peer-reviewed/standards) and both are
+  **framing, not statistics** — neither carries a headline number, so neither is exposed to the stat-mismatch
+  audit. Each verified at insertion via WebSearch (publisher + author + method listings).
+- Count reconciled across every surface that states it: **144 → 146**, Level-A held at 67 (67/146 ≈ 46%),
+  77 → 79 Tier-B. Updated MASTER-BIBLIOGRAPHY.md header, README.md, REPOSITORY-STATUS.md; validation trail
+  appended to RESEARCH-JOURNAL.md (2026-06-09 row).
+
 ## [1.22.0] - 2026-06-05 - Revival: honesty, Second Brain merge, fabricated-source removal
 
 After a 96-day lapse (the manual monthly checklist had no scheduler and the dashboard was masking
