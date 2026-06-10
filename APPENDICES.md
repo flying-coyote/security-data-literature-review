@@ -24,7 +24,7 @@ This appendix documents the evidence classification system used to assess source
 
 ## A.2 Evidence Level Definitions
 
-### Level A: High-Quality Evidence (79% of sources - EXCEEDS 73% target)
+### Level A: High-Quality Evidence
 
 **Definition**: Production-validated deployments, peer-reviewed research, or authoritative government/standards publications with quantitative validation.
 
@@ -33,7 +33,7 @@ This appendix documents the evidence classification system used to assess source
    - Documented production implementations at scale
    - Quantitative performance metrics published
    - Named organizations with verifiable deployments
-   - Example: Shell (57TB/day security telemetry with ClickHouse)
+   - Example: Huntress (93% infrastructure cost reduction after ClickHouse migration)
 
 2. **Peer-Reviewed Research**:
    - Published in academic journals or conferences
@@ -61,15 +61,13 @@ This appendix documents the evidence classification system used to assess source
 - Independent validation possible
 
 **Examples from Literature Review**:
-- SK Telecom: 97% query time reduction, 52.7TB in 3.39 seconds (Iceberg)
-- Cloudflare: 6M requests/second, 96.3% queries <1s (ClickHouse)
-- DORA 2024: 2.7× operational staff for streaming vs batch
-- MITRE: 18-24 months optimal for insider threat detection
+- Cloudflare: 6M requests/second (ClickHouse)
+- Huntress: 93% infrastructure cost reduction (ClickHouse migration)
 - LinkedIn: Terabytes of state with millisecond access (Kafka Streams)
 
 ---
 
-### Level B: Moderate-Quality Evidence (21% of sources)
+### Level B: Moderate-Quality Evidence
 
 **Definition**: Industry analyst reports, expert validation, vendor technical documentation with production validation, or comprehensive surveys with quantitative data.
 
@@ -78,7 +76,6 @@ This appendix documents the evidence classification system used to assess source
    - Gartner, IDC, Forrester research
    - Quantitative survey data
    - Multi-organization analysis
-   - Example: IDC "Hidden Costs of Real-Time Data" (2.5-3× operational staffing)
 
 2. **Expert Validation**:
    - Practitioner validation interviews
@@ -89,7 +86,7 @@ This appendix documents the evidence classification system used to assess source
    - Official vendor documentation with production validation
    - Technical depth (not marketing materials)
    - Reproducible benchmarks
-   - Example: Confluent Kafka architecture sizing (45-55% ops complexity)
+   - Example: Confluent Kafka architecture and sizing documentation
 
 4. **Comprehensive Industry Surveys**:
    - Large sample sizes (50+ organizations)
@@ -104,8 +101,6 @@ This appendix documents the evidence classification system used to assess source
 - Quantitative findings (percentages, multipliers, timelines)
 
 **Examples from Literature Review**:
-- Gartner/phData: 5.5 month security lakehouse implementation
-- Enterprise Data Quarterly: 1.5-2× infrastructure costs (streaming vs batch)
 - Confluent 2024 State of Data Architecture: 76% prioritize real-time detection
 - DataRobot: Champion-challenger pattern for ML deployment
 
@@ -169,22 +164,12 @@ This appendix documents the evidence classification system used to assess source
 ### Step 4: Cross-Validation
 1. Multiple sources corroborate findings (preferred for hypothesis validation)
 2. Independent validation from different source types
-3. Example: IDC 2.5-3× costs CONVERGES with DORA 2.7× staffing (independent validation)
 
 ---
 
-## A.4 Quality Metrics Achieved
+## A.4 Quality Metrics
 
-**Final Distribution**:
-- **Level A**: 79% (57 of 72 sources) ✅ **EXCEEDS 73% target by 6 percentage points**
-- **Level B**: 21% (15 of 72 sources) ✅ Within acceptable range
-- **Level C**: 0% (0 of 72 sources) ✅ All low-quality sources excluded
-- **Level D**: 0% (0 of 72 sources) ✅ All unreliable sources excluded
-
-**Comparison to Academic Standards**:
-- Typical systematic review: 50-60% high-quality sources
-- Medical systematic reviews: 60-70% Level A evidence
-- **This review: 79% Level A evidence** ✅ **EXCEEDS medical standards**
+Sources were classified Level A or Level B under the rubric above; Level C/D material was excluded at intake. The original classification pass assigned a large majority of sources to Level A. A 2026 claim-vs-source audit found that the initial pass overstated: a substantial share of entries carried statistics that are not present in their cited sources, and several entries were removed outright. Per-source evidence levels should therefore be treated as provisional pending re-verification, and no aggregate Level-A percentage is claimed here.
 
 ---
 
@@ -197,10 +182,10 @@ This appendix documents the evidence classification system used to assess source
 4. Hypothesis validation testing (all 7 hypotheses required Level A sources)
 
 **Reliability Checks**:
-- URL validation: 73% overall, 100% hypothesis-critical ✅
-- Production deployment verification: 18+ organizations named and validated
-- Government/standards authority: 8 sources verified (CISA, MITRE, DARPA, NSA, SANS, CSA, OCA, MITRE Engenuity)
-- Cross-source convergence testing: Zero contradictions identified
+- URL validation performed on hypothesis-critical sources
+- Production deployment organizations named where the source permits
+- Government/standards sources include CISA, MITRE, DARPA, CSA, OCA, MITRE Engenuity
+- The 2026 claim-vs-source audit subsequently found stat-source mismatches in a substantial share of entries; convergence claims should be re-checked against that audit
 
 ---
 
@@ -236,7 +221,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 - 1 point: 1 source type (single source)
 
 **Dimension 4: Quantitative Precision (1-5 points)**
-- 5 points: Specific multipliers (e.g., 2.7×, 97% reduction, 5.5 months)
+- 5 points: Specific multipliers or percentages from verified sources
 - 4 points: Narrow ranges (e.g., 2.5-3.0×, 55-80%)
 - 3 points: Broad ranges (e.g., 1.5-3.0×, 30-80%)
 - 2 points: Directional claims with estimates (e.g., "significantly higher," "2-5×")
@@ -281,111 +266,100 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 
 ## B.4 Hypothesis Validation Results
 
+> **Audit note (2026)**: a claim-vs-source audit found that several statistics originally cited in the evidence lists below are not present in their cited sources, and several source entries were removed from the bibliography outright. Those statistics have been removed from the evidence lists here. The dimension scores and confidence levels below predate the audit and should be treated as upper bounds pending re-scoring.
+
 ### H-ARCH-01: Apache Iceberg Dominance
 **Confidence**: ⭐⭐⭐⭐⭐ Strongly Validated (23/25 points)
 
 | Dimension | Score | Rationale |
 |-----------|-------|-----------|
-| Source Count | 5/5 | 5 independent sources (Dremio survey, AWS announcement, Cloudera benchmark, SK Telecom production, ASF governance) |
-| Evidence Quality | 5/5 | 100% Evidence Level A (all production or standards sources) |
+| Source Count | 5/5 | Originally 5 independent sources (Dremio survey, AWS announcement, SK Telecom production, ASF governance; the Cloudera benchmark entry was removed in the 2026 audit) |
+| Evidence Quality | 5/5 | Originally scored 100% Level A; downgraded by the 2026 audit (the Cloudera entry was removed; the SK Telecom figures are not in the cited recap) |
 | Source Diversity | 4/5 | 4 source types (industry survey, vendor announcements, production deployment, standards body) |
-| Quantitative Precision | 4/5 | Narrow range (29% vs 23% Delta, 97% reduction, 10× improvement) |
+| Quantitative Precision | 4/5 | Narrow range (29% vs 23% Delta) |
 | Geographic/Organizational Diversity | 5/5 | International (US vendors, SK Telecom Asia-Pacific, Apache global), multiple types (tech giants, enterprise, standards) |
 | **TOTAL** | **23/25** | **STRONGLY VALIDATED** |
 
 **Key Evidence**:
 - Industry consensus: Dremio 2024 survey (29% Iceberg vs 23% Delta for future adoption)
 - Universal vendor support: AWS, Google, Microsoft, Snowflake, Databricks all announced Iceberg compatibility
-- Production validation: SK Telecom (97% query time reduction, 52.7TB in 3.39 seconds)
+- Production validation: SK Telecom Iceberg deployment (the specific query-time figures formerly cited here are not in the cited Trino Summit recap — removed, 2026 audit)
 - Community strength: Apache Software Foundation governance (300+ contributors, 100+ organizations)
-- Performance: Cloudera (10× improvement over Hive tables)
 
 ---
 
-### H-IMPL-01: Streaming TCO Reality (2.5-3× operational costs)
+### H-IMPL-01: Streaming TCO Reality (operational cost premium)
 **Confidence**: ⭐⭐⭐⭐ High Confidence (22/25 points)
 
 | Dimension | Score | Rationale |
 |-----------|-------|-----------|
-| Source Count | 5/5 | 5 independent sources (IDC, DORA, Confluent, Cloudera/Forrester TEI, Enterprise Data Quarterly) |
-| Evidence Quality | 4/5 | 80% Evidence Level A (4 of 5: IDC, DORA, Cloudera/Forrester TEI, Enterprise Data Quarterly are Level A; Confluent is Level B) |
-| Source Diversity | 5/5 | 4 source types (industry analyst IDC, industry research DORA, vendor Confluent with production data, commissioned research Forrester TEI, industry publication Enterprise Data Quarterly) |
-| Quantitative Precision | 5/5 | Specific multipliers converge (IDC 2.5-3×, DORA 2.7×, Confluent 45-55% ops, Cloudera 29% operational, Enterprise Data Quarterly 1.5-2× infrastructure) |
-| Geographic/Organizational Diversity | 3/5 | US-centric (IDC, DORA, Confluent, Cloudera, Enterprise Data Quarterly) with multiple organization types (analyst, research, vendor, commissioned) |
-| **TOTAL** | **22/25** | **HIGH CONFIDENCE** |
+| Source Count | 5/5 | Originally 5 sources; the IDC and Enterprise Data Quarterly entries were removed in the 2026 audit |
+| Evidence Quality | 4/5 | Originally scored 80% Level A; downgraded by the 2026 audit (two sources removed, two multipliers not in source) |
+| Source Diversity | 5/5 | Originally 4 source types; reduced by the audit removals |
+| Quantitative Precision | 5/5 | Cloudera/Forrester TEI 29% operational TCO remains; the other multipliers were removed in the 2026 audit (not in source / removed entries) |
+| Geographic/Organizational Diversity | 3/5 | US-centric with multiple organization types (research, vendor, commissioned) |
+| **TOTAL** | **22/25** | **HIGH CONFIDENCE** (pre-audit score; see note above) |
 
 **Key Evidence**:
-- IDC: 2.5-3× higher operational staffing costs for streaming
-- DORA 2024: 2.7× operational staff for streaming vs batch
-- Confluent: 45-55% of TCO = operational complexity + specialized talent
 - Cloudera/Forrester TEI: 29% operational TCO component
-- Enterprise Data Quarterly: 1.5-2× infrastructure costs
-
-**Convergent Evidence**: Multiple independent sources (IDC, DORA, Confluent) all converge on 2.5-3× operational cost premium, strengthening confidence.
-
----
-
-### H-IMPL-02: Staffing Scarcity (2.7× operational staff, Level 4 skills)
-**Confidence**: ⭐⭐⭐⭐⭐ Strongly Validated (23/25 points) - **STRONGEST VALIDATION**
-
-| Dimension | Score | Rationale |
-|-----------|-------|-----------|
-| Source Count | 4/5 | 4 independent sources (DORA, IDC, Ververica, McKinsey) |
-| Evidence Quality | 5/5 | 100% Evidence Level A (DORA industry research, IDC analyst, Ververica production case study, McKinsey quantitative research) |
-| Source Diversity | 5/5 | **4 independent source types** (DORA industry research, IDC analyst, Ververica production deployment, McKinsey consulting research) - **HIGHEST SOURCE DIVERSITY** |
-| Quantitative Precision | 5/5 | Specific multipliers (DORA 2.7×, Ververica 3.2 FTEs, IDC 2.5-3×, McKinsey 35-40% acceleration) |
-| Geographic/Organizational Diversity | 4/5 | Primarily US/Europe with multiple organization types (research institute, analyst, production, consulting) |
-| **TOTAL** | **23/25** | **STRONGEST VALIDATION** |
-
-**Key Evidence**:
-- DORA 2024: 2.7× operational staff for streaming vs batch, "Level 4" specialized skill (top 5% organizations)
-- IDC: 2.5-3× operational staffing costs
-- Ververica: 3.2 average FTEs required for production Flink pipelines
-- McKinsey: 35-40% implementation acceleration with tiger teams (specialized expertise)
-
-**Why Strongest**: Highest source diversity (4 independent types), 100% Level A evidence, specific quantitative multipliers converge, multiple validation angles (industry research, analyst, production, consulting).
+- Confluent: operational complexity and specialized talent are major TCO drivers (the 45-55% figure formerly cited here is not in the cited course — removed, 2026 audit)
+- The IDC 2.5-3× and Enterprise Data Quarterly 1.5-2× figures, and the DORA 2.7× staffing multiplier, were removed in the 2026 audit (removed entries / not in the DORA report); the qualitative operational-cost premium stands on the remaining sources
 
 ---
 
-### H-IMPL-03: Timeline Premium (5.5 months average, 15-30% security premium)
-**Confidence**: ⭐⭐⭐ Moderate Confidence (13/25 points)
+### H-IMPL-02: Staffing Scarcity (specialized skills required)
+**Confidence**: ⭐⭐⭐⭐⭐ Strongly Validated (23/25 points) — pre-audit score; see audit note
 
 | Dimension | Score | Rationale |
 |-----------|-------|-----------|
-| Source Count | 3/5 | 3 sources (Gartner/phData, Confluent, SANS) |
-| Evidence Quality | 3/5 | 67% Evidence Level A (2 of 3: Gartner/phData Level B, Confluent Level B, SANS Level A) |
-| Source Diversity | 3/5 | 2 source types (industry analyst/practitioner Gartner/phData, vendor Confluent, government/standards SANS) |
-| Quantitative Precision | 3/5 | Narrow ranges (5.5 months, 4-6 months, 15-30% premium) |
-| Geographic/Organizational Diversity | 1/5 | US-centric (Gartner/phData, Confluent, SANS all US-focused) - **LIMITATION** |
-| **TOTAL** | **13/25** | **MODERATE CONFIDENCE** |
+| Source Count | 4/5 | Originally 4 sources; the IDC, Ververica, and McKinsey entries were removed in the 2026 audit |
+| Evidence Quality | 5/5 | Originally scored 100% Level A; downgraded — three of the four cited entries were removed |
+| Source Diversity | 5/5 | Pre-audit assessment; reduced by the removals |
+| Quantitative Precision | 5/5 | The specific multipliers formerly cited (DORA 2.7×, Ververica 3.2 FTEs, IDC 2.5-3×, McKinsey 35-40%) were removed in the 2026 audit — not in source or fabricated entries |
+| Geographic/Organizational Diversity | 4/5 | Primarily US/Europe |
+| **TOTAL** | **23/25** | Pre-audit score — requires re-validation |
 
 **Key Evidence**:
-- Gartner/phData: 5.5 month average for security-focused lakehouse implementation
-- Confluent: 4-6 months for comprehensive enterprise Kafka deployment
-- SANS: 15-30% timeline increase for security-specific constraints vs general data engineering
+- DORA 2024: streaming operations demand specialized ("Level 4") skills concentrated in a small share of organizations
+- The IDC 2.5-3×, Ververica 3.2-FTE, and McKinsey tiger-team figures formerly cited here were removed in the 2026 audit (removed/fabricated entries), and the DORA 2.7× multiplier is not in the DORA report
 
-**Limitations**: US-centric bias acknowledged (no international validation), fewer sources (3 vs 4-5 for stronger hypotheses), mix of Level A and Level B sources.
+**Audit status**: three of the four originally cited sources were removed in the 2026 source audit; the qualitative skills-scarcity claim is consistent with the surviving DORA research, but the hypothesis requires re-validation before its confidence level is cited.
 
 ---
 
-### H-COST-09: Tiered Storage Economics (55-80% cost savings)
-**Confidence**: ⭐⭐⭐⭐⭐ Strongly Validated (19/25 points)
+### H-IMPL-03: Timeline Premium
+**Confidence**: UNVALIDATED — all originally cited evidence failed the 2026 source audit (pre-audit score was ⭐⭐⭐ Moderate, 13/25)
 
 | Dimension | Score | Rationale |
 |-----------|-------|-----------|
-| Source Count | 3/5 | 3 sources (AWS, Netflix, Kafka tiered storage general guidance) |
-| Evidence Quality | 5/5 | 100% Evidence Level A (AWS official whitepaper, Netflix production deployment, Kafka official docs) |
-| Source Diversity | 4/5 | 3 source types (cloud provider AWS, production deployment Netflix, open-source platform Kafka) |
-| Quantitative Precision | 5/5 | Specific ranges (AWS 55% average, Netflix 70-80%, hot/warm/cold tier economics) |
-| Geographic/Organizational Diversity | 2/5 | US-centric (AWS, Netflix, Confluent/Kafka) but multiple organization types |
-| **TOTAL** | **19/25** | **STRONGLY VALIDATED** |
+| Source Count | 3/5 | Pre-audit: 3 sources; all three failed the audit |
+| Evidence Quality | 3/5 | Pre-audit assessment; superseded |
+| Source Diversity | 3/5 | Pre-audit assessment; superseded |
+| Quantitative Precision | 3/5 | The cited timeline figures were removed in the 2026 audit |
+| Geographic/Organizational Diversity | 1/5 | US-centric - **LIMITATION** |
+| **TOTAL** | **13/25** | Pre-audit score — hypothesis is unvalidated pending new sources |
+
+**Key Evidence**: none surviving. The 2026 audit found the 5.5-month figure is not in the cited post (which is a phData blog, not Gartner research), the 4-6-month figure is not in the cited Confluent course, and the cited SANS "Security Analytics Implementation Timelines" whitepaper does not exist. The hypothesis is plausible but currently unsupported; it requires new sources before any timeline figure is cited.
+
+**Limitations**: US-centric bias acknowledged; hypothesis unvalidated after the 2026 audit.
+
+---
+
+### H-COST-09: Tiered Storage Economics
+**Confidence**: ⭐⭐⭐⭐⭐ Strongly Validated (19/25 points) — pre-audit score; see audit note
+
+| Dimension | Score | Rationale |
+|-----------|-------|-----------|
+| Source Count | 3/5 | Pre-audit: 3 sources; the AWS and Netflix figures failed the audit |
+| Evidence Quality | 5/5 | Originally scored 100% Level A; downgraded — the cited AWS whitepaper is a deprecated stub and the "Netflix" URL is Confluent documentation |
+| Source Diversity | 4/5 | Pre-audit assessment; reduced by the removals |
+| Quantitative Precision | 5/5 | The 55% and 70-80% figures were removed in the 2026 audit (not verifiable in the cited sources) |
+| Geographic/Organizational Diversity | 2/5 | US-centric but multiple organization types |
+| **TOTAL** | **19/25** | Pre-audit score — requires re-validation |
 
 **Key Evidence**:
-- AWS: 55% average savings with tiered storage strategies (35% conservative estimate)
-- Netflix: 70-80% Kafka tiered storage cost reduction for multi-year retention
-- Kafka: Hot/warm/cold tier lifecycle economics
-
-**Why Strong**: 100% Evidence Level A, production validation (Netflix), cloud provider authority (AWS), specific quantitative ranges.
+- Kafka: Hot/warm/cold tier lifecycle economics (official documentation)
+- The AWS 55% figure (cited whitepaper is now a deprecated empty stub) and the Netflix 70-80% figure (cited URL is Confluent docs, not a Netflix source) were removed in the 2026 audit; the qualitative claim that tiered storage reduces retention cost stands on the Kafka lifecycle documentation only
 
 ---
 
@@ -394,20 +368,20 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 
 | Dimension | Score | Rationale |
 |-----------|-------|-----------|
-| Source Count | 4/5 | 4 sources (Cloudflare 6M req/sec, Shell 57TB/day, ClickHouse vs Elasticsearch, Native IP types) |
-| Evidence Quality | 5/5 | 100% Evidence Level A (all production deployments or official benchmarks) |
-| Source Diversity | 4/5 | 3 source types (production deployments Cloudflare/Shell, benchmark study, vendor technical docs) |
-| Quantitative Precision | 5/5 | Specific metrics (6M req/sec, 96.3% <1s, 57TB/day, 5-10× vs Elasticsearch, 50-100× CIDR hunting—borrowed, at larger scale; first-party probe ~13-17× at 20M rows on a single host, below the band, ~2.9× IPv4-vs-String storage) |
-| Geographic/Organizational Diversity | 3/5 | US/Europe (Cloudflare US, Shell enterprise, ClickHouse global) with multiple org types (tech giant, enterprise, vendor) |
-| **TOTAL** | **21/25** | **HIGH CONFIDENCE** |
+| Source Count | 4/5 | Originally 4 sources; the Shell 57TB/day entry was removed in the 2026 audit (dead URL, unverifiable) |
+| Evidence Quality | 5/5 | Originally scored 100% Level A; downgraded — one entry removed, two figures not in their cited pages |
+| Source Diversity | 4/5 | 3 source types (production deployment Cloudflare, benchmark study, vendor technical docs + first-party probe) |
+| Quantitative Precision | 5/5 | Specific metrics (6M req/sec, 5-10× vs Elasticsearch; first-party CIDR probe ~13-17× at 20M rows on a single host, ~2.9× IPv4-vs-String storage) |
+| Geographic/Organizational Diversity | 3/5 | US/Europe (Cloudflare US, ClickHouse global) with multiple org types (tech giant, vendor) |
+| **TOTAL** | **21/25** | **HIGH CONFIDENCE** (pre-audit score; see note above) |
 
 **Key Evidence**:
-- Cloudflare: 6M requests/second, 96.3% queries <1 second, 10-12× compression
-- Shell: 57TB/day security telemetry, sub-second queries, enterprise SIEM replacement
+- Cloudflare: 6M requests/second, 10-12× compression (the "96.3% of queries <1s" figure formerly cited here is not in the cited source — removed, 2026 audit)
 - ClickHouse vs Elasticsearch: 5-10× storage efficiency for security logs
-- Native IPv4/IPv6 types: 50-100× faster CIDR-based threat hunting vs string implementations (borrowed, at larger scale; a first-party CIDR probe—MOAR reference stack, 20M rows, single host, `lab/cidr_probe.py`, 2026-06-07—measured ~13-17× warm, which lands below the borrowed band, with ~2.9× IPv4-vs-String storage savings, 65.4 MiB vs 188.1 MiB)
+- Native IPv4/IPv6 types: a first-party CIDR probe (MOAR reference stack, 20M rows, single host, `lab/cidr_probe.py`, 2026-06-07) measured ~13-17× warm speedup vs string implementations, with ~2.9× IPv4-vs-String storage savings (65.4 MiB vs 188.1 MiB); the vendor "50-100×" band formerly cited here is not on the cited page — removed, 2026 audit
+- The Shell 57TB/day entry was removed in the 2026 audit (dead URL, claims unverifiable)
 
-**Why High**: Security-specific validation (Cloudflare, Shell), 100% Level A evidence, quantitative performance metrics.
+**Why High**: Security-specific validation (Cloudflare), first-party measurement, quantitative performance metrics.
 
 ---
 
@@ -416,38 +390,31 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 
 | Dimension | Score | Rationale |
 |-----------|-------|-----------|
-| Source Count | 3/5 | 3 sources (LinkedIn, Uber, Microsoft Azure) |
-| Evidence Quality | 5/5 | 100% Evidence Level A (all production security deployments at scale) |
-| Source Diversity | 3/5 | 2 source types (production deployments LinkedIn/Uber, cloud platform Microsoft Azure) |
-| Quantitative Precision | 4/5 | Specific metrics (terabytes of state with ms access, thousands of views with sub-second refresh, trillions events/day, 350% surges) |
-| Geographic/Organizational Diversity | 2/5 | US-centric (LinkedIn, Uber, Microsoft Azure) but multiple org types (tech giants, cloud provider) |
-| **TOTAL** | **17/25** | **HIGH CONFIDENCE** |
+| Source Count | 3/5 | Originally 3 sources; the Uber real-time-views figures failed the 2026 audit |
+| Evidence Quality | 5/5 | Originally scored 100% Level A; downgraded — one source's figures are not in the cited article |
+| Source Diversity | 3/5 | 2 source types (production deployment LinkedIn, cloud platform Microsoft Azure) |
+| Quantitative Precision | 4/5 | Specific metrics (terabytes of state with ms access, trillions events/day) |
+| Geographic/Organizational Diversity | 2/5 | US-centric (LinkedIn, Microsoft Azure) but multiple org types (tech giants, cloud provider) |
+| **TOTAL** | **17/25** | **HIGH CONFIDENCE** (pre-audit score; see note above) |
 
 **Key Evidence**:
 - LinkedIn: Terabytes of state with millisecond access times, security entity tracking (per-user, per-device behavioral analytics)
-- Uber: Thousands of real-time security views, sub-second refresh rates, current entity state queries
-- Microsoft Azure: Trillions of events/day (Azure Event Hubs, Kafka-compatible), 350% traffic surges during incidents
+- Microsoft Azure: Trillions of events/day (Azure Event Hubs, Kafka-compatible)
+- The Uber "thousands of real-time security views / sub-second refresh" figures formerly cited here are not in the cited article (a generic Confluent latency piece) — removed, 2026 audit
 
-**Why High**: Production security deployments at scale, 100% Level A evidence, security-specific validation (not general streaming).
+**Why High**: Production deployments at scale, security-specific validation (not general streaming).
 
 ---
 
 ## B.5 Overall Validation Quality
 
-**Summary Statistics**:
-- **Total hypotheses validated**: 7
-- **Strongly Validated (⭐⭐⭐⭐⭐)**: 3 hypotheses (43%) - H-ARCH-01, H-IMPL-02, H-COST-09
-- **High Confidence (⭐⭐⭐⭐)**: 3 hypotheses (43%) - H-IMPL-01, H3-PERFORMANCE-01, H-STREAM-01
-- **Moderate Confidence (⭐⭐⭐)**: 1 hypothesis (14%) - H-IMPL-03
-- **Average sources per hypothesis**: 4.1
-- **Average Evidence Level A**: 94%
-- **Quantitative precision**: 100% (all hypotheses have specific multipliers or benchmarks)
-- **Production validation**: 86% (6 of 7 hypotheses with production deployment evidence)
+**Summary Statistics** (pre-audit scoring; see the B.4 audit note):
+- **Total hypotheses scored**: 7
+- **Strongly Validated (⭐⭐⭐⭐⭐) at intake**: 3 hypotheses - H-ARCH-01, H-IMPL-02, H-COST-09
+- **High Confidence (⭐⭐⭐⭐) at intake**: 3 hypotheses - H-IMPL-01, H3-PERFORMANCE-01, H-STREAM-01
+- **Moderate Confidence (⭐⭐⭐) at intake**: 1 hypothesis - H-IMPL-03 (now unvalidated; all cited timeline evidence failed the audit)
 
-**Quality Comparison**:
-- **86% High or Strong confidence** (6 of 7 hypotheses) ✅ **EXCEPTIONAL**
-- Typical systematic reviews: 40-60% high-confidence findings
-- **This review: 86% high-confidence** ✅ **EXCEEDS typical academic standards**
+These scores predate the 2026 claim-vs-source audit, which removed several of the statistics and source entries the original scoring relied on (most heavily for H-IMPL-02, H-IMPL-03, and H-COST-09). Confidence levels are pending re-scoring against the surviving evidence and should not be cited as validation strength.
 
 ---
 
@@ -516,7 +483,7 @@ This appendix documents the structured expert validation protocol used to valida
 **Focus Areas**:
 1. **Mid-Market Data Volumes** (50-200TB)
    - Question: "How do cost, staffing, and timeline expectations change at mid-market scale vs enterprise scale (PB+)?"
-   - Validation: "Does the 2.7× staffing multiplier hold at 50-200TB scale, or are there economies of scale?"
+   - Validation: "Does an operational staffing premium for streaming hold at 50-200TB scale, or are there economies of scale?"
 
 2. **Emerging Technologies** (DuckDB edge, XTable, catalogs)
    - Question: "What production deployments have you seen for [emerging technology]?"
@@ -577,8 +544,8 @@ This appendix documents the structured expert validation protocol used to valida
   - Validation Needed: Production use cases, performance benchmarks, maturity assessment
   - Impact: Low - Not critical for main findings; emerging technology not yet mainstream
 - **Mid-Market Data Volumes**: Cost, staffing, timeline validation at 50-200TB scale
-  - Current Status: Claims validated at TB-PB scale (Shell 57TB/day, SK Telecom 52.7TB), but mid-market extrapolation needed
-  - Validation Needed: 50-200TB security operations quantitative case studies; validate staffing (does 2.7× hold?), cost, timeline
+  - Current Status: Claims examined at TB-PB scale, but mid-market extrapolation needed
+  - Validation Needed: 50-200TB security operations quantitative case studies; validate staffing premium, cost, timeline
 
 **Interview Date**: TBD (Week 3)
 **Duration**: 60 minutes
@@ -682,8 +649,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Table Formats (Apache Iceberg, Delta Lake, Hudi)
 
 **Apache Iceberg - Industry Consensus**:
-- [71] SK Telecom: 97% query time reduction, 52.7TB in 3.39 seconds (Level A)
-- [24] Cloudera: 10× performance improvement over Hive tables (Level A)
+- [71] SK Telecom: Iceberg production deployment (Level B — the specific query-time figures formerly cited are not in the cited Trino Summit recap; removed, 2026 audit)
 - [43] Dremio: 29% Iceberg vs 23% Delta Lake future adoption (Level A)
 - [8] Apache Iceberg: Official documentation (Level A)
 - [9] Apache Iceberg: 300+ contributors, 100+ organizations governance (Level A)
@@ -698,17 +664,15 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Query Engines (Trino, Dremio, ClickHouse, Athena)
 
 **ClickHouse for Security Analytics**:
-- [15] Cloudflare: 6M requests/second, 96.3% queries <1s (Level A)
+- [15] Cloudflare: 6M requests/second (Level A; the "96.3% queries <1s" figure is not in the cited source — removed, 2026 audit)
 - [16] Cloudflare: 10-12× compression for log data (Level A)
-- [17] Shell: 57TB/day security telemetry (Level A)
 - [18] ClickHouse vs Elasticsearch: 5-10× storage efficiency (Level A)
 - [19] ClickHouse: Compression codecs documentation (Level A)
-- [20] ClickHouse: Vectorized query execution (8-10× CPU efficiency) (Level A)
+- [20] ClickHouse: Vectorized query execution documentation (Level A; the "8-10× CPU efficiency" figure is not on the cited page — removed, 2026 audit)
 - [21] ClickHouse: Performance optimization guide (Level A)
-- [22] ClickHouse: Native IP types (50-100× CIDR hunting speedup) (Level A) — borrowed, at larger scale; first-party probe ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings
-- [51] Huntress: 93% cost reduction ($70K → $5K monthly), 16 billion events/day (Level A)
+- [22] ClickHouse: Native IP types — first-party CIDR probe ~13-17× at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings (first-party measurement; the vendor "50-100×" band is not on the cited page — removed, 2026 audit)
+- [51] Huntress: 93% cost reduction ($70K → $5K monthly) (Level A; the "16 billion events/day" figure is not in the cited source — removed, 2026 audit)
 - [13] Chris Bisnett: Huntress migration video (Level A)
-- [1] Altinity: 1.8-2.2M events/sec per node (Level A)
 
 **Trino/Starburst/Dremio**:
 - [46] Matt Fuller, Manfred Moser, Martin Traverso: *Trino: The Definitive Guide* (Level A)
@@ -717,26 +681,20 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - [42] Dremio: Official documentation (Level B)
 - [41] Dremio: Data lakehouse architecture guide (Level B)
 - [56] Alex Merced: Dremio YouTube channel (Level B)
-- [74] Trino Summit: Data contracts for security data quality (Level B)
 
 ---
 
 ### Streaming Architectures (Kafka, Flink, Kafka Streams)
 
 **Apache Kafka Performance & Scale**:
-- [27] Confluent: 4.5M events/sec on 9 nodes (Level A)
 - [59] Microsoft Azure: Trillions of events/day (Level A)
-- [33] Netflix: 70-80% tiered storage cost savings (Level A)
 
 **Apache Flink**:
-- [76] Uber: Real-time security analytics with Flink (Level A)
-- [40] Disney+: Unified streaming for security (Level A)
+- [40] Disney+ Hotstar (via Kai Waehner): Kafka/Flink streaming at scale — general media pipeline, not a security deployment (Level B)
 - [7] Apache Flink: Checkpointing for security workloads (Level A)
-- [78] Ververica: 3.2 FTEs for Flink pipelines (Level A)
 
 **Kafka Streams Security Patterns**:
 - [31] LinkedIn: Terabytes of state with millisecond access (Level A)
-- [32] Uber: Thousands of real-time security views (Level A)
 
 **Streaming Thought Leadership**:
 - [53] Jay Kreps: Questioning the Lambda Architecture (Level A)
@@ -750,26 +708,20 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Total Cost of Ownership (TCO)
 
 **Streaming vs Batch Cost Differential**:
-- [52] IDC: 2.5-3× operational staffing costs for streaming (Level A)
-- [39] DORA 2024: 2.7× operational staff for streaming vs batch (Level A)
-- [28] Confluent: 45-55% of TCO = operational complexity (Level B)
+- [39] DORA 2024: Accelerate State of DevOps research (Level A; the "2.7× operational staff" multiplier formerly cited here is not in the report — removed, 2026 audit)
+- [28] Confluent: Kafka TCO and operational-complexity documentation (Level B; the "45-55% of TCO" figure is not in the cited course — removed, 2026 audit)
 - [25] Cloudera/Forrester TEI: 39% licensing, 32% hardware, 29% operational TCO (Level A)
-- [45] Enterprise Data Quarterly: 1.5-2× infrastructure costs for streaming (Level B)
-- [37] Databricks: 35-40% licensing costs of TCO (Level B)
+- [37] Databricks: TCO documentation (Level B; specific licensing percentages not independently verifiable — gated source)
 
 **Tiered Storage Economics**:
-- [2] AWS: 55% average savings with tiered storage (Level A)
-- [33] Netflix: 70-80% Kafka tiered storage savings (Level A)
+- The AWS "55% average savings" and Netflix "70-80%" tiered-storage figures formerly listed here failed the 2026 audit (the cited AWS PDF is a deprecated empty stub; the "Netflix" URL is Confluent documentation) and are removed pending real sources
 
 **Reliability Economics**:
-- [50] Google SRE: Each additional "nine" = 10× cost increase (Level A)
-- [48] Gartner: 70% of orgs overspend on reliability (Level A)
-- [77] Uptime Institute: 98% cannot justify beyond four nines (Level A)
-- Financial Services: Five nines = 37× cost vs three nines (Level A)
+- The reliability cost claims formerly listed here (Google SRE cost-per-nine, Gartner reliability overspend, Uptime Institute four-nines, financial-services five-nines multiplier) were placeholder-sourced with no resolvable citations and are removed pending real sources (2026 audit)
 
 **Compute & Storage Optimization**:
 - [3] AWS: 22% average compute savings through right-sizing (Level A)
-- [2] AWS: Storage optimization whitepaper (Level A)
+- [2] AWS: Storage optimization whitepaper (cited PDF is now a deprecated empty stub — claims not verifiable; 2026 audit)
 
 ---
 
@@ -778,27 +730,25 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Staffing & Skills Scarcity
 
 **Staffing Multipliers**:
-- [39] DORA 2024: 2.7× operational staff, Level 4 skills (top 5% orgs) (Level A)
-- [52] IDC: 2.5-3× operational staffing costs (Level A)
-- [78] Ververica: 3.2 average FTEs for Flink pipelines (Level A)
-- [58] McKinsey: 35-40% implementation acceleration with tiger teams (Level A)
+- [39] DORA 2024: streaming operations demand specialized "Level 4" skills (Level A; the "2.7× operational staff" multiplier formerly cited here is not in the report — removed, 2026 audit)
+- The IDC 2.5-3×, Ververica 3.2-FTE, and McKinsey tiger-team figures formerly listed here traced to entries removed in the 2026 audit (dead-URL or fabricated citations) and are removed pending real sources
 
 ### Implementation Timelines
 
 **Security-Specific Timelines**:
-- [47] Gartner/phData: 5.5 months security lakehouse implementation (Level B)
-- [29] Confluent: 4-6 months Kafka enterprise deployment (Level B)
-- [70] SANS: 15-30% security timeline premium (Level A)
+- [47] phData: security lakehouse implementation guidance (Level B; this is a phData blog, not Gartner research, and the "5.5 months" figure is not in the post — removed, 2026 audit)
+- [29] Confluent: Kafka deployment fundamentals (Level B; the "4-6 months" figure is not in the cited course — removed, 2026 audit)
+- The SANS "15-30% security timeline premium" entry was removed in the 2026 audit — the cited whitepaper does not exist
 
 **Proficiency Timelines**:
-- [47] Gartner: 6-12 months for team proficiency (Level B)
+- [47] phData: 6-12 months for team proficiency (Level B)
 
 ### Change Management & Implementation Patterns
 
 **Organizational Readiness**:
 - [68] Prosci: 30/60/80% adoption pattern for successful implementations (Level A)
 - [14] Brooks: "Plan to throw one away" throwaway prototype principle (Level A)
-- [66] Netflix: Shadow infrastructure validation approach with WAL (Level A)
+- [66] Netflix: Shadow infrastructure validation approach with WAL (cited URL is a bare conference homepage — specifics unverified; downgraded, 2026 audit)
 
 ---
 
@@ -808,15 +758,12 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 
 **Volume Growth & Surge Patterns**:
 - [49] Gartner: 28% CAGR for security data (Level A)
-- [63] Microsoft MSRC: 350% average traffic surge during incidents (Level A)
-- [17] Shell: 57TB/day security telemetry (Level A)
 
 ### Security Data Retention Requirements
 
 **ML Training Data Requirements**:
 - [34] CISA: 24-36 month retention for behavioral baselines (Level A)
-- [64] MITRE: 18-24 months optimal for insider threat detection (Level A)
-- [61] Microsoft Purview: 24 hours for user sessions, 30-90 days for entity profiles (Level A)
+- The MITRE "18-24 months for insider threat detection" and Microsoft Purview "24 hours / 30-90 days" retention figures formerly listed here are not on their cited pages and are removed pending real sources (2026 audit)
 
 ---
 
@@ -825,27 +772,27 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### ML Deployment & MLOps
 
 **Feature Stores & Model Deployment**:
-- [75] Uber Palette: 37% ML failures from inconsistent features (Level A)
-- [38] DataRobot: Champion-challenger pattern (42% false positive reduction) (Level B)
-- [4] Anyscale Ray Serve: 600% usage growth, 99.9% availability (Level B)
+- [75] Uber Palette: feature store architecture for consistent ML features (Level A; the "37% ML failures" figure is not in the cited blog — removed, 2026 audit)
+- [38] DataRobot: Champion-challenger pattern (Level B; the "42% false positive reduction" figure is not in the cited blog — removed, 2026 audit)
+- [4] Anyscale Ray Serve: model-serving platform documentation (Level B; the growth/availability figures are not on the cited page — removed, 2026 audit)
 
 **Explainability & Governance**:
-- [35] DARPA XAI: Security applications have highest explainability requirements (Level A)
-- [69] SANS 2024 AI Survey: AI reshaping cybersecurity landscape (Level A)
-- [62] Microsoft: 40% of orgs experienced AI data security incidents (Level A)
+- [35] DARPA XAI: Explainable-AI research program (Level A; the "highest explainability requirements" claim is not on the cited page — removed, 2026 audit)
+- [69] SANS 2024 AI Survey: AI reshaping cybersecurity landscape (Level B — login-gated, not independently verifiable as cited)
+- The Microsoft "40% of orgs experienced AI data security incidents (2024)" figure formerly listed here is not in the cited document (which is from 2019) and is removed (2026 audit)
 
 **Model Evaluation & Validation**:
 - [65] MITRE Engenuity: 76% of enterprises use ATT&CK for ML evaluation (Level A)
-- [64] MITRE: Insider Threat Framework with 5,000+ cases (Level A)
+- The MITRE "Insider Threat Framework with 5,000+ cases" figures formerly listed here are not on the cited page and are removed (2026 audit)
 
 **ML Infrastructure & Performance**:
-- [5] Apache Arrow: 10-100× PySpark performance improvement (Level A)
-- [6] Arrow Flight SQL: 20× faster than JDBC/ODBC (Level A)
+- [5] Apache Arrow: columnar analytics performance (Level A; the "10-100× PySpark" multiplier is not on the cited page — removed, 2026 audit)
+- [6] Arrow Flight SQL: specification and protocol documentation (Level A; the "20× faster than JDBC/ODBC" figure is not in the spec — removed, 2026 audit)
 - [30] Confluent: Kafka for real-time ML feature engineering (Level B)
 
 **Concept Drift & Model Maintenance**:
-- [60] Microsoft Azure ML: 2-3× faster concept drift in security domain (Level A)
-- [23] Cloud Security Alliance: ML training data strategies (Level A)
+- The "security models drift 2-3× faster than business ML" claim formerly listed here was invented — no source contains it; removed (2026 audit)
+- [23] Cloud Security Alliance: ML training data strategies (Level B — cited URL is the AI-Safety working-group page, not the claimed document)
 
 ---
 
@@ -856,7 +803,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - [36] Databricks: +64% year-over-year Flink adoption for security (Level B)
 - [39] DORA 2024: Comprehensive DevOps research (Level A)
 - [43] Dremio 2024: Data lakehouse adoption trends (Level A)
-- [69] SANS 2024: AI in cybersecurity survey (Level A)
+- [69] SANS 2024: AI in cybersecurity survey (Level B — login-gated)
 
 ---
 
@@ -864,7 +811,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 
 **Standards Bodies & Frameworks**:
 - [67] Open Cybersecurity Alliance: STIX, OpenC2, OpenDXL standards (Level A)
-- [23] Cloud Security Alliance: ML for cybersecurity standards (Level A)
+- [23] Cloud Security Alliance: ML for cybersecurity standards (Level B — cited URL is the working-group page, not the claimed document)
 - [65] MITRE Engenuity: ATT&CK evaluations framework (Level A)
 
 ---
@@ -875,7 +822,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - [44] DuckDB Labs: Embedded analytics capabilities (Level A)
 
 **High-Performance Data Transfer**:
-- [6] Arrow Flight SQL: 20× performance improvement (Level A)
+- [6] Arrow Flight SQL: high-performance data-transfer protocol (Level A; the "20×" figure is not in the spec — removed, 2026 audit)
 - [5] Apache Arrow: Columnar analytics performance (Level A)
 
 **Table Format Interoperability**:
@@ -886,7 +833,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ## D.10 Practitioner Validation
 
 **Production Deployment Validation**:
-- [57] a data-platform practitioner: Starburst/Athena viability for security operations (Level A)
+- [57] a data-platform practitioner: Starburst/Athena viability for security operations (Level B — personal communication, unpublished; not independently verifiable)
 
 ---
 
@@ -907,9 +854,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - **Practitioner Validation**: 1 source (1%)
 
 **Evidence Level Distribution**:
-- **Level A**: 79% (57 of 72 sources)
-- **Level B**: 21% (15 of 72 sources)
-- **Level C/D**: 0% (excluded)
+- The original 79% / 21% Level A/B split predates the 2026 claim-vs-source audit, which removed entries and downgraded several labels; the distribution is being re-derived and no aggregate percentage is claimed here (see Appendix A.4)
 
 ---
 
@@ -919,13 +864,13 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - Refer to Table 2 (Hypothesis Validation Summary) in FIGURES-AND-TABLES.md
 - Each hypothesis lists key evidence with source references
 
-**To find sources by book chapter**:
-- Chapter 1 (Cost Comparisons): [2], [25], [28], [37], [45], [48], [50], [52], [77]
-- Chapter 4 (Implementation Journeys): [14], [39], [47], [52], [58], [66], [68], [70], [78]
-- Chapter 7 (Streaming/Ingestion): [7], [27], [30], [31], [32], [33], [40], [53], [54], [55], [59], [76], [78]
-- Chapter 8 (Storage Formats): [8], [9], [10], [11], [12], [24], [43], [71]
-- Chapter 9 (Query Engines): [1], [13], [15], [16], [17], [18], [19], [20], [21], [22], [41], [42], [46], [51], [56], [72], [73], [74]
-- Advanced Analytics (ML): [4], [5], [6], [23], [30], [34], [35], [38], [60], [61], [62], [64], [65], [69], [75]
+**To find sources by book chapter** (entry numbers removed in the 2026 audit are omitted):
+- Chapter 1 (Cost Comparisons): [2], [25], [28], [37]
+- Chapter 4 (Implementation Journeys): [14], [39], [47], [66], [68]
+- Chapter 7 (Streaming/Ingestion): [7], [30], [31], [40], [53], [54], [55], [59]
+- Chapter 8 (Storage Formats): [8], [9], [10], [11], [12], [43], [71]
+- Chapter 9 (Query Engines): [13], [15], [16], [18], [19], [20], [21], [22], [41], [42], [46], [51], [56], [72], [73]
+- Advanced Analytics (ML): [4], [5], [6], [23], [30], [34], [35], [38], [65], [69], [75]
 
 **To find sources by evidence level**:
 - Refer to Appendix A (Evidence Classification Rubric) for Level A vs Level B categorization

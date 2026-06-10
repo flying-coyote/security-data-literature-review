@@ -12,13 +12,13 @@
 
 ## ABSTRACT
 
-Security organizations evaluating modern data stack architectures (Apache Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity research focuses on detection algorithms while data engineering addresses general analytics, leaving security-specific infrastructure guidance unavailable. We conduct the first systematic literature review bridging these domains using PRISMA-aligned methodology, synthesizing 75+ sources (79% Evidence Level A—production deployments, peer-reviewed research, government standards) to provide quantitative operational guidance.
+Security organizations evaluating modern data stack architectures (Apache Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity research focuses on detection algorithms while data engineering addresses general analytics, leaving security-specific infrastructure guidance unavailable. We conduct the first systematic literature review bridging these domains using PRISMA-aligned methodology, synthesizing 75+ sources spanning production deployments, peer-reviewed research, and government standards to provide operational guidance.
 
-Seven hypotheses achieved validation with precise multipliers replacing vendor marketing claims: Apache Iceberg emerged as industry consensus for open table formats (universal vendor support, 97% query time reduction); ClickHouse validated for security analytics at unprecedented scale (Shell: 57TB/day, Cloudflare: 6M req/sec, 50-100× CIDR hunting speedup—borrowed, at larger scale; a first-party probe measured ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings); streaming architectures require 2.5-3× operational cost premium and 2.7× staffing vs batch alternatives (IDC, DORA, Confluent convergence), with fault-tolerance representing "Level 4" specialized skill (top 5% organizations); implementation timelines average 5.5 months for security-focused deployments (Gartner/phData); and tiered storage delivers 55-80% cost savings for multi-year compliance retention (AWS, Netflix).
+Seven hypotheses were assessed: Apache Iceberg emerged as industry consensus for open table formats (universal vendor support); ClickHouse validated for security analytics at scale (Cloudflare: 6M req/sec; a first-party CIDR probe measured ~13-17× native-IP speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings); streaming architectures carry a material operational cost and staffing premium vs batch alternatives, with fault-tolerance representing "Level 4" specialized skill (top 5% organizations); implementation timelines for security-focused deployments run months, not weeks; and tiered storage reduces the cost of multi-year compliance retention. A 2026-06 source audit withdrew the citations behind several of the originally stated multipliers, so those findings are stated directionally pending re-sourcing.
 
-Production validation across 18+ organizations demonstrates security-specific requirements differentiating from general analytics: IP/CIDR-based threat hunting, incident-driven burst capacity (350% traffic surges), stateful entity tracking, and multi-year queryable retention (MITRE: 18-24 months optimal). Practitioners receive evidence-based guidance: start batch architectures (SQL-friendly platforms), add selective streaming after validating business impact, implement tiered storage, right-size reliability, plan realistic timelines (5.5 months + 6-12 months proficiency), and invest in Level 4 expertise before committing to streaming.
+Production validation across 18+ organizations demonstrates security-specific requirements differentiating from general analytics: IP/CIDR-based threat hunting, incident-driven burst capacity, stateful entity tracking, and multi-year queryable retention. Practitioners receive evidence-based guidance: start batch architectures (SQL-friendly platforms), add selective streaming after validating business impact, implement tiered storage, right-size reliability, plan realistic timelines (multi-month implementation plus 6-12 months proficiency), and invest in Level 4 expertise before committing to streaming.
 
-This living literature review with quarterly updates solves citation stability while maintaining practitioner currency, providing systematic evidence base for security organizations implementing modern data stacks with quantified cost/staffing/performance trade-offs.
+This living literature review with quarterly updates solves citation stability while maintaining practitioner currency, providing systematic evidence base for security organizations implementing modern data stacks with documented cost/staffing/performance trade-offs.
 
 ---
 
@@ -26,13 +26,13 @@ This living literature review with quarterly updates solves citation stability w
 
 ### 1.1 The Security Data Challenge
 
-Modern cybersecurity operations generate unprecedented volumes of telemetry data. Organizations like Shell process 57 terabytes of security data daily, while Microsoft's Security Response Center experiences 350% traffic surges during security incidents. Traditional Security Information and Event Management (SIEM) architectures, designed for earlier threat landscapes, increasingly struggle with these data volumes, facing both scalability limits and prohibitive costs.
+Modern cybersecurity operations generate unprecedented volumes of telemetry data. Large platform operators process millions of security-relevant events per second, and incident response drives sharp, unpredictable traffic surges. Traditional Security Information and Event Management (SIEM) architectures, designed for earlier threat landscapes, increasingly struggle with these data volumes, facing both scalability limits and prohibitive costs.
 
-The modern data stack—comprising data lakehouses, distributed query engines, and streaming architectures—emerged from web-scale companies solving big data challenges in general analytics contexts (e.g., Netflix, Uber, LinkedIn). These architectural patterns promise solutions to security operations' data challenges: cost-efficient storage through table formats like Apache Iceberg, high-performance analytics via engines like ClickHouse, and real-time processing capabilities through Kafka Streams. Organizations are increasingly adopting these patterns for security operations, with production deployments at Cloudflare (6 million requests/second), SK Telecom (97% query time reduction), and Microsoft (trillions of events daily).
+The modern data stack—comprising data lakehouses, distributed query engines, and streaming architectures—emerged from web-scale companies solving big data challenges in general analytics contexts (e.g., Netflix, Uber, LinkedIn). These architectural patterns promise solutions to security operations' data challenges: cost-efficient storage through table formats like Apache Iceberg, high-performance analytics via engines like ClickHouse, and real-time processing capabilities through Kafka Streams. Organizations are increasingly adopting these patterns for security operations, with production deployments at Cloudflare (6 million requests/second) and Microsoft (trillions of events daily).
 
 However, security practitioners face a critical knowledge gap: **How do these general-purpose data architectures perform in security-specific contexts, and what are the quantified operational costs of implementation?** Vendor marketing claims abound, but systematic evidence-based guidance on architecture selection, total cost of ownership (TCO), staffing requirements, and performance benchmarks for security workloads remains scarce. A CISO evaluating ClickHouse versus traditional SIEM for a Security Operations Center (SOC) lacks peer-reviewed benchmarks, validated cost models, or industry consensus on best practices.
 
-This evidence gap has tangible consequences. Organizations overestimate implementation timelines (industry data suggests 5.5 months average versus commonly assumed 2-3 months), underestimate staffing requirements (streaming architectures require 2.7× operational staff versus batch alternatives), and lack quantitative frameworks for evaluating cost-performance trade-offs (tiered storage delivers 55-80% savings, but under what conditions?). The absence of systematic synthesis across cybersecurity and data engineering literatures leaves practitioners navigating vendor claims without rigorous validation.
+This evidence gap has tangible consequences. Organizations underestimate implementation timelines (industry implementations run materially longer than the commonly assumed 2-3 months), underestimate staffing requirements (streaming architectures require materially more operational staff than batch alternatives), and lack quantitative frameworks for evaluating cost-performance trade-offs (tiered storage reduces retention costs, but under what conditions?). The absence of systematic synthesis across cybersecurity and data engineering literatures leaves practitioners navigating vendor claims without rigorous validation.
 
 ### 1.2 Literature Gap: Two Disconnected Domains
 
@@ -84,26 +84,26 @@ This systematic review addresses the following research questions:
 
 This systematic review makes the following contributions to knowledge and practice:
 
-**1. Cross-domain synthesis**: This is the first systematic review bridging cybersecurity and data engineering literatures with rigorous methodology. We synthesize 75+ sources from government agencies (CISA, MITRE, DARPA, NSA, SANS), industry analysts (Gartner, IDC, Forrester), production deployments (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom), academic research, and vendor technical documentation. Our evidence classification system (79% Level A sources—production deployments and peer-reviewed research) ensures rigor while our PRISMA-aligned extraction methodology enables reproducibility.
+**1. Cross-domain synthesis**: This is the first systematic review bridging cybersecurity and data engineering literatures with rigorous methodology. We synthesize 75+ sources from government agencies (CISA, MITRE, DARPA, NSA, SANS), industry analysts (Gartner, Forrester), production deployments (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom), academic research, and vendor technical documentation. Our evidence classification system prioritizes production deployments and peer-reviewed research, while our PRISMA-aligned extraction methodology enables reproducibility.
 
 **2. Quantitative hypothesis validation**: We provide evidence-based validation of 7 operational hypotheses critical for security practitioners:
-- Apache Iceberg dominance (76% adoption, 5 sources)
-- Streaming architecture cost premium (2.5-3× operational costs, 5 sources)
-- Staffing multipliers (2.7× for streaming vs. batch, 4 sources)
-- Implementation timelines (5.5 months average, 3 sources)
-- Tiered storage savings (55-80% cost reduction, 3 sources)
-- ClickHouse OLAP performance (6M requests/second, 96% queries <1s, 4 sources)
-- Kafka Streams security patterns (production validation, 3 sources)
+- Apache Iceberg dominance (industry consensus, universal vendor support)
+- Streaming architecture operational cost premium vs. batch
+- Staffing multipliers for streaming vs. batch
+- Implementation timelines longer than vendor claims
+- Tiered storage savings for multi-year retention
+- ClickHouse OLAP performance (6M requests/second at Cloudflare)
+- Kafka Streams security patterns (production validation)
 
 Each hypothesis receives transparent confidence scoring using a multi-dimensional rubric (source count, evidence quality, source diversity, quantitative precision, geographic/organizational diversity).
 
-**3. Production evidence base**: We document 18+ production deployments with quantitative metrics, moving beyond vendor marketing claims to validated performance data. Examples include Cloudflare's 6 million requests/second with ClickHouse, Shell's 57TB/day security telemetry processing, SK Telecom's 97% query time reduction with Iceberg optimizations, and Microsoft's streaming architecture handling 350% traffic surges during security incidents.
+**3. Production evidence base**: We document 18+ production deployments with quantitative metrics, moving beyond vendor marketing claims to validated performance data. Examples include Cloudflare's 6 million requests/second with ClickHouse, SK Telecom's production Iceberg deployment with Trino.
 
 **4. Practitioner-oriented guidance**: We translate research findings into actionable operational guidance:
 - Architecture selection frameworks with quantified trade-offs
-- Staffing models by architecture type (3.2 FTE minimum for Flink pipelines, 9-11 FTE for full streaming architectures)
-- Budget planning templates accounting for 2.5-3× streaming cost premiums or 55-80% tiered storage savings
-- Timeline expectations calibrated to industry data (5.5 months) versus optimistic assumptions (2-3 months)
+- Staffing models by architecture type
+- Budget planning templates accounting for streaming cost premiums and tiered storage savings
+- Timeline expectations calibrated to industry experience versus optimistic assumptions (2-3 months)
 - Skills assessment frameworks identifying "Level 4" expertise requirements (top 5% organizations)
 
 **5. Gap identification for future research**: We systematically identify 6 evidence gaps requiring further investigation, including mid-market data volume validation, direct SIEM cost comparisons, emerging technology patterns (DuckDB edge processing, XTable interoperability), catalog adoption metrics, and security-specific benchmark suites.
@@ -187,17 +187,17 @@ Phase 1 (October 14-25, 2025) employed systematic extraction of 283 footnotes us
 
 Sources classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research (adapted from evidence-based medicine):
 
-**Evidence Level A** (Target: 73%+, Achieved: 79%):
-- Production case studies (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom) with quantitative benchmarks
+**Evidence Level A** (Target: 73%+):
+- Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
-- **Current Achievement**: 57 of 72 sources (79%) - EXCEEDS target by 6 percentage points
+- **Current Achievement**: under re-audit following the 2026-06 source verification pass
 
-**Evidence Level B** (Acceptable: <27%, Achieved: 21%):
+**Evidence Level B** (Acceptable: <27%):
 - Gartner, IDC, Forrester quantitative research with disclosed methodology
 - Expert practitioner validation (personal communication with production deployment details)
 - Vendor technical documentation (if production-validated)
-- **Current Achievement**: 15 of 72 sources (21%)
+- **Current Achievement**: under re-audit following the 2026-06 source verification pass
 
 **Evidence Level C** (Rejected: 0%):
 - Blog posts, conference talks (unless backed by production data)
@@ -211,7 +211,7 @@ Sources classified using a four-tier evidence system prioritizing production dep
 
 Each source underwent evaluation across multiple dimensions:
 
-*Quantitative Validation*: Specific metrics cited (e.g., "97% query time reduction" vs "significant improvement"), reproducible benchmarks with methodology disclosure, production scale indicators (data volumes, request rates, enterprise names)
+*Quantitative Validation*: Specific metrics cited (e.g., "6 million requests/second" vs "significant improvement"), reproducible benchmarks with methodology disclosure, production scale indicators (data volumes, request rates, enterprise names)
 
 *Author/Organization Authority*: Government agencies (CISA, MITRE, DARPA) = highest credibility; production deployments at scale (FAANG companies, Fortune 500) = high credibility; industry analysts with disclosed methodology (Gartner, IDC, Forrester) = moderate-high credibility; vendor claims validated by third parties = moderate credibility
 
@@ -283,9 +283,9 @@ Each hypothesis classified using a 5-level confidence scale based on multi-dimen
 
 **STRONGLY VALIDATED (⭐⭐⭐⭐⭐)**: 5+ sources with quantitative evidence, multiple independent production deployments, government/standards body validation (Example: H-ARCH-01 - Iceberg Dominance)
 
-**STRONG (⭐⭐⭐⭐)**: 3-4 sources with quantitative evidence, industry analyst validation + production deployment (Example: H-IMPL-01 - TCO Reality with 2.5-3× costs)
+**STRONG (⭐⭐⭐⭐)**: 3-4 sources with quantitative evidence, industry analyst validation + production deployment (Example: H-IMPL-01 - TCO Reality)
 
-**VALIDATED (⭐⭐⭐)**: 2-3 sources with quantitative evidence, production deployment or analyst consensus (Example: H-IMPL-03 - Timeline Premium averaging 5.5 months)
+**VALIDATED (⭐⭐⭐)**: 2-3 sources with quantitative evidence, production deployment or analyst consensus (Example: H-IMPL-03 - Timeline Premium)
 
 **PRELIMINARY (⭐⭐)**: 1-2 sources, limited quantitative data, expert consensus without production validation (Requires additional evidence before publication)
 
@@ -293,25 +293,27 @@ Each hypothesis classified using a 5-level confidence scale based on multi-dimen
 
 **Phase 1 Validation Results**:
 
+*[2026-06 source audit note: citations supporting the original staffing, TCO, timeline, and tiered-storage multipliers were withdrawn (fabricated entries or stats not present in the cited sources). The affected multipliers are removed throughout this manuscript; those hypotheses revert to directional claims pending re-sourcing, and the source counts and confidence scores in this section are pre-audit values.]*
+
 7 Hypotheses Validated with quantitative evidence (average 4.1 sources per hypothesis, 100% with quantitative evidence, 86% with production deployment validation, 29% with government/standards validation):
 
 - **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED - 5 sources, ⭐⭐⭐⭐⭐ - Dremio survey (29% vs 23% Delta), universal vendor support, 300+ contributors
-- **H-IMPL-01** (Streaming TCO 2.5-3×): STRONG - 5 sources, ⭐⭐⭐⭐ - IDC, DORA, Confluent converging evidence
-- **H-IMPL-02** (Staffing 2.7×): STRONG - 4 sources, ⭐⭐⭐⭐⭐ - DORA, Ververica, McKinsey independent validation
-- **H-IMPL-03** (Timeline 5.5mo): VALIDATED - 3 sources, ⭐⭐⭐ - Gartner/phData primary validation
-- **H-COST-09** (Tiered Storage 55-80%): STRONG - 3 sources, ⭐⭐⭐⭐⭐ - AWS/Netflix production validated
-- **H3-PERFORMANCE-01** (ClickHouse 6M req/sec): EXTENDED - 4 sources, ⭐⭐⭐⭐ - Cloudflare/Shell production
-- **H-STREAM-01** (Kafka Streams): VALIDATED - 3 sources, ⭐⭐⭐⭐ - LinkedIn/Uber/Microsoft patterns
+- **H-IMPL-01** (Streaming TCO premium): STRONG - 5 sources, ⭐⭐⭐⭐ - supporting citations under re-validation
+- **H-IMPL-02** (Staffing premium): STRONG - 4 sources, ⭐⭐⭐⭐⭐ - supporting citations under re-validation
+- **H-IMPL-03** (Timeline premium): VALIDATED - 3 sources, ⭐⭐⭐ - supporting citations under re-validation
+- **H-COST-09** (Tiered Storage savings): STRONG - 3 sources, ⭐⭐⭐⭐⭐ - supporting citations under re-validation
+- **H3-PERFORMANCE-01** (ClickHouse 6M req/sec): EXTENDED - 4 sources, ⭐⭐⭐⭐ - Cloudflare production
+- **H-STREAM-01** (Kafka Streams): VALIDATED - 3 sources, ⭐⭐⭐⭐ - LinkedIn/Microsoft patterns
 
 ### 2.6 Synthesis and Analysis Methods
 
 **Quantitative Synthesis**:
 - **Performance Benchmarks**: Aggregated across multiple sources with methodology comparison
-- **Cost Analysis**: TCO modeling using data from 5+ sources (Cloudera, IDC, Confluent, AWS, Netflix)
+- **Cost Analysis**: TCO modeling using data from multiple sources (Cloudera, Confluent, AWS, Netflix)
 - **Adoption Rates**: Industry surveys (Dremio, Databricks, Confluent) with sample size and methodology disclosure
 
 **Qualitative Synthesis**:
-- **Implementation Patterns**: Cross-case analysis of production deployments (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom)
+- **Implementation Patterns**: Cross-case analysis of production deployments (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom)
 - **Expert Validation**: Practitioner interviews for hypothesis validation
 - **Contradiction Analysis**: When sources conflict, document both perspectives with evidence quality assessment (Note: No contradictions identified in current evidence base)
 
@@ -412,14 +414,12 @@ Wiley, J. (2025). Modern Data Stack for Cybersecurity: Living Literature Review
 
 **Source statistics**:
 - **Total sources**: 75+ unique sources
-- **Evidence Level A**: 57 sources (79%) - exceeds 70% target
-- **Evidence Level B**: 15 sources (21%)
-- **Evidence Level C/D**: 0 sources (zero low-quality sources included)
+- **Evidence levels**: under re-audit following the 2026-06 source verification pass (pre-audit classification admitted Level A/B only; no C/D sources)
 
 **Source type distribution**:
-- **Production deployments**: 18+ organizations (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, Disney+, Nordstrom, Microsoft, Confluent, Anyscale, DataRobot, etc.)
+- **Production deployments**: 18+ organizations (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom, Nordstrom, Microsoft, Confluent, Anyscale, DataRobot, etc.)
 - **Government/Standards**: 8 sources (CISA, MITRE, DARPA, NSA, SANS, CSA, OCA, MITRE Engenuity)
-- **Industry analysts**: 10 sources (Gartner, IDC, Forrester, Enterprise Data Quarterly)
+- **Industry analysts**: Gartner, Forrester (source count under re-audit)
 - **Academic/Research**: 6 sources
 - **Vendor documentation**: 33 sources (high-quality technical documentation)
 
@@ -434,45 +434,39 @@ Our analysis identifies three architectural patterns validated across multiple p
 
 #### 3.2.1 Table Formats: Apache Iceberg as Industry Consensus
 
-Apache Iceberg emerged as the industry consensus choice for open table formats, validated by universal vendor support and production deployments at scale. Five independent sources confirm this pattern:
+Apache Iceberg emerged as the industry consensus choice for open table formats, validated by universal vendor support and production deployments at scale. Multiple independent sources confirm this pattern:
 
 **Universal Vendor Adoption**: AWS, Google Cloud, Microsoft Azure, Snowflake, and Databricks all announced Iceberg compatibility, providing vendor-neutral interoperability unprecedented in data lake history. This contrasts with Delta Lake's Databricks-led governance, where competing vendors face architectural friction.
 
 **Community Strength**: Apache Software Foundation governance attracted 300+ contributors across 100+ organizations, demonstrating vendor-neutral development uncommon in enterprise data infrastructure.
 
-**Production Validation**: SK Telecom achieved 97% query time reduction with Iceberg optimizations, scanning 52.7 TB in 3.39 seconds—performance impossible with traditional Hive tables. Cloudera benchmarks confirmed 10× improvement over legacy formats.
+**Production Validation**: SK Telecom operates Iceberg with Trino in production for large-scale analytics.
 
 **Adoption Trends**: Dremio's 2024 survey found 29% of organizations planning open table format adoption chose Iceberg vs 23% for Delta Lake, indicating growing momentum despite Delta's earlier market entry.
 
-Our original "76% adoption" hypothesis required refinement to "industry consensus as de facto standard" due to source limitations, but the underlying claim—Iceberg dominance—received strong validation across all five sources (100% Evidence Level A).
+Our original "76% adoption" hypothesis required refinement to "industry consensus as de facto standard" due to source limitations, but the underlying claim—Iceberg dominance—received strong validation across these sources.
 
 #### 3.2.2 Query Engines: ClickHouse Performance for Security Workloads
 
 ClickHouse demonstrated exceptional performance for security analytics, validated by production deployments processing massive telemetry volumes:
 
-**Cloudflare Production** (6M requests/second): Cloudflare's HTTP analytics processes 6 million requests per second with 96.3% of queries completing under 1 second. Compression ratios of 10-12× for log data provide storage efficiency critical for security workloads generating TB/day volumes.
-
-**Shell Enterprise Security** (57 TB/day): Shell's security operations process 57 TB of daily telemetry with sub-second query performance, replacing traditional SIEM architectures. This validates ClickHouse viability for enterprise security at unprecedented scale.
+**Cloudflare Production** (6M requests/second): Cloudflare's HTTP analytics processes 6 million requests per second. Compression ratios of 10-12× for log data provide storage efficiency critical for security workloads generating TB/day volumes.
 
 **Storage Efficiency**: Direct comparison benchmarks show ClickHouse achieves 5-10× better storage efficiency vs Elasticsearch for security log workloads, reducing infrastructure costs while improving query performance.
 
-**Security-Specific Optimization**: ClickHouse native IPv4/IPv6 data types provide 50-100× performance improvement for CIDR-based threat hunting vs string-based IP storage common in general analytics platforms (borrowed figure, at larger scale; a first-party CIDR probe on the MOAR reference stack—ClickHouse, one host, 20M rows, `lab/cidr_probe.py`, 2026-06-07—measured ~13-17× warm, 0.010 s native IPv4 vs 0.166 s per-row String parsing on the identical answer, which lands below the borrowed band, with the IPv4 column ~2.9× smaller in storage, 65.4 MiB vs 188.1 MiB). This security-specific feature justifies platform selection independent of general OLAP capabilities.
+**Security-Specific Optimization**: ClickHouse native IPv4/IPv6 data types speed up CIDR-based threat hunting vs string-based IP storage common in general analytics platforms. A first-party CIDR probe on the MOAR reference stack (ClickHouse, one host, 20M rows, `lab/cidr_probe.py`, 2026-06-07) measured ~13-17× warm, 0.010 s native IPv4 vs 0.166 s per-row String parsing on the identical answer, with the IPv4 column ~2.9× smaller in storage (65.4 MiB vs 188.1 MiB). This security-specific feature justifies platform selection independent of general OLAP capabilities.
 
-Four sources (100% Evidence Level A) validate ClickHouse performance claims, with two representing security-specific production deployments (Shell, Cloudflare security telemetry).
+Multiple sources validate ClickHouse performance claims, with Cloudflare representing production telemetry at scale.
 
 #### 3.2.3 Streaming Architectures: Kafka Streams Production Patterns
 
-Kafka Streams validated production-scale stateful security processing across three major deployments:
+Kafka Streams validated production-scale stateful security processing across major production deployments:
 
 **LinkedIn Entity Tracking**: Production deployment maintains terabytes of state with millisecond access times for security entity tracking. Stateful processing enables per-user, per-device behavioral analytics impossible with batch SQL aggregations.
 
-**Uber Real-Time Views**: Thousands of real-time security views with sub-second refresh rates demonstrate Kafka Streams scalability for security operations. Analysts query current entity state without batch processing delays.
+**Microsoft Azure Scale**: Azure Event Hubs (Kafka-compatible) processes trillions of events daily, validating Kafka scalability for cloud-scale security telemetry. Security incidents drive sharp traffic surges, requiring elastic streaming capacity.
 
-**Microsoft Azure Scale**: Azure Event Hubs (Kafka-compatible) processes trillions of events daily, validating Kafka scalability for cloud-scale security telemetry. Microsoft Security Response Center experiences 350% traffic surges during incidents, requiring elastic streaming capacity.
-
-**Confluent Performance Benchmark**: 4.5 million events/second on 9-node clusters establishes realistic throughput expectations for enterprise streaming architectures.
-
-Three sources (100% Evidence Level A) validate Kafka Streams for security, with LinkedIn and Uber providing security-specific production validation.
+LinkedIn and Microsoft provide production validation for Kafka-based security telemetry patterns.
 
 ### 3.3 Theme 2: Cost Economics & TCO Reality
 
@@ -480,49 +474,35 @@ Modern data stack architectures promise cost savings vs traditional SIEM, but op
 
 #### 3.3.1 Streaming Architecture Cost Premium
 
-Streaming architectures incur 2.5-3× higher operational costs vs batch processing, validated by convergent evidence from multiple independent sources:
+Streaming architectures incur materially higher operational costs than batch processing:
 
-**IDC Research**: 2.5-3× higher operational staffing costs for streaming vs batch due to specialized expertise requirements (Kafka, Flink), 24/7 monitoring demands, and incident response complexity.
+**DORA 2024 Report**: Fault-tolerance expertise classified as "Level 4" specialized skill available in top 5% of organizations only, creating talent scarcity that drives 20-30% salary premiums.
 
-**DORA 2024 Report**: 2.7× operational staff required for streaming architectures, with 3.2× higher incident rates. Fault-tolerance expertise classified as "Level 4" specialized skill available in top 5% of organizations only, creating talent scarcity that drives 20-30% salary premiums.
+**Cloudera TCO Analysis**: Platform TCO breakdown shows 39% licensing, 32% hardware/infrastructure, and 29% operational costs. Even batch-focused platforms allocate significant budget to operations; streaming increases this component further.
 
-**Confluent Production Data**: 45-55% of total cost of ownership (TCO) attributed to operational complexity and specialized talent, exceeding infrastructure (30-35%) and licensing (15-20%) combined. This validates that operational costs—not infrastructure—dominate streaming TCO.
-
-**Cloudera TCO Analysis**: Platform TCO breakdown shows 39% licensing, 32% hardware/infrastructure, and 29% operational costs. Even batch-focused platforms allocate significant budget to operations; streaming multiplies this component 2.5-3×.
-
-**Enterprise Data Quarterly**: 1.5-2× higher infrastructure costs for streaming vs batch, complementing operational premium to produce 2-3× total TCO multiplier.
-
-Five sources with 80% Evidence Level A converge on 2-3× TCO range, with operational staffing representing the primary cost driver.
+The citations behind the original quantitative TCO multiplier did not survive the 2026-06 source audit, so the premium is stated directionally pending re-sourcing.
 
 #### 3.3.2 Tiered Storage Economics
 
-Tiered storage strategies deliver 55-80% cost savings for multi-year security data retention, validated by cloud provider documentation and production deployments:
+Tiered storage strategies materially reduce the cost of multi-year security data retention:
 
-**AWS Storage Optimization**: Official AWS whitepaper documents 55% average savings with hot/warm/cold tiering strategies. Conservative estimates cite 35% (30-40% range) for general workloads, while storage-focused optimization achieves 55%.
+**Kafka Tiered Storage**: Hot data (recent 7-30 days) resides on Kafka brokers; cold data (historical compliance retention) migrates to object storage (S3), cutting the cost of holding multi-year retention online.
 
-**Netflix Kafka Tiered Storage**: 70-80% storage cost reduction for multi-year security data retention using Kafka Tiered Storage architecture. Hot data (recent 7-30 days) resides on Kafka brokers; cold data (historical compliance retention) migrates to object storage (S3).
-
-**Storage Tier Economics**: Hot tier (S3 Standard, Kafka brokers) provides <100ms access at 1.0× cost; warm tier (S3 Infrequent Access) reduces costs 50% with <1s latency; cold tier (S3 Glacier) achieves 80-90% savings with 12-48 hour retrieval for audit/compliance queries.
+**Storage Tier Economics**: Hot tier (S3 Standard, Kafka brokers) provides <100ms access at full price; warm tier (S3 Infrequent Access) trades lower cost for <1s latency; cold tier (S3 Glacier) is priced for archive, with 12-48 hour retrieval for audit/compliance queries.
 
 **Security Application**: Compliance requirements (HIPAA, PCI-DSS, SOC 2) mandate multi-year queryable retention (1-7 years). Tiered storage makes extended retention economically viable: 70% of security queries target last 30 days (hot tier justified), while <5% access historical data (cold tier appropriate).
 
-Three sources (100% Evidence Level A) validate 55-80% savings range, with Netflix representing security-specific production validation.
+The citations behind the original quantitative savings band did not survive the 2026-06 source audit, so the savings claim is stated directionally pending re-sourcing.
 
 #### 3.3.3 Reliability Cost Economics
 
-Reliability investments exhibit exponential cost scaling, with 70% of organizations overspending on availability beyond business requirements:
+Reliability investments scale steeply in cost with each additional "nine" of availability, and many organizations buy more availability than the business case supports:
 
-**Google SRE Reliability Economics**: Each additional "nine" of availability increases costs 10×. Three nines (99.9%) provides baseline cost; four nines (99.99%) costs 10× baseline; five nines (99.999%) costs 100× baseline due to infrastructure redundancy, operational complexity, and testing overhead.
-
-**Financial Services Reliability Analysis**: Five nines reliability costs 37× more than three nines for security infrastructure, yet equivalent security effectiveness achievable with lower availability. Tiered reliability model reserves highest availability for mission-critical components only.
-
-**Gartner Overinvestment Study**: 70% of organizations overspend on reliability, exceeding actual business requirements and diverting resources from higher-value security initiatives. Cost-benefit analysis rarely justifies five-nines for security platforms.
-
-**Uptime Institute Assessment**: 98% of organizations cannot economically justify beyond four nines. Mission-critical components (detection engines, SOC consoles) may warrant four-nines; data storage and batch processing tolerate two-three nines (99-99.9%).
+**Reliability Economics**: Each additional "nine" of availability costs disproportionately more, because infrastructure redundancy, operational complexity, and testing overhead all rise with the availability target, while equivalent security effectiveness is often achievable at lower availability. A tiered reliability model reserves the highest availability for mission-critical components only: detection engines and SOC consoles may warrant four nines, while data storage and batch processing tolerate two-three nines (99-99.9%). Cost-benefit analysis rarely justifies five nines for security platforms. (The specific cost multipliers and overspend percentages previously cited here rested on placeholder citations and were removed in the 2026-06 source audit.)
 
 **Security Context**: SIEM availability of three nines (99.9% = 8.76 hours downtime/year) suffices for most security operations. Detection engines require four nines for critical alerting, but data lake storage accepts two-three nines (batch processing tolerates delays).
 
-Four sources (100% Evidence Level A) validate reliability economics, enabling practitioners to right-size availability targets and reclaim 30-50% infrastructure costs from over-provisioning.
+Right-sizing availability targets lets practitioners reclaim infrastructure costs from over-provisioning.
 
 ### 3.4 Theme 3: Implementation Reality
 
@@ -530,33 +510,25 @@ Vendor marketing timelines contrast sharply with implementation reality document
 
 #### 3.4.1 Staffing Requirements and Specialized Skills
 
-Streaming architectures require 2.7× operational staff vs batch alternatives, with specialized fault-tolerance expertise representing "Level 4" skills available in top 5% of organizations:
+Streaming architectures require materially more operational staff than batch alternatives, with specialized fault-tolerance expertise representing "Level 4" skills available in top 5% of organizations:
 
 **DORA 2024 Classification**: Fault-tolerance expertise (Kafka exactly-once semantics, Flink checkpointing, backpressure management) classified as "Level 4" specialized skill, contrasting with commodity SQL skills (Level 1, available in 80%+ organizations) and advanced distributed systems (Level 3, available in 10-20% organizations).
 
-**Staffing Multiplier Validation**: DORA 2.7× staff multiplier independently validated by IDC (2.5-3× operational staffing costs) and production case studies. Batch architecture requires 3-4 FTEs (2-3 data engineers, 0.5 SRE, 0.5 DBA); streaming requires 8-11 FTEs (5-7 data engineers, 1-2 SRE, 1-2 specialized streaming engineers).
-
-**Platform-Specific Requirements**: Ververica case study documents 3.2 average FTEs for production Flink pipelines (1.5 Flink developers, 0.75 DevOps/SRE, 0.5 data engineering, 0.45 infrastructure). McKinsey research validates tiger team approach: 5-7 FTEs during 3-6 month implementation, transitioning to 3-4 FTE operational team.
-
 **Security-Specific Hybrid Skills Scarcity**: Security architect + distributed systems expertise rarely combined in single practitioner. Organizations choose between upskilling security team (6-12 months proficiency per Gartner), hiring data engineers with 20-30% salary premium, or outsourcing via tiger teams/managed services.
 
-**Incident Rate Impact**: DORA documents 3.2× higher incident rates for streaming vs batch, requiring 24/7 on-call rotation with Level 4 troubleshooting expertise (backpressure root cause analysis, stateful processing debugging). On-call compensation adds 15-20% staffing cost beyond base salary premium.
+**Incident Rate Impact**: Streaming architectures carry higher operational incident exposure than batch, requiring 24/7 on-call rotation with Level 4 troubleshooting expertise (backpressure root cause analysis, stateful processing debugging). On-call compensation adds 15-20% staffing cost beyond base salary premium.
 
-Four sources (100% Evidence Level A) converge on 2.5-3× staffing multiplier, representing strongest validation among all hypotheses due to source diversity (DORA industry research, IDC analyst, Ververica production, McKinsey consulting).
+The citations behind the original staffing multiplier did not survive the 2026-06 source audit (fabricated entries or stats not present in the cited sources), so the staffing premium is stated directionally pending re-sourcing.
 
 #### 3.4.2 Implementation Timelines
 
-Security-focused data lakehouse implementations average 5.5 months (Gartner/phData), representing 15-30% timeline premium vs general data engineering:
+Security-focused data lakehouse implementations run materially longer than vendor marketing suggests:
 
-**Gartner/phData Research**: 5.5 month average timeline from requirements gathering through production cutover for security-focused implementations. Timeline breakdown: Month 1 requirements/architecture, Months 2-3 pilot with limited data sources, Month 4 production planning, Month 5 cutover with parallel legacy SIEM operations, Month 6+ optimization.
-
-**Security-Specific Constraints**: SANS Institute validates 15-30% timeline premium vs general data engineering driven by compliance validation gates (HIPAA, PCI-DSS, SOC 2 reviews add 2-4 weeks), security tool integrations (EDR, SIEM, threat intel platforms add 1-2 weeks), and detection logic migration (translate/validate existing rules adds 2-3 weeks).
-
-**Confluent Kafka Roadmap**: 4-6 months for comprehensive enterprise Kafka deployment provides general baseline. Security use cases trend toward longer timeline (Month 1 fundamentals training, Month 2 pilot, Month 3 production hardening, Month 4 critical workload deployment, Months 5-6 operational maturity).
+**Security-Specific Constraints**: Compliance validation gates (HIPAA, PCI-DSS, SOC 2 reviews), security tool integrations (EDR, SIEM, threat intel platforms), and detection logic migration (translating and validating existing rules) each extend timelines beyond general data engineering baselines.
 
 **Proficiency Timeline**: Gartner documents 6-12 months for team proficiency after initial deployment. Month 1: 20% productivity (heavy vendor support); Month 3: 50% productivity (independent operations, escalations for complex issues); Month 6: 75% productivity (optimization, cost management); Month 12: 90% productivity (architectural evolution). Year 1 TCO must include vendor support contracts or consulting budget for learning curve support.
 
-Three sources (67% Evidence Level A) validate 5.5 month average, with moderate confidence due to limited source count and geographic diversity (all US-centric; European GDPR/APAC data localization may extend timelines further).
+The citations behind the original average-timeline figure did not survive the 2026-06 source audit, so the finding is stated directionally: security-focused implementations run months, not weeks, and the supporting evidence is US-centric (European GDPR/APAC data localization may extend timelines further).
 
 #### 3.4.3 Skills Scarcity and Training Investment
 
@@ -570,69 +542,69 @@ Platform selection correlates with skill availability, creating trade-offs betwe
 
 **Training ROI Analysis**: Kafka Streams training investment ($25K per engineer for 200 hours) breaks even in 6 months if enabling transition from Confluent Cloud ($150K annual premium vs self-hosted) to internal operations. Risk: Training wasted if engineers leave before ROI realized or proficiency not achieved in 6-12 month window.
 
-**Recommendation**: Managed services for Year 1 (de-risk timeline), build expertise in parallel, transition to self-hosted Year 2 after proficiency achieved. Batch-only implementations start with SQL-friendly platforms (ClickHouse, Trino, Iceberg); avoid Flink/Kafka unless real-time requirements justify 2-3× cost premium AND can hire Level 4 expertise OR accept 12-18 month proficiency timeline.
+**Recommendation**: Managed services for Year 1 (de-risk timeline), build expertise in parallel, transition to self-hosted Year 2 after proficiency achieved. Batch-only implementations start with SQL-friendly platforms (ClickHouse, Trino, Iceberg); avoid Flink/Kafka unless real-time requirements justify the streaming cost premium AND can hire Level 4 expertise OR accept 12-18 month proficiency timeline.
 
 ### 3.5 Theme 4: Performance Benchmarks
 
 Production deployments provide quantitative performance validation across query engines, streaming platforms, and table formats, establishing realistic expectations vs vendor marketing claims.
 
-**Query Performance Validation**: ClickHouse processes 6M req/sec with 96% queries <1s (Cloudflare), Shell validates 57TB/day security telemetry with sub-second queries, and SK Telecom achieves 97% query time reduction scanning 52.7TB in 3.39s with Iceberg optimizations (see Section 3.2 for details).
+**Query Performance Validation**: ClickHouse processes 6M req/sec at Cloudflare, and SK Telecom operates Iceberg with Trino in production at large scale (see Section 3.2 for details).
 
-**Streaming Throughput**: Kafka achieves 4.5M events/sec on 9-node clusters (Confluent benchmark), validated at trillion events/day scale in Microsoft Azure production. LinkedIn maintains terabytes of stateful processing state with millisecond access times; Uber operates thousands of real-time views with sub-second refresh rates.
+**Streaming Throughput**: Kafka-compatible streaming is validated at trillion events/day scale in Microsoft Azure production. LinkedIn maintains terabytes of stateful processing state with millisecond access times.
 
-**Storage Efficiency**: ClickHouse achieves 10-12× compression for log data and 5-10× storage efficiency vs Elasticsearch. Netflix validates 70-80% cost savings with Kafka tiered storage for multi-year retention. Apache Arrow Flight SQL provides 20× faster result retrieval vs JDBC/ODBC, critical for multi-engine architectures.
+**Storage Efficiency**: ClickHouse achieves 10-12× compression for log data and 5-10× storage efficiency vs Elasticsearch. Kafka tiered storage cuts the cost of multi-year retention. Apache Arrow Flight SQL is designed for faster result retrieval than JDBC/ODBC, which matters for multi-engine architectures.
 
-**Security-Specific Benchmarks**: ClickHouse native IP types enable 50-100× faster CIDR-based threat hunting vs string-based implementations (borrowed, at larger scale; a first-party probe measured ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings). Microsoft MSRC documents 350% incident traffic surges requiring elastic burst capacity. These security-specific requirements differentiate performance needs from general analytics.
+**Security-Specific Benchmarks**: ClickHouse native IP types speed up CIDR-based threat hunting vs string-based implementations (a first-party probe measured ~13-17× at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings). Incident response drives traffic surges requiring elastic burst capacity. These security-specific requirements differentiate performance needs from general analytics.
 
-**Benchmark Caveats**: Vendor benchmarks require skepticism, but Cloudflare (6M req/sec), Shell (57TB/day), SK Telecom (52.7TB/3.39s) production validations confirm claims. Your mileage may vary based on query patterns, data characteristics, infrastructure (SSD vs HDD), configuration tuning, and workload specifics. Recommendation: Pilot with your data before production commitment.
+**Benchmark Caveats**: Vendor benchmarks require skepticism; Cloudflare's production deployment (6M req/sec) is the strongest independent validation in this set. Your mileage may vary based on query patterns, data characteristics, infrastructure (SSD vs HDD), configuration tuning, and workload specifics. Recommendation: Pilot with your data before production commitment.
 
 ### 3.6 Theme 5: Security-Specific Considerations
 
 Security workloads exhibit performance requirements fundamentally different from general analytics, requiring specialized platform capabilities:
 
-**IP/CIDR-Based Threat Hunting**: ClickHouse native IPv4/IPv6 data types provide 50-100× performance improvement for CIDR-based threat hunting vs string-based IP storage common in general analytics platforms (Snowflake, BigQuery, Redshift)—a borrowed figure at larger scale; a first-party CIDR probe (MOAR reference stack, 20M rows, single host, 2026-06-07) measured ~13-17× warm, which lands below the borrowed band, with the native IPv4 column ~2.9× smaller in storage than String. Security analysts constantly filter by IP/CIDR ("show all traffic to AWS IP ranges"), whereas business analytics rarely uses CIDR patterns. This security-specific optimization justifies platform selection independent of general OLAP capabilities.
+**IP/CIDR-Based Threat Hunting**: ClickHouse native IPv4/IPv6 data types speed up CIDR-based threat hunting vs string-based IP storage common in general analytics platforms (Snowflake, BigQuery, Redshift); a first-party CIDR probe (MOAR reference stack, 20M rows, single host, 2026-06-07) measured ~13-17× warm, with the native IPv4 column ~2.9× smaller in storage than String. Security analysts constantly filter by IP/CIDR ("show all traffic to AWS IP ranges"), whereas business analytics rarely uses CIDR patterns. This security-specific optimization justifies platform selection independent of general OLAP capabilities.
 
-**Burst Capacity for Incidents**: Microsoft Security Response Center documents 350% average traffic surge during active security incidents, lasting hours to days during investigation intensity. Business analytics exhibit predictable load (scheduled dashboard refreshes, end-of-quarter reports); security workloads demand unpredictable burst handling. Cloud elastic platforms (Athena, ClickHouse Cloud, Confluent Cloud) provide burst capacity without continuous over-provisioning; on-premises requires 4× capacity provisioning (expensive) or accepts degraded performance during critical investigations (unacceptable).
+**Burst Capacity for Incidents**: Active security incidents drive sharp traffic surges that last hours to days at investigation intensity. Business analytics exhibit predictable load (scheduled dashboard refreshes, end-of-quarter reports); security workloads demand unpredictable burst handling. Cloud elastic platforms (Athena, ClickHouse Cloud, Confluent Cloud) provide burst capacity without continuous over-provisioning; on-premises requires 4× capacity provisioning (expensive) or accepts degraded performance during critical investigations (unacceptable).
 
-**Stateful Entity Behavior Tracking**: LinkedIn maintains terabytes of state with millisecond access for per-entity security tracking ("what's normal for THIS user over 30 days?"). Uber operates thousands of real-time security views with sub-second refresh. Business analytics aggregate by dimensions (SQL GROUP BY); security requires per-entity stateful history. Batch SQL re-processes entire historical windows per query (slow, expensive); stateful streaming maintains per-entity state continuously (fast, efficient).
+**Stateful Entity Behavior Tracking**: LinkedIn maintains terabytes of state with millisecond access for per-entity security tracking ("what's normal for THIS user over 30 days?"). Business analytics aggregate by dimensions (SQL GROUP BY); security requires per-entity stateful history. Batch SQL re-processes entire historical windows per query (slow, expensive); stateful streaming maintains per-entity state continuously (fast, efficient).
 
-**Multi-Year Queryable Retention**: MITRE research validates 18-24 months behavioral data optimal for insider threat detection (2.3× better accuracy vs 3-6 months). CISA recommends 24-36 month retention for behavioral baseline establishment and APT detection. Compliance investigations require fast queries across multi-year data ("show all access to this patient record 2022-2024"), not cold archive restoration (48-hour delay unacceptable for HIPAA audit). Tiered lakehouse architecture (Iceberg + Trino) provides multi-year queryable retention at 55-80% cost savings while maintaining acceptable performance (SK Telecom: 52.7 TB in 3.39s).
+**Multi-Year Queryable Retention**: CISA recommends 24-36 month retention for behavioral baseline establishment and APT detection. Compliance investigations require fast queries across multi-year data ("show all access to this patient record 2022-2024"), not cold archive restoration (48-hour delay unacceptable for HIPAA audit). Tiered lakehouse architecture (Iceberg + Trino) provides multi-year queryable retention at materially lower cost while maintaining acceptable performance.
 
-**Analyst Productivity**: Sub-second queries enable iterative threat hunting with 10-20 pivots per investigation. Slow queries (30-60s) reduce exploration to 3-5 pivots before analysts abandon investigation due to delays. Shell's ClickHouse deployment (57TB/day, sub-second queries) validates analyst productivity gains from interactive performance.
+**Analyst Productivity**: Sub-second queries enable iterative threat hunting with 10-20 pivots per investigation. Slow queries (30-60s) reduce exploration to 3-5 pivots before analysts abandon investigation due to delays.
 
-Eight sources (100% Evidence Level A) validate security-specific requirements, distinguishing security analytics from general business intelligence workloads.
+Multiple production and government sources validate these security-specific requirements, distinguishing security analytics from general business intelligence workloads.
 
 ### 3.7 Hypothesis Validation Summary
 
-Seven hypotheses received quantitative validation with varying confidence levels based on source count, evidence quality, source diversity, quantitative precision, and geographic/organizational diversity:
+Seven hypotheses received quantitative validation with varying confidence levels based on source count, evidence quality, source diversity, quantitative precision, and geographic/organizational diversity. *[2026-06 source audit note: citations behind the staffing, TCO, timeline, and tiered-storage multipliers were withdrawn (fabricated entries or stats not present in the cited sources); the affected figures are removed below, those hypotheses revert to directional claims pending re-sourcing, and the confidence scores shown are pre-audit values.]*
 
 **Strongly Validated (⭐⭐⭐⭐⭐) - 3 hypotheses**:
 
-*H-ARCH-01 (Iceberg Dominance)*: Industry consensus as de facto standard for open table formats, validated by universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), Apache Software Foundation governance (300+ contributors, 100+ orgs), production deployments (SK Telecom 97% query time reduction, Cloudera 10× vs Hive), and growing adoption momentum (Dremio: 29% planning Iceberg vs 23% Delta). Confidence: 23/25 points (5 sources, 100% Evidence Level A, 4 source types, international validation). Original "76%" claim refined to "industry consensus" due to source limitations.
+*H-ARCH-01 (Iceberg Dominance)*: Industry consensus as de facto standard for open table formats, validated by universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), Apache Software Foundation governance (300+ contributors, 100+ orgs), production deployments (SK Telecom operating Iceberg with Trino at scale), and growing adoption momentum (Dremio: 29% planning Iceberg vs 23% Delta). Confidence: 23/25 points (5 sources, 4 source types, international validation). Original "76%" claim refined to "industry consensus" due to source limitations.
 
-*H-IMPL-02 (Staffing Scarcity)*: 2.7× operational staff required for streaming vs batch, with fault-tolerance representing "Level 4" specialized skill (top 5% orgs only). Independent validation from DORA (2.7× staff, Level 4 classification), IDC (2.5-3× operational costs), Ververica (3.2 FTEs for Flink), and McKinsey (tiger teams). Confidence: 23/25 points (4 sources, 100% Evidence Level A, 4 independent source types = strongest validation among all hypotheses).
+*H-IMPL-02 (Staffing Scarcity)*: Streaming requires materially more operational staff than batch, with fault-tolerance representing "Level 4" specialized skill (top 5% orgs only). The citations behind the original staffing multiplier were withdrawn in the 2026-06 source audit, so the claim reverts to directional pending re-sourcing. Confidence: pre-audit 23/25 points (see note above).
 
-*H-COST-09 (Tiered Storage)*: 55-80% cost savings for multi-year retention validated by AWS (55% average, 35% conservative), Netflix (70-80% Kafka tiered storage for multi-year compliance), and production deployments. Confidence: 19/25 points (3 sources, 100% Evidence Level A, use-case specific with security validation).
+*H-COST-09 (Tiered Storage)*: Tiered storage materially reduces the cost of multi-year retention. The citations behind the original savings band were withdrawn in the 2026-06 source audit, so the claim reverts to directional pending re-sourcing. Confidence: pre-audit 19/25 points (see note above).
 
 **High Confidence (⭐⭐⭐⭐) - 3 hypotheses**:
 
-*H-IMPL-01 (Streaming TCO)*: 2.5-3× operational costs validated by convergent evidence from IDC (2.5-3× staffing), DORA (2.7× staff, 3.2× incidents), Confluent (45-55% ops complexity), Cloudera (29% operational in TCO breakdown), Enterprise Data Quarterly (1.5-2× infrastructure). Confidence: 22/25 points (5 sources, 80% Evidence Level A, 4 source types).
+*H-IMPL-01 (Streaming TCO)*: Streaming carries a material operational cost premium vs batch; Cloudera's TCO breakdown (29% operational) survives as supporting evidence, while the other citations behind the original multiplier were withdrawn in the 2026-06 source audit. The claim reverts to directional pending re-sourcing. Confidence: pre-audit 22/25 points (see note above).
 
-*H3-PERFORMANCE-01 (ClickHouse)*: 6M req/sec throughput, 96% queries <1s, 5-10× storage efficiency vs Elasticsearch validated by Cloudflare (6M req/sec, 10-12× compression), Shell (57TB/day security telemetry), and benchmarks. Confidence: 21/25 points (4 sources, 100% Evidence Level A, 2 security-specific production deployments).
+*H3-PERFORMANCE-01 (ClickHouse)*: 6M req/sec throughput and 5-10× storage efficiency vs Elasticsearch validated by Cloudflare (6M req/sec, 10-12× compression) and benchmarks; the Shell deployment citation and the sub-second query-share figure were withdrawn in the 2026-06 source audit. Confidence: pre-audit 21/25 points (see note above).
 
-*H-STREAM-01 (Kafka Streams)*: Stateful security processing at scale validated by LinkedIn (terabytes of state, ms access), Uber (thousands of views, sub-second refresh), and Confluent best practices. Confidence: 17/25 points (3 sources, 100% Evidence Level A, US-centric limiting geographic diversity).
+*H-STREAM-01 (Kafka Streams)*: Stateful security processing at scale validated by LinkedIn (terabytes of state, ms access) and Microsoft Azure production scale; the Uber citation was withdrawn in the 2026-06 source audit. Confidence: pre-audit 17/25 points (US-centric limiting geographic diversity).
 
 **Moderate Confidence (⭐⭐⭐) - 1 hypothesis**:
 
-*H-IMPL-03 (Timeline Premium)*: 5.5 month average for security lakehouse with 15-30% premium vs general data engineering, validated by Gartner/phData (5.5 months), SANS (security constraints add time), Confluent (4-6 months Kafka baseline). Confidence: 13/25 points (3 sources, 67% Evidence Level A, limited geographic diversity - all US-centric; European GDPR/APAC localization may extend timelines).
+*H-IMPL-03 (Timeline Premium)*: Security-focused lakehouse implementations run materially longer than vendor marketing suggests, with security-specific constraints (compliance gates, tool integrations, detection logic migration) adding time. The citations behind the original average and premium figures were withdrawn in the 2026-06 source audit, so the claim reverts to directional pending re-sourcing. Confidence: pre-audit 13/25 points (limited geographic diversity - all US-centric; European GDPR/APAC localization may extend timelines).
 
-**Validation Quality**: 86% of hypotheses achieved High or Strong confidence (6 of 7). Average 4.1 sources per hypothesis, 94% Evidence Level A average across all validations, 100% with quantitative precision (no directional claims without specific multipliers/benchmarks).
+**Validation Quality**: Pre-audit scoring showed High or Strong confidence for most hypotheses. The 2026-06 source audit withdrew citations behind several quantitative multipliers, so the affected hypotheses revert to directional claims and the validation-quality statistics will be recomputed after re-scoring.
 
 ### 3.8 Evidence Gaps & Contradictions
 
 **Literature Gaps Requiring Future Research**:
 
-1. **Mid-Market Data Volumes**: Claims validated at TB-PB enterprise scale (Shell 57TB/day, SK Telecom 52.7TB queries); need 50-200TB mid-market validation for staffing, cost, timeline extrapolation.
+1. **Mid-Market Data Volumes**: Claims validated at large enterprise scale (e.g., Cloudflare 6M req/sec); need 50-200TB mid-market validation for staffing, cost, timeline extrapolation.
 
 2. **Direct SIEM Cost Comparisons**: Cost analyses rely on storage optimization data and TCO modeling; lack head-to-head Splunk vs ClickHouse or Sentinel vs lakehouse pricing with identical workloads.
 
@@ -646,7 +618,7 @@ Seven hypotheses received quantitative validation with varying confidence levels
 
    *Partial first-party answer (2026-06-07)*: the SDW MOAR reference stack now provides a first-party, identical-workload starting point against this gap — one shared Apache Iceberg table holding OCSF events, queried by four engines (DuckDB, Trino, ClickHouse, StarRocks) with an answer-equality gate applied before any latency or storage figure is read, so the comparison rests on a verified correctness floor rather than vendor-optimized configurations. The headline first-party readings: no single engine wins every workload (DuckDB leads gated small-batch, StarRocks leads high-cardinality distinct), and a FOIL probe measured a schema-on-read SIEM index at ~7.0× the columnar footprint on OCSF data. This does not close the gap — it is a single-host apparatus (Ryzen 5800H, WSL2), so organizational/TCO claims and streaming-throughput claims remain out of its reach, and the absolute latencies are bounded to that host (the relative pattern is the finding). A standardized, multi-node, concurrency-aware security benchmark suite is still future work; the contribution here is a reproducible identical-workload method with a correctness gate, not a datacenter benchmark.
 
-**No Contradictions Identified**: Cross-source validation revealed convergent evidence without contradictions. Examples: IDC 2.5-3× operational costs converges with DORA 2.7× staffing (independent validation); AWS 55% tiered storage savings aligns with Netflix 70-80% (use-case difference: general vs multi-year Kafka). Apparent discrepancies resolved through use-case analysis rather than representing true contradictions.
+**No Contradictions Identified**: Cross-source validation revealed convergent evidence without contradictions; apparent discrepancies resolved through use-case analysis rather than representing true contradictions. (The convergence examples previously cited here rested on citations withdrawn in the 2026-06 source audit and were removed.)
 
 **Mitigation for Gaps**: Expert interview protocol addresses DuckDB (Jake Thomas) and catalog adoption (Lisa Cao) gaps. IT Harvest partnership (pending) will provide vendor landscape data for catalog/platform adoption metrics. Mid-market validation requires targeted case study identification in future quarterly updates.
 
@@ -658,43 +630,43 @@ Seven hypotheses received quantitative validation with varying confidence levels
 
 This systematic review provides security practitioners with evidence-based guidance for infrastructure decisions, translating research findings into actionable operational recommendations:
 
-**Architecture Selection Framework**: Apache Iceberg emerged as the safest choice for open table formats, validated by universal vendor support and production deployments achieving 97% query time reduction (SK Telecom). ClickHouse validated for security analytics at unprecedented scale (Shell: 57TB/day, Cloudflare: 6M req/sec), with security-specific optimizations (native IP types: 50-100× CIDR hunting speedup—borrowed, at larger scale; a first-party probe measured ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings) justifying platform selection independent of general OLAP capabilities. Kafka Streams validated for stateful entity tracking, but practitioners must accept 2.5-3× operational cost premium and Level 4 skills requirement before committing to streaming architectures.
+**Architecture Selection Framework**: Apache Iceberg emerged as the safest choice for open table formats, validated by universal vendor support and production deployments (SK Telecom operating Iceberg with Trino at scale). ClickHouse validated for security analytics at scale (Cloudflare: 6M req/sec), with security-specific optimizations (native IP types: a first-party probe measured ~13-17× CIDR speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings) justifying platform selection independent of general OLAP capabilities. Kafka Streams validated for stateful entity tracking, but practitioners must accept a material operational cost premium and Level 4 skills requirement before committing to streaming architectures.
 
-**Budget Planning Reality**: Organizations evaluating modern data stacks must account for operational costs dominating TCO (45-55% per Confluent), exceeding infrastructure and licensing combined. Streaming architectures incur 2.5-3× operational cost premium vs batch (validated by IDC, DORA, Confluent convergence); practitioners selecting streaming must justify with real-time detection requirements or MTTD reduction quantifying business impact. Tiered storage delivers 55-80% cost savings (AWS, Netflix) for multi-year compliance retention, transforming economics of extended retention from prohibitive to viable. Right-sizing reliability targets (three nines for SIEM storage vs four nines for detection engines) reclaims 30-50% infrastructure costs from over-provisioning prevalent in 70% of organizations (Gartner).
+**Budget Planning Reality**: Organizations evaluating modern data stacks must account for operational costs as a major TCO component. Streaming architectures incur a material operational cost premium vs batch; practitioners selecting streaming must justify with real-time detection requirements or MTTD reduction quantifying business impact. Tiered storage reduces the cost of multi-year compliance retention, transforming economics of extended retention from prohibitive to viable. Right-sizing reliability targets (three nines for SIEM storage vs four nines for detection engines) reclaims infrastructure costs from over-provisioning.
 
-**Staffing Models and Skills Investment**: Security teams implementing streaming require 2.7× operational staff vs batch (DORA), with 3.2 FTE minimum for production Flink pipelines (Ververica). Fault-tolerance expertise represents "Level 4" specialized skill (top 5% organizations only), creating talent scarcity driving 20-30% salary premiums. Organizations face build vs buy decision: upskill internal team (6-12 months proficiency, $25K-$50K training investment per engineer), hire external expertise (20-30% salary premium, competitive market), or outsource via managed services (30-50% cost premium, operational simplicity). Recommendation: Managed services Year 1 de-risk timeline while building internal expertise in parallel; transition to self-hosted Year 2 after proficiency achieved.
+**Staffing Models and Skills Investment**: Security teams implementing streaming require materially more operational staff than batch. Fault-tolerance expertise represents "Level 4" specialized skill (top 5% organizations only), creating talent scarcity driving 20-30% salary premiums. Organizations face build vs buy decision: upskill internal team (6-12 months proficiency, $25K-$50K training investment per engineer), hire external expertise (20-30% salary premium, competitive market), or outsource via managed services (30-50% cost premium, operational simplicity). Recommendation: Managed services Year 1 de-risk timeline while building internal expertise in parallel; transition to self-hosted Year 2 after proficiency achieved.
 
-**Timeline Expectations Calibration**: Vendor marketing claims ("deploy in weeks") contrast sharply with industry reality of 5.5 month average (Gartner/phData) for security-focused implementations. Security-specific constraints add 15-30% timeline premium: compliance validation gates (HIPAA, PCI-DSS reviews: 2-4 weeks), security tool integrations (EDR, SIEM, threat intel: 1-2 weeks), detection logic migration (rule translation/validation: 2-3 weeks). Team proficiency requires additional 6-12 months beyond initial deployment before achieving operational independence (Gartner). Year 1 budgets must include vendor support contracts or consulting for learning curve.
+**Timeline Expectations Calibration**: Vendor marketing claims ("deploy in weeks") contrast sharply with the industry reality of multi-month security-focused implementations. Security-specific constraints add further time: compliance validation gates (HIPAA, PCI-DSS reviews), security tool integrations (EDR, SIEM, threat intel), detection logic migration (rule translation/validation). Team proficiency requires additional 6-12 months beyond initial deployment before achieving operational independence (Gartner). Year 1 budgets must include vendor support contracts or consulting for learning curve.
 
-**Hybrid Architecture Strategy**: Production deployments at Uber, Netflix, Disney+ validate hybrid pattern: streaming hot path for real-time detection (5-10% of workload), batch cold path for historical analysis (90-95% of workload). Hybrid achieves 20-40% TCO premium vs pure batch while avoiding 2-3× pure streaming cost multiplier, capturing 80% of streaming value at 30-40% of streaming cost. Security teams should start batch (SQL-friendly platforms: ClickHouse, Trino, Iceberg), add selective streaming for highest-value use cases, measure MTTD improvement vs cost to justify expansion.
+**Hybrid Architecture Strategy**: Production deployments at Uber and Netflix validate the hybrid pattern: streaming hot path for real-time detection (5-10% of workload), batch cold path for historical analysis (90-95% of workload). Hybrid captures most of streaming's detection value while avoiding the pure-streaming cost multiplier. Security teams should start batch (SQL-friendly platforms: ClickHouse, Trino, Iceberg), add selective streaming for highest-value use cases, measure MTTD improvement vs cost to justify expansion.
 
 ### 4.2 Comparison to General Data Engineering
 
 Security analytics exhibit performance requirements fundamentally different from general business intelligence, requiring specialized platform capabilities:
 
-**Volume Characteristics**: Security generates higher velocity data (Shell: 57TB/day continuous ingestion vs business analytics' batch ETL patterns) with longer retention requirements (CISA: 24-36 months for behavioral baselines vs general analytics' 3-6 month active data). Data volume growth (28% CAGR per Gartner) outpaces business analytics, doubling within 3-4 years and requiring elastic scaling capacity.
+**Volume Characteristics**: Security generates higher velocity data (continuous high-volume ingestion vs business analytics' batch ETL patterns) with longer retention requirements (CISA: 24-36 months for behavioral baselines vs general analytics' 3-6 month active data). Data volume growth (28% CAGR per Gartner) outpaces business analytics, doubling within 3-4 years and requiring elastic scaling capacity.
 
-**Performance Requirements**: Security demands 50-100× CIDR-based threat hunting speedup (ClickHouse native IP types) absent in general analytics (borrowed, at larger scale; a first-party probe measured ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings). Incident-driven burst capacity (Microsoft MSRC: 350% traffic surges) requires elastic architecture or 4× over-provisioning; business analytics exhibit predictable load (scheduled dashboards, quarterly reports). Analyst productivity critically depends on sub-second query latency enabling 10-20 investigation pivots vs 3-5 pivots with slow queries (30-60s latency).
+**Performance Requirements**: Security rewards platform-native IP/CIDR handling absent in general analytics (a first-party probe measured ~13-17× CIDR speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings). Incident-driven burst capacity requires elastic architecture or 4× over-provisioning; business analytics exhibit predictable load (scheduled dashboards, quarterly reports). Analyst productivity critically depends on sub-second query latency enabling 10-20 investigation pivots vs 3-5 pivots with slow queries (30-60s latency).
 
 **Stateful Processing Patterns**: Security requires per-entity behavioral tracking ("what's normal for THIS user over 30 days?") vs business analytics' dimensional aggregation (SQL GROUP BY by region, product, quarter). Kafka Streams maintains terabytes of state with millisecond access (LinkedIn) enabling real-time entity views impossible with batch SQL re-processing entire historical windows per query.
 
-**Compliance Constraints**: Security operations demand multi-year queryable retention (MITRE: 18-24 months optimal for insider threat detection with 2.3× better accuracy vs 3-6 months) vs business analytics' acceptable cold archive (48-hour restoration delay unacceptable for HIPAA audit investigations). Compliance requires audit trails, data lineage, retention policies as first-class requirements, not optional features.
+**Compliance Constraints**: Security operations demand multi-year queryable retention vs business analytics' acceptable cold archive (48-hour restoration delay unacceptable for HIPAA audit investigations). Compliance requires audit trails, data lineage, retention policies as first-class requirements, not optional features.
 
 **Operational Patterns**: Incident response creates unpredictable query spikes requiring immediate analyst investigation vs business analytics' tolerance for batch processing delays. Detection engines require four nines availability (99.99%) while general analytics tolerates three nines (99.9%), creating differential reliability requirements within same infrastructure.
 
-**Technology Fit Implications**: Platforms excelling at general analytics (Snowflake, BigQuery, Redshift) may underperform for security-specific patterns. ClickHouse native IP types, Kafka Streams stateful processing, and Iceberg multi-year queryable retention provide 10-100× advantages for security patterns. Generic data warehouses require workarounds (string-based IP storage, batch re-processing for entity history) imposing performance penalties unacceptable for security workflows.
+**Technology Fit Implications**: Platforms excelling at general analytics (Snowflake, BigQuery, Redshift) may underperform for security-specific patterns. ClickHouse native IP types, Kafka Streams stateful processing, and Iceberg multi-year queryable retention provide measured advantages for security patterns (e.g., the first-party ~13-17× CIDR probe). Generic data warehouses require workarounds (string-based IP storage, batch re-processing for entity history) imposing performance penalties unacceptable for security workflows.
 
 ### 4.3 Theoretical Contributions
 
 This systematic review makes four theoretical contributions to knowledge:
 
-**1. Cross-Domain Synthesis Methodology**: First systematic literature review bridging cybersecurity and data engineering domains using PRISMA-aligned methodology adapted for computer science. Evidence classification system (79% Level A sources—production deployments, peer-reviewed research, government standards) exceeds academic publication standards while maintaining practitioner relevance. Living review methodology with version control (quarterly snapshots, CHANGELOG.md) solves citation stability problem for rapidly-evolving technology domains, enabling academic references to specific review versions while supporting practitioner currency needs.
+**1. Cross-Domain Synthesis Methodology**: First systematic literature review bridging cybersecurity and data engineering domains using PRISMA-aligned methodology adapted for computer science. Evidence classification system prioritizes production deployments, peer-reviewed research, and government standards while maintaining practitioner relevance. Living review methodology with version control (quarterly snapshots, CHANGELOG.md) solves citation stability problem for rapidly-evolving technology domains, enabling academic references to specific review versions while supporting practitioner currency needs.
 
-**2. Hypothesis-Driven Validation Framework**: Multi-dimensional confidence scoring rubric (source count, evidence quality, source diversity, quantitative precision, geographic/organizational diversity) provides transparent assessment of claim strength. Seven hypotheses validated with 86% achieving High or Strong confidence (6 of 7), average 4.1 sources per hypothesis, 94% Evidence Level A. Framework enables appropriate claim strength in academic writing: strongly validated claims (⭐⭐⭐⭐⭐) support primary arguments, moderate confidence claims (⭐⭐⭐) require caveats. This addresses academic literature's tendency toward overconfident assertions or hedge-word ambiguity by providing quantitative confidence levels.
+**2. Hypothesis-Driven Validation Framework**: Multi-dimensional confidence scoring rubric (source count, evidence quality, source diversity, quantitative precision, geographic/organizational diversity) provides transparent assessment of claim strength. Seven hypotheses were scored under this framework (re-scoring in progress after the 2026-06 source audit withdrew several supporting citations). Framework enables appropriate claim strength in academic writing: strongly validated claims (⭐⭐⭐⭐⭐) support primary arguments, moderate confidence claims (⭐⭐⭐) require caveats. This addresses academic literature's tendency toward overconfident assertions or hedge-word ambiguity by providing quantitative confidence levels.
 
-**3. Operational Reality Quantification**: Staffing multipliers (2.7×), cost premiums (2.5-3×), implementation timelines (5.5 months), and skills scarcity ("Level 4" expertise) provide practitioner knowledge gap not addressed in academic security literature (focuses on algorithms, not infrastructure) or data engineering literature (focuses on general analytics, not security). Quantitative validation replaces vendor marketing claims with convergent evidence from independent sources (IDC, DORA, production case studies). This operational reality enables security organizations to make evidence-based infrastructure decisions with realistic budgets, timelines, and staffing plans.
+**3. Operational Reality Quantification**: Staffing multipliers, cost premiums, implementation timelines, and skills scarcity ("Level 4" expertise) address a practitioner knowledge gap not addressed in academic security literature (focuses on algorithms, not infrastructure) or data engineering literature (focuses on general analytics, not security). Validation replaces vendor marketing claims with convergent evidence from independent sources and production case studies. This operational reality enables security organizations to make evidence-based infrastructure decisions with realistic budgets, timelines, and staffing plans.
 
-**4. Security-Specific Performance Framework**: Identification of performance requirements unique to security (IP/CIDR hunting: 50-100× speedup—borrowed, at larger scale; a first-party probe measured ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings; burst capacity: 350% surges; stateful entity tracking: terabytes of state with ms access; multi-year queryable retention: 18-24 months optimal per MITRE) differentiates security analytics from general business intelligence. Framework enables technology selection based on security-specific patterns rather than extrapolating from general analytics benchmarks. Validation that generic platforms (Snowflake, BigQuery) underperform for security patterns justifies security-optimized platform selection (ClickHouse, Kafka Streams) independent of general OLAP capabilities.
+**4. Security-Specific Performance Framework**: Identification of performance requirements unique to security (IP/CIDR hunting: a first-party probe measured ~13-17× speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings; burst capacity: incident-driven surges; stateful entity tracking: terabytes of state with ms access; multi-year queryable retention) differentiates security analytics from general business intelligence. Framework enables technology selection based on security-specific patterns rather than extrapolating from general analytics benchmarks. Validation that generic platforms (Snowflake, BigQuery) underperform for security patterns justifies security-optimized platform selection (ClickHouse, Kafka Streams) independent of general OLAP capabilities.
 
 ### 4.4 Limitations & Future Work
 
@@ -704,7 +676,7 @@ This systematic review makes four theoretical contributions to knowledge:
 
 *Geographic Bias*: Predominantly US/European sources (SK Telecom provides Asia-Pacific validation, but limited). Cost differentials, regulatory constraints (GDPR, data localization), and implementation timelines may vary by region.
 
-*Organizational Scale Bias*: Large enterprise focus (Shell 57TB/day, Cloudflare 6M req/sec, SK Telecom 52.7TB queries) may not generalize to mid-market organizations (50-200TB workloads). Staffing, cost, timeline extrapolations require mid-market validation.
+*Organizational Scale Bias*: Large enterprise focus (e.g., Cloudflare 6M req/sec) may not generalize to mid-market organizations (50-200TB workloads). Staffing, cost, timeline extrapolations require mid-market validation.
 
 *Publication Bias*: Successful deployments more likely published than failures. Expert interviews capture implementation challenges not in public documentation, but failure analysis remains limited.
 
@@ -728,17 +700,17 @@ This systematic review makes four theoretical contributions to knowledge:
 
 ## 5. CONCLUSION
 
-Modern data stack architectures promise to transform security operations, but practitioners evaluating these technologies face a critical knowledge gap: cybersecurity literature focuses on detection algorithms while data engineering literature addresses general analytics, leaving security-specific infrastructure guidance fragmented across disconnected domains. This systematic literature review bridges that gap, providing the first comprehensive synthesis of 75+ sources (79% Evidence Level A—production deployments, peer-reviewed research, government standards) across cybersecurity and data engineering literatures using PRISMA-aligned methodology.
+Modern data stack architectures promise to transform security operations, but practitioners evaluating these technologies face a critical knowledge gap: cybersecurity literature focuses on detection algorithms while data engineering literature addresses general analytics, leaving security-specific infrastructure guidance fragmented across disconnected domains. This systematic literature review bridges that gap, providing the first comprehensive synthesis of 75+ sources spanning production deployments, peer-reviewed research, and government standards across cybersecurity and data engineering literatures using PRISMA-aligned methodology.
 
-Our quantitative hypothesis validation establishes operational reality contradicting vendor marketing claims. Seven hypotheses achieved validation with 86% reaching High or Strong confidence: Apache Iceberg emerged as industry consensus for open table formats (universal vendor support, 97% query time reduction at SK Telecom); ClickHouse validated for security analytics at unprecedented scale (Shell 57TB/day, Cloudflare 6M req/sec, 50-100× CIDR hunting speedup with native IP types—borrowed, at larger scale; a first-party probe measured ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings); streaming architectures require 2.5-3× operational cost premium and 2.7× staffing vs batch alternatives (validated by IDC, DORA, Confluent convergence), with fault-tolerance representing "Level 4" specialized skill available in top 5% of organizations only; implementation timelines average 5.5 months for security-focused deployments (Gartner/phData) with 15-30% premium vs general data engineering; and tiered storage delivers 55-80% cost savings for multi-year compliance retention (AWS, Netflix production validation). These quantitative findings replace directional claims ("costs more", "faster performance") with precise multipliers and benchmarks enabling evidence-based infrastructure decisions.
+Our hypothesis validation establishes operational reality contradicting vendor marketing claims. Apache Iceberg emerged as industry consensus for open table formats (universal vendor support, Apache Software Foundation governance); ClickHouse validated for security analytics at scale (Cloudflare 6M req/sec; a first-party CIDR probe measured ~13-17× native-IP speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings); streaming architectures carry a material operational cost and staffing premium vs batch alternatives, with fault-tolerance representing "Level 4" specialized skill available in top 5% of organizations only; implementation timelines for security-focused deployments run months, not weeks; and tiered storage reduces the cost of multi-year compliance retention. A 2026-06 source audit withdrew the citations behind several of the originally stated multipliers, so those findings are stated directionally here pending re-sourcing, while the surviving production figures remain quantitative.
 
-Production validation across 18+ organizations (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, Disney+, Microsoft) demonstrates modern data stack viability for security operations while identifying security-specific requirements differentiating from general analytics: IP/CIDR-based threat hunting (50-100× speedup with platform-specific optimizations—borrowed, at larger scale; a first-party probe measured ~13-17× at 20M rows on a single host, below the band, with ~2.9× IPv4-vs-String storage savings), incident-driven burst capacity (350% traffic surges requiring elastic architecture), stateful entity behavior tracking (terabytes of state with millisecond access), and multi-year queryable retention (18-24 months optimal per MITRE for insider threat detection). These requirements justify security-optimized platform selection (ClickHouse, Kafka Streams, Iceberg) independent of general OLAP capabilities, as generic data warehouses (Snowflake, BigQuery, Redshift) may underperform for security-specific patterns.
+Production validation across organizations including Netflix, Uber, LinkedIn, Cloudflare, SK Telecom, and Microsoft demonstrates modern data stack viability for security operations while identifying security-specific requirements differentiating from general analytics: IP/CIDR-based threat hunting (a first-party probe measured ~13-17× speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings), incident-driven burst capacity (requiring elastic architecture), stateful entity behavior tracking (terabytes of state with millisecond access), and multi-year queryable retention. These requirements justify security-optimized platform selection (ClickHouse, Kafka Streams, Iceberg) independent of general OLAP capabilities, as generic data warehouses (Snowflake, BigQuery, Redshift) may underperform for security-specific patterns.
 
-Practitioner guidance synthesizes findings into actionable recommendations: Start with batch architectures using SQL-friendly platforms (ClickHouse, Trino, Iceberg) leveraging existing analyst skills; add selective streaming for highest-value real-time use cases after validating business impact justifies 2.5-3× operational cost premium; implement tiered storage (55-80% savings) for multi-year compliance retention; right-size reliability targets (three nines for storage, four nines for detection engines) reclaiming 30-50% infrastructure costs from over-provisioning; plan realistic timelines (5.5 months implementation + 6-12 months proficiency) rather than vendor claims ("deploy in weeks"); and invest in Level 4 expertise (upskill internal team, hire external talent, or outsource via managed services) before committing to streaming architectures.
+Practitioner guidance synthesizes findings into actionable recommendations: Start with batch architectures using SQL-friendly platforms (ClickHouse, Trino, Iceberg) leveraging existing analyst skills; add selective streaming for highest-value real-time use cases after validating business impact justifies the streaming cost premium; implement tiered storage for multi-year compliance retention; right-size reliability targets (three nines for storage, four nines for detection engines) reclaiming infrastructure costs from over-provisioning; plan realistic timelines (multi-month implementation + 6-12 months proficiency) rather than vendor claims ("deploy in weeks"); and invest in Level 4 expertise (upskill internal team, hire external talent, or outsource via managed services) before committing to streaming architectures.
 
 This living literature review establishes foundation for ongoing evidence synthesis supporting quarterly technology updates. Planned IT Harvest partnership enables systematic vendor landscape tracking with versioned snapshots (YYYY-QX-update.md) solving citation stability problem while maintaining practitioner currency. Expert interviews (Lisa Cao - catalog landscape, Jake Thomas - DuckDB edge processing) address immediate evidence gaps. Future research priorities include mid-market validation (50-200TB workloads), comparative performance benchmarks (security-specific test suites), failure analysis overcoming publication bias, and economic impact studies quantifying MTTD reduction and analyst productivity gains justifying streaming cost premiums with business impact rather than architectural preference.
 
-Security practitioners can now make evidence-based architecture decisions with quantified cost/staffing/performance trade-offs, moving from vendor marketing claims to production-validated patterns. Organizations implementing modern data stacks for security operations have systematic evidence base replacing fragmented anecdotes, enabling realistic budgets (accounting for operational cost dominance), achievable timelines (5.5 months + proficiency period), and staffing plans (2.7× for streaming, Level 4 skills requirement). The gap between cybersecurity and data engineering literatures is bridged, providing security practitioners with rigorous operational guidance previously unavailable in either domain independently.
+Security practitioners can now make evidence-based architecture decisions with documented cost/staffing/performance trade-offs, moving from vendor marketing claims to production-validated patterns. Organizations implementing modern data stacks for security operations have systematic evidence base replacing fragmented anecdotes, enabling realistic budgets (accounting for heavy operational costs), achievable timelines (multi-month implementation + proficiency period), and staffing plans (a streaming staffing premium, Level 4 skills requirement). The gap between cybersecurity and data engineering literatures is bridged, providing security practitioners with rigorous operational guidance previously unavailable in either domain independently.
 
 ---
 
@@ -765,6 +737,8 @@ Security practitioners can now make evidence-based architecture decisions with q
 ---
 
 ## FIGURES
+
+*Note (2026-06): the evidence-level percentages shown in Figures 1-2 predate the 2026-06 source audit and will be regenerated after evidence levels are recomputed.*
 
 ### Figure 1: PRISMA Literature Extraction Flowchart
 
@@ -817,7 +791,7 @@ Security practitioners can now make evidence-based architecture decisions with q
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
 | Total Sources | 100+ | 75+ | Sufficient |
-| Evidence Level A | >70% | 79% | ✅ Exceeded |
+| Evidence Level A | >70% | Under re-audit (2026-06) | ⏳ Pending |
 | URL Validation | 90%+ | 73% overall, 100% critical | ✅ Adequate |
 | Geographic Diversity | 2+ regions | 3 regions (US, EU, APAC) | ✅ Met |
 | Organizational Types | 3+ types | 5 types | ✅ Exceeded |
@@ -826,29 +800,33 @@ Security practitioners can now make evidence-based architecture decisions with q
 
 | Hypothesis ID | Description | Confidence | Sources | Evidence A% | Key Validation |
 |--------------|-------------|-----------|---------|-------------|----------------|
-| H-ARCH-01 | Iceberg Dominance | ⭐⭐⭐⭐⭐ | 5 | 100% | Industry consensus |
-| H-IMPL-01 | Streaming TCO (2.5-3×) | ⭐⭐⭐⭐ | 5 | 80% | IDC/DORA convergence |
-| H-IMPL-02 | Staffing (2.7×) | ⭐⭐⭐⭐⭐ | 4 | 100% | 4 independent types |
-| H-IMPL-03 | Timeline (5.5mo) | ⭐⭐⭐ | 3 | 67% | Gartner validated |
-| H-COST-09 | Tiered Storage (55-80%) | ⭐⭐⭐⭐⭐ | 3 | 100% | AWS/Netflix production |
-| H3-PERFORMANCE-01 | ClickHouse OLAP | ⭐⭐⭐⭐ | 4 | 100% | Cloudflare/Shell |
-| H-STREAM-01 | Kafka Streams | ⭐⭐⭐⭐ | 3 | 100% | LinkedIn/Uber/Microsoft |
+| H-ARCH-01 | Iceberg Dominance | ⭐⭐⭐⭐⭐ | 5 | — | Industry consensus |
+| H-IMPL-01 | Streaming TCO premium | ⭐⭐⭐⭐ | 5 | — | Citations withdrawn 2026-06 |
+| H-IMPL-02 | Staffing premium | ⭐⭐⭐⭐⭐ | 4 | — | Citations withdrawn 2026-06 |
+| H-IMPL-03 | Timeline premium | ⭐⭐⭐ | 3 | — | Citations withdrawn 2026-06 |
+| H-COST-09 | Tiered Storage savings | ⭐⭐⭐⭐⭐ | 3 | — | Citations withdrawn 2026-06 |
+| H3-PERFORMANCE-01 | ClickHouse OLAP | ⭐⭐⭐⭐ | 4 | — | Cloudflare |
+| H-STREAM-01 | Kafka Streams | ⭐⭐⭐⭐ | 3 | — | LinkedIn/Microsoft |
+
+*2026-06 source audit: confidence stars and source counts are pre-audit values and evidence-level percentages are being recomputed. Rows marked "citations withdrawn" lost the citations behind their original quantitative multipliers and revert to directional claims pending re-sourcing.*
 
 ### Table 3: Cost Comparison Findings
 
 | Architecture | Operational Cost Premium | Staffing Multiplier | Timeline | Sources |
 |-------------|-------------------------|-------------------|----------|---------|
-| Batch (Baseline) | 1.0× | 1.0× | 4 months | IDC, Gartner |
-| Streaming | 2.5-3.0× | 2.7× | 5.5 months | IDC, DORA, Ververica |
-| Tiered Storage Optimization | 0.45-0.20× (55-80% savings) | N/A | N/A | AWS, Netflix |
+| Batch (Baseline) | 1.0× | 1.0× | — | Baseline (definitional) |
+| Streaming | Elevated (under re-validation) | Elevated (under re-validation) | — | Citations withdrawn 2026-06 |
+| Tiered Storage Optimization | Reduced (under re-validation) | N/A | N/A | Citations withdrawn 2026-06 |
+
+*2026-06 source audit: the quantitative multipliers previously shown here rested on withdrawn citations and are removed pending re-sourcing.*
 
 ### Table 4: Performance Benchmarks (Security Workloads)
 
 | Platform | Query Performance | Ingestion Rate | Storage Efficiency | Production Validation |
 |---------|------------------|----------------|-------------------|---------------------|
-| ClickHouse | 96% queries <1s | N/A | 5-10× vs Elasticsearch | Cloudflare (6M req/sec), Shell (57TB/day) |
-| Kafka | N/A | 4.5M events/sec | N/A | Confluent, Microsoft (trillions/day) |
-| Iceberg | 97% query time reduction | N/A | N/A | SK Telecom (52.7TB in 3.39s) |
+| ClickHouse | — (figure withdrawn 2026-06) | N/A | 5-10× vs Elasticsearch | Cloudflare (6M req/sec) |
+| Kafka | N/A | — (figure withdrawn 2026-06) | N/A | Microsoft (trillions/day) |
+| Iceberg | — (figure withdrawn 2026-06) | N/A | N/A | SK Telecom (production Iceberg + Trino) |
 
 ### Table 5: Evidence Gaps Identified
 

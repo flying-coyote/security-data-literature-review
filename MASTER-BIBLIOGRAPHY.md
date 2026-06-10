@@ -616,12 +616,14 @@ This bibliography consolidates all literature sources from:
 
 **Final Status**: ✅ Extraction Complete (October 10, 2025)
 
+> **Audit note (2026-06-09)**: this is the October-2025 completion log, kept as history. The 2026-06-05 claim-vs-source audit later removed several entries counted in it (the fabricated staffing/timeline sources and the Shell/McKinsey/IDC dead-URL entries among them) and re-tiered the corpus, so the counts and self-grades below are superseded; the live evidence baseline is in the file header.
+
 **Completed Work**:
 - ✅ Best practices doc: 283 of 283 footnotes extracted (100%)
 - ✅ MASTER-BIBLIOGRAPHY.md: 75+ sources documented with standardized format
 - ✅ Archive manuscripts: 74 files assessed (no independent sources found)
 - ✅ High-priority sources documented: Iceberg, ClickHouse, Kafka, security use cases, ML/analytics
-- ✅ Evidence levels assigned: 73% Evidence Level A
+- Evidence levels assigned: 73% Evidence Level A at the time (pre-audit self-grade, superseded — live Level-A is ~46%, see header)
 - ✅ URL validation: 16 of 22 URLs validated (73% overall, 100% hypothesis-critical)
 - ✅ Hypothesis linking: All 7 hypotheses have validated source citations
 
@@ -632,10 +634,10 @@ This bibliography consolidates all literature sources from:
 - Conclusion: Primary extraction complete from best practices document
 
 **Quality Achievements**:
-- Evidence Level A: ~55 sources (73%) - production deployments, peer-reviewed research
+- Evidence Level A: ~55 sources (73%) - pre-audit self-grade, superseded by the 2026-06-05 re-tier (live ~46%, see header)
 - Government/Standards: 8 sources (CISA, MITRE, DARPA, NSA, SANS)
 - Industry Analysts: 10 sources (Gartner, IDC, Forrester)
-- Production Deployments: 18 sources (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, etc.)
+- Production Deployments: 18 sources (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom, etc.; the Shell 57TB entry was removed in the 2026-06-05 audit)
 
 ---
 
@@ -2535,22 +2537,22 @@ This bibliography consolidates all literature sources from:
 **High-Priority Sources Added** (Footnotes 251-283 - Final Batch):
 - **Security ML Authorities**: CISA (24-36 months training data), MITRE (insider threat detection)
 - **ML Standards**: Cloud Security Alliance (training data), Open Cybersecurity Alliance (deployment)
-- **Performance**: Apache Arrow (7-10× improvement), Microsoft Research (concept drift 2-3×)
-- **Deployment Patterns**: Capital One (42% false positive reduction), Confluent (streaming ML)
+- **Performance**: Apache Arrow (production adoption breadth), Microsoft Research (concept drift monitoring); the 7-10× and 2-3× figures formerly attached here are not in the cited sources and were removed (2026-06-05 audit)
+- **Deployment Patterns**: Capital One (champion-challenger pattern; the 42% FP-reduction figure was removed — source not found), Confluent (streaming ML)
 - **Evaluation**: MITRE Engenuity (76% use ATT&CK for ML evaluation)
 
 **Best Practices Document Extraction: COMPLETE**
 - ✅ 283 of 283 footnotes extracted (100%)
 - ✅ 75+ sources documented with standardized format
-- ✅ Evidence Level A: 74% maintained
+- Evidence Level A: 74% at the time (pre-audit self-grade, superseded — live ~46%, see header)
 - ✅ All hypothesis-critical sources captured
 
 **Critical Hypothesis Validation Status**:
 - ✅ H-ARCH-01 (Iceberg Dominance): **STRONGLY VALIDATED** - 5 sources
-- ✅ H-IMPL-01 (TCO Reality): **STRONG** - 5 sources (2.5-3× operational costs)
-- ✅ H-IMPL-02 (Staffing): **STRONG** - 3 sources (3.2 FTEs, 4-9 months)
-- ✅ H-IMPL-03 (Timelines): **VALIDATED** - 2 sources (5.5 months security-focused)
-- ✅ H-COST-09 (Tiered Storage): **STRONG** - 2 sources (55-80% savings)
+- ✅ H-IMPL-01 (TCO Reality): **STRONG** - 5 sources (qualitative operational-cost premium; the 2.5-3× multiplier traced to the removed IDC entry and was dropped)
+- ⚠️ H-IMPL-02 (Staffing): NEEDS RE-VALIDATION — the 3.2-FTE / 4-9-month stats were fabricated (both source entries cited one Klaviyo article under false publishers; removed in the 2026-06-05 audit)
+- ⚠️ H-IMPL-03 (Timelines): NEEDS RE-VALIDATION — the 5.5-month figure is not in the cited source and was removed in the 2026-06-05 audit
+- ✅ H-COST-09 (Tiered Storage): **STRONG** - 2 sources (AWS S3 Intelligent-Tiering ~35% is the surviving sourced figure; the 55-80% range was removed in the 2026-06-05 audit)
 - ✅ H3-PERFORMANCE-01 (ClickHouse): **EXTENDED** - Storage efficiency quantified
 
 **Advanced Analytics Foundation**:
@@ -2589,7 +2591,7 @@ This bibliography consolidates all literature sources from:
 **Archive Manuscripts**: 74 files assessed (reference existing footnotes only)
 **Practitioner Validation**: 1 formal citation added (a data-platform practitioner)
 **Total Sources Documented**: 76+
-**Evidence Level A Sources**: ~56 (74%)
+**Evidence Level A Sources**: ~56 (74%) at the time — pre-audit self-grade, superseded (live ~46%, see header)
 
 **Key Achievement**: Comprehensive literature extraction complete - all sources from best practices document captured + practitioner validation added
 
@@ -2601,23 +2603,23 @@ This bibliography consolidates all literature sources from:
 
 **Foundational Architecture** (Table Formats, Query Engines, Streaming):
 - Apache Iceberg: 5 sources (76% adoption, universal vendor support, 300+ contributors)
-- ClickHouse: 4 sources (6M req/sec, 96% <1s queries, 5-10× storage efficiency vs Elasticsearch)
-- Streaming (Kafka/Flink): 6 sources (4-9 month timelines, 3.2 FTEs, Level 4 skills)
+- ClickHouse: 4 sources (6M req/sec, 5-10× storage efficiency vs Elasticsearch; the "96% <1s" figure is not in the cited sources and was removed)
+- Streaming (Kafka/Flink): 6 sources (the 4-9-month / 3.2-FTE / skills-level staffing figures formerly cited here were fabricated and removed in the 2026-06-05 audit)
 
 **Cost Economics & Optimization**:
 - Reliability modeling: 4 sources (Google SRE, Gartner, Uptime Institute, FinSec)
-- Tiered storage: 3 sources (Netflix 70-80%, AWS 35%, Kafka tiered storage)
-- TCO analysis: 5 sources (Cloudera 39% licensing, Confluent 45-55% ops, CloudZero 2.8-3.6× streaming)
+- Tiered storage: 3 sources (AWS S3 Intelligent-Tiering ~35%, Kafka tiered storage; the Netflix 70-80% figure is not Netflix-published and was removed)
+- TCO analysis: 5 sources (Cloudera 39% licensing; the Confluent 45-55% and CloudZero 2.8-3.6× figures are not in their cited sources and were removed)
 
 **Implementation Reality**:
-- Staffing: 4 sources (DORA 2.7× staff, Ververica 3.2 FTEs, McKinsey tiger teams, Gartner skills gap)
-- Timelines: 3 sources (Gartner/phData 5.5 months, Confluent 4-6 months, security premium 15-30%)
+- Staffing: Gartner skills gap (qualitative) is what remains; the DORA 2.7×, Ververica 3.2-FTE, and McKinsey figures formerly cited here were removed in the 2026-06-05 audit (not in source / fabricated entries)
+- Timelines: the 5.5-month (phData blog, previously mislabeled Gartner), 4-6-month (Confluent), and 15-30% security-premium figures were all removed in the 2026-06-05 audit (not present in the cited sources)
 - Cost structure: 4 sources validating hidden operational costs
 
 **Security-Specific**:
 - Volume/surge data: 2 sources (Microsoft MSRC 350% surge, Gartner 28% CAGR)
 - ML requirements: 8 sources (CISA, MITRE, CSA, Microsoft, DARPA, SANS, OCA, MITRE Engenuity)
-- Production deployments: 6 sources (Uber, Netflix, LinkedIn, Cloudflare, Shell, SK Telecom)
+- Production deployments: Uber, Netflix, LinkedIn, Cloudflare, SK Telecom (the Shell 57TB entry was removed in the 2026-06-05 audit)
 
 **Emerging Technologies**:
 - DuckDB edge processing: 2 sources (official docs, Jake Thomas validation pending)
@@ -2637,9 +2639,11 @@ This bibliography consolidates all literature sources from:
 | H-STREAM-01 (Kafka Streams) | **VALIDATED** | 3 | 4/5 |
 | H3-PERFORMANCE-01 (ClickHouse) | **EXTENDED** | 4 | 4/5 |
 
+*Note (2026-06-09): the H-IMPL-02 (Staffing) and H-IMPL-03 (Timelines) rows predate the 2026-06-05 audit, which removed their quantitative sources (fabricated or stat-not-in-source); both need re-validation before citation.*
+
 ### Quality Metrics
 
-**Evidence Level Distribution**:
+**Evidence Level Distribution** (October-2025 self-grade, superseded — the live distribution is in the header: 67 A / 79 B / 9 C of 146):
 - Level A (Production/Academic): ~55 sources (73%)
 - Level B (Industry/Vendor): ~20 sources (27%)
 - Level C/D: 0 sources (0%)
@@ -2654,7 +2658,7 @@ This bibliography consolidates all literature sources from:
 **Geographic/Organizational Diversity**:
 - Technology leaders: Netflix, Uber, LinkedIn, Microsoft, Google, Amazon
 - Security vendors: Palo Alto, Cloudflare
-- Enterprises: SK Telecom, Shell, Capital One, Spotify
+- Enterprises: SK Telecom, Capital One, Spotify
 - Standards bodies: Apache, MITRE, CSA, OCA
 - Cloud providers: AWS, Azure, Google Cloud
 
@@ -2669,8 +2673,8 @@ This bibliography consolidates all literature sources from:
 - ✅ Advanced Analytics (ML): 10 sources (complete)
 
 **Practitioner Utility**:
-- Staffing estimates: 4 sources with quantitative data
-- Timeline expectations: 3 sources with enterprise averages
+- Staffing estimates: the quantitative staffing sources were fabricated and removed in the 2026-06-05 audit; needs re-sourcing before book use
+- Timeline expectations: the source entries survive, but their specific timeline averages were removed in the 2026-06-05 audit
 - Cost modeling: 8 sources with TCO breakdowns
 - Performance benchmarks: 12 sources with production data
 
@@ -2681,7 +2685,7 @@ This bibliography consolidates all literature sources from:
 - ✅ Major Vendors (7 of 7): Netflix, Uber, Microsoft (2), SANS, Confluent
 - ✅ Additional Vendors (4 of 4): Anyscale, Apache Arrow, MITRE Engenuity, Champion-Challenger
 - ✅ **Total validated: 16 of ~22 URLs (73%)**
-- ✅ **Hypothesis-critical sources: 100% validated**
+- **Hypothesis-critical sources: 100% validated at the time** (URL-level check only; the 2026-06-05 claim-vs-source audit later removed several of them)
 - ⚠️ Paywalls confirmed (expected): Gartner (multiple), IDC, Forrester
 - ⚠️ Placeholders (6 remaining, non-critical):
   - CloudZero streaming cost (supported by IDC/Confluent data)
@@ -2692,7 +2696,7 @@ This bibliography consolidates all literature sources from:
   - AWS Storage Optimization whitepaper (general docs available)
 
 **Validation Quality**:
-- All 7 hypotheses have verified sources
+- All 7 hypotheses had sources at extraction time; the 2026-06-05 audit later removed the quantitative staffing/timeline sources (H-IMPL-02/03 need re-validation)
 - All government/standards authorities verified
 - All major production deployments verified
 - Placeholders have supporting evidence from related sources
@@ -2706,15 +2710,15 @@ This bibliography consolidates all literature sources from:
 
 **Status**: ✅ **READY FOR BOOK WRITING**
 - 73% URL verification rate
-- 100% hypothesis-critical source validation
+- Hypothesis-critical source validation was URL-level only (superseded for H-IMPL-02/03 by the 2026-06-05 claim-vs-source audit)
 - All government, standards, and major vendor sources confirmed
 - Remaining placeholders have corroborating evidence
 
 ---
 
 **Extraction Status**: ✅ **COMPLETE** (283/283 footnotes)
-**Quality Status**: ✅ **HIGH** (73% Evidence Level A)
-**Hypothesis Validation**: ✅ **ACHIEVED** (All 6 new hypotheses validated)
+**Quality Status**: ⚠️ **SUPERSEDED** — the October-2025 self-grade (73% Evidence Level A) predates the 2026-06-05 re-tier; live Level-A is ~46% (see header)
+**Hypothesis Validation**: ⚠️ **PARTIALLY SUPERSEDED** — H-IMPL-02 (staffing) and H-IMPL-03 (timelines) lost their quantitative sources in the 2026-06-05 audit and need re-validation
 **Book Integration**: ✅ **READY** (All chapters have supporting sources)
 
 ---

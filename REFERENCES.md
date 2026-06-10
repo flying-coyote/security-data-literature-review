@@ -2,7 +2,7 @@
 
 **Purpose**: IEEE/ACM formatted references for systematic literature review publication
 **Created**: October 21, 2025
-**Total Sources**: 75+ sources
+**Total Sources**: 78 numbered entries (9 withdrawn 2026-06-09 after source verification; numbering preserved)
 **Format**: IEEE citation style with alphabetical ordering by first author
 
 ---
@@ -41,7 +41,7 @@
 
 [16] Cloudflare Engineering Blog, "Log Analytics Using ClickHouse," 2024. [Online]. Available: https://blog.cloudflare.com/log-analytics-using-clickhouse/
 
-[17] ClickHouse, "Case Study: Shell - 57TB/day Security Telemetry," 2024. [Online]. Available: https://clickhouse.com/success-stories/shell
+[17] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [18] ClickHouse Benchmarks, "ClickHouse vs Elasticsearch: The Billion Row Matchup," 2024. [Online]. Available: https://clickhouse.com/blog/clickhouse_vs_elasticsearch_the_billion_row_matchup
 
@@ -97,11 +97,11 @@
 
 [44] DuckDB Labs, "Why DuckDB," 2024. [Online]. Available: https://duckdb.org/why_duckdb.html
 
-[45] Enterprise Data Quarterly, "Streaming vs Batch TCO Analysis," Industry Analysis, 2024.
+[45] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [46] M. Fuller, M. Moser, and M. Traverso, *Trino: The Definitive Guide*. Sebastopol, CA: O'Reilly Media, 2021.
 
-[47] Gartner and phData, "How to Implement a Data Platform," phData Implementation Guide, 2024. [Online]. Available: https://www.phdata.io/blog/how-to-implement-a-data-platform/
+[47] phData, "How to Implement a Data Platform," phData Implementation Guide, 2024. [Online]. Available: https://www.phdata.io/blog/how-to-implement-a-data-platform/
 
 [48] Gartner Research, "Reliability Overinvestment Analysis," Gartner, 2024.
 
@@ -111,7 +111,7 @@
 
 [51] Huntress and ClickHouse, "How Huntress Improved Performance and Slashed Costs with ClickHouse," 2024. [Online]. Available: https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse
 
-[52] IDC Research, "Hidden Costs of Real-Time Data," IDC, 2024.
+[52] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [53] J. Kreps, "Questioning the Lambda Architecture," O'Reilly Radar, July 2014. [Online]. Available: https://www.oreilly.com/radar/questioning-the-lambda-architecture/
 
@@ -123,7 +123,7 @@
 
 [57] Anonymized practitioner, "Security Data Platform Practitioner Validation," Personal communication, Oct. 2025.
 
-[58] McKinsey Digital, "Accelerating Data Architecture Transformation," 2024. [Online]. Available: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/accelerating-data-architecture-transformation
+[58] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [59] Microsoft Azure Blog, "Processing Trillions of Events per Day with Apache Kafka on Azure," 2024. [Online]. Available: https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/
 
@@ -131,9 +131,9 @@
 
 [61] Microsoft Learn, "Microsoft Purview - Security Data Retention," 2024. [Online]. Available: https://learn.microsoft.com/en-us/purview/retention
 
-[62] Microsoft Security Engineering, "Threat Modeling for AI/ML," Microsoft Learn, 2024. [Online]. Available: https://learn.microsoft.com/en-us/security/engineering/threat-modeling-aiml
+[62] Microsoft Security Engineering, "Threat Modeling for AI/ML," Microsoft Learn, 2019. [Online]. Available: https://learn.microsoft.com/en-us/security/engineering/threat-modeling-aiml
 
-[63] Microsoft Security Response Center, "Operational Resilience in the Face of Attacks," Microsoft Security Blog, Jan. 2022. [Online]. Available: https://www.microsoft.com/en-us/security/blog/2022/01/10/operational-resilience-in-the-face-of-attacks/
+[63] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [64] MITRE Corporation, "Insider Threat Research & Framework," MITRE Insider Threat, 2024. [Online]. Available: https://insiderthreat.mitre.org/
 
@@ -147,7 +147,7 @@
 
 [69] SANS Institute, "SANS 2024 AI Survey: AI's Growing Role in Cybersecurity," SANS White Paper, Sept. 2024. [Online]. Available: https://www.sans.org/white-papers/sans-2024-ai-survey-ai-growing-role-cybersecurity-lessons-learned-path-forward
 
-[70] SANS Institute, "Security Analytics Implementation Timelines," SANS Reading Room, 2023.
+[70] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [71] SK Telecom Tech Blog, "Journey to Iceberg with Trino," Trino Summit 2022, Dec. 2022. [Online]. Available: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
 
@@ -155,44 +155,41 @@
 
 [73] Starburst Data, "Starburst Documentation," 2024. [Online]. Available: https://docs.starburst.io
 
-[74] Trino Summit, "Data Contracts for Security Data Quality," Trino Summit 2024. [Online]. Available: https://trinosummit.io/sessions/data-contracts/
+[74] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [75] Uber Engineering, "Palette Feature Store Journey," Uber Blog, 2022-2024. [Online]. Available: https://www.uber.com/blog/palette-meta-store-journey/
 
-[76] Uber Engineering, "Real-Time Security Analytics with Apache Flink," 2023. [Online]. Available: https://eng.uber.com/real-time-security-analytics-with-apache-flink/
+[76] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 [77] Uptime Institute, "Reliability Tier Economics," Uptime Institute Research, 2024.
 
-[78] Ververica, "Stream Processing with High Cardinality and Large State at Klaviyo," Ververica Blog, 2024. [Online]. Available: https://www.ververica.com/blog/stream-processing-with-high-cardinality-and-large-state-at-klaviyo
+[78] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
 ---
 
 ## NOTES ON REFERENCES
 
 **Citation Format**: IEEE style with alphabetical ordering by first author surname
-**URL Validation**: 73% of URLs verified active (100% of hypothesis-critical sources)
-**Paywall Sources**: Gartner (#48, #49), IDC (#52), Uptime Institute (#77) - expected for industry analyst reports
-**Evidence Quality**: 79% Evidence Level A (production deployments, peer-reviewed research, government standards)
+**URL Validation**: superseded by the 2026-06 source audit; entries whose sources could not be verified were withdrawn in place on 2026-06-09 (see the project fabrications register)
+**Paywall Sources**: Gartner (#48, #49), Uptime Institute (#77) - expected for industry analyst reports, though these citations remain unverified pending the weak-source pass
+**Evidence Quality**: prior evidence-level percentages withdrawn pending re-audit after the 2026-06 source verification pass
 
 **Source Distribution**:
-- Production deployments: 18+ organizations (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, Disney+, Microsoft, etc.)
-- Government/Standards: 8 sources (CISA, MITRE, DARPA, NSA, SANS, CSA, OCA, MITRE Engenuity)
-- Industry analysts: 10 sources (Gartner, IDC, Forrester, DORA, Enterprise Data Quarterly)
-- Academic/Research: 6 sources
-- Vendor documentation: 33 sources (technical depth, not marketing)
+- Production deployments: Netflix, Uber, LinkedIn, Cloudflare, SK Telecom, Disney+, Microsoft, and others
+- Government/Standards: CISA, MITRE, DARPA, SANS, CSA, OCA, MITRE Engenuity
+- Industry analysts: Gartner, Forrester, DORA
+- Academic/Research: published books and engineering literature (Brooks [14], Fuller et al. [46], Kreps [53])
+- Vendor documentation: technical depth, not marketing
 
 **Geographic Diversity**:
-- United States: 80% of sources
-- Europe: 11% of sources
-- Asia-Pacific: 4% of sources (SK Telecom production validation)
-- International: 5% (Apache Software Foundation, global vendors)
+- Predominantly United States sources, with Asia-Pacific (SK Telecom) and international (Apache Software Foundation, global vendors) representation; prior percentage breakdowns withdrawn as unverified
 
 **Organizational Diversity**:
 - Tech giants: Netflix, Uber, LinkedIn, Microsoft, Google, AWS, Cloudflare
-- Enterprises: Shell, SK Telecom, Nordstrom, Disney+
-- Government: CISA, MITRE, DARPA, NSA, SANS
+- Enterprises: SK Telecom, Disney+
+- Government: CISA, MITRE, DARPA, SANS
 - Standards bodies: Apache Software Foundation, CSA, OCA, OASIS
-- Startups: Ververica, DataRobot, Anyscale, Huntress
+- Startups: DataRobot, Anyscale, Huntress
 
 ---
 
@@ -207,7 +204,7 @@
 ---
 
 **Created**: October 21, 2025
-**Last Updated**: October 21, 2025
-**Total References**: 78 (alphabetically ordered)
+**Last Updated**: June 9, 2026 (fabrications-register cleanup: 9 entries withdrawn in place)
+**Total References**: 78 numbered entries (9 withdrawn 2026-06-09; numbering preserved for manuscript citation stability)
 **Format**: IEEE citation style
 **Purpose**: Academic publication reference section for PUBLICATION-MANUSCRIPT.md
