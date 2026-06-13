@@ -752,7 +752,7 @@ These formal research questions address critical gaps in the literature:
 3. **RQ13 (Detection Economics)**: Quantifies pipeline vs query-based detection trade-offs
 4. **RQ14 (Agent ROI)**: Documents practical automation opportunities and returns
 
-**Total Research Questions**: RQ1-RQ10 (existing) + RQ11-RQ14 (new) = 14 formal research questions
+**Total Research Questions**: RQ1-RQ10 (existing) + RQ11-RQ14 (new) = 14 formal research questions (later extended to 17 with RQ15-RQ17 — see Gap 12)
 
 **January 2026 Evidence Status**:
 | RQ | Status | Key Evidence Added |
@@ -768,7 +768,72 @@ These formal research questions address critical gaps in the literature:
 
 ---
 
+## Gap 12: Formal Research Questions RQ15-RQ17 (June 2026)
+
+Three research questions adopted from the 2026-06-13 Gemini Deep Research lit-review sweep (intake + triage in project1 `00-inbox/gemini/gemini-20260613-litreview-deepen-extend.md`). Each is framed as an open question and cross-referenced to existing work. The two named frameworks the sweep cited — an "SETC framework" for RQ16 and "ETDI" for RQ17 — are recorded as **to-confirm**, not asserted, since neither was opened at a primary; the questions are framed around the underlying concepts so they stand even if those names don't.
+
+### RQ15: Wasm-Embedded Decoders as a Storage-Layer Threat Model
+
+**Research Question**: Do file formats that embed WebAssembly decoders (e.g. CMU's F3) introduce a storage-layer code-execution threat — where a tampered or malicious embedded decoder runs arbitrary code in the reader's process if signature/sandbox validation is bypassed?
+
+**Framing**: F3-style formats ship the decoder inside the file as Wasm so any engine can read evolving encodings; that portability moves decoder code across a trust boundary into every reader. If a host does not verify the decoder's provenance and sandbox its execution, a crafted file becomes an execution vector — a storage-layer analog of unsafe deserialization.
+
+**Evidence Level**: D (proposed; logical threat, no demonstrated exploit)
+
+**Current Evidence**: F3 is real and uses Wasm decoders (SIGMOD 2025, PACMMOD 3(4) Art. 245, DOI 10.1145/3749163 — in the bibliography); FastLanes (PVLDB 2025, DOI 10.14778/3749646.3749718) and Vortex are the adjacent data-parallel-format thread. The threat is projected from the architecture, not measured.
+
+**Validation Metrics**:
+- [ ] Characterize the sandbox + signature-validation model F3 actually ships
+- [ ] Determine whether any reader executes an unverified embedded decoder
+- [ ] Map to a known weakness class (deserialization / supply-chain CWE)
+
+**Relevance**: Chapter 9 (format war) + the storage-layer security thread; pairs with the existing F3 WebAssembly-security concern.
+
+### RQ16: Measurable Intelligence Loss from Collapsing High-Cardinality Telemetry into OCSF
+
+**Research Question**: How much detection-relevant information is lost when high-cardinality endpoint telemetry is normalized/flattened into OCSF, and can that loss be measured per source?
+
+**Note**: This overlaps the existing context-collapse / OCSF-flattening benchmark work — fold in, do not duplicate. The Gemini sweep referenced an "SETC framework"; that name is unverified, so the RQ is anchored to the SDW lab's own measurements rather than the unconfirmed framework.
+
+**Evidence Level**: B (the context-collapse benchmark is measured, Tier B, in the SDW lab)
+
+**Current Evidence**: The SDW context-collapse / OCSF-flattening benchmarks (sdw-lab-benchmarks) and the six-schema → OCSF 1.8.0 crosswalk corpus already measure mapping fidelity and flattening cost. This RQ formalizes the "intelligence loss" question specifically for high-cardinality endpoint sources.
+
+**Validation Metrics**:
+- [ ] Quantify field/cardinality loss per source
+- [ ] Tie measured loss to missed-detection scenarios
+- [ ] Confirm whether a named "SETC framework" exists as a citable primary before referencing it
+
+**Relevance**: Chapter 8 (OCSF/flattening); overlaps the OCSF-crosswalk corpus and the context-collapse benchmark.
+
+### RQ17: Cryptographic MCP Tool-Validation vs Rug-Pull / Tool-Poisoning
+
+**Research Question**: Can cryptographic tool-validation (signed tool manifests, scoped OAuth/JWT — e.g. an ETDI-style proposal) mitigate MCP rug-pull and tool-poisoning attacks, and what coverage gaps remain?
+
+**Evidence Level**: D (proposed; the attack class is real, the mitigation is emerging)
+
+**Current Evidence**: MCP supply-chain risk is documented — >30 MCP CVEs in early 2026; CVE-2025-6514 (mcp-remote, CVSS 9.6 RCE; verified in the vault); the Habler/Cisco Claude-Code memory-poisoning case (Cisco Blogs + OWASP GenAI ASI06, fixed in Claude Code v2.1.50). The Gemini sweep named "ETDI" as a cryptographic tool-validation proposal; that name is unconfirmed, so the RQ is framed around signed-manifest + scoped-token validation generally.
+
+**Validation Metrics**:
+- [ ] Inventory MCP tool-poisoning / rug-pull CVEs and patterns
+- [ ] Assess signed-manifest + OAuth-scope validation approaches and their coverage
+- [ ] Confirm "ETDI" as a citable primary or drop the name
+
+**Relevance**: Chapter 12/13 (agentic security); pairs with the agentic-security thread (CVE-2025-6514, GTG-1002) and the AI-safety-vs-security framing.
+
+## Summary of RQ15-RQ17
+
+These three June-2026 questions extend the review into storage-layer and agentic-security threats:
+
+1. **RQ15 (Wasm-decoder threat)**: a code-execution threat model for embedded-decoder formats (F3) — proposed, Tier D
+2. **RQ16 (OCSF intelligence loss)**: measurable detection-relevant loss from flattening high-cardinality telemetry — anchored to the existing context-collapse benchmark, Tier B
+3. **RQ17 (cryptographic MCP tool-validation)**: signed-manifest / scoped-token mitigation of MCP rug-pull / tool-poisoning — proposed, Tier D
+
+**Total Research Questions**: RQ1-RQ10 + RQ11-RQ14 + RQ15-RQ17 = **17 formal research questions**. Two cited framework names (SETC for RQ16, ETDI for RQ17) are recorded as to-confirm, not asserted.
+
+---
+
 **Author**: Jeremy Wiley
-**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated)
+**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated), **June 13, 2026** (RQ15-RQ17 adopted from the Gemini DR sweep)
 **Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from project1, LIGER Stack reference architecture, CSA/Google AI governance study, Forrester, ClickHouse case studies, Google Cloud agent ROI, **SACR Market Guide 2025, Rippling SIEM series, Monad detection cost analysis**
 **Status**: All RQ11-RQ14 now have strong evidence validation

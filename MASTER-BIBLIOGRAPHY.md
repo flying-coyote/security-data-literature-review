@@ -3,9 +3,9 @@
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
 **Last Updated**: June 13, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 148 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 2 primary sources added 2026-06-13: Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (Tier A) and pySigma-pipeline-ocsf (Tier B OSS); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
+**Total Sources**: 155 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: ~46% Evidence Level A (live: 68 of 148 entries marked `**Evidence Level**: A`; 80 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Evidence Quality**: ~46% Evidence Level A (live: 70 of 155 entries marked `**Evidence Level**: A`; 81 B, 13 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 14 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -3967,5 +3967,124 @@ fetched and confirmed live, and each claim checked against the primary page (202
 #### Declined (no primary) — EITT Academy "90-second triage / 340% ROI / 8 FTE saved"
 
 The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide relay citing a "90-second triage, 340% ROI, 8 FTE saved" outcome. **Not added.** The precise-but-unsourced trio is a vendor-guide relay with no locatable primary (no named customer, methodology, or independent measurement), and it fits the fabricated-precise pattern the 2026-06-05 audit was built to catch. Recorded here as a deliberate refusal so it is not re-proposed; admit only if a named primary with methodology appears.
+
+---
+
+#### Cribl "Finality" Customer Case Study — In-Stream Windows-Event Reduction
+
+**Authors**: Cribl (vendor case study); customer Finality, Inc. (CEO Eric Jeanmaire quoted)
+**Date**: April 22, 2024
+**URL**: https://cribl.io/customers/finality/
+**Alt URL**: https://docs.cribl.io/stream/usecase-win-xml/
+**Evidence Level**: C (vendor-published, single-customer self-reported)
+**Relevance**:
+- Pipeline pre-ingest volume reduction (RQ13 detection economics / pipeline-vs-query) — dropping repetitive Windows-event fields in Cribl Stream before the SIEM. Concrete practitioner data point for the "filter at the pipeline" thesis.
+- Chapter 6 (stream processing) / Chapter 13 (detection engineering).
+
+**Key Findings**: Finality — an IT and security consulting firm helping US Federal agencies meet log-management/M-21-31 obligations — is a Cribl Stream customer. CEO Eric Jeanmaire, verbatim: "Being able to get a 47% reduction on average in our Windows Events by dropping repetitive fields is huge." Also documented: "10x faster" data extractions / Splunk CIM compliance, and a 250% month-over-month increase in SIEM detection-content (new-rule) delivery; CPU-intensive work (CMDB, threat enrichment) shifted off SIEM indexers onto Cribl Stream. No dollar-savings figure published. Cribl's own docs give a broader 34–70% range for Windows XML event reduction generally. **Correction to the Gemini-DR intake**: "Finality" is a Cribl *customer* (a consulting firm), not a Cribl product/feature; the 47% is a single-customer self-report qualified "on average … by dropping repetitive fields," not an independent benchmark.
+**Citations**: Cribl (2024, Apr 22). *Finality customer case study*. cribl.io.
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — 47% CEO quote, 10× and 250% figures, and the customer-not-product correction confirmed)
+
+---
+
+#### Fortinet + NVIDIA — FortiGate-VM on the BlueField-3 DPU (Isolated Infrastructure)
+
+**Authors**: Fortinet, Inc. and NVIDIA (joint press release)
+**Date**: December 16, 2025
+**URL**: https://www.fortinet.com/corporate/about-us/newsroom/press-releases/2025/fortinet-delivers-isolated-infrastructure-acceleration-for-the-ai-factory-with-nvidia
+**Alt URL**: https://www.globenewswire.com/news-release/2025/12/16/3206276/0/en/Fortinet-Delivers-Isolated-Infrastructure-Acceleration-for-the-AI-Factory-with-NVIDIA.html
+**Evidence Level**: B (vendor-official joint announcement; no independent benchmark)
+**Relevance**:
+- Isolation-first security architecture at the hardware layer (RQ7–RQ10): FortiGate-VM runs directly on the DPU, isolating the security plane from compute workloads. Relevant to the OT/AI-factory and multi-tenant isolation thread.
+- Chapter on isolation patterns; complements the isolation-first tracking work.
+
+**Key Findings**: FortiGate-VM "running on BlueField executes on the DPU, bypassing the host CPU." Verbatim isolation language: BlueField "offloads networking and security functions in an isolated trust domain, purpose-built for isolating the security plane from compute workloads"; "Security is implemented at the hardware level, yet software defined"; the integration improves "multitenant isolation, throughput, and inspection accuracy for AI workloads." Requires FortiOS 7.6.3+ with OVS bridges. **No quantified throughput/latency** appears in the release. **Correction to the intake**: "hardware-level multi-tenant isolation" is a synthesis of adjacent vendor phrases, not a single coined term; this is a vendor marketing announcement (Tier B by provenance), not an independent test.
+**Citations**: Fortinet & NVIDIA (2025, Dec 16). *Fortinet Delivers Isolated Infrastructure Acceleration for the AI Factory with NVIDIA*.
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — product, date, and isolation language confirmed at the Fortinet primary; no perf figures to cite)
+
+---
+
+#### Databricks — Cross-Engine ABAC via the Iceberg REST Catalog Scan APIs (Beta)
+
+**Authors**: Alex Jiang, Alex Reid, Michelle Leon (Databricks)
+**Date**: June 2, 2026
+**URL**: https://www.databricks.com/blog/introducing-cross-engine-abac
+**Alt URL**: https://docs.databricks.com/aws/en/data-governance/unity-catalog/filters-and-masks/
+**Evidence Level**: C (vendor blog; includes a vendor self-claim)
+**Relevance**:
+- Catalog-as-control-plane governance (RQ10 catalog governance; the catalog leg of the open-lakehouse security story): row filters and column masks enforced at the catalog layer, before data reaches the engine, across engines via an open API. Corroborates the [[reference_matrix_decision_graph]] catalog-governance leg.
+- Chapter on catalog/governance; pairs with the Polaris and Iceberg-REST entries.
+
+**Key Findings**: Beta (announced 2026-06-02, **not GA**). "Cross-engine ABAC is built on the Iceberg REST Catalog scan APIs … to delegate policy enforcement to the catalog"; "Enforcement happens at the catalog layer, before data reaches the engine." Mechanism is **server-side scan planning** — Unity Catalog evaluates entitlements during scan planning and returns "a filtered scan plan scoped to the data the user is authorized to access" (row filters, column masks, tag-based rules, SQL UDFs). **Correction to the intake**: this is distinct from credential vending (standard Iceberg REST credential vending does *not* support row-filter/column-mask tables); the relay conflated the two. Engine support at Beta: Apache Spark today; Starburst and DuckDB "coming soon." "First and only catalog to deliver cross-engine ABAC" is a vendor self-claim (flag bias). No metrics.
+**Citations**: Jiang, A., Reid, A., Leon, M. (2026, Jun 2). *Introducing Cross-Engine ABAC*. Databricks.
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — Iceberg-REST-scan mechanism, Beta status, and the scan-planning-vs-credential-vending distinction confirmed)
+
+---
+
+#### Apache Polaris — Top-Level Project Graduation + Credential Vending
+
+**Authors**: Apache Polaris project (Apache Software Foundation)
+**Date**: Graduated to ASF Top-Level Project, February 2026 (official Polaris blog Feb 19, 2026; IPMC graduation-recommendation vote passed Feb 16, 2026; Dremio press-release dateline Feb 18, 2026)
+**URL**: https://polaris.apache.org/blog/2026/02/19/apache-polaris-graduates-to-top-level-project/
+**Alt URL**: https://polaris.apache.org/releases/1.0.0/
+**Evidence Level**: A for the graduation fact (ASF-official); B for the credential-vending feature docs
+**Relevance**:
+- Zero-trust catalog / credential vending (RQ10 catalog governance): the vendor-neutral Iceberg REST catalog is now an ASF Top-Level Project, and vends temporary, scoped storage credentials so engines need no standing cloud-storage access. The catalog leg of [[reference_matrix_decision_graph]].
+- Chapter on catalogs; complements the Snowflake-Polaris and Databricks-ABAC entries.
+
+**Key Findings**: Official Polaris blog (Feb 19, 2026): "Apache Polaris has officially graduated from the Apache Incubator to become a Top Level Project." The ASF incubator IPMC RESULT vote recommending graduation passed Feb 16, 2026 (10 binding +1); Polaris had incubated since Aug 2024. Polaris 1.0.0 docs: "Polaris vends temporary storage credentials to the query engine during query execution," using scoped tokens, so engines run queries without direct cloud-storage access. **Correction to the intake**: the precise "Feb 18" date is from the Dremio vendor press release (Tier C), not an ASF-official page (the official blog byline is Feb 19); "zero-trust catalog" is the relay's label, not the docs' term ("credential vending").
+**Citations**: Apache Polaris (2026, Feb 19). *Apache Polaris Graduates to Top-Level Project*; Apache Polaris 1.0.0 docs (Security and access control).
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — graduation at the ASF-official blog + IPMC vote, and credential vending in the 1.0.0 docs)
+
+---
+
+#### KPMG — AI Quarterly Pulse Survey, Q3 2025
+
+**Authors**: KPMG US (KPMG LLP)
+**Date**: September 18, 2025
+**URL**: https://kpmg.com/us/en/media/news/q3-ai-pulse.html
+**Alt URL**: https://kpmg.com/kpmg-us/content/dam/kpmg/pdf/2025/ai-quarterly-pulse-survey-q3-2025.pdf
+**Evidence Level**: C (vendor/marketing survey; small executive panel; flag bias)
+**Relevance**:
+- Agentic-AI adoption pace and ROI expectation (RQ14 agent ROI / RQ12 governance) — executive sentiment, a demand-signal data point rather than field measurement. Distinct from the existing KPMG/Fortinet/Prophet RQ14 entry.
+- Chapter 17 (future predictions) / Chapter 13.
+
+**Key Findings**: n = 130 U.S. C-suite/business leaders at $1B+ revenue organizations. Verbatim: "42% of organizations now having deployed at least some agents, up from 11% two quarters ago," and "the majority (57%) expect measurable ROI within 12 months." **Correction to the intake**: the relay's "42% run AI agents in production" overstates KPMG's wording — "deployed at least some agents" is weaker than production-grade running. Small self-selected executive panel; KPMG professional-services marketing survey (vendor-incented toward agentic momentum), Tier C.
+**Citations**: KPMG US (2025, Sep 18). *AI Quarterly Pulse Survey: Q3 2025*.
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — 42% "deployed at least some agents" / 57% ROI-<12mo confirmed verbatim; "in production" overstatement corrected)
+
+---
+
+#### The FastLanes File Format
+
+**Authors**: Azim Afroozeh and Peter A. Boncz (Centrum Wiskunde & Informatica / CWI Amsterdam)
+**Date**: 2025 (VLDB 2025, London)
+**URL**: https://www.vldb.org/pvldb/vol18/p4629-afroozeh.pdf
+**Alt URL**: https://ir.cwi.nl/pub/35881 — DOI https://dl.acm.org/doi/10.14778/3749646.3749718
+**Evidence Level**: A (peer-reviewed, PVLDB)
+**Relevance**:
+- The columnar-format-war thread (Chapter 9): a fully data-parallel (SIMD/GPU) lightweight-encoding format that, like Vortex and CMU F3, the Iceberg File Format API (1.11.0) opens the ecosystem to. The CWI/academic anchor for "the next Parquet" discussion.
+- Pairs with the Apache Iceberg v3/1.11.0, DuckLake, and Variant entries.
+
+**Key Findings**: PVLDB 18(11):4629–4643 (2025), DOI 10.14778/3749646.3749718. Avoids generic compression (e.g. Snappy) in favor of fully data-parallel lightweight encodings; cascades them via a flexible expression-encoding mechanism enabling multi-column compression (MCC); supports partial decompression. Evaluation on a real-world corpus: on average **~43× faster decode/scan** than Parquet+Snappy (44× vs +ZSTD, 7× vs BtrBlocks, 29× vs DuckDB) and **~315× faster first-value (random-access) retrieval** than Parquet+Snappy, while improving compression ratio over Parquet. **Corrections to the intake**: "GPU-saturation encodings" overstates the abstract ("designed for SIMD or GPU"); and the often-quoted ">100 billion integers/sec scalar decode" headline belongs to the *separate* 2023 paper "The FastLanes Compression Layout" (PVLDB 16(9):2132–2144, DOI 10.14778/3598581.3598587), not this File Format paper.
+**Citations**: Afroozeh, A. & Boncz, P. (2025). *The FastLanes File Format*. PVLDB 18(11):4629–4643.
+**Validation Status**: ✅ Active (verified 2026-06-13 — title/authors/venue/DOI confirmed at CWI + PVLDB; the 43×/315× multipliers are evaluation-body figures corroborated via search indexing of the primary PDF, which blocked direct text extraction)
+
+---
+
+#### DuckLake — Data Inlining for Streaming
+
+**Authors**: Pedro Holanda (DuckLake / DuckDB Labs)
+**Date**: April 2, 2026
+**URL**: https://ducklake.select/2026/04/02/data-inlining-in-ducklake/
+**Alt URL**: https://duckdb.org/2026/04/02/data-inlining-in-ducklake
+**Evidence Level**: C (project's own benchmark; not independent)
+**Relevance**:
+- The small-files / streaming-into-the-lakehouse problem (RQ13; Chapter 9): inlining stages small DML directly in the SQL catalog (e.g. PostgreSQL) instead of writing many small Parquet files, the streaming weakness the book tracks for Iceberg. Extends the existing DuckLake v1.0 entry with the specific inlining benchmark.
+- Pairs with the DuckLake v1.0 and Iceberg entries.
+
+**Key Findings**: Benchmark is a **single DuckDB process** inserting 100 rows/second (10 batches × 10 rows) into a 23-column table — **not a 100-stream simulation**. Two distinct baselines: (1) DuckLake-with-inlining vs **Apache Iceberg + Polaris** (100-second run via pyiceberg) = **105× insert / 923× aggregation / 189× checkpoint** (the Iceberg run generated 1,000+ small Parquet files vs zero inlined); (2) DuckLake with- vs without-inlining (50-minute run) = **5.2× insert / 925.9× (≈926×) aggregation / 14.5× checkpoint**. **Correction to the intake**: the relayed "105× / 926×" pairs figures from *two different baselines* and mislabels the workload as "100-stream"; the consistent vs-Iceberg pair is 105× / 923×, and the inlining mechanism alone yields only ~5.2× on insert (most of the 105× is DuckLake vs Iceberg+Polaris overhead).
+**Citations**: Holanda, P. (2026, Apr 2). *Data Inlining in DuckLake: Unlocking Streaming for Data Lakes*. DuckLake / DuckDB Labs.
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — both baselines, the single-process workload, and the cross-baseline pairing error confirmed)
 
 ---
