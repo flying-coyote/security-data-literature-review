@@ -19,7 +19,7 @@
 
 ### Fact 2: 7 Hypotheses Validated with Quantitative Evidence ✅
 **CONFIRMED**: Strong quantitative validation for 7 hypotheses
-- **H-ARCH-01** (Iceberg Dominance): 76% adoption, 5 sources
+- **H-ARCH-01** (Iceberg Dominance): industry consensus as de facto standard, 5 sources (the "76% adoption" figure is unsourced — refined per the H-ARCH-01 audit)
 - **H-IMPL-01** (TCO Reality): 2.5-3× operational costs, 5 sources
 - **H-IMPL-02** (Staffing Scarcity): 2.7× staff required, 4 sources
 - **H-IMPL-03** (Timeline Premium): 5.5 months average, 3 sources
@@ -240,7 +240,7 @@
 ### Decision 7: Expert Interviews for Quantitative Validation
 **Decision**: Conduct expert interviews (Lisa Cao, Jake Thomas) to validate quantitative claims
 **Rationale**:
-- 7 hypotheses + 14 research questions have quantitative claims (76% adoption, 2.5-3× costs, 2.7× staffing)
+- 7 hypotheses + 14 research questions have quantitative claims (2.5-3× costs, 2.7× staffing, 5.5-month timelines; the H-ARCH-01 "76% adoption" example was unsourced and refined to "industry consensus")
 - Expert validation strengthens evidence (personal communication = additional source)
 - Interview guides ensure systematic, reproducible questioning
 - Scheduled for Q1 2026 quarterly deep dive (January 2026)
@@ -482,7 +482,7 @@
 
 ### Key Technologies Covered
 
-- **Table Formats**: Apache Iceberg (76% adoption), Delta Lake, Apache Hudi
+- **Table Formats**: Apache Iceberg (industry consensus / de facto standard), Delta Lake, Apache Hudi
 - **Query Engines**: Trino/Starburst, Dremio, Denodo, DuckDB, ClickHouse, Athena
 - **Catalogs**: Gravitino (meta-catalog), Polaris, Unity Catalog, Nessie
 - **Schemas**: OCSF (Open Cybersecurity Schema Framework), ECS (Elastic Common Schema)

@@ -302,7 +302,7 @@
 - Table 1: Source categorization by type and evidence level
 - Table 2: Hypothesis validation summary with sources
 - Table 3: Cost comparison findings (TCO, staffing, timelines)
-- Figure 2: Technology adoption trends (Iceberg 76%, etc.)
+- Figure 2: Technology adoption trends (Iceberg = industry consensus / de facto standard; do not plot the unsourced "76%")
 
 ---
 

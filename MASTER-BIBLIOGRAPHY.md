@@ -1,11 +1,11 @@
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
-**Last Updated**: June 5, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
+**Last Updated**: June 13, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 146 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
+**Total Sources**: 148 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 2 primary sources added 2026-06-13: Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (Tier A) and pySigma-pipeline-ocsf (Tier B OSS); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: ~46% Evidence Level A (live: 67 of 146 entries marked `**Evidence Level**: A`; 79 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Evidence Quality**: ~46% Evidence Level A (live: 68 of 148 entries marked `**Evidence Level**: A`; 80 B, 9 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 14 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -2602,7 +2602,7 @@ This bibliography consolidates all literature sources from:
 ### Sources by Category
 
 **Foundational Architecture** (Table Formats, Query Engines, Streaming):
-- Apache Iceberg: 5 sources (76% adoption, universal vendor support, 300+ contributors)
+- Apache Iceberg: 5 sources (industry consensus as de facto standard — universal vendor support, 300+ contributors; the bare "76% adoption" figure is unsourced and was refined to "industry consensus" in the H-ARCH-01 audit, see RESEARCH-JOURNAL.md)
 - ClickHouse: 4 sources (6M req/sec, 5-10× storage efficiency vs Elasticsearch; the "96% <1s" figure is not in the cited sources and was removed)
 - Streaming (Kafka/Flink): 6 sources (the 4-9-month / 3.2-FTE / skills-level staffing figures formerly cited here were fabricated and removed in the 2026-06-05 audit)
 
@@ -3928,5 +3928,44 @@ fetched and confirmed live, and each claim checked against the primary page (202
 **Key Findings**: MITRE extended D3FEND to OT on 2025-12-16, building a structured knowledge base for defending cyber-physical systems; the v1.3.0 release (Dec 2025) contains 267 defensive techniques across seven tactical categories and includes the OT extension, with additional ICS artifacts and implementation guidance expected through 2026. D3FEND remains built on OWL 2 DL with Core Classes aligning to upper ontologies.
 **Citations**: MITRE (2025, Dec 16). *MITRE Extends D3FEND Ontology to Operational Technology Cybersecurity*. mitre.org news release.
 **Validation Status**: ✅ Active (verified 2026-06-05 via WebSearch — MITRE news release, v1.3.0 technique count, and 2025-12-16 OT-extension date confirmed across MITRE + Industrial Cyber + vendor coverage)
+
+---
+
+#### Cohasset Associates — Amazon S3 Object Lock Compliance Assessment (SEC 17a-4(f) / 18a-6(e), FINRA 4511(c), CFTC 1.31(c))
+
+**Authors**: Cohasset Associates, Inc. (independent records-management and compliance assessor); commissioned by AWS
+**Date**: 2025 assessment
+**URL**: https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/whitepapers/compliance/Amazon-S3-Compliance-Assessment-2025.pdf
+**Alt URL**: https://aws.amazon.com/compliance/secrule17a-4f/
+**Evidence Level**: A (independent third-party compliance attestation against named SEC/FINRA/CFTC rules)
+**Relevance**:
+- The strongest compliance anchor for the lakehouse-on-object-storage thesis in regulated financial services: an independent assessor's WORM attestation that object storage can satisfy the same broker-dealer record-retention rules historically used to justify a proprietary archival SIEM/archive tier. Supports the FSI/compliance and retention hypotheses (immutability without vendor lock-in).
+- Chapter on compliance/retention; pairs with the Amazon S3 Tables and Iceberg-on-S3 entries.
+
+**Key Findings**: Cohasset's opinion is that Amazon S3 with Object Lock — Compliance mode for the strict case, Governance mode for less-restrictive needs — meets the non-rewriteable, non-erasable (WORM) record-retention requirements of SEC 17a-4(f), SEC 18a-6(e), FINRA 4511(c), and CFTC 1.31(c) for time-based retention periods and legal holds. In Compliance mode a locked object version cannot be overwritten or deleted by any user including the root account, and the retention period cannot be shortened. The report is downloadable for presentation to regulators when notifying them of the decision to store regulated records on S3.
+**Citations**: Cohasset Associates (2025). *Amazon S3 — SEC 17a-4(f), SEC 18a-6(e), FINRA 4511(c), and CFTC 1.31(c) Compliance Assessment*. AWS.
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebSearch — AWS compliance page + the 2025 assessment PDF confirm Cohasset's WORM attestation for S3 Object Lock under the named rules; exact assessment-report day within 2025 not pinned)
+
+---
+
+#### pySigma-pipeline-ocsf — Sigma → OCSF Detection-as-Code Pipeline
+
+**Authors**: SigmaHQ (maintainer: Hendrik Baecker)
+**Date**: pre-release (as of 2026-06-13)
+**URL**: https://github.com/SigmaHQ/pySigma-pipeline-ocsf
+**Evidence Level**: B (official SigmaHQ open-source project; pre-release)
+**Relevance**:
+- Detection-as-code portability across OCSF: converts Sigma rules to OCSF field/event-type names so a single detection corpus can target OCSF-normalized telemetry. Supports the Sigma-portability and OCSF-crosswalk threads, and the "contribute to pySigma-pipeline-ocsf rather than own a competing repo" engagement move.
+- Chapter on detection portability / OCSF; complements the OCSF v1.8.0 and crosswalk entries.
+
+**Key Findings**: provides the `sigma.pipeline.ocsf` package with an `ocsf_pipeline()` that returns a pySigma `ProcessingPipeline`; the README lists 23 Sigma logsource-category → OCSF event-type mappings (process_creation, network_connection, file_event, dns_query, …). MIT license; badge marks it pre-release. **Correction to the 2026-06-13 Gemini-DR intake**, which claimed "25 logsource categories → … → Detection Finding event class": the README states **23** mappings, not 25, and does **not** mention a "Detection Finding" output class — cite the 23-category logsource→OCSF mapping only, and confirm the targeted OCSF version at the repo before citing one (the README pins none).
+**Citations**: SigmaHQ; Baecker, H. *pySigma-pipeline-ocsf*. GitHub.
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch of the GitHub README — project, maintainer, MIT license, pre-release status, and 23 logsource mappings confirmed; Gemini's 25-categories / Detection-Finding-class claim corrected)
+
+---
+
+#### Declined (no primary) — EITT Academy "90-second triage / 340% ROI / 8 FTE saved"
+
+The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide relay citing a "90-second triage, 340% ROI, 8 FTE saved" outcome. **Not added.** The precise-but-unsourced trio is a vendor-guide relay with no locatable primary (no named customer, methodology, or independent measurement), and it fits the fabricated-precise pattern the 2026-06-05 audit was built to catch. Recorded here as a deliberate refusal so it is not re-proposed; admit only if a named primary with methodology appears.
 
 ---

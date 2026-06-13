@@ -9,7 +9,7 @@ Track the evolution of table formats, catalogs, and object storage patterns form
 ## Contents
 
 ### table-formats.md
-- **Apache Iceberg**: Trend analysis, adoption rates (H-ARCH-01: 76% dominance)
+- **Apache Iceberg**: Trend analysis, adoption rates (H-ARCH-01: industry consensus as de facto standard; the "76%" figure is unsourced)
 - **Delta Lake**: Evolution, feature parity tracking
 - **Apache Hudi**: Use case analysis, market position
 - **Focus**: ACID guarantees, time travel, schema evolution, security implications

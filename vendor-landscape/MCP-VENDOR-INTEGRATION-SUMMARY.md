@@ -137,7 +137,7 @@ The MCP vendor database uses a Tier A/B/C/D classification that aligns with the 
 2. **Snowflake** - Gartner Leader, Polaris (Iceberg REST catalog)
 
 **Open Source Table Formats**:
-3. **Apache Iceberg** - Apple exabyte-scale lakehouse, 76% adoption, Databricks Tabular acquisition
+3. **Apache Iceberg** - Apple exabyte-scale lakehouse, industry consensus as de facto standard (the "76% adoption" figure is unsourced), Databricks Tabular acquisition
 4. **Delta Lake** - Open-sourced by Databricks, Linux Foundation
 5. **Apache Hudi** - Uber petabyte-scale, streaming data lakehouse
 

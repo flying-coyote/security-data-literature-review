@@ -77,7 +77,7 @@
 
 ### 2.1 Table Formats
 **Apache Iceberg**:
-- Adoption metrics: [update to H-ARCH-01: currently 76%]
+- Adoption metrics: [update to H-ARCH-01: currently "industry consensus as de facto standard" — the old "76%" figure was unsourced; do not reseed it]
 - Version updates: [e.g., Iceberg 1.X features]
 - New capabilities: [puffin stats, deletion vectors, etc.]
 - Evidence level: [A/B/C]
@@ -195,8 +195,8 @@
 
 ### 5.1 Updated Hypotheses
 **H-ARCH-01 (Iceberg Dominance)**:
-- Previous: 76% adoption
-- Current: [updated percentage]
+- Previous: industry consensus as de facto standard (the "76%" figure was unsourced and retired)
+- Current: [updated status / any newly-sourced adoption figure]
 - Confidence: [Strong/Moderate/Weak]
 - Sources: [X new sources added]
 - Evidence level: [A/B/C]

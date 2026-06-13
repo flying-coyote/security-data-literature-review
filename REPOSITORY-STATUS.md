@@ -342,7 +342,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - Specialized skills: "Level 4" expertise (top 5% orgs only)
 
 **Technology Performance**:
-- Apache Iceberg: 76% adoption, 97% query time reduction at SK Telecom
+- Apache Iceberg: industry consensus as de facto standard (the "76% adoption" figure is unsourced — refined per the H-ARCH-01 audit); 97% query time reduction at SK Telecom
 - ClickHouse: 6M req/sec at Cloudflare, 96% queries <1s
 - Kafka: 4.5M events/sec on 9 nodes, trillions/day at Microsoft
 

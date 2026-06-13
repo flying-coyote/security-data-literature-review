@@ -178,7 +178,7 @@ As the vendor landscape and platform coverage expands, the repository may grow t
   - RQ10: Real-world deployment patterns
 
 **Hypothesis Validation Results** (7 validated):
-- H-ARCH-01 (Iceberg Dominance): STRONGLY VALIDATED - 76% adoption, 5 sources
+- H-ARCH-01 (Iceberg Dominance): STRONGLY VALIDATED - industry consensus as de facto standard, 5 sources (the bare "76% adoption" figure is unsourced; refined per the H-ARCH-01 audit)
 - H-IMPL-01 (TCO Reality): STRONG - 2.5-3× operational costs, 5 sources
 - H-IMPL-02 (Staffing Scarcity): STRONG - 2.7× staff required, 4 sources
 - H-IMPL-03 (Timeline Premium): VALIDATED - 5.5 months average, 3 sources

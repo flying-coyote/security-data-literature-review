@@ -40,7 +40,7 @@
 - **Status**: Apache incubator, adoption patterns unclear
 
 **Current Hypothesis Status**:
-- **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED (76% adoption claim, industry consensus)
+- **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED (industry consensus as de facto standard; the "76% adoption" figure is unsourced)
 - **H-ARCH-03** (Catalog Adoption): Needs validation - no formal hypothesis yet
 - **XTable**: Emerging technology, production usage unknown
 
