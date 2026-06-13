@@ -3438,8 +3438,8 @@ from the Second Brain entry pending the freshness sweep.
 - Book Chapter 9 (format war), long-term forensic data preservation
 - Research prototype, not production-ready (label accordingly)
 
-**Citations**: Zeng, X., Meng, R., Prammer, M., McKinney, W., Patel, J. M., Pavlo, A., & Zhang, H. (2025). *F3: The Open-Source Data File Format for the Future*. Proc. ACM Manag. Data, 3(4).
-**Validation Status**: ✅ Active URL (verified 2026-06-05)
+**Citations**: Zeng, X., Meng, R., Prammer, M., McKinney, W., Patel, J. M., Pavlo, A., & Zhang, H. (2025). *F3: The Open-Source Data File Format for the Future*. Proc. ACM Manag. Data, 3(4). **DOI: 10.1145/3749163** (verified resolves to F3 at ACM DL, 2026-06-13).
+**Validation Status**: ✅ Active URL (verified 2026-06-05); DOI added + venue/author list re-confirmed 2026-06-13. Note: the often-quoted "~150KB WebAssembly decoder" size is a secondary-source (Medium) figure — the paper describes the embedded decoder as "minimal storage (kilobytes), ~0.001% overhead" rather than fixing a specific 150KB number; cite it as "kilobytes / negligible overhead."
 
 ---
 
@@ -4067,7 +4067,7 @@ The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide
 - Pairs with the Apache Iceberg v3/1.11.0, DuckLake, and Variant entries.
 
 **Key Findings**: PVLDB 18(11):4629–4643 (2025), DOI 10.14778/3749646.3749718. Avoids generic compression (e.g. Snappy) in favor of fully data-parallel lightweight encodings; cascades them via a flexible expression-encoding mechanism enabling multi-column compression (MCC); supports partial decompression. Evaluation on a real-world corpus: on average **~43× faster decode/scan** than Parquet+Snappy (44× vs +ZSTD, 7× vs BtrBlocks, 29× vs DuckDB) and **~315× faster first-value (random-access) retrieval** than Parquet+Snappy, while improving compression ratio over Parquet. **Corrections to the intake**: "GPU-saturation encodings" overstates the abstract ("designed for SIMD or GPU"); and the often-quoted ">100 billion integers/sec scalar decode" headline belongs to the *separate* 2023 paper "The FastLanes Compression Layout" (PVLDB 16(9):2132–2144, DOI 10.14778/3598581.3598587), not this File Format paper.
-**Citations**: Afroozeh, A. & Boncz, P. (2025). *The FastLanes File Format*. PVLDB 18(11):4629–4643.
+**Citations**: Afroozeh, A. & Boncz, P. (2025). *The FastLanes File Format*. PVLDB 18(11):4629–4643. **Complementary** (added 2026-06-13): Afroozeh, A. (2026). *FastLanes: A Next-Gen File Format* (PhD thesis, Vrije Universiteit Amsterdam), **DOI 10.5463/thesis.1348** — the consolidated thesis behind the FastLanes line of work (DOI verified to resolve at the VU research portal, 2026-06-13). The encoding it defines is leveraged by Vortex and CMU F3 rather than shipping as a standalone format (the "integrated, not standalone" reading holds for the *encoding*; the 2026 thesis separately frames a "FastLanes File Format"). The often-quoted ">100 billion ints/sec" SIMD headline traces to the earlier 2023 *FastLanes Compression Layout* paper (PVLDB 16(9), DOI 10.14778/3598581.3598587) — keep the attribution above; a web-search "confirmation" that the figure sits in the 2025 File Format paper is not authoritative on which paper owns it.
 **Validation Status**: ✅ Active (verified 2026-06-13 — title/authors/venue/DOI confirmed at CWI + PVLDB; the 43×/315× multipliers are evaluation-body figures corroborated via search indexing of the primary PDF, which blocked direct text extraction)
 
 ---
