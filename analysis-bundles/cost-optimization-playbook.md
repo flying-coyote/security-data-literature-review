@@ -480,8 +480,12 @@ GROUP BY timestamp, source_ip;
 ```
 
 **Use Case**: "Top attackers in last 24 hours" query (common threat hunting)
-- **Before**: Full table scan (30-45 seconds)
-- **After**: Materialized view query (< 1 second, 30-45× faster)
+- **Before**: Full-corpus base-table scan on every refresh
+- **After**: Serve the panel from a pre-aggregated materialized view
+
+In the SDW lab I measured this directly on three SOC-dashboard panels against 20M OCSF events (single host, read latencies as medians with CV, answers verified identical between the two paths): the read speedup runs 45.3× (failed-auth-by-user), 53.6× (5-minute time series), and 76.8× (class rollup) [Tier B, `sdw-lab-benchmarks/ocsf-mv-acceleration`, H-MV-SECURITY-01]. That sits at the low end of the vendor-reported 78× to 9,000× range (Tier C/D: PostgreSQL/Snowflake/Databricks vendor benchmarks, best-case workloads, not independently reproduced), which is what I'd expect, since the published figures are favorable-workload best cases and a 709 MB base table on one machine is not where the 9,000× numbers come from. The transferable finding is the trade, not the magnitude: the MV is a bet that a fixed set of always-on questions is worth paying per-batch maintenance and storage to answer fast, so an ad-hoc pivot, a new filter, or a hunt still pays the base scan.
+
+One caveat worth stating before anyone reaches for materialized views as a concurrency fix: the speedup above is per-query compute, and it buys no headroom under load. In the interference benchmark (single host, an open-loop scheduled workload running alongside ad-hoc queries) the StarRocks arm and the same arm backed by six EXPLAIN-verified materialized views both knee at the same scheduled rate — the MV layer did not shift the knee right at all [Tier B, `sdw-lab-benchmarks/workload-interference`, P5; one MV run, the base knee is reproduced 3× but the MV result wants reproduction for a firm claim]. The reading is that at the knee the binding constraint is open-loop scheduler and per-query coordinator saturation, not the per-query compute the MVs accelerate, so even a near-instant MV-rewritten query still pays the fixed per-query overhead the scheduler is drowning in. So an MV is the right tool for a slow but uncontended dashboard, and the wrong tool for a system that's tipping over because too many queries arrive at once, where the headroom comes from the engine's scheduler and coordinator rather than from pre-aggregating the answers.
 
 ---
 

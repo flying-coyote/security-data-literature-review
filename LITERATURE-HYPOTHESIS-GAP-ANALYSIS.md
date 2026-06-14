@@ -572,6 +572,7 @@
 - **Finding**: AI generates complete OCSF parsers from log samples
 - **Implication**: Shifts integration control from vendors to customers
 - **Evidence Level**: B (Production validation)
+- **Measured follow-up (2026-06-14, #10)**: generating a mapping is not the same as a field-faithful one. Tenzir's *shipped* `zeek::ocsf::map` is class-right but derives `activity_id` on only 17% of records (83% mis-bucketed) and covers 1 of 4 common sources; this measurement is what re-tiers the RQ14 OCSF/parser legs from asserted-A to Tier-B (see OVERTURN under RQ14).
 
 ### Gap 10 Summary
 
@@ -585,15 +586,15 @@ The emergence of AI/agent architectures requires formal research questions to be
 
 ### RQ11: LIGER Stack vs Traditional SIEM Architecture
 
-**Research Question**: Can the LIGER Stack architecture achieve 70-90% cost reduction vs traditional SIEMs while maintaining comparable security detection and investigation capabilities?
+**Research Question**: Can the LIGER Stack architecture achieve a 60-80% median cost reduction (up to 90%+ in optimal conditions) vs traditional SIEMs while maintaining comparable security detection and investigation capabilities?
 
-**Hypothesis**: The LIGER Stack (Lakehouse + Index + Graph + Engine + Route) reduces total cost of ownership by 70-90% compared to traditional SIEMs through:
+**Hypothesis**: The LIGER Stack (Lakehouse + Index + Graph + Engine + Route) reduces total cost of ownership by **60-80% (median), up to 90%+ in optimal conditions**, compared to traditional SIEMs through:
 - Storage/compute separation ($0.023/GB/month S3 vs bundled SIEM pricing)
-- 10-12× compression (Parquet/ZSTD)
+- Compression, but **workload-dependent**: the SDW lab measured the storage byte ratio spanning **~2.6× (high-entropy: base64 payloads, full SHA-256, per-event GUIDs) → 7.9× (EDR/Sysmon proc-creation) → 8.5× (flat Zeek conn)** on a pinned 10M-row corpus (`~/sdw-lab-benchmarks/cost-to-serve-retention/`, commit 3d0539a, Tier B). The headline "10-12×" holds only for moderate-entropy schemas; high-entropy ingest compresses ~3.3× worse, so per-event cost must be re-based on the workload's own raw bytes/event, not a single assumed ratio.
 - Fixed compute costs (no per-query charges)
 - Vendor-neutral architecture (avoiding lock-in premiums)
 
-**Evidence Level**: A (Production validation in blog post + January 2026 research)
+**Evidence Level**: A on direction and the production-cluster anchors; the **60-80% median band is Tier C** (Jeremy's own TCO model) anchored to **Tier-B first-party byte ratios** (2.6-8.5×) plus **primary-verified production-cluster economics** (Netflix Iceberg+ClickHouse 5 PB/day hot, 1+ EB Iceberg, $5/TB DataFusion compaction; Rippling $4.50/mo per CloudTrail detection — both Reproducible/Tier B in the 2026-06-14 Gemini reconciliation; Atlassian/Project Banyan 80% ingest-cost reduction, Asserted/public Databricks figure).
 
 **Current Evidence**:
 - LIGER: $3,560/month for 500GB/day with 365-day retention
@@ -610,6 +611,8 @@ The emergence of AI/agent architectures requires formal research questions to be
 - **50% of world's 15 largest banks** using security data lakes (Hunters)
 - **Forrester**: CISOs voting with budget for data-first architecture
 - **OCSF**: 900+ contributors, 200+ orgs, Linux Foundation Project (Nov 2024)
+
+**Cost-reduction range reconciliation (2026-06-14)**: across the lit-review the cost-reduction claim drifted (RQ11 "70-90%", RQ13 "50-70%", tiered-storage "55-80%", book "71-96%"). Standardized on **60-80% median, up to 90%+ in optimal conditions**, anchored to the lab byte ratios (re-measure per workload — the high-entropy ~2.6× floor keeps the range honestly workload-dependent rather than a universal constant) and the production-cluster anchors above. The per-deployment percentages cited here (Barracuda 75%, HSBC 3×, Atlassian/Banyan 80%) are individual operator outcomes, not the median — they sit inside the band but are point cases, mostly Tier-C/Asserted vendor cases except the Reproducible Netflix/Rippling anchors.
 
 **Validation Metrics**:
 - [x] TCO comparison across 10+ production deployments (Barracuda, HSBC, Netflix, GitLab, 50% top banks)
@@ -683,7 +686,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 
 **February 2026 Research Update** ✅:
 - **Security data pipeline market**: Cribl $200M ARR (Feb 2025), fastest cybersecurity company to $100M ARR
-- **Pipeline filtering**: 50-70% log volume reduction without losing visibility (SACR Market Guide 2025)
+- **Pipeline filtering**: 50-70% log volume reduction without losing visibility (SACR Market Guide 2025) — note this is a *volume*-reduction figure, distinct from the LIGER TCO band; volume reduction is one input to TCO, not the same quantity
 - **SIEM ingestion reducible by 80%+** with pipeline pre-ingest processing
 - **Cost-per-detection**: $4.50/month per detection rule on Snowflake serverless (Rippling production)
 - **Okta case study**: 50.7% cost reduction ($1,929→$952/month) via pipeline filtering (Monad)
@@ -698,6 +701,8 @@ The emergence of AI/agent architectures requires formal research questions to be
 - [ ] Regulatory compliance verification
 - [x] Performance benchmarks (latency <1 min Snowpipe, 50-70MB/5min query scans)
 
+**Cost-band reconciliation (2026-06-14)**: where this RQ touches *overall* TCO reduction (vs the pipeline *volume*-reduction and the per-detection $/rule figures above, which are their own measured quantities), it inherits the standardized **60-80% median, up to 90%+ optimal** band from RQ11 — anchored to the lab byte ratios (2.6-8.5×, re-measure per workload) and the production-cluster economics. The "10-50× cost reduction" multiplier in the hypothesis is conditions-specific (pipeline-able known patterns, high-volume/low-value sources) and is not the same quantity as the TCO band; keep the two distinct.
+
 **Relevance**: Book Chapters 6 (Stream Processing), 9 (Security Architecture), 13 (Detection Engineering)
 
 ---
@@ -707,16 +712,24 @@ The emergence of AI/agent architectures requires formal research questions to be
 **Research Question**: What is the return on investment for deploying AI agents in security operations, and what tasks can be successfully automated?
 
 **Hypothesis**: AI agents can successfully automate 20-40% of Level 1 SOC tasks with positive ROI within 12 months, specifically:
-- Parser generation (100% automation via Tenzir MCP)
+- Parser generation (a vendor can ship an AI-generated OCSF mapping, but shipped ≠ field-faithful — see the OVERTURN note below)
 - Vulnerability patching (RAPTOR framework validation)
 - Initial triage and enrichment (30-40% reduction in analyst time)
-- OCSF normalization (80% automation achievable)
+- OCSF normalization (availability of a shipped mapping is the binding constraint, not an 80%-achievable automation rate — see the OVERTURN note)
 
-**Evidence Level**: A (Google Cloud survey + industry research + production examples)
+**Evidence Level**: A on the ROI/triage legs (Google Cloud survey); **Tier B (measured) on the two OCSF/parser legs after the 2026-06-14 overturn** — see below.
+
+> **OVERTURN — 2026-06-14 (first-party measurement supersedes the asserted "Parser generation 100% automation / OCSF normalization 80% achievable, Evidence Level A").** ⚠️ **Re-tiering of a published asserted-A confidence level — flagged for Jeremy's sign-off before any downstream surface cites it.**
+>
+> The asserted Level-A claim ("100% automation via Tenzir MCP" / "80% OCSF normalization achievable") was never a measurement — it was an inference from the *existence* of an AI-generated mapping. The SDW lab's pipeline-normalization-fidelity bench (#10) ran Tenzir's **shipped** library mapping `zeek::ocsf::map` unedited over a pinned corpus and measured what it actually delivers (`~/sdw-lab-benchmarks/pipeline-normalization-fidelity/FINDINGS-2026-06-14.md`, commit 20cf84c). Two things the asserted claim got wrong:
+> - **Fidelity is not coverage.** On the one source Tenzir ships a JSON-consumable mapping for (Zeek conn), the mapping gets the OCSF *class* right (100%, Network Activity 4001) and most *values* (92%), but it does **not** derive `activity_id` from Zeek's `conn_state`, so the activity classification diverges from the faithful gold on **83% of records** (activity_id 17%), and `history` / `service` / `uid` land in `unmapped` rather than typed OCSF attributes (field fidelity 80%). A consumer filtering on `activity_id` (open vs close vs reset vs fail) mis-buckets most connections. "Maps to OCSF" is a coverage claim, not a fidelity guarantee.
+> - **Availability is the binding constraint.** Tenzir ships **0% consumable coverage for 3 of the 4 common sources** tested — CloudTrail (no management-events → API Activity operator in the `amazon` package), Sysmon (the shipped `sysmon::ocsf::map` expects raw EVTX/XML, not the pre-parsed JSON most EDR shippers carry), and a generic auth source (no vendor ships a mapping). The second tool, **Vector 0.56.0, ships no OCSF mapping at all** (no OCSF component, function, or binary string), so this is a cross-tool finding, not a Tenzir quirk. Of the two open tools tested, one ships a usable mapping for one of four sources and the other ships none.
+>
+> **Re-tier:** from *asserted Level A* to a **measured Tier-B caveat** — *coverage is a claim, fidelity is not; shipped-mapping availability is the binding constraint on OCSF-normalization-at-source.* **Version-bound:** Tenzir **6.0.0**, library commit **671e049**, OCSF **1.8.0**, synthetic corpus, single host — re-run on a newer library before repeating. The Cribl arm (the one tool advertising a packaged OCSF Pack) is deferred and would test whether the availability gap is tool-specific or general. This is the same lineage as biblio entry #86, where a fabricated Tenzir "100% hands-off" was already corrected to "100% schema-conforming." Per-vendor percentages stay OUT of public surfaces (Matrix-paid IP); public statements carry the principle and shape only.
 
 **Current Evidence**:
 - RAPTOR: Successfully patches vulnerabilities ("duct tape MVP" works)
-- Tenzir: AI generates complete OCSF parsers from samples
+- Tenzir: AI generates complete OCSF parsers from samples — but the *shipped* library mapping is class-right/activity-wrong on 83% of Zeek-conn records and absent for 3 of 4 common sources (measured, #10, Tier B; see OVERTURN)
 - NANDA: 1,000+ agents registered, infrastructure emerging
 - Practitioner reports: AI assists but doesn't replace analysts
 
@@ -732,10 +745,10 @@ The emergence of AI/agent architectures requires formal research questions to be
 - **Target**: <2% false positive rate to avoid alert fatigue
 
 **Validation Metrics**:
-- [x] 12-month ROI validation (74% achieve ROI in first year - Google Cloud)
-- [x] ROI quantification (171% average, 192% U.S. enterprises)
-- [ ] Time-to-value measurements (parser generation: manual vs AI)
-- [ ] Task automation taxonomy (what can/cannot be automated)
+- [x] 12-month ROI validation (74% achieve ROI in first year - Google Cloud) — ROI/triage legs only
+- [x] ROI quantification (171% average, 192% U.S. enterprises) — ROI/triage legs only
+- [x] Time-to-value measurements (parser generation: manual vs AI) — REFRAMED by #10: the gating metric is shipped-mapping *availability + fidelity*, not generation speed (Tenzir: 1 of 4 sources covered, activity_id 17% on the covered one; Vector: none)
+- [ ] Task automation taxonomy (what can/cannot be automated) — #10 narrows "OCSF normalization" from "80% achievable" to "coverage ≠ fidelity, availability-bound"
 - [ ] Error rates and human oversight requirements
 - [ ] Training data requirements and costs
 
@@ -747,7 +760,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 
 These formal research questions address critical gaps in the literature:
 
-1. **RQ11 (LIGER Stack)**: Validates complete reference architecture with 70-90% cost reduction claims
+1. **RQ11 (LIGER Stack)**: Validates the complete reference architecture; cost-reduction claim standardized 2026-06-14 to **60-80% median, up to 90%+ optimal** (anchored to lab byte ratios 2.6-8.5× + production-cluster economics), replacing the looser "70-90%"
 2. **RQ12 (AI Governance)**: Establishes prerequisites for AI success in security operations
 3. **RQ13 (Detection Economics)**: Quantifies pipeline vs query-based detection trade-offs
 4. **RQ14 (Agent ROI)**: Documents practical automation opportunities and returns
@@ -760,11 +773,11 @@ These formal research questions address critical gaps in the literature:
 | RQ11 | ✅ STRONG | Barracuda 75%, HSBC 3×, GitLab <1s, Netflix 5PB/day, 50% top banks |
 | RQ12 | ✅ STRONG | CSA/Google survey: 46% vs 12% adoption by governance maturity |
 | RQ13 | ✅ STRONG | Pipeline 50-70% cost reduction, $4.50/rule serverless, 1,087× storage gap |
-| RQ14 | ✅ STRONG | Google 74% first-year ROI, 171% average, 192% U.S. enterprises |
+| RQ14 | ✅ STRONG (ROI legs) · ⚠️ RE-TIERED (OCSF/parser legs) | Google 74% first-year ROI, 171% average, 192% U.S. enterprises. **OCSF/parser legs overturned 2026-06-14**: asserted-A "100% parser automation / 80% OCSF normalization" → measured Tier-B caveat (Tenzir #10: class-right/activity-wrong-on-83%, 1 of 4 sources covered; Vector ships none). Coverage ≠ fidelity; availability is the binding constraint. |
 
 **Evidence Collection Priority** (Updated):
-- **VALIDATED**: RQ11 (LIGER production evidence), RQ12 (CSA/Google governance survey), RQ13 (pipeline economics with quantitative cost data), RQ14 (agent ROI metrics)
-- **ALL RQ11-RQ14 NOW VALIDATED** with Strong evidence
+- **VALIDATED**: RQ11 (LIGER production evidence), RQ12 (CSA/Google governance survey), RQ13 (pipeline economics with quantitative cost data), RQ14 (agent **ROI/triage** legs — agent ROI metrics)
+- **RE-TIERED 2026-06-14**: RQ14's **OCSF-normalization and parser-generation** legs moved from asserted Level A to a measured Tier-B caveat after the #10 first-party measurement (see the OVERTURN note under RQ14). The ROI/triage legs stand on the Google Cloud survey; the automation-rate legs do not.
 
 ---
 
@@ -797,14 +810,16 @@ Three research questions adopted from the 2026-06-13 Gemini Deep Research lit-re
 
 **Evidence Level**: B (the context-collapse benchmark is measured, Tier B, in the SDW lab)
 
-**Current Evidence**: The SDW context-collapse / OCSF-flattening benchmarks (sdw-lab-benchmarks) and the six-schema → OCSF 1.8.0 crosswalk corpus already measure mapping fidelity and flattening cost. This RQ formalizes the "intelligence loss" question specifically for high-cardinality endpoint sources.
+**Current Evidence**: The SDW context-collapse / OCSF-flattening benchmarks (sdw-lab-benchmarks) and the six-schema → OCSF 1.8.0 crosswalk corpus already measure mapping fidelity and flattening cost. This RQ formalizes the "intelligence loss" question specifically for high-cardinality endpoint sources. Two first-party measurements now ground it directly:
+- **Detection-relevant loss is measured, de-gamed (Tier B).** The de-gamed BENCH-A re-run (`~/sdw-lab-benchmarks/ocsf-context-collapse-apt29/`, commit 52e4958) runs **unmodified upstream SigmaHQ** rules via pySigma→SQL against real **MITRE ATT&CK APT29** (OTRF/Mordor) telemetry under documented, blind coarsening. Adversary-relevant detections lose **~2× the recall** and go fully blind ~2× as often as routine detections; the headline blinding-recall-loss delta is **+0.188** at the documented 64-char truncation cap, bounded **+0.094 to +0.205** across a coarsening sweep (deterministic, no RNG, so the band is a truncation-cap curve, not a seed band). The blinded rules are the expected ones — Base64/encoded-PowerShell and long-script-block rules killed by command-line/script-block truncation, which is exactly APT29's encoded-PowerShell tradecraft. Earlier R1/R2 runs reported a larger gameable synthetic delta (+0.719); the **de-gamed +0.188 is the figure to cite** for this RQ, with the synthetic value labelled as such. Caveats travel: modest fired-rule sample, one dataset, one coarsening config, recall-loss measured against the fidelity store (not absolute per-event labels), and the independent-reviewer Tier-A gate on "does Store N resemble what shops build" stays open.
+- **Per-source mapping/availability loss is measured (Tier B, #10).** The pipeline-normalization-fidelity bench shows the *normalization step itself* drops detection-relevant structure before any flattening: on Zeek conn the shipped Tenzir mapping leaves `activity_id` correct on only 17% of records and lands `history`/`service`/`uid` in `unmapped` (version-bound: Tenzir 6.0.0, library 671e049, OCSF 1.8.0). So "intelligence loss into OCSF" has two measurable legs — the *coarsening/flattening* leg (BENCH-A, +0.188) and the *mapping-fidelity* leg (#10, the activity-classification and unmapped-field loss).
 
 **Validation Metrics**:
-- [ ] Quantify field/cardinality loss per source
-- [ ] Tie measured loss to missed-detection scenarios
-- [ ] Confirm whether a named "SETC framework" exists as a citable primary before referencing it
+- [x] Quantify field/cardinality loss per source — BENCH-A (recall-loss delta +0.188, de-gamed) + #10 (activity_id 17%, field fidelity 80% on Zeek conn); per-source for high-cardinality EDR/Sysmon remains to run (#10 covered Zeek conn; Sysmon arm was XML-bound)
+- [x] Tie measured loss to missed-detection scenarios — APT29 encoded-PowerShell rules go blind under command-line/script-block truncation (BENCH-A)
+- [ ] Confirm whether a named "SETC framework" exists as a citable primary before referencing it — still to-confirm; the RQ stands on the lab's own measurements regardless
 
-**Relevance**: Chapter 8 (OCSF/flattening); overlaps the OCSF-crosswalk corpus and the context-collapse benchmark.
+**Relevance**: Chapter 8 (OCSF/flattening); overlaps the OCSF-crosswalk corpus, the context-collapse benchmark (BENCH-A), and the pipeline-normalization-fidelity bench (#10). Single-host, synthetic-or-single-dataset Tier B — magnitudes ride the corpus; what travels is the shape (adversary-tail loss ~2× routine; activity-classification dropped at the mapping step).
 
 ### RQ17: Cryptographic MCP Tool-Validation vs Rug-Pull / Tool-Poisoning
 
@@ -834,6 +849,6 @@ These three June-2026 questions extend the review into storage-layer and agentic
 ---
 
 **Author**: Jeremy Wiley
-**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated), **June 13, 2026** (RQ15-RQ17 adopted from the Gemini DR sweep)
+**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated), **June 13, 2026** (RQ15-RQ17 adopted from the Gemini DR sweep), **June 14, 2026** (benchmark integration: RQ14 OCSF/parser legs OVERTURNED asserted-A → measured Tier-B caveat per #10 [⚠️ confidence-level change, flagged for sign-off]; RQ16 grounded on the measured BENCH-A de-gamed +0.188 and #10 mapping-fidelity legs; RQ11/RQ13 cost-reduction standardized to 60-80% median / up to 90%+ optimal, anchored to lab byte ratios 2.6-8.5× + production-cluster economics)
 **Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from project1, LIGER Stack reference architecture, CSA/Google AI governance study, Forrester, ClickHouse case studies, Google Cloud agent ROI, **SACR Market Guide 2025, Rippling SIEM series, Monad detection cost analysis**
 **Status**: All RQ11-RQ14 now have strong evidence validation

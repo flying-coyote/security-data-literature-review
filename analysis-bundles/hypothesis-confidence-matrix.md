@@ -3,7 +3,7 @@
 **Purpose**: Transparent confidence scoring for 7 borrowed-source hypotheses plus 6 first-party (lab-measured) hypotheses, with methodological rigor
 **Target Use**: Book confidence statements, academic publication, honest claim evaluation
 **Created**: October 15, 2025
-**Updated**: June 7, 2026 (added first-party MOAR reference-stack measurements; re-grounded two borrowed cells)
+**Updated**: June 14, 2026 (re-anchored H-OCSF-CONTEXT-COLLAPSE-01 on the de-gamed APT29 +0.188 and labelled the synthetic-testbed +0.719 as its gameable predecessor; folded in the flattening-fidelity mechanism-decomposition curves; added the H-CROSS-TOOL-ASSURANCE-01 data-health band annotation. June 7: added first-party MOAR reference-stack measurements; re-grounded two borrowed cells)
 **Sources**: Borrowed-source citations reference MASTER-BIBLIOGRAPHY.md entries; first-party citations reference the SDW MOAR reference stack and the public lab benchmark repository
 **Methodology**: Evidence-based confidence rubric (source count, evidence level, validation type)
 
@@ -31,7 +31,7 @@
 |------------|-----------|--------------|---------------|-----------------|
 | **H-ENGINE-ANSWER-EQUIVALENCE-01** (four engines, one table) | ⭐⭐⭐⭐ High | 1 (first-party, multi-engine) | First-party lab | DuckDB, Trino, ClickHouse, StarRocks agree on count / needle / group-by over one Iceberg/OCSF table |
 | **H-ARCH-02** (no single engine wins) | ⭐⭐⭐⭐ High | 1 (first-party, 4 engines, 1M→100M + C1→C16 sweep) | First-party lab | Both axes measured: at 100M the workload-shape crossover appears (ClickHouse wins full-scan count, DuckDB wins needle + group-by; DuckDB had swept at 1M/10M), and the concurrency sweep splits them again — DuckDB fastest at C1 but flat ~46 q/s, ClickHouse scales 20→58 q/s and overtakes by C16 |
-| **H-OCSF-CONTEXT-COLLAPSE-01** (flattening fidelity) | ⭐⭐⭐⭐ High | 1 (published lab artifact) | First-party lab (public) | BENCH-A flattening-fidelity delta +0.719; published, reproducible |
+| **H-OCSF-CONTEXT-COLLAPSE-01** (flattening fidelity) | ⭐⭐⭐⭐ High | 2 (published lab artifacts: de-gamed APT29 + mechanism decomposition) | First-party lab (public) | De-gamed APT29 adversary-vs-routine recall-loss delta **+0.188** (sweep range +0.094 to +0.205) on unmodified SigmaHQ rules; the synthetic-testbed BENCH-A +0.719 is the gameable lab-authored predecessor it supersedes |
 | **H-SEC-CATALOG-01** (catalog portability) | ⭐⭐⭐ Moderate | 1 (first-party, 5 open catalogs) | First-party lab | swap-catalog across REST/Polaris/Nessie/Lakekeeper/Gravitino; Unity Catalog leg NOT reproducible |
 | **H-DUCKLAKE-02** (swap-format read-neutral + commit-tax) | ⭐⭐⭐⭐ High | 1 (first-party, two legs: identical bytes + streaming commits) | First-party lab | Iceberg↔DuckLake read-neutral on byte-identical data; under a 100-commit stream Iceberg ingest ~37×, metadata footprint ~515×, planning ~21×, while DuckLake planning stays flat (~7 ms) — the write-contract complement to read-neutrality |
 | **H-NDR-FEDERATION-01** (cross-source correlation) | ⭐⭐⭐⭐ High | 1 (first-party, 2-source join) | First-party lab | Join surfaces attacker 198.51.100.66 (lateral movement) no single source reveals |
@@ -656,21 +656,30 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 
 **Validation Status**: ✅ **VALIDATED (first-party, published lab artifact)**
 
-**Evidence Tier**: First-party lab measurement, and the only one of the six already published as a public Tier-B artifact — the BENCH-A context-collapse / flattening-fidelity benchmark in the public lab repository (`github.com/flying-coyote/sdw-lab-benchmarks`, `flattening-fidelity/`; the standalone `ocsf-flattening-benchmark` repo is archived and forwards there). Cite it as the worked, reproducible first-party measurement rather than re-deriving it here.
+**Evidence Tier**: First-party lab measurement, and the most publicly developed of the six — three published Tier-B artifacts in the public lab repository (`github.com/flying-coyote/sdw-lab-benchmarks`) speak to it: the original synthetic-testbed `bench-a-context-collapse/`, its de-gamed re-run `ocsf-context-collapse-apt29/`, and the mechanism-decomposition leg `flattening-fidelity/` (the standalone `ocsf-flattening-benchmark` repo is archived and forwards there). Cite the de-gamed APT29 result as the headline and the mechanism-decomposition curves as the "why", rather than re-deriving either here.
 
-**Measurement**: BENCH-A reports a flattening-fidelity delta of **+0.719** — the published, reproducible context-collapse result. (See the artifact for the per-mechanism breakdown; this matrix cites the headline delta and the published method.)
+**Measurement (headline — de-gamed APT29, supersedes the synthetic delta)**: the de-gamed re-run scores **unmodified upstream SigmaHQ rules** (cloned verbatim, compiled via pySigma→SQL) against real MITRE ATT&CK APT29 evaluation telemetry (OTRF/Mordor day 1), with each rule's adversary/routine split taken from its own `attack.tXXXX` tags rather than lab judgment. Under the documented 64-char field-truncation cap it reports an adversary-vs-routine mean blinding recall-loss delta of **+0.188**, and a coarsening-sensitivity sweep over the truncation cap (256 → 16 chars) bounds it to **+0.094 to +0.205** — the published +0.188 sitting mid-to-upper in that range, positive at every cap, never inverting. Adversary-relevant detections lose **~2× the recall** and go fully blind **~2× as often** as routine detections, with the blinded rules the expected encoded-PowerShell / long-script-block family (APT29's tradecraft). The fidelity store costs **1.799×** the bytes (1,888,601 vs 1,049,655) and 1.265× query wall-clock against this battery, so storage is the more expensive axis of keeping fidelity.
+
+**Measurement (synthetic-testbed predecessor — labelled, retained as the audit trail)**: the original BENCH-A on the lab's own synthetic testbed reported a headline delta of **+0.719** (robust across background re-draws, +0.710 to +0.719). That result is **gameable** — the lab authored the detection rules, planted the attack chain, and chose the coarsening grains — which is why it is superseded by the de-gamed APT29 re-run above and quoted here as the synthetic-testbed magnitude, not the headline. The routine→adversary disproportionality replicated with nothing lab-authored, which is what the de-gamed run establishes.
+
+**Measurement (mechanism decomposition — `flattening-fidelity/`, the three failure modes as curves)**: the flattening-fidelity leg isolates each mechanism on its own synthetic corpus and reports two of the three magnitudes as closed-form curves rather than point estimates. Mode 1 (absence→NULL coercion) is **100% silent miss by construction** — absence and NULL are the same byte once the column is flattened — privilege-escalation recall 0.00 lossy vs 1.00 preserved. Mode 2 (grain rollup) collapses beacon-hunt to **F1 = 2/(2 + decoy-to-beacon ratio)**, the published 0.50 being the ratio-2 point (seed leaves it unmoved, CV ≈ 0). Mode 3 (floating timestamps) collapses cross-zone correlation to **recall = 1 − cross-zone fraction**, the published ~0.46–0.50 being the fraction-0.5 point. The fidelity-preserving store holds 1.0 at every parameter, so the parameter-independent finding is the *shape* (lossy store collapses on the corpus parameter, preserved store does not), and the magnitude reads off the parameter.
 
 **Confidence Drivers**:
-✅ Published, externally inspectable, reproducible (fixed seed, documented method)
-✅ Security-specific by construction (OCSF events, the flattening problem security log pipelines actually hit)
-✅ A measured fidelity delta, not a directional "flattening loses information" assertion
+✅ The de-gamed APT29 leg removes all three Karen-flagged levers (lab-authored rules → unmodified SigmaHQ, synthetic chain → real APT29 telemetry, lab-chosen grains → documented volume-driven defaults applied blind), so the disproportionality holds with nothing lab-authored
+✅ The coarsening-sensitivity sweep bounds the headline (+0.094 to +0.205) and shows it is positive at every truncation cap, robust to the "you picked the cap" rebuttal
+✅ Mechanism decomposition reports two magnitudes as closed-form curves (F1 = 2/(2+r), recall = 1−cross-zone fraction) measured equal to the closed form, with the preserved store at 1.0 throughout
+✅ Published, externally inspectable, reproducible (pinned pySigma/sigma-cli versions; fixed seeds; documented methods)
+✅ Security-specific by construction (OCSF events, real APT29 detection rules, the flattening problem security log pipelines actually hit)
+✅ A measured fidelity delta with a priced storage/query cost (1.799× storage, 1.265× query), not a directional "flattening loses information" assertion
 
 **Confidence Limiters**:
-⚠️ The published artifact is the modular 3-mechanism version, not the larger pre-registered battery (still a Tier-A target); the +0.719 delta is scoped to the mechanisms measured
-⚠️ Single-host lab apparatus
+⚠️ The de-gamed APT29 leg is one dataset, one coarsening config, a modest fired-rule sample (APT29 exercises a subset of techniques); recall-loss is measured against the fidelity store, not absolute per-event labels
+⚠️ The synthetic-testbed +0.719 is gameable (lab-authored rules/chain/grains) and is retained only as the labelled predecessor, not a citable headline
+⚠️ The mechanism-decomposition magnitudes (Mode 2 F1, Mode 3 recall) are corpus parameters, not universal constants; only Mode 1 (absence→NULL) is structural and parameter-free
+⚠️ Single-host lab apparatus throughout; the independent-reviewer sign-off that the coarse store resembles what shops actually build remains the open Tier-A gate
 
 **Recommended Language**:
-> "The flattening-fidelity loss is measured, not asserted: the published BENCH-A context-collapse benchmark reports a fidelity delta of +0.719 on OCSF data (first-party, reproducible; github.com/flying-coyote/sdw-lab-benchmarks, flattening-fidelity/)."
+> "The context-collapse loss is measured, not asserted: on real MITRE ATT&CK APT29 telemetry scored with unmodified upstream SigmaHQ rules, OCSF coarsening blinds adversary-relevant detections ~2× more than routine ones — a +0.188 mean recall-loss delta (sweep range +0.094 to +0.205) under a documented field-truncation default, and the fidelity store that avoids it costs 1.799× the storage. The earlier synthetic-testbed figure (+0.719) was a lab-authored, gameable predecessor; the de-gamed re-run reproduces the disproportionality with nothing lab-authored. (First-party, reproducible; github.com/flying-coyote/sdw-lab-benchmarks, ocsf-context-collapse-apt29/ and flattening-fidelity/.)"
 
 ---
 
@@ -748,6 +757,30 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 
 ---
 
+### H-CROSS-TOOL-ASSURANCE-01: Cross-Tool Data-Health Gap (band annotation)
+
+**Hypothesis**: "Assurance lives in the cross-tool view — the merged, freshness/authority-ranked picture of an estate recovers materially more true state than any single tool, and a residual gap remains that no tool covers correctly."
+
+**Validation Status**: ✅ **VALIDATED (first-party, single host, synthetic corpus)**
+
+**Evidence Tier**: First-party lab measurement (`ocsf-data-health/`, public Tier-B; DuckDB 1.5.3, seed 20260601). This is the first-party benchmark behind the fourth layer (the cross-tool gap) of the data-health framework the Capability Matrix scores. Added here as a confidence annotation — not a fully rubric-scored row — because its discriminating dimensions are the same single-apparatus reproducibility / determinism-gate profile as the other first-party legs rather than independent-source diversity.
+
+**Measurement (point → band)**: a synthetic estate of 20,000 assets × 7 attributes = 140,000 ground-truth cells, observed by four source tools through deterministic flaw models, scored by exact set-based measures. The canonical run (truth=701, obs=702) reports best-single-tool recovery **47.7%** and cross-tool best-context recovery **75.6%** (+27.9% over best single, 24.4% residual gap no tool covers correctly). A 12-seed re-draw of the whole corpus (EXT-3) bands those two headline magnitudes: best-single **47.4% ± 0.15%** (range 47.1–47.7%, CV 0.3%) and cross-tool **75.4% ± 0.21%** (range 75.0–75.6%, CV 0.3%), so the canonical 47.7/75.6 point sits at the top edge of each band — a real reproducible draw of a tight distribution, not a fragile single seed. EXT-1 separately holds the three orderings (cross-tool > best-single, residual > 0, scored merge > naive) at every point of a 3×3 staleness×coverage grid; the parameter-independent finding is the *order*, the magnitudes are corpus parameters.
+
+**Confidence Drivers**:
+✅ The headline is banded across 12 independent corpus re-draws (CV 0.3% on both magnitudes), inoculating against a single-draw rebuttal
+✅ The ordering holds at every cell of a parameter sweep, so the transferable claim (cross-tool > best-single, residual > 0) is parameter-independent
+✅ Build-twice byte-identical determinism gate + planted-ground-truth integrity check before any number is read
+
+**Confidence Limiters**:
+⚠️ Single-host, synthetic corpus — Tier B, no production claim; the flaw-model magnitudes are corpus parameters, not universal constants (read METHODOLOGY.md before trusting any number)
+⚠️ The bandable result is the magnitude of two measures on the easiest entity (assets, one clean key); a contested join key (EXT-2 identities) costs a measured −10.1% entity-resolution tax that the asset headline does not carry
+
+**Recommended Language**:
+> "Across a 20k-asset synthetic estate, the cross-tool merge recovers 75.4% of true state (±0.21% over 12 corpus re-draws, CV 0.3%) against the best single tool's 47.4% (±0.15%, CV 0.3%), leaving a residual ~24% no tool covers correctly — assurance lives in the cross-tool view, the magnitude is a tight reproducible band rather than one lucky seed, and the parameter-independent finding is the ordering (first-party, single host, synthetic; github.com/flying-coyote/sdw-lab-benchmarks, ocsf-data-health/)."
+
+---
+
 ## Consolidated Confidence Assessment
 
 ### Overall Validation Strength
@@ -768,10 +801,11 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 |------------|-----------|------------------------|
 | **H-ENGINE-ANSWER-EQUIVALENCE-01** | ⭐⭐⭐⭐ | **Four engines agree on one Iceberg/OCSF table** - lead the apparatus with the answer-equality gate |
 | **H-ARCH-02** | ⭐⭐⭐⭐ | **No single engine wins** - lead with the measured 100M crossover (ClickHouse full-scan count, DuckDB needle + group-by; DuckDB swept at 1M/10M); then the concurrency sweep, where the single-query winner (DuckDB, flat ~46 q/s) and the throughput winner (ClickHouse, 20→58 q/s by C16) differ — specialized by concurrency as well as workload shape; relative pattern, single host, remaining gap is multi-node cluster concurrency |
-| **H-OCSF-CONTEXT-COLLAPSE-01** | ⭐⭐⭐⭐ | **+0.719 fidelity delta** - cite the published BENCH-A artifact, don't re-derive |
+| **H-OCSF-CONTEXT-COLLAPSE-01** | ⭐⭐⭐⭐ | **De-gamed +0.188 adversary-vs-routine recall-loss delta** (sweep +0.094 to +0.205, ~2× recall / blind, 1.799× storage to keep fidelity) on unmodified SigmaHQ + real APT29 — cite the de-gamed APT29 + mechanism-decomposition artifacts; the synthetic-testbed +0.719 is the gameable, labelled predecessor it supersedes, don't lead with it |
 | **H-SEC-CATALOG-01** | ⭐⭐⭐ | **Portable across 5 open catalogs** - state the Unity Catalog leg as not-reproducible |
 | **H-DUCKLAKE-02** | ⭐⭐⭐⭐ | **Iceberg↔DuckLake read-neutral on identical bytes; commit-tax diverges under streaming** - reads at parity (writer-confound control), but a 100-commit stream costs Iceberg ~37× ingest / ~515× metadata footprint / ~21× planning while DuckLake stays flat; lead with the write-contract complement for security's tiny-frequent-commit cadence |
 | **H-NDR-FEDERATION-01** | ⭐⭐⭐⭐ | **Join surfaces 198.51.100.66 lateral movement** - federation value on a controlled join |
+| **H-CROSS-TOOL-ASSURANCE-01** | ⭐⭐⭐⭐ | **Cross-tool 75.4% vs best-single 47.4% recovery** (CV 0.3% over 12 corpus re-draws), ~24% residual gap no tool covers — assurance lives in the cross-tool view; lead with the banded magnitudes, transferable claim is the ordering (band annotation, not rubric-scored) |
 
 ---
 
@@ -827,6 +861,7 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 | 1.1 | 2026-06-07 | Added 6 first-party (MOAR reference-stack) hypotheses; re-grounded two borrowed cells |
 | 1.2 | 2026-06-07 | Upgraded H-ARCH-02 with the measured 100M-row crossover (stronger leg): ClickHouse wins full-scan count, DuckDB wins needle + group-by; 1M table kept as baseline (DuckDB swept at 1M/10M), 1M→100M progression documented as the evidence that specialization is a scale property |
 | 1.3 | 2026-06-07 | Added the H-ARCH-02 concurrency-sweep leg (`lab/concurrency_sweep.py`, C1→C16 over a shared 10M-row OCSF table): DuckDB flat ~46 q/s (p95 57→689 ms), ClickHouse 20→58 q/s overtaking by C16 (gentlest p95 59→355 ms), StarRocks 16→42 q/s plateauing ~C8, Trino flat-low 9→13 q/s (p95→1736 ms, single-host coordinator penalty). Closes the concurrency half of "no single engine wins" that the single-client scale legs only hinted at — the single-query winner (DuckDB) and the concurrent-throughput winner (ClickHouse) differ, so specialization is by concurrency as well as workload shape. Single-host limiter updated: single-host concurrency now measured, remaining gap is multi-node cluster concurrency |
+| 1.4 | 2026-06-14 | Re-anchored H-OCSF-CONTEXT-COLLAPSE-01 on the **de-gamed APT29** result (+0.188 adversary-vs-routine recall-loss delta, sweep +0.094 to +0.205, ~2× recall/blind, 1.799× storage to keep fidelity) from `ocsf-context-collapse-apt29/`; labelled the synthetic-testbed **+0.719** (`bench-a-context-collapse/`, robust +0.710–0.719) as the gameable lab-authored predecessor it supersedes, retained as the audit trail. Folded in the `flattening-fidelity/` mechanism-decomposition curves (Mode 1 = 100% structural; Mode 2 F1 = 2/(2+decoy ratio); Mode 3 recall = 1−cross-zone fraction; preserved store 1.0 throughout). Added an **H-CROSS-TOOL-ASSURANCE-01** band annotation from `ocsf-data-health/`: best-single 47.4% / cross-tool 75.4% recovery (CV 0.3% over 12 corpus re-draws, canonical 47.7/75.6 at the top edge), residual ~24% gap, ordering parameter-independent. All numbers re-derived from the first-party FINDINGS docs; this is a presentation/banding refinement, no magnitude change. **Jeremy sign-off pending** on (a) treating the de-gamed +0.188 as the matrix headline over the published +0.719 and (b) the new data-health annotation row |
 
 ---
 

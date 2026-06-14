@@ -3,7 +3,7 @@
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
 **Last Updated**: June 13, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 155 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. This repo is the source of truth for literature citations.
+**Total Sources**: 159 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: ~46% Evidence Level A (live: 70 of 155 entries marked `**Evidence Level**: A`; 81 B, 13 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 14 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
@@ -767,7 +767,78 @@ This bibliography consolidates all literature sources from:
 **Citations**: All 4 hypotheses, Book Ch 8, Blog Post #28
 **Notes**: **CRITICAL** - First independent multi-engine benchmark on identical OCSF data
 
-**Validation Status**: ✅ Active Repository (December 2025)
+> **⚠️ SUPERSEDED (2026-06-14) — this is the December-2025 snapshot, kept as a dated record.** The flat "145× faster than Splunk" reads live to a skimmer but is no longer the current figure. The benchmark was re-run on the Zeek conn.log corpus (`~/sdw-lab-benchmarks/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md`, commit a6837cb, Tier B single-host) and the result splits into two regimes rather than a single multiple:
+> - **The durable, triple-validated claim** is a two-regime split: OpenSearch foil ÷ ClickHouse-over-Iceberg scan-agg = **10.1×/10.6×/11.3×** across three draws (≈10–11×, the foil-to-columnar multiple), and the open-format tax (ClickHouse-Iceberg ÷ ClickHouse-native) = **4.6×/4.3×/4.2×** (≈4.2–4.6×). The ~10–11× foil multiple and the ~4.2–4.6× tax are what travel cleanly; absolute single-host ms drift ~5–10% with page-cache.
+> - **The old "145×" was the extreme arm-pairing**, ClickHouse-native vs Dremio, which on the re-run lands at **76.6×/85.9×** (a two-draw range; draw 3's Dremio leg failed a Dremio-26 auth race — an orchestration failure, not a measurement). Quote the extreme as the **76.6×–85.9× range**, never as a single "145×" point.
+> The foil was bumped OpenSearch 2.18.0→3.7.0 (performance-neutral, −1.1% same-draw), so the multiples hold on a current SIEM. Do **not** reproduce the Dremio "1.00s / 28× / Reflections-ON" row above as live: B-DREMIO found Reflections-ON blocked (materializes then expires, `available_until`=epoch 0); the measured Reflections-**OFF** arm is 0.787s (3.6× the foil avg / 6.5× the heaviest hunt). See the campaign-wide 145×→two-regime supersession footprint (`project_145x_supersession_footprint`).
+
+**Validation Status**: ✅ Active Repository (December 2025) · ⚠️ headline superseded 2026-06-14 by the two-regime triple-band re-run (note above); H3-PERFORMANCE-01 re-tier (the "ClickHouse 145× faster than Splunk" framing in Relevance) is **FLAGGED for Jeremy** — re-running 145× as a two-regime split changes the confidence framing on a published asserted claim and needs his sign-off (karen + contradiction-detector) before it propagates.
+
+---
+
+#### Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe? (Kester et al., SIGMOD 2017)
+
+**Authors**: Michael S. Kester, Manos Athanassoulis, Stratos Idreos (Harvard DASLab)
+**Date**: 2017 (ACM SIGMOD International Conference on Management of Data)
+**URL**: https://stratos.seas.harvard.edu/publications/access-path-selection-main-memory-optimized-data-systems-should-i-scan-or
+**Alt URL**: https://dl.acm.org/doi/abs/10.1145/3035918.3064049 (DOI 10.1145/3035918.3064049)
+**Evidence Level**: A (peer-reviewed, SIGMOD)
+**Relevance**:
+- The academic "why" behind the lab's two-regime / Needle result (`zeek-flagship-rerun/results/NEEDLE-FINDINGS-2026-06-14.md`): a point lookup wins on a secondary index over an unsorted store but ties a sorted columnar store, so the lakehouse point-lookup weakness is a layout choice, not a hard limit. Kester et al. is the formal version of that argument — in a main-memory column store, modern vectorized/SIMD/multi-core sequential scans have become competitive across a much wider selectivity range than the textbook assumes, yet access-path selection is still required because both paths remain useful under varying workloads.
+- Book Chapter 9 (query engines, index-vs-scan), Appendix I (two-regime symmetry); grounds the SPEC/Matrix "where the index wins" framing.
+
+**Key Findings**: Sequential scans in main-memory-optimized columnar systems benefit from column-group storage, vectorized execution, shared scans, operating directly over compressed data, and SIMD + multi-core execution, which together make scans the better access path in more cases than older cost models assumed; secondary-index probes still win in a region, so the optimizer must still choose between scan and probe rather than defaulting to one. **NOT verified at primary**: the relayed claim that "columnar beats inverted index even at ~1% selectivity" — the abstract/DASLab and ACM pages 403'd on direct fetch, so the *specific* ~1% selectivity crossover figure could not be confirmed at the primary; the general scan-vs-probe finding and the authorship/venue ARE confirmed (Harvard DASLab publications listing + dblp SIGMOD 2017 + ACM DOI). Cite the general access-path-selection finding; do not assert the ~1% crossover until the primary figure is read. **FLAGGED for Jeremy.**
+**Citations**: Kester, M. S., Athanassoulis, M., & Idreos, S. (2017). *Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe?* SIGMOD '17, 715–730. DOI 10.1145/3035918.3064049.
+**Validation Status**: ✅ Authorship/title/venue/DOI verified 2026-06-14 (Harvard DASLab publications page + dblp SIGMOD 2017 + ACM DL listing); ⚠️ the ~1%-selectivity crossover figure NOT confirmed at primary (pages 403'd) — FLAGGED.
+
+---
+
+#### Analyzing and Comparing Lakehouse Storage Systems (LHBench, CIDR 2023)
+
+**Authors**: Paras Jain et al. (UC Berkeley / Databricks)
+**Date**: 2023 (Conference on Innovative Data Systems Research — CIDR 2023)
+**URL**: https://www.cidrdb.org/cidr2023/papers/p92-jain.pdf
+**Alt URL**: https://github.com/lhbench/lhbench (benchmark code)
+**Evidence Level**: A (peer-reviewed, CIDR)
+**Relevance**:
+- The independent academic benchmark of the three lakehouse table formats the book tracks (Iceberg / Hudi / Delta Lake), and the external grounding for "metadata processing is where the table formats actually differ" — the lab's compaction/file-count results sit inside the same regime LHBench measures.
+- Book Chapter 8 (table formats), Chapter 9; contextualizes the SDW lab's own first-party benchmarks against a published cross-format baseline.
+
+**Key Findings**: Adapts TPC-DS to the lakehouse setting on AWS EMR across Iceberg, Hudi, and Delta Lake. Headline: Delta Lake ran ~1.4× faster than Hudi and ~1.7× faster than Iceberg on end-to-end TPC-DS queries (vendor-affiliated authorship — Databricks ships Delta, so read the cross-format ordering with that incentive in mind). The large-file-count test (the `store_sales` table split into 10MB files, 1,000→200,000 files) is the more durable contribution: it isolates metadata-processing strategy, with Delta showing ~7×–20× better performance at the 200,000-file extreme. Note this is a 2023 result on the then-current format versions; Iceberg V3/1.11.0 and Hudi have moved since, so cite the *method and the metadata-is-the-differentiator finding*, not the 2023 cross-format ranking as current.
+**Citations**: Jain, P., et al. (2023). *Analyzing and Comparing Lakehouse Storage Systems*. CIDR 2023. cidrdb.org/cidr2023/papers/p92-jain.pdf.
+**Validation Status**: ✅ Verified 2026-06-14 (cidrdb.org CIDR 2023 paper + lhbench GitHub; title/venue/three-format scope/Delta 1.4×–1.7× headline/7×–20× metadata test confirmed via fetch of the CIDR page); author roster beyond lead "Jain" not individually re-verified.
+
+---
+
+#### LST-Bench: Benchmarking Log-Structured Tables in the Cloud (SIGMOD 2024)
+
+**Authors**: Jesús Camacho-Rodríguez, Ashvin Agrawal, Anja Gruenheid, Ashit Gosalia, Cristian Petculescu, Josep Aguilar-Saborit, Avrilia Floratou, Carlo Curino, Raghu Ramakrishnan (Microsoft)
+**Date**: 2024 (SIGMOD 2024 / Proc. ACM Manag. Data, Vol. 2, No. 1)
+**URL**: https://github.com/microsoft/lst-bench
+**Evidence Level**: A (peer-reviewed, SIGMOD; framework is Microsoft OSS)
+**Relevance**:
+- The complement to LHBench: a Microsoft framework + paper for benchmarking log-structured tables (Delta Lake, Apache Hudi, Apache Iceberg) with workloads that stress longevity/maintenance behavior (compaction, time-travel, concurrent writes) rather than only point-in-time TPC-DS reads — the dimension the SDW compaction-recovery and interference benches probe.
+- Book Chapter 8 (table formats), Chapter 9; second external anchor for the "the table-format choice shows up under maintenance and concurrency, not just on a cold read" argument.
+
+**Key Findings**: A configurable framework for evaluating log-structured tables (LSTs — Delta/Hudi/Iceberg) under cloud workloads, designed to capture longevity and operational behavior (degradation over many write/compaction cycles) that single-shot benchmarks miss. Cite for the methodology and the operational-dimension framing; specific per-format numbers were not extracted at primary, so do not quote LST-Bench multipliers without reading the paper.
+**Citations**: Camacho-Rodríguez, J., Agrawal, A., Gruenheid, A., Gosalia, A., Petculescu, C., Aguilar-Saborit, J., Floratou, A., Curino, C., & Ramakrishnan, R. (2024). *LST-Bench: Benchmarking Log-Structured Tables in the Cloud*. SIGMOD 2024 / Proc. ACM Manag. Data 2(1).
+**Validation Status**: ✅ Verified 2026-06-14 (microsoft/lst-bench GitHub: title/author roster/SIGMOD-2024 venue/three-format scope confirmed via fetch); specific result figures not extracted at primary.
+
+---
+
+#### ClickBench — A Benchmark for Analytical Databases (ClickHouse)
+
+**Authors**: ClickHouse, Inc. (open community submissions)
+**Date**: 2022–2026 (continuously updated)
+**URL**: https://github.com/ClickHouse/ClickBench
+**Evidence Level**: C (vendor-authored benchmark — ClickHouse maintains it; flag the author-incentive when citing cross-engine rankings)
+**Relevance**:
+- The most-cited public analytical-database benchmark and a useful methodology reference for the lab's own cold/hot discipline — but it is authored by a vendor whose engine it benchmarks, so it is a Tier-C landscape reference, not an A-tier neutral arbiter.
+- Book Chapter 9 (query engines); contextualizes the SDW lab's choice to run its own first-party benchmark rather than rely on a vendor leaderboard.
+
+**Key Findings**: A single-table analytical benchmark (web-analytics workload) run across many engines. Documented methodology: a cold run with OS page-cache (and, for "true cold," database caches) cleared and the database restarted before the first run of each query; a hot run taking the smaller of the 2nd/3rd run times; a "Combined" score as a weighted geometric mean (load time 10%, data size 10%, cold runtime 20%, hot runtime 60%). Cite for the cold/hot methodology and as the public-leaderboard landscape; treat the cross-engine ordering as vendor-incented (Tier C) given ClickHouse maintains the harness.
+**Citations**: ClickHouse, Inc. *ClickBench: A Benchmark for Analytical Databases*. github.com/ClickHouse/ClickBench.
+**Validation Status**: ✅ Verified 2026-06-14 (ClickHouse/ClickBench GitHub README: cold/hot/Combined methodology and weights confirmed).
 
 ---
 
@@ -3795,8 +3866,15 @@ fetched and confirmed live, and each claim checked against the primary page (202
 - Chapter 9, Chapter 12; the SQL-as-catalog-metadata alternative to Iceberg's file-based metadata
 
 **Key Findings**: all table metadata in a SQL catalog (SQLite/PostgreSQL/DuckDB); v1.0 adds data inlining (small DML in the catalog, no new files), sorted tables, murmur3 bucket partitioning (Iceberg-compatible), GEOMETRY + Variant, and experimental Iceberg-v3-compatible deletion vectors via Puffin.
-**Citations**: DuckDB team (2026, Apr 13). *DuckLake v1.0*. https://duckdb.org/2026/04/13/ducklake-10
-**Validation Status**: ✅ Active (verified 2026-06-05)
+
+**First-party catalog failure-mode observations (BENCH-E, 2026-06-14)** — `~/sdw-lab-benchmarks/ducklake-catalog-failuremodes/FINDINGS-2026-06-14.md` (commit ab4e4d6, Tier B), pinned to **DuckDB 1.5.3 + DuckLake spec e6a3bd0a**. The SQL catalog buys the flat ~3ms planning the design promises and pays for it in catalog-layer surface, so the trade is real on both sides rather than free:
+- **#1215 cross-store delete-conflict PERSISTS** — 29 rows survive a delete that should leave 0 (silent row resurrection). This is the worst class of failure for GDPR erasure, retention expiry, and tombstoned false-positives, where a "deleted" record reappearing is a correctness and compliance problem, not a performance one.
+- **#1184 >1600-column Postgres CREATE wall PERSISTS** — wide tables fail to create against a PostgreSQL catalog (identical with data-inlining off); security schemas go wide (flattened OCSF, EDR), so this is the constraint that bites the security workloads first.
+- **#1031 catalog-pool timeout FIXED 1.5.2→1.5.3** — 60s→0.036s, the version-currency story (the same shape as the chDB bloom-undercount fix on the ClickHouse-vs-DuckDB bench): a real bug that the next release closed, which is why each verdict is version-bound rather than a durable indictment.
+- Version-bound and peer-level by design: #1215/#1184 are OPEN as of this stack and may close the way #1031 did, so re-check on the next DuckLake release before treating either as a standing verdict. The **105×/923×/189× streaming numbers are deliberately NOT reproduced here** (unequal-workload vendor benchmark — see the DuckLake data-inlining entry below for why the relayed "105×/926×" pairs two different baselines).
+
+**Citations**: DuckDB team (2026, Apr 13). *DuckLake v1.0*. https://duckdb.org/2026/04/13/ducklake-10. First-party failure-mode findings: `sdw-lab-benchmarks/ducklake-catalog-failuremodes/FINDINGS-2026-06-14.md` (ab4e4d6).
+**Validation Status**: ✅ Active (verified 2026-06-05); first-party BENCH-E observations added 2026-06-14 (version-bound to DuckDB 1.5.3 + DuckLake e6a3bd0a; #1215/#1184 OPEN, re-check next release)
 
 ---
 
@@ -4084,6 +4162,7 @@ The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide
 - Pairs with the DuckLake v1.0 and Iceberg entries.
 
 **Key Findings**: Benchmark is a **single DuckDB process** inserting 100 rows/second (10 batches × 10 rows) into a 23-column table — **not a 100-stream simulation**. Two distinct baselines: (1) DuckLake-with-inlining vs **Apache Iceberg + Polaris** (100-second run via pyiceberg) = **105× insert / 923× aggregation / 189× checkpoint** (the Iceberg run generated 1,000+ small Parquet files vs zero inlined); (2) DuckLake with- vs without-inlining (50-minute run) = **5.2× insert / 925.9× (≈926×) aggregation / 14.5× checkpoint**. **Correction to the intake**: the relayed "105× / 926×" pairs figures from *two different baselines* and mislabels the workload as "100-stream"; the consistent vs-Iceberg pair is 105× / 923×, and the inlining mechanism alone yields only ~5.2× on insert (most of the 105× is DuckLake vs Iceberg+Polaris overhead).
+**Cross-reference (2026-06-14)**: the inlining mechanism this entry describes is the same catalog-layer machinery the BENCH-E failure-mode bench exercises — see the DuckLake v1.0 entry above for the first-party catalog-correctness observations on DuckDB 1.5.3 (#1215 delete-resurrection PERSISTS, #1184 wide-schema CREATE wall PERSISTS, #1031 pool-timeout FIXED). The streaming multipliers here (105×/923× vs Iceberg+Polaris) are the vendor's own benchmark and are deliberately not reproduced as first-party in the SDW lab; what the lab measures is the catalog-correctness surface, not the streaming throughput.
 **Citations**: Holanda, P. (2026, Apr 2). *Data Inlining in DuckLake: Unlocking Streaming for Data Lakes*. DuckLake / DuckDB Labs.
 **Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — both baselines, the single-process workload, and the cross-baseline pairing error confirmed)
 
