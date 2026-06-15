@@ -69,6 +69,12 @@
 - **Gap**: Need mid-sized enterprise validation (SOC survey in progress)
 - **Status**: PARTIALLY VALIDATED
 
+**H-ARCH-06: Query Engines Hyper-Specialize by Workload**
+- ✅ **First-party Validation (Tier B, single host)**: SDW Lab `engine-join-specialization` + the workload×engine crossover — StarRocks wins multi-table joins (≈2.7–2.8× over ClickHouse on the heaviest six-table join), ClickHouse wins flat scan-aggregation, DuckDB wins selective lookups; the per-workload winner differs at 100M rows, and the 2026-06 UEBA two-level-aggregation inverts the top (StarRocks 0.207 s > ClickHouse-Iceberg 0.378 s). "No single engine wins; pick the engine for the query shape."
+- **Literature Support**: complements H-ARCH-01 (Iceberg-as-substrate) and H-ARCH-02 (multi-engine inevitability) — specialization is *why* multi-engine is forced
+- **Note**: first-party (self-authored SDW Lab — label as such, not external citation); magnitudes host-specific, the per-shape ordering is the transferable claim
+- **Status**: VALIDATED (first-party Tier B)
+
 ---
 
 ## Gap 1: Operational TCO Reality (NEW HYPOTHESIS NEEDED)

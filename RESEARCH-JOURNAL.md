@@ -167,6 +167,12 @@ Survey (gated), CSA State-of-AI (gated), Hyperscan (homepage); StarRocks vs Clic
 | MOAR Stack reference architecture (#81) | Jeremy's own model; LIGER→MOAR rename intentional; cost figures live on the economics page (transparent assumptions). Renamed + repointed + relabeled A→B (9a24e4e) |
 | Splunk DB Connect Benchmark 145× (#25) | real first-party measurement; repo NDA-gated (404 expected); methodology public |
 | a data-platform practitioner / Okta-Jake-Thomas | genuine private practitioner input; unverifiable as external citation |
+| SDW Lab `zeek-flagship-rerun` (two-regime) | CV-gated first-party; OpenSearch foil ÷ ClickHouse-Iceberg ~10–11× on scan-aggregation, ch-native ÷ foil 46.8×; two-regime split (lakehouse wins hunting aggs, index wins lookups). Self-authored; magnitudes host-specific |
+| SDW Lab `engine-join-specialization` | CV-gated first-party; StarRocks wins joins, ClickHouse wins aggregation (grounds H-ARCH-06) |
+| SDW Lab `ocsf-zorder-pruning` | first-party; z-order is a pruning-COVERAGE lever, not latency (within-file + cross-file + Bloom legs) |
+| SDW Lab `sigma-portability` | first-party compile-fidelity matrix; OpenSearch PPL silently drops the correlation time-window on 3/5 rules |
+| SDW Lab multi-user concurrency + shard-count (2026-06-15) | first-party; single-host QPS ceiling is shard-invariant (~7 QPS), so the foil's 6.73× "scaling" is a single-shard-baseline artifact |
+| SDW Lab Arrow/ADBC manageability (2026-06-15) | first-party; integration surface collapses 4→1, engine-swap 8–24 LOC → ~1–3, uniformity gated by Flight-SQL adoption (CH/SR/Trino need the JVM ADBC-JDBC bridge) |
 
 ### Merged & 2026 additions — claim↔source verified at insertion (2026-06-05)
 
