@@ -199,9 +199,8 @@ def create_source_taxonomy():
     summary_text = """
     Quality Metrics Summary:
     • Total Sources: 75+ sources documented (100% extraction from 283 footnotes)
-    • Evidence Level A: 79% (57 sources) — Production deployments, peer-reviewed research, government standards ✓ EXCEEDS 73% target
-    • Evidence Level B: 21% (15 sources) — Industry analysts, expert validation, vendor documentation
-    • Evidence Level C/D: 0% (0 sources) — All low-quality sources excluded
+    • Evidence Level: aggregate Level-A self-grade WITHDRAWN (2026-06-14 audit) — per-source levels provisional, no aggregate % claimed pending re-verification (see FIGURES-AND-TABLES.md)
+    • Evidence levels (A/B/C/D) are classified per-source; the prior aggregate Level-A distribution (exceeds-target framing) is withdrawn
     • Geographic Diversity: 3 regions (US 80%, Europe 11%, Asia-Pacific 4%)
     • Organizational Diversity: 5 types (Tech giants, Enterprises, Government, Standards bodies, Startups)
     • URL Validation: 73% overall, 100% hypothesis-critical sources validated ✓

@@ -206,7 +206,7 @@ def create_hypothesis_confidence():
     ax2.grid(axis='y', alpha=0.3, linestyle=':', linewidth=0.5)
 
     # Add "86% High or Strong" annotation
-    ax2.text(0.5, 3.5, '86% High or Strong Confidence\n(6 of 7 hypotheses)',
+    ax2.text(0.5, 3.5, 'Aggregate self-grade WITHDRAWN\n(2026-06-14 audit)',
             transform=ax2.transData, ha='center', va='top',
             fontsize=11, fontweight='bold', color=COLORS['strong'],
             bbox=dict(boxstyle='round,pad=0.5', facecolor='white',
@@ -260,11 +260,12 @@ def create_hypothesis_confidence():
     summary = """
     Overall Validation Quality Summary:
     • Total Hypotheses Validated: 7 (100% of identified hypotheses)
-    • Average Sources per Hypothesis: 4.1 sources (strong multi-source validation)
-    • Average Evidence Level A: 94% (exceptional quality — production deployments, peer-reviewed research)
-    • Quantitative Precision: 100% (all hypotheses have specific multipliers or benchmarks, no directional-only claims)
-    • Production Validation: 86% (6 of 7 hypotheses with production deployment evidence)
-    • 86% High or Strong Confidence (6 of 7) ✓ EXCEEDS typical academic systematic reviews (40-60%)
+    • Average Sources per Hypothesis: 4.1 sources (multi-source validation)
+    • Aggregate self-grades WITHDRAWN (2026-06-14 audit): the average
+      Evidence-Level-A and the High-or-Strong-confidence aggregates are
+      withdrawn — no aggregate % is claimed pending re-verification.
+    • Per-hypothesis scores below are provisional; 3 of 7 hypotheses require
+      re-validation (entries removed in the audit). See FIGURES-AND-TABLES.md.
     """
 
     ax4.text(0.5, 0.5, summary.strip(),
@@ -275,7 +276,7 @@ def create_hypothesis_confidence():
             family='monospace')
 
     # Overall figure title
-    fig.suptitle('Figure 4: Hypothesis Validation Confidence Levels — 86% High or Strong Confidence (6 of 7 hypotheses)',
+    fig.suptitle('Figure 4: Hypothesis Validation Confidence Levels (per-hypothesis; aggregate self-grades withdrawn — 2026-06-14 audit)',
                 fontsize=16, fontweight='bold', y=0.98)
 
     # Save
