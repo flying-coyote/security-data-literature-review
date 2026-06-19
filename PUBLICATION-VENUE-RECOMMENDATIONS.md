@@ -1,3 +1,10 @@
+---
+type: strategy
+title: "Academic Publication Venue Recommendations for Literature Review"
+created: 2025-10-15
+tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
+---
+
 # Publication Venue Recommendations for Literature Review
 
 **Document Purpose**: Identify suitable academic journals and publication venues for literature review on modern data architecture for cybersecurity

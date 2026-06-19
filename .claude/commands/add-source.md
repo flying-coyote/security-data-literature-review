@@ -1,3 +1,10 @@
+---
+type: operating-doc
+title: "Add Source to Bibliography — Evidence Tier Procedure"
+created: 2026-01-02
+tags: [literature-review, bibliography, evidence-tiers, source-classification, citation-format]
+---
+
 # Add Source to Bibliography
 
 Add a new research source to the literature review with proper evidence classification.

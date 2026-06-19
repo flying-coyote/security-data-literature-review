@@ -1,4 +1,5 @@
 ---
+type: spec
 name: Evidence Tier Classifier
 description: Apply Evidence Level classification (Tier 1-5) when user adds sources, references papers, or discusses research quality for literature review. Trigger when user mentions "source", "paper", "add citation", "evidence quality", "bibliography", or evaluates research credibility. Maintain 75%+ Tier 1-2 target for publication-quality literature review.
 allowed-tools: Read, Grep, Edit

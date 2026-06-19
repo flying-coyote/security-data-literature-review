@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Literature-to-Hypothesis Gap Analysis: Security Data Architecture Research Questions"
+created: 2025-10-15
+tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco, agentic-security]
+---
+
 # Literature Review → Hypothesis Gap Analysis
 
 **Purpose**: Identify missing hypotheses, concepts, and research areas based on literature extraction

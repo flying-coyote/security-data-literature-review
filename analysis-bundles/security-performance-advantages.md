@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Security-Specific Performance Advantages Over General Analytics"
+created: 2025-10-15
+tags: [security-performance, clickhouse, cidr-hunting, entity-tracking, iceberg, first-party-benchmarks]
+---
+
 # Security-Specific Performance Advantages
 
 **Purpose**: Isolate performance advantages unique to security workloads (not general analytics)

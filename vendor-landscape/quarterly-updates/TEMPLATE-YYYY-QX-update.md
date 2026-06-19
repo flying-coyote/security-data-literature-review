@@ -1,3 +1,10 @@
+---
+type: spec
+title: "Quarterly Vendor Landscape Update Template"
+created: 2025-10-15
+tags: [vendor-landscape, quarterly-cadence, template, market-analysis, hypothesis-validation]
+---
+
 # Vendor Landscape Update: [Quarter Year] (YYYY-QX)
 
 **Publication Date**: [Month Day, Year]

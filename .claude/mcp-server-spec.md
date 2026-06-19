@@ -1,3 +1,10 @@
+---
+type: spec
+title: "Literature Review MCP Server Specification: Bibliography, Hypothesis, and Vendor Workflow Tools"
+created: 2026-01-20
+tags: [mcp, literature-review, bibliography-management, hypothesis-tracking, vendor-landscape, context-efficiency]
+---
+
 # Literature Review MCP Server Specification
 
 **Version**: 1.0.0

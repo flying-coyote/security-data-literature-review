@@ -1,3 +1,10 @@
+---
+type: engagement
+title: "Expert Interview Guide: Jake Thomas (Okta) — DuckDB Edge Processing and Security Data Volumes"
+created: 2025-10-16
+tags: [expert-interview, jake-thomas, okta, duckdb, isolation-first-security]
+---
+
 # Expert Interview Guide: Jake Thomas (Okta)
 
 **Interviewee**: Jake Thomas

@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Publication Figures and Tables: Systematic Literature Review Graphics Specifications"
+created: 2025-10-21
+tags: [literature-review, publication-graphics, hypothesis-confidence, evidence-distribution, audit-corrections]
+---
+
 # Figures and Tables for Publication Manuscript
 
 **Purpose**: Publication-ready figures and tables for "Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review"

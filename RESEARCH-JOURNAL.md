@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Literature Review Research and Validation Journal"
+created: 2026-06-05
+tags: [bibliography-validation, source-integrity, fabrication-audit, literature-review, provenance]
+---
+
 # Research / Validation Journal
 
 The durable, externally-reviewable record of the validation research done on each reference. Its job is

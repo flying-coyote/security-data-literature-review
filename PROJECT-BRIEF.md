@@ -1,3 +1,10 @@
+---
+type: plan
+title: "Security Data Literature Review Project Brief"
+created: 2025-10-19
+tags: [project-brief, literature-review, decisions-log, assumptions, project-scope]
+---
+
 # PROJECT BRIEF: Security Data Literature Review
 
 **Created**: October 19, 2025

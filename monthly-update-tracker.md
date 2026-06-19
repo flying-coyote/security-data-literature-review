@@ -1,3 +1,10 @@
+---
+type: tracker
+title: "Monthly Update Tracker: Time Investment and Quality Metrics"
+created: 2025-11-14
+tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, automation]
+---
+
 # Monthly Update Tracker
 
 **Purpose**: Track time investment, quality metrics, and community engagement for monthly rolling updates

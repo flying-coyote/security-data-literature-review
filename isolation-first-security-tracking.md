@@ -1,3 +1,10 @@
+---
+type: tracker
+title: "Isolation-First Security Architecture Research Tracking (RQ7–RQ10)"
+created: 2025-11-14
+tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection, compliance]
+---
+
 # Isolation-First Security Architecture Pattern - Research Tracking
 
 **Purpose**: Track evidence collection and validation for RQ7-RQ10 isolation-first security research questions

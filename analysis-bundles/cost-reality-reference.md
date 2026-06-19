@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cost Reality Evidence Bundle"
+created: 2025-10-15
+tags: [cost-evidence, tiered-storage, tco, streaming-vs-batch, lab-benchmarks, security-data-platform]
+---
+
 # Cost Reality Evidence Bundle
 
 **Purpose**: Consolidated cost analysis from 12+ sources for rapid book reference

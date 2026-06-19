@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Publication Appendices: Evidence Rubric, Confidence Scoring, Expert Protocol, Source Taxonomy"
+created: 2025-10-21
+tags: [literature-review, evidence-classification, hypothesis-confidence, expert-validation, ocsf, methodology]
+---
+
 # Appendices - Modern Data Architecture for Cybersecurity Operations
 
 **Purpose**: Supporting documentation for systematic literature review publication

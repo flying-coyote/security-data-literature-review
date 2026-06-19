@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Security Data Technology Performance Benchmark Comparison Table"
+created: 2025-10-15
+tags: [benchmarks, clickhouse, kafka, iceberg, first-party-benchmarks, performance]
+---
+
 # Performance Benchmark Comparison Table
 
 **Purpose**: Side-by-side technology performance comparison for quantitative selection decisions

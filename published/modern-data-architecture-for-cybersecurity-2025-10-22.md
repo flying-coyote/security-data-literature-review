@@ -1,3 +1,10 @@
+---
+type: essay-draft
+title: "Modern Data Architecture for Cybersecurity Operations: Published Substack Article (2025-10-22)"
+created: 2025-10-22
+tags: [systematic-review, security-data, lakehouse, clickhouse, streaming-tco, publication]
+---
+
 # Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review
 ## COMPLETE PUBLICATION DRAFT
 

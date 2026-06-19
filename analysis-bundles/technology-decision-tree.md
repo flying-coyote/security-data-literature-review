@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Security Data Platform Technology Decision Tree"
+created: 2025-10-15
+tags: [decision-framework, architecture-selection, streaming-vs-batch, clickhouse, iceberg, security-data-platform]
+---
+
 # Technology Decision Tree
 
 **Purpose**: Structured decision framework for security data platform architecture selection

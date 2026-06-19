@@ -1,3 +1,10 @@
+---
+type: reference
+title: "PRISMA-Aligned Systematic Literature Review Methodology"
+created: 2025-10-21
+tags: [prisma, methodology, systematic-review, evidence-tiers, literature-review]
+---
+
 # Methodology: Systematic Literature Review
 
 **Purpose**: Academic methodology documentation for "Modern Data Stack for Cybersecurity" literature review

@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Master Bibliography: Security Data Works Living Literature Review"
+created: 2025-10-15
+tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, ocsf]
+---
+
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)

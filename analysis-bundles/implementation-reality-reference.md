@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Implementation Reality Metrics Compendium"
+created: 2025-10-15
+tags: [implementation-planning, staffing, skills-scarcity, streaming-complexity, tco, security-data-platform]
+---
+
 # Implementation Reality Metrics Compendium
 
 **Purpose**: Consolidated staffing, timeline, and skills data for realistic implementation planning

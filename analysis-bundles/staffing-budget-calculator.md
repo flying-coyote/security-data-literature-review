@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Security Data Platform Staffing and Budget Calculator"
+created: 2025-10-15
+tags: [staffing, budget, tco, streaming-vs-batch, implementation-planning, security-data-platform]
+---
+
 # Staffing & Budget Calculator
 
 **Purpose**: Interactive calculator for estimating team size and budget based on architecture decisions

@@ -1,3 +1,10 @@
+---
+type: reference
+title: "MCP Vendor Database Integration Summary — 71 Vendors, 110 Evidence Sources"
+created: 2025-10-23
+tags: [vendor-database, mcp-server, evidence-quality, security-siem, automation]
+---
+
 # MCP Vendor Database Integration Summary
 
 **Integration Date**: October 23, 2025 (Session 2)

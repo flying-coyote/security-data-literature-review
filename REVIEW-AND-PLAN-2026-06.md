@@ -1,3 +1,10 @@
+---
+type: review
+title: "Literature Review State-of-Repo Review and Revival Plan (June 2026)"
+created: 2026-06-05
+tags: [state-of-repo, revival-plan, bibliography, june-2026, literature-review]
+---
+
 # Literature review: state-of-the-repo review + update/integration plan (2026-06-05)
 
 This is the periodically-updated literature review that's meant to be the evidence source of truth under

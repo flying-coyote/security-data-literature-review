@@ -1,3 +1,10 @@
+---
+type: operating-doc
+title: "Expert Interview Guide: Lisa Cao (Catalog Landscape — Gravitino, Polaris, XTable)"
+created: 2025-11-26
+tags: [expert-interview, catalog-landscape, gravitino, xtable, iceberg, hypothesis-validation]
+---
+
 # Expert Interview Guide: Lisa Cao (Datastrato)
 
 **Interviewee**: Lisa Cao

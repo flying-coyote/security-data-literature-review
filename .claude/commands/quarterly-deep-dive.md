@@ -1,3 +1,10 @@
+---
+type: operating-doc
+title: "Quarterly Literature Review Deep-Dive Workflow"
+created: 2026-01-02
+tags: [literature-review, quarterly-cadence, expert-interviews, hypothesis-validation, evidence-synthesis]
+---
+
 # Quarterly Deep Dive Workflow
 
 Execute this comprehensive workflow for quarterly literature review deep dives (January, April, July, October).

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Hypothesis Validation Confidence Assessment Matrix"
+created: 2025-10-15
+tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, clickhouse, iceberg]
+---
+
 # Hypothesis Validation Confidence Assessment
 
 **Purpose**: Transparent confidence scoring for 7 borrowed-source hypotheses plus 6 first-party (lab-measured) hypotheses, with methodological rigor

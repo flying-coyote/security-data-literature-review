@@ -1,3 +1,10 @@
+---
+type: essay-draft
+title: "Modern Data Architecture for Cybersecurity Operations: Systematic Literature Review Manuscript Draft"
+created: 2025-10-21
+tags: [manuscript, academic-publication, systematic-review, security-data-lakehouse, draft]
+---
+
 # Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review
 
 **Authors**: Jeremy Wiley [Additional co-authors TBD based on expert validation contributions]

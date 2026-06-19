@@ -1,3 +1,10 @@
+---
+type: operating-doc
+title: "Literature Review Weekly Health-Check Scheduling"
+created: 2026-06-05
+tags: [literature-review, scheduling, health-check, automation, cron]
+---
+
 # Scheduled update cadence
 
 Decided 2026-06-05: **light weekly health-check-and-notify, escalating to a real refresh monthly

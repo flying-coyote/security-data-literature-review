@@ -1,3 +1,10 @@
+---
+type: operating-doc
+title: "Evidence Quality Validation Checklist"
+created: 2026-01-02
+tags: [literature-review, evidence-tiers, bibliography, quality-assurance, hypothesis-coverage]
+---
+
 # Validate Evidence Quality
 
 Run evidence quality validation across the bibliography to ensure quality targets are maintained.

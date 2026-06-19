@@ -1,3 +1,10 @@
+---
+type: operating-doc
+title: "Monthly Literature Review Rolling Update Checklist"
+created: 2026-01-02
+tags: [literature-review, monthly-cadence, bibliography, source-freshness, quality-assurance]
+---
+
 # Monthly Rolling Update Checklist
 
 Execute this checklist for the monthly literature review update.

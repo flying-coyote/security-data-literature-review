@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Vendor Database Schema — Security Data Platforms"
+created: 2025-10-23
+tags: [vendor-database, schema, evidence-tiers, security-data, quarterly-update]
+---
+
 # Vendor Database Schema - Literature Review
 
 **Purpose**: Master vendor database schema for security data platforms

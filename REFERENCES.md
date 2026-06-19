@@ -1,3 +1,10 @@
+---
+type: reference
+title: "IEEE-Format References for Systematic Literature Review"
+created: 2025-10-21
+tags: [bibliography, ieee-citations, academic-publication, literature-review, references]
+---
+
 # References - Modern Data Architecture for Cybersecurity Operations
 
 **Purpose**: IEEE/ACM formatted references for systematic literature review publication

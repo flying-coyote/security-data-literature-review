@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Security Data Platform Cost Optimization Playbook"
+created: 2025-10-15
+tags: [cost-optimization, tiered-storage, tco, clickhouse, iceberg, security-data-platform]
+---
+
 # Cost Optimization Playbook
 
 **Purpose**: Actionable strategies for reducing security data platform costs by 40-80%
