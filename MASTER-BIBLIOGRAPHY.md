@@ -13,7 +13,7 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Total Sources**: 168 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: ~46% Evidence Level A (live: 70 of 155 entries marked `**Evidence Level**: A`; 81 B, 13 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The 9 Program-2 detection-engineering / grounding-chain anchors added 2026-06-21 add 4 Tier-A (Axelsson, Sommer & Paxson, D3FEND 1.0, BFO/ISO 21838-2), 3 Tier-B (CAR, Atomic Red Team, CCO), and 2 Tier-C (Stillions DML, SCYTHE PTEF), moving the catalogued count toward ~71 A / ~84 B / ~15 C across ~168 (recompute via `scripts/weekly_health_check.py`). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
-**Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 14 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
+**Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
 
@@ -307,7 +307,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 9 compression discussion
 **Notes**: Validates compression claims
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date 2024 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (~10-12× compression supported). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date 2024 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (~10-12× compression supported). Stale-by-date, not by content.
 
 ---
 
@@ -971,7 +971,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 7 Kafka scale claims
 **Notes**: Validates massive scale Kafka deployments
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (Siphon blog supports ~3T/day, 30M/sec). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (Siphon blog supports ~3T/day, 30M/sec). Stale-by-date, not by content.
 
 ---
 
@@ -998,7 +998,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter on emerging patterns, Jake Thomas interview
 **Notes**: **HIGH PRIORITY** - Jake Thomas validation in progress
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md ("Why DuckDB" supports the OLAP positioning). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md ("Why DuckDB" supports the OLAP positioning). Stale-by-date, not by content.
 
 ---
 
@@ -1637,7 +1637,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: H-ARCH-01 sustainability validation
 **Notes**: Community strength = long-term viability
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (live ASF page; contributor scale uncontroversial). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (live ASF page; contributor scale uncontroversial). Stale-by-date, not by content.
 
 ---
 
@@ -1756,7 +1756,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: H3-PERFORMANCE-01 extension, Chapter 9 ELK migration
 **Notes**: Direct performance comparison for security logs
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (ClickHouse advantage supported; entry's 5-10× is conservative vs source 9-19×). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (ClickHouse advantage supported; entry's 5-10× is conservative vs source 9-19×). Stale-by-date, not by content.
 
 ---
 
@@ -1859,7 +1859,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Advanced analytics chapter, data retention, threat detection
 **Notes**: Government authority on security monitoring practices, joint CISA/FBI guidance
 
-**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (advisory aa23-193a real; the "24-36mo retention" figure is embellished beyond the ~12mo in the source — disregard). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (advisory aa23-193a real; the "24-36mo retention" figure is embellished beyond the ~12mo in the source — disregard). Stale-by-date, not by content.
 
 ---
 
@@ -1983,7 +1983,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Advanced analytics, deployment standards, tool integration
 **Notes**: OCA = OASIS project for cybersecurity interoperability standards
 
-**Validation Status**: ✅ Active URL (verified OCA official site) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (site real; interop framing holds). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL (verified OCA official site) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (site real; interop framing holds). Stale-by-date, not by content.
 
 ---
 
@@ -2062,7 +2062,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Chapter 7 + Advanced analytics integration, streaming ML architecture
 **Notes**: Comprehensive series on Kafka + ML integration, links streaming to ML workflows
 
-**Validation Status**: ✅ Active URL (verified Confluent blog, 2018-2024 series) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (KSQL / embedded-ML confirmed). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL (verified Confluent blog, 2018-2024 series) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (KSQL / embedded-ML confirmed). Stale-by-date, not by content.
 
 ---
 
@@ -3068,7 +3068,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: ClickHouse performance, production deployment patterns
 **Notes**: Strong validation for ClickHouse in high-scale analytics
 
-**Validation Status**: ✅ Production case study · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (30-40s→<1s, 50M users confirmed). Stale-by-date, not by content.
+**Validation Status**: ✅ Production case study · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (30-40s→<1s, 50M users confirmed). Stale-by-date, not by content.
 
 ---
 
@@ -3090,7 +3090,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Query engine TCO, performance comparison
 **Notes**: Vendor benchmark but methodology disclosed; cross-validate with independent sources
 
-**Validation Status**: ✅ Published benchmark (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (3-5× cost / 2× faster verbatim). Stale-by-date, not by content.
+**Validation Status**: ✅ Published benchmark (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (3-5× cost / 2× faster verbatim). Stale-by-date, not by content.
 
 ---
 
@@ -3113,7 +3113,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: High-volume ingestion, ClickHouse production patterns
 **Notes**: Validates ClickHouse for extreme-scale security data
 
-**Validation Status**: ✅ Production validation (Netflix) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (5 PB/day + 10.6M events/sec confirmed on page; flagged-suspect, holds). Stale-by-date, not by content.
+**Validation Status**: ✅ Production validation (Netflix) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (5 PB/day + 10.6M events/sec confirmed on page; flagged-suspect, holds). Stale-by-date, not by content.
 
 ---
 
@@ -3158,7 +3158,7 @@ This bibliography consolidates all literature sources from:
 **Citations**: Enterprise adoption, banking sector case studies
 **Notes**: HSBC case study provides strong production validation
 
-**Validation Status**: ✅ Industry data (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — claim↔source VERIFIED in RESEARCH-JOURNAL.md (half of 15 largest banks, HSBC confirmed). Stale-by-date, not by content.
+**Validation Status**: ✅ Industry data (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (half of 15 largest banks, HSBC confirmed). Stale-by-date, not by content.
 
 ---
 
