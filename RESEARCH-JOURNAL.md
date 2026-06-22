@@ -311,5 +311,64 @@ Net (this pass): entries 144 → 146; Level-A held at 67 (67/146 = 45.9% ≈ 46%
 
 ---
 
+## 2026-06-21 — Program-2 M0/M1: live-citation fabrication audit + detection-engineering / grounding-chain sources
+
+**Scope**: the ATT&CK→D3FEND-over-OCSF through-line (Program 2). **M0** is a fabrication audit of two sources
+*already cited in deployed/public content* but never catalogued here — Stefan Axelsson's *Base-Rate Fallacy*
+(2000) and Sommer & Paxson's *Outside the Closed World* (2010) — checking whether the public paraphrases
+accurately represent the papers. **M1** adds the nine detection-engineering / grounding-chain anchors the
+through-line rests on. **Method**: `claim↔source` for the live paraphrases (compared the deployed prose
+against the papers' central arguments); `cross-ref` + DBLP/WebSearch metadata verification for the catalogued
+sources; no full-page WebFetch needed for the canonical papers (DBLP metadata + my knowledge of these
+foundational works are authoritative — ACM DL/IEEE pages 403 to automated fetch, the standing environment
+limitation noted in the 2026-06-05 sweep).
+
+### M0 — live-citation fabrication audit (VERDICT: both public paraphrases accurately represent their sources)
+
+The two paraphrases are cited live in **two surfaces each**: the private evidence note
+`project1/02-projects/d3fend-wall/AIML-RIPENESS-EVIDENCE.md` and the **deployed** essay
+`securitydataworks/src/pages/research/d3fend-wall.astro` (public on securitydataworks.com). Both checked
+against the source:
+
+| Source | Surface(s) audited | Method | Verdict |
+|---|---|---|---|
+| Axelsson, *The Base-Rate Fallacy and the Difficulty of Intrusion Detection* (TISSEC 2000) | AIML-RIPENESS-EVIDENCE.md:90 ("because genuine intrusions are vanishingly rare against benign volume, the false-positive rate against the base rate, not the true-positive rate, caps usable detection … the formal backbone of alert fatigue") + d3fend-wall.astro:371-374 ("Axelsson named the arithmetic underneath it … in 2000, the base rate … even a tiny false-positive rate buries the analyst, so the number that binds is the false-positive rate against the base rate and not the headline accuracy") | claim↔source (paraphrase vs. the paper's central Bayesian-posterior argument) | **VERIFIED — accurate.** Faithful to the paper's core claim; correct year (2000); correct mechanism (P(intrusion\|alarm) stays low because of the base rate). No overstatement, no fabricated statistic or quote. |
+| Sommer & Paxson, *Outside the Closed World: On Using Machine Learning for Network Intrusion Detection* (IEEE S&P 2010) | AIML-RIPENESS-EVIDENCE.md:89 (enumerates all five arguments — ML finds similar-not-novel so anomaly detection inverts its strength; extreme asymmetric error cost; semantic gap; no stable normal; evaluation near-impossible for lack of labeled data — plus "narrow scope + human in loop" and "2020 IEEE S&P Test-of-Time Award") + d3fend-wall.astro:369-371 ("reasons on the record since Sommer and Paxson's 2010 paper that later won a test-of-time award … a model is good at finding what resembles its training data, but detection has to find the novel attack, which inverts the strength, and there is no stable normal to learn") | claim↔source (paraphrase vs. the paper's five arguments + recommendation) | **VERIFIED — accurate.** Every enumerated point is in the paper; the inverted-strength and no-stable-normal compression in the essay is faithful; the award year (2020) is correct and the essay's "later won a test-of-time award" is true and appropriately unspecified. No fabrication. |
+
+**M0 result**: no fabrication found. Both public paraphrases (including the *deployed* d3fend-wall essay)
+accurately represent their sources — no invented statistic, quote, mechanism, or date. The only integrity
+gap was that two papers cited in live public content were **un-catalogued** in this bibliography; M1 closes
+that breach by adding both with full provenance.
+
+### M1 — added (Program-2 detection-engineering / grounding-chain anchors)
+
+| Entry | Tier | Method | Finding |
+|---|---|---|---|
+| Axelsson, *Base-Rate Fallacy* (TISSEC 2000) | A | cross-ref (DBLP journals/tissec/Axelsson00) | Author Stefan Axelsson, ACM TISSEC vol.3 no.3 pp.186-205, 2000, DOI 10.1145/357830.357849; earlier CCS-1999 version provenance accurate. Filed under Academic & Peer-Reviewed. Closes a live-citation breach (see M0). |
+| Sommer & Paxson, *Outside the Closed World* (IEEE S&P 2010) | A | cross-ref (DBLP conf/sp/SommerP10) + WebSearch (award) | Authors Robin Sommer & Vern Paxson, IEEE S&P 2010 pp.305-316, DOI 10.1109/SP.2010.25; 2020 IEEE S&P Test-of-Time Award corroborated via ICSI Berkeley + ieee-security.org SP2020 awards page. Filed under Academic & Peer-Reviewed. Closes a live-citation breach (see M0). |
+| MITRE Cyber Analytics Repository (CAR) | B | knowledge + cross-ref | Real long-standing ATT&CK-program project (car.mitre.org, github.com/mitre-attack/car, Apache-2.0); analytics carry ATT&CK technique mappings + pseudocode + reference impls against the CAR Data Model. No analytic count asserted — flagged to confirm at primary. Filed under Frameworks & Standards. |
+| Red Canary Atomic Red Team | B | knowledge + cross-ref | Real widely-used Red Canary OSS project (github.com/redcanaryco/atomic-red-team, MIT); per-technique atomic tests in YAML mapped to ATT&CK + the Invoke-AtomicRedTeam runner. No test-count/GUID asserted. Filed under Frameworks & Standards. |
+| MITRE D3FEND 1.0 (ontology) | A | WebSearch | 1.0 launch 2025-01-16 (research→production ontology); OWL 2 DL; D3FEND Core Classes = upper-ontology alignment interface; Kaloroumakis project lead confirmed. Consistent with the existing "MITRE D3FEND Framework & Ontology" entry (same version line); this is the milestone-specific grounding-chain anchor. CCO mapping flagged as in-progress, not shipped-complete. Filed under Frameworks & Standards. |
+| BFO — ISO/IEC 21838-2:2021 | A | WebSearch + ISO catalogue | Standard 21838-2, Part 2 = BFO, published Nov 2021, standardizes the BFO 2020 release (Barry Smith et al.). Version trap flagged: "BFO 2020" (ontology) ≠ "21838-2:2021" (standard date). ISO landing 403s to fetch; number/title/date corroborated via ISO catalogue + BFO-2020 GitHub + bfo-discuss. Filed under Frameworks & Standards. |
+| Common Core Ontologies (CCO) | B | WebSearch | CUBRC, Inc. origin under IARPA funding; openly available since 2017; BFO-aligned mid-level suite; arXiv:2404.17758 descriptive paper (Jensen et al.). Tier B not A — proposed candidate standard mid-level ontology, NOT an adopted ISO/IEC standard the way BFO is (flagged so prose can't borrow BFO's standards-tier authority). Filed under Frameworks & Standards. |
+| Ryan Stillions — DML (Detection Maturity Level) Model | C | knowledge + cross-ref | Real, community-canonical 2014 detection-engineering blog model (ryanstillions.blogspot.com); nine-level DML-0..DML-8 abstraction ladder. Tier C — single-author blog, not peer-reviewed. No statistic invented; level-count kept to the documented 0-8 range. Canonical URL not live-fetched this session — confirm before publication-grade cite. Filed under Practitioner Publications. |
+| SCYTHE — Purple Team Exercise Framework (PTEF) | C | knowledge + cross-ref | Real named purple-team methodology (github.com/scythe-io/purple-team-exercise-framework); Orchilles/Bort/Peacock real practitioners (Orchilles also SANS author on adversary emulation). Tier C — vendor-published (incentive flagged). No statistic/version-date beyond ~2020 v1 invented. Confirm GitHub URL live before publication-grade cite. Filed under Practitioner Publications. |
+
+### Unconfirmed / flagged
+
+- **None rejected.** All nine sources are real and pre-cutoff. Three carry "confirm at primary before
+  publication-grade citation" flags (the canonical-URL line not live-fetched this session): the Stillions
+  Blogspot post, the SCYTHE PTEF GitHub page, and the ISO 21838-2 landing page (403s to automated fetch —
+  number/title/date corroborated via the ISO catalogue, the BFO-2020 GitHub repo, and the bfo-discuss
+  announcement rather than the landing page itself). No count, GUID, DOI, page number, or quote was invented
+  for any entry; CAR/Atomic Red Team/SCYTHE deliberately assert no coverage count.
+
+Net (this pass): catalogued entries 159 → 168; +4 Tier-A, +3 Tier-B, +2 Tier-C (recompute live A% via
+`scripts/weekly_health_check.py` — the header narrative carries the running estimate). The M0 audit found
+no fabrication in the live/deployed paraphrases; the integrity action was cataloguing two already-public
+citations that had been un-recorded here.
+
+---
+
 *Next validation due with the cadence (`SCHEDULING.md`). When the worklist items above are re-sourced or
 stripped, append a dated row moving each to VERIFIED or removing it — do not silently re-litigate settled rows.*

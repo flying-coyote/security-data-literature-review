@@ -10,9 +10,9 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
 **Last Updated**: June 13, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 159 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). This repo is the source of truth for literature citations.
+**Total Sources**: 168 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: ~46% Evidence Level A (live: 70 of 155 entries marked `**Evidence Level**: A`; 81 B, 13 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Evidence Quality**: ~46% Evidence Level A (live: 70 of 155 entries marked `**Evidence Level**: A`; 81 B, 13 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The 9 Program-2 detection-engineering / grounding-chain anchors added 2026-06-21 add 4 Tier-A (Axelsson, Sommer & Paxson, D3FEND 1.0, BFO/ISO 21838-2), 3 Tier-B (CAR, Atomic Red Team, CCO), and 2 Tier-C (Stillions DML, SCYTHE PTEF), moving the catalogued count toward ~71 A / ~84 B / ~15 C across ~168 (recompute via `scripts/weekly_health_check.py`). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 14 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -3521,6 +3521,56 @@ from the Second Brain entry pending the freshness sweep.
 
 ---
 
+#### The Base-Rate Fallacy and the Difficulty of Intrusion Detection
+
+**Authors**: Stefan Axelsson
+**Date**: 2000 (ACM TISSEC 3(3):186-205; earlier version ACM CCS 1999)
+**URL**: https://dl.acm.org/doi/10.1145/357830.357849
+**Evidence Level**: A (Peer-reviewed journal, ACM Transactions on Information and System Security)
+**Relevance**:
+- D3FEND Wall AIML-ripeness evidence (02-projects/d3fend-wall/AIML-RIPENESS-EVIDENCE.md): the formal limit on the statistical-anomaly detector tier (PHDURA, UGLPA, anomaly-mode CSPP/PMAD)
+- /research/d3fend-wall essay (securitydataworks.com): "Axelsson named the arithmetic underneath" the anomaly-detection difficulty
+- Foundational anchor for the alert-fatigue / false-positive-scaling argument
+
+**Key Findings**:
+- Because the base rate of genuine intrusions is extremely low against benign volume, the false-positive rate — not the detection rate — caps the usable accuracy of an intrusion-detection system (Bayesian posterior P(intrusion|alarm) stays low even at small false-alarm rates)
+- The number that binds is the false-positive rate against the base rate, not the headline true-positive rate or accuracy
+- Formal backbone of what operators experience as alert fatigue
+
+**Citations**: AIML-RIPENESS-EVIDENCE.md (statistical-anomaly tier limit); /research/d3fend-wall essay (the base-rate arithmetic under anomaly detection)
+**Notes**: Cited inline in already-public content (the d3fend-wall essay) — catalogued here 2026-06-21 to close that citation breach. Tier A under Jeremy's strict tiers (peer-reviewed ACM journal).
+
+**Validation Status**: ✅ Verified 2026-06-21 (DBLP rec journals/tissec/Axelsson00: ACM TISSEC vol 3, issue 3, pp.186-205, 2000, DOI 10.1145/357830.357849).
+
+---
+
+#### Outside the Closed World: On Using Machine Learning for Network Intrusion Detection
+
+**Authors**: Robin Sommer, Vern Paxson
+**Date**: 2010 (IEEE Symposium on Security and Privacy / Oakland, pp.305-316)
+**URL**: https://dl.acm.org/doi/10.1109/SP.2010.25
+**Alt URL**: https://www.icir.org/robin/papers/oakland10-ml.pdf (author-hosted PDF)
+**Evidence Level**: A (Peer-reviewed, IEEE S&P; 2020 IEEE S&P Test-of-Time Award)
+**Relevance**:
+- D3FEND Wall AIML-ripeness evidence (02-projects/d3fend-wall/AIML-RIPENESS-EVIDENCE.md): why anomaly detection is the hardest place to make ML work, against the structural-optimist 'models belong in the broad base' reading
+- /research/d3fend-wall essay (securitydataworks.com): 'reasons on the record since Sommer and Paxson's 2010 paper' for why ML struggles at network anomaly detection
+- Anchor for the ripe-is-not-solved caveat
+
+**Key Findings**:
+- ML is good at finding what resembles its training data, but detection must find the novel attack — anomaly detection inverts ML's natural strength
+- Error costs in NIDS are extreme and asymmetric
+- A wide semantic gap separates 'an anomaly' from 'an attack'
+- Network traffic has no stable notion of 'normal' to learn
+- Sound evaluation is nearly impossible for lack of realistic labeled data
+- Recommendation: narrow the scope and keep a human in the loop, not abandon ML
+
+**Citations**: AIML-RIPENESS-EVIDENCE.md (anomaly-detection difficulty); /research/d3fend-wall essay (the on-the-record reasons ML is hardest at anomaly detection)
+**Notes**: Cited inline in already-public content (the d3fend-wall essay) — catalogued here 2026-06-21 to close that citation breach. Tier A (peer-reviewed IEEE S&P; 2020 Test-of-Time Award). Authors are the Corelight/Zeek co-founders.
+
+**Validation Status**: ✅ Verified 2026-06-21 (DBLP rec conf/sp/SommerP10: IEEE S&P 2010, pp.305-316, DOI 10.1109/SP.2010.25; 2020 Test-of-Time Award confirmed via ICSI Berkeley and the IEEE-Security SP2020 awards page).
+
+---
+
 ### Frameworks & Standards
 
 #### MITRE D3FEND Framework & Ontology
@@ -3614,6 +3664,96 @@ from the Second Brain entry pending the freshness sweep.
 
 **Citations**: OASIS CoSAI. *WS2: Preparing Defenders*. https://github.com/cosai-oasis/ws2-defenders
 **Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### MITRE Cyber Analytics Repository (CAR) — Analytics Mapped to ATT&CK
+
+**Authors**: MITRE Corporation (MITRE ATT&CK team)
+**Date**: 2015–present (continuously updated)
+**URL**: https://car.mitre.org/
+**Alt URL**: https://github.com/mitre-attack/car (analytics + data model, Apache-2.0)
+**Evidence Level**: B (official MITRE practitioner/operational catalogue; not peer-reviewed research)
+**Relevance**:
+- Detection-coverage measurement: each CAR analytic carries an explicit mapping to one or more ATT&CK technique IDs, so a detection corpus can be scored by which techniques its analytics cover. This is the analytic-to-technique side of a coverage corpus (the rules), complementary to a malicious-test catalogue (the needles).
+- Supports the ATT&CK-coverage / detection-engineering threads and the D3FEND-coverage work (analytics expressed against a CAR-style abstract data model travel across telemetry schemas).
+
+**Key Findings**: CAR is a knowledge base of analytics organized around the ATT&CK adversary model. Each analytic includes a description, the ATT&CK technique(s)/tactic(s) it addresses, pseudocode, and — where available — reference implementations (e.g., Splunk SPL, EQL) plus a unit/coverage note. Analytics are written against the **CAR Data Model (CARDM)**, an abstraction of host/network telemetry (objects like process, flow, file) that decouples the analytic logic from any one product's field names. A coverage view maps the analytic set onto the ATT&CK matrix. Treat CAR as a curated reference set, not an exhaustive one — it covers a subset of ATT&CK techniques, so "covered by CAR" is a floor, not the universe.
+**Citations**: ATT&CK-coverage / detection-engineering framing; the analytic↔technique mapping that anchors detection-coverage scoring.
+**Notes**: Tier B under the strict tiers — authoritative operational catalogue from MITRE, but a curated analytics repository rather than peer-reviewed research or a ratified standard. Cite the analytic's ATT&CK technique ID(s) and the CAR analytic ID (e.g., CAR-2013-xx-xxx); confirm an analytic's current implementations at the repo before citing one, since CAR is updated over time.
+**Validation Status**: ✅ Verified from knowledge (MITRE ATT&CK Cyber Analytics Repository; car.mitre.org and github.com/mitre-attack/car; analytics mapped to ATT&CK with pseudocode + CAR Data Model). Confirm the live analytic count and per-analytic implementations at the primary before quoting a number — no count is asserted here.
+
+---
+
+#### Atomic Red Team — Per-Technique Atomic Tests Mapped to ATT&CK
+
+**Authors**: Red Canary (community-maintained, open source)
+**Date**: 2017–present (continuously updated)
+**URL**: https://github.com/redcanaryco/atomic-red-team
+**Alt URL**: https://atomicredteam.io/ (project site / docs)
+**Evidence Level**: B (operational open-source testing library; MIT License; not peer-reviewed)
+**Relevance**:
+- Detection-coverage measurement: provides small, portable "atomic" tests, each mapped to a specific ATT&CK technique/sub-technique, that execute real (benign-by-design) attacker behaviors. These are the malicious needles a coverage corpus plants — you run the atomic for a technique, then check whether your detection set fired, which makes per-technique catch rate measurable rather than asserted.
+- Pairs with an analytic catalogue (e.g., MITRE CAR) and with the D3FEND-coverage work: CAR/Sigma supplies the rules keyed to ATT&CK, Atomic Red Team supplies the activity keyed to the same techniques, so coverage is testable end-to-end against one technique vocabulary.
+
+**Key Findings**: A library of executable tests organized by ATT&CK technique ID. Each test is "atomic" — small, self-contained, dependency-light, and meant to exercise a single technique (often via command-line / scripted execution across Windows, macOS, Linux). Tests are defined in a structured YAML format and can be driven by the companion **Invoke-AtomicRedTeam** (PowerShell) execution framework. MIT-licensed and community-maintained under Red Canary. Coverage is broad but not total across the ATT&CK matrix, and a passing atomic exercises one variant of a technique, so "the atomic fired a detection" measures that variant, not the whole technique — frame catch rate as injected-and-tested, not field-validated.
+**Citations**: Detection-coverage / detection-engineering threads; the technique-keyed adversary-activity side that complements CAR/Sigma analytics in a coverage corpus.
+**Notes**: Tier B under the strict tiers — widely-used operational testing library from a credible vendor, but an open-source test catalogue rather than peer-reviewed research or a standard. Cite the atomic's ATT&CK technique ID and the test name/GUID; confirm a given test's current definition at the repo before citing specifics, since the library changes. Synthetic/benign-by-design execution only — do not pipe raw execution telemetry into context.
+**Validation Status**: ✅ Verified from knowledge (Red Canary's Atomic Red Team; github.com/redcanaryco/atomic-red-team, MIT License; per-technique atomic tests in YAML mapped to ATT&CK, with the Invoke-AtomicRedTeam runner). Confirm any technique-coverage count or specific test GUID at the primary before quoting — none is asserted here.
+
+---
+
+#### MITRE D3FEND 1.0 (Cybersecurity Countermeasures Ontology)
+
+**Authors**: MITRE (D3FEND project led by Peter Kaloroumakis, Principal Applied Ontologist; funded by NSA / OUSD)
+**Date**: D3FEND 1.0 launched 2025-01-16 (research project → production ontology). The v1.3.0 line (Dec 2025) adds the OT extension — see the dedicated "MITRE D3FEND for OT" entry.
+**URL**: https://d3fend.mitre.org/
+**Alt URL**: https://www.mitre.org/news-insights/news-release/mitre-launches-d3fend-10-milestone-cybersecurity-ontology (1.0 launch) · https://github.com/d3fend/d3fend-ontology (ontology distribution source)
+**Evidence Level**: A (framework authority + formal ontology — OWL 2 DL; the 1.0 milestone is the official MITRE production release framing)
+**Relevance**:
+- The defensive-technique ontology cross-referenced in the book appendix's D3FEND cross-ref; the grounding chain D3FEND → CCO → BFO
+- D3FEND 1.0 ships D3FEND Core Classes, an interface enabling alignment to major upper ontologies — the design hook that lets the grounding chain reach BFO
+- 400+ digital artifacts; offense (ATT&CK) ↔ defense inferred relationships
+
+**Citations**: MITRE. *D3FEND: A Knowledge Graph of Cybersecurity Countermeasures*. https://d3fend.mitre.org/ ; MITRE (2025, Jan 16). *MITRE Launches D3FEND 1.0 — A Milestone in Cybersecurity Ontology*.
+**Notes**: "1.0" is the official MITRE release framing (production ontology), confirmed via the MITRE news release. Built on OWL 2 DL; Core Classes provide the upper-ontology alignment interface. CCO mapping is in-progress work, not a shipped 1.0 mapping — do not cite it as complete. Cross-reference: the existing "MITRE D3FEND Framework & Ontology" entry above catalogues the broader framework and the same v1.0/OT version line; this entry is the milestone-specific 1.0-ontology anchor for the grounding-chain work.
+**Validation Status**: ✅ Verified 2026-06-21 (WebSearch: 1.0 launch 2025-01-16 + OWL 2 DL + Core Classes upper-ontology interface confirmed via mitre.org release; Kaloroumakis as project lead confirmed).
+
+---
+
+#### Basic Formal Ontology (BFO) — ISO/IEC 21838-2:2021
+
+**Authors**: ISO/IEC JTC 1 (joint ISO + IEC committee); BFO authored by Barry Smith et al. (BFO 2020 release standardized by the document)
+**Date**: Published November 2021 (ISO/IEC 21838-2:2021). Note the version distinction: the ontology release is named "BFO 2020"; the ISO/IEC standard document is dated 2021 — cite the standard as 21838-2:2021.
+**URL**: https://www.iso.org/standard/74572.html
+**Alt URL**: https://github.com/BFO-ontology/BFO-2020 (artifacts specified in ISO 21838-2:2020/2021) · https://en.wikipedia.org/wiki/Basic_Formal_Ontology
+**Evidence Level**: A (official ISO/IEC international standard)
+**Relevance**:
+- The top-level (upper) ontology at the base of the grounding chain D3FEND → CCO → BFO referenced in the book appendix
+- 21838 is the "Top-level ontologies (TLO)" family; Part 2 is BFO — establishes BFO as a conformant top-level ontology for interchange across heterogeneous information systems
+- Anchors the formal-ontology rigor the grounding work imports into the OCSF ↔ D3FEND mapping
+
+**Citations**: ISO/IEC 21838-2:2021. *Information technology — Top-level ontologies (TLO) — Part 2: Basic Formal Ontology (BFO)*.
+**Notes**: BFO adopted as a foundational ontology by 650+ projects (biomedical, defense/security, industry). The "BFO 2020" name (ontology release) and "21838-2:2021" (standard publication date) are distinct — do not write "ISO/IEC 21838-2:2020". Part 1 of the 21838 family specifies the requirements for top-level ontologies; Part 2 is BFO specifically.
+**Validation Status**: ✅ Verified 2026-06-21 (WebSearch + ISO catalogue: standard number 21838-2, Part 2 = BFO, published Nov 2021, standardizes BFO 2020). ISO landing page returns HTTP 403 to automated fetch; number/title/date corroborated via ISO catalogue listing, the BFO-2020 GitHub repo, and the bfo-discuss announcement.
+
+---
+
+#### Common Core Ontologies (CCO) — BFO-aligned mid-level ontology
+
+**Authors**: CUBRC, Inc. (Buffalo, NY); created under IARPA funding; maintained by the CCO team (e.g., Ron Rudnicki) and a CCO Governance Board (incl. John Beverley)
+**Date**: Created 2010; made openly available 2017; actively maintained (governance board formed 2024)
+**URL**: https://github.com/CommonCoreOntology/CommonCoreOntologies
+**Alt URL**: https://ncor-network.org/wiki/ontologies/common-core-ontologies · https://arxiv.org/pdf/2404.17758 (Jensen et al., *The Common Core Ontologies*)
+**Evidence Level**: B (widely-adopted community/defense ontology suite with an arXiv descriptive paper; not itself an ISO/IEC standard — proposed as a candidate standard mid-level ontology, so A is not yet warranted)
+**Relevance**:
+- The mid-level link in the grounding chain D3FEND → CCO → BFO referenced in the book appendix
+- BFO-aligned suite of eleven+ ontologies (extends BFO downward toward domains); used across defense/intelligence for interoperability and automated reasoning
+- The reusable middle layer the D3FEND-to-BFO grounding routes through rather than mapping D3FEND straight to a top-level ontology
+
+**Citations**: Jensen, M., et al. *The Common Core Ontologies* (arXiv:2404.17758). CUBRC, Inc. CCO open-source distribution.
+**Notes**: CCO is explicitly designed to extend BFO (the top-level ontology) — confirming the BFO-alignment the grounding chain depends on. Owner/maintainer is CUBRC (Buffalo-based R&D company), not the University at Buffalo philosophy department, though the two are closely connected (Barry Smith/NCOR). "Mid-level" is the correct register — CCO sits between BFO (top-level) and mission/domain ontologies. Tier B not A: CCO is *proposed* as a standard mid-level ontology but is not an adopted ISO/IEC standard the way BFO is.
+**Validation Status**: ✅ Verified 2026-06-21 (WebSearch: CUBRC origin + IARPA funding + 2017 open release + BFO-extension/mid-level framing confirmed via NCOR, CUBRC, and the arXiv CCO paper).
 
 ---
 
@@ -3803,6 +3943,49 @@ from the Second Brain entry pending the freshness sweep.
 
 **Citations**: Huyen, C. (2025). *AI Engineering*. O'Reilly.
 **Validation Status**: ✅ Active URL (verified 2026-06-05)
+
+---
+
+#### Ryan Stillions — The DML (Detection Maturity Level) Model
+
+**Authors**: Ryan Stillions
+**Date**: 2014 (blog-published, May 2014)
+**URL**: https://ryanstillions.blogspot.com/2014/04/the-dml-model_21.html
+**Evidence Level**: C (practitioner blog-published conceptual model; widely cited in the detection-engineering community but not peer-reviewed or a standards document — cite as a framing model, not as an empirical result)
+**Relevance**:
+- Anchors the "detection maturity is about *abstraction level*, not coverage count" framing used in the D3FEND-coverage / detection-engineering line of argument — a control's value depends on *what altitude* of adversary behavior it observes (goals/strategy/TTPs vs. atomic indicators), not merely on how many techniques it nominally touches.
+- Conceptual complement to MITRE ATT&CK (which enumerates techniques) and to the ATT&CK↔D3FEND coverage work: the DML levels give a vocabulary for *why* a high-abstraction detection (DML-6/7/8: tactics/techniques/intent) is more durable than a low-abstraction one (DML-1/2: host/network artifacts, atomic IOCs).
+
+**Key Findings**:
+- A nine-level model (DML-0 None through DML-8 Goals, descending in abstraction): Identity, Goals, Strategy, Tactics, Techniques, Procedures, Tools, Host & Network Artifacts, Atomic Indicators.
+- Core claim: an organization's detection maturity is measured by the *highest abstraction level at which it can reliably detect adversary activity*, not by the raw number of indicators or signatures it maintains. Detecting at the Tactics/Techniques level survives an adversary changing tools or infrastructure; detecting only at the Atomic-Indicator level does not.
+- Frequently paraphrased alongside David Bianco's "Pyramid of Pain" (the two are complementary: Pyramid of Pain frames adversary cost, DML frames defender abstraction level).
+
+**Citations**: Detection-engineering / coverage-quality framing; supports the argument that D3FEND/ATT&CK coverage must be read by abstraction level, not technique count.
+**Notes**: Tier C under Jeremy's strict tiers — a single-author practitioner blog post, durable and community-canonical but not peer-reviewed. Cite Stillions by name + 2014 for the model; do not attribute specific empirical detection-rate numbers to it (it publishes none).
+
+**Validation Status**: ✅ Real, knowledge-confirmed (Stillions' 2014 DML blog model is a well-established detection-engineering reference; the nine-level abstraction ladder is its defining content). URL is the canonical Blogspot post; confirm live before publication-grade citation.
+
+---
+
+#### SCYTHE — Purple Team Exercise Framework (PTEF)
+
+**Authors**: Jorge Orchilles, Bryson Bort, Christopher Peacock, et al. (SCYTHE)
+**Date**: 2020 (v1; iteratively updated)
+**URL**: https://github.com/scythe-io/purple-team-exercise-framework
+**Evidence Level**: C (vendor-published operational practice framework — SCYTHE is an adversary-emulation vendor, so flag the author-incentive; the *methodology* is community-adopted and credible, but it is not peer-reviewed or a neutral standard)
+**Relevance**:
+- Anchors the "purple-teaming = the operational loop that measures detection by adversary emulation" claim used in the detection-validation / D3FEND-coverage line: detection quality is established by *emulating* known adversary TTPs (ATT&CK-mapped) and observing whether the blue team detects them, then iterating — not by counting deployed controls.
+- Complements the DML/abstraction-level framing (Stillions 2014) and the ATT&CK↔D3FEND coverage work: purple-teaming is how an org *empirically* tests whether claimed coverage actually fires, closing the gap between nominal control inventory and measured detection.
+
+**Key Findings**:
+- Defines a repeatable cycle: select adversary TTPs (typically ATT&CK techniques) → red executes the emulation → blue observes telemetry and detection → measure detect/alert/respond → tune detections → repeat. The loop is the unit of measurement, with red and blue working *together* (the "purple" collaboration) rather than adversarially.
+- Frames detection effectiveness as something *measured by emulation*, against known TTPs, rather than assumed from control coverage — the operational counterpart to ATT&CK Evaluations' threat-informed purple-teaming (see the MITRE Engenuity ATT&CK Evaluations entry, which uses the same purple-team methodology at vendor-evaluation scale).
+
+**Citations**: Detection-validation / measured-coverage framing; supports the claim that coverage must be tested by adversary emulation, not asserted.
+**Notes**: Tier C — credible, named, community-adopted operational framework, but vendor-published (SCYTHE) so flag the incentive when citing. The named-practitioner anchor (Orchilles, Bort, Peacock) keeps this above Tier-D speculation; Orchilles is also a SANS author on purple teaming / adversary emulation, which corroborates the practitioner authority. Do not attach empirical detection-rate statistics to this source.
+
+**Validation Status**: ✅ Real, knowledge-confirmed (SCYTHE's PTEF is a real, named purple-team methodology published on GitHub; Orchilles/Bort/Peacock are real, verifiable practitioners in adversary emulation). GitHub URL is the canonical home; confirm live before publication-grade citation.
 
 ---
 
