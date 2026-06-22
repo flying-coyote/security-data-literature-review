@@ -965,13 +965,13 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^72]
 
 **Key Findings**:
-- Trillions of events/day (~11.57M/sec sustained)
+- Trillions of events/day (per the page title; the precise per-second rate is not pinned to the cited page)
 - Cloud-scale validation
 
 **Citations**: Chapter 7 Kafka scale claims
 **Notes**: Validates massive scale Kafka deployments
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (Siphon blog supports ~3T/day, 30M/sec). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo), freshness-triaged (date-stale). Content correction 2026-06-22: the earlier "~11.57M/sec sustained" was unsupported (1-trillion/day arithmetic, diverging from the Siphon blog's ~3T/day figure) — removed; "trillions of events/day" is supported by the page title.
 
 ---
 
@@ -1854,12 +1854,12 @@ This bibliography consolidates all literature sources from:
 - Baseline establishment for outlier detection
 - MailItemsAccessed events monitoring (Microsoft 365)
 - Continuous monitoring of cloud environments
-- 24-36 month retention for behavioral baselines
+- ~12 month retention for behavioral baselines (per advisory aa23-193a)
 
 **Citations**: Advanced analytics chapter, data retention, threat detection
 **Notes**: Government authority on security monitoring practices, joint CISA/FBI guidance
 
-**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (advisory aa23-193a real; the "24-36mo retention" figure is embellished beyond the ~12mo in the source — disregard). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023) · Freshness (2026-06-05): publication date pre-2025 (>12mo), freshness-triaged (date-stale). Content correction 2026-06-22: the earlier "24-36 month retention" figure was an embellishment beyond the ~12mo the source supports — corrected to ~12mo.
 
 ---
 
@@ -2613,7 +2613,7 @@ This bibliography consolidates all literature sources from:
 - [x] Added 10 ML/security sources (251-283 final batch)
 
 **High-Priority Sources Added** (Footnotes 251-283 - Final Batch):
-- **Security ML Authorities**: CISA (24-36 months training data), MITRE (insider threat detection)
+- **Security ML Authorities**: CISA (~12 months retention, per advisory aa23-193a; the earlier "24-36 months" was an unsupported embellishment, corrected 2026-06-22), MITRE (insider threat detection)
 - **ML Standards**: Cloud Security Alliance (training data), Open Cybersecurity Alliance (deployment)
 - **Performance**: Apache Arrow (production adoption breadth), Microsoft Research (concept drift monitoring); the 7-10× and 2-3× figures formerly attached here are not in the cited sources and were removed (2026-06-05 audit)
 - **Deployment Patterns**: Capital One (champion-challenger pattern; the 42% FP-reduction figure was removed — source not found), Confluent (streaming ML)
@@ -3099,21 +3099,21 @@ This bibliography consolidates all literature sources from:
 **Authors**: ClickHouse
 **Date**: 2024
 **URL**: https://clickhouse.com/blog/what-really-matters-for-performance-lessons-from-a-year-of-benchmarks
-**Evidence Level**: A (Production deployment at massive scale)
+**Evidence Level**: B (ClickHouse benchmark retrospective reporting Netflix's described result — secondhand, not a Netflix primary source)
 **Relevance**:
 - RQ11: LIGER Stack scale validation
 - High-volume log ingestion patterns
 
 **Key Findings**:
-- Netflix ingests ~5 PB of logs per day into ClickHouse
+- Netflix ingests ~5 PB of logs per day into ClickHouse (per ClickHouse's blog reporting Netflix's described result; verified on the page 2026-06-22)
 - Reverse-engineered Go client for native-protocol encoding with LZ4
 - Implemented in Java pipeline for lower CPU usage and better memory efficiency
 - FastFormats benchmark drove optimization decisions
 
 **Citations**: High-volume ingestion, ClickHouse production patterns
-**Notes**: Validates ClickHouse for extreme-scale security data
+**Notes**: Validates ClickHouse for extreme-scale security data. The cited page is a ClickHouse benchmarking retrospective that uses Netflix as a case study, not a Netflix-authored source.
 
-**Validation Status**: ✅ Production validation (Netflix) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (5 PB/day + 10.6M events/sec confirmed on page; flagged-suspect, holds). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL (ClickHouse blog citing Netflix) · Freshness (2026-06-05): publication date pre-2025 (>12mo), freshness-triaged (date-stale). Content correction 2026-06-22 (WebFetch-verified): ~5 PB/day IS stated on the page (secondhand report of Netflix's result); the "10.6M events/sec" figure is NOT on the page — removed; Evidence Level corrected A→B (ClickHouse retrospective, not a Netflix primary).
 
 ---
 
