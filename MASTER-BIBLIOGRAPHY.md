@@ -2921,6 +2921,26 @@ This bibliography consolidates all literature sources from:
 
 ---
 
+#### OCSF RLS Overhead, SDW Lab First-Party Measurement (engine-side, DuckDB)
+**Authors**: SDW Lab (sdw-lab-benchmarks/ocsf-rls-overhead)
+**Date**: 2026-06-08
+**URL**: sdw-lab-benchmarks/ocsf-rls-overhead/results/RESULTS.md (reproduce: `python ocsf-rls-overhead/run.py`)
+**Evidence Level**: B (single machine; latencies are medians with reported coefficient of variation over 7 trials after 2 warmups; the corpus and the answers are deterministic; engine-side overhead only)
+**Relevance**:
+- RQ7: isolation-first security validation, the first-party number for the RLS-overhead gap the 2026-06 audit opened when it removed the unsupported figures carried above
+- Advances H-SECURITY-02 (federated catalog RBAC)
+
+**Key Findings**:
+The third-party studies above describe RLS overhead qualitatively ("significant overhead", "evaluated for every row"), so I put a measured number on the engine-side cost. The bench enforces row-level security two ways over a 1,000,000-row, 100-tenant OCSF corpus on DuckDB 1.5.3: a `tenant_id` WHERE predicate appended to the query, and a secured VIEW the query hits directly. The two mechanisms return identical answers across every query and every selectivity tier (the correctness gate reads True), which is the precondition for comparing their cost at all. The overhead is not a single percentage, it tracks query shape and selectivity: at 1% selectivity a full-scan `count_all` runs about 81% slower under the predicate and about 94% slower under the view, while a high-cardinality `top_talkers` runs about 86% *faster* under either mechanism, because the tenant filter reads roughly 99% fewer rows and the saving on scan cost outweighs the filter. So whether RLS costs or saves depends on whether the predicate adds work or removes it from the plan, and a blanket "RLS adds N%" figure of the kind the audit removed is the wrong shape for the answer.
+
+The reading that matters for the architecture argument is the lower-bound caveat. This is engine-side enforcement only: DuckDB evaluates the RLS predicate as an ordinary WHERE clause after parsing, so the numbers above are the floor. A real multi-tenant catalog (Apache Polaris principal roles, Unity Catalog row filters, AWS Lake Formation cell-level permissions) enforces policy at the catalog protocol layer before the engine plans, adding token validation, policy evaluation, and protocol round-trips on top of the engine cost measured here. The catalog-layer component is the subject of the separate q3-catalog-benchmark; cite this entry only for the engine-side floor.
+
+**Citations**: RQ7 isolation-first performance, first-party RLS-overhead measurement replacing removed third-party figures
+**Notes**: Tier B, single host (14 vCPU, WSL2), DuckDB 1.5.3 engine-side only. Pairs with the Unity Catalog RLS analysis above (which is documentation, not measurement) and fills the figure gap noted in the Netflix/ClickHouse entry where RLS overhead claims were removed in the 2026-06-05 audit.
+**Validation Status**: ✅ Reproducible from corpus fingerprint and seed; answers deterministic, latencies are medians with CV
+
+---
+
 #### Streaming vs Batch Cost Analysis 2025
 **Authors**: Confluent, Redpanda, AWS, industry analysts
 **Date**: 2025
