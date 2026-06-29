@@ -159,6 +159,20 @@ def check_git_status():
     except Exception as e:
         return {'error': str(e)}
 
+def check_vendor_database():
+    """Live-read the vendor database that lives in THIS repo (vendor-landscape/vendor-database.json).
+    Honest signal: report the real count from the file, not a hardcoded snapshot."""
+    import json
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        'vendor-landscape', 'vendor-database.json')
+    try:
+        with open(path) as f:
+            data = json.load(f)
+        vendors = data.get('vendors', data if isinstance(data, list) else [])
+        return {'count': len(vendors), 'path': 'vendor-landscape/vendor-database.json'}
+    except Exception as e:
+        return {'error': str(e)}
+
 def print_dashboard():
     """Print comprehensive automation dashboard"""
 
@@ -203,11 +217,13 @@ def print_dashboard():
     else:
         print(f"{Colors.RED}❌ No health check reports found{Colors.END}")
 
-    # MCP vendor database
-    print(f"\nMCP Vendor Database: {Colors.GREEN}✅ OPERATIONAL{Colors.END}")
-    print(f"  Status: ~90 vendors tracked (snapshot; lives in security-architect-mcp-server)")
-    print(f"  Refresh: Weekly automated maintenance")
-    print(f"  Burden Reduction: 75-90% for vendor data")
+    # Vendor database (lives in THIS repo: vendor-landscape/vendor-database.json) — live-counted, not hardcoded
+    vendor_db = check_vendor_database()
+    if 'error' not in vendor_db:
+        print(f"\nVendor Database: {Colors.GREEN}✅ PRESENT{Colors.END}")
+        print(f"  Vendors: {vendor_db['count']} (live count from {vendor_db['path']})")
+    else:
+        print(f"\nVendor Database: {Colors.RED}❌ NOT FOUND{Colors.END} ({vendor_db['error']})")
 
     # Monthly update tracker
     tracker_exists = check_file_exists("monthly-update-tracker.md")
@@ -220,18 +236,16 @@ def print_dashboard():
     # 4. INTEGRATION STATUS
     print_section("🔗 Integration Status")
 
-    print(f"Website (securitydataworks.com): {Colors.GREEN}✅ ACTIVE{Colors.END}")
+    print(f"Website (securitydataworks.com): {Colors.YELLOW}— not polled from this dashboard{Colors.END}")
     print(f"  Channel: /writing (essays), /research (evidence), /lab (first-party benchmarks)")
-    print(f"  Source Identification: from /writing feedback + LinkedIn signal-radar")
+    print(f"  Deploy state is owner-gated; this dashboard does not health-check the live site (no bluffed GREEN)")
     print(f"  Note: Security Data Commons Substack retired 2026-05-24 — do not poll it")
 
     print(f"\nBook (modern-data-stack-for-cybersecurity-book): {Colors.GREEN}✅ SUPPORTED{Colors.END}")
     print(f"  Manuscript: 115,500 words with citations")
     print(f"  Evidence Foundation: All chapters supported")
 
-    print(f"\nMCP Vendor Database: {Colors.GREEN}✅ OPERATIONAL{Colors.END}")
-    print(f"  Vendors: ~90 tracked, 84% Tier A")
-    print(f"  Replaces: IT Harvest dependency")
+    # (vendor database reported once, live-counted, in Automation Status above — dedup 2026-06-29)
 
     # 5. VERSION CONTROL
     print_section("📝 Version Control")

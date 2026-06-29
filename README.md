@@ -1,9 +1,9 @@
 # Living Literature Review — Security Data Works evidence backbone
 
 **Purpose**: Evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning
-**Last Updated**: January 2, 2026 (Version 1.19.0)
-**Last Reviewed**: January 2, 2026
-**Status**: Phase 2 ACTIVE | Monthly Updates + Quarterly Deep Dives
+**Last Updated**: June 29, 2026 (Version 1.22.0)
+**Last Reviewed**: June 29, 2026
+**Status**: Phase 2 ACTIVE | Tier-3 evidence companion to the MOAR handbook campaign
 
 ---
 
@@ -14,16 +14,15 @@ This repository contains a **living literature review** that is the shared evide
 **Current Status - June 2026** 🔄:
 - **146 sources documented** (~46% Evidence Level A, live — 67/146; honest post-audit baseline + first 2026 Tier-A primary sources + 2 Tier-B bridge-framing sources 2026-06-09; freshness sweep substantially complete — see RESEARCH-JOURNAL.md)
 - **14 research questions** (RQ1-RQ14) with comprehensive validation
-- **Best practices audit complete** (Version 1.19.0 - Score: 92/100)
-- **Q1 2026 Deep Dive active** (January - expert interviews, versioned snapshot)
+- **Fabrication audit + freshness sweep complete** (2026-06-05 to 2026-06-21; Version 1.22.0, best-practices score 92/100 — see RESEARCH-JOURNAL.md)
+- **Now the Tier-3 evidence backbone of the MOAR handbook campaign** (handbook on-page footnotes resolve to this repo's sources + their RESEARCH-JOURNAL verdicts)
 
 ## Current Priorities
 
-**Q1 2026 Quarterly Deep Dive** (January):
-- Expert interviews (Lisa Cao: catalog landscape, Jake Thomas: isolation-first validation)
-- Versioned snapshot (tag 2025-Q4-v1.0 for citation stability)
-- Quarterly synthesis blog post
-- Comprehensive hypothesis validation review
+**Handbook-campaign companion (current driver)**:
+- Resolve each handbook on-page footnote to a source here, with a JIT verdict in RESEARCH-JOURNAL.md (VERIFIED before it ships)
+- Phase 6: migrate the book appendices A–M into this repo as the public deep-evidence tier
+- Hold the honest post-audit baseline: the 2026-06-05 audit re-tiered ~26 entries off Level A; don't silence the floor breach
 
 **Ongoing Evidence Collection**:
 - LIGER Stack production deployments
@@ -45,7 +44,7 @@ This repository contains a **living literature review** that is the shared evide
 7. **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** - Gap analysis with 7 validated hypotheses
 8. **LITERATURE-EXTRACTION-PLAN.md** - Systematic extraction methodology (PRISMA-aligned)
 9. **PUBLICATION-VENUE-RECOMMENDATIONS.md** - Academic publication strategy
-10. **REPOSITORY-STATUS.md** - Comprehensive status report with completion metrics (updated November 14, 2025)
+10. **REPOSITORY-STATUS.md** - Comprehensive status report with completion metrics (updated June 5, 2026, v1.22.0)
 11. **CHANGELOG.md** - Version tracking for academic citation stability (Versions 1.0.0-1.12.0)
 
 **Analysis Bundles** (analysis-bundles/):
@@ -128,9 +127,9 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 
 **Evidence Sources** (Hybrid Model):
 1. **MCP vendor database** (automated weekly refresh) - 71 vendors, 84% Tier A
-2. **Blog post insights** (Security Data Commons, 3x/week) - 4-6× writing speedup
+2. **Writing insights** (securitydataworks.com /writing) - source identification from essay + LinkedIn feedback
 3. **Expert network validation** (Lisa Cao, Jake Thomas, Paul Agbabian, etc.)
-4. **Community feedback** (Substack readers, practitioner corrections)
+4. **Community feedback** (practitioner corrections, reader feedback)
 5. **IT Harvest partnership** (optional enhancement, not critical path)
 
 ---
@@ -148,11 +147,11 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - Literature review provides evidence foundation for 115,500-word manuscript
 - Quarterly deep dives feed book revisions
 
-**Blog (PRIMARY DRIVER)**:
-- **Security Data Commons** (3x/week practitioner content)
-- 4-6× writing speedup demonstrated with evidence foundation
-- Reader feedback → New sources → Literature updates → Improved blog evidence
+**Writing (securitydataworks.com)**:
+- The /writing essays and /research pages cite this repo as their evidence backbone
+- Reader feedback → new sources → literature updates → improved essay evidence
 - "Being wrong publicly" philosophy: rapid iteration, intellectual honesty
+- (The original Security Data Commons Substack was retired 2026-05-24; do not poll it)
 
 **MCP Vendor Database** (Automation Foundation):
 - 71 vendors, 84% Tier A quality, 110 evidence sources
@@ -186,35 +185,31 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - H3-PERFORMANCE-01 (ClickHouse): VALIDATED - 6M req/sec, 96% <1s queries
 - H-STREAM-01 (Kafka Streams): VALIDATED - Production security patterns, 3 sources
 
-**Quality Metrics** (Updated November 2025):
-- **Evidence Level A: 78%** (65 of 83 sources) - **MAINTAINS quality target**
-- Evidence Level B: 22% (18 of 83 sources)
-- Evidence Level C/D: 0% (zero low-quality sources)
-- Government/Standards Sources: 8+ (CISA, MITRE, DARPA, NSA, SANS)
-- Industry Analysts: 10+ (Gartner, IDC, Forrester)
-- Production Deployments: 21+ (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom, Huntress, Okta, etc.)
-- **New (November)**: 3 isolation-first security case studies (Netflix Polaris, Huntress, Okta)
-- Metadata Completeness: 96%+
+**Quality Metrics** (June 2026 — honest post-audit baseline, live-computed via `scripts/weekly_health_check.py`):
+- **Evidence Level A: ~46%** (67 of 146 sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A; this is the honest baseline, not the pre-audit 78% claim
+- Evidence Level B: 79 of 146 · Evidence Level C: 9 of 146
+- The Tier-A floor (60%) is intentionally breached and surfaced, not silenced — a breach that reflects real corpus quality is the dashboard working (see `scripts/weekly_scheduled_check.py`)
+- Every >12-month source now carries a 2026-06-05 validation or freshness marker; 9 fabricated entries removed, 3 dead links recorded (see RESEARCH-JOURNAL.md)
+- Production-deployment anchors (Shell, Cloudflare, SK Telecom, Huntress, etc.) are vendor case studies — Tier C under the global tiers; verify each primary before load-bearing use
 
 ---
 
-**Current Phase**: Phase 2G (Hybrid Model) - Monthly Updates + Quarterly Deep Dives ACTIVE
+**Current Phase**: Phase 2 ACTIVE — Tier-3 evidence companion to the MOAR handbook campaign.
 **Recent Milestones**:
-- ✅ Two monthly updates complete (November 2025)
-- ✅ Isolation-first security architecture integrated (RQ7-RQ10)
-- ✅ Monthly update workflow operational (tracking, automation, dashboard)
-- ✅ MCP vendor database operational (71 vendors, automated)
+- ✅ Fabrication audit complete (2026-06-05): 9 fabricated entries removed, ~26 re-tiered off A, 3 dead links recorded
+- ✅ Freshness sweep substantially complete (2026-06-05 / 06-09 / 06-21): every >12mo source carries a validation/freshness marker
+- ✅ Health signals made honest (2026-06-29): `weekly_health_check.py` delta-aware, `automation_dashboard.py` live-counts the vendor DB (no bluffed GREEN)
+- ✅ Wired as the handbook campaign's Tier-3 evidence backbone (CONTENT-loop owned)
 
 **Next Actions**:
-1. **Expert Interviews** (January 2026) - Lisa Cao and Jake Thomas scheduled for Q1 quarterly deep dive
-2. **January Monthly Update** (mid-January, 6-8 hours) - New sources, refresh outdated sources
-3. **Quarterly Synthesis** - Comprehensive blog post on Q4 2025 findings
-4. **Academic Publication** (mid-2026: journal submission preparation)
+1. **Per-footnote JIT verification** — resolve each handbook on-page footnote to a source here, log the verdict in RESEARCH-JOURNAL.md
+2. **Phase 6: appendix migration** — bring the book appendices A–M into this repo as the public deep-evidence tier
+3. **Hold the post-audit baseline** — keep the Tier-A floor breach surfaced, not silenced
+4. **Academic publication** — journal submission preparation
 
-**Recently Completed** (January 2, 2026):
-- ✅ Git tag 2025-Q4-v1.0 created for citation stability
-- ✅ Best practices audit completed (Score: 92/100)
-- ✅ Completed phases archived
+**Recently Completed** (2026-06-29):
+- ✅ README synced to live state (was frozen at Jan-2, v1.19.0; now v1.22.0, honest 46%/146 baseline)
+- ✅ Dashboard de-bluffed (vendor DB live-counted from vendor-landscape/vendor-database.json = 71)
 
 **Online Publication**: [Security Data Commons on Substack](https://securitydatacommons.substack.com) (Published October 22, 2025)
 **Maintained By**: Jeremy Wiley
