@@ -10,7 +10,7 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
 **Last Updated**: June 13, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 168 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). This repo is the source of truth for literature citations.
+**Total Sources**: 172 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). + 4 added 2026-06-30 (each verified at the source PDF/cover before cataloguing, recovered from a local research-inbox sweep): James Bonifield *Data Engineering for Cybersecurity* (B, No Starch Press — the closest named companion/competitor to the MOAR book), arXiv:2505.02709 *Evaluating Goal Drift in LM Agents* (B, Apollo Research), arXiv:2509.00115 *Adaptive Monitoring of Agentic AI Systems / AMDM* (B), arXiv:2603.11768 *Governing Evolving Memory in LLM Agents / SSGM* (C, post-cutoff framing source). This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: ~46% Evidence Level A (live: 70 of 155 entries marked `**Evidence Level**: A`; 81 B, 13 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The 9 Program-2 detection-engineering / grounding-chain anchors added 2026-06-21 add 4 Tier-A (Axelsson, Sommer & Paxson, D3FEND 1.0, BFO/ISO 21838-2), 3 Tier-B (CAR, Atomic Red Team, CCO), and 2 Tier-C (Stillions DML, SCYTHE PTEF), moving the catalogued count toward ~71 A / ~84 B / ~15 C across ~168 (recompute via `scripts/weekly_health_check.py`). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
@@ -79,6 +79,20 @@ This bibliography consolidates all literature sources from:
 **Notes**: Framing/conceptual anchor for the applied-bridge positioning (securitydataworks.com/thesis). Carries no headline statistic — catalogued for the lifecycle framework, not a number, so it is not exposed to the 2026 stat-mismatch audit. Tier B under Jeremy's strict tiers (authoritative practitioner book; A is reserved for peer-reviewed research / official standards).
 
 **Validation Status**: ✅ Verified 2026-06-09 (WebSearch: O'Reilly Media, published 2022-07-26, ISBN-13 978-1098108304, Joe Reis & Matt Housley; the data-engineering-lifecycle framework confirmed against the publisher and author listings).
+
+---
+
+#### Data Engineering for Cybersecurity (No Starch Press Book)
+
+**Author**: James Bonifield
+**Date**: No Starch Press (catalogued 2026-06-30; confirm exact publication date + ISBN at the publisher before a dated citation)
+**URL**: nostarch.com (No Starch Press catalog — confirm the exact product URL before citing)
+**Evidence Level**: B (practitioner reference book; conceptual/tooling, not a quantitative source)
+**Relevance**:
+- The closest named companion (and competitor) to the MOAR book: "Build Secure Data Pipelines with Free and Open Source Tools." Frames the same underlying problem — security teams are already doing data engineering — from a build-the-pipelines-with-FOSS angle rather than the architecture-decision angle MOAR takes.
+- Read for positioning before the next MOAR chapter pass: where it overlaps (FOSS pipelines, parsing and normalization) versus where MOAR is differentiated (open table formats, the trustworthy / well-connected / performant decision frame, the Capability Matrix, the independent-measurement lab).
+**Notes**: Title, author, and publisher verified 2026-06-30 from the book cover (PDF/EPUB held in the research inbox). Catalogued as a positioning anchor; carries no headline statistic, so it is not exposed to the stat-mismatch audit.
+**Validation Status**: ✅ Title/author/publisher verified 2026-06-30 (book cover); publication date + ISBN to confirm at the publisher before a dated citation.
 
 ---
 
@@ -2167,6 +2181,51 @@ This bibliography consolidates all literature sources from:
 ---
 
 ### AI Governance & Agent Architectures
+
+#### Evaluating Goal Drift in Language Model Agents (arXiv 2505.02709)
+
+**Authors**: Rauno Arike, Elizabeth Donoway, Henning Bartsch, Marius Hobbhahn (MATS; Apollo Research)
+**Date**: May 2025 (arXiv:2505.02709v1, 5 May 2025)
+**URL**: https://arxiv.org/abs/2505.02709
+**Evidence Level**: B (technical report; empirical, not a peer-reviewed venue)
+**Relevance**:
+- Agentic security (H-AGENT-SECURITY-01): even initially well-specified goals can shift as an LM agent accumulates context and meets competing objectives over a long horizon.
+- Finding: a scaffolded Claude 3.5 Sonnet maintained nearly perfect goal adherence for more than 100,000 tokens in the hardest setting, while all evaluated models showed some goal drift, and drift correlated with rising susceptibility to pattern-matching as context length grew.
+- Supports the constrained-inference / deterministic-verifiability positioning: long-horizon autonomy degrades, which is an argument for verifiable checks around any agent acting on security data.
+**Notes**: Verified 2026-06-30 from the paper PDF (title, authors, abstract). The 100k-token figure is the paper's own reported result, not independently reproduced.
+**Validation Status**: ✅ Verified 2026-06-30 (PDF title/authors/abstract).
+
+---
+
+#### Adaptive Monitoring and Real-World Evaluation of Agentic AI Systems (arXiv 2509.00115)
+
+**Author**: Manish A. Shukla (Independent Researcher, Plano, TX)
+**Date**: August 2025 (arXiv:2509.00115v3, 13 Sep 2025)
+**URL**: https://arxiv.org/abs/2509.00115
+**Evidence Level**: B (independent technical report; simulations plus experiments, not a peer-reviewed venue)
+**Relevance**:
+- The measurement-imbalance finding grounds the "capability isn't safety" argument: a systematic review of 84 papers (2023–2025) found about 83% report capability metrics while only about 30% consider human-centred or economic axes.
+- Proposes AMDM (Adaptive Multi-Dimensional Monitoring): per-axis exponentially-weighted thresholds with joint anomaly detection via Mahalanobis distance; reported to cut anomaly-detection latency from 12.3 s to 5.6 s and the false-positive rate from 4.5% to 0.9% versus static thresholds.
+- Relevant to monitoring agentic AI in security operations and to the AI-maturity / safety-half framing.
+**Notes**: Verified 2026-06-30 from the paper PDF. The latency and false-positive numbers are the paper's own simulated results, not independently reproduced.
+**Validation Status**: ✅ Verified 2026-06-30 (PDF title/author/abstract).
+
+---
+
+#### Governing Evolving Memory in LLM Agents — SSGM Framework (arXiv 2603.11768)
+
+**Authors**: Chingkwun Lam, Jiaxin Li, Lingfei Zhang, Kuo Zhao (Jinan University, College of Intelligent Science and Engineering)
+**Date**: May 2026 (arXiv:2603.11768v2, 19 May 2026)
+**URL**: https://arxiv.org/abs/2603.11768
+**Evidence Level**: C (conceptual governance framework, no empirical evaluation; post-cutoff publication — verify before relying on it)
+**Relevance**:
+- Agentic security (H-AGENT-SECURITY-01): mutable agent memory introduces a stability-plasticity dilemma, where facts distort through iterative summarization (semantic drift), workflows degrade (procedural drift), and hallucinations or injections get internalized as valid knowledge, with errors that are cumulative and persistent rather than isolated to one retrieval step.
+- Proposes SSGM (Stability and Safety-Governed Memory): decouples memory evolution from execution by enforcing consistency verification, temporal decay modeling, and dynamic access control before any memory consolidation.
+- A framing source for the agentic-security angle: governing what an agent is permitted to remember about security telemetry.
+**Notes**: Verified 2026-06-30 from the paper PDF (title, authors, abstract). Conceptual, with no empirical results; post-cutoff publication, so confirm at arXiv before relying on it in a publication.
+**Validation Status**: ✅ PDF verified 2026-06-30; conceptual framework, no empirical evaluation.
+
+---
 
 #### Gartner AI Maturity and Success Metrics
 
