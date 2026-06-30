@@ -942,7 +942,7 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 - **The handbook's pipeline cost comparison**: Cribl/Tenzir/OSS
 - **The variants chapter** (Chapter 6 of the handbook, "What good looks like"): the worked MOAR-variant TCO examples (Jennifer $380K/year platform + $200K Splunk, Marcus $2.9M/year modern stack vs $12M Splunk expansion, Priya $1.8M/year Denodo)
 - **The variants chapter** (Chapter 6 of the handbook, "What good looks like"): when traditional SIEM wins despite higher cost
-- **The modularity chapter** (Chapter 7 of the handbook, "Modularity: incremental modernization"): building the business case for the CFO stakeholder pitch
+- **The modularity chapter** (Chapter 7 of the handbook, "Modularity: outpatient vs open-heart surgery"): building the business case for the CFO stakeholder pitch
 
 **Sources & Validation**:
 - Microsoft Sentinel public pricing (2025): docs.microsoft.com/azure/sentinel/pricing

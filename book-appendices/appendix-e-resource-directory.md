@@ -576,7 +576,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **What it is**: a read-only, concept-only graph (1,442 nodes / 7,618 deduped edges) joining the public spine — OCSF, D3FEND, ATT&CK, NIST 800-53, and CCI — exposed over a small stdio MCP server with seven tools (legend, stats, find_node, node, neighbors, paths, coverage). It ships the public layer only; the CC-BY-ND SCF crosswalk loads behind `SCG_WITH_SCF=1`.
 - **Why it's here**: this is the OCSF↔D3FEND join above made walkable rather than asserted. The current spine carries 69 seeAlso pairs across 27 OCSF classes touching 14 of 607 DigitalArtifact leaves (97.7% leaf-orphan), and SKOS-typed control coverage of 606 edges over 402 controls (111 NIST 800-53, 291 CCI) and 79 D3FEND techniques, so you can see exactly where the crosswalk is dense and where it runs out.
 - **The discipline it carries**: every edge is tagged with a `proxy_quality` and a documented trust rank — measured (1.0) and SKOS-typed (0.9) at the strong end down to intent-blind `artifact_cooccurrence` (0.25, the largest class at roughly 6,000 of 7,618 edges) and an explicit `unmapped` (0.0) gap. A multi-hop answer is only as good as its weakest edge, so `paths` returns a `path_trust` (the minimum edge on the chain) and a `crosses_inference` flag that fires when the chain leans on one of those intent-blind co-occurrence edges. It separates what is measured or curated from what was inferred, and names the weakest hop instead of hiding a cheap join, so navigation stays honest about its own provenance.
-- **What it does not do**: it is not a grounding accuracy aid. In the SDW Lab field-mapping test (2026-06-08, Tier B), conceptual grounding prose was roughly inert against a plain schema-validity check, and graph structure changed a retrieval answer on only 1 of 9 incident-reconstruction queries (the identity-collapse case), so its value is real but narrow. It is evidence and a navigation tool, not a product — per-vendor scoring stays in the paid Capability Matrix.
+- **What it does not do**: it is not a grounding accuracy aid. In the SDW Lab field-mapping test (2026-06-08, Tier B), conceptual grounding prose was roughly inert against a plain schema-validity check, and in the companion scg context-graph retrieval evaluation from the same 2026-06-08 campaign, graph structure changed a retrieval answer on only 1 of 9 incident-reconstruction queries (the identity-collapse case), so its value is real but narrow. It is evidence and a navigation tool, not a product — per-vendor scoring stays in the paid Capability Matrix.
 
 ---
 
@@ -775,7 +775,7 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 
 | Essay | Extends |
 |-------|---------|
-| [ClickHouse at Petabyte Scale — Netflix Case Study](https://securitydataworks.com/writing/engines/clickhouse-petabyte) | **Appendix I** — 5 PB/day architecture, zero-MV validation |
+| [ClickHouse at Petabyte Scale — Netflix Case Study](https://securitydataworks.com/writing/engines/clickhouse-petabyte) | **Appendix I** — 5 PB/day architecture, operational simplicity at scale |
 | [Query-Engine Specialization: Push vs Pull](https://securitydataworks.com/writing/engines/push-pull-engines) † | **Appendix I** — dual-engine workload optimization |
 | [Cribl vs Tenzir: Route-by-Value Economics](https://securitydataworks.com/writing/pipelines/cribl-vs-tenzir) | **the what-good pipeline-evaluation material, Appendix B** — pipeline evaluation |
 | [DuckDB for Threat Hunting: 7.5 Trillion Records at Okta](https://securitydataworks.com/writing/engines/duckdb-threat-hunting) | **Appendix I** — Jake Thomas / Okta Tier-B personal account, edge preprocessing |
@@ -787,8 +787,8 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 | Essay | Extends |
 |-------|---------|
 | [Browse the migration & detection pillars](https://securitydataworks.com/writing) ‡ | **the variants chapter** — adoption barriers (no single successor essay yet) |
-| [Splunk Federated Search vs DB Connect](https://securitydataworks.com/writing/migration/splunk-federated-search) | **the variants chapter and the modernization chapter** — phased migration, parallel operation; now tracks Platform 10.4 + Cisco Data Fabric |
-| [Detection Engineering Maturity Ladder (HMM Levels)](https://securitydataworks.com/writing/detection/detection-maturity) | **the modernization chapter** — why HMM2→HMM3 requires data infrastructure |
+| [Splunk Federated Search vs DB Connect](https://securitydataworks.com/writing/migration/splunk-federated-search) | **the variants chapter and the modularity chapter** — phased migration, parallel operation; now tracks Platform 10.4 + Cisco Data Fabric |
+| [Detection Engineering Maturity Ladder (HMM Levels)](https://securitydataworks.com/writing/detection/detection-maturity) | **the modularity chapter** — why HMM2→HMM3 requires data infrastructure |
 | [Schema Lock-In Costs — Why OCSF Matters](https://securitydataworks.com/writing/ocsf/schema-read-vs-write) † | **Appendix H** — migration cost, three-layer switching costs |
 | [OCSF at Petabyte Scale — AWS Security Lake](https://securitydataworks.com/research/aws-security-lake-ocsf) † | **Appendix H** — production OCSF validation |
 | [AI-Generated OCSF Parsers via MCP / LLM mapping](https://securitydataworks.com/writing/ocsf/llm-ocsf-mapping) | **Appendix H, Appendix F** — LLM-assisted mapping, and its measured fidelity ceiling |
@@ -797,9 +797,9 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 
 | Essay | Extends |
 |-------|---------|
-| [NANDA: Agent-Native Security Infrastructure](https://securitydataworks.com/writing/ai/nanda-automation) | **the modernization chapter** — agent-native SOC architecture beyond the incremental-automation plateau |
-| [Pitching MOAR to Federated Organizations](https://securitydataworks.com/writing/migration/federated-rollout-playbook) | **the modernization chapter** — stakeholder buy-in for multi-BU deployments |
-| [Migration Reality Check: 800 Detection Rules](https://securitydataworks.com/writing/migration/migration-800-rules) | **the modernization chapter** — realistic migration timelines and costs |
+| [NANDA: Agent-Native Security Infrastructure](https://securitydataworks.com/writing/ai/nanda-automation) | **the modularity chapter** — agent-native SOC architecture beyond the incremental-automation plateau |
+| [Pitching MOAR to Federated Organizations](https://securitydataworks.com/writing/migration/federated-rollout-playbook) | **the modularity chapter** — stakeholder buy-in for multi-BU deployments |
+| [Migration Reality Check: 800 Detection Rules](https://securitydataworks.com/writing/migration/migration-800-rules) | **the modularity chapter** — realistic migration timelines and costs |
 | [Pipeline Lock-In: The Vendor Trap](https://securitydataworks.com/writing/pipelines/pipeline-lock-in) | **Appendix B** — acquisition economics |
 | [Defining What You Can Own: an AI-Security Taxonomy](https://securitydataworks.com/writing/ai/defining-what-you-can-own) † | **the manageability chapter (Chapter 1 of the handbook)** — disambiguating "AI security" |
 
@@ -809,7 +809,7 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 |-------|---------|
 | [Peak Lakehouse Threat Hunting Anti-Pattern](https://securitydataworks.com/writing/detection/peak-lakehouse-hunting) | **Appendix B** — architecture over-optimization mistakes |
 | [Anti-Pattern: Field Mapping Hell](https://securitydataworks.com/writing/ocsf/field-mapping-anti-pattern) | **Appendix B, Appendix H** — data transformation failures |
-| [Anti-Pattern: Underestimating Migration Costs](https://securitydataworks.com/writing/migration/migration-cost-reality) | **Appendix B, the modernization chapter** — realistic cost assessment (labor ran 40-100% over tech-only) |
+| [Anti-Pattern: Underestimating Migration Costs](https://securitydataworks.com/writing/migration/migration-cost-reality) | **Appendix B, the modularity chapter** — realistic cost assessment (labor ran 40-100% over tech-only) |
 | [Anti-Pattern: Flattening Away Detection Logic](https://securitydataworks.com/writing/ocsf/flattening-anti-pattern) | **Appendix B** — schema design mistakes; the absence→NULL recall result |
 
 ### Research Foundation

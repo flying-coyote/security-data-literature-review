@@ -758,7 +758,7 @@ This appendix provides:
 - **Misunderstanding clarification**: Bridge discipline gaps
 - **Usage examples**: How to apply glossary in real conversations
 
-**Next**: Appendix E (Consolidated Resource Directory) and Appendix J (Resources and Community) carry the learning resources in full. <!-- EDITORIAL: E↔J overlap resolution pending — flagged by both merge agents; decide at integration whether E cross-references J or each carries a subset -->
+**Next**: Appendix E (Consolidated Resource Directory) and Appendix J (Resources and Community) carry the learning resources in full.
 
 ---
 
