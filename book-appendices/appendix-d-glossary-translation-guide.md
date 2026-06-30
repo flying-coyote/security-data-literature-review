@@ -772,5 +772,5 @@ This appendix provides:
 - Official documentation: Apache Iceberg, Trino, Delta Lake, dbt
 
 **Practitioner Validation**:
-- a data-platform practitioner [Personal communication, October 2025]: Hybrid architecture necessity, Starburst/Athena connection, Denodo multi-cloud virtualization
+- A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture necessity, Starburst/Athena connection, Denodo multi-cloud virtualization
 - Lisa Cao (Datastrato): Gravitino meta-catalog expertise, catalog proliferation management [Personal communication, 2025; Gravitino architecture: gravitino.apache.org/docs]

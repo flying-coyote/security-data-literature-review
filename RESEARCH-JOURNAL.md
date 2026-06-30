@@ -173,7 +173,7 @@ Survey (gated), CSA State-of-AI (gated), Hyperscan (homepage); StarRocks vs Clic
 |---|---|
 | MOAR Stack reference architecture (#81) | Jeremy's own model; LIGER→MOAR rename intentional; cost figures live on the economics page (transparent assumptions). Renamed + repointed + relabeled A→B (9a24e4e) |
 | Splunk DB Connect Benchmark 145× (#25) | real first-party measurement; repo NDA-gated (404 expected); methodology public |
-| a data-platform practitioner / Okta-Jake-Thomas | genuine private practitioner input; unverifiable as external citation |
+| anonymized practitioner / Okta-Jake-Thomas | genuine private practitioner input; unverifiable as external citation |
 | SDW Lab `zeek-flagship-rerun` (two-regime) | CV-gated first-party; OpenSearch foil ÷ ClickHouse-Iceberg ~10–11× on scan-aggregation, ch-native ÷ foil 46.8×; two-regime split (lakehouse wins hunting aggs, index wins lookups). Self-authored; magnitudes host-specific |
 | SDW Lab `engine-join-specialization` | CV-gated first-party; StarRocks wins joins, ClickHouse wins aggregation (grounds H-ARCH-06) |
 | SDW Lab `ocsf-zorder-pruning` | first-party; z-order is a pruning-COVERAGE lever, not latency (within-file + cross-file + Bloom legs) |

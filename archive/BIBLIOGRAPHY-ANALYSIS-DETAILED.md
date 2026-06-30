@@ -42,18 +42,18 @@
 
 ### 1.2 Practitioner Entry Missing Fields (Line 1757)
 
-**Entry**: a data-platform practitioner - Security Data Platform Practitioner Validation
+**Entry**: Anonymized practitioner - Security Data Platform Practitioner Validation
 **Location**: Line 1757
 **Issue**: Missing standard bibliographic fields
 
 **Present Fields**: Expert, Date, Evidence Level, Relevance, Key Findings, Citations, Validation Status
 **Missing Fields**:
-- **Authors**: Should be "a data-platform practitioner"
+- **Authors**: Should be "Anonymized practitioner"
 - **URL**: N/A for practitioner validation (could note "Personal communication" or "Interview")
 
 **Recommendation**:
 ```markdown
-**Authors**: a data-platform practitioner
+**Authors**: Anonymized practitioner
 **URL**: Personal communication (Practitioner validation)
 ```
 
@@ -186,7 +186,7 @@ Checked presence of standard fields across all entries (excluding the 2 with mis
 | Notes | 69/70 | 1 | One cross-reference entry |
 | Validation Status | 69/70 | 1 | One cross-reference entry |
 
-**Finding**: All entries except the duplicate cross-reference (Line 279) have complete metadata. a data-platform practitioner entry only needs Authors and URL fields added.
+**Finding**: All entries except the duplicate cross-reference (Line 279) have complete metadata. The practitioner entry only needs Authors and URL fields added.
 
 ---
 
@@ -198,10 +198,10 @@ Checked presence of standard fields across all entries (excluding the 2 with mis
 - **Line 279**: Delete the cross-reference entry "Shell ClickHouse - 57TB/day"
 - **Rationale**: This is a duplicate of Line 119. Cross-references in "Data Volume & Characteristics" section should reference the main entry, not create incomplete duplicates.
 
-**Priority 1B - Complete a data-platform practitioner Entry**:
+**Priority 1B - Complete Practitioner Entry**:
 - **Line 1757**: Add missing fields:
   ```markdown
-  **Authors**: a data-platform practitioner
+  **Authors**: Anonymized practitioner
   **URL**: Personal communication (Practitioner validation)
   ```
 
@@ -321,7 +321,7 @@ All 7 hypotheses have validated source citations:
 
 **Minor Issues** (15-minute fix):
 1. ⚠️ Remove duplicate entry at Line 279
-2. ⚠️ Add Authors/URL to a data-platform practitioner entry at Line 1757
+2. ⚠️ Add Authors/URL to practitioner entry at Line 1757
 3. ⚠️ Update "73%" claim to "81%" in documentation
 
 **Optional Improvements** (2-4 hours):
@@ -349,13 +349,13 @@ All 7 hypotheses have validated source citations:
 
 ---
 
-### Fix #2: Complete a data-platform practitioner Entry (Line 1757)
+### Fix #2: Complete Practitioner Entry (Line 1757)
 
 **Current** (Line 1757):
 ```markdown
-#### a data-platform practitioner - Security Data Platform Practitioner Validation
+#### Anonymized practitioner - Security Data Platform Practitioner Validation
 
-**Expert**: a data-platform practitioner
+**Expert**: anonymized practitioner
 **Date**: October 2025
 **Evidence Level**: A (Practitioner validation, production security implementations)
 ```
@@ -364,9 +364,9 @@ All 7 hypotheses have validated source citations:
 
 **Corrected**:
 ```markdown
-#### a data-platform practitioner - Security Data Platform Practitioner Validation
+#### Anonymized practitioner - Security Data Platform Practitioner Validation
 
-**Authors**: a data-platform practitioner
+**Authors**: Anonymized practitioner
 **Date**: October 2025
 **URL**: Personal communication (Practitioner validation)
 **Evidence Level**: A (Practitioner validation, production security implementations)
@@ -413,7 +413,7 @@ All 7 hypotheses have validated source citations:
 ### Immediate Actions (15 minutes)
 
 1. ✅ Delete duplicate entry at Line 279
-2. ✅ Add Authors + URL to a data-platform practitioner entry (Line 1757)
+2. ✅ Add Authors + URL to practitioner entry (Line 1757)
 3. ✅ Update "73%" to "81%" in:
    - MASTER-BIBLIOGRAPHY.md (Line 8)
    - REPOSITORY-STATUS.md

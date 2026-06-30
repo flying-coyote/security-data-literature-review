@@ -105,7 +105,7 @@
 - Jake Thomas → "Expert Validator 2"
 - IT Harvest → "Vendor Landscape Partner"
 - Charles Wells → "industry partner contact"
-- a data-platform practitioner → "Security Practitioner" (used in one reference)
+- a data-platform practitioner (used in one reference)
 
 All specific names sanitized in complete draft pending public announcement.
 

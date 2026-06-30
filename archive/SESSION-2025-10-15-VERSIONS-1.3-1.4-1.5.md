@@ -212,7 +212,7 @@
    - **Sources**: Gartner (5.5 months), SANS (15-30% longer), Ververica (4-9 months)
    - **Resolution**: Timeline depends on architecture + expertise
    - **Context**: Batch 5.5 months, streaming 6-9 months, security adds 1-2 months
-   - **Validation**: a data-platform practitioner validates 4-6 month range for query engines
+   - **Validation**: practitioner validation of 4-6 month range for query engines
 
 **Part 2: Source Relationship Mapping** (4 validation chains)
 
@@ -270,7 +270,7 @@
 
 **Part 4: Evidence Level Upgrade Opportunities** (4 identified)
 
-1. **a data-platform practitioner** - ✅ ADDED IMMEDIATELY
+1. **A data-platform practitioner** - ✅ ADDED IMMEDIATELY
    - Evidence Level A (practitioner validation, production security implementations)
    - Validates Starburst/Athena at security data scale
    - Supports Chapter 4 architectural recommendations
@@ -292,9 +292,9 @@
 
 ### MASTER-BIBLIOGRAPHY.md Updates
 
-**a data-platform practitioner Formal Citation Added**:
+**Practitioner Formal Citation Added**:
 ```
-**Expert**: a data-platform practitioner
+**Expert**: anonymized practitioner
 **Date**: October 2025
 **Evidence Level**: A (Practitioner validation, production security implementations)
 **Relevance**: Query engine viability for security operations at scale
@@ -542,7 +542,7 @@
 9. analysis-bundles/source-quality-enhancements.md
 
 ### Files Modified (3)
-1. MASTER-BIBLIOGRAPHY.md (a data-platform practitioner citation added, statistics updated)
+1. MASTER-BIBLIOGRAPHY.md (practitioner citation added, statistics updated)
 2. REPOSITORY-STATUS.md (Phase 2A complete, Phase 2B in progress)
 3. CHANGELOG.md (versions 1.3.0, 1.4.0, 1.5.0 documented)
 

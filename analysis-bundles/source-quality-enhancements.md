@@ -71,7 +71,7 @@ This document originally analyzed the bibliography to upgrade evidence levels, r
 
 ~~**Source 1**: Gartner [^138] — 5.5 months. **Source 2**: SANS [^51] — 15-30% longer. **Source 3**: Ververica [^6] — 4-9 months. Resolution: batch 5.5mo, streaming 6-9mo, general 4-6mo; security adds 1-2mo, streaming adds 2-4mo.~~
 
-**WITHDRAWN**: per the 2026 audit, the "5.5 months" figure is not in the cited post (which is a phData blog, not Gartner research), the "4-6 months" Confluent figure is not in the cited course, the Ververica entry was fabricated, and the cited SANS "Security Analytics Implementation Timelines" whitepaper does not exist. No surviving timeline figure remains; the hypothesis is plausible but unsupported and needs new sources before any number is cited. a data-platform practitioner practitioner feedback (qualitative) may corroborate a multi-month range but does not, on its own, license a specific figure.
+**WITHDRAWN**: per the 2026 audit, the "5.5 months" figure is not in the cited post (which is a phData blog, not Gartner research), the "4-6 months" Confluent figure is not in the cited course, the Ververica entry was fabricated, and the cited SANS "Security Analytics Implementation Timelines" whitepaper does not exist. No surviving timeline figure remains; the hypothesis is plausible but unsupported and needs new sources before any number is cited. Practitioner feedback (qualitative) may corroborate a multi-month range but does not, on its own, license a specific figure.
 
 ---
 
@@ -280,7 +280,7 @@ Level 5 (Time-Series Optimization):
 
 ## Part 4: Evidence Level Upgrade Opportunities
 
-### Upgrade 1: a data-platform practitioner Practitioner Validation
+### Upgrade 1: Data-Platform Practitioner Validation
 
 **Current Status**: Referenced in Chapter 4 validation, not formally cited in MASTER-BIBLIOGRAPHY.md
 
@@ -293,7 +293,7 @@ Level 5 (Time-Series Optimization):
 
 **Recommendation**: Add to MASTER-BIBLIOGRAPHY.md as:
 ```
-**a data-platform practitioner - Practitioner Validation**
+**A data-platform practitioner - Practitioner Validation**
 **Date**: October 2025
 **Evidence Level**: A (Practitioner validation, production security implementations)
 **Key Findings**:
@@ -368,7 +368,7 @@ The aggregate evidence-level figures below are WITHDRAWN — the 2026 claim-vs-s
 1. ✅ Document 5 source contradictions with resolutions
 2. ✅ Map 4 validation chains (Iceberg, Streaming TCO, Tiered Storage, ClickHouse)
 3. ✅ Identify 3 corroboration patterns (convergence, production scale, triangulation)
-4. ⏳ Add a data-platform practitioner formal citation (Evidence Level A)
+4. ⏳ Add practitioner formal citation (Evidence Level A)
 5. ⏳ Prepare Jake Thomas + Lisa Cao citation templates (pending interviews)
 
 **Future Actions** (Post-Interview):
@@ -378,7 +378,7 @@ The aggregate evidence-level figures below are WITHDRAWN — the 2026 claim-vs-s
 
 ### Target State — WITHDRAWN (2026-06-14 audit)
 
-The "80%+ Level A" target and the academic-publication-readiness grade are WITHDRAWN — they assumed the pre-audit baseline that the 2026 audit overturned. The forward-looking upgrade *opportunities* in Part 4 (a data-platform practitioner, Jake Thomas, Lisa Cao, IT Harvest) remain valid as proposals, but each pending source must be verified at primary before any "Evidence Level A" is assigned, and no aggregate target percentage is claimed.
+The "80%+ Level A" target and the academic-publication-readiness grade are WITHDRAWN — they assumed the pre-audit baseline that the 2026 audit overturned. The forward-looking upgrade *opportunities* in Part 4 (the data-platform practitioner, Jake Thomas, Lisa Cao, IT Harvest) remain valid as proposals, but each pending source must be verified at primary before any "Evidence Level A" is assigned, and no aggregate target percentage is claimed.
 
 ---
 
@@ -412,7 +412,7 @@ These cross-references show which bundles propagated the now-withdrawn stats —
 ### High Priority (Immediate)
 1. ✅ **Document Source Contradictions** - This file captures all 5 contradictions with resolutions
 2. ✅ **Map Validation Chains** - 4 hypotheses with multi-level validation documented
-3. ⏳ **Add a data-platform practitioner Citation** - Formal entry in MASTER-BIBLIOGRAPHY.md (Evidence Level A)
+3. ⏳ **Add Practitioner Citation** - Formal entry in MASTER-BIBLIOGRAPHY.md (Evidence Level A)
 
 ### Medium Priority (Week 3)
 4. **Jake Thomas Interview** - Add formal citation after interview (Evidence Level A)

@@ -1435,7 +1435,7 @@ Integrate all reference links from security-data-commons-blog (published and dra
 - **MASTER-BIBLIOGRAPHY.md**: Evidence Level A percentage corrected from 73% to 79%
   - Recalculation: 57 Level A sources out of 72 total = 79.2%
   - Deleted duplicate Shell ClickHouse cross-reference entry (Line 279-282)
-  - Fixed a data-platform practitioner entry: Changed "Expert:" to "Authors:", added URL field
+  - Fixed practitioner entry: Changed "Expert:" to "Authors:", added URL field
 - **.claude/CLAUDE.md**: Updated all references from 73% to 79% Evidence Level A
 - **REPOSITORY-STATUS.md**: Updated all Evidence Level A statistics (73% → 79%, 55 → 57 sources)
 
@@ -1510,7 +1510,7 @@ Demonstrates complete workflow: Research → Evidence Synthesis → Content Crea
     - Jake Thomas (pending Week 3 interview)
     - Lisa Cao (pending Week 3 interview)
     - IT Harvest (pending partnership)
-- **MASTER-BIBLIOGRAPHY.md**: Added a data-platform practitioner practitioner validation
+- **MASTER-BIBLIOGRAPHY.md**: Added practitioner validation
   - Evidence Level A (production security implementations)
   - Validates Starburst/Athena at security data scale
   - Supports Chapter 4 architectural recommendations

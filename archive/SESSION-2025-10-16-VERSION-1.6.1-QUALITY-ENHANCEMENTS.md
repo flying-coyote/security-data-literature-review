@@ -133,9 +133,9 @@
 - **Action**: Deleted duplicate
 - **Time**: 1 minute
 
-**Fix #2**: Completed a data-platform practitioner entry (Line 1757)
+**Fix #2**: Completed anonymized practitioner entry (Line 1757)
 - **Issue**: Used "Expert:" instead of "Authors:", missing URL field
-- **Action**: Changed to "Authors: a data-platform practitioner", added "URL: Personal communication (Practitioner validation)"
+- **Action**: Changed to "Authors: Anonymized practitioner", added "URL: Personal communication (Practitioner validation)"
 - **Time**: 2 minutes
 
 **Fix #3**: Updated Evidence Level percentage (73% → 79%)
@@ -223,7 +223,7 @@
 1. **MASTER-BIBLIOGRAPHY.md**:
    - Evidence Level: 73% → **79%**
    - Deleted duplicate Shell ClickHouse entry (Lines 279-282)
-   - Fixed a data-platform practitioner entry (Authors, URL fields)
+   - Fixed anonymized practitioner entry (Authors, URL fields)
 2. **.claude/CLAUDE.md**:
    - Updated 2 references: 73% → 79%
 3. **REPOSITORY-STATUS.md**:

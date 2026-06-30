@@ -726,7 +726,7 @@ Security practitioners can now make evidence-based architecture decisions with d
 [TO BE DRAFTED]
 
 - Expert network contributors: Lisa Cao (catalog landscape), Jake Thomas (DuckDB/edge processing)
-- Practitioner validation: a data-platform practitioner (security data platform practitioner)
+- Practitioner validation: a data-platform practitioner
 - IT Harvest partnership (if established): Charles Wells (vendor landscape data)
 
 ---

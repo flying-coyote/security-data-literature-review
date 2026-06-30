@@ -87,7 +87,7 @@ This appendix documents the evidence classification system used to assess source
 2. **Expert Validation**:
    - Practitioner validation interviews
    - Expert consensus from recognized authorities
-   - Example: a data-platform practitioner practitioner validation (Starburst/Athena viability)
+   - Example: a data-platform practitioner's validation (Starburst/Athena viability)
 
 3. **Vendor Technical Documentation**:
    - Official vendor documentation with production validation
@@ -840,7 +840,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ## D.10 Practitioner Validation
 
 **Production Deployment Validation**:
-- [57] a data-platform practitioner: Starburst/Athena viability for security operations (Level B — personal communication, unpublished; not independently verifiable)
+- [57] Anonymized practitioner: Starburst/Athena viability for security operations (Level B — personal communication, unpublished; not independently verifiable)
 
 ---
 

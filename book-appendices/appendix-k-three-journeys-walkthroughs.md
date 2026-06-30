@@ -232,7 +232,7 @@ Dremio batch queries update every 5-15 minutes, adequate for threat hunting ("sh
 - Requires dedicated streaming engineer (18-24 months to hire and build capability)
 - Phase 2 roadmap, not Phase 1 deployment
 
-**2. Spark maintenance requirement** (a data-platform practitioner validation)
+**2. Spark maintenance requirement** (practitioner validation)
 
 Apache Iceberg requires periodic maintenance operations: data file compaction (combining small files into optimized sizes), orphan file cleanup (removing unreferenced files from failed jobs), and snapshot expiration (managing time-travel history). These often require Apache Spark for a self-managed deployment, though Athena (OPTIMIZE/VACUUM), Trino (OPTIMIZE), and Dremio (managed maintenance) can also perform compaction and maintenance, so Spark is the common path rather than the only one.
 

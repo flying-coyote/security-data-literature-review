@@ -688,8 +688,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ### Security Data Architecture
 
-**a data-platform practitioner** (a data platform vendor, Practitioner validation in the variants chapter and Appendix I)
-- LinkedIn: Search "a data-platform practitioner a data platform vendor"
+**A data-platform practitioner** (Practitioner validation in the variants chapter and Appendix I)
 - Focus: Starburst/Athena for security, Denodo virtualization, hybrid architectures
 - **Book Validation**: Provided practitioner validation for multi-engine patterns, hybrid architectures
 

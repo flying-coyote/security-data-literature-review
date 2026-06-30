@@ -232,7 +232,7 @@ def route_query(query_metadata):
         return 'trino'
 ```
 
-**2. Accept Multi-Engine Reality** (a data-platform practitioner validation, Appendix I):
+**2. Accept Multi-Engine Reality** (practitioner validation, Appendix I):
 > "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance. Multi-engine is not failure—it's optimization."
 
 **Multi-Engine Architecture Benefits**:

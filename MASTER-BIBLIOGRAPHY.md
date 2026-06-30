@@ -2579,9 +2579,9 @@ This bibliography consolidates all literature sources from:
 
 ### Practitioner Validation
 
-#### a data-platform practitioner - Security Data Platform Practitioner Validation
+#### Anonymized practitioner - Security Data Platform Practitioner Validation
 
-**Authors**: a data-platform practitioner
+**Authors**: Anonymized practitioner
 **Date**: October 2025
 **URL**: Personal communication (Practitioner validation)
 **Evidence Level**: A (Practitioner validation, production security implementations)
@@ -2667,7 +2667,7 @@ This bibliography consolidates all literature sources from:
 **Last Updated**: October 15, 2025
 **Primary Source Extraction**: 283 of 283 footnotes (100% COMPLETE)
 **Archive Manuscripts**: 74 files assessed (reference existing footnotes only)
-**Practitioner Validation**: 1 formal citation added (a data-platform practitioner)
+**Practitioner Validation**: 1 formal citation added (anonymized practitioner)
 **Total Sources Documented**: 76+
 **Evidence Level A Sources**: ~56 (74%) at the time — pre-audit self-grade, superseded (live ~46%, see header)
 
