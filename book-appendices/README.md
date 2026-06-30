@@ -4,13 +4,13 @@ These thirteen files are the MOAR handbook's Tier-3 deep-evidence appendices, an
 
 ## The Thirteen Appendices
 
-The "Primarily grounds" column maps each appendix to the new seven-chapter spine — Ch.1 *Why cybersecurity data is different* (manageability and the foreground-constraints decision framework), Ch.2 *MOAr explained*, Ch.3 *Trustworthy*, Ch.4 *Well-connected*, Ch.5 *Performant*, Ch.6 *Variants / what good looks like*, Ch.7 *Modularity / incremental modernization* — derived from the chapter cross-references each appendix actually carries.
+The "Primarily grounds" column maps each appendix to the new seven-chapter spine — Ch.1 *Why cybersecurity data is different* (manageability and the foreground-constraints decision framework), Ch.2 *MOAR explained*, Ch.3 *Trustworthy*, Ch.4 *Well-connected*, Ch.5 *Performant*, Ch.6 *Variants / what good looks like*, Ch.7 *Modularity / incremental modernization* — derived from the chapter cross-references each appendix actually carries.
 
 | App. | Title | Filename | Primarily grounds |
 |------|-------|----------|-------------------|
 | A | Decision Worksheets — Security Data Platform Selection | `appendix-a-decision-worksheets.md` | Ch.1 (decision framework / TCO); Ch.6 (variant TCO examples); Ch.7 (business case) |
 | B | Anti-Patterns Catalog | `appendix-b-anti-patterns.md` | Ch.1 (constraints-first decisions); Ch.7 (rollout / change management); Ch.3 (data-trust failure mode) |
-| C | MOAr Reference Architectures — L-I-G-E-R Component Model and Five Patterns | `appendix-c-reference-architectures.md` | Ch.2 (MOAr framework); Ch.6 (the four architect-journey patterns) |
+| C | MOAR Reference Architectures — L-I-G-E-R Component Model and Five Patterns | `appendix-c-reference-architectures.md` | Ch.2 (MOAR framework); Ch.6 (the four architect-journey patterns) |
 | D | Glossary — Security ↔ Data Engineering Translation Guide | `appendix-d-glossary-translation-guide.md` | Ch.1 (manageability framing); Ch.6/Ch.7 (decision-frameworks-in-practice) |
 | E | Consolidated Resource Directory | `appendix-e-resource-directory.md` | Ch.1 (learning path entry point); cross-handbook (companion essay map) |
 | F | OCSF Implementation Guide & Field Mapping Reference | `appendix-f-ocsf-implementation-guide.md` | Ch.3 (trustworthy data — tactical OCSF mapping; pairs with Appendix H) |

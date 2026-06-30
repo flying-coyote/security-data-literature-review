@@ -137,7 +137,7 @@ report on it, and reconciles the source count across every surface that states i
 - **Repo self-description broadened off book-only framing.** The README H1/intro and the bibliography
   Purpose line described the repo as "for the *Modern Data Stack for Cybersecurity* book" — a stale,
   pre-rebrand book title, and book-only scope. The repo is now the shared evidence backbone for the whole
-  Security Data Works program (the rebranded book *Modular Open Architecture (MOAr) for Cybersecurity Data*,
+  Security Data Works program (the rebranded book *Modular Open Architecture (MOAR) for Cybersecurity Data*,
   the securitydataworks.com essays/research, and the applied-bridge positioning, which publicly links here).
   Updated README.md (title + executive summary + purpose) and MASTER-BIBLIOGRAPHY.md:3.
 - **Freshness regex now reads prose dates.** `weekly_health_check.py` matched only a 4-digit year at the

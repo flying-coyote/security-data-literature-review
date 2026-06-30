@@ -1,6 +1,6 @@
 # Living Literature Review — Security Data Works evidence backbone
 
-**Purpose**: Evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning
+**Purpose**: Evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning
 **Last Updated**: June 29, 2026 (Version 1.22.0)
 **Last Reviewed**: June 29, 2026
 **Status**: Phase 2 ACTIVE | Tier-3 evidence companion to the MOAR handbook campaign
@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This repository contains a **living literature review** that is the shared evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAr) for Cybersecurity Data*, the essays and research at securitydataworks.com, and the applied-bridge positioning all cite it. The review bridges cybersecurity and data engineering with evidence-tiered, source-verified research (each entry carries an A/B/C/D tier and a validation verdict in RESEARCH-JOURNAL.md). Published openly (first released October 22, 2025; the original Substack was retired 2026-05-24 and writing moved to securitydataworks.com) with ongoing monthly updates and quarterly deep dives.
+This repository contains a **living literature review** that is the shared evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the essays and research at securitydataworks.com, and the applied-bridge positioning all cite it. The review bridges cybersecurity and data engineering with evidence-tiered, source-verified research (each entry carries an A/B/C/D tier and a validation verdict in RESEARCH-JOURNAL.md). Published openly (first released October 22, 2025; the original Substack was retired 2026-05-24 and writing moved to securitydataworks.com) with ongoing monthly updates and quarterly deep dives.
 
 **Current Status - June 2026** 🔄:
 - **146 sources documented** (~46% Evidence Level A, live — 67/146; honest post-audit baseline + first 2026 Tier-A primary sources + 2 Tier-B bridge-framing sources 2026-06-09; freshness sweep substantially complete — see RESEARCH-JOURNAL.md)
