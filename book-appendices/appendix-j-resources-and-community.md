@@ -402,6 +402,17 @@ checks for ocsf_network_activity:
 - Official docs: https://docs.soda.io/
 - Soda Core (open source): https://github.com/sodadata/soda-core
 
+### J.2.4 EvidenceForge (synthetic correlated test corpora)
+
+**Use case**: Generate realistic, cross-source security logs for detection-rule validation, threat-hunting training, and pipeline/mapping testing, without exposing production data.
+
+Cisco Talos's EvidenceForge (MIT) is a deterministic synthetic-log generator: a single canonical `SecurityEvent` model fans out to 20-plus cross-correlated raw formats, including Windows Security Events, Sysmon, Zeek's 13 log types, eCAR, syslog, Snort, and web/proxy logs. Causal event ordering and Hawkes-process timing keep the cross-source consistency and the inter-event gaps plausible enough that an experienced analyst can hunt over the data without immediately spotting it as synthetic, and generation is fully reproducible with no LLM at runtime. A scenario is a YAML file describing the environment, personas, time window, and optional attack narrative; a built-in four-pillar quality evaluation scores the output.
+
+The catch for a MOAR stack is the same one Chapter 4 makes about the well-connected property: EvidenceForge emits raw per-source formats and does not normalize to OCSF, so it is a *source* corpus, and mapping its output to OCSF (and verifying that mapping) is still yours to do. That makes it well-suited to exercising the mapping-fidelity and cross-source correlation steps on realistic multi-source data rather than single-stream samples.
+
+**Resources**:
+- Repository (Python 3.11+): https://github.com/Cisco-Talos/EvidenceForge
+
 ---
 
 ## J.3: Workflow Orchestration
