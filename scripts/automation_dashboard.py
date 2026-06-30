@@ -98,7 +98,7 @@ def parse_monthly_tracker():
 
 def get_latest_health_report():
     """Get most recent weekly health check report"""
-    reports_dir = "/home/USER/weekly-review-reports"
+    reports_dir = os.path.expanduser("~/weekly-review-reports")
     if not os.path.exists(reports_dir):
         return None
 

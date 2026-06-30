@@ -3,7 +3,7 @@
 # Assembles the manuscript core + tables + references + appendices from the
 # canonical markdown, normalizing heading levels and dropping draft stubs.
 set -euo pipefail
-ROOT="/home/USER/security-data-literature-review"
+ROOT="$HOME/security-data-literature-review"
 cd "$ROOT"
 mkdir -p build
 SRC_M="PUBLICATION-MANUSCRIPT.md"

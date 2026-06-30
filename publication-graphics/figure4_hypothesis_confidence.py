@@ -7,6 +7,7 @@ Creates multi-dimensional confidence scoring visualization with
 source diversity, evidence quality, and quantitative precision.
 """
 
+import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
@@ -280,7 +281,7 @@ def create_hypothesis_confidence():
                 fontsize=16, fontweight='bold', y=0.98)
 
     # Save
-    output_dir = '/home/USER/security-data-literature-review/publication-graphics'
+    output_dir = os.path.expanduser('~/security-data-literature-review/publication-graphics')
     plt.savefig(f'{output_dir}/figure4_hypothesis_confidence.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
     plt.savefig(f'{output_dir}/figure4_hypothesis_confidence.pdf',

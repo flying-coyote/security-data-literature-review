@@ -15,6 +15,7 @@ preserved in git history (pre-2026-06-15); do not re-add it without a re-verifie
 per-source tally.
 """
 
+import os
 import matplotlib.pyplot as plt
 
 # Set publication-quality defaults
@@ -53,7 +54,7 @@ def create_evidence_distribution():
                  fontsize=15, fontweight='bold', y=0.97, color='#B71C1C')
     plt.tight_layout(rect=[0, 0, 1, 0.95])
 
-    output_dir = '/home/USER/security-data-literature-review/publication-graphics'
+    output_dir = os.path.expanduser('~/security-data-literature-review/publication-graphics')
     plt.savefig(f'{output_dir}/figure2_evidence_distribution.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
     plt.savefig(f'{output_dir}/figure2_evidence_distribution.pdf',

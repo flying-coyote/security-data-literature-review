@@ -7,6 +7,7 @@ Creates stacked/grouped visualization showing source type distribution
 with geographic and organizational diversity.
 """
 
+import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
@@ -218,7 +219,7 @@ def create_source_taxonomy():
                 fontsize=16, fontweight='bold', y=0.98)
 
     # Save
-    output_dir = '/home/USER/security-data-literature-review/publication-graphics'
+    output_dir = os.path.expanduser('~/security-data-literature-review/publication-graphics')
     plt.savefig(f'{output_dir}/figure3_source_taxonomy.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
     plt.savefig(f'{output_dir}/figure3_source_taxonomy.pdf',
