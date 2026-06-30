@@ -207,8 +207,8 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 - **Vendor Landscape**: vendor-database.json can seed vendor-landscape/ directory population
 
 **Files**:
-- Source: `/home/USER/security-data-literature-review/vendor-landscape/vendor-database.json`
-- MCP Integration: `/home/USER/security-architect-mcp-server/data/vendor_database.json`
+- Source: `~/security-data-literature-review/vendor-landscape/vendor-database.json`
+- MCP Integration: `~/security-architect-mcp-server/data/vendor_database.json`
 - Documentation: MCP Server `QUALITY-REVIEW-FINAL-SESSION-2.md` (Grade A - 92.7/100)
 - Integration Summary: `vendor-landscape/MCP-VENDOR-INTEGRATION-SUMMARY.md`
 
@@ -495,7 +495,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
   - Checks evidence freshness (27 outdated sources flagged for refresh)
   - Monitors hypothesis validation status
   - Tracks git repository health
-  - Generates markdown reports at `/home/USER/weekly-review-reports/`
+  - Generates markdown reports at `~/weekly-review-reports/`
   - Last run: November 14, 2025 (Status: WARNING - non-critical)
 
 **Dashboard & Decision Support** ✅:
@@ -542,7 +542,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 
 **Files**:
 - Vendor database: `vendor-landscape/vendor-database.json`
-- MCP integration: `/home/USER/security-architect-mcp-server/data/vendor_database.json`
+- MCP integration: `~/security-architect-mcp-server/data/vendor_database.json`
 - Integration summary: `vendor-landscape/MCP-VENDOR-INTEGRATION-SUMMARY.md`
 
 ### Blog-Literature Feedback Loop

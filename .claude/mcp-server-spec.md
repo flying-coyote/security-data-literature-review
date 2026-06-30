@@ -712,9 +712,9 @@ SYNC_SCHEDULE = {
 
 ## References
 
-- [H-MCP-CONTEXT-01](/home/USER/project1/01-knowledge-base/hypotheses/extended-hypotheses.md)
-- [MCP 2025 Best Practices](/home/USER/project1/01-knowledge-base/concepts/mcp-2025-best-practices-implementation-patterns.md)
-- [Genealogy MCP Server Spec](/home/USER/genealogy/.claude/mcp-server-spec.md) - Reference implementation
+- [H-MCP-CONTEXT-01](~/project1/01-knowledge-base/hypotheses/extended-hypotheses.md)
+- [MCP 2025 Best Practices](~/project1/01-knowledge-base/concepts/mcp-2025-best-practices-implementation-patterns.md)
+- [Genealogy MCP Server Spec](~/genealogy/.claude/mcp-server-spec.md) - Reference implementation
 
 ---
 

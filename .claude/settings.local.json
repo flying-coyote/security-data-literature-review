@@ -2,7 +2,7 @@
   "permissions": {
     "allow": [
       "SlashCommand(/session:archive-and-update:*)",
-      "Read(//home/USER/**)",
+      "Read(/~/**)",
       "Bash(crontab:*)",
       "Bash(systemctl:*)",
       "Bash(.venv/bin/python:*)",
@@ -13,7 +13,7 @@
       "WebSearch",
       "Bash(awk:*)",
       "Bash(xargs basename:*)",
-      "Bash(/home/USER/project1/automation/linkedin-sync/.venv/bin/python:*)",
+      "Bash(~/project1/automation/linkedin-sync/.venv/bin/python:*)",
       "Bash(git log:*)",
       "Bash(python3:*)",
       "Bash(git add:*)",
@@ -29,7 +29,7 @@
       "Bash(./venv/bin/python3:*)",
       "Bash(tree:*)",
       "Bash(git init:*)",
-      "Bash(/home/USER/project1/automation/linkedin-sync/.venv/bin/pip list --format=freeze)",
+      "Bash(~/project1/automation/linkedin-sync/.venv/bin/pip list --format=freeze)",
       "Bash(pip3 install:*)",
       "WebFetch(domain:medium.com)",
       "WebFetch(domain:iceberg.apache.org)",
@@ -53,19 +53,19 @@
     {
       "tool": "Read",
       "pattern": "file_path",
-      "regex": "^/home/USER/(project1|modern-data-stack-for-cybersecurity-book|security-data-commons-blog|security-data-literature-review|security-architect-mcp-server|data-quality-flow-health-validation|itu-t-sg17-x-icd-schemas|network-visualization-services|Zeek-to-OCSF-mapping)/.*$",
+      "regex": "^~/(project1|modern-data-stack-for-cybersecurity-book|security-data-commons-blog|security-data-literature-review|security-architect-mcp-server|data-quality-flow-health-validation|itu-t-sg17-x-icd-schemas|network-visualization-services|Zeek-to-OCSF-mapping)/.*$",
       "comment": "Auto-approve reading files across all 9 project repositories"
     },
     {
       "tool": "Edit",
       "pattern": "file_path",
-      "regex": "^/home/USER/(project1|modern-data-stack-for-cybersecurity-book|security-data-commons-blog|security-data-literature-review|security-architect-mcp-server|data-quality-flow-health-validation|itu-t-sg17-x-icd-schemas|network-visualization-services|Zeek-to-OCSF-mapping)/.*$",
+      "regex": "^~/(project1|modern-data-stack-for-cybersecurity-book|security-data-commons-blog|security-data-literature-review|security-architect-mcp-server|data-quality-flow-health-validation|itu-t-sg17-x-icd-schemas|network-visualization-services|Zeek-to-OCSF-mapping)/.*$",
       "comment": "Auto-approve editing files across all 9 project repositories"
     },
     {
       "tool": "Write",
       "pattern": "file_path",
-      "regex": "^/home/USER/(project1|modern-data-stack-for-cybersecurity-book|security-data-commons-blog|security-data-literature-review|security-architect-mcp-server|data-quality-flow-health-validation|itu-t-sg17-x-icd-schemas|network-visualization-services|Zeek-to-OCSF-mapping)/.*$",
+      "regex": "^~/(project1|modern-data-stack-for-cybersecurity-book|security-data-commons-blog|security-data-literature-review|security-architect-mcp-server|data-quality-flow-health-validation|itu-t-sg17-x-icd-schemas|network-visualization-services|Zeek-to-OCSF-mapping)/.*$",
       "comment": "Auto-approve writing files across all 9 project repositories"
     },
     {
@@ -149,7 +149,7 @@
     {
       "tool": "Bash",
       "pattern": "command",
-      "regex": "^(\\./|\\.\\./|/home/USER/).*(\\.(sh|bash|py)|\\.venv/bin/).*$",
+      "regex": "^(\\./|\\.\\./|~/).*(\\.(sh|bash|py)|\\.venv/bin/).*$",
       "comment": "Execute scripts and virtual environment binaries"
     },
     {

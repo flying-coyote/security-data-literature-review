@@ -345,12 +345,12 @@ The MCP vendor database uses a Tier A/B/C/D classification that aligns with the 
 
 ### Source Files
 
-**Master Database**: `/home/USER/security-data-literature-review/vendor-landscape/vendor-database.json`
+**Master Database**: `~/security-data-literature-review/vendor-landscape/vendor-database.json`
 - 71 vendors
 - 79 vendor-level evidence sources
 - 84% Tier A quality (corrected evidence_summary metadata)
 
-**MCP Server Database**: `/home/USER/security-architect-mcp-server/data/vendor_database.json`
+**MCP Server Database**: `~/security-architect-mcp-server/data/vendor_database.json`
 - Synced via `scripts/sync_from_literature_review.py`
 - 71 vendors
 - 110 evidence sources (79 vendor-level + ~31 capability-level)
@@ -358,35 +358,35 @@ The MCP vendor database uses a Tier A/B/C/D classification that aligns with the 
 
 ### Automation Scripts
 
-**Sync Script**: `/home/USER/security-architect-mcp-server/scripts/sync_from_literature_review.py`
+**Sync Script**: `~/security-architect-mcp-server/scripts/sync_from_literature_review.py`
 - Bidirectional sync (literature review ↔ MCP server)
 - Evidence tier validation
 - Schema transformation (integrated → MCP format)
 - Generates INTEGRATION_STATUS.md
 
-**Weekly Refresh**: `/home/USER/security-architect-mcp-server/scripts/weekly_vendor_refresh.py`
+**Weekly Refresh**: `~/security-architect-mcp-server/scripts/weekly_vendor_refresh.py`
 - Validates analyst URLs (Gartner MQ, Forrester Wave)
 - Checks for new publications
 - Updates timestamps
 - Auto-syncs to MCP server
 
-**Monthly GitHub Metrics**: `/home/USER/security-architect-mcp-server/scripts/github_metrics_tracker.py`
+**Monthly GitHub Metrics**: `~/security-architect-mcp-server/scripts/github_metrics_tracker.py`
 - Fetches stars, forks, watchers for 24 OSS repos
 - Updates adoption metrics evidence
 - Generates monthly trends report
 
 ### Documentation
 
-**Quality Review**: `/home/USER/security-architect-mcp-server/docs/QUALITY-REVIEW-FINAL-SESSION-2.md`
+**Quality Review**: `~/security-architect-mcp-server/docs/QUALITY-REVIEW-FINAL-SESSION-2.md`
 - Comprehensive quality assessment
 - Grade: A (Excellent) - 92.7/100
 - 5 dimensions analyzed (evidence quality, vendor expansion, production readiness, blog recommendations, strategic decisions)
 
-**Session Archive**: `/home/USER/security-architect-mcp-server/docs/SESSION-2025-10-23-SESSION-2-VENDOR-EXPANSION.md`
+**Session Archive**: `~/security-architect-mcp-server/docs/SESSION-2025-10-23-SESSION-2-VENDOR-EXPANSION.md`
 - Complete session archive with work completed, decisions made, metrics achieved
 - Files created/modified, git commits, next steps & recommendations
 
-**Integration Recommendations**: `/home/USER/security-architect-mcp-server/docs/LITERATURE-REVIEW-UPDATE-RECOMMENDATIONS.md`
+**Integration Recommendations**: `~/security-architect-mcp-server/docs/LITERATURE-REVIEW-UPDATE-RECOMMENDATIONS.md`
 - Priority-ranked updates for literature review repository
 - Integration benefits, files to create/modify, strategic value
 

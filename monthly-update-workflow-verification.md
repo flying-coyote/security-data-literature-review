@@ -20,7 +20,7 @@
 
 **weekly_health_check.py**:
 - ✅ Runs successfully (tested November 14, 2025)
-- ✅ Generates health reports at `/home/USER/weekly-review-reports/`
+- ✅ Generates health reports at `~/weekly-review-reports/`
 - ✅ Validates links (2 broken links identified and fixed)
 - ✅ Checks evidence freshness (27 outdated sources flagged)
 - ✅ Monitors git status and uncommitted changes
