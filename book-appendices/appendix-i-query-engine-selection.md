@@ -875,9 +875,9 @@ def lambda_handler(event, context):
 - Volume: 10 TB/day raw → 2 TB/day processed (**80% reduction**)
 - Storage: $7,080/month → $1,416/month (**$5,664/month savings**)
 - Query speed: 5-minute threat hunts → 1-minute threat hunts (**5× faster**)
-- Cost per Lambda execution: $0.0000167/invocation × 10,000 invocations/day = **$167/day = $5,000/month** (still net savings vs storing unfiltered)
+- Cost per Lambda execution: $0.0000167/invocation × 10,000 invocations/day = **~$0.17/day ≈ ~$5/month** (still net savings vs storing unfiltered)
 
-What edge preprocessing does is trade compute cost (Lambda executions) for storage and query cost savings, and at CloudTrail scale (TB/day) the storage plus query savings exceed the compute cost by roughly 3-5×.
+What edge preprocessing does is trade compute cost (Lambda executions) for storage and query cost savings, and at CloudTrail scale (TB/day) the storage plus query savings dwarf the compute cost.
 
 ### I.5.3 VPC Flow Logs Aggregation
 

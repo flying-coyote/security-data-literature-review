@@ -790,11 +790,11 @@ I'd reach for Delta over Iceberg in one fairly specific situation: you've commit
 It's best for Databricks-centric environments, unified batch and streaming, and tight Spark integration.
 
 **When to use Delta over Iceberg**:
-- Databricks-committed (the unified-platform variant in the what-good-looks-like chapter)
+- Databricks-committed (the cloud-commitment variant in the what-good-looks-like chapter, §6.2)
 - Spark-only workload (no multi-engine requirement)
 - Change Data Capture (CDC) critical (Delta CDC features)
 
-**Interoperability**: Delta UniForm (the unified-platform variant in the what-good-looks-like chapter) maintains Delta + Iceberg simultaneously (migration path).
+**Interoperability**: Delta UniForm (the cloud-commitment variant in the what-good-looks-like chapter, §6.2) maintains Delta + Iceberg simultaneously (migration path).
 
 **Resources**:
 - Official docs: https://docs.delta.io/
@@ -1567,4 +1567,4 @@ Time invested in community tends to pay back unevenly but substantially: one wel
 **Validation sources**:
 - Appendix I (Query Engine Selection): Multi-engine production patterns
 - Appendix H (OCSF Strategy): dbt + Great Expectations for OCSF validation
-- What good looks like (MOAR variants): Databricks MLflow, Delta Lake patterns
+- What good looks like (the cloud-commitment variant, §6.2): Databricks MLflow, Delta Lake patterns
