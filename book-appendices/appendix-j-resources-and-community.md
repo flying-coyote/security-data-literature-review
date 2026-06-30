@@ -978,7 +978,7 @@ Spark's community is broader and more diluted than Iceberg's — you'll get answ
 - **Best for**: Architecture reviews, career advice, tool comparisons
 - **Example questions**:
   - "Hybrid Iceberg architecture review: Trino + Dremio + Spark" (Appendix I.6)
-  - "Snowflake vs MOAr for security: cost comparison"
+  - "Snowflake vs MOAR for security: cost comparison"
   - "Transitioning from a schema-on-read SIEM to a lakehouse: lessons learned?"
 
 **Who's there**: Data engineers from all industries, active practitioners, some vendor representatives.

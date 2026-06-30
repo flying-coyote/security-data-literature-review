@@ -17,7 +17,7 @@ Jennifer is a composite teaching scenario rather than a single named deployment,
 
 ### Requirements Mapping: The Decision Framework Applied
 
-Jennifer used the three-tier requirement hierarchy from the handbook's decision framework (the foreground / decision material in Chapter 1) to filter the vendor landscape systematically.
+Jennifer used the three-tier requirement hierarchy from the handbook's decision framework (Chapter 6, the variants chapter) to filter the vendor landscape systematically.
 
 **Tier 1: Mandatory Requirements (Disqualification Criteria)**
 
@@ -431,7 +431,7 @@ Detailed cost breakdown:
   - Year 2-3: S3 Infrequent Access ($0.0125/GB/month) — $0.15M/year incremental
   - Year 4-7: S3 Glacier Flexible Retrieval ($0.0036/GB/month) — $0.05M/year incremental
 - **Athena query costs**: $800K/year
-  - 500 TB scanned/month average (analysts, dashboards, compliance)
+  - 500 TB scanned/day average (analysts, dashboards, compliance)
   - $5/TB scanned = $2,500/day × 365 days = $913K/year
   - AWS discount (volume pricing from $15M commitment): 12% discount = $800K/year
 - **Glue catalog + Kinesis Firehose**: $400K/year

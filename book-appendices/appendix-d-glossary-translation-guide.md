@@ -35,7 +35,7 @@ Consider a representative exchange between a security architect and a data engin
 
 The security architect knows what they need, which is threat detection across data sources with long-term retention, and the data engineer knows how to build it with streaming pipelines, table formats, and query engines. Translation friction is what slows collaboration, and the root cause is that the two disciplines evolved in different problem domains.
 
-**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 7 years for SOC 2 and HIPAA requirements, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering — finding rare events in billions of rows — and the latency requirements combine real-time alerting (under 5 minutes) with interactive investigation (under 60 seconds).
+**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 7 years for SOC 2, 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering — finding rare events in billions of rows — and the latency requirements combine real-time alerting (under 5 minutes) with interactive investigation (under 60 seconds).
 
 **Business Intelligence** is oriented toward metrics, reporting, and decision-making. Its data is structured, drawn from transactional systems. Retention follows business value — delete when data is no longer useful. The query workload is aggregation and rollups, summarizing millions of rows to thousands of reporting rows. Batch ETL running hourly or daily is acceptable, and dashboard refresh under 10 seconds satisfies most use cases.
 
@@ -73,7 +73,7 @@ Traditional schema-on-read SIEM approach couples storage and compute:
 - Elasticsearch cluster: Storage (shards) + compute (query nodes) in same infrastructure
 - Problem: Scaling storage requires scaling compute (expensive, inflexible)
 
-MOAr approach separates them:
+MOAR approach separates them:
 
 ```
 Storage Layer               Compute Layer
@@ -293,10 +293,10 @@ After building vocabulary, you face concrete decisions: which table format, whic
 **Detailed Decision Frameworks**: See **Appendix C (Reference Architectures)** for the detailed table format comparison, catalog selection matrix, and dbt implementation patterns for security data.
 
 **Cross-References**:
-- **The what-good-looks-like material** (the variants chapter, Chapter 6 of the handbook): worked examples applying these decision frameworks across the MOAr variants, with the incremental-modernization decisions carried in the modularity chapter (Chapter 7)
+- **The what-good-looks-like material** (the variants chapter, Chapter 6 of the handbook): worked examples applying these decision frameworks across the MOAR variants, with the incremental-modernization decisions carried in the modularity chapter (Chapter 7)
 - **Appendix H**: OCSF normalization with dbt (detailed implementation)
 - **Appendix I**: Query engine selection (complements table format + catalog choices)
-- **Appendix C**: Reference architectures (Iceberg + Polaris + dbt in MOAr architecture)
+- **Appendix C**: Reference architectures (Iceberg + Polaris + dbt in MOAR architecture)
 
 ---
 
@@ -459,17 +459,17 @@ Security architects who speak both languages can use mature tooling, proven desi
 
 ---
 
-#### Modular Open Architecture (MOAr)
+#### Modular Open Architecture (MOAR)
 **Security Term**: Next-gen SIEM architecture, security data lake, lakehouse for security
 **Data Engineering Equivalent**: Composable data platform, lakehouse architecture, modular data stack
 **Context**:
 - **Definition**: Architectural philosophy for cybersecurity data: composable, vendor-neutral components selected based on organizational constraints rather than vendor bundling
 - **Five design principles**: (1) Vendor-neutral data layer, (2) Separation of storage and compute, (3) Compression-first design, (4) Schema evolution without breaking changes, (5) Query engine specialization
-- **Component model (L-I-G-E-R)**: Lakehouse (Iceberg/Delta) + Index (Polaris/Unity) + Graph (Grafana) + Engine (StarRocks/ClickHouse/Trino/DuckDB) + Route (Cribl/Tenzir/Kafka). Note: this book uses MOAr (Modular Open Architecture) for the architecture itself, and LIGER (L-I-G-E-R) for the specific five-layer reference composition the lab builds and tests — one instance of MOAr, not a synonym for it. LIGER was also this project's earlier overall working name, so references to LIGER in older notes or drafts may mean either the project or the reference stack.
+- **Component model (L-I-G-E-R)**: Lakehouse (Iceberg/Delta) + Index (Polaris/Unity) + Graph (Grafana) + Engine (StarRocks/ClickHouse/Trino/DuckDB) + Route (Cribl/Tenzir/Kafka). Note: this book uses MOAR (Modular Open Architecture) for the architecture itself, and LIGER (L-I-G-E-R) for the specific five-layer reference composition the lab builds and tests — one instance of MOAR, not a synonym for it. LIGER was also this project's earlier overall working name, so references to LIGER in older notes or drafts may mean either the project or the reference stack.
 - **Graph (the G) is usually a passthrough** rather than a build decision: the shop almost always already has somewhere its analysts work — Grafana, Superset, a custom hunt UI, or the incumbent SOC consoles (Splunk, Elastic, Sentinel) kept for federated read during a transition — and whatever sits on top inherits the trust, connection, and performance properties from the layers underneath rather than creating them, so the book stays exhaustive about the infrastructure below the analytic and deliberately not about the analytic itself. That's also why the lab ships no swap verb for Graph: it's a passthrough, not a component the lab swaps and answer-equality-checks.
 - **Index (the catalog layer) is a scale-and-governance bet**: at single-node SOC scale it earns its place less from query performance — the engines answer sub-second whether or not a separate catalog is brokering metadata — and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake rather than being needed on day one in every deployment.
-- **Contrast with SIEM**: SIEM bundles all capabilities in one platform; MOAr separates concerns into interchangeable layers
-**Why It Matters**: MOAr is the organizing framework of this book — understanding it bridges security architects ("I need detection and response") with data engineers ("I need composable, open-format storage and compute")
+- **Contrast with SIEM**: SIEM bundles all capabilities in one platform; MOAR separates concerns into interchangeable layers
+**Why It Matters**: MOAR is the organizing framework of this book — understanding it bridges security architects ("I need detection and response") with data engineers ("I need composable, open-format storage and compute")
 **See**: About This Book (definition), Appendix C (reference architectures), and the manageability-over-extreme-performance material that opens the handbook (Chapter 1) for the opportunity framing
 
 ---
@@ -685,7 +685,7 @@ For data engineers reading this book, here are security terms translated into da
 
 **What security architects often assume**: SIEM capabilities are too specialized to replicate with general-purpose data engineering tools.
 
-**How data engineers think about it**: SIEMs are specialized data lakes — the features are real, but they're not magic. For most SOC workflows, a MOAr stack covers most of the structured-analytics ground, with named gaps — streaming subsearch, the transaction model — that decide specific shops [*qualifier: this book's assessment based on production architecture patterns; no independent third-party study has benchmarked this at the 80–90% figure specifically*]:
+**How data engineers think about it**: SIEMs are specialized data lakes — the features are real, but they're not magic. For most SOC workflows, a MOAR stack covers most of the structured-analytics ground, with named gaps — streaming subsearch, the transaction model — that decide specific shops [*qualifier: this book's assessment based on production architecture patterns; no independent third-party study has benchmarked this at the 80–90% figure specifically*]:
 - **SPL core detection queries** largely translate to standard SQL (GROUP BY, window functions, time-bucketing) — but SPL's streaming subsearch and transaction model have no direct SQL equivalent and require workarounds in stream processors such as Flink
 - **Real-time alerting** = Stream processing (Kafka + Flink = proven at scale)
 - **Investigation workflow** = SQL workbench + Jupyter notebooks (familiar to data engineers)

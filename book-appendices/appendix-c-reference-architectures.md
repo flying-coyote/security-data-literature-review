@@ -1,25 +1,25 @@
 ---
 type: design
-title: "Appendix C: MOAr Reference Architectures — L-I-G-E-R Component Model and Five Patterns"
+title: "Appendix C: MOAR Reference Architectures — L-I-G-E-R Component Model and Five Patterns"
 created: 2025-10-15
 tags: [moar, liger, iceberg, architecture-design, multi-engine, security-data]
 ---
 
-# Appendix C: MOAr Reference Architectures
+# Appendix C: MOAR Reference Architectures
 
-**Purpose**: Visual diagrams and detailed implementation patterns for validated security data architectures based on Modular Open Architecture (MOAr) principles. Each pattern includes: architecture diagram, technology stack, deployment considerations, cost profile, and when to use.
+**Purpose**: Visual diagrams and detailed implementation patterns for validated security data architectures based on Modular Open Architecture (MOAR) principles. Each pattern includes: architecture diagram, technology stack, deployment considerations, cost profile, and when to use.
 
 **How to use**: Find the pattern that matches YOUR organizational constraints (from Worksheet A.2). Use as starting template, adapt for your specific requirements.
 
 ---
 
-## The MOAr Framework
+## The MOAR Framework
 
-Modular Open Architecture (MOAr) is a composable, vendor-neutral approach to security data infrastructure. Rather than selecting a monolithic SIEM that bundles storage, query, visualization, and pipeline into a single vendor's stack, MOAr separates these concerns into interchangeable layers so an organization can pick the strongest component for each one.
+Modular Open Architecture (MOAR) is a composable, vendor-neutral approach to security data infrastructure. Rather than selecting a monolithic SIEM that bundles storage, query, visualization, and pipeline into a single vendor's stack, MOAR separates these concerns into interchangeable layers so an organization can pick the strongest component for each one.
 
-![The MOAr reference architecture: security data flows from Source through Ingest, Store, and Analysis to security Tasks, built on open standards—Apache Arrow and Apache Iceberg for data, OCSF for schema, and Sigma for portable detection logic—with every layer independently swappable.](figures/moar-architecture.png){ width=95% }
+![The MOAR reference architecture: security data flows from Source through Ingest, Store, and Analysis to security Tasks, built on open standards—Apache Arrow and Apache Iceberg for data, OCSF for schema, and Sigma for portable detection logic—with every layer independently swappable.](figures/moar-architecture.png){ width=95% }
 
-### Five MOAr Design Principles
+### Five MOAR Design Principles
 
 Every reference architecture in this appendix (except Pattern 4: Traditional SIEM) applies these principles to varying degrees:
 
@@ -33,7 +33,7 @@ Every reference architecture in this appendix (except Pattern 4: Traditional SIE
 
 5. **Query Engine Specialization** — No single engine is optimal for real-time alerting, ad-hoc investigations, and scheduled reporting. Deploy the right engine for each workload. *Validation test*: You can choose the right tool for each workload without creating data silos.
 
-### MOAr Component Model (L-I-G-E-R)
+### MOAR Component Model (L-I-G-E-R)
 
 The reference implementation organizes components into five interchangeable layers:
 
@@ -49,7 +49,7 @@ The Graph layer is usually a passthrough rather than a build decision, because t
 
 One honest caveat on where the catalog/Index layer earns its place: at the single-node SOC scale I test, it pulls its weight less from query performance — the engines answer sub-second whether or not a separate catalog is brokering metadata — and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake, which makes the catalog a scale-and-governance bet rather than a layer every deployment needs on day one.
 
-Each pattern below represents a different combination of these components, optimized for specific organizational constraints. The five patterns form a spectrum from fully monolithic (Pattern 4: Traditional SIEM) to fully composable (Pattern 5: MOAr Multi-Engine).
+Each pattern below represents a different combination of these components, optimized for specific organizational constraints. The five patterns form a spectrum from fully monolithic (Pattern 4: Traditional SIEM) to fully composable (Pattern 5: MOAR Multi-Engine).
 
 One caveat keeps the interchangeability honest: it holds only when encryption stays *outside* the open file format. Parquet's own modular encryption (PME) ties an encrypted file to the library that wrote it; in lab testing, a PME-encrypted file produced by one reader was unreadable by DuckDB, Polars, DataFusion, and ClickHouse, so encrypting inside the file silently revokes the swap-any-engine property the layer model depends on (Principle 1's "swap Trino for Dremio" test fails outright). For regulated data that must be encrypted at rest, encrypt at the volume or object-store layer (SSE-S3/SSE-KMS, dm-crypt, LUKS) so the bytes the engines read stay portable, rather than inside the Parquet file — or accept that the encrypting engine becomes the only one that can read the data.
 
@@ -65,7 +65,7 @@ Those are external deployments that validate the principles at scale; the interc
 
 ### The swap-clean claim, stated once
 
-The promise underneath MOAr is that each layer can be replaced with an alternative and the data — and the answers you get back from it — survive the change. That is the whole reversibility argument: if a layer choice turns out wrong, you swap the part and the data stays, which is a sentence a monolith vendor cannot say, and it is why the architecture can defend itself even where any single component choice is debatable. The L-I-G-E-R reference composition (the table above) is *one* instantiation of MOAr at a stated scale, not MOAr itself; the durable claim is that maintained open-standard parts compose over open formats, and the specific parts I name below are the composition I happen to defend on a single host, each of them falsifiable on its own. The reference stack ships a swap verb per layer that writes or reads the same OCSF data through the alternative component and checks that the answer doesn't move:
+The promise underneath MOAR is that each layer can be replaced with an alternative and the data — and the answers you get back from it — survive the change. That is the whole reversibility argument: if a layer choice turns out wrong, you swap the part and the data stays, which is a sentence a monolith vendor cannot say, and it is why the architecture can defend itself even where any single component choice is debatable. The L-I-G-E-R reference composition (the table above) is *one* instantiation of MOAR at a stated scale, not MOAR itself; the durable claim is that maintained open-standard parts compose over open formats, and the specific parts I name below are the composition I happen to defend on a single host, each of them falsifiable on its own. The reference stack ships a swap verb per layer that writes or reads the same OCSF data through the alternative component and checks that the answer doesn't move:
 
 - **L — store**: MinIO ↔ SeaweedFS, both speaking S3, same OCSF batch, identical answer (`./moar swap-store`).
 - **I — catalog**: the Iceberg REST reference fixture ↔ Nessie ↔ Lakekeeper, three independent codebases (Java reference, Java/Quarkus, Rust/Postgres) implementing the same Iceberg REST contract, identical answer across all three (`./moar swap-catalog`).
@@ -106,7 +106,7 @@ The budget and cost figures throughout this appendix are outputs of the TCO mode
 | 2. Cloud-Native AWS-First | AWS-committed, cloud-first, cost optimization | 3-5 data engineers; 50+ analysts | $500K-2M |
 | 3. Multi-Cloud Federated (Denodo) | Multi-national, data sovereignty, M&A | 5+ data engineers; distributed teams | $2M+ (complexity premium) |
 | 4. Traditional SIEM (Splunk ES) | Real-time mandate, zero data engineers, simplicity | 0 data engineers (SOC analysts) | $2M-12M (volume-dependent) |
-| 5. MOAr Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $400K-800K |
+| 5. MOAR Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $400K-800K |
 
 Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus Path A, Priya, Marcus Path B) — the "what good looks like" material, Chapter 6 of the handbook; Pattern 5 to Appendix I. Full detail for each follows below.
 
@@ -405,7 +405,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Data Transfer** | $12K-$24K/year | Cross-region (if multi-region), VPC endpoints |
 | **QuickSight** | $12K-$24K/year | 50 users × $24/user/month |
 | **Personnel** (3-5 data engineers) | N/A | Existing headcount |
-| **TOTAL** | **$444K-$828K/year** | A.6-modeled; vs. Splunk $12M (~93-96% savings; Splunk figure per the Ch 4 Marcus case) |
+| **TOTAL** | **$444K-$828K/year** | A.6-modeled; vs. Splunk $12M (~93-96% savings; Splunk figure per the Ch 6 Marcus case) |
 
 **ROI**: 12-18 month payback, illustrative (A.6 model, vs. Splunk expansion cost avoided)
 
@@ -734,7 +734,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 ---
 
-## Pattern 5: MOAr Multi-Engine Architecture
+## Pattern 5: MOAR Multi-Engine Architecture
 
 ### Architecture Overview (Appendix I Pattern)
 
@@ -866,7 +866,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 ---
 
-## Materialized Views Strategy for MOAr Architectures
+## Materialized Views Strategy for MOAR Architectures
 
 **Applies to**: Pattern 1 (Healthcare Hybrid), Pattern 2 (AWS-First), Pattern 5 (Multi-Engine)
 

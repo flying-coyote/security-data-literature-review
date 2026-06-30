@@ -226,7 +226,7 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 - [ ] Acceptable ROI timeline: [ ] 1 year [ ] 2 years [ ] 3+ years
 
 **Constraint 2 Implication**:
-- **<$500K budget** → MOAr (Iceberg + OSS Trino) or cloud-native serverless (Athena)—traditional SIEM infeasible
+- **<$500K budget** → MOAR (Iceberg + OSS Trino) or cloud-native serverless (Athena)—traditional SIEM infeasible
 - **$500K-$2M budget** → All options viable—decision shifts to team capacity, not cost
 - **$2M+ budget** → Cost less constraining—focus on operational fit, vendor relationship strategy
 
@@ -382,7 +382,7 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 - [ ] Multi-tier lifecycle policies (automated S3 Standard → Glacier transition, NVMe → HDD, policy-driven not manual)
 - [ ] Cold storage queryability (query engine reads Glacier/cold tier—not "archived offline to tape")
 - [ ] Immutable table format (versioned, append-only: Iceberg snapshots, Delta versions—compliance audit trail)
-- [ ] Compression efficiency (ZSTD, Snappy codecs materially reduce cold-storage cost; the exact ratio is workload-dependent — measure it on your own data, and see the SDW Lab compression results in Appendix C/I for measured figures rather than relying on an illustrative one here)
+- [ ] Compression efficiency (ZSTD, Snappy codecs materially reduce cold-storage cost; the exact ratio is workload-dependent — measure it on your own data, and see the SDW Lab compression results in Appendix C for measured figures rather than relying on an illustrative one here)
 
 **Candidate Platforms**:
 - ✓ Iceberg + S3 (S3 lifecycle automated, Athena/Trino query Glacier slowly but functional, snapshot isolation immutable, Parquet codecs)
@@ -650,7 +650,7 @@ Based on Tier 1 filtering (_______ vendors eliminated), Tier 2-3 scoring (top 3-
 
 ## Worksheet A.6: TCO Calculator & Cost Analysis
 
-**Purpose**: A Total Cost of Ownership (TCO) calculation methodology for comparing traditional SIEM vs. MOAr vs. hybrid architectures at YOUR specific data volume and retention requirements.
+**Purpose**: A Total Cost of Ownership (TCO) calculation methodology for comparing traditional SIEM vs. MOAR vs. hybrid architectures at YOUR specific data volume and retention requirements.
 
 **Instructions**: Input your organization's actual data volume, retention requirements, and team capacity. Calculator provides annual TCO comparison across platform options.
 
@@ -720,11 +720,11 @@ Marcus's $12M renewal at 10-12 TB/day reconciles to the published list almost ex
 
 ---
 
-### Step 3: MOAr Cost Model
+### Step 3: MOAR Cost Model
 
 **Architecture**: S3/Blob storage + Iceberg table format + Query engine (Trino/Dremio/Athena) + Alerting (OSS or lightweight SIEM for hot tier only)
 
-**Pricing currency**: cloud and vendor rates in this MOAr cost model are as of Q4 2025; verify current rates before procurement.
+**Pricing currency**: cloud and vendor rates in this MOAR cost model are as of Q4 2025; verify current rates before procurement.
 
 **Component Costs**:
 
@@ -751,7 +751,7 @@ Marcus's $12M renewal at 10-12 TB/day reconciles to the published list almost ex
 - Elastic hot tier: $5K-$12K/month
 - **OR** skip SIEM entirely, use Flink + Iceberg for streaming alerts
 
-**MOAr Total (2 TB/day example)**:
+**MOAR Total (2 TB/day example)**:
 ```
 Storage:
 - Hot (60 TB): 60,000 GB × $0.023/GB/month = $1,380/month
@@ -774,7 +774,7 @@ TOTAL: $264K + $30K + $105K (midpoint) + $66K (midpoint) = $465K/year
 **Savings vs. schema-on-read SIEM**: $684K - $465K = **$219K/year (32% savings)** (model-derived: both sides are computed from the rate assumptions above, not a measured invoice comparison)
 **Savings vs. Sentinel**: ~$3.7M-$6.9M - $465K ≈ **$3.2M-$6.4M/year (88-93% savings)**
 
-Savings increase with data volume and retention period because storage is a marginal cost in MOAr but a fixed license cost in SIEM.
+Savings increase with data volume and retention period because storage is a marginal cost in MOAR but a fixed license cost in SIEM.
 
 ---
 
@@ -785,7 +785,7 @@ Savings increase with data volume and retention period because storage is a marg
 **Why Hybrid**:
 - Organizational inertia (existing Splunk investment, trained analysts, operational continuity)
 - Regulatory requirements (SEC <30 sec real-time detection, SIEM-proven compliance)
-- Team capacity constraints (0-1 data engineers, cannot support full MOAr)
+- Team capacity constraints (0-1 data engineers, cannot support full MOAR)
 
 **Cost Model** (2 TB/day with 10:1 route-by-value):
 ```
@@ -813,7 +813,7 @@ TOTAL HYBRID: $60K (SIEM) + $210K (Lake) + $310K (Pipeline) = $580K/year
 **When Hybrid Makes Sense**:
 - Existing SIEM investment (sunk cost, but trained team)
 - Real-time regulatory requirement (<30 sec, SIEM-proven)
-- Team capacity 0-1 engineers (cannot support full MOAr complexity)
+- Team capacity 0-1 engineers (cannot support full MOAR complexity)
 - See the variants chapter of the handbook (Chapter 6, "What good looks like") for the full hybrid approach
 
 ---
@@ -826,25 +826,25 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 |-----------------------|------------|----------|-----------|-------------------------|------------------------|
 | **Traditional SIEM (schema-on-read)** | $365K-$1.1M/year | $1.5M-$4.4M/year | $7.3M-$22M/year | ✗ Hot only (30-90 days) | 0 data engineers (SOC-managed) |
 | **Traditional SIEM (Sentinel)** | $0.95M-$1.7M/year | $3.7M-$6.9M/year | $19M-$34M/year | ✓ Queryable (slow cold tier) | 0 data engineers (cloud-managed) |
-| **MOAr (OSS)** | $180K-$280K/year | $265K-$470K/year | $548K-$848K/year | ✓ Full query transparency | 3-5 data engineers (self-hosted) |
-| **MOAr (Cloud-Managed)** | $220K-$350K/year | $380K-$650K/year | $950K-$1.5M/year | ✓ Full query transparency | 1-2 data engineers (managed services) |
+| **MOAR (OSS)** | $180K-$280K/year | $265K-$470K/year | $548K-$848K/year | ✓ Full query transparency | 3-5 data engineers (self-hosted) |
+| **MOAR (Cloud-Managed)** | $220K-$350K/year | $380K-$650K/year | $950K-$1.5M/year | ✓ Full query transparency | 1-2 data engineers (managed services) |
 | **Hybrid (SIEM + Lake)** | $280K-$450K/year | $500K-$850K/year | $2M-$3.5M/year | ✓ Lake queryable, SIEM hot | 1-2 data engineers + SOC analysts |
 
-**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAr but a fixed license cost for the SIEM — the modeled gap is roughly 92-96% at 10 TB/day and 45-60% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between at a modeled 15-30% savings versus a full SIEM, and it solves the retention gap while staying workable for a team with zero or one data engineer.
+**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM — the modeled gap is roughly 92-96% at 10 TB/day and 45-60% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between at a modeled 15-30% savings versus a full SIEM, and it solves the retention gap while staying workable for a team with zero or one data engineer.
 
 ---
 
 ### Step 6: ROI Calculation & Payback Period
 
-**Migration Cost** (if moving from incumbent SIEM to MOAr):
+**Migration Cost** (if moving from incumbent SIEM to MOAR):
 - Professional services / consulting: $150K-$500K (depends on complexity, 6-12 months timeline)
 - Staff time (internal): 2-3 FTE × 6 months = $75K-$150K loaded cost
 - Training (SOC analysts, SQL workshops): $20K-$50K
 - **Total migration cost**: $245K-$700K (one-time)
 
-**Annual Savings** (2 TB/day example, schema-on-read SIEM → MOAr):
+**Annual Savings** (2 TB/day example, schema-on-read SIEM → MOAR):
 - Current schema-on-read SIEM cost: $684K/year (hot only, archive gap)
-- MOAr cost: $465K/year (full 7-year retention)
+- MOAR cost: $465K/year (full 7-year retention)
 - **Annual savings**: $219K/year
 
 **Payback Period** (using ~$450K, the midpoint of the $245K-$700K migration range):
@@ -859,7 +859,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 **When NOT to Migrate** (stay with incumbent SIEM):
 - Payback > 3 years (savings too small to justify disruption)
-- Team capacity 0 engineers (no one to operate MOAr)
+- Team capacity 0 engineers (no one to operate MOAR)
 - Operational continuity critical (SEC real-time requirement, cannot tolerate migration risk)
 - See the variants chapter of the handbook (Chapter 6, "What good looks like") for the "When Splunk Wins" case where staying with the incumbent is the valid approach
 
@@ -869,7 +869,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 **Pricing currency**: the hidden-cost rates below are as of Q4 2025; verify current rates before procurement.
 
-**MOAr Hidden Costs**:
+**MOAR Hidden Costs**:
 1. **Staff learning curve**: 2-day SQL workshop for SOC analysts ($5K-$15K training budget)
 2. **Data engineering hiring**: $150K-$180K/year per engineer (if team capacity insufficient)
 3. **Table maintenance**: Spark cluster for compaction, snapshot expiration ($3K-$8K/month ongoing)
@@ -904,7 +904,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 **Pricing currency**: the unit rates in this worksheet are as of Q4 2025; verify current rates before procurement.
 
-**Calculate MOAr Annual Cost**:
+**Calculate MOAR Annual Cost**:
 ```
 Storage Hot: (Daily GB × Hot Days) × $0.023/GB/month × 12 = $__________
 Storage Warm: (Daily GB × Warm Days) × $0.0125/GB/month × 12 = $__________
@@ -913,12 +913,12 @@ Query Engine: (Choose Athena $30K-$50K or Trino $96K-$240K or Dremio $120K-$300K
 Pipeline: (See the handbook's pipeline cost comparison for Cribl/Tenzir/OSS costs at your volume) = $__________
 Real-Time Alerting: (Optional ClickHouse $36K-$96K or skip) = $__________
 
-TOTAL MOAr = $__________/year
+TOTAL MOAR = $__________/year
 ```
 
 **Calculate Savings**:
 ```
-Annual Savings = Current SIEM Cost - MOAr Cost = $__________/year
+Annual Savings = Current SIEM Cost - MOAR Cost = $__________/year
 Savings Percentage = (Savings ÷ Current Cost) × 100 = __________%
 
 Migration Cost (one-time) = $__________
@@ -926,7 +926,7 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 
 5-Year TCO Comparison:
 - SIEM 5-year cost: Current Annual × 5 = $__________
-- MOAr 5-year cost: (MOAr Annual × 5) + Migration = $__________
+- MOAR 5-year cost: (MOAR Annual × 5) + Migration = $__________
 - 5-Year Savings: SIEM 5-year - Modern 5-year = $__________
 ```
 

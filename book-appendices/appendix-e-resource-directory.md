@@ -7,7 +7,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 # Appendix E: Consolidated Resource Directory
 
-**Purpose**: Curated list of learning resources for building MOAr security data architectures. Compiled from the translation and navigation material (now Appendices D and J) with organization by topic.
+**Purpose**: Curated list of learning resources for building MOAR security data architectures. Compiled from the translation and navigation material (now Appendices D and J) with organization by topic.
 
 **How to use**: Start with your learning goal (e.g., "Learn Apache Iceberg") → Find topic section → Follow recommended path (docs → blog posts → videos → community). External URLs spot-checked October 2025.
 
@@ -763,7 +763,7 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 
 | Essay | Extends |
 |-------|---------|
-| [The MOAr Stack: Security Data Lakehouse Reference Architecture](https://securitydataworks.com/thesis/moar) | **Appendix C** — component model and reference architecture |
+| [The MOAR Stack: Security Data Lakehouse Reference Architecture](https://securitydataworks.com/thesis/moar) | **Appendix C** — component model and reference architecture |
 | [Apache Iceberg — Why It's Important to Security](https://securitydataworks.com/writing/lakehouse/iceberg-v3-thesis-shift) † | **Appendix D, Appendix I** — table-format capabilities, the V3/V4 shift |
 | [Iceberg vs Delta Lake for Security Data](https://securitydataworks.com/writing/lakehouse/iceberg-vs-delta) | **the variants chapter** — decision framework with Netflix/Insider production evidence |
 | [Unity Catalog vs Polaris vs Nessie](https://securitydataworks.com/writing/catalogs/catalog-decision) | **Appendix I** — catalog selection for fine-grained security governance |
@@ -798,7 +798,7 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 | Essay | Extends |
 |-------|---------|
 | [NANDA: Agent-Native Security Infrastructure](https://securitydataworks.com/writing/ai/nanda-automation) | **the modernization chapter** — agent-native SOC architecture beyond the incremental-automation plateau |
-| [Pitching MOAr to Federated Organizations](https://securitydataworks.com/writing/migration/federated-rollout-playbook) | **the modernization chapter** — stakeholder buy-in for multi-BU deployments |
+| [Pitching MOAR to Federated Organizations](https://securitydataworks.com/writing/migration/federated-rollout-playbook) | **the modernization chapter** — stakeholder buy-in for multi-BU deployments |
 | [Migration Reality Check: 800 Detection Rules](https://securitydataworks.com/writing/migration/migration-800-rules) | **the modernization chapter** — realistic migration timelines and costs |
 | [Pipeline Lock-In: The Vendor Trap](https://securitydataworks.com/writing/pipelines/pipeline-lock-in) | **Appendix B** — acquisition economics |
 | [Defining What You Can Own: an AI-Security Taxonomy](https://securitydataworks.com/writing/ai/defining-what-you-can-own) † | **the manageability chapter (Chapter 1 of the handbook)** — disambiguating "AI security" |
@@ -902,7 +902,7 @@ This directory covers books, documentation, communities, conferences, and though
 
 **Months 3-6: Deep Dive**
 - [ ] Implement proof-of-concept with real security data (network flows, endpoint logs)
-- [ ] Present findings to team (demonstrate MOAr value)
+- [ ] Present findings to team (demonstrate MOAR value)
 - [ ] Attend one data engineering conference (Data + AI Summit, Subsurface, Trino Summit)
 
 **Months 3-6: Expert Network**

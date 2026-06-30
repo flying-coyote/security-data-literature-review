@@ -1017,6 +1017,6 @@ A book that spends a whole appendix arguing for a baseline owes you the cases wh
 **Appendix H** (OCSF Strategy): An open, vendor-neutral schema baseline
 **Combined**: meaningfully *reduced* single-vendor dependency, not complete independence. An open engine plus an open schema portable across engines is a strong position, and the dependency that remains lives in the pipeline that produces the data, the catalog that governs it, and the correctness of the mappings, so the goal is to make lock-in shallow and the data portable, not to claim it is gone.
 
-**Modular Open Architecture (MOAr) for Cybersecurity Data** = Open Standards (Iceberg + OCSF) + Transparent Transformations + Multi-Vendor Interoperability, with the standing caveat that open standards move the dependency rather than erase it, and that verified semantic correctness (Section H.4.4) is what makes the openness worth anything.
+**Modular Open Architecture (MOAR) for Cybersecurity Data** = Open Standards (Iceberg + OCSF) + Transparent Transformations + Multi-Vendor Interoperability, with the standing caveat that open standards move the dependency rather than erase it, and that verified semantic correctness (Section H.4.4) is what makes the openness worth anything.
 
 **Next**: Appendix I (Query Engine Selection), Appendix J (Resources & Community), the incremental-modernization material (Chapter 7 of the handbook)

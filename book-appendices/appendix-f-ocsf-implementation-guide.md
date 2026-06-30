@@ -714,7 +714,7 @@ For non-critical fields, accept they won't map to OCSF:
 - Section H.6: When OCSF may not fit your use case
 
 **Related Appendices**:
-- Appendix C: MOAr reference architectures (with OCSF integration)
+- Appendix C: MOAR reference architectures (with OCSF integration)
 - Appendix D: Glossary (OCSF terminology definitions)
 - Appendix E: Resource directory (OCSF learning resources)
 

@@ -609,7 +609,7 @@ Most security teams store everything in one tier, either an expensive SIEM or a 
 | **Iceberg maintenance** | ✗ No procedures | ✗ No procedures | ✗ No procedures |
 | **High-cardinality aggregations** | ✓ Columnar advantage | ⚠ Slower on massive aggregations | ✓ Reflections help |
 
-**The hybrid pattern** (Netflix-validated MOAr architecture):
+**The hybrid pattern** (Netflix-validated MOAR architecture):
 - **Iceberg**: Storage foundation (ACID, schema evolution)
 - **ClickHouse**: Hot tier (last 30 days, real-time aggregations, scheduled analytics)
 - **Trino**: Ad-hoc investigations (threat hunting, forensics)
@@ -632,7 +632,7 @@ Whether that superlinear scaling generalizes depends on query type and schema, a
 
 ### I.4A.7 Key Takeaways from Netflix
 
-Netflix's ClickHouse journey lines up with the MOAr architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (Section I.6.3).
+Netflix's ClickHouse journey lines up with the MOAR architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (Section I.6.3).
 
 ### I.4A.8 Sidebar: Vortex, one layer below the engine choice
 
