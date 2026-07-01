@@ -288,7 +288,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     DATA SOURCES (10 TB/day)                        │
+│                     DATA SOURCES (2-4 TB/day)                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │ • AWS CloudTrail (multi-account)    • CrowdStrike EDR (API)        │
 │ • VPC Flow Logs                     • Okta (SAML, API logs)        │
@@ -397,7 +397,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 
 | Cost Category | Amount | Notes |
 |---------------|--------|-------|
-| **S3 Storage** | $180K-$300K/year | 3 PB (90-day hot $46K/month, 3-year cold $3K/month) |
+| **S3 Storage** | $180K-$300K/year | ~2.4-4.7 PB at 2-4 TB/day (90-day hot ~$4K-$8K/month, 3-year cold ~$8K-$16K/month; A.6 Step 3 rates) |
 | **Athena Queries** | $120K-$240K/year | 2-4 TB scanned daily × $5/TB × 365 days |
 | **EMR (Spark)** | $60K-$120K/year | Auto-scaling, 2-4 hours daily batch jobs |
 | **Kinesis Streams** | $36K-$72K/year | 20 shards (~$3.6K) + PUT-payload units at 2-4 TB/day ingest (dominant cost) + extended retention |
@@ -405,7 +405,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Data Transfer** | $12K-$24K/year | Cross-region (if multi-region), VPC endpoints |
 | **QuickSight** | $12K-$24K/year | 50 users × $24/user/month |
 | **Personnel** (3-5 data engineers) | N/A | Existing headcount |
-| **TOTAL** | **$444K-$828K/year** | A.6-modeled; vs. Splunk $12M (~93-96% savings; Splunk figure per the Ch 6 Marcus case) |
+| **TOTAL** | **$444K-$828K/year** | A.6-modeled; vs. schema-on-read SIEM $1.5M-$4.4M/year at 2 TB/day (Worksheet A.6, Step 2) — the $12M Splunk figure belongs to Pattern 4's 10-12 TB/day Marcus case (Ch.6), a different volume tier, not this pattern's |
 
 **ROI**: 12-18 month payback, illustrative (A.6 model, vs. Splunk expansion cost avoided)
 

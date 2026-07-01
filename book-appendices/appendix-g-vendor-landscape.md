@@ -11,10 +11,10 @@ tags: [vendor-landscape, siem, query-engine, iceberg, security-data, cost-compar
 
 **How to use**: Reference this appendix when evaluating vendors for your architecture. Use the Decision Worksheets (Appendix A) to score vendors against your requirements. The evidence ratings (A-D) tell you how well each vendor's claims are validated, so for production work I'd start from the Tier A/B entries and treat C/D as needing your own due diligence first.
 
-**Data Source**: This appendix is synchronized with the [Security Architect MCP Server](https://github.com/flying-coyote/security-architect-mcp-server) vendor database, ensuring consistency between book content and tooling.
+**Data Source**: This appendix is maintained manually; last reviewed July 1, 2026.
 
-**Last Updated**: February 28, 2026
-**Pricing Currency**: All cost ranges are in USD, based on publicly available pricing and practitioner-reported costs as of Q4 2025. Volume baselines are specified per vendor (e.g., "for 5TB/day"). Actual costs vary by contract terms, volume commitments, and negotiation.
+**Last Updated**: July 1, 2026
+**Pricing basis**: Q4 2025, due for quarterly review. All cost ranges are in USD, based on publicly available pricing and practitioner-reported costs as of Q4 2025. Volume baselines are specified per vendor (e.g., "for 5TB/day"). Actual costs vary by contract terms, volume commitments, and negotiation.
 
 **Sourcing note (read this first)**: This is a vendor *landscape*, so most rows describe what each vendor says it does. Treat the capability and performance language in the Description column as vendor-stated (Tier C) unless an entry carries an explicit independent source. Pricing figures fall into two buckets: rows tagged **G-Cloud 14** are anchored to the UK Government Digital Marketplace G-Cloud 14 pricelist (2024, the same source used in Appendix A.6), and everything else is vendor-published list pricing or practitioner-reported and should be read as Tier C — a starting point for your own due diligence, not an independently verified quote. The per-row Evidence rating (A-D, defined at the foot of this appendix) is the formal version of this same caution.
 
@@ -208,14 +208,14 @@ Evidence quality ratings indicate the validation level for each vendor's capabil
 This vendor landscape is maintained using the following methodology:
 
 1. **Initial Population**: Vendors identified through literature review, expert interviews, and industry analysis
-2. **Capability Mapping**: Each vendor assessed against 40+ capability dimensions (see MCP Server schema)
+2. **Capability Mapping**: Each vendor assessed against 40+ capability dimensions
 3. **Evidence Collection**: Cost and capability claims are checked against available sources and tiered A-D by how well they are corroborated; many capability and list-price claims are vendor-published (Tier C/D) and carry that caveat rather than an independent validation
-4. **Continuous Updates**: Weekly synchronization between book appendix and MCP Server database
+4. **Continuous Updates**: Maintained manually; last reviewed July 1, 2026
 5. **Expert Review**: Quarterly review with industry practitioners for accuracy
 
-**Contributing**: If you identify missing vendors or inaccurate information, please submit corrections via the [Security Architect MCP Server](https://github.com/flying-coyote/security-architect-mcp-server) repository.
+**Contributing**: If you identify missing vendors or inaccurate information, please open an issue or PR against this repository.
 
 ---
 
-*This appendix is synchronized with the Security Architect MCP Server vendor database to ensure consistency across book and tooling.*
+*This appendix is maintained manually; last reviewed July 1, 2026.*
 
