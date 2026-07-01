@@ -554,7 +554,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 **Week 2-3: Proof-of-Concept Mapping**
 - Choose 1-2 high-value data sources (EDR, cloud logs)
-- LLM-assisted mapping (Appendix H.4 pattern): GPT-4/Claude generates initial mapping
+- LLM-assisted mapping (Appendix H.4 pattern): a frontier LLM (GPT-class or Claude-class) generates initial mapping
 - Validate semantic accuracy (ambiguous fields flagged for human review)
 
 **Month 2: Production Rollout**

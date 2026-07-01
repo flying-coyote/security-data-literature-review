@@ -1,5 +1,8 @@
 ---
+type: essay-draft
 title: "Appendix M: Detection Coverage Measurement — ATT&CK→D3FEND over OCSF"
+created: 2026-06-29
+tags: [moar-book, detection-coverage, attack, d3fend, ocsf, sigma]
 ---
 
 # Appendix M: Detection Coverage Measurement — ATT&CK→D3FEND over OCSF
@@ -86,4 +89,4 @@ If you want to run the measurement rather than read about it, the C5 bench lives
 
 The natural place this appendix attaches in the main narrative is the handbook's incremental-modernization material — Chapter 7 of the handbook, on modularity. After you migrate detection rules off the SIEM — the SPL→SQL tiering that chapter lays out, where a typical 2,400 correlation searches get sorted into automated, semi-automated, and hand-rewritten tiers — you need a way to prove the migrated detections actually fire on your OCSF store rather than assuming the translation preserved their behavior, and that proof method is this appendix. It feeds directly into the migration success metrics, where a coverage figure that means measured firing rather than counted references is the kind of number that survives the six-month "was it worth it" review. And it is the instrument the Detection Engineer role runs — the same people doing OCSF schema validation and Great Expectations tests are the ones who would own a measured-firing coverage check.
 
-For the standing resource list — ATT&CK, D3FEND, OCSF, CAR, Atomic Red Team, and the Security Context Graph that supplies the D3FEND leads — see Appendix E rather than a duplicate list here. And the reciprocal of this whole appendix is Section H.5.4: that section describes the OCSF `d3fend` attribute as the *structure* view, the design-time possibility of a defense applying, and this appendix is the *measured* counterpart that tests whether the detection fires. H.5.4 states the possibility; Appendix M states whether it happened, and reading the two together is how you tell mapped structure from measured firing.
+For the standing resource list — ATT&CK, D3FEND, OCSF, and the Security Context Graph that supplies the D3FEND leads — see Appendix E rather than a duplicate list here (CAR and Atomic Red Team are cited in Section M.2). And the reciprocal of this whole appendix is Section H.5.4: that section describes the OCSF `d3fend` attribute as the *structure* view, the design-time possibility of a defense applying, and this appendix is the *measured* counterpart that tests whether the detection fires. H.5.4 states the possibility; Appendix M states whether it happened, and reading the two together is how you tell mapped structure from measured firing.

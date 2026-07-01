@@ -11,7 +11,7 @@ This material moved to the proof appendices so the platform-selection decision p
 
 ## Opening: The Multi-Engine Reality
 
-The handbook's platform-selection decision material set up the choice of platform, and that decision framework is now distributed across the manageability and foreground-decision material in Chapter 1, the what-good decision examples in Chapter 6, and the migration decisions in Chapter 7. Appendix H showed how OCSF (v1.x; the current release is v1.8.0, 2026-03-16) enables vendor-neutral schema standardization. Now comes a critical architectural question: **Which query engine do you use to actually analyze your security data?**
+The handbook's platform-selection decision material set up the choice of platform, and that decision framework is now distributed across the manageability and foreground-decision material in Chapter 1, the engine-selection groundwork in Chapter 5, the what-good decision examples in Chapter 6, and the migration decisions in Chapter 7. Appendix H showed how OCSF (v1.x; the current release is v1.8.0, 2026-03-16) enables vendor-neutral schema standardization. Now comes a critical architectural question: **Which query engine do you use to actually analyze your security data?**
 
 "Can we just use Spark for everything?"
 
@@ -125,7 +125,6 @@ The deeper lesson from running it is one the table can't show. When several engi
 
 ---
 
-<!-- RENUMBER: 9.1A/9.4A/9.4B should be resequenced in final edit -->
 ## Section I.1A: Why Elasticsearch Struggles at Petabyte Scale
 
 Elasticsearch was designed for full-text search over documents, while security analytics mostly runs aggregations over structured data, grouping by IP, counting by user, and slicing time series, and that mismatch turns expensive at TB+ scale, where it shows up as garbage-collection pauses that time out queries during active investigations and heap exhaustion on high-cardinality fields.
@@ -624,7 +623,7 @@ Most security teams store everything in one tier, either an expensive SIEM or a 
 
 Whether that superlinear scaling generalizes depends on query type and schema, and the rerun doesn't re-measure it. What the rerun does support is the storage inversion (the Iceberg table is the smallest artifact at 440 MB while the OpenSearch index is the largest compressed form at 1,868 MB), so the directional finding that columnar engines compress and aggregate far more efficiently than index-based SIEMs is structurally sound.
 
-**Cost comparison** (petabyte-scale security data, from the TCO analysis in the handbook's manageability chapter, Chapter 1; pricing as of Q4 2025):
+**Cost comparison** (petabyte-scale security data, from the TCO model in Appendix A (Worksheet A.6), which the manageability chapter, Chapter 1, points to; pricing as of Q4 2025):
 - **Schema-on-read SIEM**: $1.5M+/TB/year (unsustainable at 1+ PB/day)
 - **Snowflake**: $23/TB/month storage + $2-$4/TB scanned (Section I.6.3: $38K/month for 10 TB/day)
 - **ClickHouse + Iceberg hybrid**: $345-$7,080/month storage (depending on hot/cold ratio) + ~$3K compute

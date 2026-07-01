@@ -804,7 +804,7 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 
 ## J.7: Resource Navigation by Architectural Pattern
 
-### For Cloud-Native AWS Architecture (the cloud-native variant in the what-good-looks-like chapter):
+### For Cloud-Native AWS Architecture (the cloud-commitment variant in the what-good-looks-like chapter, §6.2):
 - **Stream processing**: AWS Kinesis Data Firehose → Lambda → Iceberg
 - **Query engines**: AWS Athena (primary), Spark (maintenance)
 - **Orchestration**: AWS Step Functions or Managed Airflow (MWAA)
@@ -1406,7 +1406,7 @@ Query on OCSF nested field (src_endpoint.ip) bypasses Reflection,
 performs full scan despite Reflection containing this field.
 
 Reproduction:
-1. Create OCSF Network Activity table (schema: [link])
+1. Create OCSF Network Activity table (schema: (schema doc))
 2. Create Reflection including src_endpoint.ip
 3. Run query: SELECT src_endpoint.ip, COUNT(*) FROM ... GROUP BY ...
 4. Observe: Query plan shows full scan (not Reflection)

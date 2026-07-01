@@ -325,7 +325,7 @@ OCSF (Open Cybersecurity Schema Framework) sits in a roughly comparable competit
 
 **Open standard coalition response** (2022-2024):
 - **OCSF Project founded** (2022): Linux Foundation governance
-- **180+ organizations join**: AWS, Splunk, IBM, Rapid7, Cloudflare, IronNet, Securonix, others
+- **180+ organizations join** (exact count drifts; see H.2.1): AWS, Splunk, IBM, Rapid7, Cloudflare, IronNet, Securonix, others
 - **Production validation**: petabyte-per-day deployments documented (vendor case studies, Tier C)
 - **Schema evolution**: v1.0.0 through the current v1.8.0 (released 2026-03-16), with backward compatibility preserved across minor versions
 
@@ -576,7 +576,7 @@ Beyond the financial services and CISA deployments above, OCSF adoption spans in
 - **Splunk OCSF App**: available on Splunkbase (download counts I had cited here were unverified; check the current Splunkbase listing). Maps CIM ↔ OCSF bidirectionally — enabling hybrid architectures (Splunk real-time + lakehouse historical, unified schema)
 - **Multi-cloud SOC pattern**: Separate Iceberg tables per cloud, all normalized to OCSF, federated queries via Dremio or Starburst. New clouds added by mapping to OCSF — existing detection rules work immediately.
 
-**Adoption timeline** (Tier C, drawn from project membership counts and vendor roadmap announcements, which lag actual production support): 50+ organizations (2023, v1.0.0) → 180+ organizations (2024, v1.3.0 with the D3FEND attribute) → broadening vendor-ecosystem integration through the v1.8.0 release of March 2026 (Splunk/Dremio/Snowflake roadmaps + CISA collaboration). I read OCSF as past proof-of-concept, with the honest qualifier that a roadmap commitment and a populated, semantically-correct OCSF export are not the same thing, so "adoption" here means stated support more than verified-in-production fidelity.
+**Adoption timeline** (Tier C, drawn from project membership counts and vendor roadmap announcements, which lag actual production support): 50+ organizations (2023, v1.0.0) → 180+ organizations (2024, v1.3.0 with the D3FEND attribute) (exact count drifts; see H.2.1) → broadening vendor-ecosystem integration through the v1.8.0 release of March 2026 (Splunk/Dremio/Snowflake roadmaps + CISA collaboration). I read OCSF as past proof-of-concept, with the honest qualifier that a roadmap commitment and a populated, semantically-correct OCSF export are not the same thing, so "adoption" here means stated support more than verified-in-production fidelity.
 
 ---
 

@@ -17,7 +17,7 @@ Jennifer is a composite teaching scenario rather than a single named deployment,
 
 ### Requirements Mapping: The Decision Framework Applied
 
-Jennifer used the three-tier requirement hierarchy from the handbook's decision framework (Chapter 6, the variants chapter) to filter the vendor landscape systematically.
+Jennifer used the three-tier requirement hierarchy from the handbook's decision-worksheet methodology (Appendix A, Worksheet A.1) to filter the vendor landscape systematically.
 
 **Tier 1: Mandatory Requirements (Disqualification Criteria)**
 
