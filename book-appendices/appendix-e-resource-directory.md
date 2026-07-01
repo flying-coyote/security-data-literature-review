@@ -800,7 +800,7 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 | [Pitching MOAR to Federated Organizations](https://securitydataworks.com/writing/migration/federated-rollout-playbook) | **the modularity chapter** — stakeholder buy-in for multi-BU deployments |
 | [Migration Reality Check: 800 Detection Rules](https://securitydataworks.com/writing/migration/migration-800-rules) | **the modularity chapter** — realistic migration timelines and costs |
 | [Pipeline Lock-In: The Vendor Trap](https://securitydataworks.com/writing/pipelines/pipeline-lock-in) | **Appendix B** — acquisition economics |
-| [Defining What You Can Own: an AI-Security Taxonomy](https://securitydataworks.com/writing/ai/defining-what-you-can-own) † | **the manageability chapter (Chapter 1 of the handbook)** — disambiguating "AI security" |
+| [Defining What You Can Own: an AI-Security Taxonomy](https://securitydataworks.com/writing/ai/defining-what-you-can-own) † | **Ch.2, MOAR explained (the ownership argument)** — disambiguating "AI security" |
 
 ### Anti-Patterns & Deep Dives
 
@@ -817,9 +817,9 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 |-------|---------|
 | [Why I Built a Living Literature Review / Methodology](https://securitydataworks.com/research/methodology) | **All chapters** — evidence methodology, confidence levels, contradiction-hunting; 100+ sources, PRISMA-aligned, quantitative guidance |
 | [The Capability Matrix](https://securitydataworks.com/matrix) | **the handbook's vendor-evaluation/decision material** — the evidence-tiered vendor-evaluation method (method public; scores paid) |
-| [AI-Native vs AI-Augmented: the Threat Timeline](https://securitydataworks.com/research/ai-native-vs-augmented) † | **the manageability chapter (Chapter 1 of the handbook)** — why defensive infrastructure must match AI-speed operations |
+| [AI-Native vs AI-Augmented: the Threat Timeline](https://securitydataworks.com/research/ai-native-vs-augmented) † | **cross-cutting companion essay (not part of the seven-chapter spine)** — an earlier blog-draft candidate, retained here for its threat-timeline argument on why defensive infrastructure must match AI-speed operations rather than anchored to a specific chapter |
 
-**Note**: these essays are continuously updated; the book is a March 2026 snapshot and the site captures developments past that date. † marks a best-fit mapping from a retired post number to its closest current essay — worth confirming the destination is the intended one. ‡ marks a post with no single successor essay yet; the link goes to the writing index.
+**Note**: these essays are continuously updated; external standards are current as of March 2026 (OCSF v1.8.0), while the manuscript itself is edition v0.2.0, June 2026, and the site captures developments past both dates. † marks a best-fit mapping from a retired post number to its closest current essay — worth confirming the destination is the intended one. ‡ marks a post with no single successor essay yet; the link goes to the writing index.
 
 ---
 
