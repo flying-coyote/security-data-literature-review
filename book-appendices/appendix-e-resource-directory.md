@@ -41,12 +41,11 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 **"Fundamentals of Data Engineering" by Joe Reis & Matt Housley** (O'Reilly, 2022)
 - **Why Essential**: The standard reference for data engineering principles
 - **Security-Relevant Chapters**:
-  - Chapter 6: Data Generation (storage patterns, object storage, separation of compute/storage)
-  - Chapter 7: Storage (data lakes, lakehouses, table formats) <!-- lint-ignore-xref -->
-  - Chapter 8: Ingestion (batch vs. streaming, change data capture) <!-- lint-ignore-xref -->
-  - Chapter 9: Data Modeling (dimensional modeling, normalization) <!-- lint-ignore-xref -->
-  - Chapter 10: Orchestration (Airflow, workflow management) <!-- lint-ignore-xref -->
-- **Reading Path**: Read Chapters 6-10 for security data architecture foundations
+  - Chapter 5: Data Generation in Source Systems (storage patterns, object storage, separation of compute/storage)
+  - Chapter 6: Storage (data lakes, lakehouses, table formats) <!-- lint-ignore-xref -->
+  - Chapter 7: Ingestion (batch vs. streaming, change data capture) <!-- lint-ignore-xref -->
+  - Chapter 8: Queries, Modeling, and Transformation (dimensional modeling, normalization) <!-- lint-ignore-xref -->
+- **Reading Path**: Read Chapters 5-9 for security data architecture foundations
 - **Where to Buy**: oreilly.com, Amazon
 - **Companion Resources**: Joe Reis blog (joereis.substack.com), Data Engineering Weekly newsletter
 
@@ -55,11 +54,11 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 **"Designing Data-Intensive Applications" by Martin Kleppmann** (O'Reilly, 2017)
 - **Why Essential**: Deep dive into distributed systems, databases, data processing
 - **Security-Relevant Chapters**:
-  - Chapter 4: Storage Engines (LSM-trees vs. B-trees—understand Elasticsearch, ClickHouse internals)
-  - Chapter 6: Replication (high availability for SIEM replacement)
-  - Chapter 11: Batch Processing (Spark, MapReduce for security data transformations) <!-- lint-ignore-xref -->
-  - Chapter 12: Stream Processing (Kafka, Flink for real-time detection) <!-- lint-ignore-xref -->
-- **Reading Path**: Focus on Chapters 4, 10, 11 for security context
+  - Chapter 3: Storage and Retrieval (LSM-trees vs. B-trees—understand Elasticsearch, ClickHouse internals)
+  - Chapter 5: Replication (high availability for SIEM replacement)
+  - Chapter 10: Batch Processing (Spark, MapReduce for security data transformations) <!-- lint-ignore-xref -->
+  - Chapter 11: Stream Processing (Kafka, Flink for real-time detection) <!-- lint-ignore-xref -->
+- **Reading Path**: Focus on Chapters 3, 10, 11 for security context
 - **Where to Buy**: oreilly.com, Amazon
 - **Difficulty**: Advanced (assumes distributed systems knowledge)
 
@@ -69,7 +68,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Why Relevant**: If considering Delta Lake table format (Databricks-centric architecture)
 - **Security-Relevant Topics**:
   - Chapter 2: Delta Lake architecture (ACID transactions, time-travel)
-  - Chapter 5: Schema evolution (OCSF v1.3 → v1.4 migrations)
+  - Chapter 5: Schema evolution (OCSF v1.7 → v1.8 migrations)
   - Chapter 7: Streaming with Delta (real-time ingestion patterns) <!-- lint-ignore-xref -->
 - **Alternative**: If choosing Iceberg (multi-engine), prioritize Iceberg docs over this book
 - **Where to Buy**: oreilly.com, databricks.com/resources
@@ -122,7 +121,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Key Sections**:
   - Table Spec: Understand metadata, manifests, data files
   - Partitioning: Hidden partitioning for security (date-based partitioning without exposing to users)
-  - Evolution: Schema evolution for OCSF v1.3 → v1.4
+  - Evolution: Schema evolution for OCSF v1.7 → v1.8
   - Maintenance: Compaction, snapshot expiration, orphan file cleanup
 
 **Iceberg Blog** (Ryan Blue, creator): https://iceberg.apache.org/blog/
@@ -182,7 +181,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
   - SQL Functions: String manipulation, JSON parsing, aggregation (threat hunting queries)
   - Performance: Predicate pushdown, partition pruning (query optimization)
 
-**Trino Community Slack**: https://trinodb.io/slack
+**Trino Community Slack**: https://trino.io/slack
 - #help: Query syntax, troubleshooting
 - #connectors-iceberg: Iceberg-specific questions
 - #general: Community discussions, best practices
@@ -617,7 +616,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 |------------------|----------------------------|------------------------------|----------------|
 | **Apache Iceberg** | iceberg-community.slack.com | Iceberg table format, maintenance, multi-engine | High (1,000+ members) |
 | **OCSF** | ocsfcommunity.slack.com | Schema mapping, vendor adoption | High (500+ members) |
-| **Trino** | trinodb.io/slack | Trino queries, connectors, federation | High (3,000+ members) |
+| **Trino** | trino.io/slack | Trino queries, connectors, federation | High (3,000+ members) |
 | **Dremio** | dremio.com/community | Dremio Reflections, BI integration | Medium-High (800+ members) |
 | **dbt** | getdbt.com/community | OCSF transformations, data modeling | Very High (10,000+ members) |
 | **Dagster** | dagster.io/slack | Data pipeline orchestration | Medium (2,000+ members) |
@@ -638,7 +637,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Focus**: Apache Iceberg deep-dive, production case studies
 - **Security Relevance**: Highest Iceberg content density
 - **Registration**: subsurfaceconf.com
-- **Note**: Originally organized by Tabular; Tabular was acquired by Databricks (June 2024). The conference continues under Iceberg community sponsorship.
+- **Note**: Originally organized by Dremio. The conference continues under Iceberg community sponsorship.
 
 ### Trino Summit
 - **When**: Annually (various locations)
@@ -886,7 +885,7 @@ This directory covers books, documentation, communities, conferences, and though
 ### 60-Day Intermediate (Deeper Technical Understanding)
 
 **Weeks 1-2: Advanced Concepts**
-- [ ] Read Joe Reis Chapters 6-10 (ingestion, queries, pipelines, orchestration)
+- [ ] Read Joe Reis Chapters 5-9 (ingestion, queries, pipelines, transformation)
 - [ ] Read Martin Kleppmann Chapters 4, 10, 11 (storage engines, batch, streaming)
 - [ ] Set up AWS Athena free tier, query security data on S3
 

@@ -23,11 +23,11 @@ tags: [vendor-landscape, siem, query-engine, iceberg, security-data, cost-compar
 ## Quick Navigation
 
 - [SIEM](#siem) (23 vendors)
-- [Detection & Response](#detection--response) (3 vendors)
-- [Query Engine](#query-engine) (11 vendors)
+- [Detection & Response](#detection--response) (7 vendors)
+- [Query Engine](#query-engine) (10 vendors)
 - [Streaming Platform](#streaming-platform) (10 vendors)
 - [Data Lakehouse](#data-lakehouse) (8 vendors)
-- [Data Catalog & Governance](#data-catalog-and-governance) (8 vendors)
+- [Data Catalog & Governance](#data-catalog--governance) (8 vendors)
 - [ETL/ELT Platform](#etlelt-platform) (10 vendors)
 - [Observability Platform](#observability-platform) (7 vendors)
 - [Object Storage](#object-storage) (5 vendors)
@@ -178,7 +178,7 @@ tags: [vendor-landscape, siem, query-engine, iceberg, security-data, cost-compar
 | [Apache Calcite](https://calcite.apache.org) | Open-source query planning and optimization framework; SQL parser and adapters across heterogeneous data engines. | cloud, on-prem, hybrid | OSS free (Apache 2.0); self-managed hosting/support only | A |
 | [Denodo Platform](https://www.denodo.com) | Logical data warehouse with real-time data virtualization; query federation across cloud and on-prem sources. | cloud, on-prem, hybrid | Professional from $6.27/hr on Azure Marketplace (30-day free trial) | A |
 | [Dremio](https://www.dremio.com) | Data lakehouse platform with semantic layer and query acceleration. | cloud, on-prem | $200K-800K for 10TB/day (practitioner-reported range) | A |
-| [Starburst Enterprise](https://www.starburst.io) | Commercial Trino distribution; high-concurrency federated SQL across heterogeneous, decentralized cloud data sources. | cloud, on-prem, hybrid | $0.50 (Pro), $0.75 (Enterprise), $1.00 (Mission-Critical) per credit-hour | A | *(Also serves as Query Engine)* |
+| [Starburst Enterprise](https://www.starburst.io) | Commercial Trino distribution; high-concurrency federated SQL across heterogeneous, decentralized cloud data sources. *(Also serves as Query Engine)* | cloud, on-prem, hybrid | $0.50 (Pro), $0.75 (Enterprise), $1.00 (Mission-Critical) per credit-hour | A |
 
 ## Other
 

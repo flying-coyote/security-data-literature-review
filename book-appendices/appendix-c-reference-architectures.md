@@ -27,7 +27,7 @@ Every reference architecture in this appendix (except Pattern 4: Traditional SIE
 
 2. **Separation of Storage and Compute** — Store data in object storage (~$0.023/GB/month S3) while scaling compute independently based on workload demands. *Validation test*: Can you turn off all compute and still access your data via different tools?
 
-3. **Compression-First Design** — Security logs achieve 10-12× compression with proper encoding (Parquet + ZSTD/SNAPPY for Iceberg, optimized codecs for ClickHouse; first-party lab measurement on OCSF-normalized Zeek and EDR corpora). *Validation test*: 1 TB/day of raw logs should cost <$700/month for S3 storage with 365-day retention.
+3. **Compression-First Design** — Security logs achieve 8.5× (Iceberg Parquet, pyiceberg zstd defaults) to 9.7× (tuned cold Parquet zstd-19) compression with proper encoding (Parquet + ZSTD/SNAPPY for Iceberg, optimized codecs for ClickHouse; first-party lab measurement on OCSF-normalized Zeek and EDR corpora, per cost-to-serve-retention/results/RESULTS.md). *Validation test*: 1 TB/day of raw logs should cost ~$1,000/month for S3 storage with 365-day retention.
 
 4. **Schema Evolution Without Breaking Changes** — Use Iceberg schema evolution and OCSF normalization (OCSF v1.x, current release v1.8.0) to onboard new log sources without system downtime. *Validation test*: Adding a new log source doesn't require downtime or data migration.
 
@@ -56,7 +56,7 @@ One caveat keeps the interchangeability honest: it holds only when encryption st
 ### Production Validation
 
 These principles are validated at scale:
-- **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Phil Fried, "ClickHouse at Netflix," ClickHouse Community Meetup, 2023; Tier B) (Principle 2, 5)
+- **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup presentation, late 2024; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
 - **Okta**: 100K QPS DuckDB, 7.5 trillion records (Okta, Jake Thomas personal account; Tier B) (Principle 5)
 - **Apple**: Petabyte-scale Apache Iceberg (Baris Aydın, "Apple's Journey with Apache Iceberg," Subsurface Live 2023; Tier B) (Principle 1, 2)
 - **CISA**: Zeek-OCSF mapping, ~95% mapping accuracy as reported by the project itself, an illustrative figure rather than an independently published rate (CISA Zeek-OCSF project; Tier B) (Principle 4)

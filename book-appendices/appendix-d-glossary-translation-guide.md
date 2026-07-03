@@ -254,7 +254,7 @@ The full resource directory lives in **Appendix E**, and the by-topic tool guide
 |------|--------|---------------------------|
 | *Fundamentals of Data Engineering* | Joe Reis & Matt Housley (2022) | **Start here.** Chapters 6-10 cover storage, ingestion, queries, and orchestration — the foundation this book builds on |
 | *Designing Data-Intensive Applications* | Martin Kleppmann (2017) | Deep dive into storage engines, batch/stream processing. Read after Reis. |
-| *Apache Iceberg: The Definitive Guide* | O'Reilly (2024) | Table format most security architectures will use. Multi-engine support, schema evolution. |
+| *Apache Iceberg: The Definitive Guide* | Tomer Shiran, Jason Hughes & Alex Merced (O'Reilly, 2024) | Table format most security architectures will use. Multi-engine support, schema evolution. |
 
 ### Key Technologies at a Glance
 
@@ -306,7 +306,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 
 **Practical engagement**:
 
-1. **Attend Data Conferences**: Subsurface (dbt, March), Trino Summit (September), Data + AI Summit (June) — ask data engineers "How do you handle high-cardinality filtering?" and "What's your approach to 7-year retention with tiered storage?"
+1. **Attend Data Conferences**: Subsurface (Dremio, fall), Trino Summit (September), Data + AI Summit (June) — ask data engineers "How do you handle high-cardinality filtering?" and "What's your approach to 7-year retention with tiered storage?"
 
 2. **Join Online Communities**: dbt Slack (tens of thousands of members), Trino Slack, r/dataengineering Reddit — frame security problems using data engineering vocabulary (use the translation guide in D.7 below)
 
@@ -319,8 +319,6 @@ Security architects who speak both languages can use mature tooling, proven desi
 ## D.7: Glossary — Full Bidirectional Reference
 
 ### Alphabetical Index (Security → Data Engineering)
-
-[A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [J](#j) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [Q](#q) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w) | [X](#x) | [Y](#y) | [Z](#z)
 
 ---
 

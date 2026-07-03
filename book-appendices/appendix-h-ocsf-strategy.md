@@ -25,7 +25,7 @@ You've selected an open storage format (Iceberg) and a vendor-neutral query engi
 
 Without normalization, security analysts write source-specific queries, so "show me CrowdStrike process executions" is a different query than "show me Sysmon process executions," detection rules fragment across data sources, and cross-source correlation turns into join gymnastics. With proprietary normalization (Splunk CIM, Microsoft Sentinel KQL, Google Chronicle UDM) you gain query consistency but buy schema lock-in, because changing platforms means rebuilding all of the detection content against the new schema.
 
-OCSF (Open Cybersecurity Schema Framework) offers a third option, and I want to set the stance up front because mine has shifted while I was writing this book. OCSF is a worthwhile normalization-hygiene baseline. It is an open, vendor-neutral schema, it is backed by a large multi-vendor coalition, and it has been run at large production volumes. None of that makes it the schema everyone agrees on, and none of it dissolves lock-in, because lock-in does not disappear when you normalize, it moves down to the pipeline and catalog layer where the data actually lives. So I read OCSF as measured-bearish: its value is real but bounded, and the most expensive mistake you can make with it is to treat a populated OCSF field as a guarantee that the value sitting in it is correct, which it is not. The appendix spends as much time on that failure mode as on the mechanics, because in the estates I have worked, the failure mode is where the money and the missed detections are.
+OCSF (Open Cybersecurity Schema Framework) offers a third option, and I want to set the stance up front because mine has shifted while I was writing this book. OCSF is a worthwhile normalization-hygiene baseline. It is an open, vendor-neutral schema, it is backed by a large multi-vendor coalition, and it has been run at large production volumes. None of that makes it the schema everyone agrees on, and none of it dissolves lock-in, because lock-in does not disappear when you normalize, it moves down to the pipeline and catalog layer where the data actually lives. So I read OCSF as measured-bearish: its value is real but bounded, and the most expensive mistake you can make with it is to treat a populated OCSF field as a guarantee that the value sitting in it is correct, which it is not. The appendix spends as much time on that failure mode as on the mechanics, because in the environments I have worked, the failure mode is where the money and the missed detections are.
 
 This appendix covers:
 1. **Why schema lock-in is a real switching cost, and where it actually lives** (Section H.1)
@@ -223,7 +223,7 @@ Cost calculation:
 - Technical debt from "quick and dirty" migrations (poor rule translations, incomplete coverage)
 - Opportunity cost (security team focused on migration vs new threat detection capabilities)
 
-**This is why the Fortune 500 financial institution stayed with Splunk**: a $6.9M migration dominated by content re-mapping, plus 18 months of degraded operations and the risk of detection gaps, was judged not worth it, even though switching to Sentinel would have lowered the annual license bill. What drove the decision was the switching cost and the disruption rather than the sticker price. The sticker price is not trivial either, since the G-Cloud 14 published list (April 2024) puts Splunk Cloud platform plus Enterprise Security near $1,200/GB/day/year at this scale; the switching cost outweighing even that recurring premium is exactly what makes the lock-in hold.
+**This is why the Fortune 500 financial institution stayed with Splunk**: a $6.9M migration dominated by content re-mapping, plus 18 months of degraded operations and the risk of detection gaps, was judged not worth it, even though switching to Sentinel would have lowered the annual license bill. What drove the decision was the switching cost and the disruption rather than the sticker price. The sticker price is not trivial either, since the G-Cloud 14 published list (April 2024) puts Splunk Cloud platform plus Enterprise Security near $1,240/GB/day/year at this scale; the switching cost outweighing even that recurring premium is exactly what makes the lock-in hold.
 
 ---
 
@@ -814,7 +814,7 @@ Set against a proprietary schema, the difference is real. Splunk's CIM `Network_
 
 ### H.5.4 The OCSF D3FEND Integration (added in v1.3.0, carried forward through v1.8.0)
 
-The `d3fend` attribute landed in OCSF v1.3.0 in March 2024 and has carried forward through the current v1.8.0, defined on the schema for event classes as a formal link between OCSF and the D3FEND ontology. Schema presence means the field is defined and typed, not that any given OCSF record will have it populated, since population is optional, as Section H.5.6 notes.
+The `d3fend` attribute landed in OCSF v1.3.0 in August 2024 and has carried forward through the current v1.8.0, defined on the schema for event classes as a formal link between OCSF and the D3FEND ontology. Schema presence means the field is defined and typed, not that any given OCSF record will have it populated, since population is optional, as Section H.5.6 notes.
 
 **Example: OCSF Network Activity (class 4001) with D3FEND grounding**:
 
@@ -862,7 +862,7 @@ The `d3fend` attribute landed in OCSF v1.3.0 in March 2024 and has carried forwa
 - Ontology reasoning: NetworkTraffic HAS-PARTS Packet, Session, Connection
 
 **tactic**: Detect
-- D3FEND tactic (Detect, Deny, Disrupt, Deceive, Destroy)
+- D3FEND tactic (Model, Harden, Detect, Isolate, Deceive, Evict, Restore)
 - Defensive counterpart to ATT&CK tactics (Initial Access, Execution, Persistence...)
 
 **Compliance pathway visualization**:
@@ -915,7 +915,7 @@ A partial fix runs through OCSF and BFO: if both universities export to OCSF Net
 
 **OCSF + CCO solution**:
 - CCO defines "Access" as a formal ontology concept with sub-types (Read, Write, Execute, Delete, Modify)
-- OCSF File System Activity (6001) and API Activity (3005) can be mapped to that CCO Access concept
+- OCSF File System Activity (1001) and API Activity (6003) can be mapped to that CCO Access concept
 - where that mapping is done, an auditor can lean on ontology-aligned logs to verify compliance against a shared definition, which narrows the room for each vendor to interpret "access" its own way, though it does not remove the auditor's judgment from the loop
 
 **3. Cross-Border Data Sharing**

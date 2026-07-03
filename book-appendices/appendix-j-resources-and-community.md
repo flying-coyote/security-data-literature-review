@@ -1,6 +1,6 @@
 ---
 type: reference
-title: "Appendix J: Tools and Community Resources for Security Data Architecture"
+title: "Appendix J: Resources and Community"
 created: 2026-06-10
 tags: [stream-processing, community, tools-catalog, flink, spark, iceberg]
 ---
@@ -794,7 +794,7 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 - Spark-only workload (no multi-engine requirement)
 - Change Data Capture (CDC) critical (Delta CDC features)
 
-**Interoperability**: Delta UniForm (the cloud-commitment variant in the what-good-looks-like chapter, §6.2) maintains Delta + Iceberg simultaneously (migration path).
+**Interoperability**: Delta UniForm (Appendix K.2) maintains Delta + Iceberg simultaneously (migration path).
 
 **Resources**:
 - Official docs: https://docs.delta.io/
@@ -1317,7 +1317,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 **Security Data Works** (this book's companion site — the security-data-specific blog the rest of this list doesn't cover):
 - https://securitydataworks.com/writing — ~70 essays across ten pillars (lakehouse, catalogs, OCSF, Sigma, engines, pipelines, detection, migration, economics, AI)
 - https://securitydataworks.com/lab — measured benchmarks behind the claims (query latency, compression, schema-mapping fidelity, ontology grounding)
-- Example: ["A Decade of Sigma: Why Community-Governed Detection Standards Endure"](https://securitydataworks.com/writing/sigma/sigma-detection-sharing-decade) — the structural argument for portable, community-owned standards, which is the whole reason a chapter like this one matters
+- Example: ["A Decade of Sigma: Why Community-Governed Detection Standards Endure"](https://securitydataworks.com/writing/sigma/sigma-detection-sharing-decade) — the structural argument for portable, community-owned standards, which is the whole reason an appendix like this one matters
 - The general-purpose data-engineering blogs below are excellent on lakehouse internals; they rarely touch detection engineering, OCSF, or SIEM migration, which is the gap this site fills
 
 **Tabular Blog** (Iceberg creators; Tabular acquired by Databricks in June 2024 — blog content now at Databricks):
@@ -1433,7 +1433,7 @@ Logs: [attach query profile, Reflection definition]
 - **Impact**: Elevate security use cases (underrepresented in data engineering conferences)
 
 **Talk ideas from this book** (adapt titles to your actual results and scale):
-- "76% cost reduction: Migrating from a schema-on-read SIEM to an Iceberg lakehouse" (Jennifer's variant in the what-good-looks-like chapter)
+- "76% cost reduction: Migrating from a schema-on-read SIEM to an Iceberg lakehouse" (Marcus's variant in the what-good-looks-like chapter)
 - "Multi-engine security architecture: Trino + Dremio + Spark" (Appendix I)
 - "OCSF at scale: [your scale]/day production deployment" (Appendix H.3.1)
 

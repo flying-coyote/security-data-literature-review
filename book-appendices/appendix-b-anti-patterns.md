@@ -138,7 +138,7 @@ The other cost is leverage. Once the vendor knows your switching cost, the negot
 
 ### Real-World Consequences
 
-The financial shape of this comes from the Appendix H case study. A Fortune 500 financial institution had Microsoft on the table offering a 40% cost reduction, $7.2M against the $12M they were paying annually, and the migration analysis came back at $6.9M total over an 18-month timeline, of which $2.7M was schema remapping alone. They stayed with Splunk, because the perceived cost and risk of unwinding the schema lock-in loomed larger than the move itself, even though three years of the savings the switch would have produced ($14.4M) would have dwarfed the actual $6.9M switching cost several times over, which is exactly the ignorance this pattern names, the disappearing leverage that comes from never having measured the real price of the exit. The outcome was that they kept paying premium prices with no competitive leverage to bring to the next renewal.
+The financial shape of this comes from the Appendix H case study. A Fortune 500 financial institution had Microsoft on the table offering a 40% cost reduction, $7.2M against the $12M they were paying annually, and the migration analysis came back at $6.9M total over an 18-month timeline, of which $2.7M was schema remapping alone. They stayed with Splunk, because the perceived cost and risk of unwinding the schema lock-in loomed larger than the move itself, even though three years of the savings the switch would have produced ($14.4M) would have exceeded the actual $6.9M switching cost roughly twice over, which is exactly the ignorance this pattern names, the disappearing leverage that comes from never having measured the real price of the exit. The outcome was that they kept paying premium prices with no competitive leverage to bring to the next renewal.
 
 The strategic exposure is harder to put a number on but just as real. The vendor can be acquired by a competitor, as Splunk was by Cisco in 2024; the product direction can change, with features deprecated and the roadmap reshaped around someone else's priorities; the pricing model can flip from per-GB to per-user and double your bill overnight. In each case there is no escape hatch, because the data and the detection content are locked into the vendor's format, so you inherit whatever the vendor decides regardless of whether it fits.
 
@@ -500,7 +500,7 @@ The cost surprises work the same way. Cloud charges accumulate invisibly across 
 ### Real-World Consequences
 
 **Cost Overrun Case**:
-> "We deployed Dremio Cloud + Iceberg on S3. First month: $12K (baseline). Third month: $42K (3.5× increase—CFO furious). Root cause: Analyst built daily dashboard that scanned full 90-day table (3 TB) instead of 1-day partition (30 GB). Query ran 300× per day (5-min auto-refresh) = 90 TB scanned daily vs. 9 GB planned. No cost monitoring → 8 weeks of 100× overspend before discovery. Fix: Dashboard uses 1-day partition. Cost drops to $14K/month."
+> "We deployed Dremio Cloud + Iceberg on S3. First month: $12K (baseline). Third month: $42K (3.5× increase—CFO furious). Root cause: Analyst built daily dashboard that scanned full 90-day table (3 TB) instead of 1-day partition (30 GB). Query ran 300× per day (5-min auto-refresh) = 900 TB scanned daily vs. 9 TB planned. No cost monitoring → 8 weeks of 100× overspend before discovery. Fix: Dashboard uses 1-day partition. Cost drops to $14K/month."
 
 **Performance Degradation Case**:
 > "Queries started timing out (>5 min). No metrics. Data engineer spent 2 weeks investigating: Spark compaction job? Iceberg metadata bloat? Query engine version? Root cause: Small file proliferation (10,000 files × 10 MB instead of 100 files × 1 GB). Would've been obvious if we had file count monitoring. Fix: Ran compaction job, query performance restored. Lesson: Deploy monitoring Day 1, not after problem discovered."
@@ -663,7 +663,7 @@ Use OCSF as the portability layer, so the transformation logic stays vendor-agno
 
 **Strategy 2: Preserve Raw Data Layer**
 
-**Dual storage pattern** (from the what-good-looks-like variants material — Chapter 6 of the handbook):
+**Dual storage pattern** (from the trustworthy-data material — Chapter 3 of the handbook):
 
 ```
 Security Logs → Pipeline (Cribl/Tenzir)

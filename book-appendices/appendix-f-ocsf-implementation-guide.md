@@ -278,7 +278,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 **Accuracy**: roughly 95% field-mapping correctness, as reported by the CISA Zeek-OCSF project across 20 Zeek protocols and 3,442 lines of M code; treat that as the project's own working figure (illustrative, not an independently published rate) rather than a benchmark you can cite as measured.
 
 **Pros**:
-- Scales: at the illustrative 20 minutes/source, 50 sources is roughly 16 hours, on the order of 2 days against the 2 weeks the manual estimate implies (arithmetic from the planning figures, not a measured project total)
+- Scales: at the illustrative 20 minutes/source, 50 sources is roughly 16 hours, on the order of 2 days against the 3-4 weeks the manual estimate implies (arithmetic from the planning figures, not a measured project total)
 - Accuracy: roughly 95% with semantic validation in the CISA project's own accounting (peer review catches the remainder); an illustrative working figure, not a formally published rate
 - Transparent: Power Query M is reviewable by non-programmers (an Excel user can validate)
 - Maintainable: OCSF schema updates → re-run LLM prompt → updated transformations
@@ -311,7 +311,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 
 **AWS Security Lake** (the OCSF class names and UIDs below are spec facts — verify each against the OCSF schema at schema.ocsf.io for the version you target, since UIDs drift between releases):
 - Natively ingests AWS sources in OCSF format:
-  - CloudTrail → OCSF API Activity (class_uid 3005)
+  - CloudTrail → OCSF API Activity (class_uid 6003)
   - VPC Flow Logs → OCSF Network Activity (4001)
   - GuardDuty → OCSF Security Finding (2001)
   - Route 53 DNS → OCSF DNS Activity (4003)
@@ -482,9 +482,9 @@ AddedRcode = Table.AddColumn(Previous, "rcode", each
 > "Wait—OCSF DNS Activity has `rcode` field, but LLM mapped Zeek `rcode` (integer) and `rcode_name` (string) both to OCSF `rcode`. Which takes precedence? Also, Zeek provides both—should we include both in OCSF, or only one?"
 
 **Resolution**:
-- OCSF `rcode` = integer (DNS response code per RFC 1035)
-- OCSF `rcode_text` = string (human-readable: "NOERROR", "NXDOMAIN")
-- **Corrected mapping**: `rcode` → `rcode`, `rcode_name` → `rcode_text` ✓
+- OCSF `rcode_id` = integer (DNS response code per RFC 1035)
+- OCSF `rcode` = string (human-readable: "NOERROR", "NXDOMAIN")
+- **Corrected mapping**: `rcode` → `rcode_id`, `rcode_name` → `rcode` ✓
 
 Across the 20 Zeek protocols in the CISA project, semantic validation (comparing descriptions, not names) caught most of the mapping errors before production deployment. The roughly 80-85% figure is an illustrative estimate, not a formally published CISA measurement.
 
@@ -547,8 +547,8 @@ AA=T, TC=F, RD=T, RA=T, Z=0
 **OCSF target** (DNS Activity):
 ```json
 {
-  "flag_ids": [1, 8, 9],  // Array of set flags
-  // OCSF DNS flag IDs: 1=AA (authoritative), 8=RD (recursion desired), 9=RA (recursion available)
+  "flag_ids": [1, 3, 4],  // Array of set flags
+  // OCSF DNS flag IDs: 1=AA (authoritative), 3=RD (recursion desired), 4=RA (recursion available)
 }
 ```
 
@@ -561,9 +561,8 @@ AddedFlags = Table.AddColumn(Source, "flag_ids", each
         {
             if [AA] = "T" then 1 else null,   // Authoritative Answer
             if [TC] = "T" then 2 else null,   // Truncated
-            if [RD] = "T" then 8 else null,   // Recursion Desired
-            if [RA] = "T" then 9 else null,   // Recursion Available
-            if [Z] <> 0 then 10 else null     // Reserved (Z flag)
+            if [RD] = "T" then 3 else null,   // Recursion Desired
+            if [RA] = "T" then 4 else null    // Recursion Available
         },
         each _ <> null  // Remove nulls (unset flags)
     ),
@@ -655,7 +654,7 @@ For non-critical fields, accept they won't map to OCSF:
 **Options**:
 1. **Network Activity (4001)**: Generic network traffic
 2. **HTTP Activity (4002)**: Protocol-specific HTTP class
-3. **Web Resources Activity (6004)**: Web-focused activity
+3. **Web Resources Activity (6001)**: Web-focused activity
 
 **Decision framework**:
 
@@ -673,12 +672,12 @@ For non-critical fields, accept they won't map to OCSF:
   "observables": [
     {
       "name": "HTTP Request",
-      "type_id": 20,  // URL observable
+      "type_id": 23,  // URL observable
       "value": "https://example.com/api/endpoint"
     },
     {
       "name": "HTTP Method",
-      "type_id": 24,  // Custom observable
+      "type_id": 99,  // Other observable
       "value": "POST"
     }
   ]
@@ -687,7 +686,7 @@ For non-critical fields, accept they won't map to OCSF:
 
 **Use when**: Specific class lacks needed fields, but want to preserve details via observables
 
-**A query-portability cost rides along with this choice.** Putting detail into an `observables[]` list of structs is good for schema fidelity, but it quietly changes how portable the resulting hunt is across engines, and that is worth knowing before you commit a feed to it. I tested the natural OCSF observables question, "does any observable carry `type_id = 21`", against one byte-identical Parquet file with explicit ground-truth counts, giving each engine its fair best expression (Tier B, single machine; duckdb 1.5.3, datafusion 53.0.0, chdb 4.1.9, polars 1.41.2). Scalar struct access (`src_endpoint.port`, `dst_endpoint.ip`) and list cardinality (`len(observables)`) stayed portable, every engine read the same nested bytes and returned the same count, so the open read contract holds through one level of nesting. The list-of-struct field predicate is where it breaks. DuckDB (`list_filter` with a lambda), chDB (`arrayExists`), and Polars (`list.eval`) all expressed it and agreed on the count (250 for `type_id = 21`, 1000 for a value present in every row), but DataFusion 53.0.0 could not apply a per-element struct-field predicate inside a `WHERE` clause and errored with `Cannot access field at argument`, so the same hunt that runs on three engines does not run on the fourth without rewriting it as an `UNNEST` subquery. This is a concrete, measured reason teams flatten observables into their own columns or a side table before querying, trading some schema fidelity for query portability. The DataFusion result is a capability gap on this version rather than a law, so re-check it on upgrade.
+**A query-portability cost rides along with this choice.** Putting detail into an `observables[]` list of structs is good for schema fidelity, but it quietly changes how portable the resulting hunt is across engines, and that is worth knowing before you commit a feed to it. I tested the natural OCSF observables question, "does any observable carry `type_id = 21`", against one byte-identical Parquet file with explicit ground-truth counts, giving each engine its fair best expression (Tier B, single machine; duckdb 1.5.3, datafusion 53.0.0, chdb 4.1.8, polars 1.41.2). Scalar struct access (`src_endpoint.port`, `dst_endpoint.ip`) and list cardinality (`len(observables)`) stayed portable, every engine read the same nested bytes and returned the same count, so the open read contract holds through one level of nesting. The list-of-struct field predicate is where it breaks. DuckDB (`list_filter` with a lambda), chDB (`arrayExists`), and Polars (`list.eval`) all expressed it and agreed on the count (250 for `type_id = 21`, 1000 for a value present in every row), but DataFusion 53.0.0 could not apply a per-element struct-field predicate inside a `WHERE` clause and errored with `Cannot access field at argument`, so the same hunt that runs on three engines does not run on the fourth without rewriting it as an `UNNEST` subquery. This is a concrete, measured reason teams flatten observables into their own columns or a side table before querying, trading some schema fidelity for query portability. The DataFusion result is a capability gap on this version rather than a law, so re-check it on upgrade.
 
 ---
 
@@ -721,8 +720,7 @@ For non-critical fields, accept they won't map to OCSF:
 **External Resources**:
 - OCSF GitHub Repository: https://github.com/ocsf/ocsf-schema
 - OCSF Documentation: https://schema.ocsf.io/
-- OCSF Slack Community: https://ocsf.io/slack
-- CISA Zeek-OCSF Project: https://github.com/cisagov/OCSF-Schema-Mappings
+- OCSF Slack Community: https://ocsf.io
 - AWS Security Lake OCSF Integration: https://docs.aws.amazon.com/security-lake/
 
 **Implementation Tools**:

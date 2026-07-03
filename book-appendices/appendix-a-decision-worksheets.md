@@ -716,7 +716,7 @@ Traditional SIEM pricing breaks at petabyte scale. For 7-year compliance retenti
 
 **Published-list anchor (UK G-Cloud 14).** These bands are grounded in Splunk's public-sector framework pricing. The G-Cloud 14 EMEA distributor schedule (April 2024) lists Splunk Cloud platform ingest on a declining per-GB/day curve, from $2,049/GB/day/year at 5-9 GB/day down to $793.50 at the 2,000-4,999 GB/day band (2 TB/day) and $764.75 above 5,000 GB/day, with the self-hosted Enterprise term license on a parallel curve ($598/GB/day/year at 2 TB/day). Splunk Enterprise Security, the correlation and detection-content layer an actual SOC runs, is a separate per-GB/day subscription on top, adding $448.50/GB/day/year at the 2 TB/day band, so two rates matter and they differ by roughly 2×. The platform-only schema-on-read baseline is $598-794/GB/day/year of published list at 2 TB/day, which after the 30-50% enterprise discounting that large multi-year Splunk contracts carry is the $300-400/GB/day/year this model uses, so the $600K above is the discounted-platform floor. The full SOC stack, platform plus Enterprise Security, lists near $1,240/GB/day/year, or roughly $620-870 once discounted, and that is the rate the worked MOAR-variant examples price.
 
-Marcus's $12M renewal at 10-12 TB/day reconciles to the published list almost exactly, because Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000-9,999 GB/day band is $1,196/GB/day/year, and that times 10,000 GB/day is $11.96M. The Metropolitan Police's 2024 Splunk SaaS deal is a named instance of the discounting at work: the Directorate of Professional Standards bought Splunk through reseller CDW for £780K up front plus £1.774M over five years, locking a 10% discount for the five-year commitment against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
+Marcus's modeled $12M SIEM-expansion figure at 10-12 TB/day reconciles to the published list almost exactly, because Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000-9,999 GB/day band is $1,196/GB/day/year, and that times 10,000 GB/day is $11.96M. The Metropolitan Police's 2024 Splunk SaaS deal is a named instance of the discounting at work: the Directorate of Professional Standards bought Splunk through reseller CDW for £780K up front plus £1.774M over five years, locking a 10% discount for the five-year commitment against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
 
 ---
 
@@ -742,7 +742,7 @@ Marcus's $12M renewal at 10-12 TB/day reconciles to the published list almost ex
 | **Starburst Enterprise** | Managed or self-hosted | Compute hours + support | $15K-$35K/month (enterprise support; directional, Tier C) |
 
 **3. Ingestion Pipeline** (Cribl/Tenzir/OSS):
-- See the handbook's pipeline cost comparison (Cribl/Tenzir/OSS)
+- See the pipeline cost bands below (Cribl/Tenzir/OSS)
 - Typical: $1.1M-$2M/year (Cribl) or $330K-$720K/year (Tenzir) or $186K-$408K/year (OSS Logstash) for 10 TB/day
 - For 2 TB/day: ~$220K-$400K/year (Cribl) or ~$66K-$144K/year (Tenzir)
 
@@ -912,7 +912,7 @@ Storage Hot: (Daily GB × Hot Days) × $0.023/GB/month × 12 = $__________
 Storage Warm: (Daily GB × Warm Days) × $0.0125/GB/month × 12 = $__________
 Storage Cold: (Daily GB × 365 × Cold Years) × $0.0036/GB/month × 12 = $__________
 Query Engine: (Choose Athena $30K-$50K or Trino $96K-$240K or Dremio $120K-$300K) = $__________
-Pipeline: (See the handbook's pipeline cost comparison for Cribl/Tenzir/OSS costs at your volume) = $__________
+Pipeline: (See the pipeline cost bands above for Cribl/Tenzir/OSS costs at your volume) = $__________
 Real-Time Alerting: (Optional ClickHouse $36K-$96K or skip) = $__________
 
 TOTAL MOAR = $__________/year
@@ -940,8 +940,8 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 ---
 
 **Cross-References**:
-- **The manageability argument** (Chapter 1 of the handbook, "Manageability > extreme performance"): cost reality and the retention gap problem
-- **The handbook's pipeline cost comparison**: Cribl/Tenzir/OSS
+- **The manageability argument** (Chapter 1 of the handbook, §1.3, "Manageability beats extreme performance"): cost reality and the retention gap problem
+- **The pipeline cost comparison**: Worksheet A.6 Step 3, above (Cribl/Tenzir/OSS)
 - **The variants chapter** (Chapter 6 of the handbook, "What good looks like"): the worked MOAR-variant TCO examples (Jennifer $380K/year platform + $200K Splunk, Marcus $2.9M/year modern stack vs $12M Splunk expansion, Priya $1.8M/year Denodo)
 - **The variants chapter** (Chapter 6 of the handbook, "What good looks like"): when traditional SIEM wins despite higher cost
 - **The modularity chapter** (Chapter 7 of the handbook, "Modularity: outpatient vs open-heart surgery"): building the business case for the CFO stakeholder pitch

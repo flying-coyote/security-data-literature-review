@@ -197,7 +197,7 @@ Jennifer designed proof-of-concept testing realistic threat hunting workflows wi
 
 ✓ **Cost projection**: $420K/year (within budget)
 - Storage: $180K (same S3 costs)
-- Starburst Enterprise license: $160K/year (12 TB/day ingestion tier)
+- Starburst Enterprise license: $160K/year (2.5 TB/day ingestion tier)
 - Infrastructure (compute clusters): $80K/year (AWS EC2 costs)
 
 ⚠ **Analyst feedback**: powerful, but with a steep learning curve
@@ -404,7 +404,7 @@ Marcus's POC tested at production scale to validate enterprise performance:
 
 Example threat hunt:
 ```sql
--- Hunt for credential stuffing across 90 days (990 TB scanned without optimization)
+-- Hunt for credential stuffing across 90 days (1,080 TB scanned without optimization)
 SELECT user_id, source_ip, COUNT(*) as failed_attempts
 FROM security_events_iceberg
 WHERE event_type = 'authentication_failure'
@@ -414,7 +414,7 @@ GROUP BY user_id, source_ip
 HAVING COUNT(*) > 100
 ORDER BY failed_attempts DESC;
 
--- Athena execution: 14 seconds (partition pruning: 990 TB → 8 TB scanned)
+-- Athena execution: 14 seconds (partition pruning: 1,080 TB → 8 TB scanned)
 ```
 
 ✓ **Real-time latency acceptable**: 60-90 seconds ingestion-to-query
@@ -439,7 +439,7 @@ Detailed cost breakdown:
   - Kinesis Firehose: $300K/year (12 TB/day ingestion × $0.029/GB)
 - **Data transfer (multi-cloud federation)**: $500K/year
   - AWS → Azure Synapse federated queries (15% of queries cross-cloud)
-  - Egress: 180 TB/month × $0.09/GB = $486K/year
+  - Egress: 450 TB/month × $0.09/GB = $486K/year
 
 **Total AWS-native stack**: $2.9M/year (17% buffer below $3.5M budget)
 
@@ -740,7 +740,7 @@ Performance breakdown:
 | Brute force global summary (24h) | 3 regions, ~500K auth events | 52 seconds | N/A (no cross-region capability) |
 | Compromised credential correlation (user in EU, login from APAC) | 2 regions, 48h window | 38 seconds | Manual: 2+ hours coordination between SOC teams |
 | Privileged access audit (all global admins, 30 days) | 3 regions, ~12K admin events | 1 min 24 sec | Manual: 4-6 hours per region, 3 separate reports |
-| Single-region deep forensic (US Splunk, 90-day threat hunt) | 1 region, ~45 TB | 28 seconds | Splunk native: 18 seconds (1.6× overhead) |
+| Single-region deep forensic (US Splunk, 90-day threat hunt) | 1 region, ~450 TB | 28 seconds | Splunk native: 18 seconds (1.6× overhead) |
 
 The honest comparison Priya's team drew from this is that the cross-region queries are not fast by Splunk standards, but they replace a process that was previously impossible, coordinating three SOC teams across time zones, manually exporting CSV files, and hoping the field names line up, so the real baseline for the 52-second query is not a faster query, it is "we have never been able to do this at all."
 
