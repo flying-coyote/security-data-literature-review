@@ -9,7 +9,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 **Purpose**: Curated list of learning resources for building MOAR security data architectures. Compiled from the translation and navigation material (now Appendices D and J) with organization by topic.
 
-**How to use**: Start with your learning goal (e.g., "Learn Apache Iceberg") → Find topic section → Follow recommended path (docs → blog posts → videos → community). External URLs spot-checked October 2025.
+**How to use**: Start with your learning goal (e.g., "Learn Apache Iceberg") → Find topic section → Follow recommended path (docs → blog posts → videos → community). External URLs spot-checked October 2025 and sample-rechecked July 2026 — core recommendations current, but a few links have moved (Snowflake's managed Polaris is now Open Catalog and its old workload URL 404s), so verify a specific link before relying on it.
 
 **Boundary with Appendix J**: This directory tells you where to learn each technology — books, documentation links, and week-by-week learning paths. The tool-by-tool implementation guides (when to use Flink versus Spark Structured Streaming, code patterns, the new-tool evaluation framework) are Appendix J Sections J.1–J.8, and the community landscape is J.9–J.17. Where the same tool appears in both, this appendix carries the learning path and J carries the implementation judgment.
 
@@ -108,7 +108,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ---
 
-**Note**: As of October 2025, **no full-length book exists on modern security data architecture using open-source table formats and query engines**. This manuscript fills that gap. Monitor O'Reilly catalog for future publications in this space.
+**Note**: As of a July 2026 re-check, general lakehouse titles on open table formats and query engines now exist (for example *Apache Iceberg: The Definitive Guide* and *Engineering Lakehouses with Open Table Formats*), but **none is a full-length book on _security_ data architecture built on those open-source foundations**. This manuscript fills that gap. Monitor O'Reilly catalog for future publications in this space.
 
 ---
 
@@ -424,9 +424,9 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Status**: Apache incubator project (October 2024), production-ready
 - **Why Important**: Iceberg-native catalog (vs. Hive Metastore legacy compatibility)
 
-**Polaris Cloud** (Snowflake-managed): https://www.snowflake.com/en/data-cloud/workloads/apache-polaris/
+**Snowflake Open Catalog** (managed Apache Polaris, GA; formerly "Polaris Cloud") — the old `data-cloud/workloads/apache-polaris/` URL 404s as of the July 2026 re-check; search snowflake.com for the current Open Catalog page
 - **When to Use**: Managed catalog service (eliminate self-hosted Hive Metastore burden)
-- **Pricing**: Contact Snowflake (not published as of October 2025)
+- **Pricing**: consumption-based; contact Snowflake (not publicly published as of the July 2026 re-check)
 
 **Learning Path**:
 1. **Week 1**: Deploy Polaris locally (Docker), connect Trino/Dremio to Polaris catalog
@@ -853,7 +853,7 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 
 ---
 
-This directory covers books, documentation, communities, conferences, and thought leaders organized by topic so you can navigate directly to your learning goal. External URLs were spot-checked October 2025; most recommendations are free (docs, Slack, YouTube).
+This directory covers books, documentation, communities, conferences, and thought leaders organized by topic so you can navigate directly to your learning goal. External URLs were spot-checked October 2025 and sample-rechecked July 2026 (core recommendations current; a few links have moved — verify before relying); most recommendations are free (docs, Slack, YouTube).
 
 ---
 

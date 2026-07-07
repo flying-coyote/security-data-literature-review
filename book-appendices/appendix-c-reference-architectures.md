@@ -90,7 +90,7 @@ $ ./moar swap-router   # R — router: one raw Okta event → three normalizers
 
 *Figure C-1 — the swap verbs run live on the reference stack (single-host, Tier B): the answer does not move when the store, the router, or the engine is swapped. This is the reversibility claim measured, not asserted.*
 
-The honest part is how unevenly that claim is backed, and the layers are not equal. The **engine layer is the one I have actually pressure-tested for answer-equivalence** rather than asserted it, and it's the one where the gate earns its keep: a broader run across twelve publishable Parquet readers on byte-identical data found ten correct and two silently wrong (engines selected by distinct reader, because the divergence lives in the Parquet reader rather than the engine wrapped around it): a version-scoped chDB Bloom-filter undercount that reproduced only at 100M scale and was fixed in the next point release (wrong on chDB 4.1.8, correct on 4.1.9), and a fastparquet `PLAIN_DICTIONARY` decode bug still live on the latest version (2026.5.0), so on the engine layer answer-equivalence is a measured, mechanism-isolated finding (SDW Lab, `clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md`, first-party Tier B; see Appendix I.1.5 and `H-ENGINE-ANSWER-EQUIVALENCE-01`), and the lesson is that a fast engine can return a wrong answer with no error, so the cross-engine check is a standing control, not optional ceremony. The other four layers, store and catalog and table format and router, I verify with a swap-and-confirm demonstration (one batch through each alternative, answer held constant) and otherwise rest on the open-format contract: the same Parquet bytes flow through, so a different store or catalog or router is reading or writing the same data, and the answer should not move. I have not run those layers through the same characterized at-scale, multi-implementation divergence probe that found the engine bugs, so the accurate statement is *answer-equivalence verified for the engine layer; the store, catalog, format, and router swaps are confirmed on a single batch and otherwise asserted from the open-format contract.* The reason the engine layer needed more than the contract is that an open table format guarantees every engine can *read* the bytes, not that two engines compute the *same answer* over them — the divergence lives in the read path, not the file — which is exactly where a swap can pass the "it runs" test and still be wrong.
+The honest part is how unevenly that claim is backed, and the layers are not equal. The **engine layer is the one I have actually pressure-tested for answer-equivalence** rather than asserted it, and it's the one where the gate earns its keep: a broader run across twelve publishable Parquet readers on byte-identical data found ten correct and two silently wrong (engines selected by distinct reader, because the divergence lives in the Parquet reader rather than the engine wrapped around it): a version-scoped chDB Bloom-filter undercount that reproduced with the Parquet row-group structure rather than at one fixed scale (at 10M rows under `ROW_GROUP_SIZE` 12288 as well as at 100M) and was fixed in the next point release (wrong on chDB 4.1.8, correct on 4.1.9), and a fastparquet `PLAIN_DICTIONARY` decode bug still live on the latest version (2026.5.0), so on the engine layer answer-equivalence is a measured, mechanism-isolated finding (SDW Lab, `clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md`, first-party Tier B; see Appendix I.1.5 and `H-ENGINE-ANSWER-EQUIVALENCE-01`), and the lesson is that a fast engine can return a wrong answer with no error, so the cross-engine check is a standing control, not optional ceremony. The other four layers, store and catalog and table format and router, I verify with a swap-and-confirm demonstration (one batch through each alternative, answer held constant) and otherwise rest on the open-format contract: the same Parquet bytes flow through, so a different store or catalog or router is reading or writing the same data, and the answer should not move. I have not run those layers through the same characterized at-scale, multi-implementation divergence probe that found the engine bugs, so the accurate statement is *answer-equivalence verified for the engine layer; the store, catalog, format, and router swaps are confirmed on a single batch and otherwise asserted from the open-format contract.* The reason the engine layer needed more than the contract is that an open table format guarantees every engine can *read* the bytes, not that two engines compute the *same answer* over them — the divergence lives in the read path, not the file — which is exactly where a swap can pass the "it runs" test and still be wrong.
 
 One file-format facet to track sits a layer below the table format: Vortex (now a Linux Foundation project, installable as `vortex-data`) claims large read speedups over Parquet. Measured against zstd-Parquet on an OCSF corpus, the gain was real but single-digit (roughly 1.7–2.6× on a full decode, 3.3–4× on a needle) rather than the headline 10–100×, with a scale-dependent footprint and identical answers. It is not yet an Iceberg data file format — Iceberg 1.11.0 shipped the pluggable File Format API but the Vortex plugin is still open — so for now it is a standalone datapoint, a candidate third answer to the read-speed question alongside the V4 metadata work and DuckLake if that plugin lands.
 
@@ -103,8 +103,8 @@ The budget and cost figures throughout this appendix are outputs of the TCO mode
 | Pattern | Use case | Team | Budget/yr |
 |---|---|---|---|
 | 1. Healthcare Hybrid (on-prem + cloud) | HIPAA, PHI residency, hybrid cloud | 1-2 data engineers; 15-person security team | $774K-1M (platform $300-500K) |
-| 2. Cloud-Native AWS-First | AWS-committed, cloud-first, cost optimization | 3-5 data engineers; 50+ analysts | $500K-2M |
-| 3. Multi-Cloud Federated (Denodo) | Multi-national, data sovereignty, M&A | 5+ data engineers; distributed teams | $2M+ (complexity premium) |
+| 2. Cloud-Native AWS-First | AWS-committed, cloud-first, cost optimization | 3-5 data engineers; 50+ analysts | $444K-$828K |
+| 3. Multi-Cloud Federated (Denodo) | Multi-national, data sovereignty, M&A | 5+ data engineers; distributed teams | $1.04M-$1.98M |
 | 4. Traditional SIEM (Splunk ES) | Real-time mandate, zero data engineers, simplicity | 0 data engineers (SOC analysts) | $2M-12M (volume-dependent) |
 | 5. MOAR Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $324K-$588K |
 
@@ -277,7 +277,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - AWS-committed organization ($18M annual AWS spend)
 - CTO mandate: use AWS-native services, avoid third-party where possible
 - 3-5 data engineers available (can manage moderate complexity)
-- Budget: $500K-$2M annually (cost optimization important but not sole driver)
+- Budget: $444K-$828K annually (cost optimization important but not sole driver)
 - No on-premises constraint (cloud-first strategy)
 
 **Solution**: AWS Athena + EMR + Glue with Iceberg on S3
@@ -459,7 +459,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - Data sovereignty requirements: EU data stays in EU, China data stays in China
 - Cannot consolidate to single cloud region (violates GDPR, Chinese data localization laws)
 - M&A complexity: Acquired companies bring legacy systems, different cloud providers
-- Budget: $2M+ annually (premium acceptable for compliance + complexity)
+- Budget: $1.04M-$1.98M annually (premium acceptable for compliance + complexity)
 
 **Solution**: Denodo data virtualization with regional Iceberg deployments
 
@@ -574,7 +574,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - Multi-national operations with data sovereignty requirements (GDPR EU, China localization)
 - M&A complexity (multiple cloud providers, legacy systems to federate)
 - Cross-region correlation requirement (5-10% of queries span regions)
-- Budget: $1M-$3M annually (premium for virtualization licensing)
+- Budget: $1.04M-$1.98M annually (premium for virtualization licensing)
 - 5+ data engineers (distributed team, can manage regional complexity)
 
 ✗ **Don't Use If**:

@@ -316,11 +316,11 @@ And the team burns out. Twelve to eighteen months of "we're migrating" with no e
 
 ### Description
 
-Manually mapping security data source schemas to OCSF (v1.x; current release v1.8.0) or another normalized schema without using LLM-assisted tooling. In my experience this runs illustratively 6-9× longer in development time and leaves more semantic validation errors behind, but treat that multiplier as an order-of-magnitude from practitioner experience, consistent with the CISA Zeek-OCSF project, rather than a benchmarked rate.
+Manually mapping security data source schemas to OCSF (v1.x; current release v1.8.0) or another normalized schema without using LLM-assisted tooling. In my experience this runs illustratively 6-16× longer in development time and leaves more semantic validation errors behind, but treat that multiplier as an order-of-magnitude from practitioner experience, consistent with the CISA Zeek-OCSF project, rather than a benchmarked rate.
 
 **Symptoms** (the hour figures here are illustrative practitioner estimates, consistent with the rest of this anti-pattern, not a benchmarked rate):
-- Data engineer spends 4-8 hours per data source manually writing transformation logic
-- 40 data sources × 6 hours average = 240 hours (6 weeks of full-time work for schema mapping alone)
+- Data engineer spends 2-4 hours per data source manually writing transformation logic
+- 40 data sources × 3 hours average = 120 hours (3 weeks of full-time work for schema mapping alone)
 - Semantic ambiguity: "Does `user` field map to `actor.user` or `target.user`?" (no validation, guessing)
 - Detection rules fail because field mappings incorrect ("Why doesn't this brute-force rule work?")
 
@@ -332,15 +332,15 @@ Manually mapping security data source schemas to OCSF (v1.x; current release v1.
 - Copy-paste errors: Typos in field names (`src_ip` vs. `source_ip`) break queries silently
 
 **Time Multiplier Without LLM Assistance** (illustrative ranges from practitioner experience, not a benchmarked study; Tier C):
-- **Manual mapping**: roughly 4-8 hours per source (40 sources ≈ 160-320 hours)
-- **LLM-assisted**: roughly 45-90 minutes per source (40 sources ≈ 30-60 hours)
-- **Illustratively a 6-9× efficiency gain** by using an LLM to generate initial mappings, with semantic validation on top
+- **Manual mapping**: roughly 2-4 hours per source (40 sources ≈ 80-160 hours)
+- **LLM-assisted**: roughly 15-20 minutes per source (40 sources ≈ 10-13 hours)
+- **Illustratively a 6-16× efficiency gain** by using an LLM to generate initial mappings, with semantic validation on top
 
 ### Real-World Consequences
 
 **Timeline Impact**:
 - Planned: "OCSF normalization will take 4 weeks"
-- Reality without LLM: 6-8 weeks (manual mapping slower than estimated)
+- Reality without LLM: 2-4 weeks (manual mapping slower than estimated)
 - Reality with LLM: 2 weeks (initial mappings generated quickly, validation/refinement remains)
 
 **Quality Impact** (illustrative error rates from practitioner experience, not a formally measured rate; Tier C):
@@ -399,7 +399,7 @@ FROM crowdstrike_raw
 - **Step 2**: Data engineer reviews ambiguous fields (15-30 min)
 - **Step 3**: Test with sample data (10-15 min)
 - **Step 4**: Validate detection rules work correctly (30-45 min)
-- **Total**: 90-150 minutes (vs. 4-8 hours manual)
+- **Total**: 90-150 minutes (vs. 2-4 hours manual)
 
 **3. Iterative Refinement (Not Perfection)**:
 - An LLM gets most mappings right on the first pass in my experience (illustratively the large majority, not a measured rate), so start using the output immediately rather than holding it back for review
@@ -847,7 +847,7 @@ The dollar figures and multipliers in this table recap the per-anti-pattern bodi
 | **#3: Vendor Lock-In Ignorance** | Proprietary formats without exit strategy | $2M-$4M switching cost, no negotiating leverage | Open table format (Iceberg/Delta), OCSF normalization |
 | **#4: One Engine for Everything** | Single query engine for all workloads | Poor performance, analyst frustration | Multi-engine architecture (Spark/Trino/Dremio), workload routing |
 | **#5: Boil the Ocean** | Big-bang migration (all sources, all rules) | 18-month timeline, 3× budget, team burnout | Phased rollout (Pilot → Production → Full), prove value first |
-| **#6: Field Mapping Hell** | Manual OCSF mapping (~4-8 hrs per source) | ~6-week timeline, illustratively 15-20% semantic errors | LLM-assisted mapping (~45-90 min per source), iterative refinement |
+| **#6: Field Mapping Hell** | Manual OCSF mapping (~2-4 hrs per source) | ~3-week timeline, illustratively 15-20% semantic errors | LLM-assisted mapping (~15-20 min per source), iterative refinement |
 | **#7: Ignoring Change Management** | Technology-first, people-last | 15% adoption, "technical success but operational failure" | Stakeholder buy-in, phased training, migrate critical workflows |
 | **#8: No Monitoring** | Deploy and forget (no metrics, no alerts) | Silent degradation, cost surprises ($75K vs. $25K) | Query performance monitoring, cost tracking, automated alerts |
 | **#9: Pipeline Vendor Lock-In** | Proprietary transforms, no OCSF, no raw preservation | $500K-$800K migration cost, vendor negotiating leverage lost | OCSF standard normalization, preserve raw data layer (10% overhead), document transforms in Git |

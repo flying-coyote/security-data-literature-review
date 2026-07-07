@@ -35,7 +35,7 @@ Consider a representative exchange between a security architect and a data engin
 
 The security architect knows what they need, which is threat detection across data sources with long-term retention, and the data engineer knows how to build it with streaming pipelines, table formats, and query engines. Translation friction is what slows collaboration, and the root cause is that the two disciplines evolved in different problem domains.
 
-**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering — finding rare events in billions of rows — and the latency requirements combine real-time alerting (under 5 minutes) with interactive investigation (under 60 seconds).
+**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering — finding rare events in billions of rows — and the latency requirements combine real-time alerting (seconds to a few minutes, depending on detection type) with interactive investigation (under 60 seconds).
 
 **Business Intelligence** is oriented toward metrics, reporting, and decision-making. Its data is structured, drawn from transactional systems. Retention follows business value — delete when data is no longer useful. The query workload is aggregation and rollups, summarizing millions of rows to thousands of reporting rows. Batch ETL running hourly or daily is acceptable, and dashboard refresh under 10 seconds satisfies most use cases.
 
@@ -57,7 +57,7 @@ Despite these different profiles, both domains need the same underlying infrastr
 
 **Compliance Retention**. Retention timeframes are regulatory mandates, not business choices. HIPAA requires 6 years of audit logs (45 CFR 164.316(b)(2)(i); some states require longer — verify against your state health privacy law). PCI-DSS mandates 1 year. SOX requires 7 years. Auditors will ask for specific records spanning years, and "we archived that to cold storage and can't query it" is not an acceptable answer.
 
-Real-time alerting (sub-second), interactive investigation (seconds), and long-term forensics (minutes across years of data) are three fundamentally different query patterns hitting the same underlying data, which is why Appendix I recommends multiple query engines — no single engine handles all three patterns efficiently.
+Real-time alerting (sub-second to a few minutes, depending on detection type), interactive investigation (seconds), and long-term forensics (minutes across years of data) are three fundamentally different query patterns hitting the same underlying data, which is why Appendix I recommends multiple query engines — no single engine handles all three patterns efficiently.
 
 ---
 
