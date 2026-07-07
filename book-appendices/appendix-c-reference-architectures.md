@@ -23,7 +23,7 @@ Modular Open Architecture (MOAR) is a composable, vendor-neutral approach to sec
 
 Every reference architecture in this appendix (except Pattern 4: Traditional SIEM) applies these principles to varying degrees:
 
-1. **Vendor-Neutral Data Layer** — Use open table formats (Apache Iceberg, Delta Lake) with vendor-neutral catalogs. *Validation test*: Can you swap Trino for Dremio without rewriting queries or migrating data?
+1. **Vendor-Neutral Data Layer** — Use open table formats (Apache Iceberg, Delta Lake) with vendor-neutral catalogs. *Validation test*: Can you swap Trino for Dremio without rewriting queries or migrating data? (SAP acquired Dremio in July 2026, which is exactly the kind of event this principle exists to absorb: when the query engine you standardized on gets bought, an open table layer lets you swap the engine out while the data stays put; the swap still costs you query-dialect and cutover work, but not a data migration.)
 
 2. **Separation of Storage and Compute** — Store data in object storage (~$0.023/GB/month S3) while scaling compute independently based on workload demands. *Validation test*: Can you turn off all compute and still access your data via different tools?
 
