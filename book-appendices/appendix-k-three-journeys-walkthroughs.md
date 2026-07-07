@@ -525,7 +525,7 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 | Dimension | Path A: Athena greenfield (2022-23 plan) | Path B: Splunk + lakehouse optionality (2024 actual) |
 |---|---|---|
 | Team | 3 FTE (2 data engineers, 1 platform engineer, AWS) | 2 FTE (0 dedicated data engineers; 2 security engineers with Splunk from the existing SOC) |
-| Budget/yr | $600K operational (staffing + AWS infra) | $12M (SIEM licensing $11.4M for 15 TB/day high-volume tier, list-modeled, + 2 FTE $600K) |
+| Budget/yr | $600K operational (staffing + AWS infra) | $12M (SIEM licensing $11.4M for the 12 TB/day full-stack tier, list-modeled with multi-year discount, + 2 FTE $600K) |
 | Timeline | 3-4 months (Athena serverless, Iceberg tables, Glue ETL) | 1 month (Splunk ES + fraud-detection content, no custom dev) |
 | 3-year TCO | $2.1M ($300K implementation + $1.8M operations) | $36M+ (SIEM licensing dominates) |
 | Performance | 60-90 s latency, historical compliance | <5 s real-time detection (beats SEC <30 s mandate) |

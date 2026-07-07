@@ -688,7 +688,7 @@ Total Retention = Hot + Warm + Cold
 
 ### Step 2: Traditional SIEM Cost Model
 
-**SIEM Pricing Reality** (as of Q4 2025; verify current rates before procurement). The schema-on-read and Sentinel rates are the two that feed the model below and are anchored — the schema-on-read band against the G-Cloud 14 published list (see the anchor note after Step 2), Sentinel against Microsoft's public list (Sources, below). The Elastic and QRadar rows are directional vendor-shape figures (Tier C), included for orientation and not used in any calculation:
+**SIEM Pricing Reality** (Splunk G-Cloud 14 anchor dated 2024-04-23; Sentinel rates verified live against the Azure Retail Prices API on 2026-07-06, both reproducing the figures below exactly; reconfirm before procurement, since list prices move). The schema-on-read and Sentinel rates are the two that feed the model below and are anchored — the schema-on-read band against the G-Cloud 14 published list (see the anchor note after Step 2), Sentinel against Microsoft's public list (Sources, below). The Elastic and QRadar rows are directional vendor-shape figures (Tier C), included for orientation and not used in any calculation:
 
 | SIEM Platform | Pricing Model | Cost Range (per GB/day) | 7-Year Retention Support |
 |---------------|---------------|------------------------|-------------------------|
@@ -716,7 +716,7 @@ Traditional SIEM pricing breaks at petabyte scale. For 7-year compliance retenti
 
 **Published-list anchor (UK G-Cloud 14).** These bands are grounded in Splunk's public-sector framework pricing. The G-Cloud 14 EMEA distributor schedule (April 2024) lists Splunk Cloud platform ingest on a declining per-GB/day curve, from $2,049/GB/day/year at 5-9 GB/day down to $793.50 at the 2,000-4,999 GB/day band (2 TB/day) and $764.75 above 5,000 GB/day, with the self-hosted Enterprise term license on a parallel curve ($598/GB/day/year at 2 TB/day). Splunk Enterprise Security, the correlation and detection-content layer an actual SOC runs, is a separate per-GB/day subscription on top, adding $448.50/GB/day/year at the 2 TB/day band, so two rates matter and they differ by roughly 2×. The platform-only schema-on-read baseline is $598-794/GB/day/year of published list at 2 TB/day, which after the 30-50% enterprise discounting that large multi-year Splunk contracts carry is the $300-400/GB/day/year this model uses, so the $600K above is the discounted-platform floor. The full SOC stack, platform plus Enterprise Security, lists near $1,240/GB/day/year, or roughly $620-870 once discounted, and that is the rate the worked MOAR-variant examples price.
 
-Marcus's modeled $12M SIEM-expansion figure at 10-12 TB/day reconciles to the published list almost exactly, because Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000-9,999 GB/day band is $1,196/GB/day/year, and that times 10,000 GB/day is $11.96M. The Metropolitan Police's 2024 Splunk SaaS deal is a named instance of the discounting at work: the Directorate of Professional Standards bought Splunk through reseller CDW for £780K up front plus £1.774M over five years, locking a 10% discount for the five-year commitment against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
+Marcus's modeled $12M SIEM-expansion figure sits at his full 12 TB/day: Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000+ GB/day band is $1,196/GB/day/year, so 12,000 GB/day is about $14.35M of published list, which the multi-year enterprise discounting described above (the Metropolitan Police locked 10%, and larger multi-year commitments run deeper) brings down to the roughly $12M modeled. The Metropolitan Police's 2024 Splunk SaaS deal is a named instance of the discounting at work: the Directorate of Professional Standards bought Splunk through reseller CDW for £780K up front plus £1.774M over five years, locking a 10% discount for the five-year commitment against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
 
 ---
 
@@ -736,12 +736,12 @@ Marcus's modeled $12M SIEM-expansion figure at 10-12 TB/day reconciles to the pu
 **2. Query Engine Options** (the Athena $/TB-scanned rate is AWS public list, see Sources; the cluster/managed monthly bands are directional model inputs, Tier C — they depend on your query frequency and node sizing, which the worksheet asks you to fill in):
 | Engine | Deployment | Cost Model | Typical Monthly Cost (2 TB/day use case) |
 |--------|-----------|------------|----------------------------------------|
-| **AWS Athena** | Serverless | $5/TB scanned (AWS public list) | $5K-$15K/month (depends on query frequency) |
+| **AWS Athena** | Serverless | $5/TB scanned (AWS public list) | $2.5K-$15K/month (depends on query frequency; the worked example below assumes a light 500 TB/month scan) |
 | **Trino (self-hosted)** | EC2/EKS cluster | Compute hours | $8K-$20K/month (r6i.4xlarge × 3-5 nodes; directional, Tier C) |
 | **Dremio Cloud** | Managed SaaS | Compute hours + storage | $10K-$25K/month (standard tier; directional, Tier C) |
 | **Starburst Enterprise** | Managed or self-hosted | Compute hours + support | $15K-$35K/month (enterprise support; directional, Tier C) |
 
-**3. Ingestion Pipeline** (Cribl/Tenzir/OSS):
+**3. Ingestion Pipeline** (Cribl/Tenzir/OSS; directional, Tier C):
 - See the pipeline cost bands below (Cribl/Tenzir/OSS)
 - Typical: $1.1M-$2M/year (Cribl) or $330K-$720K/year (Tenzir) or $186K-$408K/year (OSS Logstash) for 10 TB/day
 - For 2 TB/day: ~$220K-$400K/year (Cribl) or ~$66K-$144K/year (Tenzir)
@@ -826,13 +826,13 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 |-----------------------|------------|----------|-----------|-------------------------|------------------------|
 | **Traditional SIEM (schema-on-read)** | $365K-$1.1M/year | $1.5M-$4.4M/year | $7.3M-$22M/year | ✗ Hot only (30-90 days) | 0 data engineers (SOC-managed) |
 | **Traditional SIEM (Sentinel)** | $0.95M-$1.7M/year | $3.7M-$6.9M/year | $19M-$34M/year | ✓ Queryable (slow cold tier) | 0 data engineers (cloud-managed) |
-| **MOAR (OSS)** | $180K-$280K/year | $265K-$470K/year | $548K-$848K/year | ✓ Full query transparency | 3-5 data engineers (self-hosted) |
+| **MOAR (OSS)** | $180K-$280K/year | $360K-$534K/year | $548K-$848K/year | ✓ Full query transparency | 3-5 data engineers (self-hosted) |
 | **MOAR (Cloud-Managed)** | $220K-$350K/year | $380K-$650K/year | $950K-$1.5M/year | ✓ Full query transparency | 1-2 data engineers (managed services) |
 | **Hybrid (SIEM + Lake)** | $280K-$450K/year | $500K-$850K/year | $2M-$3.5M/year | ✓ Lake queryable, SIEM hot | 1-2 data engineers + SOC analysts |
 
 **Cold-tier assumption at 10 TB/day**: the 10 TB/day MOAR (OSS) band assumes the 7-year cold tier moves to S3 Glacier Deep Archive (~$0.00099/GB-month) rather than the Glacier Flexible rate Step 3 prices at 2 TB/day, because at 10× the volume the ~25 PB cold accumulation only fits inside the $548K-$848K band at the Deep Archive rate — Glacier Flexible alone would run roughly $92K/month there — so read Step 3's Glacier-Flexible cold line as the 2 TB/day case and this column as its 10 TB/day counterpart, which is what keeps Step 3 and Step 5 consistent.
 
-**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM — the modeled gap is roughly 92-96% at 10 TB/day and 45-60% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between at a modeled 15-30% savings versus a full SIEM, and it solves the retention gap while staying workable for a team with zero or one data engineer.
+**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM — the modeled gap is roughly 92-96% at 10 TB/day and 51-75% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between at a modeled 15-30% savings versus a full SIEM, and it solves the retention gap while staying workable for a team with zero or one data engineer.
 
 ---
 
@@ -929,7 +929,7 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 5-Year TCO Comparison:
 - SIEM 5-year cost: Current Annual × 5 = $__________
 - MOAR 5-year cost: (MOAR Annual × 5) + Migration = $__________
-- 5-Year Savings: SIEM 5-year - Modern 5-year = $__________
+- 5-Year Savings: SIEM 5-year - MOAR 5-year = $__________
 ```
 
 **Decision Threshold**:
@@ -947,8 +947,8 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 - **The modularity chapter** (Chapter 7 of the handbook, "Modularity: outpatient vs open-heart surgery"): building the business case for the CFO stakeholder pitch
 
 **Sources & Validation**:
-- Microsoft Sentinel public pricing (2025): docs.microsoft.com/azure/sentinel/pricing
-- Splunk pricing (validated against public list price + 30-50% enterprise discounting)
+- Microsoft Sentinel public pricing: azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/, cross-checked against the Azure Retail Prices API (prices.azure.com/api/retail/prices, serviceName Sentinel), verified 2026-07-06
+- Splunk pricing: UK G-Cloud 14 EMEA distributor pricelist, assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/92220/511766451042724-pricing-document-2024-04-23-1505.pdf, dated 2024-04-23 (validated against public list price + 30-50% enterprise discounting)
 - AWS S3 pricing: aws.amazon.com/s3/pricing
 - AWS Athena pricing: aws.amazon.com/athena/pricing
 - TCO calculation based on AWS S3 pricing (2025) and schema-on-read SIEM list pricing (30-50% enterprise discount applied); the resulting reduction vs SIEM at 10 TB/day scale is a model-derived output of the Steps 2-5 comparison (large, in the high-double-digit percent range — see the Step 5 table and reading note for the band), not a measured invoice-to-invoice result
