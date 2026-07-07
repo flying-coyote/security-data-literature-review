@@ -353,7 +353,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Security Relevance**: Explains why complex correlation rules (non-q-hierarchical queries) force full refresh regardless of platform
 - **Reading Level**: Advanced (computer science theory)—skip unless interested in computational complexity foundations
 
-**Netflix ClickHouse at petabyte scale** (5 PB/day, 10.6M events/sec average, peaking ~12.5M, logs searchable within ~20s): "How Netflix optimized its petabyte-scale logging system with ClickHouse" — ClickHouse blog, 2025 (https://clickhouse.com/blog/netflix-petabyte-scale-logging)
+**Netflix ClickHouse at petabyte scale** (5 PB/day, 10.6M events/sec average, peaking ~12.5M, logs searchable within ~20s): "How Netflix optimized its petabyte-scale logging system with ClickHouse" — ClickHouse blog, 2025 (Tier C) (https://clickhouse.com/blog/netflix-petabyte-scale-logging)
 - **Key Insight**: The reported gains came from disciplined low-level engineering rather than exotic architecture — generated lexers for fingerprinting (regex → JFlex, ~8-10× ingest throughput), a custom native insert protocol with LZ4 compression in place of JDBC batch inserts, and sharding the tag map across 31 buckets to kill linear scans (filter queries 3s → 1.3s, filter-plus-projection ~3s → ~700ms)
 - **Security Application**: A worked reference for running ClickHouse at security-relevant volume; note the original draft's "zero materialized views" framing is NOT supported by this article, which doesn't discuss materialized views at all
 
@@ -695,7 +695,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - Focus: Edge preprocessing with DuckDB, volume reduction patterns
 - **Book Validation**: Provided DuckDB Lambda patterns in Appendix I
 
-**Lisa Cao** (Gravitino contributor; formerly Datastrato, which rebranded)
+**Lisa Cao** (Gravitino contributor; formerly Datastrato)
 - LinkedIn: Search "Lisa Cao Gravitino"
 - Focus: Gravitino meta-catalogs, catalog federation
 - **Topic**: Gravitino for security data source cataloging (Appendix D reference)
@@ -921,7 +921,7 @@ This directory covers books, documentation, communities, conferences, and though
 6. **Community**: Join Iceberg + OCSF Slack, lurk for 2 weeks, then ask questions
 
 **New to Security** (Data engineer background):
-1. **Start**: the handbook's opening chapter, "Manageability > extreme performance" (Chapter 1)
+1. **Start**: the handbook's opening chapter (Chapter 1, "You're doing data engineering *without* the tools for it"), Section 1.3, "Manageability beats extreme performance"
 2. **Terminology**: Appendix D (Security → Data Engineering translations)
 3. **Standards**: MITRE ATT&CK (attack.mitre.org/resources/getting-started)
 4. **OCSF**: Schema.ocsf.io (browse event classes, understand security data model)

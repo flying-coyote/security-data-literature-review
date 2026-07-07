@@ -106,7 +106,7 @@ The budget and cost figures throughout this appendix are outputs of the TCO mode
 | 2. Cloud-Native AWS-First | AWS-committed, cloud-first, cost optimization | 3-5 data engineers; 50+ analysts | $500K-2M |
 | 3. Multi-Cloud Federated (Denodo) | Multi-national, data sovereignty, M&A | 5+ data engineers; distributed teams | $2M+ (complexity premium) |
 | 4. Traditional SIEM (Splunk ES) | Real-time mandate, zero data engineers, simplicity | 0 data engineers (SOC analysts) | $2M-12M (volume-dependent) |
-| 5. MOAR Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $400K-800K |
+| 5. MOAR Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $324K-$588K |
 
 Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus Path A, Priya, Marcus Path B) — the "what good looks like" material, Chapter 6 of the handbook; Pattern 5 to Appendix I. Full detail for each follows below.
 
@@ -398,7 +398,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | Cost Category | Amount | Notes |
 |---------------|--------|-------|
 | **S3 Storage** | $180K-$300K/year | ~2.4-4.7 PB at 2-4 TB/day (90-day hot ~$4K-$8K/month, 3-year cold ~$8K-$16K/month; A.6 Step 3 rates) |
-| **Athena Queries** | $120K-$240K/year | 2-4 TB scanned daily × $5/TB × 365 days |
+| **Athena Queries** | $120K-$240K/year | cumulative query scan ~65-130 TB/day (repeated and ad-hoc queries re-scan the dataset, far above the 2-4 TB/day ingest) × $5/TB × 365 days |
 | **EMR (Spark)** | $60K-$120K/year | Auto-scaling, 2-4 hours daily batch jobs |
 | **Kinesis Streams** | $36K-$72K/year | 20 shards (~$3.6K) + PUT-payload units at 2-4 TB/day ingest (dominant cost) + extended retention |
 | **Glue ETL** | $24K-$48K/year | DPU-hours for transformations |
@@ -870,7 +870,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 **Applies to**: Pattern 1 (Healthcare Hybrid), Pattern 2 (AWS-First), Pattern 5 (Multi-Engine)
 
-Appendix I.4B works through the trade-off in detail, and the short version is that materialized views buy 78× to 9,000× query speedups in the vendor literature — though the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth), at the low end of that vendor range and nowhere near 9,000×, which is the honest independently-reproduced anchor for the claim — but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
+Appendix I.4B works through the trade-off in detail, and the short version is that materialized views buy 78× to 9,000× query speedups in the vendor literature (Tier C: vendor documentation and best-case benchmarks, not independently reproduced) — though the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth), at the low end of that vendor range and nowhere near 9,000×, which is the honest independently-reproduced anchor for the claim — but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
 
 ### When to Add Materialized Views to Your Architecture
 
@@ -1010,7 +1010,7 @@ Both examples below are illustrative arithmetic on A.6-model assumptions (assume
 - **Total cost**: $15.90/day
 - **Savings**: $128/day = **$46,720/year** for single dashboard tile
 
-**ROI**: Reflection storage cost ($200/month) vs savings ($46K/year) = **23× annual ROI**
+**ROI**: Reflection storage cost ($200/month) vs savings ($46K/year) = **19× annual ROI**
 
 **Example 2: Threat Hunting (Pattern 5 Multi-Engine)**
 
@@ -1023,7 +1023,7 @@ Both examples below are illustrative arithmetic on A.6-model assumptions (assume
 
 ### When materialization earns its keep
 
-The Netflix 5 PB/day deployment (Appendix I.4A) is a useful reminder that running the query layer without leaning on materialized views can be a valid and durable choice — the public Netflix material reaches sub-second queries through base-table and ingest-path engineering rather than materialization, and operational simplicity and schema flexibility can outweigh query performance optimization, particularly when the data changes fast enough that refresh cost exceeds the query savings. The 78× to 9,000× speedups in the literature only translate to real cost reduction when query frequency materially exceeds the data change rate, so the right entry point is a pilot of 3-5 high-value, stable use cases (compliance dashboards, scheduled reports) with measured ROI before any broader rollout. Security data creates failure modes that general BI analytics don't face, the high change rates and schema volatility and multi-table correlation patterns that IVM implementations don't handle, which is why the four-tier model above (streaming → micro-batch → batch → data lake) distributes work across the right tool for each tier rather than applying materialization as a universal pattern.
+The Netflix 5 PB/day deployment (Appendix I.4A) is a useful reminder that running the query layer without leaning on materialized views can be a valid and durable choice — the public Netflix material reaches sub-second queries through base-table and ingest-path engineering rather than materialization, and operational simplicity and schema flexibility can outweigh query performance optimization, particularly when the data changes fast enough that refresh cost exceeds the query savings. The 78× to 9,000× speedups in the vendor literature (Tier C, not independently reproduced) only translate to real cost reduction when query frequency materially exceeds the data change rate, so the right entry point is a pilot of 3-5 high-value, stable use cases (compliance dashboards, scheduled reports) with measured ROI before any broader rollout. Security data creates failure modes that general BI analytics don't face, the high change rates and schema volatility and multi-table correlation patterns that IVM implementations don't handle, which is why the four-tier model above (streaming → micro-batch → batch → data lake) distributes work across the right tool for each tier rather than applying materialization as a universal pattern.
 
 **For detailed platform comparisons** (Dremio Reflections vs Snowflake Dynamic Tables vs Databricks MVs vs Materialize vs ksqlDB vs Flink), see ["Materialized Views for Security Data: What Actually Works at Petabyte Scale"](https://securitydataworks.com/writing/engines/materialized-views) on securitydataworks.com.
 

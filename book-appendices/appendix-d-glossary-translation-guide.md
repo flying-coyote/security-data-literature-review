@@ -35,7 +35,7 @@ Consider a representative exchange between a security architect and a data engin
 
 The security architect knows what they need, which is threat detection across data sources with long-term retention, and the data engineer knows how to build it with streaming pipelines, table formats, and query engines. Translation friction is what slows collaboration, and the root cause is that the two disciplines evolved in different problem domains.
 
-**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 7 years for SOC 2, 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering — finding rare events in billions of rows — and the latency requirements combine real-time alerting (under 5 minutes) with interactive investigation (under 60 seconds).
+**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering — finding rare events in billions of rows — and the latency requirements combine real-time alerting (under 5 minutes) with interactive investigation (under 60 seconds).
 
 **Business Intelligence** is oriented toward metrics, reporting, and decision-making. Its data is structured, drawn from transactional systems. Retention follows business value — delete when data is no longer useful. The query workload is aggregation and rollups, summarizing millions of rows to thousands of reporting rows. Batch ETL running hourly or daily is acceptable, and dashboard refresh under 10 seconds satisfies most use cases.
 
@@ -284,7 +284,7 @@ After building vocabulary, you face concrete decisions: which table format, whic
 
 **Three Critical Architecture Decisions**:
 
-1. **Table Format (Iceberg vs. Delta Lake vs. Hudi)**: Determines query engine flexibility, metadata scalability, vendor lock-in risk, CDC maturity. Most security teams: **Apache Iceberg** (vendor-neutral, multi-engine support) unless Databricks-committed (then Delta Lake).
+1. **Table Format (Iceberg vs. Delta Lake)**: Determines query engine flexibility, metadata scalability, vendor lock-in risk, CDC maturity. Most security teams: **Apache Iceberg** (vendor-neutral, multi-engine support) unless Databricks-committed (then Delta Lake).
 
 2. **Catalog Selection (Unity, Polaris, Nessie, Gravitino)**: Your governance enforcement point — determines row-level security capability, rollback options, catalog federation. Greenfield security teams: **Polaris** (vendor-neutral, table-level security) unless you need fine-grained access (Unity) or Git workflows (Nessie) or managing multiple catalog types (Gravitino).
 
@@ -683,7 +683,7 @@ For data engineers reading this book, here are security terms translated into da
 
 **What security architects often assume**: SIEM capabilities are too specialized to replicate with general-purpose data engineering tools.
 
-**How data engineers think about it**: SIEMs are specialized data lakes — the features are real, but they're not magic. For most SOC workflows, a MOAR stack covers most of the structured-analytics ground, with named gaps — streaming subsearch, the transaction model — that decide specific shops [*qualifier: this book's assessment based on production architecture patterns; no independent third-party study has benchmarked this at the 80–90% figure specifically*]:
+**How data engineers think about it**: SIEMs are specialized data lakes — the features are real, but they're not magic. For most SOC workflows, a MOAR stack covers most of the structured-analytics ground, with named gaps — streaming subsearch, the transaction model — that decide specific shops [*qualifier: this book's assessment based on production architecture patterns; no independent third-party study has benchmarked this coverage claim specifically*]:
 - **SPL core detection queries** largely translate to standard SQL (GROUP BY, window functions, time-bucketing) — but SPL's streaming subsearch and transaction model have no direct SQL equivalent and require workarounds in stream processors such as Flink
 - **Real-time alerting** = Stream processing (Kafka + Flink = proven at scale)
 - **Investigation workflow** = SQL workbench + Jupyter notebooks (familiar to data engineers)
@@ -762,7 +762,7 @@ This appendix provides:
 
 ## D.8: Endnotes and Sources
 
-**Evidence Quality**: A/B-Level (data engineering resources + practitioner validation)
+**Evidence Quality**: A/B-Level for terminology and architecture claims, though individual vendor-benchmark figures are tagged C/D inline where they are cited (data engineering resources + practitioner validation)
 
 **Data Engineering Resources Cited**:
 - Joe Reis & Matt Housley: "Fundamentals of Data Engineering" (O'Reilly, 2022)

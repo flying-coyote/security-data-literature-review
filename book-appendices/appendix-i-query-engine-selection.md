@@ -11,7 +11,7 @@ This material moved to the proof appendices so the platform-selection decision p
 
 ## Opening: The Multi-Engine Reality
 
-The handbook's platform-selection decision material set up the choice of platform, and that decision framework is now distributed across the manageability and foreground-decision material in Chapter 1, the engine-selection groundwork in Chapter 5, the what-good decision examples in Chapter 6, and the migration decisions in Chapter 7. Appendix H showed how OCSF (v1.x; the current release is v1.8.0, 2026-03-16) enables vendor-neutral schema standardization. Now comes a critical architectural question: **Which query engine do you use to actually analyze your security data?**
+The handbook's platform-selection decision material set up the choice of platform, and that decision framework is now distributed across the manageability and foreground-decision material in Chapter 1, the engine-selection groundwork in Chapter 5, the what-good decision examples in Chapter 6, and the migration decisions in Chapter 7. Appendix H showed how OCSF (v1.x; the current release is v1.8.0, 2026-03-16, per the OCSF schema release notes; Tier A) enables vendor-neutral schema standardization. Now comes a critical architectural question: **Which query engine do you use to actually analyze your security data?**
 
 "Can we just use Spark for everything?"
 
@@ -19,7 +19,7 @@ This question comes up in almost every security data architecture review, and it
 
 Organizations that force all workloads through a single query engine pay for it in several ways at once, and the penalty comes from workload mismatch rather than from one modern engine being broadly faster than another: frustrated analysts asking why a dashboard takes 30 seconds to load on a batch-oriented engine, unnecessarily high costs from paying for capabilities they don't use, and operational friction as SOC dashboards compete with threat hunting scans for the same resources.
 
-This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (per the cost model in Section I.6.3) compared to single-platform approaches while providing better performance.
+This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (H-ARCH-02: 0.97 confidence; Section I.6.3's worked scenario lands at 63% within that range) compared to single-platform approaches while providing better performance.
 
 The appendix works through the security workload spectrum (real-time dashboards, threat hunting, ETL, and maintenance), why Spark stays necessary for Apache Iceberg maintenance (Iceberg's V3 features shipped through 2025 and the engines have broadly picked them up by mid-2026, while the V4 spec stays open as GitHub milestone #58 with no items merged into it since late 2025; H-ARCH-04: 0.98 confidence), when Trino or Starburst wins for ad-hoc investigations, when Dremio wins for sub-second SOC dashboards, and where DuckDB edge preprocessing earns its place (50-80% volume reduction, validated at 7.5 trillion records in Jake Thomas's Tier-B Okta personal account), before pulling the engines together into hybrid architecture patterns. The reason all of that is worth the operational weight is that no single engine handles all security workloads efficiently, so success comes from matching workload characteristics to engine strengths and accepting that you'll run 3-4 engines rather than one.
 
@@ -27,7 +27,7 @@ The appendix works through the security workload spectrum (real-time dashboards,
 
 ### Leadership Takeaway
 
-Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans; the worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. Organizations that adopt hybrid multi-engine architectures typically achieve 63% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, late 2024) and described by Jake Thomas at Okta (7.5 trillion records, Tier B: personal communication).
+Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans; the worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. In this appendix's worked Enterprise-SOC scenario (Section I.6.3), hybrid multi-engine architecture shows 63% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, late 2024) and described by Jake Thomas at Okta (7.5 trillion records, Tier B: personal communication).
 
 **Bottom line**: Multiple specialized engines cost less and fit security's conflicting workloads better than one general-purpose engine; the gain is operational fit and cost, with raw speed the smaller lever at SOC scale.
 
@@ -148,7 +148,7 @@ Elasticsearch was designed for full-text search over documents, while security a
 | **Full-text search** | ✓ Optimized | ⚠ Works, not optimized |
 | **Aggregations** (group by IP, count by user) | ⚠ Heap pressure at scale | ✓ Optimized |
 | **High-cardinality grouping** (millions of unique values) | ✗ Heap exhaustion | ✓ Columnar advantage |
-| **Petabyte-scale storage** | ✗ 4-10× overhead | ✓ 10-20× compression |
+| **Petabyte-scale storage** | ✗ 4-10× overhead (vs raw) | ✓ 5-10× compression (vs raw event size) |
 | **Multi-year retention** | ✗ Cold tier 30-120 sec (reported) | ✓ Unified API 5-15 sec (reported; TB-scale vendor-ecosystem figures, not lab-verified) |
 
 **Keep Elasticsearch if**: <1 TB/day, full-text search is critical, team has deep Elastic expertise, or managed Elastic Cloud handles operational complexity.
@@ -448,8 +448,8 @@ REFRESH EVERY 5 MINUTES  -- Incremental refresh
 - Repeated 1,920 times/day = **1,920 seconds = 32 minutes total compute time**
 
 **Cost comparison**:
-- Trino: 4.3-8 hours compute × $0.10/hour = $0.43-$0.80 per tile per day × 200 tiles = **$86-$160/day**
-- Dremio: 32 minutes compute × $0.10/hour = $0.05 per tile per day × 200 tiles + reflection storage (20 GB × $0.023/GB/month) = **$10/day + $15/month storage**
+- Trino: 4.3-8 hours compute × $0.10/hour (a provisioned-cluster compute rate, distinct from the serverless per-TB-scanned model behind the $2,880/day figure in I.4.1) = $0.43-$0.80 per tile per day × 200 tiles = **$86-$160/day**
+- Dremio: 32 minutes compute × $0.10/hour = $0.05 per tile per day × 200 tiles + reflection storage (20 TB × $0.023/GB/month) = **$10/day + $460/month storage**
 
 **Savings**: 85-94% cost reduction for dashboard workloads, PLUS <1 second latency vs 8-15 seconds.
 
@@ -631,7 +631,7 @@ Whether that superlinear scaling generalizes depends on query type and schema, a
 
 ### I.4A.7 Key Takeaways from Netflix
 
-Netflix's ClickHouse journey lines up with the MOAR architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (Section I.6.3).
+Netflix's ClickHouse journey lines up with the MOAR architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (H-ARCH-02; Section I.6.3's worked scenario lands at 63% within that range).
 
 ### I.4A.8 Sidebar: Vortex, one layer below the engine choice
 

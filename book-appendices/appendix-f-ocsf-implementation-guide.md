@@ -273,9 +273,9 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 **Comparison to manual** (illustrative, both figures from the planning estimates above):
 - Manual: 2-4 hours per source
 - LLM-assisted: 15-20 minutes per source
-- **Speedup**: roughly 6-9× on these figures (the ratio of the two estimates, not a measured benchmark)
+- **Speedup**: roughly 6-9× faster, the efficiency gain the CISA Zeek-OCSF project reported on its own work rather than the ratio of the two per-source estimates above, which run a little wider (a self-assessed project figure, not a measured benchmark)
 
-**Accuracy**: roughly 95% field-mapping correctness, as reported by the CISA Zeek-OCSF project across 20 Zeek protocols and 3,442 lines of M code; treat that as the project's own working figure (illustrative, not an independently published rate) rather than a benchmark you can cite as measured.
+**Accuracy**: roughly 95% field-mapping correctness, as reported by the CISA Zeek-OCSF project across 20 Zeek protocols and roughly 2,900 lines of M code; treat that as the project's own working figure (illustrative, not an independently published rate) rather than a benchmark you can cite as measured.
 
 **Pros**:
 - Scales: at the illustrative 20 minutes/source, 50 sources is roughly 16 hours, on the order of 2 days against the 3-4 weeks the manual estimate implies (arithmetic from the planning figures, not a measured project total)
@@ -350,7 +350,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 - LLM-assisted for custom sources: Application logs, custom tools, legacy systems
 - Manual for the handful of critical or complex sources: Unusual schemas, compliance-sensitive, learning cases
 
-**CISA Zeek-OCSF project**: 100% LLM-assisted (transparency requirement), 20 protocols, 3,442 lines M code, with the project reporting roughly 95% mapping accuracy on its own work (an illustrative figure, not an independently published rate).
+**CISA Zeek-OCSF project**: 100% LLM-assisted (transparency requirement), 20 protocols, roughly 2,900 lines M code, with the project reporting roughly 95% mapping accuracy on its own work (an illustrative figure, not an independently published rate).
 
 ---
 
@@ -714,7 +714,7 @@ For non-critical fields, accept they won't map to OCSF:
 
 **Related Appendices**:
 - Appendix C: MOAR reference architectures (with OCSF integration)
-- Appendix D: Glossary (OCSF terminology definitions)
+- Appendix D: Glossary (security ↔ data engineering terminology, including OCSF terms)
 - Appendix E: Resource directory (OCSF learning resources)
 
 **External Resources**:

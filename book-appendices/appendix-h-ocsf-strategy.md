@@ -7,7 +7,7 @@ tags: [ocsf, schema-lock-in, normalization, splunk-cim, security-data, detection
 
 # Appendix H: OCSF Strategy - A Normalization Baseline, Adopted With Eyes Open
 
-This material moved to the proof appendices so the decision path through the chapters stays short. The OCSF decision the reader makes in the chapters rests on the full argument and economics carried here, in full. Nothing has been compressed or paraphrased — every sentence, table, and code block from the original chapter is present below.
+This material moved to the proof appendices so the decision path through the chapters stays short. The OCSF decision the reader makes in the chapters rests on the full argument and economics carried here, in full. Nothing has been cut for length, though later passes tightened a few specific claims for accuracy, so the full argument and economics are all here even where a figure has since been sharpened (see Section H.4.2).
 
 ## Opening: From Platform Selection to Schema Strategy
 
@@ -231,11 +231,11 @@ Cost calculation:
 
 Beyond portability, **schema normalization at ingestion eliminates repeated parsing costs**.
 
-Schema-on-read platforms (Splunk, Elasticsearch) apply field extraction at query time — every dashboard refresh, every correlation rule, every investigation re-parses raw data. A single authentication dashboard refreshing every 5 minutes triggers 288 parses/day of the same data. Across 20 dashboards and 100 correlation rules, the repeated parsing tax reaches **$370,000+/month** (modeled estimate: 20 dashboards × $8,640/month + 100 correlation rules continuous execution; derivation in the manageability-over-performance material, Chapter 1 of the handbook).
+Schema-on-read platforms (Splunk, Elasticsearch) apply field extraction at query time — every dashboard refresh, every correlation rule, every investigation re-parses raw data. A single authentication dashboard refreshing every 5 minutes triggers 288 parses/day of the same data. Across 20 dashboards and 100 correlation rules, the repeated parsing tax reaches **$370,000+/month** (modeled estimate: 20 dashboards × $8,640/month + 100 correlation rules continuous execution; a modeled illustrative estimate, Tier C/D, not an audited figure).
 
 **Schema-on-write alternative**: Parse raw events **once at ingestion**, store structured OCSF fields, query without runtime parsing.
 
-**Cost comparison** (1 TB/day, 90-day retention, from the manageability-over-performance material, Chapter 1 of the handbook):
+**Cost comparison** (1 TB/day, 90-day retention; modeled illustrative estimate, Tier C/D):
 
 | Approach | Monthly Cost | Savings |
 |----------|-------------|---------|
@@ -288,7 +288,7 @@ The vendor-neutral approach stores data in each cloud's native object storage (S
 
 **Trade-offs accepted**: Custom OCSF transformation layer required (~15-20 minutes per log source with LLM-assisted mapping, Section H.4). No turnkey vendor detection content, and you now own the correctness of every mapping (Section H.4.4), which is the cost that does not show up in this table.
 
-**The headline saving** (illustrative, same Tier C/D caveat as above): for this representative enterprise the vendor-neutral path models out far cheaper than the Sentinel-primary path, on the order of a 20-plus-times difference in annual platform cost. I would not carry that multiple into a board deck as a measured number, because it depends heavily on volume, retention, and how much turnkey detection content you would otherwise have bought; ROI varies by organization size and multi-cloud complexity, and Section H.6 lays out when the open-schema path does not pay.
+**The headline saving** (illustrative, same Tier C/D caveat as above): for this representative enterprise the vendor-neutral path models out far cheaper than the Sentinel-primary path, on the order of a high-20s multiple in annual platform cost. I would not carry that multiple into a board deck as a measured number, because it depends heavily on volume, retention, and how much turnkey detection content you would otherwise have bought; ROI varies by organization size and multi-cloud complexity, and Section H.6 lays out when the open-schema path does not pay.
 
 ### H.1.3 The Open Standard Response
 
@@ -482,7 +482,7 @@ Coalition size and governance structure matter — but claims require production
   - Compute (Dremio + Athena): $900K/year
   - Transformation (Lambda OCSF mapping): $300K/year
   - Professional services (Year 1 only): $400K (normalized to $100K/year amortized over 4 years)
-- **Savings**: 40% cost reduction WHILE increasing retention from 90 days to 7 years
+- **Savings**: roughly a third (34%) cost reduction WHILE increasing retention from 90 days to 7 years
 
 **Performance**:
 - Threat hunt queries (90 days): 15-45 seconds (Dremio Reflections acceleration)

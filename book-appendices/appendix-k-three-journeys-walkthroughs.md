@@ -13,7 +13,7 @@ The handbook's variants chapter — Chapter 6, "What good looks like" — carrie
 
 Jennifer's organizational context and constraints, the final architecture decision (Dremio Cloud + on-prem Dremio for PHI), and the Architecture Optimization Statement she put in front of the executive sponsors are in her variant summary in the handbook's variants chapter. This walkthrough picks up at the requirements mapping.
 
-Jennifer is a composite teaching scenario rather than a single named deployment, so the POC timings, the per-vendor cost projections, the staffing counts, and the multi-year TCO bands below are illustrative figures generated from the author's TCO model (Appendix A, Worksheet A.6) applied to a 2.5 TB/day healthcare profile — not measured numbers from one production system. The model's cost inputs, including the discounted Splunk platform rate, trace back to the published G-Cloud 14 pricing anchor documented in Worksheet A.6. Where a figure instead comes from a first-party SDW lab run or a named source, that is called out at the figure.
+Jennifer is a composite teaching scenario rather than a single named deployment, so the POC timings, the per-vendor cost projections, the staffing counts, and the multi-year TCO bands below are illustrative figures generated from the author's TCO model (Appendix A, Worksheet A.6) applied to a 2.5 TB/day healthcare profile — not measured numbers from one production system. The model's cost inputs, including the discounted Splunk platform rate, trace back to the published G-Cloud 14 pricing anchor documented in Worksheet A.6. Where a figure instead comes from a first-party SDW lab run or a named source, that is called out at the figure. The per-vendor capability claims (Dremio Reflections' acceleration, Iceberg maintenance tooling, Kubernetes HA requirements) are vendor representations at Tier C unless separately sourced.
 
 ### Requirements Mapping: The Decision Framework Applied
 
@@ -71,7 +71,7 @@ These constraints act as final validators even for technically superior solution
 
 ### Vendor Filtering Process
 
-Jennifer started with IT Harvest's security data platform landscape: 83 vendors identified across SIEM, data lake, log management, and analytics categories.
+Jennifer started with IT Harvest's security data platform landscape: 83 vendors identified across SIEM, data lake, log management, and analytics categories (on the order of 80-100 as of mid-2025 per the IT Harvest directory, a directional Tier C count; verify the current IT Harvest figure for your category before relying on it).
 
 **Tier 1 Filtering Results**
 
@@ -398,7 +398,7 @@ Marcus's POC tested at production scale to validate enterprise performance:
 **POC Results: AWS Athena + Iceberg + Glue + Kinesis Firehose**
 
 ✓ **Query performance exceeded expectations**:
-- 90-day threat hunts: 8-25 seconds (partition pruning reduces 12 PB corpus to 1 TB scanned)
+- 90-day threat hunts: 8-25 seconds (partition pruning reduces the 90-day window's 1,080 TB down to ~8 TB scanned)
 - 1-year compliance queries: 90-180 seconds (Iceberg metadata-based filtering)
 - 7-year audit queries: 4-8 minutes (acceptable for quarterly compliance use case)
 
@@ -641,7 +641,7 @@ From 83-vendor landscape:
 
 ✓ **Advanced to Tier 2: 12 vendors**
 
-- Denodo Platform (purpose-built data virtualization, 25-year history, multi-cloud, heterogeneous sources, enterprise managed)
+- Denodo Platform (purpose-built data virtualization, founded 1999, multi-cloud, heterogeneous sources, enterprise managed)
 - Starburst Galaxy (Trino federation, multi-cloud connectors, managed service, heterogeneous via connectors)
 - Dremio Cloud (federation capability, limited virtualization, managed, API connectors possible)
 - IBM Cloud Pak for Data (data virtualization module, multi-cloud, enterprise support)
@@ -912,9 +912,9 @@ Denodo pricing: $1.2M/year for 3 regions, 50 users, 8 data source connectors
 - Flat cost structure benefits high-query-volume use cases, penalizes low-volume
 
 **Cost reality check**:
-- **Denodo**: $1.8M/year for 18 TB/day federated access = $100/TB/year
-- **SIEM consolidation**: $8.5M/year = $472/TB/year (4.7× more expensive, but violates compliance)
-- **Lakehouse (if consolidation were legal)**: $2.1M/year = $117/TB/year (slightly more expensive, requires regional disruption)
+- **Denodo**: $1.8M/year for 18 TB/day federated access = $100K per TB/day of federated capacity
+- **SIEM consolidation**: $8.5M/year = $472K per TB/day of federated capacity (4.7× more expensive, but violates compliance)
+- **Lakehouse (if consolidation were legal)**: $2.1M/year = $117K per TB/day of federated capacity (slightly more expensive, requires regional disruption)
 
 So Denodo comes out cost-effective against the alternatives that are actually compliant, and it only looks expensive when you compare it to consolidation, which is cheaper per terabyte but isn't legal under the data-sovereignty rules Priya has to satisfy.
 

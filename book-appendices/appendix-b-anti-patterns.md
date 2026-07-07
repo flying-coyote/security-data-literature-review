@@ -138,7 +138,7 @@ The other cost is leverage. Once the vendor knows your switching cost, the negot
 
 ### Real-World Consequences
 
-The financial shape of this comes from the Appendix H case study. A Fortune 500 financial institution had Microsoft on the table offering a 40% cost reduction, $7.2M against the $12M they were paying annually, and the migration analysis came back at $6.9M total over an 18-month timeline, of which $2.7M was schema remapping alone. They stayed with Splunk, because the perceived cost and risk of unwinding the schema lock-in loomed larger than the move itself, even though three years of the savings the switch would have produced ($14.4M) would have exceeded the actual $6.9M switching cost roughly twice over, which is exactly the ignorance this pattern names, the disappearing leverage that comes from never having measured the real price of the exit. The outcome was that they kept paying premium prices with no competitive leverage to bring to the next renewal.
+The financial shape of this is the same case Appendix H documents in full, the schema-on-read SIEM renewal described just above. A Fortune 500 financial institution had Microsoft on the table offering a 40% cost reduction, $7.2M against the $12M they were paying annually, and the migration analysis came back at $6.9M total over an 18-month timeline, of which $2.7M was schema remapping alone. They stayed with Splunk, because the perceived cost and risk of unwinding the schema lock-in loomed larger than the move itself, even though three years of the savings the switch would have produced ($14.4M) would have exceeded the actual $6.9M switching cost roughly twice over, which is exactly the ignorance this pattern names, the disappearing leverage that comes from never having measured the real price of the exit. The outcome was that they kept paying premium prices with no competitive leverage to bring to the next renewal.
 
 The strategic exposure is harder to put a number on but just as real. The vendor can be acquired by a competitor, as Splunk was by Cisco in 2024; the product direction can change, with features deprecated and the roadmap reshaped around someone else's priorities; the pricing model can flip from per-GB to per-user and double your bill overnight. In each case there is no escape hatch, because the data and the detection content are locked into the vendor's format, so you inherit whatever the vendor decides regardless of whether it fits.
 
@@ -327,12 +327,12 @@ Manually mapping security data source schemas to OCSF (v1.x; current release v1.
 ### Why It Fails
 
 **Manual Schema Mapping is Tedious and Error-Prone**:
-- CrowdStrike EDR: 150+ fields → OCSF Process Activity (100+ fields) = 15,000 potential mappings to consider
+- CrowdStrike EDR: 150+ fields → OCSF Process Activity (100+ fields), which is a large mapping space to work through, since the naive cross-product of 150×100 is roughly 15,000 candidate pairings as a worst-case bound, even though in practice each source field has only a handful of plausible OCSF targets rather than all 100+
 - Semantic ambiguity: Field names don't clearly indicate meaning (`user` could be attacker, victim, or observer)
 - Copy-paste errors: Typos in field names (`src_ip` vs. `source_ip`) break queries silently
 
-**Time Multiplier Without LLM Assistance** (illustrative ranges from practitioner experience, not a benchmarked study):
-- **Manual mapping**: roughly 6-8 hours per source (40 sources ≈ 240-320 hours)
+**Time Multiplier Without LLM Assistance** (illustrative ranges from practitioner experience, not a benchmarked study; Tier C):
+- **Manual mapping**: roughly 4-8 hours per source (40 sources ≈ 160-320 hours)
 - **LLM-assisted**: roughly 45-90 minutes per source (40 sources ≈ 30-60 hours)
 - **Illustratively a 6-9× efficiency gain** by using an LLM to generate initial mappings, with semantic validation on top
 
@@ -343,9 +343,9 @@ Manually mapping security data source schemas to OCSF (v1.x; current release v1.
 - Reality without LLM: 6-8 weeks (manual mapping slower than estimated)
 - Reality with LLM: 2 weeks (initial mappings generated quickly, validation/refinement remains)
 
-**Quality Impact** (illustrative error rates from practitioner experience, not a formally measured rate):
+**Quality Impact** (illustrative error rates from practitioner experience, not a formally measured rate; Tier C):
 - Manual mappings: on the order of 15-20% semantic errors (wrong field chosen, ambiguous resolution incorrect)
-- LLM-assisted: roughly 5-8% errors, with the LLM suggesting the correct mapping most of the time (illustratively ~92-95%) and a human validating edge cases
+- LLM-assisted: roughly 5-8% errors, with the LLM suggesting the correct mapping most of the time and a human validating edge cases
 - **Detection rule accuracy** depends on correct field mappings; errors = missed threats
 
 ### Prevention Strategies
@@ -399,7 +399,7 @@ FROM crowdstrike_raw
 - **Step 2**: Data engineer reviews ambiguous fields (15-30 min)
 - **Step 3**: Test with sample data (10-15 min)
 - **Step 4**: Validate detection rules work correctly (30-45 min)
-- **Total**: 90-150 minutes (vs. 6-8 hours manual)
+- **Total**: 90-150 minutes (vs. 4-8 hours manual)
 
 **3. Iterative Refinement (Not Perfection)**:
 - An LLM gets most mappings right on the first pass in my experience (illustratively the large majority, not a measured rate), so start using the output immediately rather than holding it back for review
@@ -601,7 +601,7 @@ spark.sql("""
 An organization adopts a commercial pipeline platform (Cribl Stream, an observability pipeline) for route-by-value cost optimization — illustratively 70-90% savings against SIEM-only ingestion, with the economics in Appendix A.6 — and over 2-3 years builds 400+ proprietary transformation rules, custom routing logic, and vendor-specific integrations on top of it, with no OCSF standardization, no documented escape path, and the raw data not preserved. When the pipeline cost then jumps 3× on a price increase or an acquisition, switching has become a $500K-plus migration project.
 
 **Symptom Quotes**:
-- "Our Cribl license went from $800K to $2.4M after Cisco acquisition—can we switch to Tenzir?" (Answer: $600K rewrite, 6-month timeline)
+- "Our Cribl license went from $800K to $2.4M after Cisco acquisition—can we switch to Tenzir?" (Answer: $680K rewrite, 6-month timeline)
 - "We have 600 Cribl Packs, none documented. How do we migrate to open-source Logstash?" (Answer: Manual reverse-engineering, 40% semantic loss risk)
 - "Our S3 bucket only has normalized data, so if we leave the pipeline vendor, we lose raw logs for re-processing"
 
@@ -847,7 +847,7 @@ The dollar figures and multipliers in this table recap the per-anti-pattern bodi
 | **#3: Vendor Lock-In Ignorance** | Proprietary formats without exit strategy | $2M-$4M switching cost, no negotiating leverage | Open table format (Iceberg/Delta), OCSF normalization |
 | **#4: One Engine for Everything** | Single query engine for all workloads | Poor performance, analyst frustration | Multi-engine architecture (Spark/Trino/Dremio), workload routing |
 | **#5: Boil the Ocean** | Big-bang migration (all sources, all rules) | 18-month timeline, 3× budget, team burnout | Phased rollout (Pilot → Production → Full), prove value first |
-| **#6: Field Mapping Hell** | Manual OCSF mapping (~6-8 hrs per source) | ~6-week timeline, illustratively 15-20% semantic errors | LLM-assisted mapping (~45-90 min per source), iterative refinement |
+| **#6: Field Mapping Hell** | Manual OCSF mapping (~4-8 hrs per source) | ~6-week timeline, illustratively 15-20% semantic errors | LLM-assisted mapping (~45-90 min per source), iterative refinement |
 | **#7: Ignoring Change Management** | Technology-first, people-last | 15% adoption, "technical success but operational failure" | Stakeholder buy-in, phased training, migrate critical workflows |
 | **#8: No Monitoring** | Deploy and forget (no metrics, no alerts) | Silent degradation, cost surprises ($75K vs. $25K) | Query performance monitoring, cost tracking, automated alerts |
 | **#9: Pipeline Vendor Lock-In** | Proprietary transforms, no OCSF, no raw preservation | $500K-$800K migration cost, vendor negotiating leverage lost | OCSF standard normalization, preserve raw data layer (10% overhead), document transforms in Git |
