@@ -68,7 +68,7 @@ DataStream<AuthEvent> authStream = env
 
 If a team already runs Spark for batch, structured streaming is usually the streaming engine I'd reach for first, because the win isn't raw latency, it's that you keep one codebase and one operational model instead of standing up a second framework your on-call rotation has to learn. The micro-batch model means you're living in the 2-10 second latency range rather than the sub-second range, and for most security work (OCSF normalization on the way in, continuous CloudTrail enrichment, rolling aggregations) that's fine, so the question I'd actually ask is whether you can tolerate micro-batch latency, and if you can, the unified codebase argument tends to win over Flink's lower latency.
 
-It's best for streaming inside an existing Spark estate, micro-batch processing where 2-10 second latency is acceptable, and a single batch-plus-streaming codebase.
+It's best for streaming inside an existing Spark deployment, micro-batch processing where 2-10 second latency is acceptable, and a single batch-plus-streaming codebase.
 
 **Security use cases**:
 - Streaming OCSF normalization (Appendix H.4)
@@ -672,7 +672,7 @@ fig.show()
 
 ### J.5.1 AWS SageMaker
 
-SageMaker is the one I'd reach for when a team has committed to AWS and has the data-science skill to actually use it, because the moment you need distributed training, managed endpoints, and a feature store wired into the rest of your AWS estate, building that yourself is rarely the better trade. I'd add the caution I give every team that gets here, though: ML in security earns its place after the foundation is stable, not before, because an isolation forest on top of badly normalized data just produces confident nonsense, so the order that matters is get the lakehouse and the OCSF mapping right first, then put a model on top of clean data, and SageMaker is a fine home for that model once you're there.
+SageMaker is the one I'd reach for when a team has committed to AWS and has the data-science skill to actually use it, because the moment you need distributed training, managed endpoints, and a feature store wired into the rest of your AWS environment, building that yourself is rarely the better trade. I'd add the caution I give every team that gets here, though: ML in security earns its place after the foundation is stable, not before, because an isolation forest on top of badly normalized data just produces confident nonsense, so the order that matters is get the lakehouse and the OCSF mapping right first, then put a model on top of clean data, and SageMaker is a fine home for that model once you're there.
 
 It's best for ML training and deployment, AWS-integrated workflows, scalable infrastructure, and MLOps.
 
@@ -785,7 +785,7 @@ It's best for a multi-engine lakehouse, ACID guarantees, schema evolution, and p
 
 ### J.6.2 Delta Lake
 
-I'd reach for Delta over Iceberg in one fairly specific situation: you've committed to Databricks and your workload is Spark-only, so the multi-engine argument that makes me default to Iceberg just doesn't apply to you, and inside that world Delta's Spark integration and its CDC story are genuinely strong. The honest move if you're unsure is to use Delta UniForm, which keeps a table readable as both Delta and Iceberg at once, so you get Databricks-native performance now without burning the migration bridge later — that's the option I'd take over betting the whole estate on a single-format future.
+I'd reach for Delta over Iceberg in one fairly specific situation: you've committed to Databricks and your workload is Spark-only, so the multi-engine argument that makes me default to Iceberg just doesn't apply to you, and inside that world Delta's Spark integration and its CDC story are genuinely strong. The honest move if you're unsure is to use Delta UniForm, which keeps a table readable as both Delta and Iceberg at once, so you get Databricks-native performance now without burning the migration bridge later — that's the option I'd take over betting everything on a single-format future.
 
 It's best for Databricks-centric environments, unified batch and streaming, and tight Spark integration.
 
@@ -1423,7 +1423,7 @@ Logs: [attach query profile, Reflection definition]
 - **How**: Open-source it (GitHub), propose to Apache project or OCSF
 - **Impact**: Community reuses, improves, validates
 
-**Example**: Your Zeek-to-OCSF Power Query M scripts (Appendix H.4.2) → Contribute to OCSF GitHub → Other practitioners adopt.
+**Example**: Your Zeek-to-OCSF Power Query M scripts (Appendix H.4.1) → Contribute to OCSF GitHub → Other practitioners adopt.
 
 ---
 

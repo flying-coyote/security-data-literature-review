@@ -708,7 +708,7 @@ For non-critical fields, accept they won't map to OCSF:
 **Appendix H** (Strategic Context):
 - Section H.1: Schema lock-in problem ($6.9M migration cost example)
 - Section H.2: OCSF coalition dynamics (multi-vendor Linux Foundation coalition; exact membership count not fixed, see H.2.1)
-- Section H.3: Production validation (+1 PB/day deployments)
+- Section H.3: Production validation (1+ PB/day deployments)
 - Section H.5: Ontological foundation (D3FEND → CCO → BFO)
 - Section H.6: When OCSF may not fit your use case
 

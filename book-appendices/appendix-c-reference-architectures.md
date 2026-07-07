@@ -736,7 +736,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 ## Pattern 5: MOAR Multi-Engine Architecture
 
-### Architecture Overview (Appendix I Pattern)
+### Architecture Overview
 
 **Problem Statement**:
 - Diverse workload types with conflicting optimization requirements

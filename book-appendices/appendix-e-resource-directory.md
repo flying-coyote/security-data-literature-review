@@ -52,7 +52,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 ---
 
 **"Designing Data-Intensive Applications" by Martin Kleppmann** (O'Reilly, 2017)
-- **Why Essential**: Deep dive into distributed systems, databases, data processing
+- **Why Essential**: A thorough treatment of distributed systems, databases, and data processing
 - **Security-Relevant Chapters**:
   - Chapter 3: Storage and Retrieval (LSM-trees vs. B-trees—understand Elasticsearch, ClickHouse internals)
   - Chapter 5: Replication (high availability for SIEM replacement)
@@ -324,7 +324,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 **Materialize** (Differential Dataflow): https://materialize.com/docs/
 - **Key Differentiator**: Among the strongest IVM support of the streaming platforms here, with fully incremental multi-table joins (the differential-dataflow design is the reason)
 - **Architecture**: Maintains dataflow graphs (not result sets) for true incremental updates
-- **Performance**: 1000× lower latency than traditional OLTP replicas (vendor claim)
+- **Performance**: 1000× lower latency than traditional OLTP replicas (vendor claim, Tier C)
 - **Constraint**: Acceptable if touched partitions ≤1,000,000 rows/second (vendor docs, Tier C; can be exceeded during security incidents)
 - **Security Fit**: Excellent for sophisticated detection engineering teams, steep learning curve
 - **Learning Path**:

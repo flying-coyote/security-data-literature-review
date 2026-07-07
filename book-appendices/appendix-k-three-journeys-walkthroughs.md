@@ -924,7 +924,7 @@ The Architecture Decision Summary Priya put in front of the executive sponsors, 
 
 Priya's Denodo virtualization approach for EU/US/China data sovereignty represents the most complex staffing and budget scenario in the book, and the cost of multi-region security operations when regulatory compliance and political constraints drive the architecture works out roughly like this:
 
-**Team Composition** (6-8 FTEs):
+**Team Composition** (7-8 FTEs):
 - 3 Data Engineers (Denodo virtualization layer configuration, per-region connector optimization, API integration, query pushdown tuning)
 - 2 Platform Engineers (multi-region infrastructure coordination, performance monitoring, connector maintenance across 8 heterogeneous sources)
 - 1.5-2.5 Security Engineers (regional detection logic coordination, cross-region threat hunting, compliance validation)
