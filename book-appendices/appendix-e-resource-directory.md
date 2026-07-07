@@ -9,7 +9,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 **Purpose**: Curated list of learning resources for building MOAR security data architectures. Compiled from the translation and navigation material (now Appendices D and J) with organization by topic.
 
-**How to use**: Start with your learning goal (e.g., "Learn Apache Iceberg") → Find topic section → Follow recommended path (docs → blog posts → videos → community). External URLs spot-checked October 2025 and sample-rechecked July 2026 — core recommendations current, but a few links have moved (Snowflake's managed Polaris is now Open Catalog and its old workload URL 404s), so verify a specific link before relying on it.
+**How to use**: Start with your learning goal (e.g., "Learn Apache Iceberg") → Find topic section → Follow recommended path (docs → blog posts → videos → community). External URLs spot-checked October 2025 and fully re-checked July 2026 — core recommendations current, but several links have moved: Snowflake's managed Polaris is now Open Catalog (its old workload URL 404s), Dremio was acquired by SAP (close completed July 2026, so its docs, University, and community URLs are migrating), the OCSF Slack now takes invites through ocsf.io, and one research citation's arXiv ID was corrected. Verify a specific link before relying on it.
 
 **Boundary with Appendix J**: This directory tells you where to learn each technology — books, documentation links, and week-by-week learning paths. The tool-by-tool implementation guides (when to use Flink versus Spark Structured Streaming, code patterns, the new-tool evaluation framework) are Appendix J Sections J.1–J.8, and the community landscape is J.9–J.17. Where the same tool appears in both, this appendix carries the learning path and J carries the implementation judgment.
 
@@ -203,6 +203,8 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ### Dremio
 
+> **Acquisition note (July 2026)**: SAP completed its acquisition of Dremio in July 2026. The `dremio.com` property still resolves, but its docs, University, and community links are migrating — several already moved off their old `dremio.com/...` paths — so expect further churn and verify Dremio URLs before relying on them.
+
 **Official Documentation**: https://docs.dremio.com/
 - **Start Here**: "What is Dremio" + "Reflections" (key differentiator)
 - **Security-Relevant Features**:
@@ -210,10 +212,10 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
   - Iceberg optimization: Column-level and row-level security
   - BI integration: Tableau, Power BI, Looker connectors
 
-**Dremio University**: https://www.dremio.com/university/
+**Dremio University**: https://university.dremio.com/
 - Free courses: "Dremio Fundamentals," "Reflections Explained," "Iceberg with Dremio"
 
-**Dremio Community Slack**: https://www.dremio.com/community/
+**Dremio Community Slack**: https://community.dremio.com/
 - Active community, responsive Dremio engineers
 - #reflections: Dashboard optimization questions
 - #iceberg: Dremio + Iceberg best practices
@@ -280,7 +282,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ### Platform-Specific Documentation
 
-**Dremio Reflections** (Preferred for security dashboards): https://docs.dremio.com/current/sonar/reflections/
+**Dremio Reflections** (Preferred for security dashboards): https://docs.dremio.com/current/acceleration/
 - **Key Topics**:
   - Reflection policies (automatic vs. manual)
   - Raw vs. aggregation reflections
@@ -338,7 +340,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Security Fit**: Good for basic real-time metrics (event counts, simple aggregations), insufficient for complex correlation
 - **Learning Path**: If already using Kafka, ksqlDB is natural choice for simple streaming MVs
 
-**Apache Flink SQL Materialized Tables**: https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/table/materialized-table/overview/
+**Apache Flink SQL Materialized Tables**: https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/table/materialized-table/
 - **Status**: Materialized Table feature (Flink 1.20+)
 - **Complexity**: Operationally complex (Kafka + Flink + serving layer required)
 - **Security Fit**: Best for large enterprises with dedicated stream processing teams
@@ -348,7 +350,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ### Research Papers & Advanced Topics
 
-**q-Hierarchical Dichotomy for IVM**: Berkholz, Keppeler, Schweikardt (2017) - https://arxiv.org/abs/1807.08380
+**q-Hierarchical Dichotomy for IVM**: Berkholz, Keppeler, Schweikardt, "Answering Conjunctive Queries under Updates" (PODS 2017) - https://arxiv.org/abs/1702.06370
 - **Key Finding**: Some query patterns are **fundamentally impossible** to maintain incrementally in sub-linear time (O(N^1/2) update time required)
 - **Security Relevance**: Explains why complex correlation rules (non-q-hierarchical queries) force full refresh regardless of platform
 - **Reading Level**: Advanced (computer science theory)—skip unless interested in computational complexity foundations
@@ -391,7 +393,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ### Community Resources
 
-**Dremio Community Slack** (#reflections channel): dremio.com/community/
+**Dremio Community Slack** (#reflections channel): community.dremio.com
 - Active discussions on reflection optimization, refresh strategies, schema change handling
 - Dremio engineers responsive to troubleshooting questions
 
@@ -424,7 +426,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Status**: Apache incubator project (October 2024), production-ready
 - **Why Important**: Iceberg-native catalog (vs. Hive Metastore legacy compatibility)
 
-**Snowflake Open Catalog** (managed Apache Polaris, GA; formerly "Polaris Cloud") — the old `data-cloud/workloads/apache-polaris/` URL 404s as of the July 2026 re-check; search snowflake.com for the current Open Catalog page
+**Snowflake Open Catalog** (managed Apache Polaris, GA; formerly "Polaris Cloud") — docs at https://docs.snowflake.com/en/user-guide/opencatalog/overview (the old `data-cloud/workloads/apache-polaris/` marketing URL 404s as of the July 2026 re-check, and the `open-catalog` marketing page now redirects into Snowflake Horizon)
 - **When to Use**: Managed catalog service (eliminate self-hosted Hive Metastore burden)
 - **Pricing**: consumption-based; contact Snowflake (not publicly published as of the July 2026 re-check)
 
@@ -537,7 +539,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - Schema repository (contribute mappings, report issues)
 - Reference implementations (parsers, transformers)
 
-**OCSF Slack**: https://ocsfcommunity.slack.com/
+**OCSF Slack**: request an invite at info@ocsf.io (join path via https://ocsf.io/ — OCSF joined the Linux Foundation in November 2024, and the bare ocsfcommunity.slack.com workspace URL no longer resolves for non-members)
 - #general: Community discussions, adoption questions
 - #schema-development: Propose new event classes, field additions
 - #integrations: Vendor integration updates (AWS, Splunk, Microsoft)
@@ -615,9 +617,9 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 | Community | Slack URL | Primary Topics | Activity Level |
 |------------------|----------------------------|------------------------------|----------------|
 | **Apache Iceberg** | iceberg-community.slack.com | Iceberg table format, maintenance, multi-engine | High (1,000+ members) |
-| **OCSF** | ocsfcommunity.slack.com | Schema mapping, vendor adoption | High (500+ members) |
+| **OCSF** | ocsf.io (invite: info@ocsf.io) | Schema mapping, vendor adoption | High (500+ members) |
 | **Trino** | trino.io/slack | Trino queries, connectors, federation | High (3,000+ members) |
-| **Dremio** | dremio.com/community | Dremio Reflections, BI integration | Medium-High (800+ members) |
+| **Dremio** | community.dremio.com | Dremio Reflections, BI integration | Medium-High (800+ members) |
 | **dbt** | getdbt.com/community | OCSF transformations, data modeling | Very High (10,000+ members) |
 | **Dagster** | dagster.io/slack | Data pipeline orchestration | Medium (2,000+ members) |
 | **r/dataengineering** | reddit.com/r/dataengineering | General data engineering discussions | Very High (100K+ members) |
@@ -675,7 +677,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 **Alex Merced** (Developer Advocate, Dremio)
 - YouTube: youtube.com/@alexmerceddata
-- Blog: alexmerced.com/devblog
+- Blog: amdatalakehouse.substack.com (Substack, active) / alexmerced.com
 - Focus: Iceberg, Dremio, Apache Arrow, query engines
 
 **Zhamak Dehghani** (Data Mesh creator)
@@ -705,7 +707,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 ### Security Community (OCSF, ATT&CK)
 
 **OCSF Working Groups**
-- Monthly meetings (open to community): Check ocsfcommunity.slack.com for schedule
+- Monthly meetings (open to community): Check ocsf.io for schedule (Slack invite via info@ocsf.io)
 - Working groups: Schema Development, Integrations, Adoption
 
 **MITRE ATT&CK Team**
@@ -837,12 +839,12 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 
 ## Online Courses (Free)
 
-**Dremio University** (dremio.com/university/)
+**Dremio University** (university.dremio.com)
 - "Dremio Fundamentals" (2 hours)
 - "Reflections Explained" (1 hour)
 - "Iceberg with Dremio" (3 hours)
 
-**Databricks Academy** (academy.databricks.com)
+**Databricks Academy** (customer-academy.databricks.com)
 - "Data Engineering with Databricks" (free tier)
 - "Delta Lake Deep Dive" (free webinars)
 
@@ -853,7 +855,7 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 
 ---
 
-This directory covers books, documentation, communities, conferences, and thought leaders organized by topic so you can navigate directly to your learning goal. External URLs were spot-checked October 2025 and sample-rechecked July 2026 (core recommendations current; a few links have moved — verify before relying); most recommendations are free (docs, Slack, YouTube).
+This directory covers books, documentation, communities, conferences, and thought leaders organized by topic so you can navigate directly to your learning goal. External URLs were spot-checked October 2025 and fully re-checked July 2026 (core recommendations current; several links moved — Dremio→SAP migration, Snowflake Open Catalog, OCSF Slack now invite-only via ocsf.io, plus a corrected arXiv ID — verify before relying); most recommendations are free (docs, Slack, YouTube).
 
 ---
 
