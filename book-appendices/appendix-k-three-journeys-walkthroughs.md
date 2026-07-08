@@ -39,7 +39,7 @@ These requirements created hard filters, so any vendor missing even one gets eli
 
 These requirements aren't disqualifying, but heavily weighted in vendor scoring:
 
-- The **Apache Iceberg table format** (3 points), because the industry momentum toward Iceberg provides future flexibility. "Every enterprise is using Iceberg or has it on their roadmap" — a data-platform practitioner [Personal communication, October 2025]. Delta Lake is acceptable (2 points), proprietary formats score 0.
+- The **Apache Iceberg table format** (3 points), because the industry momentum toward Iceberg provides future flexibility. "Every enterprise is either using Iceberg or it's on their roadmap" — a data-platform practitioner [Personal communication, October 2024]. Delta Lake is acceptable (2 points), proprietary formats score 0.
 
 - Time-series partitioning (3 points), because almost every security query I've watched analysts run is time-bounded, since a hunt or an investigation works over a window rather than the whole corpus. Platforms with date-based partition pruning (scan days, not years) cut the data scanned by roughly the ratio of the window to the retention period, so a 30-day query against three years of history reads on the order of a few percent of the table (Apache Iceberg documentation, partition pruning). Native support scores 3, manual partition management scores 1.
 
@@ -293,8 +293,8 @@ Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an 
 - 1 Platform Engineer (on-prem object-store infrastructure, Dremio cluster operations, Kubernetes management)
 - 0.5-1.5 Security Engineers (detection logic, HIPAA compliance use cases, analyst support)
 
-**Annual Operational Budget**: $750K-900K
-- Staffing: $668K-800K (3.5-4.5 FTEs × $191K average fully-loaded cost, including salary + benefits + overhead)
+**Annual Operational Budget**: $860K-1.08M (the sum of the components below)
+- Staffing: $668K-860K (3.5-4.5 FTEs × $191K average fully-loaded cost, including salary + benefits + overhead)
 - Infrastructure: $50K-70K (on-premises hardware amortization, object-store support contracts, network costs)
 - Dremio Cloud licensing: $120K/year (managed Iceberg maintenance, hybrid deployment)
 - Training: $20K-30K (Dremio certifications, Kubernetes courses, Iceberg best practices)
@@ -304,15 +304,15 @@ Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an 
 - Month 3-4: Iceberg table design + HIPAA compliance validation + data migration (3-4 FTEs)
 - Month 5: Production migration + parallel operations with legacy Splunk (4-5 FTEs)
 
-**3-Year Total Cost of Ownership (TCO)**: $2.4M-2.9M
+**3-Year Total Cost of Ownership (TCO)**: $2.8M-3.6M
 - Implementation: $250K-350K (one-time: Professional Services, training, initial infrastructure)
-- Operations: $2.2M-2.7M (3 years × $750K-900K annual operational budget)
+- Operations: $2.6M-3.2M (3 years × $860K-1.08M annual operational budget)
 
 **Comparison to Alternatives**:
-- **Expanding the schema-on-read SIEM to full 2.5 TB/day, 30-day retention**: $1.6M+/year = $4.8M+ over 3 years (65-100% MORE expensive, with 30-day retention vs 3-year)
+- **Expanding the schema-on-read SIEM to full 2.5 TB/day, 30-day retention**: $1.6M+/year = $4.8M+ over 3 years (roughly 33-71% MORE expensive, with 30-day retention vs 3-year)
 - **Baseline batch lakehouse (from practitioner tools)**: $2.5M over 3 years for generic 2 TB/day deployment
 
-**Why Jennifer's TCO is 16% higher than baseline**: HIPAA compliance premium adds 15-20% to timeline (change control, audit requirements, security validation) and ongoing costs (dedicated security engineer FTE for compliance, professional services for secure Kubernetes deployment, dual environment complexity with hybrid on-prem/cloud split).
+**Why Jennifer's TCO runs roughly 15-45% higher than the $2.5M baseline**: HIPAA compliance premium adds 15-20% to timeline (change control, audit requirements, security validation) and ongoing costs (dedicated security engineer FTE for compliance, professional services for secure Kubernetes deployment, dual environment complexity with hybrid on-prem/cloud split), and the top of the band reflects the fully-staffed 4.5-FTE case rather than additional compliance cost.
 
 The economics here are driven by the batch-first choice: it keeps the team size manageable (3.5-4.5 FTEs against 9-11 for a streaming build) and the budget predictable, and HIPAA adds complexity at the margins without changing the underlying numbers, because the hybrid on-prem/cloud split is operationally workable for a regulated industry where data sovereignty is mandatory rather than optional.
 
@@ -330,7 +330,7 @@ Marcus is a composite teaching scenario, so the POC latencies, the per-vendor co
 
 - AWS-native integration (3 points): deep integration with IAM (identity and access), VPC (network isolation), S3 lifecycle (automated tiering to Glacier), and CloudWatch (monitoring and metrics). Platforms built on AWS-native services score highest, multi-cloud platforms with "good" AWS integration score medium, platforms requiring manual configuration score low.
 
-- An **open table format, Iceberg or Delta** (3 points), to prevent vendor lock-in. "Every enterprise is using Iceberg or it's on their roadmap" — a data-platform practitioner [Personal communication, October 2025]. Iceberg scores 3 (multi-engine support: Athena, Dremio, Trino, Spark), Delta scores 2 (Databricks-centric but convertible), proprietary formats score 0.
+- An **open table format, Iceberg or Delta** (3 points), to prevent vendor lock-in. "Every enterprise is either using Iceberg or it's on their roadmap" — a data-platform practitioner [Personal communication, October 2024]. Iceberg scores 3 (multi-engine support: Athena, Dremio, Trino, Spark), Delta scores 2 (Databricks-centric but convertible), proprietary formats score 0.
 
 - A managed service (3 points), to minimize operational overhead. Fully managed (no infrastructure to operate) scores 3, partially managed (managed compute, self-managed storage) scores 2, self-managed scores 0. The team can handle moderate complexity but prefers managed.
 
@@ -436,7 +436,7 @@ Detailed cost breakdown:
   - AWS discount (volume pricing from $15M commitment): 12% discount = $800K/year
 - **Glue catalog + Kinesis Firehose**: $400K/year
   - Glue Data Catalog: $100K/year (request costs, storage)
-  - Kinesis Firehose: $300K/year (12 TB/day ingestion × $0.029/GB)
+  - Kinesis Firehose: $300K/year (base ingestion 12 TB/day × $0.029/GB ≈ $127K/year, plus Parquet format conversion at $0.018/GB and dynamic-partitioning charges; a directional all-in figure, not a single-rate derivation)
 - **Data transfer (multi-cloud federation)**: $500K/year
   - AWS → Azure Synapse federated queries (15% of queries cross-cloud)
   - Egress: 450 TB/month × $0.09/GB = $486K/year
@@ -548,7 +548,7 @@ The reading I'd take from this is that the "expensive" SIEM option turned out ch
 - Export Splunk data to S3 in Parquet format (creates lakehouse-ready archive for compliance queries)
 - Use Splunk for real-time detection ONLY (10-15% of total queries)
 - Build Athena/Iceberg for historical compliance workloads when team capacity recovers (18-24 month roadmap)
-- Total 3-year cost: schema-on-read SIEM $36M + future Athena $600K = $36.6M (vs the pure-SIEM $39M, vs Athena-only non-compliant)
+- Total 3-year cost: schema-on-read SIEM $36M + future Athena $600K = $36.6M — a $600K optionality premium over the $36M pure-SIEM path (Athena-only stays non-compliant)
 
 **Evidence**: Staffing Calculator from the literature review (batch 3 FTEs minimum for lakehouse, streaming 9-11 FTEs), schema-on-read SIEM list pricing (modeled $11.4M/year for the 15 TB/day high-volume tier). Deployment-timeline figures are directional scenario assumptions, not a sourced Gartner rate.
 
@@ -930,8 +930,8 @@ Priya's Denodo virtualization approach for EU/US/China data sovereignty represen
 - 1.5-2.5 Security Engineers (regional detection logic coordination, cross-region threat hunting, compliance validation)
 - 0.5 Data Governance Engineer (GDPR/CCPA/China Cybersecurity Law compliance, data residency validation, legal coordination)
 
-**Annual Operational Budget**: $1.8M-2.2M
-- Staffing: $1.3M-1.6M (6-8 FTEs × $191K average fully-loaded cost, including salary + benefits + overhead)
+**Annual Operational Budget**: $2.7M-3.1M (the sum of the components below)
+- Staffing: $1.3M-1.6M (7-8 FTEs × $191K average fully-loaded cost, including salary + benefits + overhead)
 - Denodo Licensing: $1.2M/year (enterprise multi-region, 3 regions, 50 concurrent users, 8 data source connectors)
 - Regional Infrastructure Coordination: $50K-80K/year (API access fees, regional S3/Blob export pipelines where deployed voluntarily)
 - Professional Services: $150K-200K/year (Denodo optimization, connector tuning, performance troubleshooting)
@@ -942,26 +942,26 @@ Priya's Denodo virtualization approach for EU/US/China data sovereignty represen
 - Month 4-6: Cross-region query federation testing + GDPR/China law compliance validation with legal team + query pushdown optimization
 - Month 7-9: Security use case migration (threat hunting playbooks adapted for federated queries) + analyst training + compliance audit documentation
 
-**3-Year Total Cost of Ownership (TCO)**: $7.0M-8.8M
-- Implementation: $1.2M-1.6M (one-time: 6-9 months × 6-8 FTEs, Denodo Professional Services, compliance validation)
-- Operations: $5.4M-6.6M (3 years × $1.8M-2.2M annual operational budget)
+**3-Year Total Cost of Ownership (TCO)**: $9.4M-11M
+- Implementation: $1.2M-1.6M (one-time: 6-9 months × 7-8 FTEs, Denodo Professional Services, compliance validation)
+- Operations: $8.2M-9.4M (3 years × $2.7M-3.1M annual operational budget)
 - Denodo Licensing: $3.6M (3 years × $1.2M)
 - **Note**: Denodo licensing included in operational budget above, not double-counted
 
 **Comparison to Alternatives**:
-- **SIEM Consolidation (schema-on-read SIEM cloud, global)**: $8.5M/year = $25.5M over 3 years (3× MORE expensive, but **violates GDPR and China Cybersecurity Law**, so not viable)
-- **Lakehouse Federation (Iceberg + Trino multi-cloud)**: $2.1M/year = $6.3M over 3 years (20% CHEAPER, but requires regional S3 export pipelines = high political friction with autonomous regional IT teams, 6-12 month delays)
+- **SIEM Consolidation (schema-on-read SIEM cloud, global)**: $8.5M/year = $25.5M over 3 years (roughly 2.3-2.7× MORE expensive, but **violates GDPR and China Cybersecurity Law**, so not viable)
+- **Lakehouse Federation (Iceberg + Trino multi-cloud)**: $2.1M/year = $6.3M over 3 years (roughly 33-43% CHEAPER, but requires regional S3 export pipelines = high political friction with autonomous regional IT teams, 6-12 month delays)
 - **Manual Coordination (status quo)**: $0 new cost, but 4-6 hours per cross-region investigation (unacceptable operational burden, investigators abandon cross-region hunts)
 - **Baseline batch lakehouse (single-region)**: $2.5M over 3 years for 2 TB/day (from practitioner tools)
 
-**Why Priya's TCO is 3× higher than single-region baseline**: Multi-region complexity is exponential coordination overhead rather than just "multiply by 3 regions":
+**Why Priya's TCO is roughly 4× higher than single-region baseline**: Multi-region complexity is exponential coordination overhead rather than just "multiply by 3 regions":
 - Data governance: Full-time FTE for GDPR/CCPA/China law compliance (vs 0.2 FTE for single-region)
 - Platform engineering: 2× FTEs coordinating across 15 autonomous IT teams (vs 1 FTE managing single environment)
 - Denodo premium: Virtualization licensing ($1.2M/year) vs open-source Trino federation ($0 licensing, but requires regional data export buy-in)
 - Political cost: API-only integration avoids regional disruption (avoiding 6-12 month negotiation delays worth $600K-1.2M in delayed value)
 
-Data sovereignty changes the architecture economics from the ground up, and the thing driving the change is regulatory and political complexity rather than a technology problem, which is why it takes additional team capacity (6-8 FTEs against a 3.5 baseline) and premium tooling (Denodo at $1.2M/year against open-source alternatives) to satisfy legal and political constraints that a lakehouse consolidation cannot satisfy at any price.
+Data sovereignty changes the architecture economics from the ground up, and the thing driving the change is regulatory and political complexity rather than a technology problem, which is why it takes additional team capacity (7-8 FTEs against a 3.5 baseline) and premium tooling (Denodo at $1.2M/year against open-source alternatives) to satisfy legal and political constraints that a lakehouse consolidation cannot satisfy at any price.
 
-Denodo earns the spend in an organization that has all three of these at once: multi-region data-sovereignty mandates, decentralized IT with genuine regional autonomy, and a real need for unified cross-region visibility. An organization missing those constraints should consolidate on a lakehouse (Iceberg + Athena/Dremio) instead and take the roughly 3× lower cost and the better performance that come with it.
+Denodo earns the spend in an organization that has all three of these at once: multi-region data-sovereignty mandates, decentralized IT with genuine regional autonomy, and a real need for unified cross-region visibility. An organization missing those constraints should consolidate on a lakehouse (Iceberg + Athena/Dremio) instead and take the roughly 4× lower cost and the better performance that come with it.
 
 **Evidence**: Staffing Calculator from literature review (batch 3.5 FTEs baseline, +2-3 FTEs for multi-region governance), Gartner (6-8 FTEs for multi-region data platform management), Denodo public enterprise pricing (validated $1.2M/year for multi-region deployment with 8 connectors).

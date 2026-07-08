@@ -128,7 +128,7 @@ The pattern is the same across all of them: adopt the platform, normalize to tha
 
 Proprietary schemas create compounding switching costs across three operational layers. The figures in each layer are illustrative estimates built from published labor rates and rule-of-thumb effort estimates, not audited project data — the same Tier C/D caveat from the section opener applies to every range below:
 
-**Layer 1: Detection Rule Re-Mapping** ($150K-$500K)
+**Layer 1: Detection Rule Re-Mapping** ($225K-$375K)
 
 A typical enterprise SIEM contains 500-5,000 detection rules. Each rule references platform-specific field names and query syntax.
 
@@ -145,7 +145,7 @@ Cost calculation:
 - Security engineer cost: $150-$250/hour (fully loaded)
 - **Total**: $225K-$375K in labor alone
 
-**Layer 2: Dashboard and Visualization Rebuilding** ($300K-$800K)
+**Layer 2: Dashboard and Visualization Rebuilding** ($600K-$1M)
 
 Security operations centers rely on 50-300 dashboards for:
 - Real-time threat monitoring (NOC-style dashboards)
@@ -166,7 +166,7 @@ Cost calculation:
 - Analyst + dashboard developer: $100-$175/hour
 - **Total**: $900K-$1.575M (often outsourced at lower rate, $600K-$1M realistic)
 
-**Layer 3: Integration and Automation Re-Engineering** ($200K-$600K)
+**Layer 3: Integration and Automation Re-Engineering** ($360K-$600K)
 
 Security orchestration, automation, and response (SOAR) platforms integrate via schema-specific field mappings:
 
@@ -206,14 +206,14 @@ Cost calculation:
 
 | Cost Component | Low Estimate | High Estimate |
 |----------------|--------------|---------------|
-| Detection rules re-mapping | $225K | $500K |
+| Detection rules re-mapping | $225K | $375K |
 | Dashboard rebuilding | $600K | $1M |
 | Integration re-engineering | $360K | $600K |
 | Testing and validation | $150K | $400K |
 | Dual-platform overlap (6-12 months) | $500K | $2M |
 | Training and adoption | $100K | $300K |
-| Project management + contingency (20%) | $390K | $960K |
-| **TOTAL MIGRATION COST** | **$2.3M** | **$5.76M** |
+| Project management + contingency (20%) | $390K | $935K |
+| **TOTAL MIGRATION COST** | **$2.3M** | **$5.61M** |
 
 **Timeline**: 12-24 months (depending on organization size, detection content volume, resource availability)
 

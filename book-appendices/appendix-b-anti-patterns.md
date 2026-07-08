@@ -580,17 +580,12 @@ spark.sql("""
 **4. Operational Runbook** (For On-Call Engineers):
 
 **Common Issues + Resolutions**:
-- **Issue**: Queries timing out (>5 min)
-  - **Diagnosis**: Check file count (`SHOW TABLE EXTENDED security.cloudtrail PARTITION`)
-  - **Resolution**: Run compaction if >1,000 files per partition
 
-- **Issue**: Cost spike (daily cost >$2K)
-  - **Diagnosis**: Check slow query log (queries scanning >500 GB)
-  - **Resolution**: Identify user/dashboard, optimize query (add partition filter)
-
-- **Issue**: Dashboard slow to load (>10 sec)
-  - **Diagnosis**: Check Dremio Reflections (enabled for this query?)
-  - **Resolution**: Create/refresh Reflection if missing/stale
+| Issue | Diagnosis | Resolution |
+|-------|-----------|------------|
+| Queries timing out (>5 min) | Check file count (`SHOW TABLE EXTENDED security.cloudtrail PARTITION`) | Run compaction if >1,000 files per partition |
+| Cost spike (daily cost >$2K) | Check slow query log (queries scanning >500 GB) | Identify user/dashboard, optimize query (add partition filter) |
+| Dashboard slow to load (>10 sec) | Check Dremio Reflections (enabled for this query?) | Create/refresh Reflection if missing/stale |
 
 ---
 

@@ -402,7 +402,7 @@ ORDER BY ct.event_time DESC
 
 Dremio analyzes query patterns and creates optimized data structures (similar to materialized views but automatically managed):
 
-**Example dashboard query** (repeated 1,920 times/day):
+**Example dashboard query** (repeated 1,920 times/day — 120 refreshes/hour over a ~16-hour active-viewing window; a wall display refreshing around the clock in the 24/7 SOC of I.4.1 would run 2,880/day, which is the continuous basis behind I.4.1's $2,880/day figure):
 
 ```sql
 -- SOC dashboard tile: "Failed Authentications by Source IP (Last Hour)"
@@ -451,7 +451,7 @@ REFRESH EVERY 5 MINUTES  -- Incremental refresh
 - Trino: 4.3-8 hours compute × $0.10/hour (a provisioned-cluster compute rate, distinct from the serverless per-TB-scanned model behind the $2,880/day figure in I.4.1) = $0.43-$0.80 per tile per day × 200 tiles = **$86-$160/day**
 - Dremio: 32 minutes compute × $0.10/hour = $0.05 per tile per day × 200 tiles + reflection storage (20 TB × $0.023/GB/month) = **$10/day + $460/month storage**
 
-**Savings**: 85-94% cost reduction for dashboard workloads, PLUS <1 second latency vs 8-15 seconds.
+**Savings**: 85-94% compute-cost reduction for dashboard workloads ($10/day vs $86-$160/day; folding in the $460/month reflection storage brings the all-in reduction to roughly 71-84%), PLUS <1 second latency vs 8-15 seconds.
 
 ### I.4.3 Security Use Case: Real-Time Threat Visibility
 
@@ -1069,7 +1069,7 @@ def route_query(query_metadata):
 | Component | Monthly Cost | Calculation |
 |-----------|--------------|-------------|
 | Storage (10 TB/day × 90 days) | $20,700 | 900 TB × $23/TB/month |
-| Compute (dashboards) | $14,400 | 24,000 queries/hour × 5 sec × $0.10/hour |
+| Compute (dashboards) | $14,400 | 24,000 queries/hour × 30 sec billed compute per refresh cycle × $0.10/hour |
 | Compute (threat hunting) | $3,000 | 1,500 queries/week × 30 sec × $0.10/hour |
 | **Total** | **$38,100/month** | **$457,200/year** |
 
