@@ -8,9 +8,9 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
-**Last Updated**: June 13, 2026 (revival in progress — see REVIEW-AND-PLAN-2026-06.md)
+**Last Updated**: July 8, 2026 (+2 production-deployment anchors, WT-2; revival in progress — see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 172 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). + 4 added 2026-06-30 (each verified at the source PDF/cover before cataloguing, recovered from a local research-inbox sweep): James Bonifield *Data Engineering for Cybersecurity* (B, No Starch Press — the closest named companion/competitor to the MOAR book), arXiv:2505.02709 *Evaluating Goal Drift in LM Agents* (B, Apollo Research), arXiv:2509.00115 *Adaptive Monitoring of Agentic AI Systems / AMDM* (B), arXiv:2603.11768 *Governing Evolving Memory in LLM Agents / SSGM* (C, post-cutoff framing source). This repo is the source of truth for literature citations.
+**Total Sources**: 174 catalogued entries (141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). + 4 added 2026-06-30 (each verified at the source PDF/cover before cataloguing, recovered from a local research-inbox sweep): James Bonifield *Data Engineering for Cybersecurity* (B, No Starch Press — the closest named companion/competitor to the MOAR book), arXiv:2505.02709 *Evaluating Goal Drift in LM Agents* (B, Apollo Research), arXiv:2509.00115 *Adaptive Monitoring of Agentic AI Systems / AMDM* (B), arXiv:2603.11768 *Governing Evolving Memory in LLM Agents / SSGM* (C, post-cutoff framing source); + 2 production-deployment anchors added 2026-07-08 (each verified at primary before cataloguing, WT-2 book-footnote corroborations): RunReveal SIEM-on-ClickHouse + sigmalite (B), DNB Cyber Defense Center on Ibis via the marimo case study (B). This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
 **Evidence Quality**: ~46% Evidence Level A (live: 70 of 155 entries marked `**Evidence Level**: A`; 81 B, 13 C — recompute any time via `scripts/weekly_health_check.py`). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The 9 Program-2 detection-engineering / grounding-chain anchors added 2026-06-21 add 4 Tier-A (Axelsson, Sommer & Paxson, D3FEND 1.0, BFO/ISO 21838-2), 3 Tier-B (CAR, Atomic Red Team, CCO), and 2 Tier-C (Stillions DML, SCYTHE PTEF), moving the catalogued count toward ~71 A / ~84 B / ~15 C across ~168 (recompute via `scripts/weekly_health_check.py`). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
@@ -963,6 +963,52 @@ This bibliography consolidates all literature sources from:
 **Notes**: Video presentation from Huntress CTO, RSA 2025 field validation
 
 **Validation Status**: ✅ Active (verified Feb 2026)
+
+---
+
+#### RunReveal - SIEM Built on ClickHouse + sigmalite (Ingest-Time Sigma)
+
+**Authors**: RunReveal / ClickHouse
+**Date**: 2024 (verified live 2026-07-08)
+**URL**: https://clickhouse.com/blog/clickhouse-cloud-runreveal (ClickHouse's security team as customer); https://github.com/runreveal/sigmalite (Apache-2.0 Sigma execution engine); https://runreveal.com/case-studies/clickhouse
+**Evidence Level**: B (named-practitioner engineering blog + first-party OSS repo)
+**Relevance**:
+- Book ch05 §5.3 footnote `[^bakeoff]` (production corroboration of engine-for-the-workload; added 2026-07-08, WT-2)
+- Hypothesis H-SIGMA-01 (sigmalite is a non-pySigma, ingest-time Sigma-evaluator implementation)
+- securitydataworks.com ProductionValidatorGrid row (RunReveal, Tier A first-party)
+
+**Key Findings**:
+- RunReveal is a security data platform / modern SIEM built on ClickHouse
+- sigmalite: Go parser + execution engine for Sigma detection rules, Apache 2.0, evaluated at ingest time
+- ClickHouse's own security team migrated its in-house security logging program to RunReveal, using their own ClickHouse Cloud service via the Destinations feature
+
+**Citations**: Book ch05 `[^bakeoff]` corroboration sentence
+**Notes**: The "RunReveal's team includes ex-ClickHouse security people" phrasing that circulated in internal planning docs did NOT verify and must not be used; the verified relationship is the inverse (ClickHouse's security team is a RunReveal customer).
+
+**Validation Status**: ✅ verified 2026-07-08 (sigmalite repo fetched; ClickHouse blog + RunReveal case study confirmed via search primaries)
+
+---
+
+#### DNB - Cyber Defense Center on Ibis (Multi-Engine Lakehouse)
+
+**Authors**: marimo (vendor-hosted case study; subject is DNB's Cyber Defense Center)
+**Date**: 2026 (verified live 2026-07-08)
+**URL**: https://marimo.io/blog/case-study-dnb
+**Evidence Level**: B (named org + named security workload; vendor-hosted — marimo is the notebook vendor in the stack, bias flagged)
+**Relevance**:
+- Book ch06 §6.3 footnote `[^dnb]` (named external instance of the multi-engine variant; added 2026-07-08, WT-2)
+- securitydataworks.com ProductionValidatorGrid row (DNB Bank, Tier B)
+
+**Key Findings**:
+- DNB (Norway's largest financial services group) Cyber Defense Center moved off Azure Databricks (Delta tables) to a composable stack
+- Ibis as the query layer: analysts write once, execute across DuckDB, Spark, and Snowflake
+- Iceberg table format for object-storage compatibility; DuckDB for single-node investigation performance; Neo4j for lateral-movement graph investigations; marimo notebooks as the unified interface (also connecting Splunk, Databricks, Snowflake)
+- Stated motivation: investigation workloads wanted single-node performance but were tied to Databricks' distributed architecture and pricing model
+
+**Citations**: Book ch06 `[^dnb]`
+**Notes**: The site grid abbreviates to "Norway's largest bank"; the case study's own phrasing is "Norway's largest financial services group" — the book footnote uses the latter.
+
+**Validation Status**: ✅ verified 2026-07-08 (WebFetch of the case study)
 
 ---
 
