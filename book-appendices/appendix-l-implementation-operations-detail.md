@@ -124,7 +124,7 @@ By month 12 the program landed against its targets:
 | **Analyst adoption** | 90% | 94% | ✓ |
 | **Detection parity** | 100% | 100% | ✓ |
 
-The coalition came in at 58% BU-level participation, 7 of 12 BUs, which is the success bar in a federated model where an integrated org would need 100%. The five that stayed out each had a reason that wasn't opposition: BU-B needed an EU-only platform for GDPR data residency and pursued its own EU-specific solution, BU-F runs on mainframe with no cloud migration approved and deferred 18 to 24 months, BU-I was mid-integration after a recent acquisition and pushed evaluation to 2026, BU-J had outsourced security to an MSSP so the platform didn't apply, and BU-L took a wait-and-see posture that may turn into a later join now that the first seven have proven it out.
+The coalition came in at 58% BU-level participation, 7 of 12 BUs, which counted as success in a federated model where an integrated org would need 100% — the achieved-adoption figure, distinct from the ~two-thirds required-buy-in threshold Chapter 7 models before the aggregate economics work. The five that stayed out each had a reason that wasn't opposition: BU-B needed an EU-only platform for GDPR data residency and pursued its own EU-specific solution, BU-F runs on mainframe with no cloud migration approved and deferred 18 to 24 months, BU-I was mid-integration after a recent acquisition and pushed evaluation to 2026, BU-J had outsourced security to an MSSP so the platform didn't apply, and BU-L took a wait-and-see posture that may turn into a later join now that the first seven have proven it out.
 
 ## L.5 The Roadmap: 30% → 60-70% in 18 Months
 

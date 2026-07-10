@@ -1049,7 +1049,7 @@ DetectionLab (https://github.com/clong/DetectionLab — Chris Long's project) is
 **Where**:
 - Website: https://attack.mitre.org/
 - GitHub: https://github.com/mitre-attack
-- Slack: https://mitreattack.slack.com/ (login wall for non-members; no public invite link verified — find the current invite via the ATT&CK community resources before citing)
+- Slack: https://mitreattack.slack.com/ (get invite: https://attack.mitre.org/resources/engage-with-attack/contact/ — verified 2026-07-10)
 
 **What to expect**:
 - **Focus**: Adversary tactics, techniques, procedures (TTPs)
@@ -1090,7 +1090,7 @@ Of all the communities in this appendix, the OCSF Slack is the one where I think
 **Where**:
 - Website: https://schema.ocsf.io/
 - GitHub: https://github.com/ocsf
-- Slack: https://ocsf.slack.com/ (get invite via website)
+- Slack: https://ocsf.slack.com/ (get invite by emailing info@ocsf.io, per ocsf.io — verified 2026-07-10)
 - Linux Foundation: https://www.linuxfoundation.org/projects/ocsf
 
 **What to expect**:
@@ -1531,7 +1531,7 @@ Time invested in community tends to pay back unevenly but substantially: one wel
 
 **Essential communities** (join immediately):
 - Apache Iceberg Slack: https://apache-iceberg.slack.com/ (get invite: https://iceberg.apache.org/community/)
-- OCSF Slack: https://ocsf.slack.com/ (get invite via website)
+- OCSF Slack: https://ocsf.slack.com/ (get invite by emailing info@ocsf.io)
 - r/dataengineering: https://www.reddit.com/r/dataengineering/
 
 **Standards bodies** (monitor for updates):

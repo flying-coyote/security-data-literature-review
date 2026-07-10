@@ -196,7 +196,7 @@ This bibliography consolidates all literature sources from:
 - 2nd Edition covers: Kubernetes deployment (Helm), Iceberg/Delta Lake connectors, fault-tolerant execution, Java 17
 
 **Citations**: Blog query engine deep-dive, Chapter 9 Trino fundamentals
-**Notes**: **CRITICAL** - Authoritative Trino reference, Matt Fuller = Starburst co-founder; ISBN 978-1-098-13723-6
+**Notes**: **CRITICAL** - Authoritative Trino reference, Matt Fuller = Starburst co-founder; ISBN 978-1-098-13723-6 (print/paperback, confirmed via ISBN registry 2026-07-10; the cited O'Reilly platform URL carries the digital-edition identifier 978-1-098-13722-9 — both valid, label whichever you cite)
 
 **Validation Status**: ✅ Updated January 2026 - Corrected to 2nd Edition URL
 
