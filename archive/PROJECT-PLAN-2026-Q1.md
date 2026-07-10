@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): expired-quarter plan, superseded by the monthly-update-tracker.md cadence. Carries the 2026-07-09/10 correction annotations on the phantom `2025-Q4-v1.0` tag (four mentions, all now annotated — the tag was never created); do not trust this file's completion claims without those corrections.
+
 # Project Plan: Q1 2026 (January - March)
 
 **Created**: January 2, 2026
@@ -220,7 +222,7 @@ These require extended timelines or significant prerequisites.
 
 **Completed**:
 - Best practices audit (92/100 score)
-- Git tag 2025-Q4-v1.0
+- Git tag 2025-Q4-v1.0 ❌ (false — the tag was never created; verified absent locally and on origin 2026-07-09. This is the fourth of four mentions in this file, annotated 2026-07-10 for consistency with the corrections at lines 27/136/178)
 - Archive and planning documents
 - 14 new sources added
 

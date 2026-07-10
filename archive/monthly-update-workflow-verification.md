@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): Nov-2025 verification snapshot, superseded by SCHEDULING.md and monthly-update-tracker.md.
+
 # Monthly Update Workflow - Verification Report
 
 **Date**: November 14, 2025

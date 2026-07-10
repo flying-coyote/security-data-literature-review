@@ -55,7 +55,7 @@
                 "url": "https://altinity.com/blog/clickhouse-compression-security-logs",
                 "evidence_tier": "A",
                 "type": "benchmark",
-                "lit_review_ref": "analysis-bundles/performance-benchmarks-table.md#clickhouse-compression"
+                "lit_review_ref": "archive/analysis-bundles/performance-benchmarks-table.md#clickhouse-compression"
               }
             ],
             "validation_notes": "Validated across multiple security log deployments. Range: 10-12\u00d7 compression ratio.",
@@ -107,7 +107,7 @@
           "security_specific_queries",
           "real_time_dashboards"
         ],
-        "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#recommendation-4-batch-clickhouse-iceberg"
+        "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#recommendation-4-batch-clickhouse-iceberg"
       },
       "journey_persona_fit": {
         "jennifer": "low",
@@ -275,7 +275,7 @@
           "moderate_volume",
           "multi_source_queries"
         ],
-        "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#recommendation-5-batch-trino-iceberg"
+        "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#recommendation-5-batch-trino-iceberg"
       },
       "journey_persona_fit": {
         "jennifer": "medium",
@@ -429,7 +429,7 @@
           "microsoft_ecosystem",
           "compliance"
         ],
-        "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#choose-azure-sentinel-when"
+        "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#choose-azure-sentinel-when"
       },
       "journey_persona_fit": {
         "jennifer": "high",
@@ -612,7 +612,7 @@
           "aws_native",
           "lean_teams"
         ],
-        "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#recommendation-1-batch-athena-iceberg"
+        "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#recommendation-1-batch-athena-iceberg"
       },
       "journey_persona_fit": {
         "jennifer": "high",
@@ -821,7 +821,7 @@
           "future_proof",
           "vendor_agnostic"
         ],
-        "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#foundational-choice-iceberg-table-format"
+        "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#foundational-choice-iceberg-table-format"
       },
       "journey_persona_fit": {
         "jennifer": "high",
@@ -1028,7 +1028,7 @@
           "data_governance",
           "managed_simplicity"
         ],
-        "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#snowflake-when-governance-matters"
+        "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#snowflake-when-governance-matters"
       },
       "journey_persona_fit": {
         "jennifer": "high",
@@ -1228,7 +1228,7 @@
           "unified_analytics",
           "enterprise_scale"
         ],
-        "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#databricks-when-ml-matters"
+        "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#databricks-when-ml-matters"
       },
       "journey_persona_fit": {
         "jennifer": "medium",

@@ -402,7 +402,7 @@ See CHANGELOG.md for detailed revision history.
 **After Publication**:
 1. Update MASTER-BIBLIOGRAPHY.md with new sources
 2. Update CHANGELOG.md with quarterly update entry
-3. Update REPOSITORY-STATUS.md with completion metrics
+3. Update README.md Quality Metrics with completion metrics (REPOSITORY-STATUS.md archived 2026-07-10)
 4. Create blog post announcing findings (security-data-commons-blog)
 
 **Evidence Levels**:

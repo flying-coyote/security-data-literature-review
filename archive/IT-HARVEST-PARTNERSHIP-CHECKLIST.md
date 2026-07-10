@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): unfilled coordination template — zero checkboxes completed, no decisions recorded. The partnership is optional (PROJECT-BRIEF.md Blocker 1 RESOLVED); contact and status are recorded in PROJECT-BRIEF.md and vendor-landscape/README.md.
+
 # IT Harvest Partnership Coordination Checklist
 
 **Purpose**: Coordinate vendor landscape data integration for quarterly technology state assessments

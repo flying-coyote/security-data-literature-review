@@ -115,7 +115,7 @@ Use this template when adding new vendors:
     "hybrid_path": true | false,
     "volume_threshold": "< 100GB/day | 100GB-1TB/day | 1TB+/day",
     "use_cases": ["real_time_detection", "threat_hunting", "compliance", "incident_response"],
-    "decision_tree_ref": "analysis-bundles/technology-decision-tree.md#recommendation-X"
+    "decision_tree_ref": "archive/analysis-bundles/technology-decision-tree.md#recommendation-X"
   },
 
   "journey_persona_fit": {

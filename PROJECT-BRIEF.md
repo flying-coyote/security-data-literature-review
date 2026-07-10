@@ -22,7 +22,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 - Level-A share: 42.9% live-computed 2026-07-09 — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
 - 9 analysis bundles created (170,100 words evidence synthesis)
 - All book chapters have supporting source citations
-- **Source**: README.md lines 15-23, REPOSITORY-STATUS.md, CLAUDE.md lines 33-44
+- **Source**: README.md lines 15-23, archive/REPOSITORY-STATUS.md (archived 2026-07-10), CLAUDE.md lines 33-44
 
 ### Fact 2: 7 Hypotheses Validated with Quantitative Evidence ✅
 **CONFIRMED**: Strong quantitative validation for 7 hypotheses

@@ -44,12 +44,12 @@ This repository contains a **living literature review** that is the shared evide
 7. **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** - Gap analysis with 7 validated hypotheses
 8. **LITERATURE-EXTRACTION-PLAN.md** - Systematic extraction methodology (PRISMA-aligned)
 9. **PUBLICATION-VENUE-RECOMMENDATIONS.md** - Academic publication strategy
-10. **REPOSITORY-STATUS.md** - Comprehensive status report with completion metrics (updated June 5, 2026, v1.22.0)
+10. **archive/REPOSITORY-STATUS.md** - Historical phase-status report (archived 2026-07-10; live metrics are the Quality Metrics block in this README)
 11. **CHANGELOG.md** - Version tracking for academic citation stability (Versions 1.0.0-1.12.0)
 
 **Analysis Bundles** (analysis-bundles/):
-- Evidence synthesis (5 bundles: cost reality, implementation, performance, security-specific, hypothesis confidence)
-- Practitioner tools (3 tools: staffing calculator, technology decision tree, cost optimization playbook)
+- Live (3): hypothesis-confidence-matrix.md (cited by manuscript Appendix B), cost-reality-reference.md (cited by FIGURES-AND-TABLES.md), staffing-budget-calculator.md (held pending the queued book ch06 footnote edit)
+- Archived 2026-07-10 → archive/analysis-bundles/ (6 static Oct-2025 synthesis files, regenerable from the live bibliography; each carries its 2026-06-14 fold-correction notes)
 - Source quality enhancements (contradiction analysis, validation chains, corroboration patterns)
 
 **Monthly Update Tracking** (NEW - Phase 2G):

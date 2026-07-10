@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): dead on two independent grounds — the IT Harvest partnership it supported is 'NOW OPTIONAL' (PROJECT-BRIEF.md Blocker 1 RESOLVED), and its sync target `security-architect-mcp-server` was archived 2026-07-01 (do not resurrect). `vendor-database.json` + `vendor-database-schema.md` stay live in vendor-landscape/.
+
 # MCP Server Integration Plan
 
 **Purpose**: Roadmap for integrating literature review with MCP server

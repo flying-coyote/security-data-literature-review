@@ -6,13 +6,18 @@ Intended to maintain quarterly snapshots of the data lakehouse vendor landscape,
 > **Status (2026-07-09): mechanism ready, not yet in use.** Zero quarterly updates have been produced. The
 > schema, the update template (`quarterly-updates/TEMPLATE-YYYY-QX-update.md`), and this process doc all
 > exist, but the cadence has not started — it is contingent on the IT Harvest partnership, which is still at
-> the outreach/checklist stage (see `IT-HARVEST-PARTNERSHIP-CHECKLIST.md`). Read everything below as the
+> the outreach stage (the unfilled coordination checklist was archived 2026-07-10 → `../archive/IT-HARVEST-PARTNERSHIP-CHECKLIST.md`,
+> and the partnership itself is optional per PROJECT-BRIEF.md Blocker 1). Read everything below as the
 > *planned* mechanism, not an active one.
 
 ## Update Cadence (planned — not yet started)
 Intended **Quarterly Updates** (January, April, July, October). None produced as of 2026-07.
 
 ## Contents
+
+> Note (2026-07-10): `capability-matrix.md` and `market-trends.md` below were planned deliverables that were
+> **never created** — descriptions kept as design intent only. What actually exists here: `vendor-database.json`,
+> `vendor-database-schema.md`, `MCP-VENDOR-INTEGRATION-SUMMARY.md`, and `quarterly-updates/` (template only).
 
 ### capability-matrix.md
 - **Platform Capabilities**: Feature comparison across vendors
@@ -72,7 +77,7 @@ not happen:
    - Blog integration and book manuscript updates
 
 **Coordination Resources**:
-- **IT-HARVEST-PARTNERSHIP-CHECKLIST.md**: Comprehensive partnership coordination guide
+- **../archive/IT-HARVEST-PARTNERSHIP-CHECKLIST.md** (archived 2026-07-10 — unfilled template, partnership optional): partnership coordination guide
   - Phase-by-phase checklist (4 phases)
   - Data collection specifications
   - Quality assurance standards
@@ -145,7 +150,7 @@ Supports Chapter 9 "Technology State Assessment" with quarterly vendor landscape
 **Files**:
 - Source: `vendor-database.json` (71 vendors, 79 vendor-level evidence sources)
 - Integration Summary: `MCP-VENDOR-INTEGRATION-SUMMARY.md` (~25 KB comprehensive documentation)
-- MCP Server: `security-architect-mcp-server/data/vendor_database.json` (synced)
+- MCP Server: `security-architect-mcp-server/data/vendor_database.json` (sync retired — that repo was archived 2026-07-01; this JSON is now the frozen 71-vendor baseline, with current vendor coverage living in the book's appendix-g)
 
 ---
 **Last Updated**: October 23, 2025 (MCP vendor baseline complete - IT Harvest partnership ready for acceleration)

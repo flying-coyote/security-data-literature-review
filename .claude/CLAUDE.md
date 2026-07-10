@@ -10,7 +10,7 @@
 ## Current Status
 **Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.22.0
 **Sources**: 179 (`#### ` blocks; 177 tiered + 2 stubs) | **Evidence Level A**: 42.9% (live 2026-07-09, 76/177) | **Hypotheses Validated**: 7 (needs review — see note)
-See `PROJECT-BRIEF.md` for scope and `REPOSITORY-STATUS.md` for tracking.
+See `PROJECT-BRIEF.md` for scope; live metrics are README.md's Quality Metrics block (live-computed via `scripts/automation_dashboard.py`). REPOSITORY-STATUS.md was archived 2026-07-10 → `archive/` (it was a fourth hand-synced copy of the same numbers).
 > Counts are live-computed by `scripts/automation_dashboard.py`: sources = `#### ` blocks (179), Level-A% = A-tier over tiered entries (76/177 = 42.9%; the 2 untiered blocks are documented rejection/retirement stubs).
 > The 80% Level-A figure was self-reported; the honest live number is 42.9% (76/177) after the 2026-06-05 audit
 > folded corrections in and re-tiered ~25 entries off A (their headline stats weren't in the cited
@@ -39,6 +39,8 @@ See `PROJECT-BRIEF.md` for scope and `REPOSITORY-STATUS.md` for tracking.
 - Quarterly tags (YYYY-QX-v1.0) enable academic citation
 - "Being wrong publicly" - document contradictions, invite corrections
 - Link new sources to hypotheses in MASTER-BIBLIOGRAPHY.md
+- Don't hand-maintain counts in prose — `scripts/automation_dashboard.py` is authoritative (derive, don't state)
+- No blanket "100% verified" certificates — the 2025-10-22 certificate certified later-confirmed fabrications; verification claims stay per-item with the primary named
 
 ## Hybrid Update Model
 - **Monthly** (6-8 hrs): New sources, community feedback, MCP refresh
@@ -49,7 +51,7 @@ See `PROJECT-BRIEF.md` for scope and `REPOSITORY-STATUS.md` for tracking.
 MASTER-BIBLIOGRAPHY.md              # 118+ sources with evidence tiers
 LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md  # Hypotheses and validation
 CHANGELOG.md                        # All revisions (citation stability)
-PROJECT-PLAN-2026-Q1.md            # Current quarter plan
+monthly-update-tracker.md           # Rolling monthly cadence (Q1 plan archived 2026-07-10)
 ```
 
 ## Integration

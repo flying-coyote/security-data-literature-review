@@ -12,6 +12,18 @@ and this project adheres to semantic versioning for documentation releases.
 Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
 report on it, and reconciles the source count across every surface that states it.
 
+### 2026-07-10: D-audit archive execution + gap-analysis correction sweep
+
+**Gap-analysis correction sweep (08422b7)** — LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md was the one live surface both the 2026-06-14 fold-correction sweep and the 2026-07-09 fix passes missed; it still asserted the withdrawn IDC 2.5-3×, DORA 2.7×/"Level 4", Ververica 3.2-FTE, MIT-TR 1.5-2×, DOES 3-4×, and AWS 55%/Netflix 70-80% figures. Gaps 1/2/4 + H1-COST-08 now carry dated OVERTURN notes (H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 re-anchored on the S3 tier-delta derivation), the LinkedIn leg is re-anchored on Samza (Noghabi et al., VLDB 2017), Huntress is source-verbatim "more than 90%", SK Telecom is re-attributed to the Trino Summit slides with the table-size framing fix, and Iceberg contributors updated to the verified 407.
+
+**D-audit archive pass (owner sign-off 2026-07-10; banner → repoint → index, one commit)** — execution record in D-AUDIT-ADJUDICATION-2026-07-09.md:
+- Archived with banners: REPOSITORY-STATUS.md (live metrics are solely README's Quality Metrics block now), PROJECT-PLAN-2026-Q1.md (fourth phantom-tag mention annotated first), monthly-update-workflow-verification.md, INTEGRATION-PLAN.md + IT-HARVEST-PARTNERSHIP-CHECKLIST.md, both .claude/conversations/ transcripts, and 6 of 9 analysis-bundles → archive/analysis-bundles/.
+- Verdicts modified from the staged action: LITERATURE-EXTRACTION-PLAN.md kept live (six live citers incl. immutable published/ snapshots); cost-reality-reference.md kept live (FIGURES-AND-TABLES grounding); staffing-budget-calculator.md HELD pending project1's queued book ch06 [^siemwins] footnote edit.
+- archived/ merged into archive/2025-12-december/ — single archival convention; archive/README.md inventory updated and backfilled.
+- Repointed: .claude/CLAUDE.md, README.md, PROJECT-BRIEF.md, monthly-update-tracker Week-4 checklist, quarterly-deep-dive command, quarterly-update template, vendor-database.json (8 path anchors), vendor-database-schema.md, both expert-interview guides, vendor-landscape/README.md (which also now labels the never-created capability-matrix.md/market-trends.md as design intent).
+- Process rules adopted into .claude/CLAUDE.md Key Gotchas: derive-don't-state counts (`scripts/automation_dashboard.py` authoritative); no blanket "100% verified" certificates.
+- publication-graphics/venv removed (untracked, 175MB) after pinning exact versions to requirements-lock.txt (matplotlib 3.10.7 / numpy 2.3.4); branch local-wip-2026-06-05 deleted after file-by-file diff confirmed nothing unique vs main.
+
 ### 2026-07-09/10 closeout: re-sourcing hunts, appendices drafted, D-audit fully adjudicated
 
 **Re-sourcing hunts (9 fetch-backed verifications; project1 hypothesis mirrors updated separately)**

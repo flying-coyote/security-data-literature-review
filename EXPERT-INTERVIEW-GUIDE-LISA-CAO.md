@@ -247,7 +247,7 @@ tags: [expert-interview, catalog-landscape, gravitino, xtable, iceberg, hypothes
    - Update XTable status in Gap Analysis (production-ready vs emerging)
 
 ### Short-Term (Within 1 week)
-4. **Evidence Bundles**: Update relevant analysis bundles with new data
+4. **Evidence Bundles**: Update relevant analysis bundles with new data *(note 2026-07-10: technology-decision-tree and implementation-reality-reference are archived -> archive/analysis-bundles/; fold interview data into MASTER-BIBLIOGRAPHY.md and the live bundles instead)*
    - `technology-decision-tree.md`: Add catalog selection criteria
    - `implementation-reality-reference.md`: Add Gravitino deployment timelines/FTEs
 5. **Blog Post Potential**: "Catalog Management for Security Operations: Gravitino, Polaris, Unity Compared"

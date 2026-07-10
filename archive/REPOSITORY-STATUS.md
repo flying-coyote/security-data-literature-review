@@ -3,7 +3,10 @@ type: tracker
 title: "Literature Review Repository Status and Phase Tracker"
 created: 2025-10-15
 tags: [literature-review, project-status, quality-metrics, roadmap, version-history]
+status: superseded
 ---
+
+> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): superseded as a live surface by README.md's Quality Metrics block (live-computed via `scripts/automation_dashboard.py`) and `.claude/CLAUDE.md`'s Current Status — this file was a fourth hand-synced copy of the same numbers and one of the surfaces that forked (144/146/174) before the June-2026 reconciliation. Known-stale: the body is a Jan-2026-and-earlier phase narrative ('Next Priorities (January 2026)', 'Key Metrics (December 2025)', closing report date October 22, 2025). Kept for the Version History and phase-completion record.
 
 # Repository Status Report
 

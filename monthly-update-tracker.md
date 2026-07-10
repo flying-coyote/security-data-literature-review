@@ -459,7 +459,7 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 ### Week 4: Documentation & Integration (2-3 hours)
 - [ ] Add sources to MASTER-BIBLIOGRAPHY.md (standardized format)
 - [ ] Update LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md if new gaps identified
-- [ ] Update REPOSITORY-STATUS.md with current status
+- [ ] Update README.md Quality Metrics (live via scripts/automation_dashboard.py; REPOSITORY-STATUS.md archived 2026-07-10)
 - [ ] Create CHANGELOG.md entry (version number, changes, metrics)
 - [ ] Run weekly_health_check.py (validate quality metrics)
 - [ ] Git commit with standardized message

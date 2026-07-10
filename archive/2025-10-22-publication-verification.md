@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-07-10** (D-audit adjudication): session transcript moved out of .claude/ config space. This is the primary record of the 2025-10-22 '100% verified' certification later shown to have certified fabrications — see D-AUDIT-ADJUDICATION-2026-07-09.md item 9 for the process rule it produced. Do not trust this file's quality certificates.
+
 # Conversation Archive: Publication Verification & Complete Draft
 
 **Date**: October 22, 2025

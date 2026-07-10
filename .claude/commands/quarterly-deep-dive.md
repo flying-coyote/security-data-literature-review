@@ -146,7 +146,7 @@ git push origin 2025-Q4-v1.0
 
 ### 4.2 Update Citation References
 - [ ] Update README.md with new tag reference
-- [ ] Update REPOSITORY-STATUS.md with quarterly milestone
+- [ ] Update README.md Quality Metrics with quarterly milestone (REPOSITORY-STATUS.md archived 2026-07-10 -> archive/)
 - [ ] Update CLAUDE.md if major changes occurred
 
 ---
@@ -197,7 +197,7 @@ git push origin 2025-Q4-v1.0
 - [ ] CHANGELOG.md updated with quarterly summary
 - [ ] Blog post published
 - [ ] README.md updated with current metrics
-- [ ] REPOSITORY-STATUS.md updated with phase completion
+- [ ] README.md Quality Metrics updated with phase completion
 - [ ] Next quarter priorities identified
 
 ---

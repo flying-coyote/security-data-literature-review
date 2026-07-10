@@ -350,7 +350,7 @@ tags: [expert-interview, jake-thomas, okta, duckdb, isolation-first-security]
    - Extend H-IMPL-02 with DuckDB staffing data
 
 ### Short-Term (Within 1 week)
-4. **Evidence Bundles**: Update relevant analysis bundles
+4. **Evidence Bundles**: Update relevant analysis bundles *(note 2026-07-10: the performance-benchmarks/implementation-reality/technology-decision-tree bundles are archived -> archive/analysis-bundles/; fold interview data into MASTER-BIBLIOGRAPHY.md and the live bundles instead)*
    - `performance-benchmarks-table.md`: Add DuckDB metrics (query latency, throughput, data volumes)
    - `implementation-reality-reference.md`: Add DuckDB deployment timeline/staffing
    - `cost-reality-reference.md`: Add DuckDB TCO vs alternatives

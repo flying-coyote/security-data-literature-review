@@ -3,7 +3,10 @@ type: evidence
 title: "Security-Specific Performance Advantages Over General Analytics"
 created: 2025-10-15
 tags: [security-performance, clickhouse, cidr-hunting, entity-tracking, iceberg, first-party-benchmarks]
+status: superseded
 ---
+
+> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): Oct-2025 static synthesis bundle, regenerable from the live MASTER-BIBLIOGRAPHY.md with current verdicts; carries its 2026-06-14 fold-correction notes withdrawing the original aggregate self-grades, which travel with the file. Live exceptions kept in analysis-bundles/: hypothesis-confidence-matrix.md (cited by manuscript Appendix B), cost-reality-reference.md (cited by FIGURES-AND-TABLES.md), staffing-budget-calculator.md (held pending the queued book ch06 footnote edit).
 
 # Security-Specific Performance Advantages
 
