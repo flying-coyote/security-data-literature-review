@@ -957,8 +957,8 @@ Levels C (limited evidence) and D (unreliable evidence) were designed as exclusi
 
 **Version**: 0.3 (content drafted; sources audited 2026-06 + 2026-07; references generated)
 **Word count**: [TBD - target 10,000-15,000 words for journal article]
-**Target venue**: ACM Computing Surveys (primary), IEEE Security & Privacy Magazine (secondary)
-**Submission target**: originally Q4 2025 (passed, not submitted); new target = owner decision
+**Target venue**: Journal of Cybersecurity (Oxford, open access) — owner ruling 2026-07-10, replacing the Oct-2025 CSUR/IEEE plan; submission work gated post-2026-07-15
+**Submission target**: post-2026-07-15 window at Journal of Cybersecurity (owner ruling 2026-07-10)
 **Status**: All sections drafted. 2026-06 audit withdrew fabricated multipliers; 2026-07 per-citation verification sweep applied (33-item fix pass) — every surviving inline figure is primary-verified. References + Appendix D generated 2026-07-09.
 
 **Remaining before submission**:
@@ -966,7 +966,8 @@ Levels C (limited evidence) and D (unreliable evidence) were designed as exclusi
 2. ~~Re-sourcing hunts for the directional claims (staffing/TCO/timeline multipliers)~~ DONE 2026-07-10 — the DR-1 Deep Research hunt returned zero Tier-A/B (two predatory-adjacent venues, one anonymous Medium; two C-tier leads catalogued in GEMINI-DR1-INTAKE-2026-07-10.md); the four PRELIMINARY scores stand. Only literature restoration route left: Gartner Market Guide seat-access check (H-IMPL-02)
 3. Appendices A-C drafting; Acknowledgments
 4. Expert review (Lisa Cao, Jake Thomas)
-5. Venue decision + formatting pass
+5. ~~Venue decision~~ RULED 2026-07-10 (Journal of Cybersecurity, open access; work post-7/15) + formatting pass
+6. Promote new Tier-A-anchored hypotheses from the DR-3 intake (owner ruling 2026-07-10: keep the 7 with the honest split AND add; wording staged in NEW-HYPOTHESES-PROPOSAL-2026-07.md, gate pass before integration)
 
 ---
 

@@ -7,6 +7,8 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 
 # Publication Venue Recommendations for Literature Review
 
+> **RULED 2026-07-10 (owner)**: Journal of Cybersecurity (Oxford, open access) is the submission target — the open-access/practitioner-accessibility rationale below carried; the CSUR and IEEE S&P tracks are not being pursued. Submission work is gated post-2026-07-15. ⚠️ This document's corpus statistics predate the 2026-06/07 audits and are STALE — the 283-footnote / 73%-Level-A / 2.7× / 55-80% figures must not be cited; live counts are in README.md (43.0% Level A as of 2026-07-10) and the withdrawn-claims record is in CHANGELOG.md.
+
 **Document Purpose**: Identify suitable academic journals and publication venues for literature review on modern data architecture for cybersecurity
 **Created**: October 10, 2025
 **Last Reviewed**: October 15, 2025
