@@ -4662,3 +4662,148 @@ The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide
 **Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — both baselines, the single-process workload, and the cross-baseline pairing error confirmed)
 
 ---
+
+## Peer-Reviewed Primaries — Gemini DR-3 intake (2026-07-10, all verified at primary locally)
+
+Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; every entry below was fetched and quote-verified locally before cataloguing — three of the run's other candidates were rejected for misattribution or unreachability, see `GEMINI-DR3-INTAKE-2026-07-10.md`).
+
+#### Yang et al. - True Attacks, Attack Attempts, or Benign Triggers? An Empirical Measurement of Network Alerts in a Security Operations Center
+
+**Authors**: Limin Yang, Zhi Chen, Chenxi Wang, Zizhuang Zhang, Sushruth Booma, Phuong Cao, Constantin Adam, Alexander Withers, Zbigniew Kalbarczyk, Ravishankar K. Iyer, Gang Wang (UIUC / NCSA / IBM Research)
+**Date**: 2024 (USENIX Security '24)
+**URL**: https://www.usenix.org/conference/usenixsecurity24/presentation/yang-limin
+**PDF**: https://www.usenix.org/system/files/usenixsecurity24-yang-limin.pdf
+**Evidence Level**: A (USENIX Security, top-tier peer-reviewed; production SOC data)
+**Relevance**:
+- The empirical-SOC base-rate grounding the corpus lacked: alert volumes, true-attack rates, and alert composition measured in a production SOC rather than surveyed
+- Feeds alert-fatigue and detection-pipeline-economics claims; the strongest single source for "most alerts are not attacks" with a measured denominator
+
+**Key Findings**:
+- "SOC analysts are facing excessive alerts (24K–134K per day), but only a small percentage of the alerts (0.01%) are associated with true attacks" (verbatim)
+- "a significant portion of the alerts are related to 'attack attempts' (attacks that did not lead to true compromises, 27%), and 'benign triggers' (correctly matched security events but had business-justified explanations, 49%)" (verbatim)
+- 4 of 11 investigated true compromises went undetected by network-level alerts — network telemetry alone misses initial endpoint compromise and stealthy lateral movement
+
+**Validation Status**: ✅ Verified at primary 2026-07-10 (abstract page + PDF; full author list from citation metadata)
+
+---
+
+#### LogLite: Lightweight Plug-and-Play Streaming Log Compression
+
+**Authors**: Benzhao Tang, Shiyu Yang, Zhitao Shen, Wenjie Zhang, Xuemin Lin, Zhihong Tian (Guangzhou University / Ant Group / UNSW / Shanghai Jiao Tong)
+**Date**: September 2025, PVLDB 18(11):3757-3770
+**URL**: https://www.vldb.org/pvldb/vol18/p3757-yang.pdf
+**Alt URL**: https://arxiv.org/abs/2507.10337
+**Evidence Level**: A (PVLDB, peer-reviewed)
+**Relevance**:
+- Streaming log compression without pre-trained templates (XOR + byte-aligned RLE in a sliding window) — the edge-compression leg of the columnar-vs-row / log-storage cost story
+
+**Key Findings**:
+- "compared to state-of-the-art baselines, LogLite achieves Pareto optimality in most scenarios, delivering an average improvement of up to 67.8% in compression ratio and up to 2.7× in compression speed" (verbatim)
+
+**Validation Status**: ✅ Verified at primary 2026-07-10 (vldb.org PDF + arXiv)
+
+---
+
+#### PBC: High-Ratio Compression for Machine-Generated Data
+
+**Authors**: Jiujing Zhang, Zhitao Shen, Shiyu Yang, Lingkai Meng, Chuan Xiao, Wei Jia, Yue Li, Qinhui Sun, Wenjie Zhang, Xuemin Lin (Ant Group / Guangzhou University / UNSW)
+**Date**: 2024 (ACM SIGMOD / PACMMOD)
+**URL**: https://arxiv.org/pdf/2311.13947
+**Code**: https://github.com/antgroup/pbc
+**Evidence Level**: A (SIGMOD/PACMMOD, top-tier peer-reviewed)
+**Relevance**:
+- Pattern-based per-record log compression enabling random point-lookups without full block decompression — machine-generated-log structure exploited beyond generic Zstd/Snappy
+
+**Key Findings**:
+- "PBC, on average, achieves a compression ratio twice as high as the state-of-the-art techniques while maintaining competitive compression and decompression speeds" (verbatim)
+
+**Validation Status**: ✅ Verified at primary 2026-07-10 (arXiv PDF; venue + author list confirmed)
+
+---
+
+#### Pebbles: Leveraging Sketches for Processing Voluminous, High Velocity Data Streams
+
+**Authors**: Thilina Buddhika, Sangmi Lee Pallickara, Shrideep Pallickara (Colorado State University)
+**Date**: IEEE Transactions on Parallel and Distributed Systems (publication year to confirm on next touch — the NSF PAR record hosting the PDF was accessed 2026-07-10)
+**URL**: https://par.nsf.gov/servlets/purl/10284573
+**Evidence Level**: A (IEEE TPDS, peer-reviewed; the DR run's "Sketch-Aware Streaming Telemetry, NSF 2023" title/label was wrong — corrected at intake)
+**Relevance**:
+- Sketch-based telemetry-stream reduction — quantified upstream volume reduction for detection pipelines (pre-ingest filtering effectiveness family)
+
+**Key Findings**:
+- "up to a ~8× reduction in data volumes transferred and a ~27× improvement in throughput" (verbatim, abstract)
+
+**Validation Status**: ✅ Verified at primary 2026-07-10 (PDF fetched; title/authors corrected from the DR run's invented label)
+
+---
+
+#### Blitzcrank: Fast Semantic Compression for In-Memory Online Transaction Processing
+
+**Authors**: Yiming Qiao, Yihan Gao, Huanchen Zhang (Tsinghua University)
+**Date**: 2024, PVLDB 17(10):2528-2540
+**URL**: https://www.vldb.org/pvldb/volumes/17/paper/Blitzcrank%3A%20Fast%20Semantic%20Compression%20for%20In-Memory%20Online%20Transaction%20Processing
+**Evidence Level**: A (PVLDB, peer-reviewed)
+**Relevance**:
+- The row-oriented/OLTP counterpoint in the columnar-vs-row storage story: semantic compression with random-tuple access — what row stores can do that block-compressed columnar can't
+- ⚠ Intake note: the DR run attributed this paper's quote to a DIFFERENT paper (DeepSqueeze, ResearchGate 341750834) — re-attributed at intake after fetching both
+
+**Key Findings**:
+- "BLITZCRANK achieves a sub-microsecond latency for decompressing a random tuple while obtaining high compression factors. This leads to an 85% memory reduction in the TPC-C evaluation with a moderate (19%) throughput degradation" (verbatim)
+
+**Validation Status**: ✅ Verified at primary 2026-07-10 (correct paper located and fetched; misattribution documented in the intake doc)
+
+---
+
+#### Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores
+
+**Authors**: Michael Armbrust, Tathagata Das, Liwen Sun, Burak Yavuz, Shixiong Zhu, Mukul Murthy, Joseph Torres, Herman van Hovell, Adrian Ionescu, Alicja Łuszczak, Michał Świtakowski, et al. (21 authors, Databricks / Stanford)
+**Date**: 2020, PVLDB 13(12):3411-3424
+**URL**: https://www.vldb.org/pvldb/vol13/p3411-armbrust.pdf
+**Evidence Level**: A (PVLDB, peer-reviewed; industry-authored)
+**Relevance**:
+- The foundational peer-reviewed description of the transaction-log-over-object-store design (log compacted into Parquet checkpoints, ACID + time travel) that the book's table-format chapters describe — a citable primary underneath vendor documentation
+
+**Key Findings**:
+- The transaction log is compacted into Apache Parquet checkpoint files, providing ACID properties, time travel, and faster metadata operations for large tabular datasets on cloud object stores (abstract, near-verbatim; the paper is the definitional source rather than a benchmark)
+
+**Validation Status**: ✅ Verified at primary 2026-07-10 (PDF fetched, title + full author list confirmed)
+
+---
+
+### Vendor case studies — Gemini DR-1 intake (2026-07-10, verified at primary locally)
+
+Two C-tier catches from the DR-1 streaming-economics hunt (the run's other candidates were rejected: two predatory-adjacent journals, an anonymous Medium blog, an unreachable ResearchGate venue — see `GEMINI-DR1-INTAKE-2026-07-10.md`).
+
+#### Panther - How Cockroach Labs Ingests 5x More Logs and Cut SecOps Costs Over $200K
+
+**Authors**: Panther Labs (vendor case study; named customer sources quoted: Munir Jaber, Security Engineer, and Adam Brennick, Director of Security, Risk, and Compliance, Cockroach Labs)
+**Date**: 2026 (fetched 2026-07-10)
+**URL**: https://panther.com/case-studies/how-cockroach-labs-ingests-5x-more-logs-and-cut-secops-costs-over-200k-with-panther
+**Evidence Level**: C (vendor-authored case study quoting the customer — C per the 2026-07-10 vendor-channel tier rule; the 5×/$200K figures are Panther's own framing, the 365-day-retention quote is Brennick's directly)
+**Relevance**:
+- Migration-outcome family (legacy SIEM → security data lake): direction contradicts the streaming-costs-more premise for the SIEM-replacement case specifically
+- H-IMPL-01/H-IMPL-02 context: a modern-lake counter-datapoint, not a streaming-vs-batch measurement
+
+**Key Findings**:
+- "Gained visibility into 5x more log data while maintaining budget and eliminating $200K+ in tooling overhead" (page verbatim); hot retention expanded from 90/30-day limits to 365 days queryable
+
+**Validation Status**: ✅ Verified at primary 2026-07-10
+
+---
+
+#### layline.io - The Hidden Costs of Switching from Batch to Streaming
+
+**Authors**: Andrew Tan (on layline.io, a streaming-platform vendor's blog)
+**Date**: 2026-04-27
+**URL**: https://layline.io/resources/blog/2026-04-27-the-hidden-costs-of-switching-from-batch-to-streaming
+**Evidence Level**: C (vendor-channel authorship; treat the figures as directional practitioner observation, not measured data — no methodology disclosed)
+**Relevance**:
+- H-IMPL-02 (staffing scarcity) directional support: salary bands, hiring timelines, retraining and dual-running costs for the batch→streaming transition — the only 2026 source found that puts numbers on the transition costs, at C tier
+
+**Key Findings**:
+- "A senior stream processing engineer in London or New York costs between $160,000 and $220,000 base salary right now, plus the four-month average time-to-hire for that specialty" (verbatim)
+- Retraining "typically three to six months"; "Budget for six months of dual operation minimum" (verbatim); an 8-month e-commerce dual-run example and a 5-week stored-procedure migration anecdote
+
+**Validation Status**: ✅ Verified at primary 2026-07-10 (raw HTML fetch; all five checked figures verbatim)
+
+---
