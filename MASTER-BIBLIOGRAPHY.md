@@ -1029,7 +1029,7 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### RunReveal - SIEM Built on ClickHouse + sigmalite (Ingest-Time Sigma)
+#### RunReveal - SIEM Built on ClickHouse + sigmalite (RunReveal evaluates Sigma at ingest)
 
 **Authors**: RunReveal / ClickHouse
 **Date**: 2024 (verified live 2026-07-08)
@@ -1037,12 +1037,12 @@ This bibliography consolidates all literature sources from:
 **Evidence Level**: B (named-practitioner engineering blog + first-party OSS repo)
 **Relevance**:
 - Book ch05 §5.3 footnote `[^bakeoff]` (production corroboration of engine-for-the-workload; added 2026-07-08, WT-2)
-- Hypothesis H-SIGMA-01 (sigmalite is a non-pySigma, ingest-time Sigma-evaluator implementation)
+- Hypothesis H-SIGMA-01 (sigmalite is a non-pySigma Sigma-evaluator implementation; RunReveal deploys it at ingest time)
 - securitydataworks.com ProductionValidatorGrid row (RunReveal, Tier A first-party)
 
 **Key Findings**:
 - RunReveal is a security data platform / modern SIEM built on ClickHouse
-- sigmalite: Go parser + execution engine for Sigma detection rules, Apache 2.0, evaluated at ingest time
+- sigmalite: Go parser + execution engine for Sigma detection rules, Apache 2.0; RunReveal evaluates it at ingest time, though where in the pipeline sigmalite runs is the integrator's choice rather than a property of the library
 - ClickHouse's own security team migrated its in-house security logging program to RunReveal, using their own ClickHouse Cloud service via the Destinations feature
 
 **Citations**: Book ch05 `[^bakeoff]` corroboration sentence
@@ -1262,7 +1262,7 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Apache Flink Documentation
 **Date**: 2024
-**URL**: https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/fault-tolerance/checkpointing/
+**URL**: https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/datastream/fault-tolerance/checkpointing/
 **Evidence Level**: B (Official documentation; prescribes mechanism, not security-specific intervals or recovery SLAs)
 **Relevance**:
 - Hypothesis H-IMPL-02 (Streaming expertise)

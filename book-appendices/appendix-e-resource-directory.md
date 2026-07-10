@@ -215,7 +215,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 **Dremio University**: https://university.dremio.com/
 - Free courses: "Dremio Fundamentals," "Reflections Explained," "Iceberg with Dremio"
 
-**Dremio Community Slack**: https://community.dremio.com/
+**Dremio Community** (Discourse forum, not Slack): https://community.dremio.com/
 - Active community, responsive Dremio engineers
 - #reflections: Dashboard optimization questions
 - #iceberg: Dremio + Iceberg best practices
@@ -393,7 +393,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ### Community Resources
 
-**Dremio Community Slack** (#reflections channel): community.dremio.com
+**Dremio Community** (Discourse forum, Reflections topics): community.dremio.com
 - Active discussions on reflection optimization, refresh strategies, schema change handling
 - Dremio engineers responsive to troubleshooting questions
 
@@ -427,7 +427,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Why Important**: Iceberg-native catalog (vs. Hive Metastore legacy compatibility)
 
 **Snowflake Open Catalog** (managed Apache Polaris, GA; formerly "Polaris Cloud") — docs at https://docs.snowflake.com/en/user-guide/opencatalog/overview (the old `data-cloud/workloads/apache-polaris/` marketing URL 404s as of the July 2026 re-check, and the `open-catalog` marketing page now redirects into Snowflake Horizon)
-- **⚠️ Closed to new sign-ups (2026-07-09 re-check)**: customers without an existing Open Catalog account can no longer create one — Snowflake steers new customers to Horizon Catalog (billing begins H1 2026). The docs remain live for existing Open Catalog accounts.
+- **⚠️ Closed to new sign-ups (2026-07-09 re-check)**: customers without an existing Open Catalog account can no longer create one — Snowflake steers new customers to Horizon Catalog (Snowflake announced Horizon Catalog billing beginning in H1 2026 — confirm current pricing before relying). The docs remain live for existing Open Catalog accounts.
 - **When to Use**: only if you already hold an Open Catalog account; new deployments wanting managed-Polaris semantics should evaluate self-hosted Apache Polaris (https://polaris.apache.org) or Snowflake Horizon Catalog instead
 - **Pricing**: consumption-based; contact Snowflake (not publicly published as of the July 2026 re-check)
 

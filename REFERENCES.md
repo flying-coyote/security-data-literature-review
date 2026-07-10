@@ -28,7 +28,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [6] Apache Arrow Community, "Arrow Flight RPC," Apache Arrow Documentation, 2022-2025. [Online]. Available: https://arrow.apache.org/docs/format/Flight.html
 
-[7] Apache Flink Documentation, "Checkpointing," Apache Flink, 2024. [Online]. Available: https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/fault-tolerance/checkpointing/
+[7] Apache Flink Documentation, "Checkpointing," Apache Flink, 2024. [Online]. Available: https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/datastream/fault-tolerance/checkpointing/
 
 [8] Apache Iceberg Community, "Apache Iceberg Documentation," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/
 

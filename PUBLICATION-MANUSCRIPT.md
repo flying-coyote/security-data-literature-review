@@ -160,7 +160,7 @@ Archive manuscripts were evaluated and found to reference footnotes centralized 
 
 Beyond primary extraction, sources were supplemented through:
 
-1. **Expert Network Validation**: Practitioner interviews (Lisa Cao - Dremio, Jake Thomas - Okta, a data-platform practitioner, Paul Agbabian) providing production deployment validation
+1. **Expert Network Validation**: Practitioner interviews (Lisa Cao - Datastrato/Apache Gravitino, Jake Thomas - Okta, a data-platform practitioner, Paul Agbabian) providing production deployment validation
 2. **Blog Integration**: Ongoing source identification through security-data-commons blog (3×/week cadence)
 3. **Vendor Documentation**: Official technical documentation from Apache Software Foundation, AWS, Microsoft, Google, Confluent, Databricks
 4. **Government Standards**: CISA, MITRE, DARPA, NSA, SANS Institute publications
