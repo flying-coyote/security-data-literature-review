@@ -72,6 +72,21 @@ stale as the corpus grew.
   OCSF flattening fidelity; Okta/CrowdStrike 58%/70% field coverage at OCSF 1.8.0). The retired Substack
   was not polled.
 
+### 2026-07-09 repo hygiene — removed empty topic-dir stubs + tag
+
+- Removed `infrastructure/`, `platforms/`, `security-specific/` — README-only stubs created 2025-10-15 that
+  promised a quarterly topic-tracking cadence but were never populated in 9 months. Topic coverage already
+  lives in `MASTER-BIBLIOGRAPHY.md` (organized by topic) + `analysis-bundles/`. De-referenced in the
+  current-structure docs (README, PROJECT-BRIEF, REPOSITORY-STATUS), the IT-Harvest checklist, the
+  extraction plan, and the analysis bundle; `archive/*` and historical CHANGELOG entries were left intact as
+  history.
+- **Verification note:** the cowork audit that surfaced these had also flagged missing figure scripts, an
+  untracked-but-not-gitignored `venv/`, and a missing `tools/` dir — all **false** against the real tree
+  (the `figure2/3/4_*.py` + `figure1_prisma_flowchart.tex` + PNG/PDF outputs exist; `venv/` is gitignored
+  via `publication-graphics/.gitignore` and untracked; `tools/build/build.sh` exists). No action taken on
+  those. `vendor-landscape/quarterly-updates/` was held — it is not empty (real template + 6 active refs).
+- Created the first quarterly citation tag, **`2026-Q3-v1.0`**, per the documented `YYYY-QX-v1.0` scheme.
+
 ### Fixed (health-check mechanism)
 - `weekly_health_check.py` crashed on any direct run: its default `repo_path` was the author's hardcoded
   `~/security-data-literature-review`, which it `chdir`'d into. Now it resolves the repo relative to the

@@ -84,12 +84,13 @@ tags: [literature-review, project-status, quality-metrics, roadmap, version-hist
 
 **Directory Structure Implemented**:
 ```
-platforms/          - Query engines, OLAP analytics, hybrid architectures
-infrastructure/     - Table formats, catalogs, object storage
-security-specific/  - OCSF adoption, detection platforms, threat intel
 vendor-landscape/   - Capability matrix, market trends, quarterly updates
 analysis-bundles/   - Evidence synthesis for book writing acceleration
 ```
+> Correction (2026-07-09): the `platforms/`, `infrastructure/`, and `security-specific/` directories were
+> created as empty README-only stubs on 2025-10-15 and never populated, so "Directory Structure Implemented"
+> overstated them. They were removed 2026-07-09; topic coverage lives in `MASTER-BIBLIOGRAPHY.md` (organized
+> by topic) and `analysis-bundles/`.
 
 **Pending**: IT Harvest partnership establishment for vendor data population (Q4 2025 or Q1 2026)
 
@@ -380,7 +381,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 ### Deliverables
 - **analysis-bundles/** - 8 evidence bundles and practitioner tools (67,500+ words total)
 - **publication-graphics/** - Publication-ready figures (Python scripts + LaTeX TikZ + generated PNG/PDF outputs)
-- **platforms/**, **infrastructure/**, **security-specific/**, **vendor-landscape/** - Phase 2 structure
+- **vendor-landscape/** - Phase 2 structure (the empty `platforms/`, `infrastructure/`, `security-specific/` stubs were removed 2026-07-09 as never-populated)
 
 ### Archive (Historical Documentation)
 - **archive/** - Completed session logs and analysis artifacts (archived Oct 21, 2025)

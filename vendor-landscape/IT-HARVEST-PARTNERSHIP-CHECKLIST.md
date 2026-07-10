@@ -91,8 +91,7 @@
   - Data quality assessment: _____________
 
 - [ ] **Create First Platform Update**
-  - Document vendors in `platforms/query-engines.md`
-  - Document vendors in `platforms/olap-analytics.md`
+  - Document vendors in `MASTER-BIBLIOGRAPHY.md` (organized by topic) + `vendor-landscape/vendor-database.json`
   - Use data to populate quarterly update template
   - Cross-reference with MASTER-BIBLIOGRAPHY.md sources
 
@@ -151,7 +150,7 @@
 
 - [ ] **Month 1: Data Collection & Integration**
   - Week 1: IT Harvest data refresh received
-  - Week 2: Populate platforms/, infrastructure/, security-specific/ directories
+  - Week 2: Update MASTER-BIBLIOGRAPHY.md topic sections + vendor-database.json (the empty platforms/, infrastructure/, security-specific/ stubs were removed 2026-07-09)
   - Week 3: Update capability matrices and market trends
   - Week 4: Draft quarterly update (YYYY-QX-update.md)
 

@@ -90,20 +90,10 @@ This repository contains a **living literature review** that is the shared evide
 
 As the vendor landscape and platform coverage expands, the repository may grow to include:
 
-### platforms/ (Planned)
-- `query-engines.md`: Trino/Starburst, Dremio, Denodo, Athena
-- `olap-analytics.md`: ClickHouse, StarRocks/Celerdata, Druid
-- `hybrid-architectures.md`: Spark + Query Engine patterns
-
-### infrastructure/ (Planned)
-- `table-formats.md`: Iceberg, Delta, Hudi (trend analysis)
-- `catalogs.md`: Gravitino, Polaris, Unity, Nessie
-- `object-storage.md`: S3, MinIO, Azure Blob
-
-### security-specific/ (Planned)
-- `ocsf-adoption.md`: Quarterly tracking
-- `detection-platforms.md`: Security analytics evolution
-- `threat-intel-integration.md`: TI platform updates
+> The `platforms/`, `infrastructure/`, and `security-specific/` topic directories were created as empty
+> README-only stubs in Oct 2025 and never populated; they were removed 2026-07-09. Topic coverage lives in
+> `MASTER-BIBLIOGRAPHY.md` (organized by topic) and `analysis-bundles/`. If per-topic tracking files are
+> ever wanted, they can be recreated then rather than sitting empty.
 
 ### vendor-landscape/ (Planned - IT Harvest powered)
 - `capability-matrix.md`: Platform capabilities by category

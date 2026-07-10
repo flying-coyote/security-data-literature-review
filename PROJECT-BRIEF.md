@@ -79,10 +79,8 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 
 ### Fact 8: Directory Structure Planned for Phase 2 ✅
 **CONFIRMED**: Future structure designed for vendor landscape integration
-- `platforms/`: Query engines, OLAP analytics, hybrid architectures
-- `infrastructure/`: Table formats, catalogs, object storage
-- `security-specific/`: OCSF adoption, detection platforms, threat intel
-- `vendor-landscape/`: Capability matrix, market trends (IT Harvest powered)
+- `vendor-landscape/`: Capability matrix, market trends (IT Harvest powered) — the Phase-2 structure actually kept and maintained
+- ~~`platforms/`, `infrastructure/`, `security-specific/`~~: empty README-only stubs, never populated; removed 2026-07-09 (topic coverage lives in MASTER-BIBLIOGRAPHY.md + analysis-bundles/)
 - **Source**: README.md lines 54-75, CLAUDE.md lines 195-215
 
 ### Fact 9: Book Integration Complete for All Chapters ✅

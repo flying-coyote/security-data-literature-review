@@ -343,9 +343,9 @@ Level 5 (Time-Series Optimization):
 **Upgrade Path**: Partnership → Quarterly vendor landscape data → Evidence Level A
 
 **Expected Contribution**:
-- Query engine capability matrices (platforms/)
+- Query engine capability matrices (→ MASTER-BIBLIOGRAPHY.md + vendor-landscape/vendor-database.json)
 - Market trend analysis (vendor-landscape/)
-- Technology adoption patterns (infrastructure/)
+- Technology adoption patterns (→ MASTER-BIBLIOGRAPHY.md; the empty platforms/ & infrastructure/ stubs were removed 2026-07-09)
 
 **Recommendation**: Phase 2B integration, adds 20-30 Evidence Level A sources (vendor capability data)
 

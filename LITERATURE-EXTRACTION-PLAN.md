@@ -239,7 +239,7 @@ living-literature-review/
 ### Week 2 (Oct 21-25) - Completed Early
 - ✅ Extract citations from archive Part 3 (all parts assessed)
 - ✅ Validate URLs and update broken links (16 of 22, 73%)
-- ⏳ Create security-specific/ directory (deferred to Phase 2)
+- ❌ security-specific/ topic directory — not adopted; the empty stub was removed 2026-07-09, topic coverage consolidated into MASTER-BIBLIOGRAPHY.md (organized by topic). The proposed topic-directory tree above was superseded by that consolidation.
 - ✅ Complete MASTER-BIBLIOGRAPHY.md (75+ sources documented)
 
 ### Week 3 (Oct 28-Nov 1) - Planned
