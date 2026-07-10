@@ -780,8 +780,9 @@ The site covers what a fixed manuscript cannot — Iceberg V3/V4 as it shipped, 
 | [Query-Engine Specialization: Push vs Pull](https://securitydataworks.com/writing/engines/push-pull-engines) † | **Appendix I** — dual-engine workload optimization |
 | [Cribl vs Tenzir: Route-by-Value Economics](https://securitydataworks.com/writing/pipelines/cribl-vs-tenzir) | **the what-good pipeline-evaluation material, Appendix B** — pipeline evaluation |
 | [DuckDB for Threat Hunting: 7.5 Trillion Records at Okta](https://securitydataworks.com/writing/engines/duckdb-threat-hunting) | **Appendix I** — Jake Thomas / Okta Tier-B personal account, edge preprocessing |
-| [Kafka to Iceberg: Hidden Integration Costs](https://securitydataworks.com/writing/pipelines/kafka-iceberg-integration) | **Appendix I** — streaming-to-lakehouse architectural challenges |
-| [Streaming Decision: RisingWave, Fluss, and the Alternatives](https://securitydataworks.com/writing/pipelines/streaming-decision) † | **Appendix I** — emerging alternatives to Kafka+Flink |
+| [Kafka to Iceberg: Hidden Integration Costs](https://securitydataworks.com/writing/pipelines/kafka-iceberg-integration) | **Appendix I §I.5A** — streaming-to-lakehouse architectural challenges (copy-based vs zero-copy) |
+| [Streaming Decision: RisingWave, Fluss, and the Alternatives](https://securitydataworks.com/writing/pipelines/streaming-decision) † | **Appendix I §I.5A** — emerging alternatives to Kafka+Flink, criteria-based assessment matrix |
+| [NATS JetStream: the lightweight Kafka alternative, and why durability disqualifies it for security data](https://securitydataworks.com/writing/pipelines/nats-jetstream) | **Appendix I §I.5A** — edge-collector assessment and the Jepsen durability evidence |
 
 ### Detection Layer (SIEM & Schema Standardization)
 
