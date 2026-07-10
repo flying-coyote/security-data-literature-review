@@ -290,8 +290,8 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 **Key Evidence**:
 - Industry consensus: Dremio 2024 survey (29% Iceberg vs 23% Delta for future adoption)
 - Universal vendor support: AWS, Google, Microsoft, Snowflake, Databricks all announced Iceberg compatibility
-- Production validation: SK Telecom Iceberg deployment (the specific query-time figures formerly cited here are not in the cited Trino Summit recap — removed, 2026 audit)
-- Community strength: Apache Software Foundation governance (300+ contributors, 100+ organizations)
+- Production validation: SK Telecom Iceberg deployment (the precise figures are in the Trino Summit slides PDF, not the recap page — verified against the slides and re-attributed 2026-07-09: −97% read size, −96.5% elapsed time on a 52.7 TB table)
+- Community strength: Apache Software Foundation governance (407 GitHub contributors as of 2026-07-09; the community page itself carries no counts — re-sourced 2026-07-09)
 
 ---
 
@@ -327,7 +327,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 | **TOTAL** | **23/25** | Pre-audit score — requires re-validation |
 
 **Key Evidence**:
-- DORA 2024: streaming operations demand specialized ("Level 4") skills concentrated in a small share of organizations
+- Streaming operations demand scarce specialized skills (directional; the DORA-attributed "Level 4" classification was withdrawn in the 2026-07 verification pass — no such taxonomy in the report)
 - The IDC 2.5-3×, Ververica 3.2-FTE, and McKinsey tiger-team figures formerly cited here were removed in the 2026 audit (removed/fabricated entries), and the DORA 2.7× multiplier is not in the DORA report
 
 **Audit status**: three of the four originally cited sources were removed in the 2026 source audit; the qualitative skills-scarcity claim is consistent with the surviving DORA research, but the hypothesis requires re-validation before its confidence level is cited.
@@ -378,7 +378,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 | Source Count | 4/5 | Originally 4 sources; the Shell 57TB/day entry was removed in the 2026 audit (dead URL, unverifiable) |
 | Evidence Quality | 5/5 | Originally scored 100% Level A; downgraded — one entry removed, two figures not in their cited pages |
 | Source Diversity | 4/5 | 3 source types (production deployment Cloudflare, benchmark study, vendor technical docs + first-party probe) |
-| Quantitative Precision | 5/5 | Specific metrics (6M req/sec, 5-10× vs Elasticsearch; first-party CIDR probe ~13-17× at 20M rows on a single host, ~2.9× IPv4-vs-String storage) |
+| Quantitative Precision | 5/5 | Specific metrics (6M req/sec, 12-19× vs Elasticsearch — vendor benchmark, corrected from "5-10×" 2026-07-09; first-party CIDR probe ~13-17× at 20M rows on a single host, ~2.9× IPv4-vs-String storage) |
 | Geographic/Organizational Diversity | 3/5 | US/Europe (Cloudflare US, ClickHouse global) with multiple org types (tech giant, vendor) |
 | **TOTAL** | **21/25** | **HIGH CONFIDENCE** (pre-audit score; see note above) |
 
@@ -400,7 +400,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 | Source Count | 3/5 | Originally 3 sources; the Uber real-time-views figures failed the 2026 audit |
 | Evidence Quality | 5/5 | Originally scored 100% Level A; downgraded — one source's figures are not in the cited article |
 | Source Diversity | 3/5 | 2 source types (production deployment LinkedIn, cloud platform Microsoft Azure) |
-| Quantitative Precision | 4/5 | Specific metrics (terabytes of state with ms access, trillions events/day) |
+| Quantitative Precision | 4/5 | Specific metrics (hundreds of TB of local state per application — Samza VLDB 2017, re-attributed 2026-07-09; trillions events/day) |
 | Geographic/Organizational Diversity | 2/5 | US-centric (LinkedIn, Microsoft Azure) but multiple org types (tech giants, cloud provider) |
 | **TOTAL** | **17/25** | **HIGH CONFIDENCE** (pre-audit score; see note above) |
 
@@ -659,7 +659,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - [71] SK Telecom: Iceberg production deployment (Level B — the specific query-time figures formerly cited are not in the cited Trino Summit recap; removed, 2026 audit)
 - [43] Dremio: 29% Iceberg vs 23% Delta Lake future adoption (Level A)
 - [8] Apache Iceberg: Official documentation (Level A)
-- [9] Apache Iceberg: 300+ contributors, 100+ organizations governance (Level A)
+- [9] Apache Iceberg: 407 GitHub contributors (as of 2026-07-09; community page carries no counts — re-sourced, org count dropped as underivable) (Level A)
 - [10] Apache Iceberg: Maintenance documentation (Level A)
 - [11] Apache Iceberg: Spark procedures (Level A)
 

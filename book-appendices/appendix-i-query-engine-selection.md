@@ -129,7 +129,7 @@ The deeper lesson from running it is one the table can't show. When several engi
 
 Elasticsearch was designed for full-text search over documents, while security analytics mostly runs aggregations over structured data, grouping by IP, counting by user, and slicing time series, and that mismatch turns expensive at TB+ scale, where it shows up as garbage-collection pauses that time out queries during active investigations and heap exhaustion on high-cardinality fields.
 
-**Huntress case study** (Tier C: Huntress-reported, ClickHouse vendor ecosystem write-up, not independently audited): 3 million endpoints migrated from Elasticsearch to ClickHouse, with a reported **93% cost reduction**, going from weekly cluster instability and 10-20 hours/week operational burden to roughly zero incidents and under 2 hours/week.
+**Huntress case study** (Tier C: Huntress-reported, ClickHouse vendor ecosystem write-up, not independently audited): 3 million endpoints migrated from Elasticsearch to ClickHouse, with a reported **more than 90% cost reduction** (~$70K→~$5K/month; the write-up says ">90%" — "93%" is derived arithmetic), going from weekly cluster instability and 10-20 hours/week operational burden to roughly zero incidents and under 2 hours/week.
 
 ### Four Architecture Limitations
 

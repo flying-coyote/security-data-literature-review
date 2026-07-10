@@ -541,7 +541,7 @@ This bibliography consolidates all literature sources from:
 - **183% increase** in pace of change over last four years
 - **Sponsorship**: Active and visible sponsorship is top contributor to success
 - **Notable shift**: Change management office now most commonly located in PMO (vs HR previously)
-- 30/60/80% adoption pattern for successful implementations
+- The "30/60/80% adoption pattern" formerly listed here does not match Prosci's published figures (their correlation data runs 13/39/73/88% meeting objectives by change-management effectiveness) — removed 2026-07-09
 
 **Citations**: Chapter 4 organizational readiness, implementation best practices
 **Notes**: Industry-standard change management source, 12th edition reflects latest research
@@ -2110,7 +2110,7 @@ This bibliography consolidates all literature sources from:
 - Assesses security product effectiveness against real-world threats
 - ML capabilities tested (memory attacks, behavioral detection)
 - Freely published results and emulation plans
-- 76% of enterprises use ATT&CK for security product evaluation
+- The "76% of enterprises use ATT&CK" figure formerly listed here is not on the evals site and was replaced 2026-07-09 — the verifiable adoption figure in this family is 81% general enterprise ATT&CK adoption (UC Berkeley CLTC/McAfee, 2020; Level B, dated)
 - **2025 Enterprise Evaluation**: 11 vendors tested against Scattered Spider and Mustang Panda scenarios
 - **Cloud/hybrid** environments added alongside traditional endpoints (identity abuse, cloud service misuse)
 - Multiple vendors achieved 100% detection rates (CrowdStrike, Sophos, Cybereason)
@@ -2871,7 +2871,7 @@ This bibliography consolidates all literature sources from:
 - Cost structure: 4 sources validating hidden operational costs
 
 **Security-Specific**:
-- Volume/surge data: 2 sources (Microsoft MSRC 350% surge, Gartner 28% CAGR)
+- Volume/surge data: 1 source (Microsoft MSRC 350% surge; the Gartner "28% CAGR" was withdrawn 2026-07-09 — its cited Gartner item is a spending forecast with no volume CAGR)
 - ML requirements: 8 sources (CISA, MITRE, CSA, Microsoft, DARPA, SANS, OCA, MITRE Engenuity)
 - Production deployments: Uber, Netflix, LinkedIn, Cloudflare, SK Telecom (the Shell 57TB entry was removed in the 2026-06-05 audit)
 
