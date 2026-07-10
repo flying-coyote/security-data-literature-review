@@ -43,6 +43,12 @@ HYPOTHESES = {
     'H-STREAM-01\nStateful Streaming': {
         'score': 17, 'level': 'high',
         'label': 'Samza VLDB 2017 (peer-reviewed); Azure 3T events/day verbatim-verified'},
+    'H-LOGCOMP-01 \u2020\nMachine-Data Compression': {
+        'score': 17, 'level': 'high',
+        'label': 'LogLite + PBC + Pebbles (peer-reviewed, verbatim-verified); added post-audit 2026-07-10'},
+    'H-SOC-BASELINE-01 \u2020\nSOC Alert Base Rates': {
+        'score': 14, 'level': 'moderate',
+        'label': 'Yang USENIX Sec 24: 24K-134K alerts/day, ~0.01% true attacks; single-source cap'},
     'H-COST-09\nTiered Storage': {
         'score': 8, 'level': 'preliminary',
         'label': 'Mechanism documented; savings band withdrawn 2026-06'},
@@ -101,7 +107,7 @@ def create_hypothesis_confidence():
     ax1.set_xlabel('Confidence Score (out of 25 points)', fontsize=12,
                    fontweight='bold')
     ax1.set_title('Hypothesis Validation Confidence Levels — post-audit '
-                  're-score, 2026-07-09 (7 hypotheses)',
+                  're-score, 2026-07-09 + post-audit additions \u2020 2026-07-10 (9 hypotheses)',
                   fontsize=14, fontweight='bold', pad=15)
     ax1.set_xlim(0, 30)
     ax1.invert_yaxis()
@@ -113,8 +119,8 @@ def create_hypothesis_confidence():
 
     level_counts = {
         'Strongly\nValidated\n*****': (1, 'strong'),
-        'High\nConfidence\n****': (2, 'high'),
-        'Moderate\n***': (0, 'moderate'),
+        'High\nConfidence\n****': (3, 'high'),
+        'Moderate\n***': (1, 'moderate'),
         'Preliminary\n**\n(withdrawn legs)': (4, 'preliminary'),
     }
     lv_labels = list(level_counts.keys())

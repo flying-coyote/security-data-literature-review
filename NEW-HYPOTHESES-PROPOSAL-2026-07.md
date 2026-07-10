@@ -2,11 +2,13 @@
 type: proposal
 title: "New Tier-A-anchored hypotheses from the DR-3 intake — wording staged for owner sign-off (2026-07-10)"
 created: 2026-07-10
-status: STAGED — owner ruled "keep 7 + add new Tier-A anchored" (2026-07-10); wording below awaits sign-off + gate pass (karen-evaluator, hypothesis-validator, contradiction-detector) before manuscript integration
+status: ADJUDICATED + INTEGRATED (owner rulings + gate pass + manuscript integration all 2026-07-10, same day — see the adjudication record below)
 tags: [hypotheses, dr-3, tier-a, proposal, manuscript]
 ---
 
 # New hypothesis candidates from the six DR-3 Tier-A primaries
+
+> **ADJUDICATION RECORD (owner, 2026-07-10).** Three rulings: (1) **C1 SPLIT** — the hypothesis states only what Yang measured (alert volume orders of magnitude above true-attack incidence in the studied SOCs); the cost-domination inference moved to §4.1 as an explicitly labeled inference. (2) **C2 TRADE-QUANTIFICATION** — the H-ARCH-01 tension is named in §3.7 and §3.8 as pricing the standardization trade, not a contradiction. (3) **PROVENANCE FOLD-IN** — nine hypotheses in the main set with † provenance notes per row; §2.5 methodology reworded (source 3: post-audit literature intake) so the extraction story stays accurate. **Gate record**: karen-evaluator dual-lens caught one real defect — Blitzcrank is OLTP semantic compression (85% memory reduction at a 19% throughput COST on TPC-C), so it was demoted from anchor to adjacent-result and H-LOGCOMP-01's score adjusted 18→17/25 on three anchors; hypothesis-validator checklist passed (testable, Tier-2 evidence, tracker updated; pre-registration N/A — documentary corroboration); contradiction-detector output is the named-tension paragraph (trade-off framing pattern). **Pebbles year RESOLVED** at the dblp structured record: IEEE TPDS 32(8):2005-2020, August 2021, DOI 10.1109/TPDS.2021.3055265. **Integrated**: manuscript abstract/§2.5/§3.7/§3.8/§4.1/Table 2/Figure 4 (PNG regenerated) + MASTER-BIBLIOGRAPHY Pebbles date + project1 tracker mirror, one commit each repo.
 
 **Why**: the 2026-07-10 owner ruling on the manuscript's hypothesis set was to keep the existing 7 with the post-audit honest split AND promote new hypotheses anchored on the six peer-reviewed primaries the DR-3 intake catalogued (`GEMINI-DR3-INTAKE-2026-07-10.md`, bibliography section "Peer-Reviewed Primaries — Gemini DR-3 intake"). This doc stages the candidate wording; nothing is integrated until the owner signs off on the statements and the hypothesis gates run.
 
@@ -33,7 +35,7 @@ tags: [hypotheses, dr-3, tier-a, proposal, manuscript]
 - Pebbles (IEEE TPDS): ~8× / ~27× (title corrected at intake; publication year carries a to-confirm flag — resolve before integration).
 - PBC (SIGMOD/PACMMOD 2024): 2×.
 
-**Proposed initial score**: 18/25 ⭐⭐⭐⭐ — four independent peer-reviewed sources with verbatim-verified figures; loses points on organizational diversity (all academic prototypes, no production deployment leg yet) and on the Pebbles year flag until resolved.
+**Proposed initial score**: ~~18/25 on four anchors~~ **ADOPTED at 17/25 ⭐⭐⭐⭐ on three anchors** (Blitzcrank demoted at the karen gate — OLTP, not machine-data-specialized; Pebbles year resolved so that flag cleared); still capped on organizational diversity (academic prototypes, no production leg).
 
 **Where it lands**: manuscript §3.7 (new row), Theme "Foundational/Performance"; complements H3-PERFORMANCE-01 (general columnar engines) with the format-level result. Contradiction check required against H-ARCH-01's open-format standardization claim — specialized formats vs standard formats is a real tension the paper should name rather than paper over.
 

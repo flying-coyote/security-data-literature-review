@@ -4724,7 +4724,7 @@ Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; ever
 #### Pebbles: Leveraging Sketches for Processing Voluminous, High Velocity Data Streams
 
 **Authors**: Thilina Buddhika, Sangmi Lee Pallickara, Shrideep Pallickara (Colorado State University)
-**Date**: IEEE Transactions on Parallel and Distributed Systems (publication year to confirm on next touch — the NSF PAR record hosting the PDF was accessed 2026-07-10)
+**Date**: August 2021, IEEE Transactions on Parallel and Distributed Systems 32(8):2005-2020, DOI 10.1109/TPDS.2021.3055265 (year resolved at the dblp structured record, 2026-07-10)
 **URL**: https://par.nsf.gov/servlets/purl/10284573
 **Evidence Level**: A (IEEE TPDS, peer-reviewed; the DR run's "Sketch-Aware Streaming Telemetry, NSF 2023" title/label was wrong — corrected at intake)
 **Relevance**:
