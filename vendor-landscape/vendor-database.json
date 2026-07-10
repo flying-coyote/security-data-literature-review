@@ -1,12 +1,12 @@
 {
   "meta": {
-    "version": "2025-Q4",
-    "last_updated": "2025-10-23T07:32:11.341293+00:00",
+    "version": "2026-Q3",
+    "last_updated": "2026-07-10T00:00:00+00:00",
     "source_repository": "security-data-literature-review",
     "sync_cadence": "quarterly",
     "vendor_count": 71,
     "status": "COMPLETE_100_PERCENT",
-    "notes": "ENRICHED: Phase 1-2 (30 analyst reports) + Phase 3 (24 OSS production evidence) = ENTERPRISE-GRADE (63.7% Tier A) | 2026-07-10: appendix-g now carries dated 2026 row updates (Gemini DR-2 intake); this JSON remains the 2025-Q4 snapshot and is due a full regeneration at the next quarterly sync. KNOWN STALE: some capability evidence sources predate the 2026-06 withdrawn-legs scrub (e.g. the Shell 57TB/day ClickHouse leg) and must be re-derived, not copied, at regeneration."
+    "notes": "2026-Q3 evidence audit (2026-07-10): the 38 unique citation URLs backing all 71 vendors were re-checked for liveness + claim-match (per-URL sweep with adversarial verify on proposed drops). Applied: (1) the fabricated Shell 57TB/day ClickHouse leg REMOVED (altinity URL 404s, no discoverable trace) per the 2026-06 withdrawn-legs scrub, re-confirmed; ClickHouse query_performance confidence 5->4, score 5 retained on the verified Cloudflare 6M-req/sec leg. (2) amazon-athena cost_predictability RE-SOURCED from a dead private book-repo self-cite to AWS published Athena pricing ($5.00/TB scanned, verified live 2026-07-10); tier A->B, confidence 5->4. (3) databricks ml_ai_native claim softened to the capabilities confirmed on the cited page (MLflow, Model Serving). NOT auto-changed: 29 legs FLAGGED FOR OWNER -- 13 are analyst-report placeholder URLs without document IDs (generic Gartner /documents/magic-quadrant-* and Forrester /wave/* slugs that cannot resolve to a specific citable report, backing many vendors), the rest are link-rot 404s whose claims are often still true but need re-sourcing, plus reach-but-claim-mismatch cases (e.g. the Cloudflare '96% <1s' figure absent from the cited article). Those legs were NOT dropped autonomously because re-tiering them re-scores ~20 vendors, an owner decision. Full per-URL verdict table: project1 02-projects/system-audit-2026-06/vendor-db-evidence-audit-2026-07-10.md. IT-Harvest-gated Month-2 expert-validation remains NOT RUN. Otherwise this is the 2025-Q4 enrichment (Phase 1-2 + Phase 3); a full from-primaries regeneration is still owed at the next quarterly sync."
   },
   "vendors": [
     {
@@ -20,7 +20,7 @@
           "score": 5,
           "evidence": {
             "tier": "A",
-            "confidence": 5,
+            "confidence": 4,
             "sources": [
               {
                 "id": "cloudflare-clickhouse-2024",
@@ -29,18 +29,10 @@
                 "evidence_tier": "A",
                 "type": "production_deployment",
                 "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#cloudflare-clickhouse-2024"
-              },
-              {
-                "id": "shell-clickhouse-2024",
-                "description": "Shell security telemetry: 57TB/day production scale",
-                "url": "https://altinity.com/blog/2024-shell-clickhouse-security-telemetry",
-                "evidence_tier": "A",
-                "type": "production_deployment",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#shell-clickhouse-2024"
               }
             ],
-            "validation_notes": "2 production deployments at scale. Cloudflare (96% <1s) and Shell (57TB/day) validate sub-second performance for security workloads.",
-            "last_validated": "2025-10-22"
+            "validation_notes": "1 production deployment (Cloudflare, 6M req/sec, verified Tier A). Shell 57TB/day leg REMOVED 2026-07-10: fabricated citation (altinity URL 404s, no discoverable trace anywhere) per the 2026-06 withdrawn-legs scrub, re-confirmed by the 2026-Q3 evidence audit. FLAG: the Cloudflare article supports 6M req/sec but the '96% queries <1s' figure above is not in it and is flagged for owner re-sourcing. Confidence lowered 5->4 (one of two corroborating legs removed; score 5 retained on the verified 6M req/sec leg).",
+            "last_validated": "2026-07-10"
           }
         },
         "compression_efficiency": {
@@ -156,15 +148,6 @@
           "capability_context": "query_performance",
           "last_updated": "2025-10-23T07:28:42.137807+00:00",
           "url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/"
-        },
-        {
-          "id": "clickhouse-query_performance-shell-clickhouse-2024",
-          "description": "Query Performance: Shell security telemetry: 57TB/day production scale",
-          "evidence_tier": "A",
-          "type": "production_deployment",
-          "capability_context": "query_performance",
-          "last_updated": "2025-10-23T07:28:42.137826+00:00",
-          "url": "https://altinity.com/blog/2024-shell-clickhouse-security-telemetry"
         },
         {
           "id": "clickhouse-compression_efficiency-altinity-clickhouse-compression-2024",
@@ -546,15 +529,15 @@
         "cost_predictability": {
           "score": 5,
           "evidence": {
-            "tier": "A",
-            "confidence": 5,
+            "tier": "B",
+            "confidence": 4,
             "sources": [
               {
-                "id": "marcus-journey-athena-cost",
-                "description": "Marcus Journey: Athena $5/TB pricing enables budget predictability",
-                "url": "https://github.com/flying-coyote/modern-data-stack-for-cybersecurity-book",
-                "evidence_tier": "A",
-                "type": "book_chapter",
+                "id": "aws-athena-pricing-5tb",
+                "description": "Athena $5.00/TB-scanned pricing (AWS published pricing) enables budget predictability; verified live 2026-07-10",
+                "url": "https://aws.amazon.com/athena/pricing/",
+                "evidence_tier": "B",
+                "type": "vendor_pricing",
                 "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#marcus-journey-chapter-4"
               }
             ],
@@ -684,13 +667,13 @@
           "url": "https://www.starburst.io/platform/starburst-enterprise/aws-athena/"
         },
         {
-          "id": "amazon-athena-cost_predictability-marcus-journey-athena-cost",
-          "description": "Cost Predictability: Marcus Journey: Athena $5/TB pricing enables budget predictability",
-          "evidence_tier": "A",
-          "type": "book_chapter",
+          "id": "amazon-athena-cost_predictability-aws-athena-pricing-5tb",
+          "description": "Cost Predictability: Athena $5.00/TB-scanned pricing (AWS published pricing); verified live 2026-07-10",
+          "evidence_tier": "B",
+          "type": "vendor_pricing",
           "capability_context": "cost_predictability",
-          "last_updated": "2025-10-23T07:28:42.137879+00:00",
-          "url": "https://github.com/flying-coyote/modern-data-stack-for-cybersecurity-book"
+          "last_updated": "2026-07-10T00:00:00+00:00",
+          "url": "https://aws.amazon.com/athena/pricing/"
         }
       ]
     },
@@ -1125,7 +1108,7 @@
             "sources": [
               {
                 "id": "databricks-ml-platform",
-                "description": "Native ML capabilities: MLflow, AutoML, Feature Store, Model Serving integrated",
+                "description": "Native ML capabilities: MLflow and Model Serving integrated (AutoML and Feature Store not confirmed on the cited page - 2026-07-10 audit)",
                 "url": "https://www.databricks.com/product/machine-learning",
                 "evidence_tier": "B",
                 "type": "vendor_documentation",
@@ -1275,7 +1258,7 @@
         },
         {
           "id": "databricks-ml_ai_native-databricks-ml-platform",
-          "description": "Ml Ai Native: Native ML capabilities: MLflow, AutoML, Feature Store, Model Serving integrated",
+          "description": "Ml Ai Native: Native ML capabilities: MLflow and Model Serving integrated (AutoML/Feature Store unconfirmed on cited page - 2026-07-10 audit)",
           "evidence_tier": "B",
           "type": "vendor_documentation",
           "capability_context": "ml_ai_native",
