@@ -18,9 +18,9 @@ tags: [vendor-database, schema, evidence-tiers, security-data, quarterly-update]
 
 This file defines the authoritative vendor database schema. The MCP server `vendor_database.json` is a **generated artifact** - all edits must be made here.
 
-**Quarterly Update Cycle**: January, April, July, October
+**Quarterly Update Cycle**: January, April, July, October (planned cadence — not yet started; no quarterly update produced as of 2026-07)
 
-**Current Version**: 2025-Q4 (in development)
+**Current Version**: no quarterly snapshot produced yet (the "2025-Q4 (in development)" target did not ship)
 
 ---
 

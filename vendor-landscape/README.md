@@ -1,10 +1,16 @@
 # Vendor Landscape Tracking
 
 ## Purpose
-Maintain quarterly snapshots of the data lakehouse vendor landscape, powered by IT Harvest partnership data. Provides market trends, capability matrices, and vendor evolution tracking.
+Intended to maintain quarterly snapshots of the data lakehouse vendor landscape, powered by IT Harvest partnership data (market trends, capability matrices, vendor evolution tracking).
 
-## Update Cadence
-**Quarterly Updates** (January, April, July, October)
+> **Status (2026-07-09): mechanism ready, not yet in use.** Zero quarterly updates have been produced. The
+> schema, the update template (`quarterly-updates/TEMPLATE-YYYY-QX-update.md`), and this process doc all
+> exist, but the cadence has not started — it is contingent on the IT Harvest partnership, which is still at
+> the outreach/checklist stage (see `IT-HARVEST-PARTNERSHIP-CHECKLIST.md`). Read everything below as the
+> *planned* mechanism, not an active one.
+
+## Update Cadence (planned — not yet started)
+Intended **Quarterly Updates** (January, April, July, October). None produced as of 2026-07.
 
 ## Contents
 
@@ -21,11 +27,12 @@ Maintain quarterly snapshots of the data lakehouse vendor landscape, powered by 
 - **Focus**: Quantitative trend analysis, market position shifts
 
 ### quarterly-updates/
-Versioned quarterly snapshots for citation stability:
-- `2025-Q4-update.md` (target: first update)
-- `2026-Q1-update.md`
-- `2026-Q2-update.md`
-- etc.
+Intended home for versioned quarterly snapshots (citation stability). **Currently contains only
+`TEMPLATE-YYYY-QX-update.md`** — no dated update has been produced. The files below were targets that did
+not happen:
+- `2025-Q4-update.md` (was "target: first update" — not produced)
+- `2026-Q1-update.md` (not produced)
+- `2026-Q2-update.md` (not produced)
 
 ## IT Harvest Partnership
 **Status**: Pre-Partnership Planning with MCP Vendor Baseline Complete (October 23, 2025)
@@ -73,7 +80,7 @@ Versioned quarterly snapshots for citation stability:
 
 **Timeline**:
 - Partnership establishment: TBD (pending initial outreach)
-- First quarterly update: Q4 2025 or Q1 2026 (post-pilot completion)
+- First quarterly update: originally targeted Q4 2025 / Q1 2026 (post-pilot) — **not produced as of 2026-07**; deferred pending the partnership
 
 ## Quality Standards
 - **Vendor-Neutral Analysis**: No promotional content, balanced trade-offs

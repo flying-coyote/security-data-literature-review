@@ -84,7 +84,12 @@ stale as the corpus grew.
   untracked-but-not-gitignored `venv/`, and a missing `tools/` dir — all **false** against the real tree
   (the `figure2/3/4_*.py` + `figure1_prisma_flowchart.tex` + PNG/PDF outputs exist; `venv/` is gitignored
   via `publication-graphics/.gitignore` and untracked; `tools/build/build.sh` exists). No action taken on
-  those. `vendor-landscape/quarterly-updates/` was held — it is not empty (real template + 6 active refs).
+  those.
+- `vendor-landscape/quarterly-updates/` was **kept** (it is not empty — real template + 6 active refs), but
+  its quarterly-cadence *promises* were stripped from the vendor-landscape docs (`README.md`,
+  `vendor-database-schema.md`) to be honest: the mechanism (schema + template + process) exists, but zero
+  quarterly updates have been produced and the cadence is contingent on the still-pending IT Harvest
+  partnership. A now-past "first update Q4 2025 / Q1 2026" target was corrected to "not produced."
 - Created the first quarterly citation tag, **`2026-Q3-v1.0`**, per the documented `YYYY-QX-v1.0` scheme.
 
 ### Fixed (health-check mechanism)
