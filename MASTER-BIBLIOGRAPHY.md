@@ -10,9 +10,9 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
 **Last Updated**: July 9, 2026 (monthly update: count reconciliation across every surface + `automation_dashboard.py` live-recompute fix; the +2 WT-2 production-deployment anchors landed July 8 — revival in progress, see REVIEW-AND-PLAN-2026-06.md)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 176 catalogued `#### ` blocks (175 tiered sources + 1 documented rejection stub — the "Declined — EITT Academy" no-primary record; live-recount 2026-07-09) — grown from the 141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). + 4 added 2026-06-30 (each verified at the source PDF/cover before cataloguing, recovered from a local research-inbox sweep): James Bonifield *Data Engineering for Cybersecurity* (B, No Starch Press — the closest named companion/competitor to the MOAR book), arXiv:2505.02709 *Evaluating Goal Drift in LM Agents* (B, Apollo Research), arXiv:2509.00115 *Adaptive Monitoring of Agentic AI Systems / AMDM* (B), arXiv:2603.11768 *Governing Evolving Memory in LLM Agents / SSGM* (C, post-cutoff framing source); + 2 production-deployment anchors added 2026-07-08 (each verified at primary before cataloguing, WT-2 book-footnote corroborations): RunReveal SIEM-on-ClickHouse + sigmalite (B), DNB Cyber Defense Center on Ibis via the marimo case study (B). This repo is the source of truth for literature citations.
+**Total Sources**: 179 catalogued `#### ` blocks (177 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder; live-recount 2026-07-09 after folding in the 2026-07 research packet: +Ursa (A, PVLDB), +Exabeam (A), +OpenSec (B)) — grown from the 141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). + 4 added 2026-06-30 (each verified at the source PDF/cover before cataloguing, recovered from a local research-inbox sweep): James Bonifield *Data Engineering for Cybersecurity* (B, No Starch Press — the closest named companion/competitor to the MOAR book), arXiv:2505.02709 *Evaluating Goal Drift in LM Agents* (B, Apollo Research), arXiv:2509.00115 *Adaptive Monitoring of Agentic AI Systems / AMDM* (B), arXiv:2603.11768 *Governing Evolving Memory in LLM Agents / SSGM* (C, post-cutoff framing source); + 2 production-deployment anchors added 2026-07-08 (each verified at primary before cataloguing, WT-2 book-footnote corroborations): RunReveal SIEM-on-ClickHouse + sigmalite (B), DNB Cyber Defense Center on Ibis via the marimo case study (B). This repo is the source of truth for literature citations.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 42.3% Evidence Level A (live 2026-07-09: 74 of 175 tiered entries marked `**Evidence Level**: A`; 85 B, 16 C, across 176 `#### ` blocks incl. 1 rejection stub — recompute any time via `scripts/automation_dashboard.py`, which now counts tiers per-block and computes this live instead of reading a self-reported header). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The 9 Program-2 detection-engineering / grounding-chain anchors added 2026-06-21 add 4 Tier-A (Axelsson, Sommer & Paxson, D3FEND 1.0, BFO/ISO 21838-2), 3 Tier-B (CAR, Atomic Red Team, CCO), and 2 Tier-C (Stillions DML, SCYTHE PTEF), moving the catalogued count toward ~71 A / ~84 B / ~15 C across ~168; subsequent additions (2026-06-30 +4, 2026-07-08 +2 WT-2) and a full live-recount on 2026-07-09 put the honest current figure at **74 A / 85 B / 16 C across 175 tiered sources (176 `#### ` blocks) = 42.3%** (recompute via `scripts/automation_dashboard.py`). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Evidence Quality**: 42.9% Evidence Level A (live 2026-07-09, post-fold: 76 of 177 tiered entries marked `**Evidence Level**: A`; 85 B, 16 C, across 179 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/automation_dashboard.py`, which now counts tiers per-block and computes this live instead of reading a self-reported header). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The 9 Program-2 detection-engineering / grounding-chain anchors added 2026-06-21 add 4 Tier-A (Axelsson, Sommer & Paxson, D3FEND 1.0, BFO/ISO 21838-2), 3 Tier-B (CAR, Atomic Red Team, CCO), and 2 Tier-C (Stillions DML, SCYTHE PTEF), moving the catalogued count toward ~71 A / ~84 B / ~15 C across ~168; subsequent additions (2026-06-30 +4, 2026-07-08 +2 WT-2) and the 2026-07-09 monthly update — a full live-recount, then folding in the research packet (+Ursa A, +Exabeam A, +OpenSec B, phantom "Streaming vs Batch" retired) — put the honest current figure at **76 A / 85 B / 16 C across 177 tiered sources (179 `#### ` blocks) = 42.9%** (recompute via `scripts/automation_dashboard.py`). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -315,13 +315,13 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^8]
 
 **Key Findings**:
-- 10-12× compression ratios with columnar storage
-- Log analytics (security-relevant workload)
+- ~10× storage reduction migrating Elasticsearch → ClickHouse (600 → 60 bytes/row, LZ4 default compression) — an ES→CH migration figure (columnar + schema change), not a pure columnar-compression ratio; there is no 12× figure on the page (the earlier "10-12×" was corrected 2026-07-09, verified at primary)
+- Error/troubleshooting request-log analytics (security-adjacent, not a security-specific workload)
 
 **Citations**: Chapter 9 compression discussion
 **Notes**: Validates compression claims
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date 2024 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (~10-12× compression supported). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL · Claim re-verified at primary 2026-07-09 — ~10× ES→ClickHouse storage reduction confirmed on the page; the earlier "10-12×" was corrected (no 12× figure present). Publication date 2022-09-02 (was mis-catalogued as 2024).
 
 ---
 
@@ -910,6 +910,31 @@ This bibliography consolidates all literature sources from:
 
 ---
 
+#### How Exabeam uses ClickHouse for scalable, searchable security analytics (ClickHouse case study, 2025)
+
+**Authors**: ClickHouse (case study of Exabeam, SIEM/UEBA vendor)
+**Date**: 2025 (published Sep 11, 2025)
+**URL**: https://clickhouse.com/blog/exabeam-clickhouse-security-analytics
+**Evidence Level**: A (Production deployment with quantitative operational metrics; ClickHouse-published — vendor bias flagged)
+**Relevance**:
+- Hypothesis H3-PERFORMANCE-01 (ClickHouse for security analytics)
+- Research Question RQ11 (LIGER stack vs traditional SIEM — from the incumbent-SIEM side)
+- Book Chapter 9 (Query engines — ClickHouse as SIEM backend)
+
+**Key Findings** (verified verbatim at the primary, 2026-07-09):
+- Exabeam runs its SIEM/UEBA analytics backend on ClickHouse Cloud across 10 global regions
+- Peak ingest 1.2M events/sec per region; 80B+ events daily; 1T+ events retained
+- 3.5 PB raw → 200 TiB after compression (~17.5×); schema reduced from 1,150+ fields to ~250 columns
+- Query latency cut from 8s+ (scanning 180+ columns) to under 1s
+- Ingest scaled 100K→250K events/sec on a three-node cluster; ingestor optimization cut per-pod memory 7 GB → 4 GB (the page's own "45%" caption is a slight arithmetic slip — 7→4 GB is ~43%; both figures appear on the page)
+
+**Citations**: H3-PERFORMANCE-01 / RQ11 — an incumbent SIEM vendor running its own analytics backend on a columnar store is evidence for the columnar-store-as-SIEM-backend thesis
+**Notes**: First-party ClickHouse case study (ClickHouse marketing its own product via a customer) — figures self-reported, not independently audited. All numbers verified verbatim at the primary; kept at A on production-quantitative grounds with the vendor-bias caveat stated (a strict independent-verification bar would place it at B).
+
+**Validation Status**: ✅ Verified 2026-07-09 (ClickHouse blog primary fetched; every figure confirmed verbatim or near-verbatim)
+
+---
+
 #### Huntress - ClickHouse Migration Case Study (Isolation-First Security)
 
 **Authors**: Huntress / ClickHouse
@@ -1338,25 +1363,27 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Netflix Security Observability - Isolation-First Architecture with Polaris
+#### Netflix Petabyte-Scale Logging — ClickHouse + Iceberg (Muino, 2025)
 
 **Authors**: Daniel Muino (Netflix)
-**Date**: 2024
+**Date**: 2025 (ClickHouse blog dated Oct 23, 2025; underlying talk Daniel Muino, ClickHouse meetup, July 2025; catalogued "2024" corrected 2026-07-09)
 **URL**: https://clickhouse.com/blog/netflix-petabyte-scale-logging
-**Evidence Level**: B (Public blog post describing a production architecture; primary source is a general observability platform, not a security-specific deployment)
+**Evidence Level**: B (ClickHouse-published case study of a Netflix production deployment; vendor-relayed, no first-party Netflix primary found)
 **Relevance**:
 - **Research Question RQ7** (Isolation patterns and performance)
 - **Research Question RQ10** (Catalog governance decisions)
 - Book Chapter 8 (Storage formats - catalog selection)
 - Book Chapter 9 (Query engines - ClickHouse architecture)
 
-**Key Findings**:
-- Netflix logging platform uses ClickHouse (hot tier) + Apache Iceberg (cold tier), handling ~5 PB/day
-- Architecture is a general observability platform; security-specific isolation/compliance framing is not established by this source
-- Polaris catalog, table-level RBAC, RLS overhead figures, VPC-isolation, and SOC 2/ISO 27001 compliance claims are not supported and have been removed
+**Key Findings** (figures verified at the ClickHouse blog primary, 2026-07-09):
+- ClickHouse hot tier + Apache Iceberg cold tier, handling ~5 PB/day of logs
+- 10.6M events/sec average (12.5M peak), ~5 KB/event; 40,000+ microservices
+- 500–1,000 queries/sec; logs usually searchable within ~20 seconds vs a 5-minute SLA
+- Iceberg metadata catalog is pluggable — the blog names Apache Polaris, Unity Catalog OSS, Nessie, and Hive Metastore as options; "Polaris" is one catalog choice, not the platform name
+- The blog does not use "isolation-first"; the earlier security/isolation framing was a mis-attribution and has been removed (entry retitled 2026-07-09)
 
 **Citations**: RQ7/RQ10 qualitative architecture reference, Chapter 8/9 ClickHouse + Iceberg pattern
-**Notes**: Likely duplicate of "Netflix ClickHouse Pipeline - 5 PB/Day" — consider merging. Security/isolation-first framing removed; cite as a ClickHouse + Iceberg production scale example only.
+**Notes**: Retitled + de-misattributed 2026-07-09 (was "Netflix Security Observability - Isolation-First Architecture with Polaris"). Still likely overlaps "Netflix ClickHouse Pipeline - 5 PB/Day" — consider merging in a future pass. Cite as a ClickHouse + Iceberg production-scale case study; ClickHouse-published, so vendor-relayed (Tier B).
 
 **Validation Status**: ⚐ Re-sourced to ClickHouse blog post; original QCon claims not substantiated
 
@@ -1478,30 +1505,11 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-#### Streaming vs Batch Cost Differential (Industry Research)
+#### Retired (no primary) — "Streaming vs Batch Cost Differential" (phantom CloudZero citation)
 
-**Authors**: Industry Research (Multiple Sources)
-**Date**: 2023-2024
-**URL**: [Placeholder - specific CloudZero research not located]
-**Evidence Level**: B (Industry consensus from corroborating sources; no single primary source for this entry)
-**Relevance**:
-- **Hypothesis H-IMPL-01** (Streaming costs)
-- Book Chapter 1 (Cost comparisons)
-- Best Practices Doc footnotes [^191], [^192]
-
-**Key Findings**:
-- Real-time streaming infrastructure carries a meaningful cost premium over equivalent batch processing — a consistent qualitative finding across industry sources (specific 2.8-3.6× figure is not verifiably sourced and has been removed)
-- Supporting corroboration from adjacent citations:
-  - IDC: 2.5-3× operational staffing costs (footnote [^59])
-  - Enterprise Data Quarterly: 1.5-2× infrastructure costs (footnote [^57])
-  - Confluent architecture guidance: operational complexity and talent dominate self-managed Kafka TCO (footnote [^188])
-
-**Citations**: H-IMPL-01 TCO validation, Chapter 1 cost differential
-**Notes**: CloudZero primary source not located. Entry retained as an industry-consensus placeholder supported by IDC/Confluent corroboration; do not cite specific multipliers without a primary source.
-
-**Validation Status**: ⚠️ Placeholder (CloudZero source not found, supported by related sources)
-
-**Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
+**Status**: RETIRED 2026-07-09. This entry never resolved to a real primary — the URL was a placeholder, no CloudZero (or other) source supports a fixed streaming-over-batch cost premium, and every specific multiplier once attached to it (2.8-3.6×, IDC 2.5-3×, "Enterprise Data Quarterly" 1.5-2×) has since been withdrawn. `APPENDICES.md` D.3 already dropped the CloudZero line. Kept as a transparency record rather than silently deleted, following the "Declined — EITT Academy" precedent — so it is now an untiered stub (no Evidence Level), excluded from the tiered denominator.
+**Disposition**: the qualitative "streaming carries a cost premium" point, if used at all, now anchors only to the Cloudera/Forrester TEI entry (Level A), with the caveat that 2025-2026 sources argue the premium is conditional on utilization/scale, not a fixed differential.
+**Former tier**: B (industry-consensus placeholder) — retired as unsourced.
 ---
 
 #### AWS Well-Architected - Compute Optimization
@@ -2270,6 +2278,31 @@ This bibliography consolidates all literature sources from:
 - A framing source for the agentic-security angle: governing what an agent is permitted to remember about security telemetry.
 **Notes**: Verified 2026-06-30 from the paper PDF (title, authors, abstract). Conceptual, with no empirical results; post-cutoff publication, so confirm at arXiv before relying on it in a publication.
 **Validation Status**: ✅ PDF verified 2026-06-30; conceptual framework, no empirical evaluation.
+
+---
+
+#### OpenSec: Measuring Incident Response Agent Calibration Under Adversarial Evidence (arXiv 2601.21083)
+
+**Authors**: Jarrod Barnes (independent)
+**Date**: 2026 (arXiv:2601.21083; v1 2026-01-28, v3 2026-02-06)
+**URL**: https://arxiv.org/abs/2601.21083
+**Evidence Level**: B (Independent-authored arXiv preprint with open code + datasets; execution-based benchmark, not peer-reviewed or a standard)
+**Relevance**:
+- Research Question RQ14 (Agentic security automation — restraint/calibration under adversarial evidence)
+- Research Question RQ12 (AI/agent governance maturity)
+- Book chapter on agentic SOC / AI governance
+
+**Key Findings** (verbatim from the arXiv primary, 2026-07-09):
+- Four frontier models, 40 standard-tier episodes each; consistent over-triggering (agents act before gathering sufficient evidence)
+- GPT-5.2: executes containment in 100% of episodes at 82.5% false-positive rate, acting at step 4
+- Claude Sonnet 4.5: partial calibration (62.5% containment, 45% FP, time-to-first-containment 10.6)
+- All models correctly identify the ground-truth threat when they act — the calibration gap is in restraint, not detection
+- Open-source env (github.com/jbarnes850/opensec-env) + public datasets (huggingface.co/datasets/Jarrodbarnes/opensec-seeds)
+
+**Citations**: RQ14 measured counter-evidence to "autonomous SOC" hype — quantifies premature action when agents are given authority to act
+**Notes**: Independent single-author preprint with reproducible code/data. The skeptical, measured framing is the counterweight RQ14 needs against vendor ROI claims; Tier B (not peer-reviewed, not production).
+
+**Validation Status**: ✅ Verified 2026-07-09 (arXiv abstract + figures confirmed at primary)
 
 ---
 
@@ -3693,6 +3726,32 @@ from the Second Brain entry pending the freshness sweep.
 **Notes**: Cited inline in already-public content (the d3fend-wall essay) — catalogued here 2026-06-21 to close that citation breach. Tier A (peer-reviewed IEEE S&P; 2020 Test-of-Time Award). Authors are the Corelight/Zeek co-founders.
 
 **Validation Status**: ✅ Verified 2026-06-21 (DBLP rec conf/sp/SommerP10: IEEE S&P 2010, pp.305-316, DOI 10.1109/SP.2010.25; 2020 Test-of-Time Award confirmed via ICSI Berkeley and the IEEE-Security SP2020 awards page).
+
+---
+
+#### Ursa: A Lakehouse-Native Data Streaming Engine for Kafka (StreamNative, PVLDB 2025)
+
+**Authors**: Guo et al. (StreamNative)
+**Date**: 2025 (PVLDB Vol. 18(12):5184-5196; VLDB 2025 Industry Track — Best Industry Paper)
+**URL**: https://www.vldb.org/pvldb/vol18/p5184-guo.pdf
+**DOI**: 10.14778/3750601.3750636
+**Evidence Level**: A (Peer-reviewed, VLDB 2025 Best Industry Paper; also carries production-quantitative field measurements)
+**Relevance**:
+- Hypothesis H-ARCH-01 (Iceberg/lakehouse convergence) + streaming↔storage convergence
+- Research Question RQ11 (LIGER stack vs traditional SIEM — ingest layer)
+- Book Chapter 7 (Streaming) / Chapter 8 (Storage formats)
+
+**Key Findings** (all verified verbatim at the VLDB PDF primary, 2026-07-09):
+- Kafka-compatible engine that writes topics directly to open lakehouse tables (Apache Iceberg or Delta Lake) on object storage — leaderless, no disk-based broker storage, no external connectors
+- ~5 GB/s sustained publish and consume throughput across tested configurations (§7.1)
+- Production field measurement: infrastructure spend ≈ 5% of a comparably sized Kafka stack (§7.5, two years continuous production on StreamNative Cloud across AWS/GCP/Azure)
+- Benchmark headline: up to 10× infrastructure-cost reduction; Table 1/§8.2 report 92% reduction vs Kafka-Disk (~8% of cost) and 78% vs Kafka-TS (~22%). The ~5% production figure and the 10× benchmark headline are distinct numbers, catalogued separately
+- Object storage's internal replication removes Ursa's need to replicate across zones (vs Kafka keeping three replicas)
+
+**Citations**: H-ARCH streaming↔lakehouse convergence; RQ11 ingest-layer evidence — the "topics ARE Iceberg tables" pattern removes the connector hop between the detection pipeline and the security data lake
+**Notes**: Peer-reviewed primary (clean Tier A). Vendor-authored (StreamNative) but venue-refereed; production figures are self-reported field measurements corroborated by the paper's benchmarks.
+
+**Validation Status**: ✅ Verified 2026-07-09 (VLDB proceedings PDF fetched; all six sub-claims + venue/award confirmed at primary)
 
 ---
 

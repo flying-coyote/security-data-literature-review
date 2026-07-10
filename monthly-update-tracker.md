@@ -16,7 +16,7 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 
 | Metric | Baseline/Goal | Status |
 |--------|--------|--------|
-| **Quality**: Evidence Level A | ~75-78% target | 🔴 42.3% live (74/175 tiered, 2026-07-09) — honest post-audit floor, path back via 2026 primary sourcing |
+| **Quality**: Evidence Level A | ~75-78% target | 🔴 42.9% live (76/177 tiered, 2026-07-09) — honest post-audit floor, path back via 2026 primary sourcing |
 | **Time Investment**: Monthly effort | Track for awareness | ⏳ 5.9 hours/update avg |
 | **Blog Support**: Writing speedup | 4-6× sustained | 🟢 Demonstrated |
 | **Community Engagement**: Feedback/corrections | Develop workflow | ⏳ Tracking started |
@@ -517,15 +517,15 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 **Instruments fixed**:
 - `automation_dashboard.py` no longer crashes on the tilde-prefixed self-reported Evidence Quality header (`None >= 75`). It now counts each `#### ` block's first Evidence-Level marker and computes Level-A% live over tiered entries; two latent `None` crashes on `average_time` guarded. The dashboard can no longer bluff green.
 
-**Counts reconciled** (every current-status surface):
-- **176 `#### ` blocks / 175 tiered sources** (1 documented rejection stub) · **74 A / 85 B / 16 C** · **Level-A 42.3% (74/175)**.
+**Counts reconciled** (every current-status surface; post-fold):
+- **179 `#### ` blocks / 177 tiered sources** (2 documented stubs) · **76 A / 85 B / 16 C** · **Level-A 42.9% (76/177)** after folding in the 3 recommended adds and retiring the phantom placeholder.
 - Surfaces synced: `MASTER-BIBLIOGRAPHY.md` header, `.claude/CLAUDE.md`, `README.md` (×3), `REPOSITORY-STATUS.md`. Prior surfaces forked badly (144 / 146 / 174 sources; 46–47%); now one number everywhere.
 
 **Sources refreshed** (applied, 6 objective metadata corrections to existing entries; no tier change): 5 provably-wrong dates fixed to their primary-verified values — Cloudflare 2024→**2022-09-02**, GitLab →**2025**, ClickHouse-vs-Snowflake →**2023**, Cloudera Impala →**2022**, Kafka-to-Iceberg →**2025-10-20** — plus 1 freshness-note refresh (ClickHouse-vs-Elasticsearch page updated 2026-03-03). The 2025-10-15 bulk-generation had stamped "2024" on entries whose primaries are actually 2022–2023 or 2025.
 
-**Sources added / re-tiered / retitled** (held for adjudication): a verified multi-agent workflow (33 agents, 0 errors, adversarial primary-verification) returned **11 catalog-ready new-source candidates + 4 leads**, plus **8 freshness judgment-calls** (Netflix retitle + figure-enrich, phantom "Streaming vs Batch" retirement, 3 re-tiers, Cloudera-TEI citation split, Kai Waehner next-year refresh). All written up in `MONTHLY-2026-07-RESEARCH-PACKET.md` — nothing catalogued without a primary-confirmed claim. Recommended adds: Ursa (A, PVLDB Vol 18 / VLDB 2025 Best Industry Paper), Exabeam-on-ClickHouse (A/B tier call), OpenSec (B, measured RQ14 counter-evidence).
+**Sources added / re-tiered / retitled** (held for adjudication): a verified multi-agent workflow (33 agents, 0 errors, adversarial primary-verification) returned **11 catalog-ready new-source candidates + 4 leads**, plus **8 freshness judgment-calls** (Netflix retitle + figure-enrich, phantom "Streaming vs Batch" retirement, 3 re-tiers, Cloudera-TEI citation split, Kai Waehner next-year refresh). All written up in `MONTHLY-2026-07-RESEARCH-PACKET.md` — nothing catalogued without a primary-confirmed claim. **Recommended subset folded in 2026-07-09 on sign-off**: +Ursa (A), +Exabeam (A), +OpenSec (B); phantom "Streaming vs Batch" retired; Netflix de-misattributed; Cloudflare 12×→10× corrected → count 179 blocks / 177 tiered / 76A-85B-16C / 42.9%. The remaining 9 candidates + 4 leads + softer re-tiers stay in the packet.
 
-**Evidence Level A**: 42.3% (74/175) — honest post-audit floor, below the 75% target; the gap is visible, not masked.
+**Evidence Level A**: 42.9% (76/177) — honest post-audit floor, below the 75% target; the gap is visible, not masked.
 
 **Key lesson**: the account session limit (resets 7:30pm ET) hard-stopped 17 research agents mid-run. The deterministic local work (instrument fix, reconciliation, docs) is limit-independent and worth front-loading, with web-dependent fan-out scheduled around the reset.
 

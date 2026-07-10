@@ -53,7 +53,20 @@ stale as the corpus grew.
   returned 11 catalog-ready new-source candidates + 4 leads, plus 8 freshness judgment-calls (a Netflix
   retitle/figure-enrich, retirement of the phantom "Streaming vs Batch Cost Differential" placeholder, three
   A→B/B→C re-tiers, a Cloudera-TEI citation split, and a Kai-Waehner next-year refresh). All written up in
-  `MONTHLY-2026-07-RESEARCH-PACKET.md`; none catalogued without a primary-confirmed claim, pending sign-off.
+  `MONTHLY-2026-07-RESEARCH-PACKET.md`; none catalogued without a primary-confirmed claim.
+
+**Changed (recommended subset folded in on sign-off, 2026-07-09)**
+- Catalogued three primary-verified adds: **Ursa** (A — StreamNative, PVLDB Vol 18(12), VLDB 2025 Best
+  Industry Paper), **Exabeam-on-ClickHouse** (A — production case study, ClickHouse-published so
+  vendor-bias flagged), **OpenSec** (B — arXiv:2601.21083, measured RQ14 counter-evidence on IR-agent
+  over-containment). Retired the phantom "Streaming vs Batch Cost Differential" CloudZero placeholder to an
+  untiered stub. De-misattributed the Netflix entry (retitled off "Isolation-First / Polaris," which the
+  blog never says; enriched with verified figures — 5 PB/day, 10.6M events/sec, 20s searchability). Corrected
+  the Cloudflare entry's unsupported "12×" to the ~10× ES→ClickHouse figure the page actually states.
+- Live count moved 176 → **179 `#### ` blocks / 177 tiered / 76 A / 85 B / 16 C = 42.9%** (2 untiered stubs),
+  re-synced across all surfaces. The remaining 9 candidates + 4 leads + the softer freshness re-tiers
+  (Cloudera Impala A→B, ClickHouse-vs-Snowflake B→C, the Cloudera-TEI citation split, the Kai-Waehner
+  next-year refresh) stay in the packet for a later pass.
 - External inputs polled: securitydataworks.com `/writing` (essay inventory) and `/lab` (first-party
   benchmark set — Zeek lakehouse-vs-SIEM 46.8× native ClickHouse / 10.1× Iceberg, methodology v1.0 2026-05;
   OCSF flattening fidelity; Okta/CrowdStrike 58%/70% field coverage at OCSF 1.8.0). The retired Substack

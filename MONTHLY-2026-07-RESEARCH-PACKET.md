@@ -7,6 +7,14 @@ tags: [monthly-update, freshness, new-sources, adjudication, evidence-tier]
 
 # Monthly Update 2026-07 — Research Packet
 
+> **STATUS (2026-07-09, updated):** the recommended subset has been **FOLDED IN** — catalogued Ursa (A),
+> Exabeam (A), OpenSec (B); retired the phantom "Streaming vs Batch Cost Differential"; de-misattributed the
+> Netflix entry; corrected the Cloudflare "12×". Live count is now **179 blocks / 177 tiered / 76A-85B-16C /
+> 42.9%**. What REMAINS open for a later pass: the other **9 catalog-ready candidates** (§3, Tier-B/C), the
+> **4 leads** (§4 — the Bilot USENIX'25 paper looks like a clean A once its claim is phrased), and the softer
+> **freshness re-tiers** (§2: Cloudera Impala A→B, ClickHouse-vs-Snowflake B→C, Cloudera-TEI split, Kai
+> Waehner next-year refresh). Everything applied is marked ✅ inline below.
+
 **What this is**: the output of the July monthly sweep's research phase, run as a multi-agent workflow
 (11 freshness checks + a six-angle new-source discovery, then an adversarial verification pass that
 re-fetched every candidate's primary and confirmed the specific claim before anything was called
