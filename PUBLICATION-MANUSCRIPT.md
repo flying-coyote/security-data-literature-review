@@ -963,7 +963,7 @@ Levels C (limited evidence) and D (unreliable evidence) were designed as exclusi
 
 **Remaining before submission**:
 1. ~~Confidence re-score~~ DONE 2026-07-09 (RESCORE-PROPOSAL-2026-07.md adopted; §2.5/§3.7/Tables 1-2/Figures 2+4 updated)
-2. Re-sourcing hunts for the directional claims (staffing/TCO/timeline multipliers)
+2. ~~Re-sourcing hunts for the directional claims (staffing/TCO/timeline multipliers)~~ DONE 2026-07-10 — the DR-1 Deep Research hunt returned zero Tier-A/B (two predatory-adjacent venues, one anonymous Medium; two C-tier leads catalogued in GEMINI-DR1-INTAKE-2026-07-10.md); the four PRELIMINARY scores stand. Only literature restoration route left: Gartner Market Guide seat-access check (H-IMPL-02)
 3. Appendices A-C drafting; Acknowledgments
 4. Expert review (Lisa Cao, Jake Thomas)
 5. Venue decision + formatting pass

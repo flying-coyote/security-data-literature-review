@@ -2,7 +2,7 @@
 type: proposal
 title: "Hypothesis confidence re-score proposal — post-audit (2026-07-09)"
 created: 2026-07-09
-status: ADOPTED (owner "Apply", 2026-07-09) — applied to §2.5/§3.7/Tables 1-2/Figures 2+4 same day
+status: ADOPTED (owner "Apply", 2026-07-09) — applied to §2.5/§3.7/Tables 1-2/Figures 2+4 same day; 2026-07-10: the DR-1 re-sourcing hunt returned zero Tier-A/B, so the four PRELIMINARY scores stand unchallenged (GEMINI-DR1-INTAKE-2026-07-10.md)
 tags: [hypotheses, confidence-scoring, audit, rescore]
 ---
 
