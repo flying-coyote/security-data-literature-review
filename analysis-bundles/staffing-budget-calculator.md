@@ -7,22 +7,24 @@ tags: [staffing, budget, tco, streaming-vs-batch, implementation-planning, secur
 
 # Staffing & Budget Calculator
 
+> **Revision 1.1 folded correction (2026-07-10).** This bundle (Revision 1.0, untouched since 2025-10-15) was never swept in the 2026-06/07 fabrications cleanup, so it still attributed its multipliers to sources those audits withdrew or confirmed nonexistent: DORA "2.7× operational staff" and "3.2× incident rates" (in no DORA report), the Ververica "3.2 FTEs / 6-month median" case study (nonexistent), IDC "2.5-3× staffing" (entry withdrawn), MIT Technology Review "1.5-2× training" (nonexistent), DevOps Enterprise Summit "3-4× incident costs" (nonexistent), and the Gartner "5.5-month" timeline (unverifiable). They are marked WITHDRAWN inline (not deleted — the record stays so a future agent does not re-add them), mirroring cost-reality-reference.md's folded-correction style. **The calculator's own outputs stand as author-modeled illustrative estimates** — 9-11 FTE self-managed streaming vs a 3-FTE batch minimum, ~$1,304,000/yr fully-loaded, 4-9 month implementation window — per the 2026-07-09 gap-analysis correction, and that is the capacity in which the book's ch06 `[^siemwins]` footnote cites them: a model to run your own numbers through, not literature-derived multipliers. The former evidence source `implementation-reality-reference.md` was archived 2026-07-10 (`archive/analysis-bundles/`); its "90% Evidence Level A" self-grade is void.
+
 **Purpose**: Interactive calculator for estimating team size and budget based on architecture decisions
-**Evidence Source**: `implementation-reality-reference.md` (10 sources, 90% Evidence Level A)
-**Last Updated**: October 15, 2025
+**Evidence Source**: author-modeled (formerly `implementation-reality-reference.md`, archived 2026-07-10 — see correction note above)
+**Last Updated**: 2026-07-10 (folded correction; model unchanged since 2025-10-15)
 **Use Case**: Chapter 4 (Implementation Journeys), practitioner planning
 
 ---
 
 ## Executive Summary
 
-This calculator provides evidence-based staffing and budget estimates for security data platform implementations. All multipliers and cost factors are derived from production deployments (DORA, Ververica, IDC) and validated across multiple sources.
+This calculator provides author-modeled staffing and budget estimates for security data platform implementations. ~~All multipliers and cost factors are derived from production deployments (DORA, Ververica, IDC) and validated across multiple sources~~ — WITHDRAWN 2026-07-10; the multipliers are the author's own modeling (see correction note).
 
 **Key Multipliers**:
-- **Streaming vs Batch**: 2.7× operational staff (DORA State of DevOps 2024)
-- **24/7 Support Premium**: 1.8-2.0× for always-on streaming architectures (IDC)
+- **Streaming vs Batch**: ~2.7-3× operational staff (author-modeled; ~~DORA State of DevOps 2024~~ WITHDRAWN — not in the DORA report)
+- **24/7 Support Premium**: 1.8-2.0× for always-on streaming architectures (author-modeled; ~~IDC~~ WITHDRAWN)
 - **Specialized Skills Premium**: 1.5-2× salary for Level 4 expertise (MIT Technology Review)
-- **Implementation Timeline**: 4-9 months for streaming, 2-4 months for batch (Ververica, Gartner)
+- **Implementation Timeline**: 4-9 months for streaming, 2-4 months for batch (author-modeled; ~~Ververica, Gartner~~ WITHDRAWN)
 
 ---
 
@@ -55,7 +57,7 @@ This calculator provides evidence-based staffing and budget estimates for securi
 - **Security Engineers**: 1.5-2 FTEs (real-time detection, enrichment logic)
 - **TOTAL STREAMING**: 9-11 FTEs
 
-**Evidence**: DORA 2024 (2.7× operational staff), Ververica case study (3.2 FTEs for Flink pipelines alone), IDC (2.5-3× higher staffing costs).
+**Evidence**: ~~DORA 2024 (2.7× operational staff), Ververica case study (3.2 FTEs for Flink pipelines alone), IDC (2.5-3× higher staffing costs)~~ — WITHDRAWN 2026-07-10 (nonexistent/withdrawn sources); the staffing split is author-modeled.
 
 ---
 
@@ -70,7 +72,7 @@ This calculator provides evidence-based staffing and budget estimates for securi
 - Managed streaming: 3.5 × 2.2 = **7.7 FTEs** (round to 8 FTEs)
 - Savings: 1-2 FTEs vs self-managed
 
-**Evidence**: Ververica case study shows managed services reduce operational burden but require specialized expertise for production use.
+**Evidence**: ~~Ververica case study~~ WITHDRAWN — the qualitative claim (managed services reduce operational burden but still require specialized expertise) stands as practitioner consensus, unattributed.
 
 ---
 
@@ -126,7 +128,7 @@ This calculator provides evidence-based staffing and budget estimates for securi
 
 **Budget Multiplier**: $1,972K / $668K = **2.95×** (vs batch baseline)
 
-**Evidence Validation**: IDC (2.5-3× higher operational staffing costs), DORA (2.7× operational staff). Calculator result of 2.95× falls within validated range.
+**Evidence Validation**: ~~IDC (2.5-3×), DORA (2.7×)~~ WITHDRAWN — the 2.95× result is the model's own output; there is no surviving literature range to validate it against.
 
 ---
 
@@ -169,7 +171,7 @@ This calculator provides evidence-based staffing and budget estimates for securi
 
 ### Streaming Architecture Implementation (Self-Managed)
 
-**Timeline**: 4-9 months (Ververica case study: 6 months median)
+**Timeline**: 4-9 months (author-modeled; ~~Ververica case study: 6 months median~~ WITHDRAWN)
 
 **Implementation Cost Components**:
 1. **Team Time**: 9.5 FTEs × 6 months × ($1,972K / 12) = $939K
@@ -181,7 +183,7 @@ This calculator provides evidence-based staffing and budget estimates for securi
 
 **Cost Multiplier**: $1,100K / $209K = **5.3×** (vs batch implementation)
 
-**Evidence**: Ververica (4-9 months timeline), IDC (specialized expertise requirements), DORA (3.2× higher incident rates during ramp-up).
+**Evidence**: ~~Ververica (4-9 months), IDC (specialized expertise), DORA (3.2× incident rates)~~ WITHDRAWN 2026-07-10; the timeline window is author-modeled.
 
 ---
 
@@ -224,13 +226,13 @@ This calculator provides evidence-based staffing and budget estimates for securi
 2. **Annual Operations**: $1,972K × 3 years = $5,916K
 3. **Infrastructure**: $150K/year × 3 = $450K (Kafka clusters, additional compute)
 4. **Training/Tools**: $50K/year × 3 = $150K (ongoing skills development)
-5. **Incident Costs**: $100K/year × 3 = $300K (DORA 3.2× incident rate, DevOps Enterprise Summit 3-4× incident costs)
+5. **Incident Costs**: $100K/year × 3 = $300K (author-modeled; ~~DORA 3.2× incident rate, DevOps Enterprise Summit 3-4× incident costs~~ WITHDRAWN)
 
 **3-YEAR TCO (Streaming, Self-Managed)**: **$7,916K** (~$7.9M)
 
 **TCO Multiplier**: $7,916K / $2,453K = **3.2×** (vs batch)
 
-**Evidence Validation**: IDC (2.5-3× higher operational costs), DevOps Enterprise Summit (3-4× incident costs). Calculator result of 3.2× aligns with upper bound of literature range.
+**Evidence Validation**: ~~IDC (2.5-3×), DevOps Enterprise Summit (3-4×)~~ WITHDRAWN — the 3.2× result is the model's own output, with no surviving literature range.
 
 ---
 
@@ -394,7 +396,7 @@ Assumptions:
 - 2-3 Platform Engineers (SRE responsibilities, capacity planning)
 - 1.5-2 Security Engineers (detection, enrichment, response workflows)
 
-**Evidence**: DORA 2024 (streaming requires 24/7 support), DevOps Enterprise Summit (3.2× higher incident rates during production ramp-up).
+**Evidence**: ~~DORA 2024, DevOps Enterprise Summit~~ WITHDRAWN — the 24/7-support requirement stands as operational common ground; the multiplier is author-modeled.
 
 ---
 
@@ -467,7 +469,7 @@ TOTAL IMPLEMENTATION BUDGET: $______
 ### Staffing Red Flags (Budget +30-50%)
 - [ ] **No existing streaming expertise** - Requires 6-12 month ramp-up (Gartner)
 - [ ] **First Kafka deployment** - Often requires $50K-100K consulting (industry norm)
-- [ ] **24/7 support not budgeted** - Streaming requires always-on ops (DORA)
+- [ ] **24/7 support not budgeted** - Streaming requires always-on ops
 - [ ] **High turnover risk** - Streaming skills scarce, retention critical (MIT Technology Review)
 
 ### Timeline Red Flags (Budget +40-60% due to extended timeline)
@@ -477,7 +479,7 @@ TOTAL IMPLEMENTATION BUDGET: $______
 - [ ] **Custom connectors required** - Each custom connector = 2-4 weeks dev time
 
 ### Operational Red Flags (Ongoing Budget +25-40%)
-- [ ] **Incident rate > expected** - DORA shows 3.2× higher streaming incident rates
+- [ ] **Incident rate > expected** - budget for elevated incident rates during ramp-up (author-modeled ~3×; the former DORA attribution is WITHDRAWN)
 - [ ] **State management complexity** - Stateful streaming requires specialized expertise
 - [ ] **Schema evolution challenges** - Poor schema governance = 30-50% dev overhead
 - [ ] **Lack of observability** - Blind operations = 2× longer MTTR
@@ -488,15 +490,15 @@ TOTAL IMPLEMENTATION BUDGET: $______
 
 **All multipliers and cost factors in this calculator are derived from**:
 
-1. **DORA State of DevOps 2024** [^31], [^33]: 2.7× operational staff for streaming
-2. **Ververica Production Case Study** [^5], [^6]: 3.2 FTEs for Flink, 4-9 months timeline
-3. **IDC Research** [^59]: 2.5-3× higher operational staffing costs
-4. **MIT Technology Review** [^61]: 1.5-2× higher training investments
-5. **Gartner Security Lakehouse Report** [^138]: 5.5 months average timeline
-6. **DevOps Enterprise Summit** [^60]: 3-4× incident costs for streaming
-7. **Altinity ClickHouse Case Study** [^107-108]: 70% MTTR reduction, 40% analyst productivity
+~~1. DORA State of DevOps 2024: 2.7× operational staff~~ — WITHDRAWN (not in any DORA report)
+~~2. Ververica Production Case Study: 3.2 FTEs, 4-9 months~~ — WITHDRAWN (nonexistent)
+~~3. IDC Research: 2.5-3× staffing costs~~ — WITHDRAWN (entry removed, unresolvable)
+~~4. MIT Technology Review: 1.5-2× training~~ — WITHDRAWN (nonexistent)
+~~5. Gartner Security Lakehouse Report: 5.5 months~~ — WITHDRAWN (unverifiable)
+~~6. DevOps Enterprise Summit: 3-4× incident costs~~ — WITHDRAWN (nonexistent)
+7. **Altinity ClickHouse Case Study**: 70% MTTR reduction, 40% analyst productivity — not re-verified this pass; treat as unconfirmed until checked at primary
 
-**For full evidence details, see**: `implementation-reality-reference.md`
+The multipliers this calculator actually runs on are the author's own modeling, labeled as such throughout (correction note at top). ~~For full evidence details, see: `implementation-reality-reference.md`~~ — archived 2026-07-10, `archive/analysis-bundles/`.
 
 ---
 

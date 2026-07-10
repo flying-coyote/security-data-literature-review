@@ -18,18 +18,20 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ---
 
+> **Folded correction (2026-07-10).** This bundle was never swept in the 2026-06/07 fabrications cleanup, so its borrowed-hypothesis rows, per-section evidence enumerations, and journal-ready confidence statements still asserted legs those audits withdrew or confirmed nonexistent: DORA 2.7×/3.2×/"Level 4" (in no DORA report), IDC 2.5-3× (withdrawn), Ververica 3.2-FTE (nonexistent), Gartner/phData 5.5-month (unverifiable), AWS 55% (deprecated stub), Netflix 70-80% (no locatable primary), Shell 57TB/day (entry removed), and "universal vendor support incl. Microsoft" (contradicted by its own cited source — Microsoft is the named Delta-first holdout, corrected 2026-07-10). **Current adjudicated scores after the overturns: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 (re-anchored on the first-party S3 tier-price derivation); H-IMPL-03's Gartner leg is withdrawn pending re-score.** The October-2025 section bodies below are preserved as the record with dated section notes rather than rewritten; do NOT cite their evidence enumerations. The full re-tier of the borrowed seven is staged in RESCORE-PROPOSAL-2026-07.md (owner adjudication pending). The first-party (lab-measured) hypotheses are unaffected. Manuscript Appendix B cites this bundle — it cites the first-party half and the rubric, which stand.
+
 ## Executive Summary
 
-**All 7 hypotheses are validated**, but with **varying confidence levels**:
+**All 7 hypotheses are validated** *(the October-2025 claim — see the correction note above; the hypothesis-count adjudication and the borrowed-seven re-tier are pending)*, with **varying confidence levels**:
 
 | Hypothesis | Confidence | Source Count | Evidence Level A % | Key Validation |
 |------------|-----------|--------------|-------------------|----------------|
 | **H-ARCH-01** (Iceberg) | ⭐⭐⭐⭐⭐ Strong | 5 (+1 first-party) | 100% | Industry consensus, universal vendor support; FIRST-PARTY answer-equality on one Iceberg/OCSF table |
-| **H-IMPL-01** (TCO) | ⭐⭐⭐⭐ High | 5 | 80% | IDC, DORA, Confluent convergence |
-| **H-IMPL-02** (Staffing) | ⭐⭐⭐⭐⭐ Strong | 4 | 100% | DORA 2.7×, IDC 2.5-3×, Ververica 3.2 FTEs |
-| **H-IMPL-03** (Timeline) | ⭐⭐⭐ Moderate | 3 | 67% | Gartner 5.5 months, SANS premium validated |
-| **H-COST-09** (Tiered Storage) | ⭐⭐⭐⭐⭐ Strong | 3 | 100% | AWS 55%, Netflix 70-80%, production validated |
-| **H3-PERFORMANCE-01** (ClickHouse) | ⭐⭐⭐⭐ High | 4 (+1 first-party) | 100% | Cloudflare 6M req/sec, Shell 57TB/day; FIRST-PARTY ~7.0× storage on OCSF data (FOIL) |
+| **H-IMPL-01** (TCO) | ⭐ 1/5 (overturned 2026-07-09) | 0 quantitative | — | ~~IDC, DORA, Confluent convergence~~ all withdrawn; qualitative direction only |
+| **H-IMPL-02** (Staffing) | ⭐⭐ 2/5 (overturned 2026-07-09) | 0 quantitative | — | ~~DORA 2.7×, IDC 2.5-3×, Ververica 3.2 FTEs~~ all withdrawn/nonexistent |
+| **H-IMPL-03** (Timeline) | ⭐⭐⭐ Moderate (pending re-score) | 2 | — | ~~Gartner 5.5 months~~ withdrawn; SANS premium leg stands |
+| **H-COST-09** (Tiered Storage) | ⭐⭐⭐⭐ 4/5 (re-anchored 2026-07-09) | 3 | — | ~~AWS 55%, Netflix 70-80%~~ dead legs; stands on the first-party S3 tier-price derivation (−45.7% to −95.7% by tier) + Insider + Kozlovski |
+| **H3-PERFORMANCE-01** (ClickHouse) | ⭐⭐⭐⭐ High | 3 (+1 first-party) | — | Cloudflare 6M req/sec; ~~Shell 57TB/day~~ withdrawn; FIRST-PARTY ~7.0× storage on OCSF data vs baseline |
 | **H-STREAM-01** (Kafka Streams) | ⭐⭐⭐⭐ High | 3 | 100% | LinkedIn, Uber production security |
 
 **FIRST-PARTY hypotheses (lab-measured, MOAR reference stack, 2026-06-07, single host):**
@@ -43,7 +45,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 | **H-DUCKLAKE-02** (swap-format read-neutral + commit-tax) | ⭐⭐⭐⭐ High | 1 (first-party, two legs: identical bytes + streaming commits) | First-party lab | Iceberg↔DuckLake read-neutral on byte-identical data; under a 100-commit stream Iceberg ingest ~37×, metadata footprint ~515×, planning ~21×, while DuckLake planning stays flat (~7 ms) — the write-contract complement to read-neutrality |
 | **H-NDR-FEDERATION-01** (cross-source correlation) | ⭐⭐⭐⭐ High | 1 (first-party, 2-source join) | First-party lab | Join surfaces attacker 198.51.100.66 (lateral movement) no single source reveals |
 
-**Key Insight**: **Hypothesis validation strength correlates with source diversity** (government + industry + production), not just source count. H-IMPL-02 (staffing) has **strongest validation** despite only 4 sources because: DORA (industry research) + IDC (analyst) + Ververica (production) + McKinsey (consulting) represent **4 independent validation types**. The first-party hypotheses score differently: a single source, but a source we control end-to-end, so the discriminating dimensions are reproducibility and the answer-equality gate rather than independent-source count. A first-party run cannot manufacture source diversity, and we do not pretend it does; its claim is narrower and better-controlled, which is why several of these sit at High rather than Strong despite being measured rather than borrowed.
+**Key Insight** *(2026-07-10 note: this insight is now the bundle's own cautionary tale — H-IMPL-02's "4 independent validation types" were 4 independently NONEXISTENT sources, so apparent source-diversity is no defense against fabricated legs; only verification at the primary is)*: ~~**Hypothesis validation strength correlates with source diversity** (government + industry + production), not just source count. H-IMPL-02 (staffing) has **strongest validation** despite only 4 sources because: DORA (industry research) + IDC (analyst) + Ververica (production) + McKinsey (consulting) represent **4 independent validation types**.~~ The first-party hypotheses score differently: a single source, but a source we control end-to-end, so the discriminating dimensions are reproducibility and the answer-equality gate rather than independent-source count. A first-party run cannot manufacture source diversity, and we do not pretend it does; its claim is narrower and better-controlled, which is why several of these sit at High rather than Strong despite being measured rather than borrowed.
 
 ---
 
@@ -164,6 +166,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ### H-IMPL-01: Streaming Hidden Costs (TCO Reality)
 
+> **Section record note (2026-07-10):** every quantitative leg below (IDC 2.5-3×, DORA 2.7×/'Level 4', Confluent 45-55%) was withdrawn or confirmed nonexistent in the 2026-06/07 audits; current score **1/5** — the qualitative streaming-carries-an-ops-premium direction survives, no multiplier does. Preserved as the October-2025 record; do not cite.
+
 **Hypothesis**: "Streaming architectures incur 2.5-3× higher operational costs vs batch processing due to specialized expertise, 24/7 monitoring, and incident management complexity."
 
 **Validation Status**: ✅ **HIGH CONFIDENCE**
@@ -236,6 +240,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ### H-IMPL-02: Staffing Scarcity (Specialized Skills)
 
+> **Section record note (2026-07-10):** all four legs below (DORA 2.7×, IDC 2.5-3×, Ververica 3.2-FTE, McKinsey tiger-teams) are withdrawn or nonexistent; current score **2/5**. The Gartner seat-access check remains the only literature route to re-quantify. Preserved as the record; do not cite.
+
 **Hypothesis**: "Organizations implementing streaming architectures require 2.7× operational staff vs batch alternatives, with fault-tolerance expertise representing 'Level 4' specialized skills available in only the top 5% of organizations."
 
 **Validation Status**: ✅ **STRONGLY VALIDATED**
@@ -304,6 +310,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 ---
 
 ### H-IMPL-03: Timeline Premium (Security Implementation)
+
+> **Section record note (2026-07-10):** the Gartner/phData 5.5-month leg below is withdrawn (the cited phData post carries no such figure); the SANS security-premium leg stands. Re-score pending. Cite the surviving legs only.
 
 **Hypothesis**: "Security-focused data lakehouse implementations require 15-30% longer timelines vs general data engineering due to compliance validation, security tool integrations, and detection logic migration."
 
@@ -375,6 +383,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ### H-COST-09: Tiered Storage Economics
 
+> **Section record note (2026-07-10):** the AWS 55% and Netflix 70-80% legs below are dead (deprecated stub / no locatable primary — marked do-not-cite in MASTER-BIBLIOGRAPHY); current score **4/5**, re-anchored on the first-party S3 storage-class price derivation (−45.7% IA / −82.6% Glacier Instant / −84.3% Flexible / −95.7% Deep Archive) plus the Insider and Kozlovski legs.
+
 **Hypothesis**: "Tiered storage strategies (hot/warm/cold) deliver 55-80% cost savings for multi-year security data retention, with AWS documenting 55% average savings and Netflix achieving 70-80% for Kafka tiered storage."
 
 **Validation Status**: ✅ **STRONGLY VALIDATED**
@@ -437,6 +447,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 ---
 
 ### H3-PERFORMANCE-01: ClickHouse OLAP Performance
+
+> **Section record note (2026-07-10):** the Shell 57TB/day leg below was removed from the bibliography in the 2026-06-05 audit; Cloudflare and the first-party lab legs stand.
 
 **Hypothesis**: "ClickHouse delivers exceptional OLAP performance for security workloads: 6 million requests/second throughput, 96% of queries completing under 1 second, and 5-10× storage efficiency vs Elasticsearch."
 
@@ -838,6 +850,8 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 ## Academic Publication Readiness
 
 ### Confidence Statements for Journal Submission
+
+> **⛔ DO NOT USE (2026-07-10).** Every statement below asserts withdrawn or corrected figures — the DORA/IDC/Ververica staffing multipliers (nonexistent), the AWS/Netflix tiered-storage legs (dead), and "universal vendor support across AWS, Google, Microsoft..." (contradicted by its own source; Microsoft is the named Delta-first holdout). They are preserved verbatim as the October-2025 record of what was ALMOST submitted — the strongest argument this corpus has for verify-at-primary-before-publishing. Draft replacements only after the RESCORE-PROPOSAL adjudication lands.
 
 **Strong Confidence Hypotheses** (suitable for primary claims):
 > "Our systematic review strongly validates that Apache Iceberg has emerged as the industry consensus choice for open table formats, with universal vendor support across AWS, Google, Microsoft, Snowflake, and Databricks (5 sources, 100% Evidence Level A)."
