@@ -12,6 +12,36 @@ and this project adheres to semantic versioning for documentation releases.
 Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
 report on it, and reconciles the source count across every surface that states it.
 
+### 2026-07-09 verification-sweep fix pass, part 1 — mechanical corrections (fixes 2-5, 8, 11-33 of VERIFICATION-SWEEP-2026-07-09-cowork.md)
+
+A 49-check per-citation sweep (fetch-backed, cowork session; report merged at the repo root) drove this
+pass. Every replacement figure below was verified against its primary before landing; two were re-derived
+independently before the report was even accepted (OMB M-21-31 PDF: ≥12mo active + 18mo cold, zero
+occurrences of "24-36"; ClickHouse billion-row page: 12-19× verbatim).
+
+**Corrected (number/date/attribution, across PUBLICATION-MANUSCRIPT.md, MASTER-BIBLIOGRAPHY.md, APPENDICES.md, REFERENCES.md)**
+- Cloudflare "10-12× compression" → ~10× per-record storage (600→60 bytes/row, ES→CH migration) + 8× inserter CPU/memory; entry re-dated 2018-03-06 (Bocharov), log-analytics post 2022-09-02 (Singh).
+- ClickHouse-vs-Elasticsearch "5-10×" → 12-19× (functionally equivalent config) / 9-12× (`_source` disabled) — the repo had been *understating* a favorable number; the stale "9-19×/OTel/2026-03-03" freshness note was removed (not on the page).
+- CISA "24-36 month retention" → AA23-193A quotes OMB M-21-31: ≥12 months active + 18 months cold (an FCEB compliance mandate, not an APT-detection recommendation) — everywhere it appeared.
+- Iceberg "300+ contributors across 100+ organizations" → 407 contributors (GitHub deduplicated count, 2026-07-09); the community page carries no counts; org count dropped as underivable.
+- SK Telecom precise figures (209 GB→6.11 GB, 97.2s→3.39s, 52.7 TB) RE-ATTRIBUTED, not withdrawn: they are verbatim in the Trino Summit slides PDF (Alt URL) — verified 2026-07-09; the recap page carries only approximations. One framing fix: 52.7 TB is the table's logical size, not data processed in 3.39 s.
+- Azure Kafka entry re-dated 2019-02-05 with page-verified figures ("3 trillion events per day", "up to 30 million events per second").
+- Forrester/Cloudera TEI entry SPLIT: Public Cloud (Oct 2021 PDF: 194% ROI, $35.54M) vs Private Cloud (May 2024); the 39/32/29 TCO breakdown appears in NEITHER document and was withdrawn (manuscript/appendices treatment in part 2). Three-way date drift (2021/2023/2024) reconciled across files.
+- Arrow Flight "20× faster than JDBC/ODBC" scoped to "as much as 20× faster than PyODBC".
+- Huntress "93%" → "more than 90% (~$70K→~$5K/month)" (93% was derived arithmetic).
+- Prosci "30/60/80% adoption" → Prosci's actual 13/39/73/88% meeting-objectives correlation (Level B).
+- MITRE "76% use ATT&CK for ML evaluation" → 81% general enterprise adoption (UC Berkeley CLTC/McAfee 2020, Level B, dated); evals site rebranded to evals.mitre.org.
+- Gartner "28% CAGR for security data" removed (spending forecast ≠ volume CAGR; no locatable source); Gartner "6-12 months proficiency" de-attribution lands in part 2.
+- LinkedIn/Northguard bibliography entry: phantom "terabytes of state with millisecond access" key finding deleted (manuscript treatment in part 2).
+- AWS "22% right-sizing" removed from APPENDICES (bibliography had already retired it as CloudZero-origin; list synced).
+
+**Withdrawn (REFERENCES.md, following the existing convention)**
+- [26] Confluent "2024 State of Data Architecture Report" and [36] Databricks "State of Data Engineering 2024": neither report exists under its claimed publisher (the latter title belongs to lakeFS, whose report also lacks the cited figure). [49] Gartner "Security Data Growth Rates" (Document 4008641): unverifiable, cited only for the removed CAGR.
+
+**Updated (book-appendices)**
+- appendix-e: Polaris → Apache top-level project since 2026-02-19 (v1.5.0 2026-05-18); Snowflake Open Catalog marked CLOSED to new sign-ups (new deployments steered to self-hosted Apache Polaris or Horizon Catalog); Dremio churn note softened (docs/University/community all still resolve at 2026-07-09).
+- appendix-g: Chronicle row re-pointed to the Google SecOps canonical page (chronicle.security serves stale pre-rebrand content).
+
 ### 2026-07-09 monthly update — dashboard instrument fix + count re-reconciliation
 
 The monthly sweep found the *other* reporting instrument still broken and the reconciled count itself gone

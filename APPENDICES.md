@@ -40,7 +40,7 @@ This appendix documents the evidence classification system used to assess source
    - Documented production implementations at scale
    - Quantitative performance metrics published
    - Named organizations with verifiable deployments
-   - Example: Huntress (93% infrastructure cost reduction after ClickHouse migration)
+   - Example: Huntress (more than 90% infrastructure cost reduction after ClickHouse migration, ~$70K→~$5K/month)
 
 2. **Peer-Reviewed Research**:
    - Published in academic journals or conferences
@@ -52,7 +52,7 @@ This appendix documents the evidence classification system used to assess source
    - Government agencies (CISA, MITRE, DARPA, NSA, SANS)
    - Standards bodies (Apache Software Foundation, OCA, CSA)
    - Authoritative technical guidance
-   - Example: CISA Enhanced Security Monitoring (24-36 month retention guidance)
+   - Example: CISA AA23-193A, quoting OMB M-21-31 (≥12 months active + 18 months cold log retention for federal civilian agencies)
 
 4. **Authoritative Technical Books**:
    - O'Reilly publications
@@ -69,8 +69,8 @@ This appendix documents the evidence classification system used to assess source
 
 **Examples from Literature Review**:
 - Cloudflare: 6M requests/second (ClickHouse)
-- Huntress: 93% infrastructure cost reduction (ClickHouse migration)
-- LinkedIn: Terabytes of state with millisecond access (Kafka Streams)
+- Huntress: more than 90% infrastructure cost reduction (~$70K→~$5K/month, ClickHouse migration)
+- LinkedIn: stateful stream processing at up to hundreds of TB of state per application (Samza, VLDB 2017; the earlier "terabytes of state with millisecond access (Kafka Streams)" attribution was corrected in the 2026-07 verification pass)
 
 ---
 
@@ -108,8 +108,8 @@ This appendix documents the evidence classification system used to assess source
 - Quantitative findings (percentages, multipliers, timelines)
 
 **Examples from Literature Review**:
-- Confluent 2024 State of Data Architecture: 76% prioritize real-time detection
 - DataRobot: Champion-challenger pattern for ML deployment
+- The Confluent "2024 State of Data Architecture: 76% prioritize real-time detection" example formerly listed here was removed in the 2026-07 verification pass — no such Confluent report was found (Confluent's 2024 flagship is the Data Streaming Report), and the 76% stat is unlocatable
 
 ---
 
@@ -383,8 +383,8 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 | **TOTAL** | **21/25** | **HIGH CONFIDENCE** (pre-audit score; see note above) |
 
 **Key Evidence**:
-- Cloudflare: 6M requests/second, 10-12× compression (the "96.3% of queries <1s" figure formerly cited here is not in the cited source — removed, 2026 audit)
-- ClickHouse vs Elasticsearch: 5-10× storage efficiency for security logs
+- Cloudflare: 6M requests/second, ~10× per-record storage reduction in its ES→ClickHouse migration (600→60 bytes/row; the "10-12×" and "96.3% of queries <1s" figures formerly cited here are not in the cited source — corrected/removed, 2026 audits)
+- ClickHouse vs Elasticsearch: 12-19× storage efficiency at functionally equivalent config, 9-12× with `_source` disabled (vendor benchmark; the earlier "5-10×" matched only the page's query-speed multipliers — corrected 2026-07-09)
 - Native IPv4/IPv6 types: a first-party CIDR probe (MOAR reference stack, 20M rows, single host, `lab/cidr_probe.py`, 2026-06-07) measured ~13-17× warm speedup vs string implementations, with ~2.9× IPv4-vs-String storage savings (65.4 MiB vs 188.1 MiB); the vendor "50-100×" band formerly cited here is not on the cited page — removed, 2026 audit
 - The Shell 57TB/day entry was removed in the 2026 audit (dead URL, claims unverifiable)
 
@@ -672,13 +672,13 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 
 **ClickHouse for Security Analytics**:
 - [15] Cloudflare: 6M requests/second (Level A; the "96.3% queries <1s" figure is not in the cited source — removed, 2026 audit)
-- [16] Cloudflare: 10-12× compression for log data (Level A)
-- [18] ClickHouse vs Elasticsearch: 5-10× storage efficiency (Level A)
+- [16] Cloudflare: ~10× per-record storage reduction, 600→60 bytes/row, plus 8× inserter CPU/memory (ES→CH migration; Level A — the "10-12×" formerly here is not on the page, corrected 2026-07-09)
+- [18] ClickHouse vs Elasticsearch: 12-19× storage efficiency (9-12× with `_source` disabled; vendor benchmark, Level A — corrected from "5-10×" 2026-07-09)
 - [19] ClickHouse: Compression codecs documentation (Level A)
 - [20] ClickHouse: Vectorized query execution documentation (Level A; the "8-10× CPU efficiency" figure is not on the cited page — removed, 2026 audit)
 - [21] ClickHouse: Performance optimization guide (Level A)
 - [22] ClickHouse: Native IP types — first-party CIDR probe ~13-17× at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings (first-party measurement; the vendor "50-100×" band is not on the cited page — removed, 2026 audit)
-- [51] Huntress: 93% cost reduction ($70K → $5K monthly) (Level A; the "16 billion events/day" figure is not in the cited source — removed, 2026 audit)
+- [51] Huntress: more than 90% cost reduction ($70K → $5K monthly; the page states ">90%" — "93%" was derived arithmetic, restated 2026-07-09) (Level A; the "16 billion events/day" figure is not in the cited source — removed, 2026 audit)
 - [13] Chris Bisnett: Huntress migration video (Level A)
 
 **Trino/Starburst/Dremio**:
@@ -727,8 +727,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - The reliability cost claims formerly listed here (Google SRE cost-per-nine, Gartner reliability overspend, Uptime Institute four-nines, financial-services five-nines multiplier) were placeholder-sourced with no resolvable citations and are removed pending real sources (2026 audit)
 
 **Compute & Storage Optimization**:
-- [3] AWS: 22% average compute savings through right-sizing (Level A)
-- [2] AWS: Storage optimization whitepaper (cited PDF is now a deprecated empty stub — claims not verifiable; 2026 audit)
+- Both entries formerly listed here are withdrawn: the AWS "22% average compute savings through right-sizing" traced to CloudZero, not AWS (bibliography retired it in the 2026 audit; this list synced 2026-07-09), and the AWS storage-optimization whitepaper PDF is a deprecated empty stub (2026 audit). Subsection retained pending real sources.
 
 ---
 
@@ -753,7 +752,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Change Management & Implementation Patterns
 
 **Organizational Readiness**:
-- [68] Prosci: 30/60/80% adoption pattern for successful implementations (Level A)
+- [68] Prosci: 13/39/73/88% of initiatives meet or exceed objectives as change-management effectiveness rises from poor to excellent (Prosci best-practices correlation data; replaces the "30/60/80% adoption pattern" formerly cited here, which does not match Prosci's published figures — corrected 2026-07-09) (Level B, vendor research)
 - [14] Brooks: "Plan to throw one away" throwaway prototype principle (Level A)
 - [66] Netflix: Shadow infrastructure validation approach with WAL (cited URL is a bare conference homepage — specifics unverified; downgraded, 2026 audit)
 
@@ -764,12 +763,12 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Data Volume & Characteristics
 
 **Volume Growth & Surge Patterns**:
-- [49] Gartner: 28% CAGR for security data (Level A)
+- The Gartner "28% CAGR for security data" formerly listed here was removed in the 2026-07 verification pass — the cited Gartner item is a security-*spending* forecast, and no repo-cited Gartner source contains a data-volume CAGR. Subsection retained pending a real growth-rate source.
 
 ### Security Data Retention Requirements
 
 **ML Training Data Requirements**:
-- [34] CISA: 24-36 month retention for behavioral baselines (Level A)
+- [34] CISA AA23-193A, quoting OMB M-21-31: ≥12 months active + 18 months cold log retention for federal civilian agencies (Level A; the "24-36 month retention for behavioral baselines" formerly cited here is not in the advisory — corrected 2026-07-09)
 - The MITRE "18-24 months for insider threat detection" and Microsoft Purview "24 hours / 30-90 days" retention figures formerly listed here are not on their cited pages and are removed pending real sources (2026 audit)
 
 ---
@@ -789,7 +788,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - The Microsoft "40% of orgs experienced AI data security incidents (2024)" figure formerly listed here is not in the cited document (which is from 2019) and is removed (2026 audit)
 
 **Model Evaluation & Validation**:
-- [65] MITRE Engenuity: 76% of enterprises use ATT&CK for ML evaluation (Level A)
+- [65] 81% of enterprises use MITRE ATT&CK (UC Berkeley CLTC/McAfee study, 2020 — general enterprise adoption, not ML-evaluation-specific; replaces the "MITRE Engenuity: 76%" formerly cited here, which appears nowhere on the evals site — corrected 2026-07-09; note the site rebranded to evals.mitre.org) (Level B, dated)
 - The MITRE "Insider Threat Framework with 5,000+ cases" figures formerly listed here are not on the cited page and are removed (2026 audit)
 
 **ML Infrastructure & Performance**:
@@ -806,9 +805,8 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ## D.7 Industry Surveys & Trends
 
 **Comprehensive Industry Surveys**:
-- [26] Confluent 2024: 76% of security ops teams prioritize real-time detection (Level B)
-- [36] Databricks: +64% year-over-year Flink adoption for security (Level B)
 - [39] DORA 2024: Comprehensive DevOps research (Level A)
+- The Confluent "76% prioritize real-time detection" and Databricks "+64% YoY Flink adoption" entries formerly listed here were removed in the 2026-07 verification pass: neither cited report exists under its claimed publisher (the Confluent title is unlocatable; "State of Data Engineering 2024" is a lakeFS report, which also contains no 64% Flink figure)
 - [43] Dremio 2024: Data lakehouse adoption trends (Level A)
 - [69] SANS 2024: AI in cybersecurity survey (Level B — login-gated)
 

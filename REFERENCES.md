@@ -32,7 +32,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [8] Apache Iceberg Community, "Apache Iceberg Documentation," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/
 
-[9] Apache Iceberg Community, "Apache Iceberg Governance & Contributors," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/community/
+[9] Apache Iceberg Community, "Apache Iceberg Governance & Contributors," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/community/ (page carries no contributor counts; for the contributor figure cite https://github.com/apache/iceberg — 407 as of 2026-07-09)
 
 [10] Apache Iceberg Community, "Maintenance Documentation," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/docs/latest/maintenance/
 
@@ -44,9 +44,9 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [14] F. P. Brooks Jr., *The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition*. Boston, MA: Pearson, 1995.
 
-[15] Cloudflare Engineering Blog, "HTTP Analytics for 6M Requests per Second Using ClickHouse," 2024. [Online]. Available: https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/
+[15] A. Bocharov, "HTTP Analytics for 6M Requests per Second Using ClickHouse," Cloudflare Engineering Blog, 2018. [Online]. Available: https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/ (date corrected from "2024" 2026-07-09)
 
-[16] Cloudflare Engineering Blog, "Log Analytics Using ClickHouse," 2024. [Online]. Available: https://blog.cloudflare.com/log-analytics-using-clickhouse/
+[16] M. Singh, "Log Analytics Using ClickHouse," Cloudflare Engineering Blog, 2022. [Online]. Available: https://blog.cloudflare.com/log-analytics-using-clickhouse/ (date corrected from "2024" 2026-07-09)
 
 [17] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
@@ -64,9 +64,9 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [24] Cloudera Engineering Blog, "Apache Iceberg with Cloudera Data Platform," 2024. [Online]. Available: https://blog.cloudera.com/apache-iceberg-with-cloudera-data-platform/
 
-[25] Cloudera and Forrester TEI, "Total Economic Impact of Cloudera Data Platform Public Cloud," 2023. [Online]. Available: https://www.cloudera.com/content/dam/www/marketing/resources/analyst-reports/total-economic-impact-cdp-public-cloud.pdf
+[25] Forrester Consulting (commissioned by Cloudera), "Total Economic Impact of Cloudera Data Platform Public Cloud," October 2021. [Online]. Available: https://www.cloudera.com/content/dam/www/marketing/resources/analyst-reports/total-economic-impact-cdp-public-cloud.pdf (PDF dated October 2021 — the "2023"/"2024" dates in earlier versions of this repo were wrong; the 39/32/29 TCO breakdown formerly cited to this study appears in neither TEI document — withdrawn 2026-07-09)
 
-[26] Confluent, "2024 State of Data Architecture Report," 2024. [Online]. Available: https://www.confluent.io/resources/report/2024-state-of-data-architecture-report/
+[26] Reference withdrawn 2026-07-09 — no such Confluent report found (Confluent's 2024 flagship is the Data Streaming Report); the "76% prioritize real-time detection" stat cited to it is unlocatable (see the project fabrications register).
 
 [27] Confluent, "Kafka: Fastest Messaging System," 2023. [Online]. Available: https://www.confluent.io/blog/kafka-fastest-messaging-system/
 
@@ -86,7 +86,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [35] D. Gunning and D. W. Aha, "DARPA's Explainable Artificial Intelligence (XAI) Program," DARPA, 2017-2021. [Online]. Available: https://www.darpa.mil/research/programs/explainable-artificial-intelligence
 
-[36] Databricks, "State of Data Engineering 2024," 2024. [Online]. Available: https://www.databricks.com/resources/report/state-of-data-engineering-2024
+[36] Reference withdrawn 2026-07-09 — Databricks has no "State of Data Engineering 2024" (that title is a lakeFS report, which also contains no "+64% YoY Flink" figure); see the project fabrications register.
 
 [37] Databricks Engineering Blog, "TCO Analysis: Lakehouse vs Traditional Data Platforms," Nov. 2022. [Online]. Available: https://www.databricks.com/blog/2022/11/16/tco-analysis-lakehouse-vs-traditional-data-platforms.html
 
@@ -112,7 +112,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [48] Gartner Research, "Reliability Overinvestment Analysis," Gartner, 2024.
 
-[49] Gartner Security & Risk Management, "Security Data Growth Rates," Gartner Document 4008641, 2024.
+[49] Reference withdrawn 2026-07-09 — cited for a "28% security-data-volume CAGR" that appears in no locatable Gartner source (the repo's verified Gartner item is a security-*spending* forecast); the document number is unverifiable (see the project fabrications register).
 
 [50] Google Site Reliability Engineering Team, "Site Reliability Engineering: Reliability Economics," Google SRE Book, 2024.
 
@@ -144,7 +144,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [64] MITRE Corporation, "Insider Threat Research & Framework," MITRE Insider Threat, 2024. [Online]. Available: https://insiderthreat.mitre.org/
 
-[65] MITRE Engenuity, "ATT&CK Evaluations Framework," 2019-2024. [Online]. Available: https://attackevals.mitre-engenuity.org/
+[65] MITRE Engenuity, "ATT&CK Evaluations Framework," 2019-2024. [Online]. Available: https://attackevals.mitre-engenuity.org/ (site rebranded to evals.mitre.org; carries no adoption statistics — the "76% use ATT&CK" formerly cited to it was replaced 2026-07-09 with UC Berkeley CLTC/McAfee 2020's 81% general-adoption figure)
 
 [66] Netflix Technology Blog, "Building a Resilient Data Platform with Write-Ahead Log at Netflix," Jan. 2025. [Online]. Available: https://netflixtechblog.com/building-a-resilient-data-platform-with-write-ahead-log-at-netflix-127b6712359a
 

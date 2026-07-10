@@ -445,7 +445,7 @@ Apache Iceberg emerged as the industry consensus choice for open table formats, 
 
 **Universal Vendor Adoption**: AWS, Google Cloud, Microsoft Azure, Snowflake, and Databricks all announced Iceberg compatibility, providing vendor-neutral interoperability unprecedented in data lake history. This contrasts with Delta Lake's Databricks-led governance, where competing vendors face architectural friction.
 
-**Community Strength**: Apache Software Foundation governance attracted 300+ contributors across 100+ organizations, demonstrating vendor-neutral development uncommon in enterprise data infrastructure.
+**Community Strength**: Apache Software Foundation governance attracted 400+ contributors (407 per GitHub's deduplicated contributor count for apache/iceberg, as of 2026-07-09), demonstrating vendor-neutral development uncommon in enterprise data infrastructure.
 
 **Production Validation**: SK Telecom operates Iceberg with Trino in production for large-scale analytics.
 
@@ -457,9 +457,9 @@ Our original "76% adoption" hypothesis required refinement to "industry consensu
 
 ClickHouse demonstrated exceptional performance for security analytics, validated by production deployments processing massive telemetry volumes:
 
-**Cloudflare Production** (6M requests/second): Cloudflare's HTTP analytics processes 6 million requests per second. Compression ratios of 10-12× for log data provide storage efficiency critical for security workloads generating TB/day volumes.
+**Cloudflare Production** (6M requests/second): Cloudflare's HTTP analytics processes 6 million requests per second. Its Elasticsearch-to-ClickHouse log-pipeline migration cut per-record storage from 600 bytes to 60 bytes (~10×), efficiency critical for security workloads generating TB/day volumes.
 
-**Storage Efficiency**: Direct comparison benchmarks show ClickHouse achieves 5-10× better storage efficiency vs Elasticsearch for security log workloads, reducing infrastructure costs while improving query performance.
+**Storage Efficiency**: ClickHouse's billion-row benchmark vs Elasticsearch measured 12-19× less storage at functionally equivalent configuration (9-12× with Elasticsearch `_source` disabled) — a vendor benchmark, but directionally consistent with Cloudflare's independent production migration.
 
 **Security-Specific Optimization**: ClickHouse native IPv4/IPv6 data types speed up CIDR-based threat hunting vs string-based IP storage common in general analytics platforms. A first-party CIDR probe on the MOAR reference stack (ClickHouse, one host, 20M rows, `lab/cidr_probe.py`, 2026-06-07) measured ~13-17× warm, 0.010 s native IPv4 vs 0.166 s per-row String parsing on the identical answer, with the IPv4 column ~2.9× smaller in storage (65.4 MiB vs 188.1 MiB). This security-specific feature justifies platform selection independent of general OLAP capabilities.
 
@@ -559,7 +559,7 @@ Production deployments provide quantitative performance validation across query 
 
 **Streaming Throughput**: Kafka-compatible streaming is validated at trillion events/day scale in Microsoft Azure production. LinkedIn maintains terabytes of stateful processing state with millisecond access times.
 
-**Storage Efficiency**: ClickHouse achieves 10-12× compression for log data and 5-10× storage efficiency vs Elasticsearch. Kafka tiered storage cuts the cost of multi-year retention. Apache Arrow Flight SQL is designed for faster result retrieval than JDBC/ODBC, which matters for multi-engine architectures.
+**Storage Efficiency**: ClickHouse cut Cloudflare's per-record log storage ~10× (600→60 bytes/row), and its billion-row vendor benchmark measured 12-19× less storage than Elasticsearch (9-12× with `_source` disabled). Kafka tiered storage cuts the cost of multi-year retention. Apache Arrow Flight SQL is designed for faster result retrieval than JDBC/ODBC, which matters for multi-engine architectures.
 
 **Security-Specific Benchmarks**: ClickHouse native IP types speed up CIDR-based threat hunting vs string-based implementations (a first-party probe measured ~13-17× at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings). Incident response drives traffic surges requiring elastic burst capacity. These security-specific requirements differentiate performance needs from general analytics.
 
@@ -575,7 +575,7 @@ Security workloads exhibit performance requirements fundamentally different from
 
 **Stateful Entity Behavior Tracking**: LinkedIn maintains terabytes of state with millisecond access for per-entity security tracking ("what's normal for THIS user over 30 days?"). Business analytics aggregate by dimensions (SQL GROUP BY); security requires per-entity stateful history. Batch SQL re-processes entire historical windows per query (slow, expensive); stateful streaming maintains per-entity state continuously (fast, efficient).
 
-**Multi-Year Queryable Retention**: CISA recommends 24-36 month retention for behavioral baseline establishment and APT detection. Compliance investigations require fast queries across multi-year data ("show all access to this patient record 2022-2024"), not cold archive restoration (48-hour delay unacceptable for HIPAA audit). Tiered lakehouse architecture (Iceberg + Trino) provides multi-year queryable retention at materially lower cost while maintaining acceptable performance.
+**Multi-Year Queryable Retention**: CISA's AA23-193A advisory quotes OMB M-21-31's log-retention requirement for US federal civilian agencies — at least 12 months in active storage plus 18 months in cold storage — a compliance mandate rather than an APT-detection recommendation, but a concrete retention floor security teams can plan against. Compliance investigations require fast queries across multi-year data ("show all access to this patient record 2022-2024"), not cold archive restoration (48-hour delay unacceptable for HIPAA audit). Tiered lakehouse architecture (Iceberg + Trino) provides multi-year queryable retention at materially lower cost while maintaining acceptable performance.
 
 **Analyst Productivity**: Sub-second queries enable iterative threat hunting with 10-20 pivots per investigation. Slow queries (30-60s) reduce exploration to 3-5 pivots before analysts abandon investigation due to delays.
 
@@ -587,7 +587,7 @@ Seven hypotheses received quantitative validation with varying confidence levels
 
 **Strongly Validated (⭐⭐⭐⭐⭐) - 3 hypotheses**:
 
-*H-ARCH-01 (Iceberg Dominance)*: Industry consensus as de facto standard for open table formats, validated by universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), Apache Software Foundation governance (300+ contributors, 100+ orgs), production deployments (SK Telecom operating Iceberg with Trino at scale), and growing adoption momentum (Dremio: 29% planning Iceberg vs 23% Delta). Confidence: 23/25 points (5 sources, 4 source types, international validation). Original "76%" claim refined to "industry consensus" due to source limitations.
+*H-ARCH-01 (Iceberg Dominance)*: Industry consensus as de facto standard for open table formats, validated by universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), Apache Software Foundation governance (400+ GitHub contributors as of 2026-07-09), production deployments (SK Telecom operating Iceberg with Trino at scale), and growing adoption momentum (Dremio: 29% planning Iceberg vs 23% Delta). Confidence: 23/25 points (5 sources, 4 source types, international validation). Original "76%" claim refined to "industry consensus" due to source limitations.
 
 *H-IMPL-02 (Staffing Scarcity)*: Streaming requires materially more operational staff than batch, with fault-tolerance representing "Level 4" specialized skill (top 5% orgs only). The citations behind the original staffing multiplier were withdrawn in the 2026-06 source audit, so the claim reverts to directional pending re-sourcing. Confidence: pre-audit 23/25 points (see note above).
 
@@ -597,7 +597,7 @@ Seven hypotheses received quantitative validation with varying confidence levels
 
 *H-IMPL-01 (Streaming TCO)*: Streaming carries a material operational cost premium vs batch; Cloudera's TCO breakdown (29% operational) survives as supporting evidence, while the other citations behind the original multiplier were withdrawn in the 2026-06 source audit. The claim reverts to directional pending re-sourcing. Confidence: pre-audit 22/25 points (see note above).
 
-*H3-PERFORMANCE-01 (ClickHouse)*: 6M req/sec throughput and 5-10× storage efficiency vs Elasticsearch validated by Cloudflare (6M req/sec, 10-12× compression) and benchmarks; the Shell deployment citation and the sub-second query-share figure were withdrawn in the 2026-06 source audit. Confidence: pre-audit 21/25 points (see note above).
+*H3-PERFORMANCE-01 (ClickHouse)*: 6M req/sec throughput validated by Cloudflare production (~10× per-record storage reduction in its ES→ClickHouse migration), and 12-19× storage efficiency vs Elasticsearch per ClickHouse's billion-row benchmark (9-12× with `_source` disabled); the Shell deployment citation and the sub-second query-share figure were withdrawn in the 2026-06 source audit. Confidence: pre-audit 21/25 points (see note above).
 
 *H-STREAM-01 (Kafka Streams)*: Stateful security processing at scale validated by LinkedIn (terabytes of state, ms access) and Microsoft Azure production scale; the Uber citation was withdrawn in the 2026-06 source audit. Confidence: pre-audit 17/25 points (US-centric limiting geographic diversity).
 
@@ -651,7 +651,7 @@ This systematic review provides security practitioners with evidence-based guida
 
 Security analytics exhibit performance requirements fundamentally different from general business intelligence, requiring specialized platform capabilities:
 
-**Volume Characteristics**: Security generates higher velocity data (continuous high-volume ingestion vs business analytics' batch ETL patterns) with longer retention requirements (CISA: 24-36 months for behavioral baselines vs general analytics' 3-6 month active data). Data volume growth (28% CAGR per Gartner) outpaces business analytics, doubling within 3-4 years and requiring elastic scaling capacity.
+**Volume Characteristics**: Security generates higher velocity data (continuous high-volume ingestion vs business analytics' batch ETL patterns) with longer retention requirements (OMB M-21-31, quoted by CISA AA23-193A: ≥12 months active + 18 months cold for federal civilian agencies, vs general analytics' 3-6 month active data). Security data volume growth outpaces business analytics, requiring elastic scaling capacity.
 
 **Performance Requirements**: Security rewards platform-native IP/CIDR handling absent in general analytics (a first-party probe measured ~13-17× CIDR speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings). Incident-driven burst capacity requires elastic architecture or 4× over-provisioning; business analytics exhibit predictable load (scheduled dashboards, quarterly reports). Analyst productivity critically depends on sub-second query latency enabling 10-20 investigation pivots vs 3-5 pivots with slow queries (30-60s latency).
 
@@ -831,7 +831,7 @@ Security practitioners can now make evidence-based architecture decisions with d
 
 | Platform | Query Performance | Ingestion Rate | Storage Efficiency | Production Validation |
 |---------|------------------|----------------|-------------------|---------------------|
-| ClickHouse | — (figure withdrawn 2026-06) | N/A | 5-10× vs Elasticsearch | Cloudflare (6M req/sec) |
+| ClickHouse | — (figure withdrawn 2026-06) | N/A | 12-19× vs Elasticsearch (vendor benchmark; 9-12× with `_source` disabled) | Cloudflare (6M req/sec) |
 | Kafka | N/A | — (figure withdrawn 2026-06) | N/A | Microsoft (trillions/day) |
 | Iceberg | — (figure withdrawn 2026-06) | N/A | N/A | SK Telecom (production Iceberg + Trino) |
 

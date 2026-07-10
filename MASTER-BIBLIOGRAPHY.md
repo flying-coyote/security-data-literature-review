@@ -111,17 +111,16 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^3]
 
 **Key Findings**:
-- 97% query time reduction with Iceberg optimizations
-- Processed 52.7TB in 3.39 seconds
-- Production validation at scale
-- Input data reduced "on the order of hundreds, down to under ten gigabytes"
-- Query planning optimized to 70ms at optimal partition configuration
+- Case 1: −97% read data size (209 GB → 6.11 GB) and −96.5% elapsed time (97.2 s → 3.39 s) with Iceberg optimizations (slides)
+- Case-1 table: 52.7 TB Iceberg logical size, 109,765 partitions (was Hive 52.1 TB) — the 3.39 s query reads 6.11 GB after pruning, not the full table (the earlier "processed 52.7TB in 3.39 seconds" framing conflated table size with data read; corrected 2026-07-09)
+- Production validation at scale; headline improvement across cases ~−80% (slides)
+- Recap-page approximations: input data reduced "on the order of hundreds, down to under ten gigabytes"; query planning ~70 ms
 - Metadata indexing and snapshot isolation key to performance gains
 
 **Citations**: Chapter 8 performance benchmarks
-**Notes**: High-credibility source, production deployment, quantitative data; Medium URL returns 403, replaced with Trino Summit recap
+**Notes**: High-credibility source, production deployment, quantitative data; Medium URL returns 403, replaced with Trino Summit recap. **Source split (2026-07-09)**: the precise figures (209 GB, 6.11 GB, 97.2 s, 3.39 s, 52.7 TB, −80%) are in the Trino Summit slides PDF (Alt URL) — verified against the PDF 2026-07-09; the recap page carries only the approximations. Cite the slides for the precise numbers.
 
-**Validation Status**: ✅ Updated January 2026 - Trino blog recap (Medium link blocked)
+**Validation Status**: ✅ Figures re-verified against slides PDF (Alt URL) 2026-07-09; recap URL live (Medium link blocked, replaced January 2026)
 
 ---
 
@@ -277,8 +276,8 @@ This bibliography consolidates all literature sources from:
 
 #### ClickHouse at Cloudflare - 6M Requests/Second
 
-**Authors**: Cloudflare Engineering Blog
-**Date**: 2024-2025 (updated February 2026)
+**Authors**: Alex Bocharov (Cloudflare Engineering Blog)
+**Date**: 2018-03-06 (verified at primary 2026-07-09; entry formerly said "2024-2025, updated February 2026" — a bulk-stamp artifact. Alt-URL material is Oct 2025)
 **URL**: https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/
 **Alt URL**: https://clickhouse.com/blog/cloudflare
 **Evidence Level**: A (Production deployment at massive scale)
@@ -316,6 +315,7 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - ~10× storage reduction migrating Elasticsearch → ClickHouse (600 → 60 bytes/row, LZ4 default compression) — an ES→CH migration figure (columnar + schema change), not a pure columnar-compression ratio; there is no 12× figure on the page (the earlier "10-12×" was corrected 2026-07-09, verified at primary)
+- 8× reduction in inserter CPU and memory in the same migration (verified at primary 2026-07-09)
 - Error/troubleshooting request-log analytics (security-adjacent, not a security-specific workload)
 
 **Citations**: Chapter 9 compression discussion
@@ -673,13 +673,12 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^68]
 
 **Key Findings**:
-- Terabytes of state with millisecond access times
 - **2025 update (Northguard blog)**: LinkedIn processes 32 trillion records/day, 17 PB/day across 400K topics, 10K+ machines, 150 clusters
 - Northguard replaces Kafka at hyper-scale: sharded data/metadata, log striping, self-balancing clusters
 - Original Kafka Streams state management patterns remain valid for typical enterprise scale
 
 **Citations**: Chapter 7 Kafka Streams for security
-**Notes**: **CRITICAL** - URL re-sourced to LinkedIn Northguard blog; Northguard is general infrastructure (not a security-specific deployment). Scale figures (32T records/day, 17 PB/day) are verbatim from the Northguard post. For Kafka-Streams stateful mechanics, use Confluent course as secondary cite only.
+**Notes**: **CRITICAL** - URL re-sourced to LinkedIn Northguard blog; Northguard is general infrastructure (not a security-specific deployment). Scale figures (32T records/day, 17 PB/day) are verbatim from the Northguard post. The former "terabytes of state with millisecond access" key finding is not in the post and was removed 2026-07-09 — for LinkedIn stateful-processing scale, cite the Samza VLDB 2017 entry instead. For Kafka-Streams stateful mechanics, use Confluent course as secondary cite only.
 
 **Validation Status**: ✅ Refreshed February 2026
 
@@ -1042,7 +1041,7 @@ This bibliography consolidates all literature sources from:
 #### Azure - Kafka at Trillion Events/Day
 
 **Authors**: Microsoft Azure Blog
-**Date**: 2024
+**Date**: 2019-02-05 (verified at primary 2026-07-09; entry formerly said 2024)
 **URL**: https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/
 **Evidence Level**: A (Microsoft production deployment)
 **Relevance**:
@@ -1050,13 +1049,13 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^72]
 
 **Key Findings**:
-- Trillions of events/day (per the page title; the precise per-second rate is not pinned to the cited page)
+- "3 trillion events per day" ingested and processed via Kafka on Azure; "up to 30 million events per second" (both verified verbatim at primary 2026-07-09 — supersedes the 2026-06-22 caution, which predated a full-page re-fetch and correctly removed a derived ~11.57M/sec figure)
 - Cloud-scale validation
 
 **Citations**: Chapter 7 Kafka scale claims
 **Notes**: Validates massive scale Kafka deployments
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo), freshness-triaged (date-stale). Content correction 2026-06-22: the earlier "~11.57M/sec sustained" was unsupported (1-trillion/day arithmetic, diverging from the Siphon blog's ~3T/day figure) — removed; "trillions of events/day" is supported by the page title.
+**Validation Status**: ✅ Active URL · Re-verified at primary 2026-07-09: 3T events/day and up-to-30M events/sec are on the page verbatim; publication date corrected to 2019-02-05.
 
 ---
 
@@ -1156,7 +1155,7 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnotes [^150], [^151]
 
 **Key Findings**:
-- **20× faster than JDBC/ODBC** for query result retrieval (from Alt URL: arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/ — not the spec page)
+- **As much as 20× faster than PyODBC** for query result retrieval — the blog's stated comparison target is PyODBC specifically (per a Dremio Subsurface talk it cites), not a generic JDBC/ODBC benchmark; scoped 2026-07-09 (from Alt URL: arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/ — not the spec page)
 - Columnar data format eliminates row-based serialization overhead (qualitative advantage; no transfer-time percentage from this source)
 - Production validation with ClickHouse, DuckDB, Dremio, StarRocks integrations
 - Zero-copy transmission with Arrow in-memory columnar format
@@ -1390,30 +1389,45 @@ This bibliography consolidates all literature sources from:
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
-#### Cloudera Total Economic Impact (Forrester TEI 2024)
+#### Cloudera Total Economic Impact — Public Cloud (Forrester TEI, October 2021)
 
-**Authors**: Cloudera / Forrester TEI
-**Date**: 2024 (May 2024 study)
+**Authors**: Forrester Consulting (commissioned by Cloudera)
+**Date**: 2021-10 (PDF date verified 2026-07-09; formerly conflated into a single "2024" entry)
+**URL**: Cloudera Public Cloud TEI PDF (linked from Cloudera's TEI resources; direct PDF URL to be catalogued — the 2026-07-09 sweep verified the figures against the PDF itself)
+**Evidence Level**: A (Commissioned research, quantitative — flag vendor-commissioned bias where cited)
+**Relevance**:
+- Book Chapter 1 (Cost comparisons)
+
+**Key Findings**:
+- 194% ROI and $35.54M benefits over 3 years (verified in the PDF 2026-07-09)
+
+**Citations**: Chapter 1 cost modeling
+**Notes**: **Split 2026-07-09** from a conflated Public+Private entry. The "39% licensing / 32% hardware / 29% operational" TCO breakdown formerly credited to this study appears in NEITHER TEI document (grep-negative in both) and was withdrawn — H-IMPL-01 must not cite a TCO distribution from Forrester TEI.
+
+**Validation Status**: ✅ Figures verified in PDF 2026-07-09; PDF is dated October 2021, not 2024
+
+---
+
+#### Cloudera Total Economic Impact — Private Cloud (Forrester TEI, May 2024)
+
+**Authors**: Forrester Consulting (commissioned by Cloudera)
+**Date**: 2024-05
 **URL**: https://tei.forrester.com/go/cloudera/onPremises/
-**Evidence Level**: A (Commissioned research, quantitative - 6 organizations interviewed)
+**Evidence Level**: A (Commissioned research, quantitative - 6 organizations interviewed; flag vendor-commissioned bias where cited)
 **Relevance**:
 - **Hypothesis H-IMPL-01** (Hidden costs)
 - Book Chapter 1 (Cost comparisons)
 - Best Practices Doc footnote [^187]
 
 **Key Findings**:
-- **Public Cloud**: 194% ROI, $35M benefits over 3 years
-- **Private Cloud** (May 2024 study):
-  - 35% cost savings with modern architecture
-  - 80% faster time to value worth $11.5M over 3 years
-  - 20% enhanced data team productivity ($1.6M over 3 years)
-  - 39% licensing, 32% hardware of TCO
-  - Cost distribution validation across data platforms
+- 35% cost savings with modern architecture (not re-verified this pass — interactive TEI study)
+- 80% faster time to value worth $11.5M over 3 years (not re-verified this pass)
+- 20% enhanced data team productivity, $1.6M over 3 years (not re-verified this pass)
 
-**Citations**: H-IMPL-01 TCO reality, Chapter 1 cost modeling
-**Notes**: **CRITICAL** - Validates operational cost distribution, updated 2024 Forrester study
+**Citations**: H-IMPL-01 (directional only — see note), Chapter 1 cost modeling
+**Notes**: **Split 2026-07-09** from a conflated entry that mixed this study with the October 2021 Public Cloud PDF. The TCO-distribution claim was withdrawn (see the Public Cloud entry); the remaining figures are savings/velocity claims, not a cost-share breakdown.
 
-**Validation Status**: ✅ Active (verified Feb 2026, interactive TEI study)
+**Validation Status**: ✅ Active URL (verified Feb 2026, interactive TEI study); figures not re-verified in the 2026-07-09 sweep
 
 ---
 
@@ -1698,14 +1712,14 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnotes [^246], [^247], [^249]
 
 **Key Findings**:
-- 300+ contributors across 100+ organizations
+- 407 contributors on apache/iceberg (GitHub deduplicated count, as of 2026-07-09) — re-sourced 2026-07-09: the cited community page carries no contributor or organization counts, so the earlier "300+ contributors across 100+ organizations" was replaced with the GitHub-derived figure and the organization count dropped as underivable
 - Open governance model
 - Iceberg Foundation for dedicated advancement
 
 **Citations**: H-ARCH-01 sustainability validation
-**Notes**: Community strength = long-term viability
+**Notes**: Community strength = long-term viability. For the contributor count, cite GitHub (https://github.com/apache/iceberg) with an as-of date, not the community page.
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (live ASF page; contributor scale uncontroversial). Stale-by-date, not by content.
+**Validation Status**: ✅ Re-verified 2026-07-09: community page live but count-free; contributor figure re-sourced to GitHub API (407, under the API's 500-entry cap, so uncapped).
 
 ---
 
@@ -1784,8 +1798,9 @@ This bibliography consolidates all literature sources from:
 #### SK Telecom - Iceberg Performance Validation
 
 **Authors**: SK Telecom (duplicate entry for cross-reference)
-**Date**: 2022-2024
+**Date**: 2022-12 (Trino Summit 2022)
 **URL**: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
+**Alt URL**: https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf (presentation slides — the precise figures below are in the slides, verified 2026-07-09; the recap page carries only approximations)
 **Evidence Level**: A (Production deployment)
 **Relevance**:
 - Hypothesis H-ARCH-01 (Performance advantage)
@@ -1817,14 +1832,14 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^208]
 
 **Key Findings**:
-- 5-10× storage efficiency vs Elasticsearch
+- 12-19× less storage than Elasticsearch at functionally equivalent configuration; 9-12× with Elasticsearch `_source` disabled (verified verbatim at primary 2026-07-09 — the entry's earlier "5-10×" matched only the page's query-speed multipliers, not its storage figures)
 - Billion-row performance comparison
 - Security log format optimization
 
 **Citations**: H3-PERFORMANCE-01 extension, Chapter 9 ELK migration
-**Notes**: Direct performance comparison for security logs
+**Notes**: Direct performance comparison for security logs; vendor benchmark — label as such where cited
 
-**Validation Status**: ✅ Active URL · Freshness (2026-06-05): page updated 2026-03-03 (was May 2024); figure now 5x realistic / 12-19x synthetic — widen flagged in review packet (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (ClickHouse advantage supported; entry's 5-10× is conservative vs source 9-19×). Stale-by-date, not by content.
+**Validation Status**: ✅ Re-verified at primary 2026-07-09: page (dated 2024-05-07 at fetch) states 12-19× / 9-12× storage reduction. The earlier freshness note's "2026-03-03 update / 5x realistic-OTel / 9-19×" claims are not on this page (the ~5×/OTel figures belong to a different 2026 ClickHouse post) and were removed.
 
 ---
 
@@ -2818,8 +2833,8 @@ This bibliography consolidates all literature sources from:
 ### Sources by Category
 
 **Foundational Architecture** (Table Formats, Query Engines, Streaming):
-- Apache Iceberg: 5 sources (industry consensus as de facto standard — universal vendor support, 300+ contributors; the bare "76% adoption" figure is unsourced and was refined to "industry consensus" in the H-ARCH-01 audit, see RESEARCH-JOURNAL.md)
-- ClickHouse: 4 sources (6M req/sec, 5-10× storage efficiency vs Elasticsearch; the "96% <1s" figure is not in the cited sources and was removed)
+- Apache Iceberg: 5 sources (industry consensus as de facto standard — universal vendor support, 400+ GitHub contributors as of 2026-07-09; the bare "76% adoption" figure is unsourced and was refined to "industry consensus" in the H-ARCH-01 audit, see RESEARCH-JOURNAL.md)
+- ClickHouse: 4 sources (6M req/sec; 12-19× storage efficiency vs Elasticsearch per the vendor's billion-row benchmark, corrected from "5-10×" 2026-07-09; the "96% <1s" figure is not in the cited sources and was removed)
 - Streaming (Kafka/Flink): 6 sources (the 4-9-month / 3.2-FTE / skills-level staffing figures formerly cited here were fabricated and removed in the 2026-06-05 audit)
 
 **Cost Economics & Optimization**:
