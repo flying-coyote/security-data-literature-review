@@ -12,6 +12,23 @@ and this project adheres to semantic versioning for documentation releases.
 Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
 report on it, and reconciles the source count across every surface that states it.
 
+### 2026-07-09 manuscript References generated + re-score proposal staged
+
+**Added (PUBLICATION-MANUSCRIPT.md)**
+- REFERENCES section generated from MASTER-BIBLIOGRAPHY.md: 21 IEEE-style entries covering every work cited
+  inline, each primary-verified in the 2026-06/07 audits or on generation day (PRISMA 2020 statement verified
+  via PubMed API: Page et al., BMJ 372:n71, 2021). Corpus note distinguishes the inline-cited subset from the
+  179-entry living corpus. Appendix D generated as the themed grouping with a corpus pointer.
+- Metadata block de-staled: version 0.3; "Submission target: Q4 2025" marked passed-not-submitted (new target
+  = owner decision); next-steps list replaced with the actual remaining-before-submission items.
+- Two unquoted "Level 4" residuals in §3.4.3 (missed by the quote-sensitive residual grep) reworded.
+
+**Staged (RESCORE-PROPOSAL-2026-07.md — DRAFT, owner adjudicates)**
+- Post-audit confidence re-score proposal for all 7 hypotheses: H-ARCH-01 confirm 23/25; H3-PERFORMANCE-01
+  20/25; H-STREAM-01 hold 17/25; H-IMPL-01 → 6/25, H-IMPL-02 → 7/25, H-IMPL-03 → 7/25, H-COST-09 → 8/25
+  (all four to ⭐⭐ PRELIMINARY). Includes knock-on list (§2.5/§3.7/Table 2/Figure 4) and restoration paths.
+  Nothing applied.
+
 ### 2026-07-09 verification-sweep fix pass, part 2 — fabrication removals + hypothesis downgrades (fixes 1, 6, 7, 9, 10; owner-ratified)
 
 The three findings that change hypothesis standing, applied after owner sign-off:

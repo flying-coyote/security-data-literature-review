@@ -545,11 +545,11 @@ Platform selection correlates with skill availability, creating trade-offs betwe
 
 **Kafka Fundamentals**: 3-4 months for pub/sub basics, 6-9 months for Kafka Streams stateful processing. Medium-High scarcity requires training investment ($15K-$20K per engineer for fundamentals, $25K-$35K for advanced) plus 200-300 hour time commitment.
 
-**Flink Stateful Processing**: 9-12 months proficiency timeline, 300-400 hours training investment ($35K-$50K including opportunity cost). High scarcity (Level 4) makes hiring external expertise (20-30% salary premium) competitive with internal development.
+**Flink Stateful Processing**: 9-12 months proficiency timeline, 300-400 hours training investment ($35K-$50K including opportunity cost). High scarcity makes hiring external expertise (20-30% salary premium) competitive with internal development.
 
 **Training ROI Analysis**: Kafka Streams training investment ($25K per engineer for 200 hours) breaks even in 6 months if enabling transition from Confluent Cloud ($150K annual premium vs self-hosted) to internal operations. Risk: Training wasted if engineers leave before ROI realized or proficiency not achieved in 6-12 month window.
 
-**Recommendation**: Managed services for Year 1 (de-risk timeline), build expertise in parallel, transition to self-hosted Year 2 after proficiency achieved. Batch-only implementations start with SQL-friendly platforms (ClickHouse, Trino, Iceberg); avoid Flink/Kafka unless real-time requirements justify the streaming cost premium AND can hire Level 4 expertise OR accept 12-18 month proficiency timeline.
+**Recommendation**: Managed services for Year 1 (de-risk timeline), build expertise in parallel, transition to self-hosted Year 2 after proficiency achieved. Batch-only implementations start with SQL-friendly platforms (ClickHouse, Trino, Iceberg); avoid Flink/Kafka unless real-time requirements justify the streaming cost premium AND can hire scarce fault-tolerance expertise OR accept 12-18 month proficiency timeline.
 
 ### 3.5 Theme 4: Performance Benchmarks
 
@@ -733,13 +733,51 @@ Security practitioners can now make evidence-based architecture decisions with d
 
 ## REFERENCES
 
-[TO BE GENERATED from MASTER-BIBLIOGRAPHY.md]
+*Generated 2026-07-09 from MASTER-BIBLIOGRAPHY.md, restricted to works cited inline in this manuscript; every entry below was verified against its primary during the 2026-06/2026-07 source audits or on generation day. The full living-review corpus (179 entries with evidence-tier classifications) is maintained in MASTER-BIBLIOGRAPHY.md in this repository and is the citable corpus behind the "75+ sources" synthesis claims; see Appendix D. Expert-interview inputs (L. Cao, J. Thomas, P. Agbabian) are personal communications and are not listed. First-party artifacts are labeled.*
 
-**Format**: IEEE or ACM citation style (venue-dependent)
+[1] Apache Arrow Community, "Introducing Apache Arrow Flight SQL: Accelerating Database Access," Apache Arrow Blog, Feb. 16, 2022. [Online]. Available: https://arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/
 
-**Total references**: 75+ sources
+[2] Apache Iceberg Community, "Apache Iceberg" (project documentation and community), Apache Software Foundation. [Online]. Available: https://iceberg.apache.org/ ; contributor count derived from https://github.com/apache/iceberg (407 contributors, GitHub deduplicated count, as of Jul. 9, 2026)
 
-**Organization**: Alphabetical by author/organization
+[3] A. Bocharov, "HTTP Analytics for 6M Requests per Second Using ClickHouse," Cloudflare Blog, Mar. 6, 2018. [Online]. Available: https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/
+
+[4] CISA and FBI, "Enhanced Monitoring to Detect APT Activity Targeting Outlook Online," Cybersecurity Advisory AA23-193A, Jul. 12, 2023. [Online]. Available: https://www.cisa.gov/news-events/alerts/2023/07/12/cisa-and-fbi-release-cybersecurity-advisory-enhanced-monitoring-detect-apt-activity-targeting
+
+[5] ClickHouse, "ClickHouse vs. Elasticsearch: The Billion-Row Matchup," ClickHouse Blog, May 7, 2024 (vendor benchmark). [Online]. Available: https://clickhouse.com/blog/clickhouse_vs_elasticsearch_the_billion_row_matchup
+
+[6] ClickHouse, "IPv4 and IPv6 Data Types," ClickHouse Documentation. [Online]. Available: https://clickhouse.com/docs/sql-reference/data-types/ipv6
+
+[7] Confluent, "Tiered Storage," Confluent Platform Documentation (Kafka tiered-storage mechanism). [Online]. Available: https://docs.confluent.io/platform/current/kafka/tiered-storage.html
+
+[8] DevOps Research and Assessment (DORA) / Google Cloud, "2024 Accelerate State of DevOps Report," 2024. [Online]. Available: https://dora.dev/research/2024/dora-report/ (cited in this manuscript's audit notes; see §3.4.1)
+
+[9] Dremio, "State of the Data Lakehouse 2024," press release, Nov. 2023 (survey: Propeller Insights, n=500). [Online]. Available: https://www.dremio.com/press-releases/state-of-the-data-lakehouse-2024-businesses-are-leaving-cloud-data-warehouses-for-data-lakehouses/
+
+[10] Forrester Consulting (commissioned by Cloudera), "The Total Economic Impact of Cloudera Data Platform — Public Cloud," Oct. 2021.
+
+[11] Forrester Consulting (commissioned by Cloudera), "The Total Economic Impact of Cloudera — Private Cloud," May 2024. [Online]. Available: https://tei.forrester.com/go/cloudera/onPremises/
+
+[12] Microsoft Azure, "Processing Trillions of Events per Day with Apache Kafka on Azure," Azure Blog, Feb. 5, 2019. [Online]. Available: https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/
+
+[13] Netflix (D. Muino), "Petabyte-Scale Logging at Netflix with ClickHouse," ClickHouse Blog, 2025. [Online]. Available: https://clickhouse.com/blog/netflix-petabyte-scale-logging
+
+[14] S. A. Noghabi, K. Paramasivam, Y. Pan, N. Ramesh, J. Bringhurst, I. Gupta, and R. H. Campbell, "Samza: Stateful Scalable Stream Processing at LinkedIn," *Proceedings of the VLDB Endowment*, vol. 10, no. 12, pp. 1634-1645, 2017. [Online]. Available: https://www.vldb.org/pvldb/vol10/p1634-noghabi.pdf
+
+[15] Office of Management and Budget, "M-21-31: Improving the Federal Government's Investigative and Remediation Capabilities Related to Cybersecurity Incidents," Aug. 2021. [Online]. Available: https://www.whitehouse.gov/wp-content/uploads/2021/08/M-21-31-Improving-the-Federal-Governments-Investigative-and-Remediation-Capabilities-Related-to-Cybersecurity-Incidents.pdf
+
+[16] M. J. Page et al., "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews," *BMJ*, vol. 372, n71, 2021, doi: 10.1136/bmj.n71.
+
+[17] M. Singh, "Log Analytics Using ClickHouse," Cloudflare Blog, Sep. 2, 2022. [Online]. Available: https://blog.cloudflare.com/log-analytics-using-clickhouse/
+
+[18] SK Telecom (J. Song and J. Oh), "Journey to Iceberg with Trino," Trino Summit 2022, Dec. 2022. Recap: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html ; slides (precise figures): https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf
+
+[19] Uber Engineering, "Inside Uber's Large-Scale Real-Time Analytics Platform," Confluent Current 2025 (conference session). [Online]. Available: https://current.confluent.io/post-conference-videos-2025/inside-ubers-large-scale-real-time-analytics-platform-bng25
+
+[20] J. Wiley, "MOAR Stack — Security Data Lakehouse Reference Architecture" (FIRST-PARTY reference architecture and cost model). [Online]. Available: https://securitydataworks.com/thesis/moar
+
+[21] J. Wiley, "SDW Lab Benchmarks" (FIRST-PARTY: CIDR probe `lab/cidr_probe.py`, MOAR reference-stack engine comparison, FOIL storage probe), GitHub repository. [Online]. Available: https://github.com/flying-coyote/sdw-lab-benchmarks
+
+**Format**: IEEE-style, alphabetical by author/organization. **Corpus note**: the "75+ sources" synthesized by this review resolve through MASTER-BIBLIOGRAPHY.md (versioned, evidence-tiered); the list above is the subset carrying inline claims in this manuscript.
 
 ---
 
@@ -864,27 +902,37 @@ Security practitioners can now make evidence-based architecture decisions with d
 
 ### Appendix D: Source List by Theme
 
-[TO BE GENERATED from MASTER-BIBLIOGRAPHY.md organized by sections]
+*Generated 2026-07-09. Inline-cited references (see REFERENCES) grouped by review theme; the full evidence-tiered corpus behind each theme lives in MASTER-BIBLIOGRAPHY.md in this repository (179 entries at generation date), organized under the same theme headings with per-entry evidence levels, key findings, and validation status.*
+
+**Theme 1 — Foundational Architecture** (table formats, query engines, streaming): Apache Iceberg project + GitHub [2]; Dremio lakehouse survey [9]; SK Telecom Iceberg/Trino [18]; ClickHouse-vs-Elasticsearch benchmark [5]; ClickHouse IP types [6]; Samza VLDB 2017 [14]; Azure Kafka [12]; Uber real-time platform [19]; Arrow Flight SQL [1]
+
+**Theme 2 — Cost Economics & TCO**: Forrester TEI Public Cloud [10]; Forrester TEI Private Cloud [11]; Confluent tiered storage [7]
+
+**Theme 3 — Implementation Reality**: DORA 2024 [8] (audit-note citation only — see §3.4.1)
+
+**Theme 4 — Performance Benchmarks**: Cloudflare HTTP analytics [3]; Cloudflare log analytics [17]; Netflix petabyte-scale logging [13]; SDW Lab first-party benchmarks [21]; MOAR reference architecture [20]
+
+**Theme 5 — Security-Specific Requirements**: CISA AA23-193A [4]; OMB M-21-31 [15]
+
+**Methodology**: PRISMA 2020 statement [16]
 
 ---
 
 ## MANUSCRIPT METADATA
 
-**Version**: 0.1 (Draft template created)
+**Version**: 0.3 (content drafted; sources audited 2026-06 + 2026-07; references generated)
 **Word count**: [TBD - target 10,000-15,000 words for journal article]
 **Target venue**: ACM Computing Surveys (primary), IEEE Security & Privacy Magazine (secondary)
-**Submission target**: Q4 2025
-**Status**: Template complete, content drafting in progress
+**Submission target**: originally Q4 2025 (passed, not submitted); new target = owner decision
+**Status**: All sections drafted. 2026-06 audit withdrew fabricated multipliers; 2026-07 per-citation verification sweep applied (33-item fix pass) — every surviving inline figure is primary-verified. References + Appendix D generated 2026-07-09.
 
-**Next steps**:
-1. Draft Introduction (Section 1)
-2. Complete Methodology (Section 2) - leverage LITERATURE-EXTRACTION-PLAN.md
-3. Synthesize Findings (Section 3) - leverage analysis-bundles/*
-4. Draft Discussion (Section 4)
-5. Create figures and tables
-6. Generate references from MASTER-BIBLIOGRAPHY.md
-7. Expert review (Lisa Cao, Jake Thomas)
-8. Finalize abstract and conclusion
+**Remaining before submission**:
+1. Confidence re-score of the 7 hypotheses (post-audit scores; proposal in RESCORE-PROPOSAL-2026-07.md — owner adjudicates)
+2. Regenerate Figures 1-2 + Table 1/2 evidence-level percentages after re-score
+3. Re-sourcing hunts for the directional claims (staffing/TCO/timeline multipliers)
+4. Appendices A-C drafting; Acknowledgments
+5. Expert review (Lisa Cao, Jake Thomas)
+6. Venue decision + formatting pass
 
 ---
 
