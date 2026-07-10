@@ -9,10 +9,10 @@
 
 ## Current Status
 **Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.22.0
-**Sources**: 182 (`#### ` blocks; 180 tiered + 2 stubs) | **Evidence Level A**: 42.8% (live 2026-07-10, 77/180) | **Hypotheses Validated**: 7 (needs review — see note)
+**Sources**: 187 (`#### ` blocks; 185 tiered + 2 stubs) | **Evidence Level A**: 41.6% (live 2026-07-10, 77/185) | **Hypotheses Validated**: 7 (needs review — see note)
 See `PROJECT-BRIEF.md` for scope; live metrics are README.md's Quality Metrics block (live-computed via `scripts/automation_dashboard.py`). REPOSITORY-STATUS.md was archived 2026-07-10 → `archive/` (it was a fourth hand-synced copy of the same numbers).
-> Counts are live-computed by `scripts/automation_dashboard.py`: sources = `#### ` blocks (182), Level-A% = A-tier over tiered entries (77/180 = 42.8%; the 2 untiered blocks are documented rejection/retirement stubs).
-> The 80% Level-A figure was self-reported; the honest live number is 42.8% (77/180) after the 2026-06-05 audit
+> Counts are live-computed by `scripts/automation_dashboard.py`: sources = `#### ` blocks (187), Level-A% = A-tier over tiered entries (77/185 = 41.6%; the 2 untiered blocks are documented rejection/retirement stubs).
+> The 80% Level-A figure was self-reported; the honest live number is 41.6% (77/185) after the 2026-06-05 audit
 > folded corrections in and re-tiered ~25 entries off A (their headline stats weren't in the cited
 > source). The freshness sweep + 2026 production sources are the path back toward the 75% target — the
 > gap is now visible, not masked. The validated-hypothesis count is unreconciled across docs (7 here,
@@ -40,6 +40,7 @@ See `PROJECT-BRIEF.md` for scope; live metrics are README.md's Quality Metrics b
 - "Being wrong publicly" - document contradictions, invite corrections
 - Link new sources to hypotheses in MASTER-BIBLIOGRAPHY.md
 - Don't hand-maintain counts in prose — `scripts/automation_dashboard.py` is authoritative (derive, don't state)
+- Vendor-channel tier rule (owner-adjudicated 2026-07-10): first-person practitioner AUTHORSHIP on a vendor channel = Tier B with a curation caveat; vendor-AUTHORED piece QUOTING a practitioner = Tier C. Authorship is the line, not who appears.
 - No blanket "100% verified" certificates — the 2025-10-22 certificate certified later-confirmed fabrications; verification claims stay per-item with the primary named
 
 ## Hybrid Update Model

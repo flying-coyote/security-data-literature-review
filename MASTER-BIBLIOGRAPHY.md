@@ -2590,6 +2590,93 @@ This bibliography consolidates all literature sources from:
 
 ---
 
+#### Contentsquare - Elasticsearch to ClickHouse Migration
+
+**Authors**: Ryad Zenine (Contentsquare engineer; guest post on the ClickHouse blog)
+**Date**: 2022-10-11
+**URL**: https://clickhouse.com/blog/contentsquare-migration-from-elasticsearch-to-clickhouse
+**Evidence Level**: B (first-person practitioner authorship on a vendor channel — B-with-curation-caveat per the 2026-07-10 vendor-channel tier rule; ClickHouse selected and hosts the piece)
+**Relevance**:
+- Book ch02 cost-corroboration footnote (general log/product-analytics migration, held apart from the security-workload set)
+
+**Key Findings**:
+- "ClickHouse turned out to be 11 times cheaper (in infrastructure cost) and allowed us to have a 10x performance improvement in our p99 for queries" (page verbatim)
+
+**Citations**: ch02 [^cost-corroboration-ch2]
+**Validation Status**: ✅ Verified at primary 2026-07-10 (part-2 follow-up, 5-agent cite hunt); author affiliation cross-checked
+
+---
+
+#### Didi - Elasticsearch to ClickHouse Log Storage Migration
+
+**Authors**: Yuankai Zhong (Didi engineer; translated from Didi Tech, republished on the ClickHouse blog)
+**Date**: 2024-04-19
+**URL**: https://clickhouse.com/blog/didi-migrates-from-elasticsearch-to-clickHouse-for-a-new-generation-log-storage-system
+**Evidence Level**: B (named practitioner authorship, vendor-hosted translation — B-with-curation-caveat per the 2026-07-10 vendor-channel tier rule)
+**Relevance**:
+- Book ch02 cost-corroboration footnote (general log-analytics migration, held apart from the security-workload set)
+
+**Key Findings**:
+- "Compared to Elasticsearch, the machine cost of ClickHouse has decreased by 30%" (page verbatim); query speed "improved by about 4 times"
+
+**Citations**: ch02 [^cost-corroboration-ch2]
+**Validation Status**: ✅ Verified at primary 2026-07-10
+
+---
+
+#### Cloudflare - Log Analytics using ClickHouse
+
+**Authors**: Monika Singh and Pradeep Chhetri (Cloudflare engineers; adapted from their Monitorama PDX 2022 talk)
+**Date**: 2022-09-02
+**URL**: https://blog.cloudflare.com/log-analytics-using-clickhouse/
+**Evidence Level**: B (named practitioners describing their own org's internal system on their own engineering blog)
+**Relevance**:
+- Book ch02 cost-corroboration footnote (general log-analytics migration, held apart from the security-workload set)
+
+**Key Findings**:
+- "Each Elasticsearch document which used 600 bytes, came down to 60 bytes per row in ClickHouse" (page verbatim — a 90% per-document storage reduction)
+- "CPU and memory consumption on the inserter side were reduced by eight times" (page verbatim)
+- **The page carries NO cost-reduction percentage and no dollar figures** — the "Cloudflare 85-90% cost reduction" sometimes attributed to this migration is a phantom (traced 2026-07-10 to a third-party dev.to post about an unnamed crypto-derivatives platform that cited Cloudflare in passing); cite the storage/compute figures only, framed as storage/compute
+
+**Citations**: ch02 [^cost-corroboration-ch2] (which correctly frames it as 8x compute / 10x per-document storage)
+**Validation Status**: ✅ Verified at primary 2026-07-10 (fetched twice, second pass scanning specifically for cost/percentage/dollar language — none found)
+
+---
+
+#### Navan - SIEM-less Detection Engineering (Anvilogic Case Study)
+
+**Authors**: Anvilogic (vendor case study quoting Prabhath Karanth, Global Head of Security & Trust, Navan)
+**Date**: Undated page (likely 2023-2024; the related Snowflake Ventures post on the same partnership is 2024-05-21)
+**URL**: https://www.anvilogic.com/case-studies/navan
+**Evidence Level**: C (vendor-authored case study quoting a practitioner — C per the 2026-07-10 vendor-channel tier rule; flag marketing bias)
+**Relevance**:
+- Book ch02 cost-corroboration footnote (security-workload outcome)
+
+**Key Findings**:
+- "By using a detection engineering platform on top of our data lake, we are able to achieve some significant efficiencies in our overall SOC and IR operations, which can equate to cost savings of close to 70–80%" (Karanth, page verbatim) — a SOC/IR operating-cost figure, not a SIEM-bill figure; baseline and ingest volume unnamed
+
+**Citations**: ch02 [^cost-corroboration-ch2]
+**Validation Status**: ✅ Verified at the case-study page 2026-07-10; no publication date on page, not in Wayback
+
+---
+
+#### Rivian - SIEM Cost Reduction on Databricks
+
+**Authors**: Taylor Kain, Dave Herrald, Omar Khawaja (Databricks; vendor blog quoting Chris Mandich, Director of Cybersecurity Operations, Rivian)
+**Date**: 2025-09-30
+**URL**: https://www.databricks.com/blog/transforming-cybersecurity-data-intelligence
+**Evidence Level**: C (vendor-authored post quoting a practitioner — C per the 2026-07-10 vendor-channel tier rule; flag testimonial selection bias)
+**Relevance**:
+- Book ch02 cost-corroboration footnote (security-workload outcome; read against the A.6 model's 92-96% projection at Rivian's scale, it undershoots)
+
+**Key Findings**:
+- "Lowering our SIEM costs by 60% while migrating 7–10TB of daily data from over 100 sources in under four months was only possible because Databricks gave us full control, scalability, and real-time detection" (Mandich, page verbatim)
+
+**Citations**: ch02 [^cost-corroboration-ch2]
+**Validation Status**: ✅ Verified at primary 2026-07-10 (quote and attribution re-confirmed twice)
+
+---
+
 #### SOC Automation ROI and AI Implementation
 
 **Authors**: KPMG, Fortinet, Prophet Security
