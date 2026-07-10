@@ -12,6 +12,27 @@ and this project adheres to semantic versioning for documentation releases.
 Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
 report on it, and reconciles the source count across every surface that states it.
 
+### 2026-07-09 re-score ADOPTED and applied (owner "Apply")
+
+**Changed (PUBLICATION-MANUSCRIPT.md)**
+- §2.5 Phase-1 list, §3.7 tier groupings + per-hypothesis confidence lines, Table 2, and the figure
+  captions now carry the post-audit scores: H-ARCH-01 23/25 confirmed ⭐⭐⭐⭐⭐; H3-PERFORMANCE-01 20/25
+  and H-STREAM-01 17/25 ⭐⭐⭐⭐; H-COST-09 8/25, H-IMPL-02 7/25, H-IMPL-03 7/25, H-IMPL-01 6/25 all ⭐⭐
+  PRELIMINARY (pre-audit values retained inline per hypothesis). Tier shape: 1 strong / 2 high / 4
+  preliminary — the honest split between primary-verified architecture-and-performance findings and
+  directional organizational-cost claims.
+- Table 1 Level-A row now states the live figure: 42.9% (76/177 tiered, dashboard-computed 2026-07-09),
+  ❌ below the >70% target — replacing "under re-audit / pending."
+
+**Regenerated (publication-graphics/)**
+- Figure 2 rebuilt from the re-verified live tally (76A/85B/16C of 177; its withdrawal-notice script's own
+  re-add condition — "a re-verified per-source tally" — is now met by the 2026-07 reconciliation). Chart
+  states 42.9% Level A with the target gap annotated; constants documented as dashboard-sourced.
+- Figure 4 rebuilt with adopted post-audit scores, a PRELIMINARY tier (red, dotted hatch), withdrawn
+  figures scrubbed from bar labels, rubric example switched to H-ARCH-01 (now the strongest), and the
+  quality-summary box stating the post-audit shape. Figure 1 needed no rebuild (flowchart carries no
+  percentages); its manuscript caption dropped the withdrawn 79%.
+
 ### 2026-07-09 manuscript References generated + re-score proposal staged
 
 **Added (PUBLICATION-MANUSCRIPT.md)**

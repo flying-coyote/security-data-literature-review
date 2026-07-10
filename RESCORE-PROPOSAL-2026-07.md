@@ -2,7 +2,7 @@
 type: proposal
 title: "Hypothesis confidence re-score proposal — post-audit (2026-07-09)"
 created: 2026-07-09
-status: DRAFT — owner adjudicates; nothing applied to the manuscript yet
+status: ADOPTED (owner "Apply", 2026-07-09) — applied to §2.5/§3.7/Tables 1-2/Figures 2+4 same day
 tags: [hypotheses, confidence-scoring, audit, rescore]
 ---
 

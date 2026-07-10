@@ -302,15 +302,15 @@ Each hypothesis classified using a 5-level confidence scale based on multi-dimen
 
 *[2026-06 source audit note: citations supporting the original staffing, TCO, timeline, and tiered-storage multipliers were withdrawn (fabricated entries or stats not present in the cited sources). The affected multipliers are removed throughout this manuscript; those hypotheses revert to directional claims pending re-sourcing, and the source counts and confidence scores in this section are pre-audit values.]*
 
-7 Hypotheses Validated with quantitative evidence (average 4.1 sources per hypothesis, 100% with quantitative evidence, 86% with production deployment validation, 29% with government/standards validation):
+7 Hypotheses assessed; post-audit re-score adopted 2026-07-09 (RESCORE-PROPOSAL-2026-07.md):
 
-- **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED - 5 sources, ⭐⭐⭐⭐⭐ - Dremio survey (29% vs 23% Delta), universal vendor support, 400+ GitHub contributors (2026-07-09)
-- **H-IMPL-01** (Streaming TCO premium): STRONG - 5 sources, ⭐⭐⭐⭐ - supporting citations under re-validation
-- **H-IMPL-02** (Staffing premium): STRONG - 4 sources, ⭐⭐⭐⭐⭐ - supporting citations under re-validation
-- **H-IMPL-03** (Timeline premium): VALIDATED - 3 sources, ⭐⭐⭐ - supporting citations under re-validation
-- **H-COST-09** (Tiered Storage savings): STRONG - 3 sources, ⭐⭐⭐⭐⭐ - supporting citations under re-validation
-- **H3-PERFORMANCE-01** (ClickHouse 6M req/sec): EXTENDED - 4 sources, ⭐⭐⭐⭐ - Cloudflare production
-- **H-STREAM-01** (Kafka Streams): VALIDATED - 3 sources, ⭐⭐⭐⭐ - LinkedIn/Microsoft patterns
+- **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED, 23/25 ⭐⭐⭐⭐⭐ - Dremio survey (29% vs 23% Delta), universal vendor support, 400+ GitHub contributors (2026-07-09)
+- **H3-PERFORMANCE-01** (ClickHouse): HIGH CONFIDENCE, 20/25 ⭐⭐⭐⭐ - Cloudflare production, verbatim-verified
+- **H-STREAM-01** (Stateful Streaming): HIGH CONFIDENCE, 17/25 ⭐⭐⭐⭐ - Samza VLDB 2017 (peer-reviewed) + Azure production
+- **H-COST-09** (Tiered Storage savings): PRELIMINARY, 8/25 ⭐⭐ - savings band withdrawn 2026-06; directional
+- **H-IMPL-02** (Staffing premium): PRELIMINARY, 7/25 ⭐⭐ - DORA attribution withdrawn as fabricated; directional
+- **H-IMPL-03** (Timeline premium): PRELIMINARY, 7/25 ⭐⭐ - timeline figures withdrawn 2026-06/07; directional
+- **H-IMPL-01** (Streaming TCO premium): PRELIMINARY, 6/25 ⭐⭐ - DORA + TEI legs withdrawn; directional
 
 ### 2.6 Synthesis and Analysis Methods
 
@@ -583,29 +583,29 @@ Multiple production and government sources validate these security-specific requ
 
 ### 3.7 Hypothesis Validation Summary
 
-Seven hypotheses received quantitative validation with varying confidence levels based on source count, evidence quality, source diversity, quantitative precision, and geographic/organizational diversity. *[2026-06 source audit note: citations behind the staffing, TCO, timeline, and tiered-storage multipliers were withdrawn (fabricated entries or stats not present in the cited sources); the affected figures are removed below, those hypotheses revert to directional claims pending re-sourcing, and the confidence scores shown are pre-audit values. A 2026-07 per-citation verification pass withdrew two further items — the DORA-attributed "Level 4 / top 5%" skill taxonomy and the Forrester TEI TCO breakdown — and re-attributed the LinkedIn stateful-processing figures to Samza (VLDB 2017); per-hypothesis notes below.]*
+Seven hypotheses received quantitative validation with varying confidence levels based on source count, evidence quality, source diversity, quantitative precision, and geographic/organizational diversity. *[2026-06 source audit note: citations behind the staffing, TCO, timeline, and tiered-storage multipliers were withdrawn (fabricated entries or stats not present in the cited sources); the affected figures are removed below, those hypotheses revert to directional claims pending re-sourcing, and the confidence scores shown are pre-audit values. A 2026-07 per-citation verification pass withdrew two further items — the DORA-attributed "Level 4 / top 5%" skill taxonomy and the Forrester TEI TCO breakdown — and re-attributed the LinkedIn stateful-processing figures to Samza (VLDB 2017). The post-audit re-score was adopted 2026-07-09 (RESCORE-PROPOSAL-2026-07.md): the tier groupings and confidence scores below are the post-audit values, with pre-audit values noted per hypothesis.]*
 
-**Strongly Validated (⭐⭐⭐⭐⭐) - 3 hypotheses**:
+**Strongly Validated (⭐⭐⭐⭐⭐) - 1 hypothesis** *(tiers re-grouped by the 2026-07-09 post-audit re-score; see RESCORE-PROPOSAL-2026-07.md)*:
 
-*H-ARCH-01 (Iceberg Dominance)*: Industry consensus as de facto standard for open table formats, validated by universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), Apache Software Foundation governance (400+ GitHub contributors as of 2026-07-09), production deployments (SK Telecom operating Iceberg with Trino at scale), and growing adoption momentum (Dremio: 29% planning Iceberg vs 23% Delta). Confidence: 23/25 points (5 sources, 4 source types, international validation). Original "76%" claim refined to "industry consensus" due to source limitations.
+*H-ARCH-01 (Iceberg Dominance)*: Industry consensus as de facto standard for open table formats, validated by universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), Apache Software Foundation governance (400+ GitHub contributors as of 2026-07-09), production deployments (SK Telecom operating Iceberg with Trino at scale), and growing adoption momentum (Dremio: 29% planning Iceberg vs 23% Delta). Confidence: 23/25 points, CONFIRMED in the 2026-07-09 post-audit re-score — all four legs survived primary verification and two strengthened (GitHub-derived contributor count; SK Telecom figures verified in the Trino Summit slides). Original "76%" claim refined to "industry consensus" due to source limitations.
 
-*H-IMPL-02 (Staffing Scarcity)*: Streaming requires materially more operational staff than batch, and the fault-tolerance expertise it demands is scarce. The citations behind the original staffing multiplier were withdrawn in the 2026-06 source audit, and the DORA-attributed "Level 4 / top 5%" skill classification was withdrawn in the 2026-07 verification pass (not present in that report), so the claim is fully directional pending re-sourcing and no longer merits this tier's stars. Confidence: pre-audit 23/25 points (see note above).
+**High Confidence (⭐⭐⭐⭐) - 2 hypotheses**:
 
-*H-COST-09 (Tiered Storage)*: Tiered storage materially reduces the cost of multi-year retention. The citations behind the original savings band were withdrawn in the 2026-06 source audit, so the claim reverts to directional pending re-sourcing. Confidence: pre-audit 19/25 points (see note above).
+*H3-PERFORMANCE-01 (ClickHouse)*: 6M req/sec throughput validated by Cloudflare production (~10× per-record storage reduction in its ES→ClickHouse migration), and 12-19× storage efficiency vs Elasticsearch per ClickHouse's billion-row benchmark (9-12× with `_source` disabled); the Shell deployment citation and the sub-second query-share figure were withdrawn in the 2026-06 source audit. Confidence: 20/25 points (post-audit re-score 2026-07-09; pre-audit 21/25 — source count reduced by the Shell withdrawal, quantitative precision better-anchored by primary verification).
 
-**High Confidence (⭐⭐⭐⭐) - 3 hypotheses**:
+*H-STREAM-01 (Kafka-based Stateful Streaming)*: Stateful security processing at scale validated by LinkedIn's Samza (hundreds of TB of state per application, millions of requests/sec from local state — Noghabi et al., VLDB 2017; re-attributed from an orphaned Kafka Streams claim in the 2026-07 verification pass) and Microsoft Azure production scale; the Uber citation was withdrawn in the 2026-06 source audit. Confidence: 17/25 points, HELD in the 2026-07-09 post-audit re-score (total unchanged; evidence composition improved — a peer-reviewed leg now replaces the orphaned claim; US-centric limiting geographic diversity).
 
-*H-IMPL-01 (Streaming TCO)*: Streaming carries a material operational cost premium vs batch. The citations behind the original multiplier were withdrawn in the 2026-06 source audit, and the Cloudera TCO breakdown formerly described here as surviving evidence was itself withdrawn in the 2026-07 verification pass (the 39/32/29 split appears in neither Forrester TEI document), leaving the hypothesis fully directional with no quantitative support pending re-sourcing. Confidence: pre-audit 22/25 points (see note above).
+**Preliminary (⭐⭐) - 4 hypotheses** *(quantitative legs withdrawn in the 2026-06/07 audits; each claim is directional pending re-sourcing)*:
 
-*H3-PERFORMANCE-01 (ClickHouse)*: 6M req/sec throughput validated by Cloudflare production (~10× per-record storage reduction in its ES→ClickHouse migration), and 12-19× storage efficiency vs Elasticsearch per ClickHouse's billion-row benchmark (9-12× with `_source` disabled); the Shell deployment citation and the sub-second query-share figure were withdrawn in the 2026-06 source audit. Confidence: pre-audit 21/25 points (see note above).
+*H-COST-09 (Tiered Storage)*: Tiered storage materially reduces the cost of multi-year retention. The mechanism is well documented (Kafka tiered storage, S3 storage classes), but the citations behind the original savings band were withdrawn in the 2026-06 source audit and the query-recency split is now labeled illustrative. Confidence: 8/25 points (post-audit re-score 2026-07-09; pre-audit 19/25). Restoration path: derive tier-price bounds from public S3 Standard/IA/Glacier pricing, labeled first-party.
 
-*H-STREAM-01 (Kafka-based Stateful Streaming)*: Stateful security processing at scale validated by LinkedIn's Samza (hundreds of TB of state per application, millions of requests/sec from local state — Noghabi et al., VLDB 2017; re-attributed from an orphaned Kafka Streams claim in the 2026-07 verification pass) and Microsoft Azure production scale; the Uber citation was withdrawn in the 2026-06 source audit. Confidence: pre-audit 17/25 points (US-centric limiting geographic diversity).
+*H-IMPL-02 (Staffing Scarcity)*: Streaming requires materially more operational staff than batch, and the fault-tolerance expertise it demands is scarce. The citations behind the original staffing multiplier were withdrawn in the 2026-06 source audit, and the DORA-attributed "Level 4 / top 5%" skill classification was withdrawn in the 2026-07 verification pass (not present in that report), leaving no quantified leg in this corpus. Confidence: 7/25 points (post-audit re-score 2026-07-09; pre-audit 23/25).
 
-**Moderate Confidence (⭐⭐⭐) - 1 hypothesis**:
+*H-IMPL-03 (Timeline Premium)*: Security-focused lakehouse implementations run materially longer than vendor marketing suggests, with security-specific constraints (compliance gates, tool integrations, detection logic migration) adding time. The citations behind the original average and premium figures were withdrawn in the 2026-06 source audit, and the proficiency-timeline attribution was withdrawn in the 2026-07 verification pass. Confidence: 7/25 points (post-audit re-score 2026-07-09; pre-audit 13/25; all-US-centric evidence — European GDPR/APAC localization may extend timelines).
 
-*H-IMPL-03 (Timeline Premium)*: Security-focused lakehouse implementations run materially longer than vendor marketing suggests, with security-specific constraints (compliance gates, tool integrations, detection logic migration) adding time. The citations behind the original average and premium figures were withdrawn in the 2026-06 source audit, so the claim reverts to directional pending re-sourcing. Confidence: pre-audit 13/25 points (limited geographic diversity - all US-centric; European GDPR/APAC localization may extend timelines).
+*H-IMPL-01 (Streaming TCO)*: Streaming carries a material operational cost premium vs batch. The citations behind the original multiplier were withdrawn in the 2026-06 source audit, and the Cloudera TCO breakdown formerly described here as surviving evidence was itself withdrawn in the 2026-07 verification pass (the 39/32/29 split appears in neither Forrester TEI document), leaving the hypothesis fully directional with no quantitative support. Confidence: 6/25 points (post-audit re-score 2026-07-09; pre-audit 22/25).
 
-**Validation Quality**: Pre-audit scoring showed High or Strong confidence for most hypotheses. The 2026-06 source audit withdrew citations behind several quantitative multipliers, so the affected hypotheses revert to directional claims and the validation-quality statistics will be recomputed after re-scoring.
+**Validation Quality** (post-audit re-score, 2026-07-09): the review's architecture and performance findings are validated at strong-to-high confidence on primary-verified production evidence (1 strongly validated, 2 high confidence), while its organizational-cost findings are preliminary (4 hypotheses) — their quantitative legs were withdrawn as fabricated attribution or figures absent from cited sources, and each is stated directionally pending re-sourcing. Every surviving score reflects only evidence that passed primary-source verification.
 
 ### 3.8 Evidence Gaps & Contradictions
 
@@ -783,26 +783,26 @@ Security practitioners can now make evidence-based architecture decisions with d
 
 ## FIGURES
 
-*Note (2026-06): the evidence-level percentages shown in Figures 1-2 predate the 2026-06 source audit and will be regenerated after evidence levels are recomputed.*
+*Note (2026-07-09): Figures 2 and 4 regenerated with post-audit values (live evidence tally; adopted re-score). Figure 1's flowchart carries no percentages; its caption below was corrected to drop the withdrawn 79% self-grade.*
 
 ### Figure 1: PRISMA Literature Extraction Flowchart
 
-![Figure 1: PRISMA-aligned systematic literature review flowchart showing extraction of 283 footnotes from best practices document and 74 archive manuscripts, consolidation of duplicates, quality assessment with evidence level classification, and final inclusion of 75+ sources achieving 79% Evidence Level A.](publication-graphics/figure1_prisma_flowchart.pdf){ width=85% }
+![Figure 1: PRISMA-aligned systematic literature review flowchart showing extraction of 283 footnotes from best practices document and 74 archive manuscripts, consolidation of duplicates, quality assessment with evidence level classification, and final inclusion of 75+ sources.](publication-graphics/figure1_prisma_flowchart.pdf){ width=85% }
 
 **Shows**:
 - Source materials identified: Best practices document (283 footnotes), 74 archived manuscripts
 - Screening: 283 citations extracted
 - Eligibility: Duplicates consolidated
 - Included: 75+ unique sources documented
-- Evidence level classification: 79% Level A, 21% Level B, 0% C/D
+- Evidence level classification per entry (the aggregate distribution is Figure 2's live tally; the earlier "79% Level A" self-grade was withdrawn in the 2026-06 audit)
 
 ### Figure 2: Evidence Level Distribution
 
-![Figure 2: Evidence level distribution — 79% Level A (production deployments, peer-reviewed research, government standards) exceeds the 70% Level A target; 21% Level B (industry analysts, expert validation).](publication-graphics/figure2_evidence_distribution.png){ width=85% }
+![Figure 2: Evidence level distribution, live per-source tally at 2026-07-09 — 42.9% Level A (76/177 tiered), 48.0% Level B (85/177), 9.0% Level C (16/177); below the >70% Level A target, stated honestly in place of the withdrawn 79% self-grade.](publication-graphics/figure2_evidence_distribution.png){ width=85% }
 
 **Shows**:
-- Pie chart or bar chart of evidence levels (A: 79%, B: 21%)
-- Comparison to target (70% Level A target, achieved 79%)
+- Bar chart of the live tier mix (A: 42.9%, B: 48.0%, C: 9.0% of 177 tiered entries; dashboard-computed 2026-07-09, not self-graded)
+- The >70% Level-A target line with the honest gap (−27.1 points) annotated
 
 ### Figure 3: Source Type Taxonomy
 
@@ -817,11 +817,12 @@ Security practitioners can now make evidence-based architecture decisions with d
 
 ### Figure 4: Hypothesis Validation Confidence Levels
 
-![Figure 4: Hypothesis validation confidence levels for all 7 validated hypotheses, grouped by strength — 3 strongly validated (5-star), 3 high confidence (4-star), 1 moderate confidence (3-star).](publication-graphics/figure4_hypothesis_confidence.png){ width=85% }
+![Figure 4: Hypothesis validation confidence levels for all 7 hypotheses under the 2026-07-09 post-audit re-score — 1 strongly validated (H-ARCH-01, 23/25), 2 high confidence (H3-PERFORMANCE-01 20/25, H-STREAM-01 17/25), 4 preliminary (H-COST-09 8/25, H-IMPL-02 7/25, H-IMPL-03 7/25, H-IMPL-01 6/25; quantitative legs withdrawn in the 2026-06/07 audits).](publication-graphics/figure4_hypothesis_confidence.png){ width=85% }
 
 **Shows**:
-- Bar chart of 7 hypotheses with confidence scores (⭐⭐⭐⭐⭐ to ⭐⭐⭐)
-- Grouped by validation strength (3 Strong, 3 High, 1 Moderate)
+- Bar chart of 7 hypotheses with post-audit confidence scores (23/25 down to 6/25)
+- Grouped by validation strength (1 Strong, 2 High, 0 Moderate, 4 Preliminary)
+- Rubric example (H-ARCH-01, strongest post-audit) and the honest audit summary
 
 ### Figure 5: Technology Adoption Trends
 
@@ -836,24 +837,24 @@ Security practitioners can now make evidence-based architecture decisions with d
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
 | Total Sources | 100+ | 75+ | Sufficient |
-| Evidence Level A | >70% | Under re-audit (2026-06) | ⏳ Pending |
+| Evidence Level A | >70% | 42.9% (76/177 tiered; live-computed 2026-07-09) | ❌ Below target (honest live figure; was a withdrawn 79% self-grade) |
 | URL Validation | 90%+ | 73% overall, 100% critical | ✅ Adequate |
 | Geographic Diversity | 2+ regions | 3 regions (US, EU, APAC) | ✅ Met |
 | Organizational Types | 3+ types | 5 types | ✅ Exceeded |
 
 ### Table 2: Hypothesis Validation Summary
 
-| Hypothesis ID | Description | Confidence | Sources | Evidence A% | Key Validation |
-|--------------|-------------|-----------|---------|-------------|----------------|
-| H-ARCH-01 | Iceberg Dominance | ⭐⭐⭐⭐⭐ | 5 | — | Industry consensus |
-| H-IMPL-01 | Streaming TCO premium | ⭐⭐⭐⭐ | 5 | — | Citations withdrawn 2026-06 |
-| H-IMPL-02 | Staffing premium | ⭐⭐⭐⭐⭐ | 4 | — | Citations withdrawn 2026-06 |
-| H-IMPL-03 | Timeline premium | ⭐⭐⭐ | 3 | — | Citations withdrawn 2026-06 |
-| H-COST-09 | Tiered Storage savings | ⭐⭐⭐⭐⭐ | 3 | — | Citations withdrawn 2026-06 |
-| H3-PERFORMANCE-01 | ClickHouse OLAP | ⭐⭐⭐⭐ | 4 | — | Cloudflare |
-| H-STREAM-01 | Kafka Streams | ⭐⭐⭐⭐ | 3 | — | LinkedIn/Microsoft |
+| Hypothesis ID | Description | Confidence (post-audit) | Pre-audit | Key Validation |
+|--------------|-------------|------------------------|-----------|----------------|
+| H-ARCH-01 | Iceberg Dominance | ⭐⭐⭐⭐⭐ 23/25 | 23/25 | Industry consensus; all legs primary-verified |
+| H3-PERFORMANCE-01 | ClickHouse OLAP | ⭐⭐⭐⭐ 20/25 | 21/25 | Cloudflare verbatim-verified |
+| H-STREAM-01 | Stateful streaming | ⭐⭐⭐⭐ 17/25 | 17/25 | Samza VLDB 2017 + Azure verbatim-verified |
+| H-COST-09 | Tiered Storage savings | ⭐⭐ 8/25 | 19/25 | Savings band withdrawn 2026-06; directional |
+| H-IMPL-02 | Staffing premium | ⭐⭐ 7/25 | 23/25 | DORA attribution fabricated (withdrawn 2026-07); directional |
+| H-IMPL-03 | Timeline premium | ⭐⭐ 7/25 | 13/25 | Timeline figures withdrawn 2026-06/07; directional |
+| H-IMPL-01 | Streaming TCO premium | ⭐⭐ 6/25 | 22/25 | DORA + TEI legs withdrawn; directional |
 
-*2026-06 source audit: confidence stars and source counts are pre-audit values and evidence-level percentages are being recomputed. Rows marked "citations withdrawn" lost the citations behind their original quantitative multipliers and revert to directional claims pending re-sourcing.*
+*Post-audit re-score adopted 2026-07-09 (RESCORE-PROPOSAL-2026-07.md) after the 2026-06 source audit and the 2026-07 per-citation verification sweep. Preliminary rows lost the citations behind their quantitative multipliers (fabricated attribution or figures absent from cited sources) and are directional pending re-sourcing.*
 
 ### Table 3: Cost Comparison Findings
 
@@ -927,12 +928,11 @@ Security practitioners can now make evidence-based architecture decisions with d
 **Status**: All sections drafted. 2026-06 audit withdrew fabricated multipliers; 2026-07 per-citation verification sweep applied (33-item fix pass) — every surviving inline figure is primary-verified. References + Appendix D generated 2026-07-09.
 
 **Remaining before submission**:
-1. Confidence re-score of the 7 hypotheses (post-audit scores; proposal in RESCORE-PROPOSAL-2026-07.md — owner adjudicates)
-2. Regenerate Figures 1-2 + Table 1/2 evidence-level percentages after re-score
-3. Re-sourcing hunts for the directional claims (staffing/TCO/timeline multipliers)
-4. Appendices A-C drafting; Acknowledgments
-5. Expert review (Lisa Cao, Jake Thomas)
-6. Venue decision + formatting pass
+1. ~~Confidence re-score~~ DONE 2026-07-09 (RESCORE-PROPOSAL-2026-07.md adopted; §2.5/§3.7/Tables 1-2/Figures 2+4 updated)
+2. Re-sourcing hunts for the directional claims (staffing/TCO/timeline multipliers)
+3. Appendices A-C drafting; Acknowledgments
+4. Expert review (Lisa Cao, Jake Thomas)
+5. Venue decision + formatting pass
 
 ---
 
