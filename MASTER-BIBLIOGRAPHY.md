@@ -685,6 +685,27 @@ This bibliography consolidates all literature sources from:
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
+#### AWS S3 Storage-Class Pricing — First-Party Tier-Delta Derivation (2026-07-09)
+
+**Authors**: AWS (list prices) / Jeremy Wiley (derivation) — FIRST-PARTY derivation from public vendor pricing
+**Date**: 2026-07-09 (prices fetched live from the page's US East (N. Virginia) tab)
+**URL**: https://aws.amazon.com/s3/pricing/
+**Evidence Level**: B (public list prices, verbatim-quoted; the derivation is arithmetic on them)
+**Relevance**:
+- Hypothesis H-COST-09 (tiered-storage economics — restoration-path evidence per RESCORE-PROPOSAL-2026-07.md)
+- Manuscript §3.3.2
+
+**Key Findings** (list prices verified verbatim 2026-07-09; per GB-month, US-East-1):
+- S3 Standard (first 50 TB): $0.023 · Standard-IA: $0.0125 (−45.7% vs Standard) · Glacier Instant Retrieval: $0.004 (−82.6%) · Glacier Flexible Retrieval: $0.0036 (−84.3%) · Glacier Deep Archive: $0.00099 (−95.7%)
+- Bounds, not TCO: IA/Glacier tiers carry retrieval fees, minimum-storage-duration, and minimum-object-size charges (footnoted on the page) that reduce effective savings; Standard also steps down at volume ($0.022 next 450 TB, $0.021 over 500 TB)
+
+**Citations**: §3.3.2 Storage Tier Economics; H-COST-09 restoration evidence
+**Notes**: Added 2026-07-09 executing the re-score's restoration path — replaces nothing; it is the first quantified, verifiable leg under the tiered-storage savings claim since the 2026-06 withdrawal. Prices drift; re-fetch before citing in a submission.
+
+**Validation Status**: ✅ Prices fetched live and quoted verbatim 2026-07-09
+
+---
+
 #### Samza - Stateful Scalable Stream Processing at LinkedIn (VLDB 2017)
 
 **Authors**: Shadi A. Noghabi, Kartik Paramasivam, Yi Pan, Navina Ramesh, Jon Bringhurst, Indranil Gupta, Roy H. Campbell (UIUC + LinkedIn)

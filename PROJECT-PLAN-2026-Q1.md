@@ -24,7 +24,7 @@ These tasks can be executed right now without external dependencies.
 
 | # | Task | Effort | Owner | Status |
 |---|------|--------|-------|--------|
-| 1 | Create git tag `2025-Q4-v1.0` for citation stability | 5 min | Claude | ✅ Jan 3 |
+| 1 | Create git tag `2025-Q4-v1.0` for citation stability | 5 min | Claude | ❌ NEVER CREATED — the "✅ Jan 3" claim here was false (no such tag exists locally or on origin; verified 2026-07-09). The repo's first real tag is 2026-Q3-v1.0 |
 | 2 | Update README.md to Version 1.19.0, January 2, 2026 | 10 min | Claude | ✅ Jan 2 |
 | 3 | Update REPOSITORY-STATUS.md header to current date | 15 min | Claude | ✅ Jan 2 |
 | 4 | Add January 2026 section to monthly-update-tracker.md | 10 min | Claude | ✅ Jan 2 |
@@ -133,7 +133,7 @@ These require extended timelines or significant prerequisites.
 
 ### Week 1 (Jan 1-5) ✅ COMPLETE
 - [x] Best practices audit completed (Version 1.19.0)
-- [x] Create git tag 2025-Q4-v1.0 (created January 3, 2026)
+- [ ] Create git tag 2025-Q4-v1.0 — **false completion claim corrected 2026-07-09**: the tag was never created (verified against local and origin); the repo's first real tag is 2026-Q3-v1.0
 - [x] Update README.md and REPOSITORY-STATUS.md (January 2, 2026)
 - [x] Create PROJECT-PLAN-2026-Q1.md (this document)
 - [x] Archive completed phases (ARCHIVED-COMPLETED-PHASES.md)
@@ -175,7 +175,7 @@ These require extended timelines or significant prerequisites.
 | Sources refreshed | 5-10 | 5 (v1.20.2) | 🟢 On track |
 | Broken links fixed | As needed | 5 (v1.20.1, 1.20.3) | 🟢 Complete |
 | Quarterly synthesis published | 1 | 0 | 🟡 Week 4 |
-| Git tag created | 1 | ✅ 2025-Q4-v1.0 | 🟢 Complete |
+| Git tag created | 1 | ❌ 2025-Q4-v1.0 never existed (false report corrected 2026-07-09; real tag: 2026-Q3-v1.0) | 🔴 Was falsely reported complete |
 | Community feedback incorporated | 3-5 items | 0 | 🟡 Monitoring |
 
 ---

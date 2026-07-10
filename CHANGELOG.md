@@ -12,6 +12,36 @@ and this project adheres to semantic versioning for documentation releases.
 Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
 report on it, and reconciles the source count across every surface that states it.
 
+### 2026-07-09/10 closeout: re-sourcing hunts, appendices drafted, D-audit fully adjudicated
+
+**Re-sourcing hunts (9 fetch-backed verifications; project1 hypothesis mirrors updated separately)**
+- CONFIRMED NONEXISTENT (six legs): IDC "Hidden Costs of Real-Time Data" (no such title), "Enterprise Data
+  Quarterly" (no such publication), Ververica/DevOps.com 3.2-FTE + 4-9-month figures, DevOps Enterprise
+  Summit 3-4× incident-cost figure, MIT Technology Review 1.5-2× training figure, "Data Engineering Summit"
+  76% figure — every remaining quantitative leg under the staffing/TCO multipliers is fabricated attribution.
+- Gartner "Market Guide for Event Stream Processing": the document FAMILY is real (2018/2021/2023 editions,
+  vendor-reprint corroborated) but the "<15% expertise" figure is unconfirmable (Gartner 403s even abstracts)
+  — plausibly a fabricated figure on a real report.
+- Netflix 70-80% tiered-storage figure: no Netflix TechBlog primary exists (Keystone posts use S3 only for
+  checkpoints).
+- EXECUTED the H-COST-09 restoration path: live S3 US-East-1 list prices fetched verbatim and derived —
+  IA −45.7%, Glacier Instant −82.6%, Flexible −84.3%, Deep Archive −95.7% vs Standard (price-floor bounds,
+  pre-retrieval-fees). Added to §3.3.2 + a first-party bibliography entry.
+
+**Manuscript completion (PUBLICATION-MANUSCRIPT.md)**
+- Appendices A (evidence rubric, incl. the honest design-vs-practice gap on the 16 held C-tier entries),
+  B (scoring methodology, worked example reconciled to the canonical bundle split 5/5/5/3/5 — Figure 4's
+  example subplot regenerated to match), and C (expert protocol, explicitly method-not-completed-interviews)
+  drafted from in-repo source material. Acknowledgments drafted conditionally (finalize after expert review).
+
+**D-audit fully adjudicated (D-AUDIT-ADJUDICATION-2026-07-09.md)**
+- Every remaining audit row locally verified. Corrections APPLIED: METHODOLOGY.md + PROJECT-BRIEF.md stale
+  "79% EXCEEDS" self-grades → live 42.9% figure; PROJECT-PLAN-2026-Q1.md's false "✅ tag 2025-Q4-v1.0 created
+  Jan 3" claims marked NEVER CREATED (tag verified absent from local + origin); published/README.md citations
+  re-pointed to the real 2026-Q3-v1.0; CAO/CHAO filename refs fixed. Archives/deletions staged for owner
+  sign-off (REPOSITORY-STATUS, planning fossils, analysis-bundles statics, archived/-vs-archive/ merge,
+  venv, the local-wip branch with its one preserved commit).
+
 ### 2026-07-09 re-score ADOPTED and applied (owner "Apply")
 
 **Changed (PUBLICATION-MANUSCRIPT.md)**

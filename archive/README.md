@@ -89,7 +89,7 @@ Current, actively maintained documentation remains in repository root:
 - PUBLICATION-VENUE-RECOMMENDATIONS.md - Academic publication strategy
 
 **Expert Validation**:
-- EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md - Structured interview (catalog landscape)
+- EXPERT-INTERVIEW-GUIDE-LISA-CAO.md - Structured interview (catalog landscape)
 - EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md - Structured interview (DuckDB, edge processing)
 
 **Deliverables**:

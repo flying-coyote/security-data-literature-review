@@ -19,7 +19,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Fact 1: Phase 1-2C Complete, 76+ Sources Documented ✅
 **CONFIRMED**: Phase 1 (Literature Extraction) complete with 76+ sources documented
 - 283 footnotes extracted from best practices document
-- 79% Evidence Level A (production/academic sources) - **EXCEEDS 73% target**
+- Level-A share: 42.9% live-computed 2026-07-09 — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
 - 9 analysis bundles created (170,100 words evidence synthesis)
 - All book chapters have supporting source citations
 - **Source**: README.md lines 15-23, REPOSITORY-STATUS.md, CLAUDE.md lines 33-44

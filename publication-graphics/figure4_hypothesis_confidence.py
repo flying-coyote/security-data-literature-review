@@ -144,7 +144,7 @@ def create_hypothesis_confidence():
 
     dimensions = ['Source Count', 'Evidence Quality', 'Source Diversity',
                   'Quantitative Precision', 'Geographic Diversity']
-    example_scores = [5, 5, 4, 5, 4]  # H-ARCH-01 = 23/25
+    example_scores = [5, 5, 5, 3, 5]  # H-ARCH-01 = 23/25 (canonical bundle split)
 
     x_pos = np.arange(len(dimensions))
     bars3 = ax3.barh(x_pos, example_scores, color=COLORS['dimension'],

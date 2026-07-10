@@ -131,7 +131,7 @@ Options:
 - Notify subscribers of comprehensive update
 
 ### 5. Version Control
-- Tag repository: `git tag 2025-Q4-v1.0`
+- Tag repository: done — `2026-Q3-v1.0` (annotated tag, created 2026-07-09). *Correction note: the previously planned `2025-Q4-v1.0` tag was never actually created despite completion claims elsewhere; `2026-Q3-v1.0` is the repo's first real citation tag.*
 - Update CHANGELOG.md with this version
 - Create versioned snapshot for academic citation
 
@@ -141,14 +141,14 @@ Options:
 
 **Recommended Citation Format**:
 ```
-Wiley, J. (2025). Modern Data Stack for Cybersecurity: A Systematic Literature Review 
-(Version 2025-Q4-v1.0). Retrieved from https://securitydatacommons.substack.com/p/modern-data-architecture-for-cybersecurity
+Wiley, J. (2026). Modern Data Stack for Cybersecurity: A Systematic Literature Review
+(Version 2026-Q3-v1.0). Retrieved from https://securitydatacommons.substack.com/p/modern-data-architecture-for-cybersecurity
 ```
 
 **Repository Citation**:
 ```
-Wiley, J. (2025). Modern Data Stack for Cybersecurity: Living Literature Review 
-(Version 2025-Q4-v1.0). GitHub. https://github.com/flying-coyote/security-data-literature-review
+Wiley, J. (2026). Modern Data Stack for Cybersecurity: Living Literature Review
+(Version 2026-Q3-v1.0). GitHub. https://github.com/flying-coyote/security-data-literature-review
 ```
 
 ---

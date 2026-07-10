@@ -65,7 +65,7 @@ This repository contains a **living literature review** that is the shared evide
 - Automated generation: generate_all_figures.sh, requirements.txt, README.md
 
 **Expert Interview Guides**:
-- **EXPERT-INTERVIEW-GUIDE-LISA-CHAO.md** - Catalog adoption, XTable validation, H-ARCH-01
+- **EXPERT-INTERVIEW-GUIDE-LISA-CAO.md** - Catalog adoption, XTable validation, H-ARCH-01
 - **EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md** - DuckDB edge processing, H-EDGE-01, data volumes
 
 ---

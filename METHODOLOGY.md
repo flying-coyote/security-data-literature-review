@@ -86,14 +86,14 @@ Beyond the primary extraction from archived manuscripts:
 
 All sources are classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research:
 
-#### Evidence Level A (Target: 73%+, Achieved: 79%)
+#### Evidence Level A (Target: 73%+; live share 42.9% at 2026-07-09 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
 **Criteria**: Production deployments, peer-reviewed research, government standards
 **Examples**:
-- Production case studies (Netflix, Uber, LinkedIn, Cloudflare, Shell, SK Telecom) with quantitative benchmarks
+- Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks (the Shell entry was removed in the 2026 audit — dead URL, unverifiable)
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 57 of 72 sources (79%) - EXCEEDS target
+**Current Achievement**: 76 of 177 tiered entries (42.9%), live-computed 2026-07-09 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; the dashboard now computes this figure from per-entry markers.
 
 #### Evidence Level B (Acceptable: <27%, Achieved: 21%)
 **Criteria**: Industry analyst reports, expert consensus, verified vendor documentation
@@ -412,7 +412,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 75+ | ✅ Sufficient |
-| Evidence Level A | 73%+ | 79% | ✅ EXCEEDS |
+| Evidence Level A | 73%+ | 42.9% (live, 2026-07-09; the 79% self-grade was withdrawn 2026-06) | ❌ Below target |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
@@ -431,7 +431,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 **Suitability Assessment**:
 - ✅ PRISMA-aligned methodology documented
-- ✅ Evidence quality exceeds academic standards (79% Level A)
+- ⚠️ Evidence quality below the Level-A target (42.9% live at 2026-07-09; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
 - ✅ Quantitative hypothesis validation with multiple sources
 - ✅ Reproducible extraction process
 - ✅ Version control for citation stability
@@ -479,7 +479,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 This systematic literature review employs a PRISMA-aligned methodology to consolidate 75+ sources on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: 79% Evidence Level A (production deployments, peer-reviewed research, government standards)
+1. **Evidence Quality**: Level-A share live-computed per entry (42.9% at 2026-07-09; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit)
 2. **Quantitative Validation**: 7 hypotheses validated with multiple sources averaging 4.1 sources each
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations
