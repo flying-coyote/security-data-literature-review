@@ -56,6 +56,6 @@ monthly-update-tracker.md           # Rolling monthly cadence (Q1 plan archived 
 ```
 
 ## Integration
-- **Blog**: Evidence foundation for 3x/week content
-- **Book**: Citations for 115,500-word manuscript
-- **MCP Server**: 71 vendors, automated weekly refresh
+- **Blog**: RETIRED 2026-05-24 (Substack archived read-only; essays live at securitydataworks.com/writing)
+- **Book**: Citations for the MOAR manuscript (word count lives in the book repo's own build — derive, don't state)
+- **MCP Server**: repo ARCHIVED 2026-07-01; the vendor DB lives in vendor-landscape/ here, quarterly cadence (no automated weekly refresh exists)
