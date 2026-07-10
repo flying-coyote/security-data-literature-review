@@ -6,7 +6,7 @@
     "sync_cadence": "quarterly",
     "vendor_count": 71,
     "status": "COMPLETE_100_PERCENT",
-    "notes": "ENRICHED: Phase 1-2 (30 analyst reports) + Phase 3 (24 OSS production evidence) = ENTERPRISE-GRADE (63.7% Tier A)"
+    "notes": "ENRICHED: Phase 1-2 (30 analyst reports) + Phase 3 (24 OSS production evidence) = ENTERPRISE-GRADE (63.7% Tier A) | 2026-07-10: appendix-g now carries dated 2026 row updates (Gemini DR-2 intake); this JSON remains the 2025-Q4 snapshot and is due a full regeneration at the next quarterly sync. KNOWN STALE: some capability evidence sources predate the 2026-06 withdrawn-legs scrub (e.g. the Shell 57TB/day ClickHouse leg) and must be re-derived, not copied, at regeneration."
   },
   "vendors": [
     {
