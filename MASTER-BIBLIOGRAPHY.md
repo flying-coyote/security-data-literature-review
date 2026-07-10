@@ -61,7 +61,7 @@ This bibliography consolidates all literature sources from:
 #### Fundamentals of Data Engineering (O'Reilly Book)
 
 **Authors**: Joe Reis, Matt Housley
-**Date**: July 2022 (1st Edition)
+**Date**: June 2022 (O'Reilly platform date, fetch-verified in the part-2 sweep; print edition 2022-07-26 explains the former "July 2022")
 **URL**: https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/
 **Alt URL**: https://www.amazon.com/Fundamentals-Data-Engineering-Robust-Systems/dp/1098108302 (ISBN-13 978-1098108304)
 **Evidence Level**: B (Authoritative practitioner reference; conceptual framing, not a quantitative source)
@@ -228,8 +228,8 @@ This bibliography consolidates all literature sources from:
 
 #### Dremio - Data Lakehouse Architecture Guide
 
-**Authors**: Dremio Corporation (Alex Merced, contributor)
-**Date**: 2024
+**Authors**: Dremio Corporation (Dipankar Mazumdar, Developer Advocate — byline verified 2026-07-10; the former Merced credit was wrong for this URL)
+**Date**: 2023-09-06
 **URL**: https://www.dremio.com/blog/what-is-a-data-lakehouse/
 **Evidence Level**: B (Vendor thought leadership, educational)
 **Relevance**:
@@ -329,8 +329,8 @@ This bibliography consolidates all literature sources from:
 
 #### Kafka Performance Benchmark - Confluent
 
-**Authors**: Confluent
-**Date**: 2023-2026 (continuously updated benchmarks)
+**Authors**: Alok Nikhil and Vinoth Chandar (Confluent)
+**Date**: 2020-08-21 (single benchmark post; the entry's former "2023-2026 continuously updated" framing was wrong — corrected 2026-07-10)
 **URL**: https://www.confluent.io/blog/kafka-fastest-messaging-system/
 **Alt URL**: https://developer.confluent.io/learn/kafka-performance/
 **Evidence Level**: B (Vendor benchmark, methodology disclosed but self-published)
@@ -339,17 +339,13 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^4]
 
 **Key Findings**:
-- 605 MB/s peak throughput across 3 brokers (Confluent benchmark)
-- 15× faster than RabbitMQ; 2× faster than Pulsar under the benchmark conditions
-- Confluent Cloud up to 12× faster than Apache Kafka as throughput scales (Kora engine)
-- Latency benchmarks: 10 MBps to 1.4 GBps ingress tested
-- Kafkorama benchmark: 1M messages/sec fanout to 1M WebSocket connections (1.6B messages in 30 min)
-- End-to-end latency increase of only 2-3ms with Confluent Cloud vs self-managed
+- 605 MB/s peak throughput across 3 brokers (page verbatim)
+- "Writing 15x faster than RabbitMQ and 2x faster than Pulsar" (page verbatim) under the benchmark conditions
 
 **Citations**: Chapter 7 Kafka performance
-**Notes**: Vendor-published benchmark; 605 MB/s, 15× RabbitMQ, 2× Pulsar figures are from the cited blog. Widely referenced but self-published.
+**Notes**: Vendor-published benchmark; 605 MB/s, 15× RabbitMQ, 2× Pulsar figures are from the cited blog. Widely referenced but self-published — and a 2020 result on then-current versions; cite the method and ordering, not the absolute numbers, as current. Correction (2026-07-10, part-2 sweep fix 6): the Kora 12×, "10 MBps→1.4 GBps ingress", Kafkorama 1M msg/s fanout, and 2-3 ms latency-delta bullets were removed — none appear on the cited page (exhaustive term search); the Kora figure likely traces to Confluent's separate Kora engine material — re-source there if needed.
 
-**Validation Status**: ✅ Active URL (refreshed January 2026)
+**Validation Status**: ✅ Verified at primary 2026-07-10; re-dated to the actual 2020-08-21 post
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -388,17 +384,16 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^19]
 
 **Key Findings**:
-- Processes trillions of messages and dozens of PB daily via Kafka + Flink
+- Serves "up to 10s of thousands of queries/sec, several million writes/sec and host up to tens of Petabytes of Pinot datasets" (page verbatim)
+- Processes trillions of messages and dozens of PB daily via Kafka + Flink (NOT on the cited page — sourced to InfoQ's Mar 2026 IngestionNext coverage; cite InfoQ for this figure)
 - **IngestionNext**: streaming-first data-lake ingestion on Kafka + Flink + Apache Hudi; latency hours→minutes, ~25% less compute (corroborated by InfoQ, Mar 2026)
-- **FlinkSQL**: SQL layer on Flink making stream processing accessible to analysts
-- Serves 10s of thousands of queries/sec, several million writes/sec
-- Tens-of-petabytes Pinot datasets for real-time analytics
-- **Data Streaming Award winner** (Confluent Current 2025)
+- **AthenaX**: Uber's SQL-based transformation layer on Flink (page verbatim: "AthenaX(SQL based transformation on Flink)" — the entry formerly said "FlinkSQL", corrected 2026-07-10)
+- Data Streaming Award: not shown on the cited session page (the site's award section is elsewhere); treat as unverified at this URL
 
 **Citations**: Chapter 7 streaming architecture at extreme scale
-**Notes**: The original eng.uber.com "real-time security analytics with Flink" URL is dead (not carried in the eng.uber.com→uber.com/blog migration, no Wayback snapshot 2026-06-05), and its security-specific framing was never independently verifiable. Re-pointed to the live Confluent Current 2025 session, which supports the scale figures but describes Uber's **general** real-time analytics platform (EVA), not a security deployment. Cite as a streaming-at-scale example, not a security case study.
+**Notes**: The original eng.uber.com "real-time security analytics with Flink" URL is dead (not carried in the eng.uber.com→uber.com/blog migration, no Wayback snapshot 2026-06-05), and its security-specific framing was never independently verifiable. Re-pointed to the live Confluent Current 2025 session, which supports the scale figures but describes Uber's **general** real-time analytics platform (EVA), not a security deployment. Cite as a streaming-at-scale example, not a security case study. Correction (2026-07-10, part-2 sweep fix 7): qps/writes/PB figures verified verbatim at the page; trillions/dozens-PB re-attributed to InfoQ; AthenaX naming fixed; award claim de-anchored from this URL.
 
-**Validation Status**: ✅ Re-verified 2026-06-05 — live source confirms scale figures (WebSearch; page 403s automated fetch)
+**Validation Status**: ✅ Verified at primary 2026-07-10 (page no longer 403s automated fetch — stale note dropped)
 **Validation (2026-06-05, folded)**: dead security URL retired, re-pointed to verified general-analytics source, security framing removed; provenance in RESEARCH-JOURNAL.md.
 
 ---
@@ -478,7 +473,8 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: AWS
 **Date**: 2024
-**URL**: https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-storage-optimization/cost-optimization-storage-optimization.pdf
+**URL**: https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-storage-optimization/cost-optimization-storage-optimization.pdf (serves an official "DEPRECATED" stub as of 2026-07-10)
+**Alt URL**: https://aws.amazon.com/whitepapers (current Whitepapers & Guides index, per the stub's own redirect notice); tier figures live at https://aws.amazon.com/s3/storage-classes/intelligent-tiering/ (see the standalone "AWS Storage Optimization - Tiered Storage" entry)
 **Evidence Level**: B (Vendor documentation; cited PDF deprecated, tier figures sourced from S3 Intelligent-Tiering page)
 **Relevance**:
 - Hypothesis H1-COST-08 (SIEM vs storage costs)
@@ -613,23 +609,22 @@ This bibliography consolidates all literature sources from:
 
 **Authors**: Databricks
 **Date**: 2024
-**URL**: https://www.databricks.com/resources/ebook/state-of-data-ai
+**URL**: https://web.archive.org/web/20250122143448/https://www.databricks.com/resources/ebook/state-of-data-ai (archived snapshot of the 2024 report page — the live URL now serves Databricks' 2026 "State of AI Agents" report instead)
 **Evidence Level**: B (Vendor survey, 10,000 customers)
 **Relevance**:
 - Book Chapter 7 (Flink adoption, streaming trends)
 - Best Practices Doc footnote [^24]
 
 **Key Findings**:
-- AI models in production: 11x growth year-over-year
-- 76% of companies using LLMs choose open-source models
-- RAG adoption: 377% year-over-year growth
-- Financial services leading in GPU consumption (88% growth)
-- Databricks customer base data engineering trends
+- AI models in production: 11x growth year-over-year — archive-verified verbatim ("Why 11x more AI models were put into production year over year")
+- RAG adoption direction confirmed on the archived page ("customizing them with their private data through retrieval augmented generation"); the specific 377% year-over-year figure sits in the gated report body, not landing-page-verifiable
+- 76% open-source LLM preference and 88% financial-services GPU growth: report-body figures, not verifiable on the archived landing page — cite with that caveat or not at all
+- Survey base: "more than 10,000 companies — now including over 300 of the Fortune 500" (archived page verbatim)
 
 **Citations**: Chapter 7 technology adoption trends, AI/ML integration patterns
-**Notes**: Updated URL (original 404), comprehensive data engineering + AI trends
+**Notes**: Correction (2026-07-10, part-2 sweep fix 3): the live URL was silently repurposed for the 2026 State of AI Agents report (published 2026-01-09), orphaning all four cited figures; re-sourced to the Jan-2025 archive.org snapshot of the 2024 page rather than retiring the entry. Only 11x and the survey base verify verbatim at the snapshot; the other three figures live inside the gated ebook.
 
-**Validation Status**: ✅ Active (verified Feb 2026)
+**Validation Status**: ⚠️ Re-sourced to archive snapshot 2026-07-10; live URL serves a different (2026) report
 
 ---
 
@@ -851,15 +846,15 @@ This bibliography consolidates all literature sources from:
 - The academic "why" behind the lab's two-regime / Needle result (`zeek-flagship-rerun/results/NEEDLE-FINDINGS-2026-06-14.md`): a point lookup wins on a secondary index over an unsorted store but ties a sorted columnar store, so the lakehouse point-lookup weakness is a layout choice, not a hard limit. Kester et al. is the formal version of that argument — in a main-memory column store, modern vectorized/SIMD/multi-core sequential scans have become competitive across a much wider selectivity range than the textbook assumes, yet access-path selection is still required because both paths remain useful under varying workloads.
 - Book Chapter 9 (query engines, index-vs-scan), Appendix I (two-regime symmetry); grounds the SPEC/Matrix "where the index wins" framing.
 
-**Key Findings**: Sequential scans in main-memory-optimized columnar systems benefit from column-group storage, vectorized execution, shared scans, operating directly over compressed data, and SIMD + multi-core execution, which together make scans the better access path in more cases than older cost models assumed; secondary-index probes still win in a region, so the optimizer must still choose between scan and probe rather than defaulting to one. **NOT verified at primary**: the relayed claim that "columnar beats inverted index even at ~1% selectivity" — the abstract/DASLab and ACM pages 403'd on direct fetch, so the *specific* ~1% selectivity crossover figure could not be confirmed at the primary; the general scan-vs-probe finding and the authorship/venue ARE confirmed (Harvard DASLab publications listing + dblp SIGMOD 2017 + ACM DOI). Cite the general access-path-selection finding; do not assert the ~1% crossover until the primary figure is read. **FLAGGED for Jeremy.**
+**Key Findings**: Sequential scans in main-memory-optimized columnar systems benefit from column-group storage, vectorized execution, shared scans, operating directly over compressed data, and SIMD + multi-core execution, which together make scans the better access path in more cases than older cost models assumed; secondary-index probes still win in a region, so the optimizer must still choose between scan and probe rather than defaulting to one. **FLAG CLOSED (2026-07-10, part-2 sweep fix 40)**: the previously 403-blocked PDF now fetches, and the paper's scoped crossover reads verbatim: "the index is preferable when selectivity drops below 0.5−1%" (single-query, column-at-a-time baseline; the threshold rises to ~8% for 10-column groups and falls toward 0.4% under concurrency). The relayed "~1%" claim was directionally right but unscoped — cite the scoped figure, never a bare "~1%". Authorship/venue confirmed earlier (Harvard DASLab + dblp SIGMOD 2017 + ACM DOI); the ACM page itself was also browser-confirmed live 2026-07-10 for the Axelsson-style bot-block reason.
 **Citations**: Kester, M. S., Athanassoulis, M., & Idreos, S. (2017). *Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe?* SIGMOD '17, 715–730. DOI 10.1145/3035918.3064049.
-**Validation Status**: ✅ Authorship/title/venue/DOI verified 2026-06-14 (Harvard DASLab publications page + dblp SIGMOD 2017 + ACM DL listing); ⚠️ the ~1%-selectivity crossover figure NOT confirmed at primary (pages 403'd) — FLAGGED.
+**Validation Status**: ✅ Authorship/title/venue/DOI verified 2026-06-14; ✅ scoped selectivity crossover (0.5–1%, ~8% for 10-column groups, ~0.4% under concurrency) verified at the now-fetchable PDF 2026-07-10 — FLAG closed.
 
 ---
 
 #### Analyzing and Comparing Lakehouse Storage Systems (LHBench, CIDR 2023)
 
-**Authors**: Paras Jain et al. (UC Berkeley / Databricks)
+**Authors**: Paras Jain, Peter Kraft, Conor Power, Tathagata Das, Ion Stoica, Matei Zaharia (UC Berkeley / Stanford / Databricks — full roster verified at the PDF title page 2026-07-10)
 **Date**: 2023 (Conference on Innovative Data Systems Research — CIDR 2023)
 **URL**: https://www.cidrdb.org/cidr2023/papers/p92-jain.pdf
 **Alt URL**: https://github.com/lhbench/lhbench (benchmark code)
@@ -868,9 +863,9 @@ This bibliography consolidates all literature sources from:
 - The independent academic benchmark of the three lakehouse table formats the book tracks (Iceberg / Hudi / Delta Lake), and the external grounding for "metadata processing is where the table formats actually differ" — the lab's compaction/file-count results sit inside the same regime LHBench measures.
 - Book Chapter 8 (table formats), Chapter 9; contextualizes the SDW lab's own first-party benchmarks against a published cross-format baseline.
 
-**Key Findings**: Adapts TPC-DS to the lakehouse setting on AWS EMR across Iceberg, Hudi, and Delta Lake. Headline: Delta Lake ran ~1.4× faster than Hudi and ~1.7× faster than Iceberg on end-to-end TPC-DS queries (vendor-affiliated authorship — Databricks ships Delta, so read the cross-format ordering with that incentive in mind). The large-file-count test (the `store_sales` table split into 10MB files, 1,000→200,000 files) is the more durable contribution: it isolates metadata-processing strategy, with Delta showing ~7×–20× better performance at the 200,000-file extreme. Note this is a 2023 result on the then-current format versions; Iceberg V3/1.11.0 and Hudi have moved since, so cite the *method and the metadata-is-the-differentiator finding*, not the 2023 cross-format ranking as current.
+**Key Findings**: Adapts TPC-DS to the lakehouse setting on AWS EMR across Iceberg, Hudi, and Delta Lake. Headline: Delta Lake ran ~1.4× faster than Hudi and ~1.7× faster than Iceberg on end-to-end TPC-DS queries (vendor-affiliated authorship — Databricks ships Delta, so read the cross-format ordering with that incentive in mind). The large-file-count test (the `store_sales` table split into 10MB files, 1,000→200,000 files) is the more durable contribution: it isolates metadata-processing strategy, with the paper's exact figure: Delta Lake's distributed planning "improves performance by 7–12× for a 200K file table" (p.5 §3.4 verbatim — the entry's former "~7×–20×" appears nowhere in the paper; corrected 2026-07-10). Note this is a 2023 result on the then-current format versions; Iceberg V3/1.11.0 and Hudi have moved since, so cite the *method and the metadata-is-the-differentiator finding*, not the 2023 cross-format ranking as current.
 **Citations**: Jain, P., et al. (2023). *Analyzing and Comparing Lakehouse Storage Systems*. CIDR 2023. cidrdb.org/cidr2023/papers/p92-jain.pdf.
-**Validation Status**: ✅ Verified 2026-06-14 (cidrdb.org CIDR 2023 paper + lhbench GitHub; title/venue/three-format scope/Delta 1.4×–1.7× headline/7×–20× metadata test confirmed via fetch of the CIDR page); author roster beyond lead "Jain" not individually re-verified.
+**Validation Status**: ✅ Verified at the PDF 2026-07-10 (part-2 sweep fix 8): full author roster + Stanford affiliation added; 7–12× metadata figure corrected to paper verbatim; Delta 1.4×/1.7× headline re-confirmed.
 
 ---
 
@@ -1060,7 +1055,7 @@ This bibliography consolidates all literature sources from:
 #### DNB - Cyber Defense Center on Ibis (Multi-Engine Lakehouse)
 
 **Authors**: marimo (vendor-hosted case study; subject is DNB's Cyber Defense Center)
-**Date**: 2026 (verified live 2026-07-08)
+**Date**: 2025-10-14 (post date verified 2026-07-10; site last checked live 2026-07-08)
 **URL**: https://marimo.io/blog/case-study-dnb
 **Evidence Level**: B (named org + named security workload; vendor-hosted — marimo is the notebook vendor in the stack, bias flagged)
 **Relevance**:
@@ -1215,8 +1210,8 @@ This bibliography consolidates all literature sources from:
 
 #### Anyscale Ray Serve - Production AI Deployment Platform
 
-**Authors**: Anyscale
-**Date**: 2024
+**Authors**: Anyscale (Akshay Malik, Edward Oakes, Phi Nguyen)
+**Date**: 2023-09-25 (byline verified 2026-07-10; entry formerly said 2024)
 **URL**: https://www.anyscale.com/blog/tackling-the-cost-and-complexity-of-serving-ai-in-production-ray-serve
 **Evidence Level**: B (Vendor platform with production validation)
 **Relevance**:
@@ -1253,7 +1248,7 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - 10× performance improvement over traditional Hive tables
-- Production CDP validation
+- Private technical-preview release of Iceberg for CDP Data Services (2022) — the page announces a TP, not GA; the 10× figure is a single customer's anecdote ("one of our customers found that Iceberg tables perform 10x times better") (re-scoped 2026-07-10)
 - Iceberg ACID transactions
 
 **Citations**: Chapter 8 Iceberg performance validation
@@ -1337,8 +1332,8 @@ This bibliography consolidates all literature sources from:
 
 #### phData - Data Platform Implementation (Iterative Delivery)
 
-**Authors**: phData Implementation Guide
-**Date**: 2024
+**Authors**: phData (Nick Hauschild)
+**Date**: 2021-11-12 (byline verified 2026-07-10; entry formerly said 2024)
 **URL**: https://www.phdata.io/blog/how-to-implement-a-data-platform/
 **Evidence Level**: C (Vendor opinion blog — iterative/use-case-first delivery argument, no quantitative timeline data)
 **Relevance**:
@@ -1489,12 +1484,11 @@ This bibliography consolidates all literature sources from:
 **Key Findings**:
 - Operational complexity and specialized talent dominate self-managed Kafka TCO (qualitative consensus; specific 45-55% figure is not in this source)
 - Sizing methodology covering partition counts, replication, and broker capacity
-- Infrastructure cost benchmarks for capacity planning
 
 **Citations**: H-IMPL-01 TCO validation, Chapter 7 capacity planning
-**Notes**: **CRITICAL** - Streaming operational cost driver. The "45-55% of TCO" figure has been removed as unsupported by this source. For a quantified reduction claim, Confluent's TCO page cites "up to 40-60% TCO reduction" with managed Kafka.
+**Notes**: **CRITICAL** - Streaming operational cost driver. The "45-55% of TCO" figure has been removed as unsupported by this source. For a quantified reduction claim, Confluent's TCO page cites "up to 40-60% TCO reduction" with managed Kafka. Correction (2026-07-10, part-2 sweep fix 9): the "infrastructure cost benchmarks for capacity planning" finding was dropped — the cited course covers Kafka internals/architecture only and carries no cost or capacity-cost content at all.
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Verified at primary 2026-07-10; cost-benchmark finding removed as unsupported
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1512,21 +1506,18 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^189]
 
 **Key Findings**:
-- 30-50% TCO reduction vs traditional warehouses (original finding)
 - **2025 TCO formula**: TCO = Direct Costs + Engineering/Operational Costs – ROI from AI/ML
-- **Up to 9× lower ETL costs** vs Snowflake (some benchmarks)
-- **15-40% TCO cuts achievable** in 3-6 months through optimization
-- Databricks 57% YoY growth ($2.6B revenue 2024) vs Snowflake 27% YoY ($3.8B revenue 2024)
+- **Up to 9× lower ETL costs** vs Snowflake — Alt URL (dateonic) verbatim "up to 9x lower ETL costs compared to Snowflake"; attribute to dateonic, NOT the Databricks page
+- Databricks page's own current claims (2026-07-10 fetch): "Unity Catalog managed tables accelerate queries up to 20x and cut cost by more than 50%"; "Databricks ran 2.8x faster, at about 3.4x better price/performance"; Snowflake Gen2 "increases cost by up to 35% for I/O bound workloads" — vendor self-claims, cite as such
 - Platform consolidation reduces admin overhead
-- **Counterpoint**: AMN Healthcare achieved 93% lower data lake costs migrating Databricks → Snowflake
 - **Security note**: Databricks lacks storage layer (relies on S3/Azure Blob/GCS); Snowflake has always-on encryption
 
 **Note**: URL updated January 2026 to current comparison pages; TCO varies significantly by workload type
 
 **Citations**: Chapter 1 lakehouse economics
-**Notes**: Lakehouse cost structure validation
+**Notes**: Lakehouse cost structure validation. Correction (2026-07-10, part-2 sweep fix 5): the former 30-50% TCO, 15-40%-in-3-6-months, 57%-vs-27% YoY revenue, and AMN Healthcare 93% counterpoint findings were removed — none appear on the cited Databricks page or the dateonic Alt URL (fetched both); the 9× figure was the only one that verified, at dateonic. If the AMN counterpoint matters for balance, re-source it to its own primary before re-adding.
 
-**Validation Status**: ✅ Active URL
+**Validation Status**: ✅ Both URLs fetched 2026-07-10; figures re-attributed to their actual sources
 
 ---
 
@@ -1606,14 +1597,14 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnotes [^196], [^200]
 
 **Key Findings**:
-- AWS S3 Intelligent-Tiering reports ~35% average storage savings for non-optimized buckets by automatically moving objects between access tiers
-- 30-40% savings range consistent with hot/warm/cold lifecycle patterns
-- Hot/warm/cold tiering mechanics covered; cold/archive tiers (Glacier) offer steeper savings for infrequently accessed data
+- Page verbatim tier savings: "The Infrequent Access tier saves up to 40% on storage costs"; "The Archive Instant Access tier saves up to 68% on storage costs"; Archive and Deep Archive tiers "save up to 95% for rarely accessed objects"
+- Named customer outcomes on the page: Stripe ~30%, Zalando 37%, GRAIL 40%, Shutterstock and Illumina up to 60% — vendor-curated examples, cite as such
+- Hot/warm/cold tiering mechanics covered; cold/archive tiers offer steeper savings for infrequently accessed data
 
 **Citations**: H-COST-09 validation, Chapter 8 tiered storage economics
-**Notes**: **CRITICAL** - Validates tiered storage hypothesis. Re-sourced from placeholder whitepaper URL to the S3 Intelligent-Tiering product page, which is AWS's primary public reference for the ~35% savings figure.
+**Notes**: **CRITICAL** - Validates tiered storage hypothesis directionally. Correction (2026-07-10, part-2 sweep fix 10): the former "~35% average savings for non-optimized buckets" and "30-40% range" findings appear nowhere on the page — replaced with the page's actual up-to-40%/68%/95% tier figures and its named customer percentages. H-COST-09's independent grounding remains the S3 storage-class price-delta derivation (see the "AWS S3 Storage-Class Pricing" entry).
 
-**Validation Status**: ✅ URL updated to S3 Intelligent-Tiering page
+**Validation Status**: ✅ Verified at primary 2026-07-10; savings figures restated page-verbatim
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1621,7 +1612,7 @@ This bibliography consolidates all literature sources from:
 #### Google SRE - Reliability Economics (Exponential Cost of Nines)
 
 **Authors**: Google Site Reliability Engineering Team
-**Date**: 2024
+**Date**: 2017 (book copyright, per the page footer — entry formerly said 2024)
 **URL**: https://sre.google/sre-book/embracing-risk/
 **Evidence Level**: B (Authoritative public text; bracketed placeholder URL corrected — cite as expert-consensus reference, not a quantified production study)
 **Relevance**:
@@ -1732,14 +1723,14 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^245]
 
 **Key Findings**:
-- Databricks, Snowflake, AWS, Google, and Microsoft all support Apache Iceberg as of 2025 (Databricks announced full support in 2025, closing the final major gap)
-- Recommended table format across all major vendors; coverage confirmed by The Register's October 2024 feature announcement roundup
-- Reduces vendor lock-in risk — open standard with cross-platform read/write compatibility
+- Snowflake, AWS, Google, and Cloudera support Apache Iceberg per The Register's Oct 2024 roundup; Databricks added Iceberg support (Managed/Foreign tables via Unity Catalog) in **Public Preview** June 12, 2025 — not GA at announcement
+- Microsoft is the named holdout, not a supporter: the cited Register piece's subheading is "Market rivals settle on open table format, while Microsoft and Databricks go their own way", and its body says "Although Microsoft Fabric provides some support for Iceberg and Hudi by default, Fabric favors Delta and Apache Parquet"
+- Reduces vendor lock-in risk — open standard with cross-platform read/write compatibility, though vendor coverage is broad rather than universal
 
 **Citations**: H-ARCH-01 validation, Chapter 8 vendor support
-**Notes**: Date corrected from 2024 to 2025; full universal support was not achieved until Databricks closed the gap in 2025. Corroborating sources added (The Register Oct 2024, Databricks blog).
+**Notes**: Correction (2026-07-10, part-2 sweep fix 2): the prior "Databricks, Snowflake, AWS, Google, and Microsoft all support" finding contradicted its own cited source — the Register piece explicitly separates Microsoft (Delta-first, partial Iceberg in Fabric) from the settlers, and its settler list is AWS/Cloudera/Google/Snowflake. Databricks support re-scoped to Public-Preview-as-of-2025-06 per the Alt URL 2 announcement. The entry title's "Universal" overstates; kept for cross-reference stability with the overstatement documented here. H-ARCH-01 reads on this: dominance-as-direction holds, universality does not.
 
-**Validation Status**: ✅ Multiple public announcements; date corrected 2026-06-05
+**Validation Status**: ✅ Verified at both Alt URLs 2026-07-10 (part-2 sweep); Microsoft leg corrected
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1890,7 +1881,7 @@ This bibliography consolidates all literature sources from:
 #### Uber - Palette Feature Store for ML
 
 **Authors**: Uber Engineering (Michelangelo Platform)
-**Date**: 2022-2024
+**Date**: 2024-01-18 (post date verified 2026-07-10; entry formerly said 2022-2024)
 **URL**: https://www.uber.com/blog/palette-meta-store-journey/
 **Evidence Level**: B (Production case study with unsupported headline stat; retained claims are qualitative/process)
 **Relevance**:
@@ -1923,22 +1914,21 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^270]
 
 **Key Findings**:
-- 4-year program (2017-2021), ~11 research teams, David Gunning as program manager
+- Development of XAI toolkit for future systems — program page verbatim: "the final delivery will be a toolkit library consisting of machine learning and human-computer interface software modules that could be used to develop future explainable AI systems"
 - Defense and national security focus areas; false positives/negatives have high operational consequences
-- Development of XAI toolkit for future systems
-- Retrospective: Gunning & Aha (2021), *Applied AI Letters*, doi 10.1002/ail2.61
+- 4-year program (2017-2021), ~11 research teams, David Gunning as program manager — attribute these to the retrospective (Gunning & Aha 2021, *Applied AI Letters*, doi 10.1002/ail2.61), NOT the program page, which carries neither the team count, nor Gunning's name, nor the 2017-2021 span (verified 2026-07-10)
 
 **Citations**: Advanced analytics, ML governance, regulatory compliance
-**Notes**: Definitive government source on explainability requirements for security AI
+**Notes**: Definitive government source on explainability requirements for security AI. Correction (2026-07-10, part-2 sweep fix 11): program-metadata claims re-attributed from the DARPA page to the retrospective the entry already lists.
 
-**Validation Status**: ✅ Active URL (verified DARPA official site)
+**Validation Status**: ✅ Verified at primary 2026-07-10; toolkit claim page-verbatim, metadata re-attributed
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### SANS Institute - AI Survey & SOC Automation Research
 
-**Authors**: SANS Institute (Ahmed Abugharbia, Brandon Evans, Chris Crowley)
+**Authors**: 2024 AI Survey — Matt Edmondson, Matt Bromiley; 2025 SOC Survey — Christopher Crowley (SANS Institute; bylines verified at the landing pages 2026-07-10 — the former combined credit was wrong)
 **Date**: 2024-2025 (updated February 2026)
 **URL**: https://www.sans.org/white-papers/sans-2024-ai-survey-ai-growing-role-cybersecurity-lessons-learned-path-forward
 **Alt URL**: https://www.sans.org/white-papers/sans-2025-soc-survey
@@ -2003,7 +1993,7 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - 15+ years of insider threat research program at MITRE, multi-disciplinary InT Lab
-- 47 ATT&CK techniques, 29 sub-techniques for insider threats (MITRE Engenuity Insider Threat Knowledge Base 2.0)
+- 47 ATT&CK techniques, 29 sub-techniques for insider threats — source is the MITRE Engenuity Insider Threat Knowledge Base 2.0 announcement (medium.com/mitre-engenuity/insider-threat-knowledge-base-2-0-more-techniques-new-mitigations-and-the-human-touch-d246f5ef1135, verbatim "47 ATT&CK techniques and 29 sub-techniques"), a distinct property from the cited insiderthreat.mitre.org page, which carries no technique counts (repointed 2026-07-10)
 - Bi-Directional Loyalty (BDL) as key behavioral risk measure
 
 **Citations**: Advanced analytics, insider threat detection, behavioral analytics
@@ -2051,7 +2041,7 @@ This bibliography consolidates all literature sources from:
 - Best Practices Doc footnote [^266]
 
 **Key Findings**:
-- Broad production adoption across major platforms (PySpark, Dremio, Snowflake, Streamlit, VAST, and others per powered_by list)
+- Broad production adoption across major platforms (Apache Spark, Dremio, VAST, ClickHouse, pandas, Polars, and others per powered_by list — Snowflake and Streamlit are no longer on the current list, verified 2026-07-10)
 - Columnar in-memory format eliminates serialization overhead for analytics workloads
 - VAST network telemetry: high-bandwidth path for security investigations
 - High-cardinality features (IP addresses, domains) optimized by columnar layout
@@ -2067,7 +2057,7 @@ This bibliography consolidates all literature sources from:
 #### Champion-Challenger Model Pattern (MLOps Industry Standard)
 
 **Authors**: MLOps Industry Practice (DataRobot, Dataiku, Capital One reference)
-**Date**: 2022-2024
+**Date**: 2020-06-19 (the cited DataRobot post's date, verified 2026-07-10; entry formerly said 2022-2024)
 **URL**: https://www.datarobot.com/blog/introducing-mlops-champion-challenger-models/
 **Evidence Level**: B (Industry methodology, widely adopted)
 **Relevance**:
@@ -2183,7 +2173,7 @@ This bibliography consolidates all literature sources from:
 - KSQL for feature engineering (filtering, enrichment, transformation)
 - Kafka Streams embeds ML into microservices
 - Same preprocessing for training and inference
-- Current 2023: Building real-time ML apps on generative AI with Kafka Streams
+- ~~Current 2023: Building real-time ML apps on generative AI with Kafka Streams~~ (removed 2026-07-10 — the cited page is a single 2018-11-19 Kai Waehner post with no generative-AI content; the other findings verify against it)
 - Production-validated scalable ML workflows
 
 **Citations**: Chapter 7 + Advanced analytics integration, streaming ML architecture
@@ -2212,7 +2202,7 @@ This bibliography consolidates all literature sources from:
 **Key Findings**:
 - Native support for Apache Iceberg tables in Security Lake (February 2024)
 - Automatic centralization from AWS environments, SaaS providers, on-premises
-- Direct query support from Athena, Redshift, Spark, EMR
+- Direct query support from Athena, Redshift, and third-party services — source is the Security Lake user guide (docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html, verbatim "You can also query data by using Amazon Athena, Amazon Redshift…"), NOT the cited announcement or the features page, neither of which mentions the query engines (repointed 2026-07-10; the part-2 sweep's own features-page suggestion was checked and refuted)
 - **OCSF v1.1.0 Observables** for threat intel matching and identity search across environments
 - Note: 3× query / 10× TPS figures are from Amazon S3 Tables (December 2024 announcement), not Security Lake itself
 
@@ -2452,23 +2442,22 @@ This bibliography consolidates all literature sources from:
 **Key Findings**:
 - Provides foundational infrastructure for trillions of AI agents
 - Decentralized registry solving identity, discovery, coordination at scale
-- 1,000+ agents registered via Join39 developer onboarding
-- Builds on Anthropic MCP and Google A2A protocols
+- Builds on Anthropic's Model Context Protocol (MCP) — supported by the companion arXiv paper (see the "NANDA Index in Practice" entry, verified 2026-07-10)
 - Open governance model with modular stack
-- MLflow + NANDA integration (Databricks validation)
 
 **Citations**: Agent infrastructure, security architecture for AI systems
-**Notes**: **CRITICAL** - Security operations will require agent-to-agent coordination. NANDA provides infrastructure layer.
+**Notes**: **CRITICAL** - Security operations will require agent-to-agent coordination. NANDA provides infrastructure layer. Correction (2026-07-10, part-2 sweep fix 16): the "1,000+ agents via Join39", "MLflow + NANDA integration (Databricks validation)", and Google-A2A bullets were removed — none appear on the MIT overview page (browser-checked 2026-07-10; the page is a light group overview) or in the arXiv abstract; the site still advertises the April 2025 summit, so treat its content as stale. Re-add individually if primaries surface.
 
-**Validation Status**: ✅ Active URLs (MIT, arXiv, GitHub)
+**Validation Status**: ✅ MIT page live (browser-verified 2026-07-10; redirects to media.mit.edu/groups/nanda/overview); arXiv leg live
 
 ---
 
 #### AI-Generated Security Parsers - Tenzir MCP Implementation
 
-**Authors**: Tenzir (Matthias Vallentin)
-**Date**: November-December 2025
+**Authors**: Jannis Köhl (Tenzir) — byline browser-verified 2026-07-10; entry formerly credited Vallentin
+**Date**: 2025-08-21 (v0.1 announcement; entry formerly said November-December 2025)
 **URL**: https://tenzir.com/blog/announcing-the-tenzir-mcp-server-ai-generated-ocsf-mappings
+**Alt URL**: https://tenzir.com/blog/ai-generated-integrations-the-end-of-vendor-lock-in (Tenzir MCP Server v0.4.0, 2025-11-10)
 **Evidence Level**: B (Production demonstration, vendor implementation)
 **Relevance**:
 - Automated parser generation
@@ -2477,15 +2466,15 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - AI generates security data parsers / OCSF mappings from log samples
-- Tenzir's announcement describes the generated mappings as "100% schema-conforming" (the earlier "100% hands-off keyboard" quote and the "test suites / deployable packages" claims were NOT in the source — corrected 2026-06-05)
-- Shifts power dynamic from vendors to customers
+- v0.1 announcement (cited URL) describes the generated mappings as "100% schema-conforming"
+- v0.4.0 post (Alt URL, 2025-11-10): "turns a single log sample into a complete, tested, production-ready Tenzir package with both parsing and OCSF mapping—100% hands-off-keyboard" — the "hands-off-keyboard" and "tested, production-ready packages" claims removed 2026-06-05 as unsourced were in THIS later post, not the v0.1 announcement; restored 2026-07-10 with the correct source
+- Shifts power dynamic from vendors to customers ("The integration power dynamic between vendors and security teams just flipped" — v0.4.0 post verbatim)
 - Commoditizes parser development
-- Production deployment validated (December 2025)
 
 **Citations**: AI automation, OCSF integration, parser generation
-**Notes**: Validated in production. Eliminates vendor roadmap dependency for integrations.
+**Notes**: Correction (2026-07-10, part-2 sweep fix 17): re-dated and re-attributed — the cited URL is the v0.1 announcement (2025-08-21, Jannis Köhl), and the former "Production deployment validated (December 2025)" claim was dropped as absent from it. The two-post split resolves the 2026-06-05 correction's puzzle: the strong claims belong to the v0.4.0 post, now cited as Alt URL. Eliminates vendor roadmap dependency for integrations.
 
-**Validation Status**: ✅ Production validated (December 2025)
+**Validation Status**: ✅ Both posts browser-verified at primary 2026-07-10
 
 ---
 
@@ -2521,7 +2510,7 @@ This bibliography consolidates all literature sources from:
 #### Security Data Pipeline Market Guide 2025
 
 **Authors**: Software Analyst Cyber Research (SACR)
-**Date**: February 2025
+**Date**: 2025-04-21 (byline verified at primary 2026-07-10; entry formerly said February 2025)
 **URL**: https://softwareanalyst.substack.com/p/market-guide-2025-the-rise-of-security
 **Evidence Level**: B (Industry analyst report with vendor data)
 **Relevance**:
@@ -2531,7 +2520,7 @@ This bibliography consolidates all literature sources from:
 
 **Key Findings**:
 - Cribl crossed $200M ARR in Feb 2025 (one of fastest to $100M ARR behind only Wiz, HashiCorp, Snowflake)
-- Pipeline pre-ingest filtering achieves 50-70% log volume reduction without losing visibility
+- Log reduction "often uses rules or machine learning to identify redundant events and reduce volume by 80% or more" (page verbatim, general claim); Axoflow-specific "reported log volume reductions of 25–70%, especially for verbose logs like Windows" — the entry's former blended "50-70%" figure appears nowhere on the page (corrected 2026-07-10)
 - SIEM ingestion volume reducible by 80%+ with pipeline processing
 - Security telemetry doubling every ~18 months; organizations use 40-50+ security tools
 - SIEMs evolving from monolithic to modular "query layer" with separate storage
@@ -3024,10 +3013,11 @@ This bibliography consolidates all literature sources from:
 ---
 
 #### SANS AI Security Controls Framework
-**Authors**: SANS Institute
-**Date**: 2025
+**Authors**: SANS Institute (Rob T. Lee)
+**Date**: 2025-03-31
 **URL**: https://www.sans.org/blog/securing-ai-in-2025-a-risk-based-approach-to-ai-controls-and-governance
 **Evidence Level**: B (Expert-consensus practitioner framework; regulatory-audit and logging-requirement claims not in source)
+**Cross-reference**: same source URL as "SANS Institute - Securing AI in 2025: Risk-Based Approach" below — deliberate topic split (this entry: the controls framework; that entry: implementation practices), tiers reconciled to B 2026-07-10 (part-2 sweep fix 39)
 **Relevance**:
 - RQ12: AI governance maturity
 - Security controls for AI agents
@@ -3084,7 +3074,7 @@ This bibliography consolidates all literature sources from:
 - Unity Catalog: Now fully open-source, strong within Databricks ecosystem; offers granular RBAC
 - Polaris: REST-based interoperability, backed by Snowflake and Dremio; offers granular RBAC
 - Gravitino: Emerging with AI/unstructured data features; offers granular RBAC
-- Unity, Polaris, and Gravitino provide fine-grained access control; Nessie focuses on versioning only (source: onehouse.ai comprehensive catalog comparison)
+- Unity, Polaris, and Gravitino provide fine-grained access control (source: onehouse.ai comparison — verbatim "the only catalogs that offer this are Unity, Polaris, and Gravitino"; its evaluated set is Unity/Polaris/DataHub/Glue/Gravitino/Atlan). Nessie's versioning-only focus re-attributed 2026-07-10 to Nessie's own documentation (projectnessie.org — Git-like data versioning is its stated design center); Nessie sits outside the onehouse.ai comparison's evaluated scope (one passing mention as an Iceberg catalog integration)
 - "Catalog wars" intensifying in 2025 with vendor competition
 
 **Citations**: Catalog comparison, governance features, production adoption
@@ -3205,8 +3195,8 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 **Key Findings**:
 - "Governance maturity stands out as the strongest indicator of readiness"
-- About 25% have comprehensive AI security governance
-- Remainder rely on partial guidelines or policies still in development
+- Organizations with comprehensive AI governance policies are nearly twice as likely to report early adoption of agentic AI (46%) vs those with only partial guidelines (25%) or policies still in development (12%) — the entry's former "about 25% have comprehensive governance" mis-scoped the page's 25%, which is the agentic-adoption rate among partial-guideline orgs (corrected 2026-07-10)
+- Survey base: 300 IT and security professionals, conducted online by CSA in Summer 2025
 - Gap between AI adoption pace and governance structure
 
 **Citations**: Governance-readiness correlation, industry benchmarks
@@ -3218,10 +3208,10 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 #### SANS Institute - Securing AI in 2025: Risk-Based Approach
 
-**Authors**: SANS Institute
-**Date**: 2025
+**Authors**: SANS Institute (Rob T. Lee)
+**Date**: 2025-03-31
 **URL**: https://www.sans.org/blog/securing-ai-in-2025-a-risk-based-approach-to-ai-controls-and-governance
-**Evidence Level**: A (SANS Institute - authoritative security training organization)
+**Evidence Level**: B (re-tiered from A 2026-07-10, part-2 sweep fix 39 — a SANS blog post is practitioner-tier under the strict A=peer-reviewed/standards definition, and the same URL was catalogued at B in the "SANS AI Security Controls Framework" entry above; deliberate topic split retained, tiers reconciled)
 **Relevance**:
 - RQ12: AI Governance Maturity Gates
 - Implementation best practices
@@ -3285,7 +3275,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Citations**: ClickHouse performance, production deployment patterns
 **Notes**: Strong validation for ClickHouse in high-scale analytics
 
-**Validation Status**: ✅ Production case study · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (30-40s→<1s, 50M users confirmed). Stale-by-date, not by content.
+**Validation Status**: ✅ Production case study — re-verified at primary 2026-07-10 ("queries over 100M rows that once took 30–40 seconds now return in under a second" page-verbatim, byline 2025-10-21); the former "pre-2025" freshness remnant no longer applied after the 2026-07-09 date correction and was removed (part-2 sweep).
 
 ---
 
@@ -3307,7 +3297,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Citations**: Query engine TCO, performance comparison
 **Notes**: Vendor benchmark but methodology disclosed; cross-validate with independent sources
 
-**Validation Status**: ✅ Published benchmark (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (3-5× cost / 2× faster verbatim). Stale-by-date, not by content.
+**Validation Status**: ✅ Published benchmark (2023-09-06) — re-verified at primary 2026-07-10 ("ClickHouse Cloud is 3-5x more cost-effective than Snowflake" and "over 2x faster" both page-verbatim); the former "(2024)" internal remnant corrected (part-2 sweep).
 
 ---
 
@@ -3370,7 +3360,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 - 50% of world's 15 largest banks using security data lakes
 - **HSBC**: 3× more threat hunts with lower TCO on Databricks Lakehouse
 - Security data lakes emerged to address SIEM limitations and high costs
-- Skills shortage affects security data lake projects
+- ~~Skills shortage affects security data lake projects~~ (removed 2026-07-10 — absent from the cited page; the bank and HSBC figures above verify verbatim)
 
 **Citations**: Enterprise adoption, banking sector case studies
 **Notes**: HSBC case study provides strong production validation
@@ -3397,19 +3387,13 @@ The reading that matters for the architecture argument is the lower-bound caveat
 - 900+ contributors
 - 200+ participating organizations
 - Founded by AWS, Cisco, IBM, Splunk, Broadcom (Symantec)
-- **Schema velocity**: 3 releases in 2025 alone (v1.5.0 Apr, v1.6.0 Aug, v1.7.0 Nov)
-- **v1.7.0** (Nov 2025): Peripheral Activity class, function invocation objects, Windows extensions
-- **v1.6.0**: IAM Analysis Finding class, programmatic credential objects
-- **v1.5.0**: Application Security Posture Finding, live evidence, malware scan objects
-- **v1.4.0** (2025): Unmanned Systems category (drone/ADS-B), Cloud Resource Inventory Info class, 140+ net-new changes
-- **Industry support growing**: 80%+ security professionals view open standards as key requirement
-- **Major vendor adoption**: SentinelOne building OCSF into Security AI platform; AWS Security Lake auto-converts to OCSF
-- **15+ additional organizations**: Cloudflare, DTEX, IBM Security, IronNet, Okta, Rapid7, Salesforce, Securonix, Sumo Logic, Zscaler
+- Latest version at press-release time: v1.3.0 (August 2024) — "The latest version, 1.3.0, released in August 2024" (page verbatim)
+- **Schema velocity** (re-sourced 2026-07-10 to github.com/ocsf/ocsf-schema releases — the press release carries nothing past v1.3.0): 3 releases in 2025 (v1.5.0 Apr, v1.6.0 Aug, v1.7.0 Nov) plus v1.8.0 in March 2026; release dates verified at GitHub 2026-07-09 (see the "OCSF Schema v1.8.0" entry); per-release feature contents live in the GitHub release notes, not re-verified here
 
 **Citations**: OCSF adoption, industry consortium, schema evolution velocity
-**Notes**: **CRITICAL** - 4 schema releases in 2025 demonstrates rapid evolution; now at v1.7.0 (up from v1.3.0 in Aug 2024); expanding beyond traditional security into IoT/drone/cloud asset domains
+**Notes**: Correction (2026-07-10, part-2 sweep fix 1): the "80%+ security professionals" stat, the SentinelOne/AWS-Security-Lake adoption claims, and the "15+ additional organizations" vendor list were removed — none appear on the cited press release or the ocsf.io Alt URL, and no primary was located this pass; re-add individually if a primary turns up. What the press release does verify verbatim: v1.3.0 latest (Aug 2024), "over 900 contributors and 200 participating organizations", and the founder list.
 
-**Validation Status**: ✅ Refreshed February 2026 - v1.7.0 current, 3 releases in 2025
+**Validation Status**: ✅ Verified at primary 2026-07-10 (part-2 sweep); velocity claims re-sourced to GitHub releases
 
 ---
 
@@ -3417,8 +3401,8 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 #### Apache Gravitino - Production Adoption
 
-**Authors**: Datastrato, Apache Foundation
-**Date**: 2025
+**Authors**: Medium account "Office" (summarizes Jerry Shao's talk; entry formerly credited "Datastrato, Apache Foundation")
+**Date**: 2025-08-26
 **URL**: https://medium.com/@office_9948/apache-gravitino-production-ready-unified-metadata-for-enterprise-data-9ba0eb38268b
 **Evidence Level**: B (Community/vendor blog; adopter list partially confirmed via separate sources)
 **Relevance**:
@@ -3429,12 +3413,10 @@ The reading that matters for the architecture argument is the lower-bound caveat
 - Pinterest confirmed adopter (per cited Medium article)
 - ChatSlide: Scaled from 100K to 150K+ users with sub-second query performance (per chatslide.ai/pages/apache-gravitino-data-catalog)
 - **Bilibili**: ~70% reduction in metadata query API response times (per Gravitino "OneMeta" writeup; treat as vendor case study)
-- Geo-distributed architecture for multi-region deployments
-- Supports OAuth2 and HTTPS security
-- Integration with Apache Ranger for policy enforcement
+- Supports OAuth2 and HTTPS security ("OAuth2: Modern web-based authentication for applications and users" — article verbatim)
 
 **Citations**: Multi-catalog management, enterprise adoption
-**Notes**: The Medium source names Pinterest; broader adopter list (Uber, Apple, Intel, eBay, Xiaomi, Cloudflare, AWS, Tencent, Yahoo, Roku TV) requires verification against gravitino.apache.org/blog/gravitino-top-level-project/ before citing.
+**Notes**: The Medium source names Pinterest; broader adopter list (Uber, Apple, Intel, eBay, Xiaomi, Cloudflare, AWS, Tencent, Yahoo, Roku TV) requires verification against gravitino.apache.org/blog/gravitino-top-level-project/ before citing. Correction (2026-07-10, part-2 sweep fix 22): the geo-distributed-architecture and Apache-Ranger-integration bullets were removed — neither appears in the cited Medium article; re-source to gravitino.apache.org docs if needed. Article re-attributed: Medium account "Office", 2025-08-26, summarizing Jerry Shao's talk "Scaling Iceberg Adoption at Pinterest with Gravitino".
 
 **Validation Status**: ✅ Production deployments documented
 
@@ -3453,14 +3435,12 @@ The reading that matters for the architecture argument is the lower-bound caveat
 - Polaris adoption patterns
 
 **Key Findings**:
-- Polaris production-ready for Iceberg (time travel, commit retries, STS credential vending)
-- Snowflake and Dremio commercial offerings prove production readiness
+- Polaris production-ready for Iceberg — "Commercial offerings from Dremio and Snowflake have already proven its production readiness" (page verbatim)
 - Upcoming integrations from ingestion vendors, catalog platforms, storage providers
-- Versions 1.0.0 (Jul 2025), 1.1.0 (Sep 2025), 1.2.0 (Oct 2025) released in 2025
-- Version 1.2.0 focused on governance: fine-grained authorization, event persistence, expanded RBAC (per dremio.com/blog/whats-new-in-apache-polaris-1-2-0/)
+- Version 1.2.0 (Oct 2025) focused on governance: fine-grained authorization, event persistence, expanded RBAC (per dremio.com/blog/whats-new-in-apache-polaris-1-2-0/)
 
 **Citations**: Polaris ecosystem, production readiness
-**Notes**: Validates Polaris for isolation-first architectures. Version release dates sourced from the Dremio "What's New in Polaris 1.2.0" blog, not the ecosystem overview page.
+**Notes**: Validates Polaris for isolation-first architectures. Correction (2026-07-10, part-2 sweep fix 23): the "time travel, commit retries, STS credential vending" parenthetical and the 1.0.0 (Jul 2025) / 1.1.0 (Sep 2025) release dates were removed — none appear on either cited Dremio page; re-source to Polaris release notes (polaris.apache.org) if the version history is needed. Both Dremio pages now carry a "Dremio is now part of SAP" banner (ownership context, live 2026-07-10).
 
 **Validation Status**: ✅ Active development (2025)
 
@@ -3518,7 +3498,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 #### Obsidian Security - 2025 AI Agent Security Landscape
 
 **Authors**: Obsidian Security
-**Date**: 2025
+**Date**: 2025-10-23 (published; page rewritten 2026-06-30)
 **URL**: https://www.obsidiansecurity.com/blog/ai-agent-market-landscape
 **Evidence Level**: B (Security vendor analysis; qualitative guidance, no disclosed benchmarks)
 **Relevance**:
@@ -3526,16 +3506,12 @@ The reading that matters for the architecture argument is the lower-bound caveat
 - Security-specific agent considerations
 
 **Key Findings**:
-- Recommends monitoring MTTD (Mean Time to Detect) as a key operational metric for AI agents
-- Recommends monitoring MTTR (Mean Time to Respond) as an automation effectiveness metric
-- Recommends monitoring false positive rate to avoid alert fatigue
-- Real-time monitoring and anomaly detection essential
-- Integration with existing SIEM/SOAR platforms critical
+- Real-time monitoring and anomaly detection essential (present on the rewritten page)
 
 **Citations**: Agent security metrics, operational guidance
-**Notes**: Security-specific implementation guidance. The blog identifies MTTD, MTTR, and FP rate as metrics to monitor and tune; no specific numeric thresholds are stated in the source.
+**Notes**: Correction (2026-07-10, part-2 sweep fix 24): the page was rewritten 2026-06-30 — after this entry's 2026-06-05 validation — and the MTTD/MTTR/false-positive-rate metric recommendations and the SIEM/SOAR-integration guidance no longer appear anywhere on it; those bullets were removed rather than left asserting content the live source no longer carries. If the metric guidance matters, cite an archive.org snapshot of the pre-rewrite page instead.
 
-**Validation Status**: ✅ Active analysis (2025)
+**Validation Status**: ⚠️ Page rewritten 2026-06-30; re-verified against current text 2026-07-10 — most former findings no longer on live page
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -3555,16 +3531,13 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 **Key Findings**:
 - Analyzed 330 trillion security observations from 10,000+ organizations
-- Reduced to 8.6 million alerts (99.999% noise reduction)
-- Aug-Oct 2025: 116 trillion raw data points → 20 trillion analyzed observations
-- Supports OCSF for unified data normalization
-- Multi-tenant portal with risk remediation guidance
-- Aurora Endpoint Security launched 2025; Sevco Security acquired Feb 2026
+- "Reduced 330 trillion raw observations down to 8.6 million alerts — a noise reduction rate of more than 99.99999%" (page verbatim, seven nines — the entry's prior 99.999% understated Arctic Wolf's own figure; corrected 2026-07-10)
+- UpSight Security acquired (Alt URL verbatim: "Arctic Wolf acquired UpSight Security, accelerating our roadmap with predictive, on-device AI capabilities")
 
 **Citations**: MSSP architecture, multi-tenant patterns
-**Notes**: Original product page URL (403) replaced with 2025 Security Operations Report; validates multi-tenant at massive scale
+**Notes**: Original product page URL (403) replaced with 2025 Security Operations Report; validates multi-tenant at massive scale. Correction (2026-07-10, part-2 sweep fix 4): the "116T→20T (Aug-Oct 2025)", OCSF-normalization, and multi-tenant-portal bullets were removed — none appear on the primary or Alt URL; and the former "Sevco Security acquired Feb 2026" claim was replaced with UpSight (the Alt URL names UpSight, not Sevco — re-add Sevco only with its own primary).
 
-**Validation Status**: ✅ Updated February 2026 - 2025 Security Operations Report
+**Validation Status**: ✅ Verified at primary + Alt URL 2026-07-10; noise-reduction figure restated page-verbatim
 
 ---
 
@@ -3575,16 +3548,16 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Authors**: DEV Community, DuckDB Labs
 **Date**: 2024-2025 (updated February 2026)
 **URL**: https://duckdb.org/2025/09/16/announcing-duckdb-140
+**Alt URL**: https://duckdb.org/2024/06/03/announcing-duckdb-100 (v1.0.0 announcement — source for the v1.0 facts below)
 **Evidence Level**: B (Community analysis, official release notes)
 **Relevance**:
 - RQ7: Isolation-first performance
 - Edge/embedded analytics
 
 **Key Findings**:
-- Version 1.0.0 released June 3, 2024 (codename "Snow Duck")
-- Stable on-disk storage format with backward compatibility
-- Millions of monthly downloads
-- Used at Facebook, Google, Airbnb
+- Version 1.0.0 released June 3, 2024, "codename 'Snow Duck' (anas nivis)" (v1.0.0 announcement verbatim; the v1.4.0 page's release table lists the same 1.0.x line under the Latin "Nivis")
+- Stable on-disk storage format: "DuckDB files created with DuckDB 1.0.0 will be compatible with future DuckDB versions" (v1.0.0 announcement verbatim)
+- "Download counts are in the millions each month, and download traffic just for extensions is upwards of four terabytes each day" (v1.0.0 announcement verbatim)
 - **v1.4.0 LTS** (September 16, 2025): First Long-Term Support release, 1-year support window
 - **Iceberg write support** added in v1.4.0 (copy data from DuckDB to Iceberg)
 - In-memory checkpointing enables 5-10× performance improvements for some queries
@@ -3593,7 +3566,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 - **DuckLake**: ACID-compliant lakehouse format planned for v1.0 in 2026
 
 **Citations**: DuckDB production readiness, adoption metrics, Iceberg integration
-**Notes**: v1.4.0 LTS + Iceberg write support validates DuckDB as serious lakehouse component; DuckLake may create new architecture options for isolated SOC deployments
+**Notes**: v1.4.0 LTS + Iceberg write support validates DuckDB as serious lakehouse component; DuckLake may create new architecture options for isolated SOC deployments. Correction (2026-07-10, part-2 sweep fix 25): the composite was split — v1.0 facts re-sourced to the v1.0.0 announcement (added as Alt URL, verified 2026-07-10) rather than the v1.4.0 page that doesn't carry them; the "Used at Facebook, Google, Airbnb" claim was removed (on neither announcement; no primary located).
 
 **Validation Status**: ✅ Refreshed February 2026 - v1.4.0 LTS current
 
@@ -3604,9 +3577,9 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 The following papers have been identified for future analysis:
 
-#### Hyperscan: A Fast Multi-pattern Regex Matcher
+#### Hyperscan: A Fast Multi-pattern Regex Matcher for Modern CPUs
 
-**Authors**: Wang Xiang, Hong Cheng, Chang Yang, Park Jinseon, Langdale Geoff, Hu Jianbo, Zhu Heqing (Intel Labs et al.)
+**Authors**: Xiang Wang, Yang Hong, Harry Chang, KyoungSoo Park, Geoff Langdale, Jiayu Hu, Heqing Zhu (Intel / KAIST — roster corrected 2026-07-10 from a garbled name-order list; verified vs NSDI '19 listing, pp. 631-648)
 **Date**: 2019
 **URL**: https://www.usenix.org/conference/nsdi19/presentation/wang-xiang
 **Evidence Level**: A (Peer-reviewed, USENIX NSDI '19)
@@ -3628,12 +3601,13 @@ The following papers have been identified for future analysis:
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
-#### DBSP: Incremental Computation for Streaming Databases
+#### DBSP: Automatic Incremental View Maintenance for Rich Query Languages
 
-**Authors**: Academic paper
-**Date**: TBD
-**URL**: https://github.com/feldera/feldera (implementation)
-**Evidence Level**: A (Academic research - pending verification)
+**Authors**: Mihai Budiu, Tej Chajed, Frank McSherry, Leonid Ryzhyk, Val Tannen (verified at the PVLDB PDF 2026-07-10; entry formerly said "Academic paper"/"TBD")
+**Date**: 2023 (PVLDB 16(7): 1601-1614; VLDB 2023, Vancouver, August 2023)
+**URL**: https://www.vldb.org/pvldb/vol16/p1601-budiu.pdf
+**Alt URL**: https://github.com/feldera/feldera (implementation)
+**Evidence Level**: A (Peer-reviewed, PVLDB)
 **Relevance**:
 - Streaming database patterns
 - Incremental computation
@@ -3689,19 +3663,20 @@ from the Second Brain entry pending the freshness sweep.
 
 ### Academic & Peer-Reviewed
 
-#### Matryoshka: Semantic-Aware Log Parsing
+#### Matryoshka — Semantic-Aware Parsing for Security Logs
 
-**Authors**: Julien Piet (UC Berkeley EECS)
-**Date**: 2024
+**Authors**: Julien Piet, Vivian Fang, Rishi Khare, Scott Coull, Vern Paxson, Raluca Ada Popa, David Wagner (UC Berkeley + Google — full roster verified at arXiv 2026-07-10; entry formerly credited Piet alone with the informal "Log Parsing" title)
+**Date**: 2025 (arXiv 2506.17512; entry formerly said 2024)
 **URL**: https://people.eecs.berkeley.edu/~julien.piet/matryoshka.pdf
+**Alt URL**: https://arxiv.org/abs/2506.17512
 **Evidence Level**: A (peer-reviewed academic research)
 **Relevance**:
 - Semantic-aware parsing methodology directly applicable to Zeek → OCSF transformation
 - Book Chapter 8 (OCSF mapping), Appendix F (mapping implementation)
 - Grounds the parsing-fidelity argument that field mapping is a semantic problem, not a syntactic one
 
-**Citations**: Piet, J. (2024). *Matryoshka: Semantic-Aware Log Parsing*. UC Berkeley EECS.
-**Validation Status**: ✅ Active URL (verified 2026-06-05)
+**Citations**: Piet, J., Fang, V., Khare, R., Coull, S., Paxson, V., Popa, R.A., Wagner, D. (2025). *Semantic-Aware Parsing for Security Logs*. arXiv:2506.17512.
+**Validation Status**: ✅ Verified at arXiv 2026-07-10 (part-2 sweep fix 29): title, seven-author roster, and affiliations corrected
 
 ---
 
@@ -3734,7 +3709,7 @@ from the Second Brain entry pending the freshness sweep.
 - Research prototype, not production-ready (label accordingly)
 
 **Citations**: Zeng, X., Meng, R., Prammer, M., McKinney, W., Patel, J. M., Pavlo, A., & Zhang, H. (2025). *F3: The Open-Source Data File Format for the Future*. Proc. ACM Manag. Data, 3(4). **DOI: 10.1145/3749163** (verified resolves to F3 at ACM DL, 2026-06-13).
-**Validation Status**: ✅ Active URL (verified 2026-06-05); DOI added + venue/author list re-confirmed 2026-06-13. Note: the often-quoted "~150KB WebAssembly decoder" size is a secondary-source (Medium) figure — the paper describes the embedded decoder as "minimal storage (kilobytes), ~0.001% overhead" rather than fixing a specific 150KB number; cite it as "kilobytes / negligible overhead."
+**Validation Status**: ✅ Active URL (verified 2026-06-05); DOI added + venue/author list re-confirmed 2026-06-13. Correction (2026-07-10, part-2 sweep fix 30 — the 2026-06-13 note above had it inverted): the paper itself fixes the decoder size verbatim — "Wasm binary size for the two custom encodings is approximately 150 KB—negligible compared to the achieved size reduction" (verified at the SIGMOD 2025 PDF; full-text grep finds no "0.001%" anywhere in the paper). Cite ~150 KB as paper-primary; the "~0.001% overhead" phrasing is what has no paper support.
 
 ---
 
@@ -3790,7 +3765,7 @@ from the Second Brain entry pending the freshness sweep.
 
 #### Ursa: A Lakehouse-Native Data Streaming Engine for Kafka (StreamNative, PVLDB 2025)
 
-**Authors**: Guo et al. (StreamNative)
+**Authors**: Matteo Merli, Sijie Guo, Penghui Li, Hang Chen, Neng Lu (StreamNative — roster verified at the PVLDB PDF 2026-07-10; entry formerly said "Guo et al.")
 **Date**: 2025 (PVLDB Vol. 18(12):5184-5196; VLDB 2025 Industry Track — Best Industry Paper)
 **URL**: https://www.vldb.org/pvldb/vol18/p5184-guo.pdf
 **DOI**: 10.14778/3750601.3750636
@@ -3804,7 +3779,7 @@ from the Second Brain entry pending the freshness sweep.
 - Kafka-compatible engine that writes topics directly to open lakehouse tables (Apache Iceberg or Delta Lake) on object storage — leaderless, no disk-based broker storage, no external connectors
 - ~5 GB/s sustained publish and consume throughput across tested configurations (§7.1)
 - Production field measurement: infrastructure spend ≈ 5% of a comparably sized Kafka stack (§7.5, two years continuous production on StreamNative Cloud across AWS/GCP/Azure)
-- Benchmark headline: up to 10× infrastructure-cost reduction; Table 1/§8.2 report 92% reduction vs Kafka-Disk (~8% of cost) and 78% vs Kafka-TS (~22%). The ~5% production figure and the 10× benchmark headline are distinct numbers, catalogued separately
+- Benchmark headline: up to 10× infrastructure-cost reduction; Figure 10 reports 92% reduction vs Kafka-Disk (~8% of cost) and 78% vs Kafka-TS (~22%) (figure reference corrected from Table 1, 2026-07-10). The ~5% production figure and the 10× benchmark headline are distinct numbers, catalogued separately
 - Object storage's internal replication removes Ursa's need to replicate across zones (vs Kafka keeping three replicas)
 
 **Citations**: H-ARCH streaming↔lakehouse convergence; RQ11 ingest-layer evidence — the "topics ARE Iceberg tables" pattern removes the connector hop between the detection pipeline and the security data lake
@@ -3829,7 +3804,7 @@ from the Second Brain entry pending the freshness sweep.
 - Digital-artifact / offense-defense inferred matrix; semantic compliance mapping
 
 **Citations**: MITRE. *D3FEND: A Knowledge Graph of Cybersecurity Countermeasures*. https://d3fend.mitre.org/
-**Notes**: A glaring prior gap — absent from this bibliography despite being central to the current grounding research. *Version-line note (2026-06-05): public WebSearch confirms the v1.0 (Jan 2025) launch and the v1.3.0 (Dec 2025) OT line; the prior "v1.4.0 line" annotation (from the project1 reference_d3fend_data_api memory note, citing d3fend.ttl 1.4.0) was not reconfirmed against the changelog in this pass — verify v1.4.0 vs v1.3.0 against d3fend.mitre.org/changelog before quoting a version. FLAGGED for Jeremy.*
+**Notes**: A glaring prior gap — absent from this bibliography despite being central to the current grounding research. *Version-line note (2026-06-05, FLAG closed 2026-07-10): the live d3fend.mitre.org version badge reads **v1.4.0** (fetch-confirmed in the part-2 sweep), reconciling the prior tension — v1.3.0 (Dec 2025) carried the OT extension, and v1.4.0 is now current, consistent with the project1 reference_d3fend_data_api note. Quote v1.4.0 as current.*
 **Validation Status**: ✅ Active URL (verified 2026-06-05); v1.0/OT milestones verified via WebSearch; exact current version line needs a changelog check
 
 ---
@@ -3857,11 +3832,11 @@ from the Second Brain entry pending the freshness sweep.
 **URL**: https://www.securecontrolsframework.com/
 **Evidence Level**: C (framework; independent validation advised)
 **Relevance**:
-- 1,200+ controls mapped to 150+ compliance frameworks
+- "1,500+ Controls across 34 domains" mapped to "200+ Laws, regulations & frameworks" (site verbatim, SCF v2026.2 — refreshed 2026-07-10 from the stale 1,200+/150+ figures)
 - D3FEND ↔ SCF control mapping; compliance-control reconciliation
 
 **Citations**: Secure Controls Framework Council. *Secure Controls Framework*. https://www.securecontrolsframework.com/
-**Validation Status**: ✅ Active URL (verified 2026-06-05)
+**Validation Status**: ✅ Verified at primary 2026-07-10 (counts refreshed to v2026.2)
 
 ---
 
@@ -3991,7 +3966,7 @@ from the Second Brain entry pending the freshness sweep.
 **Evidence Level**: B (widely-adopted community/defense ontology suite with an arXiv descriptive paper; not itself an ISO/IEC standard — proposed as a candidate standard mid-level ontology, so A is not yet warranted)
 **Relevance**:
 - The mid-level link in the grounding chain D3FEND → CCO → BFO referenced in the book appendix
-- BFO-aligned suite of eleven+ ontologies (extends BFO downward toward domains); used across defense/intelligence for interoperability and automated reasoning
+- BFO-aligned suite of exactly eleven ontologies (page verbatim "a widely-used suite of eleven ontologies"; latest release v2.1, April 2026 — refreshed 2026-07-10); used across defense/intelligence for interoperability and automated reasoning
 - The reusable middle layer the D3FEND-to-BFO grounding routes through rather than mapping D3FEND straight to a top-level ontology
 
 **Citations**: Jensen, M., et al. *The Common Core Ontologies* (arXiv:2404.17758). CUBRC, Inc. CCO open-source distribution.
@@ -4084,18 +4059,18 @@ from the Second Brain entry pending the freshness sweep.
 
 ---
 
-#### Kafka to Iceberg: A Comparison of 9 Solutions — Tom Scott (Streambased)
+#### The 9 Ways to Move Data Kafka -> Iceberg — Tom Scott (Streambased)
 
 **Authors**: Tom Scott (Streambased)
 **Date**: 2025-10-20 (actual publication date; catalogued "October 2024" corrected 2026-07-09, verified at primary)
-**URL**: https://blog.streambased.io/
+**URL**: https://blog.streambased.io/p/the-9-ways-to-move-data-kafka-iceberg
 **Evidence Level**: B (practitioner analysis)
 **Relevance**:
-- Streaming-lakehouse architecture; zero-copy vs copy-based trade-offs across Confluent, Redpanda, AutoMQ, Streambased, Aiven, StreamNative, Bufstream, Apache Fluss
+- Streaming-lakehouse architecture; zero-copy vs copy-based trade-offs. The article's actual 9: Kafka Connect, Redpanda Iceberg Topics, Confluent TableFlow, WarpStream TableFlow, AutoMQ Table Topics, Bufstream, Aiven Iceberg Topics, StreamNative Ursa, Streambased (verified at the article 2026-07-10 — the entry's former list wrongly included Apache Fluss and omitted Kafka Connect and WarpStream)
 - Chapter 9 (Kafka → Iceberg integration patterns)
 
-**Citations**: Scott, T. (2024). *Kafka to Iceberg: A Comparison of 9 Solutions*. ZeroCopy Blog, Streambased.
-**Validation Status**: ✅ Active URL (verified 2026-06-05)
+**Citations**: Scott, T. (2025). *The 9 Ways to Move Data Kafka -> Iceberg*. Streambased blog.
+**Validation Status**: ✅ Verified at the article 2026-07-10 (part-2 sweep fix 31): URL repointed from blog root to the article; title and solution list corrected
 
 ---
 
@@ -4132,45 +4107,46 @@ from the Second Brain entry pending the freshness sweep.
 #### Building AI for Cyber Defenders + Claude-Assisted Intrusion Report — Anthropic
 
 **Authors**: Anthropic
-**Date**: 2024-2025
+**Date**: 2025 (intrusion report published Nov 13, 2025 — the entry's former "November 2024" was wrong; corrected 2026-07-10)
 **URL**: https://www.anthropic.com/research
+**Alt URL**: https://www.anthropic.com/news/disrupting-AI-espionage (the GTG-1002 intrusion report)
 **Evidence Level**: B (vendor research, named publications)
 **Relevance**:
-- "Building AI for Cyber Defenders"; the November 2024 report on a state-sponsored actor using Claude for a largely-autonomous intrusion (required human assistance at 4+ stages)
+- "Building AI for Cyber Defenders"; the November 13, 2025 report on a state-sponsored actor using Claude for a largely-autonomous intrusion — page verbatim: "human intervention required only sporadically (perhaps 4-6 critical decision points per hacking campaign)"
 - Validates "AI amplification, not replacement"; AI threat-intelligence reference
 
-**Citations**: Anthropic (2024-2025). *Building AI for Cyber Defenders*; *Disrupting AI-orchestrated cyber operations*. anthropic.com/research
-**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+**Citations**: Anthropic (2025). *Building AI for Cyber Defenders*; *Disrupting AI-orchestrated cyber operations*. anthropic.com/news/disrupting-AI-espionage
+**Validation Status**: ✅ Verified at primary 2026-07-10 (part-2 sweep fix 32): date corrected, report URL added
 
 ---
 
-#### We've Been Thinking About AI All Wrong / ITEM Framework — Daniel Miessler
+#### Business AI Is the Automation of Intelligence Tasks / ITEM Framework — Daniel Miessler
 
 **Authors**: Daniel Miessler
-**Date**: 2025
+**Date**: 2024-07-29 (the post was retitled and is dated 2024-07-29 at the live page, verified 2026-07-10; entry formerly said 2025)
 **URL**: https://danielmiessler.com/blog/weve-been-thinking-about-ai-all-wrong
 **Evidence Level**: C (practitioner blog; anti-hype perspective)
 **Relevance**:
 - ITEM Framework (Knowledge, Intelligence, Speed, Accuracy, Cost) for intelligence-task automation
 - Realistic AI-adoption expectations for security operations; AI-maturity hypothesis input
 
-**Citations**: Miessler, D. (2025). *We've Been Thinking About AI All Wrong*; ITEM Framework. danielmiessler.com.
+**Citations**: Miessler, D. (2024). *Business AI Is the Automation of Intelligence Tasks* (formerly *We've Been Thinking About AI All Wrong*); ITEM Framework. danielmiessler.com.
 **Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
 
 ---
 
-#### We Hijacked a Claude Skill and the Weapon is a PDF — Josh Devon
+#### How We Hijacked a Claude Skill with an Invisible Sentence — Josh Devon
 
-**Authors**: Josh Devon (Secure Trajectories)
-**Date**: October 2024
-**URL**: https://securetrajectories.substack.com
+**Authors**: Josh Devon (Secure Trajectories, publication now at Sondera)
+**Date**: October 20, 2025 (the entry's former "October 2024" was implausible — it predates Claude Skills; corrected 2026-07-10)
+**URL**: https://blog.sondera.ai/p/claude-skill-hijack-invisible-sentence
 **Evidence Level**: B (independent security research, published)
 **Relevance**:
-- PDF-based prompt injection against AI agents (Claude Skills); maps to MITRE ATLAS AML.T0080 (context poisoning)
+- PDF-based prompt injection against AI agents (Claude Skills) via invisible/white-on-white text; maps to MITRE ATLAS AML.T0080 (context poisoning)
 - AI-agent security vulnerabilities and defenses
 
-**Citations**: Devon, J. (2024). *We Hijacked a Claude Skill and the Weapon is a PDF*. Secure Trajectories.
-**Validation Status**: ⏳ Carried from Second Brain; re-verify in sweep
+**Citations**: Devon, J. (2025). *How We Hijacked a Claude Skill with an Invisible Sentence*. Secure Trajectories / Sondera.
+**Validation Status**: ✅ Located at the moved publication 2026-07-10 (part-2 sweep fix 33): securetrajectories.substack.com 301s to blog.sondera.ai; article URL, live title, and date corrected
 
 ---
 
@@ -4192,7 +4168,7 @@ from the Second Brain entry pending the freshness sweep.
 #### Ryan Stillions — The DML (Detection Maturity Level) Model
 
 **Authors**: Ryan Stillions
-**Date**: 2014 (blog-published, May 2014)
+**Date**: 2014-04 (URL path indicates April 2014; entry previously said May 2014 — exact day unconfirmed, Blogger page is JS-shelled to fetchers)
 **URL**: https://ryanstillions.blogspot.com/2014/04/the-dml-model_21.html
 **Evidence Level**: C (practitioner blog-published conceptual model; widely cited in the detection-engineering community but not peer-reviewed or a standards document — cite as a framing model, not as an empirical result)
 **Relevance**:
@@ -4344,18 +4320,18 @@ fetched and confirmed live, and each claim checked against the primary page (202
 
 ---
 
-#### Using the NANDA Index Architecture in Practice
+#### Using the NANDA Index Architecture in Practice: An Enterprise Perspective
 
 **Authors**: Sichao Wang, Ramesh Raskar (MIT Media Lab), Mahesh Lambe, Pradyumna Chari, Rekha Singhal, Shailja Gupta, Rajesh Ranjan, Ken Huang
 **Date**: August 5, 2025
 **URL**: https://arxiv.org/abs/2508.03101
 **Evidence Level**: B (preprint, not peer-reviewed; MIT-affiliated)
 **Relevance**:
-- The actual NANDA primary source: agent discovery, authentication, capability attestation (Agent-Facts), cross-protocol interoperability (MCP/A2A/NLWeb) for an "Internet of Agents"
+- The actual NANDA primary source: agent discovery, authentication, capability attestation (AgentFacts — spelling per the paper), cross-protocol interoperability (MCP/A2A/NLWeb) for an "Internet of Agents"
 - Chapter 12 (agent-native architecture) — as infrastructure, not a SOC-automation benchmark
 
 **⚠️ VERIFICATION (2026-06-05)**: the "≈98.7% SOC automation" figure attached to NANDA across the book (ch12) and the website essay ("The 98.7% Solution") is **NOT in this paper** and no primary source for it could be found — NANDA is agent-internet infrastructure, not a SOC system, and the abstract reports no percentage metrics. Cite this paper for the architecture only; the 98.7% figure needs a real source or should be dropped. FLAGGED for Jeremy.
-**Citations**: Wang, S., Raskar, R., et al. (2025, Aug 5). *Using the NANDA Index Architecture in Practice*. arXiv:2508.03101.
+**Citations**: Wang, S., Raskar, R., et al. (2025, Aug 5). *Using the NANDA Index Architecture in Practice: An Enterprise Perspective*. arXiv:2508.03101.
 **Validation Status**: ✅ Active (verified 2026-06-05); ⚠️ the 98.7% claim is unsupported
 
 ---
@@ -4370,7 +4346,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 - The current Splunk picture (the book's Splunk analysis is on the 2024 product): Federated Search GA, "core pillar of the Cisco Data Fabric," SPL2, BYO catalogs
 - Chapter 6 (when Splunk wins / federation)
 
-**Key Findings**: Splunk Cloud Platform 10.4 + Enterprise 10.4 ship Federated Search (search distributed data in place across hybrid/multi-cloud); Federated Search for Snowflake reaches GA July 2026; bundles Splunk AI Assistant 2.0.
+**Key Findings**: Splunk Cloud Platform 10.4 + Enterprise 10.4 ship Federated Search — "a core pillar of the Cisco Data Fabric powered by the Splunk Platform" (page verbatim) — with SPL2 and BYO-catalog support; bundles Splunk AI Assistant 2.0. (The former "Federated Search for Snowflake GA July 2026" clause was removed 2026-07-10 — Snowflake is unmentioned on the cited post; re-source separately if a Snowflake-specific citation is wanted.)
 **Citations**: Kazi, A., Corpora, M. (2026, May 18). *Splunk Cloud Platform 10.4 and Enterprise 10.4: Federated Search*. Splunk.
 **Validation Status**: ✅ Active (verified 2026-06-05)
 
@@ -4392,20 +4368,19 @@ fetched and confirmed live, and each claim checked against the primary page (202
 
 ---
 
-#### Apache Iceberg 1.11.0 — Release (V3 stabilization)
+#### Apache Iceberg 1.11.0 — Release
 
-**Authors**: Apache Iceberg project (Apache Software Foundation)
-**Date**: May 19, 2026
+**Authors**: Alex Stephen & Talat Uyarer (Google, Lakehouse team — bylines verified at the post 2026-07-10)
+**Date**: May 27, 2026 (post date verified at primary; entry formerly said May 19)
 **URL**: https://opensource.googleblog.com/2026/05/announcing-apache-iceberg-1110.html
 **Alt URL**: https://iceberg.apache.org/releases/ (official releases index; 1.11.0 is latest)
 **Evidence Level**: A (official ASF release)
 **Relevance**:
-- The latest Iceberg release; matters because it is where the V3 feature set (deletion vectors, Variant, geospatial types, nanosecond timestamps) moves from experimental to stable defaults — the practical line between "V3 spec exists" and "V3 is what you get". Pairs with the Iceberg-v3-spec entry above.
-- Chapter 9 (format war); user's top format-war tracking priority
+- The latest Iceberg release. Pairs with the Iceberg-v3-spec entry above; Chapter 9 (format war); user's top format-war tracking priority.
 
-**Key Findings**: 1.11.0 (2026-05-19) is the release that matures the V3 spec — all V3 features (manifest-list encryption, deletion vectors, Variant, geospatial geometry/geography, nanosecond timestamps) now require format-version-3 tables and are stabilized rather than experimental. Predecessor 1.10.0 (2025-09-11) was the first release to "close" the V3 table spec; Snowflake reached Iceberg-v3 GA 2026-05-07 (catalog-side adoption, separate from the engine release).
-**Citations**: Apache Iceberg (2026, May 19). *Announcing Apache Iceberg 1.11.0*. Google Open Source Blog / iceberg.apache.org/releases.
-**Validation Status**: ✅ Active (verified 2026-06-05 via WebSearch — official release date and V3-stabilization framing confirmed across Google OSS Blog + Dremio + Snowflake release notes; WebFetch of iceberg.apache.org/releases confirms 1.11.0 is the current latest tag)
+**Key Findings**: What the cited Google post actually covers (verified 2026-07-10): support for Apache Spark 4.1 and Apache Flink 2.1; "the REST catalog learns to plan scans server-side, shifting metadata work off the query engine"; built-in table encryption (envelope encryption, KMS integration); a new File Format API; and an SQL UDF specification. Separately sourced context, NOT from this post: predecessor 1.10.0 (2025-09-11) was the first release to "close" the V3 table spec, and Snowflake reached Iceberg-v3 GA 2026-05-07 (catalog-side adoption).
+**Citations**: Stephen, A., Uyarer, T. (2026, May 27). *Announcing Apache Iceberg 1.11.0*. Google Open Source Blog / iceberg.apache.org/releases.
+**Validation Status**: ✅ Verified at the post 2026-07-10 (part-2 sweep fix 35): the entry's former "V3 stabilization / features now require format-version-3" framing appears nowhere in the cited post and was replaced with the post's actual contents; date and bylines corrected
 
 ---
 
@@ -4419,7 +4394,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 - The standards-tier step-change for OCSF: in December 2025 ITU member states unanimously supported OCSF for ratification as an ITU X-series ("x.***") international standard, slated for June 2026. This moves OCSF from an industry-consortium schema (its Linux Foundation status, already catalogued) toward a formally ratified international standard that governments fold into national cyber policy.
 - Chapter 8 (OCSF / schema standards); strengthens the "OCSF as lingua franca" thread the book and the crosswalk corpus track (cite alongside the bearish-on-lingua-franca caveat — ITU ratification is governance momentum, not field-level adoption).
 
-**Key Findings**: ITU member states unanimously supported OCSF for ratification as an international standard (Dec 2025); ratification as an ITU x.*** standard slated by June 2026; the article frames standardization as "a global necessity" governments will incorporate into national cybersecurity policy. The supporting standardization claim is corroborated by DevOps.com's republication ("Future Proofing the Foundation for AI-Ready Security Operations").
+**Key Findings**: ITU member states unanimously supported OCSF for ratification as an international standard (Dec 2025); ratification as an ITU x.*** standard slated by June 2026; the article frames standardization as "a global necessity" governments will incorporate into national cybersecurity policy. The supporting standardization claim is corroborated by DevOps.com's republication ("Future Proofing the Foundation for AI-Ready Security Operations"). Cross-source date note (2026-07-10): this post states v1.8.0 "released March 16th, 2026" — two days off the authoritative GitHub release timestamp (2026-03-18, per github.com/ocsf/ocsf-schema/releases); keep the bibliography's v1.8.0 entry date (March 18) and treat this post's date as the outlier.
 **Citations**: Wallace, R. (2026, Mar 24). *OCSF Achieves ITU Support: Powering AI-Ready Security Operations*. AWS Open Source Blog.
 **Validation Status**: ✅ Active (verified 2026-06-05 via WebFetch of the AWS post — date, author, Dec-2025 ITU member-state support, and June-2026 ratification timeline all confirmed on the page)
 
@@ -4427,7 +4402,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 
 #### MITRE D3FEND for OT — Operational Technology Extension (v1.3.0)
 
-**Authors**: MITRE (D3FEND project; funded by NSA and OUSD)
+**Authors**: MITRE (D3FEND project; funded by NSA and the Office of the Under Secretary of War for Acquisition & Sustainment — the Alt URL's verbatim funder title post-rename, verified 2026-07-10; formerly "OUSD")
 **Date**: December 16, 2025 (OT extension; shipped in the D3FEND v1.3.0 release line, December 2025)
 **URL**: https://www.mitre.org/news-insights/news-release/mitre-extends-d3fend-ontology-operational-technology-cybersecurity
 **Alt URL**: https://d3fend.mitre.org/domain/ot/
@@ -4436,9 +4411,9 @@ fetched and confirmed live, and each claim checked against the primary page (202
 - Extends the D3FEND defensive ontology (already catalogued for the OCSF↔D3FEND grounding work) to cyber-physical / industrial-control-system defense — relevant to the OT-estate anecdotes and the isolation-first / OT thread. The OT domain is a distinct, separately-citable artifact from the base ATT&CK-mapped enterprise ontology.
 - Chapter 8/grounding work; complements the existing "MITRE D3FEND Framework & Ontology" entry, which now reflects the v1.0 (2025-01-16) → v1.3.0 (Dec 2025) line.
 
-**Key Findings**: MITRE extended D3FEND to OT on 2025-12-16, building a structured knowledge base for defending cyber-physical systems; the v1.3.0 release (Dec 2025) contains 267 defensive techniques across seven tactical categories and includes the OT extension, with additional ICS artifacts and implementation guidance expected through 2026. D3FEND remains built on OWL 2 DL with Core Classes aligning to upper ontologies.
+**Key Findings**: MITRE extended D3FEND to OT on 2025-12-16, building a structured knowledge base for defending cyber-physical systems, with additional ICS artifacts and implementation guidance expected through 2026. The "267 defensive techniques across seven tactical categories", "v1.3.0", and OWL-2-DL details are secondary-coverage figures (Industrial Cyber et al.), NOT on the cited MITRE news release or the d3fend.mitre.org/domain/ot Alt URL — cite them to the secondary coverage explicitly or not at all (labeled 2026-07-10). Version update: the live d3fend.mitre.org badge now reads **v1.4.0**, superseding the v1.3.0 line this entry tracks.
 **Citations**: MITRE (2025, Dec 16). *MITRE Extends D3FEND Ontology to Operational Technology Cybersecurity*. mitre.org news release.
-**Validation Status**: ✅ Active (verified 2026-06-05 via WebSearch — MITRE news release, v1.3.0 technique count, and 2025-12-16 OT-extension date confirmed across MITRE + Industrial Cyber + vendor coverage)
+**Validation Status**: ✅ Alt URL verified 2026-07-10 (funder title confirmed verbatim; mitre.org news release 403s automated fetch — technique-count figures labeled secondary pending a rendered check)
 
 ---
 
@@ -4469,7 +4444,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 - Detection-as-code portability across OCSF: converts Sigma rules to OCSF field/event-type names so a single detection corpus can target OCSF-normalized telemetry. Supports the Sigma-portability and OCSF-crosswalk threads, and the "contribute to pySigma-pipeline-ocsf rather than own a competing repo" engagement move.
 - Chapter on detection portability / OCSF; complements the OCSF v1.8.0 and crosswalk entries.
 
-**Key Findings**: provides the `sigma.pipeline.ocsf` package with an `ocsf_pipeline()` that returns a pySigma `ProcessingPipeline`; the README lists 23 Sigma logsource-category → OCSF event-type mappings (process_creation, network_connection, file_event, dns_query, …). MIT license; badge marks it pre-release. **Correction to the 2026-06-13 Gemini-DR intake**, which claimed "25 logsource categories → … → Detection Finding event class": the README states **23** mappings, not 25, and does **not** mention a "Detection Finding" output class — cite the 23-category logsource→OCSF mapping only, and confirm the targeted OCSF version at the repo before citing one (the README pins none).
+**Key Findings**: provides the `sigma.pipeline.ocsf` package with an `ocsf_pipeline()` that returns a pySigma `ProcessingPipeline`; the README lists **25** Sigma logsource-category → OCSF event-type mappings as of 2026-07-10 (grown from 23 at the 2026-06-13 check — counts move; restate with an as-of date whenever cited). MIT license; badge marks it pre-release. The 2026-06-13 correction's other half still holds: the README does **not** mention a "Detection Finding" output class — cite the logsource→OCSF mapping only, and confirm the targeted OCSF version at the repo before citing one (the README pins none).
 **Citations**: SigmaHQ; Baecker, H. *pySigma-pipeline-ocsf*. GitHub.
 **Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch of the GitHub README — project, maintainer, MIT license, pre-release status, and 23 logsource mappings confirmed; Gemini's 25-categories / Detection-Finding-class claim corrected)
 

@@ -54,7 +54,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **H-ARCH-01: Apache Iceberg Dominance**
 - ✅ **Strong Validation**: Industry consensus as de facto standard
   - **Dremio 2024 survey**: 29% planning Iceberg vs 23% Delta Lake (next 3 years)
-  - **Universal vendor support**: AWS, Google, Snowflake, Databricks, Microsoft
+  - **Broad vendor support** *(corrected 2026-07-10 — the cited Register piece contradicts the former "universal" list)*: AWS, Google, Snowflake, Cloudera settled on Iceberg; Databricks added support in Public Preview (June 2025); Microsoft remains Delta-first with only partial Fabric support
   - **Production validation**: SK Telecom (3.39s on a 52.7TB *table* — table size, not bytes scanned; re-attributed 2026-07-09 to the Trino Summit slides, where the 97% query-time reduction is verbatim)
   - **Apache governance**: 407 GitHub contributors (Link-header count, verified 2026-07-09) across 100+ organizations
 - **Literature Support**: Footnotes [^3], [^131], [^132], [^243-249]

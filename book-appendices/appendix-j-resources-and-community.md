@@ -134,7 +134,7 @@ query = aggregated.writeStream \
 
 ---
 
-### J.1.3 AWS Kinesis Data Firehose
+### J.1.3 Amazon Data Firehose (formerly AWS Kinesis Data Firehose)
 
 Firehose is what I'd default to when the job is "get this AWS log source into S3 or Iceberg reliably and stop thinking about it," because there's no cluster to run, it scales itself, and a small Lambda covers the light enrichment most pipelines actually need. The trade is latency: Firehose buffers before it delivers, so you're paying a delivery delay that's a documented characteristic of the service rather than a tuning failure, and if your detection budget is tighter than that buffer you've picked the wrong tool. So I reach for it on CloudTrail, VPC Flow, WAF, and GuardDuty delivery where near-real-time is good enough, and I reach for Flink instead when it isn't.
 
@@ -150,7 +150,7 @@ It's best for serverless ingestion to S3/Iceberg, simple transformations, no inf
 - **Serverless**: No cluster management, automatic scaling
 - **Lambda transformations**: Inline data enrichment, filtering
 - **Direct S3 delivery**: Batching, partitioning, compression built-in
-- **Buffered delivery**: a buffer interval on the order of 60-90 seconds is typical, and it's configurable; this is a documented service characteristic, so check the current AWS Kinesis Data Firehose buffering-hints docs for the exact bounds [Tier C — vendor-documented behavior]
+- **Buffered delivery**: a buffer interval on the order of 60-90 seconds is typical, and it's configurable; this is a documented service characteristic, so check the current Amazon Data Firehose buffering-hints docs for the exact bounds [Tier C — vendor-documented behavior]
 
 **When to use Firehose**:
 - AWS-committed architecture
@@ -164,7 +164,7 @@ It's best for serverless ingestion to S3/Iceberg, simple transformations, no inf
 - <30 second latency (buffer adds 60-90 sec delay)
 
 **Resources**:
-- Official docs: https://aws.amazon.com/kinesis/data-firehose/
+- Official docs: https://aws.amazon.com/firehose/ (service renamed Amazon Data Firehose; the old kinesis/data-firehose path redirects)
 - Lambda transformation: https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html
 
 ---
@@ -238,7 +238,7 @@ validator.save_expectation_suite("ocsf_network_activity_validation")
 
 **Resources**:
 - Official docs: https://docs.greatexpectations.io/
-- Validating Iceberg tables: GX has no dedicated Iceberg data source; reach Iceberg through a generic SQL or Spark datasource (https://docs.greatexpectations.io/docs/application_integration_support/), which is the same path GX uses for any backend it doesn't natively integrate
+- Validating Iceberg tables: GX has no dedicated Iceberg data source; reach Iceberg through a generic SQL or Spark datasource (https://docs.greatexpectations.io/docs/help/compatibility_reference), which is the same path GX uses for any backend it doesn't natively integrate
 
 ---
 
@@ -670,7 +670,7 @@ fig.show()
 
 **Use case**: Anomaly detection, threat intelligence, user behavior analytics, automated classification.
 
-### J.5.1 AWS SageMaker
+### J.5.1 AWS SageMaker (docs now titled "Amazon SageMaker AI")
 
 SageMaker is the one I'd reach for when a team has committed to AWS and has the data-science skill to actually use it, because the moment you need distributed training, managed endpoints, and a feature store wired into the rest of your AWS environment, building that yourself is rarely the better trade. I'd add the caution I give every team that gets here, though: ML in security earns its place after the foundation is stable, not before, because an isolation forest on top of badly normalized data just produces confident nonsense, so the order that matters is get the lakehouse and the OCSF mapping right first, then put a model on top of clean data, and SageMaker is a fine home for that model once you're there.
 
@@ -798,7 +798,7 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 
 **Resources**:
 - Official docs: https://docs.delta.io/
-- Databricks Delta: https://www.databricks.com/product/delta-lake-on-databricks
+- Databricks Delta/Iceberg ("Lakehouse Storage"): https://www.databricks.com/product/lakehouse-storage (the old delta-lake-on-databricks path redirects; the page now covers Delta + Iceberg as one storage layer)
 
 ---
 
@@ -951,7 +951,7 @@ Spark's community is broader and more diluted than Iceberg's — you'll get answ
 
 **Where**:
 - Slack: https://starburst.io/slack
-- Community forum: https://community.starburst.io/
+- Community forum: https://www.starburst.io/community/forum/ (community.starburst.io 302s here)
 
 **What to expect**:
 - **Response time**: 24-48 hours
@@ -1025,7 +1025,7 @@ The communities for detection-engineering discussion are scattered across Reddit
 
 **DetectionLab** (tool resource, not a community forum)
 
-DetectionLab (https://github.com/clong/DetectionLab — Chris Long's project) is a Vagrant/Packer-based lab automation tool that provisions a full Windows Active Directory + logging stack (Sysmon, Zeek, Winlogbeat, Splunk) for detection-engineering testing. It isn't a discussion community, but it's worth listing here because practitioners building security data pipelines often use it as a reference environment for generating realistic test telemetry against the log sources covered in this book.
+DetectionLab (https://github.com/clong/DetectionLab — Chris Long's project) is a Vagrant/Packer-based lab automation tool that provisions a full Windows Active Directory + logging stack (Sysmon, Zeek, Winlogbeat, Splunk) for detection-engineering testing. It isn't a discussion community, but it's worth listing here because practitioners building security data pipelines often use it as a reference environment for generating realistic test telemetry against the log sources covered in this book. Note: the repo has been unmaintained since 2023-01-01 per its own README, though it remains live and usable as a reference.
 
 ---
 
@@ -1049,7 +1049,7 @@ DetectionLab (https://github.com/clong/DetectionLab — Chris Long's project) is
 **Where**:
 - Website: https://attack.mitre.org/
 - GitHub: https://github.com/mitre-attack
-- Slack: https://mitreattack.slack.com/
+- Slack: https://mitreattack.slack.com/ (login wall for non-members; no public invite link verified — find the current invite via the ATT&CK community resources before citing)
 
 **What to expect**:
 - **Focus**: Adversary tactics, techniques, procedures (TTPs)
@@ -1321,7 +1321,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 - The general-purpose data-engineering blogs below are excellent on lakehouse internals; they rarely touch detection engineering, OCSF, or SIEM migration, which is the gap this site fills
 
 **Tabular Blog** (Iceberg creators; Tabular acquired by Databricks in June 2024 — blog content now at Databricks):
-- Archive: https://tabular.io/blog/ (**verify redirect before publication** — URL behavior has changed post-acquisition)
+- Archive: https://tabular.io/blog/ (frozen at 2023 pre-acquisition posts per the 2026-07-10 sweep's live fetch; local DNS intermittently fails to resolve the domain — **verify before publication**)
 - Current: https://www.databricks.com/blog (search "Iceberg" for continuation of Tabular team's work)
 - Deep dives: Iceberg internals, performance optimization
 - Example: "Hidden Partitioning in Iceberg" (explains partition evolution)
@@ -1530,8 +1530,8 @@ Time invested in community tends to pay back unevenly but substantially: one wel
 ## J.17: Resource Summary
 
 **Essential communities** (join immediately):
-- Apache Iceberg Slack: https://apache-iceberg.slack.com/
-- OCSF Slack: https://ocsf.slack.com/
+- Apache Iceberg Slack: https://apache-iceberg.slack.com/ (get invite: https://iceberg.apache.org/community/)
+- OCSF Slack: https://ocsf.slack.com/ (get invite via website)
 - r/dataengineering: https://www.reddit.com/r/dataengineering/
 
 **Standards bodies** (monitor for updates):

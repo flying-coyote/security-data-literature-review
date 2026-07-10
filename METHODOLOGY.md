@@ -233,7 +233,7 @@ Each hypothesis is classified using a 5-level confidence scale:
 - 5+ sources with quantitative evidence
 - Multiple independent production deployments
 - Government/standards body validation
-- Example: **H-ARCH-01** (Iceberg Dominance) - 5 sources including Dremio survey, universal vendor support, Apache governance
+- Example: **H-ARCH-01** (Iceberg Dominance) - 5 sources including Dremio survey, broad (not universal) vendor support, Apache governance
 
 **STRONG (⭐⭐⭐⭐)**:
 - 3-4 sources with quantitative evidence
@@ -256,11 +256,13 @@ Each hypothesis is classified using a 5-level confidence scale:
 
 ### 5.3 Validated Hypotheses (Phase 1 Results)
 
-**7 Hypotheses Validated** with quantitative evidence:
+> **Correction (2026-07-10, part-2 sweep)**: this table is the October-2025 Phase-1 record, preserved as-written — but several of its Key Evidence legs were later confirmed fabricated or unsupported and formally overturned: H-IMPL-01's IDC 2.5-3×, Confluent 45-55%, and Cloudera 39%/32% legs (hypothesis now scores 1/5), H-IMPL-02's DORA 2.7× and Ververica 3.2-FTE legs (now 2/5), H-IMPL-03's Gartner/phData 5.5-month leg, H-COST-09's Netflix 70-80% and AWS ~35% legs (replaced by the first-party S3 tier-price derivation; now 4/5), and H-STREAM-01's LinkedIn "terabytes state" phrasing. Do NOT cite this table's evidence column — current scores and verified legs live in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md and MASTER-BIBLIOGRAPHY.md.
+
+**7 Hypotheses Validated** with quantitative evidence *(Phase-1 claim — see correction above; the hypothesis-count adjudication is separately pending)*:
 
 | Hypothesis | Status | Sources | Confidence | Key Evidence |
 |------------|--------|---------|------------|--------------|
-| **H-ARCH-01**: Apache Iceberg dominance as de facto standard | STRONGLY VALIDATED | 5 | ⭐⭐⭐⭐⭐ | Dremio survey (29% vs 23% Delta), universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft), 300+ contributors |
+| **H-ARCH-01**: Apache Iceberg dominance as de facto standard | STRONGLY VALIDATED | 5 | ⭐⭐⭐⭐⭐ | Dremio survey (29% vs 23% Delta), broad vendor support (AWS, Google, Snowflake, Cloudera; Databricks in Public Preview since June 2025; Microsoft remains Delta-first with partial Fabric support — corrected 2026-07-10), 407 GitHub contributors |
 | **H-IMPL-01**: 2.5-3× operational costs for streaming vs batch | STRONG | 5 | ⭐⭐⭐⭐ | IDC (2.5-3× staffing), Confluent (45-55% TCO = ops), Cloudera (39% licensing, 32% hardware) |
 | **H-IMPL-02**: 2.7× specialized staff for streaming architectures | STRONG | 4 | ⭐⭐⭐⭐⭐ | DORA (2.7× staff), Ververica (3.2 FTEs), McKinsey (tiger teams 35-40% acceleration) |
 | **H-IMPL-03**: 5.5 month average for security data lakehouse | VALIDATED | 3 | ⭐⭐⭐ | Gartner/phData (5.5 months), Confluent (4-6 months), security premium 15-30% |

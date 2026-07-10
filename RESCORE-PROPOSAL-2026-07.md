@@ -14,7 +14,7 @@ tags: [hypotheses, confidence-scoring, audit, rescore]
 
 | Hypothesis | Pre-audit | Proposed | Stars | What changed |
 |---|---|---|---|---|
-| H-ARCH-01 (Iceberg dominance) | 23/25 ⭐⭐⭐⭐⭐ | **23/25 CONFIRM** | ⭐⭐⭐⭐⭐ | All four legs survived; two strengthened (contributor count now GitHub-derived with as-of date; SK Telecom figures verified verbatim in the Trino Summit slides PDF) |
+| H-ARCH-01 (Iceberg dominance) | 23/25 ⭐⭐⭐⭐⭐ | **23/25 CONFIRM** | ⭐⭐⭐⭐⭐ | All four legs survived; two strengthened (contributor count now GitHub-derived with as-of date; SK Telecom figures verified verbatim in the Trino Summit slides PDF). Part-2 sweep note (2026-07-10): the vendor-support leg re-worded broad-not-universal — the cited Register piece names Microsoft as the Delta-first holdout and Databricks support is Public Preview; dominance-as-direction unaffected |
 | H3-PERFORMANCE-01 (ClickHouse) | 21/25 ⭐⭐⭐⭐ | **20/25** | ⭐⭐⭐⭐ | Cloudflare figures verbatim-verified; CH-vs-ES corrected *upward* to 12-19×; losses are the Shell entry (2026-06) and the withdrawn query-perf multiplier — source count −1, precision better-anchored |
 | H-STREAM-01 (stateful streaming) | 17/25 ⭐⭐⭐⭐ | **17/25 HOLD** | ⭐⭐⭐⭐ | Composition improved, total unchanged: peer-reviewed Samza VLDB 2017 leg (verified verbatim) replaces the orphaned Kafka-Streams claim; Azure figures verbatim-verified; Uber figures remain withdrawn from this hypothesis (2026-06) |
 | H-IMPL-01 (streaming TCO premium) | 22/25 ⭐⭐⭐⭐ | **6/25** | ⭐⭐ PRELIMINARY | DORA fabricated (0 matches in report PDF); TEI 39/32/29 in neither TEI document; IDC leg flagged fabricated-or-dead by the 2026-06 audit. Zero quantitative support survives; direction supported by practitioner experience only |
