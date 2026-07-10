@@ -7,6 +7,8 @@ tags: [expert-interview, catalog-landscape, gravitino, xtable, iceberg, hypothes
 
 # Expert Interview Guide: Lisa Cao (Datastrato)
 
+> **⚠️ Refresh before scheduling (2026-07-10 check)**: two claims in this guide's context/probes have no bibliography support — do NOT quote them to Lisa: the "Gartner: 64% architects concerned about format lock-in / 42% cite XTable" survey (no such entry exists; untraceable-Gartner-percentage pattern) and the broad Gravitino adopter list "Uber, Apple, Intel" (only Pinterest is confirmed via the cited article; the rest is verify-before-citing). Re-pull the context section from the current bibliography before the interview.
+
 **Interviewee**: Lisa Cao
 **Affiliation**: Datastrato (Gravitino project)
 **Expertise**: Catalog management, table format interoperability, data lakehouse infrastructure

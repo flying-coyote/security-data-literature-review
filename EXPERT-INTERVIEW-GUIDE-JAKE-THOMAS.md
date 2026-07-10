@@ -7,6 +7,8 @@ tags: [expert-interview, jake-thomas, okta, duckdb, isolation-first-security]
 
 # Expert Interview Guide: Jake Thomas (Okta)
 
+> **⚠️ Refresh before scheduling (2026-07-10 check)**: three figures in this guide's pre-interview context have since been withdrawn or flagged in MASTER-BIBLIOGRAPHY — do NOT quote them to Jake: Shell 57TB/day (entry withdrawn 2026-06-05), DuckDB "used at Facebook/Google/Airbnb" (removed 2026-07-10, no primary), and "6+ million monthly downloads" (uncatalogued; the verified v1.0.0-announcement phrasing is "download counts are in the millions each month"). Re-pull the context section from the current bibliography before the interview.
+
 **Interviewee**: Jake Thomas
 **Affiliation**: Okta
 **Expertise**: Production defensive cyber operations, DuckDB at scale, security data volumes

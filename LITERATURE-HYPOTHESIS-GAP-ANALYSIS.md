@@ -73,7 +73,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Status**: PARTIALLY VALIDATED
 
 **H1-VOLUME-07: Security Data Volume Claims**
-- ✅ **Validation**: Shell ClickHouse (57TB/day security telemetry)
+- ~~**Validation**: Shell ClickHouse (57TB/day security telemetry)~~ *(removed 2026-07-10 — the Shell entry was withdrawn from MASTER-BIBLIOGRAPHY in the 2026-06-05 audit; this line escaped both correction sweeps. H3-PERFORMANCE-01's surviving legs are Cloudflare + the lab's first-party runs.)*
 - **Literature Support**: Footnote [^11]
 - **Gap**: Need mid-sized enterprise validation (SOC survey in progress)
 - **Status**: PARTIALLY VALIDATED
