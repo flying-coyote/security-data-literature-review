@@ -16,7 +16,7 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 
 | Metric | Baseline/Goal | Status |
 |--------|--------|--------|
-| **Quality**: Evidence Level A | ~75-78% | 🟢 80% (Feb 2026) |
+| **Quality**: Evidence Level A | ~75-78% target | 🔴 42.3% live (74/175 tiered, 2026-07-09) — honest post-audit floor, path back via 2026 primary sourcing |
 | **Time Investment**: Monthly effort | Track for awareness | ⏳ 5.9 hours/update avg |
 | **Blog Support**: Writing speedup | 4-6× sustained | 🟢 Demonstrated |
 | **Community Engagement**: Feedback/corrections | Develop workflow | ⏳ Tracking started |
@@ -502,6 +502,35 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 
 ---
 
+## July 2026 Update
+
+### Update: Instrument fix + count reconciliation + verified research sweep (July 9, 2026 — Unreleased, continues the 1.22.0 revival)
+
+**Time Investment** (Claude Code session, agent-assisted; hours-equivalent):
+- Ground-truth recount + honest per-source freshness inventory: ~1 hour
+- `automation_dashboard.py` fix (crash + live-compute) and verification: ~1 hour
+- Count reconciliation across four current-status surfaces: ~1 hour
+- Multi-agent freshness/discovery workflow (two relaunches around a session-limit reset): ~2 hours
+- External-inputs poll (`/writing`, `/lab`) + CHANGELOG + tracker: ~1 hour
+- **Total: ~6 hours** ✅ (within the ≤10-hour target)
+
+**Instruments fixed**:
+- `automation_dashboard.py` no longer crashes on the tilde-prefixed self-reported Evidence Quality header (`None >= 75`). It now counts each `#### ` block's first Evidence-Level marker and computes Level-A% live over tiered entries; two latent `None` crashes on `average_time` guarded. The dashboard can no longer bluff green.
+
+**Counts reconciled** (every current-status surface):
+- **176 `#### ` blocks / 175 tiered sources** (1 documented rejection stub) · **74 A / 85 B / 16 C** · **Level-A 42.3% (74/175)**.
+- Surfaces synced: `MASTER-BIBLIOGRAPHY.md` header, `.claude/CLAUDE.md`, `README.md` (×3), `REPOSITORY-STATUS.md`. Prior surfaces forked badly (144 / 146 / 174 sources; 46–47%); now one number everywhere.
+
+**Sources refreshed** (applied, 6 objective metadata corrections to existing entries; no tier change): 5 provably-wrong dates fixed to their primary-verified values — Cloudflare 2024→**2022-09-02**, GitLab →**2025**, ClickHouse-vs-Snowflake →**2023**, Cloudera Impala →**2022**, Kafka-to-Iceberg →**2025-10-20** — plus 1 freshness-note refresh (ClickHouse-vs-Elasticsearch page updated 2026-03-03). The 2025-10-15 bulk-generation had stamped "2024" on entries whose primaries are actually 2022–2023 or 2025.
+
+**Sources added / re-tiered / retitled** (held for adjudication): a verified multi-agent workflow (33 agents, 0 errors, adversarial primary-verification) returned **11 catalog-ready new-source candidates + 4 leads**, plus **8 freshness judgment-calls** (Netflix retitle + figure-enrich, phantom "Streaming vs Batch" retirement, 3 re-tiers, Cloudera-TEI citation split, Kai Waehner next-year refresh). All written up in `MONTHLY-2026-07-RESEARCH-PACKET.md` — nothing catalogued without a primary-confirmed claim. Recommended adds: Ursa (A, PVLDB Vol 18 / VLDB 2025 Best Industry Paper), Exabeam-on-ClickHouse (A/B tier call), OpenSec (B, measured RQ14 counter-evidence).
+
+**Evidence Level A**: 42.3% (74/175) — honest post-audit floor, below the 75% target; the gap is visible, not masked.
+
+**Key lesson**: the account session limit (resets 7:30pm ET) hard-stopped 17 research agents mid-run. The deterministic local work (instrument fix, reconciliation, docs) is limit-independent and worth front-loading, with web-dependent fan-out scheduled around the reset.
+
+---
+
 ## Notes & Lessons Learned
 
 ### What's Working ✅
@@ -528,5 +557,5 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 ---
 
 **Maintained By**: Jeremy Wiley
-**Last Updated**: January 11, 2026
-**Next Update**: Late January 2026 (expert interview scheduling + quarterly synthesis)
+**Last Updated**: July 9, 2026
+**Next Update**: August 2026 (monthly) — finish adjudicating the freshness/discovery candidates from this run; poll `/research`

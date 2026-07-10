@@ -12,6 +12,53 @@ and this project adheres to semantic versioning for documentation releases.
 Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
 report on it, and reconciles the source count across every surface that states it.
 
+### 2026-07-09 monthly update — dashboard instrument fix + count re-reconciliation
+
+The monthly sweep found the *other* reporting instrument still broken and the reconciled count itself gone
+stale as the corpus grew.
+
+**Fixed (`automation_dashboard.py`)**
+- The dashboard crashed on every run (`TypeError: '>=' not supported between 'NoneType' and 'int'`):
+  `parse_master_bibliography` read the header's self-reported `**Evidence Quality**: ~46% …` line, whose
+  regex `([\d.]+)%` never matched the tilde-prefixed value and returned `None` — and reading a self-grade
+  is exactly the trap the 2026-06-05 audit was cleaning up. It now counts each `#### ` block's first
+  Evidence-Level marker and computes Level-A% live over tiered entries, matching CLAUDE.md's stated
+  contract. Also guarded two latent `None` crashes on `average_time` in the time-sustainability and
+  readiness paths.
+- The dashboard now reports the honest live figure and can't bluff green: **42.3% Level-A (74/175 tiered),
+  ⚠️ below the 75% target**, with the tier mix and rejection-stub count shown inline.
+
+**Changed (count re-reconciliation)**
+- The Phase-2 reconciliation below pinned 141 / ~46% (65/141); the corpus has since grown to **176 `#### `
+  blocks / 175 tiered sources** through the documented June–July additions (+9 detection-engineering
+  anchors 06-21, +4 benchmark-landscape 06-14, +4 06-30, +2 WT-2 production anchors 07-08, plus framing
+  anchors between), while the A-count rose to 74 and the denominator rose faster — so live Level-A eased to
+  **42.3% (74/175)**. Not a regression: Tier-B practitioner/framing additions diluting a growing base.
+  Re-synced this figure across `MASTER-BIBLIOGRAPHY.md` (header Total Sources + Evidence Quality),
+  `.claude/CLAUDE.md`, `README.md` (three spots), and `REPOSITORY-STATUS.md`. The 1 untiered `#### ` block
+  is the documented "Declined — EITT Academy" rejection stub, excluded from the tiered denominator.
+
+**Fixed (freshness — 6 metadata corrections applied)**
+- The verified workflow (below) caught that the 2025-10-15 bulk-generation stamped "2024" on several entries
+  whose primaries are actually 2022–2023 or 2025. Corrected, each verified at the live primary: Cloudflare
+  ClickHouse log analytics 2024→**2022-09-02**, GitLab sub-second analytics →**2025** (byline Oct 21 2025),
+  ClickHouse-vs-Snowflake →**2023** (Sept 6 2023), Cloudera Impala+Iceberg →**2022-02-22**, Kafka-to-Iceberg
+  (Streambased) →**2025-10-20**, and a ClickHouse-vs-Elasticsearch freshness note (page updated 2026-03-03).
+  None change a tier, so the reconciled 74/175/42.3% holds.
+
+**In progress (freshness + discovery — held for adjudication)**
+- Freshness triage of the refreshable 2024 vendor/production sources and a six-angle verified new-source
+  sweep ran as a multi-agent workflow (final run: 33 agents, 0 errors, adversarial primary-verification;
+  two earlier launches hit the account session limit and were relaunched after the 7:30pm ET reset). It
+  returned 11 catalog-ready new-source candidates + 4 leads, plus 8 freshness judgment-calls (a Netflix
+  retitle/figure-enrich, retirement of the phantom "Streaming vs Batch Cost Differential" placeholder, three
+  A→B/B→C re-tiers, a Cloudera-TEI citation split, and a Kai-Waehner next-year refresh). All written up in
+  `MONTHLY-2026-07-RESEARCH-PACKET.md`; none catalogued without a primary-confirmed claim, pending sign-off.
+- External inputs polled: securitydataworks.com `/writing` (essay inventory) and `/lab` (first-party
+  benchmark set — Zeek lakehouse-vs-SIEM 46.8× native ClickHouse / 10.1× Iceberg, methodology v1.0 2026-05;
+  OCSF flattening fidelity; Okta/CrowdStrike 58%/70% field coverage at OCSF 1.8.0). The retired Substack
+  was not polled.
+
 ### Fixed (health-check mechanism)
 - `weekly_health_check.py` crashed on any direct run: its default `repo_path` was the author's hardcoded
   `~/security-data-literature-review`, which it `chdir`'d into. Now it resolves the repo relative to the

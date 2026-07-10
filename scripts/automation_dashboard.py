@@ -59,20 +59,43 @@ def parse_master_bibliography():
     with open(biblio_path, 'r') as f:
         content = f.read()
 
-    # Extract metadata from header
-    evidence_quality = re.search(r'\*\*Evidence Quality\*\*:\s*([\d\.]+)%', content)
-    total_sources = re.search(r'\*\*Total Sources\*\*:\s*(\d+)', content)
-    last_updated = re.search(r'\*\*Last Updated\*\*:\s*([\d\-]+)', content)
+    # Live-computed, per-ENTRY tier counts. We deliberately do NOT parse the header's
+    # self-reported **Evidence Quality** line — it is narrative prose (tilde-prefixed,
+    # occasionally stale), and reading a self-grade is exactly the trap the 2026-06-05
+    # audit was cleaning up. CLAUDE.md is explicit: "Counts are live-computed: sources =
+    # #### entries, Level-A = **Evidence Level**: A / entries." So we count directly.
+    #
+    # Count the tier of each #### block (its FIRST Evidence Level marker), not raw line
+    # matches across the file — a block can restate its tier in an update note, which
+    # would double-count. A #### block with no tier at all is a documented rejection
+    # stub (e.g. "Declined (no primary) — ..."), correctly excluded from the tiered set.
+    last_updated = re.search(r'\*\*Last Updated\*\*:\s*([A-Za-z0-9,\-\. ]+)', content)
 
-    # Count Evidence Level A sources (rough estimate)
-    level_a_count = len(re.findall(r'\*\*Evidence Level\*\*:\s*A\s', content))
-    total_entries = len(re.findall(r'^####\s+', content, re.MULTILINE))
+    blocks = re.split(r'(?m)^####\s+', content)[1:]  # drop the pre-first-#### preamble
+    total_entries = len(blocks)
+    tier_counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
+    untiered = 0
+    for b in blocks:
+        m = re.search(r'\*\*Evidence Level\*\*:\s*([A-D])\b', b)
+        if m:
+            tier_counts[m.group(1)] += 1
+        else:
+            untiered += 1
+    tiered_total = sum(tier_counts.values())
+
+    # Level-A% is over TIERED sources (entries carrying an A/B/C/D marker), so a
+    # rejection stub in the denominator can't dishonestly deflate the number.
+    evidence_quality = round(tier_counts['A'] / tiered_total * 100, 1) if tiered_total else None
 
     return {
-        'evidence_quality': float(evidence_quality.group(1)) if evidence_quality else None,
-        'total_sources': int(total_sources.group(1)) if total_sources else total_entries,
-        'last_updated': last_updated.group(1) if last_updated else 'Unknown',
-        'level_a_count': level_a_count,
+        'evidence_quality': evidence_quality,
+        'total_sources': total_entries,
+        'last_updated': last_updated.group(1).strip() if last_updated else 'Unknown',
+        'level_a_count': tier_counts['A'],
+        'level_b_count': tier_counts['B'],
+        'level_c_count': tier_counts['C'],
+        'tiered_total': tiered_total,
+        'untiered_stubs': untiered,
         'total_entries': total_entries
     }
 
@@ -183,19 +206,24 @@ def print_dashboard():
     # 1. QUALITY METRICS
     print_section("📊 Quality Metrics")
     biblio = parse_master_bibliography()
-    if biblio:
-        evidence_status = f"{Colors.GREEN}✅ EXCELLENT" if biblio['evidence_quality'] >= 75 else f"{Colors.YELLOW}⚠️ WARNING"
-        print(f"Evidence Level A: {Colors.BOLD}{biblio['evidence_quality']}%{Colors.END} {evidence_status}{Colors.END}")
-        print(f"  Target: ≥75% | Current: {biblio['evidence_quality']}%")
-        print(f"  Level A Sources: {biblio['level_a_count']} / {biblio['total_entries']} total entries")
+    if biblio and biblio['evidence_quality'] is not None:
+        eq = biblio['evidence_quality']
+        evidence_status = f"{Colors.GREEN}✅ AT/ABOVE TARGET" if eq >= 75 else f"{Colors.YELLOW}⚠️ BELOW TARGET (honest post-audit floor)"
+        print(f"Evidence Level A: {Colors.BOLD}{eq}%{Colors.END} {evidence_status}{Colors.END}")
+        print(f"  Target: ≥75% | Current: {eq}% (live-computed, not self-reported)")
+        print(f"  Tier mix: {Colors.BOLD}{biblio['level_a_count']}A{Colors.END} / {biblio['level_b_count']}B / {biblio['level_c_count']}C "
+              f"across {biblio['tiered_total']} tiered sources ({biblio['total_entries']} #### blocks, "
+              f"{biblio['untiered_stubs']} rejection stub{'s' if biblio['untiered_stubs'] != 1 else ''})")
         print(f"  Last Updated: {biblio['last_updated']}")
+    elif biblio:
+        print(f"{Colors.RED}❌ Bibliography has no tiered entries to compute Level-A%{Colors.END}")
     else:
         print(f"{Colors.RED}❌ Could not load bibliography metrics{Colors.END}")
 
     # 2. TIME SUSTAINABILITY
     print_section("⏱️  Time Sustainability")
     tracker = parse_monthly_tracker()
-    if tracker:
+    if tracker and tracker['average_time'] is not None:
         time_status = f"{Colors.GREEN}✅ SUSTAINABLE" if tracker['average_time'] <= 10 else f"{Colors.YELLOW}⚠️ WARNING"
         print(f"Average Time: {Colors.BOLD}{tracker['average_time']} hours/update{Colors.END} {time_status}{Colors.END}")
         print(f"  Target: ≤10 hours/month | Current: {tracker['average_time']} hours/update")
@@ -271,7 +299,7 @@ def print_dashboard():
     else:
         print(f"{Colors.RED}❌ Quality Below Target{Colors.END}")
 
-    if tracker and tracker['average_time'] <= 10:
+    if tracker and tracker['average_time'] is not None and tracker['average_time'] <= 10:
         print(f"{Colors.GREEN}✅ Time Sustainable{Colors.END} ({tracker['average_time']} hours ≤ 10 hours)")
         ready_count += 1
     else:
