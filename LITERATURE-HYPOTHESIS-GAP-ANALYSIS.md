@@ -11,7 +11,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Sources**: 283 footnotes from best practices doc + MASTER-HYPOTHESIS-TRACKER.md (26 existing hypotheses)
 **Date**: October 10, 2025
 **Last Reviewed**: October 16, 2025 (v1.6.1 - Post-blog/book integration update)
-**Status**: Analysis COMPLETE - 6 new hypotheses identified and proposed, 3 now STRONGLY VALIDATED
+**Status**: Analysis COMPLETE - 6 new hypotheses identified and proposed. ⚠️ The three 2025 "STRONGLY VALIDATED" upgrades were overturned by the 2026-07 verification hunts — see the dated correction notes at Gaps 1, 2, 4 and H1-COST-08 (current standings: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5)
 
 ---
 
@@ -25,6 +25,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **Impact**: 3 of 6 proposed hypotheses now have strong multi-source validation suitable for academic publication.
 
+> **Correction (2026-07-10)**: this v1.6.1 impact claim did not survive verification. The H-IMPL-01/H-IMPL-02 upgrades rested on IDC/EDQ/DOES/DORA/Ververica/MIT-TR citations that the 2026-07-09/10 fetch-backed hunts confirmed nonexistent or unlocatable, and H-COST-09's AWS/Netflix legs died with them (replaced by a first-party S3 tier-delta derivation). The block above stays verbatim as version history; current standing is in the per-gap notes below and CHANGELOG 2026-07.
+
 ---
 
 ## Executive Summary
@@ -32,10 +34,10 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Finding**: Literature reveals 8 major hypothesis/concept gaps requiring formalization
 
 **Critical Gaps** (Need immediate hypotheses):
-1. **Operational TCO Reality** - Hidden costs 2.5-3× underestimated
+1. **Operational TCO Reality** - Hidden costs 2.5-3× underestimated *(figure withdrawn 2026-07-10 — its IDC/EDQ/DOES sources are confirmed nonexistent; the gap stands unquantified)*
 2. **Streaming Staffing Requirements** - Specialized skills gap
 3. **Security-Specific Implementation Timelines** - Different from general data engineering
-4. **Tiered Storage Cost Optimization** - 70-80% savings patterns
+4. **Tiered Storage Cost Optimization** - savings patterns *(the 70-80% Netflix figure was withdrawn 2026-07-10 for lack of a primary; the verified anchor is the first-party S3 tier-delta derivation, −45.7% to −95.7% by tier)*
 
 **Emerging Concepts** (Need tracking):
 5. **Table Format Interoperability** (Apache XTable)
@@ -53,8 +55,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - ✅ **Strong Validation**: Industry consensus as de facto standard
   - **Dremio 2024 survey**: 29% planning Iceberg vs 23% Delta Lake (next 3 years)
   - **Universal vendor support**: AWS, Google, Snowflake, Databricks, Microsoft
-  - **Production validation**: SK Telecom (52.7TB in 3.39s, 97% query time reduction)
-  - **Apache governance**: 300+ contributors across 100+ organizations
+  - **Production validation**: SK Telecom (3.39s on a 52.7TB *table* — table size, not bytes scanned; re-attributed 2026-07-09 to the Trino Summit slides, where the 97% query-time reduction is verbatim)
+  - **Apache governance**: 407 GitHub contributors (Link-header count, verified 2026-07-09) across 100+ organizations
 - **Literature Support**: Footnotes [^3], [^131], [^132], [^243-249]
 - **Note**: Original "76% adoption" claim not found in validation searches (Oct 2025). Updated to "industry consensus" with Dremio survey + vendor support evidence. Confidence remains Strong (⭐⭐⭐⭐⭐).
 - **Status**: STRONGLY VALIDATED
@@ -65,8 +67,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Status**: VALIDATED
 
 **H1-COST-08: SIEM vs Storage Cost Differential**
-- ✅ **Partial Validation**: AWS tiered storage (55% savings), Netflix Kafka (70-80% reduction)
-- **Literature Support**: Footnotes [^15], [^70]
+- ⚠️ **Legs withdrawn (2026-07-10)**: the AWS 55% whitepaper is a dead link and the Netflix Kafka 70-80% claim has no locatable primary — both marked do-not-cite in MASTER-BIBLIOGRAPHY. The verified replacement anchor is the first-party AWS S3 tier-price derivation (−45.7% to −95.7% per-GB by tier; manuscript §3.3.2).
+- **Literature Support**: ~~Footnotes [^15], [^70]~~ (both dead — do not cite)
 - **Gap**: Need direct SIEM pricing validation (in progress per user)
 - **Status**: PARTIALLY VALIDATED
 
@@ -88,6 +90,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 ### Literature Evidence
 
+> **OVERTURN — 2026-07-10.** All three sources below are confirmed nonexistent by the 2026-07-09/10 fetch-backed hunts: no IDC publication with this title exists, "Enterprise Data Quarterly" is not a real journal, and no DevOps Enterprise Summit incident-economics figure could be located. H-IMPL-01 is now **1/5** with zero verified quantitative legs (project1 `book-critical-hypotheses.md`); the only remaining re-quantification route is a first-party security-specific TCO comparison. The source blocks stay verbatim below as the record of what was claimed.
+
 **Source 1**: IDC - Hidden Costs of Real-Time Data [^59]
 - **Finding**: 2.5-3× higher operational staffing costs for streaming
 - **Cause**: Specialized expertise + 24/7 support requirements
@@ -106,13 +110,15 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **Hypothesis**: Real-time streaming architectures incur 2.5-3× higher operational costs than equivalent batch architectures due to specialized staffing (2.7× more staff), higher infrastructure redundancy (1.5-2× costs), and incident management complexity (3-4× annual costs).
 
-**Evidence Level**: A (IDC, DORA, Enterprise Data Quarterly)
+**Evidence Level**: ~~A (IDC, DORA, Enterprise Data Quarterly)~~ — ❌ withdrawn 2026-07-10; all three named sources confirmed nonexistent
 
 **Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**
 - Blog post "The Streaming Tax" synthesized 8 Level A sources with convergent validation
 - 3-year TCO comparison quantified: Batch $2.5M vs Self-Managed Streaming $7.9M (3.2× multiplier)
 - Break-even analysis: 6.3 years (conservative), 1.3 years (high-value ops)
 - Evidence bundles: cost-reality-reference.md, staffing-budget-calculator.md
+
+> **Correction (2026-07-10)**: the v1.6.0 call is withdrawn — the "8 Level A sources" were the IDC/EDQ/DOES/DORA set now confirmed nonexistent, and the $2.5M-vs-$7.9M / 3.2× model inherits their inputs. Current standing **1/5, unvalidated**; the TCO arithmetic survives only as a self-derived illustrative model, and the bundles named above carry their own 2026-06-14 fold-correction notes.
 
 **Relevance**:
 - Book Chapter 4 (Implementation journeys - TCO reality)
@@ -130,6 +136,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 ## Gap 2: Streaming Staffing Specialization (NEW HYPOTHESIS NEEDED)
 
 ### Literature Evidence
+
+> **OVERTURN — 2026-07-10.** None of the quantitative legs below survived the 2026-07-09/10 hunts: the DORA 2.7× / "Level 4" / 3.2× figures appear in no DORA report (that fabrication was scrubbed repo-wide 2026-07-09), the Ververica 3.2-FTE and 4-9-month figures could not be located in any Ververica or DevOps.com source, and the MIT Technology Review 1.5-2× training figure does not exist. The Gartner Market Guide cited in the hypothesis is real but its <15% figure is unconfirmable without seat access. H-IMPL-02 is now **2/5** with zero verified literature legs; the Gartner seat-access check is the only remaining literature route. Source blocks stay verbatim as the record.
 
 **Source 1**: DORA 2024 State of DevOps [^31], [^33], [^43]
 - **Finding 1**: 2.7× operational staff for streaming vs batch
@@ -150,13 +158,15 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **Hypothesis**: Enterprise-grade stream processing requires specialized expertise available in <15% of organizations (Gartner [^41]), necessitating 2.7× larger operations teams (DORA [^31]) and 4-9 month implementation timelines (Ververica [^6]) even with experienced staff.
 
-**Evidence Level**: A (DORA, Gartner, Ververica)
+**Evidence Level**: ~~A (DORA, Gartner, Ververica)~~ — ❌ withdrawn 2026-07-10 (see the OVERTURN note above)
 
 **Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**
 - Staffing-budget-calculator.md: Batch 3.5 FTEs vs Streaming 9-11 FTEs (2.6-3.1× validated)
 - Blog post quantified Tax #1 (Staffing): $1,304,000/year cost for 2.7× multiplier
 - Implementation timeline: 3-7 months typical, 4-9 months with "Level 4" skills scarcity
 - Evidence bundles: staffing-budget-calculator.md, implementation-reality-reference.md
+
+> **Correction (2026-07-10)**: the v1.6.0 call is withdrawn with its sources. The calculator's 9-11-FTE / 2.6-3.1× model and the $1,304,000/year figure are self-derived illustrations built on the now-withdrawn 2.7× multiplier — treat as illustrative, not validated — and the "Level 4" scarcity framing carries no verified source. Current standing **2/5**.
 
 **Relevance**:
 - Book Chapter 4 (Journey 2: Streaming-first architect - staffing reality)
@@ -180,8 +190,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Implication**: Security-specific constraints (compliance, change control, threat landscape)
 
 **Source 2**: Gartner - Security Data Platforms [^12], [^138]
-- **Finding**: 5.5 month average for security-focused lakehouse
-- **Comparison**: General lakehouse 6-12 months
+- **Finding**: 5.5 month average for security-focused lakehouse (unverified against a primary)
+- **Comparison**: General lakehouse 6-12 months *(de-attributed from Gartner 2026-07-09 — practitioner estimate, not a Gartner citation)*
 
 **Source 3**: Managed Kafka - Practitioner Experiences [^10]
 - **Finding**: 3-6 months for production Kafka in security ops
@@ -212,6 +222,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 ### Literature Evidence
 
+> **OVERTURN — 2026-07-10.** Source 1 (Netflix 70-80%) has no locatable primary and Source 2's AWS whitepaper link is dead — both marked do-not-cite in MASTER-BIBLIOGRAPHY. The verified replacement is a first-party derivation from live AWS S3 list prices: Standard $0.023/GB-mo vs IA $0.0125 (−45.7%), Glacier Instant Retrieval $0.004 (−82.6%), Glacier Flexible $0.0036 (−84.3%), Deep Archive $0.00099 (−95.7%) — price-floor bounds, manuscript §3.3.2. Confluent's qualitative tiered-storage documentation (Source 3) stands. H-COST-09 is now **4/5** on the Insider + Kozlovski + S3-derivation legs.
+
 **Source 1**: Netflix - Kafka Tiered Storage [^70]
 - **Finding**: 70-80% storage cost reduction for multi-year retention
 - **Technology**: Kafka tiered storage (S3 backend)
@@ -228,15 +240,17 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-COST-09: Tiered Storage Economics**
 
-**Hypothesis**: Implementing tiered storage architectures (hot/warm/cold) for security data reduces storage costs by 55-80% (AWS [^15], Netflix [^70]) while maintaining compliance retention requirements, with Kafka tiered storage and Iceberg lifecycle policies as primary implementation patterns.
+**Hypothesis**: Implementing tiered storage architectures (hot/warm/cold) for security data reduces storage costs by 55-80% (AWS [^15], Netflix [^70]) while maintaining compliance retention requirements, with Kafka tiered storage and Iceberg lifecycle policies as primary implementation patterns. *(2026-07-10: the 55-80% band and both citations are withdrawn; the verified per-GB tier deltas are −45.7% to −95.7% — S3 derivation, §3.3.2.)*
 
-**Evidence Level**: A (Netflix production, AWS whitepapers, Confluent documentation)
+**Evidence Level**: ~~A (Netflix production, AWS whitepapers, Confluent documentation)~~ — revised 2026-07-10: the Netflix and AWS legs are dead; standing is **4/5** on Insider Inc. + Kozlovski + the first-party S3 derivation
 
 **Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **VALIDATED**
 - Cost-optimization-playbook.md: Strategy #1 (Tiered Storage) with 55-80% savings validated
 - 15-23× ROI for quick wins (tiered storage, right-size reliability, avoid premature streaming)
 - Total potential savings: $2M-4M/year for mid-sized operations
 - Evidence bundles: cost-optimization-playbook.md, cost-reality-reference.md
+
+> **Correction (2026-07-10)**: "55-80% savings validated" overstated — the band's AWS/Netflix anchors are dead. The tiering strategy stands directionally, and quantification now rides the S3 tier-delta derivation in the OVERTURN note above.
 
 **Relevance**:
 - Book Chapter 1 (Cost comparisons - storage optimization)
@@ -256,9 +270,9 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 ### Literature Evidence
 
-**Source 1**: LinkedIn Security - State Management [^68]
-- **Finding**: Terabytes of state with millisecond access
-- **Production**: Security implementation at scale
+**Source 1**: LinkedIn — Samza at scale (Noghabi et al., VLDB 2017) [^68]
+- **Finding**: hundreds of TB of local state per application, millions of requests/s *(re-anchored 2026-07-09 on the peer-reviewed Samza paper; the prior "terabytes with millisecond access" paraphrase had no locatable primary)*
+- **Production**: LinkedIn production deployment (Tier A, peer-reviewed)
 
 **Source 2**: Uber - Real-Time Security Views [^69]
 - **Finding**: Thousands of real-time views, sub-second refresh
@@ -490,7 +504,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Source 2**: Huntress EDR Data Lake
 - **Finding**: Iceberg on isolated AWS infrastructure, table-level RBAC
 - **Implication**: Simplified security posture, avoided Unity Catalog complexity
-- **Evidence Level**: A (Production case study, 93% cost reduction)
+- **Evidence Level**: A (Production case study; "more than 90%" cost reduction — source-verbatim, softened from the derived 93% on 2026-07-09)
 
 **Source 3**: Okta Security Analytics
 - **Finding**: DuckDB + Iceberg on isolated platform (Jake Thomas validation)
@@ -862,6 +876,6 @@ These three June-2026 questions extend the review into storage-layer and agentic
 ---
 
 **Author**: Jeremy Wiley
-**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated), **June 13, 2026** (RQ15-RQ17 adopted from the Gemini DR sweep), **June 14, 2026** (benchmark integration: RQ14 OCSF/parser legs OVERTURNED asserted-A → measured Tier-B caveat per #10 [⚠️ confidence-level change, flagged for sign-off]; RQ16 grounded on the measured BENCH-A de-gamed +0.188 and #10 mapping-fidelity legs; RQ11/RQ13 cost-reduction standardized to 60-80% median / up to 90%+ optimal, anchored to lab byte ratios 2.6-8.5× + production-cluster economics)
+**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated), **June 13, 2026** (RQ15-RQ17 adopted from the Gemini DR sweep), **June 14, 2026** (benchmark integration: RQ14 OCSF/parser legs OVERTURNED asserted-A → measured Tier-B caveat per #10 [⚠️ confidence-level change, flagged for sign-off]; RQ16 grounded on the measured BENCH-A de-gamed +0.188 and #10 mapping-fidelity legs; RQ11/RQ13 cost-reduction standardized to 60-80% median / up to 90%+ optimal, anchored to lab byte ratios 2.6-8.5× + production-cluster economics), **July 10, 2026** (correction sweep: Gaps 1/2/4 + H1-COST-08 OVERTURNED per the 2026-07-09/10 fetch-backed hunts — H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 re-anchored on the S3 tier-delta derivation; LinkedIn leg re-anchored on Samza VLDB 2017; Huntress softened to source-verbatim "more than 90%"; SK Telecom re-attributed to the Trino Summit slides)
 **Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from project1, LIGER Stack reference architecture, CSA/Google AI governance study, Forrester, ClickHouse case studies, Google Cloud agent ROI, **SACR Market Guide 2025, Rippling SIEM series, Monad detection cost analysis**
 **Status**: All RQ11-RQ14 now have strong evidence validation
