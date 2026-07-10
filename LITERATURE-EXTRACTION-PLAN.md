@@ -1,5 +1,13 @@
 # Literature Review Extraction Plan
 
+> **Dated correction banner (2026-07-10, part-3 verification sweep).** Everything below is the **historical record of the October-2025 extraction as it graded itself at the time** — read the self-grades as that record, NOT as current achievement, because the 2026-06/07 fabrication audits overturned several of them:
+> - **"73% Evidence Level A"** (asserted three times below): the live, dashboard-computed figure is **41.6% (77/185)** as of 2026-07-10 — the October self-grade is the masked number the audit exposed (see README/CLAUDE.md for the current derivation).
+> - **"All 7 hypotheses validated with verified sources" / "All hypothesis-critical sources verified"**: contradicted by the post-overturn standing (roughly 1 strong / 2 high / the rest at 1-2/5 or pending re-score; several formerly "critical" sources — DORA multipliers, Ververica, IDC, MIT-TR, AWS/Netflix tiered-storage — were confirmed nonexistent or withdrawn). See `analysis-bundles/hypothesis-confidence-matrix.md` (banner) and `RESCORE-PROPOSAL-2026-07.md`.
+> - **Count inconsistency, unreconciled**: "6 hypotheses formalized" (Total Work) vs "All 7 hypotheses validated" (Final Statistics) vs "6 new hypotheses (26→32)" (Deliverables) — the validated-hypothesis count was never reconciled (CLAUDE.md flags this too).
+> - **MASTER-HYPOTHESIS-TRACKER.md is NOT in this repository** — it lives in the project1 hub repo (`~/project1/01-knowledge-base/MASTER-HYPOTHESIS-TRACKER.md`); the Deliverables pointer below is external.
+> - The source-material claims (283 footnotes; 74 archive manuscripts) reference an archive external to this repo and have not been re-verified — treat as the October-2025 record, not checked facts.
+> - "16 of 22 URLs validated (73%)" is historical and fine as record under this banner.
+
 **Purpose**: Extract and consolidate literature sources from archived manuscripts into living literature review
 **Source Materials**: Best practices document (2024-04-15) + 74 archived manuscript files
 **Target**: Systematic bibliography organized by topic for book foundation

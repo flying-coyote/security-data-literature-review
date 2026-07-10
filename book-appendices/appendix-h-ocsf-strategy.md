@@ -426,7 +426,7 @@ Coalition size and governance structure matter — but claims require production
 
 ### H.3.1 The 2 Petabyte/Day Enterprise Deployment
 
-**Source and tier**: published case study, vendor-validated and enterprise-anonymized (Tier C — I have not independently audited these figures, and a vendor-published case study has an obvious incentive to show the architecture in its best light, so read the cost and performance numbers below as the vendor's claims rather than measured results I can stand behind).
+**Source and tier**: published case study, vendor-validated and enterprise-anonymized (Tier C — I have not independently audited these figures, and a vendor-published case study has an obvious incentive to show the architecture in its best light, so read the cost and performance numbers below as the vendor's claims rather than measured results I can stand behind). ⚠ **No primary on file (flagged 2026-07-10)**: no URL or bibliography entry exists for this case study anywhere in the repo, so as it stands it is unciteable — treat it as an illustrative composite until the vendor case-study link is located and catalogued; do not cite these figures onward.
 
 **Organization profile**:
 - Global financial services firm

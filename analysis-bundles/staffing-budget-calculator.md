@@ -23,7 +23,7 @@ This calculator provides author-modeled staffing and budget estimates for securi
 **Key Multipliers**:
 - **Streaming vs Batch**: ~2.7-3× operational staff (author-modeled; ~~DORA State of DevOps 2024~~ WITHDRAWN — not in the DORA report)
 - **24/7 Support Premium**: 1.8-2.0× for always-on streaming architectures (author-modeled; ~~IDC~~ WITHDRAWN)
-- **Specialized Skills Premium**: 1.5-2× salary for Level 4 expertise (MIT Technology Review)
+- **Specialized Skills Premium**: 1.5-2× salary for specialized streaming expertise (author-modeled; ~~MIT Technology Review~~ WITHDRAWN 2026-07-10 — nonexistent, and the "Level 4" taxonomy was the fabricated DORA leg)
 - **Implementation Timeline**: 4-9 months for streaming, 2-4 months for batch (author-modeled; ~~Ververica, Gartner~~ WITHDRAWN)
 
 ---
@@ -38,7 +38,7 @@ This calculator provides author-modeled staffing and budget estimates for securi
 - **Security Engineers**: 0.5 FTE (detection logic, use case development)
 - **TOTAL BASELINE**: 3.5 FTEs
 
-**Evidence**: Gartner security lakehouse implementations average 3-4 FTE core teams for batch architectures.
+**Evidence**: ~~Gartner security lakehouse implementations average 3-4 FTE core teams~~ WITHDRAWN 2026-07-10 (the unverifiable-Gartner staffing family); the 3-4 FTE baseline is author-modeled.
 
 ---
 
@@ -86,7 +86,7 @@ This calculator provides author-modeled staffing and budget estimates for securi
 - **Security Engineer**: $110,000 - $150,000 (median $130K)
 - **Stream Processing Engineer**: $150,000 - $200,000 (median $175K) - specialized skill premium
 
-**Evidence**: MIT Technology Review (1.5-2× higher training investments), Gartner skills scarcity (Level 4 expertise premium).
+**Evidence**: ~~MIT Technology Review (1.5-2× higher training investments), Gartner skills scarcity (Level 4 expertise premium)~~ WITHDRAWN 2026-07-10 (both nonexistent/unverifiable); the salary bands are author-modeled from market observation.
 
 ---
 
@@ -158,7 +158,7 @@ This calculator provides author-modeled staffing and budget estimates for securi
 
 ### Batch Architecture Implementation
 
-**Timeline**: 2-4 months (Gartner security lakehouse average: 3 months)
+**Timeline**: 2-4 months (author-modeled; ~~Gartner security lakehouse average: 3 months~~ WITHDRAWN 2026-07-10)
 
 **Implementation Cost Components**:
 1. **Team Time**: 3.5 FTEs × 3 months × ($668K / 12) = $186K
@@ -176,7 +176,7 @@ This calculator provides author-modeled staffing and budget estimates for securi
 **Implementation Cost Components**:
 1. **Team Time**: 9.5 FTEs × 6 months × ($1,972K / 12) = $939K
 2. **Infrastructure Setup**: $30K-50K (Kafka cluster, monitoring, tooling)
-3. **Training**: $40K-60K (specialized streaming skills - MIT Technology Review 1.5-2× training premium)
+3. **Training**: $40K-60K (specialized streaming skills; the 1.5-2× training-premium multiplier is author-modeled — ~~MIT Technology Review~~ WITHDRAWN 2026-07-10)
 4. **Consulting/Experts**: $50K-100K (Kafka/Flink expertise - common for first deployments)
 
 **TOTAL IMPLEMENTATION COST (Streaming, Self-Managed)**: **$1,059K - $1,149K** (~$1.1M)
@@ -259,18 +259,20 @@ This calculator provides author-modeled staffing and budget estimates for securi
 ### Business Value Assumptions
 
 **Streaming-Enabled Capabilities** (quantified benefits):
-1. **Faster Incident Response**: 70% reduction in MTTD/MTTR (Altinity ClickHouse case study)
+1. **Faster Incident Response**: 70% reduction in MTTD/MTTR (Altinity ClickHouse case study — UNCONFIRMED, not re-verified at primary; see Evidence Summary item 7)
    - **Value**: Incident cost reduction (if 10 critical incidents/year × $50K/incident = $500K/year baseline)
    - **Streaming Benefit**: $500K × 0.70 = **$350K/year savings**
 
 2. **Real-Time Detection**: Sub-minute threat detection vs 15-60 minute batch delays
-   - **Value**: Reduced breach impact (IBM Cost of a Data Breach 2024: $200K avg difference between <30min and >1hr detection)
+   - **Value**: Reduced breach impact (⚠ NO-PRIMARY 2026-07-10: no IBM Cost of a Data Breach entry exists in MASTER-BIBLIOGRAPHY and the "$200K avg difference between <30min and >1hr detection" framing does not match the report's published detection-lifecycle statistics — treat the $200K as an author-modeled placeholder until re-derived)
    - **Streaming Benefit**: **$200K/year** (if 1 breach avoided every 2 years = $100K/year amortized)
 
-3. **Analyst Productivity**: 40% increase (Altinity case study)
+3. **Analyst Productivity**: 40% increase (Altinity case study — UNCONFIRMED, not re-verified at primary)
    - **Value**: 5 analysts × $130K × 0.40 productivity gain = **$260K/year equivalent capacity**
 
 **TOTAL ANNUAL BUSINESS VALUE**: $350K + $100K + $260K = **$710K/year**
+
+> ⚠ The break-even headlines below ("7.7 years", "6.3 years", "1.3 years") rest on the two UNCONFIRMED Altinity figures and the NO-PRIMARY IBM figure above — carry that caveat wherever these conclusions are cited (2026-07-10).
 
 ---
 
@@ -318,7 +320,7 @@ Assumptions:
 - Detection use cases tolerate 5-60 minute data latency
 - Team size < 5 FTEs (insufficient for 2.7× staffing multiplier)
 - Budget constraints < $2M/year
-- Limited streaming expertise available (Level 4 skills scarce)
+- Limited streaming expertise available (specialized streaming skills scarce)
 - Organization risk profile = low-moderate (not critical infrastructure)
 
 **Estimated 3-Year TCO**: $2.5M
@@ -341,7 +343,7 @@ Assumptions:
 ### Choose Self-Managed Streaming When:
 - Real-time detection + custom stream processing required
 - Incident costs > $3M/year + analyst capacity constraints
-- Team size > 10 FTEs with Level 4 streaming expertise
+- Team size > 10 FTEs with deep streaming expertise
 - Budget capacity > $2.5M/year
 - Organization has existing Kafka/streaming expertise (avoids 6-12 month ramp-up)
 - Compliance/sovereignty requires full platform control
@@ -467,13 +469,13 @@ TOTAL IMPLEMENTATION BUDGET: $______
 ## Red Flags: When Budget Will Exceed Estimates
 
 ### Staffing Red Flags (Budget +30-50%)
-- [ ] **No existing streaming expertise** - Requires 6-12 month ramp-up (Gartner)
+- [ ] **No existing streaming expertise** - Requires 6-12 month ramp-up (author-modeled; ~~Gartner~~ WITHDRAWN 2026-07-10)
 - [ ] **First Kafka deployment** - Often requires $50K-100K consulting (industry norm)
 - [ ] **24/7 support not budgeted** - Streaming requires always-on ops
-- [ ] **High turnover risk** - Streaming skills scarce, retention critical (MIT Technology Review)
+- [ ] **High turnover risk** - Streaming skills scarce, retention critical (~~MIT Technology Review~~ WITHDRAWN 2026-07-10; qualitative point stands unattributed)
 
 ### Timeline Red Flags (Budget +40-60% due to extended timeline)
-- [ ] **Security-specific compliance** - 15-30% longer timelines (SANS Institute)
+- [ ] **Security-specific compliance** - longer timelines (~~15-30% (SANS Institute)~~ WITHDRAWN 2026-07-10 — the figure was removed from the bibliography 2026-06-05 as not present in the cited sources; direction stands, magnitude unsourced)
 - [ ] **Legacy system integration** - Adds 2-4 months (common implementation blocker)
 - [ ] **Multi-cloud complexity** - 1.5-2× implementation effort
 - [ ] **Custom connectors required** - Each custom connector = 2-4 weeks dev time
@@ -521,5 +523,5 @@ The multipliers this calculator actually runs on are the author's own modeling, 
 
 **Author**: Jeremy Wiley
 **Date**: October 15, 2025
-**Evidence Quality**: 90% Level A (7 of 8 primary sources)
+**Evidence Quality**: ~~90% Level A (7 of 8 primary sources)~~ — VOID 2026-07-10 (six of the eight "primary sources" were withdrawn as nonexistent/unverifiable; the model is author-modeled throughout, per the Revision-1.1 banner)
 **Status**: Ready for book integration

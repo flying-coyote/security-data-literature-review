@@ -596,7 +596,7 @@ spark.sql("""
 An organization adopts a commercial pipeline platform (Cribl Stream, an observability pipeline) for route-by-value cost optimization — illustratively 70-90% savings against SIEM-only ingestion, with the economics in Appendix A.6 — and over 2-3 years builds 400+ proprietary transformation rules, custom routing logic, and vendor-specific integrations on top of it, with no OCSF standardization, no documented escape path, and the raw data not preserved. When the pipeline cost then jumps 3× on a price increase or an acquisition, switching has become a $500K-plus migration project.
 
 **Symptom Quotes**:
-- "Our Cribl license went from $800K to $2.4M after Cisco acquisition—can we switch to Tenzir?" (Answer: $680K rewrite, 6-month timeline)
+- "Our pipeline license went from $800K to $2.4M after the vendor got acquired—can we switch to Tenzir?" (Answer: $680K rewrite, 6-month timeline)
 - "We have 600 Cribl Packs, none documented. How do we migrate to open-source Logstash?" (Answer: Manual reverse-engineering, 40% semantic loss risk)
 - "Our S3 bucket only has normalized data, so if we leave the pipeline vendor, we lose raw logs for re-processing"
 
@@ -616,12 +616,12 @@ The common mistake is storing only the pipeline-transformed output and deleting 
 
 ### Real-World Consequences
 
-**Fortune 500 Retail** (8 TB/day):
-- Deployed Cribl Stream in 2020 ($800K/year), built 540 transformation rules
-- 2024: Cisco acquires Cribl, 3× price increase ($2.4M/year after renewal)
-- **Migration analysis**: Cribl → Tenzir = $680K (rewrite transforms) + $120K (documentation)
+**Fortune 500 Retail** (8 TB/day; illustrative composite — the acquisition event is hypothetical, and an earlier draft wrongly named it as "Cisco acquires Cribl," which never happened; Cisco acquired Splunk, completed 2024-03-18, and Cribl remains independent — corrected 2026-07-10):
+- Deployed a commercial pipeline platform in 2020 ($800K/year), built 540 transformation rules
+- Vendor acquired; list price tripled at renewal ($2.4M/year) — the strategic-exposure scenario from the section above, played out
+- **Migration analysis**: incumbent pipeline → Tenzir = $680K (rewrite transforms) + $120K (documentation)
 - **Timeline**: 6 months (400 transforms to Tenzir, 140 to open-source as-is)
-- **Outcome**: Stayed with Cribl, because switching cost + risk exceeded 2-year price premium
+- **Outcome**: Stayed with the incumbent, because switching cost + risk exceeded the 2-year price premium
 
 **Healthcare SOC** (3 TB/day):
 - Adopted vendor "Observability Pipeline" with proprietary data model

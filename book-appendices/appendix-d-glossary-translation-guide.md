@@ -312,7 +312,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 
 3. **Follow Thought Leaders**: Joe Reis (LinkedIn + newsletter), Alex Merced (YouTube tutorials), Ryan Blue (Iceberg roadmap) — comment thoughtfully to build relationships
 
-4. **Experiment Hands-On**: DuckDB (duckdb.org), AWS Athena Free Tier, Iceberg Docker (github.com/tabular-io/iceberg-rest-image) — breaking things teaches more than documentation
+4. **Experiment Hands-On**: DuckDB (duckdb.org), AWS Athena Free Tier, Iceberg Docker (github.com/databricks/iceberg-rest-image — the old tabular-io path redirects there since Databricks acquired Tabular; verified live 2026-07-10) — breaking things teaches more than documentation
 
 ---
 
@@ -370,7 +370,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Data Engineering Equivalent**: Materialized view, query results cache, aggregation table, Dremio Reflections
 **Context**:
 - **Security expectation**: "Pre-compute dashboard queries for instant refresh"
-- **Data engineering reality**: "Materialized views can provide dramatic speedups — published benchmarks report 78× to 9,000× on favorable workloads (simple aggregations, low data-change rate, stable schema), but these are best-case figures [Evidence tier C/D: vendor documentation and their own benchmarks, not independently reproduced]; security data frequently hits the failure modes below" (see Appendix I.4B for the conditions under which these figures hold)
+- **Data engineering reality**: "Materialized views can provide dramatic speedups — Snowflake reports roughly a 78% query improvement (a percentage, not a multiplier), a single-developer PostgreSQL case study reports 350×–9,000× (Sid Ngeth, 2025, synthetic Rails dataset), and a practitioner Splunk write-up reports ~270× — but these are best-case figures [Evidence tier C/D; units-and-attribution corrected 2026-07-10, not independently reproduced]; security data frequently hits the failure modes below" (see Appendix I.4B for the conditions under which these figures hold)
 - **Three failure modes**:
   1. **High data change rates** (continuous log ingestion) → refresh costs exceed query savings
   2. **Schema volatility** (new log sources, vendor updates) → views invalidated frequently
@@ -419,7 +419,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Data Engineering Equivalent**: Hot tier, S3 Standard, frequently accessed partition
 **Context**:
 - **Security pattern**: "Last 7 days queried 100× per day (hot), older data queried 2× per week (cold)"
-- **Data engineering solution**: S3 Standard (hot, $0.023/GB/month) for 7 days, transition to Glacier ($0.001/GB/month) for older data
+- **Data engineering solution**: S3 Standard (hot, $0.023/GB/month) for 7 days, transition to S3 Glacier Deep Archive (~$0.001/GB/month; tier named 2026-07-10 for consistency with A.6, which prices Glacier Flexible Retrieval separately at $0.0036) for older data
 **Why It Matters**: Data engineers design tiered storage based on access patterns — tell them your query frequency to optimize cost
 
 ---

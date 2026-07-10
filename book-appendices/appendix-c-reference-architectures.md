@@ -56,9 +56,9 @@ One caveat keeps the interchangeability honest: it holds only when encryption st
 ### Production Validation
 
 These principles are validated at scale:
-- **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup presentation, late 2024; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
+- **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup talk, July 2025, written up on the ClickHouse blog 2025-10-23 — date corrected 2026-07-10 from "late 2024" per the bibliography's 2026-07-09 correction; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
 - **Okta**: 100K QPS DuckDB, 7.5 trillion records (Okta, Jake Thomas personal account; Tier B) (Principle 5)
-- **Apple**: Petabyte-scale Apache Iceberg (Baris Aydın, "Apple's Journey with Apache Iceberg," Subsurface Live 2023; Tier B) (Principle 1, 2)
+- **Apple**: Petabyte-scale Apache Iceberg (Apple engineers present Iceberg work at Dremio's Subsurface conference — e.g., Russell Spitzer's Subsurface 2024 session on Apple's Iceberg contributions — and Apple holds multiple Iceberg PMC seats; the earlier "Baris Aydın, 'Apple's Journey with Apache Iceberg,' Subsurface Live 2023" attribution could not be located anywhere and was dropped 2026-07-10; Tier C pending a fetched talk page) (Principle 1, 2)
 - **CISA**: Zeek-OCSF mapping, ~95% mapping accuracy as reported by the project itself, an illustrative figure rather than an independently published rate (CISA Zeek-OCSF project; Tier B) (Principle 4)
 
 Those are external deployments that validate the principles at scale; the interchangeability claim itself I verified first-party in a runnable reference stack, because "the layers are swappable" is the kind of assertion that deserves a measurement rather than a diagram. What follows is the one place in this book where I state the swap-clean claim in full and say exactly how much of it is measured.
@@ -661,7 +661,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
                     │ • Dashboards, alerts         │
                     │                              │
                     │ Enterprise Security (ES)     │
-                    │ • ~1,700 correlation rules   │
+                    │ • ~2,100 ESCU detections     │
                     │ • Risk-based alerting        │
                     │ • Threat intelligence        │
                     │ • Incident review            │
@@ -686,7 +686,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Ingestion** | Universal/Heavy Forwarders | Filebeat, Logstash | Real-time (<5 sec), agent-based, mature connectors |
 | **Storage** | Splunk tsidx | Iceberg, Parquet | Indexed (not columnar) optimized for SPL queries |
 | **Query Language** | SPL | SQL, KQL | Purpose-built for security (streamstats, transaction, tstats) |
-| **Detection** | ES Correlation Searches | Custom rules | ~1,700 pre-built rules, tuned for low false positives |
+| **Detection** | ES Correlation Searches | Custom rules | Extensive pre-built library: the ESCU security-content project publishes ~2,113 non-deprecated detections (GitHub-derived 2026-07-10; ES additionally bundles correlation searches — the older un-sourced "~1,700 correlation rules" figure conflated the two and was replaced) |
 | **SOAR** | Splunk Phantom | Third-party | Native integration, single-vendor support |
 | **ML** | MLTK (Machine Learning Toolkit) | Separate ML platform | Built-in, no integration required |
 
@@ -870,7 +870,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 **Applies to**: Pattern 1 (Healthcare Hybrid), Pattern 2 (AWS-First), Pattern 5 (Multi-Engine)
 
-Appendix I.4B works through the trade-off in detail, and the short version is that materialized views buy 78× to 9,000× query speedups in the vendor literature (Tier C: vendor documentation and best-case benchmarks, not independently reproduced) — though the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth), at the low end of that vendor range and nowhere near 9,000×, which is the honest independently-reproduced anchor for the claim — but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
+Appendix I.4B works through the trade-off in detail, and the short version is that the published upside claims decompose into three very different sources (units-and-attribution corrected 2026-07-10 against the SDW essay): Snowflake's own figure is roughly a 78% query improvement with 21% cost reduction on single-table aggregations (a percentage, not a multiplier; vendor docs, Tier C), the 9,000× top end comes from a single-developer PostgreSQL case study (Sid Ngeth, 2025: 350×–9,000× on a synthetic Rails dataset; Tier D anecdote, not vendor literature), and a practitioner Splunk write-up reports ~270× (unsafehex.com, Tier C) — while the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth), which is the honest independently-reproduced anchor for the claim — but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
 
 ### When to Add Materialized Views to Your Architecture
 
@@ -951,7 +951,7 @@ The per-month cost and ROI figures in this section are A.6-model projections for
 - ROI: Incremental, since it enables <1 second dashboards without additional infrastructure
 
 **Pattern 4 (Traditional SIEM)**: N/A
-- Schema-on-read SIEM Data Model Acceleration = built-in materialized views (51-270× speedups documented; Splunk Data Model Acceleration docs, docs.splunk.com — vendor docs, Tier C)
+- Schema-on-read SIEM Data Model Acceleration = built-in materialized views (~270× reported in a practitioner write-up — unsafehex.com, "tstats: afterburners for your Splunk threat hunting," Tier C; re-attributed 2026-07-10 from "docs.splunk.com," which documents the mechanism but not that figure, and the unlocatable "51×" low end dropped)
 - Enable for high-value use cases (CIM-compliant dashboards)
 - Cost: Included in Splunk licensing
 - ROI: Performance improvement only (no separate cost)
@@ -1023,7 +1023,7 @@ Both examples below are illustrative arithmetic on A.6-model assumptions (assume
 
 ### When materialization earns its keep
 
-The Netflix 5 PB/day deployment (Appendix I.4A) is a useful reminder that running the query layer without leaning on materialized views can be a valid and durable choice — the public Netflix material reaches sub-second queries through base-table and ingest-path engineering rather than materialization, and operational simplicity and schema flexibility can outweigh query performance optimization, particularly when the data changes fast enough that refresh cost exceeds the query savings. The 78× to 9,000× speedups in the vendor literature (Tier C, not independently reproduced) only translate to real cost reduction when query frequency materially exceeds the data change rate, so the right entry point is a pilot of 3-5 high-value, stable use cases (compliance dashboards, scheduled reports) with measured ROI before any broader rollout. Security data creates failure modes that general BI analytics don't face, the high change rates and schema volatility and multi-table correlation patterns that IVM implementations don't handle, which is why the four-tier model above (streaming → micro-batch → batch → data lake) distributes work across the right tool for each tier rather than applying materialization as a universal pattern.
+The Netflix 5 PB/day deployment (Appendix I.4A) is a useful reminder that running the query layer without leaning on materialized views can be a valid and durable choice — the public Netflix material reaches sub-second queries through base-table and ingest-path engineering rather than materialization, and operational simplicity and schema flexibility can outweigh query performance optimization, particularly when the data changes fast enough that refresh cost exceeds the query savings. The published materialized-view speedups (Snowflake ~78% improvement; a single-developer PostgreSQL case study at 350×–9,000×; practitioner Splunk ~270× — Tier C/D, not independently reproduced) only translate to real cost reduction when query frequency materially exceeds the data change rate, so the right entry point is a pilot of 3-5 high-value, stable use cases (compliance dashboards, scheduled reports) with measured ROI before any broader rollout. Security data creates failure modes that general BI analytics don't face, the high change rates and schema volatility and multi-table correlation patterns that IVM implementations don't handle, which is why the four-tier model above (streaming → micro-batch → batch → data lake) distributes work across the right tool for each tier rather than applying materialization as a universal pattern.
 
 **For detailed platform comparisons** (Dremio Reflections vs Snowflake Dynamic Tables vs Databricks MVs vs Materialize vs ksqlDB vs Flink), see ["Materialized Views for Security Data: What Actually Works at Petabyte Scale"](https://securitydataworks.com/writing/engines/materialized-views) on securitydataworks.com.
 

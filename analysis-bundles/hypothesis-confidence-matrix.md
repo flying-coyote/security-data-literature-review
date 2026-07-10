@@ -26,13 +26,13 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 | Hypothesis | Confidence | Source Count | Evidence Level A % | Key Validation |
 |------------|-----------|--------------|-------------------|----------------|
-| **H-ARCH-01** (Iceberg) | ⭐⭐⭐⭐⭐ Strong | 5 (+1 first-party) | 100% | Industry consensus, universal vendor support; FIRST-PARTY answer-equality on one Iceberg/OCSF table |
+| **H-ARCH-01** (Iceberg) | ⭐⭐⭐⭐⭐ Strong (three legs corrected 2026-07-10 — see section note) | 5 (+1 first-party) | — | Industry consensus, broad-not-universal vendor support (Microsoft is the named Delta-first holdout); FIRST-PARTY answer-equality on one Iceberg/OCSF table |
 | **H-IMPL-01** (TCO) | ⭐ 1/5 (overturned 2026-07-09) | 0 quantitative | — | ~~IDC, DORA, Confluent convergence~~ all withdrawn; qualitative direction only |
 | **H-IMPL-02** (Staffing) | ⭐⭐ 2/5 (overturned 2026-07-09) | 0 quantitative | — | ~~DORA 2.7×, IDC 2.5-3×, Ververica 3.2 FTEs~~ all withdrawn/nonexistent |
-| **H-IMPL-03** (Timeline) | ⭐⭐⭐ Moderate (pending re-score) | 2 | — | ~~Gartner 5.5 months~~ withdrawn; SANS premium leg stands |
+| **H-IMPL-03** (Timeline) | ⭐⭐⭐ Moderate (pending re-score) | 0 quantitative | — | ~~Gartner 5.5 months~~ withdrawn; ~~SANS 15-30% premium~~ ALSO withdrawn (corrected 2026-07-10 — removed from the bibliography 2026-06-05 as not present in the cited sources); zero surviving quantitative legs |
 | **H-COST-09** (Tiered Storage) | ⭐⭐⭐⭐ 4/5 (re-anchored 2026-07-09) | 3 | — | ~~AWS 55%, Netflix 70-80%~~ dead legs; stands on the first-party S3 tier-price derivation (−45.7% to −95.7% by tier) + Insider + Kozlovski |
 | **H3-PERFORMANCE-01** (ClickHouse) | ⭐⭐⭐⭐ High | 3 (+1 first-party) | — | Cloudflare 6M req/sec; ~~Shell 57TB/day~~ withdrawn; FIRST-PARTY ~7.0× storage on OCSF data vs baseline |
-| **H-STREAM-01** (Kafka Streams) | ⭐⭐⭐⭐ High | 3 | 100% | LinkedIn, Uber production security |
+| **H-STREAM-01** (Kafka Streams) | ⭐⭐⭐⭐ High (pending re-score, legs corrected 2026-07-10) | 1 verified | — | LinkedIn leg re-anchored to Samza/VLDB-2017 (no millisecond-latency claim); Uber sub-second-refresh figures withdrawn |
 
 **FIRST-PARTY hypotheses (lab-measured, MOAR reference stack, 2026-06-07, single host):**
 
@@ -93,6 +93,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 ## Hypothesis-by-Hypothesis Assessment
 
 ### H-ARCH-01: Apache Iceberg Dominance
+
+> **Section record note (2026-07-10):** three legs below were corrected in the 2026-07 audits and the enumerations should not be cited as they stand: (1) "universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)" — contradicted by its own cited source; Microsoft is the named Delta-first holdout (The Register verbatim: "Microsoft went with Delta Lake"; Databricks' own Iceberg support reached Public Preview 2025-06-12), so the claim is broad-not-universal; (2) "300+ contributors across 100+ organizations" — replaced 2026-07-09 with the GitHub-derived **407 contributors** (as-of-dated; the organization count was dropped as underivable); (3) SK Telecom "52.7 TB in 3.39s" — the figures are not in the recap the entry cited and were re-attributed 2026-07-10 to the Trino Summit slides with table-size framing. The de-facto-standard direction and the first-party leg stand. Preserved as the October-2025 record.
 
 **Hypothesis**: "Apache Iceberg has emerged as the de facto standard for open table formats in enterprise data lakehouses, with 76% adoption among organizations standardizing on open formats."
 
@@ -311,7 +313,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ### H-IMPL-03: Timeline Premium (Security Implementation)
 
-> **Section record note (2026-07-10):** the Gartner/phData 5.5-month leg below is withdrawn (the cited phData post carries no such figure); the SANS security-premium leg stands. Re-score pending. Cite the surviving legs only.
+> **Section record note (2026-07-10, corrected same day):** the Gartner/phData 5.5-month leg below is withdrawn (the cited phData post carries no such figure) — and the SANS 15-30% security-premium leg does NOT stand either: the bibliography records it as removed in the 2026-06-05 audit (not present in the cited sources). The hypothesis has **zero surviving quantitative legs**; the RESCORE-PROPOSAL adjudication should reflect that. The qualitative direction (security constraints extend timelines) survives unquantified. Do not cite the enumerations below.
 
 **Hypothesis**: "Security-focused data lakehouse implementations require 15-30% longer timelines vs general data engineering due to compliance validation, security tool integrations, and detection logic migration."
 
@@ -448,7 +450,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ### H3-PERFORMANCE-01: ClickHouse OLAP Performance
 
-> **Section record note (2026-07-10):** the Shell 57TB/day leg below was removed from the bibliography in the 2026-06-05 audit; Cloudflare and the first-party lab legs stand.
+> **Section record note (2026-07-10, amended same day):** the Shell 57TB/day leg below was removed from the bibliography in the 2026-06-05 audit. The Cloudflare 6M-req/sec and 96%-<1s legs and the first-party lab leg stand — but two other figures below are part-1 CLAIM-MISMATCH verdicts and must not be cited as written: "10-12× compression" (the verified Cloudflare figure is ~10×, stated as 600→60 bytes/row) and "5-10× storage efficiency vs Elasticsearch" (the CH-vs-ES benchmark's verified STORAGE figure is 12-19×; the 5-12× multipliers in that page are query-speed, not storage).
 
 **Hypothesis**: "ClickHouse delivers exceptional OLAP performance for security workloads: 6 million requests/second throughput, 96% of queries completing under 1 second, and 5-10× storage efficiency vs Elasticsearch."
 
@@ -517,6 +519,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 ---
 
 ### H-STREAM-01: Kafka Streams Security Patterns
+
+> **Section record note (2026-07-10):** both quantitative legs below have been corrected since October 2025. The LinkedIn "terabytes of state with millisecond access" claim was orphaned (no locatable primary) and re-anchored 2026-07-09 on **Samza — "Stateful Scalable Stream Processing at LinkedIn" (VLDB 2017)**, whose verified figures are hundreds of TB of local state across applications and millions of requests/sec — the paper's local-state figure is THROUGHPUT; do not cite a millisecond latency number to it. The Uber "thousands of views / sub-second refresh" figures are recorded as withdrawn (cost-reality-reference §4.1 cross-reference). The bibliography line anchors cited below (502-520 / 681-699) predate the July edits and have drifted. Re-score pending; do not cite the enumerations or the Recommended Book Language below as they stand.
 
 **Hypothesis**: "Kafka Streams enables production-scale stateful security processing: LinkedIn maintains terabytes of state with millisecond access times, Uber operates thousands of real-time security views with sub-second refresh rates."
 
@@ -802,17 +806,19 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 
 ## Consolidated Confidence Assessment
 
+> **⛔ Record note (2026-07-10).** The borrowed-seven table below was never re-scored when the Executive Summary was, and every row still instructs the book to lead with withdrawn legs (2.7×/Level 4, 5.5 months, AWS+Netflix 55-80%, Shell, LinkedIn+Uber sub-second views). It is struck and preserved as the October-2025 record — the CURRENT adjudicated guidance is the banner at the top of this file (H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 re-anchored first-party, H-IMPL-03 zero quantitative legs pending re-score) and RESCORE-PROPOSAL-2026-07.md. The first-party table below it stands unmodified.
+
 ### Overall Validation Strength
 
 | Hypothesis | Confidence | Recommendation for Book |
 |------------|-----------|------------------------|
-| **H-ARCH-01** | ⭐⭐⭐⭐⭐ | **Refine from "76%" to "industry consensus"** - strong claim justified |
-| **H-IMPL-01** | ⭐⭐⭐⭐ | **2.5-3× operational costs** - high confidence, cite convergence |
-| **H-IMPL-02** | ⭐⭐⭐⭐⭐ | **2.7× staffing, Level 4 skills** - strongest validation, lead with this |
-| **H-IMPL-03** | ⭐⭐⭐ | **5.5 months, 15-30% premium** - moderate confidence, add caveat |
-| **H-COST-09** | ⭐⭐⭐⭐⭐ | **55-80% tiered storage savings** - strong, cite AWS + Netflix |
-| **H3-PERFORMANCE-01** | ⭐⭐⭐⭐ | **6M req/sec, 96% <1s** - high confidence, cite Cloudflare + Shell; FIRST-PARTY ~7.0× storage (FOIL) added |
-| **H-STREAM-01** | ⭐⭐⭐⭐ | **Terabytes of state, sub-second views** - high confidence, cite LinkedIn + Uber |
+| **H-ARCH-01** | ~~⭐⭐⭐⭐⭐~~ | ~~**Refine from "76%" to "industry consensus"** - strong claim justified~~ (direction stands; "universal vendor support" corrected to broad-not-universal — see section note) |
+| **H-IMPL-01** | ~~⭐⭐⭐⭐~~ now 1/5 | ~~**2.5-3× operational costs** - high confidence, cite convergence~~ WITHDRAWN — no surviving multiplier |
+| **H-IMPL-02** | ~~⭐⭐⭐⭐⭐~~ now 2/5 | ~~**2.7× staffing, Level 4 skills** - strongest validation, lead with this~~ WITHDRAWN — all four legs nonexistent/withdrawn |
+| **H-IMPL-03** | ~~⭐⭐⭐~~ pending re-score | ~~**5.5 months, 15-30% premium** - moderate confidence, add caveat~~ WITHDRAWN — zero surviving quantitative legs |
+| **H-COST-09** | ~~⭐⭐⭐⭐⭐~~ now 4/5 | ~~**55-80% tiered storage savings** - strong, cite AWS + Netflix~~ WITHDRAWN — re-anchored on the first-party S3 tier-price derivation (−45.7% to −95.7% by tier) |
+| **H3-PERFORMANCE-01** | ⭐⭐⭐⭐ | **6M req/sec, 96% <1s** - cite Cloudflare; ~~+ Shell~~ withdrawn; FIRST-PARTY ~7.0× storage (FOIL) stands |
+| **H-STREAM-01** | ~~⭐⭐⭐⭐~~ pending re-score | ~~**Terabytes of state, sub-second views** - high confidence, cite LinkedIn + Uber~~ CORRECTED — Samza/VLDB-2017 re-anchor only (throughput, not latency); Uber figures withdrawn |
 
 **First-party (lab-measured, MOAR reference stack, 2026-06-07, single host):**
 
@@ -830,20 +836,15 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 
 ### Confidence Distribution Analysis
 
-**Strong Confidence (⭐⭐⭐⭐⭐)**: 3 hypotheses
-- H-ARCH-01 (Iceberg dominance)
-- H-IMPL-02 (Staffing scarcity)
-- H-COST-09 (Tiered storage)
+> **⛔ Record note (2026-07-10):** pre-overturn material, struck — the post-overturn distribution is 1 strong (H-ARCH-01, with corrected legs) / 2 high (H3-PERFORMANCE-01 corrected, H-COST-09 4/5 re-anchored) / the rest 1-2/5 or pending re-score. See the banner and RESCORE-PROPOSAL-2026-07.md.
 
-**High Confidence (⭐⭐⭐⭐)**: 3 hypotheses
-- H-IMPL-01 (TCO reality)
-- H3-PERFORMANCE-01 (ClickHouse)
-- H-STREAM-01 (Kafka Streams)
+~~**Strong Confidence (⭐⭐⭐⭐⭐)**: 3 hypotheses — H-ARCH-01 (Iceberg dominance), H-IMPL-02 (Staffing scarcity), H-COST-09 (Tiered storage)~~
 
-**Moderate Confidence (⭐⭐⭐)**: 1 hypothesis
-- H-IMPL-03 (Timeline premium)
+~~**High Confidence (⭐⭐⭐⭐)**: 3 hypotheses — H-IMPL-01 (TCO reality), H3-PERFORMANCE-01 (ClickHouse), H-STREAM-01 (Kafka Streams)~~
 
-**Assessment**: **86% of hypotheses have High or Strong confidence** (6 of 7). Only H-IMPL-03 has moderate confidence due to limited source count (3 sources, 67% Level A).
+~~**Moderate Confidence (⭐⭐⭐)**: 1 hypothesis — H-IMPL-03 (Timeline premium)~~
+
+~~**Assessment**: **86% of hypotheses have High or Strong confidence** (6 of 7). Only H-IMPL-03 has moderate confidence due to limited source count (3 sources, 67% Level A).~~
 
 ---
 

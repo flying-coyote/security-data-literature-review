@@ -13,6 +13,8 @@ tags: [cost-evidence, tiered-storage, tco, streaming-vs-batch, lab-benchmarks, s
 **Sources**: All citations reference MASTER-BIBLIOGRAPHY.md entries
 **Evidence Quality**: the original "11 of 12 sources = Level A (92%)" self-grade is WITHDRAWN — see the Revision 1.1 audit note below. Per-source levels are provisional pending re-verification; no aggregate Level-A percentage is claimed.
 
+> **Revision 1.2 addendum (2026-07-10).** Three "survives the audit" claims in the 1.1 revision are now themselves contradicted by the post-banner bibliography and are struck below where they appear live: (1) the DORA "Level 4 skills" qualitative leg — part 1's fetch found ZERO occurrences of any Level-taxonomy, "top 5%", or fault-tolerance framing in DORA 2024, and the bibliography now says "do not use this source for staffing or incident-rate comparisons"; (2) the Forrester TEI 39/32/29 TCO split — grep-negative in BOTH TEI documents, withdrawn 2026-07-09; (3) the Gartner 28% CAGR — the cited Gartner item is a spending forecast with no volume CAGR, withdrawn 2026-07-09. Also aligned: Huntress wording to the source-verbatim "more than 90%" (93% is derived arithmetic). The 📍 bibliography line anchors throughout predate the July edits and have drifted — re-derive before following any of them.
+
 > **Revision 1.1 audit note (2026-06-14, folded correction).** This bundle (Revision 1.0, untouched since 2025-10-15) was never swept in the 2026-06 fabrications cleanup that corrected MASTER-BIBLIOGRAPHY.md and APPENDICES.md, so it still asserted the exact statistics that audit removed or could not trace to a surviving source. They are marked WITHDRAWN inline (not deleted — the record stays so a future agent does not re-add them), mirroring the APPENDICES.md folded-correction style. Withdrawn here, with the same provenance as the bibliography audit: DORA "2.7× operational staff" and "3.2× higher incident rates" (the 2.7× multiplier is not in the DORA report); IDC "2.5-3× operational staffing" (entry withdrawn); Enterprise Data Quarterly "1.5-2× infrastructure" (entry withdrawn); Confluent "45-55% of TCO" (figure not in the cited course); AWS "35% / 55% tiered-storage savings" (cited whitepaper is a deprecated empty stub); Netflix "70-80% tiered-storage savings" (cited URL is Confluent documentation, not a Netflix source); Microsoft MSRC "350% traffic surge" (sole source withdrawn); Shell "57TB/day" (entry removed, dead URL); the CloudZero "2.8-3.6×" placeholder (no resolvable source — was already self-flagged as a placeholder); and the reliability-economics figures (Google SRE per-nine, Gartner 70% overspend, Uptime Institute four-nines, financial-services five-nines multiplier — placeholder-sourced, no resolvable citations). The cost-REDUCTION framing has been recalibrated to **60-80% median, up to 90%+ in optimal conditions**, anchored to first-party lab byte ratios (2.6× high-entropy → 7.9× EDR → 8.5× flat Zeek, `~/sdw-lab-benchmarks/cost-to-serve-retention`, verified against the FINDINGS doc) and the surviving audit-verified production anchor (Huntress 93% infrastructure-cost reduction, $70K→$5K/month, Chris Bisnett migration video — Level A). The "92% Level A" aggregate self-grade is withdrawn. Do NOT re-flag the named-source audit trail (DORA/IDC/Netflix/AWS/MSRC/Shell etc. appearing in correction notes are records, not new violations).
 
 ---
@@ -24,8 +26,8 @@ Modern data lakehouses for security promise cost savings vs traditional SIEM, bu
 - **Streaming architectures**: the borrowed 2.5-3× operational-cost multiplier is WITHDRAWN (DORA/IDC figures not in source); the qualitative claim that streaming carries a higher operational-cost premium than batch stands on the surviving sources, without a specific multiple
 - **Tiered storage / cost reduction**: I'd put the defensible range at **60-80% median, up to 90%+ in optimal conditions** — anchored to the first-party byte ratios (2.6×-8.5× across telemetry shapes) and the audit-verified Huntress 93% migration result, not to the withdrawn AWS 55% / Netflix 70-80% figures
 - **Reliability economics**: the "each nine = 10× / 70% overspend" figures are WITHDRAWN (placeholder-sourced); the qualitative point that over-targeting availability wastes budget stands without the magnitudes
-- **Hidden costs**: the Cloudera/Forrester TEI 29% operational TCO survives the audit (the 39% licensing / 32% hardware split is from that same source and stands); operational cost is the underestimated component
-- **Security premium**: specialized-skills scarcity stands qualitatively on the surviving DORA research; the specific 15-30% premium is not separately sourced and should be treated as an estimate
+- **Hidden costs**: ~~the Cloudera/Forrester TEI 29% operational TCO survives the audit (the 39% licensing / 32% hardware split is from that same source and stands)~~ — WITHDRAWN 2026-07-10: the 39/32/29 breakdown appears in NEITHER TEI document (grep-negative in both); operational-cost-is-underestimated stands as a qualitative direction only
+- **Security premium**: specialized-skills scarcity stands as practitioner consensus, unattributed — ~~on the surviving DORA research~~ WITHDRAWN 2026-07-10 (DORA 2024 contains no Level-taxonomy or fault-tolerance-skills finding); the specific 15-30% premium is not separately sourced and should be treated as an estimate
 
 I think the honest read is that operational costs (staffing, complexity, specialized skills) are the hidden multiplier that determines true TCO, but the specific multipliers that used to quantify that claim mostly failed the audit, so the bundle now leads with the lab-anchored cost-reduction band and flags the rest as withdrawn.
 
@@ -53,10 +55,10 @@ I think the honest read is that operational costs (staffing, complexity, special
 **Findings**:
 - ~~2.7× operational staff required for streaming vs batch~~ — **WITHDRAWN: the 2.7× multiplier is not in the DORA report.**
 - ~~3.2× higher incident rates for streaming~~ — **WITHDRAWN: not in the DORA report.**
-- Fault-tolerance expertise as a specialized "Level 4" skill (top organizations only) — this qualitative finding IS in the surviving DORA research and is retained.
+- ~~Fault-tolerance expertise as a specialized "Level 4" skill (top organizations only) — this qualitative finding IS in the surviving DORA research and is retained.~~ — **WITHDRAWN 2026-07-10: part 1's fetch of DORA 2024 found zero occurrences of any Level-taxonomy, "top 5%", or fault-tolerance skills framing; the entire "Level 4" construct has no source.**
 
-**Evidence Level**: A for the surviving qualitative "Level 4 skills" point; the 2.7× and 3.2× multipliers are withdrawn (not in source)
-**Confidence**: Moderate on the skills-scarcity point; n/a for the withdrawn multipliers
+**Evidence Level**: nothing survives from this source for this claim — the multipliers AND the "Level 4" qualitative point are all withdrawn (bibliography: "do not use this source for staffing or incident-rate comparisons")
+**Confidence**: n/a
 
 ---
 
@@ -99,15 +101,12 @@ I think the honest read is that operational costs (staffing, complexity, special
 **Cloudera TCO Analysis (Forrester TEI, 2023)**
 📍 MASTER-BIBLIOGRAPHY.md:1033-1053
 
-**Finding**: Platform TCO breakdown for data lakehouses:
-- **39% licensing costs**
-- **32% hardware/infrastructure**
-- **29% operational** (staffing, training, maintenance)
+~~**Finding**: Platform TCO breakdown for data lakehouses: **39% licensing costs** / **32% hardware/infrastructure** / **29% operational** (staffing, training, maintenance)~~ — **WITHDRAWN 2026-07-10: the bibliography's split TEI entries record this breakdown as appearing in NEITHER TEI document (grep-negative in both); H-IMPL-01 must not cite a TCO distribution from Forrester TEI.**
 
-**Evidence Level**: A (Commissioned research, quantitative)
-**Confidence**: High - Forrester Total Economic Impact methodology
+**Evidence Level**: withdrawn (figures not in the cited documents)
+**Confidence**: n/a
 
-**Book Application**: Shows operational costs (29%) are significant even for batch-focused platforms
+**Book Application**: the qualitative point (operational cost is a significant TCO component) stands unsourced; do not cite a percentage split to TEI
 
 ---
 
@@ -183,7 +182,7 @@ The per-tier cost multipliers below track the published S3 storage-class price s
 **Synthesis (recalibrated 2026-06-14)**: the borrowed AWS 55% and Netflix 70-80% figures are withdrawn (see §2.1, §2.2). The defensible cost-reduction band is **60-80% median, up to 90%+ in optimal conditions**, and it rests on two surviving anchors rather than the withdrawn vendor figures:
 
 - *First-party byte ratios* (`~/sdw-lab-benchmarks/cost-to-serve-retention`, verified against its FINDINGS doc): the columnar/compressed-vs-raw storage ratio spans **2.6× (high-entropy security telemetry) → 7.9× (EDR/Sysmon) → 8.5× (flat Zeek conn)** on a single host at 10M rows. The ratio is strongly workload-dependent at the tails, so the cost model must re-measure the byte ratio per workload rather than assume a single constant.
-- *Production literature* (audit-verified): Huntress reported a **93% infrastructure-cost reduction** ($70K → $5K/month) on a ClickHouse migration (Chris Bisnett migration video, Level A) — the upper-end anchor for the "up to 90%+ optimal" tail.
+- *Production literature* (audit-verified): Huntress reported **"more than 90%"** infrastructure-cost reduction (~$70K → ~$5K/month; 93% is the derived arithmetic, not the source's own phrasing) on a ClickHouse migration (Chris Bisnett migration video, Level A) — the upper-end anchor for the "up to 90%+ optimal" tail.
 
 So the honest framing is a workload-dependent range (60-80% typical, 90%+ when the data compresses well and tiering is aggressive), with the high-entropy floor (~2.6×) noted so the band reads as workload-dependent, not a universal constant.
 
@@ -266,7 +265,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
    - Fraud detection with financial impact
    - Critical infrastructure monitoring
 
-2. **Stateful entity tracking** (LinkedIn validated; the Uber refresh-rate figures are withdrawn — see performance-benchmarks-table.md §2.1)
+2. **Stateful entity tracking** (LinkedIn leg re-anchored 2026-07-09 on Samza/VLDB-2017 — throughput figures only, no millisecond-latency claim; the Uber refresh-rate figures are withdrawn — see performance-benchmarks-table.md §2.1)
    - User behavior analytics requiring continuous state
    - Network flow correlation across time windows
 
@@ -286,7 +285,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
 **Optimal Scenarios**:
 1. **Threat hunting** (historical analysis, no real-time requirement)
 2. **Compliance reporting** (daily/weekly cadence sufficient)
-3. **Behavioral baselining** (18-24 months data, MITRE validated)
+3. **Behavioral baselining** (18-24 months data — "MITRE validated" softened to reported 2026-07-10; no bibliography entry backs the validation claim)
 4. **Cost-conscious implementations** (mid-market, budget constraints)
 
 **Cost Advantage**: Batch avoids:
@@ -298,7 +297,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
 
 ### 4.3 Hybrid Architecture Strategy
 
-**Recommended Pattern** (validated by Uber, Netflix, Disney+):
+**Recommended Pattern** (reported in industry practice — the "validated by Uber, Netflix, Disney+" attribution carried no bibliography entries and was softened 2026-07-10):
 - **Hot path (streaming)**: Real-time detection, critical alerts (5-10% of data processing)
 - **Cold path (batch)**: Historical analysis, threat hunting, compliance (90-95% of data processing)
 
@@ -337,17 +336,11 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
 **Gartner - Security Data Growth Rates**
 📍 MASTER-BIBLIOGRAPHY.md:1102-1122
 
-**Finding**: **28% CAGR for security data** (compound annual growth rate)
-- 25-35% annual volume growth typical
-- Driven by: Cloud adoption, endpoint proliferation, IoT/OT expansion
+~~**Finding**: **28% CAGR for security data** (compound annual growth rate) — 25-35% annual volume growth typical~~ — **WITHDRAWN 2026-07-10: the cited Gartner item is a spending forecast with no volume CAGR (bibliography note, withdrawn 2026-07-09).** Volume growth drivers (cloud adoption, endpoint proliferation, IoT/OT expansion) stand qualitatively.
 
-**Multi-Year Cost Planning**:
-- Year 1: Baseline
-- Year 2: 1.28× baseline
-- Year 3: 1.64× baseline
-- Year 5: 2.14× baseline
+~~**Multi-Year Cost Planning**: Year 1: Baseline / Year 2: 1.28× / Year 3: 1.64× / Year 5: 2.14×~~ — arithmetic on the withdrawn CAGR, withdrawn with it.
 
-**Cost Implication**: TCO projections must account for **2× data volume within 3 years**
+**Cost Implication**: security data volumes grow year over year — plan for growth, but derive the rate from your own ingest history, not this withdrawn figure
 
 ---
 
@@ -357,7 +350,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
 📍 MASTER-BIBLIOGRAPHY.md:357-376 (DORA), 1010-1030 (McKinsey)
 
 **Findings**:
-- Streaming fault-tolerance as a specialized "Level 4" skill (top organizations) — this qualitative DORA finding survives the audit and is retained.
+- ~~Streaming fault-tolerance as a specialized "Level 4" skill (top organizations) — this qualitative DORA finding survives the audit and is retained.~~ — **WITHDRAWN 2026-07-10 (no Level-taxonomy in DORA 2024 at all).** Skills scarcity stands as unattributed practitioner consensus.
 - Security + data-engineering hybrid skills are scarce; the "20-30% salary premium" is an estimate, not a separately sourced figure — treat as directional (D).
 - ~~Tiger teams: 35-40% implementation acceleration (McKinsey)~~ — **WITHDRAWN: the McKinsey tiger-team figure was removed in the 2026 audit (entry removed). The build-vs-buy-vs-managed strategy below stands without it.**
 
@@ -393,7 +386,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
 ### 6.2 Three-Year TCO with Growth
 
 **Assumptions**:
-- 28% annual data growth (Gartner, Level A — retained; APPENDICES.md [49])
+- ~~28% annual data growth (Gartner, Level A — retained; APPENDICES.md [49])~~ — WITHDRAWN 2026-07-10 (spending forecast, no volume CAGR); the growth assumption in the table below is illustrative
 - Tiered storage cost reduction: use the recalibrated 60-80% median / up to 90%+ optimal band (§2.3) — the Netflix 70% figure this assumption originally cited is withdrawn
 - Operational efficiency: ~20% staffing reduction Year 2-3 (automation, proficiency — author's estimate, D)
 
@@ -414,7 +407,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
 ### Tier 1: High Impact, Low Effort
 
 1. **Implement tiered storage** (60-80% median, up to 90%+ optimal — recalibrated §2.3)
-   - Anchors: first-party lab byte ratios (2.6×-8.5×, `~/sdw-lab-benchmarks/cost-to-serve-retention`) + Huntress 93% migration (Level A). The borrowed AWS 55% / Netflix 70-80% figures are withdrawn.
+   - Anchors: first-party lab byte ratios (2.6×-8.5×, `~/sdw-lab-benchmarks/cost-to-serve-retention`) + Huntress "more than 90%" migration (~$70K→~$5K/mo, Level A). The borrowed AWS 55% / Netflix 70-80% figures are withdrawn.
    - Effort: 2-4 weeks implementation
    - ROI: Immediate savings on storage costs
 
@@ -488,9 +481,9 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 ### Source Distribution (post-2026-06-14 audit)
 
 **Surviving (with caveats)**:
-- Cloudera TCO / Forrester TEI (29% operational TCO split) — retained, A
-- Gartner 28% security-data CAGR — retained, A
-- DORA "Level 4 skills" qualitative finding — retained, A (the 2.7× / 3.2× multipliers are withdrawn)
+- ~~Cloudera TCO / Forrester TEI (29% operational TCO split) — retained, A~~ — WITHDRAWN 2026-07-10 (in neither TEI document)
+- ~~Gartner 28% security-data CAGR — retained, A~~ — WITHDRAWN 2026-07-10 (spending forecast, no volume CAGR)
+- ~~DORA "Level 4 skills" qualitative finding — retained, A~~ — WITHDRAWN 2026-07-10 (no Level-taxonomy in DORA 2024)
 - Confluent operational-complexity driver (qualitative) — B (the 45-55% figure is withdrawn)
 - Databricks TCO (vendor analysis) — B
 
@@ -510,7 +503,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 | Tiered storage 55-80% savings | **RECALIBRATED** | borrowed AWS/Netflix figures withdrawn; replaced by the lab-anchored 60-80%/90%+ band (§2.3) |
 | Each "nine" = 10× cost | **WITHDRAWN** | Google SRE figure placeholder-sourced, removed |
 | 70% reliability overspend | **WITHDRAWN** | placeholder-sourced, removed |
-| 28% security data CAGR | **High (retained)** | Gartner, Level A — survives the audit |
+| 28% security data CAGR | **WITHDRAWN (2026-07-10)** | the cited Gartner item is a spending forecast with no volume CAGR |
 
 ---
 
@@ -520,7 +513,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 
 **Key messages** (post-2026-06-14 audit — the original three messages are corrected):
 1. ~~"Streaming architectures cost 2-3× more than batch (IDC, DORA, Enterprise Data Quarterly)"~~ — WITHDRAWN; say instead: "streaming carries a higher operational-cost premium than batch (specialized skills, 24/7 ops, incident complexity), though the specific multiple is not currently sourced."
-2. ~~"Tiered storage reduces costs 55-80% (AWS, Netflix)"~~ — RECALIBRATED; say instead: "tiered storage and columnar compression reduce retention cost by roughly 60-80% in typical security workloads and 90%+ in optimal conditions, with the saving driven by a workload-dependent byte ratio (2.6×-8.5×, first-party lab) — re-measure per workload (Huntress reported 93% on a ClickHouse migration, Level A)."
+2. ~~"Tiered storage reduces costs 55-80% (AWS, Netflix)"~~ — RECALIBRATED; say instead: "tiered storage and columnar compression reduce retention cost by roughly 60-80% in typical security workloads and 90%+ in optimal conditions, with the saving driven by a workload-dependent byte ratio (2.6×-8.5×, first-party lab) — re-measure per workload (Huntress reported \"more than 90%\" — ~$70K→~$5K/mo, 93% derived — on a ClickHouse migration, Level A)."
 3. ~~"70% of organizations overspend on reliability (Gartner, Uptime Institute)"~~ — WITHDRAWN (placeholder-sourced); the qualitative right-sizing point stands without the percentage.
 
 **Citation format**: do NOT cite the withdrawn IDC/DORA/AWS/Netflix figures. Cite the first-party byte ratios (`~/sdw-lab-benchmarks/cost-to-serve-retention`) and the audit-verified Huntress migration for cost-reduction claims.
@@ -530,8 +523,8 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 ### Chapter 4: Implementation Journeys
 
 **Key messages** (post-audit):
-1. "Operational costs (staffing, training, complexity) are a major share of total TCO — the Cloudera/Forrester TEI breakdown puts operational at 29% (retained, A); the Confluent 45-55% figure is withdrawn, so do not cite the higher '40-55%' framing."
-2. "Specialized streaming expertise is a scarce 'Level 4' skill (DORA, qualitative — retained)."
+1. "Operational costs (staffing, training, complexity) are a major share of total TCO" — qualitative only as of 2026-07-10: ~~the Cloudera/Forrester TEI breakdown puts operational at 29% (retained, A)~~ withdrawn (in neither TEI document); the Confluent 45-55% figure was already withdrawn. Cite no percentage split.
+2. ~~"Specialized streaming expertise is a scarce 'Level 4' skill (DORA, qualitative — retained)."~~ — WITHDRAWN 2026-07-10; say "specialized streaming expertise is scarce" without the Level-4 taxonomy or the DORA attribution.
 3. ~~"Hybrid architectures achieve 60-70% cost savings vs pure streaming (Uber, Netflix)"~~ — WITHDRAWN (derived from the withdrawn streaming premium); the qualitative point (apply the premium only to the real-time slice) stands.
 
 ---
@@ -540,7 +533,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 
 **Key messages** (post-audit):
 1. "Tiered storage and columnar compression cut retention cost by roughly 60-80% (up to 90%+ optimal), workload-dependent (§2.3); right-sizing reliability and applying streaming selectively also save budget, but the specific 30-50% / 60-70% figures are withdrawn."
-2. "Multi-year TCO planning must account for ~28% annual data growth (Gartner, retained, A) and roughly 2× volume within 3 years."
+2. "Multi-year TCO planning must account for year-over-year data growth — ~~28% annual (Gartner, retained, A) / 2× within 3 years~~ WITHDRAWN 2026-07-10; derive the growth rate from the org's own ingest history."
 3. ~~"Security workloads experience 350% traffic surges during incidents (Microsoft MSRC)"~~ — the 350% figure is WITHDRAWN (sole source removed); say "telemetry spikes sharply during incidents — provision burst headroom sized from a real surge measurement."
 
 ---
@@ -568,6 +561,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 | Version | Date | Changes | Sources Updated |
 |---------|------|---------|-----------------|
 | 1.0 | 2025-10-15 | Initial synthesis | 12 sources consolidated |
+| 1.2 | 2026-07-10 | **Banner-staleness pass (part-3 sweep):** struck the three 1.1-era "survives the audit" claims now contradicted by the bibliography — DORA Level-4 qualitative leg (no Level-taxonomy in DORA 2024 at all), Forrester TEI 39/32/29 (in neither TEI document), Gartner 28% CAGR (spending forecast, no volume CAGR) — at every live site (exec summary, §1.1, §1.3, §5.2, §5.3, §6.2, §9, §10); softened the unsourced "MITRE validated" / "validated by Uber, Netflix, Disney+" attributions to reported; aligned Huntress to source-verbatim "more than 90%" (93% = derived); LinkedIn stateful leg annotated to the Samza/VLDB-2017 re-anchor. 📍 line anchors noted as drifted (mechanical re-anchor deferred). | three retained-A claims withdrawn |
 | 1.1 | 2026-06-14 | **Folded-correction audit** (this bundle was never swept in the 2026-06 fabrications cleanup). Marked WITHDRAWN inline, mirroring APPENDICES.md: DORA 2.7×/3.2×, IDC 2.5-3×, Enterprise Data Quarterly 1.5-2×, Confluent 45-55%, CloudZero 2.8-3.6×, AWS 35%/55%, Netflix 70-80%, MSRC 350%, Shell 57TB, McKinsey 35-40%, and the placeholder-sourced reliability-economics figures (Google SRE per-nine, Gartner 70% overspend, Uptime Institute, financial-services 37×). Recalibrated the cost-reduction framing to 60-80% median / up to 90%+ optimal, anchored to first-party lab byte ratios (2.6×-8.5×, verified against `~/sdw-lab-benchmarks/cost-to-serve-retention` FINDINGS) + the audit-verified Huntress 93% migration. Retained: Cloudera/Forrester TEI 29%, Gartner 28% CAGR, DORA Level-4-skills qualitative. Withdrew the "92% Level A" aggregate self-grade. Audit-trail names left inline as records, not new violations. | borrowed stats withdrawn; lab + Huntress anchors substituted |
 
 ---
