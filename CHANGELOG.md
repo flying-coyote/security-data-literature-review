@@ -12,6 +12,39 @@ and this project adheres to semantic versioning for documentation releases.
 Continuation of the 1.22.0 revival. The audit fixed the *content*; this fixes the *instruments* that
 report on it, and reconciles the source count across every surface that states it.
 
+### 2026-07-09 verification-sweep fix pass, part 2 — fabrication removals + hypothesis downgrades (fixes 1, 6, 7, 9, 10; owner-ratified)
+
+The three findings that change hypothesis standing, applied after owner sign-off:
+
+**Withdrawn: DORA "Level 4 / top 5%" skill taxonomy (fix 1).** The DORA 2024 report contains no
+Level-1/3/4 taxonomy, no "top 5%," not even the word "fault-tolerance" (0 matches in the extracted PDF).
+Removed from the abstract, exec summary, §3.3.1, §3.4.1 (both paragraphs), §3.7 (H-IMPL-02), §4.1 (two
+spots), §4.3, the conclusion (three spots), and APPENDICES.md — each site now states the skills-scarcity
+claim directionally with an inline withdrawal note. This finishes the manuscript's own 2026-06 precedent,
+which had retracted the DORA staffing *multiplier* while leaving the equally-absent taxonomy standing.
+H-IMPL-02 is now fully directional; its 23/25 confidence is explicitly labeled pre-audit and no longer
+tier-defensible.
+
+**Withdrawn: Forrester TEI "39/32/29" TCO breakdown (fix 6).** Appears in neither TEI document
+(grep-negative in both). §3.3.1's "Cloudera TCO Analysis" paragraph and §3.7's H-IMPL-01 entry — which
+had described the 29% figure as "surviving evidence" — now say it did not survive; H-IMPL-01 is fully
+directional with zero quantitative support pending re-sourcing.
+
+**Re-attributed, not withdrawn: LinkedIn stateful processing (fix 7).** The orphaned "Kafka Streams:
+terabytes of state with millisecond access" claim (7 manuscript occurrences) traced to no source — but
+the timeboxed primary hunt found better: LinkedIn's engine is **Samza**, and the peer-reviewed VLDB 2017
+paper (Noghabi et al.) states "massive state sizes (hundreds of TB) per application" and "millions of
+requests/s" from local state (both verified verbatim against the PDF). All seven occurrences reworded to
+the verified figures; a new Tier-A Samza bibliography entry added; H-STREAM-01 re-anchored on it (the
+Northguard throughput figures were NOT substituted — they measure ingest volume, not stateful-store
+access, which is the sweep's proposed reframe we rejected).
+
+**Labeled, kept: the two unsourced numbers (fixes 9, 10).** "Gartner 6-12 months proficiency" (5 sites)
+de-attributed to practitioner estimate — no Gartner source exists anywhere in the repo; the 20/50/75/90
+productivity curve marked illustrative. The "70%/<5%" query-recency split reworded to a labeled
+practitioner observation — it is the last number holding §3.3.2 together and defensible as experience,
+not as a statistic.
+
 ### 2026-07-09 verification-sweep fix pass, part 1 — mechanical corrections (fixes 2-5, 8, 11-33 of VERIFICATION-SWEEP-2026-07-09-cowork.md)
 
 A 49-check per-citation sweep (fetch-backed, cowork session; report merged at the repo root) drove this

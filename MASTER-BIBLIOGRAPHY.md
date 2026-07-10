@@ -685,6 +685,29 @@ This bibliography consolidates all literature sources from:
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
+#### Samza - Stateful Scalable Stream Processing at LinkedIn (VLDB 2017)
+
+**Authors**: Shadi A. Noghabi, Kartik Paramasivam, Yi Pan, Navina Ramesh, Jon Bringhurst, Indranil Gupta, Roy H. Campbell (UIUC + LinkedIn)
+**Date**: 2017 (PVLDB Vol. 10, No. 12, pp. 1634-1645)
+**URL**: https://www.vldb.org/pvldb/vol10/p1634-noghabi.pdf
+**Evidence Level**: A (Peer-reviewed VLDB paper with LinkedIn production data)
+**Relevance**:
+- Hypothesis H-STREAM-01 (stateful stream processing at scale)
+- Book Chapter 7 (Ingestion - streaming)
+
+**Key Findings**:
+- Partitioned local state + low-overhead changelog "allowing it to scale to massive state sizes (hundreds of TB) per application" (abstract, verified verbatim 2026-07-09)
+- "When using local state we perform millions of requests/s" (§6 evaluation, verified verbatim 2026-07-09)
+- Host Affinity makes recovery time near-constant independent of state size
+- Production deployment table spans LinkedIn datacenters; one deployment cited at 100s of TB total data across 200+ machines
+
+**Citations**: H-STREAM-01 validation; manuscript §3.2.3/3.5/3.6/4.2
+**Notes**: Added 2026-07-09 to replace the orphaned "LinkedIn Kafka Streams: terabytes of state with millisecond access" claim — LinkedIn's stream processor is Samza (Kafka-backed changelog + local RocksDB state, same design family as Kafka Streams), and these are the verified figures. Do not cite a millisecond latency number to this paper; its stated local-state figure is throughput (millions of requests/s).
+
+**Validation Status**: ✅ Added + verified against the PDF 2026-07-09
+
+---
+
 #### Netflix - Kafka Tiered Storage
 
 **Authors**: Netflix Technology Blog

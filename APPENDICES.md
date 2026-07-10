@@ -303,12 +303,12 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 | Source Count | 5/5 | Originally 5 sources; the IDC and Enterprise Data Quarterly entries were removed in the 2026 audit |
 | Evidence Quality | 4/5 | Originally scored 80% Level A; downgraded by the 2026 audit (two sources removed, two multipliers not in source) |
 | Source Diversity | 5/5 | Originally 4 source types; reduced by the audit removals |
-| Quantitative Precision | 5/5 | Cloudera/Forrester TEI 29% operational TCO remains; the other multipliers were removed in the 2026 audit (not in source / removed entries) |
+| Quantitative Precision | 5/5 | Pre-audit score. The Cloudera/Forrester TEI "29% operational" figure formerly described as remaining was itself withdrawn 2026-07-09 (the breakdown appears in neither TEI document); all multipliers behind this dimension are now removed |
 | Geographic/Organizational Diversity | 3/5 | US-centric with multiple organization types (research, vendor, commissioned) |
 | **TOTAL** | **22/25** | **HIGH CONFIDENCE** (pre-audit score; see note above) |
 
 **Key Evidence**:
-- Cloudera/Forrester TEI: 29% operational TCO component
+- The Cloudera/Forrester TEI "29% operational TCO component" formerly listed here was withdrawn in the 2026-07 verification pass — the 39/32/29 breakdown appears in neither TEI document
 - Confluent: operational complexity and specialized talent are major TCO drivers (the 45-55% figure formerly cited here is not in the cited course — removed, 2026 audit)
 - The IDC 2.5-3× and Enterprise Data Quarterly 1.5-2× figures, and the DORA 2.7× staffing multiplier, were removed in the 2026 audit (removed entries / not in the DORA report); the qualitative operational-cost premium stands on the remaining sources
 
@@ -717,7 +717,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 **Streaming vs Batch Cost Differential**:
 - [39] DORA 2024: Accelerate State of DevOps research (Level A; the "2.7× operational staff" multiplier formerly cited here is not in the report — removed, 2026 audit)
 - [28] Confluent: Kafka TCO and operational-complexity documentation (Level B; the "45-55% of TCO" figure is not in the cited course — removed, 2026 audit)
-- [25] Cloudera/Forrester TEI: 39% licensing, 32% hardware, 29% operational TCO (Level A)
+- [25] Cloudera/Forrester TEI: the 39/32/29 TCO breakdown formerly cited here appears in NEITHER TEI document — withdrawn, 2026-07 verification pass (the studies' verified figures: Public Cloud PDF, Oct 2021 — 194% ROI, $35.54M benefits)
 - [37] Databricks: TCO documentation (Level B; specific licensing percentages not independently verifiable — gated source)
 
 **Tiered Storage Economics**:
@@ -736,7 +736,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Staffing & Skills Scarcity
 
 **Staffing Multipliers**:
-- [39] DORA 2024: streaming operations demand specialized "Level 4" skills (Level A; the "2.7× operational staff" multiplier formerly cited here is not in the report — removed, 2026 audit)
+- [39] DORA 2024: comprehensive DevOps research (Level A; the "2.7× operational staff" multiplier AND the "Level 4 skills" classification formerly cited here are both absent from the report — removed, 2026 audit + 2026-07 verification pass)
 - The IDC 2.5-3×, Ververica 3.2-FTE, and McKinsey tiger-team figures formerly listed here traced to entries removed in the 2026 audit (dead-URL or fabricated citations) and are removed pending real sources
 
 ### Implementation Timelines
