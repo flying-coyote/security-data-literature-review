@@ -11,6 +11,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc,fit}
 \usepackage{xcolor}
+\usepackage{amssymb}  % \checkmark, \bigstar (pdflatex-safe replacements for Unicode glyphs)
 
 % Define colors
 \definecolor{identification}{RGB}{144,202,249}  % Light blue
@@ -125,15 +126,15 @@
 
     \textbf{URL Validation:}\\[0.1cm]
     • Active URLs: 16 of 22 (73\%)\\
-    • \textbf{Hypothesis-critical: 16 of 16 (100\%)} ✓\\
+    • \textbf{Hypothesis-critical: 16 of 16 (100\%)} $\checkmark$\\
     • Paywalls (expected): 3 sources (Gartner, IDC, Forrester)\\
     • Placeholders with corroboration: 3 sources (non-critical)
     \vspace{0.2cm}
 
     \textbf{Hypotheses Validated: 7}\\[0.1cm]
-    • Strongly Validated (⭐⭐⭐⭐⭐): 3 hypotheses\\
-    • High Confidence (⭐⭐⭐⭐): 3 hypotheses\\
-    • Moderate Confidence (⭐⭐⭐): 1 hypothesis\\
+    • Strongly Validated ($\bigstar\bigstar\bigstar\bigstar\bigstar$): 3 hypotheses\\
+    • High Confidence ($\bigstar\bigstar\bigstar\bigstar$): 3 hypotheses\\
+    • Moderate Confidence ($\bigstar\bigstar\bigstar$): 1 hypothesis\\
     • Average sources per hypothesis: 4.1\\
     • Aggregate Evidence-Level-A average WITHDRAWN (2026-06-14 audit)
 };
