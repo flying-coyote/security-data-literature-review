@@ -967,7 +967,7 @@ Levels C (limited evidence) and D (unreliable evidence) were designed as exclusi
 ## MANUSCRIPT METADATA
 
 **Version**: 0.3 (content drafted; sources audited 2026-06 + 2026-07; references generated)
-**Word count**: [TBD - target 10,000-15,000 words for journal article]
+**Word count**: ~10,100 words of main text (abstract through Conclusion; excludes references, figures, tables, and appendices), within the 10,000-15,000 target for a Journal of Cybersecurity article; the full document runs ~14,060 words including references and appendices (measured 2026-07-11)
 **Target venue**: Journal of Cybersecurity (Oxford, open access) — owner ruling 2026-07-10, replacing the Oct-2025 CSUR/IEEE plan; submission work gated post-2026-07-15
 **Submission target**: post-2026-07-15 window at Journal of Cybersecurity (owner ruling 2026-07-10)
 **Status**: All sections drafted. 2026-06 audit withdrew fabricated multipliers; 2026-07 per-citation verification sweep applied (33-item fix pass) — every surviving inline figure is primary-verified. References + Appendix D generated 2026-07-09.
