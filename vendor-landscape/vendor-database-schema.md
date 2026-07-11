@@ -242,7 +242,7 @@ vendor-landscape/
 ```
 
 **Citation Format**:
-> "According to the 2025-Q4 vendor landscape snapshot, ClickHouse achieved 96% queries <1s in production deployments."
+> "According to the 2025-Q4 vendor landscape snapshot, ClickHouse sustained 6M requests/second in production deployments (Cloudflare)."
 
 ---
 

@@ -5,6 +5,8 @@ created: 2025-10-22
 tags: [systematic-review, security-data, lakehouse, clickhouse, streaming-tco, publication]
 ---
 
+> **Post-publication correction (2026-07-11).** Two performance figures in this 2025-10-22 snapshot were later found unsupported and are withdrawn: the ClickHouse "96% of queries <1s" figure (attributed to Cloudflare, but not present in the cited article, which supports 6M req/sec only) and the "Shell 57TB/day security telemetry" leg (dead-URL citation, removed in the 2026-06-05 audit). H3-PERFORMANCE-01 recomputed from 21/25 to 17/25 (High) as a result. Do not cite either figure; the corrected record is in `analysis-bundles/hypothesis-confidence-matrix.md` and `FIGURES-AND-TABLES.md`. The Cloudflare 6M req/sec and first-party lab (~7.0× storage) legs stand.
+
 # Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review
 ## COMPLETE PUBLICATION DRAFT
 

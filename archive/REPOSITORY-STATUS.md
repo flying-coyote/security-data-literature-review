@@ -354,7 +354,7 @@ analysis-bundles/   - Evidence synthesis for book writing acceleration
 
 **Technology Performance**:
 - Apache Iceberg: industry consensus as de facto standard (the "76% adoption" figure is unsourced — refined per the H-ARCH-01 audit); 97% query time reduction at SK Telecom
-- ClickHouse: 6M req/sec at Cloudflare, 96% queries <1s
+- ClickHouse: 6M req/sec at Cloudflare ~~, 96% queries <1s~~ [WITHDRAWN 2026-07-11 — figure not in cited Cloudflare source]
 - Kafka: 4.5M events/sec on 9 nodes, trillions/day at Microsoft
 
 ---

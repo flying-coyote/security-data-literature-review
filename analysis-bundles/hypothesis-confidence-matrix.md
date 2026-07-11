@@ -450,9 +450,9 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ### H3-PERFORMANCE-01: ClickHouse OLAP Performance
 
-> **Section record note (2026-07-10, amended same day):** the Shell 57TB/day leg below was removed from the bibliography in the 2026-06-05 audit. The Cloudflare 6M-req/sec and 96%-<1s legs and the first-party lab leg stand — but two other figures below are part-1 CLAIM-MISMATCH verdicts and must not be cited as written: "10-12× compression" (the verified Cloudflare figure is ~10×, stated as 600→60 bytes/row) and "5-10× storage efficiency vs Elasticsearch" (the CH-vs-ES benchmark's verified STORAGE figure is 12-19×; the 5-12× multipliers in that page are query-speed, not storage).
+> **Section record note (2026-07-10, amended 2026-07-11):** the Shell 57TB/day leg below was removed from the bibliography in the 2026-06-05 audit, and the Cloudflare "96% of queries <1s" figure was removed 2026-07-11 (I-1 citation audit: it is not in the cited Cloudflare article, which supports 6M req/sec only). The Cloudflare 6M-req/sec leg and the first-party lab leg stand. Two further figures below are part-1 CLAIM-MISMATCH verdicts and must not be cited as written: "10-12× compression" (the verified Cloudflare figure is ~10×, stated as 600→60 bytes/row) and "5-10× storage efficiency vs Elasticsearch" (the CH-vs-ES benchmark's verified STORAGE figure is 12-19×; the 5-12× multipliers in that page are query-speed, not storage). **The 21/25 rollup below was recomputed 2026-07-11 to 17/25 (High) to reflect the removal of both the Shell and 96%-<1s legs — see the recompute note at the total.**
 
-**Hypothesis**: "ClickHouse delivers exceptional OLAP performance for security workloads: 6 million requests/second throughput, 96% of queries completing under 1 second, and 5-10× storage efficiency vs Elasticsearch."
+**Hypothesis**: "ClickHouse delivers exceptional OLAP performance for security workloads: 6 million requests/second throughput, ~~96% of queries completing under 1 second~~ [WITHDRAWN 2026-07-11 — figure not in cited Cloudflare source], and 5-10× storage efficiency vs Elasticsearch."
 
 **Validation Status**: ✅ **HIGH CONFIDENCE**
 
@@ -460,40 +460,40 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 #### Confidence Scoring
 
-**Source Count**: 5 points (4 borrowed sources) + 1 first-party leg
-- Cloudflare: 6M req/sec, 96% <1s queries
-- Cloudflare: 10-12× compression
-- Shell: 57TB/day security telemetry
-- ClickHouse vs Elasticsearch: 5-10× storage efficiency
+**Source Count**: 4 points (recomputed 2026-07-11; was 5) — 2 borrowed orgs + 1 benchmark + 1 first-party leg
+- Cloudflare: 6M req/sec ~~, 96% <1s queries~~ [WITHDRAWN 2026-07-11 — not in source]
+- Cloudflare: ~10× compression (600→60 bytes/row; the "10-12×" phrasing is a claim-mismatch)
+- ~~Shell: 57TB/day security telemetry~~ [REMOVED 2026-06-05 — dead-URL fabrication]
+- ClickHouse vs Elasticsearch: storage efficiency (verified 12-19×; the "5-10×" figure is query-speed, not storage)
 - **FIRST-PARTY (lab-measured, 2026-06-07, MOAR reference stack, single host)**: the FOIL probe (lakehouse vs an OpenSearch SIEM) over 200,000 OCSF events measured a SIEM index footprint of 11.5 MB against a columnar Parquet footprint of 1.6 MB — the SIEM index is ~7.0× the columnar footprint, which lands inside the borrowed "5-10×" band rather than at its edge, and answers agreed across the engines before the ratio was read. HEDGE: single host, OpenSearch over HTTP vs DuckDB in-process; the term-index advantage at larger scale is not isolated, so the robust first-party findings here are the answer-equality and the ~7.0× storage ratio, not a latency claim.
 
-**Evidence Level Quality**: 5 points (100% Level A)
-- All 4 sources = Level A (production deployments, benchmark study)
+**Evidence Level Quality**: 4 points (recomputed 2026-07-11; was 5) — no longer 100% Level A
+- Cloudflare 6M req/sec = Level A (production); first-party lab leg = measured A; the ClickHouse-vs-Elasticsearch comparison is a vendor-published benchmark (Level B)
 
 **Source Diversity**: 3 points (2 source types)
 - Production Deployment: Cloudflare (2 sources), Shell
 - Benchmark: ClickHouse vs Elasticsearch comparison
 
-**Quantitative Precision**: 5 points (precise metrics)
+**Quantitative Precision**: 4 points (recomputed 2026-07-11; was 5) — precise on the surviving legs
 - 6M req/sec (specific)
-- 96% queries <1s (precise percentile)
-- 5-10× storage efficiency (range)
+- ~~96% queries <1s~~ [WITHDRAWN 2026-07-11 — not in source]
+- storage efficiency: first-party ~7.0× (measured), benchmark 12-19× (the "5-10×" was query-speed)
 
-**Geographic/Organizational Diversity**: 3 points (international)
+**Geographic/Organizational Diversity**: 2 points (recomputed 2026-07-11; was 3 — Shell leg removed)
 - Cloudflare: Global CDN
-- Shell: Global energy company
-- ClickHouse: Vendor (but production validated)
+- ~~Shell: Global energy company~~ [REMOVED 2026-06-05]
+- ClickHouse: Vendor benchmark; first-party lab (single host)
 
-**Total Confidence**: **21/25 points** = ⭐⭐⭐⭐ **HIGH**
+**Total Confidence**: **17/25 points** = ⭐⭐⭐⭐ **HIGH** (recomputed 2026-07-11 from 21/25; Source Count 5→4, Evidence Level 5→4, Precision 5→4, Geo/Org 3→2, Source Diversity 3 unchanged — reflecting removal of the Shell 57TB/day leg [2026-06-05] and the Cloudflare 96%-<1s leg [2026-07-11]. Still in the High band [16-20]; the hypothesis stays validated on the surviving Cloudflare 6M-req/sec + first-party lab legs, at High rather than Strong.)
 
 ---
 
 #### Confidence Drivers
 
-✅ **Production validation at scale**: Cloudflare (6M req/sec), Shell (57TB/day) prove ClickHouse works at massive security scale
-✅ **Quantitative precision**: Not "fast," but "6M req/sec" and "96% <1s"
-✅ **Security-specific**: Shell 57TB/day is **enterprise security deployment** (not general analytics)
-✅ **100% Evidence Level A**: Exceptional
+✅ **Production validation at scale**: Cloudflare (6M req/sec) proves ClickHouse works at massive scale (the Shell 57TB/day leg was removed 2026-06-05)
+✅ **Quantitative precision**: Not "fast," but "6M req/sec" (the "96% <1s" figure was withdrawn 2026-07-11 — not in source)
+⚠️ **Security-specificity reduced**: with Shell removed, the surviving production leg (Cloudflare) is general-analytics, not a security deployment
+⚠️ **Evidence Level**: mostly A, with one vendor-published benchmark (B) — no longer 100% A
 ✅ **FIRST-PARTY storage measurement (lab-measured, 2026-06-07)**: our FOIL probe measured a SIEM index at ~7.0× the columnar Parquet footprint on first-party OCSF data (11.5 MB vs 1.6 MB over 200,000 events), inside the borrowed 5-10× band, with answers agreeing across engines — a measured leg under the borrowed benchmark, scoped to a single host (term-index advantage at larger scale not isolated)
 
 ---
@@ -508,7 +508,9 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 #### Recommended Book Language
 
 **High Confidence Statement**:
-> "ClickHouse delivers exceptional OLAP performance for security workloads, validated by production deployments at massive scale: Cloudflare processes 6 million requests/second with 96% of queries completing under 1 second, while Shell analyzes 57 TB/day of security telemetry with sub-second query performance. Storage efficiency is equally compelling: ClickHouse achieves 10-12× compression ratios for log data (Cloudflare) and 5-10× storage efficiency vs Elasticsearch (ClickHouse benchmark), validated by real-world security deployments."
+> "ClickHouse delivers strong OLAP performance for security workloads, validated by Cloudflare's production deployment processing 6 million requests per second, and by a first-party lab measurement showing a columnar footprint roughly one-seventh the size of an OpenSearch SIEM index over 200,000 OCSF events (~7.0× storage efficiency, single host, answers verified equal across engines). ClickHouse's own benchmark reports substantially larger storage advantages vs Elasticsearch (12-19×); treat that as a vendor figure pending independent confirmation."
+>
+> _(Recommended language rewritten 2026-07-11: removed the withdrawn Cloudflare 96%-<1s figure and the removed Shell 57TB/day leg; narrowed the compression/storage figures to the verified values.)_
 
 **Citations**:
 - Cloudflare (6M req/sec): MASTER-BIBLIOGRAPHY.md:74-94
@@ -866,7 +868,7 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 **High Confidence Hypotheses** (suitable for supporting claims):
 > "Streaming architectures incur 2.5-3× higher operational costs vs batch processing, with convergent validation from industry analyst (IDC), industry research (DORA), and production data (Confluent) (5 sources, 80% Evidence Level A)."
 
-> "ClickHouse delivers exceptional OLAP performance for security workloads: 6M req/sec throughput and 96% of queries <1s, validated by Cloudflare and Shell production deployments processing 57 TB/day of security telemetry (4 sources, 100% Evidence Level A)."
+> "ClickHouse delivers strong OLAP performance for security workloads: 6M req/sec throughput (Cloudflare), with a first-party lab measurement of ~7.0× storage efficiency vs an OpenSearch SIEM index (single host, answers verified equal). ~~96% of queries <1s~~ [WITHDRAWN 2026-07-11 — not in source] and the ~~Shell 57 TB/day~~ [REMOVED 2026-06-05] leg no longer support this; recomputed 17/25 High (was 21/25, 100% Level A no longer holds)."
 
 ---
 

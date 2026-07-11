@@ -6,7 +6,7 @@ tags: [cost-optimization, tiered-storage, tco, clickhouse, iceberg, security-dat
 status: superseded
 ---
 
-> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): Oct-2025 static synthesis bundle, regenerable from the live MASTER-BIBLIOGRAPHY.md with current verdicts; carries its 2026-06-14 fold-correction notes withdrawing the original aggregate self-grades, which travel with the file. Live exceptions kept in analysis-bundles/: hypothesis-confidence-matrix.md (cited by manuscript Appendix B), cost-reality-reference.md (cited by FIGURES-AND-TABLES.md), staffing-budget-calculator.md (held pending the queued book ch06 footnote edit).
+> **ARCHIVED 2026-07-10** (D-audit adjudication, owner sign-off): Oct-2025 static synthesis bundle, regenerable from the live MASTER-BIBLIOGRAPHY.md with current verdicts; carries its 2026-06-14 fold-correction notes withdrawing the original aggregate self-grades, which travel with the file. Live exceptions kept in analysis-bundles/: hypothesis-confidence-matrix.md (cited by manuscript Appendix B), cost-reality-reference.md (cited by FIGURES-AND-TABLES.md), staffing-budget-calculator.md (held pending the queued book ch06 footnote edit). Also withdrawn here (2026-07-11, not caught by the 2026-06-14 fold): the ClickHouse "96% queries <1s" figure (not in the cited Cloudflare source) and the "Shell 57TB/day" leg (dead URL, removed 2026-06-05) — do not cite either; the surviving legs are Cloudflare 6M req/sec and the first-party lab ~7.0× storage.
 
 # Cost Optimization Playbook
 
