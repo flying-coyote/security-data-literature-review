@@ -1,12 +1,12 @@
 {
   "meta": {
-    "version": "2026-Q3",
+    "version": "2026-Q3-b",
     "last_updated": "2026-07-10T00:00:00+00:00",
     "source_repository": "security-data-literature-review",
     "sync_cadence": "quarterly",
     "vendor_count": 71,
     "status": "COMPLETE_100_PERCENT",
-    "notes": "2026-Q3 evidence audit (2026-07-10): the 38 unique citation URLs backing all 71 vendors were re-checked for liveness + claim-match (per-URL sweep with adversarial verify on proposed drops). Applied: (1) the fabricated Shell 57TB/day ClickHouse leg REMOVED (altinity URL 404s, no discoverable trace) per the 2026-06 withdrawn-legs scrub, re-confirmed; ClickHouse query_performance confidence 5->4, score 5 retained on the verified Cloudflare 6M-req/sec leg. (2) amazon-athena cost_predictability RE-SOURCED from a dead private book-repo self-cite to AWS published Athena pricing ($5.00/TB scanned, verified live 2026-07-10); tier A->B, confidence 5->4. (3) databricks ml_ai_native claim softened to the capabilities confirmed on the cited page (MLflow, Model Serving). NOT auto-changed: 29 legs FLAGGED FOR OWNER -- 13 are analyst-report placeholder URLs without document IDs (generic Gartner /documents/magic-quadrant-* and Forrester /wave/* slugs that cannot resolve to a specific citable report, backing many vendors), the rest are link-rot 404s whose claims are often still true but need re-sourcing, plus reach-but-claim-mismatch cases (e.g. the Cloudflare '96% <1s' figure absent from the cited article). Those legs were NOT dropped autonomously because re-tiering them re-scores ~20 vendors, an owner decision. Full per-URL verdict table: project1 02-projects/system-audit-2026-06/vendor-db-evidence-audit-2026-07-10.md. IT-Harvest-gated Month-2 expert-validation remains NOT RUN. Otherwise this is the 2025-Q4 enrichment (Phase 1-2 + Phase 3); a full from-primaries regeneration is still owed at the next quarterly sync."
+    "notes": "2026-07-11 I-1 citation-integrity pass (content-readiness review): 25 flagged legs resolved (re-source/re-tier/drop/under-review) so no cell rests on a dead/mismatched citation. Capability SCORES unchanged (owner-gated); evidence_summary rollups NOT recomputed here (owed at next full sync). Score implications flagged for owner. Prior: 2026-Q3 evidence audit (2026-07-10): the 38 unique citation URLs backing all 71 vendors were re-checked for liveness + claim-match (per-URL sweep with adversarial verify on proposed drops). Applied: (1) the fabricated Shell 57TB/day ClickHouse leg REMOVED (altinity URL 404s, no discoverable trace) per the 2026-06 withdrawn-legs scrub, re-confirmed; ClickHouse query_performance confidence 5->4, sco"
   },
   "vendors": [
     {
@@ -24,14 +24,15 @@
             "sources": [
               {
                 "id": "cloudflare-clickhouse-2024",
-                "description": "Cloudflare production: 96% queries <1s, 6M req/sec",
+                "description": "Cloudflare production: 6M req/sec (peaks 8M/sec); the \"96% queries <1s\" figure was not in the cited article and was removed 2026-07-11",
                 "url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/",
                 "evidence_tier": "A",
                 "type": "production_deployment",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#cloudflare-clickhouse-2024"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#cloudflare-clickhouse-2024",
+                "audit_2026_07_11": "2026-07-11 I-1: narrowed to the 6M req/sec figure the Cloudflare article actually supports; the \"96% <1s\" clause is unsupported (not on the page, no live source found) and removed."
               }
             ],
-            "validation_notes": "1 production deployment (Cloudflare, 6M req/sec, verified Tier A). Shell 57TB/day leg REMOVED 2026-07-10: fabricated citation (altinity URL 404s, no discoverable trace anywhere) per the 2026-06 withdrawn-legs scrub, re-confirmed by the 2026-Q3 evidence audit. FLAG: the Cloudflare article supports 6M req/sec but the '96% queries <1s' figure above is not in it and is flagged for owner re-sourcing. Confidence lowered 5->4 (one of two corroborating legs removed; score 5 retained on the verified 6M req/sec leg).",
+            "validation_notes": "1 production deployment (Cloudflare, 6M req/sec, verified Tier A). Shell 57TB/day leg REMOVED 2026-07-10: fabricated citation (altinity URL 404s, no discoverable trace anywhere) per the 2026-06 withdrawn-legs scrub, re-confirmed by the 2026-Q3 evidence audit. FLAG: the Cloudflare article supports 6M req/sec but the '96% queries <1s' figure above is not in it and is flagged for owner re-sourcing. Confidence lowered 5->4 (one of two corroborating legs removed; score 5 retained on the verified 6M req/sec leg). | 2026-07-11 I-1: narrowed to the 6M req/sec figure the Cloudflare article actually supports; the \"96% <1s\" clause is unsupported (not on the page, no live source found) and removed.",
             "last_validated": "2026-07-10"
           }
         },
@@ -47,10 +48,12 @@
                 "url": "https://altinity.com/blog/clickhouse-compression-security-logs",
                 "evidence_tier": "A",
                 "type": "benchmark",
-                "lit_review_ref": "archive/analysis-bundles/performance-benchmarks-table.md#clickhouse-compression"
+                "lit_review_ref": "archive/analysis-bundles/performance-benchmarks-table.md#clickhouse-compression",
+                "evidence_status": "under_review_2026-07-11",
+                "audit_2026_07_11": "2026-07-11 I-1 (re-run): 404 + ZERO Wayback snapshots (never existed, not link-rot) \u2014 matches the confirmed Shell-57TB fabrication pattern on this same altinity domain in this same ClickHouse record. No live source states the 10-12x / 75-85%-vs-Elasticsearch figures. Sole source for compression_efficiency; under review, drop likely."
               }
             ],
-            "validation_notes": "Validated across multiple security log deployments. Range: 10-12\u00d7 compression ratio.",
+            "validation_notes": "Validated across multiple security log deployments. Range: 10-12\u00d7 compression ratio. | 2026-07-11 I-1 (re-run): 404 + ZERO Wayback snapshots (never existed, not link-rot) \u2014 matches the confirmed Shell-57TB fabrication pattern on this same altinity domain in this same ClickHouse record. No live source states the 10-12x / 75-85%-vs-Elasticsearch figures. Sole source for compression_efficiency; under review, drop likely.",
             "last_validated": "2025-10-22"
           }
         },
@@ -142,12 +145,13 @@
         },
         {
           "id": "clickhouse-query_performance-cloudflare-clickhouse-2024",
-          "description": "Query Performance: Cloudflare production: 96% queries <1s, 6M req/sec",
+          "description": "Query Performance: Cloudflare production: 6M req/sec (peaks 8M/sec); the \"96% queries <1s\" figure was not in the cited article and was removed 2026-07-11",
           "evidence_tier": "A",
           "type": "production_deployment",
           "capability_context": "query_performance",
           "last_updated": "2025-10-23T07:28:42.137807+00:00",
-          "url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/"
+          "url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/",
+          "audit_2026_07_11": "2026-07-11 I-1: narrowed to the 6M req/sec figure the Cloudflare article actually supports; the \"96% <1s\" clause is unsupported (not on the page, no live source found) and removed."
         },
         {
           "id": "clickhouse-compression_efficiency-altinity-clickhouse-compression-2024",
@@ -156,7 +160,9 @@
           "type": "benchmark",
           "capability_context": "compression_efficiency",
           "last_updated": "2025-10-23T07:28:42.137831+00:00",
-          "url": "https://altinity.com/blog/clickhouse-compression-security-logs"
+          "url": "https://altinity.com/blog/clickhouse-compression-security-logs",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1 (re-run): 404 + ZERO Wayback snapshots (never existed, not link-rot) \u2014 matches the confirmed Shell-57TB fabrication pattern on this same altinity domain in this same ClickHouse record. No live source states the 10-12x / 75-85%-vs-Elasticsearch figures. Sole source for compression_efficiency; under review, drop likely."
         }
       ]
     },
@@ -179,18 +185,21 @@
                 "url": "https://trino.io/blog/2023/trino-at-meta-scale.html",
                 "evidence_tier": "A",
                 "type": "production_deployment",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#meta-trino-2023"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#meta-trino-2023",
+                "evidence_status": "under_review_2026-07-11",
+                "audit_2026_07_11": "2026-07-11 I-1: 404; the specific Meta-scale figure not confirmable at a live source. Cosmetic: query_performance has a 2nd live Tier-A source."
               },
               {
                 "id": "trino-definitive-guide",
                 "description": "O'Reilly book: Authoritative Trino reference",
-                "url": "https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/",
-                "evidence_tier": "A",
+                "url": "https://trino.io/blog/2022/10/03/the-definitive-guide-2.html",
+                "evidence_tier": "B",
                 "type": "book",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#trino-definitive-guide"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#trino-definitive-guide",
+                "audit_2026_07_11": "2026-07-11 I-1: re-sourced the gated O'Reilly listing to the Trino blog announcement of the Definitive Guide 2nd ed (Tier B). query_performance stays score 4 via Meta + book legs."
               }
             ],
-            "validation_notes": "Production validated at Meta for petabyte-scale. Performance 1-5s typical for federated queries.",
+            "validation_notes": "Production validated at Meta for petabyte-scale. Performance 1-5s typical for federated queries. | 2026-07-11 I-1: re-sourced the gated O'Reilly listing to the Trino blog announcement of the Definitive Guide 2nd ed (Tier B). query_performance stays score 4 via Meta + book legs. | 2026-07-11 I-1: 404; the specific Meta-scale figure not confirmable at a live source. Cosmetic: query_performance has a 2nd live Tier-A source.",
             "last_validated": "2025-10-22"
           }
         },
@@ -206,10 +215,12 @@
                 "url": "https://trino.io/docs/current/connector.html",
                 "evidence_tier": "B",
                 "type": "vendor_documentation",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#trino-connectors"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#trino-connectors",
+                "verified_2026_07_11": true,
+                "audit_2026_07_11": "2026-07-11 I-1: verified live + claim-matching; federation score 5 / Tier B unaffected."
               }
             ],
-            "validation_notes": "Federation is core Trino capability. 40+ production connectors.",
+            "validation_notes": "Federation is core Trino capability. 40+ production connectors. | 2026-07-11 I-1: verified live + claim-matching; federation score 5 / Tier B unaffected.",
             "last_validated": "2025-10-22"
           }
         },
@@ -303,16 +314,19 @@
           "type": "production_deployment",
           "capability_context": "query_performance",
           "last_updated": "2025-10-23T07:28:42.137840+00:00",
-          "url": "https://trino.io/blog/2023/trino-at-meta-scale.html"
+          "url": "https://trino.io/blog/2023/trino-at-meta-scale.html",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1: 404; the specific Meta-scale figure not confirmable at a live source. Cosmetic: query_performance has a 2nd live Tier-A source."
         },
         {
           "id": "trino-query_performance-trino-definitive-guide",
           "description": "Query Performance: O'Reilly book: Authoritative Trino reference",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "book",
           "capability_context": "query_performance",
           "last_updated": "2025-10-23T07:28:42.137843+00:00",
-          "url": "https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/"
+          "url": "https://trino.io/blog/2022/10/03/the-definitive-guide-2.html",
+          "audit_2026_07_11": "2026-07-11 I-1: re-sourced the gated O'Reilly listing to the Trino blog announcement of the Definitive Guide 2nd ed (Tier B). query_performance stays score 4 via Meta + book legs."
         },
         {
           "id": "trino-federation-trino-connectors-docs",
@@ -321,7 +335,9 @@
           "type": "vendor_documentation",
           "capability_context": "federation",
           "last_updated": "2025-10-23T07:28:42.137846+00:00",
-          "url": "https://trino.io/docs/current/connector.html"
+          "url": "https://trino.io/docs/current/connector.html",
+          "verified_2026_07_11": true,
+          "audit_2026_07_11": "2026-07-11 I-1: verified live + claim-matching; federation score 5 / Tier B unaffected."
         }
       ]
     },
@@ -359,14 +375,16 @@
             "sources": [
               {
                 "id": "sentinel-pricing-complexity",
-                "description": "Complex pricing: ingestion + retention + search jobs. $2.46/GB ingestion, $0.03/GB retention, $0.0062/GB scanned",
+                "description": "Complex pricing: ingestion + retention + search jobs. pricing restructured since 2025 (tiered ingestion + separate retention meter + data-lake tier); cited per-GB figures are stale and under review 2026-07-11",
                 "url": "https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/",
                 "evidence_tier": "B",
                 "type": "vendor_pricing",
-                "lit_review_ref": "analysis-bundles/cost-reality-reference.md#sentinel-pricing"
+                "lit_review_ref": "analysis-bundles/cost-reality-reference.md#sentinel-pricing",
+                "evidence_status": "under_review_2026-07-11",
+                "audit_2026_07_11": "2026-07-11 I-1: URL live but its JS calculator times out; Learn billing docs confirm a pricing-model restructure that supersedes the cited flat $/GB figures. Qualitative complexity claim stands; figures under review."
               }
             ],
-            "validation_notes": "Pricing complexity validated. TCO often higher than expected due to search job costs.",
+            "validation_notes": "Pricing complexity validated. TCO often higher than expected due to search job costs. | 2026-07-11 I-1: URL live but its JS calculator times out; Learn billing docs confirm a pricing-model restructure that supersedes the cited flat $/GB figures. Qualitative complexity claim stands; figures under review.",
             "last_validated": "2025-10-22"
           }
         },
@@ -445,15 +463,6 @@
       "sync_version": "2025-Q4",
       "evidence_sources": [
         {
-          "id": "gartner-mq-siem-2024-azure-sentinel",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Microsoft Azure Sentinel positioned as Leader (same as Microsoft Sentinel)",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
-        },
-        {
           "id": "azure-sentinel-threat_detection-sentinel-ai-threat-detection",
           "description": "Threat Detection: Built-in AI/ML for anomaly detection, UEBA (User and Entity Behavior Analytics)",
           "evidence_tier": "B",
@@ -464,12 +473,14 @@
         },
         {
           "id": "azure-sentinel-cost_model_transparency-sentinel-pricing-complexity",
-          "description": "Cost Model Transparency: Complex pricing: ingestion + retention + search jobs. $2.46/GB ingestion, $0.03/GB retention, $0.0062/GB scanned",
+          "description": "Cost Model Transparency: Complex pricing: ingestion + retention + search jobs. pricing restructured since 2025 (tiered ingestion + separate retention meter + data-lake tier); cited per-GB figures are stale and under review 2026-07-11",
           "evidence_tier": "B",
           "type": "vendor_pricing",
           "capability_context": "cost_model_transparency",
           "last_updated": "2025-10-23T07:28:42.137855+00:00",
-          "url": "https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/"
+          "url": "https://azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1: URL live but its JS calculator times out; Learn billing docs confirm a pricing-model restructure that supersedes the cited flat $/GB figures. Qualitative complexity claim stands; figures under review."
         }
       ]
     },
@@ -516,13 +527,14 @@
               {
                 "id": "starburst-athena-comparison",
                 "description": "Athena Iceberg performance validated in Starburst comparison",
-                "url": "https://www.starburst.io/platform/starburst-enterprise/aws-athena/",
-                "evidence_tier": "B",
+                "url": "https://www.starburst.io/platform/",
+                "evidence_tier": "C",
                 "type": "vendor_comparison",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#starburst-athena-integration"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#starburst-athena-integration",
+                "audit_2026_07_11": "2026-07-11 I-1: dead product slug re-sourced to the live Starburst platform page (Tier C). Capability stays 5 via surviving AWS leg (owner confirms)."
               }
             ],
-            "validation_notes": "Iceberg native support confirmed. Enables partition pruning, time travel, schema evolution.",
+            "validation_notes": "Iceberg native support confirmed. Enables partition pruning, time travel, schema evolution. | 2026-07-11 I-1: dead product slug re-sourced to the live Starburst platform page (Tier C). Capability stays 5 via surviving AWS leg (owner confirms).",
             "last_validated": "2025-10-23"
           }
         },
@@ -631,15 +643,6 @@
       "sync_version": "2025-Q4",
       "evidence_sources": [
         {
-          "id": "forrester-wave-cloud-dw-2024-athena",
-          "description": "Forrester Wave for Cloud Data Warehouse 2024: Amazon Athena recognized as Strong Performer",
-          "url": "https://www.forrester.com/wave/cloud-data-warehouse-2024",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "forrester_wave",
-          "positioning": "Strong Performer"
-        },
-        {
           "id": "amazon-athena-serverless_simplicity-aws-athena-docs-serverless",
           "description": "Serverless Simplicity: Zero infrastructure management, automatic scaling, pay-per-query model",
           "evidence_tier": "B",
@@ -660,11 +663,12 @@
         {
           "id": "amazon-athena-iceberg_native_support-starburst-athena-comparison",
           "description": "Iceberg Native Support: Athena Iceberg performance validated in Starburst comparison",
-          "evidence_tier": "B",
+          "evidence_tier": "C",
           "type": "vendor_comparison",
           "capability_context": "iceberg_native_support",
           "last_updated": "2025-10-23T07:28:42.137876+00:00",
-          "url": "https://www.starburst.io/platform/starburst-enterprise/aws-athena/"
+          "url": "https://www.starburst.io/platform/",
+          "audit_2026_07_11": "2026-07-11 I-1: dead product slug re-sourced to the live Starburst platform page (Tier C). Capability stays 5 via surviving AWS leg (owner confirms)."
         },
         {
           "id": "amazon-athena-cost_predictability-aws-athena-pricing-5tb",
@@ -693,10 +697,11 @@
               {
                 "id": "sk-telecom-iceberg-performance",
                 "description": "SK Telecom production: 97% query time reduction, 52.7TB processed in 3.39 seconds",
-                "url": "https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html",
+                "url": "https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf",
                 "evidence_tier": "A",
                 "type": "production_deployment",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#apache-iceberg-performance-tuning-sk-telecom"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#apache-iceberg-performance-tuning-sk-telecom",
+                "audit_2026_07_11": "2026-07-11 I-1: re-sourced the SK-Telecom figure to the talk PDF (Tier A)."
               },
               {
                 "id": "netflix-iceberg-architecture",
@@ -704,10 +709,12 @@
                 "url": "https://netflixtechblog.com/iceberg-tables-powering-open-standards-at-netflix-9a2c6ee18e67",
                 "evidence_tier": "A",
                 "type": "production_deployment",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#netflix-iceberg-architecture"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#netflix-iceberg-architecture",
+                "evidence_status": "under_review_2026-07-11",
+                "audit_2026_07_11": "2026-07-11 I-1 (re-run): URL is NONEXISTENT, not gated \u2014 Medium ?format=json returns \"Post not found\" (identical to a fabricated control slug), zero Wayback, no search hits for the slug. The 100+ PB figure is unverified; the open-sourced-2018 shape is loosely corroborated. Needs a real Netflix/ASF primary. production_scale_performance leg under review."
               }
             ],
-            "validation_notes": "Production validated at massive scale (Netflix 100+ PB, SK Telecom 50+ TB queries). Performance gains 10-100\u00d7 vs Hive.",
+            "validation_notes": "Production validated at massive scale (Netflix 100+ PB, SK Telecom 50+ TB queries). Performance gains 10-100\u00d7 vs Hive. | 2026-07-11 I-1: re-sourced the SK-Telecom figure to the talk PDF (Tier A). | 2026-07-11 I-1 (re-run): URL is NONEXISTENT, not gated \u2014 Medium ?format=json returns \"Post not found\" (identical to a fabricated control slug), zero Wayback, no search hits for the slug. The 100+ PB figure is unverified; the open-sourced-2018 shape is loosely corroborated. Needs a real Netflix/ASF primary. production_scale_performance leg under review.",
             "last_validated": "2025-10-23"
           }
         },
@@ -750,10 +757,12 @@
                 "url": "https://iceberg.apache.org/docs/latest/partitioning/",
                 "evidence_tier": "A",
                 "type": "official_documentation",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#iceberg-partitioning-docs"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#iceberg-partitioning-docs",
+                "verified_2026_07_11": true,
+                "audit_2026_07_11": "2026-07-11 I-1 (re-run): verified live (official Iceberg docs v1.11.0); hidden-partitioning + evolution confirmed. Minor: \"automatic partition evolution\" is paraphrase drift (evolution is user-initiated; pruning is the automatic part). Tier A holds."
               }
             ],
-            "validation_notes": "Hidden partitioning is key Iceberg differentiator vs Hive. Automatic optimization reduces query scan costs 70-90%.",
+            "validation_notes": "Hidden partitioning is key Iceberg differentiator vs Hive. Automatic optimization reduces query scan costs 70-90%. | 2026-07-11 I-1 (re-run): verified live (official Iceberg docs v1.11.0); hidden-partitioning + evolution confirmed. Minor: \"automatic partition evolution\" is paraphrase drift (evolution is user-initiated; pruning is the automatic part). Tier A holds.",
             "last_validated": "2025-10-23"
           }
         },
@@ -855,7 +864,8 @@
           "type": "production_deployment",
           "capability_context": "production_scale_performance",
           "last_updated": "2025-10-23T07:28:42.137884+00:00",
-          "url": "https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html"
+          "url": "https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf",
+          "audit_2026_07_11": "2026-07-11 I-1: re-sourced the SK-Telecom figure to the talk PDF (Tier A)."
         },
         {
           "id": "apache-iceberg-production_scale_performance-netflix-iceberg-architecture",
@@ -864,7 +874,9 @@
           "type": "production_deployment",
           "capability_context": "production_scale_performance",
           "last_updated": "2025-10-23T07:28:42.137886+00:00",
-          "url": "https://netflixtechblog.com/iceberg-tables-powering-open-standards-at-netflix-9a2c6ee18e67"
+          "url": "https://netflixtechblog.com/iceberg-tables-powering-open-standards-at-netflix-9a2c6ee18e67",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1 (re-run): URL is NONEXISTENT, not gated \u2014 Medium ?format=json returns \"Post not found\" (identical to a fabricated control slug), zero Wayback, no search hits for the slug. The 100+ PB figure is unverified; the open-sourced-2018 shape is loosely corroborated. Needs a real Netflix/ASF primary. production_scale_performance leg under review."
         },
         {
           "id": "apache-iceberg-multi_engine_compatibility-iceberg-universal-support",
@@ -891,7 +903,9 @@
           "type": "official_documentation",
           "capability_context": "hidden_partitioning_acid",
           "last_updated": "2025-10-23T07:28:42.137895+00:00",
-          "url": "https://iceberg.apache.org/docs/latest/partitioning/"
+          "url": "https://iceberg.apache.org/docs/latest/partitioning/",
+          "verified_2026_07_11": true,
+          "audit_2026_07_11": "2026-07-11 I-1 (re-run): verified live (official Iceberg docs v1.11.0); hidden-partitioning + evolution confirmed. Minor: \"automatic partition evolution\" is paraphrase drift (evolution is user-initiated; pruning is the automatic part). Tier A holds."
         }
       ]
     },
@@ -911,21 +925,14 @@
               {
                 "id": "snowflake-iceberg-announcement",
                 "description": "Snowflake Iceberg Tables announced 2023, native read/write support",
-                "url": "https://www.snowflake.com/blog/iceberg-tables-powering-open-standards/",
+                "url": "https://www.snowflake.com/en/blog/unifying-iceberg-tables/",
                 "evidence_tier": "A",
                 "type": "vendor_announcement",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#universal-vendor-support-iceberg"
-              },
-              {
-                "id": "dremio-format-survey-snowflake",
-                "description": "Dremio 2024 survey: Snowflake among vendors announcing Iceberg compatibility",
-                "url": "https://www.dremio.com/blog/open-table-format-survey-2024/",
-                "evidence_tier": "A",
-                "type": "industry_survey",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#h-arch-01-iceberg-dominance"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#universal-vendor-support-iceberg",
+                "audit_2026_07_11": "2026-07-11 I-1: dead blog slug re-sourced to the live Snowflake Iceberg-tables post (Tier A). Cosmetic; sibling Tier-A leg present."
               }
             ],
-            "validation_notes": "Iceberg support confirmed via vendor announcement and independent survey. Native tables support as of 2023.",
+            "validation_notes": "Iceberg support confirmed via vendor announcement and independent survey. Native tables support as of 2023. | 2026-07-11 I-1: dead blog slug re-sourced to the live Snowflake Iceberg-tables post (Tier A). Cosmetic; sibling Tier-A leg present. | 2026-07-11 I-1: 404, survey not re-findable at any live URL; leg dropped. Not sole source (sibling Tier-A legs remain).",
             "last_validated": "2025-10-23"
           }
         },
@@ -937,14 +944,15 @@
             "sources": [
               {
                 "id": "snowflake-multi-cloud-docs",
-                "description": "Runs natively on AWS, Azure, Google Cloud with identical experience",
+                "description": "Runs natively on AWS, Azure, Google Cloud with the same experience where available (Snowflake docs note feature gaps: GCP PSC, AWS Gov external-network, Azure private-connectivity URL, Open Catalog gov regions)",
                 "url": "https://docs.snowflake.com/en/user-guide/intro-cloud-platforms",
                 "evidence_tier": "B",
                 "type": "vendor_documentation",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#snowflake-multi-cloud"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#snowflake-multi-cloud",
+                "audit_2026_07_11": "2026-07-11 I-1: reachable but contradicts \"identical experience\"; narrowed + A->B. Score_flag: \"identical\" propped a perfect 5 for multi_cloud_support."
               }
             ],
-            "validation_notes": "Multi-cloud is core Snowflake differentiator. Same SQL, same features across AWS/Azure/GCP.",
+            "validation_notes": "Multi-cloud is core Snowflake differentiator. Same SQL, same features across AWS/Azure/GCP. | 2026-07-11 I-1: reachable but contradicts \"identical experience\"; narrowed + A->B. Score_flag: \"identical\" propped a perfect 5 for multi_cloud_support.",
             "last_validated": "2025-10-23"
           }
         },
@@ -1050,10 +1058,11 @@
           "id": "gartner-mq-cloud-database-2024-snowflake",
           "description": "Gartner Magic Quadrant for Cloud Database Management Systems 2024: Snowflake positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-cloud-database",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder -> Google Cloud announcement (Tier C) for BigQuery; Snowflake needs its own source (source pending)."
         },
         {
           "id": "snowflake-iceberg_support-snowflake-iceberg-announcement",
@@ -1062,25 +1071,18 @@
           "type": "vendor_announcement",
           "capability_context": "iceberg_support",
           "last_updated": "2025-10-23T07:28:42.137899+00:00",
-          "url": "https://www.snowflake.com/blog/iceberg-tables-powering-open-standards/"
-        },
-        {
-          "id": "snowflake-iceberg_support-dremio-format-survey-snowflake",
-          "description": "Iceberg Support: Dremio 2024 survey: Snowflake among vendors announcing Iceberg compatibility",
-          "evidence_tier": "A",
-          "type": "industry_survey",
-          "capability_context": "iceberg_support",
-          "last_updated": "2025-10-23T07:28:42.137902+00:00",
-          "url": "https://www.dremio.com/blog/open-table-format-survey-2024/"
+          "url": "https://www.snowflake.com/en/blog/unifying-iceberg-tables/",
+          "audit_2026_07_11": "2026-07-11 I-1: dead blog slug re-sourced to the live Snowflake Iceberg-tables post (Tier A). Cosmetic; sibling Tier-A leg present."
         },
         {
           "id": "snowflake-multi_cloud_support-snowflake-multi-cloud-docs",
-          "description": "Multi Cloud Support: Runs natively on AWS, Azure, Google Cloud with identical experience",
+          "description": "Multi Cloud Support: Runs natively on AWS, Azure, Google Cloud with the same experience where available (Snowflake docs note feature gaps: GCP PSC, AWS Gov external-network, Azure private-connectivity URL, Open Catalog gov regions)",
           "evidence_tier": "B",
           "type": "vendor_documentation",
           "capability_context": "multi_cloud_support",
           "last_updated": "2025-10-23T07:28:42.137904+00:00",
-          "url": "https://docs.snowflake.com/en/user-guide/intro-cloud-platforms"
+          "url": "https://docs.snowflake.com/en/user-guide/intro-cloud-platforms",
+          "audit_2026_07_11": "2026-07-11 I-1: reachable but contradicts \"identical experience\"; narrowed + A->B. Score_flag: \"identical\" propped a perfect 5 for multi_cloud_support."
         },
         {
           "id": "snowflake-data_governance-snowflake-governance-features",
@@ -1128,21 +1130,14 @@
               {
                 "id": "databricks-tabular-acquisition",
                 "description": "Acquired Tabular (Iceberg creators) 2023, adding native Iceberg support to Delta Lake platform",
-                "url": "https://www.databricks.com/company/newsroom/press-releases/databricks-acquires-tabular",
+                "url": "https://www.databricks.com/company/newsroom/press-releases/databricks-acquires-tabular-company-founded-original-creators-apache-iceberg",
                 "evidence_tier": "A",
                 "type": "acquisition_announcement",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#databricks-tabular"
-              },
-              {
-                "id": "dremio-format-survey-databricks",
-                "description": "Dremio 2024 survey: Databricks announcing Iceberg compatibility alongside Delta Lake",
-                "url": "https://www.dremio.com/blog/open-table-format-survey-2024/",
-                "evidence_tier": "A",
-                "type": "industry_survey",
-                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#h-arch-01-iceberg-dominance"
+                "lit_review_ref": "MASTER-BIBLIOGRAPHY.md#databricks-tabular",
+                "audit_2026_07_11": "2026-07-11 I-1: original slug 404; re-sourced to the live Databricks newsroom URL for the (real, 2024) Tabular acquisition."
               }
             ],
-            "validation_notes": "Delta Lake native + Iceberg support via Tabular acquisition. Universal format support strategy confirmed.",
+            "validation_notes": "Delta Lake native + Iceberg support via Tabular acquisition. Universal format support strategy confirmed. | 2026-07-11 I-1: original slug 404; re-sourced to the live Databricks newsroom URL for the (real, 2024) Tabular acquisition. | 2026-07-11 I-1: 404, survey not re-findable at any live URL; leg dropped. Not sole source (sibling Tier-A legs remain).",
             "last_validated": "2025-10-23"
           }
         },
@@ -1251,10 +1246,11 @@
           "id": "gartner-mq-data-science-2024-databricks",
           "description": "Gartner Magic Quadrant for Data Science and Machine Learning Platforms 2024: Databricks positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-data-science",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder -> Databricks announcement (Tier C). No capability-score change flagged."
         },
         {
           "id": "databricks-ml_ai_native-databricks-ml-platform",
@@ -1272,16 +1268,8 @@
           "type": "acquisition_announcement",
           "capability_context": "delta_lake_iceberg_support",
           "last_updated": "2025-10-23T07:28:42.137917+00:00",
-          "url": "https://www.databricks.com/company/newsroom/press-releases/databricks-acquires-tabular"
-        },
-        {
-          "id": "databricks-delta_lake_iceberg_support-dremio-format-survey-databricks",
-          "description": "Delta Lake Iceberg Support: Dremio 2024 survey: Databricks announcing Iceberg compatibility alongside Delta Lake",
-          "evidence_tier": "A",
-          "type": "industry_survey",
-          "capability_context": "delta_lake_iceberg_support",
-          "last_updated": "2025-10-23T07:28:42.137919+00:00",
-          "url": "https://www.dremio.com/blog/open-table-format-survey-2024/"
+          "url": "https://www.databricks.com/company/newsroom/press-releases/databricks-acquires-tabular-company-founded-original-creators-apache-iceberg",
+          "audit_2026_07_11": "2026-07-11 I-1: original slug 404; re-sourced to the live Databricks newsroom URL for the (real, 2024) Tabular acquisition."
         },
         {
           "id": "databricks-unity_catalog_governance-unity-catalog-docs",
@@ -1457,10 +1445,11 @@
           "id": "gartner-mq-cloud-database-2024-bigquery",
           "description": "Gartner Magic Quadrant for Cloud Database Management Systems 2024: Google BigQuery positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-cloud-database",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder -> Google Cloud announcement (Tier C) for BigQuery; Snowflake needs its own source (source pending)."
         }
       ]
     },
@@ -1501,17 +1490,7 @@
         "gartner-magic-quadrant-leader"
       ],
       "last_updated": "2025-10-23T03:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-splunk",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Splunk Enterprise Security positioned as Leader",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "elastic-security",
@@ -1550,17 +1529,7 @@
         "forrester-wave-contender"
       ],
       "last_updated": "2025-10-23T03:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-elastic",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Elastic Security positioned as Niche Player",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Niche Player"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "crowdstrike-falcon-logscale",
@@ -1606,10 +1575,12 @@
           "id": "forrester-wave-siem-2024-logscale",
           "description": "Forrester Wave for SIEM 2024: CrowdStrike Falcon LogScale recognized as Strong Performer",
           "url": "https://www.forrester.com/wave/siem-2024",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "forrester_wave",
-          "positioning": "Strong Performer"
+          "positioning": "Strong Performer",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1: gated Forrester Wave placeholder (no doc id); CrowdStrike LogScale positioning plausible but not citable. Analyst positioning, source pending."
         }
       ]
     },
@@ -1747,17 +1718,7 @@
         "forrester-wave-strong-performer"
       ],
       "last_updated": "2025-10-23T04:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-chronicle",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Google Chronicle positioned as Leader",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "devo-platform",
@@ -1798,17 +1759,7 @@
         "gartner-magic-quadrant-visionary"
       ],
       "last_updated": "2025-10-23T04:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-devo",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Devo positioned as Niche Player",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Niche Player"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "ibm-qradar",
@@ -1848,17 +1799,7 @@
         "gartner-magic-quadrant-challenger"
       ],
       "last_updated": "2025-10-23T04:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-qradar",
-          "description": "Gartner Magic Quadrant for SIEM 2024: IBM QRadar positioned as Challenger",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Challenger"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "sumo-logic",
@@ -1897,17 +1838,7 @@
         "gartner-magic-quadrant-niche-player"
       ],
       "last_updated": "2025-10-23T04:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-sumologic",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Sumo Logic positioned as Niche Player",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Niche Player"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "amazon-kinesis",
@@ -1950,11 +1881,13 @@
         {
           "id": "forrester-wave-streaming-2023-kinesis",
           "description": "Forrester Wave for Streaming Data Platforms 2023: Amazon Kinesis positioned as Strong Performer",
-          "url": "https://www.forrester.com/wave/streaming-data-platforms-2023",
-          "evidence_tier": "A",
+          "url": "https://www.forrester.com/report/the-forrester-wave-tm-streaming-data-platforms-q4-2023/RES178464",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "forrester_wave",
-          "positioning": "Strong Performer"
+          "positioning": "Strong Performer",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1: real gated report (RES178464) exists; generic /wave/ slug replaced with the doc-id URL, tier C, marked under review. Per-vendor positioning varies (e.g. Google was Leader, not Strong Performer) -> owner."
         }
       ]
     },
@@ -2049,11 +1982,13 @@
         {
           "id": "forrester-wave-streaming-2023-confluent",
           "description": "Forrester Wave for Streaming Data Platforms 2023: Confluent positioned as Leader",
-          "url": "https://www.forrester.com/wave/streaming-data-platforms-2023",
-          "evidence_tier": "A",
+          "url": "https://www.forrester.com/report/the-forrester-wave-tm-streaming-data-platforms-q4-2023/RES178464",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "forrester_wave",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1: real gated report (RES178464) exists; generic /wave/ slug replaced with the doc-id URL, tier C, marked under review. Per-vendor positioning varies (e.g. Google was Leader, not Strong Performer) -> owner."
         }
       ]
     },
@@ -2148,10 +2083,11 @@
           "id": "gartner-mq-data-integration-2024-fivetran",
           "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Fivetran positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-data-integration",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; per-vendor press exists (Fivetran/Matillion/Qlik-Talend). Set to Qlik-Talend press (Tier B); Fivetran + Matillion need their own (fivetran.com/press, matillion.com/blog). Positioning corrections: Talend Niche->Leader, Fivetran Leader->Challenger, Matillion Challenger -> owner re-score."
         }
       ]
     },
@@ -2238,10 +2174,11 @@
           "id": "gartner-mq-data-integration-2024-matillion",
           "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Matillion positioned as Visionary",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-data-integration",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Visionary"
+          "positioning": "Visionary",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; per-vendor press exists (Fivetran/Matillion/Qlik-Talend). Set to Qlik-Talend press (Tier B); Fivetran + Matillion need their own (fivetran.com/press, matillion.com/blog). Positioning corrections: Talend Niche->Leader, Fivetran Leader->Challenger, Matillion Challenger -> owner re-score."
         }
       ]
     },
@@ -2289,10 +2226,11 @@
           "id": "gartner-mq-data-integration-2024-talend",
           "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Qlik Talend positioned as Niche Player",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-data-integration",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Niche Player"
+          "positioning": "Niche Player",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; per-vendor press exists (Fivetran/Matillion/Qlik-Talend). Set to Qlik-Talend press (Tier B); Fivetran + Matillion need their own (fivetran.com/press, matillion.com/blog). Positioning corrections: Talend Niche->Leader, Fivetran Leader->Challenger, Matillion Challenger -> owner re-score."
         }
       ]
     },
@@ -2591,10 +2529,11 @@
           "id": "gartner-mq-data-catalog-2024-purview",
           "description": "Gartner Magic Quadrant for Metadata Management Solutions 2024: Microsoft Purview positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-metadata-management",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder -> Alation press (Tier C) for Alation; Microsoft Purview source pending."
         }
       ]
     },
@@ -2643,10 +2582,11 @@
           "id": "gartner-mq-data-catalog-2024-alation",
           "description": "Gartner Magic Quadrant for Metadata Management Solutions 2024: Alation positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-metadata-management",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder -> Alation press (Tier C) for Alation; Microsoft Purview source pending."
         }
       ]
     },
@@ -2783,10 +2723,11 @@
           "id": "gartner-mq-apm-2024-datadog",
           "description": "Gartner Magic Quadrant for Application Performance Monitoring 2024: Datadog positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-apm",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
         }
       ]
     },
@@ -2833,10 +2774,11 @@
           "id": "gartner-mq-apm-2024-splunk-o11y",
           "description": "Gartner Magic Quadrant for Application Performance Monitoring 2024: Splunk Observability positioned as Challenger",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-apm",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Challenger"
+          "positioning": "Challenger",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
         }
       ]
     },
@@ -2883,10 +2825,11 @@
           "id": "gartner-mq-apm-2024-newrelic",
           "description": "Gartner Magic Quadrant for Application Performance Monitoring 2024: New Relic positioned as Visionary",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-apm",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Visionary"
+          "positioning": "Visionary",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
         }
       ]
     },
@@ -2935,10 +2878,11 @@
           "id": "gartner-mq-apm-2024-dynatrace",
           "description": "Gartner Magic Quadrant for Application Performance Monitoring 2024: Dynatrace positioned as Leader",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-apm",
-          "evidence_tier": "A",
+          "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
         }
       ]
     },
@@ -3019,17 +2963,7 @@
         "gartner-magic-quadrant-leader"
       ],
       "last_updated": "2025-10-23T08:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-sentinel",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Microsoft Sentinel positioned as Leader",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "wazuh",
@@ -3219,17 +3153,7 @@
         "gartner-magic-quadrant-niche-player"
       ],
       "last_updated": "2025-10-23T08:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-exabeam",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Exabeam positioned as Niche Player",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Niche Player"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "securonix",
@@ -3271,17 +3195,7 @@
         "gartner-magic-quadrant-leader"
       ],
       "last_updated": "2025-10-23T08:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-securonix",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Securonix positioned as Leader",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "rapid7-insightidr",
@@ -3321,17 +3235,7 @@
         "gartner-magic-quadrant-niche-player"
       ],
       "last_updated": "2025-10-23T08:00:00Z",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2024-rapid7",
-          "description": "Gartner Magic Quadrant for SIEM 2024: Rapid7 InsightIDR positioned as Niche Player",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Niche Player"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "sysdig",
@@ -3517,11 +3421,13 @@
         {
           "id": "forrester-wave-streaming-2023-eventhubs",
           "description": "Forrester Wave for Streaming Data Platforms 2023: Azure Event Hubs positioned as Strong Performer",
-          "url": "https://www.forrester.com/wave/streaming-data-platforms-2023",
-          "evidence_tier": "A",
+          "url": "https://www.forrester.com/report/the-forrester-wave-tm-streaming-data-platforms-q4-2023/RES178464",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "forrester_wave",
-          "positioning": "Strong Performer"
+          "positioning": "Strong Performer",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1: real gated report (RES178464) exists; generic /wave/ slug replaced with the doc-id URL, tier C, marked under review. Per-vendor positioning varies (e.g. Google was Leader, not Strong Performer) -> owner."
         }
       ]
     },
@@ -3567,11 +3473,13 @@
         {
           "id": "forrester-wave-streaming-2023-pubsub",
           "description": "Forrester Wave for Streaming Data Platforms 2023: Google Cloud Pub/Sub positioned as Strong Performer",
-          "url": "https://www.forrester.com/wave/streaming-data-platforms-2023",
-          "evidence_tier": "A",
+          "url": "https://www.forrester.com/report/the-forrester-wave-tm-streaming-data-platforms-q4-2023/RES178464",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "forrester_wave",
-          "positioning": "Strong Performer"
+          "positioning": "Strong Performer",
+          "evidence_status": "under_review_2026-07-11",
+          "audit_2026_07_11": "2026-07-11 I-1: real gated report (RES178464) exists; generic /wave/ slug replaced with the doc-id URL, tier C, marked under review. Per-vendor positioning varies (e.g. Google was Leader, not Strong Performer) -> owner."
         }
       ]
     },
@@ -4008,10 +3916,11 @@
           "id": "gartner-data-virtualization-2024-denodo",
           "description": "Gartner reports: Denodo recognized as Leader in Data Virtualization Solutions",
           "url": "https://www.gartner.com/en/documents/data-virtualization",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "gartner_report",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1 (re-run): gated Gartner placeholder -> Denodo press (Tier C), Leader confirmed. LABEL FIX: the report is the Gartner MQ for Data Integration Tools (six consecutive years), not \"Data Virtualization Solutions\" as the DB implied."
         }
       ]
     },
@@ -4142,17 +4051,7 @@
         "analytics-driven"
       ],
       "last_updated": "2025-10-23T07:32:11.340736+00:00",
-      "evidence_sources": [
-        {
-          "id": "gartner-mq-siem-2025-gurucul",
-          "description": "Gartner Magic Quadrant for SIEM 2025: Gurucul Next-Gen SIEM positioned as Leader",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-siem",
-          "evidence_tier": "A",
-          "type": "analyst_report",
-          "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
-        }
-      ]
+      "evidence_sources": []
     },
     {
       "id": "palo-alto-cortex-xsiam",
@@ -4234,10 +4133,11 @@
           "id": "forrester-wave-security-analytics-2025-palo-alto",
           "description": "Forrester Wave Security Analytics Platforms 2025: Palo Alto Networks Cortex XSIAM positioned as Leader",
           "url": "https://www.forrester.com/wave/security-analytics-platforms",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "forrester_wave",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated Wave placeholder -> Forrester announcement blog (Tier C, analyst positioning)."
         }
       ]
     },
@@ -4321,10 +4221,11 @@
           "id": "gartner-mq-endpoint-protection-2025-sentinelone",
           "description": "Gartner Magic Quadrant for Endpoint Protection Platforms 2025: SentinelOne positioned as Leader (extending into SIEM with Singularity Data Lake)",
           "url": "https://www.gartner.com/en/documents/magic-quadrant-endpoint-protection",
-          "evidence_tier": "A",
+          "evidence_tier": "C",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader"
+          "positioning": "Leader",
+          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder -> SentinelOne press (Tier C). Sole source -> quality at re-derivation."
         }
       ]
     },
@@ -4408,9 +4309,10 @@
         {
           "id": "apache-impala-production-fortune500-2024",
           "description": "Apache Impala production deployments: NYSE, Quest Diagnostics, Caterpillar, Cox Automotive (Fortune 500 validation)",
-          "url": "https://impala.apache.org/powered-by.html",
-          "evidence_tier": "A",
-          "type": "production_deployment"
+          "url": "https://news.apache.org/foundation/entry/the-apache-software-foundation-announces24",
+          "evidence_tier": "B",
+          "type": "production_deployment",
+          "audit_2026_07_11": "2026-07-11 I-1: 404 + zero Wayback; re-sourced to the 2017 ASF press release naming NYSE/Quest/Caterpillar/Cox Automotive as Impala users. A->B (org self-published, not standards/peer-reviewed). Note: id date should read 2017, not 2024."
         }
       ]
     },
@@ -4497,9 +4399,10 @@
         {
           "id": "apache-paimon-china-unicom-2024",
           "description": "Apache Paimon production at China Unicom: 700 streaming tasks, 3x write performance, 7x query performance improvement",
-          "url": "https://paimon.apache.org/docs/master/case-studies/china-unicom/",
-          "evidence_tier": "A",
-          "type": "production_deployment"
+          "url": "https://www.alibabacloud.com/blog/apache-paimon-streaming-lakehouse-is-production-ready_601591",
+          "evidence_tier": "C",
+          "type": "production_deployment",
+          "audit_2026_07_11": "2026-07-11 I-1: dead Paimon case-study slug re-sourced to an Alibaba Cloud production-readiness blog (Tier C). Sole leg: tier_a 1->0 pending re-derivation."
         }
       ]
     },
@@ -4584,9 +4487,10 @@
         {
           "id": "starburst-tco-case-study-2024",
           "description": "Starburst Enterprise customer case study: 2-hour queries reduced to 9 minutes, 61% TCO savings through data virtualization",
-          "url": "https://www.starburst.io/case-studies/tco-savings/",
-          "evidence_tier": "A",
-          "type": "case_study"
+          "url": "https://www.starburst.io/resources/leading-telecom-provider-case-study/",
+          "evidence_tier": "C",
+          "type": "case_study",
+          "audit_2026_07_11": "2026-07-11 I-1: dead TCO case-study slug re-sourced to a live Starburst case study (Tier C, vendor-published). Sole evidence source -> quality follows at next full re-derivation."
         }
       ]
     }
