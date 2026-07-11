@@ -2064,9 +2064,9 @@
       },
       "evidence_summary": {
         "total_sources": 1,
-        "tier_a_sources": 1,
-        "tier_b_sources": 0,
-        "overall_evidence_quality": "A",
+        "tier_a_sources": 0,
+        "tier_b_sources": 1,
+        "overall_evidence_quality": "B",
         "validated_by": "Jeremy Wiley",
         "analyst_reports": 1
       },
@@ -2081,12 +2081,12 @@
       "evidence_sources": [
         {
           "id": "gartner-mq-data-integration-2024-fivetran",
-          "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Fivetran positioned as Leader",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-data-integration",
+          "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Fivetran positioned as Challenger",
+          "url": "https://www.fivetran.com/resources/reports/2024-gartner-magic-quadrant-for-data-integration-tools",
           "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Leader",
+          "positioning": "Challenger",
           "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; per-vendor press exists (Fivetran/Matillion/Qlik-Talend). Set to Qlik-Talend press (Tier B); Fivetran + Matillion need their own (fivetran.com/press, matillion.com/blog). Positioning corrections: Talend Niche->Leader, Fivetran Leader->Challenger, Matillion Challenger -> owner re-score."
         }
       ]
@@ -2155,9 +2155,9 @@
       },
       "evidence_summary": {
         "total_sources": 1,
-        "tier_a_sources": 1,
-        "tier_b_sources": 0,
-        "overall_evidence_quality": "A",
+        "tier_a_sources": 0,
+        "tier_b_sources": 1,
+        "overall_evidence_quality": "B",
         "validated_by": "Jeremy Wiley",
         "analyst_reports": 1
       },
@@ -2166,18 +2166,18 @@
         "maia-ai",
         "snowflake-native",
         "mentioned-in-book",
-        "gartner-magic-quadrant-visionary"
+        "gartner-magic-quadrant-challenger"
       ],
       "last_updated": "2025-10-23T06:00:00Z",
       "evidence_sources": [
         {
           "id": "gartner-mq-data-integration-2024-matillion",
-          "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Matillion positioned as Visionary",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-data-integration",
+          "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Matillion positioned as Challenger",
+          "url": "https://www.matillion.com/blog/matillions-recognized-as-a-challenger-in-2024-gartner-magic-quadrant",
           "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Visionary",
+          "positioning": "Challenger",
           "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; per-vendor press exists (Fivetran/Matillion/Qlik-Talend). Set to Qlik-Talend press (Tier B); Fivetran + Matillion need their own (fivetran.com/press, matillion.com/blog). Positioning corrections: Talend Niche->Leader, Fivetran Leader->Challenger, Matillion Challenger -> owner re-score."
         }
       ]
@@ -2207,9 +2207,9 @@
       },
       "evidence_summary": {
         "total_sources": 1,
-        "tier_a_sources": 1,
-        "tier_b_sources": 0,
-        "overall_evidence_quality": "A",
+        "tier_a_sources": 0,
+        "tier_b_sources": 1,
+        "overall_evidence_quality": "B",
         "validated_by": "Jeremy Wiley",
         "analyst_reports": 1
       },
@@ -2218,18 +2218,18 @@
         "ai-transformation",
         "qlik-integration",
         "mentioned-in-book",
-        "gartner-magic-quadrant-niche-player"
+        "gartner-magic-quadrant-leader"
       ],
       "last_updated": "2025-10-23T06:00:00Z",
       "evidence_sources": [
         {
           "id": "gartner-mq-data-integration-2024-talend",
-          "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Qlik Talend positioned as Niche Player",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-data-integration",
+          "description": "Gartner Magic Quadrant for Data Integration Tools 2024: Qlik Talend positioned as Leader",
+          "url": "https://www.qlik.com/us/news/company/press-room/press-releases/qlik-recognized-as-a-leader-for-ninth-consecutive-year-in-gartner-magic-quadrant-for-data-integration-tools",
           "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Niche Player",
+          "positioning": "Leader",
           "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; per-vendor press exists (Fivetran/Matillion/Qlik-Talend). Set to Qlik-Talend press (Tier B); Fivetran + Matillion need their own (fivetran.com/press, matillion.com/blog). Positioning corrections: Talend Niche->Leader, Fivetran Leader->Challenger, Matillion Challenger -> owner re-score."
         }
       ]
@@ -2727,7 +2727,7 @@
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
           "positioning": "Leader",
-          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
+          "audit_2026_07_11": "2026-07-11 I-1 (updated): the 2024 report is Gartner's MQ for Observability Platforms (the APM MQ was renamed) — report name corrected here. Quadrant positions are CONTESTED: this DB previously carried Splunk=Challenger and New Relic=Visionary, but the 2024/2025 Observability Platforms MQ vendor press lists Splunk, New Relic, and Dynatrace among Leaders. Dynatrace=Leader is corroborated (15th consecutive) and retained; Splunk and New Relic set to 'pending verification' rather than asserting a contested quadrant — verify against the actual report before citing. evidence_summary rollup corrected A->B (single Tier-B analyst source)."
         }
       ]
     },
@@ -2754,9 +2754,9 @@
       },
       "evidence_summary": {
         "total_sources": 1,
-        "tier_a_sources": 1,
-        "tier_b_sources": 0,
-        "overall_evidence_quality": "A",
+        "tier_a_sources": 0,
+        "tier_b_sources": 1,
+        "overall_evidence_quality": "B",
         "validated_by": "Jeremy Wiley",
         "analyst_reports": 1
       },
@@ -2766,19 +2766,19 @@
         "apm",
         "rum",
         "mentioned-in-book",
-        "gartner-magic-quadrant-visionary"
+        "gartner-magic-quadrant-position-pending"
       ],
       "last_updated": "2025-10-23T08:00:00Z",
       "evidence_sources": [
         {
           "id": "gartner-mq-apm-2024-splunk-o11y",
-          "description": "Gartner Magic Quadrant for Application Performance Monitoring 2024: Splunk Observability positioned as Challenger",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-apm",
+          "description": "Gartner Magic Quadrant for Observability Platforms 2024: Splunk Observability evaluated; exact quadrant pending verification against the source (2024/2025 press lists it among Leaders, contradicting the earlier Challenger placeholder)",
+          "url": "https://www.gartner.com/en/documents/5663323",
           "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Challenger",
-          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
+          "positioning": "Pending verification",
+          "audit_2026_07_11": "2026-07-11 I-1 (updated): the 2024 report is Gartner's MQ for Observability Platforms (the APM MQ was renamed) — report name corrected here. Quadrant positions are CONTESTED: this DB previously carried Splunk=Challenger and New Relic=Visionary, but the 2024/2025 Observability Platforms MQ vendor press lists Splunk, New Relic, and Dynatrace among Leaders. Dynatrace=Leader is corroborated (15th consecutive) and retained; Splunk and New Relic set to 'pending verification' rather than asserting a contested quadrant — verify against the actual report before citing. evidence_summary rollup corrected A->B (single Tier-B analyst source)."
         }
       ]
     },
@@ -2805,9 +2805,9 @@
       },
       "evidence_summary": {
         "total_sources": 1,
-        "tier_a_sources": 1,
-        "tier_b_sources": 0,
-        "overall_evidence_quality": "A",
+        "tier_a_sources": 0,
+        "tier_b_sources": 1,
+        "overall_evidence_quality": "B",
         "validated_by": "Jeremy Wiley",
         "analyst_reports": 1
       },
@@ -2817,19 +2817,19 @@
         "consumption-based",
         "unified-platform",
         "mentioned-in-book",
-        "gartner-magic-quadrant-challenger"
+        "gartner-magic-quadrant-position-pending"
       ],
       "last_updated": "2025-10-23T08:00:00Z",
       "evidence_sources": [
         {
           "id": "gartner-mq-apm-2024-newrelic",
-          "description": "Gartner Magic Quadrant for Application Performance Monitoring 2024: New Relic positioned as Visionary",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-apm",
+          "description": "Gartner Magic Quadrant for Observability Platforms 2024: New Relic evaluated; exact quadrant pending verification against the source (2024/2025 press lists it among Leaders, contradicting the earlier Visionary placeholder)",
+          "url": "https://www.gartner.com/en/documents/5663323",
           "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
-          "positioning": "Visionary",
-          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
+          "positioning": "Pending verification",
+          "audit_2026_07_11": "2026-07-11 I-1 (updated): the 2024 report is Gartner's MQ for Observability Platforms (the APM MQ was renamed) — report name corrected here. Quadrant positions are CONTESTED: this DB previously carried Splunk=Challenger and New Relic=Visionary, but the 2024/2025 Observability Platforms MQ vendor press lists Splunk, New Relic, and Dynatrace among Leaders. Dynatrace=Leader is corroborated (15th consecutive) and retained; Splunk and New Relic set to 'pending verification' rather than asserting a contested quadrant — verify against the actual report before citing. evidence_summary rollup corrected A->B (single Tier-B analyst source)."
         }
       ]
     },
@@ -2858,9 +2858,9 @@
       },
       "evidence_summary": {
         "total_sources": 1,
-        "tier_a_sources": 1,
-        "tier_b_sources": 0,
-        "overall_evidence_quality": "A",
+        "tier_a_sources": 0,
+        "tier_b_sources": 1,
+        "overall_evidence_quality": "B",
         "validated_by": "Jeremy Wiley",
         "analyst_reports": 1
       },
@@ -2876,13 +2876,13 @@
       "evidence_sources": [
         {
           "id": "gartner-mq-apm-2024-dynatrace",
-          "description": "Gartner Magic Quadrant for Application Performance Monitoring 2024: Dynatrace positioned as Leader",
-          "url": "https://www.gartner.com/en/documents/magic-quadrant-apm",
+          "description": "Gartner Magic Quadrant for Observability Platforms 2024: Dynatrace positioned as Leader (15th consecutive; corroborated by vendor press)",
+          "url": "https://www.gartner.com/en/documents/5663323",
           "evidence_tier": "B",
           "type": "analyst_report",
           "report_type": "gartner_magic_quadrant",
           "positioning": "Leader",
-          "audit_2026_07_11": "2026-07-11 I-1: gated placeholder; the real 2024 report is the MQ for OBSERVABILITY PLATFORMS (not APM). Re-tiered to Datadog's press release (Tier B). Per-vendor positioning corrections needed: Splunk Obs was Challenger (not Leader), New Relic Visionary (not Leader), Dynatrace Leader (confirmed) -> owner re-score."
+          "audit_2026_07_11": "2026-07-11 I-1 (updated): the 2024 report is Gartner's MQ for Observability Platforms (the APM MQ was renamed) — report name corrected here. Quadrant positions are CONTESTED: this DB previously carried Splunk=Challenger and New Relic=Visionary, but the 2024/2025 Observability Platforms MQ vendor press lists Splunk, New Relic, and Dynatrace among Leaders. Dynatrace=Leader is corroborated (15th consecutive) and retained; Splunk and New Relic set to 'pending verification' rather than asserting a contested quadrant — verify against the actual report before citing. evidence_summary rollup corrected A->B (single Tier-B analyst source)."
         }
       ]
     },
