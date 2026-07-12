@@ -489,7 +489,7 @@ Security queries scan millions of rows but touch few columns (timestamps, IPs, u
 - ClickHouse native MergeTree (sorted layout): **0.061s average**, 46.8× over the OpenSearch 2.18.0 schema-on-read baseline (2.854s)
 - ClickHouse-over-Iceberg (`icebergS3()`, zstd Parquet): **0.282s average**, 10.1× over the baseline
 - The average hides the finding, which is a two-regime split by query shape: the inverted index wins the cheap index-shaped lookups (a protocol-distribution count 3.4× and a duration filter 1.8× over native) while the columnar engines win the hunting-shaped aggregations by one to two orders of magnitude (a byte-sum group-by at 5.4× Iceberg / 21× native, a distinct-port scan at 14× Iceberg / 62× native). The full engine table is in I.4A.4.
-- Source: SDW Lab zeek-flagship-rerun (2026-06-10), which supersedes the legacy 145× splunk-db-connect-benchmark (Dec 2025, retired). The legacy baseline averaged 27.52s; OpenSearch 2.18.0, bulk-loaded and force-merged, averages 2.85s on the same five queries, so the baseline itself is roughly 10× faster and every multiplier shrinks accordingly.
+- Source: SDW Lab zeek-flagship-rerun (2026-06-10), which supersedes a retired legacy benchmark (Dec 2025). OpenSearch 2.18.0, bulk-loaded and force-merged, averages 2.85s on the same five queries, and the retired benchmark's higher multipliers are superseded by these re-measured figures against that optimized baseline.
 
 **Compression optimization gap**:
 - Default (LZ4): 4.6× compression (712 MB for 10M events)
@@ -525,7 +525,7 @@ In Netflix's stack ClickHouse is a specialized engine layered on Apache Iceberg,
 | Trino | Iceberg | 0.795 | 3.6× |
 | OpenSearch 2.18.0 (schema-on-read baseline) | inverted index | 2.854 | 1× (baseline) |
 
-*Source: SDW Lab, zeek-flagship-rerun/results/RESULTS.md + starrocks_trino_arms.json (2026-06-10). Supersedes the splunk-db-connect-benchmark (Dec 2025, retired).*
+*Source: SDW Lab, zeek-flagship-rerun/results/RESULTS.md + starrocks_trino_arms.json (2026-06-10). Supersedes a retired legacy benchmark (Dec 2025).*
 
 What the bake-off method demonstrates: the three open engines over Iceberg — ClickHouse, StarRocks, and Trino — query byte-identical Iceberg data and return identical answers, which is the architecture argument; ClickHouse-native and the OpenSearch baseline are the two non-Iceberg reference points. The specific multiples are workload-dependent.
 
@@ -619,7 +619,7 @@ Most security teams store everything in one tier, either an expensive SIEM or a 
 **Schema-on-read SIEM footprint and scaling (SDW Lab, zeek-flagship-rerun, 2026-06-10; 10M Zeek conn.log events)**:
 - OpenSearch 2.18.0 baseline: **2.854s** average across the 5 standardized queries
 - Index footprint: **1,868 MB** for 10M events (best_compression, 1 segment), a 2.0× compression against the 3,743 MB raw JSONL, where the same rows land in 440 MB of Iceberg Parquet (8.5×) and 685 MB of ClickHouse native LZ4 (5.5×)
-- Superlinear index growth was the retired Dec-2025 bench's single-run observation (1M→10M: 3.47s→27.52s, roughly 8× for 10× the data); the rerun measures only the 10M point, so treat that scaling ratio as a directional historical reading, not a re-measured claim
+- Superlinear index growth was the retired Dec-2025 bench's single-run observation (query latency grew faster than linearly with data volume); the rerun measures only the 10M point, so treat that scaling behavior as a directional historical reading, not a re-measured claim
 
 Whether that superlinear scaling generalizes depends on query type and schema, and the rerun doesn't re-measure it. What the rerun does support is the storage inversion (the Iceberg table is the smallest artifact at 440 MB while the OpenSearch index is the largest compressed form at 1,868 MB), so the directional finding that columnar engines compress and aggregate far more efficiently than index-based SIEMs is structurally sound.
 
@@ -1190,7 +1190,7 @@ The harder thing to carry out of this appendix isn't the routing table, which mo
 - A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture patterns, workload segregation, Spark irreplaceable for Iceberg (Tier B)
 - Jake Thomas (Okta) [Personal communication]: DuckDB extreme scale validation (7.5T records in 6 months, $2K/day Snowflake → "dramatically reduced" — figures are Jake's own account, not independently audited) (Tier B)
 - Netflix ClickHouse scale figures [Daniel Muino, ClickHouse meetup presentation, late 2024]: 5 PB/day, 10.6M events/sec, sub-second queries — vendor ecosystem presentation, not independently reproduced (Tier C)
-- Schema-on-read SIEM bake-off [SDW Lab, zeek-flagship-rerun, 2026-06-10]: a two-regime split over 10M OCSF-normalized Zeek conn.log events, 5 standardized queries, CV-gated, answers verified equal — the OpenSearch 2.18.0 baseline (2.854s avg) against ClickHouse-native (0.061s, 46.8×), ClickHouse-over-Iceberg (0.282s, 10.1×), StarRocks (0.343s, 8.3×), and Trino (0.795s, 3.6×); the index wins the cheap lookups, the lakehouse wins the heavy hunting aggregations. Supersedes the splunk-db-connect-benchmark (Dec 2025, retired). One specific workload, directional for network-telemetry analytical queries (Tier B)
+- Schema-on-read SIEM bake-off [SDW Lab, zeek-flagship-rerun, 2026-06-10]: a two-regime split over 10M OCSF-normalized Zeek conn.log events, 5 standardized queries, CV-gated, answers verified equal — the OpenSearch 2.18.0 baseline (2.854s avg) against ClickHouse-native (0.061s, 46.8×), ClickHouse-over-Iceberg (0.282s, 10.1×), StarRocks (0.343s, 8.3×), and Trino (0.795s, 3.6×); the index wins the cheap lookups, the lakehouse wins the heavy hunting aggregations. Supersedes a retired legacy benchmark (Dec 2025). One specific workload, directional for network-telemetry analytical queries (Tier B)
 
 **Technical documentation**:
 - [Apache Spark Iceberg Procedures](https://iceberg.apache.org/docs/latest/spark-procedures/)
