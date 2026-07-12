@@ -78,8 +78,8 @@ def create_source_taxonomy():
     }
 
     # Create figure with two subplots
-    fig = plt.figure(figsize=(16, 10))
-    gs = fig.add_gridspec(3, 2, height_ratios=[2, 1, 1], hspace=0.4, wspace=0.3)
+    fig = plt.figure(figsize=(16, 11))
+    gs = fig.add_gridspec(3, 2, height_ratios=[2, 1.5, 1.0], hspace=0.5, wspace=0.28)
 
     # ========== Subplot 1: Source Type Distribution (Horizontal Bar) ==========
     ax1 = fig.add_subplot(gs[0, :])
@@ -115,13 +115,14 @@ def create_source_taxonomy():
                 f'n={count}',
                 ha='left', va='center', fontsize=11, fontweight='bold')
 
-        # Examples on left side
+        # Examples on their own line just below the category label (left of axis),
+        # so they never sit on top of the bold y-axis tick labels.
         examples = source_types[label]['examples']
         example_text = ', '.join(examples[:3])
         if len(examples) > 3:
             example_text += ', etc.'
-        ax1.text(-2, i, example_text, ha='right', va='center',
-                fontsize=9, style='italic', color='#424242')
+        ax1.text(-0.5, i - 0.40, example_text, ha='right', va='center',
+                fontsize=8, style='italic', color='#424242')
 
     # Formatting
     ax1.set_yticks(y_pos)
@@ -142,9 +143,12 @@ def create_source_taxonomy():
     wedges, texts, autotexts = ax2.pie(geo_values, labels=geo_labels,
                                         autopct='%1.0f%%',
                                         colors=geo_colors,
-                                        startangle=90,
-                                        explode=[0.05, 0, 0, 0],
-                                        textprops={'fontsize': 10, 'fontweight': 'bold'},
+                                        startangle=0,
+                                        radius=0.9,
+                                        explode=[0.0, 0.05, 0.11, 0.17],
+                                        labeldistance=1.15,
+                                        pctdistance=0.72,
+                                        textprops={'fontsize': 9, 'fontweight': 'bold'},
                                         wedgeprops={'linewidth': 1, 'edgecolor': 'black'})
 
     # Add source counts as annotations
@@ -153,7 +157,7 @@ def create_source_taxonomy():
         autotext.set_color('white')
         autotext.set_fontsize(11)
 
-    ax2.set_title('Geographic Distribution', fontsize=13, fontweight='bold', pad=10)
+    ax2.set_title('Geographic Distribution', fontsize=13, fontweight='bold', pad=18)
 
     # ========== Subplot 3: Organizational Diversity (Text Summary) ==========
     ax3 = fig.add_subplot(gs[1, 1])
@@ -167,25 +171,25 @@ def create_source_taxonomy():
         ('Startups', 'DataRobot, Anyscale, Huntress')
     ]
 
-    y_start = 0.95
-    y_step = 0.18
-
-    ax3.text(0.5, y_start + 0.05, 'Organizational Diversity',
-            ha='center', va='top', fontsize=13, fontweight='bold',
+    # Title inside the box, near the top
+    ax3.text(0.5, 0.93, 'Organizational Diversity',
+            ha='center', va='center', fontsize=12, fontweight='bold',
             transform=ax3.transAxes)
 
-    for i, (org_type, examples) in enumerate(org_diversity):
-        y = y_start - (i * y_step)
-
+    # Rows evenly spaced below the title; each row is a bold type label with its
+    # italic examples on the line below, with generous vertical separation so
+    # neither the rows nor the title/border collide.
+    row_ys = np.linspace(0.78, 0.14, len(org_diversity))
+    for (org_type, examples), y in zip(org_diversity, row_ys):
         # Type label (bold)
-        ax3.text(0.05, y, f'{org_type}:',
-                ha='left', va='top', fontsize=10, fontweight='bold',
+        ax3.text(0.06, y, f'{org_type}:',
+                ha='left', va='center', fontsize=10, fontweight='bold',
                 transform=ax3.transAxes)
 
-        # Examples (italic, wrapped)
-        ax3.text(0.05, y - 0.04, examples,
-                ha='left', va='top', fontsize=9, style='italic',
-                wrap=True, transform=ax3.transAxes, color='#424242')
+        # Examples (italic) on their own line just below the label
+        ax3.text(0.06, y - 0.068, examples,
+                ha='left', va='center', fontsize=8.5, style='italic',
+                transform=ax3.transAxes, color='#424242')
 
     # Add border
     rect = mpatches.Rectangle((0.02, 0.02), 0.96, 0.96,
