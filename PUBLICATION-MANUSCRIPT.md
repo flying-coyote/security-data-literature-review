@@ -11,9 +11,9 @@ tags: [manuscript, academic-publication, systematic-review, security-data-lakeho
 
 **Keywords**: Data lakehouse, security analytics, OLAP, streaming architectures, cybersecurity data engineering, systematic review
 
-**Manuscript Status**: DRAFT v0.1 (In Progress)
+**Manuscript Status**: DRAFT v0.3 (In Progress)
 **Created**: October 21, 2025
-**Last Updated**: October 21, 2025
+**Last Updated**: July 10, 2026
 
 ---
 
@@ -25,7 +25,7 @@ Nine hypotheses were assessed (seven from the original extraction; two added 202
 
 Production validation across 18+ organizations demonstrates security-specific requirements differentiating from general analytics: IP/CIDR-based threat hunting, incident-driven burst capacity, stateful entity tracking, and multi-year queryable retention. Practitioners receive evidence-based guidance: start batch architectures (SQL-friendly platforms), add selective streaming after validating business impact, implement tiered storage, right-size reliability, plan realistic timelines (multi-month implementation plus a 6-12 month proficiency ramp, stated as practitioner estimate), and invest in scarce fault-tolerance expertise before committing to streaming.
 
-This living literature review with quarterly updates solves citation stability while maintaining practitioner currency, providing systematic evidence base for security organizations implementing modern data stacks with documented cost/staffing/performance trade-offs.
+This living literature review with quarterly updates mitigates citation instability while maintaining practitioner currency, providing systematic evidence base for security organizations implementing modern data stacks with documented cost/staffing/performance trade-offs.
 
 ---
 
@@ -301,7 +301,7 @@ Each hypothesis classified using a 5-level confidence scale based on multi-dimen
 
 **Phase 1 Validation Results**:
 
-*[2026-06 source audit note: citations supporting the original staffing, TCO, timeline, and tiered-storage multipliers were withdrawn (fabricated entries or stats not present in the cited sources). The affected multipliers are removed throughout this manuscript; those hypotheses revert to directional claims pending re-sourcing, and the source counts and confidence scores in this section are pre-audit values.]*
+*[2026-06 source audit note: citations supporting the original staffing, TCO, timeline, and tiered-storage multipliers were withdrawn (fabricated entries or stats not present in the cited sources). A 2026-07 per-citation verification pass additionally withdrew the DORA-attributed "Level 4 / top 5%" skill taxonomy and the Forrester TEI TCO breakdown and re-attributed the LinkedIn stateful-processing figures to Samza (VLDB 2017). The affected multipliers are removed throughout this manuscript, and those hypotheses revert to directional claims pending re-sourcing. The source counts and confidence scores below are the post-audit values (2026-07-09 re-score, RESCORE-PROPOSAL-2026-07.md), not pre-audit figures.]*
 
 9 Hypotheses assessed (7 original; 2 added post-audit 2026-07-10, provenance noted per row); post-audit re-score adopted 2026-07-09 (RESCORE-PROPOSAL-2026-07.md):
 
@@ -325,7 +325,7 @@ Each hypothesis classified using a 5-level confidence scale based on multi-dimen
 **Qualitative Synthesis**:
 - **Implementation Patterns**: Cross-case analysis of production deployments (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom)
 - **Expert Validation**: Practitioner interviews for hypothesis validation
-- **Contradiction Analysis**: When sources conflict, document both perspectives with evidence quality assessment (Note: No contradictions identified in current evidence base)
+- **Contradiction Analysis**: When sources conflict, document both perspectives with evidence quality assessment (post-audit state, per §3.8: one named tension — H-LOGCOMP-01's specialized-compression result against H-ARCH-01's open-format consensus — is resolved as a standardization-cost trade rather than a contradiction; the earlier convergence examples rested on citations withdrawn in the 2026-06/07 audits and were removed)
 
 **Gap Analysis**:
 
@@ -446,7 +446,7 @@ Our analysis identifies three architectural patterns validated across multiple p
 
 Apache Iceberg emerged as the industry consensus choice for open table formats, validated by universal vendor support and production deployments at scale. Multiple independent sources confirm this pattern:
 
-**Universal Vendor Adoption**: AWS, Google Cloud, Microsoft Azure, Snowflake, and Databricks all announced Iceberg compatibility, providing vendor-neutral interoperability unprecedented in data lake history. This contrasts with Delta Lake's Databricks-led governance, where competing vendors face architectural friction.
+**Universal Vendor Adoption**: AWS, Google Cloud, Microsoft Azure, Snowflake, and Databricks all announced Iceberg compatibility, providing interoperability broader than Delta Lake's single-vendor governance model, where competing vendors face architectural friction under Databricks-led governance.
 
 **Community Strength**: Apache Software Foundation governance attracted 400+ contributors (407 per GitHub's deduplicated contributor count for apache/iceberg, as of 2026-07-09), demonstrating vendor-neutral development uncommon in enterprise data infrastructure.
 
@@ -458,7 +458,7 @@ Our original "76% adoption" hypothesis required refinement to "industry consensu
 
 #### 3.2.2 Query Engines: ClickHouse Performance for Security Workloads
 
-ClickHouse demonstrated exceptional performance for security analytics, validated by production deployments processing massive telemetry volumes:
+ClickHouse demonstrated measured performance for security analytics, validated by production deployments processing telemetry at scale:
 
 **Cloudflare Production** (6M requests/second): Cloudflare's HTTP analytics processes 6 million requests per second. Its Elasticsearch-to-ClickHouse log-pipeline migration cut per-record storage from 600 bytes to 60 bytes (~10×), efficiency critical for security workloads generating TB/day volumes.
 
@@ -580,7 +580,7 @@ Security workloads exhibit performance requirements fundamentally different from
 
 **Multi-Year Queryable Retention**: CISA's AA23-193A advisory quotes OMB M-21-31's log-retention requirement for US federal civilian agencies — at least 12 months in active storage plus 18 months in cold storage — a compliance mandate rather than an APT-detection recommendation, but a concrete retention floor security teams can plan against. Compliance investigations require fast queries across multi-year data ("show all access to this patient record 2022-2024"), not cold archive restoration (48-hour delay unacceptable for HIPAA audit). Tiered lakehouse architecture (Iceberg + Trino) provides multi-year queryable retention at materially lower cost while maintaining acceptable performance.
 
-**Analyst Productivity**: Sub-second queries enable iterative threat hunting with 10-20 pivots per investigation. Slow queries (30-60s) reduce exploration to 3-5 pivots before analysts abandon investigation due to delays.
+**Analyst Productivity**: Sub-second queries enable iterative threat hunting with 10-20 pivots per investigation. Slow queries (30-60s) reduce exploration to 3-5 pivots before analysts abandon investigation due to delays (practitioner estimate).
 
 Multiple production and government sources validate these security-specific requirements, distinguishing security analytics from general business intelligence workloads.
 
@@ -632,7 +632,7 @@ Nine hypotheses received quantitative validation (seven assessed in the original
 
 6. **Security-Specific Benchmark Suites**: TPC-like benchmarks exist for general analytics (TPC-H, TPC-DS); security workloads lack standardized benchmark suite for vendor-neutral performance comparison.
 
-   *Partial first-party answer (2026-06-07)*: the SDW MOAR reference stack now provides a first-party, identical-workload starting point against this gap — one shared Apache Iceberg table holding OCSF events, queried by four engines (DuckDB, Trino, ClickHouse, StarRocks) with an answer-equality gate applied before any latency or storage figure is read, so the comparison rests on a verified correctness floor rather than vendor-optimized configurations. The headline first-party readings: no single engine wins every workload (DuckDB leads gated small-batch, StarRocks leads high-cardinality distinct), and a FOIL probe measured a schema-on-read SIEM index at ~7.0× the columnar footprint on OCSF data. This does not close the gap — it is a single-host apparatus (Ryzen 5800H, WSL2), so organizational/TCO claims and streaming-throughput claims remain out of its reach, and the absolute latencies are bounded to that host (the relative pattern is the finding). A standardized, multi-node, concurrency-aware security benchmark suite is still future work; the contribution here is a reproducible identical-workload method with a correctness gate, not a datacenter benchmark.
+   *Partial first-party answer (2026-06-07)*: the SDW MOAR reference stack now provides a first-party, identical-workload starting point against this gap — one shared Apache Iceberg table holding OCSF events, queried by four engines (DuckDB, Trino, ClickHouse, StarRocks) with an answer-equality gate applied before any latency or storage figure is read, so the comparison rests on a verified correctness floor rather than vendor-optimized configurations. The headline first-party readings: no single engine wins every workload (DuckDB leads gated small-batch, StarRocks leads high-cardinality distinct), and a baseline probe measured a schema-on-read SIEM index at ~7.0× the columnar footprint on OCSF data. This does not close the gap — it is a single-host apparatus (Ryzen 5800H, WSL2), so organizational/TCO claims and streaming-throughput claims remain out of its reach, and the absolute latencies are bounded to that host (the relative pattern is the finding). A standardized, multi-node, concurrency-aware security benchmark suite is still future work; the contribution here is a reproducible identical-workload method with a correctness gate, not a datacenter benchmark.
 
 **One Named Tension, Resolved as a Trade**: the post-audit H-LOGCOMP-01 (machine-data-specialized designs measurably beat general-purpose equivalents) sits in deliberate tension with H-ARCH-01's open-format consensus; §3.7 frames it as quantifying the cost of the standardization trade rather than as a contradiction. Beyond that, cross-source validation revealed convergent evidence without contradictions; apparent discrepancies resolved through use-case analysis rather than representing true contradictions. (The convergence examples previously cited here rested on citations withdrawn in the 2026-06 source audit and were removed.)
 
@@ -662,7 +662,7 @@ Security analytics exhibit performance requirements fundamentally different from
 
 **Volume Characteristics**: Security generates higher velocity data (continuous high-volume ingestion vs business analytics' batch ETL patterns) with longer retention requirements (OMB M-21-31, quoted by CISA AA23-193A: ≥12 months active + 18 months cold for federal civilian agencies, vs general analytics' 3-6 month active data). Security data volume growth outpaces business analytics, requiring elastic scaling capacity.
 
-**Performance Requirements**: Security rewards platform-native IP/CIDR handling absent in general analytics (a first-party probe measured ~13-17× CIDR speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings). Incident-driven burst capacity requires elastic architecture or 4× over-provisioning; business analytics exhibit predictable load (scheduled dashboards, quarterly reports). Analyst productivity critically depends on sub-second query latency enabling 10-20 investigation pivots vs 3-5 pivots with slow queries (30-60s latency).
+**Performance Requirements**: Security rewards platform-native IP/CIDR handling absent in general analytics (a first-party probe measured ~13-17× CIDR speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings). Incident-driven burst capacity requires elastic architecture or 4× over-provisioning; business analytics exhibit predictable load (scheduled dashboards, quarterly reports). Analyst productivity critically depends on sub-second query latency enabling 10-20 investigation pivots vs 3-5 pivots with slow queries (30-60s latency; practitioner estimate).
 
 **Stateful Processing Patterns**: Security requires per-entity behavioral tracking ("what's normal for THIS user over 30 days?") vs business analytics' dimensional aggregation (SQL GROUP BY by region, product, quarter). Kafka-backed stateful processors maintain partitioned local state at up to hundreds-of-TB scale per application (LinkedIn's Samza, VLDB 2017) enabling real-time entity views impossible with batch SQL re-processing entire historical windows per query.
 
@@ -782,7 +782,17 @@ The author thanks the practitioners whose production experience informed this re
 
 [20] J. Wiley, "MOAR Stack — Security Data Lakehouse Reference Architecture" (FIRST-PARTY reference architecture and cost model). [Online]. Available: https://securitydataworks.com/thesis/moar
 
-[21] J. Wiley, "SDW Lab Benchmarks" (FIRST-PARTY: CIDR probe `lab/cidr_probe.py`, MOAR reference-stack engine comparison, FOIL storage probe), GitHub repository. [Online]. Available: https://github.com/flying-coyote/sdw-lab-benchmarks
+[21] J. Wiley, "SDW Lab Benchmarks" (FIRST-PARTY: CIDR probe `lab/cidr_probe.py`, MOAR reference-stack engine comparison, schema-on-read baseline storage probe), GitHub repository. [Online]. Available: https://github.com/flying-coyote/sdw-lab-benchmarks
+
+[22] T. Buddhika, S. L. Pallickara, and S. Pallickara, "Pebbles: Leveraging Sketches for Processing Voluminous, High Velocity Data Streams," *IEEE Transactions on Parallel and Distributed Systems*, vol. 32, no. 8, pp. 2005-2020, Aug. 2021, doi: 10.1109/TPDS.2021.3055265. [Online]. Available: https://par.nsf.gov/servlets/purl/10284573
+
+[23] Y. Qiao, Y. Gao, and H. Zhang, "Blitzcrank: Fast Semantic Compression for In-Memory Online Transaction Processing," *Proceedings of the VLDB Endowment*, vol. 17, no. 10, pp. 2528-2540, 2024. [Online]. Available: https://www.vldb.org/pvldb/volumes/17/paper/Blitzcrank%3A%20Fast%20Semantic%20Compression%20for%20In-Memory%20Online%20Transaction%20Processing
+
+[24] B. Tang, S. Yang, Z. Shen, W. Zhang, X. Lin, and Z. Tian, "LogLite: Lightweight Plug-and-Play Streaming Log Compression," *Proceedings of the VLDB Endowment*, vol. 18, no. 11, pp. 3757-3770, 2025. [Online]. Available: https://www.vldb.org/pvldb/vol18/p3757-yang.pdf
+
+[25] L. Yang, Z. Chen, C. Wang, Z. Zhang, S. Booma, P. Cao, C. Adam, A. Withers, Z. Kalbarczyk, R. K. Iyer, and G. Wang, "True Attacks, Attack Attempts, or Benign Triggers? An Empirical Measurement of Network Alerts in a Security Operations Center," in *Proceedings of the 33rd USENIX Security Symposium (USENIX Security '24)*, 2024. [Online]. Available: https://www.usenix.org/conference/usenixsecurity24/presentation/yang-limin
+
+[26] J. Zhang, Z. Shen, S. Yang, L. Meng, C. Xiao, W. Jia, Y. Li, Q. Sun, W. Zhang, and X. Lin, "PBC: High-Ratio Compression for Machine-Generated Data," *Proc. ACM Manag. Data (PACMMOD)*, SIGMOD 2024, 2024. [Online]. Available: https://arxiv.org/pdf/2311.13947
 
 **Format**: IEEE-style, alphabetical by author/organization. **Corpus note**: the "75+ sources" synthesized by this review resolve through MASTER-BIBLIOGRAPHY.md (versioned, evidence-tiered); the list above is the subset carrying inline claims in this manuscript.
 
@@ -827,8 +837,8 @@ The author thanks the practitioners whose production experience informed this re
 ![Figure 4: Hypothesis validation confidence levels for all 9 hypotheses — 1 strongly validated (H-ARCH-01, 23/25), 3 high confidence (H3-PERFORMANCE-01 20/25, H-LOGCOMP-01 17/25 †, H-STREAM-01 17/25), 1 moderate (H-SOC-BASELINE-01 14/25 †), 4 preliminary (H-COST-09 8/25, H-IMPL-02 7/25, H-IMPL-03 7/25, H-IMPL-01 6/25). † = post-audit additions, 2026-07-10.](publication-graphics/figure4_hypothesis_confidence.png){ width=85% }
 
 **Shows**:
-- Bar chart of 7 hypotheses with post-audit confidence scores (23/25 down to 6/25)
-- Grouped by validation strength (1 Strong, 2 High, 0 Moderate, 4 Preliminary)
+- Bar chart of 9 hypotheses with post-audit confidence scores (23/25 down to 6/25)
+- Grouped by validation strength (1 Strong, 3 High, 1 Moderate, 4 Preliminary)
 - Rubric example (H-ARCH-01, strongest post-audit) and the honest audit summary
 
 ### Figure 5: Technology Adoption Trends
@@ -845,7 +855,7 @@ The author thanks the practitioners whose production experience informed this re
 |--------|--------|----------|--------|
 | Total Sources | 100+ | 75+ | Sufficient |
 | Evidence Level A | >70% | 42.9% (76/177 tiered; live-computed 2026-07-09) | ❌ Below target (honest live figure; was a withdrawn 79% self-grade) |
-| URL Validation | 90%+ | 73% overall, 100% critical | ✅ Adequate |
+| URL Validation (hypothesis-critical citations) | 90%+ | 100% (16/16 critical); 73% overall | ✅ Met (critical scope) |
 | Geographic Diversity | 2+ regions | 3 regions (US, EU, APAC) | ✅ Met |
 | Organizational Types | 3+ types | 5 types | ✅ Exceeded |
 

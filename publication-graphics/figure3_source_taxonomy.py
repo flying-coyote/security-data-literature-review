@@ -38,14 +38,14 @@ def create_source_taxonomy():
     # Data for source type distribution
     source_types = {
         'Production\nDeployments': {
-            'count': 18,
-            'percentage': 24,
+            'count': 17,
+            'percentage': 23,
             'color': COLORS['production'],
-            'examples': ['Netflix', 'Uber', 'LinkedIn', 'Cloudflare', 'Shell', 'SK Telecom']
+            'examples': ['Netflix', 'Uber', 'LinkedIn', 'Cloudflare', 'SK Telecom']
         },
         'Vendor\nDocumentation': {
             'count': 33,
-            'percentage': 44,
+            'percentage': 45,
             'color': COLORS['vendor'],
             'examples': ['Apache', 'Confluent', 'ClickHouse', 'AWS', 'Databricks']
         },
@@ -127,7 +127,7 @@ def create_source_taxonomy():
     ax1.set_yticks(y_pos)
     ax1.set_yticklabels(labels, fontsize=12, fontweight='bold')
     ax1.set_xlabel('Percentage of Total Sources (%)', fontsize=12, fontweight='bold')
-    ax1.set_title('Source Type Distribution (n=75+ sources)',
+    ax1.set_title('Source Type Distribution (n=74 sources)',
                  fontsize=14, fontweight='bold', pad=15)
     ax1.set_xlim(0, 50)
     ax1.grid(axis='x', alpha=0.3, linestyle=':', linewidth=0.5)
@@ -161,10 +161,10 @@ def create_source_taxonomy():
 
     org_diversity = [
         ('Tech Giants', 'Netflix, Uber, LinkedIn, Microsoft, Google, AWS, Cloudflare'),
-        ('Enterprises', 'Shell, SK Telecom, Nordstrom, Disney+'),
+        ('Enterprises', 'SK Telecom, Nordstrom, Disney+'),
         ('Government', 'CISA, MITRE, DARPA, NSA, SANS'),
         ('Standards', 'Apache SF, CSA, OCA, OASIS'),
-        ('Startups', 'Ververica, DataRobot, Anyscale, Huntress')
+        ('Startups', 'DataRobot, Anyscale, Huntress')
     ]
 
     y_start = 0.95
@@ -199,7 +199,7 @@ def create_source_taxonomy():
 
     summary_text = """
     Quality Metrics Summary:
-    • Total Sources: 75+ sources documented (100% extraction from 283 footnotes)
+    • Total Sources: 74 sources documented (100% extraction from 283 footnotes)
     • Evidence Level: aggregate Level-A self-grade WITHDRAWN (2026-06-14 audit) — per-source levels provisional, no aggregate % claimed pending re-verification (see FIGURES-AND-TABLES.md)
     • Evidence levels (A/B/C/D) are classified per-source; the prior aggregate Level-A distribution (exceeds-target framing) is withdrawn
     • Geographic Diversity: 3 regions (US 80%, Europe 11%, Asia-Pacific 4%)
@@ -215,7 +215,7 @@ def create_source_taxonomy():
             family='monospace')
 
     # Overall figure title
-    fig.suptitle('Figure 3: Source Type Taxonomy — 75+ Sources with Geographic & Organizational Diversity',
+    fig.suptitle('Figure 3: Source Type Taxonomy — 74 Sources with Geographic & Organizational Diversity',
                 fontsize=16, fontweight='bold', y=0.98)
 
     # Save

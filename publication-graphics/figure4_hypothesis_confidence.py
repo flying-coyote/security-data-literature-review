@@ -182,8 +182,8 @@ def create_hypothesis_confidence():
 
     summary = """
     Post-audit validation summary (re-scored 2026-07-09; RESCORE-PROPOSAL-2026-07.md):
-    - Architecture & performance findings VALIDATED on primary-verified production evidence:
-      1 strongly validated (H-ARCH-01), 2 high confidence (H3-PERFORMANCE-01, H-STREAM-01).
+    - Findings VALIDATED on primary-verified production evidence:
+      1 strongly validated (H-ARCH-01), 3 high confidence (H3-PERFORMANCE-01, H-LOGCOMP-01, H-STREAM-01), 1 moderate (H-SOC-BASELINE-01).
     - Organizational-cost findings PRELIMINARY: 4 hypotheses (H-IMPL-01/02/03, H-COST-09) lost their
       quantitative legs to the 2026-06 audit and 2026-07 verification sweep (fabricated attribution or
       figures absent from cited sources); each is stated directionally pending re-sourcing.

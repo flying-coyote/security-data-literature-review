@@ -9,7 +9,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 **Purpose**: IEEE/ACM formatted references for systematic literature review publication
 **Created**: October 21, 2025
-**Total Sources**: 78 numbered entries (9 withdrawn 2026-06-09 after source verification; numbering preserved)
+**Total Sources**: 78 numbered entries (12 withdrawn after source verification; numbering preserved)
 **Format**: IEEE citation style with alphabetical ordering by first author
 
 ---
@@ -211,7 +211,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 ---
 
 **Created**: October 21, 2025
-**Last Updated**: June 9, 2026 (fabrications-register cleanup: 9 entries withdrawn in place)
-**Total References**: 78 numbered entries (9 withdrawn 2026-06-09; numbering preserved for manuscript citation stability)
+**Last Updated**: July 9, 2026 (fabrications-register cleanup: 12 entries withdrawn in place)
+**Total References**: 78 numbered entries (12 withdrawn; numbering preserved for manuscript citation stability)
 **Format**: IEEE citation style
 **Purpose**: Academic publication reference section for PUBLICATION-MANUSCRIPT.md

@@ -451,7 +451,7 @@ Confluent:      ~~4.5M events/second on 9-node clusters~~ [WITHDRAWN —
 | **Evidence Level C/D** | 0% | 0% (0/72) | ✅ Met | Marketing materials excluded at intake |
 | **URL Validation (Overall)** | 90%+ | ~~73% (16/22)~~ **WITHDRAWN** | — | 2026-06-14 audit: superseded by 2026-06 source audit; 9 refs withdrawn in place (REFERENCES.md) |
 | **URL Validation (Hypothesis-Critical)** | 100% | ~~100% (16/16)~~ **WITHDRAWN** | — | 2026-06-14 audit: percentage superseded by the source audit |
-| **Paywalls (Expected)** | Accept | 3 sources | ✅ Expected | Gartner, ~~IDC~~ (entry removed 2026 audit), Forrester |
+| **Paywalls (Expected)** | Accept | 2 sources | ✅ Expected | Gartner, Forrester (~~IDC~~ entry removed 2026 audit; not backfilled) |
 | **Geographic Diversity** | 2+ regions | 3 regions | ✅ Met | US, Europe, Asia-Pacific (SK Telecom); prior percentage breakdown withdrawn as unverified |
 | **Organizational Types** | 3+ types | 5 types | ✅ **EXCEEDS** | Tech giants, enterprises, government, standards, startups |
 | **Production Deployments** | 10+ | 18+ organizations | ✅ Met | Netflix, Uber, LinkedIn, Cloudflare, SK Telecom, Disney+, Microsoft, etc. (~~Shell~~ entry removed 2026 audit, dead URL) |
