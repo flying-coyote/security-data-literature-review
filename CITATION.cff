@@ -16,6 +16,7 @@ authors:
     given-names: Jeremy
     affiliation: Security Data Works
 repository-code: "https://github.com/flying-coyote/security-data-literature-review"
+license: CC-BY-4.0
 abstract: >-
   Security organizations evaluating modern data stack architectures (Apache
   Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity

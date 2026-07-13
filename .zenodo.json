@@ -17,5 +17,6 @@
     "cybersecurity data engineering",
     "systematic literature review"
   ],
-  "notes": "This is a LIVING systematic literature review with quarterly updates; each tagged GitHub release is archived on Zenodo as a new version under one concept DOI, so the concept DOI cites the review as a living work while a version DOI pins a specific snapshot. The repository carried no LICENSE file when this metadata was prepared (2026-07-12); the owner selects the license before the first deposit and adds the matching 'license' key here (see docs/ZENODO-RELEASE-CHECKLIST.md, step 0)."
+  "license": "cc-by-4.0",
+  "notes": "This is a LIVING systematic literature review with quarterly updates; each tagged GitHub release is archived on Zenodo as a new version under one concept DOI, so the concept DOI cites the review as a living work while a version DOI pins a specific snapshot. Licensed CC-BY-4.0 (LICENSE at the repository root, canonical Creative Commons legal code); the same license id is set in CITATION.cff."
 }
