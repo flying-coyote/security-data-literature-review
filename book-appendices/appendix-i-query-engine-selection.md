@@ -491,11 +491,11 @@ Security queries scan millions of rows but touch few columns (timestamps, IPs, u
 - The average hides the finding, which is a two-regime split by query shape: the inverted index wins the cheap index-shaped lookups (a protocol-distribution count 3.4× and a duration filter 1.8× over native) while the columnar engines win the hunting-shaped aggregations by one to two orders of magnitude (a byte-sum group-by at 5.4× Iceberg / 21× native, a distinct-port scan at 14× Iceberg / 62× native). The full engine table is in I.4A.4.
 - Source: SDW Lab zeek-flagship-rerun (2026-06-10), which supersedes a retired legacy benchmark (Dec 2025). OpenSearch 2.18.0, bulk-loaded and force-merged, averages 2.85s on the same five queries, and the retired benchmark's higher multipliers are superseded by these re-measured figures against that optimized baseline.
 
-**Compression optimization gap**:
-- Default (LZ4): 4.6× compression (712 MB for 10M events)
-- Optimized (ZSTD-22 + LowCardinality): **8.2× compression** (399 MB for 10M events)
-- Trade-off: +32% query latency with extreme compression
-- Huntress 50:1 compression ratio (vs raw JSON): Achievable with ZSTD(22), not out-of-box default
+**Compression optimization gap** (SDW Lab `cost-to-serve-retention/measured_footprints.json`, measured 2026-06-10, Tier B, sha256-pinned 10M-row Zeek `conn` corpus; 374.3 raw bytes/event). These re-measured figures supersede a retired Dec-2025 `splunk-db-connect` benchmark that reported 4.6×/8.2× (712/399 MB) and was never reproduced — its "8.2×" in particular traced to no measurement in the lab (SDW Lab NUMBER-VERIFICATION-2026-07-02):
+- Default (LZ4): 5.5× compression (685 MB for 10M events, 68.5 bytes/event)
+- Tuned (blanket ZSTD-22): **9.0× compression** (415 MB for 10M events, 41.5 bytes/event)
+- The codec is a smaller lever than it looks. Tuned ZSTD-22 compresses better than Iceberg's zstd default (9.0× vs 8.5× on the same corpus), but the storage-class decision — block storage for a hot index versus object storage for a lakehouse table — moves the retention bill by about 3.5×, an order of magnitude more than the tens of percent the codec buys. Squeeze harder only after the cold bytes are on object storage.
+- Huntress 50:1 compression ratio (vs raw JSON): achievable with ZSTD(22), not the out-of-box default
 
 ### I.4A.3 Netflix's Three Optimizations (What Security Teams Can Steal)
 

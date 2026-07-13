@@ -808,7 +808,7 @@ This bibliography consolidates all literature sources from:
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse 145x faster than Splunk)
 - Hypothesis H3-PERFORMANCE-02 (StarRocks vs Dremio comparison)
-- Hypothesis H3-PERFORMANCE-03 (Compression optimization 4.6-8.2x)
+- Hypothesis H3-PERFORMANCE-03 (Compression optimization; the Dec-2025 4.6–8.2× figures are superseded by the re-measured SDW Lab 5.5×/9.0× — see the compression supersession note in Key Findings)
 - Hypothesis H-ARCH-02 (Multi-engine Iceberg validation)
 - Book Chapter 8 (Query Engine Selection)
 - Blog Post #28 (Splunk Integration with LIGER Stack)
@@ -821,7 +821,7 @@ This bibliography consolidates all literature sources from:
 - StarRocks Iceberg: 1.50s avg (18x faster than Splunk)
 - Trino Iceberg: 2.67s avg (10x faster than Splunk)
 - Splunk scaling: 8x degradation from 1M→10M events
-- Compression: 4.6x default (LZ4), 8.2x optimized (ZSTD-22)
+- Compression: **SUPERSEDED** — the Dec-2025 4.6× (LZ4) / 8.2× (ZSTD-22) figures were re-measured in SDW Lab `cost-to-serve-retention/measured_footprints.json` (2026-06-10, Tier B, sha256-pinned 10M-row Zeek corpus) as **5.5× (685 MB) / 9.0× (415 MB)**; the old 8.2× traced to no lab measurement (NUMBER-VERIFICATION-2026-07-02), so quote the re-measured figures, not these
 
 **Citations**: All 4 hypotheses, Book Ch 8, Blog Post #28
 **Notes**: **CRITICAL** - First independent multi-engine benchmark on identical OCSF data
