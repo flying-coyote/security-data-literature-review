@@ -1,4 +1,4 @@
-% Figure 1: PRISMA Literature Extraction Flowchart
+% Figure 1: PRISMA 2020 flow diagram (two arms)
 % LaTeX TikZ code for publication-quality flowchart
 %
 % Usage:
@@ -6,165 +6,193 @@
 % 2. Or include in main manuscript: \input{figure1_prisma_flowchart.tex}
 %
 % Requirements: \usepackage{tikz}, \usetikzlibrary{shapes,arrows,positioning,calc}
+%
+% PROVENANCE OF EVERY NUMBER IN THIS FIGURE:
+%   methods/prisma-results/search-log.json      -- per-database raw counts, dedup breakdown
+%   methods/prisma-results/records.json         -- 395 unique records carried into screening
+%   methods/prisma-results/screen-batch-0..9.json -- 395 screening decisions + criterion codes
+%   methods/prisma-results/reconciliation.json  -- corpus reconciliation, arm overlap, categories
+% No count in this figure is estimated, rounded, or inferred.
 
 \documentclass[tikz,border=5mm]{standalone}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc,fit}
 \usepackage{xcolor}
-\usepackage{amssymb}  % \checkmark, \bigstar (pdflatex-safe replacements for Unicode glyphs)
+\usepackage{amssymb}  % pdflatex-safe symbol set
 
-% Define colors
+% Define colors (unchanged four-stage scheme)
 \definecolor{identification}{RGB}{144,202,249}  % Light blue
 \definecolor{screening}{RGB}{255,224,178}        % Light orange
 \definecolor{eligibility}{RGB}{255,245,157}      % Light yellow
 \definecolor{included}{RGB}{165,214,167}         % Light green
 \definecolor{bordercolor}{RGB}{33,33,33}         % Dark gray
 
-% Define styles
-\tikzstyle{stage} = [rectangle, rounded corners, minimum width=10cm, minimum height=1.5cm,
-                     text centered, draw=bordercolor, line width=1.2pt, font=\bfseries\large]
-\tikzstyle{box} = [rectangle, minimum width=9cm, minimum height=3cm,
-                   text width=8.5cm, text centered, draw=bordercolor, line width=0.8pt, font=\small]
+% Define styles (same vocabulary as the other figures)
+\tikzstyle{stage} = [rectangle, rounded corners, minimum width=13cm, minimum height=1.1cm,
+                     text centered, text width=12.4cm, draw=bordercolor, line width=1.2pt,
+                     font=\bfseries]
+\tikzstyle{box} = [rectangle, minimum width=7.8cm, minimum height=1.6cm,
+                   text width=7.2cm, draw=bordercolor, line width=0.8pt, font=\small,
+                   align=left, inner sep=6pt]
+\tikzstyle{sidebox} = [box, minimum width=5.6cm, text width=5.2cm]
 \tikzstyle{arrow} = [thick,->,>=stealth,line width=1.5pt]
+\tikzstyle{sidearrow} = [thick,->,>=stealth,line width=1.0pt]
 \tikzstyle{label} = [font=\footnotesize\itshape]
 
 \begin{document}
 
-\begin{tikzpicture}[node distance=1cm]
+\begin{tikzpicture}
 
-% ==================== IDENTIFICATION ====================
-\node (stage1) [stage, fill=identification] {IDENTIFICATION};
+% ==================== ARM HEADERS ====================
+\node (head-l) [stage, fill=identification] at (3.6,0)
+    {Identification of studies via databases and registers};
+\node (head-r) [stage, fill=identification] at (18.6,0)
+    {Identification of studies via other methods};
 
-\node (id-box) [box, below=0.3cm of stage1, fill=identification!30] {
-    \textbf{Source Documents Identified:}\\[0.2cm]
-    \begin{itemize}
-        \item Best Practices Document: 283 footnotes (2024-04-15)
-        \item Archive Manuscripts: 74 files assessed
-    \end{itemize}
-    \vspace{0.2cm}
-    \textbf{Supplementary Sources:}\\[0.1cm]
-    \begin{itemize}
-        \item Expert network validation
-        \item Blog integration (security-data-commons)
-        \item Vendor documentation (official technical docs)
-        \item Government standards (CISA, MITRE, DARPA, NSA, SANS)
-        \item Industry analysts (Gartner, IDC, Forrester)
-    \end{itemize}
+% ==================== LEFT ARM: IDENTIFICATION ====================
+\node (l-id) [box, fill=identification!30] at (0,-2.9) {
+    \textbf{Records identified from databases}\\[2pt]
+    OpenAlex (n = 354)\\
+    dblp (n = 46)\\[3pt]
+    \textbf{Total records identified: n = 400}\\[3pt]
+    \footnotesize Search run 2026-07-13 (UTC). Boolean
+    title-and-abstract filter at OpenAlex with a
+    2018-01-01 date floor; dblp exposes no date
+    parameter, so the date limit was enforced at
+    screening for dblp records.
 };
 
-% ==================== SCREENING ====================
-\node (stage2) [stage, fill=screening, below=0.8cm of id-box] {SCREENING};
-
-\node (screen-box) [box, below=0.3cm of stage2, fill=screening!30] {
-    \textbf{Citations Extracted: 283}\\[0.2cm]
-    \begin{itemize}
-        \item Automated URL extraction from markdown footnotes
-        \item Manual review of vendor documentation references
-        \item Performance benchmark identification
-        \item Expert quote attribution verification
-    \end{itemize}
-    \vspace{0.3cm}
-    \textbf{Archive Assessment Result:}\\[0.1cm]
-    \begin{itemize}
-        \item 74 manuscripts reference best practices document
-        \item No independent citations found beyond 283 footnotes
-        \item \textit{Best practices document = primary extraction target}
-    \end{itemize}
+\node (l-dup) [sidebox, fill=identification!15] at (7.4,-2.9) {
+    \textbf{Records removed before screening}\\[2pt]
+    Duplicate records removed (n = 5)\\
+    \quad by DOI (n = 1)\\
+    \quad by normalized title (n = 4)\\[3pt]
+    \footnotesize Cross-database overlap was a single
+    record, so dblp contributed 45 records OpenAlex
+    did not return.
 };
 
-% ==================== ELIGIBILITY ====================
-\node (stage3) [stage, fill=eligibility, below=0.8cm of screen-box] {ELIGIBILITY};
-
-\node (elig-box) [box, below=0.3cm of stage3, fill=eligibility!30] {
-    \textbf{Duplicates Consolidated:}\\[0.1cm]
-    \begin{itemize}
-        \item Multiple citations to same source merged
-        \item Example: Cloudflare blog posts consolidated
-    \end{itemize}
-    \vspace{0.2cm}
-    \textbf{Quality Assessment Applied:}\\[0.1cm]
-    \textit{Inclusion criteria}: Production deployments, peer-reviewed research,\\
-    industry analyst reports, government/standards publications\\[0.1cm]
-    \textit{Exclusion criteria}: Marketing materials, unverified claims,\\
-    speculation, duplicate coverage
-    \vspace{0.2cm}
-    \textbf{Evidence Level Classification:}\\[0.1cm]
-    \begin{itemize}
-        \item \textbf{Level A}: Production deployments, peer-reviewed research, government standards
-        \item \textbf{Level B}: Industry analyst reports, expert validation, vendor docs (if production-validated)
-        \item \textbf{Level C/D}: Rejected (marketing materials, speculation)
-    \end{itemize}
+% ==================== LEFT ARM: SCREENING ====================
+\node (l-screen) [box, fill=screening!40] at (0,-6.7) {
+    \textbf{Records screened (title / abstract)}\\[2pt]
+    n = 395\\[3pt]
+    \footnotesize 318 of 395 carried an abstract; the 45
+    dblp-only records carry none and were judged on
+    title and year.
 };
 
-% ==================== INCLUDED ====================
-\node (stage4) [stage, fill=included, below=0.8cm of elig-box] {INCLUDED};
+\node (l-excl) [sidebox, fill=screening!25] at (7.4,-7.4) {
+    \textbf{Records excluded (n = 355)}\\[3pt]
+    \footnotesize
+    E2 subject is not a security-telemetry data architecture: 137\\
+    E1 ML/DL classifier evaluated on a streaming platform, the platform being plumbing rather than the object of study: 103\\
+    I1 published before the 2018 date floor: 36\\
+    E3 survey or review with no architecture-level evaluation of its own: 35\\
+    E6 duplicate report of an already-included study: 13\\
+    E4 not a substantive report (dataset or artifact descriptor): 11\\
+    I2 no data-architecture subject: 10\\
+    I3 no reported measurement, benchmark, or deployment: 8\\
+    E5 not in English: 2
+};
 
-\node (incl-box) [box, below=0.3cm of stage4, fill=included!30, minimum height=5cm] {
-    \textbf{Total Unique Sources: 75+}\\[0.3cm]
+% ==================== LEFT ARM: ELIGIBILITY ====================
+\node (l-elig) [box, fill=eligibility!50] at (0,-11.6) {
+    \textbf{Reports assessed for eligibility}\\[2pt]
+    n = 40\\[3pt]
+    \footnotesize Eligibility was assessed at title and
+    abstract level; no separate full-text retrieval
+    round was run, so no reports were excluded at this
+    stage (n = 0). Every decision and its criterion code
+    is recorded per record in screen-batch-0..9.json.
+};
 
-    \textbf{Evidence Level Distribution:}\\[0.1cm]
-    \begin{itemize}
-        \item \textbf{Aggregate Level-A self-grade WITHDRAWN (2026-06-14 audit)}
-        \item No aggregate \% claimed pending re-verification
-        \item Per-source evidence levels are provisional
-    \end{itemize}
-    \vspace{0.2cm}
+% ==================== LEFT ARM: INCLUDED ====================
+\node (l-incl) [box, fill=included!50] at (0,-15.0) {
+    \textbf{Studies included from databases and registers}\\[2pt]
+    n = 40
+};
 
-    \textbf{Source Type Distribution:}\\[0.1cm]
-    • Production deployments: 18+ organizations\\
-    • Government/Standards: 8 sources\\
-    • Industry analysts: 10 sources\\
-    • Academic/Research: 6 sources\\
-    • Vendor documentation: 33 sources (technical depth)
-    \vspace{0.2cm}
+% ==================== RIGHT ARM: IDENTIFICATION ====================
+\node (r-id) [box, fill=identification!30, text width=11.2cm, minimum width=11.8cm] at (18.6,-3.6) {
+    \textbf{Records identified through the author's curation}\\[2pt]
+    Curated corpus (MASTER-BIBLIOGRAPHY.md entry blocks): n = 195\\[3pt]
+    \footnotesize
+    vendor engineering blogs and product documentation: 63\\
+    open-source project docs, specs, and repositories: 33\\
+    practitioner talks, personal blogs, LinkedIn and Substack: 18\\
+    standards, frameworks, and government publications: 17\\
+    big-tech engineering blogs: 14\\
+    analyst and industry reports: 12\\
+    books: 8\\
+    expert interviews and personal communications: 2\\
+    first-party SDW lab measurements: 2\\
+    documented no-primary stubs (retired or declined): 2\\
+    peer-reviewed papers held in the corpus but not returned by the database search: 24
+};
 
-    \textbf{Geographic/Organizational Diversity:}\\[0.1cm]
-    • Regions: US, Europe, Asia-Pacific (SK Telecom)\\
-    • Organization types: Tech giants, enterprises, startups, government, standards\\
-    • Industries: Technology, telecom, retail, energy, finance
-    \vspace{0.2cm}
+% ==================== RIGHT ARM: SCREENING / ELIGIBILITY ====================
+\node (r-elig) [box, fill=eligibility!50, text width=11.2cm, minimum width=11.8cm] at (18.6,-9.4) {
+    \textbf{Reports sought for retrieval and assessed for eligibility}\\[2pt]
+    n = 195\\[3pt]
+    \footnotesize Reports not retrieved (n = 2): documented no-primary stubs kept as
+    the record of a claim whose source was retired or declined.
+};
 
-    \textbf{URL Validation:}\\[0.1cm]
-    • Active URLs: 16 of 22 (73\%)\\
-    • \textbf{Hypothesis-critical: 16 of 16 (100\%)} $\checkmark$\\
-    • Paywalls (expected): 3 sources (Gartner, IDC, Forrester)\\
-    • Placeholders with corroboration: 3 sources (non-critical)
-    \vspace{0.2cm}
+% ==================== RIGHT ARM: INCLUDED ====================
+\node (r-incl) [box, fill=included!50, text width=11.2cm, minimum width=11.8cm] at (18.6,-12.9) {
+    \textbf{Studies included via other methods}\\[2pt]
+    n = 193 (each carrying an evidence tier)
+};
 
-    \textbf{Hypotheses Validated: 7}\\[0.1cm]
-    • Strongly Validated ($\bigstar\bigstar\bigstar\bigstar\bigstar$): 3 hypotheses\\
-    • High Confidence ($\bigstar\bigstar\bigstar\bigstar$): 3 hypotheses\\
-    • Moderate Confidence ($\bigstar\bigstar\bigstar$): 1 hypothesis\\
-    • Average sources per hypothesis: 4.1\\
-    • Aggregate Evidence-Level-A average WITHDRAWN (2026-06-14 audit)
+% ==================== CONVERGENCE ====================
+\node (total) [box, fill=included!70, text width=14.4cm, minimum width=15cm] at (9.3,-18.3) {
+    \textbf{\large Total studies included in the review: n = 233}\\[3pt]
+    40 from databases and registers $+$ 193 from the curated corpus.\\[3pt]
+    \footnotesize Overlap between the two arms: n = 0. No database-included record matched a
+    bibliography entry on DOI, on normalized title (exact, substring, or fuzzy), or on
+    author and year, so corpus recall against the systematic search is 0 of 40. The two arms
+    reach disjoint literatures, and that separation is a finding of the review rather than an
+    artifact of the diagram.
 };
 
 % ==================== ARROWS ====================
-\draw [arrow] (id-box) -- (stage2);
-\draw [arrow] (screen-box) -- (stage3);
-\draw [arrow] (elig-box) -- (stage4);
-\draw [arrow] (incl-box.south) -- +(0,-0.5);
+\draw [arrow] (l-id.south) -- (l-screen.north);
+\draw [arrow] (l-screen.south) -- (l-elig.north);
+\draw [arrow] (l-elig.south) -- (l-incl.north);
+\draw [sidearrow] (l-id.east) -- (l-dup.west);
+\draw [sidearrow] (l-screen.east) -- (l-excl.west);
 
-% ==================== SIDE NOTES ====================
-% Exclusions (right side)
-\node (excl1) [label, right=0.5cm of screen-box.east, text width=3cm, align=left]
-    {Archive manuscripts:\\No independent\\sources found\\(n=74 files)};
+\draw [arrow] (r-id.south) -- (r-elig.north);
+\draw [arrow] (r-elig.south) -- (r-incl.north);
 
-\node (excl2) [label, right=0.5cm of elig-box.east, text width=3cm, align=left]
-    {Marketing materials\\excluded\\(n=unknown)\\[0.2cm]Speculation\\excluded\\(n=unknown)};
+\draw [arrow] (l-incl.south) |- ($(total.north) + (0,0.9)$) -- (total.north);
+\draw [arrow] (r-incl.south) |- ($(total.north) + (0,0.9)$);
 
-% Connect exclusions with dashed lines
-\draw [dashed, gray, thick] (screen-box.east) -- (excl1.west);
-\draw [dashed, gray, thick] (elig-box.east) -- (excl2.west);
+% ==================== AUDIT BANNER ====================
+\node (audit) [box, fill=white, text width=14.4cm, minimum width=15cm, draw=bordercolor,
+               line width=1.0pt] at (9.3,-21.6) {
+    \textbf{Audit banner (2026-06-14).} The aggregate Level-A self-grade is WITHDRAWN and no
+    aggregate percentage is claimed pending re-verification; per-source evidence levels remain
+    provisional. Of the 195 bibliography blocks, 193 carry an evidence level.
+};
 
 % ==================== TITLE ====================
-\node [above=0.5cm of stage1, font=\LARGE\bfseries] (title) {
-    Figure 1: PRISMA-Aligned Systematic Literature Review Flowchart
+\node [above=0.6cm of head-l.north west, anchor=west, font=\LARGE\bfseries] (title) {
+    Figure 1: PRISMA 2020 flow diagram
 };
 
 % ==================== CAPTION ====================
-\node [below=0.5cm of incl-box.south, font=\small, text width=13cm, text centered] (caption) {
-    \textit{PRISMA-aligned systematic literature review flowchart showing extraction of 283 footnotes from best practices document and 74 archive manuscripts, consolidation of duplicates, quality assessment with evidence level classification, and final inclusion of 75+ sources. Aggregate Evidence-Level-A and hypothesis-confidence self-grades withdrawn (2026-06-14 audit); per-source levels provisional, no aggregate \% claimed pending re-verification.}
+\node [below=0.5cm of audit.south, font=\small, text width=24cm, align=left] (caption) {
+    \textit{PRISMA 2020 two-arm flow. The database arm ran a boolean search of OpenAlex and a
+    title search of dblp on 2026-07-13, identifying 400 records, of which 5 were duplicates,
+    leaving 395 screened on title and abstract, 355 excluded against the recorded criteria, and
+    40 included. The dominant exclusion was E2 (subject is not a security-telemetry data
+    architecture, n = 137), followed by E1 (a machine-learning classifier evaluated on a
+    streaming platform, where the platform is plumbing rather than the object of study, n = 103).
+    The other-methods arm is the curated corpus of vendor engineering blogs, practitioner talks,
+    standards documents, and technical books that a bibliographic database cannot return, since
+    it is not journal or conference literature. The arms do not overlap, and each count above is
+    reproducible from the JSON under methods/prisma-results/.}
 };
 
 \end{tikzpicture}

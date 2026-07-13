@@ -1,0 +1,362 @@
+[
+  {
+    "id": "https://openalex.org/W2785501066",
+    "doi": "https://doi.org/10.1053/j.gastro.2018.02.009",
+    "title": "How to Become a Physician Executive: From Fellowship to Leadership",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Career-development article for gastroenterology physicians; no data architecture or security subject at all."
+  },
+  {
+    "id": "https://openalex.org/W7161954859",
+    "doi": "https://doi.org/10.1109/cipher70417.2026.11523972",
+    "title": "Real-Time Event Monitoring in Web Applications: An Optimized Architecture with AI-Driven Predictive Analytics",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Kafka/Flink/Redis architecture for web-app 'user behavior and system reliability' monitoring, not security telemetry (SIEM/detection/log analysis)."
+  },
+  {
+    "id": "https://openalex.org/W7124994277",
+    "doi": "https://doi.org/10.12732/ijam.v38i11s.1625",
+    "title": "SCALABLE ANALYSIS OF HETEROGENEOUS LOG STREAMS: A DISTRIBUTED ENSEMBLE APPROACH FOR ROBUST SYSTEM OBSERVABILITY",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is an 'ensemble of varied base learners' classifier for log streams, not an evaluation of the data architecture itself."
+  },
+  {
+    "id": "https://openalex.org/W7166577859",
+    "doi": "https://doi.org/10.1088/2631-8695/ae8421",
+    "title": "Securing Differentiated Services Code Points using Blockchain-enabled Intelligent Deep Packet Inspection",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Blockchain-based deep packet inspection for QoS integrity, not a data storage/query/ingest architecture paper."
+  },
+  {
+    "id": "https://openalex.org/W7125413178",
+    "doi": "https://doi.org/10.17632/nv729tbdgz.2",
+    "title": "BigFlow-NIDS",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "NetFlow dataset for intrusion-detection ML research; Apache Spark is used only as a preprocessing pipeline for dataset creation, not evaluated as architecture."
+  },
+  {
+    "id": "https://openalex.org/W7118068809",
+    "doi": "https://doi.org/10.17632/nv729tbdgz",
+    "title": "BigFlow-NIDS",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Same dataset/abstract as W7125413178 (different Mendeley version); Spark used only as preprocessing plumbing for the NIDS dataset, not architecture evidence."
+  },
+  {
+    "id": "https://openalex.org/W7167718373",
+    "doi": "https://doi.org/10.1016/j.procs.2026.06.349",
+    "title": "Real-Time Hardware Monitoring System Using Big Data Technology Stack",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Kafka/Spark pipeline for HWInfo hardware-parameter monitoring; no security application."
+  },
+  {
+    "id": "https://openalex.org/W7155196600",
+    "doi": "https://doi.org/10.3390/iot7020036",
+    "title": "PatternStudio: A Neuro-Symbolic Framework for Dynamic and High-Throughput Complex Event Processing",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "General Flink-based CEP framework for 'industrial IoT, cybersecurity, and financial monitoring' broadly; no security-specific evidence, cybersecurity is only listed as one example domain."
+  },
+  {
+    "id": "https://openalex.org/W7151999042",
+    "doi": "https://doi.org/10.5281/zenodo.19464927",
+    "title": "Reproducibility Dataset for Differential Privacy Experiments on CICIDS2017",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Reproducibility artefacts for a privacy-utility trade-off statistics study, not a data architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7152006143",
+    "doi": "https://doi.org/10.5281/zenodo.19464928",
+    "title": "Reproducibility Dataset for Differential Privacy Experiments on CICIDS2017",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Duplicate Zenodo version of W7151999042; same privacy-utility reproducibility artefacts, no data architecture content."
+  },
+  {
+    "id": "https://openalex.org/W4413487495",
+    "doi": "https://doi.org/10.63282/3050-922x.ijeret-v3i3p109",
+    "title": "Delta-IPInsight: Temporal Embedding Shifts for Real-Time Anomaly Detection in High-Velocity Log Streams",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Anomaly-detection model paper (temporal embeddings) for log-stream security events; no evaluation of the underlying data architecture itself."
+  },
+  {
+    "id": "https://openalex.org/W4411725588",
+    "doi": "https://doi.org/10.1109/access.2025.3583817",
+    "title": "Automated Root Cause Analysis of Network Failures in IP/MPLS Network Using Machine Learning and Case-Based Reasoning",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Network-fault root-cause analysis for IP/MPLS operations, not a security-telemetry data architecture study."
+  },
+  {
+    "id": "https://openalex.org/W4238216672",
+    "doi": "https://doi.org/10.4018/978-1-7998-5339-8.ch090",
+    "title": "Confidentiality and Safekeeping Problems and Techniques in Fog Computing",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Book chapter discussing fog-computing security/privacy issues generally; no data storage/query/ingest architecture evidence."
+  },
+  {
+    "id": "https://openalex.org/W4398794932",
+    "doi": "https://doi.org/10.48550/arxiv.2405.13066",
+    "title": "Practical Performance of a Distributed Processing Framework for Machine-Learning-based NIDS",
+    "year": 2024,
+    "decision": "include",
+    "criterion": "I3",
+    "reason": "Abstract states the distributed stream-processing framework's own performance 'has not been comprehensively evaluated' and this paper evaluates it, i.e. the contribution is architecture-level evidence, not just a classifier's accuracy."
+  },
+  {
+    "id": "https://openalex.org/W2911372209",
+    "doi": "https://doi.org/10.4018/978-1-5225-6070-8.ch005",
+    "title": "Confidentiality and Safekeeping Problems and Techniques in Fog Computing",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Earlier-year duplicate publication of the same fog-computing security/privacy survey chapter as W4238216672; no architecture evidence."
+  },
+  {
+    "id": "https://openalex.org/W7135221195",
+    "doi": "https://doi.org/10.1109/icaect68478.2026.11426160",
+    "title": "AI-Driven Real-Time Stock Forecasting Framework with Kafka and Cassandra",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Kafka/Cassandra architecture for high-frequency stock-market forecasting; financial trading application, not security telemetry."
+  },
+  {
+    "id": "https://openalex.org/W4412586573",
+    "doi": "https://doi.org/10.17762/ijisae.v11i6s.7669",
+    "title": "Dataware house - US Healthcare Provider Data Management",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Healthcare data-warehouse paper for EHRs/claims/labs; no security application."
+  },
+  {
+    "id": "https://openalex.org/W7167887250",
+    "doi": "https://doi.org/10.5281/zenodo.21295522",
+    "title": "D3.2: Specific Data Protection analysis",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "GDPR/data-protection governance deliverable for the ECLIPSE DIGITAL project use-cases; not a data architecture evidence paper."
+  },
+  {
+    "id": "https://openalex.org/W7167892045",
+    "doi": "https://doi.org/10.5281/zenodo.21295523",
+    "title": "D3.2: Specific Data Protection analysis",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Duplicate Zenodo version of W7167887250's GDPR/data-protection deliverable; no architecture content."
+  },
+  {
+    "id": "https://openalex.org/W2911404364",
+    "doi": "https://doi.org/10.4271/2024-01-3681",
+    "title": "MICROTOKEN EXCHANGE (MTE) FOR SECURING DIGITAL DATA FROM CYBER WARFARE ATTACKS",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Encryption/tokenization scheme for secure data transmission (AES-focused), not a storage/query/ingest architecture paper."
+  },
+  {
+    "id": "https://openalex.org/W7163885150",
+    "doi": "https://doi.org/10.55041/isjem07844",
+    "title": "A Comprehensive Survey on Computer System Validation: Challenges, Regulatory Compliance, Data Integrity, AI-Driven Validation, Cloud-Native Architectures, and Future Intelligent Validation Ecosystems",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Survey of regulatory computer-system-validation practices across many industries; no architecture-level content of its own and no security-telemetry focus."
+  },
+  {
+    "id": "https://openalex.org/W4375853869",
+    "doi": "https://doi.org/10.1109/southeastcon51012.2023.10115177",
+    "title": "Development of a High-Speed High-Fidelity SCADA Simulation Framework",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Cyber-physical SCADA simulation framework for modeling vulnerabilities, not a security-telemetry storage/query/ingest architecture study."
+  },
+  {
+    "id": "https://openalex.org/W2893496689",
+    "doi": "https://doi.org/10.6025/ijwa/2018/10/3/81-90",
+    "title": "A Non-Dominant Solution for Bi-objective Web Service Composition Problem in Multi-Cloud Environment",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Web-service composition optimization in multi-cloud environments; security mentioned only as a general uncertainty factor, not the subject."
+  },
+  {
+    "id": "https://openalex.org/W7128551575",
+    "doi": "https://doi.org/10.47363/jaicc/2026(5)504",
+    "title": "Cloud Computing & AI Optimization",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "General survey of AWS/Azure/GCP AI-optimization capabilities; no architecture-level evidence specific to security telemetry."
+  },
+  {
+    "id": "https://openalex.org/W7130348128",
+    "doi": "https://doi.org/10.36948/ijfmr.2025.v07i02.69007",
+    "title": "Autonomous Medallion Orchestration: A Multi-Agent Reinforcement Learning Framework for Financial Ecosystems",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Multi-agent RL orchestration of a financial lakehouse's medallion architecture; financial-ops application, not security telemetry."
+  },
+  {
+    "id": "https://openalex.org/W4415412212",
+    "doi": "https://doi.org/10.1007/978-3-032-03527-1_37",
+    "title": "A Comprehensive Approach to Deployment Cloud-Based Machine Learning",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Title-only decision (no abstract): general cloud-based ML deployment guidance, no stated security application."
+  },
+  {
+    "id": "https://openalex.org/W7140036079",
+    "doi": "https://doi.org/10.5281/zenodo.19166027",
+    "title": "Best Practices for Enterprise System Integration in Modern Organizations",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "'Comprehensive guide' to enterprise system-integration best practices; no data architecture evidence and no security telemetry focus."
+  },
+  {
+    "id": "https://openalex.org/W7139084575",
+    "doi": "https://doi.org/10.52783/jisem.v11i2s.14558",
+    "title": "Best Practices for Enterprise System Integration in Modern Organizations",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Duplicate-content re-publication (different venue) of the same enterprise-integration best-practices guide as W7140036079; no evidence, no security focus."
+  },
+  {
+    "id": "https://openalex.org/W7140024868",
+    "doi": "https://doi.org/10.5281/zenodo.19166026",
+    "title": "Best Practices for Enterprise System Integration in Modern Organizations",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Third copy of the same enterprise-integration best-practices guide as W7140036079/W7139084575; no evidence, no security focus."
+  },
+  {
+    "id": "https://openalex.org/W4385180152",
+    "doi": "https://doi.org/10.5281/zenodo.8179189",
+    "title": "A Model for CybersecurityRisk Management in Digital Transformation (Case Study: An Iranian Bank)",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Cybersecurity risk-management model for banking digital transformation; not a data architecture paper."
+  },
+  {
+    "id": "https://openalex.org/W4414719371",
+    "doi": "https://doi.org/10.1007/978-3-032-02853-2_6",
+    "title": "Enhancing Network Security: Anomaly Detection Using Generalized Isolation Forest and Explainable AI",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Title-only decision (no abstract): an anomaly-detection algorithm (isolation forest + XAI) for network security, no indication it evaluates a data architecture."
+  },
+  {
+    "id": "https://openalex.org/W7162000454",
+    "doi": "https://doi.org/10.5281/zenodo.20320448",
+    "title": "Prompt Ledger: AI Governance Infrastructure for Institutional Deployment",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Audit/governance proxy layer for LLM prompt behavior; not a security-telemetry storage/query architecture."
+  },
+  {
+    "id": "https://openalex.org/W4362617992",
+    "doi": "https://doi.org/10.1002/9781119892335.ch10",
+    "title": "Toward Security Metrics Maturity",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Book chapter presenting an 'operational security-metrics maturity model' (covers security data marts and sparse/prescriptive analytics conceptually) with no measurement, benchmark, or deployment evidence of its own."
+  },
+  {
+    "id": "https://openalex.org/W4409616560",
+    "doi": "https://doi.org/10.37745/ejaafr.2013/vol13n5",
+    "title": "None",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Examines 'enterprise data systems and integration technologies' (API frameworks, data warehousing, edge computing) for financial inclusion; no security application."
+  },
+  {
+    "id": "https://openalex.org/W4409616658",
+    "doi": "https://doi.org/10.37745/ejaafr.2013/vol13n5114",
+    "title": "The Societal Impact of Data Integration on Financial Inclusion",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Same content/abstract as W4409616560 on data-integration technologies for financial inclusion; no security application."
+  },
+  {
+    "id": "https://openalex.org/W2800088935",
+    "doi": "https://doi.org/10.1007/978-981-10-7563-6_9",
+    "title": "A Study of Various Varieties of Distributed Data Mining Architectures",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Title-only decision (no abstract): survey of distributed data-mining architectures generally, no indication of a security application."
+  },
+  {
+    "id": "https://openalex.org/W7161964099",
+    "doi": "https://doi.org/10.5281/zenodo.20320449",
+    "title": "Prompt Ledger: AI Governance Infrastructure for Institutional Deployment",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Duplicate Zenodo version of W7162000454's LLM-governance proxy paper; not a security-telemetry data architecture."
+  },
+  {
+    "id": "https://openalex.org/W3165158987",
+    "doi": "None",
+    "title": "Stream-Based IP Flow Analysis",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Proposes stream-based IP flow monitoring/collection to address network-management scale limits; abstract frames it as network management (venue: Integrated Network Management), with no stated security/detection application."
+  },
+  {
+    "id": "https://openalex.org/W4409653341",
+    "doi": "https://doi.org/10.1111/trf.18257",
+    "title": "Canadian donations and transfusion database (CANDAT): From blood donors to transfusion recipients",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Blood-transfusion clinical database description; unrelated to security telemetry."
+  },
+  {
+    "id": "https://openalex.org/W2918063509",
+    "doi": "https://doi.org/10.1109/cyberc.2018.00045",
+    "title": "A Binary Feature Extraction Based Data Provenance System Implemented on Flink Platform",
+    "year": 2018,
+    "decision": "include",
+    "criterion": "I2",
+    "reason": "Implements a data-provenance/information-flow-control system for enterprise security operations on the Apache Flink stream-processing platform, with the architecture-level implementation itself as the reported contribution."
+  }
+]

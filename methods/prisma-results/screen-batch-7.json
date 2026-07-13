@@ -1,0 +1,362 @@
+[
+  {
+    "id": "https://openalex.org/W4324358723",
+    "doi": "https://doi.org/10.1201/9781003373384-1",
+    "title": "Introduction",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Book-chapter introduction surveying big-data analytics and ML for cybersecurity in general terms; reports no measurement, benchmark, or architecture-level evidence of its own."
+  },
+  {
+    "id": "https://openalex.org/W7165730258",
+    "doi": "https://doi.org/10.37936/ecti-cit.2026202.264216",
+    "title": "Comparative Evaluation of Log Reduction Techniques Using Vector on Public Security Datasets",
+    "year": 2026,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "Benchmarks five Vector-based log-reduction methods against a baseline Filebeat pipeline on 3M+ SOC log records, reporting throughput/bandwidth/attack-coverage measurements at the ingest-pipeline level, not an ML detection model."
+  },
+  {
+    "id": "https://openalex.org/W7167445126",
+    "doi": null,
+    "title": "AN INNOVATIVE APPROACH TO PORT MONITORING: DIGITAL TWIN, STRATEGIC DECISION SYSTEMS AND PORT GOVERNANCE",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Subject is a seaport digital-twin and governance architecture with a 'data lake approach' mentioned only in passing; cybersecurity is a peripheral concern, not the object of evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7124134362",
+    "doi": "https://doi.org/10.5281/zenodo.18240362",
+    "title": "Session 7: Global landscape of available technologies for data",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "General overview of data technologies (cloud, data lakes, warehouses) 'across public and private sectors'; cybersecurity is one of several listed concerns, no security-specific architecture evidence."
+  },
+  {
+    "id": "https://openalex.org/W4415465195",
+    "doi": "https://doi.org/10.63397/iscsitr-ijcs_2025_06_05_001",
+    "title": "Balancing Innovation and Cyber Risk in a Decentralized Tech Landscape: A Geospatial Software Perspective",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Examines cyber-risk sectors and 'federated security architectures' in geospatial software companies as a risk-management study, not a measurement or benchmark of the underlying data architecture."
+  },
+  {
+    "id": "https://openalex.org/W7118411248",
+    "doi": "https://doi.org/10.5281/zenodo.18176902",
+    "title": "Session 7: Global landscape of available technologies for data",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Duplicate-text record of the same general data-technologies overview (see zenodo.18240362); cybersecurity is one of several listed concerns, no security-specific architecture evidence."
+  },
+  {
+    "id": "https://openalex.org/W7118617745",
+    "doi": "https://doi.org/10.5281/zenodo.18176903",
+    "title": "Session 7: Global landscape of available technologies for data",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Third copy of the same general data-technologies overview text; no security-specific architecture evidence."
+  },
+  {
+    "id": "https://openalex.org/W7124436561",
+    "doi": "https://doi.org/10.48550/arxiv.2601.09968",
+    "title": "Derivations for the Cumulative Standardized Binomial EWMA (CSB-EWMA) Control Chart",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Statistical process-control derivation for binomial monitoring, applied generically 'across diverse domains including manufacturing, healthcare, and cybersecurity'; not a security-telemetry data architecture."
+  },
+  {
+    "id": "https://openalex.org/W7128509347",
+    "doi": "https://doi.org/10.63282/3050-9262.ijaidsml-v7i1p112",
+    "title": "Typed Telemetry, Advisory Analytics: An EPICS–Spark Architecture for Dental Robotic Arms",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Subject is a safety-partitioned control/analytics architecture for dental robotic arms; 'cybersecurity hardening' is one of several V&V checklist items, not a security-telemetry application."
+  },
+  {
+    "id": "https://openalex.org/W7117414583",
+    "doi": "https://doi.org/10.55248/gengpi.06.1225.4219",
+    "title": "Engineering a Cloud Security Incident Detection and Response Pipeline for Large-Scale and Operationally Resilient Environments",
+    "year": 2025,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "Describes and evaluates a distributed log-aggregation/stream-processing incident-detection pipeline itself against detection accuracy, response time, availability, and operational overhead, not just an ML model riding on top of plumbing."
+  },
+  {
+    "id": "https://openalex.org/W4411171052",
+    "doi": "https://doi.org/10.32628/cseit25113366",
+    "title": "Beyond Keyword Search: AI-Driven Log Intelligence for Proactive Support and Engineering Alerts",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Targets IT-operations/customer-support log analysis ('resolve issues before customer impact', CSAT gains) rather than SIEM/SOC security operations."
+  },
+  {
+    "id": "https://openalex.org/W7166549121",
+    "doi": "https://doi.org/10.1007/978-981-92-1926-1_35",
+    "title": "RHA-Sketch: Mining Time-Decay Heavy Hitters in High-Speed Data Streams",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract is absent; title describes a general streaming heavy-hitters sketch algorithm with no stated security application."
+  },
+  {
+    "id": "https://openalex.org/W7117686450",
+    "doi": "https://doi.org/10.17762/ijisae.v10i2s.7972",
+    "title": "Machine Learning–Enhanced Threat Intelligence for Understanding the Underground Cybercrime Market",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is ML/graph-analytics threat-actor profiling; the ETL pipeline and cloud warehouse are described as supporting plumbing, not themselves measured or evaluated."
+  },
+  {
+    "id": "https://openalex.org/W4414076046",
+    "doi": "https://doi.org/10.20944/preprints202509.0573.v1",
+    "title": "Efficient Malicious Domain Detection Using a Distributed Deep Forest Algorithm",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Deep Forest classifier accuracy/recall paper; HBase/Hive/Spark are used to warehouse and scale the DNS data but are not themselves the object of evaluation."
+  },
+  {
+    "id": "https://openalex.org/W4206306734",
+    "doi": "https://doi.org/10.9734/bpi/mono/978-93-5547-265-6/ch0",
+    "title": "Research Issues on Datamining",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "General book-chapter overview of data-mining methods and IDS research issues; no architecture-level measurement or evaluation of its own."
+  },
+  {
+    "id": "https://openalex.org/W7135019618",
+    "doi": "https://doi.org/10.1109/iceet67911.2025.11424121",
+    "title": "Powering the 6G and Beyond Wireless Era: AI and Deep Learning Innovations",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Comprehensive review of a 6G AI framework where 'security' is one of several network-layer subdomains (alongside resource allocation, signal processing); not a security-data architecture paper."
+  },
+  {
+    "id": "https://openalex.org/W7134200746",
+    "doi": "https://doi.org/10.1049/dgt2.70021",
+    "title": "A Holistic Framework for Airport Spatial Data Maintenance: Bridging Theory and Practice",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Qualitative framework for airport spatial-data maintenance (digital twins, ontologies, data lakehouses); cybersecurity appears only as a future-research item, not the paper's subject."
+  },
+  {
+    "id": "https://openalex.org/W7134243517",
+    "doi": "https://doi.org/10.5281/zenodo.18904147",
+    "title": "GET-25: The Global Spatiotemporal ADS-B Kinematic Consistency Benchmark",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Aviation surveillance (ADS-B) data-engineering benchmark over 246.7B OpenSky messages; abstract states no cybersecurity/security-telemetry application."
+  },
+  {
+    "id": "https://openalex.org/W4386618581",
+    "doi": "https://doi.org/10.20944/preprints202309.0545.v1",
+    "title": "SigML++: Supervised Log Anomaly with Probabilistic Polynomial Approximations",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is a homomorphic-encryption ANN anomaly-detection model over encrypted logs; the data warehouse is only where logs are 'stored for archiving,' not evaluated."
+  },
+  {
+    "id": "https://openalex.org/W7134284983",
+    "doi": "https://doi.org/10.15662/ijrai.2024.0706036",
+    "title": "Cloud-Native AI Pipelines for Real-Time Cyber Threat Intelligence",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Discusses deploying deep-learning ransomware-detection processes on a cloud-native AI pipeline conceptually; no measurement or benchmark of the pipeline/data-lake architecture is reported."
+  },
+  {
+    "id": "https://openalex.org/W7115011040",
+    "doi": "https://doi.org/10.5281/zenodo.17910596",
+    "title": "Digital and Social Media Monitoring Agentic System for Brand Reputation",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Agentic system for brand-reputation monitoring across news/blogs/social media; not a SIEM, detection, or security-operations application."
+  },
+  {
+    "id": "https://openalex.org/W7115006000",
+    "doi": "https://doi.org/10.5281/zenodo.17910597",
+    "title": "Digital and Social Media Monitoring Agentic System for Brand Reputation",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Duplicate-text record of the same brand-reputation monitoring system (see zenodo.17910596); not a security-operations application."
+  },
+  {
+    "id": "https://openalex.org/W7167424631",
+    "doi": "https://doi.org/10.5281/zenodo.21207619",
+    "title": "HIVE-OT: A Physics-Coherent Industrial Honeypot Attack Corpus",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "An ICS/OT honeypot attack-interaction dataset from a 76-day deployment; it documents captured attack data, not a table format, query engine, or storage/query pipeline evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7167427245",
+    "doi": "https://doi.org/10.5281/zenodo.21207620",
+    "title": "HIVE-OT: A Physics-Coherent Industrial Honeypot Attack Corpus",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "Duplicate-text record of the same honeypot attack-corpus dataset (see zenodo.21207619); documents captured attack data, not a data-architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W4415928145",
+    "doi": "https://doi.org/10.22399/ijcesen.4230",
+    "title": "Geographic Access Audit Dashboard: Monitoring Oracle HCM Cloud Authentication Events via RESTful API Integration",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "I3",
+    "reason": "Describes a dimensional-warehouse audit-dashboard design for Oracle HCM authentication events but reports no measurement, benchmark, or production performance figures, only qualitative claims of optimized 'bandwidth utilization and processing efficiency.'"
+  },
+  {
+    "id": "https://openalex.org/W7162491778",
+    "doi": "https://doi.org/10.34218/ijarm_17_01_006",
+    "title": "STREAMING DATA ARCHITECTURES FOR REAL-TIME GOVERNANCE: FROM BATCH PROCESSING TO CONTINUOUS INTELLIGENCE",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Explores streaming architecture for public-sector governance functions (fraud detection, emergency response, smart cities); cybersecurity infrastructure is one listed data source among many, not the application."
+  },
+  {
+    "id": "https://openalex.org/W4416792287",
+    "doi": "https://doi.org/10.7753/ijsea1412.1010",
+    "title": "Cloud-Native Framework for Enterprise Business Intelligence with AI-Driven Scalability Using Snowflake and Big Query",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Business-intelligence scalability/cost framework using Snowflake and BigQuery; 'security monitoring' is one listed governance feature, not the paper's security telemetry subject."
+  },
+  {
+    "id": "https://openalex.org/W7154159952",
+    "doi": "https://doi.org/10.5281/zenodo.19557474",
+    "title": "GET-25: The Global Spatiotemporal ADS-B Kinematic Consistency Benchmark",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Duplicate-text record of the ADS-B aviation surveillance benchmark (see zenodo.18904147); no cybersecurity application stated."
+  },
+  {
+    "id": "https://openalex.org/W4413860967",
+    "doi": "https://doi.org/10.54660/.jfmr.2021.2.1.453-466",
+    "title": "Systematic Review of Data Centralization and Analytics Warehouse Optimization Across Emerging Markets",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "PRISMA-guided systematic review of data-warehouse modernization in emerging economies; cybersecurity risk is one listed challenge, and the review reports no architecture-level evidence of its own."
+  },
+  {
+    "id": "https://openalex.org/W7134252916",
+    "doi": "https://doi.org/10.5281/zenodo.18904146",
+    "title": "GET-25: The Global Spatiotemporal ADS-B Kinematic Consistency Benchmark",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Third duplicate-text record of the ADS-B aviation surveillance benchmark; no cybersecurity application stated."
+  },
+  {
+    "id": "https://openalex.org/W7155086877",
+    "doi": "https://doi.org/10.6084/m9.figshare.30643508",
+    "title": "AutoGraphAD: Unsupervised network anomaly detection using Variational Graph Autoencoders",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Data/code repository for a Variational Graph Autoencoder anomaly-detection model on UNSW-NB15; contribution is the ML model's accuracy, not a data architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7128578320",
+    "doi": null,
+    "title": "Distributed Similarity Search Computation over Unbounded Datasets",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Dissertation on a general hardware-agnostic distributed ANN search framework; intrusion detection is listed only as one of several example domains (alongside recommendation systems, image recognition)."
+  },
+  {
+    "id": "https://openalex.org/W4404772029",
+    "doi": "https://doi.org/10.1049/pbhe063e_ch6",
+    "title": "Enhancing healthcare data security in the era of 5G and Big Data Analytics",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Book chapter exploring healthcare data-security challenges and strategies in the 5G/big-data era at a conceptual level; no measurement or benchmark of a data architecture."
+  },
+  {
+    "id": "https://openalex.org/W7167817194",
+    "doi": "https://doi.org/10.55056/ceur-ws.org/vol-4164/paper15.pdf",
+    "title": "Online Feature Vector Restoration in Data Stream Mining Tasks",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Feature-extraction method for stream-mining classification, evaluated on 'classifying military objects based on images'; no cybersecurity/security-telemetry application."
+  },
+  {
+    "id": "https://openalex.org/W4403673991",
+    "doi": "https://doi.org/10.15439/2024f1683",
+    "title": "Agent at the Edge: Opportunity and Challenges of Video Streaming Analytics at the CDN Edge",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Distributed log-analytics-at-the-edge study aimed at video streaming QoE and CDN resource bottlenecks; not a security-telemetry application."
+  },
+  {
+    "id": "https://openalex.org/W7125525542",
+    "doi": "https://doi.org/10.1007/978-3-032-07479-9_11",
+    "title": "AI and IoT: Shaping the Future of Cloud Ecosystems",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract is absent; title indicates a general AI/IoT/cloud-ecosystems book chapter with no stated security-data-architecture focus."
+  },
+  {
+    "id": "https://openalex.org/W7123355253",
+    "doi": "https://doi.org/10.1109/icdiss68238.2025.11320716",
+    "title": "Development of Big Data Analytics in International Business Networks: Detecting Cyber Threats and Behavior Modelling",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Conceptual study of big-data analytics for cyber-anomaly discovery and behavior modeling in business networks; describes an intended research approach with no reported architecture measurement."
+  },
+  {
+    "id": "https://openalex.org/W4412687776",
+    "doi": "https://doi.org/10.47297/taposatwsp2633-456925.20250604",
+    "title": "A Literature Review on Spark-Based Optimization of Machine Learning Algorithms for Cyber Fraud Detection",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Explicitly a literature review of Spark-based ML fraud-detection algorithms; reviews others' accuracy/acceleration results with no architecture-level evaluation of its own."
+  },
+  {
+    "id": "https://openalex.org/W7129080990",
+    "doi": "https://doi.org/10.64206/n2ztd961",
+    "title": "A Comprehensive Frameworks for Fraud Crime Detection and Security :Leveraging Neural Networks and AI",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Deep-learning fraud-detection framework (CNN/RNN/GNN ensembles); 'real-time data stream processing' is listed as a supporting technique, not the object of evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7155604802",
+    "doi": "https://doi.org/10.31474/1996-1588-2026-1-42-145-151",
+    "title": "METHOD OF INTELLIGENT GRAPH-BASED DATA CORRELATION FOR DETECTING ATTACK VECTORS IN CTF COMPETITIONS",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Graph-neural-network attack-detection method (PageRank, Louvain, GNN) evaluated on detection accuracy and false-positive rate in simulated CTF scenarios; the Rust/Tokio event-stream processing is plumbing, not itself evaluated."
+  }
+]

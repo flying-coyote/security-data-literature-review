@@ -1,0 +1,2418 @@
+{
+  "generated_utc": "2026-07-13T02:49:41Z",
+  "inputs": {
+    "records": "methods/prisma-results/records.json (395 unique records)",
+    "screening": "methods/prisma-results/screen-batch-0..9.json (395 decisions: 40 include, 355 exclude)",
+    "corpus": "MASTER-BIBLIOGRAPHY.md (195 \"#### \" entry blocks; 193 carry an evidence level, 2 are documented no-primary stubs)"
+  },
+  "matching_rules": [
+    "1. DOI (exact string, case-normalized, searched across the full bibliography text)",
+    "2. normalized title (lowercase, parentheticals and punctuation stripped; exact, substring, and fuzzy ratio via difflib)",
+    "3. author surname + publication year (co-occurring inside a single bibliography entry block)"
+  ],
+  "counts": {
+    "search_records_screened": 395,
+    "search_included": 40,
+    "search_excluded": 355,
+    "corpus_entries": 195,
+    "overlap_A": 0,
+    "search_only_B": 40,
+    "corpus_only_grey_C": 171,
+    "corpus_academic_indexable": 24,
+    "corpus_recall_against_search": "0/40 = 0.0"
+  },
+  "A_overlap": [],
+  "A_note": "Empty. No search-included record matched any bibliography entry on DOI, on normalized title (exact, substring, or fuzzy — the best ratio across all 40x195 pairs was 0.54), or on author+year (the five surname+year collisions, all on the surname Zhang, were rejected because the titles are unrelated). Measured recall of the curated corpus against this systematic search is therefore 0 of 40.",
+  "B_search_only": [
+    {
+      "rank": 0,
+      "title": "Performance Evaluation of Intrusion Detection Streaming Transactions Using Apache Kafka and Spark Streaming",
+      "year": 2019,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/aitc.2019.8920960",
+      "openalex_id": "https://openalex.org/W2994134668",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "May Thet Tun",
+        "Dim En Nyaung",
+        "Myat Pwint Phyu"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "Abstract reports processing-time and fault-tolerance results of the Kafka+Spark Streaming pipeline itself ('fault tolerance can be provided by the multiple brokers of Kafka...multiple partitions...increase the processing time'), not a classifier's accuracy.",
+      "what_it_would_add": "First-party throughput/fault-tolerance measurement of a Kafka+Spark Streaming security ingest path on UNSW-NB15 — a peer-reviewed measurement of the pipeline itself, which the corpus currently sources only from vendor blogs.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 1,
+      "title": "Toward a monitoring and threat detection system based on stream processing as a virtual network function for big data",
+      "year": 2019,
+      "venue": "Concurrency and Computation Practice and Experience",
+      "type": "article",
+      "doi": "https://doi.org/10.1002/cpe.5344",
+      "openalex_id": "https://openalex.org/W2946704785",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Martin Andreoni Lopez",
+        "Diogo M. F. Mattos",
+        "Otto Carlos M. B. Duarte",
+        "Guy Pujolle"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "CATRACA is evaluated as a deployed Apache Spark-based Virtualized Network Function with real-time visualization and concept-drift handling, a substantive evaluation of the streaming architecture itself, not just a bare classifier.",
+      "what_it_would_add": "CATRACA, a Spark-based virtualized network function evaluated as a deployed threat-detection pipeline with concept-drift handling — a peer-reviewed instance of the 'detection in the pipeline' pattern the corpus argues from vendor material.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 2,
+      "title": "An evaluation of a virtual network function for real-time threat detection using stream processing",
+      "year": 2018,
+      "venue": null,
+      "type": "preprint",
+      "doi": "https://doi.org/10.1109/mobisecserv.2018.8311440",
+      "openalex_id": "https://openalex.org/W2791514401",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Martin Andreoni Lopez",
+        "Antonio Gonzalez Pastana Lobato",
+        "Otto Carlos M. B. Duarte",
+        "Guy Pujolle"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "Reports elasticity, scaling and throughput ('analyzing more than five million messages per second') and sensor-migration latency for the VNF stream-processing architecture itself.",
+      "what_it_would_add": "Reports >5M messages/sec and sensor-migration latency for a stream-processing VNF — an academic throughput anchor for the streaming-architecture chapter, where the corpus leans on Confluent and Tenzir numbers.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 3,
+      "title": "Machine learning based network intrusion detection for data streaming IoT applications",
+      "year": 2021,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/snpdwinter52325.2021.00019",
+      "openalex_id": "https://openalex.org/W3157973856",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Aymen Yahyaoui",
+        "Haithem Lakhdhar",
+        "Takoua Abdellatif",
+        "Rabah Attia"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "The system is 'developed, deployed and tested with the two leading stream processing frameworks (Apache Flink and Apache Spark Streaming)' with 'Results show considerable throughputs...especially for Apache Flink' -- an explicit framework-to-framework throughput comparison, not incidental plumbing.",
+      "what_it_would_add": "Head-to-head Flink vs Spark Streaming throughput on an IoT NIDS workload — a direct peer-reviewed engine comparison the corpus has no academic counterpart for.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 4,
+      "title": "Real-Time Intrusion Detection in Network Traffic Using Adaptive and Auto-Scaling Stream Processor",
+      "year": 2018,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/glocom.2018.8647489",
+      "openalex_id": "https://openalex.org/W2916796522",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "G. V. Loganathan",
+        "Jagath Samarabandu",
+        "Xianbin Wang"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "The 'Wisdom' adaptive auto-scaling CEP stream processor itself is evaluated ('processing over 2.5 million events per second', 'consumes significantly fewer system resources than the monolithic deployment'), a stream-processing architecture measurement, not only detection accuracy.",
+      "what_it_would_add": "Auto-scaling CEP processor ('Wisdom') measured at >2.5M events/sec with lower resource use than a monolithic deployment — evidence for the elastic-vs-monolith argument at the core of the MOAR position.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 5,
+      "title": "A Monitoring and Threat Detection System Using Stream Processing as a Virtual Function for Big Data",
+      "year": 2019,
+      "venue": "theses.fr (ABES)",
+      "type": "article",
+      "doi": "https://doi.org/10.5753/sbrc_estendido.2019.7789",
+      "openalex_id": "https://openalex.org/W2955559202",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Martin Andreoni Lopez",
+        "Otto Carlos M. B. Duarte",
+        "Guy Pujolle"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "Reports a sensor-placement heuristic and a greedy VNF-allocation algorithm for the stream-processing architecture -- a substantive design evaluation of the architecture, not a bare classifier accuracy result.",
+      "what_it_would_add": "Sensor-placement heuristic and greedy VNF-allocation for a security stream-processing architecture — design evidence on where detection compute should sit, a question the corpus treats only qualitatively.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 6,
+      "title": "DATA WAREHOUSE MODELLING INFORMATION SECURITY LOG MANAGEMENT IN BUILDING A SECURITY OPERATION CENTER IN CENTRAL GOVERNMENT AGENCIES WITH KIMBALL METHOD",
+      "year": 2023,
+      "venue": "Jurnal Teknik Informatika (Jutif)",
+      "type": "article",
+      "doi": "https://doi.org/10.52436/1.jutif.2023.4.4.649",
+      "openalex_id": "https://openalex.org/W4390916097",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Maya Asmita",
+        "Henny Henny",
+        "Samidi Samidi"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "Designs a Kimball-method star/snowflake data-warehouse schema explicitly for SOC security-log management and tests it with the Pentaho tool -- a substantive data-architecture design evaluation for security data.",
+      "what_it_would_add": "Kimball star/snowflake warehouse modelling applied to SOC log management in government agencies — the one peer-reviewed treatment of dimensional modelling for security data, a gap in the corpus's schema chapter.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 7,
+      "title": "Transforming Cybersecurity with AI-driven Dashboards: A Cloud-Native Implementation Framework for Real-Time Threat Detection and Automated Response",
+      "year": 2022,
+      "venue": "International Journal of Future Innovative Science and Technology",
+      "type": "article",
+      "doi": "https://doi.org/10.15662/ijfist.2022.0505004",
+      "openalex_id": "https://openalex.org/W7134231547",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Sivaramakrishnan Narayanan Sivaramakrishnan Narayanan"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "A four-layer architecture (cloud-native logging aggregation, stream processing, ML classification, automated orchestration) evaluated by simulation with reported operational metrics (63% MTTR reduction, 71% MTTD improvement, 48.8% false-positive reduction), an architecture-level evaluation.",
+      "what_it_would_add": "Four-layer cloud-native detection architecture with reported MTTR/MTTD reductions — a rare academic (if simulation-based) operational-metric claim for the SOC-outcomes argument; low-tier venue, treat as Tier C evidence.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 8,
+      "title": "A study on time models in graph databases for security log analysis",
+      "year": 2021,
+      "venue": "International Journal of Web Information Systems",
+      "type": "article",
+      "doi": "https://doi.org/10.1108/ijwis-03-2021-0023",
+      "openalex_id": "https://openalex.org/W3195307067",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Daniel Hofer",
+        "Markus Jäger",
+        "Aya Mohamed",
+        "Josef Küng"
+      ],
+      "screening_criterion": "I2,I3",
+      "screening_reason": "Compares three different timestamp-storage models in a graph database for security-log analysis, reporting query-performance differences between the models -- a substantive design evaluation of the data architecture.",
+      "what_it_would_add": "Compares three timestamp-storage models in a graph database for security-log query performance — directly relevant to the temporal-modelling and query-engine sections; the corpus has no graph-database anchor.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 9,
+      "title": "Building a large scale Intrusion Detection System using Big Data technologies",
+      "year": 2018,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.22323/1.327.0014",
+      "openalex_id": "https://openalex.org/W2904437560",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Pablo Panero",
+        "Liviu Vâlsan",
+        "Vincent Brillault",
+        "Ioan Cristian Schuszter"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"The system is currently processing in real time approximately one TB of data per day\" -- a production big-data architecture deployment for security telemetry (CERN) with reported operational evidence.",
+      "what_it_would_add": "CERN's production IDS on big-data technologies processing ~1 TB/day — a named, non-vendor production-scale deployment, the kind of anchor the corpus otherwise gets only from vendor case studies.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 10,
+      "title": "Efficient Host Intrusion Detection using Hyperdimensional Computing",
+      "year": 2024,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/bigdata62323.2024.10825247",
+      "openalex_id": "https://openalex.org/W4406458942",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Yujin Nam",
+        "Rachel King",
+        "Quinn Burke",
+        "Minxuan Zhou",
+        "Patrick McDaniel",
+        "Tajana Rosing"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"State-of-the-art designs deliver query latencies that are impractical for modern threat detection... we introduce a hyper-dimensional computing (HDC) approach to querying provenance graphs\" -- an evidence-backed query-engine evaluation over security telemetry.",
+      "what_it_would_add": "Hyperdimensional-computing querying of provenance graphs, argued against state-of-the-art query latencies that are 'impractical for modern threat detection' — an academic statement of the query-latency problem the cost-to-serve argument depends on.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 11,
+      "title": "High-performance FPGA Architecture for Data Streams Processing on Example of IPsec Gateway",
+      "year": 2018,
+      "venue": "International Journal of Electronics and Telecommunications",
+      "type": "article",
+      "doi": "https://doi.org/10.24425/123532",
+      "openalex_id": "https://openalex.org/W2884616193",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Mateusz Korona",
+        "K. Skowron",
+        "Mateusz Trzepiński",
+        "Mariusz Rawski"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"principles of high-performance FPGA architecture for data streams processing on example of IPsec gateway... allows to use it in networks with data rates of several Gbit/s\" -- a stream-processing architecture applied to security data with throughput evidence.",
+      "what_it_would_add": "FPGA data-stream architecture for an IPsec gateway at multi-Gbit/s — hardware-acceleration evidence for the ingest tier that the corpus does not cover at all.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 12,
+      "title": "Workload-Aware Storage Reduction for Multi-Tenant SIEM on ClickHouse",
+      "year": 2026,
+      "venue": "International Journal of Advanced Computer Science and Applications",
+      "type": "article",
+      "doi": "https://doi.org/10.14569/ijacsa.2026.0170474",
+      "openalex_id": "https://openalex.org/W7160265326",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Nutthakorn Chalaemwongwan"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"demonstrates 79% uncompressed and 70% compressed storage reduction with sub-second query latency\" -- a ClickHouse storage/retention architecture evaluation with reported benchmark evidence on security telemetry.",
+      "what_it_would_add": "Reports 79% uncompressed / 70% compressed storage reduction with sub-second latency for multi-tenant SIEM on ClickHouse — the closest peer-reviewed analogue to the SDW lab's ClickHouse storage results and a direct check on the corpus's ClickHouse claims.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 13,
+      "title": "AIDA Framework",
+      "year": 2019,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1145/3339252.3340513",
+      "openalex_id": "https://openalex.org/W2968342184",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Martin Husák",
+        "Jaroslav Kašpar"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"The framework was deployed as an analytical component of an alert sharing platform... The deployment is briefly described and evaluated\" -- a stream-processing/complex-event-processing architecture for security alerts with a described production deployment.",
+      "what_it_would_add": "AIDA, a CEP framework deployed inside an alert-sharing platform, with a described deployment evaluation — peer-reviewed support for pipeline-side alert processing.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 14,
+      "title": "The Next-Generation NIDS Platform: Cloud-Based Snort NIDS Using Containers and Big Data",
+      "year": 2022,
+      "venue": "Big Data and Cognitive Computing",
+      "type": "article",
+      "doi": "https://doi.org/10.3390/bdcc6010019",
+      "openalex_id": "https://openalex.org/W4229022564",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Ferry Astika Saputra",
+        "Muhammad Salman",
+        "Jauari Akhmad Nur Hasim",
+        "Isbat Uzzin Nadhori",
+        "Kalamullah Ramli"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"We conducted experiments to measure sensor deployment, optimum message delivery... aggregation speed, and efficiency in the data-processing performance\" -- a lambda-architecture big-data ingest design for security telemetry with reported performance experiments.",
+      "what_it_would_add": "Containerized Snort NIDS on a lambda-architecture big-data backend with measured aggregation and delivery performance — a peer-reviewed instance of the batch/stream split the streaming chapter discusses.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 15,
+      "title": "Federated Stream-Processing and Latency-Gated Response for Cross-Sector Threat Detection and Collaborative Containment",
+      "year": 2026,
+      "venue": "arXiv (Cornell University)",
+      "type": "preprint",
+      "doi": "https://doi.org/10.48550/arxiv.2605.17325",
+      "openalex_id": "https://openalex.org/W7161682982",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Namit Mohale"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"reconciled directly within a version-keyed columnar storage engine... We evaluate a prototype... against a 500,000 events per second workload\" -- a stream-processing/columnar-storage architecture for security telemetry with reported throughput/latency benchmarks.",
+      "what_it_would_add": "Federated stream processing reconciled inside a version-keyed columnar engine, evaluated at 500K events/sec — the only record in the search touching columnar storage and federation together, close to the MOAR lakehouse thesis; 2026 preprint, unrefereed.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 16,
+      "title": "Towards Low-Latency Big Data Infrastructure at Sangfor",
+      "year": 2022,
+      "venue": "Communications in computer and information science",
+      "type": "book-chapter",
+      "doi": "https://doi.org/10.1007/978-3-031-23098-1_3",
+      "openalex_id": "https://openalex.org/W4313447051",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Fei Chen",
+        "Zhengzheng Yan",
+        "Liang Gu"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Title 'Towards Low-Latency Big Data Infrastructure at Sangfor' indicates a production big-data infrastructure case study at a network-security vendor; abstract is absent so this decision is made on title alone.",
+      "what_it_would_add": "Production low-latency big-data infrastructure at Sangfor, a network-security vendor — a vendor-scale case study inside a peer-reviewed venue; no abstract was available, so it was screened on title and needs a full-text read before citation.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 17,
+      "title": "Enhancing Cybersecurity Through the Unification of Data Analytics, Artificial Intelligence, and Machine Learning in Big Data Cloud Environments: A Databricks Lakehouse Approach",
+      "year": 2023,
+      "venue": "International Journal of Computer Trends and Technology",
+      "type": "article",
+      "doi": "https://doi.org/10.14445/22312803/ijctt-v71i6p104",
+      "openalex_id": "https://openalex.org/W4384344346",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Mayur Katariya",
+        "Digan Parikh"
+      ],
+      "screening_criterion": "I3",
+      "screening_reason": "Abstract states the article focuses on 'Databricks lakehouse architecture' applied to security data (anomaly/threat detection, governance) and 'draws on real-world examples and industry case studies' of cybersecurity architecture and data flow.",
+      "what_it_would_add": "Databricks lakehouse architecture applied to security analytics with industry case studies — the search's only lakehouse-for-security paper; a weak venue, but it is the academic counterpart to the corpus's Databricks vendor material.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 18,
+      "title": "Securing Big Data Pipelines in Healthcare: A Framework for Real-Time Threat Detection in Population Health Systems",
+      "year": 2025,
+      "venue": "Research Corridor Journal of Engineering Science",
+      "type": "article",
+      "doi": "https://doi.org/10.66320/aen33a42",
+      "openalex_id": "https://openalex.org/W7135167107",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Adaeze Ojinika Ezeogu",
+        "Asafa Emmanuel"
+      ],
+      "screening_criterion": "I3",
+      "screening_reason": "Abstract reports a layered security architecture integrating Kafka stream processing and Splunk SIEM, evaluated in a simulated population-health system processing 2.5 million security events per second with measured 500ms detection latency and 97.3% detection accuracy.",
+      "what_it_would_add": "Kafka + Splunk layered pipeline in healthcare with 2.5M events/sec and 500 ms detection latency reported from simulation — a domain (healthcare/population health) the corpus never covers.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 19,
+      "title": "Architecting Petabyte-Scale Stream Processing Systems for Cybersecurity: A Sharded Data and Compute Processing Strategy for Minimizing Incident Response Time in Real-Time Enterprise Defense",
+      "year": 2026,
+      "venue": "Open MIND",
+      "type": "article",
+      "doi": "https://doi.org/10.5281/zenodo.18817603",
+      "openalex_id": "https://openalex.org/W7132835880",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Abhishek Suman"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Abstract's subject is a horizontally scalable, compute-sharded stream-processing architecture specifically for petabyte-scale security event processing, with schema-agnostic ingestion and multi-region deployment topology as the paper's own design evaluation.",
+      "what_it_would_add": "Compute-sharded petabyte-scale security stream-processing design with multi-region topology and schema-agnostic ingestion — architecture evidence at the scale tier the corpus asserts from practice; Zenodo/Open MIND venue, so tier it C.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 20,
+      "title": "A Cloud-Native Framework for Real-Time Topology Analysis and Security Monitoring in SDN Environments",
+      "year": 2026,
+      "venue": "Advances in Science and Technology",
+      "type": "book-chapter",
+      "doi": "https://doi.org/10.1201/9781003774679-27",
+      "openalex_id": "https://openalex.org/W7140321422",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Vijaya Pijarkjar",
+        "Kirtan Raina",
+        "Rakshit Jandiyal",
+        "Pratab Nair",
+        "Umesh Pinjarkar"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "Proposes and measures a streaming/storage architecture (Kafka + OrientDB) for network security monitoring, reporting 95% topology-discovery accuracy, sub-second anomaly detection, and 40% incident-response improvement at 10,000-node scale.",
+      "what_it_would_add": "Kafka + OrientDB monitoring architecture for SDN with measured topology-discovery accuracy and detection latency — extends the review into SDN telemetry, absent from the corpus.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 21,
+      "title": "A Data Middle Platform-Based Power Grid Data Security Monitoring System",
+      "year": 2025,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/aibdf67964.2025.11440698",
+      "openalex_id": "https://openalex.org/W7140201200",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Shengguo Xu",
+        "Liang Guo",
+        "Fucun Zhang",
+        "Hao Hong"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "Data mid-end architecture using the MaxCompute data warehouse for security monitoring, with experimental results and comparative analysis against mainstream SIEM/cloud-native tools.",
+      "what_it_would_add": "Power-grid security monitoring on a MaxCompute data warehouse, compared experimentally against mainstream SIEM tooling — a rare non-Western OT/utility architecture comparison relevant to the OT sections.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 22,
+      "title": "Hybrid Stream Processing for Runtime Protection in Remote and Infrastructure-Supported Driving",
+      "year": 2026,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/icin69025.2026.11481838",
+      "openalex_id": "https://openalex.org/W7156304501",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Tarek Stolz",
+        "Aliza Katharina Reif",
+        "O. H. Ramírez-Agudelo",
+        "Michael Karl"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "Proposes and measures a distributed data-stream-processing architecture (extending GALOIS) for a cybersecurity management framework, reporting an online detection operator that \"outperformed the classical offline detection by 584.3% in latency time.\"",
+      "what_it_would_add": "Distributed stream-processing (GALOIS extension) for runtime protection in remote driving, with an online operator beating an offline detector — an automotive-OT case for the streaming-vs-batch argument.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 23,
+      "title": "Performance Comparison of Python-Based Complex Event Processing Engines for IoT Intrusion Detection: Faust Versus Streamz",
+      "year": 2026,
+      "venue": "Computers",
+      "type": "article",
+      "doi": "https://doi.org/10.3390/computers15030200",
+      "openalex_id": "https://openalex.org/W7140125876",
+      "sources": [
+        "openalex",
+        "dblp"
+      ],
+      "authors": [
+        "Maryam Abbasi",
+        "Filipe Cardoso",
+        "Paulo Váz",
+        "José Silva",
+        "Filipe Sá",
+        "Pedro Martins"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"The first systematic comparison\" of two CEP engines (Faust vs. Streamz) as a stream-processing architecture choice \"under realistic IoT security workloads.\"",
+      "what_it_would_add": "Systematic Faust vs Streamz CEP-engine comparison under IoT security workloads — a like-for-like engine benchmark of exactly the kind the corpus builds itself, from a peer-reviewed source.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 24,
+      "title": "SPARCS: Stream-Processing Architecture Applied in Real-Time Cyber-Physical Security",
+      "year": 2019,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/escience.2019.00028",
+      "openalex_id": "https://openalex.org/W3011644536",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Reinhard Gentz",
+        "Sean Peisert",
+        "Joshua Boverhof",
+        "Dan Gunter"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "\"A complete, end-to-end, fault tolerant, bandwidth and latency optimized architecture\" for collection/transport/storage/processing of security data, presented as a practical hierarchical system design.",
+      "what_it_would_add": "SPARCS, an end-to-end fault-tolerant collection/transport/storage/processing architecture for cyber-physical security — a full-stack reference design for the architecture chapter.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 25,
+      "title": "General purpose data streaming platform for log analysis, anomaly detection and security protection",
+      "year": 2024,
+      "venue": "EPJ Web of Conferences",
+      "type": "article",
+      "doi": "https://doi.org/10.1051/epjconf/202429501032",
+      "openalex_id": "https://openalex.org/W4396681710",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Francesco Amori",
+        "Stefano Antonelli",
+        "Vincenzo Ciaschini",
+        "Antonio Falabella",
+        "Enrico Fattibene",
+        "F. Fornari",
+        "Daniele Lattanzio",
+        "Diego Michelotto",
+        "Lucia Morganti"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "Describes the production monitoring/streaming infrastructure reengineering at the INFN-CNAF WLCG Tier-1 data centre for log analysis, anomaly detection, and security protection.",
+      "what_it_would_add": "INFN-CNAF WLCG Tier-1 production log-analysis and security-monitoring platform — a second named large-scale scientific-computing deployment alongside CERN, both non-vendor.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 26,
+      "title": "Practical Performance of a Distributed Processing Framework for Machine-Learning-based NIDS",
+      "year": 2024,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/compsac61105.2024.00355",
+      "openalex_id": "https://openalex.org/W4401880044",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "M. Kajiura",
+        "Junya Nakamura"
+      ],
+      "screening_criterion": "I3",
+      "screening_reason": "Measures throughput/latency and identifies bottlenecks of the distributed stream-processing framework itself, using five NIDS classifiers as workload, not the classifiers' detection accuracy.",
+      "what_it_would_add": "Throughput/latency bottleneck analysis of the distributed processing framework itself, with five NIDS classifiers as workload — a clean separation of pipeline performance from model accuracy, which is the review's core methodological stance.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 27,
+      "title": "Corporate Security is a Big Data Problem",
+      "year": 2018,
+      "venue": "Ubiquity",
+      "type": "article",
+      "doi": "https://doi.org/10.1145/3158348",
+      "openalex_id": "https://openalex.org/W2883261670",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Louisa Saunier",
+        "Kemal A. Delic"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Presents a substantive high-level architecture for transforming security data lakes into security intelligence via a 'security cockpit,' addressing volume/velocity/variety challenges of enterprise security data directly.",
+      "what_it_would_add": "ACM Ubiquity argument that corporate security is a big-data problem, with a security-data-lake-to-'security cockpit' architecture — a 2018 academic statement of the thesis the corpus dates to vendor writing.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 28,
+      "title": "Aprendizado de Máquina em Plataformas de Processamento Distribuído de Fluxo: Análise e Detecção de Ameaças em Tempo Real",
+      "year": 2018,
+      "venue": null,
+      "type": "article",
+      "doi": null,
+      "openalex_id": "https://openalex.org/W3152149748",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Martin Andreoni Lopez",
+        "Igor Jochem Sanz",
+        "Antonio Gonzalez Pastana Lobato"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Book chapter presents and compares Apache Storm, Spark Streaming, and Apache Flink as stream-processing architectures for real-time threat detection, evaluating lambda-architecture proposals and the CATRACA tool",
+      "what_it_would_add": "Portuguese-language book chapter comparing Storm, Spark Streaming, and Flink for real-time threat detection including lambda-architecture proposals — an engine-comparison source outside the English-language corpus; no DOI, so acquisition needs checking.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 29,
+      "title": "ARCHITECTURAL AND ANALYTICAL ASPECTS OF BIG DATA APPLICATION FOR ENSURING IOT SYSTEM SECURITY",
+      "year": 2026,
+      "venue": "Cybersecurity Education Science Technique",
+      "type": "article",
+      "doi": "https://doi.org/10.28925/2663-4023.2026.33.1144",
+      "openalex_id": "https://openalex.org/W7166700368",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "U. P. Panovyk",
+        "Rostyslav Tkachuk",
+        "Valeriia Balatska",
+        "V. A. Yashchuk"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Proposes a multi-layer Big Data architecture for IoT security telemetry (ingestion, distributed processing, Data Lake storage, analytics) and reports simulated DDoS-scenario latency/detection-accuracy results",
+      "what_it_would_add": "Multi-layer big-data architecture for IoT security with a data-lake storage tier and simulated DDoS latency/accuracy results — IoT-tier ingest evidence the corpus lacks.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 30,
+      "title": "BUILDING A DYNAMIC SCALABLE PARALLEL CLOUD-BASED SNORT NIDS USING CONTAINERS AND BIG DATA",
+      "year": 2021,
+      "venue": "Journal of Southwest Jiaotong University",
+      "type": "article",
+      "doi": "https://doi.org/10.35741/issn.0258-2724.56.5.27",
+      "openalex_id": "https://openalex.org/W3216695651",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "S. Ferry Astika",
+        "Mukhammad Shalahuddin Jauhari",
+        "N. Isbatuzzin",
+        "Muhammad Salman",
+        "Kalamullah Ramli"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Cloud-based Snort NIDS built on Docker, Kafka, and a lambda-architecture Big Data pipeline, with measured sensor deployment, message-delivery, and aggregation-speed performance",
+      "what_it_would_add": "Container-and-Kafka scalable Snort NIDS with measured sensor deployment and aggregation speed — a companion measurement to record 14 from the same line of work.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 31,
+      "title": "МЕХАНИЗМЫ ВЗАИМОДЕЙСВИЯ МЕЖДУ РАСПРЕДЕЛЕННЫМИ IDPS И SOCВ ИНФРАСТРУКТУРАХ УМНЫХ ГОРОДОВ НА ОСНОВЕ IOTТ.",
+      "year": 2025,
+      "venue": "INTERNATIONAL JOURNAL OF INFORMATION AND COMMUNICATION TECHNOLOGIES",
+      "type": "article",
+      "doi": "https://doi.org/10.54309/ijict.2025.24.4.002",
+      "openalex_id": "https://openalex.org/W4416820470",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Tеtiana Babenko",
+        "Damelya Maksutovna Yeskendirova",
+        "Yelena Bakhtiyarova",
+        "Kanibek Sansyzbay"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Distributed IDPS-to-SOC architecture using Kafka message bus, STIX/TAXII normalization, and Elastic SIEM integration, reporting a ~28% alert-correlation latency reduction and ~30% false-positive reduction on BoT-IoT/TON_IoT",
+      "what_it_would_add": "Russian-language distributed IDPS-to-SOC architecture over a Kafka bus with STIX/TAXII normalization and Elastic SIEM, reporting ~28% correlation-latency and ~30% false-positive reductions — the only record in the search that touches schema normalization end-to-end, which is the OCSF question the corpus cares most about.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 32,
+      "title": "Analysis of Logs in the Environment of Email Services",
+      "year": 2020,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/iceta51985.2020.9379260",
+      "openalex_id": "https://openalex.org/W3137672213",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Martin Chovanec",
+        "Martin Havrilla",
+        "Eva Chovancová"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Compares non-relational databases (Elasticsearch, Kafka, Redis, Splunk, MongoDB) for log/audit-record storage and analysis in email services, selecting the most suitable database and evaluating safety/functional risks",
+      "what_it_would_add": "Compares Elasticsearch, Kafka, Redis, Splunk, and MongoDB as log stores for email-service audit records — a store-selection comparison for the query-engine chapter.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 33,
+      "title": "Practical Performance of a Distributed Processing Framework for Machine-Learning-based NIDS",
+      "year": 2024,
+      "venue": "arXiv (Cornell University)",
+      "type": "preprint",
+      "doi": "https://doi.org/10.48550/arxiv.2405.13066",
+      "openalex_id": "https://openalex.org/W4398794932",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "M. Kajiura",
+        "Junya Nakamura"
+      ],
+      "screening_criterion": "I3",
+      "screening_reason": "Abstract states the distributed stream-processing framework's own performance 'has not been comprehensively evaluated' and this paper evaluates it, i.e. the contribution is architecture-level evidence, not just a classifier's accuracy.",
+      "what_it_would_add": "arXiv version of record 26 (same title, distinct DOI) — worth keeping in the flow to show the preprint/version duplication the deduplication step could not merge on DOI.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 34,
+      "title": "A Binary Feature Extraction Based Data Provenance System Implemented on Flink Platform",
+      "year": 2018,
+      "venue": null,
+      "type": "article",
+      "doi": "https://doi.org/10.1109/cyberc.2018.00045",
+      "openalex_id": "https://openalex.org/W2918063509",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Yangyizhou Wang",
+        "Lan Li",
+        "Lei Fan"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "Implements a data-provenance/information-flow-control system for enterprise security operations on the Apache Flink stream-processing platform, with the architecture-level implementation itself as the reported contribution.",
+      "what_it_would_add": "Data-provenance and information-flow-control system implemented on Flink — provenance-as-security-telemetry, a pattern the corpus does not carry.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 35,
+      "title": "Comparative Evaluation of Log Reduction Techniques Using Vector on Public Security Datasets",
+      "year": 2026,
+      "venue": "ECTI Transactions on Computer and Information Technology (ECTI-CIT)",
+      "type": "article",
+      "doi": "https://doi.org/10.37936/ecti-cit.2026202.264216",
+      "openalex_id": "https://openalex.org/W7165730258",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Nutthakorn Chalaemwongwan"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "Benchmarks five Vector-based log-reduction methods against a baseline Filebeat pipeline on 3M+ SOC log records, reporting throughput/bandwidth/attack-coverage measurements at the ingest-pipeline level, not an ML detection model.",
+      "what_it_would_add": "Benchmarks five Vector-based log-reduction methods against a Filebeat baseline over 3M+ SOC records, reporting throughput, bandwidth, and attack-coverage — a direct peer-reviewed check on the pipeline-reduction (Cribl/Vector) economics the corpus sources from vendors.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 36,
+      "title": "Engineering a Cloud Security Incident Detection and Response Pipeline for Large-Scale and Operationally Resilient Environments",
+      "year": 2025,
+      "venue": "International Journal of Research Publication and Reviews",
+      "type": "article",
+      "doi": "https://doi.org/10.55248/gengpi.06.1225.4219",
+      "openalex_id": "https://openalex.org/W7117414583",
+      "sources": [
+        "openalex"
+      ],
+      "authors": [
+        "Bukunmi Temiloluwa Ofili"
+      ],
+      "screening_criterion": "I2/I3",
+      "screening_reason": "Describes and evaluates a distributed log-aggregation/stream-processing incident-detection pipeline itself against detection accuracy, response time, availability, and operational overhead, not just an ML model riding on top of plumbing.",
+      "what_it_would_add": "Cloud incident-detection pipeline evaluated on detection accuracy, response time, availability, and operational overhead — pipeline-level rather than model-level evaluation; low-tier venue, tier it C.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 37,
+      "title": "A data lake-based security transmission and storage scheme for streaming big data",
+      "year": 2024,
+      "venue": "Clust. Comput.",
+      "type": "Journal Articles",
+      "doi": "https://doi.org/10.1007/S10586-023-04201-9",
+      "openalex_id": null,
+      "sources": [
+        "dblp"
+      ],
+      "authors": [
+        "Xiaoyan Zhao",
+        "Conghui Zhang",
+        "Shaopeng Guan"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "No abstract, but title directly names a data-lake-based scheme for security transmission/storage of streaming big data, matching the architecture-applied-to-security-data scope; Cluster Computing is a peer-reviewed venue and 2024 satisfies I1 (decided on title).",
+      "what_it_would_add": "Data-lake-based secure transmission and storage scheme for streaming big data (Cluster Computing) — a peer-reviewed security-data-lake design; no abstract retrieved, so it needs a full-text read before citation.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 38,
+      "title": "Digital forensics architecture for real-time automated evidence collection and centralization: Leveraging security lake and modern data architecture",
+      "year": 2024,
+      "venue": "J. Intell. Syst.",
+      "type": "Journal Articles",
+      "doi": "https://doi.org/10.1515/JISYS-2024-0109",
+      "openalex_id": null,
+      "sources": [
+        "dblp"
+      ],
+      "authors": [
+        "Wasan Saad Ahmed",
+        "Ziyad Tariq Mustafa Al-Ta&apos;l",
+        "Tamirat Abegaz",
+        "Ghassan Sabeeh Mahmood"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "No abstract, but title names a forensics evidence-collection architecture built on a 'security lake and modern data architecture', matching the architecture-applied-to-security-data scope; Journal of Intelligent Systems is peer-reviewed and 2024 satisfies I1 (decided on title).",
+      "what_it_would_add": "Digital-forensics architecture built on a security lake and modern data architecture — the closest peer-reviewed match to the security-data-lake thesis in the whole search; no abstract retrieved, needs full-text read.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    },
+    {
+      "rank": 39,
+      "title": "International Network Performance and Security Testing Based on Distributed Abyss Storage Cluster and Draft of Data Lake Framework",
+      "year": 2018,
+      "venue": "Secur. Commun. Networks",
+      "type": "Journal Articles",
+      "doi": "https://doi.org/10.1155/2018/1746809",
+      "openalex_id": null,
+      "sources": [
+        "dblp"
+      ],
+      "authors": [
+        "ByungRae Cha",
+        "Sun Park",
+        "JongWon Kim 0001",
+        "Sung Bum Pan",
+        "Juhyun Shin"
+      ],
+      "screening_criterion": "I2",
+      "screening_reason": "No abstract, but title names a distributed storage cluster and data lake framework evaluated via network performance/security testing, matching the architecture-applied-to-security-data scope; 2018 satisfies I1 (decided on title).",
+      "what_it_would_add": "Distributed storage cluster plus a data-lake framework tested for network performance and security — an early (2018) data-lake-for-security design; no abstract retrieved, needs full-text read.",
+      "match_attempted": {
+        "doi": "no match in MASTER-BIBLIOGRAPHY.md",
+        "normalized_title": "no exact/substring match; best fuzzy ratio across all 195 entries < 0.55",
+        "author_year": "no true match (only common-surname collisions, e.g. Zhang, rejected on title)"
+      }
+    }
+  ],
+  "C_corpus_only_grey_literature": {
+    "total": 171,
+    "by_category": {
+      "vendor_engineering_blog_or_product_docs": 63,
+      "open_source_project_docs_or_repo": 33,
+      "practitioner_talk_or_personal_blog": 18,
+      "standards_frameworks_government": 17,
+      "big_tech_engineering_blog": 14,
+      "analyst_or_industry_report": 12,
+      "book": 8,
+      "expert_interview_or_personal_communication": 2,
+      "no_primary_retired_or_declined": 2,
+      "first_party_lab_measurement": 2
+    },
+    "category_definitions": {
+      "vendor_engineering_blog_or_product_docs": "vendor engineering blogs, product documentation, and vendor benchmark posts (ClickHouse, Databricks, Dremio, Confluent, AWS, Cribl, Tenzir, Panther, Splunk, and similar)",
+      "open_source_project_docs_or_repo": "open-source project documentation, specifications, and source repositories (Apache Iceberg / Arrow / Trino / Polaris / DataFusion, DuckDB, Zeek, GitHub repos)",
+      "academic_peer_reviewed_EXCLUDED_FROM_C": "peer-reviewed papers held in the corpus; database-indexable in principle, so they are NOT grey literature and are counted separately",
+      "book": "books (O'Reilly, No Starch, Manning, Pearson, Technics, and one trade title)",
+      "standards_frameworks_government": "standards and framework documents (NIST, ISO, CISA, MITRE D3FEND / ATLAS / CAR, OCA, CSA, DARPA)",
+      "practitioner_talk_or_personal_blog": "conference talks, videos, personal and practitioner blogs, LinkedIn and Substack posts",
+      "big_tech_engineering_blog": "engineering blogs of large technology companies (Netflix, Uber, Cloudflare, Google, Microsoft, Anthropic)",
+      "analyst_or_industry_report": "analyst and industry reports (Gartner, Forrester, KPMG, Uptime Institute, DORA, Prosci)",
+      "expert_interview_or_personal_communication": "expert interviews and personal communications collected for this review",
+      "first_party_lab_measurement": "first-party measurements produced by the SDW lab",
+      "no_primary_retired_or_declined": "documented stubs kept as a record of a retired or declined claim; no primary source exists"
+    },
+    "entries": [
+      {
+        "title": "Fundamentals of Data Engineering (O'Reilly Book)",
+        "category": "book",
+        "url": "https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/",
+        "evidence_level": "B (Authoritative practitioner reference; conceptual framing, not a quantitative source)",
+        "section": "Data Engineering Foundations"
+      },
+      {
+        "title": "Data Engineering for Cybersecurity (No Starch Press Book)",
+        "category": "book",
+        "url": "nostarch.com (No Starch Press catalog — confirm the exact product URL before citing)",
+        "evidence_level": "B (practitioner reference book; conceptual/tooling, not a quantitative source)",
+        "section": "Data Engineering Foundations"
+      },
+      {
+        "title": "Apache Iceberg Performance Tuning - SK Telecom",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html",
+        "evidence_level": "A (Production deployment, quantitative benchmarks)",
+        "section": "Table Formats"
+      },
+      {
+        "title": "Starburst - Official Documentation",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://docs.starburst.io",
+        "evidence_level": "B (Vendor documentation, technical authority)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "Starburst - AWS Athena Comparison",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.starburst.io/aws-athena/",
+        "evidence_level": "B (Vendor comparison documentation)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "Trino: The Definitive Guide (O'Reilly Book)",
+        "category": "book",
+        "url": "https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/",
+        "evidence_level": "A (Authoritative technical book, O'Reilly publication)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "Dremio - Official Documentation",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://docs.dremio.com",
+        "evidence_level": "B (Vendor documentation, technical authority)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "Dremio - Data Lakehouse Architecture Guide",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.dremio.com/blog/what-is-a-data-lakehouse/",
+        "evidence_level": "B (Vendor thought leadership, educational)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "Alex Merced - Dremio YouTube Channel",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.youtube.com/@alexmercedcoder",
+        "evidence_level": "B (Vendor educational content, practitioner tutorials)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "ClickHouse at Cloudflare - 6M Requests/Second",
+        "category": "big_tech_engineering_blog",
+        "url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/",
+        "evidence_level": "A (Production deployment at massive scale)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "ClickHouse Log Analytics - Cloudflare",
+        "category": "big_tech_engineering_blog",
+        "url": "https://blog.cloudflare.com/log-analytics-using-clickhouse/",
+        "evidence_level": "A (Production deployment)",
+        "section": "Query Engines"
+      },
+      {
+        "title": "Kafka Performance Benchmark - Confluent",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.confluent.io/blog/kafka-fastest-messaging-system/",
+        "evidence_level": "B (Vendor benchmark, methodology disclosed but self-published)",
+        "section": "Streaming Architectures"
+      },
+      {
+        "title": "Questioning the Lambda Architecture - Jay Kreps",
+        "category": "book",
+        "url": "https://www.oreilly.com/radar/questioning-the-lambda-architecture/",
+        "evidence_level": "A (Foundational thought leadership)",
+        "section": "Streaming Architectures"
+      },
+      {
+        "title": "Uber - Real-Time Analytics Platform (Kafka/Flink/Pinot)",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://current.confluent.io/post-conference-videos-2025/inside-ubers-large-scale-real-time-analytics-platform-bng25",
+        "evidence_level": "A (Production platform, public conference talk with specific scale figures)",
+        "section": "Streaming Architectures"
+      },
+      {
+        "title": "Disney+ Hotstar - Kafka/Flink Streaming at Scale",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.kai-waehner.de/blog/2025/02/28/data-streaming-with-apache-kafka-and-flink-in-the-media-industry-disney-hotstar-and-jiocinema/",
+        "evidence_level": "B (Vendor-aligned expert secondary source citing a Kafka Summit production talk)",
+        "section": "Streaming Architectures"
+      },
+      {
+        "title": "McAfee Cybersecurity Streaming Evolution - Kai Waehner",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.kai-waehner.de/blog/2025/01/27/the-role-of-data-streaming-in-mcafees-cybersecurity-evolution/",
+        "evidence_level": "A (Vendor architecture, industry expert)",
+        "section": "Streaming Architectures"
+      },
+      {
+        "title": "Top Trends for Data Streaming 2025 - Kai Waehner",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.kai-waehner.de/blog/2024/12/02/top-trends-for-data-streaming-with-apache-kafka-and-flink-in-2025/",
+        "evidence_level": "B (Expert analysis, trends)",
+        "section": "Streaming Architectures"
+      },
+      {
+        "title": "AWS Storage Optimization Whitepaper",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-storage-optimization/cost-optimization-storage-optimization.pdf (serves an official \"DEPRECATED\" stub as of 2026-07-10)",
+        "evidence_level": "B (Vendor documentation; cited PDF deprecated, tier figures sourced from S3 Intelligent-Tiering page)",
+        "section": "Cost Comparisons"
+      },
+      {
+        "title": "The Data-Centric Revolution + Incremental Stealth Legacy Modernization (Dave McComb)",
+        "category": "book",
+        "url": "https://technicspub.com/software_wasteland/ (Technics Publications page for *Software Wasteland* + *The Data-Centric Revolution*)",
+        "evidence_level": "B (Authoritative practitioner; conceptual framing, not a quantitative source)",
+        "section": "Change Management"
+      },
+      {
+        "title": "Prosci Change Management Best Practices (12th Edition)",
+        "category": "analyst_or_industry_report",
+        "url": "https://www.prosci.com/blog/change-management-best-practices",
+        "evidence_level": "A (Industry standard framework, research-based)",
+        "section": "Change Management"
+      },
+      {
+        "title": "2024-2025 State of DevOps Report - DORA",
+        "category": "analyst_or_industry_report",
+        "url": "https://dora.dev/research/2024/dora-report/",
+        "evidence_level": "A (Industry research, 39,000+ professionals surveyed)",
+        "section": "Change Management"
+      },
+      {
+        "title": "LinkedIn Security - Kafka Streams State Management",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.linkedin.com/blog/engineering/infrastructure/introducing-northguard-and-xinfra",
+        "evidence_level": "A (Production deployment at scale)",
+        "section": "Extraction Summary - COMPLETE"
+      },
+      {
+        "title": "AWS S3 Storage-Class Pricing — First-Party Tier-Delta Derivation (2026-07-09)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://aws.amazon.com/s3/pricing/",
+        "evidence_level": "B (public list prices, verbatim-quoted; the derivation is arithmetic on them)",
+        "section": "Extraction Summary - COMPLETE"
+      },
+      {
+        "title": "Netflix - Kafka Tiered Storage",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://docs.confluent.io/platform/current/kafka/tiered-storage.html",
+        "evidence_level": "B (Confluent vendor docs for tiered-storage; Netflix scale figure requires Netflix Keystone blog as primary cite)",
+        "section": "Extraction Summary - COMPLETE"
+      },
+      {
+        "title": "ClickHouse - Vectorized Query Execution",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/docs/concepts/why-clickhouse-is-so-fast",
+        "evidence_level": "B (Vendor technical documentation — conceptual page, no throughput benchmarks disclosed)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "ClickHouse - IP Address Types Performance",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/docs/sql-reference/data-types/ipv6",
+        "evidence_level": "B (Vendor documentation; qualitative storage-efficiency claim only — no benchmarked multiplier in source)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "Splunk DB Connect Benchmark - Multi-Engine Performance Comparison",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/flying-coyote/splunk-db-connect-benchmark",
+        "evidence_level": "A (Tier 1 production benchmark, 10M OCSF events)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "LST-Bench: Benchmarking Log-Structured Tables in the Cloud (SIGMOD 2024)",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/microsoft/lst-bench",
+        "evidence_level": "A (peer-reviewed, SIGMOD; framework is Microsoft OSS)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "ClickBench — A Benchmark for Analytical Databases (ClickHouse)",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/ClickHouse/ClickBench",
+        "evidence_level": "C (vendor-authored benchmark — ClickHouse maintains it; flag the author-incentive when citing cross-engine rankings)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "ClickHouse - Compression Codecs Documentation",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/docs/en/sql-reference/statements/create/table#compression-codecs",
+        "evidence_level": "B (Vendor technical documentation; codec list confirmed, ratio figures require separate engineering-blog cite)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "ClickHouse - Performance Optimization Guide",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/docs/optimize/query-optimization",
+        "evidence_level": "A (Vendor technical documentation) — *tier note (2026-06-05): vendor product docs usually score B under the re-tier discipline (no independent benchmark on the page); kept A pending Jeremy's call, FLAGGED.*",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "How Exabeam uses ClickHouse for scalable, searchable security analytics (ClickHouse case study, 2025)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/exabeam-clickhouse-security-analytics",
+        "evidence_level": "A (Production deployment with quantitative operational metrics; ClickHouse-published — vendor bias flagged)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "Huntress - ClickHouse Migration Case Study (Isolation-First Security)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse",
+        "evidence_level": "A (Production deployment, validated metrics)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "Chris Bisnett - Huntress ClickHouse Migration (Video)",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.youtube.com/watch?v=lhsWNofOcdk",
+        "evidence_level": "A (Production deployment presentation)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "RunReveal - SIEM Built on ClickHouse + sigmalite (RunReveal evaluates Sigma at ingest)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/clickhouse-cloud-runreveal (ClickHouse's security team as customer); https://github.com/runreveal/sigmalite (Apache-2.0 Sigma execution engine); https://runreveal.com/case-studies/clickhouse",
+        "evidence_level": "B (named-practitioner engineering blog + first-party OSS repo)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "DNB - Cyber Defense Center on Ibis (Multi-Engine Lakehouse)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://marimo.io/blog/case-study-dnb",
+        "evidence_level": "B (named org + named security workload; vendor-hosted — marimo is the notebook vendor in the stack, bias flagged)",
+        "section": "ClickHouse Performance (Additional Sources)"
+      },
+      {
+        "title": "Azure - Kafka at Trillion Events/Day",
+        "category": "big_tech_engineering_blog",
+        "url": "https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/",
+        "evidence_level": "A (Microsoft production deployment)",
+        "section": "Kafka Performance (Additional)"
+      },
+      {
+        "title": "DuckDB Labs - DuckDB Overview",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://duckdb.org/why_duckdb.html",
+        "evidence_level": "A (Official documentation)",
+        "section": "DuckDB Edge Processing"
+      },
+      {
+        "title": "Okta Security Analytics - Isolation-First Architecture with DuckDB + Iceberg",
+        "category": "expert_interview_or_personal_communication",
+        "url": "Personal communication (expert validation)",
+        "evidence_level": "B (Expert validation, production deployment)",
+        "section": "DuckDB Edge Processing"
+      },
+      {
+        "title": "Apache XTable - Format Interoperability",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://xtable.apache.org/",
+        "evidence_level": "B (Apache Incubator project, active development)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Arrow Flight SQL - High-Performance Query Connectivity",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://arrow.apache.org/docs/format/Flight.html",
+        "evidence_level": "A (Official documentation, benchmark testing, production validation)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Anyscale Ray Serve - Production AI Deployment Platform",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.anyscale.com/blog/tackling-the-cost-and-complexity-of-serving-ai-in-production-ray-serve",
+        "evidence_level": "B (Vendor platform with production validation)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Cloudera Impala + Iceberg Performance",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.cloudera.com/blog/technical/introducing-apache-iceberg-in-cloudera-data-platform.html",
+        "evidence_level": "A (Production benchmarks)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Flink Checkpointing - Fault Tolerance Patterns",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/datastream/fault-tolerance/checkpointing/",
+        "evidence_level": "B (Official documentation; prescribes mechanism, not security-specific intervals or recovery SLAs)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Microsoft Purview - Retention Policies and Labels",
+        "category": "big_tech_engineering_blog",
+        "url": "https://learn.microsoft.com/en-us/purview/retention",
+        "evidence_level": "C (Vendor documentation — general retention-policy/label reference only)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Confluent Customer Success - Implementation Roadmap",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://developer.confluent.io/courses/apache-kafka/",
+        "evidence_level": "C (Vendor learning-path resource — no deployment-timeline data disclosed)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "phData - Data Platform Implementation (Iterative Delivery)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.phdata.io/blog/how-to-implement-a-data-platform/",
+        "evidence_level": "C (Vendor opinion blog — iterative/use-case-first delivery argument, no quantitative timeline data)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Brooks - The Mythical Man-Month (Throwaway Prototype)",
+        "category": "book",
+        "url": "https://www.pearson.com/en-us/subject-catalog/p/mythical-man-month-essays-on-software-engineering-anniversary-edition-the/P200000000149",
+        "evidence_level": "A (Seminal work, widely cited)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Netflix - Building Resilient Data Platform with WAL",
+        "category": "big_tech_engineering_blog",
+        "url": "https://netflixtechblog.com/building-a-resilient-data-platform-with-write-ahead-log-at-netflix-127b6712359a",
+        "evidence_level": "A (Production implementation at scale)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Netflix Petabyte-Scale Logging — ClickHouse + Iceberg (Muino, 2025)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/netflix-petabyte-scale-logging",
+        "evidence_level": "B (ClickHouse-published case study of a Netflix production deployment; vendor-relayed, no first-party Netflix primary found)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Cloudera Total Economic Impact — Public Cloud (Forrester TEI, October 2021)",
+        "category": "analyst_or_industry_report",
+        "url": "Cloudera Public Cloud TEI PDF (linked from Cloudera's TEI resources; direct PDF URL to be catalogued — the 2026-07-09 sweep verified the figures against the PDF itself)",
+        "evidence_level": "A (Commissioned research, quantitative — flag vendor-commissioned bias where cited)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Cloudera Total Economic Impact — Private Cloud (Forrester TEI, May 2024)",
+        "category": "analyst_or_industry_report",
+        "url": "https://tei.forrester.com/go/cloudera/onPremises/",
+        "evidence_level": "A (Commissioned research, quantitative - 6 organizations interviewed; flag vendor-commissioned bias where cited)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Confluent - Kafka Architecture & Sizing",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://developer.confluent.io/courses/architecture/get-started/",
+        "evidence_level": "B (Vendor best practices)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Databricks TCO - Lakehouse vs Traditional Platforms",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.databricks.com/databricks-vs-snowflake",
+        "evidence_level": "A (Vendor analysis + independent benchmarks, quantitative data)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Gartner - Security Data Growth Rates & Spending Forecast 2024-2029",
+        "category": "analyst_or_industry_report",
+        "url": "https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025",
+        "evidence_level": "A (Authoritative industry research)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Retired (no primary) — \"Streaming vs Batch Cost Differential\" (phantom CloudZero citation)",
+        "category": "no_primary_retired_or_declined",
+        "url": null,
+        "evidence_level": null,
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "AWS Well-Architected - Compute Optimization",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html",
+        "evidence_level": "B (Cloud provider framework guidance — prescriptive methodology without a specific quantified savings figure)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "AWS Storage Optimization - Tiered Storage",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://aws.amazon.com/s3/storage-classes/intelligent-tiering/",
+        "evidence_level": "B (Cloud provider quantitative claim from vendor product page; methodology not independently audited)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Google SRE - Reliability Economics (Exponential Cost of Nines)",
+        "category": "big_tech_engineering_blog",
+        "url": "https://sre.google/sre-book/embracing-risk/",
+        "evidence_level": "B (Authoritative public text; bracketed placeholder URL corrected — cite as expert-consensus reference, not a quantified production study)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Gartner - Reliability Overinvestment Analysis",
+        "category": "analyst_or_industry_report",
+        "url": "[Gartner reliability research — doc 3906266, paywalled]",
+        "evidence_level": "B (Analyst advisory; specific \"70% overspend\" statistic is not findable in any Gartner source — entry retained as paywalled-analyst-consensus reference only)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Uptime Institute - Reliability Tier Economics",
+        "category": "analyst_or_industry_report",
+        "url": "https://uptimeinstitute.com/tiers",
+        "evidence_level": "C (Industry standards body — specific \"98% cannot justify beyond four nines\" statistic is not findable; URL updated to tier-classification page; cite with methodology-disclosure caveat)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Iceberg - Industry Consensus & Market Momentum",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.dremio.com/press-releases/state-of-the-data-lakehouse-2024-businesses-are-leaving-cloud-data-warehouses-for-data-lakehouses/",
+        "evidence_level": "A (Industry survey + vendor support validation)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Iceberg - Universal Vendor Support",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "Multiple vendor announcements",
+        "evidence_level": "A (Vendor public commitments — date corrected to 2025 when full cross-vendor support was achieved)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Iceberg Foundation - Governance & Contributors",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://iceberg.apache.org/community/",
+        "evidence_level": "A (Official ASF project metrics)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Iceberg - Official Documentation",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://iceberg.apache.org/",
+        "evidence_level": "A (Official open-source project documentation)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Iceberg - Maintenance Documentation",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://iceberg.apache.org/docs/latest/maintenance/",
+        "evidence_level": "A (Official documentation)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Iceberg - Spark Procedures Documentation",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://iceberg.apache.org/docs/latest/spark-procedures/",
+        "evidence_level": "A (Official documentation)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "SK Telecom - Iceberg Performance Validation",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html",
+        "evidence_level": "A (Production deployment)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "ClickHouse vs Elasticsearch - Storage Efficiency",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/clickhouse_vs_elasticsearch_the_billion_row_matchup",
+        "evidence_level": "A (Benchmark study)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Uber - Palette Feature Store for ML",
+        "category": "big_tech_engineering_blog",
+        "url": "https://www.uber.com/blog/palette-meta-store-journey/",
+        "evidence_level": "B (Production case study with unsupported headline stat; retained claims are qualitative/process)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "DARPA XAI - Explainable Artificial Intelligence Program",
+        "category": "standards_frameworks_government",
+        "url": "https://www.darpa.mil/research/programs/explainable-artificial-intelligence",
+        "evidence_level": "B (Government research program; headline budget/ranking claims unsupported — retained claims are program-scope facts)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "SANS Institute - AI Survey & SOC Automation Research",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.sans.org/white-papers/sans-2024-ai-survey-ai-growing-role-cybersecurity-lessons-learned-path-forward",
+        "evidence_level": "A (Security research authority, industry survey)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "CISA - Enhanced Security Monitoring Best Practices",
+        "category": "standards_frameworks_government",
+        "url": "https://www.cisa.gov/news-events/alerts/2023/07/12/cisa-and-fbi-release-cybersecurity-advisory-enhanced-monitoring-detect-apt-activity-targeting",
+        "evidence_level": "A (Government security authority)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "MITRE Corporation - Insider Threat Research & Framework",
+        "category": "standards_frameworks_government",
+        "url": "https://insiderthreat.mitre.org/",
+        "evidence_level": "B (Research authority with 15+ years program; headline detection-rate stats were invented — retained claims are framework-scope facts)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Microsoft Security - Threat Modeling & Data Security for AI/ML",
+        "category": "big_tech_engineering_blog",
+        "url": "https://learn.microsoft.com/en-us/security/engineering/threat-modeling-aiml",
+        "evidence_level": "B (Vendor engineering guidance; incident-rate stat removed — retained claims are the documented threat taxonomy)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Apache Arrow - Columnar Analytics Performance",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://arrow.apache.org/powered_by/",
+        "evidence_level": "B (Adoption reference; cited page is a community powered-by list, not a benchmark — performance multipliers not substantiated there)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Champion-Challenger Model Pattern (MLOps Industry Standard)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.datarobot.com/blog/introducing-mlops-champion-challenger-models/",
+        "evidence_level": "B (Industry methodology, widely adopted)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Open Cybersecurity Alliance - Standards & Interoperability",
+        "category": "standards_frameworks_government",
+        "url": "https://opencybersecurityalliance.org/",
+        "evidence_level": "A (Industry standards consortium)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "MITRE Engenuity - ATT&CK Evaluations Framework",
+        "category": "standards_frameworks_government",
+        "url": "https://evals.mitre.org/",
+        "evidence_level": "A (Framework authority, rigorous methodology)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Microsoft - Concept Drift Detection & Monitoring",
+        "category": "big_tech_engineering_blog",
+        "url": "https://techcommunity.microsoft.com/blog/fasttrackforazureblog/identifying-drift-in-ml-models-best-practices-for-generating-consistent-reliable/4040531",
+        "evidence_level": "B (Vendor platform guidance + academic citation; quantified rate-of-drift claim removed)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Confluent - Machine Learning with Apache Kafka",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.confluent.io/blog/using-apache-kafka-drive-cutting-edge-machine-learning/",
+        "evidence_level": "B (Vendor best practices, production patterns)",
+        "section": "Table Format Interoperability"
+      },
+      {
+        "title": "Amazon Security Lake with Apache Iceberg",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-analytics-ocsf-iceberg/",
+        "evidence_level": "A (AWS production service, enterprise deployment)",
+        "section": "Reference Architectures & Implementation Patterns"
+      },
+      {
+        "title": "StarRocks vs ClickHouse Production Benchmarks",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "Various (Tinybird, StarRocks, Medium)",
+        "evidence_level": "B (Vendor-run benchmarks with disclosed methodology; interpret with vendor-bias caveat)",
+        "section": "Reference Architectures & Implementation Patterns"
+      },
+      {
+        "title": "MOAR Stack - Security Data Lakehouse Reference Architecture",
+        "category": "first_party_lab_measurement",
+        "url": "https://securitydataworks.com/thesis/moar",
+        "evidence_level": "B (first-party model with disclosed assumptions; relabeled from A — self-authored, not external validation)",
+        "section": "Reference Architectures & Implementation Patterns"
+      },
+      {
+        "title": "Gartner AI Maturity and Success Metrics",
+        "category": "analyst_or_industry_report",
+        "url": "Multiple Gartner reports",
+        "evidence_level": "B (Analyst prediction; headline maturity-correlation and abandonment figures not traceable to any Gartner publication)",
+        "section": "AI Governance & Agent Architectures"
+      },
+      {
+        "title": "AI Governance Maturity Gate - Prerequisites for AI Success",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "LinkedIn professional discourse",
+        "evidence_level": "B (Practitioner consensus, multiple independent sources)",
+        "section": "AI Governance & Agent Architectures"
+      },
+      {
+        "title": "RAPTOR Security Automation Framework - Production AI Patching",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "LinkedIn announcement",
+        "evidence_level": "B (Production demonstration, \"duct tape MVP\")",
+        "section": "AI Governance & Agent Architectures"
+      },
+      {
+        "title": "NANDA - Infrastructure for Internet of AI Agents",
+        "category": "standards_frameworks_government",
+        "url": "https://nanda.media.mit.edu/, https://arxiv.org/pdf/2507.14263",
+        "evidence_level": "A (MIT research, 10 years development, arXiv paper)",
+        "section": "AI Governance & Agent Architectures"
+      },
+      {
+        "title": "AI-Generated Security Parsers - Tenzir MCP Implementation",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://tenzir.com/blog/announcing-the-tenzir-mcp-server-ai-generated-ocsf-mappings",
+        "evidence_level": "B (Production demonstration, vendor implementation)",
+        "section": "AI Governance & Agent Architectures"
+      },
+      {
+        "title": "Tenzir Security Data Pipeline Platform",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://tenzir.com/product/comparisons/cribl",
+        "evidence_level": "C (Vendor self-claim on comparison page; no independent methodology disclosed)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Security Data Pipeline Market Guide 2025",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://softwareanalyst.substack.com/p/market-guide-2025-the-rise-of-security",
+        "evidence_level": "B (Industry analyst report with vendor data)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Rippling - Engineering a Cost-Effective SIEM (3-Part Series)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.rippling.com/blog/engineering-siem-part-3",
+        "evidence_level": "A (Production deployment with quantitative cost data)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Monad - Detection Engineering Guide to Cutting SIEM Costs",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.monad.com/blog/a-detection-engineers-guide-to-cutting-siem-costs",
+        "evidence_level": "A (Quantitative cost analysis with production data)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Contentsquare - Elasticsearch to ClickHouse Migration",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/contentsquare-migration-from-elasticsearch-to-clickhouse",
+        "evidence_level": "B (first-person practitioner authorship on a vendor channel — B-with-curation-caveat per the 2026-07-10 vendor-channel tier rule; ClickHouse selected and hosts the piece)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Didi - Elasticsearch to ClickHouse Log Storage Migration",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/didi-migrates-from-elasticsearch-to-clickHouse-for-a-new-generation-log-storage-system",
+        "evidence_level": "B (named practitioner authorship, vendor-hosted translation — B-with-curation-caveat per the 2026-07-10 vendor-channel tier rule)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Cloudflare - Log Analytics using ClickHouse",
+        "category": "big_tech_engineering_blog",
+        "url": "https://blog.cloudflare.com/log-analytics-using-clickhouse/",
+        "evidence_level": "B (named practitioners describing their own org's internal system on their own engineering blog)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Navan - SIEM-less Detection Engineering (Anvilogic Case Study)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.anvilogic.com/case-studies/navan",
+        "evidence_level": "C (vendor-authored case study quoting a practitioner — C per the 2026-07-10 vendor-channel tier rule; flag marketing bias)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Rivian - SIEM Cost Reduction on Databricks",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.databricks.com/blog/transforming-cybersecurity-data-intelligence",
+        "evidence_level": "C (vendor-authored post quoting a practitioner — C per the 2026-07-10 vendor-channel tier rule; flag testimonial selection bias)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "SOC Automation ROI and AI Implementation",
+        "category": "analyst_or_industry_report",
+        "url": "Multiple industry reports",
+        "evidence_level": "B (Partial industry-survey support; two headline stats unverifiable)",
+        "section": "Pipeline Detection vs Query-Based Analytics"
+      },
+      {
+        "title": "Anonymized practitioner - Security Data Platform Practitioner Validation",
+        "category": "expert_interview_or_personal_communication",
+        "url": "Personal communication (Practitioner validation)",
+        "evidence_level": "A (Practitioner validation, production security implementations)",
+        "section": "Practitioner Validation"
+      },
+      {
+        "title": "Apache Iceberg 2025 Performance Analysis",
+        "category": "open_source_project_docs_or_repo",
+        "url": "Various (ProCogia, Streamkap, AutoMQ, Starburst); primary: https://iceberg.apache.org/docs/latest/performance/",
+        "evidence_level": "B (Multiple vendor analyses with disclosed methodology; primary Iceberg docs support core claim)",
+        "section": "Remaining Work"
+      },
+      {
+        "title": "SANS AI Security Controls Framework",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.sans.org/blog/securing-ai-in-2025-a-risk-based-approach-to-ai-controls-and-governance",
+        "evidence_level": "B (Expert-consensus practitioner framework; regulatory-audit and logging-requirement claims not in source)",
+        "section": "Remaining Work"
+      },
+      {
+        "title": "Security Data Lakehouse Implementation Patterns",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "Various (Snowflake, Ryft.io, Query.ai, Dremio)",
+        "evidence_level": "B (Industry analysis and implementation guides)",
+        "section": "Remaining Work"
+      },
+      {
+        "title": "Data Catalog Wars 2025 - Polaris vs Unity vs Nessie vs Gravitino",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "Various catalog comparison articles",
+        "evidence_level": "B (Vendor analyses and community reviews)",
+        "section": "Remaining Work"
+      },
+      {
+        "title": "Row-Level Security Performance Impact Studies",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "Various database documentation and benchmarks",
+        "evidence_level": "B (Technical documentation and benchmarks)",
+        "section": "Remaining Work"
+      },
+      {
+        "title": "OCSF RLS Overhead, SDW Lab First-Party Measurement (engine-side, DuckDB)",
+        "category": "first_party_lab_measurement",
+        "url": "sdw-lab-benchmarks/ocsf-rls-overhead/results/RESULTS.md (reproduce: `python ocsf-rls-overhead/run.py`)",
+        "evidence_level": "B (single machine; latencies are medians with reported coefficient of variation over 7 trials after 2 warmups; the corpus and the answers are deterministic; engine-side overhead only)",
+        "section": "Remaining Work"
+      },
+      {
+        "title": "Streaming vs Batch Cost Analysis 2025",
+        "category": "analyst_or_industry_report",
+        "url": "Confluent 2025 Data Streaming Report (confluent.io/resources/report/2025-data-streaming-report/); supplementary vendor sources",
+        "evidence_level": "B (Primary survey data from Confluent report confirmed; several cost-ratio bullets lack primary-source backing)",
+        "section": "Remaining Work"
+      },
+      {
+        "title": "CSA/Google Cloud - The State of AI Security and Governance",
+        "category": "standards_frameworks_government",
+        "url": "https://cloudsecurityalliance.org/artifacts/the-state-of-ai-security-and-governance",
+        "evidence_level": "A (Industry survey, independent research, major vendors)",
+        "section": "AI Governance & Security Maturity (RQ12)"
+      },
+      {
+        "title": "CSA Press Release - Governance Maturity as AI Predictor",
+        "category": "standards_frameworks_government",
+        "url": "https://cloudsecurityalliance.org/press-releases/2025/12/18/csa-and-google-cloud-study-finds-governance-maturity-is-strongest-predictor-of-ai-readiness",
+        "evidence_level": "A (Industry consortium, Google Cloud partnership)",
+        "section": "AI Governance & Security Maturity (RQ12)"
+      },
+      {
+        "title": "SANS Institute - Securing AI in 2025: Risk-Based Approach",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://www.sans.org/blog/securing-ai-in-2025-a-risk-based-approach-to-ai-controls-and-governance",
+        "evidence_level": "B (re-tiered from A 2026-07-10, part-2 sweep fix 39 — a SANS blog post is practitioner-tier under the strict A=peer-reviewed/standards definition, and the same URL was catalogued at B in the \"SANS AI Security Controls Framework\" entry above; deliberate topic split retained, tiers reconciled)",
+        "section": "AI Governance & Security Maturity (RQ12)"
+      },
+      {
+        "title": "Databricks Data Intelligence for Cyber Defense - Barracuda & Palo Alto",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://hyperframeresearch.com/2025/10/07/databricks-releases-data-intelligence-for-cyber-defense/",
+        "evidence_level": "A (Production deployment, quantitative results)",
+        "section": "Security Data Lakehouse Production Evidence (RQ11)"
+      },
+      {
+        "title": "ClickHouse - GitLab Sub-Second Analytics Case Study",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/how-gitlab-uses-clickhouse-to-scale-analytical-workloads",
+        "evidence_level": "A (Production deployment, quantitative benchmarks)",
+        "section": "Security Data Lakehouse Production Evidence (RQ11)"
+      },
+      {
+        "title": "ClickHouse vs Snowflake Benchmarks and Cost Analysis",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/clickhouse-vs-snowflake-for-real-time-analytics-benchmarks-cost-analysis",
+        "evidence_level": "B (Vendor benchmark, methodology disclosed)",
+        "section": "Security Data Lakehouse Production Evidence (RQ11)"
+      },
+      {
+        "title": "Netflix ClickHouse Pipeline - 5 PB/Day Ingestion",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://clickhouse.com/blog/what-really-matters-for-performance-lessons-from-a-year-of-benchmarks",
+        "evidence_level": "B (ClickHouse benchmark retrospective reporting Netflix's described result — secondhand, not a Netflix primary source)",
+        "section": "Security Data Lakehouse Production Evidence (RQ11)"
+      },
+      {
+        "title": "Forrester - Drowning In Security Data Costs",
+        "category": "analyst_or_industry_report",
+        "url": "https://www.forrester.com/blogs/drowning-in-security-data-costs-you-get-a-data-lake/",
+        "evidence_level": "B (Analyst blog post; actual content differs from previous summary)",
+        "section": "Security Data Lakehouse Production Evidence (RQ11)"
+      },
+      {
+        "title": "Hunters Security - Why Companies Are Adopting Security Data Lakes",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.hunters.security/en/blog/why-companies-are-adopting-security-data-lakes",
+        "evidence_level": "B (Vendor analysis with industry data)",
+        "section": "Security Data Lakehouse Production Evidence (RQ11)"
+      },
+      {
+        "title": "Linux Foundation - OCSF Joins Linux Foundation",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://www.linuxfoundation.org/press/open-cybersecurity-schema-framework-ocsf-joins-the-linux-foundation-to-optimize-critical-security-data",
+        "evidence_level": "A (Linux Foundation official, consortium milestone)",
+        "section": "OCSF Schema Adoption (RQ11)"
+      },
+      {
+        "title": "Apache Gravitino - Production Adoption",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://medium.com/@office_9948/apache-gravitino-production-ready-unified-metadata-for-enterprise-data-9ba0eb38268b",
+        "evidence_level": "B (Community/vendor blog; adopter list partially confirmed via separate sources)",
+        "section": "Catalog Governance & Multi-Catalog Management (RQ10)"
+      },
+      {
+        "title": "Apache Polaris - Growing Ecosystem",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.dremio.com/blog/the-growing-apache-polaris-ecosystem-the-growing-apache-iceberg-catalog-standard/",
+        "evidence_level": "B (Vendor analysis, ecosystem overview)",
+        "section": "Catalog Governance & Multi-Catalog Management (RQ10)"
+      },
+      {
+        "title": "Google Cloud - AI Agent ROI Report",
+        "category": "big_tech_engineering_blog",
+        "url": "https://cloud.google.com/transform/roi-of-ai-how-agents-help-business",
+        "evidence_level": "A (Major vendor, survey data)",
+        "section": "Agent Automation & ROI (RQ14)"
+      },
+      {
+        "title": "AI Multiple - AI Agent Performance: Success Rates & ROI",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.pagerduty.com/resources/ai/learn/companies-expecting-agentic-ai-roi-2025/",
+        "evidence_level": "C (Vendor survey, n=1,000; self-reported ROI projections; cite bias)",
+        "section": "Agent Automation & ROI (RQ14)"
+      },
+      {
+        "title": "Obsidian Security - 2025 AI Agent Security Landscape",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.obsidiansecurity.com/blog/ai-agent-market-landscape",
+        "evidence_level": "B (Security vendor analysis; qualitative guidance, no disclosed benchmarks)",
+        "section": "Agent Automation & ROI (RQ14)"
+      },
+      {
+        "title": "Arctic Wolf Aurora Platform - Multi-Tenant Security Operations",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://arcticwolf.com/resources/press-releases/arctic-wolf-2025-security-operations-report-reveals-threat-landscape-acceleration-majority-of-security-alerts-now-occur-outside-working-hours/",
+        "evidence_level": "A (Production platform, quantitative metrics)",
+        "section": "MSSP Multi-Tenant Architecture (RQ9)"
+      },
+      {
+        "title": "DuckDB 1.0-1.4 Production Readiness & LTS",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://duckdb.org/2025/09/16/announcing-duckdb-140",
+        "evidence_level": "B (Community analysis, official release notes)",
+        "section": "DuckDB & Edge Processing (Supporting RQ7)"
+      },
+      {
+        "title": "MITRE D3FEND Framework & Ontology",
+        "category": "standards_frameworks_government",
+        "url": "https://d3fend.mitre.org/",
+        "evidence_level": "A (framework authority, formal ontology — OWL 2 DL)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "MITRE ATLAS (Adversarial Threat Landscape for AI Systems)",
+        "category": "standards_frameworks_government",
+        "url": "https://atlas.mitre.org/",
+        "evidence_level": "A (framework authority)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "Secure Controls Framework (SCF)",
+        "category": "standards_frameworks_government",
+        "url": "https://www.securecontrolsframework.com/",
+        "evidence_level": "C (framework; independent validation advised)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "NIST Cybersecurity Framework (CSF 2.0)",
+        "category": "standards_frameworks_government",
+        "url": "https://www.nist.gov/cyberframework",
+        "evidence_level": "A (official government standard)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "CISA / ICS-CERT Industrial Control Systems Guidance",
+        "category": "standards_frameworks_government",
+        "url": "https://www.cisa.gov/topics/industrial-control-systems",
+        "evidence_level": "B (government guidance)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "CoSAI — Coalition for Secure AI (OASIS)",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/cosai-oasis/ws2-defenders",
+        "evidence_level": "B (industry consortium)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "MITRE Cyber Analytics Repository (CAR) — Analytics Mapped to ATT&CK",
+        "category": "standards_frameworks_government",
+        "url": "https://car.mitre.org/",
+        "evidence_level": "B (official MITRE practitioner/operational catalogue; not peer-reviewed research)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "Atomic Red Team — Per-Technique Atomic Tests Mapped to ATT&CK",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/redcanaryco/atomic-red-team",
+        "evidence_level": "B (operational open-source testing library; MIT License; not peer-reviewed)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "MITRE D3FEND 1.0 (Cybersecurity Countermeasures Ontology)",
+        "category": "standards_frameworks_government",
+        "url": "https://d3fend.mitre.org/",
+        "evidence_level": "A (framework authority + formal ontology — OWL 2 DL; the 1.0 milestone is the official MITRE production release framing)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "Basic Formal Ontology (BFO) — ISO/IEC 21838-2:2021",
+        "category": "standards_frameworks_government",
+        "url": "https://www.iso.org/standard/74572.html",
+        "evidence_level": "A (official ISO/IEC international standard)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "Common Core Ontologies (CCO) — BFO-aligned mid-level ontology",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/CommonCoreOntology/CommonCoreOntologies",
+        "evidence_level": "B (widely-adopted community/defense ontology suite with an arXiv descriptive paper; not itself an ISO/IEC standard — proposed as a candidate standard mid-level ontology, so A is not yet warranted)",
+        "section": "Frameworks & Standards"
+      },
+      {
+        "title": "Zeek Network Security Monitor — Documentation",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://docs.zeek.org/",
+        "evidence_level": "B (official open-source documentation)",
+        "section": "Technical Documentation"
+      },
+      {
+        "title": "Microsoft Power Query M — Language Reference",
+        "category": "big_tech_engineering_blog",
+        "url": "https://learn.microsoft.com/en-us/powerquery-m/",
+        "evidence_level": "B (official vendor documentation)",
+        "section": "Technical Documentation"
+      },
+      {
+        "title": "Apache DataFusion Ballista",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://datafusion.apache.org/ballista/",
+        "evidence_level": "B (Apache open-source project; limited production case studies)",
+        "section": "Emerging Projects"
+      },
+      {
+        "title": "Lakekeeper — Apache Iceberg REST Catalog (Rust)",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://docs.lakekeeper.io/",
+        "evidence_level": "B (open-source project; limited production case studies)",
+        "section": "Emerging Projects"
+      },
+      {
+        "title": "Architecting an Apache Iceberg Lakehouse — Alex Merced",
+        "category": "book",
+        "url": "https://www.manning.com/books/architecting-an-apache-iceberg-lakehouse",
+        "evidence_level": "B (practitioner book; Manning MEAP)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "The 9 Ways to Move Data Kafka -> Iceberg — Tom Scott (Streambased)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://blog.streambased.io/p/the-9-ways-to-move-data-kafka-iceberg",
+        "evidence_level": "B (practitioner analysis)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "Okta's Multi-Engine Data Stack — Julien Hurault",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://juhache.substack.com/",
+        "evidence_level": "A (Tier-1 production validation, named deployment with metrics)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "SOC Modernization & AI — Anton Chuvakin",
+        "category": "big_tech_engineering_blog",
+        "url": "https://cloud.withgoogle.com/cloudsecurity/podcast/",
+        "evidence_level": "B (industry thought-leadership, published)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "Building AI for Cyber Defenders + Claude-Assisted Intrusion Report — Anthropic",
+        "category": "big_tech_engineering_blog",
+        "url": "https://www.anthropic.com/research",
+        "evidence_level": "B (vendor research, named publications)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "Business AI Is the Automation of Intelligence Tasks / ITEM Framework — Daniel Miessler",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://danielmiessler.com/blog/weve-been-thinking-about-ai-all-wrong",
+        "evidence_level": "C (practitioner blog; anti-hype perspective)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "How We Hijacked a Claude Skill with an Invisible Sentence — Josh Devon",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://blog.sondera.ai/p/claude-skill-hijack-invisible-sentence",
+        "evidence_level": "B (independent security research, published)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "AI Engineering — Chip Huyen",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/chiphuyen/aie-book",
+        "evidence_level": "B (practitioner book)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "Ryan Stillions — The DML (Detection Maturity Level) Model",
+        "category": "practitioner_talk_or_personal_blog",
+        "url": "https://ryanstillions.blogspot.com/2014/04/the-dml-model_21.html",
+        "evidence_level": "C (practitioner blog-published conceptual model; widely cited in the detection-engineering community but not peer-reviewed or a standards document — cite as a framing model, not as an empirical result)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "SCYTHE — Purple Team Exercise Framework (PTEF)",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/scythe-io/purple-team-exercise-framework",
+        "evidence_level": "C (vendor-published operational practice framework — SCYTHE is an adversary-emulation vendor, so flag the author-incentive; the *methodology* is community-adopted and credible, but it is not peer-reviewed or a neutral standard)",
+        "section": "Practitioner Publications"
+      },
+      {
+        "title": "Kingpin: How One Hacker Took Over the Billion-Dollar Cybercrime Underground",
+        "category": "book",
+        "url": "(print) ISBN 978-0307588685, Crown",
+        "evidence_level": "B (non-fiction, investigative)",
+        "section": "Books"
+      },
+      {
+        "title": "Apache Iceberg v3 — Table Format Specification",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://iceberg.apache.org/spec/",
+        "evidence_level": "A (official standard)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Apache Iceberg v4 — Spec Effort (Milestone #58)",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/apache/iceberg/milestone/58",
+        "evidence_level": "A (official project tracker)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "DuckLake v1.0: The Lakehouse Format Built on SQL",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://duckdb.org/2026/04/13/ducklake-10",
+        "evidence_level": "B (project/vendor authoritative)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Introducing Variant — Open Standard for Semi-Structured Data",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.databricks.com/blog/introducing-variant-new-open-standard-semi-structured-data-apache-parquettm-delta-lake",
+        "evidence_level": "B (vendor authoritative; co-authored by Iceberg co-creator Ryan Blue)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "OCSF Schema v1.8.0",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/ocsf/ocsf-schema/releases",
+        "evidence_level": "A (official schema standard)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Splunk Platform 10.4 + Cisco Data Fabric — Federated Search",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.splunk.com/en_us/blog/platform/splunk-cloud-platform-10-4-and-splunk-enterprise-10-4.html",
+        "evidence_level": "B (vendor product announcement)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Amazon S3 Tables — Native Apache Iceberg in Object Storage",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://aws.amazon.com/about-aws/whats-new/2024/12/amazon-s3-tables-apache-iceberg-tables-analytics-workloads/",
+        "evidence_level": "B (vendor GA announcement)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Apache Iceberg 1.11.0 — Release",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://opensource.googleblog.com/2026/05/announcing-apache-iceberg-1110.html",
+        "evidence_level": "A (official ASF release)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "OCSF Achieves ITU Support — Toward an International Standard",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://aws.amazon.com/blogs/opensource/ocsf-achieves-itu-support-powering-ai-ready-security-operations/",
+        "evidence_level": "A (official standards-body milestone — ITU is the UN's telecommunication standards body; report is from the AWS Open Source team, an OCSF founding contributor)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "MITRE D3FEND for OT — Operational Technology Extension (v1.3.0)",
+        "category": "standards_frameworks_government",
+        "url": "https://www.mitre.org/news-insights/news-release/mitre-extends-d3fend-ontology-operational-technology-cybersecurity",
+        "evidence_level": "A (official MITRE release; formal OWL 2 DL ontology extension)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Cohasset Associates — Amazon S3 Object Lock Compliance Assessment (SEC 17a-4(f) / 18a-6(e), FINRA 4511(c), CFTC 1.31(c))",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/whitepapers/compliance/Amazon-S3-Compliance-Assessment-2025.pdf",
+        "evidence_level": "A (independent third-party compliance attestation against named SEC/FINRA/CFTC rules)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "pySigma-pipeline-ocsf — Sigma → OCSF Detection-as-Code Pipeline",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://github.com/SigmaHQ/pySigma-pipeline-ocsf",
+        "evidence_level": "B (official SigmaHQ open-source project; pre-release)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Declined (no primary) — EITT Academy \"90-second triage / 340% ROI / 8 FTE saved\"",
+        "category": "no_primary_retired_or_declined",
+        "url": null,
+        "evidence_level": null,
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Cribl \"Finality\" Customer Case Study — In-Stream Windows-Event Reduction",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://cribl.io/customers/finality/",
+        "evidence_level": "C (vendor-published, single-customer self-reported)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Fortinet + NVIDIA — FortiGate-VM on the BlueField-3 DPU (Isolated Infrastructure)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.fortinet.com/corporate/about-us/newsroom/press-releases/2025/fortinet-delivers-isolated-infrastructure-acceleration-for-the-ai-factory-with-nvidia",
+        "evidence_level": "B (vendor-official joint announcement; no independent benchmark)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Databricks — Cross-Engine ABAC via the Iceberg REST Catalog Scan APIs (Beta)",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://www.databricks.com/blog/introducing-cross-engine-abac",
+        "evidence_level": "C (vendor blog; includes a vendor self-claim)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Apache Polaris — Top-Level Project Graduation + Credential Vending",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://polaris.apache.org/blog/2026/02/19/apache-polaris-graduates-to-top-level-project/",
+        "evidence_level": "A for the graduation fact (ASF-official); B for the credential-vending feature docs",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "KPMG — AI Quarterly Pulse Survey, Q3 2025",
+        "category": "analyst_or_industry_report",
+        "url": "https://kpmg.com/us/en/media/news/q3-ai-pulse.html",
+        "evidence_level": "C (vendor/marketing survey; small executive panel; flag bias)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "DuckLake — Data Inlining for Streaming",
+        "category": "open_source_project_docs_or_repo",
+        "url": "https://ducklake.select/2026/04/02/data-inlining-in-ducklake/",
+        "evidence_level": "C (project's own benchmark; not independent)",
+        "section": "2026 Format & Standards Developments (added June 2026)"
+      },
+      {
+        "title": "Panther - How Cockroach Labs Ingests 5x More Logs and Cut SecOps Costs Over $200K",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://panther.com/case-studies/how-cockroach-labs-ingests-5x-more-logs-and-cut-secops-costs-over-200k-with-panther",
+        "evidence_level": "C (vendor-authored case study quoting the customer — C per the 2026-07-10 vendor-channel tier rule; the 5×/$200K figures are Panther's own framing, the 365-day-retention quote is Brennick's directly)",
+        "section": "Vendor case studies — Gemini DR-1 intake (2026-07-10, verified at primary locally)"
+      },
+      {
+        "title": "layline.io - The Hidden Costs of Switching from Batch to Streaming",
+        "category": "vendor_engineering_blog_or_product_docs",
+        "url": "https://layline.io/resources/blog/2026-04-27-the-hidden-costs-of-switching-from-batch-to-streaming",
+        "evidence_level": "C (vendor-channel authorship; treat the figures as directional practitioner observation, not measured data — no methodology disclosed)",
+        "section": "Vendor case studies — Gemini DR-1 intake (2026-07-10, verified at primary locally)"
+      }
+    ]
+  },
+  "C_note": "These are the entries a database search could not have returned: they are not indexed in OpenAlex or DBLP because they are not journal or conference literature. Under PRISMA 2020 they belong in the \"identification of studies via other methods\" arm of the flow diagram, not in the database arm.",
+  "corpus_academic_entries": [
+    {
+      "title": "Samza - Stateful Scalable Stream Processing at LinkedIn (VLDB 2017)",
+      "url": "https://www.vldb.org/pvldb/vol10/p1634-noghabi.pdf",
+      "date": "2017 (PVLDB Vol. 10, No. 12, pp. 1634-1645)",
+      "evidence_level": "A (Peer-reviewed VLDB paper with LinkedIn production data)"
+    },
+    {
+      "title": "Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe? (Kester et al., SIGMOD 2017)",
+      "url": "https://stratos.seas.harvard.edu/publications/access-path-selection-main-memory-optimized-data-systems-should-i-scan-or",
+      "date": "2017 (ACM SIGMOD International Conference on Management of Data)",
+      "evidence_level": "A (peer-reviewed, SIGMOD)"
+    },
+    {
+      "title": "Analyzing and Comparing Lakehouse Storage Systems (LHBench, CIDR 2023)",
+      "url": "https://www.cidrdb.org/cidr2023/papers/p92-jain.pdf",
+      "date": "2023 (Conference on Innovative Data Systems Research — CIDR 2023)",
+      "evidence_level": "A (peer-reviewed, CIDR)"
+    },
+    {
+      "title": "Evaluating Goal Drift in Language Model Agents (arXiv 2505.02709)",
+      "url": "https://arxiv.org/abs/2505.02709",
+      "date": "May 2025 (arXiv:2505.02709v1, 5 May 2025)",
+      "evidence_level": "B (technical report; empirical, not a peer-reviewed venue)"
+    },
+    {
+      "title": "Adaptive Monitoring and Real-World Evaluation of Agentic AI Systems (arXiv 2509.00115)",
+      "url": "https://arxiv.org/abs/2509.00115",
+      "date": "August 2025 (arXiv:2509.00115v3, 13 Sep 2025)",
+      "evidence_level": "B (independent technical report; simulations plus experiments, not a peer-reviewed venue)"
+    },
+    {
+      "title": "Governing Evolving Memory in LLM Agents — SSGM Framework (arXiv 2603.11768)",
+      "url": "https://arxiv.org/abs/2603.11768",
+      "date": "May 2026 (arXiv:2603.11768v2, 19 May 2026)",
+      "evidence_level": "C (conceptual governance framework, no empirical evaluation; post-cutoff publication — verify before relying on it)"
+    },
+    {
+      "title": "OpenSec: Measuring Incident Response Agent Calibration Under Adversarial Evidence (arXiv 2601.21083)",
+      "url": "https://arxiv.org/abs/2601.21083",
+      "date": "2026 (arXiv:2601.21083; v1 2026-01-28, v3 2026-02-06)",
+      "evidence_level": "B (Independent-authored arXiv preprint with open code + datasets; execution-based benchmark, not peer-reviewed or a standard)"
+    },
+    {
+      "title": "Hyperscan: A Fast Multi-pattern Regex Matcher for Modern CPUs",
+      "url": "https://www.usenix.org/conference/nsdi19/presentation/wang-xiang",
+      "date": "2019",
+      "evidence_level": "A (Peer-reviewed, USENIX NSDI '19)"
+    },
+    {
+      "title": "DBSP: Automatic Incremental View Maintenance for Rich Query Languages",
+      "url": "https://www.vldb.org/pvldb/vol16/p1601-budiu.pdf",
+      "date": "2023 (PVLDB 16(7): 1601-1614; VLDB 2023, Vancouver, August 2023)",
+      "evidence_level": "A (Peer-reviewed, PVLDB)"
+    },
+    {
+      "title": "Xor Filters: Faster and Smaller than Bloom Filters",
+      "url": "https://arxiv.org/abs/1912.08258",
+      "date": "TBD",
+      "evidence_level": "A (Academic research - pending verification)"
+    },
+    {
+      "title": "Matryoshka — Semantic-Aware Parsing for Security Logs",
+      "url": "https://people.eecs.berkeley.edu/~julien.piet/matryoshka.pdf",
+      "date": "2025 (arXiv 2506.17512; entry formerly said 2024)",
+      "evidence_level": "A (peer-reviewed academic research)"
+    },
+    {
+      "title": "Mining Temporal Attack Patterns from Cyberthreat Intelligence Reports",
+      "url": "https://arxiv.org/abs/2401.01883",
+      "date": "2024",
+      "evidence_level": "A (academic research, preprint)"
+    },
+    {
+      "title": "F3: The Open-Source Data File Format for the Future",
+      "url": "https://db.cs.cmu.edu/papers/2025/zeng-sigmod2025.pdf",
+      "date": "September 2025 (SIGMOD)",
+      "evidence_level": "A (peer-reviewed, SIGMOD 2025)"
+    },
+    {
+      "title": "The Base-Rate Fallacy and the Difficulty of Intrusion Detection",
+      "url": "https://dl.acm.org/doi/10.1145/357830.357849",
+      "date": "2000 (ACM TISSEC 3(3):186-205; earlier version ACM CCS 1999)",
+      "evidence_level": "A (Peer-reviewed journal, ACM Transactions on Information and System Security)"
+    },
+    {
+      "title": "Outside the Closed World: On Using Machine Learning for Network Intrusion Detection",
+      "url": "https://dl.acm.org/doi/10.1109/SP.2010.25",
+      "date": "2010 (IEEE Symposium on Security and Privacy / Oakland, pp.305-316)",
+      "evidence_level": "A (Peer-reviewed, IEEE S&P; 2020 IEEE S&P Test-of-Time Award)"
+    },
+    {
+      "title": "Ursa: A Lakehouse-Native Data Streaming Engine for Kafka (StreamNative, PVLDB 2025)",
+      "url": "https://www.vldb.org/pvldb/vol18/p5184-guo.pdf",
+      "date": "2025 (PVLDB Vol. 18(12):5184-5196; VLDB 2025 Industry Track — Best Industry Paper)",
+      "evidence_level": "A (Peer-reviewed, VLDB 2025 Best Industry Paper; also carries production-quantitative field measurements)"
+    },
+    {
+      "title": "Using the NANDA Index Architecture in Practice: An Enterprise Perspective",
+      "url": "https://arxiv.org/abs/2508.03101",
+      "date": "August 5, 2025",
+      "evidence_level": "B (preprint, not peer-reviewed; MIT-affiliated)"
+    },
+    {
+      "title": "The FastLanes File Format",
+      "url": "https://www.vldb.org/pvldb/vol18/p4629-afroozeh.pdf",
+      "date": "2025 (VLDB 2025, London)",
+      "evidence_level": "A (peer-reviewed, PVLDB)"
+    },
+    {
+      "title": "Yang et al. - True Attacks, Attack Attempts, or Benign Triggers? An Empirical Measurement of Network Alerts in a Security Operations Center",
+      "url": "https://www.usenix.org/conference/usenixsecurity24/presentation/yang-limin",
+      "date": "2024 (USENIX Security '24)",
+      "evidence_level": "A (USENIX Security, top-tier peer-reviewed; production SOC data)"
+    },
+    {
+      "title": "LogLite: Lightweight Plug-and-Play Streaming Log Compression",
+      "url": "https://www.vldb.org/pvldb/vol18/p3757-yang.pdf",
+      "date": "September 2025, PVLDB 18(11):3757-3770",
+      "evidence_level": "A (PVLDB, peer-reviewed)"
+    },
+    {
+      "title": "PBC: High-Ratio Compression for Machine-Generated Data",
+      "url": "https://arxiv.org/pdf/2311.13947",
+      "date": "2024 (ACM SIGMOD / PACMMOD)",
+      "evidence_level": "A (SIGMOD/PACMMOD, top-tier peer-reviewed)"
+    },
+    {
+      "title": "Pebbles: Leveraging Sketches for Processing Voluminous, High Velocity Data Streams",
+      "url": "https://par.nsf.gov/servlets/purl/10284573",
+      "date": "August 2021, IEEE Transactions on Parallel and Distributed Systems 32(8):2005-2020, DOI 10.1109/TPDS.2021.3055265 (year resolved at the dblp structured record, 2026-07-10)",
+      "evidence_level": "A (IEEE TPDS, peer-reviewed; the DR run's \"Sketch-Aware Streaming Telemetry, NSF 2023\" title/label was wrong — corrected at intake)"
+    },
+    {
+      "title": "Blitzcrank: Fast Semantic Compression for In-Memory Online Transaction Processing",
+      "url": "https://www.vldb.org/pvldb/volumes/17/paper/Blitzcrank%3A%20Fast%20Semantic%20Compression%20for%20In-Memory%20Online%20Transaction%20Processing",
+      "date": "2024, PVLDB 17(10):2528-2540",
+      "evidence_level": "A (PVLDB, peer-reviewed)"
+    },
+    {
+      "title": "Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores",
+      "url": "https://www.vldb.org/pvldb/vol13/p3411-armbrust.pdf",
+      "date": "2020, PVLDB 13(12):3411-3424",
+      "evidence_level": "A (PVLDB, peer-reviewed; industry-authored)"
+    }
+  ],
+  "corpus_academic_note": "24 corpus entries are peer-reviewed and in principle database-indexable, yet none was returned by this search. Two (Axelsson 2000; Sommer & Paxson 2010) fall outside the 2018 date filter. Most of the rest are database-systems papers (PVLDB, CIDR, SIGMOD: Delta Lake, LHBench, FastLanes, F3, LogLite, Blitzcrank, DBSP, Ursa) whose titles and abstracts carry the storage/engine half of the query but not the security half, so the conjunctive query could not reach them. That asymmetry is itself a finding about the search strategy, and it is reported rather than repaired."
+}

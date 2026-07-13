@@ -1,0 +1,362 @@
+[
+  {
+    "id": "https://openalex.org/W2994134668",
+    "doi": "https://doi.org/10.1109/aitc.2019.8920960",
+    "title": "Performance Evaluation of Intrusion Detection Streaming Transactions Using Apache Kafka and Spark Streaming",
+    "year": 2019,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "Abstract reports processing-time and fault-tolerance results of the Kafka+Spark Streaming pipeline itself ('fault tolerance can be provided by the multiple brokers of Kafka...multiple partitions...increase the processing time'), not a classifier's accuracy."
+  },
+  {
+    "id": "https://openalex.org/W2951105308",
+    "doi": "https://doi.org/10.1109/comst.2019.2922584",
+    "title": "Intrusion Detection Systems: A Cross-Domain Overview",
+    "year": 2019,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Abstract states 'we briefly describe domains...We also survey standards...we provide the technical details and an evaluation of the most recent work' -- a survey with no architecture-level evidence of its own."
+  },
+  {
+    "id": "https://openalex.org/W3209501825",
+    "doi": "https://doi.org/10.3390/electronics10212633",
+    "title": "Internet of Drones Intrusion Detection Using Deep Learning",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "An RNN-based intrusion-detection model evaluated on FANET datasets; 'big data analytics' and stream processing are mentioned only as plumbing for the deep-learning model."
+  },
+  {
+    "id": "https://openalex.org/W2946704785",
+    "doi": "https://doi.org/10.1002/cpe.5344",
+    "title": "Toward a monitoring and threat detection system based on stream processing as a virtual network function for big data",
+    "year": 2019,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "CATRACA is evaluated as a deployed Apache Spark-based Virtualized Network Function with real-time visualization and concept-drift handling, a substantive evaluation of the streaming architecture itself, not just a bare classifier."
+  },
+  {
+    "id": "https://openalex.org/W3152701910",
+    "doi": "https://doi.org/10.1007/s41870-021-00659-1",
+    "title": "Intrusion detection system for data warehouse with second level authentication",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "Abstract is absent; decided on title, which indicates an access-authentication mechanism protecting a data warehouse rather than evidence about the warehouse's data architecture."
+  },
+  {
+    "id": "https://openalex.org/W4200471225",
+    "doi": "https://doi.org/10.1109/icds53782.2021.9626721",
+    "title": "Distributed intrusion detection system in the cloud environment based on Apache Kafka and Apache Spark",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Compares Decision Tree/Random Forest/etc. classifiers by accuracy and F1-score on CIDDS-001; the abstract states data is 'streamed with Kafka component to Spark component for preprocessing' -- Kafka/Spark are plumbing, not evaluated."
+  },
+  {
+    "id": "https://openalex.org/W2791514401",
+    "doi": "https://doi.org/10.1109/mobisecserv.2018.8311440",
+    "title": "An evaluation of a virtual network function for real-time threat detection using stream processing",
+    "year": 2018,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "Reports elasticity, scaling and throughput ('analyzing more than five million messages per second') and sensor-migration latency for the VNF stream-processing architecture itself."
+  },
+  {
+    "id": "https://openalex.org/W4388937006",
+    "doi": "https://doi.org/10.1109/icccnt56998.2023.10307506",
+    "title": "Big Data Enabled Intrusion Detection with Honeypot Intelligence System on Apache Flink (BDE-IDHIS)",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "A honeypot-redirection detection technique evaluated by 'experimental result analysis' of the technique; Apache Flink is used to 'manage huge data settings' as plumbing, no data-architecture measurement reported."
+  },
+  {
+    "id": "https://openalex.org/W2887492447",
+    "doi": "https://doi.org/10.1109/icc.2018.8422622",
+    "title": "An Adaptive Real-Time Architecture for Zero-Day Threat Detection",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Reported results are classification accuracy (>90%) and the detection/false-positive trade-off for online supervised/unsupervised detection schemes; stream processing is invoked to enable throughput but no throughput figure is itself reported as a result."
+  },
+  {
+    "id": "https://openalex.org/W3157973856",
+    "doi": "https://doi.org/10.1109/snpdwinter52325.2021.00019",
+    "title": "Machine learning based network intrusion detection for data streaming IoT applications",
+    "year": 2021,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "The system is 'developed, deployed and tested with the two leading stream processing frameworks (Apache Flink and Apache Spark Streaming)' with 'Results show considerable throughputs...especially for Apache Flink' -- an explicit framework-to-framework throughput comparison, not incidental plumbing."
+  },
+  {
+    "id": "https://openalex.org/W4405019201",
+    "doi": "https://doi.org/10.60087/jaigs.v3i1.263",
+    "title": "Integrating Next-Generation SIEM with Data Lakes and AI: Advancing Threat Detection and Response",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "I3",
+    "reason": "Abstract describes a proposed Data Lake-centered SIEM architecture in generic terms ('the system will be able to identify anomalies...improve on false positives') with no reported measurement, benchmark, or deployment evidence."
+  },
+  {
+    "id": "https://openalex.org/W4392788220",
+    "doi": "https://doi.org/10.1002/cpe.8034",
+    "title": "AE-Integrated: Real-time network intrusion detection with Apache Kafka and autoencoder",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "An autoencoder deep-learning model evaluated on CICIDS-2017 (accuracy 99.54%, recall, AUC); Apache Kafka and the Slack API are used only to deliver real-time alerts."
+  },
+  {
+    "id": "https://openalex.org/W4406141489",
+    "doi": "https://doi.org/10.1007/s11416-024-00545-x",
+    "title": "Big data with machine learning enabled intrusion detection with honeypot intelligence system on apache Flink (BDML-IDHIS)",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract is absent; title matches the ML-plus-honeypot detection-system-on-Flink pattern of its companion paper (record 7 in this batch, BDE-IDHIS), an ML detection paper."
+  },
+  {
+    "id": "https://openalex.org/W4403556648",
+    "doi": "https://doi.org/10.58496/mjbd/2024/012",
+    "title": "A Framework for Automated Big Data Analytics in Cybersecurity Threat Detection",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Combines Kafka ingestion and Flink stream processing with LSTM/Autoencoder ML models and SOAR/XDR response; the abstract reports no architecture-specific measurement, only that the framework 'offers robust anomaly detection capabilities.'"
+  },
+  {
+    "id": "https://openalex.org/W4414802890",
+    "doi": "https://doi.org/10.1016/j.jnca.2025.104326",
+    "title": "Next-generation AI for advanced threat detection and security enhancement in DNS over HTTPS",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "Abstract is absent; title indicates an AI threat-detection method for DNS-over-HTTPS, not a data architecture subject."
+  },
+  {
+    "id": "https://openalex.org/W4377134008",
+    "doi": "https://doi.org/10.1007/s10207-023-00703-0",
+    "title": "An autoML network traffic analyzer for cyber threat detection",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract is absent; title is an AutoML network-traffic analyzer, an ML model paper by subject."
+  },
+  {
+    "id": "https://openalex.org/W2916796522",
+    "doi": "https://doi.org/10.1109/glocom.2018.8647489",
+    "title": "Real-Time Intrusion Detection in Network Traffic Using Adaptive and Auto-Scaling Stream Processor",
+    "year": 2018,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "The 'Wisdom' adaptive auto-scaling CEP stream processor itself is evaluated ('processing over 2.5 million events per second', 'consumes significantly fewer system resources than the monolithic deployment'), a stream-processing architecture measurement, not only detection accuracy."
+  },
+  {
+    "id": "https://openalex.org/W4403496496",
+    "doi": "https://doi.org/10.53022/oarjet.2024.7.2.0057",
+    "title": "AI-powered threat detection in surveillance systems: A real-time data processing framework",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Abstract states 'This review proposes a comprehensive real-time data processing framework' -- a review with no architecture-level evaluation of its own."
+  },
+  {
+    "id": "https://openalex.org/W4385360560",
+    "doi": "https://doi.org/10.3390/app13158587",
+    "title": "Leveraging Explainable Artificial Intelligence in Real-Time Cyberattack Identification: Intrusion Detection System Approach",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "A Random Forest classifier with SHAP explanations evaluated on UNSW-NB15; Apache Kafka and Spark are described only as the real-time delivery pipeline for the classifier."
+  },
+  {
+    "id": "https://openalex.org/W3195857193",
+    "doi": "https://doi.org/10.1002/cpe.6561",
+    "title": "A fast and accurate threat detection and prevention architecture using stream processing",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Reported results are classification/anomaly-detection accuracy (>95%) and the attack-detection/false-positive trade-off; the stream+batch combination itself is not measured."
+  },
+  {
+    "id": "https://openalex.org/W4313374082",
+    "doi": "https://doi.org/10.1007/978-3-031-11199-0_11",
+    "title": "Cybersecurity in Healthcare",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract is absent; a generic 'Cybersecurity in Healthcare' book chapter title gives no indication of a data-architecture subject."
+  },
+  {
+    "id": "https://openalex.org/W3040353697",
+    "doi": "https://doi.org/10.1007/978-3-030-42500-5_6",
+    "title": "Intrusion Detection in Industrial Networks via Data Streaming",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "I3",
+    "reason": "Abstract is absent; the title gives no indication of a reported measurement, benchmark, or deployment for the data-streaming architecture."
+  },
+  {
+    "id": "https://openalex.org/W2901398756",
+    "doi": "https://doi.org/10.1007/978-981-13-2285-3_43",
+    "title": "Hybrid Technique Based on DBSCAN for Selection of Improved Features for Intrusion Detection System",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract is absent; title is a DBSCAN-based feature-selection technique for an intrusion detection system, an ML feature-engineering paper."
+  },
+  {
+    "id": "https://openalex.org/W4383480960",
+    "doi": "https://doi.org/10.1007/s00330-023-09860-1",
+    "title": "Cybersecurity considerations for radiology departments involved with artificial intelligence",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "A review of AI cybersecurity considerations for radiology departments; no security-telemetry data architecture is its subject."
+  },
+  {
+    "id": "https://openalex.org/W4411066886",
+    "doi": "https://doi.org/10.52710/cfs.678",
+    "title": "Retail Fraud Detection via Log Analysis and Stream Processing",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Reports the F1-score (0.92) of clustering/graph-based fraud-detection algorithms 'outperforming traditional rule-based systems by 34%'; Apache Flink and Kafka are the streaming plumbing, not evaluated."
+  },
+  {
+    "id": "https://openalex.org/W2955559202",
+    "doi": "https://doi.org/10.5753/sbrc_estendido.2019.7789",
+    "title": "A Monitoring and Threat Detection System Using Stream Processing as a Virtual Function for Big Data",
+    "year": 2019,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "Reports a sensor-placement heuristic and a greedy VNF-allocation algorithm for the stream-processing architecture -- a substantive design evaluation of the architecture, not a bare classifier accuracy result."
+  },
+  {
+    "id": "https://openalex.org/W3210306618",
+    "doi": "https://doi.org/10.1007/978-981-16-6597-4_6",
+    "title": "Intrusion Detection Systems Fundamentals",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Abstract is absent; the title 'Intrusion Detection Systems Fundamentals' indicates an introductory/survey book chapter."
+  },
+  {
+    "id": "https://openalex.org/W4409727905",
+    "doi": "https://doi.org/10.4018/979-8-3373-2827-0.ch005",
+    "title": "Cybersecurity Issues on E-Healthcare Cloud Data Warehouse System",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "A federated-learning-plus-blockchain framework for DoS/DDoS detection; the MQTT broker is IoT plumbing gathering data for the ML model, not an evaluated data architecture."
+  },
+  {
+    "id": "https://openalex.org/W4389617183",
+    "doi": "https://doi.org/10.3934/math.2024076",
+    "title": "Intrusion detection in the IoT data streams using concept drift localization",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Proposes concept-drift detectors (EMNCD) and iForest/XGBoost-based anomaly detection evaluated on the IIoTset dataset; an ML algorithm paper with no data-architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W3205621366",
+    "doi": "https://doi.org/10.1007/978-3-030-70296-0_83",
+    "title": "A Grid Partition-Based Local Outlier Factor for Data Stream Processing",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract is absent; a general Local Outlier Factor algorithm for data-stream processing, with no security application indicated by the title."
+  },
+  {
+    "id": "https://openalex.org/W4213164607",
+    "doi": "https://doi.org/10.1145/3503823.3503889",
+    "title": "A Novel Cybersecurity Architecture for IoV Communication",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "A secure data-transfer/storage architecture for vehicle telemetry (Kafka, MongoDB) with cybersecurity tools (Snort, Keycloak, Cloudflare) added on top; the data itself is vehicle telemetry, not security telemetry."
+  },
+  {
+    "id": "https://openalex.org/W3023647830",
+    "doi": "https://doi.org/10.1145/3388142.3388160",
+    "title": "A Genetic-Based Incremental Local Outlier Factor Algorithm for Efficient Data Stream Processing",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "A general incremental outlier-detection algorithm; network intrusion detection is named only as one of several motivating applications ('detecting fraud transactions...network intrusion detection'), not the evaluated subject."
+  },
+  {
+    "id": "https://openalex.org/W4413918019",
+    "doi": "https://doi.org/10.1109/icsc65596.2025.11139927",
+    "title": "AI-Powered Threat Detection and Response: Leveraging Machine Learning for Real-Time Intrusion Detection Systems (IDS) Using Network Traffic Data",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Primary contribution is a Random Forest+LSTM hybrid classifier (98.7% F1-score, 99.2% AUC-ROC) on CICIDS2017/UNSW-NB15/KDD Cup 1999; Apache Kafka and TensorRT are the deployment pipeline, not the object of evaluation."
+  },
+  {
+    "id": "https://openalex.org/W4226372432",
+    "doi": "https://doi.org/10.2196/36711",
+    "title": "Linking Biomedical Data Warehouse Records With the National Mortality Database in France: Large-scale Matching Algorithm",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "A biomedical data-warehouse record-matching algorithm against a national mortality database; no security application."
+  },
+  {
+    "id": "https://openalex.org/W4416166216",
+    "doi": "https://doi.org/10.63282/3050-9246.ijetcsit-v5i3p111",
+    "title": "Secure Data Warehousing in ERP Environments: An AI-Based Multimodal Threat Detection Framework",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "An attention-based multimodal deep-learning framework with 'adaptive anomaly scoring' for ERP threat detection; 'data warehousing' names the domain but the evaluated object is the ML framework, not the warehouse architecture."
+  },
+  {
+    "id": "https://openalex.org/W4390916097",
+    "doi": "https://doi.org/10.52436/1.jutif.2023.4.4.649",
+    "title": "DATA WAREHOUSE MODELLING INFORMATION SECURITY LOG MANAGEMENT IN BUILDING A SECURITY OPERATION CENTER IN CENTRAL GOVERNMENT AGENCIES WITH KIMBALL METHOD",
+    "year": 2023,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "Designs a Kimball-method star/snowflake data-warehouse schema explicitly for SOC security-log management and tests it with the Pentaho tool -- a substantive data-architecture design evaluation for security data."
+  },
+  {
+    "id": "https://openalex.org/W7134231547",
+    "doi": "https://doi.org/10.15662/ijfist.2022.0505004",
+    "title": "Transforming Cybersecurity with AI-driven Dashboards: A Cloud-Native Implementation Framework for Real-Time Threat Detection and Automated Response",
+    "year": 2022,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "A four-layer architecture (cloud-native logging aggregation, stream processing, ML classification, automated orchestration) evaluated by simulation with reported operational metrics (63% MTTR reduction, 71% MTTD improvement, 48.8% false-positive reduction), an architecture-level evaluation."
+  },
+  {
+    "id": "https://openalex.org/W2894853047",
+    "doi": null,
+    "title": "Real-time Intrusion Detection using Multidimensional Sequence-to-Sequence Machine Learning and Adaptive Stream Processing",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "This thesis reports the same 'Wisdom' adaptive auto-scaling stream processor achieving 2.5 million events/sec already captured in record W2916796522 (included in this batch), which appears to be the conference-paper version of the same underlying work."
+  },
+  {
+    "id": "https://openalex.org/W4408100496",
+    "doi": "https://doi.org/10.1109/ants63515.2024.10898580",
+    "title": "AURA: Adaptive Unified Real-Time Analytics for IoT Intrusion Detection",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "XGBoost/RandomForest/ExtraTrees classifiers evaluated for accuracy and adversarial robustness on CICIoV24/CICEVSE2024; Kafka pub-sub and PyFlink are the ingestion plumbing."
+  },
+  {
+    "id": "https://openalex.org/W3195307067",
+    "doi": "https://doi.org/10.1108/ijwis-03-2021-0023",
+    "title": "A study on time models in graph databases for security log analysis",
+    "year": 2021,
+    "decision": "include",
+    "criterion": "I2,I3",
+    "reason": "Compares three different timestamp-storage models in a graph database for security-log analysis, reporting query-performance differences between the models -- a substantive design evaluation of the data architecture."
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "id": "https://openalex.org/W4405907930",
+    "doi": "https://doi.org/10.18034/apjee.v9i2.781",
+    "title": "Data Analytics for Enhanced Business Intelligence in Energy-Saving Distributed Systems",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Subject is BI/energy-management analytics for distributed energy systems; cybersecurity appears only as a policy-recommendation aside, not the paper's subject."
+  },
+  {
+    "id": "https://openalex.org/W4211181791",
+    "doi": "https://doi.org/10.1186/s12889-022-12578-2",
+    "title": "Public health surveillance in the U.S. Department of Veterans Affairs: evaluation of the Praedico surveillance system",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Evaluates a public-health syndromic surveillance system, not a security-telemetry data architecture."
+  },
+  {
+    "id": "https://openalex.org/W4408017739",
+    "doi": "https://doi.org/10.1109/icmsci62561.2025.10893946",
+    "title": "Enhancing Snowflake Security: A Novel Framework Integrating HGWCS and CANN for Improved Threat Detection and Response in Cloud Environments",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is a hybrid metaheuristic-optimized CANN classifier for threat detection; Snowflake is the deployment target, not an evaluated data architecture."
+  },
+  {
+    "id": "https://openalex.org/W4406261800",
+    "doi": "https://doi.org/10.1109/icicnis64247.2024.10823179",
+    "title": "Adaptive Real-Time Malware Detection for IoT Traffic Streams: A Comparative Study of Concept Drift Detection Techniques",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Comparative study of concept-drift detection techniques for a malware classifier on IoT traffic; no data-architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W4207031870",
+    "doi": "https://doi.org/10.2196/preprints.36711",
+    "title": "Large-scale matching algorithm for linking biomedical data warehouse records with the national mortality database in France (Preprint)",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Biomedical data-warehouse record-linkage algorithm with no security application."
+  },
+  {
+    "id": "https://openalex.org/W7131428834",
+    "doi": "https://doi.org/10.1109/bts-i2c67944.2025.11399364",
+    "title": "HDLF-CUMS: A Context-Aware Hybrid Deep Learning Framework for Proactive Threat Detection in University Digital Ecosystems",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "\"Novel, context-aware hybrid deep learning framework\" for threat detection is a classifier paper, not a data-architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W2804989710",
+    "doi": "https://doi.org/10.1007/978-3-319-91476-3_43",
+    "title": "Similarity-Based Accuracy Measures for Approximate Query Results",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract absent; title is a query-processing accuracy-metrics paper with no indication of a security application."
+  },
+  {
+    "id": "https://openalex.org/W3132188073",
+    "doi": "https://doi.org/10.1109/ijcnn52387.2021.9534280",
+    "title": "Efficient Two-Stream Network for Violence Detection Using Separable Convolutional LSTM",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Video violence-detection deep-learning model for surveillance footage; not a data-architecture paper."
+  },
+  {
+    "id": "https://openalex.org/W4407181495",
+    "doi": "https://doi.org/10.18535/ijsrm/v11i06.ec3",
+    "title": "Scalable Data Engineering Approaches For Ai-Driven Industrial Iot Applications",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract covers IIoT/AI data engineering generally (predictive insights, real-time monitoring) with no security application stated."
+  },
+  {
+    "id": "https://openalex.org/W4404913397",
+    "doi": "https://doi.org/10.4018/979-8-3693-5728-6.ch015",
+    "title": "Real-Time Data Analytics and Decision Making in Cyber-Physical Systems",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "General CPS real-time-analytics chapter (manufacturing, robotics); no security telemetry subject."
+  },
+  {
+    "id": "https://openalex.org/W7104026981",
+    "doi": "https://doi.org/10.11578/dc.20251103.2",
+    "title": "Cybersecurity Operations Research, Experimentation, Integration, And Innovation (coreii) Platform",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "I3",
+    "reason": "Abstract only describes the platform's components (Kubernetes, PostgreSQL, Llama-based RAG data lake) with no measurement, benchmark, or evaluation reported."
+  },
+  {
+    "id": "https://openalex.org/W7120845122",
+    "doi": null,
+    "title": "Distributed Healthcare Privacy Protection in Emerging Cybersecurity Use of Sensitive Data",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "IoT/cloud data-warehouse privacy protection for healthcare records, not security telemetry/SIEM data architecture."
+  },
+  {
+    "id": "https://openalex.org/W4417447753",
+    "doi": "https://doi.org/10.3389/fdata.2025.1688091",
+    "title": "Transparent and trustworthy CyberSecurity: an XAI-integrated big data framework for phishing attack detection",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "XAI-integrated ML framework for phishing detection; big data is the deployment context, not the evaluated subject."
+  },
+  {
+    "id": "https://openalex.org/W4404980055",
+    "doi": "https://doi.org/10.3389/frai.2024.1476422",
+    "title": "Revolutionizing smart grid security: a holistic cyber defence strategy",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "\"Holistic cyber defence strategy\" narrative for smart grids with no architecture-level measurement or evaluation of its own."
+  },
+  {
+    "id": "https://openalex.org/W4316506901",
+    "doi": "https://doi.org/10.1201/9781003339175",
+    "title": "Quantum Computing and Other Transformative Technologies",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Broad survey book spanning quantum computing, data lakes, edge/fog, IoE, zero trust; no architecture-level evidence of its own."
+  },
+  {
+    "id": "https://openalex.org/W4306154446",
+    "doi": "https://doi.org/10.1007/978-981-19-3035-5_64",
+    "title": "Modelling Auto-scalable Big Data Enabled Log Analytic Framework",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract absent; title (\"Big Data Enabled Log Analytic Framework\") gives no indication the log analytics is applied to security data."
+  },
+  {
+    "id": "https://openalex.org/W4401880044",
+    "doi": "https://doi.org/10.1109/compsac61105.2024.00355",
+    "title": "Practical Performance of a Distributed Processing Framework for Machine-Learning-based NIDS",
+    "year": 2024,
+    "decision": "include",
+    "criterion": "I3",
+    "reason": "Measures throughput/latency and identifies bottlenecks of the distributed stream-processing framework itself, using five NIDS classifiers as workload, not the classifiers' detection accuracy."
+  },
+  {
+    "id": "https://openalex.org/W4414353721",
+    "doi": "https://doi.org/10.32996/jcsts.2025.7.9.49",
+    "title": "Ensuring Exactly-Once Semantics in Kafka Streaming Systems",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "General Kafka exactly-once-semantics examination; cybersecurity is named only as one of several industries benefiting, not the paper's subject."
+  },
+  {
+    "id": "https://openalex.org/W7123352936",
+    "doi": "https://doi.org/10.1109/isai-nlp66160.2025.11320545",
+    "title": "AI-Driven Zero-Trust Cloud Security: Automated Threat Response Leveraging Multi-Cloud Data Lakes and LLMS",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is AI/LLM-driven automated threat detection and response orchestration; multi-cloud data lakes are the plumbing feeding the analytics pipeline, not the evaluated subject."
+  },
+  {
+    "id": "https://openalex.org/W7134275794",
+    "doi": "https://doi.org/10.3390/make8030067",
+    "title": "Drift-Aware Online Ensemble Learning for Real-Time Cybersecurity in Internet of Medical Things Networks",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Online ensemble classifier (Leveraging Bagging + Hoeffding Tree) for IoMT intrusion detection; no data-architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7130403258",
+    "doi": "https://doi.org/10.1109/iconstem65670.2025.11374416",
+    "title": "AI-Driven Secure and Scalable Data Architecture with Multi-Domain MDM and Cybersecurity for Real-Time Fintech Decision-Making",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is AI-based data-integration/fraud-detection methods; Apache Kafka is used as the streaming tool with no reported measurement of the streaming architecture itself."
+  },
+  {
+    "id": "https://openalex.org/W2800153762",
+    "doi": "https://doi.org/10.1109/tpds.2018.2829759",
+    "title": "Penguin: Efficient Query-Based Framework for Replaying Large Scale Historical Data",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "\"Security trading\" in the abstract refers to stock/financial securities replay for stock-market users, not cybersecurity telemetry; no security application."
+  },
+  {
+    "id": "https://openalex.org/W7154574028",
+    "doi": "https://doi.org/10.1109/icvadv67766.2026.11470491",
+    "title": "Toporiskformer-GNN: A Topological Riskaware Graph Transformer for Cybersecurity Anomaly Detection and Risk Assessment",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Hybrid GNN/LSTM/attention deep-learning classifier for threat detection in Oracle-based data warehouses; contribution is model accuracy/explainability, not warehouse architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W2883261670",
+    "doi": "https://doi.org/10.1145/3158348",
+    "title": "Corporate Security is a Big Data Problem",
+    "year": 2018,
+    "decision": "include",
+    "criterion": "I2",
+    "reason": "Presents a substantive high-level architecture for transforming security data lakes into security intelligence via a 'security cockpit,' addressing volume/velocity/variety challenges of enterprise security data directly."
+  },
+  {
+    "id": "https://openalex.org/W4407687892",
+    "doi": "https://doi.org/10.2139/ssrn.5140153",
+    "title": "Synergistic Innovations: Cloud Infrastructure Automation, AI-Driven Cybersecurity, and Advanced IPTV Technologies",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Abstract absent; title spans three unrelated technology areas (cloud automation, AI cybersecurity, IPTV) typical of a broad, unfocused survey with no architecture-level content of its own."
+  },
+  {
+    "id": "https://openalex.org/W4293214593",
+    "doi": "https://doi.org/10.54941/ahfe1002703",
+    "title": "Digital Twins for the Intelligent Detection of Malicious Activities in Urban Spaces",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "S4AllCities digital-twin/edge-IoT security-monitoring project; subject is digital-twin system design, not storage/query/ingest architecture."
+  },
+  {
+    "id": "https://openalex.org/W4401920610",
+    "doi": "https://doi.org/10.30574/wjaets.2024.12.2.0351",
+    "title": "Design and deployment of zero-trust SMPC algorithm to enhance financial cybersecurity in small and medium scale supply chains in the United States",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is a zero-trust SMPC/ML algorithm; Apache Kafka is used for real-time data processing but not itself evaluated."
+  },
+  {
+    "id": "https://openalex.org/W4381326018",
+    "doi": "https://doi.org/10.1007/978-3-031-34671-2_26",
+    "title": "SigML: Supervised Log Anomaly with Fully Homomorphic Encryption",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract absent; title indicates a supervised log-anomaly classifier under homomorphic encryption, a detection-model contribution rather than an architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7161030284",
+    "doi": "https://doi.org/10.1007/s10791-026-10129-6",
+    "title": "CyberFedEdgeAI framework for real time cyberattack detection in heterogeneous IoT systems using federated edge intelligence",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Federated deep-learning classifier (FedSecureNet) evaluated by accuracy on TON_IoT/N-BaIoT; Kafka/Spark/HDFS are named only as ingestion/storage plumbing, not evaluated."
+  },
+  {
+    "id": "https://openalex.org/W7131748669",
+    "doi": null,
+    "title": "Implementación de Security Data Lake con Splunk. Creación de reglas de correlación ymodelos para la detección avanzada de amenazas",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E5",
+    "reason": "Title and abstract are in Spanish."
+  },
+  {
+    "id": "https://openalex.org/W2993362366",
+    "doi": "https://doi.org/10.21608/ijicis.2019.62592",
+    "title": "SCLUSTREAM: AN EFFICIENT ALGORITHM FOR TRACKING CLUSTERS OVER SLIDING WINDOW IN BIG DATA STREAMING",
+    "year": 2019,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Generic data-stream clustering algorithm (sliding-window enhancement of CluStream) with no security application in the abstract."
+  },
+  {
+    "id": "https://openalex.org/W4247903362",
+    "doi": "https://doi.org/10.21608/ijicis.2020.18625.1011",
+    "title": "SCLUSTREAM: AN EFFICIENT ALGORITHM FOR TRACKING CLUSTERS OVER SLIDING WINDOW IN BIG DATA STREAMING",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Same generic data-stream clustering algorithm as the 2019 version of this title, with no security application in the abstract."
+  },
+  {
+    "id": "https://openalex.org/W3046503924",
+    "doi": "https://doi.org/10.1109/rams48030.2020.9153689",
+    "title": "Real-Time Management of RAM Data Using OT and IT Infrastructure in Oil & Gas Operations",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "PRiME-IO data-lake deployment is centered on safety-critical-system reliability and OT/IT convergence; cybersecurity is named only as one of several challenges discussed, not the subject."
+  },
+  {
+    "id": "https://openalex.org/W4220737862",
+    "doi": "https://doi.org/10.1201/9781003155799-3",
+    "title": "OMNI at the Edge",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "NERSC's OMNI data warehouse is for HPC operational monitoring; cybersecurity is noted only as a consideration for secure data transmission, not the paper's subject."
+  },
+  {
+    "id": "https://openalex.org/W4410639734",
+    "doi": "https://doi.org/10.1109/ieeedata.2025.3572866",
+    "title": "Descriptor: Firewall Attack Detections and Extractions (FADE)",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "An IEEE Data Descriptor introducing a firewall-attack dataset, not a substantive architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W4301935558",
+    "doi": "https://doi.org/10.1109/aero53065.2022.9843235",
+    "title": "The Mars 2020 Ground Data System Architecture",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "NASA Mars rover mission ground data system; no security application."
+  },
+  {
+    "id": "https://openalex.org/W4297906419",
+    "doi": "https://doi.org/10.47459/jssi.2022.12.12",
+    "title": "Assessment of it Systems Architecture in the Context of Big Data Processing for Smart Cities Development",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Multi-criteria evaluation of IT/big-data architecture for smart cities; cybersecurity is named as only one of several evaluation criteria, not the subject."
+  },
+  {
+    "id": "https://openalex.org/W4414154137",
+    "doi": "https://doi.org/10.3390/computation13090221",
+    "title": "Adaptive Neural Network System for Detecting Unauthorised Intrusions Based on Real-Time Traffic Analysis",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Variational-autoencoder/Kalman-filter anomaly classifier evaluated on precision/recall/F1/latency; Kafka/Spark/Flink/SIEM integration is named only as future practical application."
+  },
+  {
+    "id": "https://openalex.org/W4410461649",
+    "doi": "https://doi.org/10.36910/6775-2524-0560-2025-58-05",
+    "title": "Optimising Machine Learning Integration in Real-Time Text Analytics Platforms: Technical Approaches and Performance Criteria",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "General real-time text-analytics platform for media monitoring, cybersecurity, finance, and healthcare alike; cybersecurity is one of four named domains, not the subject."
+  },
+  {
+    "id": "https://openalex.org/W4296160062",
+    "doi": "https://doi.org/10.1007/978-981-19-2828-4_33",
+    "title": "A Comprehensive Performance Evaluation of Novel Big Data Log Analytic Framework",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract absent; title (\"Big Data Log Analytic Framework\") gives no indication the log analytics is applied to security data."
+  }
+]

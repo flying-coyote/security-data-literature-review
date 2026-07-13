@@ -1,0 +1,362 @@
+[
+  {
+    "id": 120,
+    "doi": "https://doi.org/10.24138/jcomss-2025-0113",
+    "title": "HyFlaNK: A Hybrid Federated Learning Framework for Real-time Network Threat Detection",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "CNN/LSTM federated-learning classifier for threat detection; Kafka is used only to simulate live data ingestion, not evaluated as the architecture under study."
+  },
+  {
+    "id": 121,
+    "doi": "https://doi.org/10.1109/i-smac58438.2023.10290190",
+    "title": "Ingestion of Google Cloud Platform Data using Dataflow",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Data-engineering paper on GCP Dataflow ingestion pipelines with no security application mentioned."
+  },
+  {
+    "id": 122,
+    "doi": "https://doi.org/10.1109/iscs69371.2025.11386278",
+    "title": "Deep Learning for Web Application Security: A Comprehensive Survey on Intrusion Detection Systems",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "\"Comprehensive Survey\" of deep-learning IDS approaches (CNN/RNN/LSTM/Transformers/GANs), no architecture-level content of its own."
+  },
+  {
+    "id": 123,
+    "doi": "https://doi.org/10.1201/9781003774679-27",
+    "title": "A Cloud-Native Framework for Real-Time Topology Analysis and Security Monitoring in SDN Environments",
+    "year": 2026,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "Proposes and measures a streaming/storage architecture (Kafka + OrientDB) for network security monitoring, reporting 95% topology-discovery accuracy, sub-second anomaly detection, and 40% incident-response improvement at 10,000-node scale."
+  },
+  {
+    "id": 124,
+    "doi": "https://doi.org/10.1109/aibdf67964.2025.11440698",
+    "title": "A Data Middle Platform-Based Power Grid Data Security Monitoring System",
+    "year": 2025,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "Data mid-end architecture using the MaxCompute data warehouse for security monitoring, with experimental results and comparative analysis against mainstream SIEM/cloud-native tools."
+  },
+  {
+    "id": 125,
+    "doi": "https://doi.org/10.32996/jcsts.2025.7.8.4",
+    "title": "Zero-Trust Data Warehousing for Cross-Bank AI Collaboration: A Technical Review",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Self-described \"Technical Review\" of the field; no architecture-level content, measurement, or deployment of its own."
+  },
+  {
+    "id": 126,
+    "doi": "https://doi.org/10.61298/pnspsc.2026.3.287",
+    "title": "Multisectoral data lakehouse for climate-resilient agriculture and sustainable food securityin Nigeria",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "\"Security\" here means food security in an agricultural data lakehouse, not cybersecurity/security telemetry."
+  },
+  {
+    "id": 127,
+    "doi": "https://doi.org/10.5281/zenodo.21133619",
+    "title": "Cybersecurity Datalake – Neo4J Knowledge Graph Dataset",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "Zenodo dataset description (bronze/silver Parquet layers for CVE/threat data), not a substantive paper with reported evidence about the architecture."
+  },
+  {
+    "id": 128,
+    "doi": "https://doi.org/10.5281/zenodo.21133620",
+    "title": "Cybersecurity Datalake – Neo4J Knowledge Graph Dataset",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 127 (a different DOI/version of the same Zenodo dataset)."
+  },
+  {
+    "id": 129,
+    "doi": "https://doi.org/10.2139/ssrn.5224919",
+    "title": "Next-Generation Ai for Advanced Threat Detection and Security Enhancement in Dns Over Https",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract absent; title is about AI threat detection over DNS-over-HTTPS, not a data architecture."
+  },
+  {
+    "id": 130,
+    "doi": "https://doi.org/10.1109/aixmm62960.2025.00014",
+    "title": "AI-Driven Causal Inference for Cross-Cloud Threat Detection Using Anonymized CloudTrail Logs",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Autoencoder/LSTM anomaly-detection model reporting \"96% detection accuracy\" on CloudTrail logs; the logs are the model's input, not an evaluated architecture."
+  },
+  {
+    "id": 131,
+    "doi": null,
+    "title": "Designing a security operations center (SOC) in the university infrastructure using Big Data and Advanced Analytics",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "I3",
+    "reason": "Proposes a Kafka/Elastic-Stack conceptual model for a SOC but the abstract states the work is \"project character\" aimed at a future practical foundation, with no measurement or design evaluation reported."
+  },
+  {
+    "id": 132,
+    "doi": "https://doi.org/10.12694/scpe.v26i2.3962",
+    "title": "Research and Implementation of Campus Network Intrusion Detection System based on Data Mining and Image Processing",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Data-mining/image-processing intrusion detection system compared against \"traditional methods\"; the data warehouse is one listed hardware component, not the evaluated subject."
+  },
+  {
+    "id": 133,
+    "doi": "https://doi.org/10.1109/icin69025.2026.11481838",
+    "title": "Hybrid Stream Processing for Runtime Protection in Remote and Infrastructure-Supported Driving",
+    "year": 2026,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "Proposes and measures a distributed data-stream-processing architecture (extending GALOIS) for a cybersecurity management framework, reporting an online detection operator that \"outperformed the classical offline detection by 584.3% in latency time.\""
+  },
+  {
+    "id": 134,
+    "doi": "https://doi.org/10.5281/zenodo.19435851",
+    "title": "Behavioral and Psychometric Feature Matrix for Insider Threat Detection (Derived from CERT r4.2)",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "An engineered feature-matrix dataset for insider-threat ML models, not a data architecture paper."
+  },
+  {
+    "id": 135,
+    "doi": "https://doi.org/10.5281/zenodo.19435850",
+    "title": "Behavioral and Psychometric Feature Matrix for Insider Threat Detection (Derived from CERT r4.2)",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 134 (a different DOI/version of the same Zenodo dataset)."
+  },
+  {
+    "id": 136,
+    "doi": "https://doi.org/10.1080/00295450.2021.2011574",
+    "title": "Foundations for a Fission Battery Digital Twin",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Nuclear-reactor digital-twin engineering paper; no security telemetry or data architecture subject."
+  },
+  {
+    "id": 137,
+    "doi": "https://doi.org/10.3390/app14104047",
+    "title": "Empirical Study of Fully Homomorphic Encryption Using Microsoft SEAL",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Empirical study of FHE library performance; \"data lakes\" is mentioned only as motivating context, not the evaluated subject."
+  },
+  {
+    "id": 138,
+    "doi": "https://doi.org/10.62225/2583049x.2023.3.6.5418",
+    "title": "Designing an AI-Predictive Maintenance Model for E-Commerce Systems Using Machine Learning and Cloud Analytics",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Predictive-maintenance ML review for e-commerce systems; no security application."
+  },
+  {
+    "id": 139,
+    "doi": "https://doi.org/10.1007/s13198-026-03229-5",
+    "title": "Research on network intrusion detection and protection system based on blockchain technology and network data security",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract absent; title describes a blockchain-based intrusion detection/protection system, not a data architecture subject."
+  },
+  {
+    "id": 140,
+    "doi": "https://doi.org/10.1201/9781003606659-156",
+    "title": "Deploying cloud computing and data warehousing to optimize supply chain management and retail analytics",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Cloud/data-warehousing paper for supply chain and retail analytics with no security application."
+  },
+  {
+    "id": 141,
+    "doi": null,
+    "title": "A synchrophasor stream processing pipeline architecture for near-real-time applications",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Stream-processing architecture for power-grid synchrophasor (PMU) data engineering; abstract has no security application."
+  },
+  {
+    "id": 142,
+    "doi": "https://doi.org/10.3390/computers15030200",
+    "title": "Performance Comparison of Python-Based Complex Event Processing Engines for IoT Intrusion Detection: Faust Versus Streamz",
+    "year": 2026,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "\"The first systematic comparison\" of two CEP engines (Faust vs. Streamz) as a stream-processing architecture choice \"under realistic IoT security workloads.\""
+  },
+  {
+    "id": 143,
+    "doi": "https://doi.org/10.1109/iciccs67901.2026.11502843",
+    "title": "Secure and Efficient Public-Key-Based Deduplication with Homomorphic Key Encryption for Cloud Data Warehouse",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "A homomorphic-encryption deduplication scheme for confidentiality; the data warehouse is the deployment context, not the evaluated data architecture."
+  },
+  {
+    "id": 144,
+    "doi": "https://doi.org/10.63278/jicrcr.vi.3722",
+    "title": "Real-Time Nlp Pipelines For Proactive Threat Detection In High-Velocity Data Streams",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Distributed machine-learning NLP pipeline for threat detection on text streams; the contribution is the detection model, not an evaluation of the stream architecture."
+  },
+  {
+    "id": 145,
+    "doi": "https://doi.org/10.5281/zenodo.19074179",
+    "title": "Real-Time Nlp Pipelines For Proactive Threat Detection In High-Velocity Data Streams",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 144 (a different DOI/version of the same work)."
+  },
+  {
+    "id": 146,
+    "doi": "https://doi.org/10.5281/zenodo.19074180",
+    "title": "Real-Time Nlp Pipelines For Proactive Threat Detection In High-Velocity Data Streams",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 144 (another DOI/version of the same work)."
+  },
+  {
+    "id": 147,
+    "doi": "https://doi.org/10.1109/access.2025.3622511",
+    "title": "Integrating Large Language Models and AI Into Blockchain: A Framework for Intelligent Smart Contracts and Fraud Detection",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "LLM+blockchain framework for smart contracts and fraud detection; not a data architecture for security telemetry."
+  },
+  {
+    "id": 148,
+    "doi": "https://doi.org/10.1109/icimtech63123.2024.10780866",
+    "title": "Revolutionizing Industries Through Data Mining and Data Warehousing Techniques Across Various Business Areas",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Self-described \"meta-analysis\" consolidating prior research on data mining/warehousing across many industries (cybersecurity is one of several listed sectors); no architecture-level content of its own."
+  },
+  {
+    "id": 149,
+    "doi": "https://doi.org/10.4018/979-8-3373-1717-5.ch004",
+    "title": "Distributed Cybersecurity Preemptiveness on Industrial IoT Network Infrastructures",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Blockchain-federated-learning anomaly-detection system for DDoS/e-healthcare IoT; the data warehouse is mentioned as deployment context, not the evaluated architecture."
+  },
+  {
+    "id": 150,
+    "doi": "https://doi.org/10.15407/pp2022.03-04.403",
+    "title": "Development of decision support system using OLAP-technologies for information security monitoring systems",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "I3",
+    "reason": "An OLAP/data-warehouse architectural model for security monitoring \"has been proposed,\" but the abstract reports no measurement, benchmark, or deployment evidence for it."
+  },
+  {
+    "id": 151,
+    "doi": "https://doi.org/10.1109/escience.2019.00028",
+    "title": "SPARCS: Stream-Processing Architecture Applied in Real-Time Cyber-Physical Security",
+    "year": 2019,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "\"A complete, end-to-end, fault tolerant, bandwidth and latency optimized architecture\" for collection/transport/storage/processing of security data, presented as a practical hierarchical system design."
+  },
+  {
+    "id": 152,
+    "doi": "https://doi.org/10.21203/rs.3.rs-6775484/v1",
+    "title": "Real-Time Analytics and Processing Techniques for Streaming Big Data in Healthcare and Smart Environments",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract absent; title covers healthcare and smart-environment streaming analytics with no security application."
+  },
+  {
+    "id": 153,
+    "doi": "https://doi.org/10.23919/fruct67853.2025.11239212",
+    "title": "Multitenant Cybersecurity Operations Center Designed as an Open Cloud Service with Machine Learning Elements",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "\"Synthesises\" findings from a keyword search that retained \"thirteen selected case studies\" of Elastic Stack/OpenSearch SOC deployments; a systematic review with no architecture-level evidence of its own."
+  },
+  {
+    "id": 154,
+    "doi": "https://doi.org/10.1051/epjconf/202429501032",
+    "title": "General purpose data streaming platform for log analysis, anomaly detection and security protection",
+    "year": 2024,
+    "decision": "include",
+    "criterion": "I2/I3",
+    "reason": "Describes the production monitoring/streaming infrastructure reengineering at the INFN-CNAF WLCG Tier-1 data centre for log analysis, anomaly detection, and security protection."
+  },
+  {
+    "id": 155,
+    "doi": null,
+    "title": "A Nonparametric Adaptive EWMA Control Chart for Binary Monitoring of Multiple Stream Processes",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Statistical process control (EWMA chart) with \"applications from manufacturing to cybersecurity\" cited only generically; not a data architecture for security telemetry."
+  },
+  {
+    "id": 156,
+    "doi": "https://doi.org/10.48550/arxiv.2604.12095",
+    "title": "A Nonparametric Adaptive EWMA Control Chart for Binary Monitoring of Multiple Stream Processes",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 155 (arXiv preprint version of the same work)."
+  },
+  {
+    "id": 157,
+    "doi": "https://doi.org/10.1109/icoseit67010.2025.11290834",
+    "title": "Intrusion Detection System based on Machine Learning for Detecting Real-Time and Real-World DDoS Attacks from Heterogeneous Tools",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Random Forest classifier evaluated on Zeek connection logs for DDoS detection; Zeek supplies the labeled data, the architecture is not itself evaluated."
+  },
+  {
+    "id": 158,
+    "doi": "https://doi.org/10.1145/3674399.3674419",
+    "title": "The Application of a Novel Domestic Stream Processing Engine Based on Dataflow Network in the CDN Domain",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Proposes a \"domestic\" streaming engine for CDN log analysis motivated by supply-chain/sovereignty \"security risks associated with foreign big data engines,\" not by security-telemetry detection."
+  },
+  {
+    "id": 159,
+    "doi": "https://doi.org/10.21227/ytzc-9g83",
+    "title": "\"Honeypot Cyber Intrusion Dataset For Cybersecurity Research\"",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "A honeypot network-traffic dataset description; no data architecture is evaluated."
+  }
+]

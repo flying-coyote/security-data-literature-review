@@ -1,0 +1,317 @@
+[
+  {
+    "id": "360",
+    "doi": "https://doi.org/10.1109/ICNSS.2011.6059953",
+    "title": "A misuse-based network Intrusion Detection System using Temporal Logic and stream processing",
+    "year": 2011,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2011, before the 2018-01-01 cutoff (\"A misuse-based network Intrusion Detection System using Temporal Logic and stream processing\")."
+  },
+  {
+    "id": "361",
+    "doi": "https://doi.org/10.1016/J.COMCOM.2007.10.010",
+    "title": "Processing of massive audit data streams for real-time anomaly intrusion detection",
+    "year": 2008,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2008, before the 2018-01-01 cutoff (\"Processing of massive audit data streams for real-time anomaly intrusion detection\")."
+  },
+  {
+    "id": "362",
+    "doi": "https://doi.org/10.1117/12.816443",
+    "title": "Design of data warehouse in teaching state based on OLAP and data mining",
+    "year": 2009,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2009, before the 2018-01-01 cutoff (\"Design of data warehouse in teaching state based on OLAP and data mining\")."
+  },
+  {
+    "id": "363",
+    "doi": "https://doi.org/10.1007/978-0-387-48533-1_8",
+    "title": "Security in Data Warehouses and OLAP Systems",
+    "year": 2008,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2008, before the 2018-01-01 cutoff (\"Security in Data Warehouses and OLAP Systems\")."
+  },
+  {
+    "id": "364",
+    "doi": "https://doi.org/10.1117/12.660005",
+    "title": "The design and application of data warehouse during modern enterprises environment",
+    "year": 2006,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2006, before the 2018-01-01 cutoff (\"The design and application of data warehouse during modern enterprises environment\")."
+  },
+  {
+    "id": "365",
+    "doi": "https://doi.org/10.1007/S10586-025-05809-9",
+    "title": "Performance optimization in cloud data warehouse based on blockchain and data security using AC-AKDES approach",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "No abstract; title-only decision. \"Performance optimization in cloud data warehouse based on blockchain and data security\" is general cloud-warehouse security/performance work, not an architecture applied to security telemetry (SIEM/detection/log analysis/security ops data)."
+  },
+  {
+    "id": "366",
+    "doi": "https://doi.org/10.1093/GPBJNL/QZAF010",
+    "title": "The Updated Genome Warehouse: Enhancing Data Value, Security, and Usability to Address Data Expansion",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "No abstract; title-only decision. \"The Updated Genome Warehouse\" is a bioinformatics genomic-data repository paper — no security-operations subject matter."
+  },
+  {
+    "id": "367",
+    "doi": "https://doi.org/10.1007/978-1-4614-8265-9_333",
+    "title": "Data Warehouse Security",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "No abstract; title-only decision. \"Data Warehouse Security\" is generic data-warehouse access-control/security territory, not architecture for security telemetry (SIEM/detection/log analysis)."
+  },
+  {
+    "id": "368",
+    "doi": "https://doi.org/10.1109/BHI.2016.7455821",
+    "title": "Data security and privacy management in healthcare applications and clinical data warehouse environment",
+    "year": 2016,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2016, before the 2018-01-01 cutoff (\"Data security and privacy management in healthcare applications and clinical data warehouse environment\")."
+  },
+  {
+    "id": "369",
+    "doi": "https://doi.org/10.1145/2602087.2602098",
+    "title": "Integration of external data sources with cyber security data warehouse",
+    "year": 2014,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2014, before the 2018-01-01 cutoff (\"Integration of external data sources with cyber security data warehouse\")."
+  },
+  {
+    "id": "370",
+    "doi": "https://doi.org/10.1109/TRUSTCOM.2011.33",
+    "title": "Balancing Security and Performance for Enhancing Data Privacy in Data Warehouses",
+    "year": 2011,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2011, before the 2018-01-01 cutoff (\"Balancing Security and Performance for Enhancing Data Privacy in Data Warehouses\")."
+  },
+  {
+    "id": "371",
+    "doi": null,
+    "title": "Outsourcing Your Data Warehouse and Business Intelligence Activities; Is Your Data Safe?",
+    "year": 2010,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2010, before the 2018-01-01 cutoff (\"Outsourcing Your Data Warehouse and Business Intelligence Activities; Is Your Data Safe?\")."
+  },
+  {
+    "id": "372",
+    "doi": "https://doi.org/10.1007/978-0-387-39940-9_333",
+    "title": "Data Warehouse Security",
+    "year": 2009,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2009, before the 2018-01-01 cutoff (\"Data Warehouse Security\")."
+  },
+  {
+    "id": "373",
+    "doi": "https://doi.org/10.1201/9781439833032.CH182",
+    "title": "Security and Privacy for Data Warehouses",
+    "year": 2007,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2007, before the 2018-01-01 cutoff (\"Security and Privacy for Data Warehouses\")."
+  },
+  {
+    "id": "374",
+    "doi": "https://doi.org/10.1109/ARES.2006.110",
+    "title": "Representing Security and Audit Rules for Data Warehouses at the Logical Level by Using the Common Warehouse Metamodel",
+    "year": 2006,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2006, before the 2018-01-01 cutoff (\"Representing Security and Audit Rules for Data Warehouses at the Logical Level by Using the Common Warehouse Metamodel\")."
+  },
+  {
+    "id": "375",
+    "doi": null,
+    "title": "General Considerations on Data Warehouse Security",
+    "year": 2004,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2004, before the 2018-01-01 cutoff (\"General Considerations on Data Warehouse Security\")."
+  },
+  {
+    "id": "376",
+    "doi": null,
+    "title": "View security as the basis for data warehouse security",
+    "year": 2000,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2000, before the 2018-01-01 cutoff (\"View security as the basis for data warehouse security\")."
+  },
+  {
+    "id": "377",
+    "doi": "https://doi.org/10.1007/978-3-030-32258-8_16",
+    "title": "Data Warehouse Design for Security Applications Using Distributed Ontology-Based Knowledge Representation",
+    "year": 2019,
+    "decision": "exclude",
+    "criterion": "I2",
+    "reason": "No abstract; title-only decision. \"Data Warehouse Design for Security Applications Using Distributed Ontology-Based Knowledge Representation\" is an ontology/knowledge-representation DW design paper, not evidence about a telemetry/log-analytics data architecture."
+  },
+  {
+    "id": "378",
+    "doi": "https://doi.org/10.1109/CIST.2016.7804961",
+    "title": "Dynamic management of data warehouse security levels based on user profiles",
+    "year": 2016,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2016, before the 2018-01-01 cutoff (\"Dynamic management of data warehouse security levels based on user profiles\")."
+  },
+  {
+    "id": "379",
+    "doi": "https://doi.org/10.1109/NSYSS.2016.7400708",
+    "title": "Privacy and security problems of national health data warehouse: a convenient solution for developing countries",
+    "year": 2016,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2016, before the 2018-01-01 cutoff (\"Privacy and security problems of national health data warehouse: a convenient solution for developing countries\")."
+  },
+  {
+    "id": "380",
+    "doi": "https://doi.org/10.1109/ICIS.2015.7166672",
+    "title": "Adaptive security for Cloud data warehouse as a service",
+    "year": 2015,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2015, before the 2018-01-01 cutoff (\"Adaptive security for Cloud data warehouse as a service\")."
+  },
+  {
+    "id": "381",
+    "doi": null,
+    "title": "Security Issues in Data Warehouse",
+    "year": 2015,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2015, before the 2018-01-01 cutoff (\"Security Issues in Data Warehouse\")."
+  },
+  {
+    "id": "382",
+    "doi": "https://doi.org/10.3166/ISI.19.5.75-96",
+    "title": "A survey of data warehouse security",
+    "year": 2014,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2014, before the 2018-01-01 cutoff (\"A survey of data warehouse security\")."
+  },
+  {
+    "id": "383",
+    "doi": "https://doi.org/10.1007/978-3-642-32287-7_18",
+    "title": "Verification of Security Coherence in Data Warehouse Designs",
+    "year": 2012,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2012, before the 2018-01-01 cutoff (\"Verification of Security Coherence in Data Warehouse Designs\")."
+  },
+  {
+    "id": "384",
+    "doi": "https://doi.org/10.5539/CIS.V4N4P46",
+    "title": "An Integrated Conceptual Model for Temporal Data Warehouse Security",
+    "year": 2011,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2011, before the 2018-01-01 cutoff (\"An Integrated Conceptual Model for Temporal Data Warehouse Security\")."
+  },
+  {
+    "id": "385",
+    "doi": "https://doi.org/10.1007/978-3-642-22714-1_2",
+    "title": "Evaluation of Approaches for Modeling of Security in Data Warehouses",
+    "year": 2011,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2011, before the 2018-01-01 cutoff (\"Evaluation of Approaches for Modeling of Security in Data Warehouses\")."
+  },
+  {
+    "id": "386",
+    "doi": "https://doi.org/10.1109/ISI.2011.5984776",
+    "title": "Improving the security of the distributed enterprise data warehouse system",
+    "year": 2011,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2011, before the 2018-01-01 cutoff (\"Improving the security of the distributed enterprise data warehouse system\")."
+  },
+  {
+    "id": "387",
+    "doi": "https://doi.org/10.1007/978-3-642-25126-9_40",
+    "title": "An Advanced Generation Model for a Security Data Warehouse",
+    "year": 2011,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2011, before the 2018-01-01 cutoff (\"An Advanced Generation Model for a Security Data Warehouse\")."
+  },
+  {
+    "id": "388",
+    "doi": "https://doi.org/10.1081/E-EIA-120046723",
+    "title": "Data Warehouses: Security and Privacy",
+    "year": 2011,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2011, before the 2018-01-01 cutoff (\"Data Warehouses: Security and Privacy\")."
+  },
+  {
+    "id": "389",
+    "doi": null,
+    "title": "Building a Data Warehouse for National Social Security Fund of the Republic of Tunisia",
+    "year": 2010,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2010, before the 2018-01-01 cutoff (\"Building a Data Warehouse for National Social Security Fund of the Republic of Tunisia\")."
+  },
+  {
+    "id": "390",
+    "doi": "https://doi.org/10.1016/J.CSI.2008.09.040",
+    "title": "A UML 2.0 profile to define security requirements for Data Warehouses",
+    "year": 2009,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2009, before the 2018-01-01 cutoff (\"A UML 2.0 profile to define security requirements for Data Warehouses\")."
+  },
+  {
+    "id": "391",
+    "doi": "https://doi.org/10.1109/ARES.2008.86",
+    "title": "Towards Comprehensive Requirement Analysis for Data Warehouses: Considering Security Requirements",
+    "year": 2008,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2008, before the 2018-01-01 cutoff (\"Towards Comprehensive Requirement Analysis for Data Warehouses: Considering Security Requirements\")."
+  },
+  {
+    "id": "392",
+    "doi": "https://doi.org/10.1109/ARES.2006.132",
+    "title": "The Security Issue of Federated Data Warehouses in the Area of Evidence-Based Medicine",
+    "year": 2006,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 2006, before the 2018-01-01 cutoff (\"The Security Issue of Federated Data Warehouses in the Area of Evidence-Based Medicine\")."
+  },
+  {
+    "id": "393",
+    "doi": null,
+    "title": "Security Administration for Federations, Warehouses, and other Derived Data",
+    "year": 1999,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 1999, before the 2018-01-01 cutoff (\"Security Administration for Federations, Warehouses, and other Derived Data\")."
+  },
+  {
+    "id": "394",
+    "doi": "https://doi.org/10.1109/DEXA.1998.707417",
+    "title": "A Prototype Model for Data Warehouse Security Based on Metadata",
+    "year": 1998,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract; title-only decision. Published 1998, before the 2018-01-01 cutoff (\"A Prototype Model for Data Warehouse Security Based on Metadata\")."
+  }
+]

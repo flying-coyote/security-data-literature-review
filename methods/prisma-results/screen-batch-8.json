@@ -1,0 +1,362 @@
+[
+  {
+    "id": 320,
+    "doi": "https://doi.org/10.28925/2663-4023.2025.31.1003",
+    "title": "CLOUD PLATFORMS AS THE KEY TO EFFECTIVE STORAGE AND ANALYSIS OF IOT DATA",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract evaluates AWS/Azure/GCP for general IoT data storage/analytics (scalability, integration, cost); security is one of five comparison dimensions, not the subject."
+  },
+  {
+    "id": 321,
+    "doi": "https://doi.org/10.18623/rvd.v23.6804",
+    "title": "SECURE MIGRATION OF ENTERPRISE DATABASES FROM ON-PREMISES SYSTEMS TO CLOUD PLATFORMS IN SAUDI ARABIA",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Literature review of database-migration governance/compliance practice, not security telemetry or SIEM/detection data architecture."
+  },
+  {
+    "id": 322,
+    "doi": "https://doi.org/10.62970/ijirct.v11.i4.2602026",
+    "title": "AI-Powered Fraud Detection: Moving from Reactive Investigation to Real-Time Prevention",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract frames a fraud-detection model contribution ('real-time payment systems...attack surface...traditional fraud detection methodologies'), not an evaluation of the underlying data architecture."
+  },
+  {
+    "id": 323,
+    "doi": "https://doi.org/10.5281/zenodo.20608245",
+    "title": "Enterprise Risk Intelligence Through Real-Time Event-Driven Processing",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Abstract covers enterprise risk intelligence broadly (financial, operational, market risk); cybersecurity threats are named only as one driver among several, not the paper's security-data subject."
+  },
+  {
+    "id": 324,
+    "doi": "https://doi.org/10.5281/zenodo.20608244",
+    "title": "Enterprise Risk Intelligence Through Real-Time Event-Driven Processing",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 323 (same Zenodo deposit set), which is itself excluded on E2; duplicate."
+  },
+  {
+    "id": 325,
+    "doi": "https://doi.org/10.17586/2226-1494-2026-26-2-367-377",
+    "title": "An approach to contextual example mining for DGA domain identification using large language models",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is an LLM-based DGA-domain classifier ('use of Large Language Models... to identify hidden patterns in domain names and classify them'), not a data-architecture evaluation."
+  },
+  {
+    "id": 326,
+    "doi": "https://doi.org/10.1109/icmlas64557.2025.10968941",
+    "title": "Transfer Learning Model for Anomaly Detection in Data Streaming - Data Engineering Perspective",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract's contribution is a transfer-learning anomaly-detection classifier ('increase the anomaly detection rate with a reduced false positive rate'); the streaming platform is plumbing, not the object of evaluation."
+  },
+  {
+    "id": 327,
+    "doi": "https://doi.org/10.13052/jcsm2245-1439.1524",
+    "title": "Research on a Network Security Situation Intelligent Awareness and Prediction Model Based on Big Data Technology and Its Supporting Applications",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract proposes a 'perception prediction model...with cognitive reasoning capabilities'; big-data technology is the substrate for a situational-awareness ML model, not the evaluated architecture."
+  },
+  {
+    "id": 328,
+    "doi": "https://doi.org/10.1109/rtucon67996.2025.11415052",
+    "title": "Automated Level Control System development for Harbor Tank Storage for Smart Cities",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "PLC/SCADA industrial-control paper (Siemens S7-1200, WinCC HMI) about tank-level monitoring; no security telemetry or detection application."
+  },
+  {
+    "id": 329,
+    "doi": "https://doi.org/10.1007/978-3-031-60221-4_37",
+    "title": "Information Economy for the Fitness of Intelligent Algorithms",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "No abstract available; title concerns algorithm economics/fitness generally, with no indication of a security-data application (decided on title)."
+  },
+  {
+    "id": 330,
+    "doi": "https://doi.org/10.5089/9798229004596.019",
+    "title": "Curaçao and Sint Maarten",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "IMF technical-assistance report on financial-stability-report methodology and credit-risk modeling; no security-data-architecture content."
+  },
+  {
+    "id": 331,
+    "doi": "https://doi.org/10.32342/3041-2196-2025-1-29-19",
+    "title": "WAYS OF USING CLOUD SERVICES FOR TRAINING IT BACHELORS",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Paper is about integrating cloud services into IT undergraduate curricula, an education-pedagogy topic with no security-data application."
+  },
+  {
+    "id": 332,
+    "doi": "https://doi.org/10.1109/aero66936.2026.11519847",
+    "title": "Design and Implementation of the NASA Psyche Discovery Mission Science Data Center",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Describes a planetary-science mission data center (spectroscopic/magnetic/gravity data products); no security telemetry or security-operations application."
+  },
+  {
+    "id": 333,
+    "doi": null,
+    "title": "Integrazione di dati personali per Giustizia e Sanita: architettura, processo e metodi",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Data-integration/record-linkage architecture for justice and healthcare personal-data confidentiality; not security telemetry, SIEM, or detection data."
+  },
+  {
+    "id": 334,
+    "doi": null,
+    "title": "ВІД «Е-УРЯДУВАННЯ» ДО «І-УРЯДУВАННЯ»: ДОРОЖНЯ КАРТА ВПРОВАДЖЕННЯ ІННОВАЦІЙНИХ ТЕХНОЛОГІЙ ШІ В ПУБЛІЧНЕ УПРАВЛІННЯ",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Policy roadmap for AI in public administration ('Electronic Government' to 'Intelligent Governance'); no security-data-architecture content."
+  },
+  {
+    "id": 335,
+    "doi": "https://doi.org/10.2196/preprints.44977",
+    "title": "Deployment of Real-time Natural Language Processing and Deep Learning Clinical Decision Support in the Electronic Health Record: Pipeline Implementation for an Opioid Misuse Screener in Hospitalized Adults (Preprint)",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Clinical NLP pipeline for an opioid-misuse screener in an EHR; a data-engineering pipeline with no security application."
+  },
+  {
+    "id": 336,
+    "doi": "https://doi.org/10.25140/2411-5363-2020-2(20)-218-228",
+    "title": "PROTECTED INTELLIGENT HOUSE SYSTEM USING INTERNET OF THINGS",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "IoT smart-home security paper ('comprehensive protection of IoT systems'), device/network security, not a data-architecture evaluation."
+  },
+  {
+    "id": 337,
+    "doi": "https://doi.org/10.5281/zenodo.18670171",
+    "title": "Monitoring, Analytics, And Optimization Of Distributed Computing Environments",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "General distributed-computing performance/fault-tolerance monitoring across cloud/edge/hybrid infrastructure; abstract has no security-data application."
+  },
+  {
+    "id": 338,
+    "doi": "https://doi.org/10.5281/zenodo.18670138",
+    "title": "Monitoring, Analytics, And Optimization Of Distributed Computing Environments",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 337 (same Zenodo deposit set), which is itself excluded on E2; duplicate."
+  },
+  {
+    "id": 339,
+    "doi": "https://doi.org/10.5281/zenodo.18670139",
+    "title": "Monitoring, Analytics, And Optimization Of Distributed Computing Environments",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 337 (same Zenodo deposit set), which is itself excluded on E2; duplicate."
+  },
+  {
+    "id": 340,
+    "doi": "https://doi.org/10.5281/zenodo.18670172",
+    "title": "Monitoring, Analytics, And Optimization Of Distributed Computing Environments",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical title/abstract to record 337 (same Zenodo deposit set), which is itself excluded on E2; duplicate."
+  },
+  {
+    "id": 341,
+    "doi": "https://doi.org/10.26906/sunz.2025.3.081",
+    "title": "DATA PROCESSING METHODS IN A CORPORATE NETWORK",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Survey classifying data-processing methods across finance, logistics, marketing, HR, and healthcare use cases in general; 'cybersecurity solutions' is listed once among many applications, with no architecture-level content of its own."
+  },
+  {
+    "id": 342,
+    "doi": "https://doi.org/10.5281/zenodo.17594626",
+    "title": "iTechSmart",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "Self-described promotional product listing ('World's First Fully Integrated AI-Powered Enterprise Ecosystem... 25 Production-Ready Products'), not a peer-reviewed study or preprint reporting evidence."
+  },
+  {
+    "id": 343,
+    "doi": "https://doi.org/10.35940/ijsce.9",
+    "title": null,
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "Abstract is journal front-matter describing IJSCE's scope and publication schedule, not an article."
+  },
+  {
+    "id": 344,
+    "doi": "https://doi.org/10.1007/978-981-95-6358-6_5",
+    "title": "Fusion of Vehicular Communications, Crowdsensing, and Autonomous Agents to Acquire Urban Intelligence",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "No abstract available; title concerns urban-intelligence sensing/vehicular communications with no indication of a security-data application (decided on title)."
+  },
+  {
+    "id": 345,
+    "doi": "https://doi.org/10.1108/978-1-80262-637-720221018",
+    "title": "Index",
+    "year": 2022,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "Back-matter index of the book 'Big Data Analytics in the Insurance Market', not an article."
+  },
+  {
+    "id": 346,
+    "doi": "https://doi.org/10.5281/zenodo.19843334",
+    "title": "6th International Conference on Big Data, IoT and Machine Learning (BIOM 2026)",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "Conference call-for-papers/scope notice, not a research article."
+  },
+  {
+    "id": 347,
+    "doi": "https://doi.org/10.5281/zenodo.19843335",
+    "title": "6th International Conference on Big Data, IoT and Machine Learning (BIOM 2026)",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Identical call-for-papers notice to record 346 (duplicate Zenodo deposit)."
+  },
+  {
+    "id": 348,
+    "doi": "https://doi.org/10.1108/978-1-83909-099-820201022",
+    "title": "Index",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "Back-matter index of the book 'Big Data Analytics and Intelligence: A Perspective for Health Care', not an article."
+  },
+  {
+    "id": 349,
+    "doi": "https://doi.org/10.1108/s1085-462220230000027016",
+    "title": "Index",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E4",
+    "reason": "Back-matter index of the book 'Advances in Accounting Education', not an article."
+  },
+  {
+    "id": 350,
+    "doi": "https://doi.org/10.1109/W-FICLOUD.2016.41",
+    "title": "Application of Big Data, Fast Data, and Data Lake Concepts to Information Security Issues",
+    "year": 2016,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract, but title matches the review's architecture-for-security scope; published 2016, before the 2018-01-01 cutoff (decided on title/year)."
+  },
+  {
+    "id": 351,
+    "doi": null,
+    "title": "Database and Application Security XV, IFIP TC11/WG11.3 Fifteenth Annual Working Conference on Database and Application Security, July 15-18, 2001, Niagara on the Lake, Ontario, Canada",
+    "year": 2002,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "Conference proceedings volume from a 2001 working conference, published 2002; before the 2018-01-01 cutoff (decided on title/year)."
+  },
+  {
+    "id": 352,
+    "doi": null,
+    "title": "Database Security, VII: Status and Prospects, Proceedings of the IFIP WG11.3 Working Conference on Database Security, Lake Guntersville, Alabama, USA, 12-15 September, 1993",
+    "year": 1994,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "Conference proceedings volume from a 1993 working conference, published 1994; before the 2018-01-01 cutoff (decided on title/year)."
+  },
+  {
+    "id": 353,
+    "doi": "https://doi.org/10.1007/S10586-023-04201-9",
+    "title": "A data lake-based security transmission and storage scheme for streaming big data",
+    "year": 2024,
+    "decision": "include",
+    "criterion": "I2",
+    "reason": "No abstract, but title directly names a data-lake-based scheme for security transmission/storage of streaming big data, matching the architecture-applied-to-security-data scope; Cluster Computing is a peer-reviewed venue and 2024 satisfies I1 (decided on title)."
+  },
+  {
+    "id": 354,
+    "doi": null,
+    "title": "Database Securty XI: Status and Prospects, IFIP TC11 WG11.3 Eleventh International Conference on Database Security, 10-13 August 1997, Lake Tahoe, California, USA",
+    "year": 1998,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "Conference proceedings volume from a 1997 working conference, published 1998; before the 2018-01-01 cutoff (decided on title/year)."
+  },
+  {
+    "id": 355,
+    "doi": "https://doi.org/10.1515/JISYS-2024-0109",
+    "title": "Digital forensics architecture for real-time automated evidence collection and centralization: Leveraging security lake and modern data architecture",
+    "year": 2024,
+    "decision": "include",
+    "criterion": "I2",
+    "reason": "No abstract, but title names a forensics evidence-collection architecture built on a 'security lake and modern data architecture', matching the architecture-applied-to-security-data scope; Journal of Intelligent Systems is peer-reviewed and 2024 satisfies I1 (decided on title)."
+  },
+  {
+    "id": 356,
+    "doi": "https://doi.org/10.1145/3583781.3590255",
+    "title": "hChain: Blockchain Based Healthcare Data Sharing with Enhanced Security and Privacy Location-Based-Authentication",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "No abstract, but title concerns blockchain-based healthcare data sharing and authentication, not security telemetry/SIEM data architecture (decided on title)."
+  },
+  {
+    "id": 357,
+    "doi": "https://doi.org/10.1155/2018/1746809",
+    "title": "International Network Performance and Security Testing Based on Distributed Abyss Storage Cluster and Draft of Data Lake Framework",
+    "year": 2018,
+    "decision": "include",
+    "criterion": "I2",
+    "reason": "No abstract, but title names a distributed storage cluster and data lake framework evaluated via network performance/security testing, matching the architecture-applied-to-security-data scope; 2018 satisfies I1 (decided on title)."
+  },
+  {
+    "id": 358,
+    "doi": "https://doi.org/10.1109/PST62714.2024.10788073",
+    "title": "Enhancing Network Intrusion Detection Systems: A Review of Feature Selection Algorithms for Streaming Data Processing",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Title/abstract frame is a review of feature-selection algorithms for NIDS ML models, not architecture-level evidence about the streaming platform itself."
+  },
+  {
+    "id": 359,
+    "doi": null,
+    "title": "Online network intrusion detection system using temporal logic and stream data processing",
+    "year": 2013,
+    "decision": "exclude",
+    "criterion": "I1",
+    "reason": "No abstract, but title/year indicate a 2013 publication, before the 2018-01-01 cutoff (decided on title/year)."
+  }
+]

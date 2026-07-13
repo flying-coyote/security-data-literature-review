@@ -1,0 +1,362 @@
+[
+  {
+    "id": "https://openalex.org/W7163750685",
+    "doi": "https://doi.org/10.22214/ijraset.2026.83364",
+    "title": "A Hybrid AI-Driven Cybersecurity Framework For Real-Time Threat Detection Using Big Data Analytics",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "ML/DL classifier (RF, 1D-CNN, OCSVM) evaluated on CICIDS2017 with accuracy/F1 metrics; Kafka/Spark used only as streaming plumbing, no evaluation of the data architecture itself."
+  },
+  {
+    "id": "https://openalex.org/W7140289057",
+    "doi": "https://doi.org/10.1109/gcwcn66157.2025.11448322",
+    "title": "Quantum-Federated Threat Detection in Multi-Cloud Data Lakes: A Zero-Trust Security Approach",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Abstract claims a 'quantum-federated' framework demonstrated via 'workflow analysis, architectural decomposition, and threat modeling' with only qualitative claims (enhances, reduces, maintains) and no reported measurement or benchmark of the architecture."
+  },
+  {
+    "id": "https://openalex.org/W4408727653",
+    "doi": "https://doi.org/10.1109/gcat62922.2024.10923914",
+    "title": "Data Analytics Techniques for Privacy Protection in Cybersecurity for Leveraging Machine Learning for Advanced Threat Detection",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Contribution is ML/DL classifiers (SVM, RF, NN, Isolation Forest, GMM) reported by accuracy rate; Kafka/Spark are only the 'data intake and processing components,' not evaluated architecture."
+  },
+  {
+    "id": "https://openalex.org/W7161246770",
+    "doi": "https://doi.org/10.1145/3786160.3788469",
+    "title": "Real-Time Anomaly Detection in Web Server Logs Using Machine Learning and Apache Kafka",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Evaluates ten classical/deep-learning IDS algorithms by F1 score against a commercial SIEM; Kafka appears only in a proposed real-time architecture discussed briefly, the paper's contribution is the classifier comparison."
+  },
+  {
+    "id": "https://openalex.org/W4313447051",
+    "doi": "https://doi.org/10.1007/978-3-031-23098-1_3",
+    "title": "Towards Low-Latency Big Data Infrastructure at Sangfor",
+    "year": 2022,
+    "decision": "include",
+    "criterion": "I2",
+    "reason": "Title 'Towards Low-Latency Big Data Infrastructure at Sangfor' indicates a production big-data infrastructure case study at a network-security vendor; abstract is absent so this decision is made on title alone."
+  },
+  {
+    "id": "https://openalex.org/W4415381517",
+    "doi": "https://doi.org/10.1201/9781003630685-19",
+    "title": "Mitigating DoS/DDoS Cybersecurity False Data Injection on E-Healthcare Cloud Data Warehouse System",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "No abstract; title 'Mitigating DoS/DDoS Cybersecurity False Data Injection on E-Healthcare Cloud Data Warehouse System' reads as an attack-mitigation technique applied to a data warehouse context rather than an evaluation of the warehouse architecture itself, decided on title alone."
+  },
+  {
+    "id": "https://openalex.org/W4407786270",
+    "doi": "https://doi.org/10.54660/ijsser.2023.2.1.129-142",
+    "title": "Big Data-Driven Cybersecurity Models for Financial Institutions: Solving Threat Detection and Prevention Gaps in Emerging Economies",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Abstract describes a conceptual 'Big Data-Driven Cybersecurity Model' using ML for threat detection/prevention with data lakes named only as one of several 'big data technologies leveraged,' no architecture-level measurement reported."
+  },
+  {
+    "id": "https://openalex.org/W4285327829",
+    "doi": "https://doi.org/10.1109/csci54926.2021.00270",
+    "title": "An ML Based Anomaly Detection System in real-time data streams",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Real-time ML anomaly detection system for DDoS traffic; Kafka collects NetFlow data and Spark triggers the ML detector, both used as plumbing for the classifier, not evaluated as architecture."
+  },
+  {
+    "id": "https://openalex.org/W7164402839",
+    "doi": "https://doi.org/10.5281/zenodo.20644008",
+    "title": "Ai-Powered SOC Framework for Automated Threat Detection and Response",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Random Forest NIDS with severity scoring fed by Kafka and Spark as streaming plumbing into a SOC dashboard; contribution is the classifier/dashboard, not an evaluation of the data architecture."
+  },
+  {
+    "id": "https://openalex.org/W7164503931",
+    "doi": "https://doi.org/10.5281/zenodo.20664627",
+    "title": "Ai-Powered SOC Framework for Automated Threat Detection and Response",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Duplicate abstract/title of record 88 (different DOI); same Random Forest NIDS on Kafka/Spark plumbing with no architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W4415744908",
+    "doi": "https://doi.org/10.1109/icoeit63558.2025.11211805",
+    "title": "Real-Time Anomaly Detection in Network Traffic: A Hybrid ML-DL Approach",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Hybrid Random Forest/XGBoost/LSTM-Autoencoder IDS tested on CICIDS2017 and UNSW-NB15; Kafka/PySpark used only 'to support scalability and real-time processing,' not evaluated."
+  },
+  {
+    "id": "https://openalex.org/W7167389379",
+    "doi": null,
+    "title": "Explainable Intrusion Detection System for IoT Networks",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Thesis on a deep-learning (MLP) IoT intrusion detection system with LIME explainability, evaluated on CICIoT2023/TON_IoT by accuracy; no data architecture subject at all."
+  },
+  {
+    "id": "https://openalex.org/W4415883863",
+    "doi": "https://doi.org/10.1109/icbdse65491.2025.11220098",
+    "title": "Real-Time Threat Detection Using Stream Analytics and Deep Learning on Network Logs",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Hybrid LSTM/1D-CNN deep-learning threat detector evaluated on CIC-IDS2017 and UNSW-NB15; Kafka for ingestion and Flink for stream analytics are plumbing for the DL models, not the paper's subject."
+  },
+  {
+    "id": "https://openalex.org/W3083439929",
+    "doi": "https://doi.org/10.1016/j.ins.2020.08.011",
+    "title": "Effective and efficient top-k query processing over incomplete data streams",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "No abstract; title 'Effective and efficient top-k query processing over incomplete data streams' is a general data-engineering query-processing paper with no stated security application."
+  },
+  {
+    "id": "https://openalex.org/W4413393309",
+    "doi": "https://doi.org/10.1109/isbdas64762.2025.11116832",
+    "title": "Data Lakehouse Architecture in Healthcare: Implementation and Applications",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Subject is a general healthcare data lakehouse (retrieval time, patient outcomes, diagnosis time); cybersecurity appears only as one compliance/security-measures bullet, not the paper's security-telemetry subject."
+  },
+  {
+    "id": "https://openalex.org/W7163880734",
+    "doi": "https://doi.org/10.5281/zenodo.20592546",
+    "title": "The Regulated Banking AI Lakehouse by Kuladeep Sandra",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "'Regulated Banking AI Lakehouse' abstract describes a general banking enterprise data architecture spanning governance, risk, compliance and customer engagement; security is one of several concerns, not a security-telemetry/detection application."
+  },
+  {
+    "id": "https://openalex.org/W4410370620",
+    "doi": "https://doi.org/10.1038/s41598-025-93898-2",
+    "title": "A computational framework for IoT security integrating deep learning-based semantic algorithms for real-time threat response",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Hybrid CNN/RNN plus knowledge-graph semantic reasoning framework for IoT threat detection evaluated on CICIoT2023 and a custom testbed; Edge Computing/stream processing are named only as enabling paradigms, not evaluated architecture."
+  },
+  {
+    "id": "https://openalex.org/W7163888717",
+    "doi": "https://doi.org/10.5281/zenodo.20592545",
+    "title": "The Regulated Banking AI Lakehouse by Kuladeep Sandra",
+    "year": 2024,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Duplicate title/abstract of record 95 (different DOI, not yet included so E6 doesn't apply); same general banking lakehouse subject with security as one of several concerns."
+  },
+  {
+    "id": "https://openalex.org/W4384344346",
+    "doi": "https://doi.org/10.14445/22312803/ijctt-v71i6p104",
+    "title": "Enhancing Cybersecurity Through the Unification of Data Analytics, Artificial Intelligence, and Machine Learning in Big Data Cloud Environments: A Databricks Lakehouse Approach",
+    "year": 2023,
+    "decision": "include",
+    "criterion": "I3",
+    "reason": "Abstract states the article focuses on 'Databricks lakehouse architecture' applied to security data (anomaly/threat detection, governance) and 'draws on real-world examples and industry case studies' of cybersecurity architecture and data flow."
+  },
+  {
+    "id": "https://openalex.org/W7164941751",
+    "doi": "https://doi.org/10.64771/ijesat.2026.v26.i5.3000",
+    "title": "BIG DATA–DRIVEN DISTRIBUTED INTRUSION DETECTION SYSTEM USING SPARK STREAMING",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Distributed intrusion detection system using Kafka/Spark Streaming; abstract only makes generic architectural claims (supports high throughput, fault tolerance) without reporting a measurement of those properties, contribution is the ML/anomaly-detection pipeline."
+  },
+  {
+    "id": "https://openalex.org/W4410779865",
+    "doi": "https://doi.org/10.21275/sr25523162324",
+    "title": "RPA to Automate ETL Processes in Data Warehousing",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "'RPA to Automate ETL Processes in Data Warehousing' lists cybersecurity as one of several application domains (finance, healthcare, logistics) alongside cybersecurity; no security-data application is evaluated."
+  },
+  {
+    "id": "https://openalex.org/W7128732433",
+    "doi": "https://doi.org/10.5281/zenodo.18621565",
+    "title": "Supplementary Material: Benchmarking Methodology for Industrial Intrusion Detection",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Supplementary repository for an industrial-intrusion-detection benchmarking methodology (FAH-calibrated classifier evaluation); Parquet files are just the stored feature datasets, not an evaluated data architecture."
+  },
+  {
+    "id": "https://openalex.org/W7128698552",
+    "doi": "https://doi.org/10.5281/zenodo.18621564",
+    "title": "Supplementary Material: Benchmarking Methodology for Industrial Intrusion Detection",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Duplicate title/abstract of record 101 (different DOI, not yet included so E6 doesn't apply); same FAH-calibrated intrusion-detection benchmarking supplement."
+  },
+  {
+    "id": "https://openalex.org/W4408104906",
+    "doi": "https://doi.org/10.48175/ijarsct-23608",
+    "title": "RTASM: An AI-Driven Real-Time Adaptive Streaming Model for Zero-Latency Big Data Processing",
+    "year": 2025,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "'RTASM' AI-driven streaming architecture (Kafka/Hadoop) is evaluated for financial transactions, IoT, social media, and industrial applications generally; abstract names no security-telemetry or SIEM application."
+  },
+  {
+    "id": "https://openalex.org/W4387048206",
+    "doi": "https://doi.org/10.4108/eetsis.3997",
+    "title": "Knox: Lightweight Machine Learning Approaches for Automated Detection of Botnet Attacks",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "'Knox' is a lightweight ML botnet-detection classifier reaching 99% accuracy on IoT data; Kafka feeds data 'to REST API' as plumbing, not an evaluated architecture."
+  },
+  {
+    "id": "https://openalex.org/W3089732376",
+    "doi": "https://doi.org/10.1109/icbaie49996.2020.00078",
+    "title": "Research on Hadoop-based Intrusion Detection by IP Address Mining",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "K-Means/FP-Growth data-mining IDS run in parallel on Hadoop with results stored in Hive; the reported result is reduced false reports/omissions from the detection algorithm, not a measurement of the Hadoop/Hive architecture itself."
+  },
+  {
+    "id": "https://openalex.org/W7133025133",
+    "doi": null,
+    "title": "Real-Time Log Analysis for Distributed Systems Monitoring",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E5",
+    "reason": "Abstract is written in Croatian ('Analiza dnevnickih zapisa raspodijeljenih sustava u stvarnom vremenu...'), not English."
+  },
+  {
+    "id": "https://openalex.org/W7135219902",
+    "doi": "https://doi.org/10.18196/jrc.v7i1.26715",
+    "title": "An Interpretable ANN-Based Intrusion Detection System Using SMOTE and Bayesian Optimization",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "ANN-based IDS with SMOTE and Bayesian optimization evaluated on CICIDS2017 by accuracy/precision/recall/AUC; no data architecture or platform is discussed at all."
+  },
+  {
+    "id": "https://openalex.org/W3113138324",
+    "doi": "https://doi.org/10.1109/icps48405.2020.9274712",
+    "title": "Deployment of Batch Processing for Log File Analysis",
+    "year": 2020,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Compares a custom LOGDIG tool to Apache Flink for log analysis of intelligent transportation system behavior; abstract states no security application, subject is spatial/temporal behavior mining."
+  },
+  {
+    "id": "https://openalex.org/W7131382658",
+    "doi": "https://doi.org/10.1109/iitcee67948.2026.11394369",
+    "title": "Vortex Shield - Honeypot-Based Intrusion Detection System Using Machine Learning",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "'Vortex Shield' XGBoost classifier on honeypot logs; Kafka and the ELK stack are named as the 'real-time data processing framework' feeding the classifier, not themselves evaluated."
+  },
+  {
+    "id": "https://openalex.org/W7135167107",
+    "doi": "https://doi.org/10.66320/aen33a42",
+    "title": "Securing Big Data Pipelines in Healthcare: A Framework for Real-Time Threat Detection in Population Health Systems",
+    "year": 2025,
+    "decision": "include",
+    "criterion": "I3",
+    "reason": "Abstract reports a layered security architecture integrating Kafka stream processing and Splunk SIEM, evaluated in a simulated population-health system processing 2.5 million security events per second with measured 500ms detection latency and 97.3% detection accuracy."
+  },
+  {
+    "id": "https://openalex.org/W7132835880",
+    "doi": "https://doi.org/10.5281/zenodo.18817603",
+    "title": "Architecting Petabyte-Scale Stream Processing Systems for Cybersecurity: A Sharded Data and Compute Processing Strategy for Minimizing Incident Response Time in Real-Time Enterprise Defense",
+    "year": 2026,
+    "decision": "include",
+    "criterion": "I2",
+    "reason": "Abstract's subject is a horizontally scalable, compute-sharded stream-processing architecture specifically for petabyte-scale security event processing, with schema-agnostic ingestion and multi-region deployment topology as the paper's own design evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7132843097",
+    "doi": "https://doi.org/10.5281/zenodo.18817602",
+    "title": "Architecting Petabyte-Scale Stream Processing Systems for Cybersecurity: A Sharded Data and Compute Processing Strategy for Minimizing Incident Response Time in Real-Time Enterprise Defense",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E6",
+    "reason": "Duplicate title/abstract of record 111 (different DOI), which is included on the same content; this record is the duplicate."
+  },
+  {
+    "id": "https://openalex.org/W4366463885",
+    "doi": "https://doi.org/10.2196/44977",
+    "title": "Deployment of Real-time Natural Language Processing and Deep Learning Clinical Decision Support in the Electronic Health Record: Pipeline Implementation for an Opioid Misuse Screener in Hospitalized Adults",
+    "year": 2023,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Real-time NLP/deep-learning clinical decision support pipeline for opioid-misuse screening in EHR; no security application, subject is clinical care delivery."
+  },
+  {
+    "id": "https://openalex.org/W2914086750",
+    "doi": "https://doi.org/10.1109/bigdata.2018.8621934",
+    "title": "Distributed Real Time Link Prediction on Graph Streams",
+    "year": 2018,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "Graph-stream link-prediction algorithm names cybersecurity as only one of several application domains (bioinformatics, social network analysis, e-commerce); no security-data architecture evaluated."
+  },
+  {
+    "id": "https://openalex.org/W3210088900",
+    "doi": "https://doi.org/10.1111/exsy.12814",
+    "title": "COVID‐19 patient diagnosis and treatment data mining algorithm based on association rules",
+    "year": 2021,
+    "decision": "exclude",
+    "criterion": "E2",
+    "reason": "COVID-19 patient diagnosis/treatment association-rule mining paper; no security application, subject is clinical drug-use data mining."
+  },
+  {
+    "id": "https://openalex.org/W7128915348",
+    "doi": "https://doi.org/10.56726/irjmets69854",
+    "title": "SECURITY AND COMPLIANCE IN CLOUD-NATIVE DATA WAREHOUSING: A TECHNICAL DEEP DIVE",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E3",
+    "reason": "Abstract is a market-overview narrative on cloud-native data-warehouse security/compliance ('global market demonstrates substantial growth...', 'organizations...report significant reductions') with no specific measurement or architecture-level evaluation of its own."
+  },
+  {
+    "id": "https://openalex.org/W7164207037",
+    "doi": "https://doi.org/10.5281/zenodo.20626641",
+    "title": "Big Data Pipeline for Real-Time Threat Intelligence using Stream Processing And NLP-Based Filtering",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Random Forest NIDS with severity scoring fed by Kafka/Spark plumbing into a SOC dashboard; same pattern as records 88/89/118/119, contribution is the classifier/dashboard, not architecture evaluation."
+  },
+  {
+    "id": "https://openalex.org/W7164389693",
+    "doi": "https://doi.org/10.5281/zenodo.20644009",
+    "title": "Big Data Pipeline for Real-Time Threat Intelligence using Stream Processing and NLP-Based Filtering",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Duplicate title/abstract pattern of record 117 (different DOI, not yet included so E6 doesn't apply); same Kafka/Spark-plumbed Random Forest NIDS with SOC dashboard."
+  },
+  {
+    "id": "https://openalex.org/W7164166281",
+    "doi": "https://doi.org/10.5281/zenodo.20626639",
+    "title": "Big Data Pipeline for Real-Time Threat Intelligence using Stream Processing And NLP-Based Filtering",
+    "year": 2026,
+    "decision": "exclude",
+    "criterion": "E1",
+    "reason": "Duplicate title/abstract pattern of record 117 (different DOI, not yet included so E6 doesn't apply); same Kafka/Spark-plumbed Random Forest NIDS with SOC dashboard."
+  }
+]

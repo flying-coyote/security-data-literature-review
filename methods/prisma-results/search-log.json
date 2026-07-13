@@ -1,0 +1,84 @@
+{
+  "run_timestamp_utc": "2026-07-13T02:36:26Z",
+  "script": "scripts/prisma_search.py",
+  "note": "Retro-run of the systematic search against a curated corpus. arXiv preprints are reached through OpenAlex, which indexes them; the arXiv Atom API is not queried.",
+  "date_filter": {
+    "from_publication_date": "2018-01-01"
+  },
+  "queries": {
+    "openalex": {
+      "endpoint": "https://api.openalex.org/works",
+      "filter": "title_and_abstract.search:(cybersecurity OR \"security analytics\" OR SIEM OR \"intrusion detection\" OR \"threat detection\" OR \"security operations\" OR \"security monitoring\" OR \"log analysis\") AND (lakehouse OR \"data lake\" OR \"Apache Iceberg\" OR \"Delta Lake\" OR \"query engine\" OR Trino OR ClickHouse OR DuckDB OR \"stream processing\" OR \"Apache Kafka\" OR \"Apache Flink\" OR \"columnar storage\" OR Parquet OR \"data warehouse\"),from_publication_date:2018-01-01",
+      "per_page": 200,
+      "paging": "cursor"
+    },
+    "dblp": {
+      "endpoint": "https://dblp.org/search/publ/api",
+      "format": "json",
+      "h": 100,
+      "paging": "f offset",
+      "query_strings": [
+        "security data lake",
+        "SIEM data lake",
+        "security analytics lakehouse",
+        "security log stream processing",
+        "intrusion detection stream processing",
+        "security data warehouse",
+        "threat detection Kafka",
+        "security telemetry pipeline"
+      ]
+    }
+  },
+  "raw_counts": {
+    "openalex": 354,
+    "dblp": 46
+  },
+  "dblp_per_query_counts": {
+    "security data lake": {
+      "reported_total": 8,
+      "records_retrieved": 8
+    },
+    "SIEM data lake": {
+      "reported_total": 0,
+      "records_retrieved": 0
+    },
+    "security analytics lakehouse": {
+      "reported_total": 0,
+      "records_retrieved": 0
+    },
+    "security log stream processing": {
+      "reported_total": 0,
+      "records_retrieved": 0
+    },
+    "intrusion detection stream processing": {
+      "reported_total": 5,
+      "records_retrieved": 5
+    },
+    "security data warehouse": {
+      "reported_total": 33,
+      "records_retrieved": 33
+    },
+    "threat detection Kafka": {
+      "reported_total": 0,
+      "records_retrieved": 0
+    },
+    "security telemetry pipeline": {
+      "reported_total": 0,
+      "records_retrieved": 0
+    }
+  },
+  "failed_queries": [],
+  "openalex_reported_count": 354,
+  "total_raw_records": 400,
+  "duplicates_removed": {
+    "by_doi": 1,
+    "by_normalized_title": 4,
+    "total": 5
+  },
+  "unique_records": 395,
+  "records_by_source_combination": {
+    "openalex": 349,
+    "dblp+openalex": 1,
+    "dblp": 45
+  }
+}
