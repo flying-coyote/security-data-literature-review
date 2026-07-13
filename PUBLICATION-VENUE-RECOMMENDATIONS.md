@@ -12,7 +12,7 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 **Document Purpose**: Identify suitable academic journals and publication venues for literature review on modern data architecture for cybersecurity
 **Created**: October 10, 2025
 **Last Reviewed**: October 15, 2025
-**Literature Review**: MASTER-BIBLIOGRAPHY.md (75+ sources, 73% Evidence Level A, 283 footnotes extracted)
+**Literature Review**: MASTER-BIBLIOGRAPHY.md (221 catalogued sources, 219 tiered; 42.9% Evidence Level A live-derived 2026-07-13 — the "73%" figure previously stated here was a withdrawn self-grade, wrong by roughly thirty points)
 
 ---
 
@@ -290,7 +290,7 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 - ✅ Reference PRISMA guidelines for systematic reviews
 
 **Restructuring Needed**:
-- Current format = annotated bibliography (75+ individual entries)
+- Current format = annotated bibliography (221 catalogued entries)
 - Journal format = synthesized narrative with thematic organization
 - Suggested structure:
   1. Introduction (gap in security-specific data architecture literature)
@@ -301,7 +301,7 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
   6. Future research directions
 
 **Quantitative Summary Required**:
-- Source statistics (75+ sources, 73% Evidence Level A)
+- Source statistics (221 catalogued sources; 42.9% Evidence Level A, live-derived)
 - Hypothesis validation results (7 hypotheses, confidence levels)
 - Geographic/organizational diversity metrics
 - Evidence quality distribution
@@ -374,7 +374,7 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 
 **Cover Letter Key Points**:
 - Gap: No systematic review of modern data architecture for security operations
-- Contribution: 283 sources, 73% Evidence Level A, systematic validation
+- Contribution: 221 catalogued sources, 42.9% Evidence Level A (live-derived), systematic validation
 - Impact: Operational guidance (costs, staffing, timelines) for security practitioners
 - Novelty: Bridges cybersecurity and data engineering literatures
 - Audience: Security architects, SOC managers, data engineers in security domain

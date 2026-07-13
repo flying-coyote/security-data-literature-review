@@ -19,7 +19,7 @@ tags: [manuscript, academic-publication, systematic-review, security-data-lakeho
 
 ## ABSTRACT
 
-Security teams collect enormous volumes of log and event data, and the systems that store and search it are among the most expensive infrastructure they run. Data platforms that grew out of web-scale analytics (Apache Iceberg, ClickHouse, Kafka Streams) promise to cut those costs, but the evidence on whether they hold up under security workloads is split across two literatures that rarely meet, because cybersecurity research treats data infrastructure as a given while data engineering studies general analytics rather than security operations. We conducted a PRISMA-aligned systematic review bridging the two, synthesizing 75+ sources spanning production deployments, peer-reviewed research, and government standards, and we maintain it as a living review with quarterly updates because these sources shift too fast for a one-time survey. The architectures work but demand more time and scarcer expertise than vendor accounts suggest: start with batch on SQL-friendly platforms, add streaming after validating business impact, tier storage for multi-year retention, and plan multi-month implementations plus a 6-12 month proficiency ramp (a practitioner estimate).
+Security teams collect enormous volumes of log and event data, and the systems that store and search it are among the most expensive infrastructure they run. Data platforms that grew out of web-scale analytics (Apache Iceberg, ClickHouse, Kafka Streams) promise to cut those costs, but the evidence on whether they hold up under security workloads is split across two literatures that rarely meet, because cybersecurity research treats data infrastructure as a given while data engineering studies general analytics rather than security operations. We conducted a PRISMA 2020 two-arm review bridging the two, synthesizing 219 tiered sources spanning production deployments, peer-reviewed research, and government standards, and we maintain it as a living review with quarterly updates because these sources shift too fast for a one-time survey. A retrospective systematic search of OpenAlex and dblp, run against the already-curated corpus, found that none of the 40 studies it included was already cited — a measured recall of zero, which we report rather than repair silently; the 26 that survived a critical appraisal of venue integrity are incorporated here, and the 14 that did not are recorded with their reasons, eight of them having been published in predatory or compromised venues. The architectures work but demand more time and scarcer expertise than vendor accounts suggest: start with batch on SQL-friendly platforms, add streaming after validating business impact, tier storage for multi-year retention, and plan multi-month implementations plus a 6-12 month proficiency ramp (a practitioner estimate).
 
 Nine hypotheses were assessed, seven from the original extraction and two added in July 2026 from post-audit peer-reviewed primaries, each graded on the review's A-D evidence tiers. Apache Iceberg emerged as industry consensus for open table formats with universal vendor support, and ClickHouse validated for security analytics at scale (Cloudflare: 6M requests/sec; a first-party CIDR probe measured roughly 13-17× native-IP speedup at 20M rows on a single host, with about 2.9× IPv4-versus-String storage savings). Streaming architectures carry a material operational cost and staffing premium over batch alternatives, since the required fault-tolerance expertise remains scarce. The two hypotheses added post-audit carry clean peer-reviewed legs, one measuring production-SOC alert base rates of 24K-134K per day with a true-attack share on the order of 0.01% in the studied SOCs, the other measuring machine-data-specialized compression at multiples over general-purpose equivalents. Production validation across 18+ organizations confirms requirements general analytics does not exercise, among them IP/CIDR-based threat hunting, incident-driven burst capacity, stateful entity tracking, and multi-year queryable retention. The 2026 source audits withdrew the citations behind several originally stated multipliers, so those findings now read directionally pending re-sourcing.
 
@@ -87,7 +87,7 @@ This systematic review addresses the following research questions:
 
 This systematic review makes the following contributions to knowledge and practice:
 
-**1. Cross-domain synthesis**: This is the first systematic review bridging cybersecurity and data engineering literatures with rigorous methodology. We synthesize 75+ sources from government agencies (CISA, MITRE, DARPA, NSA, SANS), industry analysts (Gartner, Forrester), production deployments (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom), academic research, and vendor technical documentation. Our evidence classification system prioritizes production deployments and peer-reviewed research, while our PRISMA-aligned extraction methodology enables reproducibility.
+**1. Cross-domain synthesis**: This review bridges the cybersecurity and data-engineering literatures under a PRISMA 2020 two-arm methodology. We synthesize 219 tiered sources from government agencies (CISA, MITRE, DARPA, NSA, SANS), industry analysts (Gartner, Forrester), production deployments (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom, and — via the search arm — CERN, INFN-CNAF and Lawrence Berkeley National Laboratory), peer-reviewed research, and vendor technical documentation. Our evidence classification prioritizes production deployments and peer-reviewed research, and every count on every surface of this review is derived from the bibliography by a committed script rather than hand-maintained, so that a stated number cannot drift from the corpus it describes.
 
 **2. Quantitative hypothesis validation**: We provide evidence-based validation of 9 operational hypotheses (7 original plus 2 added in the 2026-07 audit) critical for security practitioners:
 - Apache Iceberg dominance (industry consensus, universal vendor support)
@@ -168,9 +168,19 @@ Phase 1 (October 14-25, 2025) employed systematic extraction of 283 footnotes us
 
 **Extraction Coverage**:
 - 283 of 283 footnotes extracted (100% completion)
-- 75+ unique sources documented with standardized format
+- 221 sources catalogued with a standardized format, of which 219 carry an evidence tier
 - 16 of 22 URLs validated (73% overall, 100% hypothesis-critical sources)
 - Archive manuscripts: 74 files assessed (no independent sources found)
+
+**Database Search (added 2026-07-13, run retrospectively)**:
+
+Everything described above is curation, which PRISMA 2020 accommodates as the "identification via other methods" arm but which cannot, on its own, answer the question a reviewer will ask: what does the indexed literature hold, and did this review find it? To answer it we ran a genuine systematic search after the fact and reported the result whatever it turned out to be.
+
+The search queried OpenAlex with a strict boolean title-and-abstract filter (a security term AND a data-architecture term, 2018 date floor) and dblp with eight title-level queries, on 2026-07-13. It identified 400 records, removed 5 duplicates, screened 395 on title and abstract against pre-specified criteria, and included 40. The full protocol, the per-record screening decisions, and the search logs are committed under `methods/`.
+
+The reconciliation against the existing corpus produced the finding that matters most in this section: **none of the 40 was already cited.** Measured recall of the curated corpus against a systematic search of its own subject was zero. The corpus and the indexed literature had been reaching disjoint bodies of work — which is, in a sense, the review's own thesis turned back on itself, and is reported here rather than quietly corrected.
+
+The 40 were then critically appraised, a stage the topical screening had skipped: venue identity resolved at the DOI, publisher and DOAJ/Scopus/Web-of-Science status established from primaries, predatory-list and delisting checks run, and each proposed citation put to an independent second reviewer instructed to refuse it under uncertainty. **Fourteen did not survive.** Eight were published in predatory or compromised venues — one in a journal documented as hijacked, one in a title Clarivate delisted in its March-2023 cull of Hindawi journals after the publisher admitted paper-mill compromise. Three were not peer-reviewed at all, including a preprint typeset with a counterfeit publisher masthead and a placeholder DOI. One could not be read at any price and was dropped rather than cited unread. The remaining 26 are incorporated into this edition, and the appraisal record for all 40 — every drop and its reason — is `methods/prisma-appraisal-2026-07-13.json`.
 
 ### 2.3 Source Selection and Quality Assessment
 
@@ -190,25 +200,25 @@ Phase 1 (October 14-25, 2025) employed systematic extraction of 283 footnotes us
 
 Sources classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research (adapted from evidence-based medicine):
 
-**Evidence Level A** (Target: 73%+):
+**Evidence Level A** (target >70%; live 42.9%, 94 of 219 tiered):
 - Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks
-- Peer-reviewed academic publications
+- Peer-reviewed academic publications in venues whose peer review has been verified to exist
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
-- **Current Achievement**: under re-audit following the 2026-06 source verification pass
 
-**Evidence Level B** (Acceptable: <27%):
+**Evidence Level B** (live 46.6%, 102 of 219 tiered):
 - Gartner, IDC, Forrester quantitative research with disclosed methodology
 - Expert practitioner validation (personal communication with production deployment details)
-- Vendor technical documentation (if production-validated)
-- **Current Achievement**: under re-audit following the 2026-06 source verification pass
+- Vendor technical documentation (if production-validated); peer-reviewed conference work whose review depth could not be independently established
 
-**Evidence Level C** (Rejected: 0%):
-- Blog posts, conference talks (unless backed by production data)
-- Policy: Not included in bibliography unless upgraded to Level A/B with supporting evidence
+**Evidence Level C** (live 10.5%, 23 of 219 tiered):
+- Vendor blog posts, product documentation, and conference talks not backed by production measurement
+- Policy, stated as practised rather than as originally intended: Level C sources **are** catalogued, with their bias flagged and their tier stated, where they are the only available account of a system's behaviour. They never carry a hypothesis on their own. The original protocol declared Level C "rejected, 0%", and the corpus has never matched that claim — 23 of 219 tiered entries are Level C. The protocol is corrected here to describe what the review actually does, because a stated inclusion policy that the bibliography visibly contradicts is worse than a permissive one stated plainly.
 
-**Evidence Level D** (Rejected: 0%):
+**Evidence Level D** (0%):
 - Marketing materials, unverified claims, speculation
-- Policy: Excluded from literature review
+- Policy: excluded. No Level D source is catalogued, and this one the corpus does honour.
+
+**A note on what "peer-reviewed" is taken to mean.** The 2026-07-13 systematic search made this concrete rather than nominal. Of the 40 studies it topically included, eight were published in venues that are predatory, hijacked, or delisted for paper-mill compromise — venues where the peer review that Level A rests on did not meaningfully happen. A paper in such a venue cannot be Level A however relevant its claims, and this review drops it rather than laundering a weak claim through a citation that merely looks authoritative. Venue integrity is therefore part of the tier assignment, not a separate courtesy.
 
 **Multi-Dimensional Credibility Assessment**:
 
@@ -264,7 +274,7 @@ Validation Priority: All hypothesis-validating sources verified before publicati
 
 *Phase 1: Source Document Inventory* (Week 1) - Identified 283 footnotes in best practices document; assessed 74 archived manuscript files
 
-*Phase 2: Systematic Extraction* (Week 1-2) - Extracted all 283 footnotes with standardized format; consolidated duplicates; Result: 75+ unique sources documented
+*Phase 2: Systematic Extraction* (Week 1-2) - Extracted all 283 footnotes with standardized format; consolidated duplicates; Result: the initial catalogue of unique sources, which has since grown by curation and by the 2026-07-13 database search to 221 entries
 
 *Phase 3: Validation & Quality Assurance* (Week 2-3) - URL validation, evidence level verification, cross-reference validation, expert network review
 
@@ -374,29 +384,43 @@ Wiley, J. (2025). Modern Data Stack for Cybersecurity: Living Literature Review
 
 **Acknowledged Limitations**:
 
-1. **Source Document Dependency**: 283 of 283 footnotes from single best practices document
-   - *Mitigation*: Supplemented with expert validation, blog integration, vendor documentation
+1. **Source Document Dependency**: the corpus began as an extraction of 283 footnotes from a single best-practices document, and that origin shaped it
+   - *Mitigation*: supplemented with expert validation, vendor documentation, standards material, and — since 2026-07-13 — a systematic database search whose 26 surviving studies entered the corpus through a route the original curation did not control
+   - *Residual*: the search measured the size of the problem before it fixed it. Recall of the curated corpus against a systematic search of its own subject was **zero of 40**. A curated corpus that had never been tested against the indexed literature turned out not to overlap it at all
 
-2. **Vendor Documentation Prevalence**: 33 of 75 sources (44%) are vendor-provided
-   - *Mitigation*: Prioritize production-validated vendor sources (Netflix, Uber, Cloudflare); exclude marketing materials
+2. **Vendor Documentation Prevalence**: vendor-authored material (63 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 77 of 221 entries (34.8%) — the largest single bloc, and larger than the peer-reviewed literature
+   - *Mitigation*: prioritize production-validated vendor sources (Netflix, Uber, Cloudflare); exclude marketing materials; flag bias per entry; never rest a hypothesis on a vendor source alone
+   - *Residual*: a review that urges practitioners to distrust vendor accounts is itself, by source count, substantially built from them
 
-3. **Publication Bias**: Successful deployments more likely published than failures
+3. **Venue Quality in the Indexed Literature**: of the 40 studies the systematic search topically included, 14 were not fit to cite — eight of them published in predatory, hijacked, or paper-mill-compromised venues
+   - *Impact*: this is a limitation of the field, not only of the review. A fifth of what a systematic database search returns at the security/data-architecture intersection cannot be used, which means any review of this literature that trusts indexing alone will cite junk. Venue integrity was made part of tier assignment as a result
+   - *Mitigation*: every included study's venue was resolved at the DOI and checked against DOAJ, Scopus, Web of Science, delisting records and predatory-publisher lists, then put to an independent verifier instructed to refuse under uncertainty (`methods/prisma-appraisal-2026-07-13.json`)
+
+4. **Non-Independence Within the Search Arm**: the 26 incorporated studies resolve to only 23 independent author groups
+   - *Impact*: sharpest where it hurts most. The two studies that were supposed to put peer-reviewed footing under the corpus's weakest, vendor-sourced claims — ClickHouse storage reduction, and pipeline log-reduction economics — share a single author, and one of the two appears in a journal removed from DOAJ in 2017. They corroborate each other, not the claim. Three further studies (the CATRACA line of work) come from one group
+   - *Mitigation*: both are catalogued with the dependency stated in the entry itself, and neither is treated as independent confirmation
+
+5. **The Search Cannot Reach the Storage Literature**: the database query is conjunctive — a security term AND a data-architecture term — and the storage-side papers this review depends on do not carry a security term in their title or abstract
+   - *Impact*: 24 peer-reviewed entries already in the corpus (Delta Lake, LHBench, FastLanes, LogLite, DBSP, Ursa, and their PVLDB/CIDR/SIGMOD kin) were **unreachable by construction** by the very search meant to test the corpus's coverage. The systematic search therefore validated one half of this review's subject and was structurally blind to the other
+   - *Mitigation*: none applied in this edition; the limitation is reported rather than repaired. A future run needs a second query arm on the storage side, with the security constraint dropped and relevance restored by hand
+
+6. **Publication Bias**: Successful deployments more likely published than failures
    - *Mitigation*: Expert interviews capture implementation challenges not in public documentation
 
-4. **Geographic Bias**: Predominantly US/European sources (some Asia-Pacific representation like SK Telecom)
+7. **Geographic Bias**: Predominantly US/European sources (some Asia-Pacific representation like SK Telecom)
    - *Impact*: May miss regional deployments, though major vendors and standards bodies publish in English
 
-5. **Organizational Bias**: Large enterprises more likely to publish than mid-sized organizations
+8. **Organizational Bias**: Large enterprises more likely to publish than mid-sized organizations
    - *Impact*: Mid-market validation needs additional evidence collection
 
-6. **Temporal Currency**: Rapidly evolving field, findings may age quickly
+9. **Temporal Currency**: Rapidly evolving field, findings may age quickly
    - *Mitigation*: Living review with quarterly updates maintains currency
 
-7. **Access Constraints**: Some industry analyst reports behind paywalls (cited but not fully analyzed)
+10. **Access Constraints**: Some industry analyst reports behind paywalls (cited but not fully analyzed)
    - *Impact*: 3 sources (Gartner, IDC, Forrester) verified but not deeply analyzed
 
-8. **English-Language Sources**: All sources in English
-   - *Impact*: May miss regional deployments, though major standards bodies publish in English
+11. **English-Language Sources**: The synthesised corpus is in English
+   - *Impact*: May miss regional deployments, though major standards bodies publish in English. The systematic search returned Portuguese- and Russian-language records; the Portuguese short-course chapter is catalogued, and the rest were excluded on other grounds
 
 **Threats to Validity**:
 
@@ -417,21 +441,31 @@ Wiley, J. (2025). Modern Data Stack for Cybersecurity: Living Literature Review
 
 ### 3.1 Overview of Evidence Base
 
-**Source statistics**:
-- **Total sources**: 75+ unique sources
-- **Evidence levels**: under re-audit following the 2026-06 source verification pass (pre-audit classification admitted Level A/B only; no C/D sources)
+**Source statistics** (derived per entry on 2026-07-13, not self-reported):
+- **Total sources**: 221 catalogued entries, of which 219 carry an evidence tier and 2 are documented no-primary stubs
+- **Evidence levels**: Level A 42.9% (94/219), Level B 46.6% (102/219), Level C 10.5% (23/219), Level D 0%
 
-**Source type distribution**:
-- **Production deployments**: 18+ organizations (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom, Nordstrom, Microsoft, Confluent, Anyscale, DataRobot, etc.)
-- **Government/Standards**: 8 sources (CISA, MITRE, DARPA, NSA, SANS, CSA, OCA, MITRE Engenuity)
-- **Industry analysts**: Gartner, Forrester (source count under re-audit)
-- **Academic/Research**: 6 sources
-- **Vendor documentation**: 33 sources (high-quality technical documentation)
+**Source type distribution** (Figure 3; derived by `scripts/derive_source_taxonomy.py` and reconciled against the bibliography):
+- **Vendor engineering blogs and product documentation**: 63 (28.5%)
+- **Peer-reviewed academic**: 50 (22.6%)
+- **Open-source project documentation, specs, and repositories**: 33 (14.9%)
+- **Practitioner talks and personal blogs**: 18 (8.1%)
+- **Standards, frameworks, and government publications**: 17 (7.7%)
+- **Big-tech engineering blogs**: 14 (6.3%)
+- **Analyst and industry reports**: 12 (5.4%)
+- **Books**: 8 (3.6%)
+- **Expert interviews, first-party lab measurements, documented no-primary stubs**: 2 each
+
+Two observations follow from that distribution, and both cut against the review rather than for it.
+
+The first is that vendor-authored material — vendor blogs and product documentation, plus the big-tech engineering blogs — is 77 of 221 entries (34.8%), which makes it the largest bloc in the corpus and larger than the peer-reviewed literature. A review arguing that security teams should evaluate data platforms on measured evidence rather than vendor accounts is itself, by source count, substantially built on vendor accounts. The mitigation is real but partial: vendor sources are tiered, their bias is flagged per entry, and no hypothesis rests on one alone. The imbalance remains.
+
+The second is that the peer-reviewed share (50 of 221, 22.6%) roughly doubled on 2026-07-13, when the systematic search's surviving 26 studies were incorporated — and that the corpus had, before that date, a *measured* recall of zero against a systematic search of its own subject. The peer-reviewed base of this review is younger than the review.
 
 **Geographic/organizational diversity**:
-- **Regions**: United States, Europe, Asia-Pacific (SK Telecom)
-- **Organization types**: Tech giants, enterprises, startups, government, standards bodies
-- **Industries**: Technology, telecommunications, retail, energy, finance
+- **Regions**: United States, Europe, Asia-Pacific (SK Telecom); the search arm added Brazilian, Japanese, Thai, Ukrainian, Czech and Slovak work
+- **Organization types**: Tech giants, enterprises, startups, government, standards bodies, and — new with the search arm — public research infrastructure (CERN, INFN-CNAF, Lawrence Berkeley National Laboratory), which is the one category of production-scale deployment with no product to sell
+- **Industries**: Technology, telecommunications, retail, energy, finance, scientific computing
 
 ### 3.2 Theme 1: Foundational Architecture Patterns
 
@@ -472,6 +506,8 @@ Kafka-based stateful stream processing is validated at production scale across m
 **Microsoft Azure Scale**: Azure Event Hubs (Kafka-compatible) processes trillions of events daily, validating Kafka scalability for cloud-scale security telemetry. Security incidents drive sharp traffic surges, requiring elastic streaming capacity.
 
 LinkedIn and Microsoft provide production validation for Kafka-based security telemetry patterns.
+
+**Peer-reviewed corroboration (added 2026-07-13)**: until the systematic search was run, every source in this subsection was a vendor or big-tech engineering account. The search supplied academic measurements of the same patterns. Andreoni Lopez et al. (*Concurrency and Computation*, 2019) report a deployed stream-processing threat-detection function sustaining over 95% accuracy against DoS and probe traffic across three datasets and over 85% under concept drift — detection embedded in the pipeline rather than bolted on after it. Loganathan et al. (IEEE GLOBECOM, 2018) measure an auto-scaling CEP processor at over 2.5 million events/sec with lower resource use than a monolithic deployment, which is the elastic-scaling argument this review makes from vendor material elsewhere. Saputra et al. (*Big Data and Cognitive Computing*, 2022) measure Kafka at a maximum 650,000 messages/sec and 172 MB/s into a Spark/Hadoop backend. Husák and Kašpar (ARES, 2019) deploy stream-based alert correlation inside SABU, a production multi-peer alert-sharing platform. None of these was in the corpus before 2026-07-13.
 
 ### 3.3 Theme 2: Cost Economics & TCO Reality
 
@@ -563,7 +599,15 @@ Production deployments provide quantitative performance validation across query 
 
 **Benchmark Caveats**: Vendor benchmarks require skepticism; Cloudflare's production deployment (6M req/sec) is the strongest independent validation in this set. Your mileage may vary based on query patterns, data characteristics, infrastructure (SSD vs HDD), configuration tuning, and workload specifics. Recommendation: Pilot with your data before production commitment.
 
-### 3.6 Theme 5: Security-Specific Considerations
+**Engine comparisons from the search arm (added 2026-07-13)**. This review has argued that vendor benchmarks are optimized for the vendor and that the field needs like-for-like comparisons on identical security workloads. The systematic search found some, and they belong here rather than in a future-work list.
+
+Kajiura and Nakamura (IEEE COMPSAC, 2024) run five machine-learning NIDS classifiers through one distributed pipeline and report the throughputs separately from the accuracies: Decision Tree at 22,972 sessions/sec, Naive Bayes at 22,736, Random Forest at 19,869, SVM at 8,413, and kNN at 723 — a thirty-fold spread — while the top three land within 0.007 of each other on F1 (0.967–0.974). The bottlenecks they locate are in Zeek, Logstash and Elasticsearch, not in the models. That is this review's central methodological claim, measured by someone else: the pipeline, not the classifier, is where the throughput goes.
+
+Abbasi et al. (*Computers*, 2026) compare Faust and Streamz on an identical IoT intrusion-detection workload with significance testing, reporting Streamz at 4,450 events/sec with a 12 ms median latency and 40 MB resident memory, and Faust holding 93–98% detection accuracy; Streamz sustains above 95% efficiency to 3,500 events/sec while Faust degrades past 2,500. Notably, they find Faust and Kafka Streams statistically indistinguishable on detection quality (96.2% vs 96.8%, p = 0.318) while the performance differences across engines are significant (p < 0.001, Cohen's d > 0.8) — engine choice moves throughput, not detection quality, which is precisely the separation practitioners are usually sold the opposite of.
+
+Gentz et al. (IEEE eScience, 2019), at Lawrence Berkeley National Laboratory, publish serialization measurements for a full security data pipeline that make the format decision concrete: in Python, MsgPack serializes in 0.68 ms against JSON's 6.47 ms and Protobuf's 47.02 ms, while in C++ the ordering inverts and all three fall under 1 ms. A format choice that looks like a detail costs two orders of magnitude in the wrong runtime.
+
+*Caution on the two closest analogues to this program's own measurements.* The search returned one paper reporting workload-aware storage reduction for multi-tenant SIEM on ClickHouse (79% uncompressed, 70% compressed, with Sigma rule coverage preserved) and one benchmarking Vector-based log-reduction against a Filebeat baseline over 3M+ SOC records (45% throughput improvement, 80% outbound traffic reduction, 98% attack coverage retained). These are the two claims this review most needed peer-reviewed footing under, since it otherwise sources them from vendor blogs. They are the same author, publishing twice in 2026, and one of the two venues (IJACSA) was removed from DOAJ in 2017 and is indexed only in Web of Science's Emerging Sources index. They are reported here because a systematic review reports what its search returns; they are not treated as independent confirmation of anything, and the claims they touch remain vendor-sourced in substance.### 3.6 Theme 5: Security-Specific Considerations
 
 Security workloads exhibit performance requirements fundamentally different from general analytics, requiring specialized platform capabilities:
 
@@ -578,6 +622,8 @@ Security workloads exhibit performance requirements fundamentally different from
 **Analyst Productivity**: Sub-second queries enable iterative threat hunting with 10-20 pivots per investigation. Slow queries (30-60s) reduce exploration to 3-5 pivots before analysts abandon investigation due to delays (practitioner estimate).
 
 Multiple production and government sources validate these security-specific requirements, distinguishing security analytics from general business intelligence workloads.
+
+**Non-vendor production deployments (added 2026-07-13)**. The production-scale evidence in this review has one structural weakness that no amount of tiering fixes: it comes almost entirely from companies with a product to sell or a platform to promote. The systematic search surfaced the exception — public research infrastructure, which operates security telemetry at scale and publishes about it without a commercial interest. Panero et al. (PoS, ISGC 2018) describe CERN's intrusion-detection system processing approximately 1 TB/day in real time, with a stated goal of at least 5 TB/day. Amori et al. (*EPJ Web of Conferences*, CHEP 2023) describe the equivalent platform at INFN-CNAF, a WLCG Tier-1 site, though they publish the architecture without a performance evaluation. Gentz et al. (IEEE eScience, 2019) do the same for Lawrence Berkeley National Laboratory. These are the only production-scale deployments in the corpus with no vendor incentive attached, and they were absent from it until a database search went looking.
 
 ### 3.7 Hypothesis Validation Summary
 
@@ -683,7 +729,7 @@ This systematic review makes four theoretical contributions to knowledge:
 
 **Study Limitations** (see Section 2.8 for detailed discussion):
 
-*Source Document Dependency*: 283 of 283 footnotes from single best practices document, supplemented with expert validation and blog integration, but may introduce selection bias toward author's priorities.
+*Source Document Dependency*: the corpus began as an extraction of 283 footnotes from a single best-practices document, supplemented with expert validation and vendor material, which introduces selection bias toward the author's priorities. The 2026-07-13 systematic search measured that bias rather than asserting it: recall of the curated corpus against a database search of its own subject was zero of 40, and the 26 studies that survived venue appraisal have been incorporated. The search's own blind spot — a conjunctive query cannot reach the storage-side literature — is stated in Section 2.8.
 
 *Geographic Bias*: Predominantly US/European sources (SK Telecom provides Asia-Pacific validation, but limited). Cost differentials, regulatory constraints (GDPR, data localization), and implementation timelines may vary by region.
 
@@ -703,6 +749,8 @@ This systematic review makes four theoretical contributions to knowledge:
 
 **4. Comparative Performance Studies**: Head-to-head benchmarks (ClickHouse vs Druid vs Elasticsearch; Kafka Streams vs Flink vs Spark Streaming) with identical security workloads (not vendor-optimized benchmarks). Security-specific benchmark suite (TPC-like for security analytics) would enable vendor-neutral comparison. A first-party step in this direction now exists: the SDW MOAR reference stack runs four engines (DuckDB, Trino, ClickHouse, StarRocks) over one shared Iceberg/OCSF table with an answer-equality gate, producing an identical-workload comparison on first-party data (2026-06-07). It is deliberately scoped as a single-host apparatus, so it informs the relative engine pattern and a measured ~7.0× SIEM-index storage ratio but not multi-node throughput, concurrency, or organizational TCO — those remain the open work this future direction names.
 
+The 2026-07-13 systematic search partly answered this direction, which is worth recording because it is the clearest case of the search changing a finding rather than padding a bibliography. Abbasi et al. (Computers, 2026) benchmark Faust against Streamz on an identical IoT intrusion-detection workload with significance testing rather than a single headline multiple; Yahyaoui et al. (ACIS SNPD, 2021) put Flink head-to-head against Spark Streaming on a security workload; and Kajiura and Nakamura (IEEE COMPSAC, 2024) do the thing this review argues for most insistently — they separate the pipeline's throughput from the classifier's accuracy, and find five NIDS models spanning a thirty-fold throughput range while landing within 0.007 of each other on F1, with the bottlenecks sitting in Zeek, Logstash and Elasticsearch rather than in the models. The comparative literature this direction called for is thinner than it should be, but it is not empty, and it was not cited here until a systematic search went looking for it.
+
 **5. Failure Analysis**: Systematic study of failed implementations overcoming publication bias. What streaming deployments were abandoned? What drove rollback from lakehouse to traditional SIEM? What organizational factors predict success/failure? Requires confidential case study access or retrospective practitioner surveys.
 
 **6. Economic Impact Studies**: Quantify MTTD reduction from streaming vs batch architectures; measure analyst productivity gains from sub-second queries; calculate breach cost avoidance from enhanced detection. These ROI metrics justify streaming cost premiums with quantified business impact rather than architectural preference.
@@ -711,7 +759,7 @@ This systematic review makes four theoretical contributions to knowledge:
 
 ## 5. CONCLUSION
 
-Modern data stack architectures promise to transform security operations, but practitioners evaluating these technologies face a critical knowledge gap: cybersecurity literature focuses on detection algorithms while data engineering literature addresses general analytics, leaving security-specific infrastructure guidance fragmented across disconnected domains. This systematic literature review bridges that gap, providing the first comprehensive synthesis of 75+ sources spanning production deployments, peer-reviewed research, and government standards across cybersecurity and data engineering literatures using PRISMA-aligned methodology.
+Modern data stack architectures promise to transform security operations, but practitioners evaluating these technologies face a critical knowledge gap: cybersecurity literature focuses on detection algorithms while data engineering literature addresses general analytics, leaving security-specific infrastructure guidance fragmented across disconnected domains. This systematic literature review bridges that gap, synthesizing 219 tiered sources spanning production deployments, peer-reviewed research, and government standards across the cybersecurity and data-engineering literatures under a PRISMA 2020 two-arm methodology.
 
 Our hypothesis validation establishes operational reality contradicting vendor marketing claims. Apache Iceberg emerged as industry consensus for open table formats (universal vendor support, Apache Software Foundation governance); ClickHouse validated for security analytics at scale (Cloudflare 6M req/sec; a first-party CIDR probe measured ~13-17× native-IP speedup at 20M rows on a single host, with ~2.9× IPv4-vs-String storage savings); streaming architectures carry a material operational cost and staffing premium vs batch alternatives, with the required fault-tolerance expertise remaining scarce; implementation timelines for security-focused deployments run months, not weeks; and tiered storage reduces the cost of multi-year compliance retention. Two post-audit hypotheses extend the set with verbatim-verified peer-reviewed legs: measured production-SOC alert base rates (Yang et al., USENIX Security 2024) and machine-data-specialized compression beating general-purpose equivalents (H-SOC-BASELINE-01, H-LOGCOMP-01; added 2026-07-10). The 2026-06 and 2026-07 source audits withdrew the citations behind several of the originally stated multipliers and classifications, so those findings are stated directionally here pending re-sourcing, while the surviving production figures remain quantitative.
 
@@ -759,7 +807,7 @@ The scoring, count-reconciliation, and validation scripts used to derive every c
 
 ## REFERENCES
 
-*Generated 2026-07-09 from MASTER-BIBLIOGRAPHY.md, restricted to works cited inline in this manuscript; every entry below was verified against its primary during the 2026-06/2026-07 source audits or on generation day. The full living-review corpus (195 entries, 193 of them carrying evidence-tier classifications, derived 2026-07-13) is maintained in MASTER-BIBLIOGRAPHY.md in this repository and is the citable corpus behind the "75+ sources" synthesis claims; see Appendix D. Expert-interview inputs (L. Cao, J. Thomas, P. Agbabian) are personal communications and are not listed. First-party artifacts are labeled.*
+*Generated 2026-07-09 from MASTER-BIBLIOGRAPHY.md, restricted to works cited inline in this manuscript; every entry below was verified against its primary during the 2026-06/2026-07 source audits or on generation day. The full living-review corpus (221 entries, 219 of them carrying evidence-tier classifications, derived 2026-07-13) is maintained in MASTER-BIBLIOGRAPHY.md in this repository and is the citable corpus this review synthesises; see Appendix D. Expert-interview inputs (L. Cao, J. Thomas, P. Agbabian) are personal communications and are not listed. First-party artifacts are labeled.*
 
 [1] Apache Arrow Community, "Introducing Apache Arrow Flight SQL: Accelerating Database Access," Apache Arrow Blog, Feb. 16, 2022. [Online]. Available: https://arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/
 
@@ -813,9 +861,36 @@ The scoring, count-reconciliation, and validation scripts used to derive every c
 
 [26] J. Zhang, Z. Shen, S. Yang, L. Meng, C. Xiao, W. Jia, Y. Li, Q. Sun, W. Zhang, and X. Lin, "PBC: High-Ratio Compression for Machine-Generated Data," *Proc. ACM Manag. Data (PACMMOD)*, SIGMOD 2024, 2024. [Online]. Available: https://arxiv.org/pdf/2311.13947
 
-**Format**: IEEE-style, alphabetical by author/organization. **Corpus note**: the "75+ sources" synthesized by this review resolve through MASTER-BIBLIOGRAPHY.md (versioned, evidence-tiered); the list above is the subset carrying inline claims in this manuscript.
+**Format**: IEEE-style, alphabetical by author/organization. **Corpus note**: the 219 tiered sources synthesized by this review resolve through MASTER-BIBLIOGRAPHY.md (versioned, evidence-tiered, count derived rather than stated); the list above is the subset carrying claims in this manuscript.
 
 ---
+
+
+**Systematic-search arm (incorporated 2026-07-13).** The following entries entered this review through the database search described in Section 2.2, not through the original curation. They are numbered separately because they are a distinct provenance, and each carries the evidence tier its venue appraisal supports. The 14 studies the appraisal refused are not listed here; they are recorded, with reasons, in `methods/prisma-appraisal-2026-07-13.json`.
+
+[R1] M. Abbasi, F. Cardoso, P. Váz, J. Silva, F. Sá, and P. Martins, "Performance Comparison of Python-Based Complex Event Processing Engines for IoT Intrusion Detection: Faust Versus Streamz," *Computers*, vol. 15, no. 3, art. 200, 2026. doi: 10.3390/computers15030200. [Systematic-search arm, 2026-07-13; Level A.]
+
+[R2] F. Amori, S. Antonelli, V. Ciaschini, A. Falabella, E. Fattibene, F. Fornari, D. Lattanzio, D. Michelotto, and L. Morganti, "General Purpose Data Streaming Platform for Log Analysis, Anomaly Detection and Security Protection," *EPJ Web of Conferences* (CHEP 2023), vol. 295, art. 01032, 2024. doi: 10.1051/epjconf/202429501032. [Systematic-search arm; Level B — architecture in production, no performance evaluation published.]
+
+[R3] M. Andreoni Lopez, D. M. F. Mattos, O. C. M. B. Duarte, and G. Pujolle, "Toward a Monitoring and Threat Detection System Based on Stream Processing as a Virtual Network Function for Big Data," *Concurrency and Computation: Practice and Experience*, vol. 31, no. 20, e5344, 2019. doi: 10.1002/cpe.5344. [Systematic-search arm; Level A. Shares authors with the CATRACA conference and short-course reports; the three are one group.]
+
+[R4] N. Chalaemwongwan, "Workload-Aware Storage Reduction for Multi-Tenant SIEM on ClickHouse," *International Journal of Advanced Computer Science and Applications*, vol. 17, no. 4, 2026. doi: 10.14569/ijacsa.2026.0170474. [Systematic-search arm; **Level C — venue caveat**: IJACSA was removed from DOAJ in 2017 and is indexed only in Web of Science ESCI. Reported, not relied upon. Same author as R5; the two are not independent.]
+
+[R5] N. Chalaemwongwan, "Comparative Evaluation of Log Reduction Techniques Using Vector on Public Security Datasets," *ECTI Transactions on Computer and Information Technology*, vol. 20, no. 2, 2026. doi: 10.37936/ecti-cit.2026202.264216. [Systematic-search arm; Level A. Same author as R4; the two are not independent.]
+
+[R6] R. Gentz, S. Peisert, J. Boverhof, and D. Gunter, "SPARCS: Stream-Processing Architecture Applied in Real-Time Cyber-Physical Security," in *Proc. IEEE 15th Int. Conf. on eScience*, 2019, pp. 91-100. doi: 10.1109/escience.2019.00028. [Systematic-search arm; Level A. Lawrence Berkeley National Laboratory.]
+
+[R7] M. Husák and J. Kašpar, "AIDA Framework: Real-Time Correlation and Prediction of Intrusion Detection Alerts," in *Proc. 14th Int. Conf. on Availability, Reliability and Security (ARES)*, 2019, art. 81. doi: 10.1145/3339252.3340513. [Systematic-search arm; Level A. Deployed in the SABU production alert-sharing platform.]
+
+[R8] M. Kajiura and J. Nakamura, "Practical Performance of a Distributed Processing Framework for Machine-Learning-Based NIDS," in *Proc. IEEE 48th Annual Computers, Software, and Applications Conf. (COMPSAC)*, 2024. doi: 10.1109/compsac61105.2024.00355. [Systematic-search arm; Level A.]
+
+[R9] G. V. Loganathan, J. Samarabandu, and X. Wang, "Real-Time Intrusion Detection in Network Traffic Using Adaptive and Auto-Scaling Stream Processor," in *Proc. IEEE Global Communications Conf. (GLOBECOM)*, 2018. doi: 10.1109/glocom.2018.8647489. [Systematic-search arm; Level A.]
+
+[R10] P. Panero, L. Vâlsan, V. Brillault, and I. C. Schuszter, "Building a Large Scale Intrusion Detection System Using Big Data Technologies," in *Proc. Int. Symp. on Grids and Clouds (ISGC)*, PoS(ISGC2018)014, 2018. doi: 10.22323/1.327.0014. [Systematic-search arm; Level B. CERN.]
+
+[R11] F. A. Saputra, M. Salman, J. A. N. Hasim, I. U. Nadhori, and K. Ramli, "The Next-Generation NIDS Platform: Cloud-Based Snort NIDS Using Containers and Big Data," *Big Data and Cognitive Computing*, vol. 6, no. 1, art. 19, 2022. doi: 10.3390/bdcc6010019. [Systematic-search arm; Level B.]
+
+[R12] A. Yahyaoui, H. Lakhdhar, T. Abdellatif, and R. Attia, "Machine Learning Based Network Intrusion Detection for Data Streaming IoT Applications," in *Proc. 21st ACIS Int. Winter Conf. on Software Engineering, AI, Networking and Parallel/Distributed Computing (SNPD-Winter)*, 2021. doi: 10.1109/snpdwinter52325.2021.00019. [Systematic-search arm; Level B.]
 
 ## FIGURES
 
@@ -823,38 +898,38 @@ The scoring, count-reconciliation, and validation scripts used to derive every c
 
 ### Figure 1: PRISMA 2020 Flow Diagram
 
-![Figure 1: PRISMA 2020 two-arm flow diagram. Databases and registers: 400 records identified (OpenAlex 354, dblp 46), 5 duplicates removed, 395 screened on title and abstract, 355 excluded against pre-specified criteria, 40 meeting the inclusion criteria. Other methods: 195 curated entries identified through the author's curation, of which 171 are grey literature no database search returns. This edition synthesises the 193 tiered corpus entries; the 40 database-included studies are the measured gap the retrospective search exposed and are not yet cited here, pending triage. The search was run retrospectively on 2026-07-13 against a corpus built by curation, and overlap between the two arms is zero.](publication-graphics/figure1_prisma_flowchart.pdf){ width=85% }
+![Figure 1: PRISMA 2020 two-arm flow diagram. Databases and registers: 400 records identified (OpenAlex 354, dblp 46), 5 duplicates removed, 395 screened on title and abstract, 355 excluded against pre-specified criteria, 40 meeting the topical inclusion criteria, and 26 surviving a critical appraisal of venue integrity that excluded 14 — eight of them in predatory or compromised venues. Other methods: 195 curated entries, of which 171 are grey literature no database search returns. The two arms converge on the 219 tiered studies this edition synthesises. The search was run retrospectively on 2026-07-13 against a corpus built by curation, and overlap between the two arms is zero.](publication-graphics/figure1_prisma_flowchart.pdf){ width=85% }
 
-Alt text: A PRISMA 2020 flow diagram with two identification arms converging on the review's evidence base. The left arm, identification via databases and registers, begins with 400 records — 354 from OpenAlex under a strict boolean title-and-abstract filter with a 2018 date floor, and 46 from dblp across eight title-level queries — from which 5 duplicates were removed (1 by DOI, 4 by normalized title), leaving 395 records screened on title and abstract. 355 were excluded against the pre-specified criteria, the largest groups being 137 data-engineering papers with no security application, 103 machine-learning intrusion-detection model papers that merely run on a streaming platform without evaluating the data architecture, and 36 dblp records falling outside the 2018 date floor, which dblp's API cannot enforce at query time. 40 met the inclusion criteria. Those 40 are not yet cited by this edition: they are the measured gap the retrospective search exposed, and they are being triaged for incorporation. The right arm, identification via other methods, holds the 195 curated bibliography entries, of which 171 are grey literature that no database search returns — 63 vendor engineering blogs, 33 open-source project docs, 18 practitioner talks, 17 standards and government documents, 14 big-tech engineering blogs, 12 analyst reports, 8 books, and 6 further entries — alongside 24 academic entries that are indexable in principle. A note records that the overlap between the two arms is zero: none of the 40 database-included studies appears in the curated corpus.
+Alt text: A PRISMA 2020 flow diagram with two identification arms converging on the review's evidence base. The left arm, identification via databases and registers, begins with 400 records — 354 from OpenAlex under a strict boolean title-and-abstract filter with a 2018 date floor, and 46 from dblp across eight title-level queries — from which 5 duplicates were removed (1 by DOI, 4 by normalized title), leaving 395 records screened on title and abstract. 355 were excluded against the pre-specified criteria, the largest groups being 137 data-engineering papers with no security application, 103 machine-learning intrusion-detection model papers that merely run on a streaming platform without evaluating the data architecture, and 36 dblp records falling outside the 2018 date floor, which dblp's API cannot enforce at query time. 40 met the topical inclusion criteria and then entered a critical-appraisal stage that the topical screening had not applied, in which venue identity was resolved at the DOI and indexing status established from primaries. That stage excluded 14: eight in predatory or compromised venues, including one paper in a hijacked journal and one in a title Clarivate delisted after an admitted paper-mill compromise; three not peer-reviewed at all, including a preprint typeset with a counterfeit publisher masthead; one whose full text could not be obtained at any price; and two whose citation the independent verifier refused. 26 studies were included. The right arm, identification via other methods, holds the 195 curated bibliography entries, of which 171 are grey literature that no database search returns — 63 vendor engineering blogs, 33 open-source project docs, 18 practitioner talks, 17 standards and government documents, 14 big-tech engineering blogs, 12 analyst reports, 8 books, and 6 further entries — alongside 24 academic entries that are indexable in principle. The arms converge on 219 tiered studies. A note records that the overlap between them is zero: none of the 40 database-included studies was already in the curated corpus, so the corpus's measured recall against a systematic search of its own subject was zero before this incorporation.
 
 **Shows**:
-- The two identification arms PRISMA 2020 provides, both used honestly: a systematic database search (395 screened, 40 included) and the curated grey-literature corpus (195 entries, 171 of them grey) that a database search structurally cannot reach
+- The two identification arms PRISMA 2020 provides, both used honestly: a systematic database search (395 screened, 40 topically included, 26 surviving appraisal) and the curated grey-literature corpus (195 entries, 171 of them grey) that a database search structurally cannot reach
 - The exclusion profile, which is the substantive finding: the security-plus-data-architecture query is dominated by machine-learning detection-model papers (E1, n=103) and by pure data-engineering work (E2, n=137)
-- The zero overlap between the two arms, and with it the corpus's measured recall against the systematic search
+- A second exclusion profile the appraisal produced, and a harder one to report: 14 of the 40 topically-included studies were not fit to cite, and eight of those sat in predatory or compromised venues. A fifth of what a systematic database search returns at this intersection cannot be used
+- The zero overlap between the two arms, and with it the corpus's measured recall against the systematic search — zero of 40 before this edition incorporated them
 - That the search was run *after* the corpus was curated, disclosed as a retro-run rather than presented as a prospective protocol (methods/PRISMA-RETRO-RUN-2026-07-13.md)
 
 ### Figure 2: Evidence Level Distribution
 
-![Figure 2: Evidence level distribution, per-source tally derived 2026-07-13 — 43.0% Level A (83/193 tiered), 46.6% Level B (90/193), 10.4% Level C (20/193); below the >70% Level A target, stated honestly in place of the withdrawn 79% self-grade.](publication-graphics/figure2_evidence_distribution.png){ width=85% }
+![Figure 2: Evidence level distribution, per-source tally derived 2026-07-13 — 42.9% Level A (94/219 tiered), 46.6% Level B (102/219), 10.5% Level C (23/219); below the >70% Level A target, stated honestly in place of the withdrawn 79% self-grade.](publication-graphics/figure2_evidence_distribution.png){ width=85% }
 
-Alt text: Bar chart of the evidence-level distribution across the 193 tiered sources as derived on 2026-07-13: Level A 43.0% (83 sources), Level B 46.6% (90 sources), Level C 10.4% (20 sources). A reference line marks the greater-than-70-percent Level-A target, and the chart annotates the 27.0-point shortfall against it — the honest derived figure stated in place of the 79% self-grade withdrawn in the 2026-06 audit.
+Alt text: Bar chart of the evidence-level distribution across the 219 tiered sources as derived on 2026-07-13: Level A 42.9% (94 sources), Level B 46.6% (102 sources), Level C 10.5% (23 sources). A reference line marks the greater-than-70-percent Level-A target, and the chart annotates the shortfall against it — the honest derived figure stated in place of the 79% self-grade withdrawn in the 2026-06 audit.
 
 **Shows**:
-- Bar chart of the tier mix (A: 43.0%, B: 46.6%, C: 10.4% of 193 tiered entries; derived from MASTER-BIBLIOGRAPHY.md by `scripts/count_reconcile.py` on 2026-07-13, not self-graded)
-- The >70% Level-A target line with the honest gap (−27.0 points) annotated
+- Bar chart of the tier mix (A: 42.9%, B: 46.6%, C: 10.5% of 219 tiered entries; derived from MASTER-BIBLIOGRAPHY.md by `scripts/count_reconcile.py` on 2026-07-13, not self-graded)
+- The >70% Level-A target line with the honest gap annotated
+- The mix is essentially unchanged by the systematic-search incorporation of 2026-07-13, which added 11 Level-A studies against 15 at Level B or C. Adding peer-reviewed work to this corpus did not raise its Level-A share, because Level A in this scheme also admits production case studies and standards, and because half of what survived venue appraisal is conference-grade rather than journal-grade.
 
 ### Figure 3: Source Type Taxonomy
 
-![Figure 3: Source type taxonomy across 75+ sources: production deployments (18+ organizations), vendor documentation (33), industry analysts (10), government/standards (8), and academic/research (6).](publication-graphics/figure3_source_taxonomy.png){ width=85% }
+![Figure 3: Source-type taxonomy of the 221-entry corpus, derived per entry rather than estimated — peer-reviewed academic 50 (22.6%), vendor blogs and product documentation 63 (28.5%), open-source project documentation 33 (14.9%), practitioner talks and personal blogs 18 (8.1%), standards and government 17 (7.7%), big-tech engineering blogs 14 (6.3%), analyst and industry reports 12 (5.4%), books 8 (3.6%), and expert interviews, first-party lab measurements and documented no-primary stubs at 2 each.](publication-graphics/figure3_source_taxonomy.png){ width=85% }
 
-Alt text: Chart of the source-type taxonomy across the 75+ included sources, ordered from largest category to smallest: vendor documentation 33 sources, production deployments 18+ organizations, industry analysts 10 sources, government and standards publications 8 sources, and academic or research papers 6 sources.
+Alt text: Horizontal bar chart of the source-type taxonomy across the 221 catalogued entries, ordered largest to smallest: vendor blogs and product documentation 63 sources (28.5%), peer-reviewed academic 50 (22.6%), open-source project documentation 33 (14.9%), practitioner talks and personal blogs 18 (8.1%), standards and government publications 17 (7.7%), big-tech engineering blogs 14 (6.3%), analyst and industry reports 12 (5.4%), books 8 (3.6%), and expert interviews, first-party lab measurements, and documented no-primary stubs at 2 sources each. Peer-reviewed work is drawn in a distinct colour and vendor-authored categories in another, because the contrast between them is the point of the chart.
 
 **Shows**:
-- Production deployments: 18+
-- Government/Standards: 8
-- Industry analysts: 10
-- Academic: 6
-- Vendor documentation: 33
+- Vendor-authored material (vendor blogs and product docs, plus big-tech engineering blogs) is 77 of 221 entries (34.8%) — the single largest bloc, and larger than the peer-reviewed literature
+- Peer-reviewed academic work is 50 of 221 (22.6%), up from 24 of 195 (12.3%) before the 2026-07-13 systematic-search incorporation, which roughly doubled it
+- Every count is derived per entry by `scripts/derive_source_taxonomy.py` and reconciled against the bibliography's block count, so a source added without a classification fails the build rather than silently vanishing from the chart. The previous version of this figure was hand-maintained, summed to 74, and described a corpus that had not existed since October 2025.
 
 ### Figure 4: Hypothesis Validation Confidence Levels
 
@@ -875,8 +950,9 @@ Alt text: Horizontal bar chart of confidence scores on the 25-point rubric for a
 
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
-| Total Sources | 100+ | 75+ | Sufficient |
-| Evidence Level A | >70% | 42.9% (76/177 tiered; live-computed 2026-07-09) | ❌ Below target (honest live figure; was a withdrawn 79% self-grade) |
+| Total Sources | 100+ | 221 catalogued (219 tiered; live-derived 2026-07-13) | ✅ Met |
+| Peer-reviewed share | (none set) | 22.6% (50/221; was 12.3% before the 2026-07-13 search incorporation) | Reported, not targeted |
+| Evidence Level A | >70% | 42.9% (94/219 tiered; live-derived 2026-07-13) | ❌ Below target (honest live figure; was a withdrawn 79% self-grade) |
 | URL Validation (hypothesis-critical citations) | 90%+ | 100% (16/16 critical); 73% overall | ✅ Met (critical scope) |
 | Geographic Diversity | 2+ regions | 3 regions (US, EU, APAC) | ✅ Met |
 | Organizational Types | 3+ types | 5 types | ✅ Exceeded |
@@ -946,7 +1022,9 @@ Levels C (limited evidence) and D (unreliable evidence) were designed as exclusi
 
 **Classification process.** Sources move through four steps: initial assessment (source type, URL, publication metadata), quality evaluation (quantitative evidence present, production validation, reproducibility, methodological transparency), evidence-level assignment against the criteria above, and cross-validation, where corroboration from an independent source type is preferred for any claim feeding hypothesis validation.
 
-**Post-audit state of the tier mix.** The original classification pass assigned a large majority of sources to Level A, targeting a greater-than-70-percent Level-A share. The 2026-06 fabrication audit and the 2026-07 verification sweep re-checked surviving inline figures against their cited sources and found that a substantial share of the originally Level-A entries carried statistics not actually present in the source, or had entries removed outright. The live, dashboard-computed tally as of 2026-07-09 is 76 of 177 tiered entries at Level A (42.9 percent), 85 at Level B (48.0 percent), and 16 at Level C (9.0 percent) — below the target, and reported here honestly in place of the withdrawn 79 percent self-graded figure (see Table 1). Per-source evidence levels remain provisional pending further re-verification.
+**Post-audit state of the tier mix.** The original classification pass assigned a large majority of sources to Level A, targeting a greater-than-70-percent Level-A share. The 2026-06 fabrication audit and the 2026-07 verification sweep re-checked surviving inline figures against their cited sources and found that a substantial share of the originally Level-A entries carried statistics not actually present in the source, or had entries removed outright. The live, derived tally as of 2026-07-13 is 94 of 219 tiered entries at Level A (42.9 percent), 102 at Level B (46.6 percent), and 23 at Level C (10.5 percent) — below the target, and reported here honestly in place of the withdrawn 79 percent self-graded figure (see Table 1). Per-source evidence levels remain provisional pending further re-verification.
+
+The systematic-search incorporation of 2026-07-13 is worth reading against that target rather than as progress toward it. It added 26 peer-reviewed studies, which nearly doubled the corpus's peer-reviewed share, and it moved the Level-A percentage by one tenth of a point in the wrong direction (43.0 to 42.9). Only 11 of the 26 tier at Level A: the rest are conference work whose review depth could not be independently established, or papers in venues too weak to carry a Level-A claim. The lesson is not that the search failed — it is that Level A in this scheme is a demanding grade that most of the indexed literature at this intersection does not meet, and that a corpus cannot be raised to a 70-percent Level-A share by adding peer-reviewed papers unless the papers are good ones.
 
 **What tier constrains.** A source's tier gates what kind of claim it can carry. A quantitative claim feeding hypothesis validation should be backed by at least one Level A source, with Level B treated as corroborating rather than sufficient on its own; the post-audit re-score reflects this constraint directly, grading one hypothesis strongly validated, two at high confidence, two moderate, and four preliminary, in each case because the surviving Level A support narrowed after the audits. A Level B source alone may support a qualified or contextual claim but not a headline quantitative one. Level C and D sources support no claim in the published text.
 

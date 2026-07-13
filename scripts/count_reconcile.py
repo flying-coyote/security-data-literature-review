@@ -217,7 +217,63 @@ def build_allowlist(T, bib):
         ("manuscript corpus note", MANUSCRIPT,
          r"The full living-review corpus \((\d+) entries, (\d+) of them carrying evidence-tier classifications",
          (N, TIER), False),
+        # The 2026-07-13 incorporation found a second cohort of stale surfaces sitting
+        # OUTSIDE this allowlist — including MASTER-BIBLIOGRAPHY.md's own header, which
+        # had been describing a 179-block corpus for months while being the very file the
+        # counts derive FROM, and a "73% Evidence Level A" claim in the venue memo that was
+        # wrong by thirty points. A gate that watches only some of the surfaces teaches you
+        # that the watched ones are fine; it says nothing about the rest. These are the rest.
+        ("bibliography header total", "MASTER-BIBLIOGRAPHY.md",
+         r"\*\*Total Sources\*\*: (\d+) catalogued `#### ` blocks \((\d+) tiered sources \+ (\d+) documented stubs",
+         (N, TIER, S), False),
+        ("bibliography header tiers", "MASTER-BIBLIOGRAPHY.md",
+         r"\*\*Evidence Quality\*\*: ([\d.]+)% Evidence Level A \(live-derived [0-9-]+: (\d+) of (\d+) tiered entries; (\d+) B,\s*\n?\s*(\d+) C, across (\d+) `#### ` blocks incl\. (\d+) documented stubs",
+         (PCT, A, TIER, B, C, N, S), False),
+        ("manuscript Table 1 total sources", MANUSCRIPT,
+         r"\| Total Sources \| 100\+ \| (\d+) catalogued \((\d+) tiered; live-derived [0-9-]+\) \|",
+         (N, TIER), False),
+        ("manuscript Table 1 Level-A", MANUSCRIPT,
+         r"\| Evidence Level A \| >70% \| ([\d.]+)% \((\d+)/(\d+) tiered; live-derived [0-9-]+\) \|",
+         (PCT, A, TIER), False),
+        ("manuscript tier-mix prose", MANUSCRIPT,
+         r"The live, derived tally as of [0-9-]+ is (\d+) of (\d+) tiered entries at Level A \(([\d.]+) percent\), (\d+) at Level B \(([\d.]+) percent\), and (\d+) at Level C \(([\d.]+) percent\)",
+         (A, TIER, PCT, B, PCT_B, C, PCT_C), False),
+        ("manuscript 2.3 tier shares", MANUSCRIPT,
+         r"\*\*Evidence Level A\*\* \(target >70%; live ([\d.]+)%, (\d+) of (\d+) tiered\)",
+         (PCT, A, TIER), False),
+        ("manuscript 3.1 source statistics", MANUSCRIPT,
+         r"\*\*Evidence levels\*\*: Level A ([\d.]+)% \((\d+)/(\d+)\), Level B ([\d.]+)% \((\d+)/(\d+)\), Level C ([\d.]+)% \((\d+)/(\d+)\)",
+         (PCT, A, TIER, PCT_B, B, TIER, PCT_C, C, TIER), False),
+        ("METHODOLOGY Level-A achievement", "METHODOLOGY.md",
+         r"\*\*Current Achievement\*\*: (\d+) of (\d+) tiered entries \(([\d.]+)%\), live-derived",
+         (A, TIER, PCT), False),
+        ("METHODOLOGY target table", "METHODOLOGY.md",
+         r"\| Evidence Level A \| >70% \| ([\d.]+)% \((\d+)/(\d+) tiered; live-derived [0-9-]+\) \|",
+         (PCT, A, TIER), False),
+        ("publication-graphics README fig2", "publication-graphics/README.md",
+         r"live per-source tier tally \(([\d.]+)% Level A, (\d+)/(\d+) tiered, derived",
+         (PCT, A, TIER), False),
+        ("PUBLICATION-VENUE-RECOMMENDATIONS header", "PUBLICATION-VENUE-RECOMMENDATIONS.md",
+         r"MASTER-BIBLIOGRAPHY\.md \((\d+) catalogued sources, (\d+) tiered; ([\d.]+)% Evidence Level A live-derived",
+         (N, TIER, PCT), False),
     ]
+
+
+def check_source_taxonomy(bib):
+    """Special surface: the derived source taxonomy must account for every catalogued block.
+
+    Figure 3 charts this file. It used to chart five hardcoded buckets summing to 74 — a corpus
+    that stopped existing in October 2025 — and nothing noticed for nine months because nothing
+    derived it. Now a source added without a classification fails here rather than silently
+    dropping out of a published figure.
+    """
+    path = REPO_ROOT / "methods" / "source-taxonomy.json"
+    if not path.exists():
+        return None, bib["total_entries"]
+    import json
+
+    tax = json.loads(path.read_text(encoding="utf-8"))
+    return tax.get("total_entries"), bib["total_entries"]
 
 
 def check_readme_roster_ids(T):
@@ -339,6 +395,18 @@ def main():
     if status != "OK":
         failures += 1
         if not staged_mode or fig4_file in staged_files:
+            blocking += 1
+
+    n_tax, n_blocks = check_source_taxonomy(bib)
+    tax_file = "methods/source-taxonomy.json"
+    if n_tax is None:
+        status, stated_str = "MISS", "file not found (run scripts/derive_source_taxonomy.py)"
+    else:
+        status, stated_str = ("OK" if n_tax == n_blocks else "FAIL"), str(n_tax)
+    rows.append((status, "Figure 3 source taxonomy total", tax_file, stated_str, str(n_blocks)))
+    if status != "OK":
+        failures += 1
+        if not staged_mode or tax_file in staged_files:
             blocking += 1
 
     w_id = max(len(r[1]) for r in rows)

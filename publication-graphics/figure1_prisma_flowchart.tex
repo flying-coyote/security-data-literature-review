@@ -106,10 +106,36 @@
     is recorded per record in screen-batch-0..9.json.
 };
 
+% ==================== LEFT ARM: CRITICAL APPRAISAL ====================
+% Screening was TOPICAL only. Nothing had yet asked whether the venues were real
+% peer-reviewed venues, and a fifth of the yield turned out not to be.
+\node (l-appr) [box, fill=eligibility!30] at (0,-15.2) {
+    \textbf{Studies critically appraised}\\[2pt]
+    n = 40\\[3pt]
+    \footnotesize Venue identity resolved at the DOI; publisher, DOAJ, Scopus and Web of
+    Science status established from primaries; predatory-list, delisting and hijacking
+    checks run; then a second, independent reviewer instructed to refute each proposed
+    citation. Per-record verdicts and evidence: prisma-appraisal-2026-07-13.json.
+};
+
+\node (l-appr-excl) [sidebox, fill=eligibility!15] at (7.4,-15.9) {
+    \textbf{Studies excluded at appraisal (n = 14)}\\[3pt]
+    \footnotesize
+    A1 predatory or compromised venue: 8\\
+    \quad\emph{incl. 1 in a hijacked journal and 1 in a title delisted by Clarivate after
+    an admitted paper-mill compromise}\\
+    A2 not peer reviewed (2 preprints, 1 repository self-deposit): 3\\
+    \quad\emph{incl. 1 preprint typeset with a counterfeit publisher masthead}\\
+    A3 full text unobtainable, so uncitable: 1\\
+    A4 citation refused by the independent verifier: 2
+};
+
 % ==================== LEFT ARM: INCLUDED ====================
-\node (l-incl) [box, fill=included!50] at (0,-15.0) {
+\node (l-incl) [box, fill=included!50] at (0,-19.3) {
     \textbf{Studies included from databases and registers}\\[2pt]
-    n = 40
+    n = 26\\[3pt]
+    \footnotesize 11 Level A, 12 Level B, 3 Level C. The 26 resolve to 23 independent
+    author groups.
 };
 
 % ==================== RIGHT ARM: IDENTIFICATION ====================
@@ -145,26 +171,31 @@
 };
 
 % ==================== CONVERGENCE ====================
-\node (total) [box, fill=included!70, text width=14.4cm, minimum width=15cm] at (9.3,-18.3) {
-    \textbf{\large Studies synthesised in this edition: n = 193} \quad\quad
-    \textbf{\large Awaiting incorporation: n = 40}\\[3pt]
-    193 tiered entries from the curated corpus are synthesised in the findings.
-    The 40 database-included studies are \emph{not yet} cited by this edition.\\[3pt]
+\node (total) [box, fill=included!70, text width=14.4cm, minimum width=15cm] at (9.3,-24.2) {
+    \textbf{\large Studies synthesised in this edition: n = 219}\\[3pt]
+    193 tiered entries via the other-methods arm $+$ 26 via the database arm. The corpus
+    carries 221 catalogued blocks, of which 219 hold an evidence tier and 2 are documented
+    no-primary stubs.\\[3pt]
     \footnotesize Overlap between the two arms: n = 0. No database-included record matched a
     bibliography entry on DOI, on normalized title (exact, substring, or fuzzy), or on
-    author and year, so corpus recall against the systematic search is 0 of 40. The two arms
-    reach disjoint literatures, and that separation is a finding of the review rather than an
-    artifact of the diagram. The 40 are the measured gap this retro-run exists to expose;
-    they are being triaged for incorporation, and until each has been read and tiered it
-    would be false to count it among the studies this review synthesises.
+    author and year, so measured recall of the curated corpus against the systematic search
+    was 0 of 40 \emph{before} this incorporation. The two arms reach disjoint literatures, and
+    that separation is a finding of the review rather than an artifact of the diagram: the
+    curated arm holds the vendor and practitioner material a database cannot return, and the
+    database arm holds the indexed literature the curation never reached. The 26 studies added
+    here close the gap the retro-run exposed; the 14 the appraisal refused are recorded rather
+    than quietly dropped, because a systematic review that reports only what it kept is not
+    reporting its search.
 };
 
 % ==================== ARROWS ====================
 \draw [arrow] (l-id.south) -- (l-screen.north);
 \draw [arrow] (l-screen.south) -- (l-elig.north);
-\draw [arrow] (l-elig.south) -- (l-incl.north);
+\draw [arrow] (l-elig.south) -- (l-appr.north);
+\draw [arrow] (l-appr.south) -- (l-incl.north);
 \draw [sidearrow] (l-id.east) -- (l-dup.west);
 \draw [sidearrow] (l-screen.east) -- (l-excl.west);
+\draw [sidearrow] (l-appr.east) -- (l-appr-excl.west);
 
 \draw [arrow] (r-id.south) -- (r-elig.north);
 \draw [arrow] (r-elig.south) -- (r-incl.north);
@@ -174,10 +205,10 @@
 
 % ==================== AUDIT BANNER ====================
 \node (audit) [box, fill=white, text width=14.4cm, minimum width=15cm, draw=bordercolor,
-               line width=1.0pt] at (9.3,-21.6) {
+               line width=1.0pt] at (9.3,-28.8) {
     \textbf{Audit banner (2026-06-14).} The aggregate Level-A self-grade is WITHDRAWN and no
     aggregate percentage is claimed pending re-verification; per-source evidence levels remain
-    provisional. Of the 195 bibliography blocks, 193 carry an evidence level.
+    provisional. Of the 221 bibliography blocks, 219 carry an evidence level.
 };
 
 % ==================== TITLE ====================
@@ -195,8 +226,12 @@
     streaming platform, where the platform is plumbing rather than the object of study, n = 103).
     The other-methods arm is the curated corpus of vendor engineering blogs, practitioner talks,
     standards documents, and technical books that a bibliographic database cannot return, since
-    it is not journal or conference literature. The arms do not overlap, and each count above is
-    reproducible from the JSON under methods/prisma-results/.}
+    it is not journal or conference literature. The 40 database-included studies then passed
+    through a critical-appraisal stage that the topical screening had not applied, and 14 did not
+    survive it: eight sat in predatory or compromised venues, three were not peer reviewed, one
+    could not be read, and two were refused by the independent verifier. The arms do not overlap,
+    and each count above is reproducible from the JSON under methods/prisma-results/ and
+    methods/prisma-appraisal-2026-07-13.json.}
 };
 
 \end{tikzpicture}

@@ -32,8 +32,8 @@ plt.rcParams['figure.dpi'] = 300
 # Live tally — source: scripts/count_reconcile.py Counter 2, derived from
 # MASTER-BIBLIOGRAPHY.md on 2026-07-13 (195 blocks / 193 tiered / 2 stubs).
 TALLY_DATE = '2026-07-13'
-TIERED_TOTAL = 193
-TALLY = {'A': 83, 'B': 90, 'C': 20}
+TIERED_TOTAL = 219
+TALLY = {'A': 94, 'B': 102, 'C': 23}
 TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}

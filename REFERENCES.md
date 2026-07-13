@@ -201,7 +201,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 ---
 
 **Compilation Notes**:
-- References compiled from MASTER-BIBLIOGRAPHY.md (75+ sources)
+- References compiled from MASTER-BIBLIOGRAPHY.md (221 catalogued sources, 219 tiered; live-derived 2026-07-13)
 - Format: IEEE citation style for academic publication
 - Alphabetical ordering by first author for ease of reference
 - URLs included where available for reproducibility

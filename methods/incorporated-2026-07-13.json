@@ -1,0 +1,242 @@
+{
+  "generated": "2026-07-13",
+  "source": "PRISMA database-arm search + critical appraisal (methods/prisma-appraisal-2026-07-13.json)",
+  "note": "The studies added to MASTER-BIBLIOGRAPHY.md by the incorporation pass. All are peer-reviewed venues that survived the venue-integrity appraisal; the 14 that did not survive are recorded in the appraisal file and are deliberately NOT catalogued.",
+  "count": 26,
+  "entries": [
+    {
+      "rank": 0,
+      "title": "Performance Evaluation of Intrusion Detection Streaming Transactions Using Apache Kafka and Spark Streaming",
+      "doi": "https://doi.org/10.1109/aitc.2019.8920960",
+      "year": 2019,
+      "venue": "2019 International Conference on Advanced Information Technologies (ICAIT) \u2014 3rd edition, Univ. of Information Technology, Yangon, Myanmar, 6-7 Nov 2019",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 1,
+      "title": "Toward a monitoring and threat detection system based on stream processing as a virtual network function for big data",
+      "doi": "https://doi.org/10.1002/cpe.5344",
+      "year": 2019,
+      "venue": "Concurrency and Computation: Practice and Experience",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 2,
+      "title": "An evaluation of a virtual network function for real-time threat detection using stream processing",
+      "doi": "https://doi.org/10.1109/mobisecserv.2018.8311440",
+      "year": 2018,
+      "venue": "2018 Fourth International Conference on Mobile and Secure Services (MobiSecServ), Miami Beach, FL, 24-25 Feb 2018",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 3,
+      "title": "Machine learning based network intrusion detection for data streaming IoT applications",
+      "doi": "https://doi.org/10.1109/snpdwinter52325.2021.00019",
+      "year": 2021,
+      "venue": "2021 21st ACIS International Winter Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD-Winter), Ho Chi Minh City, Vietnam, 28-30 Jan 2021",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 4,
+      "title": "Real-Time Intrusion Detection in Network Traffic Using Adaptive and Auto-Scaling Stream Processor",
+      "doi": "https://doi.org/10.1109/glocom.2018.8647489",
+      "year": 2018,
+      "venue": "2018 IEEE Global Communications Conference (GLOBECOM)",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 6,
+      "title": "DATA WAREHOUSE MODELLING INFORMATION SECURITY LOG MANAGEMENT IN BUILDING A SECURITY OPERATION CENTER IN CENTRAL GOVERNMENT AGENCIES WITH KIMBALL METHOD",
+      "doi": "https://doi.org/10.52436/1.jutif.2023.4.4.649",
+      "year": 2023,
+      "venue": "Jurnal Teknik Informatika (JUTIF)",
+      "tier": "C",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 8,
+      "title": "A study on time models in graph databases for security log analysis",
+      "doi": "https://doi.org/10.1108/ijwis-03-2021-0023",
+      "year": 2021,
+      "venue": "International Journal of Web Information Systems, Vol. 17, No. 5, pp. 427-448 (2021)",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 9,
+      "title": "Building a large scale Intrusion Detection System using Big Data technologies",
+      "doi": "https://doi.org/10.22323/1.327.0014",
+      "year": 2018,
+      "venue": "PoS(ISGC2018)014 -- Proceedings of the International Symposium on Grids and Clouds 2018 in conjunction with Frontiers in Computational Drug Discovery (ISGC 2018 & FCDD), Vol. 327",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 10,
+      "title": "Efficient Host Intrusion Detection using Hyperdimensional Computing",
+      "doi": "https://doi.org/10.1109/bigdata62323.2024.10825247",
+      "year": 2024,
+      "venue": "2024 IEEE International Conference on Big Data (IEEE BigData 2024), Washington DC, pp. 2645-2652",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 11,
+      "title": "High-performance FPGA Architecture for Data Streams Processing on Example of IPsec Gateway",
+      "doi": "https://doi.org/10.24425/123532",
+      "year": 2018,
+      "venue": "International Journal of Electronics and Telecommunications, 2018, Vol. 64, No. 3, pp. 351-356",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 12,
+      "title": "Workload-Aware Storage Reduction for Multi-Tenant SIEM on ClickHouse",
+      "doi": "https://doi.org/10.14569/ijacsa.2026.0170474",
+      "year": 2026,
+      "venue": "International Journal of Advanced Computer Science and Applications (IJACSA), Vol. 17, No. 4, 2026",
+      "tier": "C",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 13,
+      "title": "AIDA Framework",
+      "doi": "https://doi.org/10.1145/3339252.3340513",
+      "year": 2019,
+      "venue": "14th International Conference on Availability, Reliability and Security (ARES 2019 / CyberTIM workshop), Canterbury, UK",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 14,
+      "title": "The Next-Generation NIDS Platform: Cloud-Based Snort NIDS Using Containers and Big Data",
+      "doi": "https://doi.org/10.3390/bdcc6010019",
+      "year": 2022,
+      "venue": "Big Data and Cognitive Computing (BDCC), Vol. 6, Issue 1, Article 19 (2022)",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 22,
+      "title": "Hybrid Stream Processing for Runtime Protection in Remote and Infrastructure-Supported Driving",
+      "doi": "https://doi.org/10.1109/icin69025.2026.11481838",
+      "year": 2026,
+      "venue": "2026 29th Conference on Innovation in Clouds, Internet and Networks (ICIN), Athens, Greece, 30 Mar - 2 Apr 2026",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 23,
+      "title": "Performance Comparison of Python-Based Complex Event Processing Engines for IoT Intrusion Detection: Faust Versus Streamz",
+      "doi": "https://doi.org/10.3390/computers15030200",
+      "year": 2026,
+      "venue": "Computers (MDPI), ISSN 2073-431X",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 24,
+      "title": "SPARCS: Stream-Processing Architecture Applied in Real-Time Cyber-Physical Security",
+      "doi": "https://doi.org/10.1109/escience.2019.00028",
+      "year": 2019,
+      "venue": "2019 IEEE 15th International Conference on eScience (eScience 2019)",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 25,
+      "title": "General purpose data streaming platform for log analysis, anomaly detection and security protection",
+      "doi": "https://doi.org/10.1051/epjconf/202429501032",
+      "year": 2024,
+      "venue": "EPJ Web of Conferences, Vol. 295, Art. 01032 \u2014 Proceedings of CHEP 2023 (26th International Conference on Computing in High Energy and Nuclear Physics)",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 26,
+      "title": "Practical Performance of a Distributed Processing Framework for Machine-Learning-based NIDS",
+      "doi": "https://doi.org/10.1109/compsac61105.2024.00355",
+      "year": 2024,
+      "venue": "2024 IEEE 48th Annual Computers, Software, and Applications Conference (COMPSAC 2024)",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 27,
+      "title": "Corporate Security is a Big Data Problem",
+      "doi": "https://doi.org/10.1145/3158348",
+      "year": 2018,
+      "venue": "Ubiquity (ACM's web-based magazine), Vol. 2018, July, subtitled 'Big Data (Ubiquity symposium)'",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 28,
+      "title": "Aprendizado de M\u00e1quina em Plataformas de Processamento Distribu\u00eddo de Fluxo: An\u00e1lise e Detec\u00e7\u00e3o de Amea\u00e7as em Tempo Real",
+      "doi": null,
+      "year": 2018,
+      "venue": "Minicursos do XXXVI Simp\u00f3sio Brasileiro de Redes de Computadores e Sistemas Distribu\u00eddos (SBRC 2018) \u2014 book chapter, SBC OpenLib (SOL)",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 29,
+      "title": "ARCHITECTURAL AND ANALYTICAL ASPECTS OF BIG DATA APPLICATION FOR ENSURING IOT SYSTEM SECURITY",
+      "doi": "https://doi.org/10.28925/2663-4023.2026.33.1144",
+      "year": 2026,
+      "venue": "\u041a\u0456\u0431\u0435\u0440\u0431\u0435\u0437\u043f\u0435\u043a\u0430: \u043e\u0441\u0432\u0456\u0442\u0430, \u043d\u0430\u0443\u043a\u0430, \u0442\u0435\u0445\u043d\u0456\u043a\u0430 (Cybersecurity: Education, Science, Technique)",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 32,
+      "title": "Analysis of Logs in the Environment of Email Services",
+      "doi": "https://doi.org/10.1109/iceta51985.2020.9379260",
+      "year": 2020,
+      "venue": "2020 18th International Conference on Emerging eLearning Technologies and Applications (ICETA), Technical University of Ko\u0161ice, Slovakia",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 34,
+      "title": "A Binary Feature Extraction Based Data Provenance System Implemented on Flink Platform",
+      "doi": "https://doi.org/10.1109/cyberc.2018.00045",
+      "year": 2018,
+      "venue": "2018 International Conference on Cyber-Enabled Distributed Computing and Knowledge Discovery (CyberC), 10th edition, Zhengzhou, China",
+      "tier": "C",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 35,
+      "title": "Comparative Evaluation of Log Reduction Techniques Using Vector on Public Security Datasets",
+      "doi": "https://doi.org/10.37936/ecti-cit.2026202.264216",
+      "year": 2026,
+      "venue": "ECTI Transactions on Computer and Information Technology (ECTI-CIT), Vol. 20 No. 2 (April 2026)",
+      "tier": "A",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 37,
+      "title": "A data lake-based security transmission and storage scheme for streaming big data",
+      "doi": "https://doi.org/10.1007/S10586-023-04201-9",
+      "year": 2024,
+      "venue": "Cluster Computing (Springer)",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "rank": 38,
+      "title": "Digital forensics architecture for real-time automated evidence collection and centralization: Leveraging security lake and modern data architecture",
+      "doi": "https://doi.org/10.1515/JISYS-2024-0109",
+      "year": 2024,
+      "venue": "Journal of Intelligent Systems",
+      "tier": "B",
+      "category": "academic_peer_reviewed"
+    }
+  ]
+}

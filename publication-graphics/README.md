@@ -12,7 +12,7 @@ This directory contains Python scripts and LaTeX TikZ code to convert text-based
 
 **Figures Generated**:
 1. **Figure 1**: PRISMA flowchart (LaTeX TikZ) - Literature extraction process
-2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (42.9% Level A, 76/177 tiered, computed 2026-07-09; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
+2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (42.9% Level A, 94/219 tiered, derived 2026-07-13; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
 3. **Figure 3**: Source Type Taxonomy (Python matplotlib) - Source diversity and geographic distribution
 4. **Figure 4**: Hypothesis Validation Confidence (Python matplotlib) - post-audit rescored confidence scoring (2026-07-13 rubric rescore)
 
@@ -90,7 +90,7 @@ rm *.aux *.log
 - Color palette: Green (#2E7D32) for Level A, Blue (#1976D2) for Level B
 - "EXCEEDS TARGET" annotation with +6 percentage points
 
-**Data Source**: MASTER-BIBLIOGRAPHY.md (live tier tally, dashboard-computed; 42.9% Level A, 76 of 177 tiered sources as of 2026-07-09)
+**Data Source**: MASTER-BIBLIOGRAPHY.md (live tier tally, derived; 42.9% Level A, 94 of 219 tiered sources as of 2026-07-13). Figure 3 is likewise derived, from methods/source-taxonomy.json via scripts/derive_source_taxonomy.py — it was hand-maintained until 2026-07-13, when it was found still charting a 74-source corpus.
 
 ---
 

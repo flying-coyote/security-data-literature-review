@@ -12,7 +12,7 @@
 This repository contains a **living literature review** that is the shared evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the essays and research at securitydataworks.com, and the applied-bridge positioning all cite it. The review bridges cybersecurity and data engineering with evidence-tiered, source-verified research (each entry carries an A/B/C/D tier and a validation verdict in RESEARCH-JOURNAL.md). Published openly (first released October 22, 2025; the original Substack was retired 2026-05-24 and writing moved to securitydataworks.com) with ongoing monthly updates and quarterly deep dives.
 
 **Current Status - June 2026** 🔄:
-- **195 sources catalogued** (193 tiered + 2 documented stubs; 43.0% Evidence Level A, live 2026-07-10 — 83/193; six DR-3 peer-reviewed primaries + two DR-1 vendor case studies added 2026-07-10; honest post-audit baseline + 2026 Tier-A primary sources + Tier-B bridge-framing + detection-engineering anchors + WT-2 production anchors; freshness sweep substantially complete — see RESEARCH-JOURNAL.md)
+- **221 sources catalogued** (219 tiered + 2 documented stubs; 42.9% Evidence Level A, live 2026-07-13 — 94/219; the systematic-search incorporation added 26 peer-reviewed studies on 2026-07-13, after a critical appraisal refused 14 of the 40 the search returned — eight of them in predatory or compromised venues. The Level-A share barely moved, because most of what survived appraisal tiers at B or C; that is the honest result and not a disappointing one — see MASTER-BIBLIOGRAPHY.md § Systematic Search Arm)
 - **14 research questions** (RQ1-RQ14) with comprehensive validation
 - **Fabrication audit + freshness sweep complete** (2026-06-05 to 2026-06-21; Version 1.22.0, best-practices score 92/100 — see RESEARCH-JOURNAL.md)
 - **Now the Tier-3 evidence backbone of the MOAR handbook campaign** (handbook on-page footnotes resolve to this repo's sources + their RESEARCH-JOURNAL verdicts)
@@ -35,7 +35,7 @@ This repository contains a **living literature review** that is the shared evide
 ## Current Repository Contents
 
 **Core Documentation Files**:
-1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 195 catalogued sources (193 tiered), 43.0% Evidence Level A (live, 83/193)
+1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 221 catalogued sources (219 tiered), 42.9% Evidence Level A (live, 94/219)
 2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture
 3. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (9,999 words, all sections drafted)
 4. **REFERENCES.md** - IEEE/ACM formatted references (78 sources, alphabetically ordered)
@@ -178,8 +178,8 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - H-IMPL-01 (Streaming TCO): PRELIMINARY, 6/25 - quantitative legs withdrawn in the 2026-06/07 audits; directional pending re-sourcing
 
 **Quality Metrics** (2026-07-12 — honest post-audit baseline, live-computed via `scripts/automation_dashboard.py` and gated by `scripts/count_reconcile.py`):
-- **Evidence Level A: 43.0%** (83 of 193 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; this is the honest baseline, not the pre-audit 78% claim
-- Evidence Level B: 90 of 193 · Evidence Level C: 20 of 193 (across 195 `#### ` blocks incl. 2 documented stubs)
+- **Evidence Level A: 42.9%** (94 of 219 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; the 2026-07-13 systematic-search incorporation added 11 Level-A studies but 15 at B/C, so the share held flat. This is the honest baseline, not the pre-audit 78% claim
+- Evidence Level B: 102 of 219 · Evidence Level C: 23 of 219 (across 221 `#### ` blocks incl. 2 documented stubs)
 - The Tier-A floor (60%) is intentionally breached and surfaced, not silenced — a breach that reflects real corpus quality is the dashboard working (see `scripts/weekly_scheduled_check.py`)
 - Every >12-month source now carries a 2026-06-05 validation or freshness marker; 9 fabricated entries removed, 3 dead links recorded (see RESEARCH-JOURNAL.md)
 - Production-deployment anchors (Shell, Cloudflare, SK Telecom, Huntress, etc.) are vendor case studies — Tier C under the global tiers; verify each primary before load-bearing use

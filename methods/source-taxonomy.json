@@ -1,0 +1,76 @@
+{
+  "derived_by": "scripts/derive_source_taxonomy.py",
+  "total_entries": 221,
+  "peer_reviewed": 50,
+  "peer_reviewed_percent": 22.6,
+  "added_by_incorporation_pass": 26,
+  "categories": [
+    {
+      "category": "academic_peer_reviewed",
+      "label": "Peer-reviewed\nacademic",
+      "count": 50,
+      "percent": 22.6
+    },
+    {
+      "category": "vendor_engineering_blog_or_product_docs",
+      "label": "Vendor blogs /\nproduct docs",
+      "count": 63,
+      "percent": 28.5
+    },
+    {
+      "category": "open_source_project_docs_or_repo",
+      "label": "Open-source\nproject docs",
+      "count": 33,
+      "percent": 14.9
+    },
+    {
+      "category": "practitioner_talk_or_personal_blog",
+      "label": "Practitioner talks /\npersonal blogs",
+      "count": 18,
+      "percent": 8.1
+    },
+    {
+      "category": "standards_frameworks_government",
+      "label": "Standards /\ngovernment",
+      "count": 17,
+      "percent": 7.7
+    },
+    {
+      "category": "big_tech_engineering_blog",
+      "label": "Big-tech\nengineering blogs",
+      "count": 14,
+      "percent": 6.3
+    },
+    {
+      "category": "analyst_or_industry_report",
+      "label": "Analyst /\nindustry reports",
+      "count": 12,
+      "percent": 5.4
+    },
+    {
+      "category": "book",
+      "label": "Books",
+      "count": 8,
+      "percent": 3.6
+    },
+    {
+      "category": "expert_interview_or_personal_communication",
+      "label": "Expert interviews",
+      "count": 2,
+      "percent": 0.9
+    },
+    {
+      "category": "first_party_lab_measurement",
+      "label": "First-party lab\nmeasurement",
+      "count": 2,
+      "percent": 0.9
+    },
+    {
+      "category": "no_primary_retired_or_declined",
+      "label": "Retired / declined\n(no primary)",
+      "count": 2,
+      "percent": 0.9
+    }
+  ],
+  "note": "Composed from the retro-run classification of the pre-existing corpus plus the studies added by the incorporation pass. Percentages are of all 221 catalogued blocks, which includes the two documented stubs the tier counts exclude, so this denominator is the block count and not the tiered count."
+}

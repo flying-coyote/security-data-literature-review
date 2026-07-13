@@ -8,11 +8,11 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
-**Last Updated**: July 9, 2026 (monthly update: count reconciliation across every surface + `automation_dashboard.py` live-recompute fix; the +2 WT-2 production-deployment anchors landed July 8 — revival in progress, see REVIEW-AND-PLAN-2026-06.md)
+**Last Updated**: July 13, 2026 (systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 179 catalogued `#### ` blocks (177 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder; live-recount 2026-07-09 after folding in the 2026-07 research packet: +Ursa (A, PVLDB), +Exabeam (A), +OpenSec (B)) — grown from the 141 post-merge baseline + 3 new 2026 Tier-A primary sources added 2026-06-05: Apache Iceberg 1.11.0, OCSF–ITU support, MITRE D3FEND-for-OT; + 2 Tier-B framing sources added 2026-06-09: Joe Reis & Housley *Fundamentals of Data Engineering*, Dave McComb *The Data-Centric Revolution* / Incremental Stealth Legacy Modernization — grounding the applied-bridge positioning; + 9 primary sources added 2026-06-13 (each opened + re-tiered at source): Cohasset Associates S3 Object Lock SEC 17a-4(f) attestation (A), pySigma-pipeline-ocsf (B OSS), Cribl Finality case study (C), Fortinet+BlueField-3 DPU (B), Databricks Cross-Engine ABAC (C), Apache Polaris TLP graduation (A), KPMG Q3-2025 AI Pulse (C), FastLanes PVLDB-2025 (A), DuckLake data-inlining (C); + 4 benchmark-landscape anchors added 2026-06-14 (each verified at primary before cataloguing): Kester et al. *Access Path Selection* SIGMOD 2017 (A — authorship/venue verified, the ~1%-selectivity crossover figure NOT primary-confirmed and FLAGGED), LHBench / *Analyzing and Comparing Lakehouse Storage Systems* CIDR 2023 (A), LST-Bench SIGMOD 2024 (A), ClickBench (C, vendor-authored); + 9 detection-engineering / grounding-chain anchors added 2026-06-21 (Program-2 M0/M1, ATT&CK→D3FEND-over-OCSF through-line): Axelsson *Base-Rate Fallacy* TISSEC 2000 (A), Sommer & Paxson *Outside the Closed World* IEEE S&P 2010 (A), MITRE Cyber Analytics Repository (B), Red Canary Atomic Red Team (B), MITRE D3FEND 1.0 ontology (A), BFO / ISO-IEC 21838-2:2021 (A), Common Core Ontologies (B), Stillions DML model (C), SCYTHE PTEF (C) — Axelsson + Sommer & Paxson catalogued to close a live-citation breach (cited in the deployed d3fend-wall essay + AIML-RIPENESS-EVIDENCE.md but previously un-catalogued); see CHANGELOG + RESEARCH-JOURNAL.md). 8 entries URL-re-sourced; the 49 audit-flagged entries have had their corrections **folded into the prose and re-tiered** (2026-06-05) — each carries a compact `Validation (2026-06-05, folded)` marker pointing to the journal. The Splunk-DB-Connect "145×" entry carries a 2026-06-14 supersession note (the durable claim is the two-regime split + ~10–11× foil multiple; the old 145× is the ch-native-vs-Dremio extreme pair, now a 76.6×–85.9× range) and the DuckLake v1.0 entry carries the BENCH-E catalog-failure-mode observations (version-bound to DuckDB 1.5.3). + 4 added 2026-06-30 (each verified at the source PDF/cover before cataloguing, recovered from a local research-inbox sweep): James Bonifield *Data Engineering for Cybersecurity* (B, No Starch Press — the closest named companion/competitor to the MOAR book), arXiv:2505.02709 *Evaluating Goal Drift in LM Agents* (B, Apollo Research), arXiv:2509.00115 *Adaptive Monitoring of Agentic AI Systems / AMDM* (B), arXiv:2603.11768 *Governing Evolving Memory in LLM Agents / SSGM* (C, post-cutoff framing source); + 2 production-deployment anchors added 2026-07-08 (each verified at primary before cataloguing, WT-2 book-footnote corroborations): RunReveal SIEM-on-ClickHouse + sigmalite (B), DNB Cyber Defense Center on Ibis via the marimo case study (B). This repo is the source of truth for literature citations.
+**Total Sources**: 221 catalogued `#### ` blocks (219 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 42.9% Evidence Level A (live 2026-07-09, post-fold: 76 of 177 tiered entries marked `**Evidence Level**: A`; 85 B, 16 C, across 179 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/automation_dashboard.py`, which now counts tiers per-block and computes this live instead of reading a self-reported header). This is the honest post-fold baseline plus the first 2026 primary-source additions: the 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source (real source, wrong/absent number), dropping live Level-A to ~45% (64/141); adding 3 verified 2026 Tier-A standards-tier sources nudged it to ~47% (67/144); the 2 Tier-B framing sources added 2026-06-09 hold the A-count flat at 67 while the denominator grows, easing live A% to ~46% (67/146). The 9 Program-2 detection-engineering / grounding-chain anchors added 2026-06-21 add 4 Tier-A (Axelsson, Sommer & Paxson, D3FEND 1.0, BFO/ISO 21838-2), 3 Tier-B (CAR, Atomic Red Team, CCO), and 2 Tier-C (Stillions DML, SCYTHE PTEF), moving the catalogued count toward ~71 A / ~84 B / ~15 C across ~168; subsequent additions (2026-06-30 +4, 2026-07-08 +2 WT-2) and the 2026-07-09 monthly update — a full live-recount, then folding in the research packet (+Ursa A, +Exabeam A, +OpenSec B, phantom "Streaming vs Batch" retired) — put the honest current figure at **76 A / 85 B / 16 C across 177 tiered sources (179 `#### ` blocks) = 42.9%** (recompute via `scripts/automation_dashboard.py`). The freshness sweep + further 2026 primary-source additions are the path back toward the 75% target — the gap is now visible rather than masked.
+**Evidence Quality**: 42.9% Evidence Level A (live-derived 2026-07-13: 94 of 219 tiered entries; 102 B, 23 C, across 221 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the Level-A share has hovered in the low forties since. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -4807,3 +4807,471 @@ Two C-tier catches from the DR-1 streaming-economics hunt (the run's other candi
 **Validation Status**: ✅ Verified at primary 2026-07-10 (raw HTML fetch; all five checked figures verbatim)
 
 ---
+
+## Systematic Search Arm — PRISMA Database Search (2026-07-13)
+
+Everything above this line reached the corpus by curation: footnote extraction, expert interviews, vendor and standards material, and ongoing practitioner reading. That is the "identification via other methods" arm of a PRISMA 2020 flow, and it is a legitimate arm, but on its own it cannot answer the question a reviewer will ask — what does the indexed literature contain, and did this review find it?
+
+The retro-run search (OpenAlex + dblp, 2018 onward, protocol in `methods/PRISMA-SEARCH-PROTOCOL-2026-07-13.md`) answered that question, and the answer was uncomfortable: of 40 studies the search included, **not one was already in this corpus**. Measured recall of the curated corpus against a systematic search of its own subject was zero. The entries below are the repair.
+
+They are not, however, simply 40 new citations. Every included study went through a critical-appraisal stage the topical screening had skipped — venue identity resolved at the DOI, publisher and indexing established from primaries (DOAJ, Scopus, Web of Science), predatory-list and delisting checks run, then an independent second reviewer instructed to refute each proposed citation. **Fourteen of the 40 did not survive it.** Eight were in predatory or compromised venues — including one paper in a *hijacked* journal whose DOI prefix is documented in Abalkina's 2024 work on journal hijacking, and one in a Hindawi title Clarivate delisted in its March-2023 cull after Wiley admitted paper-mill compromise. Three were not peer-reviewed at all, among them an arXiv preprint typeset with a counterfeit IEEE Access masthead and a placeholder DOI line. One could not be read at any price and was dropped rather than cited unread.
+
+That leaves the 26 below. The appraisal record for all 40, including every drop and its reason, is `methods/prisma-appraisal-2026-07-13.json`.
+
+Two cautions travel with these entries. First, 26 records resolve to only **23 independent author groups** — and the two papers that were supposed to put peer-reviewed footing under the corpus's weakest, vendor-sourced claims (ClickHouse storage reduction; pipeline log-reduction economics) turn out to share a single author, one of them publishing in a journal removed from DOAJ in 2017. They corroborate each other, not the claim. Second, several entries carry figures that are real but not usable as evidence here — speedups measured against unrelated hardware baselines, a percentage that is malformed as written, numbers a paper quotes from someone else. Each such entry says in the open what is carried and what is left behind.
+
+### Streaming Architectures & Engine Comparisons (search arm)
+
+#### Intrusion Detection Streaming Transactions Using Apache Kafka and Spark Streaming (IEEE ICAIT, 2019)
+
+**Authors**: May Thet Tun, Dim En Nyaung, Myat Pwint Phyu
+**Date**: 2019 (2019 International Conference on Advanced Information Technologies (ICAIT) — 3rd edition, Univ. of Information Technology, Yangon, Myanmar, 6-7 Nov 2019)
+**URL**: https://doi.org/10.1109/aitc.2019.8920960
+**Evidence Level**: B (Legitimate IEEE-published conference proceedings from a real, ongoing university-run series with no predatory or integrity flags found — so this is not a DROP-on-venue case)
+**Relevance**:
+- Hypothesis H-STREAM-01 — recorded as an instance of first-party Kafka/Spark pipeline measurement on UNSW-NB15
+
+**Key Findings**:
+- Carried for the existence of the measurement only. No number may be quoted from it: the readable abstract contains no figures, and its one directional statement (that Kafka partitions *increase* processing time) contradicts the paper's own stated aim, which the full text — IEEE-paywalled and unread — would have to resolve. A metadata trap worth recording: Semantic Scholar mis-assigns this paper to the unrelated IEEE International Conference on Advanced Infocomm Technology; the venue here is the Yangon ICAIT series, per Crossref.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 0 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+#### CATRACA — Stream-Processing Threat Detection as a Virtual Network Function (Concurrency and Computation, 2019)
+
+**Authors**: Martin Andreoni Lopez, Diogo M. F. Mattos, Otto Carlos M. B. Duarte, Guy Pujolle
+**Date**: 2019 (Concurrency and Computation: Practice and Experience)
+**URL**: https://doi.org/10.1002/cpe.5344
+**Evidence Level**: A (Established, currently Scopus/WoS-SCIE-indexed Wiley journal with no integrity flags found; real deployed-system measurement (not simulation) with concrete accuracy figures in the abstract)
+**Relevance**:
+- Hypothesis H-STREAM-01 (stateful stream processing at scale) — a peer-reviewed instance of detection embedded in the streaming pipeline rather than bolted on after it
+- Book Chapter 7 (Ingestion — streaming)
+
+**Key Findings**:
+- over 95% accuracy distinguishing normal traffic from DoS attacks and vulnerability probes, across three different datasets
+- more than 85% accuracy handling streaming data under concept-drift detection
+- A deployed, evaluated system (not a proposal), with concept-drift handling — the pattern the rest of the corpus sources from vendor material.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 1 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Virtual Network Function for Real-Time Threat Detection Using Stream Processing (MobiSecServ, 2018)
+
+**Authors**: Martin Andreoni Lopez, Antonio Gonzalez Pastana Lobato, Otto Carlos M. B. Duarte, Guy Pujolle
+**Date**: 2018 (2018 Fourth International Conference on Mobile and Secure Services (MobiSecServ), Miami Beach, FL, 24-25 Feb 2018)
+**URL**: https://doi.org/10.1109/mobisecserv.2018.8311440
+**Evidence Level**: B (Legitimate, multi-year IEEE conference with no predatory or integrity flags — and I actively disconfirmed the one apparent red flag in the record set (the OpenAlex 'preprint' type tag), so this is not an unreviewed preprint)
+**Relevance**:
+- Hypothesis H-STREAM-01 (streaming throughput at scale)
+- Book Chapter 7 (Ingestion — streaming)
+
+**Key Findings**:
+- more than five million messages per second (scaling test, hardware/test conditions not stated in the abstract)
+- Earlier conference statement of the CATRACA line of work; shares authors with the 2019 journal paper above and with the SBRC short-course chapter below, so the three are one research group and not three independent confirmations.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 2 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Flink vs Spark Streaming for Machine-Learning NIDS on Data Streams (ACIS SNPD Winter, 2021)
+
+**Authors**: Aymen Yahyaoui, Haithem Lakhdhar, Takoua Abdellatif, Rabah Attia
+**Date**: 2021 (2021 21st ACIS International Winter Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD-Winter), Ho Chi Minh City, Vietnam, 28-30 Jan 2021)
+**URL**: https://doi.org/10.1109/snpdwinter52325.2021.00019
+**Evidence Level**: B (Long-running (21-edition), IEEE/ACIS-published conference series with no predatory or integrity flags — a defensible venue)
+**Relevance**:
+- Hypothesis H-STREAM-01 (engine selection)
+- Answers, in part, the head-to-head engine comparison this review names as open work (Section 4.4, Future Direction 4)
+
+**Key Findings**:
+- A direct peer-reviewed Flink-versus-Spark-Streaming comparison on a security workload. The abstract's headline claim is qualitative, so the paper is carried for the existence and direction of the comparison, not for a throughput number.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 3 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+#### Adaptive and Auto-Scaling Stream Processing for Real-Time Intrusion Detection (IEEE GLOBECOM, 2018)
+
+**Authors**: G. V. Loganathan, Jagath Samarabandu, Xianbin Wang
+**Date**: 2018 (2018 IEEE Global Communications Conference (GLOBECOM))
+**URL**: https://doi.org/10.1109/glocom.2018.8647489
+**Evidence Level**: A (Genuinely peer-reviewed IEEE flagship conference paper (documented multi-reviewer process, IEEE Xplore/Scopus/WoS pedigree); the precision/recall numbers are measured against the real, published CICIDS2017 intrusion-detection dataset (not a network simulator), and throughput was measured on the actual system)
+**Relevance**:
+- Hypothesis H-STREAM-01 (elastic vs monolithic stream processing)
+- Book Chapter 7 (Ingestion) — the elastic-scaling argument
+
+**Key Findings**:
+- average precision of 99.98%
+- average recall of 93.42%
+- processing over 2.5 million events per second
+- Uses the Wisdom CEP engine; the auto-scaling deployment is reported to use fewer resources than a monolithic one at the same load, which is the architectural claim the review makes from vendor sources elsewhere.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 4 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### AIDA Framework — Real-Time Correlation and Prediction of Intrusion Detection Alerts (ARES, 2019)
+
+**Authors**: Martin Husák, Jaroslav Kašpar
+**Date**: 2019 (14th International Conference on Availability, Reliability and Security (ARES 2019 / CyberTIM workshop), Canterbury, UK)
+**URL**: https://doi.org/10.1145/3339252.3340513
+**Evidence Level**: A (Genuinely peer-reviewed ACM conference paper from an identifiable, durable academic group (Husak/Kaspar, Masaryk University CSIRT-MU) with a multi-year publication trail on the same real production system (SABU/Warden), evaluated on real alert data from a live platform rather than simulation)
+**Relevance**:
+- Hypothesis H-STREAM-01 (stream processing for alert correlation)
+- Book Chapter 9 (Detection) — pipeline-side correlation
+
+**Key Findings**:
+- Deployed as a live analytical component of the SABU platform, a production multi-peer alert-sharing infrastructure (not a lab testbed)
+- Notable because it is deployed inside SABU, a production multi-peer alert-sharing platform, rather than evaluated on a testbed.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 13 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Cloud-Based Snort NIDS Using Containers and Big Data (Big Data and Cognitive Computing, 2022)
+
+**Authors**: Ferry Astika Saputra, Muhammad Salman, Jauari Akhmad Nur Hasim, Isbat Uzzin Nadhori, Kalamullah Ramli
+**Date**: 2022 (Big Data and Cognitive Computing (BDCC), Vol. 6, Issue 1, Article 19 (2022))
+**URL**: https://doi.org/10.3390/bdcc6010019
+**Evidence Level**: B (Legitimately peer-reviewed and properly indexed (Scopus Q1, ESCI, Ei Compendex) with no documented integrity problem specific to this journal; real measured Kafka/big-data testbed numbers, not simulation)
+**Venue appraisal (2026-07-13)**: MDPI — class `mdpi_or_similar_apc_but_indexed`. No integrity flags found.
+**Relevance**:
+- Hypothesis H-STREAM-01 (Kafka ingest throughput)
+- Book Chapter 7 (Ingestion) — the containerized-sensor pattern
+
+**Key Findings**:
+- Apache Kafka achieved a maximum message rate of 650,000 messages/sec
+- Maximum throughput of 172 MBps streaming data into Spark and Hadoop
+- Kafka message-rate and throughput figures measured on a lambda-architecture backend.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 14 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Faust vs Streamz — Complex Event Processing Engines for IoT Intrusion Detection (Computers, MDPI, 2026)
+
+**Authors**: Maryam Abbasi, Filipe Cardoso, Paulo Váz, José Silva, Filipe Sá, Pedro Martins
+**Date**: 2026 (Computers (MDPI), ISSN 2073-431X)
+**URL**: https://doi.org/10.3390/computers15030200
+**Evidence Level**: A (Confirmed DOAJ-listed, Scopus/ESCI/DBLP/Ei Compendex-indexed journal from an identifiable, non-predatory publisher, with a full, detailed, methodologically transparent abstract reporting controlled experiments with explicit statistics on two real datasets rather than a simulation or an unevaluated proposal)
+**Venue appraisal (2026-07-13)**: MDPI AG — class `mdpi_or_similar_apc_but_indexed`. No integrity flags found.
+**Relevance**:
+- Hypothesis H-STREAM-01 (engine selection under a security workload)
+- Directly answers Future Direction 4 (Section 4.4): a like-for-like engine benchmark on an identical security workload, with significance testing
+
+**Key Findings**:
+- Streamz: 4450 events/sec throughput, 89% efficiency, 40 MB memory, 12 ms median latency
+- Faust: 93-98% intrusion-detection accuracy, 1.4% CPU utilization standard deviation
+- Faust vs Kafka Streams detection quality: 96.2% vs 96.8% (0.6 pp difference, not statistically significant, p=0.318)
+- Statistically significant performance differences across all metrics (p<0.001, Cohen's d>0.8)
+- Streamz maintains >95% efficiency up to 3500 events/sec; Faust degrades beyond 2500 events/sec
+- The closest published analogue to this program's own engine benchmarks: same workload across engines, effect sizes and p-values reported rather than a single headline multiple.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 23 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### SPARCS — Stream-Processing Architecture for Real-Time Cyber-Physical Security (IEEE eScience, 2019)
+
+**Authors**: Reinhard Gentz, Sean Peisert, Joshua Boverhof, Dan Gunter
+**Date**: 2019 (2019 IEEE 15th International Conference on eScience (eScience 2019))
+**URL**: https://doi.org/10.1109/escience.2019.00028
+**Evidence Level**: A (Real, established, peer-reviewed IEEE conference (CORE A eScience series); no integrity flags of any kind; full text confirms genuine LBNL deployment work with at least one directly measured hardware benchmark (Protobuf/MsgPack/JSON serialization timing on a BeagleBone Black minicomputer, Python and C++))
+**Relevance**:
+- Book Chapter 6 (Architecture) — an end-to-end collection/transport/storage/processing reference design
+- Serialization-format selection (Chapter 8): the measured Protobuf/MsgPack/JSON spread is directly comparable to the format decisions this review discusses
+
+**Key Findings**:
+- Protobuf serialization (Python): 47.0197 ms; deserialization: 48.6306 ms
+- MsgPack serialization (Python): 0.6806 ms; deserialization: 0.3453 ms
+- JSON serialization (Python): 6.4709 ms; deserialization: 2.0404 ms
+- Protobuf serialization (C++): 0.79528 ms; deserialization: 0.66304 ms
+- MsgPack serialization (C++): 0.47313 ms; deserialization: 0.29642 ms
+- JSON serialization (C++): 0.18463 ms; deserialization: 0.29469 ms
+- Authored at Lawrence Berkeley National Laboratory. The only record in the search set to receive a clean CITE with no venue caveat.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 24 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Practical Performance of a Distributed Processing Framework for ML-Based NIDS (IEEE COMPSAC, 2024)
+
+**Authors**: M. Kajiura, Junya Nakamura
+**Date**: 2024 (2024 IEEE 48th Annual Computers, Software, and Applications Conference (COMPSAC 2024))
+**URL**: https://doi.org/10.1109/compsac61105.2024.00355
+**Evidence Level**: A (Established, rigorous, peer-reviewed IEEE flagship conference (48th edition, <25% acceptance, 3+ reviews/paper); no integrity flags; full text confirms real measured throughput/latency on named real hardware (9-node Kubernetes cluster), directly on point for the review's pipeline-vs-accuracy methodological stance)
+**Relevance**:
+- Hypothesis H3-PERFORMANCE-01 (pipeline throughput is distinct from model accuracy)
+- Supports this review's core methodological stance: the pipeline, not the classifier, is where the throughput goes
+
+**Key Findings**:
+- Decision Tree: 22,972 sessions/sec (~9.0 Gbps), ~340-350 ms latency
+- Naive Bayes: 22,736 sessions/sec (~9.0 Gbps), ~340-350 ms latency
+- Random Forest: 19,869 sessions/sec (~7.5 Gbps), ~340-350 ms latency
+- SVM: 8,413 sessions/sec (~3.0 Gbps), ~530 ms latency
+- kNN: 723 sessions/sec (~250 Mbps), ~1.5 s latency
+- Baseline (no classifier): 23,596 sessions/sec
+- F1 scores of 0.967-0.974 for Decision Tree/Naive Bayes/Random Forest despite large throughput gaps
+- Bottlenecks identified in Zeek, Logstash, and Elasticsearch processes
+- Separates framework performance from model accuracy and locates the bottlenecks in Zeek, Logstash and Elasticsearch — the classifiers with a 30x throughput spread land within 0.007 of each other on F1. The arXiv deposit of this paper (record 33) is the same work and was removed as a duplicate.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 26 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+---
+
+### Non-Vendor Production Deployments (search arm)
+
+#### CERN — Large-Scale Intrusion Detection on Big Data Technologies (PoS, ISGC 2018)
+
+**Authors**: Pablo Panero, Liviu Vâlsan, Vincent Brillault, Ioan Cristian Schuszter
+**Date**: 2018 (PoS(ISGC2018)014 -- Proceedings of the International Symposium on Grids and Clouds 2018 in conjunction with Frontiers in Computational Drug Discovery (ISGC 2018 & FCDD), Vol. 327)
+**URL**: https://doi.org/10.22323/1.327.0014
+**Evidence Level**: B (Genuine, non-predatory, indexed proceedings venue (DOAJ + Scopus), but the review process is proceedings-level (organizer/convener review under an editorial committee), not full journal double-blind peer review -- so this doesn't clear the bar for tier A under the program's rule)
+**Relevance**:
+- Hypothesis H1-VOLUME-07 (production security-telemetry volumes)
+- Book Chapter 3 — a named, non-vendor production deployment at scale
+
+**Key Findings**:
+- processing in real time approximately one TB of data per day
+- final goal of coping with at least 5 TB / day
+- Valuable for what it is rather than what it measures: the corpus's production-scale evidence is otherwise almost entirely big-tech engineering blogs, and this is a named public-research deployment with no product to sell.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 9 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### INFN-CNAF — General-Purpose Data-Streaming Platform for Log Analysis and Security Protection (EPJ Web of Conferences, CHEP 2023)
+
+**Authors**: Francesco Amori, Stefano Antonelli, Vincenzo Ciaschini, Antonio Falabella, Enrico Fattibene, F. Fornari, Daniele Lattanzio, Diego Michelotto, Lucia Morganti
+**Date**: 2024 (EPJ Web of Conferences, Vol. 295, Art. 01032 — Proceedings of CHEP 2023 (26th International Conference on Computing in High Energy and Nuclear Physics))
+**URL**: https://doi.org/10.1051/epjconf/202429501032
+**Evidence Level**: B (Legitimate peer-reviewed proceedings at a DOAJ-sealed, Scopus-indexed venue with no integrity flags — the venue itself would support Tier A)
+**Relevance**:
+- Book Chapter 3 — a second named non-vendor production deployment (WLCG Tier-1), alongside CERN above
+
+**Key Findings**:
+- A platform description rather than an evaluation: it reports the architecture in production but publishes no throughput or latency measurement, so it supports the deployment claim and not a performance claim.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 25 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+---
+
+### Storage Reduction, Compression & Query (search arm)
+
+#### Time Models in Graph Databases for Security Log Analysis (International Journal of Web Information Systems, 2021)
+
+**Authors**: Daniel Hofer, Markus Jäger, Aya Mohamed, Josef Küng
+**Date**: 2021 (International Journal of Web Information Systems, Vol. 17, No. 5, pp. 427-448 (2021))
+**URL**: https://doi.org/10.1108/ijwis-03-2021-0023
+**Evidence Level**: A (Legitimate, Scopus/ESCI-indexed Emerald journal with no integrity flags found anywhere I checked; real query-performance measurement against real log data (not simulation or an unevaluated proposal))
+**Relevance**:
+- Book Chapter 8 (Schema and modelling) — temporal modelling of security logs
+- The corpus carries no graph-database anchor; this is the only one the search returned
+
+**Key Findings**:
+- Compares three timestamp-storage models for query performance. The finding is comparative and qualitative — the simplest model also yields the simplest queries — so no figure is carried.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 8 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+#### Efficient Host Intrusion Detection Using Hyperdimensional Computing (IEEE BigData, 2024)
+
+**Authors**: Yujin Nam, Rachel King, Quinn Burke, Minxuan Zhou, Patrick McDaniel, Tajana Rosing
+**Date**: 2024 (2024 IEEE International Conference on Big Data (IEEE BigData 2024), Washington DC, pp. 2645-2652)
+**URL**: https://doi.org/10.1109/bigdata62323.2024.10825247
+**Evidence Level**: A (Real-world-dataset evaluation (not simulation), from a rigorously and competitively peer-reviewed IEEE conference (18)
+**Relevance**:
+- Book Chapter 9 (Detection) — cited for its statement of the provenance-graph query-latency problem, which the review's cost-to-serve argument depends on
+
+**Key Findings**:
+- >90% detection accuracy
+- The paper's headline speedups (up to 4,242x on CPU, up to 18,000x on a hardware accelerator, and power figures quoted in orders of magnitude) are measured against different baselines and different hardware than anything this review compares, and are deliberately NOT carried. What is carried is the framing: state-of-the-art provenance-graph query latencies are described as impractical for modern threat detection, from an authorship group including Patrick McDaniel and Tajana Rosing.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 10 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Workload-Aware Storage Reduction for Multi-Tenant SIEM on ClickHouse (IJACSA, 2026)
+
+**Authors**: Nutthakorn Chalaemwongwan
+**Date**: 2026 (International Journal of Advanced Computer Science and Applications (IJACSA), Vol. 17, No. 4, 2026)
+**URL**: https://doi.org/10.14569/ijacsa.2026.0170474
+**Evidence Level**: C (Read the full paper directly)
+**Venue appraisal (2026-07-13)**: The Science and Information (SAI) Organization (thesai.org) — class `low_tier_legitimate`. Removed from DOAJ in 2017, per search-derived DOAJ-blog records (could not re-verify by a direct live DOAJ query this session). Publisher (SAI / thesai.org) has a documented history of appearing on Beall's list of potential predatory publishers, though Beall's-list criteria are contested and some sources describe SAI's more recent output as improved. Web of Science coverage is ESCI (Emerging Sources Citation Index) only, not the more selective SCIE — ranks 32.2 percentile (bottom third) of its WoS category with Journal Impact Factor 1.1. Sweeping, all-encompassing journal title ("International Journal of Advanced Computer Science and Applications") matching the APC-mill naming pattern this review was told to watch for. Single-author paper from a Thai vocational/technical college (KOSEN-KMITL), no co-authors or external institutional cross-check, with an explicit generative-AI-writing-assistance declaration on the manuscript itself.
+**Relevance**:
+- Hypothesis H3-PERFORMANCE-01 (ClickHouse for security analytics) and H-LOGCOMP-01 (machine-data compression)
+- The closest published analogue to this program's own ClickHouse storage-reduction measurements
+
+**Key Findings**:
+- 79% uncompressed storage reduction (331.43 MiB to 68.67 MiB)
+- 70% compressed storage reduction (35.10 MiB to 10.57 MiB)
+- 56% column-count reduction (27 to 12 columns)
+- compression ratio 9.4:1 baseline vs. 6.5:1 optimized
+- query latency 144-170ms across RULE/INVESTIGATE/IOC/AGGREGATE query classes, all under 200ms ('sub-second')
+- 100% Sigma detection-rule coverage preserved at optimal threshold tau*=0.23
+- 74% uncompressed reduction under a uniform-distribution robustness check, vs. 79% under the primary Zipf-distributed workload
+- READ THE VENUE APPRAISAL BEFORE CITING THIS. The figures were located in the source and are reported here faithfully, but the venue cannot carry a Level-A claim, so this paper does not corroborate the storage-reduction claim in the way a peer-reviewed source normally would — it records that the only indexed paper on the exact question sits in a weak venue. The ~$30,000/year saving is the paper's own back-of-envelope projection for a hypothetical 100 GB/day SOC, not a measured result, and is not carried. Note also that this author's other 2026 paper (ECTI-CIT, below) is the review's other peer-reviewed check on a vendor-sourced claim: the two are the same author and are not independent of each other.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 12 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Comparative Evaluation of Log-Reduction Techniques Using Vector on Public Security Datasets (ECTI-CIT, 2026)
+
+**Authors**: Nutthakorn Chalaemwongwan
+**Date**: 2026 (ECTI Transactions on Computer and Information Technology (ECTI-CIT), Vol. 20 No. 2 (April 2026))
+**URL**: https://doi.org/10.37936/ecti-cit.2026202.264216
+**Evidence Level**: A (Passes venue integrity: DOAJ-listed, Scopus-indexed, Diamond OA (no APC motive), double-blind reviewed, published by an established engineering-society journal with continuous history since 2005 — no predatory or delisting signal found)
+**Venue appraisal (2026-07-13)**: ECTI Association (Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology Association, Thailand); hosted on the TCI-Thaijo (Thailand Citation Index) platform — class `low_tier_legitimate`. No integrity flags found.
+**Relevance**:
+- Hypothesis H-COST-09 (pipeline reduction economics) — a dataset-based check on the Cribl/Vector-class reduction claims the corpus otherwise takes from vendor material
+- Book Chapter 7 (Ingestion) — the route/reshape/reduce pattern
+
+**Key Findings**:
+- Throughput improved by 45%
+- Outbound traffic reduced by 80%
+- Attack coverage maintained at 98%
+- 3,000,000+ SOC log records evaluated
+- Benchmarks five Vector-based reduction methods against a Filebeat baseline over 3M+ SOC records, reporting attack-coverage retention alongside the reduction — which is the honest way to state a reduction claim, since throwing away data always reduces volume and the question is what detection you lose. Same single author as the IJACSA ClickHouse paper above; the two are not independent.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 35 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+---
+
+### Security Data Lake & Forensics Architecture (search arm)
+
+#### Data-Lake-Based Security Transmission and Storage Scheme for Streaming Big Data (Cluster Computing, 2024)
+
+**Authors**: Xiaoyan Zhao, Conghui Zhang, Shaopeng Guan
+**Date**: 2024 (Cluster Computing (Springer))
+**URL**: https://doi.org/10.1007/S10586-023-04201-9
+**Evidence Level**: B (Venue is legitimate and currently indexed (Scopus/WoS, IF 7)
+**Venue appraisal (2026-07-13)**: Springer Science and Business Media LLC (Springer Nature) — class `established_journal`. Context only, not disqualifying for this article: Cluster Computing has a documented history of paper-mill infiltration via guest-edited special issues; Springer Nature's Research Integrity department has been retracting affected articles, and the journal appointed a dedicated Editor-in-Chief for Special Issues and capped concurrent guest-edited collections in response. I found no evidence this specific article (regular Vol 27, Issue 9, 2024) came from a flagged special issue, and the journal remains actively Scopus/WoS-indexed with a 2024 IF of 7.31 — it was never delisted.
+**Relevance**:
+- Hypothesis H-ARCH-01 (lakehouse/data-lake architecture for security data)
+- Book Chapter 6 (Architecture) — secure ingestion and storage of streaming security data
+
+**Key Findings**:
+- An ECC lightweight-encryption interceptor at the data source, an SSL-secured Flume/Kafka transport, and an LZO-compressed Hadoop data-lake storage layer. The published abstract reports roughly an 18% reduction in memory load attributed to the encryption interceptor; the figure was confirmed in the publisher's abstract by an independent check, but no full text was read, so it is recorded and not built upon. Cluster Computing has a documented paper-mill problem confined to guest-edited special issues; this is a regular-issue article, which is why it survives appraisal.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 37 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Digital-Forensics Architecture on a Security Lake for Automated Evidence Collection (Journal of Intelligent Systems, 2024)
+
+**Authors**: Wasan Saad Ahmed, Ziyad Tariq Mustafa Al-Ta&apos;l, Tamirat Abegaz, Ghassan Sabeeh Mahmood
+**Date**: 2024 (Journal of Intelligent Systems)
+**URL**: https://doi.org/10.1515/JISYS-2024-0109
+**Evidence Level**: B (Legitimate, DOAJ/Scopus/ESCI-indexed venue with documented double-anonymous peer review — no integrity flags found)
+**Relevance**:
+- Hypothesis H-ARCH-01 (security data lake) — the closest published statement of the security-lake thesis this review argues
+- Book Chapter 6 (Architecture)
+
+**Key Findings**:
+- A security-lake plus data-lake architecture for real-time forensic evidence collection across multiple cloud accounts and regions, stated to be validated on an actual AWS deployment. Appraised at abstract level only — the publisher's full text was unreachable — so no quantitative result is carried. Venue verified at primaries: DOAJ-listed, Scopus Q2, double-anonymous review, not retracted.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 38 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+---
+
+### Framing & Position Sources (search arm)
+
+#### Corporate Security Is a Big Data Problem (ACM Ubiquity, 2018)
+
+**Authors**: Louisa Saunier, Kemal A. Delic
+**Date**: 2018 (Ubiquity (ACM's web-based magazine), Vol. 2018, July, subtitled 'Big Data (Ubiquity symposium)')
+**URL**: https://doi.org/10.1145/3158348
+**Evidence Level**: B (Legitimate ACM in-house venue, no integrity flags found, but the peer review Ubiquity applies to commentaries is lighter than a full journal's (ACM's own materials distinguish 'peer-reviewed commentaries' from unreviewed 'blogs' within the same magazine, and I could not directly confirm on the ACM DL page — 403'd — which track this ran under))
+**Relevance**:
+- Section 1.2 (Literature gap) — a 2018 statement, in an ACM venue, of the thesis this review otherwise dates to vendor writing
+
+**Key Findings**:
+- Argues corporate security is a big-data problem and sketches a security-data-lake-to-'security cockpit' architecture. Ubiquity is ACM's editor-led web magazine, not a peer-reviewed journal — the review it applies to commentary is lighter than a journal's, so this is a framing source and not evidence.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 27 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+#### Machine Learning on Distributed Stream-Processing Platforms — Storm, Spark Streaming and Flink (SBRC Short Courses, 2018, in Portuguese)
+
+**Authors**: Martin Andreoni Lopez, Igor Jochem Sanz, Antonio Gonzalez Pastana Lobato
+**Date**: 2018 (Minicursos do XXXVI Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos (SBRC 2018) — book chapter, SBC OpenLib (SOL))
+**URL**: No DOI registered
+**Evidence Level**: B (Legitimate, non-predatory venue — SBC is Brazil's primary computer-science professional society, no integrity flags found — but this is a reviewed-proposal tutorial/survey chapter, not a blind-peer-reviewed original-research paper, and it reports no new measurements of its own: every headline number is a third-party citation embedded in the introduction)
+**Venue appraisal (2026-07-13)**: Sociedade Brasileira de Computação (SBC) — class `low_tier_legitimate`. No integrity flags found.
+**Relevance**:
+- Background for the engine-comparison discussion (Storm vs Spark Streaming vs Flink), including lambda-architecture treatment
+
+**Key Findings**:
+- A short-course/tutorial chapter, not a primary study. Every figure in it is quoted from third parties, so no number is carried. Shares authors with records 1 and 2 above (the CATRACA group).
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 28 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+---
+
+### Recorded from the Search, Not Supporting a Claim in This Edition (search arm)
+
+#### Data-Warehouse Modelling for Security-Log Management in a Government SOC (Jurnal Teknik Informatika, 2023)
+
+**Authors**: Maya Asmita, Henny Henny, Samidi Samidi
+**Date**: 2023 (Jurnal Teknik Informatika (JUTIF))
+**URL**: https://doi.org/10.52436/1.jutif.2023.4.4.649
+**Evidence Level**: C (Not predatory, but not internationally indexed either — a real university-run journal at national (SINTA 2) accreditation tier only, so its peer-review rigor cannot be externally corroborated the way DOAJ/Scopus indexing would provide)
+**Venue appraisal (2026-07-13)**: Informatics Department, Universitas Jenderal Soedirman (UNSOED), Indonesia — class `low_tier_legitimate`. Not found in DOAJ (direct ISSN searches for 2723-3863 returned no match). Not on the journal's own claimed indexing list, which conspicuously omits DOAJ, Scopus, and Web of Science despite listing 17 other indexers. One entry on that self-reported indexing list, 'ISI Indexing,' is a separate low-value indexing service unrelated to Clarivate's Web of Science despite the deceptively similar name — a soft red flag common at this journal tier, though not itself proof of predatory intent.
+**Relevance**:
+- No hypothesis in this edition. Recorded as the only treatment the search returned of Kimball-style dimensional modelling applied to SOC log data
+
+**Key Findings**:
+- A modelling proposal with no evaluation, in a journal not listed in DOAJ, Scopus or Web of Science. Recorded for completeness of the search record; it supports nothing.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 6 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+#### High-Performance FPGA Architecture for Data-Stream Processing — IPsec Gateway (International Journal of Electronics and Telecommunications, 2018)
+
+**Authors**: Mateusz Korona, K. Skowron, Mateusz Trzepiński, Mariusz Rawski
+**Date**: 2018 (International Journal of Electronics and Telecommunications, 2018, Vol. 64, No. 3, pp. 351-356)
+**URL**: https://doi.org/10.24425/123532
+**Evidence Level**: A (Legitimate, national-academy-backed, Scopus+DOAJ-indexed journal with no integrity flags found)
+**Relevance**:
+- No hypothesis in this edition. Recorded from the systematic search: hardware acceleration of the ingest tier is outside the scope this review sets (software architecture on commodity infrastructure), and is noted as adjacent work rather than folded into a finding
+
+**Key Findings**:
+- Gateway 2.0 best DES config (8/8/8/16): 10,227.44 Mbit/s for 1500-byte packets at a 128-packet stream
+- Gateway 2.0 best AES-CBC config (8/8/12/8): 5,518.80 Mbit/s for 1500-byte packets at a 128-packet stream
+- Peer-reviewed and sound; simply not on any claim this review makes.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 11 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Hybrid Stream Processing for Runtime Protection in Remote Driving (IEEE ICIN, 2026)
+
+**Authors**: Tarek Stolz, Aliza Katharina Reif, O. H. Ramírez-Agudelo, Michael Karl
+**Date**: 2026 (2026 29th Conference on Innovation in Clouds, Internet and Networks (ICIN), Athens, Greece, 30 Mar - 2 Apr 2026)
+**URL**: https://doi.org/10.1109/icin69025.2026.11481838
+**Evidence Level**: A (Venue integrity is solid: ICIN is a genuinely established, continuously-run, IEEE-published conference (29th edition, DLR-funded, real institutional authors, no publisher instability or indexing red flags of any kind) — nothing here resembles the mill pattern found in rank 21)
+**Relevance**:
+- No hypothesis in this edition. Recorded from the systematic search as an automotive/OT instance of the online-vs-offline detection split
+
+**Key Findings**:
+- Its headline figure — an online operator beating an offline detector 'by 584.3% in latency time' — is malformed as written (a percentage improvement in latency is not interpretable without the direction and the base), so no number is carried.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 22 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+
+#### Architectural and Analytical Aspects of Big Data for IoT System Security (Cybersecurity: Education, Science, Technique, 2026)
+
+**Authors**: U. P. Panovyk, Rostyslav Tkachuk, Valeriia Balatska, V. A. Yashchuk
+**Date**: 2026 (Кібербезпека: освіта, наука, техніка (Cybersecurity: Education, Science, Technique))
+**URL**: https://doi.org/10.28925/2663-4023.2026.33.1144
+**Evidence Level**: B (Real, DOAJ-verified, double-blind peer-reviewed journal with no integrity red flags found — legitimate though niche and not Scopus/WoS-indexed)
+**Venue appraisal (2026-07-13)**: Borys Grinchenko Kyiv University — class `low_tier_legitimate`. No integrity flags found.
+**Relevance**:
+- No hypothesis in this edition. Recorded from the systematic search
+
+**Key Findings**:
+- Simulated evaluation, qualitative claims only, no figures with units in the abstract.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 29 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+#### Analysis of Logs in the Environment of Email Services (IEEE ICETA, 2020)
+
+**Authors**: Martin Chovanec, Martin Havrilla, Eva Chovancová
+**Date**: 2020 (2020 18th International Conference on Emerging eLearning Technologies and Applications (ICETA), Technical University of Košice, Slovakia)
+**URL**: https://doi.org/10.1109/iceta51985.2020.9379260
+**Evidence Level**: B (Venue integrity is clean: a real, long-running IEEE-co-sponsored conference with standard peer review, no predatory or delisting signal found)
+**Relevance**:
+- No hypothesis in this edition. Recorded from the systematic search as a store-selection comparison (Elasticsearch, Kafka, Redis, Splunk, MongoDB) for audit records
+
+**Key Findings**:
+- The comparison method could not be established from the available text, so it is recorded and not relied on.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 32 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+#### Binary-Feature-Extraction Data-Provenance System on Flink (IEEE CyberC, 2018)
+
+**Authors**: Yangyizhou Wang, Lan Li, Lei Fan
+**Date**: 2018 (2018 International Conference on Cyber-Enabled Distributed Computing and Knowledge Discovery (CyberC), 10th edition, Zhengzhou, China)
+**URL**: https://doi.org/10.1109/cyberc.2018.00045
+**Evidence Level**: C (Venue integrity is clean (legitimate long-running IEEE conference, no predatory or delisting signal))
+**Relevance**:
+- No hypothesis in this edition. Recorded from the systematic search as provenance-as-security-telemetry implemented on a stream processor
+
+**Key Findings**:
+- A pattern the corpus does not otherwise carry; noted for a future edition rather than cited here.
+
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 34 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+
+---
+

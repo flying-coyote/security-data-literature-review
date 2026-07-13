@@ -74,7 +74,7 @@ Beyond the primary extraction from archived manuscripts:
 
 **Extraction Coverage**:
 - 283 of 283 footnotes extracted (100% completion)
-- 75+ unique sources documented with standardized format
+- 221 sources catalogued with a standardized format (219 tiered; live-derived 2026-07-13)
 - 16 of 22 URLs validated (73% overall, 100% hypothesis-critical sources)
 - Archive manuscripts: 74 files assessed (no independent sources found)
 
@@ -86,14 +86,14 @@ Beyond the primary extraction from archived manuscripts:
 
 All sources are classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research:
 
-#### Evidence Level A (Target: 73%+; live share 42.9% at 2026-07-09 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
+#### Evidence Level A (Target: >70%; live share 42.9% at 2026-07-13 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
 **Criteria**: Production deployments, peer-reviewed research, government standards
 **Examples**:
 - Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks (the Shell entry was removed in the 2026 audit — dead URL, unverifiable)
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 76 of 177 tiered entries (42.9%), live-computed 2026-07-09 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; the dashboard now computes this figure from per-entry markers.
+**Current Achievement**: 94 of 219 tiered entries (42.9%), live-derived 2026-07-13 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
 #### Evidence Level B (Acceptable: <27%, Achieved: 21%)
 **Criteria**: Industry analyst reports, expert consensus, verified vendor documentation
@@ -413,8 +413,8 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
-| Unique Sources Documented | 100+ | 75+ | ✅ Sufficient |
-| Evidence Level A | 73%+ | 42.9% (live, 2026-07-09; the 79% self-grade was withdrawn 2026-06) | ❌ Below target |
+| Unique Sources Documented | 100+ | 221 catalogued (219 tiered) | ✅ Met |
+| Evidence Level A | >70% | 42.9% (94/219 tiered; live-derived 2026-07-13) | ❌ Below target |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
@@ -433,7 +433,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 **Suitability Assessment**:
 - ✅ PRISMA-aligned methodology documented
-- ⚠️ Evidence quality below the Level-A target (42.9% live at 2026-07-09; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
+- ⚠️ Evidence quality below the Level-A target (42.9% live at 2026-07-13; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
 - ✅ Quantitative hypothesis validation with multiple sources
 - ✅ Reproducible extraction process
 - ✅ Version control for citation stability
@@ -479,9 +479,9 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 ## 10. Conclusion
 
-This systematic literature review employs a PRISMA-aligned methodology to consolidate 75+ sources on modern data stack technologies for cybersecurity. The approach prioritizes:
+This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 219 tiered sources on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: Level-A share live-computed per entry (42.9% at 2026-07-09; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit)
+1. **Evidence Quality**: Level-A share live-derived per entry (42.9% at 2026-07-13; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit)
 2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit), the original seven averaging 4.1 sources each
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations
