@@ -4995,9 +4995,9 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - SVM: 8,413 sessions/sec (~3.0 Gbps), ~530 ms latency
 - kNN: 723 sessions/sec (~250 Mbps), ~1.5 s latency
 - Baseline (no classifier): 23,596 sessions/sec
-- F1 scores of 0.967-0.974 for Decision Tree/Naive Bayes/Random Forest despite large throughput gaps
+- F1 scores after parameter search of 0.967 / 0.964 / 0.972 for Decision Tree / Naive Bayes / Random Forest (Table VI; at default NB is only 0.599) despite large throughput gaps
 - Bottlenecks identified in Zeek, Logstash, and Elasticsearch processes
-- Separates framework performance from model accuracy and locates the bottlenecks in Zeek, Logstash and Elasticsearch — the classifiers with a 30x throughput spread land within 0.007 of each other on F1. The arXiv deposit of this paper (record 33) is the same work and was removed as a duplicate.
+- Separates framework performance from model accuracy and locates the bottlenecks in Zeek, Logstash and Elasticsearch — the three fastest classifiers, once tuned, land within ~0.008 of each other on F1 (0.964–0.972). The arXiv deposit of this paper (record 33) is the same work and was removed as a duplicate.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 26 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
 
