@@ -81,7 +81,7 @@ Operational complexity scales with the infrastructure you stand up, not with the
 The cost side is just as direct. You pay for 10× capacity you don't use, with cloud compute running 24/7 at 10% utilization, when the whole point of cloud pricing is that you pay for what you run and scale up when you need it rather than pre-provisioning for a future that may not arrive.
 
 **Example failure** (anonymized practitioner):
-> "We built a 50-node Spark cluster anticipating 'big data' security workloads. Reality: Our daily batch jobs completed in 15 minutes on 5 nodes. We paid for 45 idle nodes for 23 hours 45 minutes daily. Annual waste: $180K. When we rightsized to 5-node cluster with auto-scaling (add nodes if job takes >30 min), cost dropped to $36K—same performance, $144K annual savings."
+> "We built a 50-node Spark cluster anticipating 'big data' security workloads. Reality: Our daily batch jobs completed in 15 minutes on 5 nodes. We paid for 45 idle nodes for 23 hours 45 minutes daily. Annual cost: $180K, most of it idle capacity. When we rightsized to a 5-node cluster with auto-scaling (add nodes if job takes >30 min), cost dropped to $36K with the same performance, a $144K annual savings."
 
 ### Real-World Consequences
 
@@ -612,7 +612,7 @@ Without OCSF normalization, the transformations are tightly coupled to vendor-sp
 
 **3. Raw Data Not Preserved**
 
-The common mistake is storing only the pipeline-transformed output and deleting the raw, which means you cannot re-process the data through a different pipeline if you ever leave the vendor. The escape path requires dual storage, raw alongside transformed, at roughly 10% storage overhead — a small price for keeping the option to move open at all.
+The common mistake is storing only the pipeline-transformed output and deleting the raw, which means you cannot re-process the data through a different pipeline if you ever leave the vendor. The escape path requires dual storage, raw alongside transformed, which adds roughly a third to storage cost at Glacier cold-tier rates (the arithmetic is under Strategy 2 below), a modest price for keeping the option to move open at all.
 
 ### Real-World Consequences
 
@@ -671,9 +671,9 @@ Security Logs → Pipeline (Cribl/Tenzir)
 ```
 
 **Storage economics** (per-GB figures are vendor list prices, Tier C, directional):
-- Raw (compressed): 90% of storage volume, $0.02/GB/month (Glacier)
+- Raw (compressed): 90% of storage volume, $0.0036/GB/month (S3 Glacier Flexible, the same cold-tier rate Appendix A prices)
 - Normalized (hot): 10% of storage volume, $0.10/GB/month (S3 Standard + query engine)
-- **Overhead**: 10% additional cost for vendor optionality
+- **Overhead**: roughly 32% additional storage cost for vendor optionality, because per 1 TB stored the raw layer runs 900 GB × $0.0036 = $3.24/month against the normalized layer's 100 GB × $0.10 = $10.00/month
 
 **Strategy 3: Document Transformation Logic**
 
@@ -729,7 +729,7 @@ At <500 GB/day, open-source is sufficient, and introducing a commercial vendor d
 
 **Phase 1: Enable Raw Data Preservation** (Week 1-2)
 - Add S3 raw output to the existing Cribl pipeline (dual-write: Cribl transforms plus raw S3)
-- 10% storage overhead buys a future escape path, since you can then re-process the raw data through a new pipeline
+- Roughly 32% additional storage cost (the Strategy 2 arithmetic) buys a future escape path, since you can then re-process the raw data through a new pipeline
 
 **Phase 2: Document Critical Transforms** (Week 3-6)
 - Inventory the 400 transforms and classify by criticality (Tier 1: detection-critical, Tier 2: enrichment, Tier 3: nice-to-have)
@@ -845,7 +845,7 @@ The dollar figures and multipliers in this table recap the per-anti-pattern bodi
 | **#6: Field Mapping Hell** | Manual OCSF mapping (~2-4 hrs per source) | ~3-week timeline, illustratively 15-20% semantic errors | LLM-assisted mapping (~15-20 min per source), iterative refinement |
 | **#7: Ignoring Change Management** | Technology-first, people-last | 15% adoption, "technical success but operational failure" | Stakeholder buy-in, phased training, migrate critical workflows |
 | **#8: No Monitoring** | Deploy and forget (no metrics, no alerts) | Silent degradation, cost surprises ($75K vs. $25K) | Query performance monitoring, cost tracking, automated alerts |
-| **#9: Pipeline Vendor Lock-In** | Proprietary transforms, no OCSF, no raw preservation | $500K-$800K migration cost, vendor negotiating leverage lost | OCSF standard normalization, preserve raw data layer (10% overhead), document transforms in Git |
+| **#9: Pipeline Vendor Lock-In** | Proprietary transforms, no OCSF, no raw preservation | $500K-$800K migration cost, vendor negotiating leverage lost | OCSF standard normalization, preserve raw data layer (~32% storage-cost overhead), document transforms in Git |
 | **#10: Skipping Spark Maintenance** | Query performance degrades significantly over weeks (illustratively 5× at 30 days, 32× at 60 days; see AP#10 example) | Analyst frustration, emergency compaction, rollback pressure | Weekly Spark compaction from Day 1, spot instances, file count monitoring |
 | **#11: Ignoring Edge Preprocessing** | 2-10× higher storage/query costs | Budget overruns, slow investigations | DuckDB Lambda filtering (80% reduction), VPC Flow aggregation (200× reduction) |
 | **#12: Mapping Wrong by Construction** | Correlation searches never fire; data model shows volume but produces no results | Blind detection coverage with no error signal; defect is install-base-wide | Count events at source and at data-model boundary; treat any gap as a defect, not a config problem |

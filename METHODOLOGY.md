@@ -272,9 +272,9 @@ Each hypothesis is classified using a 5-level confidence scale:
 
 **Validation Quality Metrics**:
 - Average sources per validated hypothesis: 4.1
-- Quantitative evidence in all 7 hypotheses: 100%
-- Production deployment validation: 6 of 7 hypotheses (86%)
-- Government/standards validation: 2 of 7 hypotheses (29%)
+- Quantitative evidence in all 9 hypotheses: 100% (7 original plus 2 added in the 2026-07-10 audit)
+- Production deployment validation: 6 of the 7 Phase-1 hypotheses (86%)
+- Government/standards validation: 2 of the 7 Phase-1 hypotheses (29%)
 
 ### 5.4 Isolation-First Security Research Questions (November 2025)
 
@@ -482,11 +482,11 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 This systematic literature review employs a PRISMA-aligned methodology to consolidate 75+ sources on modern data stack technologies for cybersecurity. The approach prioritizes:
 
 1. **Evidence Quality**: Level-A share live-computed per entry (42.9% at 2026-07-09; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit)
-2. **Quantitative Validation**: 7 hypotheses validated with multiple sources averaging 4.1 sources each
+2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit), the original seven averaging 4.1 sources each
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations
 
-**Phase 1 Success**: Extraction complete with all book chapters cited, 7 hypotheses validated, academic publication readiness achieved.
+**Phase 1 Success**: Extraction complete with all book chapters cited, 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit), academic publication readiness achieved.
 
 **Phase 2 Planned**: Quarterly updates integrating IT Harvest vendor landscape data, expert validation cycles, and blog-literature feedback loop.
 

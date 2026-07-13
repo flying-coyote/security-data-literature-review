@@ -59,7 +59,7 @@ The trainable gaps split into two programs, one for the analysts and one for the
 
 After the workshop, a 30-day "SQL buddy" program pairs each junior analyst with a senior one for query help, which is where most of the real learning actually happens.
 
-The engineer program is a three-day vendor-led Apache Iceberg deep dive (V3-era, the spec line carrying deletion vectors and row lineage): day one on architecture, metadata, snapshots, and time-travel; day two on the maintenance procedures (compaction, expiration, orphan cleanup) and performance tuning; day three on Spark integration, Airflow orchestration, and production troubleshooting. The vendors worth using are Tabular (the Iceberg creators, now part of Databricks) or Dremio Professional Services, and the $15K-$25K it costs is cheap against the six months of self-inflicted mistakes it buys the team out of.
+The engineer program is a three-day vendor-led Apache Iceberg deep dive (V3-era, the spec line carrying deletion vectors and row lineage): day one on architecture, metadata, snapshots, and time-travel; day two on the maintenance procedures (compaction, expiration, orphan cleanup) and performance tuning; day three on Spark integration, Airflow orchestration, and production troubleshooting. The vendors worth using are Tabular (the Iceberg creators, now part of Databricks) or Dremio Professional Services (Dremio is now part of SAP after the July 2026 acquisition, so the services offering may reorganize under SAP), and the $15K-$25K it costs is cheap against the six months of self-inflicted mistakes it buys the team out of.
 
 ## L.3 Security + Data Engineering Collaboration (Breaking Down the Compliance Wall)
 

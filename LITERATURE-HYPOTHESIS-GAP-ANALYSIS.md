@@ -717,7 +717,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 - **SIEM ingestion reducible by 80%+** with pipeline pre-ingest processing
 - **Cost-per-detection**: $4.50/month per detection rule on Snowflake serverless (Rippling production)
 - **Okta case study**: 50.7% cost reduction ($1,929→$952/month) via pipeline filtering (Monad)
-- **Storage differential**: SIEM ~$25/GB/day vs S3 $0.023/GB/month (1,087× cost gap)
+- **SIEM ingest vs S3 storage rates (Monad)**: SIEM ingest licensing ~$25/GB/day alongside S3 storage at $0.023/GB/month, but the two rates price different things (ingest licensing vs storage), so no cost multiple can be derived from the pair; the 1,087× figure previously stated here mixed the units and was struck 2026-07-12 per the ratified re-derive-or-strike ruling
 - **Counterpoint**: Query-based with serverless (Snowflake) can be cost-effective at $4.50/month/rule
 - **Security telemetry** doubling every ~18 months; traditional volume-based SIEM pricing "unsustainable"
 
@@ -799,7 +799,7 @@ These formal research questions address critical gaps in the literature:
 |----|--------|-------------------|
 | RQ11 | ✅ STRONG | Barracuda 75%, HSBC 3×, GitLab <1s, Netflix 5PB/day, 50% top banks |
 | RQ12 | ✅ STRONG | CSA/Google survey: 46% vs 12% adoption by governance maturity |
-| RQ13 | ✅ STRONG | Pipeline 50-70% cost reduction, $4.50/rule serverless, 1,087× storage gap |
+| RQ13 | ✅ STRONG | Pipeline 50-70% cost reduction, $4.50/rule serverless, SIEM ingest ~$25/GB/day vs S3 storage $0.023/GB/month (unit-mismatched rates, no ratio derivable) |
 | RQ14 | ✅ STRONG (ROI legs) · ⚠️ RE-TIERED (OCSF/parser legs) | Google 74% first-year ROI, 171% average, 192% U.S. enterprises. **OCSF/parser legs overturned 2026-06-14**: asserted-A "100% parser automation / 80% OCSF normalization" → measured Tier-B caveat (Tenzir #10: class-right/activity-wrong-on-83%, 1 of 4 sources covered; Vector ships none). Coverage ≠ fidelity; availability is the binding constraint. |
 
 **Evidence Collection Priority** (Updated):

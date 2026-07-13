@@ -11,7 +11,9 @@ The handbook's variants chapter — Chapter 6, "What good looks like" — carrie
 
 ## K.1 Jennifer's Healthcare SOC: On-Prem/Hybrid Priority
 
-Jennifer's organizational context and constraints, the final architecture decision (Dremio Cloud + on-prem Dremio for PHI), and the Architecture Optimization Statement she put in front of the executive sponsors are in her variant summary in the handbook's variants chapter. This walkthrough picks up at the requirements mapping.
+Jennifer's organizational context and constraints, the final architecture decision (Dremio Cloud + on-prem Dremio for PHI),[^sap-dremio] and the Architecture Optimization Statement she put in front of the executive sponsors are in her variant summary in the handbook's variants chapter. This walkthrough picks up at the requirements mapping.
+
+[^sap-dremio]: SAP completed its acquisition of Dremio in July 2026, so the "Dremio Cloud" product name and packaging may shift; the pattern Jennifer relies on, querying across an on-prem regulated slice and cloud object storage without moving either, is a capability of the engine reading open tables rather than a product SKU, so it survives the rebrand.
 
 Jennifer is a composite teaching scenario rather than a single named deployment, so the POC timings, the per-vendor cost projections, the staffing counts, and the multi-year TCO bands below are illustrative figures generated from the author's TCO model (Appendix A, Worksheet A.6) applied to a 2.5 TB/day healthcare profile — not measured numbers from one production system. The model's cost inputs, including the discounted Splunk platform rate, trace back to the published G-Cloud 14 pricing anchor documented in Worksheet A.6. Where a figure instead comes from a first-party SDW lab run or a named source, that is called out at the figure. The per-vendor capability claims (Dremio Reflections' acceleration, Iceberg maintenance tooling, Kubernetes HA requirements) are vendor representations at Tier C unless separately sourced.
 

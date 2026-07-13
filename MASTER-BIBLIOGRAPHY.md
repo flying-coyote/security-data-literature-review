@@ -2579,7 +2579,7 @@ This bibliography consolidates all literature sources from:
 - Annual savings of $11,721 per 1M daily Okta events
 - Event size reduction: 2,570→1,545 bytes (40% field reduction)
 - 180,000 low-value events/day filtered from SIEM (18% of 1M total)
-- SIEM ingestion: ~$25/GB/day vs S3 archival: $0.023/GB/month (1,087× cost differential)
+- SIEM ingestion licensing: ~$25/GB/day; S3 archival storage: $0.023/GB/month (an ingest-licensing rate and a storage rate respectively, so the two are not commensurable and no cost multiple is derived from them; the previously stated 1,087× mixed the units and was struck 2026-07-12)
 - 3-year savings: $35,181 per log source optimized
 - Pipeline filtering preserves investigation capability via S3 archival
 

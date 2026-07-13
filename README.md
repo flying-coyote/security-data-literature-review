@@ -41,7 +41,7 @@ This repository contains a **living literature review** that is the shared evide
 4. **REFERENCES.md** - IEEE/ACM formatted references (78 sources, alphabetically ordered)
 5. **APPENDICES.md** - 4 appendices (Evidence rubric, Confidence scoring, Expert protocol, Source taxonomy)
 6. **FIGURES-AND-TABLES.md** - 5 figures + 5 tables with publication specifications
-7. **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** - Gap analysis with 7 validated hypotheses
+7. **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** - Gap analysis that seeded the original hypothesis roster (9 assessed as of 2026-07-10; the Oct-2025 numbers inside are the historical record)
 8. **LITERATURE-EXTRACTION-PLAN.md** - Systematic extraction methodology (PRISMA-aligned)
 9. **PUBLICATION-VENUE-RECOMMENDATIONS.md** - Academic publication strategy
 10. **archive/REPOSITORY-STATUS.md** - Historical phase-status report (archived 2026-07-10; live metrics are the Quality Metrics block in this README)
@@ -166,21 +166,38 @@ As the vendor landscape and platform coverage expands, the repository may grow t
   - RQ9: Security-specific catalog features adoption
   - RQ10: Real-world deployment patterns
 
-**Hypothesis Validation Results** (7 validated):
-- H-ARCH-01 (Iceberg Dominance): STRONGLY VALIDATED - industry consensus as de facto standard, 5 sources (the bare "76% adoption" figure is unsourced; refined per the H-ARCH-01 audit)
-- H-IMPL-01 (TCO Reality): STRONG - 2.5-3× operational costs, 5 sources
-- H-IMPL-02 (Staffing Scarcity): STRONG - 2.7× staff required, 4 sources
-- H-IMPL-03 (Timeline Premium): VALIDATED - 5.5 months average, 3 sources
-- H-COST-09 (Tiered Storage): STRONG - 55-80% cost savings, 3 sources
-- H3-PERFORMANCE-01 (ClickHouse): VALIDATED - 6M req/sec, 96% <1s queries
-- H-STREAM-01 (Kafka Streams): VALIDATED - Production security patterns, 3 sources
+**Hypothesis Validation Results** (9 assessed: 7 original + 2 added post-audit 2026-07-10; scores are the adopted 2026-07-09 post-audit re-score, RESCORE-PROPOSAL-2026-07.md):
+- H-ARCH-01 (Iceberg Dominance): STRONGLY VALIDATED, 23/25 - industry consensus as de facto standard; all four legs survived primary verification (the bare "76% adoption" figure is unsourced; refined per the H-ARCH-01 audit)
+- H3-PERFORMANCE-01 (ClickHouse): HIGH CONFIDENCE, 20/25 - Cloudflare 6M req/sec production; the sub-second query-share figure was withdrawn in the 2026-06 audit
+- H-STREAM-01 (Stateful Streaming): HIGH CONFIDENCE, 17/25 - re-anchored on Samza (Noghabi et al., VLDB 2017) plus Azure production scale
+- H-LOGCOMP-01 (Machine-Data Compression; added 2026-07-10): HIGH CONFIDENCE, 17/25 - three peer-reviewed anchors (LogLite, PBC, Pebbles), verbatim-verified at their primaries
+- H-SOC-BASELINE-01 (SOC Alert Base Rates; added 2026-07-10): MODERATE, 14/25 - Yang et al. (USENIX Security 2024) production measurement, single-source cap
+- H-COST-09 (Tiered Storage): PRELIMINARY, 8/25 - mechanism documented, but the savings band was withdrawn in the 2026-06 audit; directional pending re-sourcing
+- H-IMPL-02 (Staffing Scarcity): PRELIMINARY, 7/25 - quantitative legs withdrawn in the 2026-06/07 audits; directional pending re-sourcing
+- H-IMPL-03 (Timeline Premium): PRELIMINARY, 7/25 - quantitative legs withdrawn in the 2026-06/07 audits; directional pending re-sourcing
+- H-IMPL-01 (Streaming TCO): PRELIMINARY, 6/25 - quantitative legs withdrawn in the 2026-06/07 audits; directional pending re-sourcing
 
-**Quality Metrics** (2026-07-09 — honest post-audit baseline, live-computed via `scripts/automation_dashboard.py`):
-- **Evidence Level A: 42.9%** (76 of 177 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; this is the honest baseline, not the pre-audit 78% claim
+**Quality Metrics** (2026-07-12 — honest post-audit baseline, live-computed via `scripts/automation_dashboard.py` and gated by `scripts/count_reconcile.py`):
+- **Evidence Level A: 43.0%** (83 of 193 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; this is the honest baseline, not the pre-audit 78% claim
 - Evidence Level B: 90 of 193 · Evidence Level C: 20 of 193 (across 195 `#### ` blocks incl. 2 documented stubs)
 - The Tier-A floor (60%) is intentionally breached and surfaced, not silenced — a breach that reflects real corpus quality is the dashboard working (see `scripts/weekly_scheduled_check.py`)
 - Every >12-month source now carries a 2026-06-05 validation or freshness marker; 9 fabricated entries removed, 3 dead links recorded (see RESEARCH-JOURNAL.md)
 - Production-deployment anchors (Shell, Cloudflare, SK Telecom, Huntress, etc.) are vendor case studies — Tier C under the global tiers; verify each primary before load-bearing use
+
+---
+
+## Development: derived counts + pre-commit gate
+
+Counted numbers on this repo's surfaces are derived, not hand-typed, because the same fact copied across seven-plus files drifted (a 9-vs-7 hypothesis count, and a stale 76/177 tier block sitting 160 lines below a corrected top block in this very README). `scripts/count_reconcile.py` is the single counting rule: it derives the assessed-hypothesis count from PUBLICATION-MANUSCRIPT.md §3.7 (distinct hypothesis IDs cross-checked against the section's own Confidence lines and band headers, so a malformed section fails rather than miscounts) and the bibliography tier counts from MASTER-BIBLIOGRAPHY.md via `automation_dashboard.parse_master_bibliography()`, then checks every allowlisted surface that states one of those numbers (this README, PROJECT-BRIEF.md, PUBLICATION-MANUSCRIPT.md, METHODOLOGY.md, FIGURES-AND-TABLES.md, monthly-update-tracker.md, and the Figure 4 script's roster dict) and exits non-zero on any mismatch, printing a per-surface table. The "Total Hypotheses: 32/34/36" population line is deliberately not gated — its book-side leg is enumerated nowhere in this repo, so the number was retired from live surfaces rather than presented next to gated ones.
+
+Run it directly with `python3 scripts/count_reconcile.py` (full check, exit 1 on any stale surface). The commit gate is `scripts/pre-commit.sh`, which runs the existing secret scan first and then `count_reconcile.py --staged`, where only a staged file whose stated count disagrees with the live derivation blocks the commit. The local hook isn't version-controlled, so point it at the checked-in entry once per clone:
+
+```bash
+printf '#!/usr/bin/env bash\nexec bash "$(git rev-parse --show-toplevel)/scripts/pre-commit.sh"\n' \
+  > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+```
+
+Adding a new surface that states a gated count means adding one entry to the ALLOWLIST in `scripts/count_reconcile.py`, not writing another parser; rephrasing or retiring a surface means updating its entry, since a missing pattern fails the run on purpose.
 
 ---
 

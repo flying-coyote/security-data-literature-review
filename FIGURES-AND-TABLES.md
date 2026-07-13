@@ -485,7 +485,7 @@ Confluent:      ~~4.5M events/second on 9-node clusters~~ [WITHDRAWN —
 | **H-STREAM-01** | Kafka Streams Security Patterns (stateful processing at scale) | ⭐⭐⭐⭐ | 3 | ~~100%~~ withdrawn | LinkedIn (terabytes of state, ms access, entity tracking), ~~Uber (thousands of views, sub-second refresh)~~ [WITHDRAWN — not in cited article], Confluent best practices | Production security |
 
 **Validation Quality Summary**:
-- **Total hypotheses validated**: 7
+- **Total hypotheses validated**: 9 (7 original plus 2 added in the 2026-07-10 audit)
 - ~~**Strongly Validated (⭐⭐⭐⭐⭐)**: 3 hypotheses (43%) - H-ARCH-01, H-IMPL-02, H-COST-09~~ [WITHDRAWN — 2026-06-14 audit: H-IMPL-02 and H-COST-09 lost their evidentiary basis and need re-validation; only H-ARCH-01 retains its source set (minus the withdrawn SK Telecom/Cloudera figures)]
 - ~~**High Confidence (⭐⭐⭐⭐)**: 3 hypotheses (43%) - H-IMPL-01, H3-PERFORMANCE-01, H-STREAM-01~~ [partially withdrawn — H-IMPL-01's multipliers were removed; the qualitative premium stands]
 - ~~**Moderate Confidence (⭐⭐⭐)**: 1 hypothesis (14%) - H-IMPL-03~~ [WITHDRAWN — H-IMPL-03's timeline figures removed; re-validate]

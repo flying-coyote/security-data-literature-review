@@ -868,8 +868,7 @@ The Iceberg Slack is the one I'd prioritize first. Response quality is high beca
 
 **Where**:
 - Slack: https://apache-iceberg.slack.com/ (get invite: https://iceberg.apache.org/community/)
-- Mailing list: dev@iceberg.apache.org
-- GitHub Discussions: https://github.com/apache/iceberg/discussions
+- Mailing list: dev@iceberg.apache.org (browsable archive: https://lists.apache.org/list.html?dev@iceberg.apache.org)
 
 **What to expect**:
 - **Response time**: 24-48 hours typical (active maintainers)
@@ -932,7 +931,7 @@ Spark's community is broader and more diluted than Iceberg's — you'll get answ
 
 **Where**:
 - Community forum: https://community.dremio.com/
-- Slack: https://bit.ly/dremio-slack
+- Developer hub: https://developer.dremio.com/ (carries the current Slack invite; the invite URLs themselves are tokenized and expire, so go through the hub)
 
 **What to expect**:
 - **Response time**: 12-24 hours (Dremio employees active)
@@ -950,7 +949,6 @@ Spark's community is broader and more diluted than Iceberg's — you'll get answ
 **Starburst Community**
 
 **Where**:
-- Slack: https://starburst.io/slack
 - Community forum: https://www.starburst.io/community/forum/ (community.starburst.io 302s here)
 
 **What to expect**:
@@ -1091,7 +1089,7 @@ Of all the communities in this appendix, the OCSF Slack is the one where I think
 - Website: https://schema.ocsf.io/
 - GitHub: https://github.com/ocsf
 - Slack: https://ocsf.slack.com/ (get invite by emailing info@ocsf.io, per ocsf.io — verified 2026-07-10)
-- Linux Foundation: https://www.linuxfoundation.org/projects/ocsf
+- Project site: https://ocsf.io (a Linux Foundation project since November 2024; announcement: https://www.linuxfoundation.org/press/open-cybersecurity-schema-framework-ocsf-joins-the-linux-foundation-to-optimize-critical-security-data)
 
 **What to expect**:
 - **Governance**: Linux Foundation hosted, multi-vendor TSC

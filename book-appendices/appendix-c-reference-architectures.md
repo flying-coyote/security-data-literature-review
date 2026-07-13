@@ -103,7 +103,7 @@ The budget and cost figures throughout this appendix are outputs of the TCO mode
 | Pattern | Use case | Team | Budget/yr |
 |---|---|---|---|
 | 1. Healthcare Hybrid (on-prem + cloud) | HIPAA, PHI residency, hybrid cloud | 1-2 data engineers; 15-person security team | $774K-1M (platform $300-500K) |
-| 2. Cloud-Native AWS-First | AWS-committed, cloud-first, cost optimization | 3-5 data engineers; 50+ analysts | $444K-$828K |
+| 2. Cloud-Native AWS-First | AWS-committed, cloud-first, cost optimization | 3-5 data engineers; 50+ analysts | $408K-$816K |
 | 3. Multi-Cloud Federated (Denodo) | Multi-national, data sovereignty, M&A | 5+ data engineers; distributed teams | $1.04M-$1.98M |
 | 4. Traditional SIEM (Splunk ES) | Real-time mandate, zero data engineers, simplicity | 0 data engineers (SOC analysts) | $2M-12M (volume-dependent) |
 | 5. MOAR Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $324K-$588K |
@@ -274,10 +274,10 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 ### Architecture Overview
 
 **Problem Statement**:
-- AWS-committed organization ($18M annual AWS spend)
+- AWS-committed organization ($15M annual AWS spend)
 - CTO mandate: use AWS-native services, avoid third-party where possible
 - 3-5 data engineers available (can manage moderate complexity)
-- Budget: $444K-$828K annually (cost optimization important but not sole driver)
+- Budget: $408K-$816K annually (cost optimization important but not sole driver)
 - No on-premises constraint (cloud-first strategy)
 
 **Solution**: AWS Athena + EMR + Glue with Iceberg on S3
@@ -397,7 +397,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 
 | Cost Category | Amount | Notes |
 |---------------|--------|-------|
-| **S3 Storage** | $180K-$300K/year | ~2.4-4.7 PB at 2-4 TB/day (90-day hot ~$4K-$8K/month, 3-year cold ~$8K-$16K/month; A.6 Step 3 rates) |
+| **S3 Storage** | $144K-$288K/year | ~2.4-4.7 PB at 2-4 TB/day (90-day hot ~$4K-$8K/month, 3-year cold ~$8K-$16K/month; A.6 Step 3 rates) |
 | **Athena Queries** | $120K-$240K/year | cumulative query scan ~65-130 TB/day (repeated and ad-hoc queries re-scan the dataset, far above the 2-4 TB/day ingest) × $5/TB × 365 days |
 | **EMR (Spark)** | $60K-$120K/year | Auto-scaling, 2-4 hours daily batch jobs |
 | **Kinesis Streams** | $36K-$72K/year | 20 shards (~$3.6K) + PUT-payload units at 2-4 TB/day ingest (dominant cost) + extended retention |
@@ -405,7 +405,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Data Transfer** | $12K-$24K/year | Cross-region (if multi-region), VPC endpoints |
 | **QuickSight** | $12K-$24K/year | 50 users × $24/user/month |
 | **Personnel** (3-5 data engineers) | N/A | Existing headcount |
-| **TOTAL** | **$444K-$828K/year** | A.6-modeled; vs. schema-on-read SIEM $1.5M-$4.4M/year at 2 TB/day (Worksheet A.6, Step 2) — the $12M Splunk figure belongs to Pattern 4's 10-12 TB/day Marcus case (Ch.6), a different volume tier, not this pattern's |
+| **TOTAL** | **$408K-$816K/year** | A.6-modeled; vs. schema-on-read SIEM $1.5M-$4.4M/year at 2 TB/day (Worksheet A.6, Step 2) — the $12M Splunk figure belongs to Pattern 4's 12 TB/day Marcus case (Ch.6), a different volume tier, not this pattern's |
 
 **ROI**: 12-18 month payback, illustrative (A.6 model, vs. Splunk expansion cost avoided)
 
@@ -557,7 +557,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Storage (US)** | $150K-$250K/year | S3 + Glacier, 1 PB |
 | **Storage (China)** | $100K-$200K/year | Alibaba OSS, 500 TB |
 | **Trino (3 regions)** | $180K-$360K/year | Self-hosted clusters ($60K-$120K per region) |
-| **Denodo Platform** | $400K-$800K/year | Enterprise license + professional services; large multi-region/many-connector deployments (e.g. Appendix K.3) run higher, ~$1.2M/year |
+| **Denodo Platform** | $400K-$800K/year | Enterprise license + professional services; large multi-region/many-connector deployments (e.g. Appendix K.3) run higher, ~$1.8M/year |
 | **Network (VPN/DX)** | $60K-$120K/year | Cross-region connectivity |
 | **Personnel** (5+ data engineers) | N/A | Distributed team (1-2 per region) |
 | **TOTAL** | **$1.04M-$1.98M/year** | A.6-modeled; premium for multi-region complexity |
@@ -720,12 +720,12 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 | **10 TB/day** | $12M-$20M/year | $1.2M-$2.5M/year | 85-90% |
 
 **Variants-chapter case study** (Marcus Financial Services, from the "what good looks like" material — Chapter 6 of the handbook):
-- Volume: 10 TB/day (Path A: full lakehouse migration to Iceberg on S3 + Athena)
+- Volume: 12 TB/day (Path A: full lakehouse migration to Iceberg on S3 + Athena)
 - Schema-on-read SIEM renewal: $12M/year
 - Modern stack (Athena): $2.9M/year
 - **Savings: $9.1M/year (76%)**
 
-> **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 10-12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion/storage but benefit from volume discounts at higher tiers — actual savings percentages at 12 TB/day may exceed the 85-90% shown for 10 TB/day due to better S3 and compute pricing tiers.
+> **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion/storage but benefit from volume discounts at higher tiers — actual savings percentages at 12 TB/day may exceed the 85-90% shown for 10 TB/day due to better S3 and compute pricing tiers.
 
 **When Splunk Still Wins** (Marcus Path B):
 - SEC real-time fraud detection mandate (<30 seconds)
@@ -1040,7 +1040,7 @@ The estimated-cost column repeats the A.6-modeled figures from each pattern abov
 | Your Constraint | Recommended Pattern | Estimated Cost | Timeline |
 |-----------------|-------------------|----------------|----------|
 | **HIPAA/PCI on-prem + cloud** | Pattern 1: Healthcare Hybrid | $774K-$1,020K | 9-12 months |
-| **AWS-committed, cloud-first** | Pattern 2: Cloud-Native AWS | $444K-$828K | 9-12 months |
+| **AWS-committed, cloud-first** | Pattern 2: Cloud-Native AWS | $408K-$816K | 9-12 months |
 | **Multi-region sovereignty (EU/US/China)** | Pattern 3: Multi-Cloud Federated | $1.04M-$1.98M | 12-18 months |
 | **0 engineers, real-time <30 sec** | Pattern 4: Traditional SIEM | $2M-$12M | 3-6 months |
 | **3-5 engineers, cost optimization** | Pattern 5: Multi-Engine Modern | $324K-$588K | 9-15 months |

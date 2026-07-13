@@ -12,10 +12,11 @@ This directory contains Python scripts and LaTeX TikZ code to convert text-based
 
 **Figures Generated**:
 1. **Figure 1**: PRISMA flowchart (LaTeX TikZ) - Literature extraction process
-2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - 79% Level A achievement
+2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (42.9% Level A, 76/177 tiered, computed 2026-07-09; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
 3. **Figure 3**: Source Type Taxonomy (Python matplotlib) - Source diversity and geographic distribution
-4. **Figure 4**: Hypothesis Validation Confidence (Python matplotlib) - Multi-dimensional confidence scoring
-5. **Figure 5**: Technology Adoption & Performance (planned - can be created with similar approach)
+4. **Figure 4**: Hypothesis Validation Confidence (Python matplotlib) - post-audit rescored confidence scoring (2026-07-13 rubric rescore)
+
+Figure 5 (Technology Adoption & Performance) was **cut** on 2026-07-13: its panels restated H-ARCH-01, H3-PERFORMANCE-01, and H-STREAM-01 per technology, which Figure 4 and Table 2 already carry in full, and its remaining figures were among those the 2026-06/07 audits corrected or re-attributed. See `methods/RESCORE-2026-07-13.md`.
 
 **Output Formats**:
 - **PNG**: High-resolution (300 DPI) for manuscript submission and presentations
@@ -81,7 +82,7 @@ rm *.aux *.log
 ### Python Scripts
 
 #### `figure2_evidence_distribution.py`
-**Purpose**: Evidence Level Distribution chart (79% Level A vs 73% target)
+**Purpose**: Evidence Level Distribution chart (live tier tally against the >70% Level-A target)
 
 **Features**:
 - Horizontal bar chart with hatching for accessibility
@@ -89,7 +90,7 @@ rm *.aux *.log
 - Color palette: Green (#2E7D32) for Level A, Blue (#1976D2) for Level B
 - "EXCEEDS TARGET" annotation with +6 percentage points
 
-**Data Source**: MASTER-BIBLIOGRAPHY.md (79% Level A, 57 of 72 sources)
+**Data Source**: MASTER-BIBLIOGRAPHY.md (live tier tally, dashboard-computed; 42.9% Level A, 76 of 177 tiered sources as of 2026-07-09)
 
 ---
 
@@ -107,15 +108,16 @@ rm *.aux *.log
 ---
 
 #### `figure4_hypothesis_confidence.py`
-**Purpose**: Hypothesis Validation Confidence Levels (multi-dimensional scoring)
+**Purpose**: Hypothesis Validation Confidence Levels (multi-dimensional scoring; post-audit rescored)
 
 **Features**:
-- Confidence scores for 7 hypotheses (23/25 for H-IMPL-02 STRONGEST)
-- Distribution by confidence level (43% Strong, 43% High, 14% Moderate)
+- Confidence scores for 9 hypotheses (H-ARCH-01 strongest at 23/25; three H-IMPL hypotheses at the 5/25 instrument floor)
+- Distribution by confidence level (1 Strongly Validated, 2 High, 2 Moderate, 4 Preliminary)
+- Band thresholds drawn at the rubric's boundaries (21/16/11)
 - Multi-dimensional scoring example (5 dimensions: source count, evidence quality, source diversity, quantitative precision, geographic diversity)
 - Color-coded by confidence (Dark Green ⭐⭐⭐⭐⭐, Medium Green ⭐⭐⭐⭐, Orange ⭐⭐⭐)
 
-**Data Source**: APPENDICES.md Appendix B (Hypothesis Confidence Scoring Methodology)
+**Data Source**: `methods/scoring-rubric.md` (the instrument of record), applied to the nine hypotheses in `methods/RESCORE-2026-07-13.md`; narrative background in APPENDICES.md Appendix B
 
 ---
 

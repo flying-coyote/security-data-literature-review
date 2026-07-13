@@ -709,10 +709,10 @@ Total Retention = Hot + Warm + Cold
 - Retention beyond the included window: the warm/cold archive accumulating toward 5.1 PB over 7 years is priced per GB-month at long-term/archive rates well below the ingestion rate (~$0.026-$0.05/GB/month), adding **~$130K-$255K/month** as it fills (~$1.6M-$3.1M/year at steady state)
 - **Total**: roughly **$3.7M-$6.9M/year** as retention accumulates — expensive at scale, but driven by ingestion, not by re-charging accumulated storage at the ingestion rate
 
-Traditional SIEM pricing breaks at petabyte scale. For 7-year compliance retention (these bands are model-derived from the discounted per-GB/day rates below — the G-Cloud anchor that follows grounds the Splunk platform floor, not the full blended band):
-- **500 GB/day**: $365K-$1.1M/year (SIEM acceptable)
-- **2 TB/day**: $1.5M-$4.4M/year (SIEM cost-prohibitive)
-- **10 TB/day**: $7.3M-$22M/year (SIEM infeasible)
+Traditional SIEM pricing breaks at petabyte scale. For 7-year compliance retention (these bands are the discounted full-stack rate from the anchor note below, $620-870/GB/day/year for platform plus Enterprise Security, multiplied by daily volume; the S3 archive workaround adds on the order of $84K/year at 2 TB/day on top, per the worked example above, without making the archive queryable):
+- **500 GB/day**: $310K-$435K/year (SIEM acceptable)
+- **2 TB/day**: $1.24M-$1.74M/year (SIEM cost-prohibitive)
+- **10 TB/day**: $6.2M-$8.7M/year (SIEM infeasible)
 
 **Published-list anchor (UK G-Cloud 14).** These bands are grounded in Splunk's public-sector framework pricing. The G-Cloud 14 EMEA distributor schedule (April 2024) lists Splunk Cloud platform ingest on a declining per-GB/day curve, from $2,049/GB/day/year at 5-9 GB/day down to $793.50 at the 2,000-4,999 GB/day band (2 TB/day) and $764.75 above 5,000 GB/day, with the self-hosted Enterprise term license on a parallel curve ($598/GB/day/year at 2 TB/day). Splunk Enterprise Security, the correlation and detection-content layer an actual SOC runs, is a separate per-GB/day subscription on top, adding $448.50/GB/day/year at the 2 TB/day band, so two rates matter and they differ by roughly 2×. The platform-only schema-on-read baseline is $598-794/GB/day/year of published list at 2 TB/day, which after the 30-50% enterprise discounting that large multi-year Splunk contracts carry is the $300-400/GB/day/year this model uses, so the $600K above is the discounted-platform floor. The full SOC stack, platform plus Enterprise Security, lists near $1,240/GB/day/year, or roughly $620-870 once discounted, and that is the rate the worked MOAR-variant examples price.
 
@@ -797,18 +797,18 @@ SIEM (hot tier, 30 days, 200 GB/day only):
 - Schema-on-read SIEM: $60K/year (10× cost reduction via route-by-value)
 
 Data Lake (warm/cold, 1,800 GB/day full volume):
-- Storage (30 days hot + 7 years cold): ~$180K/year
+- Storage (30 days hot + 7 years cold): ~$213.6K/year (hot $14.9K + cold $198.7K at the Step 3 S3 rates)
 - Query engine: ~$30K/year
-- Subtotal lake: $210K/year
+- Subtotal lake: ~$243.6K/year
 
 Pipeline (Cribl Stream):
 - $220K-$400K/year (2 TB/day tier) = ~$310K/year midpoint
 
-TOTAL HYBRID: $60K (SIEM) + $210K (Lake) + $310K (Pipeline) = $580K/year
+TOTAL HYBRID: $60K (SIEM) + $243.6K (Lake) + $310K (Pipeline) = ~$613.6K/year
 ```
 
-**Savings vs. Full SIEM**: $684K - $580K = **$104K/year (15% savings)**, and it solves the 7-year retention gap
-**Savings vs. Sentinel**: ~$3.7M-$6.9M - $580K ≈ **$3.1M-$6.3M/year (84-91% savings)**
+**Savings vs. Full SIEM**: $684K - $613.6K = **~$70K/year (10% savings)**, and it solves the 7-year retention gap
+**Savings vs. Sentinel**: ~$3.7M-$6.9M - $613.6K ≈ **$3.1M-$6.3M/year (83-91% savings)**
 
 **When Hybrid Makes Sense**:
 - Existing SIEM investment (sunk cost, but trained team)
@@ -824,7 +824,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 | Platform Architecture | 500 GB/day | 2 TB/day | 10 TB/day | 7-Year Retention Support | Team Capacity Required |
 |-----------------------|------------|----------|-----------|-------------------------|------------------------|
-| **Traditional SIEM (schema-on-read)** | $365K-$1.1M/year | $1.5M-$4.4M/year | $7.3M-$22M/year | ✗ Hot only (30-90 days) | 0 data engineers (SOC-managed) |
+| **Traditional SIEM (schema-on-read)** | $310K-$435K/year | $1.24M-$1.74M/year | $6.2M-$8.7M/year | ✗ Hot only (30-90 days) | 0 data engineers (SOC-managed) |
 | **Traditional SIEM (Sentinel)** | $0.95M-$1.7M/year | $3.7M-$6.9M/year | $19M-$34M/year | ✓ Queryable (slow cold tier) | 0 data engineers (cloud-managed) |
 | **MOAR (OSS)** | $180K-$280K/year | $360K-$534K/year | $548K-$848K/year | ✓ Full query transparency | 3-5 data engineers (self-hosted) |
 | **MOAR (Cloud-Managed)** | $220K-$350K/year | $380K-$650K/year | $950K-$1.5M/year | ✓ Full query transparency | 1-2 data engineers (managed services) |
@@ -832,7 +832,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 **Cold-tier assumption at 10 TB/day**: the 10 TB/day MOAR (OSS) band assumes the 7-year cold tier moves to S3 Glacier Deep Archive (~$0.00099/GB-month) rather than the Glacier Flexible rate Step 3 prices at 2 TB/day, because at 10× the volume the ~25 PB cold accumulation only fits inside the $548K-$848K band at the Deep Archive rate — Glacier Flexible alone would run roughly $92K/month there — so read Step 3's Glacier-Flexible cold line as the 2 TB/day case and this column as its 10 TB/day counterpart, which is what keeps Step 3 and Step 5 consistent.
 
-**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM — the modeled gap is roughly 92-96% at 10 TB/day and 51-75% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between at a modeled 15-30% savings versus a full SIEM, and it solves the retention gap while staying workable for a team with zero or one data engineer.
+**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM — the modeled gap is roughly 90-91% at 10 TB/day and 36-42% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between: its modeled savings versus a full-volume SIEM are roughly 10% at the 2 TB/day worked example in Step 4, widening at higher volumes against the full-stack bands above, and it solves the retention gap while staying workable for a team with zero or one data engineer.
 
 ---
 
@@ -840,19 +840,19 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 **Migration Cost** (if moving from incumbent SIEM to MOAR):
 - Professional services / consulting: $150K-$500K (depends on complexity, 6-12 months timeline)
-- Staff time (internal): 2-3 FTE × 6 months = $75K-$150K loaded cost
+- Staff time (internal): 2-3 FTE × 6 months = 1-1.5 FTE-years × $150K-$180K/year = $150K-$270K loaded cost
 - Training (SOC analysts, SQL workshops): $20K-$50K
-- **Total migration cost**: $245K-$700K (one-time)
+- **Total migration cost**: $320K-$820K (one-time)
 
 **Annual Savings** (2 TB/day example, schema-on-read SIEM → MOAR):
 - Current schema-on-read SIEM cost: $684K/year (hot only, archive gap)
 - MOAR cost: $465K/year (full 7-year retention)
 - **Annual savings**: $219K/year
 
-**Payback Period** (using ~$450K, the midpoint of the $245K-$700K migration range):
-- Migration cost ÷ Annual savings = $450K ÷ $219K ≈ **2 years payback** (roughly 1.1 years at the $245K low end, 3.2 years at the $700K high end)
-- After payback, savings compound: Year 3 = $219K net savings, Year 4 = $219K, Year 5 = $219K
-- **5-year TCO savings**: $219K × 5 - $450K ≈ **$645K cumulative** (at the midpoint migration cost)
+**Payback Period** (using ~$570K, the midpoint of the $320K-$820K migration range):
+- Migration cost ÷ Annual savings = $570K ÷ $219K ≈ **2.6 years payback** (roughly 1.5 years at the $320K low end, 3.7 years at the $820K high end)
+- After payback, savings compound: the balance of Year 3 past the ~2.6-year mark, then Year 4 = $219K net savings and Year 5 = $219K
+- **5-year TCO savings**: $219K × 5 - $570K ≈ **$525K cumulative** (at the midpoint migration cost)
 
 **When ROI Justifies Migration**:
 - Payback < 3 years (acceptable for most CFOs)
@@ -911,7 +911,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 Storage Hot: (Daily GB × Hot Days) × $0.023/GB/month × 12 = $__________
 Storage Warm: (Daily GB × Warm Days) × $0.0125/GB/month × 12 = $__________
 Storage Cold: (Daily GB × 365 × Cold Years) × $0.0036/GB/month × 12 = $__________
-Query Engine: (Choose Athena $30K-$50K or Trino $96K-$240K or Dremio $120K-$300K) = $__________
+Query Engine: (Choose Athena $30K-$180K or Trino $96K-$240K or Dremio $120K-$300K) = $__________
 Pipeline: (See the pipeline cost bands above for Cribl/Tenzir/OSS costs at your volume) = $__________
 Real-Time Alerting: (Optional ClickHouse $36K-$96K or skip) = $__________
 

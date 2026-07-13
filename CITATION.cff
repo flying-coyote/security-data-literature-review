@@ -1,0 +1,34 @@
+# Citation metadata for the Security Data Works systematic literature review.
+# A Zenodo DOI is minted on the first tagged GitHub release (owner-held step;
+# see docs/ZENODO-RELEASE-CHECKLIST.md). Once minted, the concept DOI is added
+# under `identifiers:` below and becomes the citation target.
+cff-version: 1.2.0
+message: >-
+  If you cite this literature review, please cite the Zenodo DOI once it is
+  minted on the first tagged release (it will be recorded in this file under
+  identifiers, and the release checklist in docs/ replaces the manuscript's
+  DOI placeholders at the same time); until then, please cite the title and
+  repository URL below.
+type: dataset
+title: "Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review"
+authors:
+  - family-names: Wiley
+    given-names: Jeremy
+    affiliation: Security Data Works
+repository-code: "https://github.com/flying-coyote/security-data-literature-review"
+abstract: >-
+  Security organizations evaluating modern data stack architectures (Apache
+  Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity
+  research focuses on detection algorithms while data engineering addresses
+  general analytics, leaving security-specific infrastructure guidance
+  unavailable. We conduct the first systematic literature review bridging these
+  domains using PRISMA-aligned methodology, synthesizing 75+ sources spanning
+  production deployments, peer-reviewed research, and government standards to
+  provide operational guidance.
+keywords:
+  - data lakehouse
+  - security analytics
+  - OLAP
+  - streaming architectures
+  - cybersecurity data engineering
+  - systematic literature review

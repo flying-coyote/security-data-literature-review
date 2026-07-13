@@ -19,21 +19,23 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Fact 1: Phase 1-2C Complete, 76+ Sources Documented ✅
 **CONFIRMED**: Phase 1 (Literature Extraction) complete with 76+ sources documented
 - 283 footnotes extracted from best practices document
-- Level-A share: 42.9% live-computed 2026-07-09 — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
+- Level-A share: 43.0% live-computed 2026-07-12 (83/193 tiered) — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
 - 9 analysis bundles created (170,100 words evidence synthesis)
 - All book chapters have supporting source citations
 - **Source**: README.md lines 15-23, archive/REPOSITORY-STATUS.md (archived 2026-07-10), CLAUDE.md lines 33-44
 
-### Fact 2: 7 Hypotheses Validated with Quantitative Evidence ✅
-**CONFIRMED**: Strong quantitative validation for 7 hypotheses
-- **H-ARCH-01** (Iceberg Dominance): industry consensus as de facto standard, 5 sources (the "76% adoption" figure is unsourced — refined per the H-ARCH-01 audit)
-- **H-IMPL-01** (TCO Reality): 2.5-3× operational costs, 5 sources
-- **H-IMPL-02** (Staffing Scarcity): 2.7× staff required, 4 sources
-- **H-IMPL-03** (Timeline Premium): 5.5 months average, 3 sources
-- **H-COST-09** (Tiered Storage): 55-80% cost savings, 3 sources
-- **H3-PERFORMANCE-01** (ClickHouse): 6M req/sec, 96% <1s queries
-- **H-STREAM-01** (Kafka Streams): Production security patterns, 3 sources
-- **Source**: README.md lines 108-117, LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md
+### Fact 2: 9 Hypotheses Assessed with Quantitative Confidence Scoring ✅
+**CONFIRMED**: 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10); scores below are the adopted 2026-07-09 post-audit re-score, and the withdrawn pre-audit multipliers are deliberately not restated here
+- **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED, 23/25 - industry consensus as de facto standard (the "76% adoption" figure is unsourced — refined per the H-ARCH-01 audit)
+- **H3-PERFORMANCE-01** (ClickHouse): HIGH CONFIDENCE, 20/25 - Cloudflare 6M req/sec production
+- **H-STREAM-01** (Stateful Streaming): HIGH CONFIDENCE, 17/25 - Samza (VLDB 2017) plus Azure production scale
+- **H-LOGCOMP-01** (Machine-Data Compression; added 2026-07-10): HIGH CONFIDENCE, 17/25 - three peer-reviewed anchors
+- **H-SOC-BASELINE-01** (SOC Alert Base Rates; added 2026-07-10): MODERATE, 14/25 - Yang et al. (USENIX Security 2024)
+- **H-COST-09** (Tiered Storage): PRELIMINARY, 8/25 - savings band withdrawn; directional pending re-sourcing
+- **H-IMPL-02** (Staffing Scarcity): PRELIMINARY, 7/25 - quantitative legs withdrawn; directional pending re-sourcing
+- **H-IMPL-03** (Timeline Premium): PRELIMINARY, 7/25 - quantitative legs withdrawn; directional pending re-sourcing
+- **H-IMPL-01** (Streaming TCO): PRELIMINARY, 6/25 - quantitative legs withdrawn; directional pending re-sourcing
+- **Source**: PUBLICATION-MANUSCRIPT.md §3.7, RESCORE-PROPOSAL-2026-07.md, LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md
 
 ### Fact 3: Expert Interview Guides Prepared for Week 3 ✅
 **CONFIRMED**: Interview guides complete for expert validation
@@ -155,7 +157,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 **In Scope**:
 - Living literature review published openly on Substack (primary venue)
 - Evidence foundation for book (115,500 words) and blog (3x/week practitioner content)
-- Hypothesis validation (32 hypotheses total, 7 validated so far)
+- Hypothesis validation (9 assessed as of 2026-07-10, drawn from book-manuscript claims, literature-gap analysis, and post-audit peer-reviewed additions; the book-side population count lives in the book project's hypothesis tracker and is deliberately not restated here, since nothing in this repo can verify it)
 - **Hybrid update model**: Monthly rolling updates + quarterly deep synthesis
 - **Blog philosophy**: "Being wrong publicly" - rapid iteration, intellectual honesty, collaborative corrections
 - Academic quality maintained (79%→75%+ Evidence Level A) for eventual journal submission (2026)
@@ -424,8 +426,8 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Phase 1 Success Metrics (ACHIEVED ✅)
 - ✅ 283 footnotes extracted from best practices document
 - ✅ 76+ sources documented with standardized format
-- ✅ 79% Evidence Level A (EXCEEDS 73% target)
-- ✅ 7 hypotheses validated with quantitative evidence
+- ✅ 43.0% Evidence Level A (live-derived 2026-07-12: 83 of 193 tiered; the Phase-1 "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit)
+- ✅ 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10) with quantitative confidence scoring
 - ✅ All book chapters have supporting citations
 - ✅ Blog integration demonstrated (1 post, 4-6× speedup)
 
@@ -512,8 +514,8 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 - Enables peer review acceptance (ACM CSUR, IEEE S&P targets)
 
 **Hypothesis-Driven Research**:
-- 32 hypotheses total (29 from book, 3 from literature review gap analysis)
-- 7 hypotheses validated so far (quantitative evidence, multiple sources)
+- Hypotheses drawn from book-manuscript claims, literature-review gap analysis, and post-audit peer-reviewed additions (the book-side population count lives in the book project's hypothesis tracker and is deliberately not restated here, since nothing in this repo can verify it)
+- 9 hypotheses assessed so far (7 original + 2 added post-audit 2026-07-10; scored per PUBLICATION-MANUSCRIPT.md §3.7)
 - Expert interviews validate quantitative claims (Lisa Cao, Jake Thomas)
 
 **Quarterly Update Model** (Phase 2):

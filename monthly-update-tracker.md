@@ -16,7 +16,7 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 
 | Metric | Baseline/Goal | Status |
 |--------|--------|--------|
-| **Quality**: Evidence Level A | ~75-78% target | 🔴 42.9% live (76/177 tiered, 2026-07-09) — honest post-audit floor, path back via 2026 primary sourcing |
+| **Quality**: Evidence Level A | ~75-78% target | 🔴 43.0% live (83/193 tiered, 2026-07-12) — honest post-audit floor, path back via 2026 primary sourcing |
 | **Time Investment**: Monthly effort | Track for awareness | ⏳ 5.9 hours/update avg |
 | **Blog Support**: Writing speedup | 4-6× sustained | 🟢 Demonstrated |
 | **Community Engagement**: Feedback/corrections | Develop workflow | ⏳ Tracking started |
@@ -366,7 +366,7 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
    - Security data lakehouse on Snowflake + S3 with <1 min latency
 3. **Monad - Detection Engineering Cost Guide** - Evidence Level A
    - Okta case study: 50.7% cost reduction ($1,929→$952/month) via pipeline filtering
-   - SIEM ~$25/GB/day vs S3 $0.023/GB/month (1,087× storage differential)
+   - SIEM ingest licensing ~$25/GB/day vs S3 storage $0.023/GB/month (an ingest-licensing rate and a storage rate, so the pair yields no valid multiple; the 1,087× figure formerly stated here was struck 2026-07-12)
 
 **Sources Refreshed** (4 hypothesis-critical sources with 2025-2026 data):
 1. **OCSF Linux Foundation** - Schema now at v1.7.0 (4 releases in 2025), expanding into IoT/drone/cloud domains

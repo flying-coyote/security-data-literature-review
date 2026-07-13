@@ -1,0 +1,21 @@
+{
+  "title": "Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "creators": [
+    {
+      "name": "Wiley, Jeremy",
+      "affiliation": "Security Data Works"
+    }
+  ],
+  "description": "Security organizations evaluating modern data stack architectures (Apache Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity research focuses on detection algorithms while data engineering addresses general analytics, leaving security-specific infrastructure guidance unavailable. We conduct the first systematic literature review bridging these domains using PRISMA-aligned methodology, synthesizing 75+ sources spanning production deployments, peer-reviewed research, and government standards to provide operational guidance.",
+  "keywords": [
+    "data lakehouse",
+    "security analytics",
+    "OLAP",
+    "streaming architectures",
+    "cybersecurity data engineering",
+    "systematic literature review"
+  ],
+  "notes": "This is a LIVING systematic literature review with quarterly updates; each tagged GitHub release is archived on Zenodo as a new version under one concept DOI, so the concept DOI cites the review as a living work while a version DOI pins a specific snapshot. The repository carried no LICENSE file when this metadata was prepared (2026-07-12); the owner selects the license before the first deposit and adds the matching 'license' key here (see docs/ZENODO-RELEASE-CHECKLIST.md, step 0)."
+}

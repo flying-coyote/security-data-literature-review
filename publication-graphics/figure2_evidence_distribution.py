@@ -7,12 +7,16 @@ The 2026-06-14 audit withdrew that self-grade (Level A overstated, entries
 removed) and this script rendered a withdrawal notice, with the condition that
 the chart not return without a re-verified per-source tally.
 
-That condition is now met: the 2026-07 monthly update reconciled the corpus to
-179 blocks / 177 tiered and the dashboard live-computes the tier mix from
-per-entry Evidence-Level markers (automation_dashboard.py, fixed 2026-07-09).
-This chart states the honest figure — 42.9% Level A, BELOW the 70% target —
-rather than a self-grade. Update the TALLY constants from the dashboard before
+That condition is now met: the corpus reconciles to 195 blocks / 193 tiered and
+the tier mix is computed from per-entry Evidence-Level markers. This chart states
+the honest figure — 43.0% Level A, BELOW the 70% target — rather than a
+self-grade. Update the TALLY constants from the canonical counter before
 regenerating; do not hand-edit percentages.
+
+Canonical source for TIERED_TOTAL and TALLY: scripts/count_reconcile.py
+("Counter 2: bibliography tiers"), which derives them from MASTER-BIBLIOGRAPHY.md.
+The reconcile script also gates this figure's caption in the manuscript, so a
+tally change here that is not propagated there fails the count-reconcile check.
 """
 
 import os
@@ -25,10 +29,11 @@ plt.rcParams['font.size'] = 11
 plt.rcParams['axes.linewidth'] = 0.8
 plt.rcParams['figure.dpi'] = 300
 
-# Live tally — source: automation_dashboard.py live computation, 2026-07-09
-TALLY_DATE = '2026-07-09'
-TIERED_TOTAL = 177
-TALLY = {'A': 76, 'B': 85, 'C': 16}
+# Live tally — source: scripts/count_reconcile.py Counter 2, derived from
+# MASTER-BIBLIOGRAPHY.md on 2026-07-13 (195 blocks / 193 tiered / 2 stubs).
+TALLY_DATE = '2026-07-13'
+TIERED_TOTAL = 193
+TALLY = {'A': 83, 'B': 90, 'C': 20}
 TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}

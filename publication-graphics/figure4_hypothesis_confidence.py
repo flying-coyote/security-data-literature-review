@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
 """
-Figure 4: Hypothesis Validation Confidence Levels — post-audit re-score (2026-07-09)
+Figure 4: Hypothesis Validation Confidence Levels — rubric rescore (2026-07-13)
 
-Scores are the ADOPTED post-audit values from RESCORE-PROPOSAL-2026-07.md
-(owner-ratified 2026-07-09), applied after the 2026-06 fabrications audit and
-the 2026-07 per-citation verification sweep. Four hypotheses drop to
-PRELIMINARY: their quantitative legs were withdrawn (fabricated attribution or
-figures absent from cited sources) and no quantified support survives pending
-re-sourcing. Labels carry no withdrawn figures.
+Scores are the mechanical application of methods/scoring-rubric.md (the explicit
+instrument of record, ruling G-R4) to the nine hypotheses, computed in
+methods/RESCORE-2026-07-13.md. They supersede the 2026-07-09 adopted values from
+RESCORE-PROPOSAL-2026-07.md where the two differ: those totals were directionally
+right but contained interpolated dimension values with no anchor a reviewer could
+re-derive them from.
+
+What moved: H3-PERFORMANCE-01 20 -> 19, H-STREAM-01 17 -> 15 (High -> Moderate;
+the section cites two legs after the Uber withdrawal, and the source-count anchor
+prices 1-2 sources at 1 point), H-SOC-BASELINE-01 14 -> 13, H-COST-09 8 -> 9 (the
+first-party S3 tier-delta derivation lands), and the three H-IMPL hypotheses
+collapse to the instrument's 5/25 floor, retiring their 6/7/7 gradation. Band
+thresholds are drawn at the rubric's boundaries (21/16/11), not the 19/15/10 this
+script previously used. Labels carry no withdrawn figures.
 """
 
 import os
@@ -32,36 +40,43 @@ HATCHES = {'strong': '///', 'high': '//', 'moderate': 'xx', 'preliminary': '..'}
 STARS = {'strong': '*****', 'high': '****', 'moderate': '***',
          'preliminary': '**'}
 
-# Post-audit scores (RESCORE-PROPOSAL-2026-07.md, adopted 2026-07-09)
+# Rescored under methods/scoring-rubric.md (methods/RESCORE-2026-07-13.md).
+# Ordered by descending total, ties alphabetical by hypothesis ID (rubric section 3).
+# 'dims' = source count / evidence quality / source diversity / quantitative
+# precision / geographic-organizational diversity; each sums to 'score'.
 HYPOTHESES = {
     'H-ARCH-01\nIceberg Dominance': {
-        'score': 23, 'level': 'strong',
-        'label': 'Universal vendor support; 407 GitHub contributors; SK Telecom slides-verified'},
+        'score': 23, 'level': 'strong', 'dims': [5, 5, 5, 3, 5],
+        'label': 'Broad vendor support; 407 GitHub contributors; SK Telecom slides-verified'},
     'H3-PERF-01\nClickHouse': {
-        'score': 20, 'level': 'high',
-        'label': 'Cloudflare 6M req/sec verbatim-verified; 12-19x vs ES (vendor benchmark)'},
-    'H-STREAM-01\nStateful Streaming': {
-        'score': 17, 'level': 'high',
-        'label': 'Samza VLDB 2017 (peer-reviewed); Azure 3T events/day verbatim-verified'},
+        'score': 19, 'level': 'high', 'dims': [5, 3, 3, 5, 3],
+        'label': 'Cloudflare 6M req/sec verbatim-verified; 4 legs, 3 at Level A; first-party CIDR probe'},
     'H-LOGCOMP-01 \u2020\nMachine-Data Compression': {
-        'score': 17, 'level': 'high',
-        'label': 'LogLite + PBC + Pebbles (peer-reviewed, verbatim-verified); added post-audit 2026-07-10'},
+        'score': 17, 'level': 'high', 'dims': [3, 5, 1, 5, 3],
+        'label': 'LogLite + PBC + Pebbles (peer-reviewed, verbatim-verified); two independent author groups'},
+    'H-STREAM-01\nStateful Streaming': {
+        'score': 15, 'level': 'moderate', 'dims': [1, 5, 3, 3, 3],
+        'label': 'Samza VLDB 2017 + Azure verbatim-verified; two legs cap the source count'},
     'H-SOC-BASELINE-01 \u2020\nSOC Alert Base Rates': {
-        'score': 14, 'level': 'moderate',
+        'score': 13, 'level': 'moderate', 'dims': [1, 5, 1, 5, 1],
         'label': 'Yang USENIX Sec 24: 24K-134K alerts/day, ~0.01% true attacks; single-source cap'},
     'H-COST-09\nTiered Storage': {
-        'score': 8, 'level': 'preliminary',
-        'label': 'Mechanism documented; savings band withdrawn 2026-06'},
-    'H-IMPL-02\nStaffing Scarcity': {
-        'score': 7, 'level': 'preliminary',
-        'label': 'DORA attribution fabricated (withdrawn 2026-07); directional only'},
-    'H-IMPL-03\nTimeline Premium': {
-        'score': 7, 'level': 'preliminary',
-        'label': 'Timeline figures withdrawn 2026-06/07; directional only'},
+        'score': 9, 'level': 'preliminary', 'dims': [1, 1, 1, 3, 3],
+        'label': 'Mechanism documented; savings band withdrawn 2026-06; S3 tier-delta bounds the saving'},
     'H-IMPL-01\nStreaming TCO': {
-        'score': 6, 'level': 'preliminary',
-        'label': 'DORA fabricated + TEI breakdown in neither doc; directional only'},
+        'score': 5, 'level': 'preliminary', 'dims': [1, 1, 1, 1, 1],
+        'label': 'DORA fabricated + TEI breakdown in neither doc; no scoreable leg, instrument floor'},
+    'H-IMPL-02\nStaffing Scarcity': {
+        'score': 5, 'level': 'preliminary', 'dims': [1, 1, 1, 1, 1],
+        'label': 'DORA attribution fabricated (withdrawn 2026-07); no scoreable leg, instrument floor'},
+    'H-IMPL-03\nTimeline Premium': {
+        'score': 5, 'level': 'preliminary', 'dims': [1, 1, 1, 1, 1],
+        'label': 'Timeline figures withdrawn 2026-06/07; no scoreable leg, instrument floor'},
 }
+
+# Guard: every stated total must equal the sum of its five anchor dimensions.
+for _name, _h in HYPOTHESES.items():
+    assert sum(_h['dims']) == _h['score'], f"{_name}: dims do not sum to score"
 
 
 def create_hypothesis_confidence():
@@ -95,19 +110,22 @@ def create_hypothesis_confidence():
         ax1.text(27, i, HYPOTHESES[hyp]['label'], ha='left', va='center',
                  fontsize=8, style='italic', color='#424242')
 
-    ax1.axvline(x=19, color=COLORS['strong'], linestyle=':', linewidth=1.5,
-                alpha=0.5, label='Strong threshold (19+)')
-    ax1.axvline(x=15, color=COLORS['high'], linestyle=':', linewidth=1.5,
-                alpha=0.5, label='High threshold (15+)')
-    ax1.axvline(x=10, color=COLORS['moderate'], linestyle=':', linewidth=1.5,
-                alpha=0.5, label='Moderate threshold (10+)')
+    # Band boundaries per methods/scoring-rubric.md section 3 (21-25 / 16-20 /
+    # 11-15 / 5-10). The 19/15/10 lines this script drew before contradicted the
+    # rubric they were meant to illustrate.
+    ax1.axvline(x=21, color=COLORS['strong'], linestyle=':', linewidth=1.5,
+                alpha=0.5, label='Strongly Validated (21+)')
+    ax1.axvline(x=16, color=COLORS['high'], linestyle=':', linewidth=1.5,
+                alpha=0.5, label='High Confidence (16+)')
+    ax1.axvline(x=11, color=COLORS['moderate'], linestyle=':', linewidth=1.5,
+                alpha=0.5, label='Moderate (11+)')
 
     ax1.set_yticks(y_pos)
     ax1.set_yticklabels(labels, fontsize=11, fontweight='bold')
     ax1.set_xlabel('Confidence Score (out of 25 points)', fontsize=12,
                    fontweight='bold')
-    ax1.set_title('Hypothesis Validation Confidence Levels — post-audit '
-                  're-score, 2026-07-09 + post-audit additions \u2020 2026-07-10 (9 hypotheses)',
+    ax1.set_title('Hypothesis Validation Confidence Levels — rubric rescore, '
+                  '2026-07-13 (9 hypotheses; \u2020 = added post-audit 2026-07-10)',
                   fontsize=14, fontweight='bold', pad=15)
     ax1.set_xlim(0, 30)
     ax1.invert_yaxis()
@@ -119,8 +137,8 @@ def create_hypothesis_confidence():
 
     level_counts = {
         'Strongly\nValidated\n*****': (1, 'strong'),
-        'High\nConfidence\n****': (3, 'high'),
-        'Moderate\n***': (1, 'moderate'),
+        'High\nConfidence\n****': (2, 'high'),
+        'Moderate\n***': (2, 'moderate'),
         'Preliminary\n**\n(withdrawn legs)': (4, 'preliminary'),
     }
     lv_labels = list(level_counts.keys())
@@ -140,7 +158,7 @@ def create_hypothesis_confidence():
     ax2.set_xticks(range(len(lv_labels)))
     ax2.set_xticklabels(lv_labels, fontsize=9, fontweight='bold')
     ax2.set_ylabel('Number of Hypotheses', fontsize=11, fontweight='bold')
-    ax2.set_title('Distribution by Confidence Level (post-audit)',
+    ax2.set_title('Distribution by Confidence Level (2026-07-13 rescore)',
                   fontsize=13, fontweight='bold')
     ax2.set_ylim(0, 5)
     ax2.grid(axis='y', alpha=0.3, linestyle=':', linewidth=0.5)
@@ -150,7 +168,9 @@ def create_hypothesis_confidence():
 
     dimensions = ['Source Count', 'Evidence Quality', 'Source Diversity',
                   'Quantitative Precision', 'Geographic Diversity']
-    example_scores = [5, 5, 5, 3, 5]  # H-ARCH-01 = 23/25 (canonical bundle split)
+    # Read the worked example straight from the scored data so the panel cannot
+    # drift from the bars above it (rubric section 4: H-ARCH-01, 5/5/5/3/5 = 23/25).
+    example_scores = HYPOTHESES['H-ARCH-01\nIceberg Dominance']['dims']
 
     x_pos = np.arange(len(dimensions))
     bars3 = ax3.barh(x_pos, example_scores, color=COLORS['dimension'],
@@ -163,7 +183,7 @@ def create_hypothesis_confidence():
     ax3.set_yticks(x_pos)
     ax3.set_yticklabels(dimensions, fontsize=10)
     ax3.set_xlabel('Score (out of 5 points)', fontsize=11, fontweight='bold')
-    ax3.set_title('Example: H-ARCH-01 Scoring (strongest post-audit)',
+    ax3.set_title('Example: H-ARCH-01 Scoring (strongest; rubric section 4)',
                   fontsize=13, fontweight='bold', pad=10)
     ax3.set_xlim(0, 6)
     ax3.invert_yaxis()
@@ -181,12 +201,15 @@ def create_hypothesis_confidence():
     ax4.axis('off')
 
     summary = """
-    Post-audit validation summary (re-scored 2026-07-09; RESCORE-PROPOSAL-2026-07.md):
-    - Findings VALIDATED on primary-verified production evidence:
-      1 strongly validated (H-ARCH-01), 3 high confidence (H3-PERFORMANCE-01, H-LOGCOMP-01, H-STREAM-01), 1 moderate (H-SOC-BASELINE-01).
-    - Organizational-cost findings PRELIMINARY: 4 hypotheses (H-IMPL-01/02/03, H-COST-09) lost their
-      quantitative legs to the 2026-06 audit and 2026-07 verification sweep (fabricated attribution or
-      figures absent from cited sources); each is stated directionally pending re-sourcing.
+    Confidence rescore, 2026-07-13 (methods/scoring-rubric.md; applied in methods/RESCORE-2026-07-13.md):
+    - Every score is the sum of five anchor-valued dimensions, so a reviewer holding the rubric and the
+      bibliography re-derives it. Bands: 21-25 Strongly Validated, 16-20 High, 11-15 Moderate, 5-10 Preliminary.
+    - 1 strongly validated (H-ARCH-01), 2 high confidence (H3-PERFORMANCE-01, H-LOGCOMP-01),
+      2 moderate (H-STREAM-01, H-SOC-BASELINE-01), 4 preliminary (H-COST-09, H-IMPL-01/02/03).
+    - H-STREAM-01 moves High -> Moderate: after the Uber withdrawal the section cites two legs, and the
+      source-count anchor prices 1-2 sources at 1 point. One further verified leg restores it to 17/25.
+    - H-IMPL-01/02/03 sit at the instrument's 5/25 floor: no scoreable leg survives the audits, and their
+      former 6/7/7 gradation was judgment the rubric cannot express.
     - Every score reflects only evidence that survived primary-source verification.
     """
 
@@ -197,7 +220,7 @@ def create_hypothesis_confidence():
              family='monospace')
 
     fig.suptitle('Figure 4: Hypothesis Validation Confidence Levels — '
-                 'post-audit re-score (2026-07-09)',
+                 'rubric rescore (2026-07-13)',
                  fontsize=16, fontweight='bold', y=0.98)
 
     output_dir = os.path.expanduser(
@@ -207,7 +230,7 @@ def create_hypothesis_confidence():
     plt.savefig(f'{output_dir}/figure4_hypothesis_confidence.pdf',
                 bbox_inches='tight', facecolor='white')
 
-    print("Figure 4 rendered with adopted post-audit scores.")
+    print("Figure 4 rendered with the 2026-07-13 rubric rescore.")
     plt.close()
 
 
