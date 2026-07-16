@@ -1,18 +1,24 @@
 % ── Security Data Works brand preamble (xelatex) ─────────────────────────────
 % Brand fonts: DM Sans (body + headings, weight 600 for headings) + JetBrains Mono.
 % Static TTFs instanced from the website's variable woff2 into tools/build/fonts/.
+% NOTE: this file is a TEMPLATE — @@FONTDIR@@ is substituted by tools/build/build.sh
+% with the absolute path to tools/build/fonts/ (derived from the script's own
+% location), and the result is written to build/header.gen.tex, which is what
+% pandoc compiles. fontspec needs an absolute Path= because pandoc runs the TeX
+% engine from a temp directory, so a relative path would not resolve. Do not
+% compile this file directly; run tools/build/build.sh.
 \usepackage{fontspec}
 \setmainfont{DMSans}[
-  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Path=@@FONTDIR@@/,
   Extension=.ttf, UprightFont=*-400, BoldFont=*-700, ItalicFont=*-400i, BoldItalicFont=*-700i]
 \setsansfont{DMSans}[
-  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Path=@@FONTDIR@@/,
   Extension=.ttf, UprightFont=*-400, BoldFont=*-700, ItalicFont=*-400i, BoldItalicFont=*-700i]
 \setmonofont{JetBrainsMono}[
-  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Path=@@FONTDIR@@/,
   Extension=.ttf, UprightFont=*-400, BoldFont=*-700, Scale=0.86]
 \newfontfamily{\headingfont}{DMSans}[
-  Path=/home/USER/security-data-literature-review/tools/build/fonts/,
+  Path=@@FONTDIR@@/,
   Extension=.ttf, UprightFont=*-600, BoldFont=*-700]
 
 \usepackage{microtype}
@@ -97,3 +103,5 @@
 \newunicodechar{^^^^fe0f}{}
 \newunicodechar{“}{{\symbolfont “}}
 \newunicodechar{”}{{\symbolfont ”}}
+\newunicodechar{š}{{\symbolfont š}}
+\newunicodechar{†}{{\symbolfont †}}

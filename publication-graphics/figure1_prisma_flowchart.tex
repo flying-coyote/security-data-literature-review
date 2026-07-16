@@ -45,7 +45,7 @@
 
 % ==================== ARM HEADERS ====================
 \node (head-l) [stage, fill=identification] at (3.6,0)
-    {Identification of studies via databases and registers};
+    {Identification of studies via databases};
 \node (head-r) [stage, fill=identification] at (18.6,0)
     {Identification of studies via other methods};
 
@@ -114,8 +114,8 @@
     n = 40\\[3pt]
     \footnotesize Venue identity resolved at the DOI; publisher, DOAJ, Scopus and Web of
     Science status established from primaries; predatory-list, delisting and hijacking
-    checks run; then a second, independent reviewer instructed to refute each proposed
-    citation. Per-record verdicts and evidence: prisma-appraisal-2026-07-13.json.
+    checks run; then an independent LLM verification pass instructed to refute each
+    proposed citation. Per-record verdicts and evidence: prisma-appraisal-2026-07-13.json.
 };
 
 \node (l-appr-excl) [sidebox, fill=eligibility!15] at (7.4,-15.9) {
@@ -127,15 +127,16 @@
     A2 not peer reviewed (2 preprints, 1 repository self-deposit): 3\\
     \quad\emph{incl. 1 preprint typeset with a counterfeit publisher masthead}\\
     A3 full text unobtainable, so uncitable: 1\\
-    A4 citation refused by the independent verifier: 2
+    A4 citation refused by the independent LLM verification pass: 2
 };
 
 % ==================== LEFT ARM: INCLUDED ====================
 \node (l-incl) [box, fill=included!50] at (0,-19.3) {
-    \textbf{Studies included from databases and registers}\\[2pt]
+    \textbf{Studies included from databases}\\[2pt]
     n = 26\\[3pt]
     \footnotesize 11 Level A, 12 Level B, 3 Level C. The 26 resolve to 23 independent
-    author groups.
+    author groups. Full-text retrieval pass (2026-07-16): 19 of 26 read at full text,
+    7 at abstract only, none unretrievable.
 };
 
 % ==================== RIGHT ARM: IDENTIFICATION ====================
@@ -229,7 +230,7 @@
     it is not journal or conference literature. The 40 database-included studies then passed
     through a critical-appraisal stage that the topical screening had not applied, and 14 did not
     survive it: eight sat in predatory or compromised venues, three were not peer reviewed, one
-    could not be read, and two were refused by the independent verifier. The arms do not overlap,
+    could not be read, and two were refused by the independent LLM verification pass. The arms do not overlap,
     and each count above is reproducible from the JSON under methods/prisma-results/ and
     methods/prisma-appraisal-2026-07-13.json.}
 };

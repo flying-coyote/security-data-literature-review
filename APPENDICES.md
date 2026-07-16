@@ -7,6 +7,14 @@ tags: [literature-review, evidence-classification, hypothesis-confidence, expert
 
 # Appendices - Modern Data Architecture for Cybersecurity Operations
 
+> **⛔ SUPERSEDED — 2026-07-16.** This is the October-2025 pre-rescore appendix set, retained as a record; the appendices of record are `PUBLICATION-MANUSCRIPT.md`'s embedded Appendices A–D, and nothing below should be used to re-derive scores or intake policy. Known contradictions with the current instruments, named so nobody re-derives from the wrong one:
+> - the **Level C/D "0% of sources - EXCLUDED"** headers (~lines 116, 135) contradict the corrected intake policy, which catalogues Level C sources with bias flagged rather than excluding them — the live corpus carries 24 Level C of 227 tiered (10.6%, 2026-07-16);
+> - **"all 7 hypotheses"** (~lines 189, 432) contradicts the corpus of record, which assesses nine (two added post-audit 2026-07-10: H-LOGCOMP-01, H-SOC-BASELINE-01);
+> - the **Appendix B rubric anchors with 2- and 4-point values** (~lines 211–241) contradict the instrument of record, the 1/3/5 anchor-only rubric in `methods/scoring-rubric.md`, under which the 2026-07-13 rescore in manuscript §3.7 was scored;
+> - citations in **REFERENCES.md numbering** ([51], [68], and the Appendix D chapter maps) use a numbering that is parallel to and incompatible with the manuscript's embedded [1]–[38] list, which is the only list the manuscript's inline citations resolve against.
+>
+> Body preserved below, unedited. Do NOT bundle this file into any submission package.
+
 **Purpose**: Supporting documentation for systematic literature review publication
 **Created**: October 21, 2025
 **Status**: Complete - All appendices drafted

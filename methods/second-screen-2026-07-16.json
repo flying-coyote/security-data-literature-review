@@ -1,0 +1,159 @@
+{
+ "generated": "2026-07-16",
+ "method": "Independent second screen of every excluded database-arm record (Cochrane rapid-review single-reviewer mitigation: the second screener reviews ALL records the first screener excluded; Garritty et al. 2021). Second screener: an LLM agent per screen batch, independent of the first screener's session, applying the pre-specified I1-I3/E1-E6 criteria from methods/PRISMA-SEARCH-PROTOCOL-2026-07-13.md section 4 to each excluded record's title+abstract. Disagreements are flags for human re-adjudication, not reversals; flagged records remain excluded until the owner rules.",
+ "totals": {
+  "excluded_reviewed": 355,
+  "agreements": 344,
+  "disagreements": 11,
+  "should_include": 1,
+  "uncertain_lean_include": 10,
+  "flag_rate": "3.1%"
+ },
+ "note": "The 3.1% flag rate sits below the ~13% average miss rate measured for single-reviewer abstract screening (Gartlehner et al. 2020), consistent with criterion-driven screening plus a systematic second pass. Two flags concern title-only records (no abstract in the source APIs), where any single screener's I2/I3 call is structurally weakest. Owner adjudication pending; any reversal would enter the corpus through the standard appraisal gate, not directly.",
+ "batches": [
+  {
+   "batch": 0,
+   "excluded_reviewed": 31,
+   "agreements": 29,
+   "disagreements": [
+    {
+     "id": "https://openalex.org/W3040353697",
+     "title": "Intrusion Detection in Industrial Networks via Data Streaming",
+     "original_criterion": "I3",
+     "second_opinion": "uncertain_lean_include",
+     "why": "This is a title-only record (no abstract), and the exclusion reason is that 'the title gives no indication of a reported measurement, benchmark, or deployment' -- but titles almost never state their evidence, so applying I3 on a title-only record effectively auto-excludes the whole no-abstract class, which the protocol's own section 5 handles differently (title-only records that pass are flagged for full-text read, implying retain-when-uncertain). The subject squarely matches I2: data streaming applied to intrusion detection in industrial networks, plausibly the Gulisano/Almgren stream-processing-architecture line of work rather than an ML-classifier paper. A human should pull the full text before letting I3 decide this one."
+    },
+    {
+     "id": "https://openalex.org/W4413918019",
+     "title": "AI-Powered Threat Detection and Response: Leveraging Machine Learning for Real-Time Intrusion Detection Systems (IDS) Using Network Traffic Data",
+     "original_criterion": "E1",
+     "second_opinion": "uncertain_lean_include",
+     "why": "The E1 reason says Kafka and TensorRT are 'the deployment pipeline, not the object of evaluation', but the abstract does report pipeline-level measurements: 'Real-time testing demonstrated a latency of 4.2 ms and throughput of 12,000 requests/second, surpassing existing approaches by 60%.' That is the same kind of evidence (processing time and throughput of a Kafka-based pipeline) that got W2994134668 included in this very batch, so the two decisions sit on opposite sides of the same line. I lean toward the exclusion being defensible since the throughput is really model-serving throughput and the contribution is the RF+LSTM classifier, but a human should adjudicate the pair for consistency."
+    }
+   ]
+  },
+  {
+   "batch": 1,
+   "excluded_reviewed": 33,
+   "agreements": 32,
+   "disagreements": [
+    {
+     "id": "https://openalex.org/W7127166471",
+     "title": "BigFlow-NIDS: A large-scale dataset for network intrusion detection in big data environment",
+     "original_criterion": "E2",
+     "second_opinion": "uncertain_lean_include",
+     "why": "The exclusion reads the Parquet result as incidental, but the abstract reports a concrete storage-format measurement on security telemetry at scale: \"Compared with CSV, Parquet loading reduced read time dramatically (CSV: 920.82 s vs Parquet: 27.35 s)... demonstrating the importance of columnar storage for large NIDS corpora\" \u2014 a ~34x columnar-storage gain on 66.9M security flows, which is squarely the RQ3 storage-efficiency evidence class. The subject is admittedly a dataset rather than an architecture (the I2 objection is fair), but I3-grade evidence about columnar storage for security data is present in the abstract itself, so a human should read the full text to see whether the storage evaluation is more than the one Colab measurement before this is dropped."
+    }
+   ]
+  },
+  {
+   "batch": 2,
+   "excluded_reviewed": 36,
+   "agreements": 36,
+   "disagreements": []
+  },
+  {
+   "batch": 3,
+   "excluded_reviewed": 34,
+   "agreements": 33,
+   "disagreements": [
+    {
+     "id": "153",
+     "title": "Multitenant Cybersecurity Operations Center Designed as an Open Cloud Service with Machine Learning Elements",
+     "original_criterion": "E3",
+     "second_opinion": "uncertain_lean_include",
+     "why": "E3 excludes a survey 'with no architecture-level content of its own', but this paper's synthesis is itself architecture-level and squarely in scope for RQ1/RQ4: it distills from thirteen Elastic Stack/OpenSearch case studies 'a recurring foundation... an open telemetry plane based on the Elastic technology stack, container orchestration for horizontal scale and tenant isolation, and optional streaming with Apache Kafka and Apache Spark for real-time workloads', and the title claims a multitenant SOC 'Designed as an Open Cloud Service', suggesting a proposed design beyond pure synthesis. Whether that constitutes a 'substantive design evaluation' under I3 or original content under E3 can't be settled from the abstract alone, so a human should check the full text before letting E3 stand."
+    }
+   ]
+  },
+  {
+   "batch": 4,
+   "excluded_reviewed": 38,
+   "agreements": 38,
+   "disagreements": []
+  },
+  {
+   "batch": 5,
+   "excluded_reviewed": 35,
+   "agreements": 32,
+   "disagreements": [
+    {
+     "id": "https://openalex.org/W4417089145",
+     "title": "Federated Security Control Data Fabric: Scalable Telemetry Normalization and Orchestration in Multi-Cloud Environments",
+     "original_criterion": "I3",
+     "second_opinion": "uncertain_lean_include",
+     "why": "This is the review's exact subject \u2014 a 'federated lakehouse architecture enables unified querying across source environments without requiring centralized storage' for multi-cloud security telemetry, with distributed ingestion gateways, a normalization registry, and explicit SIEM/SOAR economics framing. The screener is right that the abstract reports no measurement or deployment, but I3 also admits 'a substantive design evaluation', and an abstract this architecturally detailed may carry one in the full text. Given how squarely it hits I2, a human should read the full text before it is excluded on abstract-level absence of evidence."
+    },
+    {
+     "id": "https://openalex.org/W7154562186",
+     "title": "A Scalable AI-Enhanced Framework for Real-Time Streaming Analytics in High-Velocity Distributed Data Environments",
+     "original_criterion": "E2",
+     "second_opinion": "uncertain_lean_include",
+     "why": "The paper's contribution is architecture evidence of the kind I3 asks for \u2014 'A comparison of Apache Flink, Spark Streaming and Kafka Streams has demonstrated trade-offs between performance, cost and energy efficiency' \u2014 and cybersecurity is a named application domain, with 'Anomaly detection, auto-scaling and fraud detection capabilities were evaluated in the context of real-time data streams'. The E2 call ('no security application') is arguable but not obviously right, since anomaly detection over streams is a security workload if the evaluated data is security telemetry. Whether the benchmark actually runs on security data is a full-text question, so a human should adjudicate."
+    },
+    {
+     "id": "https://openalex.org/W7138965513",
+     "title": "From Streams to Security: Architecting a Production-Ready Fraud Pipeline with Flink and Kafka",
+     "original_criterion": "E2",
+     "second_opinion": "uncertain_lean_include",
+     "why": "The subject is the pipeline architecture itself (Kafka/ksqlDB/Flink stateful stream processing) rather than a classifier, and it reports deployment evidence: 'Our containerized deployment demonstrates a 94.2% sensitivity rate with sub-second response times'. The E2 exclusion reads it as financial fraud, but the streams include 'authentication logs' and the detections are 'geographical impossibilities and high-frequency velocity infractions' \u2014 impossible-travel and velocity detection on auth logs is standard security-operations content, framed by the authors as 'real-time security analytics'. Whether fraud-on-auth-logs counts as the protocol's security application is a judgment call a human should make; its E6 duplicate (same title, Zenodo record) resolves the same way."
+    }
+   ]
+  },
+  {
+   "batch": 6,
+   "excluded_reviewed": 38,
+   "agreements": 36,
+   "disagreements": [
+    {
+     "id": "https://openalex.org/W3165158987",
+     "title": "Stream-Based IP Flow Analysis",
+     "original_criterion": "E2",
+     "second_opinion": "should_include",
+     "why": "The E2 reason says 'no stated security/detection application', but the abstract states the work aims to 'extend network monitoring and threat detection capabilities' and proposes 'a novel performance benchmark' of 'distributed data stream processing systems' to determine their suitability for IP flow processing, released as the open-source Stream4Flow framework. That is stream-processing platforms evaluated AS infrastructure (I2) with a benchmark as evidence (I3), applied to flow telemetry that the paper itself ties to threat detection. This is squarely the review's scope (architecture underneath detection, not a detection model), so the exclusion looks like a misread of the network-management framing."
+    },
+    {
+     "id": "https://openalex.org/W7161954859",
+     "title": "Real-Time Event Monitoring in Web Applications: An Optimized Architecture with AI-Driven Predictive Analytics",
+     "original_criterion": "E2",
+     "second_opinion": "uncertain_lean_include",
+     "why": "The exclusion reason says 'not security telemetry', but the abstract reports 'real-world case studies in e-commerce and cybersecurity domains' with a measured '75% faster security response times', and the contribution is the Kafka/Flink/Redis ingestion architecture itself evaluated under load (1.2M events/sec), not a classifier \u2014 so E1 does not apply and the architecture-with-security-application reading of I2/I3 is arguable. Security is one of two case-study domains rather than the paper's subject, which is why I would not call it a clean include, but a human should read the cybersecurity case study before letting E2 stand."
+    }
+   ]
+  },
+  {
+   "batch": 7,
+   "excluded_reviewed": 38,
+   "agreements": 37,
+   "disagreements": [
+    {
+     "id": "https://openalex.org/W4415928145",
+     "title": "Geographic Access Audit Dashboard: Monitoring Oracle HCM Cloud Authentication Events via RESTful API Integration",
+     "original_criterion": "I3",
+     "second_opinion": "uncertain_lean_include",
+     "why": "The exclusion concedes I2 is met (a dimensional-warehouse audit architecture over authentication-event telemetry feeding a SIEM) and rests entirely on I3, but I3's fourth arm accepts 'a substantive design evaluation', not only measurements. The abstract offers 'a detailed technical specification of the two-tier audit data extraction process' and 'evaluates Oracle Integration Cloud as an enterprise-grade middleware orchestration platform, comparing its capabilities with those of alternative tools and justifying its selection', which reads as a comparative design evaluation of the ingest/warehouse pipeline rather than a bare proposal. Whether that evaluation is 'substantive' enough without any reported figures is a judgment call a human should make on the full text, so I would not exclude on abstract alone."
+    }
+   ]
+  },
+  {
+   "batch": 8,
+   "excluded_reviewed": 37,
+   "agreements": 37,
+   "disagreements": []
+  },
+  {
+   "batch": 9,
+   "excluded_reviewed": 35,
+   "agreements": 34,
+   "disagreements": [
+    {
+     "id": "377",
+     "title": "Data Warehouse Design for Security Applications Using Distributed Ontology-Based Knowledge Representation",
+     "original_criterion": "I2",
+     "second_opinion": "uncertain_lean_include",
+     "why": "This is a title-only decision (no abstract in records.json), and the title reads as a data-warehouse DESIGN paper explicitly built \"for Security Applications\", which is on its face the I2 subject \u2014 a storage/warehouse architecture applied to security data \u2014 rather than the excluded categories of securing a warehouse or general data engineering. The screener's reason treats the ontology/knowledge-representation angle as disqualifying, but an ontology-based warehouse design for security applications could still be a substantive design evaluation under I3 (2019, so I1 holds). With no abstract available, the exclusion rests on an inference about what the paper is not, so a human should fetch the abstract or full text before letting this exclusion stand."
+    }
+   ]
+  }
+ ]
+}

@@ -7,6 +7,8 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 # References - Modern Data Architecture for Cybersecurity Operations
 
+> **⛔ SUPERSEDED — 2026-07-16.** This file is no longer the manuscript's reference section. Its 78-entry numbering is a PARALLEL, INCOMPATIBLE numbering to the reference list embedded in `PUBLICATION-MANUSCRIPT.md` ([1]–[38]) — this file's [8] is the Apache Iceberg documentation while the manuscript's [8] is DORA 2024, so resolving a manuscript citation against this file silently swaps the source. The manuscript's inline citations resolve ONLY against its embedded list. This file is retained as the full IEEE-formatted corpus listing (78 numbered entries, 12 withdrawn in place), it must NOT be bundled into any submission package, and the build pipeline was repointed off it 2026-07-16.
+
 **Purpose**: IEEE/ACM formatted references for systematic literature review publication
 **Created**: October 21, 2025
 **Total Sources**: 78 numbered entries (12 withdrawn after source verification; numbering preserved)
@@ -214,4 +216,4 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 **Last Updated**: July 9, 2026 (fabrications-register cleanup: 12 entries withdrawn in place)
 **Total References**: 78 numbered entries (12 withdrawn; numbering preserved for manuscript citation stability)
 **Format**: IEEE citation style
-**Purpose**: Academic publication reference section for PUBLICATION-MANUSCRIPT.md
+**Purpose**: ~~Academic publication reference section for PUBLICATION-MANUSCRIPT.md~~ Corpus-wide IEEE-formatted reference listing (superseded 2026-07-16 as the manuscript's reference section — the manuscript's inline citations resolve against its own embedded [1]–[38] list, not this file's numbering)

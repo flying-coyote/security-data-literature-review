@@ -1,0 +1,252 @@
+{
+ "generated": "2026-07-16",
+ "method": "Documented full-text retrieval pass over all 26 incorporated search-arm studies (PRISMA 2020 retrieval reporting). One agent per study; escalation: DOI resolve -> publisher page -> Unpaywall -> author/green-OA copies via web search. 'retrieval' records the deepest level actually read; 'claim_check' verifies the MASTER-BIBLIOGRAPHY.md entry's carried claim at that depth. Run as part of the 2026-07-16 pre-submission wave.",
+ "totals": {
+  "full_text": 19,
+  "abstract_only": 7,
+  "not_retrieved": 0,
+  "claim_checks": {
+   "verified": 19,
+   "partially_verified": 1,
+   "no_quantitative_claim": 6,
+   "not_verified": 0
+  }
+ },
+ "note": "No entry's carried claim was contradicted at any depth. The one partially_verified (rank 3) is an entry that deliberately cites the comparison qualitatively with no numbers; the comparison's existence is confirmed at abstract depth, its direction is not visible there, and the entry does not state one. Rank 38 (Journal of Intelligent Systems 2024), previously flagged 'cited architecture-only without a retrieved full text', was retrieved at full text and its entry verified, closing that flag.",
+ "retrievals": [
+  {
+   "rank": 0,
+   "title": "Performance Evaluation of Intrusion Detection Streaming Transactions Using Apache Kafka and Spark Streaming",
+   "retrieval": "abstract_only",
+   "open_access": false,
+   "claim_check": "no_quantitative_claim",
+   "access_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/aitc.2019.8920960",
+   "note": "Bibliography entry (MASTER-BIBLIOGRAPHY.md line 4825) deliberately carries no quotable numbers, only the existence of a Kafka/Spark measurement on UNSW-NB15. Full abstract retrieved via Semantic Scholar API; Unpaywall reports closed OA with no repository copy, IEEE Xplore and ResearchGate both inaccessible, so depth is abstract-only. The abstract matches the entry exactly: zero figures, and the directional statement that multiple Kafka partitions increase processing time is present verbatim, still unresolved against the paywalled full text. The entry's Semantic Scholar venue mis-assignment warning also reproduced (API returns 'International Conference on Advanced Infocomm Technology')."
+  },
+  {
+   "rank": 1,
+   "title": "Toward a monitoring and threat detection system based on stream processing as a virtual network function for big data",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://web.archive.org/web/2023/https://hal.sorbonne-universite.fr/hal-02188745/file/Lopez%20et%20al.%20-%20Toward%20a%20monitoring%20and%20threat%20detection%20system%20ba.pdf",
+   "note": "Wiley landing page returned 403 and HAL Sorbonne blocks automated access (Anubis), but the green-OA author copy (Unpaywall/Semantic Scholar both point to hal-02188745) was retrievable via the Wayback Machine as a 25-page PDF, so the full body was read. The entry's >95% accuracy across three datasets is confirmed in the evaluation tables (GTA/UFRJ 95.99%, NetOp 98.74%, third dataset 98.394%); the >85% concept-drift figure matches the abstract, though the body prose reports sustained accuracy \"over 70%\" for most window/alpha settings with the best case (alpha=90%, 5000-sample window) shown only in Figure 17d, so that number rests on the paper's own abstract-level claim."
+  },
+  {
+   "rank": 2,
+   "title": "An evaluation of a virtual network function for real-time threat detection using stream processing",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://www.gta.ufrj.br/ftp/gta/TechReports/ALDP16.pdf",
+   "note": "Read the full 5-page author copy hosted on the authors' GTA/UFRJ site (same title/authors as the IEEE MobiSecServ 2018 paper; Unpaywall reports the publisher version closed with no OA location, and the HAL record is metadata-only behind a 403). The bibliography's key claim \u2014 more than five million messages per second in the scaling test \u2014 is confirmed in Section V/Figure 4: throughput peaks above 5M msg/s around parallelism 20 with a 4.65 latency speedup, on an OPNFV Danube 2.0 cluster (96 GB RAM, 128 Intel Xeon 2.6 GHz cores, Spark Streaming 1.3.1, Kafka 0.8.2.1). The entry's caveat that hardware/test conditions are \"not stated in the abstract\" is accurate for the abstract, though the body does state them, so the entry could be tightened rather than corrected."
+  },
+  {
+   "rank": 3,
+   "title": "Machine learning based network intrusion detection for data streaming IoT applications",
+   "retrieval": "abstract_only",
+   "open_access": false,
+   "claim_check": "partially_verified",
+   "note": "Bibliography entry (MASTER-BIBLIOGRAPHY.md ~line 4872) carries the paper qualitatively: a peer-reviewed Flink-vs-Spark-Streaming head-to-head on a NIDS workload, explicitly not cited for any throughput number. Unpaywall reports oa_status closed with no repository copy, IEEE Xplore and ResearchGate both blocked the fetch, so the deepest level reached was the abstract via Semantic Scholar and search snippets, which confirms the system was developed, deployed and tested with both Apache Flink and Spark Streaming using an RNN reaching 87% accuracy. Existence of the comparison is confirmed at this depth, but which engine won (the \"direction\") is not visible in the abstract, hence partially_verified rather than verified; no number mismatch found.",
+   "access_url": "https://www.semanticscholar.org/paper/cc59e4e2502ac7eec7f3238311a180fe0590d8a1"
+  },
+  {
+   "rank": 4,
+   "title": "Real-Time Intrusion Detection in Network Traffic Using Adaptive and Auto-Scaling Stream Processor",
+   "retrieval": "full_text",
+   "open_access": false,
+   "claim_check": "verified",
+   "access_url": "https://ir.lib.uwo.ca/etd/5523/",
+   "note": "The IEEE PDF is closed (Unpaywall: no OA location; ResearchGate 403), but full text was obtained via the author's open-access MESc thesis (Western University ETD 5523, downloaded from uwo.scholaris.ca), which contains the same Wisdom/PSO+Bisection/CICIDS 2017 study. Thesis Table 6.2 per-rule figures (precision 100/100/99.95, recall 99.61/96.85/83.80) average exactly to the bibliography entry's 99.98% precision and 93.42% recall, the >2.5M events/sec throughput is stated in the thesis abstract and the paper's own abstract (Semantic Scholar), and the auto-scaling-consumes-fewer-resources-than-always-on-monolithic claim is supported in the thesis results chapter. open_access=false refers to the DOI version itself; the verifying author copy is freely available at the access URL."
+  },
+  {
+   "rank": 6,
+   "title": "DATA WAREHOUSE MODELLING INFORMATION SECURITY LOG MANAGEMENT IN BUILDING A SECURITY OPERATION CENTER IN CENTRAL GOVERNMENT AGENCIES WITH KIMBALL METHOD",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://jutif.if.unsoed.ac.id/index.php/jurnal/article/download/649/359",
+   "note": "Retrieved the publisher's gold-OA CC-BY PDF (Unpaywall best location, JUTIF Vol 4 No 4 pp 987-994) and read all 8 pages. The bibliography entry's key claim is architectural, not quantitative \u2014 \"a modelling proposal with no evaluation\" \u2014 and the full text confirms it: Kimball 9-step starflake schema with malware/intrusion/attack fact tables, Pentaho ETL into MySQL, testing limited to ETL execution screenshots, with response-time comparison explicitly deferred to future work. The entry's \"no numbers to check\" holds; the only figures in the paper are raw Table 1 log-volume counts the entry does not carry."
+  },
+  {
+   "rank": 8,
+   "title": "A study on time models in graph databases for security log analysis",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://www.emerald.com/ijwis/article/17/5/427-448/375925",
+   "note": "Unpaywall reports the paper as CC-BY open access at the publisher, and the Emerald article page (reached via the DOI redirect) exposes the complete text, so the check ran at full-text depth including body sections and query-timing tables. The bibliography entry's key claim is comparative and deliberately carries no figure \u2014 three timestamp-storage models compared, with the simplest model yielding the simplest queries \u2014 and the paper's conclusion states almost verbatim that the simplest model with the fewest graph-database-specific concepts also yields the simplest and fastest queries, across the three models (property-based, timeline, hierarchical). No number mismatch, since the entry correctly carries no numbers; the direct PDF download was blocked by Cloudflare but the HTML full text sufficed."
+  },
+  {
+   "rank": 9,
+   "title": "Building a large scale Intrusion Detection System using Big Data technologies",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "note": "Downloaded and read the full 12-page open-access PDF from pos.sissa.it (CC BY-NC-ND). The entry's key claims \u2014 \"processing in real time approximately one TB of data per day\" and \"final goal of coping with at least 5 TB / day\" \u2014 appear verbatim in the abstract, and the body confirms the CERN Flume/Kafka/Spark/HDFS/Elasticsearch deployment with per-topic throughput figures (Table 1: bro_conn 8500 avg / 12000 peak msg/sec). One nuance: the Conclusion states the enrichment phase currently runs on 50% (500 GB/day) and the detection phase on 12% (500 GB/day) of expected data, so the ~1 TB/day is ingest, not fully-processed volume.",
+   "access_url": "https://pos.sissa.it/327/014/pdf"
+  },
+  {
+   "rank": 10,
+   "title": "Efficient Host Intrusion Detection using Hyperdimensional Computing",
+   "retrieval": "full_text",
+   "open_access": false,
+   "claim_check": "verified",
+   "note": "Unpaywall reports the IEEE version closed (no OA locations), but a full author copy PDF is posted on co-author Quinn Burke's site, which I downloaded and read end to end (7 pages including Table 1 ROC-AUC results and the evaluation section). The bibliography entry's claims all check out against the body text: >90% average detection accuracy (Table 1 averages 0.934/0.898/0.912/0.913 across hop lengths, conclusion states >90%), speedups up to 4,242x on CPU and up to 18,000x on the FeFET PIM accelerator versus the SysFlow backward-tracing baseline, power savings up to 5,300x (CPU) and 12 orders of magnitude (PIM), and the carried framing that state-of-the-art provenance-graph query latencies are impractical for modern threat detection appears verbatim in the abstract. The entry's caution that the speedup baselines are paper-specific is well founded, since the PIM figures come from a NeuroSim-modeled cycle-based simulation rather than physical hardware.",
+   "access_url": "https://www.quinnburke.net/papers/2024_cyberhunt__hids.pdf"
+  },
+  {
+   "rank": 11,
+   "title": "High-performance FPGA Architecture for Data Streams Processing on Example of IPsec Gateway",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "http://journals.pan.pl/Content/107747/PDF/48_1444.pdf",
+   "note": "Downloaded the publisher's CC-BY PDF (found via Unpaywall) and read all 6 pages including the performance tables. Table V shows the Gateway 2.0 DES 8/8/8/16 config at 10227.44 Mbit/s and Table IX the AES-CBC 8/8/12/8 config at 5518.80 Mbit/s, both for 1500-byte packets at a 128-packet stream, matching the bibliography entry's figures exactly. Design tested on a Terasic DE5-Net board with Altera Stratix V, consistent with the entry's architectural framing."
+  },
+  {
+   "rank": 12,
+   "title": "Workload-Aware Storage Reduction for Multi-Tenant SIEM on ClickHouse",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://thesai.org/Downloads/Volume17No4/Paper_74-Workload_Aware_Storage_Reduction_for_Multi_Tenant_SIEM.pdf",
+   "note": "DOI resolved to the thesai.org landing page and the open-access PDF (6 pages) downloaded and read in full via pdftotext. All key bibliography figures were located in the body: 79%/70% storage reduction (331.43\u219268.67 MiB uncompressed, 35.10\u219210.57 MiB compressed), 27\u219212 columns, 9.4:1 vs 6.5:1 compression ratios, 144\u2013170 ms query latencies, \u03c4*=0.23 with 100% detection coverage, and 74% under the uniform-distribution robustness check. No mismatches found; the ~$30K/year saving is confirmed as the paper's own projection, correctly not carried as a measured result."
+  },
+  {
+   "rank": 13,
+   "title": "AIDA Framework \u2014 Real-Time Correlation and Prediction of Intrusion Detection Alerts (ARES 2019 / CyberTIM)",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://is.muni.cz/publication/1540256/2019-CyberTIM-AIDA-Framework-paper.pdf",
+   "note": "ACM DL landing page returned 403 and Unpaywall reports the DOI as closed with no OA location, but the author copy hosted at is.muni.cz downloaded after a cookie/meta-refresh handshake and I read the full body (Section 4, Deployment and Evaluation). The bibliography entry's key claim \u2014 AIDA deployed as a live analytical component of the production SABU alert-sharing platform, not a testbed \u2014 is confirmed verbatim in Section 4.1 plus operational specifics the entry doesn't cite (about 1.7M alerts/day in H1-2019, roughly 650K same-source-IP sequences distilled daily, Kafka 2.2.0/Spark 2.2.0/Esper 8.0.0 on a Xeon E5520 with 16 GB RAM). The entry carries no quantitative figure, so there was no number to mismatch; the architectural claim checks out at full-text depth."
+  },
+  {
+   "rank": 14,
+   "title": "The Next-Generation NIDS Platform: Cloud-Based Snort NIDS Using Containers and Big Data",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://mdpi-res.com/d_attachment/BDCC/BDCC-06-00019/article_deploy/BDCC-06-00019.pdf",
+   "note": "MDPI landing page and direct PDF URL both returned 403 to automated fetch, but the publisher's asset CDN (mdpi-res.com) served the full 10-page CC-BY PDF, which I extracted and read past the abstract into the results and conclusion. The bibliography entry's key figures (Kafka maximum message rate of 650,000 messages/s and maximum throughput of 172 MBps into Spark/Hadoop) appear verbatim in the Table 4 discussion and the conclusion, and the lambda-architecture/Docker containerized-sensor design matches the entry. No mismatches found; entry at MASTER-BIBLIOGRAPHY.md line 4921."
+  },
+  {
+   "rank": 22,
+   "title": "Hybrid Stream Processing for Runtime Protection in Remote and Infrastructure-Supported Driving",
+   "retrieval": "abstract_only",
+   "open_access": false,
+   "claim_check": "verified",
+   "access_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/icin69025.2026.11481838",
+   "note": "DOI resolves to IEEE Xplore (page blocked to fetch), Unpaywall reports oa_status closed with no repository copy, and no arXiv/author copy of this ICIN 2026 paper exists (the arXiv GALOIS paper is the 2023 predecessor), so the deepest level obtained was the full abstract via the Semantic Scholar API. The abstract ends verbatim with \"Our introduced online detection operator outperformed the classical offline detection by 584.3% in latency time,\" which confirms the bibliography entry's key claim exactly: the 584.3% figure exists in the source and is malformed as written (direction and base unstated), so the entry rightly carries no number. Since the entry's claim is about that abstract sentence itself, it is verified at this depth; body tables were not readable."
+  },
+  {
+   "rank": 23,
+   "title": "Performance Comparison of Python-Based Complex Event Processing Engines for IoT Intrusion Detection: Faust Versus Streamz",
+   "retrieval": "abstract_only",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://doaj.org/article/2b04be4eaf884d099e4e06dc90964a22",
+   "note": "The paper is gold OA (CC-BY, Unpaywall confirms), but MDPI's Akamai front returned 403 to both WebFetch and curl for the landing page and PDF, so the deepest level actually read was the full structured abstract retrieved via the DOAJ API. Every quantitative claim in the bibliography entry sits in that abstract and matched exactly: Streamz 4450 events/sec, 89% efficiency, 40 MB, 12 ms median latency; Faust 93-98% accuracy with 1.4% CPU standard deviation; Faust 96.2% vs Kafka Streams 96.8% (0.6 pp, p=0.318); p<0.001 with Cohen's d>0.8 across metrics; and the 3500/2500 events/sec scalability thresholds. Marked verified because the entry's key numbers were all confirmed verbatim in the source abstract, though body tables were not inspected at this depth."
+  },
+  {
+   "rank": 24,
+   "title": "SPARCS: Stream-Processing Architecture Applied in Real-Time Cyber-Physical Security",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "note": "Unpaywall pointed to an open-access author copy (submittedVersion) on eScholarship/California Digital Library; the 5-page PDF was downloaded and read in full via pdftotext. Table I confirms every figure in the bibliography entry exactly \u2014 Protobuf Python 47.0197/48.6306 ms, MsgPack Python 0.6806/0.3453 ms, JSON Python 6.4709/2.0404 ms, and the C++ counterparts 0.79528/0.66304, 0.47313/0.29642, 0.18463/0.29469 ms \u2014 measured on a BeagleBone Black over 1000 runs with 6304-byte PMU data. The LBNL authorship and end-to-end collection/transport/storage/processing design claims also check out in the body text.",
+   "access_url": "https://escholarship.org/content/qt3pj19498/qt3pj19498.pdf?t=q9g1bb"
+  },
+  {
+   "rank": 25,
+   "title": "General purpose data streaming platform for log analysis, anomaly detection and security protection",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "no_quantitative_claim",
+   "access_url": "https://www.epj-conferences.org/articles/epjconf/pdf/2024/05/epjconf_chep2024_01032.pdf",
+   "note": "Downloaded the CC-BY-4.0 publisher PDF from EPJ Web of Conferences and read all 7 pages. The bibliography entry carries no quantitative figure by design, and the full text confirms that framing: the paper describes a Kafka/Logstash/OpenSearch/Wazuh platform in production at INFN-CNAF (WLCG Tier-1) since Spring 2023, ingesting logs from roughly 60 data-transfer servers, with no throughput or latency measurement published. The entry's architectural/deployment claim is therefore fully supported at full-text depth, with no number mismatch possible."
+  },
+  {
+   "rank": 26,
+   "title": "Practical Performance of a Distributed Processing Framework for Machine-Learning-based NIDS",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://arxiv.org/html/2405.13066v1",
+   "note": "The IEEE DOI is closed (Unpaywall: oa_status closed, no repository copy), but the authors' arXiv deposit (2405.13066) is the same work and its HTML full text was read, including the results figure/tables. Every number in the bibliography entry checked out: throughputs 22,972/22,736/19,869/8,413/723 sessions/sec, baseline 23,596, latencies ~340-350ms/530ms/1.5s, tuned F1 0.967/0.964/0.972 with NB default 0.599, bottlenecks in Zeek/Logstash/Elasticsearch, and the 9-node Kubernetes cluster. No mismatches found."
+  },
+  {
+   "rank": 27,
+   "title": "Corporate Security is a Big Data Problem",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "note": "Read the complete article body (all sections plus references and author bios) via a Wayback Machine capture of the free ubiquity.acm.org publisher page, after the ACM DL, live Ubiquity site, and ResearchGate all 403'd and Unpaywall reported oa_status closed (misleading \u2014 Ubiquity is a free-to-read ACM magazine, the blocks were bot-gating not a paywall). The bibliography entry's key claim is architectural and it checks out: the paper argues corporate security is a big-data problem and presents a high-level security-intelligence architecture feeding security data lakes through security analytics into a security \"cockpit\" (Figure 3), exactly as the entry describes. The entry's \"no numbers to check\" is accurate for the claim it carries \u2014 the figures in the article (Cisco 2.3 ZB/yr by 2020, 16 records breached/sec, 7-month average APT detection) are all third-party citations the entry does not repeat.",
+   "access_url": "https://web.archive.org/web/2023id_/https://ubiquity.acm.org/article.cfm?id=3158348"
+  },
+  {
+   "rank": 28,
+   "title": "Aprendizado de M\u00e1quina em Plataformas de Processamento Distribu\u00eddo de Fluxo: An\u00e1lise e Detec\u00e7\u00e3o de Amea\u00e7as em Tempo Real",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "note": "No DOI exists (matching the entry's 'No DOI registered'), so retrieval went via web search to the authors' open-access copy on the GTA/UFRJ technical-reports server; the full 60+ page chapter PDF was downloaded and read via pdftotext. The entry's key claim checks out: it is a tutorial/survey chapter whose introduction headline numbers (1 Tb/s DDoS, US$10/hr, 85% late detection, 80B IoT devices) are all third-party cited, and it carries no measurements new to the chapter. One nuance: Section 3.3 re-presents a Storm/Flink/Spark Streaming throughput and failure benchmark from the authors' own prior paper [Andreoni Lopez et al. 2018], so those figures are the CATRACA group's own re-published results rather than strictly third-party, which is consistent with the entry's shared-authorship caveat.",
+   "access_url": "https://www.gta.ufrj.br/ftp/gta/TechReports/ASL18.pdf"
+  },
+  {
+   "rank": 29,
+   "title": "ARCHITECTURAL AND ANALYTICAL ASPECTS OF BIG DATA APPLICATION FOR ENSURING IOT SYSTEM SECURITY",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "no_quantitative_claim",
+   "access_url": "https://csecurity.kubg.edu.ua/index.php/journal/article/download/1144/1023",
+   "note": "Retrieved the full 12-page publisher PDF (gold OA, CC-BY-NC-SA, DOAJ journal) via Unpaywall's publisher link and read all body sections. The bibliography entry carries no quantitative claim (\"simulated evaluation, qualitative claims only, no figures with units in the abstract\"), which is accurate for the abstract, and the full text confirms the simulated-evaluation design. The results section does contain figures the entry could now cite: 500 simulated IoT devices, ~2.5M events (8% anomalous), Precision ~0.93 / Recall ~0.95 / F1 ~0.94, latency 0.9s normal to 1.8s at 2400 events/s peak."
+  },
+  {
+   "rank": 32,
+   "title": "Analysis of Logs in the Environment of Email Services",
+   "retrieval": "abstract_only",
+   "open_access": false,
+   "claim_check": "no_quantitative_claim",
+   "access_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1109/iceta51985.2020.9379260",
+   "note": "DOI resolves to IEEE Xplore document 9379260, which is paywalled; Unpaywall reports oa_status=closed with no repository copy, and web search found no author/preprint PDF, so the deepest level obtained was the abstract via the Semantic Scholar API. The bibliography entry carries no numbers (it explicitly records \"no numbers to check\") and its architectural claim \u2014 a store-selection comparison across ElasticSearch, Apache Kafka, Redis, Splunk, and MongoDB for email audit records \u2014 is directly confirmed by the abstract, which names all five stores and the selection purpose. The entry's caution that the comparison method could not be established remains appropriate, since the method is not visible at abstract depth."
+  },
+  {
+   "rank": 34,
+   "title": "A Binary Feature Extraction Based Data Provenance System Implemented on Flink Platform",
+   "retrieval": "abstract_only",
+   "open_access": false,
+   "claim_check": "no_quantitative_claim",
+   "access_url": "https://ieeexplore.ieee.org/document/8644688/",
+   "note": "Bibliography entry (MASTER-BIBLIOGRAPHY.md line 5262, tier C) carries no numbers, only the architectural characterization \"provenance-as-security-telemetry implemented on a stream processor.\" Retrieval escalated through DOI resolution to IEEE Xplore, Unpaywall (closed, no OA locations), Semantic Scholar (isOpenAccess false, no openAccessPdf), OpenReview (blocked by verification wall), and a preprint web search; only the abstract was obtainable. The abstract supports the entry's design claim \u2014 capture agents feed traffic via a message queue into Flink-based document restoration and feature extraction for provenance tracking \u2014 so the entry is consistent at abstract depth, though body sections and tables were not readable."
+  },
+  {
+   "rank": 35,
+   "title": "Comparative Evaluation of Log Reduction Techniques Using Vector on Public Security Datasets",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "https://ph01.tci-thaijo.org/index.php/ecticit/article/download/264216/175976",
+   "note": "Downloaded the gold-OA publisher PDF (CC-BY-NC-ND, via Unpaywall) and read the extracted full text past the abstract, including methods (Section 3, five reduction profiles in TOML, ANOVA alpha=0.05) and results (Table 3, Figure 2, sink-layer EPS measured in ClickHouse). Every key figure in the bibliography entry appears in the source: throughput +45% vs the 5.0 kEPS Filebeat baseline, 80% outbound traffic reduction, ~98% attack coverage retained at ~90% reduction, 3M+ records from CIC-IDS2017 and UNSW-NB15, and five Vector-based reduction methods benchmarked against Filebeat. No number mismatches found; the entry's framing (coverage reported alongside reduction) matches the paper's own metric design."
+  },
+  {
+   "rank": 37,
+   "title": "A data lake-based security transmission and storage scheme for streaming big data",
+   "retrieval": "abstract_only",
+   "open_access": false,
+   "claim_check": "verified",
+   "access_url": "https://link.springer.com/article/10.1007/s10586-023-04201-9",
+   "note": "Read the full Springer abstract via the DOI redirect chain; Unpaywall reports oa_status closed with no repository copy and web search found no author/arXiv copy, so full text (USD 39.95 paywall) was not obtained. The abstract states the 18% memory-load reduction and the ECC-interceptor + SSL Flume/Kafka + LZO/Hadoop design exactly as the bibliography entry at MASTER-BIBLIOGRAPHY.md line 5132 records them. The entry explicitly scopes its claim to the abstract and marks it not built upon, so at the depth the claim is made it verifies; body-level experimental support remains unchecked."
+  },
+  {
+   "rank": 38,
+   "title": "Digital forensics architecture for real-time automated evidence collection and centralization: Leveraging security lake and modern data architecture",
+   "retrieval": "full_text",
+   "open_access": true,
+   "claim_check": "verified",
+   "access_url": "http://web.archive.org/web/20260129181410/https://www.degruyterbrill.com/document/doi/10.1515/jisys-2024-0109/html",
+   "note": "Read the full body (introduction through conclusion, ~79k chars) via a Wayback snapshot of the CC-BY publisher HTML; the live degruyterbrill.com page is gold OA per Unpaywall but gated by an AWS WAF JS challenge. The bibliography entry's key claim is verified: the paper proposes an Amazon Security Lake (OCSF/Parquet) plus modern-data-lake architecture collecting evidence in real time from multiple AWS accounts and regions into one forensics account, analyzed with Athena and Wazuh, and states it was validated on an actual AWS deployment (a university organization with multiple OUs). Consistent with the entry, the paper reports no quantitative performance figures (no latency/throughput/cost numbers found), so the entry is right to carry none."
+  }
+ ]
+}

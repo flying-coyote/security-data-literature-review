@@ -4814,7 +4814,7 @@ Everything above this line reached the corpus by curation: footnote extraction, 
 
 The retro-run search (OpenAlex + dblp, 2018 onward, protocol in `methods/PRISMA-SEARCH-PROTOCOL-2026-07-13.md`) answered that question, and the answer was uncomfortable: of 40 studies the search included, **not one was already in this corpus**. Measured recall of the curated corpus against a systematic search of its own subject was zero. The entries below are the repair.
 
-They are not, however, simply 40 new citations. Every included study went through a critical-appraisal stage the topical screening had skipped — venue identity resolved at the DOI, publisher and indexing established from primaries (DOAJ, Scopus, Web of Science), predatory-list and delisting checks run, then an independent second reviewer instructed to refute each proposed citation. **Fourteen of the 40 did not survive it.** Eight were in predatory or compromised venues — including one paper in a *hijacked* journal whose DOI prefix is documented in Abalkina's 2024 work on journal hijacking, and one in a Hindawi title Clarivate delisted in its March-2023 cull after Wiley admitted paper-mill compromise. Three were not peer-reviewed at all, among them an arXiv preprint typeset with a counterfeit IEEE Access masthead and a placeholder DOI line. One could not be read at any price and was dropped rather than cited unread.
+They are not, however, simply 40 new citations. Every included study went through a critical-appraisal stage the topical screening had skipped — venue identity resolved at the DOI, publisher and indexing established from primaries (DOAJ, Scopus, Web of Science), predatory-list and delisting checks run, then an independent LLM verification pass (a second LLM agent, separately prompted to refute each proposed citation; see the manuscript's §2.9). **Fourteen of the 40 did not survive it.** Eight were in predatory or compromised venues — including one paper in a *hijacked* journal whose DOI prefix is documented in Abalkina's 2024 work on journal hijacking, and one in a Hindawi title Clarivate delisted in its March-2023 cull after Wiley admitted paper-mill compromise. Three were not peer-reviewed at all, among them an arXiv preprint typeset with a counterfeit IEEE Access masthead and a placeholder DOI line. One could not be read at any price and was dropped rather than cited unread.
 
 That leaves the 26 below. The appraisal record for all 40, including every drop and its reason, is `methods/prisma-appraisal-2026-07-13.json`.
 
@@ -4834,7 +4834,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - Carried for the existence of the measurement only. No number may be quoted from it: the readable abstract contains no figures, and its one directional statement (that Kafka partitions *increase* processing time) contradicts the paper's own stated aim, which the full text — IEEE-paywalled and unread — would have to resolve. A metadata trap worth recording: Semantic Scholar mis-assigns this paper to the unrelated IEEE International Conference on Advanced Infocomm Technology; the venue here is the Yangon ICAIT series, per Crossref.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 0 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 0 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 #### CATRACA — Stream-Processing Threat Detection as a Virtual Network Function (Concurrency and Computation, 2019)
 
@@ -4851,7 +4851,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - more than 85% accuracy handling streaming data under concept-drift detection
 - A deployed, evaluated system (not a proposal), with concept-drift handling — the pattern the rest of the corpus sources from vendor material.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 1 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 1 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Virtual Network Function for Real-Time Threat Detection Using Stream Processing (MobiSecServ, 2018)
 
@@ -4867,7 +4867,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - more than five million messages per second (scaling test, hardware/test conditions not stated in the abstract)
 - Earlier conference statement of the CATRACA line of work; shares authors with the 2019 journal paper above and with the SBRC short-course chapter below, so the three are one research group and not three independent confirmations.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 2 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 2 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Flink vs Spark Streaming for Machine-Learning NIDS on Data Streams (ACIS SNPD Winter, 2021)
 
@@ -4882,7 +4882,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - A direct peer-reviewed Flink-versus-Spark-Streaming comparison on a security workload. The abstract's headline claim is qualitative, so the paper is carried for the existence and direction of the comparison, not for a throughput number.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 3 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 3 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 #### Adaptive and Auto-Scaling Stream Processing for Real-Time Intrusion Detection (IEEE GLOBECOM, 2018)
 
@@ -4900,7 +4900,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - processing over 2.5 million events per second
 - Uses the Wisdom CEP engine; the auto-scaling deployment is reported to use fewer resources than a monolithic one at the same load, which is the architectural claim the review makes from vendor sources elsewhere.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 4 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 4 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### AIDA Framework — Real-Time Correlation and Prediction of Intrusion Detection Alerts (ARES, 2019)
 
@@ -4916,7 +4916,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - Deployed as a live analytical component of the SABU platform, a production multi-peer alert-sharing infrastructure (not a lab testbed)
 - Notable because it is deployed inside SABU, a production multi-peer alert-sharing platform, rather than evaluated on a testbed.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 13 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 13 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Cloud-Based Snort NIDS Using Containers and Big Data (Big Data and Cognitive Computing, 2022)
 
@@ -4934,7 +4934,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - Maximum throughput of 172 MBps streaming data into Spark and Hadoop
 - Kafka message-rate and throughput figures measured on a lambda-architecture backend.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 14 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 14 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Faust vs Streamz — Complex Event Processing Engines for IoT Intrusion Detection (Computers, MDPI, 2026)
 
@@ -4955,7 +4955,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - Streamz maintains >95% efficiency up to 3500 events/sec; Faust degrades beyond 2500 events/sec
 - The closest published analogue to this program's own engine benchmarks: same workload across engines, effect sizes and p-values reported rather than a single headline multiple.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 23 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 23 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### SPARCS — Stream-Processing Architecture for Real-Time Cyber-Physical Security (IEEE eScience, 2019)
 
@@ -4976,7 +4976,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - JSON serialization (C++): 0.18463 ms; deserialization: 0.29469 ms
 - Authored at Lawrence Berkeley National Laboratory. The only record in the search set to receive a clean CITE with no venue caveat.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 24 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 24 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Practical Performance of a Distributed Processing Framework for ML-Based NIDS (IEEE COMPSAC, 2024)
 
@@ -4999,7 +4999,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - Bottlenecks identified in Zeek, Logstash, and Elasticsearch processes
 - Separates framework performance from model accuracy and locates the bottlenecks in Zeek, Logstash and Elasticsearch — the three fastest classifiers, once tuned, land within ~0.008 of each other on F1 (0.964–0.972). The arXiv deposit of this paper (record 33) is the same work and was removed as a duplicate.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 26 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 26 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 ---
 
@@ -5020,7 +5020,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - final goal of coping with at least 5 TB / day
 - Valuable for what it is rather than what it measures: the corpus's production-scale evidence is otherwise almost entirely big-tech engineering blogs, and this is a named public-research deployment with no product to sell.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 9 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 9 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### INFN-CNAF — General-Purpose Data-Streaming Platform for Log Analysis and Security Protection (EPJ Web of Conferences, CHEP 2023)
 
@@ -5034,7 +5034,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - A platform description rather than an evaluation: it reports the architecture in production but publishes no throughput or latency measurement, so it supports the deployment claim and not a performance claim.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 25 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 25 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 ---
 
@@ -5053,7 +5053,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - Compares three timestamp-storage models for query performance. The finding is comparative and qualitative — the simplest model also yields the simplest queries — so no figure is carried.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 8 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 8 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 #### Efficient Host Intrusion Detection Using Hyperdimensional Computing (IEEE BigData, 2024)
 
@@ -5068,7 +5068,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - >90% detection accuracy
 - The paper's headline speedups (up to 4,242x on CPU, up to 18,000x on a hardware accelerator, and power figures quoted in orders of magnitude) are measured against different baselines and different hardware than anything this review compares, and are deliberately NOT carried. What is carried is the framing: state-of-the-art provenance-graph query latencies are described as impractical for modern threat detection, from an authorship group including Patrick McDaniel and Tajana Rosing.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 10 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 10 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Workload-Aware Storage Reduction for Multi-Tenant SIEM on ClickHouse (IJACSA, 2026)
 
@@ -5091,7 +5091,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - 74% uncompressed reduction under a uniform-distribution robustness check, vs. 79% under the primary Zipf-distributed workload
 - READ THE VENUE APPRAISAL BEFORE CITING THIS. The figures were located in the source and are reported here faithfully, but the venue cannot carry a Level-A claim, so this paper does not corroborate the storage-reduction claim in the way a peer-reviewed source normally would — it records that the only indexed paper on the exact question sits in a weak venue. The ~$30,000/year saving is the paper's own back-of-envelope projection for a hypothetical 100 GB/day SOC, not a measured result, and is not carried. Note also that this author's other 2026 paper (ECTI-CIT, below) is the review's other peer-reviewed check on a vendor-sourced claim: the two are the same author and are not independent of each other.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 12 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 12 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Comparative Evaluation of Log-Reduction Techniques Using Vector on Public Security Datasets (ECTI-CIT, 2026)
 
@@ -5111,7 +5111,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - 3,000,000+ SOC log records evaluated
 - Benchmarks five Vector-based reduction methods against a Filebeat baseline over 3M+ SOC records, reporting attack-coverage retention alongside the reduction — which is the honest way to state a reduction claim, since throwing away data always reduces volume and the question is what detection you lose. Same single author as the IJACSA ClickHouse paper above; the two are not independent.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 35 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 35 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 ---
 
@@ -5131,7 +5131,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - An ECC lightweight-encryption interceptor at the data source, an SSL-secured Flume/Kafka transport, and an LZO-compressed Hadoop data-lake storage layer. The published abstract reports roughly an 18% reduction in memory load attributed to the encryption interceptor; the figure was confirmed in the publisher's abstract by an independent check, but no full text was read, so it is recorded and not built upon. Cluster Computing has a documented paper-mill problem confined to guest-edited special issues; this is a regular-issue article, which is why it survives appraisal.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 37 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 37 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Digital-Forensics Architecture on a Security Lake for Automated Evidence Collection (Journal of Intelligent Systems, 2024)
 
@@ -5146,7 +5146,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - A security-lake plus data-lake architecture for real-time forensic evidence collection across multiple cloud accounts and regions, stated to be validated on an actual AWS deployment. Appraised at abstract level only — the publisher's full text was unreachable — so no quantitative result is carried. Venue verified at primaries: DOAJ-listed, Scopus Q2, double-anonymous review, not retracted.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 38 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 38 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 ---
 
@@ -5164,7 +5164,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - Argues corporate security is a big-data problem and sketches a security-data-lake-to-'security cockpit' architecture. Ubiquity is ACM's editor-led web magazine, not a peer-reviewed journal — the review it applies to commentary is lighter than a journal's, so this is a framing source and not evidence.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 27 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 27 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 #### Machine Learning on Distributed Stream-Processing Platforms — Storm, Spark Streaming and Flink (SBRC Short Courses, 2018, in Portuguese)
 
@@ -5179,7 +5179,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - A short-course/tutorial chapter, not a primary study. Every figure in it is quoted from third parties, so no number is carried. Shares authors with records 1 and 2 above (the CATRACA group).
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 28 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 28 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 ---
 
@@ -5198,7 +5198,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - A modelling proposal with no evaluation, in a journal not listed in DOAJ, Scopus or Web of Science. Recorded for completeness of the search record; it supports nothing.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 6 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 6 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 #### High-Performance FPGA Architecture for Data-Stream Processing — IPsec Gateway (International Journal of Electronics and Telecommunications, 2018)
 
@@ -5214,7 +5214,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 - Gateway 2.0 best AES-CBC config (8/8/12/8): 5,518.80 Mbit/s for 1500-byte packets at a 128-packet stream
 - Peer-reviewed and sound; simply not on any claim this review makes.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 11 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 11 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Hybrid Stream Processing for Runtime Protection in Remote Driving (IEEE ICIN, 2026)
 
@@ -5228,7 +5228,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - Its headline figure — an online operator beating an offline detector 'by 584.3% in latency time' — is malformed as written (a percentage improvement in latency is not interpretable without the direction and the base), so no number is carried.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 22 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 22 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
 
 #### Architectural and Analytical Aspects of Big Data for IoT System Security (Cybersecurity: Education, Science, Technique, 2026)
 
@@ -5243,7 +5243,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - Simulated evaluation, qualitative claims only, no figures with units in the abstract.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 29 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 29 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 #### Analysis of Logs in the Environment of Email Services (IEEE ICETA, 2020)
 
@@ -5257,7 +5257,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - The comparison method could not be established from the available text, so it is recorded and not relied on.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 32 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 32 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 #### Binary-Feature-Extraction Data-Provenance System on Flink (IEEE CyberC, 2018)
 
@@ -5271,7 +5271,7 @@ Two cautions travel with these entries. First, 26 records resolve to only **23 i
 **Key Findings**:
 - A pattern the corpus does not otherwise carry; noted for a future edition rather than cited here.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 34 of 40). Appraised for venue integrity and content, then independently verified by a second reviewer; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 34 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
 
 ---
 
