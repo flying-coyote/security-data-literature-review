@@ -30,10 +30,10 @@ plt.rcParams['axes.linewidth'] = 0.8
 plt.rcParams['figure.dpi'] = 300
 
 # Live tally — source: scripts/count_reconcile.py Counter 2, derived from
-# MASTER-BIBLIOGRAPHY.md on 2026-07-13 (195 blocks / 193 tiered / 2 stubs).
-TALLY_DATE = '2026-07-13'
-TIERED_TOTAL = 219
-TALLY = {'A': 94, 'B': 102, 'C': 23}
+# MASTER-BIBLIOGRAPHY.md on 2026-07-16 (229 blocks / 227 tiered / 2 stubs).
+TALLY_DATE = '2026-07-16'
+TIERED_TOTAL = 227
+TALLY = {'A': 95, 'B': 108, 'C': 24}
 TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}
@@ -99,13 +99,13 @@ def create_evidence_distribution():
             bbox=dict(boxstyle='round,pad=0.4', facecolor='#F5F5F5',
                       edgecolor='#9E9E9E', linewidth=0.8))
 
-    fig.suptitle('Figure 2: Evidence Level Distribution — 42.9% Level A '
+    pct_a = round(TALLY['A'] / TIERED_TOTAL * 100, 1)
+    fig.suptitle(f'Figure 2: Evidence Level Distribution — {pct_a}% Level A '
                  '(below the 70% target; honest live tally)',
                  fontsize=14, fontweight='bold', y=0.97)
     plt.tight_layout(rect=[0, 0, 1, 0.93])
 
-    output_dir = os.path.expanduser(
-        '~/security-data-literature-review/publication-graphics')
+    output_dir = os.path.dirname(os.path.abspath(__file__))
     plt.savefig(f'{output_dir}/figure2_evidence_distribution.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
     plt.savefig(f'{output_dir}/figure2_evidence_distribution.pdf',

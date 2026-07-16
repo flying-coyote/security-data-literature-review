@@ -35,23 +35,23 @@ from weekly_health_check import LiteratureReviewHealthCheck  # noqa: E402
 # BREACHED on purpose: 46% < 60% correctly escalates every run until the freshness sweep + 2026 primary
 # sourcing restore genuine Tier-A quality. Do NOT lower the floor to silence this — a breach that reflects
 # real corpus quality is the dashboard working, not failing. Revisit 60% only after the sweep.
-TIER_A_FLOOR = 60.0          # % Evidence Level A floor (target-aligned; currently breached at ~46%)
+TIER_A_FLOOR = 60.0          # % Evidence Level A floor (target-aligned; currently breached at ~42%)
 OUTDATED_FRACTION_RED = 0.40  # >40% of sources >12mo is a red-line freshness failure
 MONTHLY_WINDOW_DAYS = 7       # the weekly run within the first N days of a month triggers monthly refresh
 
 
 def live_tier_a_percentage():
     """Compute Evidence Level A % live from the bibliography (the health check leaves this unset).
-    Counts '**Evidence Level**: A' entries over total '#### ' entries. Returns 0.0 if unreadable."""
-    path = os.path.join(HERE, "..", "MASTER-BIBLIOGRAPHY.md")
+    Imported, not reimplemented (count_reconcile.py's rule): a divergent local counting rule
+    reported 43.0% while the canonical parser said 41.9%, so the escalation floor and the
+    published number could disagree. Returns 0.0 if the bibliography is unreadable."""
+    sys.path.insert(0, HERE)
     try:
-        with open(path, encoding="utf-8") as f:
-            content = f.read()
-    except OSError:
+        from automation_dashboard import parse_master_bibliography
+        bib = parse_master_bibliography()
+        return float(bib["evidence_quality"]) if bib else 0.0
+    except Exception:
         return 0.0
-    entries = len(re.findall(r"^#### ", content, re.MULTILINE))
-    level_a = len(re.findall(r"\*\*Evidence Level\*\*:\s*A\b", content))
-    return round(100.0 * level_a / entries, 1) if entries else 0.0
 
 
 def decide(result, today):

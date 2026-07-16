@@ -8,15 +8,14 @@
 ```
 
 ## Current Status
-**Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.22.0
-**Sources**: 195 (`#### ` blocks; 193 tiered + 2 stubs) | **Evidence Level A**: 43.0% (live 2026-07-10, 83/193) | **Hypotheses Validated**: 7 (needs review — see note)
+**Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.22.0 (+ [Unreleased])
+**Counts**: run `python3 scripts/automation_dashboard.py` — this file no longer states them (they drifted twice while hand-maintained here; the derive-don't-state gotcha below applies to this file too). Snapshot at last edit (2026-07-16): 229 `#### ` blocks / 227 tiered / 41.9% Level A (95/227), after the 2026-07-16 heading fix surfaced 8 entries invisible to the counter since Nov 2025.
+**Hypotheses**: 9 assessed under the 2026-07-13 rubric rescore (1 strong / 2 high / 2 moderate / 4 preliminary, per `count_reconcile.py` Counter 1). The "N validated" vocabulary is retired pending the owner's canonical-status ruling.
 See `PROJECT-BRIEF.md` for scope; live metrics are README.md's Quality Metrics block (live-computed via `scripts/automation_dashboard.py`). REPOSITORY-STATUS.md was archived 2026-07-10 → `archive/` (it was a fourth hand-synced copy of the same numbers).
-> Counts are live-computed by `scripts/automation_dashboard.py`: sources = `#### ` blocks (195), Level-A% = A-tier over tiered entries (83/193 = 43.0%; the 2 untiered blocks are documented rejection/retirement stubs).
-> The 80% Level-A figure was self-reported; the honest live number is 43.0% (83/193) after the 2026-06-05 audit and the 2026-07-10 DR-3 Tier-A adds
+> The 80% Level-A figure was self-reported; the honest live number is ~42% after the 2026-06-05 audit
 > folded corrections in and re-tiered ~25 entries off A (their headline stats weren't in the cited
 > source). The freshness sweep + 2026 production sources are the path back toward the 75% target — the
-> gap is now visible, not masked. The validated-hypothesis count is unreconciled across docs (7 here,
-> "3 strongly validated/6 proposed" in the Oct-2025 gap analysis) and needs a real review.
+> gap is now visible, not masked.
 
 ## Evidence Tiers
 | Tier | Type | Target |

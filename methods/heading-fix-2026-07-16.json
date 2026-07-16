@@ -1,0 +1,46 @@
+{
+  "generated": "2026-07-16",
+  "note": "Eight full bibliography entries (each carrying its own Authors/Date/URL/Evidence Level fields) were headed '### ' instead of '#### ' from their November-2025 addition until 2026-07-16, which made them invisible to parse_master_bibliography()'s '(?m)^####\\s+' split and therefore to every derived count. The headings were promoted 2026-07-16 (one character each). Because they were invisible at retro-run time, they appear in neither methods/prisma-results/reconciliation.json (which classified the 195 then-visible blocks) nor methods/incorporated-2026-07-13.json; this file supplies their taxonomy classifications as a third dated input. The curated arm's true size at the 2026-07-13 retro-run was therefore 203 entries (179 grey + 24 academic), not 195 (171 grey). All eight are grey vendor/OSS items, none resembling any of the 40 database-arm academic records, so the retro-run's zero-overlap result (0/40 recall) is unaffected; both frozen records are left unedited per the never-retro-edit convention, and this note is the correction of record.",
+  "entries": [
+    {
+      "title": "Confluent Data Streaming Report (2025)",
+      "evidence_level": "B",
+      "category": "analyst_or_industry_report"
+    },
+    {
+      "title": "Databricks State of Data + AI 2024",
+      "evidence_level": "B",
+      "category": "analyst_or_industry_report"
+    },
+    {
+      "title": "Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework",
+      "evidence_level": "B",
+      "category": "vendor_engineering_blog_or_product_docs"
+    },
+    {
+      "title": "Cribl Pipeline Economics - Route, Reshape, Reduce Pattern",
+      "evidence_level": "B",
+      "category": "vendor_engineering_blog_or_product_docs"
+    },
+    {
+      "title": "Vortex File Format - Emerging Columnar Format",
+      "evidence_level": "C",
+      "category": "open_source_project_docs_or_repo"
+    },
+    {
+      "title": "Databricks MCP Catalog - Unity Catalog for AI Agents",
+      "evidence_level": "B",
+      "category": "vendor_engineering_blog_or_product_docs"
+    },
+    {
+      "title": "Apache Polaris Catalog - Security Architecture & Isolation",
+      "evidence_level": "A",
+      "category": "open_source_project_docs_or_repo"
+    },
+    {
+      "title": "Unity Catalog - Row-Level Security Performance Analysis",
+      "evidence_level": "B",
+      "category": "vendor_engineering_blog_or_product_docs"
+    }
+  ]
+}

@@ -276,6 +276,29 @@ def check_source_taxonomy(bib):
     return tax.get("total_entries"), bib["total_entries"]
 
 
+def check_heading_conformance():
+    """Structural lint: no '### '-headed section may itself carry an Evidence Level field.
+
+    Eight full bibliography entries sat under '### ' headings from November 2025 to
+    2026-07-16, invisible to the '(?m)^####\\s+' split every counter uses, so all 43
+    gated surfaces printed 221/219/42.9% while the true corpus was 229/227/41.9% —
+    the gate vouched for a number its own parser could not see. This check fails the
+    run whenever the text directly under a '### ' heading (before any child heading)
+    contains an '**Evidence Level**:' field, which is the signature of a mis-leveled
+    entry rather than a section divider.
+    """
+    text = (REPO_ROOT / "MASTER-BIBLIOGRAPHY.md").read_text(encoding="utf-8")
+    headings = list(re.finditer(r"(?m)^(#{1,4}) +(.+)$", text))
+    offenders = []
+    for i, h in enumerate(headings):
+        if len(h.group(1)) != 3:
+            continue
+        end = headings[i + 1].start() if i + 1 < len(headings) else len(text)
+        if "**Evidence Level**:" in text[h.start():end]:
+            offenders.append(h.group(2).strip())
+    return offenders
+
+
 def check_readme_roster_ids(T):
     """Special surface: the README roster must list exactly T distinct hypothesis IDs."""
     lines = (REPO_ROOT / "README.md").read_text(encoding="utf-8").splitlines()
@@ -320,6 +343,15 @@ def main():
     bib = parse_master_bibliography()
     if bib is None:
         print("FATAL: MASTER-BIBLIOGRAPHY.md not found — canonical source broken.")
+        sys.exit(2)
+
+    offenders = check_heading_conformance()
+    if offenders:
+        print(
+            "FATAL: mis-leveled bibliography heading(s) — full entries headed '### ' are "
+            "invisible to every counter, so no derived number below can be trusted. "
+            f"Promote to '#### ': {offenders}"
+        )
         sys.exit(2)
 
     staged_files = set()

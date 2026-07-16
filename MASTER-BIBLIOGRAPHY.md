@@ -10,9 +10,9 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
 **Last Updated**: July 13, 2026 (systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 221 catalogued `#### ` blocks (219 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation.
+**Total Sources**: 229 catalogued `#### ` blocks (227 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 42.9% Evidence Level A (live-derived 2026-07-13: 94 of 219 tiered entries; 102 B, 23 C, across 221 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the Level-A share has hovered in the low forties since. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
+**Evidence Quality**: 41.9% Evidence Level A (live-derived 2026-07-16: 95 of 227 tiered entries; 108 B, 24 C, across 229 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the Level-A share has hovered in the low forties since. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -577,7 +577,7 @@ This bibliography consolidates all literature sources from:
 
 ## Survey & Industry Reports
 
-### Confluent Data Streaming Report (2025)
+#### Confluent Data Streaming Report (2025)
 
 **Authors**: Confluent (with Freeform Dynamics, Radma Research)
 **Date**: 2025 (May 2025 report, updated February 2026)
@@ -605,7 +605,7 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-### Databricks State of Data + AI 2024
+#### Databricks State of Data + AI 2024
 
 **Authors**: Databricks
 **Date**: 2024
@@ -2702,7 +2702,7 @@ This bibliography consolidates all literature sources from:
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
-### Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework
+#### Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework
 
 **Authors**: Matthias Vallentin (Tenzir Founder)
 **Date**: November 2025
@@ -2727,7 +2727,7 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-### Cribl Pipeline Economics - Route, Reshape, Reduce Pattern
+#### Cribl Pipeline Economics - Route, Reshape, Reduce Pattern
 
 **Authors**: Clint Sharp (Cribl CEO)
 **Date**: October 2025
@@ -2752,7 +2752,7 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-### Vortex File Format - Emerging Columnar Format
+#### Vortex File Format - Emerging Columnar Format
 
 **Authors**: Will Manning et al.
 **Date**: November 2025
@@ -2775,7 +2775,7 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-### Databricks MCP Catalog - Unity Catalog for AI Agents
+#### Databricks MCP Catalog - Unity Catalog for AI Agents
 
 **Authors**: Databricks
 **Date**: October 2025
@@ -2799,7 +2799,7 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-### Apache Polaris Catalog - Security Architecture & Isolation
+#### Apache Polaris Catalog - Security Architecture & Isolation
 
 **Authors**: Snowflake / Apache Software Foundation
 **Date**: 2024
@@ -2825,7 +2825,7 @@ This bibliography consolidates all literature sources from:
 
 ---
 
-### Unity Catalog - Row-Level Security Performance Analysis
+#### Unity Catalog - Row-Level Security Performance Analysis
 
 **Authors**: Unity Catalog Community / Databricks Documentation
 **Date**: 2024 (performance analysis published September 2024)

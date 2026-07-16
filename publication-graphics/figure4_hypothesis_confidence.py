@@ -223,8 +223,7 @@ def create_hypothesis_confidence():
                  'rubric rescore (2026-07-13)',
                  fontsize=16, fontweight='bold', y=0.98)
 
-    output_dir = os.path.expanduser(
-        '~/security-data-literature-review/publication-graphics')
+    output_dir = os.path.dirname(os.path.abspath(__file__))
     plt.savefig(f'{output_dir}/figure4_hypothesis_confidence.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
     plt.savefig(f'{output_dir}/figure4_hypothesis_confidence.pdf',

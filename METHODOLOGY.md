@@ -74,7 +74,7 @@ Beyond the primary extraction from archived manuscripts:
 
 **Extraction Coverage**:
 - 283 of 283 footnotes extracted (100% completion)
-- 221 sources catalogued with a standardized format (219 tiered; live-derived 2026-07-13)
+- 229 sources catalogued with a standardized format (227 tiered; live-derived 2026-07-16)
 - 16 of 22 URLs validated (73% overall, 100% hypothesis-critical sources)
 - Archive manuscripts: 74 files assessed (no independent sources found)
 
@@ -93,7 +93,7 @@ All sources are classified using a four-tier evidence system prioritizing produc
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 94 of 219 tiered entries (42.9%), live-derived 2026-07-13 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 95 of 227 tiered entries (41.9%), live-derived 2026-07-13 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
 #### Evidence Level B (Acceptable: <27%, Achieved: 21%)
 **Criteria**: Industry analyst reports, expert consensus, verified vendor documentation
@@ -413,8 +413,8 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
-| Unique Sources Documented | 100+ | 221 catalogued (219 tiered) | ✅ Met |
-| Evidence Level A | >70% | 42.9% (94/219 tiered; live-derived 2026-07-13) | ❌ Below target |
+| Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
+| Evidence Level A | >70% | 41.9% (95/227 tiered; live-derived 2026-07-16) | ❌ Below target |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
@@ -479,7 +479,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 ## 10. Conclusion
 
-This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 219 tiered sources on modern data stack technologies for cybersecurity. The approach prioritizes:
+This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 227 tiered sources on modern data stack technologies for cybersecurity. The approach prioritizes:
 
 1. **Evidence Quality**: Level-A share live-derived per entry (42.9% at 2026-07-13; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit)
 2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit), the original seven averaging 4.1 sources each

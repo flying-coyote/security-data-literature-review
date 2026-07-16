@@ -3,7 +3,7 @@
 Figure 3: Source-type taxonomy of the corpus.
 
 DERIVED, NOT DRAWN. This chart used to hold five hand-maintained buckets whose counts summed
-to 74 and described the "75+ sources" corpus of October 2025. The corpus is now 221 catalogued
+to 74 and described the "75+ sources" corpus of October 2025. The corpus is now derived live (229 catalogued blocks as of 2026-07-16)
 entries. Nothing derived the figure, so nothing caught the drift, and a chart of a corpus that
 no longer existed sat in a manuscript bound for peer review. It now reads its numbers from
 methods/source-taxonomy.json, which scripts/derive_source_taxonomy.py composes from the
@@ -30,6 +30,7 @@ import numpy as np  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 TAXONOMY = REPO / "methods" / "source-taxonomy.json"
 OUT = REPO / "publication-graphics" / "figure3_source_taxonomy.png"
+OUT_PDF = REPO / "publication-graphics" / "figure3_source_taxonomy.pdf"
 
 plt.rcParams["font.family"] = "serif"
 plt.rcParams["font.serif"] = ["Times New Roman", "DejaVu Serif"]
@@ -119,6 +120,7 @@ def main():
 
     plt.tight_layout(rect=[0, 0.04, 1, 1])
     plt.savefig(OUT, dpi=300, bbox_inches="tight", facecolor="white")
+    plt.savefig(OUT_PDF, bbox_inches="tight", facecolor="white")
     print(f"Figure 3 rendered from {TAXONOMY.name}: {total} entries, {peer} peer-reviewed ({peer_pct}%).")
 
 

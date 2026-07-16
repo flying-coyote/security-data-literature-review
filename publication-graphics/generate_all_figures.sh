@@ -33,7 +33,7 @@ source venv/bin/activate
 echo ""
 echo "Installing Python dependencies..."
 pip install --quiet --upgrade pip
-pip install --quiet -r requirements.txt
+pip install --quiet -r requirements-lock.txt
 echo "✓ Dependencies installed"
 echo ""
 
@@ -92,7 +92,7 @@ echo ""
 echo "Next steps:"
 echo "  1. Review generated figures"
 echo "  2. Insert into PUBLICATION-MANUSCRIPT.md"
-echo "  3. Submit to journal (ACM Computing Surveys target)"
+echo "  3. Submit to journal (Journal of Cybersecurity — owner ruling 2026-07-10)"
 echo ""
 
 # Deactivate virtual environment
