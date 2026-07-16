@@ -7,7 +7,7 @@ tags: [gemini-dr, intake, vendor-landscape, appendix-g, verification]
 
 # Gemini DR-2 intake — vendor-landscape delta scan (late Q1 – July 2026)
 
-**Run**: DR-2 from `~/project1/02-projects/GEMINI-DR-QUEUE-2026-07-10.md` (fired 2026-07-10; output Google Doc `1ELZp1JDPxVKhlXtmGi9e8cdwVNzq2gvGLmrZNVl0LSA`). All 28 grouped ledger checks verified at vendor primaries (workflow `wf_54e835a8-776`, 10 agents). **Disposition: STAGED for the next appendix-g / vendor-database.json quarterly pass** — appendix-g's July-10 review stamp is fresh, so these land as the input queue for the next touch rather than same-day edits.
+**Run**: DR-2 from `~/project1/02-projects/GEMINI-DR-QUEUE-2026-07-10.md` (fired 2026-07-10; output Google Doc [ID redacted to the private hub 2026-07-16 per the redact-to-pointer ruling; see ~/project1/02-projects/GEMINI-DR-QUEUE-2026-07-10.md]). All 28 grouped ledger checks verified at vendor primaries (workflow `wf_54e835a8-776`, 10 agents). **Disposition: STAGED for the next appendix-g / vendor-database.json quarterly pass** — appendix-g's July-10 review stamp is fresh, so these land as the input queue for the next touch rather than same-day edits.
 
 > **UPDATE 2026-07-10 (same day): APPLIED, owner-directed.** 16 of the ledger changes landed in appendix-g (see CHANGELOG "2026-07-10 (night)" for the carried/not-carried split); both date corrections below are in the applied text (Airbyte Feb 2025; the Falcon AIDR item was not carried, so its corrected GA date lives here). vendor-database.json was NOT regenerated — meta.notes stamped with the staleness pointer; the JSON rebuild stays with the quarterly sync.
 

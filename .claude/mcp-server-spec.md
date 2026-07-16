@@ -7,6 +7,8 @@ tags: [mcp, literature-review, bibliography-management, hypothesis-tracking, ven
 
 # Literature Review MCP Server Specification
 
+> **⛔ Status banner (2026-07-16).** The subject of this spec — the literature-review MCP server — was archived 2026-07-01; the document below is preserved unedited as the design record. The corpus statistics inside (the 115,500-word book count, the "3x/week" Security Data Commons blog — retired 2026-05-24, "115+ sources (79% Evidence Level A)", and the H-MCP-CONTEXT-01 "Validated" status) predate the 2026-06-05 audit and must not be cited; live counts come from `scripts/automation_dashboard.py`.
+
 **Version**: 1.0.0
 **Date**: January 20, 2026
 **Status**: Design Phase (Production-ready quality standards)

@@ -1,3 +1,5 @@
+> **Post-publication notice (2026-07-16).** This verification certificate is the document the project's own CLAUDE.md rule now disavows: it certified, as "verified accurate", figures later confirmed fabricated or unsupported, including the 79% Evidence Level A self-grade (~lines 37 and 519 of the original report; the live-derived share after the 2026-06-05 audit is roughly 43%), the Cloudflare "96.3% queries <1 second" figure (~line 388; not present in the cited article), and the Shell 57TB/day telemetry leg (~lines 235 and 389; dead-URL citation, removed 2026-06-05). The certificate is preserved verbatim below as the record of what was claimed on 2025-10-22, so no line of its body has been altered. Per-item verification now lives in RESEARCH-JOURNAL.md with the primary named per claim, the correction record is CHANGELOG.md, and the repo no longer issues blanket verification certificates (rule adopted 2026-07-10).
+
 # Verification Report: Published Substack Post
 ## Modern Data Architecture for Cybersecurity Operations
 

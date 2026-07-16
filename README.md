@@ -127,10 +127,10 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 ## Integration Points
 
 **Published Literature Review**:
-- **Substack** (October 22, 2025) - 38,000 words, openly accessible
+- **First release** October 22, 2025 on the Security Data Commons Substack (retired 2026-05-24; essays now at securitydataworks.com/writing) — immutable snapshots in `published/`
 - Monthly rolling updates (November 2025+)
 - Quarterly deep dives for citation stability
-- Academic journal submission planned (mid-2026)
+- **Academic journal submission**: Journal of Cybersecurity (Oxford), owner ruling 2026-07-10; submission gate lifted 2026-07-15
 
 **Book Manuscript**:
 - All chapters have supporting citations in MASTER-BIBLIOGRAPHY.md
@@ -218,6 +218,10 @@ Adding a new surface that states a gated count means adding one entry to the ALL
 - ✅ README synced to live state (was frozen at Jan-2, v1.19.0; now v1.22.0, honest 46%/146 baseline)
 - ✅ Dashboard de-bluffed (vendor DB live-counted from vendor-landscape/vendor-database.json = 71)
 
-**Online Publication**: [Security Data Commons on Substack](https://securitydatacommons.substack.com) (Published October 22, 2025)
+**Online Publication**: securitydataworks.com/writing (the original October 22, 2025 release was on the Security Data Commons Substack, retired 2026-05-24 and archived read-only)
 **Maintained By**: Jeremy Wiley
 **Repository**: https://github.com/flying-coyote/security-data-literature-review
+
+## License
+
+The review prose, bibliography, methods records, and data files are licensed [CC-BY-4.0](LICENSE). The code — `scripts/`, `tools/` (excluding fonts), and the Python/shell files in `publication-graphics/` — is licensed [MIT](LICENSE-CODE), because Creative Commons licenses are not designed for software. The redistributed DM Sans and JetBrains Mono fonts in `tools/build/fonts/` remain under their own SIL Open Font License 1.1 (`tools/build/fonts/OFL-*.txt`).

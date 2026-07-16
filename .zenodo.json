@@ -1,22 +1,23 @@
 {
   "title": "Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review",
-  "upload_type": "publication",
-  "publication_type": "preprint",
+  "upload_type": "dataset",
   "creators": [
     {
       "name": "Wiley, Jeremy",
       "affiliation": "Security Data Works"
     }
   ],
-  "description": "Security organizations evaluating modern data stack architectures (Apache Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity research focuses on detection algorithms while data engineering addresses general analytics, leaving security-specific infrastructure guidance unavailable. We conduct the first systematic literature review bridging these domains using PRISMA-aligned methodology, synthesizing 75+ sources spanning production deployments, peer-reviewed research, and government standards to provide operational guidance.",
+  "description": "Security organizations evaluating modern data stack architectures (Apache Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity research focuses on detection algorithms while data engineering addresses general analytics, leaving security-specific infrastructure guidance fragmented across disconnected domains. We conduct a systematic literature review bridging the two under a PRISMA 2020 two-arm methodology — a curated multivocal corpus plus a retrospective database search whose measured recall, critical appraisal, and refusals are reported in full — synthesizing a living, evidence-tiered corpus of 200+ sources spanning production deployments, peer-reviewed research, and government standards into operational guidance. Counts on every surface are derived from the bibliography by committed scripts rather than hand-maintained; the exact tally for any snapshot is in its README Quality Metrics block.",
   "keywords": [
     "data lakehouse",
     "security analytics",
     "OLAP",
     "streaming architectures",
     "cybersecurity data engineering",
-    "systematic literature review"
+    "systematic literature review",
+    "SIEM",
+    "Apache Iceberg"
   ],
   "license": "cc-by-4.0",
-  "notes": "This is a LIVING systematic literature review with quarterly updates; each tagged GitHub release is archived on Zenodo as a new version under one concept DOI, so the concept DOI cites the review as a living work while a version DOI pins a specific snapshot. Licensed CC-BY-4.0 (LICENSE at the repository root, canonical Creative Commons legal code); the same license id is set in CITATION.cff."
+  "notes": "This is a LIVING systematic literature review with quarterly updates; each tagged GitHub release is archived on Zenodo as a new version under one concept DOI, so the concept DOI cites the review as a living work while a version DOI pins a specific snapshot (cite the version DOI when a claim depends on a specific snapshot). Licensing: review prose, bibliography, and data are CC-BY-4.0 (LICENSE at the repository root, canonical Creative Commons legal code; the record license field carries this as the dominant content license); code in scripts/, tools/, and publication-graphics/ is MIT-licensed per LICENSE-CODE; redistributed DM Sans and JetBrains Mono fonts in tools/build/fonts/ are SIL OFL-1.1 with their license texts alongside."
 }

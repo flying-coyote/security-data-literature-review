@@ -819,7 +819,7 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 | **H-IMPL-02** | ~~⭐⭐⭐⭐⭐~~ now 2/5 | ~~**2.7× staffing, Level 4 skills** - strongest validation, lead with this~~ WITHDRAWN — all four legs nonexistent/withdrawn |
 | **H-IMPL-03** | ~~⭐⭐⭐~~ pending re-score | ~~**5.5 months, 15-30% premium** - moderate confidence, add caveat~~ WITHDRAWN — zero surviving quantitative legs |
 | **H-COST-09** | ~~⭐⭐⭐⭐⭐~~ now 4/5 | ~~**55-80% tiered storage savings** - strong, cite AWS + Netflix~~ WITHDRAWN — re-anchored on the first-party S3 tier-price derivation (−45.7% to −95.7% by tier) |
-| **H3-PERFORMANCE-01** | ⭐⭐⭐⭐ | **6M req/sec, 96% <1s** - cite Cloudflare; ~~+ Shell~~ withdrawn; FIRST-PARTY ~7.0× storage (FOIL) stands |
+| **H3-PERFORMANCE-01** | ⭐⭐⭐⭐ | **6M req/sec**, ~~96% <1s~~ *(struck 2026-07-16 — withdrawn 2026-07-11, I-1 citation audit: not in the cited Cloudflare article; the verified figures are ~10× and 12-19× vs Elasticsearch, see the H3-PERFORMANCE-01 section note)* - cite Cloudflare; ~~+ Shell~~ withdrawn; FIRST-PARTY ~7.0× storage (FOIL) stands |
 | **H-STREAM-01** | ~~⭐⭐⭐⭐~~ pending re-score | ~~**Terabytes of state, sub-second views** - high confidence, cite LinkedIn + Uber~~ CORRECTED — Samza/VLDB-2017 re-anchor only (throughput, not latency); Uber figures withdrawn |
 
 **First-party (lab-measured, MOAR reference stack, 2026-06-07, single host):**

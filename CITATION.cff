@@ -22,10 +22,15 @@ abstract: >-
   Iceberg, ClickHouse, Kafka Streams) face fragmented literature: cybersecurity
   research focuses on detection algorithms while data engineering addresses
   general analytics, leaving security-specific infrastructure guidance
-  unavailable. We conduct the first systematic literature review bridging these
-  domains using PRISMA-aligned methodology, synthesizing 75+ sources spanning
-  production deployments, peer-reviewed research, and government standards to
-  provide operational guidance.
+  fragmented across disconnected domains. We conduct a systematic literature
+  review bridging the two under a PRISMA 2020 two-arm methodology — a curated
+  multivocal corpus plus a retrospective database search whose measured recall,
+  critical appraisal, and refusals are reported in full — synthesizing a
+  living, evidence-tiered corpus of 200+ sources spanning production
+  deployments, peer-reviewed research, and government standards into
+  operational guidance. Counts on every surface are derived from the
+  bibliography by committed scripts rather than hand-maintained; the exact
+  tally for any snapshot is in its README Quality Metrics block.
 keywords:
   - data lakehouse
   - security analytics
@@ -33,3 +38,5 @@ keywords:
   - streaming architectures
   - cybersecurity data engineering
   - systematic literature review
+  - SIEM
+  - Apache Iceberg

@@ -1,3 +1,5 @@
+> **Directory notice (2026-07-16).** This directory holds immutable point-in-time snapshots of the 2025-10-22 publication, and their headline metrics (the 79% Level A self-grade, the seven-hypothesis validation claims, the Shell/Cloudflare performance legs, and the streaming cost/staffing multipliers) were superseded by the 2026-06/07 audits, so each snapshot now carries its own dated correction banner. Live metrics are the Quality Metrics block in the repo-root README.md; the correction record is CHANGELOG.md and METHODOLOGY.md §5.3's banner.
+
 # Published Post Verification & Complete Draft
 
 **Date**: October 22, 2025
@@ -18,7 +20,7 @@
 **Content**: Comprehensive gap analysis and verification results
 
 **Key Findings**:
-- ✅ All data verified accurate (79% Level A, 7 hypotheses, all metrics correct)
+- ~~✅ All data verified accurate (79% Level A, 7 hypotheses, all metrics correct)~~ [2026-07-16: this assertion is withdrawn — see the correction banners on each snapshot; live metrics are README.md's Quality Metrics block at repo root]
 - ❌ 3 critical gaps: References (78 missing), Figures (5 missing), Appendices (4 missing)
 - Detailed specifications for all missing content
 

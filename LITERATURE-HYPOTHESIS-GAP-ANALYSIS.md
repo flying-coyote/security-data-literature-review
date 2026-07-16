@@ -62,9 +62,9 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Status**: STRONGLY VALIDATED
 
 **H3-PERFORMANCE-01: ClickHouse OLAP Performance**
-- ✅ **Strong Validation**: Cloudflare (96% <1s), Shell (57TB/day), multiple benchmarks
+- ✅ **Strong Validation**: Cloudflare (~~96% <1s~~), ~~Shell (57TB/day)~~, multiple benchmarks *(struck 2026-07-16 — the Shell 57TB/day leg was removed 2026-06-05 as fabricated-class, and the Cloudflare "96% <1s" was corrected 2026-07-11 in the part-1 sweep: the verified figures are ~10× and 12-19× vs Elasticsearch, see hypothesis-confidence-matrix.md's H3-PERFORMANCE-01 section note. This block escaped the sweeps that already struck the same Shell leg under H1-VOLUME-07 below.)*
 - **Literature Support**: Footnotes [^7], [^8], [^11], [^81], [^99-108]
-- **Status**: VALIDATED
+- **Status**: ~~VALIDATED~~ HIGH CONFIDENCE *(2026-07-16 — 19/25 under the 2026-07-13 rubric rescore, canonical in PUBLICATION-MANUSCRIPT.md §3.7; surviving legs are Cloudflare 6M req/sec + the first-party SDW lab CIDR probe)*
 
 **H1-COST-08: SIEM vs Storage Cost Differential**
 - ⚠️ **Legs withdrawn (2026-07-10)**: the AWS 55% whitepaper is a dead link and the Netflix Kafka 70-80% claim has no locatable primary — both marked do-not-cite in MASTER-BIBLIOGRAPHY. The verified replacement anchor is the first-party AWS S3 tier-price derivation (−45.7% to −95.7% per-GB by tier; manuscript §3.3.2).

@@ -7,6 +7,8 @@ tags: [vendor-database, mcp-server, evidence-quality, security-siem, automation]
 
 # MCP Vendor Database Integration Summary
 
+> **⚠️ STALE 2026-07-16 — DATED RECORD, FIGURES SUPERSEDED**: This is the October 23, 2025 integration record for the MCP server repo, and that repo was archived 2026-07-01, so the operational claims below did not survive it: no automated weekly refresh exists (the `weekly_vendor_refresh.py` cron described in the executive summary and under "Automation & Maintenance" did not continue past the archive — the actual sync cadence is quarterly, per vendor-database.json `meta`), and the "✅ COMPLETE — 71 vendors, 110 evidence sources, 84% Tier A (92 Tier A sources)" rollup is the October-2025 snapshot, superseded. The Shell 57TB/day ClickHouse leg listed under Query Engine was removed from vendor-database.json on 2026-07-10 as fabricated-class (the altinity URL 404s, no discoverable trace). Live vendor data is `vendor-landscape/vendor-database.json`, whose evidence_summary reads 85 sources / 70 Tier A = 82.4% — but its meta.notes flags those rollups as not recomputed pending the quarterly regeneration, so quote no current rollup number at all (not even the ones in this banner) until that lands. Body preserved unchanged as the historical record; individual lines are not struck because this banner carries the whole correction.
+
 **Integration Date**: October 23, 2025 (Session 2)
 **Context**: MCP Server vendor database enrichment provides ready-made baseline for vendor landscape population
 **Status**: ✅ COMPLETE - 71 vendors, 110 evidence sources, 84% Tier A quality

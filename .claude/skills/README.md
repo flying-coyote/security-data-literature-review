@@ -1,21 +1,21 @@
 # Security Data Literature Review - Claude Skills
 
 **Project**: Living Literature Review for "Modern Data Stack for Cybersecurity"
-**Status**: Phase 2 Active (101 sources, 78% Tier 1-2)
+**Status**: Phase 2 Active (live counts: `scripts/automation_dashboard.py` — the header's old 101/78% figures were the Jan-2026 snapshot)
 **Skills**: 1 project-specific + 6 personal skills
-**Last Updated**: 2026-01-02
+**Last Updated**: 2026-07-16
 
 ---
 
 ## Project-Specific Skills
 
 ### 1. evidence-tier-classifier
-**Purpose**: Maintain 79% Evidence Level A (Tier 1-2) academic quality
+**Purpose**: Evidence Level A (Tier 1-2) quality tracking against the 75% target (live share via `scripts/automation_dashboard.py`)
 **Triggers**: "source", "paper", "add citation", "evidence quality"
 **Features**:
 - Tier 1-5 classification with detailed rationale
 - Evidence Level A-D mapping
-- Distribution tracking (current: 79% Tier 1-2 ✅ exceeds 70% target)
+- Distribution tracking (live share derived by `scripts/automation_dashboard.py` — the old "79% ✅" self-grade was withdrawn in the 2026-06 audit; below the 75% target as of 2026-07-16)
 - Hypothesis-evidence linking
 - Publication readiness assessment
 
@@ -49,7 +49,7 @@ Tier 4: Vendor claims (note bias) → Evidence Level C
 Tier 5: Speculation (don't use) → Evidence Level D
 
 Target: 70%+ Evidence Level A (Tier 1+2)
-Current: 79% ✅
+Current: derive via scripts/automation_dashboard.py (41.9% on 2026-07-16 — below target; the old 79% self-grade was withdrawn 2026-06)
 ```
 
 ---
@@ -84,8 +84,8 @@ Current: 79% ✅
 
 ## Current Status
 
-**Sources**: 101 documented
-**Quality**: 78% Evidence Level A (Tier 1+2) ✅
+**Sources**: derive via `scripts/automation_dashboard.py` (229 blocks / 227 tiered on 2026-07-16)
+**Quality**: 41.9% Evidence Level A on 2026-07-16 — below the 75% target (the old 78-79% self-grades were withdrawn in the 2026-06 audit)
 **Distribution**:
 - Tier 1 (Production): 21+ case studies documented
 - Tier 2 (Peer-reviewed): 45+ sources
