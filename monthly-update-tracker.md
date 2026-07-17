@@ -438,7 +438,7 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 1. **Source Monitoring**: RSS feeds or alerts for key thought leaders
 2. **Link Validation**: Automated weekly URL checking (partially implemented)
 3. **Evidence Freshness**: Automated alerts for sources >12 months old
-4. **Community Feedback**: Substack webhook integration for comments
+4. **Community Feedback**: ~~Substack webhook integration for comments~~ — retired 2026-05-24: the Substack was archived read-only, so there is no comment stream to integrate; community input now arrives as reader feedback via securitydataworks.com (the /writing and /research pages, per the README's Writing integration points) and through the GitHub repository
 
 ---
 

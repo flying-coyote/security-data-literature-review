@@ -26,6 +26,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 
 ### Fact 2: 9 Hypotheses Assessed with Quantitative Confidence Scoring ✅
 **CONFIRMED**: 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10); scores below are the adopted 2026-07-09 post-audit re-score, and the withdrawn pre-audit multipliers are deliberately not restated here
+*Scores below are the 2026-07-09 adopted values; the manuscript's 2026-07-13 rubric rescore supersedes where they differ (PUBLICATION-MANUSCRIPT.md §3.7).*
 - **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED, 23/25 - industry consensus as de facto standard (the "76% adoption" figure is unsourced — refined per the H-ARCH-01 audit)
 - **H3-PERFORMANCE-01** (ClickHouse): HIGH CONFIDENCE, 20/25 - Cloudflare 6M req/sec production
 - **H-STREAM-01** (Stateful Streaming): HIGH CONFIDENCE, 17/25 - Samza (VLDB 2017) plus Azure production scale
@@ -50,10 +51,11 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 - 4-6× speedup demonstrated for evidence-based blog writing
 - Literature review serves as foundation for blog deep-dives
 - **Source**: README.md line 20, SESSION-2025-10-15-FINAL-INTEGRATION-BLOG-BOOK.md
+- **Status (2026-07-16)**: the blog channel this fact describes was the Security Data Commons Substack, retired 2026-05-24 and archived read-only; the essays now live at securitydataworks.com/writing
 
 ### Fact 5: Academic Publication Quality Maintained ✅
 **CONFIRMED**: Evidence standards suitable for peer review
-- 79% Evidence Level A (57 of 72 sources) - production deployments + peer-reviewed research
+- 79% Evidence Level A (57 of 72 sources) - production deployments + peer-reviewed research — withdrawn 2026-06-05: this and the bullets below are the October 2025 pre-audit self-grade, kept as record; the honest Level-A figure is 41.9% (95/227 tiered, derived 2026-07-16 via scripts/automation_dashboard.py), and target recovery is open work
 - 21% Evidence Level B (15 of 72 sources) - industry analysts
 - 0% Evidence Level C/D - zero low-quality sources
 - Government/Standards: 8 sources (CISA, MITRE, DARPA, NSA, SANS)
@@ -78,6 +80,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 - **Versioning**: Rolling updates via git commits, quarterly snapshots (YYYY-QX-v1.0 tags) for citation stability
 - **Philosophy**: "Being wrong publicly" - rapid iteration, intellectual honesty, collaborative corrections
 - **Source**: Substack justification post (Oct 22, 2025), CLAUDE.md, MCP vendor database automation
+- **Status (2026-07-16)**: three of these legs have since changed — the Substack venue was retired 2026-05-24 (writing moved to securitydataworks.com/writing); no automated weekly MCP refresh exists (the MCP server repo was archived 2026-07-01, and the vendor DB is refreshed quarterly in vendor-landscape/); and the publication venue was ruled by the owner 2026-07-10: Journal of Cybersecurity (Oxford)
 
 ### Fact 8: Directory Structure Planned for Phase 2 ✅
 **CONFIRMED**: Future structure designed for vendor landscape integration
@@ -96,7 +99,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 **CONFIRMED**: evidence-tier-classifier skill active for quality management
 - Activates during source additions, citation updates, bibliography work
 - Classifies Tier 1-5 evidence with rationale (Tier 1=Production, Tier 2=Peer-reviewed, etc.)
-- Maintains 79% Evidence Level A quality standard
+- Maintains 79% Evidence Level A quality standard — withdrawn 2026-06-05: the 79% self-grade was withdrawn in the audit; the honest live figure is 41.9% (95/227 tiered, derived 2026-07-16)
 - **Source**: CLAUDE.md lines 111-116
 
 ---
@@ -133,6 +136,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 - **Future path**: Community-validated Substack version → Refined manuscript → Journal submission (ACM CSUR, USENIX, IEEE S&P) in 2026
 - **Trade-off**: Broader practitioner reach (Substack) vs academic credibility (journal), online-first chosen
 - **Source**: Substack blog posts (Oct 22, 2025), blog philosophy ("Security Architects Need to Be Wrong")
+- **Status (2026-07-16)**: superseded twice — the Substack was retired 2026-05-24 (essays at securitydataworks.com/writing), and the venue question was ruled by the owner 2026-07-10: Journal of Cybersecurity (Oxford), not the ACM CSUR / USENIX / IEEE S&P shortlist above
 
 ### Assumption 5: 75%+ Evidence Level A Achievable with Monthly Rolling Updates ⚠️
 **ASSUMPTION**: Monthly rolling updates can maintain ≥75% Evidence Level A (slight degradation from 79% acceptable)
@@ -155,7 +159,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ## PART 3: SCOPE & BOUNDARIES
 
 **In Scope**:
-- Living literature review published openly on Substack (primary venue)
+- Living literature review published openly on Substack (primary venue) — status 2026-07-16: the Substack was retired 2026-05-24; the open venue is securitydataworks.com/writing, and the journal target is Journal of Cybersecurity per the 2026-07-10 owner ruling
 - Evidence foundation for book (115,500 words) and blog (3x/week practitioner content)
 - Hypothesis validation (9 assessed as of 2026-07-10, drawn from book-manuscript claims, literature-gap analysis, and post-audit peer-reviewed additions; the book-side population count lives in the book project's hypothesis tracker and is deliberately not restated here, since nothing in this repo can verify it)
 - **Hybrid update model**: Monthly rolling updates + quarterly deep synthesis
@@ -247,7 +251,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Decision 7: Expert Interviews for Quantitative Validation
 **Decision**: Conduct expert interviews (Lisa Cao, Jake Thomas) to validate quantitative claims
 **Rationale**:
-- 7 hypotheses + 14 research questions have quantitative claims (2.5-3× costs, 2.7× staffing, 5.5-month timelines; the H-ARCH-01 "76% adoption" example was unsourced and refined to "industry consensus")
+- 7 hypotheses + 14 research questions have quantitative claims (2.5-3× costs, 2.7× staffing, 5.5-month timelines; the H-ARCH-01 "76% adoption" example was unsourced and refined to "industry consensus") — note 2026-07-16: those multipliers were withdrawn in the 2026-06/07 audits and now read directionally pending re-sourcing (PUBLICATION-MANUSCRIPT.md §3.7)
 - Expert validation strengthens evidence (personal communication = additional source)
 - Interview guides ensure systematic, reproducible questioning
 - Scheduled for Q1 2026 quarterly deep dive (January 2026)
@@ -542,4 +546,4 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 **Next Action**: First monthly rolling update (November 2025) - 3-month trial to validate sustainability
 **Priority**: HIGH - Primary driver for blog (3x/week), foundation for book, academic publication deferred to 2026
 **Owner**: Jeremy Wiley (Project Lead)
-**Updated**: October 30, 2025 (strategic realignment: quarterly → monthly/hybrid, journal → online-first)
+**Updated**: 2026-07-16 (label-don't-decide correction sweep; prior stamp October 30, 2025 — strategic realignment: quarterly → monthly/hybrid, journal → online-first)

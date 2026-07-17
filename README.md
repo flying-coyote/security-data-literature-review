@@ -1,8 +1,9 @@
 # Living Literature Review — Security Data Works evidence backbone
 
 **Purpose**: Evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning
-**Last Updated**: June 29, 2026 (Version 1.22.0)
+**Last Updated**: July 16, 2026 (Version 1.23.0)
 **Last Reviewed**: June 29, 2026
+**Search currency**: Database searches current as of 2026-07-13 (OpenAlex, dblp); curation is continuous
 **Status**: Phase 2 ACTIVE | Tier-3 evidence companion to the MOAR handbook campaign
 
 ---
@@ -36,16 +37,16 @@ This repository contains a **living literature review** that is the shared evide
 
 **Core Documentation Files**:
 1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 229 catalogued sources (227 tiered), 41.9% Evidence Level A (live, 95/227)
-2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture
-3. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (9,999 words, all sections drafted)
-4. **REFERENCES.md** - IEEE/ACM formatted references (78 sources, alphabetically ordered)
+2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture (note 2026-07-16: the full roster is 14 — METHODOLOGY.md formalizes RQ1-RQ10, and RQ11-RQ14 live in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gap 11)
+3. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (~15.3k words main text, measured 2026-07-16; derived at build, see the manuscript's MANUSCRIPT METADATA block)
+4. **REFERENCES.md** - IEEE/ACM formatted references (78 numbered sources, of which 12 are withdrawn in place; superseded 2026-07-16 by the manuscript's embedded reference section, and the file carries a superseded banner)
 5. **APPENDICES.md** - 4 appendices (Evidence rubric, Confidence scoring, Expert protocol, Source taxonomy)
 6. **FIGURES-AND-TABLES.md** - 5 figures + 5 tables with publication specifications
 7. **LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md** - Gap analysis that seeded the original hypothesis roster (9 assessed as of 2026-07-10; the Oct-2025 numbers inside are the historical record)
 8. **LITERATURE-EXTRACTION-PLAN.md** - Systematic extraction methodology (PRISMA-aligned)
 9. **PUBLICATION-VENUE-RECOMMENDATIONS.md** - Academic publication strategy
 10. **archive/REPOSITORY-STATUS.md** - Historical phase-status report (archived 2026-07-10; live metrics are the Quality Metrics block in this README)
-11. **CHANGELOG.md** - Version tracking for academic citation stability (Versions 1.0.0-1.12.0)
+11. **CHANGELOG.md** - Version tracking for academic citation stability (Versions 1.0.0-1.23.0 + [Unreleased])
 
 **Analysis Bundles** (analysis-bundles/):
 - Live (3): hypothesis-confidence-matrix.md (cited by manuscript Appendix B), cost-reality-reference.md (cited by FIGURES-AND-TABLES.md), staffing-budget-calculator.md (held pending the queued book ch06 footnote edit)
@@ -79,7 +80,7 @@ This repository contains a **living literature review** that is the shared evide
 - Performance benchmarks and emerging technology tracking
 - Source quality maintenance (broken link fixes, outdated source refresh)
 
-**Quarterly Deep Dives** (~32 hours/quarter, Q1 2026 next):
+**Quarterly Deep Dives** (~32 hours/quarter, Q1 2026 next — note 2026-07-16: this ~32h figure disagrees with .claude/CLAUDE.md's ~24 hrs/quarter and the owner has not reconciled the two, while "Q1 2026 next" is stale; the live cadence record is monthly-update-tracker.md):
 - Expert interviews and validation (Lisa Cao, Jake Thomas, etc.)
 - Comprehensive hypothesis review
 - Versioned snapshots for citation stability (git tags: YYYY-QX-v1.0)
@@ -158,13 +159,15 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 
 ## Key Research Findings
 
-**Research Questions** (10 total, RQ1-RQ10):
+**Research Questions** (10 total, RQ1-RQ10 — note 2026-07-16: the full roster is 14, with RQ11-RQ14 in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gap 11; the 10 detailed below are the METHODOLOGY.md set):
 - **RQ1-RQ6**: Original data engineering questions (Iceberg adoption, TCO reality, staffing, performance, streaming)
 - **RQ7-RQ10 (NEW)**: Isolation-first security architecture pattern
   - RQ7: Performance overhead of isolation mechanisms
   - RQ8: Table format convergence (Iceberg + XTable)
   - RQ9: Security-specific catalog features adoption
   - RQ10: Real-world deployment patterns
+
+*Scores below are the 2026-07-09 adopted values; the manuscript's 2026-07-13 rubric rescore supersedes where they differ (PUBLICATION-MANUSCRIPT.md §3.7).*
 
 **Hypothesis Validation Results** (9 assessed: 7 original + 2 added post-audit 2026-07-10; scores are the adopted 2026-07-09 post-audit re-score, RESCORE-PROPOSAL-2026-07.md):
 - H-ARCH-01 (Iceberg Dominance): STRONGLY VALIDATED, 23/25 - industry consensus as de facto standard; all four legs survived primary verification (the bare "76% adoption" figure is unsourced; refined per the H-ARCH-01 audit)

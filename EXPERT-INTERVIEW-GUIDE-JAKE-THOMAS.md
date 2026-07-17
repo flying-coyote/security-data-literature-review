@@ -9,6 +9,8 @@ tags: [expert-interview, jake-thomas, okta, duckdb, isolation-first-security]
 
 > **⚠️ Refresh before scheduling (2026-07-10 check)**: three figures in this guide's pre-interview context have since been withdrawn or flagged in MASTER-BIBLIOGRAPHY — do NOT quote them to Jake: Shell 57TB/day (entry withdrawn 2026-06-05), DuckDB "used at Facebook/Google/Airbnb" (removed 2026-07-10, no primary), and "6+ million monthly downloads" (uncatalogued; the verified v1.0.0-announcement phrasing is "download counts are in the millions each month"). Re-pull the context section from the current bibliography before the interview.
 
+> **Re-pulled 2026-07-16**: the three figures flagged above are gone from the sections below. The Shell 57TB/day line is replaced in two places — the H1-VOLUME-07 status note now cites the surviving Cloudflare 6M req/sec production leg, and the Section 4 ask-script quote now cites Okta's own serverless-DuckDB figure (1M Lambda invocations/day, 250 GB/min peak, from Julien Hurault's write-up, Evidence Level A) — since a number about Jake's own employer gives him something concrete to confirm or correct rather than a withdrawn figure about a company he has no connection to. The "used at Facebook/Google/Airbnb" line is removed with no replacement, because no primary source for it was ever located. "6+ million monthly downloads" is corrected to the v1.0.0 announcement's verbatim phrasing, "download counts are in the millions each month." The corpus and hypothesis context throughout this guide is current as of this pull: 229 catalogued entries (227 tiered, 41.9% Level A, per `scripts/count_reconcile.py`) and the 2026-07-13 rubric rescore recorded in PUBLICATION-MANUSCRIPT.md §3.7. Neither H-EDGE-01 nor H1-VOLUME-07 carries a formal score under that rubric yet, which is honestly the point of this interview — it's the intended route to giving both one.
+
 **Interviewee**: Jake Thomas
 **Affiliation**: Okta
 **Expertise**: Production defensive cyber operations, DuckDB at scale, security data volumes
@@ -38,21 +40,24 @@ tags: [expert-interview, jake-thomas, okta, duckdb, isolation-first-security]
 
 ### What We Know from Literature Review
 
-**DuckDB Positioning** (from MASTER-BIBLIOGRAPHY.md):
+**DuckDB Positioning** (from MASTER-BIBLIOGRAPHY.md's DuckDB & Edge Processing section, re-pulled 2026-07-16):
 - **Official Positioning**: Embedded analytics, SQLite alternative for OLAP workloads
-- **Key Features**: In-process analytics, no server management, OLAP-grade performance
-- **Status**: Production-ready, growing adoption in data engineering
+- **Key Features**: In-process analytics, no server management, OLAP-grade performance, stable on-disk storage format since v1.0.0 (June 3, 2024)
+- **Status**: Production-ready. The corpus now carries several DuckDB-relevant entries beyond the official docs page: the v1.0-1.4 release history (Evidence Level B), the DuckLake v1.0 lakehouse format with first-party BENCH-E catalog failure-mode findings run on DuckDB 1.5.3 (Evidence Level B, project/vendor-authoritative), a first-party OCSF row-level-security overhead measurement run directly on DuckDB 1.5.3 (Evidence Level B, single host), the Data Inlining in DuckLake vendor benchmark (Evidence Level C), and Julien Hurault's Okta multi-engine data-stack write-up (Evidence Level A, verified 2026-06-05) — the last of which already documents an Okta production number worth confirming with Jake directly: serverless DuckDB at 1M Lambda invocations/day, 250 GB/min peak.
+- **Note**: MASTER-BIBLIOGRAPHY.md also carries a placeholder entry for this interview itself ("Okta Security Analytics - Isolation-First Architecture with DuckDB + Iceberg," Evidence Level B, attributed to Jake Thomas as personal communication), logged as scheduled for the Q1 2026 quarterly deep dive after slipping from October 2025. It's now July 2026, so this guide is being re-pulled well past that scheduled window.
 
 **Current Evidence Gaps**:
-- **H-EDGE-01**: Proposed but not validated - "DuckDB enables edge/endpoint security analytics"
-- **Production deployments**: Jake Thomas (Okta) is primary validation source
-- **Security-specific benchmarks**: No DuckDB security workload data in literature review
+- **H-EDGE-01**: Still proposed, still not formally validated - "DuckDB enables edge/endpoint security analytics." It sits outside the nine hypotheses scored under the 2026-07-13 rubric rescore (PUBLICATION-MANUSCRIPT.md §3.7) because it has no quantitative leg yet, so this interview is the intended route to giving it one.
+- **Production deployments**: Jake Thomas (Okta) remains the primary intended validation source; Julien Hurault's write-up gives a secondary, already-verified Okta data point worth checking against what Jake is actually running today.
+- **Security-specific benchmarks**: partially closed. The review's own first-party OCSF row-level-security bench now runs on DuckDB 1.5.3, so RLS overhead specifically has a measured number; general DuckDB security-workload performance (query latency, throughput under a security-telemetry shape) is still absent from the literature review.
 
 **Related Hypotheses**:
-- **H1-VOLUME-07** (Security Data Volumes): Partially validated at large scale (Shell 57TB/day), needs mid-market validation
-- **H3-PERFORMANCE-01** (OLAP Performance): ClickHouse validated, DuckDB comparison needed
+- **H1-VOLUME-07** (Security Data Volumes): Partially validated at large scale. The Shell 57TB/day figure was withdrawn 2026-06-05 as fabricated-class and no longer supports this hypothesis; the surviving large-scale leg is Cloudflare's 6M req/sec production throughput (Evidence Level A, verified at primary). Mid-market validation is still the open gap this interview targets.
+- **H3-PERFORMANCE-01** (OLAP Performance): Now High Confidence (4 stars, 19/25 under the 2026-07-13 rubric rescore) on the Cloudflare leg plus a first-party CIDR probe; a DuckDB comparison at security-relevant scale isn't part of that score yet, so it's a clean opening for this interview.
 
 **Evidence Level Target**: A (production deployment, quantitative metrics from Jake)
+
+**Corpus status** (2026-07-16): the live bibliography holds 229 catalogued `#### ` entries, 227 tiered, at 41.9% Evidence Level A (`scripts/count_reconcile.py`). Nine hypotheses carry a formal score under the 2026-07-13 rescore - one strongly validated, two high confidence, two moderate, four preliminary - and H-EDGE-01 and H1-VOLUME-07 are not among them, which is the honest way of saying this interview is trying to move both from unscored to scored.
 
 ---
 
@@ -179,7 +184,7 @@ tags: [expert-interview, jake-thomas, okta, duckdb, isolation-first-security]
 ### Section 4: Security Data Volumes & Economics (15 minutes)
 
 **Context-Setting**:
-> "I'm validating security data volume claims. Literature shows Shell at 57TB/day, but I need mid-market validation."
+> "I'm validating security data volume claims. One data point I have on Okta specifically is Julien Hurault's write-up describing serverless DuckDB at 1M Lambda invocations/day, 250 GB/min peak — I'd love to know if that still matches what you're running, and what a realistic mid-market range looks like more broadly."
 
 **Q4.1 Data Volume Reality**:
 - Okta's security data volume: TB/day, PB/year range?
@@ -485,23 +490,25 @@ tags: [expert-interview, jake-thomas, okta, duckdb, isolation-first-security]
 
 ### Isolation-First Security Evidence (RQ7-RQ10)
 
-**January 2026 Research Findings**:
-- DuckDB 1.0 released June 2024 (stable storage format, production-ready)
-- 6+ million monthly DuckDB downloads
-- Used at Facebook, Google, Airbnb
-- Gravitino adopted by Uber, Apple, Intel, Pinterest (multi-catalog management)
+**Current Bibliography Findings** (re-pulled 2026-07-16, replacing the January 2026 draft's uncatalogued figures):
+- DuckDB 1.0 released June 3, 2024 (stable on-disk storage format, production-ready; v1.0.0 announcement)
+- "Download counts are in the millions each month, and download traffic just for extensions is upwards of four terabytes each day" (v1.0.0 announcement, verbatim - replaces the earlier "6+ million monthly downloads," which was never catalogued)
+- Okta itself is a catalogued production adopter: serverless DuckDB at 1M Lambda invocations/day, 250 GB/min peak (Julien Hurault's write-up, Evidence Level A) - worth confirming directly with Jake rather than citing secondhand
+- Gravitino: Pinterest is the confirmed adopter (Jerry Shao's "Scaling Iceberg Adoption at Pinterest with Gravitino" talk, per the cataloged Medium write-up); a broader adopter list (Uber, Apple, Intel, and others) circulates but is unverified against Gravitino's own project materials, so it shouldn't be quoted to Jake as confirmed
+
+**Removed** (2026-07-10, no primary located): "Used at Facebook, Google, Airbnb" - do not quote this to Jake.
 
 **Questions for Jake on Isolation-First Validation**:
 - Does Okta use network isolation + IAM as primary security controls (vs fine-grained catalog)?
 - What's the performance advantage of table-level RBAC vs row-level security for your workloads?
 - Has the isolation-first approach simplified compliance (SOC 2/ISO 27001)?
 
-**Source**: CSA/Google Cloud "The State of AI Security and Governance" (Dec 2025)
+**Sources**: DuckDB Labs, *DuckDB 1.0.0 Announcement* (2024-06-03); Julien Hurault, *Okta's Multi-Engine Data Stack* (2024-05-01); Medium/"Office," summarizing Jerry Shao, *Scaling Iceberg Adoption at Pinterest with Gravitino* (2025-08-26) - all per MASTER-BIBLIOGRAPHY.md. (The January 2026 draft cited "CSA/Google Cloud" here, which is the source for the AI-governance stats above, not for these DuckDB/Gravitino figures - corrected in this pass.)
 
 ---
 
 **Prepared By**: Claude (AI Assistant) + Jeremy Wiley
-**Date**: October 16, 2025 (updated January 3, 2026 with AI governance + isolation-first findings)
+**Date**: October 16, 2025 (updated January 3, 2026 with AI governance + isolation-first findings; context re-pulled 2026-07-16 - see banner note)
 **Status**: Ready for scheduling
 **Estimated Interview Duration**: 75-80 minutes
 **Format**: Video call (Zoom/Google Meet) with recording

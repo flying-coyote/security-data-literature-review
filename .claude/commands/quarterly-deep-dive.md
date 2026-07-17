@@ -182,10 +182,13 @@ git push origin 2025-Q4-v1.0
 ```
 
 ### 5.2 Publish and Cross-Reference
-- [ ] Publish to Security Data Commons Substack
+- [ ] ~~Publish to Security Data Commons Substack~~
 - [ ] Cross-reference in book manuscript if relevant
 - [ ] Update any blog posts that cited outdated data
 - [ ] Share on LinkedIn for community feedback
+
+> Note: the old Security Data Commons Substack was retired 2026-05-24; the live channel is
+> securitydataworks.com (`/writing`, `/research`, `/lab`). Do not publish to the Substack.
 
 ---
 

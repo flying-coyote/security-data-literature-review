@@ -17,12 +17,21 @@ import json
 import os
 import re
 import subprocess
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Tuple
 from dataclasses import dataclass, field
 from urllib.parse import urlparse
 import requests
+
+# Canonical hypothesis-count parser, imported not reimplemented (same pattern
+# scripts/weekly_scheduled_check.py already uses for parse_master_bibliography): a
+# second, locally-invented counting rule for the same fact is exactly what
+# count_reconcile.py's ALLOWLIST gate exists to catch drifting out of sync.
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from count_reconcile import derive_hypothesis_counter  # noqa: E402
 
 
 @dataclass
@@ -266,26 +275,22 @@ class LiteratureReviewHealthCheck:
         """Check hypothesis validation status."""
         print("\n🧪 Checking Hypothesis Status...")
 
-        hyp_path = self.repo_path / "LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md"
-        if not hyp_path.exists():
-            self.result.checks_warning += 1
-            print(f"  ⚠️  Hypothesis gap analysis not found")
+        try:
+            hyp = derive_hypothesis_counter()
+        except SystemExit:
+            # derive_hypothesis_counter exits the process on a malformed canonical
+            # section (manuscript 3.7) rather than silently under/over-reporting — the
+            # right call for count_reconcile.py's own gate, but this health check still
+            # owes its other checks a report, so convert the exit into a failed check
+            # instead of letting it kill the run.
+            self.result.checks_failed += 1
+            print(f"  ❌ Canonical hypothesis count unavailable — manuscript 3.7 is malformed (see count_reconcile.py)")
             return
 
-        with open(hyp_path, 'r') as f:
-            content = f.read()
-
-        # Count validated vs pending hypotheses
-        validated = len(re.findall(r'(STRONGLY VALIDATED|VALIDATED|STRONG)', content, re.IGNORECASE))
-        pending = len(re.findall(r'(PENDING|INSUFFICIENT|WEAK)', content, re.IGNORECASE))
-
-        if validated > 0:
-            self.result.checks_passed += 1
-            print(f"  ✅ {validated} hypotheses validated")
-
-        if pending > validated:
-            self.result.checks_warning += 1
-            print(f"  ⚠️  {pending} hypotheses still pending validation")
+        total = hyp["total_assessed"]
+        bands = ", ".join(f"{label.strip()}={n}" for label, n in hyp["bands"])
+        self.result.checks_passed += 1
+        print(f"  ✅ {total} hypotheses assessed (canonical, manuscript 3.7) [{bands}]")
 
     def check_publication_status(self):
         """Check publication manuscript status."""
@@ -299,9 +304,6 @@ class LiteratureReviewHealthCheck:
 
         with open(pub_path, 'r') as f:
             content = f.read()
-
-        # Check word count (target: ~10,000 words)
-        word_count = len(content.split())
 
         # Check for required sections
         required_sections = [
@@ -318,12 +320,38 @@ class LiteratureReviewHealthCheck:
             self.result.checks_passed += 1
             print(f"  ✅ All required sections present")
 
-        if 9000 <= word_count <= 11000:
+        # Main-text word count: the section span from ABSTRACT through ACKNOWLEDGMENTS
+        # (inclusive) — same range the manual audit uses (`sed -n '/^## ABSTRACT/,/^##
+        # ACKNOWLEDGMENTS/p' | wc -w`), reimplemented in Python instead of shelling out.
+        # This excludes References/Figures/Tables/Appendices/Metadata, which would
+        # otherwise inflate the count against a target that means body text. The old
+        # 9,000-11,000 band was stale — the manuscript runs ~15k main-text / ~24k total —
+        # so the band now matches Journal of Cybersecurity's stated 10,000-15,000 target,
+        # and a manuscript outside it is a warning, not a failure.
+        lines = content.splitlines()
+        start_idx = end_idx = None
+        for i, line in enumerate(lines):
+            if start_idx is None and line.startswith('## ABSTRACT'):
+                start_idx = i
+            elif start_idx is not None and line.startswith('## ACKNOWLEDGMENTS'):
+                end_idx = i
+                break
+
+        if start_idx is not None and end_idx is not None:
+            main_text_word_count = len('\n'.join(lines[start_idx:end_idx + 1]).split())
+        else:
+            # Section markers renamed/missing — fall back to whole-document count rather
+            # than crash, but say so: that number includes References/Appendices/etc.
+            main_text_word_count = len(content.split())
+            print(f"  ⚠️  ABSTRACT/ACKNOWLEDGMENTS markers not found — using full-document word count")
+
+        JCS_MIN, JCS_MAX = 10000, 15000
+        if JCS_MIN <= main_text_word_count <= JCS_MAX:
             self.result.checks_passed += 1
-            print(f"  ✅ Word count: {word_count:,} (target range)")
+            print(f"  ✅ Main-text word count: {main_text_word_count:,} (Journal of Cybersecurity target: {JCS_MIN:,}-{JCS_MAX:,})")
         else:
             self.result.checks_warning += 1
-            print(f"  ⚠️  Word count: {word_count:,} (target: 9,000-11,000)")
+            print(f"  ⚠️  Main-text word count: {main_text_word_count:,} (target: {JCS_MIN:,}-{JCS_MAX:,})")
 
     def check_quarterly_update_schedule(self):
         """Check if quarterly update is due."""

@@ -108,15 +108,40 @@ def parse_monthly_tracker():
     with open(tracker_path, 'r') as f:
         content = f.read()
 
-    # Extract November summary metrics
-    total_time = re.search(r'\*\*Total Time Investment\*\*:\s*([\d\.]+)\s*hours', content)
-    average_time = re.search(r'Average:\s*([\d\.]+)\s*hours/update', content)
-    evidence_level = re.search(r'Evidence Level A:\s*([\d]+)%', content)
+    # Locate the MOST RECENT dated section, not a fixed month. The tracker is appended
+    # chronologically, so the LAST "## <Month(s)> <Year> Update(s)" heading in the file is
+    # the newest one — anchoring to the first such heading (November 2025, as this used to)
+    # freezes the reported average at whatever November said, forever, no matter how many
+    # months get appended after it.
+    month_names = ('January|February|March|April|May|June|July|August|September|'
+                   'October|November|December')
+    heading_pattern = re.compile(
+        rf'(?m)^##\s+((?:{month_names})(?:-(?:{month_names}))?\s+\d{{4}})\s+Updates?\b'
+    )
+    headings = list(heading_pattern.finditer(content))
+    if not headings:
+        return None
+
+    latest = headings[-1]
+    section_label = latest.group(1)  # e.g. "July 2026" — carried into the dashboard output
+    section_start = latest.end()
+    next_heading = re.search(r'(?m)^##\s+', content[section_start:])
+    section_end = section_start + next_heading.start() if next_heading else len(content)
+    section = content[section_start:section_end]
+
+    # Each dated "### Update ..." entry within that month states its own session hours as
+    # "**Total: ~X hours**"; average across however many updates landed that month (usually
+    # one, so total == average, but a multi-update month averages correctly).
+    hours = [float(h) for h in re.findall(r'\*\*Total:\s*~?([\d.]+)\s*hours?\*\*', section)]
+    average_time = round(sum(hours) / len(hours), 1) if hours else None
+    evidence_level = re.search(r'Evidence Level A\*{0,2}:\s*(?:[\d.]+%\s*(?:→|->)\s*)?([\d.]+)%', section)
 
     return {
-        'total_time_nov': float(total_time.group(1)) if total_time else None,
-        'average_time': float(average_time.group(1)) if average_time else None,
-        'evidence_level_a': int(evidence_level.group(1)) if evidence_level else None
+        'section_label': section_label,
+        'total_hours': round(sum(hours), 1) if hours else None,
+        'update_count': len(hours),
+        'average_time': average_time,
+        'evidence_level_a': float(evidence_level.group(1)) if evidence_level else None
     }
 
 def get_latest_health_report():
@@ -225,9 +250,13 @@ def print_dashboard():
     tracker = parse_monthly_tracker()
     if tracker and tracker['average_time'] is not None:
         time_status = f"{Colors.GREEN}✅ SUSTAINABLE" if tracker['average_time'] <= 10 else f"{Colors.YELLOW}⚠️ WARNING"
-        print(f"Average Time: {Colors.BOLD}{tracker['average_time']} hours/update{Colors.END} {time_status}{Colors.END}")
-        print(f"  Target: ≤10 hours/month | Current: {tracker['average_time']} hours/update")
-        print(f"  November Total: {tracker['total_time_nov']} hours (2 updates)")
+        # Labeled with its source month so this figure can't silently masquerade as
+        # current — it's whatever the most recent dated tracker section reports, not
+        # something this dashboard measures live.
+        print(f"Average Time ({tracker['section_label']}): {Colors.BOLD}{tracker['average_time']} hours/update{Colors.END} {time_status}{Colors.END}")
+        print(f"  Target: ≤10 hours/month | Current: {tracker['average_time']} hours/update ({tracker['section_label']})")
+        update_word = 'update' if tracker['update_count'] == 1 else 'updates'
+        print(f"  {tracker['section_label']} Total: {tracker['total_hours']} hours ({tracker['update_count']} {update_word})")
     else:
         print(f"{Colors.RED}❌ Could not load time tracking metrics{Colors.END}")
 
@@ -270,7 +299,10 @@ def print_dashboard():
     print(f"  Note: Security Data Commons Substack retired 2026-05-24 — do not poll it")
 
     print(f"\nBook (modern-data-stack-for-cybersecurity-book): {Colors.GREEN}✅ SUPPORTED{Colors.END}")
-    print(f"  Manuscript: 115,500 words with citations")
+    # Derive-don't-state (CLAUDE.md): the book's word count lives in the book repo's own
+    # build, not in this repo, so this dashboard points at it instead of hand-typing a
+    # number here that would go stale the next time the book repo builds.
+    print(f"  Manuscript word count: derived in the book repo's own build (not tracked here)")
     print(f"  Evidence Foundation: All chapters supported")
 
     # (vendor database reported once, live-counted, in Automation Status above — dedup 2026-06-29)
@@ -300,7 +332,7 @@ def print_dashboard():
         print(f"{Colors.RED}❌ Quality Below Target{Colors.END}")
 
     if tracker and tracker['average_time'] is not None and tracker['average_time'] <= 10:
-        print(f"{Colors.GREEN}✅ Time Sustainable{Colors.END} ({tracker['average_time']} hours ≤ 10 hours)")
+        print(f"{Colors.GREEN}✅ Time Sustainable{Colors.END} ({tracker['average_time']} hours ≤ 10 hours, {tracker['section_label']})")
         ready_count += 1
     else:
         print(f"{Colors.RED}❌ Time Unsustainable{Colors.END}")
