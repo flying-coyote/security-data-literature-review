@@ -1,0 +1,46 @@
+{
+ "generated": "2026-07-16",
+ "source": "Second-screen flag adjudication — owner ruling ('apply as recommended') on the 2026-07-16 review walkthrough; 5 of the 11 flags in methods/second-screen-2026-07-16.json taken up",
+ "note": "Each taken-up candidate got the same two-pass treatment as the original 40: full-text (or fullest-obtainable) retrieval, eligibility per PRISMA-SEARCH-PROTOCOL-2026-07-13.md section 4, venue-integrity appraisal at the prisma-appraisal-2026-07-13.json standard, and an adversarial verification pass on any ADMIT. The 6 flags not taken up remain excluded and logged.",
+ "adjudicated": [
+  {
+   "title": "Stream-Based IP Flow Analysis",
+   "verdict": "ADMIT",
+   "tier": "B",
+   "reason": "Original E2 exclusion was an abstract-level misread: at full text the subject is the stream-processing platform layer evaluated as security-flow infrastructure (I2) with benchmark + campus deployment evidence (I3). Venue clean (IFIP/IEEE IM 2021, Xplore 9464011, dblp conf/im/CermakC21). Level B not A: Dissertation Digest track summarizing a 2020 thesis whose primary benchmark is NOMS 2016 — 2016-era measurements carried as historical suitability + workflow design, not current performance. ADMIT upheld by independent adversarial verification (all cited numbers re-verified at the IFIP DL full text)."
+  },
+  {
+   "title": "AI-Powered Threat Detection and Response: ... Real-Time IDS Using Network Traffic Data",
+   "verdict": "KEEP_EXCLUDED",
+   "reason": "E1 as written: RF+LSTM classifier evaluated on CICIDS2017/UNSW-NB15/KDD; the 4.2 ms / 12k req/s figures are model-serving performance, platform is plumbing. Also IEEE-paywalled, numbers unverifiable at source. Consistency pair resolved: the included sibling (W2994134668) has the pipeline as its titled subject."
+  },
+  {
+   "title": "BigFlow-NIDS: A large-scale dataset for network intrusion detection in big data environment",
+   "verdict": "KEEP_EXCLUDED",
+   "reason": "Governing criterion corrected from E2 to I2-fails: a Data in Brief dataset paper (legitimate Elsevier venue) whose subject is a merged NetFlow corpus for ML research; the flagged ~34x figure is a single-environment Colab load-time comparison (CSV 920.82 s vs Parquet 27.35 s) reported incidentally in the dataset description, not an architecture evaluation. Admitting it would break the same strictness that excludes the E1 classifier papers. Workflow appraiser was safety-blocked; adjudicated inline by the orchestrator under the same instrument, 2026-07-16."
+  },
+  {
+   "title": "Intrusion Detection in Industrial Networks via Data Streaming",
+   "verdict": "KEEP_EXCLUDED",
+   "reason": "I3 confirmed at full text (E3 secondary): Springer Industrial IoT book chapter with no measurement, benchmark, deployment, or design evaluation of its own — all architectural content reproduced from cited work."
+  },
+  {
+   "title": "Data Warehouse Design for Security Applications Using Distributed Ontology-Based Knowledge Representation",
+   "verdict": "KEEP_EXCLUDED",
+   "reason": "I2 fails on abstract evidence (was title-only): the 'warehouse' is a description-logic knowledge base for registering railway-infrastructure incidents, not telemetry/log storage-query-ingest architecture; I3 fails independently."
+  }
+ ],
+ "flags_not_taken_up": 6,
+ "count": 1,
+ "entries": [
+  {
+   "title": "Stream-Based IP Flow Analysis",
+   "doi": null,
+   "identifier": "IEEE Xplore 9464011; dblp conf/im/CermakC21; OpenAlex W3165158987; no DOI assigned",
+   "year": 2021,
+   "venue": "17th IFIP/IEEE International Symposium on Integrated Network Management (IM 2021), Dissertation Digest track, pp. 736-741",
+   "tier": "B",
+   "category": "academic_peer_reviewed"
+  }
+ ]
+}

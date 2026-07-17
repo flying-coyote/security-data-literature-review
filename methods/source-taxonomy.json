@@ -1,33 +1,33 @@
 {
   "derived_by": "scripts/derive_source_taxonomy.py",
-  "total_entries": 229,
-  "peer_reviewed": 50,
-  "peer_reviewed_percent": 21.8,
+  "total_entries": 230,
+  "peer_reviewed": 51,
+  "peer_reviewed_percent": 22.2,
   "added_by_incorporation_pass": 26,
   "categories": [
     {
       "category": "academic_peer_reviewed",
       "label": "Peer-reviewed\nacademic",
-      "count": 50,
-      "percent": 21.8
+      "count": 51,
+      "percent": 22.2
     },
     {
       "category": "vendor_engineering_blog_or_product_docs",
       "label": "Vendor blogs /\nproduct docs",
       "count": 67,
-      "percent": 29.3
+      "percent": 29.1
     },
     {
       "category": "open_source_project_docs_or_repo",
       "label": "Open-source\nproject docs",
       "count": 35,
-      "percent": 15.3
+      "percent": 15.2
     },
     {
       "category": "practitioner_talk_or_personal_blog",
       "label": "Practitioner talks /\npersonal blogs",
       "count": 18,
-      "percent": 7.9
+      "percent": 7.8
     },
     {
       "category": "standards_frameworks_government",
@@ -72,5 +72,5 @@
       "percent": 0.9
     }
   ],
-  "note": "Composed from the retro-run classification of the pre-existing corpus plus the studies added by the incorporation pass. Percentages are of all 229 catalogued blocks, which includes the two documented stubs the tier counts exclude, so this denominator is the block count and not the tiered count."
+  "note": "Composed from the retro-run classification of the pre-existing corpus plus the studies added by the incorporation pass. Percentages are of all 230 catalogued blocks, which includes the two documented stubs the tier counts exclude, so this denominator is the block count and not the tiered count."
 }

@@ -105,7 +105,7 @@ All sources are classified using a four-tier evidence system prioritizing produc
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 95 of 227 tiered entries (41.9%), live-derived 2026-07-16 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 95 of 228 tiered entries (41.7%), live-derived 2026-07-16 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
 #### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 47.6%)
 **Criteria**: Industry analyst reports, expert consensus, verified vendor documentation
@@ -429,7 +429,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | >70% | 41.9% (95/227 tiered; live-derived 2026-07-16) | ❌ Below target |
+| Evidence Level A | >70% | 41.7% (95/228 tiered; live-derived 2026-07-16) | ❌ Below target |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |

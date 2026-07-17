@@ -47,3 +47,9 @@
 ---
 
 _This pass is report-only: no bibliography file was edited by this script. Any fixes (re-pointing a dead URL, dropping a stale citation) are owner-adjudicated by hand._
+
+---
+
+## Adjudication (2026-07-16, applied on owner "apply as recommended")
+
+The five non-OK findings were dispositioned the same day: the `flying-coyote/splunk-db-connect-benchmark` 404 is by design (the repo is private, NDA-gated, and its bibliography entry has carried that caveat since 2026-06-05), so the entry stands unchanged; the TDAN.com Alt URL was re-pointed to its live dataversity.net redirect target, because TDAN was absorbed into DATAVERSITY and the recorded redirect resolves; the opencybersecurityalliance.org root 404 was re-pointed to the OCA GitHub organization (verified 200 today), which is the live presence of what is now an OASIS Open Project; and the Microsoft techcommunity 400 and Uber blog 406 are anti-bot content negotiation rather than dead pages, so they are reclassified blocked-not-dead pending a browser spot-check rather than edited. Both re-points carry dated inline notes at their bibliography entries.

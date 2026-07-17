@@ -25,6 +25,10 @@ Thumbs.db
 # PDF/EPUB build output (reproducible via tools/build/build.sh; tooling + fonts ARE tracked)
 /build/
 
+# Curated Zenodo deposit export + tarball (reproducible via tools/build/export_paper.sh)
+/paper/
+/dist/
+
 # LaTeX aux from compiling figures (the figure PDFs ARE tracked)
 *.aux
 *.log

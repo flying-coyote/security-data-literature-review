@@ -299,6 +299,57 @@ def check_heading_conformance():
     return offenders
 
 
+def derive_hypothesis_scores():
+    """Per-hypothesis scores from manuscript 3.7 (the canonical rescore surface).
+
+    Added 2026-07-16 after the score-canon ruling: the 2026-07-09 adopted values
+    sat on README/PROJECT-BRIEF for three days differing from 3.7 on seven of
+    nine rows, and the roster gate only counted IDs, so the drift passed silently.
+    This derives {id: score} so the roster surfaces can be checked value-by-value.
+    """
+    text = (REPO_ROOT / MANUSCRIPT).read_text(encoding="utf-8")
+    m = re.search(r"(?ms)^### 3\.7 Hypothesis Validation Summary\s*$(.*?)(?=^### )", text)
+    if not m:
+        return {}
+    span = m.group(1)
+    scores = {}
+    id_iter = list(re.finditer(r"(?m)^\*(H\d?(?:-[A-Z]+)+-\d+)", span))
+    for i, idm in enumerate(id_iter):
+        seg_end = id_iter[i + 1].start() if i + 1 < len(id_iter) else len(span)
+        c = re.search(r"Confidence:\s*(\d+)/25 points", span[idm.start():seg_end])
+        if c:
+            scores[idm.group(1)] = int(c.group(1))
+    return scores
+
+
+def check_roster_scores(fname, block_start_pattern, scores):
+    """Special surface: a roster block's per-hypothesis N/25 values must match 3.7.
+
+    Scans only the roster block (from block_start_pattern to the first
+    non-list line) so stray historical mentions of a score elsewhere in the
+    file cannot false-positive. Returns (mismatches, ids_checked).
+    """
+    text = (REPO_ROOT / fname).read_text(encoding="utf-8")
+    lines = text.splitlines()
+    mismatches, checked, in_block = [], 0, False
+    for line in lines:
+        if re.search(block_start_pattern, line):
+            in_block = True
+            continue
+        if in_block:
+            m = re.match(r"^- \*{0,2}(H\d?(?:-[A-Z]+)+-\d+)\*{0,2}[^\n]*?(\d+)/25", line)
+            if m:
+                hid, stated = m.group(1), int(m.group(2))
+                checked += 1
+                if hid in scores and stated != scores[hid]:
+                    mismatches.append(f"{hid} {stated}!={scores[hid]}")
+            elif checked and line.strip() and not line.startswith("- "):
+                # intro prose may sit between the block start and the list, so
+                # only a non-list line AFTER the first scored row ends the block
+                break
+    return mismatches, checked
+
+
 def check_readme_roster_ids(T):
     """Special surface: the README roster must list exactly T distinct hypothesis IDs."""
     lines = (REPO_ROOT / "README.md").read_text(encoding="utf-8").splitlines()
@@ -416,6 +467,23 @@ def main():
         failures += 1
         if not staged_mode or "README.md" in staged_files:
             blocking += 1
+
+    scores = derive_hypothesis_scores()
+    for fname, block_pat, surf in (
+        ("README.md", r"\*\*Hypothesis Validation Results\*\*", "README roster scores vs 3.7"),
+        ("PROJECT-BRIEF.md", r"### Fact 2:", "PROJECT-BRIEF roster scores vs 3.7"),
+    ):
+        mism, checked = check_roster_scores(fname, block_pat, scores)
+        if checked == 0:
+            status, stated_str = "MISS", "roster block not found"
+        else:
+            status = "OK" if not mism else "FAIL"
+            stated_str = f"{checked} checked" if not mism else "; ".join(mism)
+        rows.append((status, surf, fname, stated_str, "3.7 scores"))
+        if status != "OK":
+            failures += 1
+            if not staged_mode or fname in staged_files:
+                blocking += 1
 
     n_fig4, _ = check_figure4_dict(T)
     fig4_file = "publication-graphics/figure4_hypothesis_confidence.py"

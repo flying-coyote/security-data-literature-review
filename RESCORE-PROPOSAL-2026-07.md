@@ -2,7 +2,7 @@
 type: proposal
 title: "Hypothesis confidence re-score proposal — post-audit (2026-07-09)"
 created: 2026-07-09
-status: ADOPTED (owner "Apply", 2026-07-09) — applied to §2.5/§3.7/Tables 1-2/Figures 2+4 same day; 2026-07-10: the DR-1 re-sourcing hunt returned zero Tier-A/B, so the four PRELIMINARY scores stand unchallenged (GEMINI-DR1-INTAKE-2026-07-10.md). Owner ruling same day: the paper keeps all 7 with the honest split AND promotes new Tier-A-anchored hypotheses from the DR-3 intake (NEW-HYPOTHESES-PROPOSAL-2026-07.md); venue ruled = Journal of Cybersecurity, post-7/15
+status: ADOPTED (owner "Apply", 2026-07-09) — applied to §2.5/§3.7/Tables 1-2/Figures 2+4 same day; 2026-07-10: the DR-1 re-sourcing hunt returned zero Tier-A/B, so the four PRELIMINARY scores stand unchallenged (GEMINI-DR1-INTAKE-2026-07-10.md). Owner ruling same day: the paper keeps all 7 with the honest split AND promotes new Tier-A-anchored hypotheses from the DR-3 intake (NEW-HYPOTHESES-PROPOSAL-2026-07.md); venue ruled = Journal of Cybersecurity, post-7/15. SUPERSEDED 2026-07-13 by the mechanical rescore (`methods/RESCORE-2026-07-13.md`) where totals differ (20→19, 17→15, 14→13, 8→9, 7/7/6→5/5/5); the rescore was ruled score canon 2026-07-16 (noted here per rescore edit 18)
 tags: [hypotheses, confidence-scoring, audit, rescore]
 ---
 

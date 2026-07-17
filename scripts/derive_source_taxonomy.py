@@ -41,6 +41,10 @@ from automation_dashboard import parse_master_bibliography  # noqa: E402
 
 RECON = REPO_ROOT / "methods" / "prisma-results" / "reconciliation.json"
 ADDED = REPO_ROOT / "methods" / "incorporated-2026-07-13.json"
+# Fourth dated input (2026-07-16, later the same day): the second-screen flag
+# adjudication admitted one study through the same appraisal gate as the
+# original 40, so it enters the taxonomy through its own dated record.
+ADJUD = REPO_ROOT / "methods" / "second-screen-adjudication-2026-07-16.json"
 # Third dated input (2026-07-16): eight entries were headed '### ' instead of
 # '#### ' from November 2025 until the heading fix, so they are in neither frozen
 # record above; their classifications live in this file rather than in a retro-edit.
@@ -79,6 +83,10 @@ def load_counts():
 
     if HEADFIX.exists():
         for entry in json.loads(HEADFIX.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    if ADJUD.exists():
+        for entry in json.loads(ADJUD.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
 
     return counts, len(added)

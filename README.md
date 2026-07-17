@@ -13,8 +13,8 @@
 This repository contains a **living literature review** that is the shared evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the essays and research at securitydataworks.com, and the applied-bridge positioning all cite it. The review bridges cybersecurity and data engineering with evidence-tiered, source-verified research (each entry carries an A/B/C/D tier and a validation verdict in RESEARCH-JOURNAL.md). Published openly (first released October 22, 2025; the original Substack was retired 2026-05-24 and writing moved to securitydataworks.com) with ongoing monthly updates and quarterly deep dives.
 
 **Current Status - June 2026** 🔄:
-- **229 sources catalogued** (227 tiered + 2 documented stubs; 41.9% Evidence Level A, live 2026-07-16 — 95/227; the systematic-search incorporation added 26 peer-reviewed studies on 2026-07-13, after a critical appraisal refused 14 of the 40 the search returned — eight of them in predatory or compromised venues. The Level-A share barely moved, because most of what survived appraisal tiers at B or C; that is the honest result and not a disappointing one — see MASTER-BIBLIOGRAPHY.md § Systematic Search Arm)
-- **14 research questions** (RQ1-RQ14) with comprehensive validation
+- **230 sources catalogued** (228 tiered + 2 documented stubs; 41.7% Evidence Level A, live 2026-07-16 — 95/228; the systematic-search incorporation added 26 peer-reviewed studies on 2026-07-13, after a critical appraisal refused 14 of the 40 the search returned — eight of them in predatory or compromised venues. The Level-A share barely moved, because most of what survived appraisal tiers at B or C; that is the honest result and not a disappointing one — see MASTER-BIBLIOGRAPHY.md § Systematic Search Arm; a 27th study was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same gate)
+- **17 formal research questions** (RQ1-RQ14, plus RQ15-RQ17 adopted 2026-06-13 in Gap 12 — RQ16 substantively benchmarked, RQ15/RQ17 Tier-D unvalidated; roster ruled 17 on 2026-07-16)
 - **Fabrication audit + freshness sweep complete** (2026-06-05 to 2026-06-21; Version 1.22.0, best-practices score 92/100 — see RESEARCH-JOURNAL.md)
 - **Now the Tier-3 evidence backbone of the MOAR handbook campaign** (handbook on-page footnotes resolve to this repo's sources + their RESEARCH-JOURNAL verdicts)
 
@@ -36,8 +36,8 @@ This repository contains a **living literature review** that is the shared evide
 ## Current Repository Contents
 
 **Core Documentation Files**:
-1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 229 catalogued sources (227 tiered), 41.9% Evidence Level A (live, 95/227)
-2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture (note 2026-07-16: the full roster is 14 — METHODOLOGY.md formalizes RQ1-RQ10, and RQ11-RQ14 live in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gap 11)
+1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 230 catalogued sources (228 tiered), 41.7% Evidence Level A (live, 95/228)
+2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture (note 2026-07-16: the full roster is 17 — METHODOLOGY.md formalizes RQ1-RQ10, RQ11-RQ14 live in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gap 11, and RQ15-RQ17 in Gap 12, the last two Tier-D unvalidated)
 3. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (~15.3k words main text, measured 2026-07-16; derived at build, see the manuscript's MANUSCRIPT METADATA block)
 4. **REFERENCES.md** - IEEE/ACM formatted references (78 numbered sources, of which 12 are withdrawn in place; superseded 2026-07-16 by the manuscript's embedded reference section, and the file carries a superseded banner)
 5. **APPENDICES.md** - 4 appendices (Evidence rubric, Confidence scoring, Expert protocol, Source taxonomy)
@@ -80,7 +80,7 @@ This repository contains a **living literature review** that is the shared evide
 - Performance benchmarks and emerging technology tracking
 - Source quality maintenance (broken link fixes, outdated source refresh)
 
-**Quarterly Deep Dives** (~32 hours/quarter, Q1 2026 next — note 2026-07-16: this ~32h figure disagrees with .claude/CLAUDE.md's ~24 hrs/quarter and the owner has not reconciled the two, while "Q1 2026 next" is stale; the live cadence record is monthly-update-tracker.md):
+**Quarterly Deep Dives** (~24 hours/quarter target — ruled 2026-07-16, resolving the ~32h formerly stated here against .claude/CLAUDE.md's ~24h; actuals are derived per update in monthly-update-tracker.md and reported month-labeled by scripts/automation_dashboard.py, so the hours figure is no longer hand-asserted anywhere):
 - Expert interviews and validation (Lisa Cao, Jake Thomas, etc.)
 - Comprehensive hypothesis review
 - Versioned snapshots for citation stability (git tags: YYYY-QX-v1.0)
@@ -159,7 +159,7 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 
 ## Key Research Findings
 
-**Research Questions** (10 total, RQ1-RQ10 — note 2026-07-16: the full roster is 14, with RQ11-RQ14 in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gap 11; the 10 detailed below are the METHODOLOGY.md set):
+**Research Questions** (10 detailed below, RQ1-RQ10 — note 2026-07-16: the full roster is 17, with RQ11-RQ14 in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gap 11 and RQ15-RQ17 in Gap 12, RQ15/RQ17 still Tier-D unvalidated; the 10 detailed below are the METHODOLOGY.md set):
 - **RQ1-RQ6**: Original data engineering questions (Iceberg adoption, TCO reality, staffing, performance, streaming)
 - **RQ7-RQ10 (NEW)**: Isolation-first security architecture pattern
   - RQ7: Performance overhead of isolation mechanisms
@@ -167,22 +167,22 @@ As the vendor landscape and platform coverage expands, the repository may grow t
   - RQ9: Security-specific catalog features adoption
   - RQ10: Real-world deployment patterns
 
-*Scores below are the 2026-07-09 adopted values; the manuscript's 2026-07-13 rubric rescore supersedes where they differ (PUBLICATION-MANUSCRIPT.md §3.7).*
+*Scores below are the canonical 2026-07-13 rubric rescore (`methods/RESCORE-2026-07-13.md`, applied to the manuscript in fea2e05; ruled canon 2026-07-16, replacing the 2026-07-09 adopted values that differed on seven of nine rows).*
 
-**Hypothesis Validation Results** (9 assessed: 7 original + 2 added post-audit 2026-07-10; scores are the adopted 2026-07-09 post-audit re-score, RESCORE-PROPOSAL-2026-07.md):
+**Hypothesis Validation Results** (9 assessed: 7 original + 2 added post-audit 2026-07-10; scores are the 2026-07-13 mechanical rescore under `methods/scoring-rubric.md`, matching PUBLICATION-MANUSCRIPT.md §3.7):
 - H-ARCH-01 (Iceberg Dominance): STRONGLY VALIDATED, 23/25 - industry consensus as de facto standard; all four legs survived primary verification (the bare "76% adoption" figure is unsourced; refined per the H-ARCH-01 audit)
-- H3-PERFORMANCE-01 (ClickHouse): HIGH CONFIDENCE, 20/25 - Cloudflare 6M req/sec production; the sub-second query-share figure was withdrawn in the 2026-06 audit
-- H-STREAM-01 (Stateful Streaming): HIGH CONFIDENCE, 17/25 - re-anchored on Samza (Noghabi et al., VLDB 2017) plus Azure production scale
+- H3-PERFORMANCE-01 (ClickHouse): HIGH CONFIDENCE, 19/25 - Cloudflare 6M req/sec production; the sub-second query-share figure was withdrawn in the 2026-06 audit (the earlier 20/25 was not reachable from the rubric's anchor values)
+- H-STREAM-01 (Stateful Streaming): MODERATE, 15/25 - re-anchored on Samza (Noghabi et al., VLDB 2017) plus Azure production scale; two legs cap the source count, which demotes it from the earlier High Confidence
 - H-LOGCOMP-01 (Machine-Data Compression; added 2026-07-10): HIGH CONFIDENCE, 17/25 - three peer-reviewed anchors (LogLite, PBC, Pebbles), verbatim-verified at their primaries
-- H-SOC-BASELINE-01 (SOC Alert Base Rates; added 2026-07-10): MODERATE, 14/25 - Yang et al. (USENIX Security 2024) production measurement, single-source cap
-- H-COST-09 (Tiered Storage): PRELIMINARY, 8/25 - mechanism documented, but the savings band was withdrawn in the 2026-06 audit; directional pending re-sourcing
-- H-IMPL-02 (Staffing Scarcity): PRELIMINARY, 7/25 - quantitative legs withdrawn in the 2026-06/07 audits; directional pending re-sourcing
-- H-IMPL-03 (Timeline Premium): PRELIMINARY, 7/25 - quantitative legs withdrawn in the 2026-06/07 audits; directional pending re-sourcing
-- H-IMPL-01 (Streaming TCO): PRELIMINARY, 6/25 - quantitative legs withdrawn in the 2026-06/07 audits; directional pending re-sourcing
+- H-SOC-BASELINE-01 (SOC Alert Base Rates; added 2026-07-10): MODERATE, 13/25 - Yang et al. (USENIX Security 2024) production measurement, single-source cap
+- H-COST-09 (Tiered Storage): PRELIMINARY, 9/25 - mechanism documented and a first-party S3 tier-price derivation bounds the saving, but the original savings band was withdrawn in the 2026-06 audit; directional pending re-sourcing
+- H-IMPL-02 (Staffing Scarcity): PRELIMINARY, 5/25 - quantitative legs withdrawn in the 2026-06/07 audits; no scoreable leg, instrument floor; directional pending re-sourcing
+- H-IMPL-03 (Timeline Premium): PRELIMINARY, 5/25 - quantitative legs withdrawn in the 2026-06/07 audits; no scoreable leg, instrument floor; directional pending re-sourcing
+- H-IMPL-01 (Streaming TCO): PRELIMINARY, 5/25 - quantitative legs withdrawn in the 2026-06/07 audits; no scoreable leg, instrument floor; directional pending re-sourcing
 
 **Quality Metrics** (2026-07-12 — honest post-audit baseline, live-computed via `scripts/automation_dashboard.py` and gated by `scripts/count_reconcile.py`):
-- **Evidence Level A: 41.9%** (95 of 227 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; the 2026-07-13 systematic-search incorporation added 11 Level-A studies but 15 at B/C, so the share held flat. This is the honest baseline, not the pre-audit 78% claim
-- Evidence Level B: 108 of 227 · Evidence Level C: 24 of 227 (across 229 `#### ` blocks incl. 2 documented stubs)
+- **Evidence Level A: 41.7%** (95 of 228 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; the 2026-07-13 systematic-search incorporation added 11 Level-A studies but 15 at B/C, so the share held flat. This is the honest baseline, not the pre-audit 78% claim
+- Evidence Level B: 109 of 228 · Evidence Level C: 24 of 228 (across 230 `#### ` blocks incl. 2 documented stubs)
 - The Tier-A floor (60%) is intentionally breached and surfaced, not silenced — a breach that reflects real corpus quality is the dashboard working (see `scripts/weekly_scheduled_check.py`)
 - Every >12-month source now carries a 2026-06-05 validation or freshness marker; 9 fabricated entries removed, 3 dead links recorded (see RESEARCH-JOURNAL.md)
 - Production-deployment anchors (Shell, Cloudflare, SK Telecom, Huntress, etc.) are vendor case studies — Tier C under the global tiers; verify each primary before load-bearing use

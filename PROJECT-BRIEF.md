@@ -19,23 +19,23 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Fact 1: Phase 1-2C Complete, 76+ Sources Documented ✅
 **CONFIRMED**: Phase 1 (Literature Extraction) complete with 76+ sources documented
 - 283 footnotes extracted from best practices document
-- Level-A share: 41.9% live-computed 2026-07-16 (95/227 tiered) — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
+- Level-A share: 41.7% live-computed 2026-07-16 (95/228 tiered) — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
 - 9 analysis bundles created (170,100 words evidence synthesis)
 - All book chapters have supporting source citations
 - **Source**: README.md lines 15-23, archive/REPOSITORY-STATUS.md (archived 2026-07-10), CLAUDE.md lines 33-44
 
 ### Fact 2: 9 Hypotheses Assessed with Quantitative Confidence Scoring ✅
-**CONFIRMED**: 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10); scores below are the adopted 2026-07-09 post-audit re-score, and the withdrawn pre-audit multipliers are deliberately not restated here
-*Scores below are the 2026-07-09 adopted values; the manuscript's 2026-07-13 rubric rescore supersedes where they differ (PUBLICATION-MANUSCRIPT.md §3.7).*
+**CONFIRMED**: 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10); scores below are the canonical 2026-07-13 mechanical rescore, and the withdrawn pre-audit multipliers are deliberately not restated here
+*Scores are the 2026-07-13 rubric rescore (`methods/RESCORE-2026-07-13.md`, ruled canon 2026-07-16; it replaced the 2026-07-09 adopted values on seven of nine rows), matching PUBLICATION-MANUSCRIPT.md §3.7.*
 - **H-ARCH-01** (Iceberg Dominance): STRONGLY VALIDATED, 23/25 - industry consensus as de facto standard (the "76% adoption" figure is unsourced — refined per the H-ARCH-01 audit)
-- **H3-PERFORMANCE-01** (ClickHouse): HIGH CONFIDENCE, 20/25 - Cloudflare 6M req/sec production
-- **H-STREAM-01** (Stateful Streaming): HIGH CONFIDENCE, 17/25 - Samza (VLDB 2017) plus Azure production scale
+- **H3-PERFORMANCE-01** (ClickHouse): HIGH CONFIDENCE, 19/25 - Cloudflare 6M req/sec production (the earlier 20/25 was off the rubric's anchor values)
+- **H-STREAM-01** (Stateful Streaming): MODERATE, 15/25 - Samza (VLDB 2017) plus Azure production scale; two legs cap the source count, demoting the earlier High Confidence
 - **H-LOGCOMP-01** (Machine-Data Compression; added 2026-07-10): HIGH CONFIDENCE, 17/25 - three peer-reviewed anchors
-- **H-SOC-BASELINE-01** (SOC Alert Base Rates; added 2026-07-10): MODERATE, 14/25 - Yang et al. (USENIX Security 2024)
-- **H-COST-09** (Tiered Storage): PRELIMINARY, 8/25 - savings band withdrawn; directional pending re-sourcing
-- **H-IMPL-02** (Staffing Scarcity): PRELIMINARY, 7/25 - quantitative legs withdrawn; directional pending re-sourcing
-- **H-IMPL-03** (Timeline Premium): PRELIMINARY, 7/25 - quantitative legs withdrawn; directional pending re-sourcing
-- **H-IMPL-01** (Streaming TCO): PRELIMINARY, 6/25 - quantitative legs withdrawn; directional pending re-sourcing
+- **H-SOC-BASELINE-01** (SOC Alert Base Rates; added 2026-07-10): MODERATE, 13/25 - Yang et al. (USENIX Security 2024)
+- **H-COST-09** (Tiered Storage): PRELIMINARY, 9/25 - savings band withdrawn; first-party S3 tier-delta bound; directional pending re-sourcing
+- **H-IMPL-02** (Staffing Scarcity): PRELIMINARY, 5/25 - quantitative legs withdrawn; instrument floor; directional pending re-sourcing
+- **H-IMPL-03** (Timeline Premium): PRELIMINARY, 5/25 - quantitative legs withdrawn; instrument floor; directional pending re-sourcing
+- **H-IMPL-01** (Streaming TCO): PRELIMINARY, 5/25 - quantitative legs withdrawn; instrument floor; directional pending re-sourcing
 - **Source**: PUBLICATION-MANUSCRIPT.md §3.7, RESCORE-PROPOSAL-2026-07.md, LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md
 
 ### Fact 3: Expert Interview Guides Prepared for Week 3 ✅
@@ -55,7 +55,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 
 ### Fact 5: Academic Publication Quality Maintained ✅
 **CONFIRMED**: Evidence standards suitable for peer review
-- 79% Evidence Level A (57 of 72 sources) - production deployments + peer-reviewed research — withdrawn 2026-06-05: this and the bullets below are the October 2025 pre-audit self-grade, kept as record; the honest Level-A figure is 41.9% (95/227 tiered, derived 2026-07-16 via scripts/automation_dashboard.py), and target recovery is open work
+- 79% Evidence Level A (57 of 72 sources) - production deployments + peer-reviewed research — withdrawn 2026-06-05: this and the bullets below are the October 2025 pre-audit self-grade, kept as record; the honest Level-A figure is 41.7% (95/228 tiered, derived 2026-07-16 via scripts/automation_dashboard.py), and target recovery is open work
 - 21% Evidence Level B (15 of 72 sources) - industry analysts
 - 0% Evidence Level C/D - zero low-quality sources
 - Government/Standards: 8 sources (CISA, MITRE, DARPA, NSA, SANS)
@@ -430,7 +430,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Phase 1 Success Metrics (ACHIEVED ✅)
 - ✅ 283 footnotes extracted from best practices document
 - ✅ 76+ sources documented with standardized format
-- ✅ 41.9% Evidence Level A (live-derived 2026-07-16: 95 of 227 tiered; the Phase-1 "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit)
+- ✅ 41.7% Evidence Level A (live-derived 2026-07-16: 95 of 228 tiered; the Phase-1 "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit)
 - ✅ 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10) with quantitative confidence scoring
 - ✅ All book chapters have supporting citations
 - ✅ Blog integration demonstrated (1 post, 4-6× speedup)
