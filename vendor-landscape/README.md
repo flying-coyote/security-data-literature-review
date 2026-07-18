@@ -43,15 +43,15 @@ not happen:
 **Status**: Pre-Partnership Planning with MCP Vendor Baseline Complete (October 23, 2025)
 
 **Baseline Data Available**: 71-vendor database from MCP Server enrichment provides ready-made foundation:
-- ~~110 evidence sources (84% Tier A quality = 92 Tier A sources)~~ [2026-07-16: Oct-2025 rollup, superseded; the live vendor-database.json evidence_summary reads 85 sources / 70 Tier A, and its meta.notes flags the rollups as pending recomputation at the quarterly vendor-database.json regeneration — quote none until then]
-- 46.5% analyst coverage (Gartner MQ, Forrester Wave for 33 vendors)
-- 35.2% production validation (Fortune 500 deployments for 25 OSS vendors)
+- ~~110 evidence sources (84% Tier A quality = 92 Tier A sources)~~ [2026-07-16: Oct-2025 rollup, superseded; quote-none ruling] [2026-07-18: regeneration landed (2026-Q3-c) — rollups now derived by `scripts/derive_vendor_rollups.py --stats` (gated); snapshot at this edit: 92 logical sources, 38 Tier A (41.3%); see `quarterly-updates/2026-Q3-regen-2026-07-18.md`]
+- ~~46.5% analyst coverage (Gartner MQ, Forrester Wave for 33 vendors)~~ [2026-07-18: Oct-2025 figure, superseded — derived analyst coverage is 30/71 vendors (42.3%), and every analyst leg now cites a live public primary at Tier C per the vendor-channel rule]
+- ~~35.2% production validation (Fortune 500 deployments for 25 OSS vendors)~~ [2026-07-18: Oct-2025 figure, superseded — derived production-deployment coverage is 18/71 vendors (25.4%)]
 - ~~Automated maintenance (weekly refresh + monthly GitHub metrics tracking)~~ [2026-07-16: no weekly refresh exists — it lived in the MCP server repo, which was archived 2026-07-01; the sync cadence is quarterly, per vendor-database.json meta]
 
 **Partnership Acceleration**: MCP vendor baseline enables:
 1. **Pilot Project Validation**: 10 query engine vendors already documented with evidence
 2. **First Quarterly Update**: ~60% effort reduction (baseline data + evidence exists)
-3. **Quality Baseline**: ~~84% Tier A evidence quality sets partnership expectations~~ [2026-07-16: Oct-2025 rollup, superseded; rollups pending recomputation at the quarterly vendor-database.json regeneration — quote none until then]
+3. **Quality Baseline**: ~~84% Tier A evidence quality sets partnership expectations~~ [2026-07-16: Oct-2025 rollup, superseded] [2026-07-18: derived baseline is 41.3% Tier A (38/92 legs) after the 2026-Q3-c regeneration — the honest number a partnership pitch should carry]
 
 **Partnership Roadmap**:
 1. **Phase 1: Partnership Establishment**
@@ -136,7 +136,7 @@ Supports Chapter 9 "Technology State Assessment" with quarterly vendor landscape
 
 **Quick Facts**:
 - 71 vendors across 9 categories (SIEM, Query Engine, Streaming, Lakehouse, ETL/ELT, Observability, Object Storage, Data Catalog, Data Virtualization)
-- ~~110 evidence sources (84% Tier A quality)~~ [2026-07-16: Oct-2025 rollup, superseded; rollups pending recomputation at the quarterly vendor-database.json regeneration — quote none until then]
+- ~~110 evidence sources (84% Tier A quality)~~ [2026-07-16: Oct-2025 rollup, superseded] [2026-07-18: derived — 92 logical sources, 41.3% Tier A (2026-Q3-c regeneration)]
 - Zero Tier D (marketing) sources
 - ~~Automated maintenance: Weekly refresh validates analyst URLs, monthly GitHub metrics tracking~~ [2026-07-16: no weekly refresh exists — it lived in the MCP server repo, which was archived 2026-07-01; the sync cadence is quarterly, per vendor-database.json meta]
 - Quality grade: A (Excellent) - 92.7/100
@@ -144,13 +144,13 @@ Supports Chapter 9 "Technology State Assessment" with quarterly vendor landscape
 **Integration Value**:
 - IT Harvest partnership accelerated (10 query engines baseline ready)
 - First quarterly update effort reduced ~60% (baseline data exists)
-- ~~Academic publication validated (110 evidence sources)~~ [2026-07-16: Oct-2025 rollup figure, superseded — rollups pending recomputation at the quarterly vendor-database.json regeneration; quote none until then]
+- ~~Academic publication validated (110 evidence sources)~~ [2026-07-16: Oct-2025 rollup figure, superseded] [2026-07-18: derived — 92 logical sources after the 2026-Q3-c regeneration]
 - Vendor landscape population ready (vendor-database.json seeds directory)
 
 **Files**:
-- Source: `vendor-database.json` (71 vendors, 79 vendor-level evidence sources)
+- Source: `vendor-database.json` (71 vendors; evidence rollups derived and gated by `scripts/derive_vendor_rollups.py` since the 2026-Q3-c regeneration, 2026-07-18)
 - Integration Summary: `MCP-VENDOR-INTEGRATION-SUMMARY.md` (~25 KB comprehensive documentation)
 - MCP Server: `security-architect-mcp-server/data/vendor_database.json` (sync retired — that repo was archived 2026-07-01; this JSON is now the frozen 71-vendor baseline, with current vendor coverage living in the book's appendix-g)
 
 ---
-**Last Updated**: 2026-07-16 (stale-rollup strikes: Oct-2025 evidence rollups and the weekly-refresh claim superseded — see inline notes); prior content update October 23, 2025 (MCP vendor baseline complete - IT Harvest partnership ready for acceleration)
+**Last Updated**: 2026-07-18 (2026-Q3-c full regeneration landed: rollups derived and gated, DR-2 deltas folded, under-review legs adjudicated at live primaries — see `quarterly-updates/2026-Q3-regen-2026-07-18.md`); prior: 2026-07-16 stale-rollup strikes; October 23, 2025 (MCP vendor baseline complete)

@@ -13,4 +13,8 @@ set -u
 root="$(git rev-parse --show-toplevel)"
 bash "$root/scripts/secret-scan.sh" || exit 1
 python3 "$root/scripts/count_reconcile.py" --staged || exit 1
+# Vendor rollup gate: only when the vendor database itself is staged (cheap otherwise-skip)
+if git diff --cached --name-only | grep -q '^vendor-landscape/vendor-database.json$'; then
+  python3 "$root/scripts/derive_vendor_rollups.py" --check || exit 1
+fi
 exit 0

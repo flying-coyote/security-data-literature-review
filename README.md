@@ -117,7 +117,7 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - Monthly updates tracked between quarterly snapshots
 
 **Evidence Sources** (Hybrid Model):
-1. **MCP vendor database** (automated weekly refresh) - 71 vendors, 84% Tier A
+1. **Vendor database** (quarterly regeneration, rollups gated by `scripts/derive_vendor_rollups.py`) - 71 vendors; 92 evidence legs, 41.3% Tier A at the 2026-07-18 regen
 2. **Writing insights** (securitydataworks.com /writing) - source identification from essay + LinkedIn feedback
 3. **Expert network validation** (Lisa Cao, Jake Thomas, Paul Agbabian, etc.)
 4. **Community feedback** (practitioner corrections, reader feedback)
@@ -144,11 +144,10 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - "Being wrong publicly" philosophy: rapid iteration, intellectual honesty
 - (The original Security Data Commons Substack was retired 2026-05-24; do not poll it)
 
-**MCP Vendor Database** (Automation Foundation):
-- 71 vendors, 84% Tier A quality, 110 evidence sources
-- Automated weekly refresh + monthly GitHub metrics
+**Vendor Database** (`vendor-landscape/`):
+- 71 vendors; evidence rollups derived per vendor by `scripts/derive_vendor_rollups.py` (pre-commit/CI gated) — 92 logical sources, 41.3% Tier A at the 2026-Q3-c regeneration (2026-07-18)
+- Quarterly regeneration cadence (the MCP-era weekly refresh retired with that repo's 2026-07-01 archive)
 - Replaces IT Harvest dependency (partnership now optional)
-- 75-90% burden reduction enables sustainable monthly updates
 
 **Expert Network**:
 - Validation interviews (Lisa Cao, Jake Thomas, Paul Agbabian, etc.)
