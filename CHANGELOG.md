@@ -9,6 +9,14 @@ and this project adheres to semantic versioning for documentation releases.
 
 ## [Unreleased]
 
+### 2026-07-18 (second-screen adjudication completed, owner "Adjudicate the six"): all eleven flags now adjudicated, zero further admissions
+
+The six flags logged unadjudicated since the 2026-07-16 pass ran through the same two-pass instrument (full-text retrieval, protocol §4 criteria, venue integrity at the 14-of-40-refused bar, adversarial refutation on any ADMIT; workflow `wf_747c8088-663`) and all six exclusions were CONFIRMED — no admission, so no corpus ripple:
+
+- Two confirmed on the original criterion at full text: the FRUCT multitenant-SOC paper is a parametric literature review whose 13 cited primaries "form the sole evidence base" (E3 exactly), and the federated-data-fabric paper states in its own introduction that it "synthesizes existing technologies... rather than presenting empirical benchmarks" (I3 by the paper's own words — with its venue, IJCESEN, independently failing integrity).
+- Four refused on venue integrity or source verifiability: IJCESEN (publisher of record an individual person, absent from DOAJ, 56→501→1,050 papers across 2023→2025, Scopus-discontinued per convergent secondaries) appears behind two of the six; two IEEE-paywalled full texts (the AI-streaming framework, the web-event-monitoring architecture) have no legal OA route, so the numbers the review would cite cannot be verified at the primary — the Stream4Flow per-item verification bar is unreachable; the Flink/Kafka fraud pipeline had topical merit (the second screen was right that auth-log impossible-travel detection is security-operations content) but its venue fails integrity, which moots the question.
+- Record: `methods/second-screen-adjudication-2026-07-18.json` (deliberately not wired into the taxonomy — zero entries to contribute). §2.8's mitigation sentence updated from "six flags remain logged unadjudicated" to the completed two-pass story; main text 14,791 → 14,859 words (still inside the 10-15k JCS band; abstract untouched at exactly 350); PDF rebuilt.
+
 ### 2026-07-18 (vendor-database 2026-Q3-c full regeneration, owner-ordered "complete it all the way"): DR-2 folded, rollups derived and gated, scrubbed legs re-derived at live primaries
 
 The three items `vendor-database.json` meta.notes had recorded as owed since 2026-07-10/11, executed to completion — full account in `vendor-landscape/quarterly-updates/2026-Q3-regen-2026-07-18.md` (the first real file in that directory):
