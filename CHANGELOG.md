@@ -9,6 +9,10 @@ and this project adheres to semantic versioning for documentation releases.
 
 ## [Unreleased]
 
+### 2026-07-18 (July re-tier + catalog proposal STAGED, owner "stage it"): 18 rows awaiting approve/strike, nothing applied
+
+`methods/RETIER-PROPOSAL-2026-07-18.md` stages the July research packet's remainder plus the regen's tier-class finding as per-row owner decisions: 3 freshness re-tiers (Cloudera Impala A→B; ClickHouse-vs-Snowflake B→C with the Snowflake-contested caveat; Kai Waehner repoint to the live 2026 edition) with the TEI split recorded as already done; 9 catalog candidates with per-row calls (Bilot USENIX'25 first as the packet's only clean A, the measured RQ12/RQ13 set recommended, the Realm.Security self-reported metric recommended struck); 3 leads (the Matryoshka arXiv lead confirmed a duplicate of the existing L3753 entry); the vendor-docs B→C sweep (7 legs) with trino-connectors-docs separated for an owner ruling on how the authorship line maps to ASF-project docs; and one staging-time observation (ClickHouse-vs-Elasticsearch at A in the same vendor-benchmark class, proposed A→B for consistency). Net impact if applied as recommended: Level A ≈ 40.0% — derived at execution. No bibliography or vendor-database edit in this commit.
+
 ### 2026-07-18 (second-screen adjudication completed, owner "Adjudicate the six"): all eleven flags now adjudicated, zero further admissions
 
 The six flags logged unadjudicated since the 2026-07-16 pass ran through the same two-pass instrument (full-text retrieval, protocol §4 criteria, venue integrity at the 14-of-40-refused bar, adversarial refutation on any ADMIT; workflow `wf_747c8088-663`) and all six exclusions were CONFIRMED — no admission, so no corpus ripple:
