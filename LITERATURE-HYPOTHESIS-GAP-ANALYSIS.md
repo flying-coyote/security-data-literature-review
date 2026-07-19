@@ -185,6 +185,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 ### Literature Evidence
 
+> **OVERTURN — 2026-07-10.** Source 1 (SANS Institute) is confirmed nonexistent: the cited "Security Analytics Implementation" whitepaper does not exist and the entry was removed from MASTER-BIBLIOGRAPHY in the 2026-06-05 audit. Source 2's "5.5 month" figure is not in the cited phData post either (see the de-attribution note already on that line). H-IMPL-03 is now **5/25** with zero surviving quantitative legs (PUBLICATION-MANUSCRIPT.md §3.7; METHODOLOGY.md §5.3's correction banner). The source blocks stay verbatim below as the record of what was claimed.
+
 **Source 1**: SANS Institute - Security Analytics Implementation [^51]
 - **Finding**: Security-specific timelines differ from general data engineering
 - **Implication**: Security-specific constraints (compliance, change control, threat landscape)
@@ -201,9 +203,9 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-IMPL-03: Security Implementation Timeline Premium**
 
-**Hypothesis**: Security-focused data platform implementations require 15-30% longer timelines than general data engineering due to compliance requirements, security change control processes, and threat-informed architecture decisions (SANS [^51], Gartner [^138]).
+**Hypothesis**: Security-focused data platform implementations require 15-30% longer timelines than general data engineering due to compliance requirements, security change control processes, and threat-informed architecture decisions (SANS [^51], Gartner [^138]). *(2026-07-10: the 15-30% band and the SANS citation are withdrawn — the cited whitepaper does not exist, removed from the bibliography 2026-06-05. The qualitative direction — security constraints extend timelines — stands unquantified.)*
 
-**Evidence Level**: B (SANS, Gartner - need more security-specific validation)
+**Evidence Level**: ~~B (SANS, Gartner - need more security-specific validation)~~ — withdrawn 2026-07-10: SANS entry confirmed nonexistent (removed 2026-06-05 audit); standing is **5/25** with zero surviving quantitative legs
 
 **Relevance**:
 - Book Chapter 4 (All three journeys - realistic timeline expectations)
