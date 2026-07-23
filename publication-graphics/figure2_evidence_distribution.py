@@ -30,10 +30,10 @@ plt.rcParams['axes.linewidth'] = 0.8
 plt.rcParams['figure.dpi'] = 300
 
 # Live tally — source: scripts/count_reconcile.py Counter 2, derived from
-# MASTER-BIBLIOGRAPHY.md on 2026-07-16 (229 blocks / 227 tiered / 2 stubs).
-TALLY_DATE = '2026-07-16'
-TIERED_TOTAL = 228
-TALLY = {'A': 95, 'B': 109, 'C': 24}
+# MASTER-BIBLIOGRAPHY.md on 2026-07-23 (231 blocks / 229 tiered / 2 stubs).
+TALLY_DATE = '2026-07-23'
+TIERED_TOTAL = 229
+TALLY = {'A': 96, 'B': 109, 'C': 24}
 TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}

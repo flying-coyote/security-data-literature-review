@@ -49,6 +49,9 @@ ADJUD = REPO_ROOT / "methods" / "second-screen-adjudication-2026-07-16.json"
 # '#### ' from November 2025 until the heading fix, so they are in neither frozen
 # record above; their classifications live in this file rather than in a retro-edit.
 HEADFIX = REPO_ROOT / "methods" / "heading-fix-2026-07-16.json"
+# Fifth dated input (2026-07-23): the Apache Ossie entry added by the
+# semantic-data-layer standards pass, classified in its own dated record.
+ADDED_0723 = REPO_ROOT / "methods" / "added-2026-07-23.json"
 OUT = REPO_ROOT / "methods" / "source-taxonomy.json"
 
 ACADEMIC = "academic_peer_reviewed"
@@ -87,6 +90,10 @@ def load_counts():
 
     if ADJUD.exists():
         for entry in json.loads(ADJUD.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    if ADDED_0723.exists():
+        for entry in json.loads(ADDED_0723.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
 
     return counts, len(added)
