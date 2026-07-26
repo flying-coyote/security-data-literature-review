@@ -64,7 +64,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 ---
 
-**"Delta Lake: The Definitive Guide" by Denny Lee, Tathagata Das, et al.** (O'Reilly, 2024)
+**"Delta Lake: The Definitive Guide" by Denny Lee, Tristen Wentling, Scott Haines, and Prashanth Babu** (O'Reilly, 2024)
 - **Why Relevant**: If considering Delta Lake table format (Databricks-centric architecture)
 - **Security-Relevant Topics**:
   - Chapter 2: Delta Lake architecture (ACID transactions, time-travel)

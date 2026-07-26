@@ -268,7 +268,7 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 **1. Existing vendor relationships influencing decision:**
 - [ ] Splunk incumbent (5+ years deployment, institutional knowledge, existing contract)
 - [ ] AWS commitment (AWS Enterprise Support, heavy AWS investment, prefer AWS-native)
-- [ ] Microsoft E5 licensing (Office 365 E5 includes Sentinel—"free" SIEM economically attractive)
+- [ ] Microsoft 365 E5 licensing (the Sentinel benefit is a data grant of up to 5 MB per user per day for Microsoft 365 E5/A5/F5/G5 and the matching Security SKUs, not a free SIEM; Office 365 E5 alone does not qualify)
 - [ ] Other cloud commitment: [ ] Azure [ ] GCP
 
 **2. Vendor consolidation preference:**
