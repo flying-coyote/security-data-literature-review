@@ -483,6 +483,17 @@ Security architects who speak both languages can use mature tooling, proven desi
 
 ---
 
+#### Ontology / Reasoner / Entailment
+**Security Term**: Ontology (D3FEND), knowledge graph, semantic model
+**Data Engineering Equivalent**: A schema with typed relationships plus machine-checkable constraints (the closest everyday analogue: a data model whose keys and types a checker can actually verify)
+**Context**:
+- **Ontology** = a schema that also states what things *are* and how classes relate (a subclass tree a machine can walk), so a defense watching a general class provably covers the specific kinds beneath it
+- **Reasoner** (e.g., ELK) = the program that computes what the ontology's claims imply and reports contradictions; the "does this even compile" check for a knowledge model
+- **Entailment** = a connection the reasoner infers rather than one a human wrote (Chapter 4's D3FEND join runs on these)
+**Why It Matters**: The payoff is fail-loud semantics: a wrong change to the model gets refused by the reasoner before it ships (Appendix H.5.7 walks a real case) instead of surfacing months later as silently wrong query results
+
+---
+
 #### Parsing / Field Extraction
 **Security Term**: Parsing, field extraction, log parsing
 **Data Engineering Equivalent**: Schema-on-read, JSON parsing, CSV parsing, regex extraction
