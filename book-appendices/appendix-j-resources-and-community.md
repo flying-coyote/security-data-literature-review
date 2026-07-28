@@ -1198,7 +1198,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 
 ---
 
-**Subsurface Data Conference (Dremio/Starburst)**
+**Subsurface Data Conference (Iceberg community; originally organized by Dremio)**
 
 **When**: Fall annually
 **Where**: Virtual
@@ -1508,7 +1508,7 @@ In my experience, the most engagement comes from posts that lead with a concrete
 
 **Month 1**: Consume content
 - Subscribe: Data Engineering Weekly newsletter
-- Follow blogs: Security Data Works (securitydataworks.com — the security-specific one), Tabular, Netflix, Dremio, Starburst
+- Follow blogs: Security Data Works (securitydataworks.com, the security-specific one), Databricks (where the Tabular team's Iceberg writing continued after the 2024 acquisition), Netflix, Dremio, Starburst
 - Listen: Data Engineering Podcast (commute/exercise)
 
 **Month 3**: Contribute

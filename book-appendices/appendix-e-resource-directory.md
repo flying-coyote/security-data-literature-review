@@ -133,7 +133,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - Ryan Blue keynotes (Iceberg design principles, roadmap)
 - Production case studies (Netflix, Apple, Tabular [now Databricks, acquired June 2024])
 
-**Slack Community**: Apache Iceberg Slack (iceberg-community.slack.com)
+**Slack Community**: Apache Iceberg Slack, request an invite through https://iceberg.apache.org/community/ (workspace: apache-iceberg.slack.com)
 - #help-iceberg: Troubleshooting queries, table management
 - #implementation: Best practices, design patterns
 - #security: Limited traffic, but growing (use #help-iceberg for now)
@@ -434,7 +434,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 **Learning Path**:
 1. **Week 1**: Deploy Polaris locally (Docker), connect Trino/Dremio to Polaris catalog
 2. **Week 2**: Test multi-engine writes (Spark writes, Trino reads—catalog coordination)
-3. **Week 3**: Polaris Cloud trial (if managed service preferred)
+3. **Week 3**: production decision, either staying on self-hosted Apache Polaris or evaluating Snowflake Horizon Catalog if you want the managed option (Snowflake Open Catalog is closed to new accounts as of the 2026-07-09 re-check)
 
 ---
 
@@ -617,7 +617,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 | Community | Slack URL | Primary Topics | Activity Level |
 |------------------|----------------------------|------------------------------|----------------|
-| **Apache Iceberg** | iceberg-community.slack.com | Iceberg table format, maintenance, multi-engine | High (1,000+ members) |
+| **Apache Iceberg** | apache-iceberg.slack.com (invite: iceberg.apache.org/community/) | Iceberg table format, maintenance, multi-engine | High (1,000+ members) |
 | **OCSF** | ocsf.io (invite: info@ocsf.io) | Schema mapping, vendor adoption | High (500+ members) |
 | **Trino** | trino.io/slack | Trino queries, connectors, federation | High (3,000+ members) |
 | **Dremio** | community.dremio.com | Dremio Reflections, BI integration | Medium-High (800+ members) |
@@ -890,7 +890,7 @@ This directory covers books, documentation, communities, conferences, and though
 
 **Weeks 1-2: Advanced Concepts**
 - [ ] Read Joe Reis Chapters 5-9 (ingestion, queries, pipelines, transformation)
-- [ ] Read Martin Kleppmann Chapters 4, 10, 11 (storage engines, batch, streaming)
+- [ ] Read Martin Kleppmann Chapters 3, 10, 11 (storage engines, batch, streaming)
 - [ ] Set up AWS Athena free tier, query security data on S3
 
 **Weeks 3-4: Tool-Specific Learning**

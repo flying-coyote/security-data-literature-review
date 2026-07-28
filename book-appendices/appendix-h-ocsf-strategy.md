@@ -223,7 +223,7 @@ Cost calculation:
 - Technical debt from "quick and dirty" migrations (poor rule translations, incomplete coverage)
 - Opportunity cost (security team focused on migration vs new threat detection capabilities)
 
-**This is why the Fortune 500 financial institution stayed with Splunk**: a $6.9M migration dominated by content re-mapping, plus 18 months of degraded operations and the risk of detection gaps, was judged not worth it, even though switching to Sentinel would have lowered the annual license bill. What drove the decision was the switching cost and the disruption rather than the sticker price. The sticker price is not trivial either, since the G-Cloud 14 published list (April 2024) puts Splunk Cloud platform plus Enterprise Security near $1,240/GB/day/year at this scale; the switching cost outweighing even that recurring premium is exactly what makes the lock-in hold.
+**This is why the modeled institution stayed with Splunk**: a $6.9M migration dominated by content re-mapping, plus 18 months of degraded operations and the risk of detection gaps, was judged not worth it, even though switching to Sentinel would have lowered the annual license bill. What drove the decision was the switching cost and the disruption rather than the sticker price. The sticker price is not trivial either, since the G-Cloud 14 published list (April 2024) puts Splunk Cloud platform plus Enterprise Security near $1,240/GB/day/year at this scale; the switching cost outweighing even that recurring premium is exactly what makes the lock-in hold.
 
 ---
 
@@ -797,7 +797,7 @@ BFO:Occurrent
     → D3FEND:DefensiveTechnique
       → D3FEND:D3-NTA (Network Traffic Analysis)
       → D3FEND:D3-PLA (Process Lineage Analysis)
-      → D3FEND:D3-UAA (User Account Analysis)
+      → D3FEND:D3-UBA (User Behavior Analysis)
       → D3FEND:D3-IAM (Identifier Activity Monitoring)
 ```
 
@@ -947,7 +947,7 @@ Beyond DoD, a commercial enterprise can put OCSF (with or without the ontologica
 
 Ontological grounding is powerful and it is not a cure-all, so here are the open questions I would want a reader to carry alongside the upside above.
 
-The first is that OCSF → D3FEND mapping coverage is incomplete. The `d3fend` attribute is defined in the schema, but populating it is optional, and many OCSF event classes do not have an obvious D3FEND technique to map to in the first place, so OCSF Email Activity (class 4009) could plausibly map to D3-EA (Email Analysis) or D3-MFA (Message Filtering) depending on context. The practical implication is that real-world OCSF data may not carry the `d3fend` attribute at all, which means the CCO compliance pathway exists as an architectural possibility rather than a guarantee you get for free, and the mitigation is partly out of your hands, since the OCSF community is still working through D3FEND mapping guidance across the 1.x releases.
+The first is that OCSF → D3FEND mapping coverage is incomplete. The `d3fend` attribute is defined in the schema, but populating it is optional, and many OCSF event classes do not have an obvious D3FEND technique to map to in the first place, so OCSF Email Activity (class 4009) could plausibly map to D3-MA (Message Analysis) or D3-EF (Email Filtering) depending on context. The practical implication is that real-world OCSF data may not carry the `d3fend` attribute at all, which means the CCO compliance pathway exists as an architectural possibility rather than a guarantee you get for free, and the mitigation is partly out of your hands, since the OCSF community is still working through D3FEND mapping guidance across the 1.x releases.
 
 The second is the ontology maintenance burden, because BFO, CCO, and D3FEND evolve on their own schedules separately from OCSF, which creates version-skew risk. If a future D3FEND release adds a technique like a Zero Trust Network Analysis defense, an OCSF release whose `d3fend.technique_id` enum predates it cannot represent the new technique until the schema catches up, so ontology evolution turns into schema-update pressure and a coordination cost you carry across all four moving standards.
 

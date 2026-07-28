@@ -654,7 +654,7 @@ From 83-vendor landscape:
 
 | Vendor Solution | Virtualization Layer (3 pts) | Centralized Governance (3 pts) | Low Overhead (3 pts) | Incremental Adoption (3 pts) | **Weighted Score** |
 |-----------------|----------------------------|------------------------------|-------------------|----------------------------|-------------------|
-| **Denodo Platform** | ✓✓ Native virtualization (6 pts) | ✓ RBAC + audit + compliance (3) | ✓ Fully managed (3) | ✓ API-based, region-by-region (3) | **45 points** |
+| **Denodo Platform** | ✓ Native virtualization (3) | ✓ RBAC + audit + compliance (3) | ✓ Fully managed (3) | ✓ API-based, region-by-region (3) | **36 points** |
 | **Starburst Galaxy** | ✓ Trino federation (3) | ✓ RBAC, limited audit (3) | ✓ Fully managed (3) | ⚠ Requires connector setup per region (2) | **33 points** |
 | **Dremio Cloud** | ⚠ Limited virtualization, federation via reflections (2) | ✓ RBAC (3) | ✓ Fully managed (3) | ✓ API federation possible (3) | **33 points** |
 | **IBM Cloud Pak** | ✓ Virtualization module (3) | ✓ Enterprise governance (3) | ⚠ Managed but complex setup (2) | ⚠ Requires regional deployment (1) | **27 points** |
@@ -662,7 +662,7 @@ From 83-vendor landscape:
 
 **Finalists** (Top 2 by weighted score):
 
-1. **Denodo Platform** (45 points): Purpose-built virtualization, mature governance, managed service, incremental adoption via APIs
+1. **Denodo Platform** (36 points): Purpose-built virtualization, mature governance, managed service, incremental adoption via APIs
 2. **Starburst Galaxy** (33 points): Modern Trino federation, managed service, good multi-cloud support but requires more regional coordination
 
 ### POC Evaluation
