@@ -47,11 +47,11 @@ The reference implementation organizes components into five interchangeable laye
 
 The Graph layer is usually a passthrough rather than a build decision, because the shop almost always already has somewhere its analysts work, such as Grafana, Superset, a custom hunt UI, or the incumbent SOC consoles (Splunk, Elastic, Sentinel) kept for federated read during a transition, and you can go many directions from here, including the AI tooling that increasingly sits above or beside the analytics. I don't try to be exhaustive about that overlying analytic layer, because it isn't where the trust problem lives and it changes faster than anything underneath it. The intent of this book runs the other way, to be exhaustive about the optional infrastructures underneath the analytic (storage, table format, catalog, engine, routing) that decide whether the analytic they feed is trustworthy, well-connected, and performant in the first place, and whatever interface sits on top inherits those properties rather than creating them.
 
-One honest caveat on where the catalog/Index layer earns its place: at the single-node SOC scale I test, it pulls its weight less from query performance (the engines answer sub-second whether or not a separate catalog is brokering metadata) and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake, which makes the catalog a scale-and-governance bet rather than a layer every deployment needs on day one.
+One caveat on where the catalog/Index layer earns its place: at the single-node SOC scale I test, it pulls its weight less from query performance (the engines answer sub-second whether or not a separate catalog is brokering metadata) and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake, which makes the catalog a scale-and-governance bet rather than a layer every deployment needs on day one.
 
 Each pattern below represents a different combination of these components, optimized for specific organizational constraints. The five patterns form a spectrum from fully monolithic (Pattern 4: Traditional SIEM) to fully composable (Pattern 5: MOAR Multi-Engine).
 
-One caveat keeps the interchangeability honest: it holds only when encryption stays *outside* the open file format. Parquet's own modular encryption (PME) ties an encrypted file to the library that wrote it; in lab testing, a PME-encrypted file produced by one reader was unreadable by DuckDB, Polars, DataFusion, and ClickHouse, so encrypting inside the file silently revokes the swap-any-engine property the layer model depends on (Principle 1's "swap Trino for Dremio" test fails outright). For regulated data that must be encrypted at rest, encrypt at the volume or object-store layer (SSE-S3/SSE-KMS, dm-crypt, LUKS) so the bytes the engines read stay portable, rather than inside the Parquet file, or accept that the encrypting engine becomes the only one that can read the data.
+One condition keeps the interchangeability claim narrow: it holds only when encryption stays *outside* the open file format. Parquet's own modular encryption (PME) ties an encrypted file to the library that wrote it; in lab testing, a PME-encrypted file produced by one reader was unreadable by DuckDB, Polars, DataFusion, and ClickHouse, so encrypting inside the file silently revokes the swap-any-engine property the layer model depends on (Principle 1's "swap Trino for Dremio" test fails outright). For regulated data that must be encrypted at rest, encrypt at the volume or object-store layer (SSE-S3/SSE-KMS, dm-crypt, LUKS) so the bytes the engines read stay portable, rather than inside the Parquet file, or accept that the encrypting engine becomes the only one that can read the data.
 
 ### Production Validation
 
@@ -90,7 +90,7 @@ $ ./moar swap-router   # R — router: one raw Okta event → three normalizers
 
 *Figure C-1. The swap verbs run live on the reference stack (single-host, Tier B): the answer does not move when the store, the router, or the engine is swapped. This is the reversibility claim measured, not asserted.*
 
-The honest part is how unevenly that claim is backed, and the layers are not equal. The **engine layer is the one I have actually pressure-tested for answer-equivalence** rather than asserted it, and it's the one where the gate earns its keep: a broader run across twelve publishable Parquet readers on byte-identical data found ten correct and two silently wrong (engines selected by distinct reader, because the divergence lives in the Parquet reader rather than the engine wrapped around it): a version-scoped chDB Bloom-filter undercount that reproduced with the Parquet row-group structure rather than at one fixed scale (at 10M rows under `ROW_GROUP_SIZE` 12288 as well as at 100M) and was fixed in the next point release (wrong on chDB 4.1.8, correct on 4.1.9), and a fastparquet `PLAIN_DICTIONARY` decode bug still live on the latest version (2026.5.0), so on the engine layer answer-equivalence is a measured, mechanism-isolated finding (SDW Lab, `clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md`, first-party Tier B; see Appendix I.1.5 and `H-ENGINE-ANSWER-EQUIVALENCE-01`), and the lesson is that a fast engine can return a wrong answer with no error, so the cross-engine check is a standing control, not optional ceremony. The other four layers, store and catalog and table format and router, I verify with a swap-and-confirm demonstration (one batch through each alternative, answer held constant) and otherwise rest on the open-format contract: the same Parquet bytes flow through, so a different store or catalog or router is reading or writing the same data, and the answer should not move. I have not run those layers through the same characterized at-scale, multi-implementation divergence probe that found the engine bugs, so the accurate statement is *answer-equivalence verified for the engine layer; the store, catalog, format, and router swaps are confirmed on a single batch and otherwise asserted from the open-format contract.* The reason the engine layer needed more than the contract is that an open table format guarantees every engine can *read* the bytes, not that two engines compute the *same answer* over them (the divergence lives in the read path, not the file), which is exactly where a swap can pass the "it runs" test and still be wrong.
+The honest part is how unevenly that claim is backed, and the layers are not equal. The **engine layer is the one I have actually pressure-tested for answer-equivalence** rather than asserted it, and it's the one where the gate earns its keep. A broader run across twelve publishable Parquet readers on byte-identical data found ten correct and two silently wrong, with engines selected by distinct reader because the divergence lives in the Parquet reader rather than the engine wrapped around it. The two were a version-scoped chDB Bloom-filter undercount that reproduced with the Parquet row-group structure rather than at one fixed scale (at 10M rows under `ROW_GROUP_SIZE` 12288 as well as at 100M) and was fixed in the next point release (wrong on chDB 4.1.8, correct on 4.1.9), and a fastparquet `PLAIN_DICTIONARY` decode bug still live on the latest version (2026.5.0), so on the engine layer answer-equivalence is a measured, mechanism-isolated finding (SDW Lab, `clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md`, first-party Tier B; see Appendix I.1.5 and `H-ENGINE-ANSWER-EQUIVALENCE-01`), and the lesson is that a fast engine can return a wrong answer with no error, so the cross-engine check is a standing control, not optional ceremony. The other four layers, store and catalog and table format and router, I verify with a swap-and-confirm demonstration (one batch through each alternative, answer held constant) and otherwise rest on the open-format contract: the same Parquet bytes flow through, so a different store or catalog or router is reading or writing the same data, and the answer should not move. I have not run those layers through the same characterized at-scale, multi-implementation divergence probe that found the engine bugs, so the accurate statement is *answer-equivalence verified for the engine layer; the store, catalog, format, and router swaps are confirmed on a single batch and otherwise asserted from the open-format contract.* The reason the engine layer needed more than the contract is that an open table format guarantees every engine can *read* the bytes, not that two engines compute the *same answer* over them (the divergence lives in the read path rather than in the file), which is exactly where a swap can pass the "it runs" test and still be wrong.
 
 One file-format facet to track sits a layer below the table format: Vortex (now a Linux Foundation project, installable as `vortex-data`) claims large read speedups over Parquet. Measured against zstd-Parquet on an OCSF corpus, the gain was real but single-digit (roughly 1.7–2.6× on a full decode, 3.3–4× on a needle) rather than the headline 10–100×, with a scale-dependent footprint and identical answers. It is not yet an Iceberg data file format (Iceberg 1.11.0 shipped the pluggable File Format API, but the Vortex plugin is still open), so for now it is a standalone datapoint, a candidate third answer to the read-speed question alongside the V4 metadata work and DuckLake if that plugin lands.
 
@@ -189,7 +189,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Storage (Non-PHI)** | AWS S3 (Standard + Glacier) | Cloud | Cost-optimized tiered storage |
 | **Table Format** | Apache Iceberg | Both | Unified format, query across on-prem + cloud |
 | **Catalog** | Polaris (self-hosted + Cloud) | Hybrid | Federate on-prem + cloud tables |
-| **Query Engine** | Dremio Cloud | Cloud (managed) | 0-1 data engineer constraint, BI acceleration |
+| **Query Engine** | Dremio Cloud | Cloud (managed) | 0-1 data engineer constraint, BI acceleration; SAP-owned since July 2026, so re-check pricing and roadmap before committing (Principle 1 covers why the Iceberg layer keeps that swap reversible) |
 | **Table Maintenance** | Apache Spark | On-prem (scheduled) | Iceberg compaction, snapshot expiration |
 | **Orchestration** | Apache Airflow | On-prem | DAG scheduling for batch jobs |
 
@@ -613,7 +613,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - Operational simplicity valued over cost optimization
 - SEC fraud detection mandate (financial services) or equivalent regulatory driver
 
-**Solution**: Splunk Enterprise Security (turnkey platform)
+**Solution**: Splunk Enterprise Security (single-vendor platform, ingestion through detection content in one licensed stack)
 
 ---
 
@@ -830,7 +830,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 | Workload | Engine | Why This Engine | Alternative |
 |----------|--------|----------------|-------------|
-| **Real-time Dashboards** | Dremio Cloud | Reflections (<1 sec), BI acceleration | ClickHouse (won the most aggregation-shaped query in my single-host Tier-B join bench; more infrastructure to operate) |
+| **Real-time Dashboards** | Dremio Cloud | Reflections (<1 sec), BI acceleration; SAP-owned since July 2026, so re-check pricing and roadmap before committing (Principle 1) | ClickHouse (won the most aggregation-shaped query in my single-host Tier-B join bench; more infrastructure to operate) |
 | **Ad-hoc Threat Hunting** | Trino | MPP interactive, federation, no cache overhead | Athena (serverless but slower) |
 | **Table Maintenance** | Apache Spark | Most mature for Iceberg compaction (Trino/Flink/Dremio also support it) | Trino / Flink / Dremio |
 | **Edge Preprocessing** | DuckDB | volume reduction at the edge (the 50-80% figure is illustrative and filter-dependent, not a measured constant), Lambda-compatible | Flink (overkill for simple filtering) |
@@ -870,7 +870,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 **Applies to**: Pattern 1 (Healthcare Hybrid), Pattern 2 (AWS-First), Pattern 5 (Multi-Engine)
 
-Appendix I.4B works through the trade-off in detail, and the short version is that the published upside claims decompose into three very different sources (units-and-attribution corrected 2026-07-10 against the SDW essay): Snowflake's own figure is roughly a 78% query improvement with 21% cost reduction on single-table aggregations (a percentage, not a multiplier; vendor docs, Tier C), the 9,000× top end comes from a single-developer PostgreSQL case study (Sid Ngeth, 2025: 350×–9,000× on a synthetic Rails dataset; Tier D anecdote, not vendor literature), and a practitioner Splunk write-up reports ~270× (unsafehex.com, Tier C), while the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth), which is the honest independently-reproduced anchor for the claim, but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
+Appendix I.4B works through the trade-off in detail, and the short version is that the published upside claims decompose into three very different sources (units-and-attribution corrected 2026-07-10 against the SDW essay): Snowflake's own figure is roughly a 78% query improvement with 21% cost reduction on single-table aggregations (a percentage, not a multiplier; vendor docs, Tier C), the 9,000× top end comes from a single-developer PostgreSQL case study (Sid Ngeth, 2025: 350×–9,000× on a synthetic Rails dataset; Tier D anecdote, not vendor literature), and a practitioner Splunk write-up reports ~270× (unsafehex.com, Tier C), while the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth; SDW Lab, `ocsf-mv-acceleration/results/RESULTS.md`, 20M OCSF events across 20 streaming batches), which is the independently-reproduced anchor for the claim, but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
 
 ### When to Add Materialized Views to Your Architecture
 
@@ -1007,10 +1007,10 @@ Both examples below are illustrative arithmetic on A.6-model assumptions (assume
 **After Dremio Reflection**:
 - Refresh cost: $1.50/day (incremental, process new hour's data)
 - Query cost: $0.05 per query × 288 = $14.40/day
-- **Total cost**: $15.90/day
-- **Savings**: $128/day = **$46,720/year** for single dashboard tile
+- **Total cost**: $15.90/day, plus $200/month reflection storage
+- **Savings**: $128/day = **$46,720/year** for a single dashboard tile, before reflection storage
 
-**ROI**: Reflection storage cost ($200/month) vs savings ($46K/year) = **19× annual ROI**
+**ROI**: netting the $2.4K/year of reflection storage out of that gross figure leaves about **$44.3K/year**, roughly **18×** against the storage line
 
 **Example 2: Threat Hunting (Pattern 5 Multi-Engine)**
 
@@ -1052,6 +1052,6 @@ These reference architectures provide:
 - **Technology stacks** with alternatives and rationale
 - **Cost profiles** with annual TCO estimates
 - **When to use** (and when NOT to use) each pattern
-- **Migration paths** (phased rollout timelines)
+- **Migration paths** (phased rollout timelines, Patterns 1-3)
 
 **Next**: Appendix D (Glossary Translation Guide) provides security ↔ data engineering terminology translations.

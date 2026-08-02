@@ -11,9 +11,9 @@ tags: [vendor-landscape, siem, query-engine, iceberg, security-data, cost-compar
 
 **How to use**: Reference this appendix when evaluating vendors for your architecture. Use the Decision Worksheets (Appendix A) to score vendors against your requirements. The evidence ratings (A-D) tell you how well each vendor's claims are validated, so for production work I'd start from the Tier A/B entries and treat C/D as needing your own due diligence first.
 
-**Data Source**: This appendix is maintained manually; last reviewed July 10, 2026 (full 93-row link sweep: 1 dead URL fixed, 7 moved URLs repointed, 6 rebrand/ownership annotations added); same-day vendor-delta pass applied 16 primary-verified 2026 changes from the Gemini DR-2 intake (see repo CHANGELOG).
+**Data Source**: This appendix is maintained manually; the content and link sweep last ran July 10, 2026 (full 93-row link sweep: 1 dead URL fixed, 7 moved URLs repointed, 6 rebrand/ownership annotations added), and pricing was re-verified July 13, 2026 on the rows marked "(verified 2026-07)"; the same-day vendor-delta pass applied 16 primary-verified 2026 changes from the Gemini DR-2 intake (see repo CHANGELOG).
 
-**Last Updated**: July 10, 2026
+**Last Updated**: content and link sweep July 10, 2026; pricing re-verified July 13, 2026
 **Pricing basis**: Q3 2026 review 2026-07-13 (per-entry "(verified 2026-07)" marks what was actually re-verified; unmarked figures remain Q4 2025); due for quarterly review. Cost ranges are quoted in the currency of the cited pricelist: USD unless marked £, because some G-Cloud 14 schedules publish in GBP (Chronicle, CrowdStrike Falcon LogScale) while others are dollar-denominated (Splunk's EMEA distributor schedule), and GBP figures are left as published with no conversion applied. Figures are based on publicly available pricing and practitioner-reported costs as of Q4 2025, except for the rows carrying a "(verified 2026-07)" marker, where the figure was re-checked against the vendor's public pricing page during the Q3 2026 review and is current as of July 2026. Volume baselines are specified per vendor (e.g., "for 5TB/day"). Actual costs vary by contract terms, volume commitments, and negotiation.
 
 **Sourcing note (read this first)**: This is a vendor *landscape*, so most rows describe what each vendor says it does. Treat the capability and performance language in the Description column as vendor-stated (Tier C) unless an entry carries an explicit independent source. Pricing figures fall into two buckets: rows tagged **G-Cloud 14** are anchored to the UK Government Digital Marketplace G-Cloud 14 pricelist (2024, the same source used in Appendix A.6), and everything else is vendor-published list pricing or practitioner-reported and should be read as Tier C, a starting point for your own due diligence, not an independently verified quote. The per-row Evidence rating (A-D, defined at the foot of this appendix) is the formal version of this same caution, and the line it draws on the cost column is this: a figure anchored to an independently checkable published pricelist or public rate card (a G-Cloud 14 schedule, a hyperscaler price page, a vendor's posted per-unit rates) can rate A because the list rate itself is verifiable even though your negotiated cost will differ, while a practitioner-reported range or an unpublished estimate rates C regardless of how established the vendor is, which matches how Appendix A tiers the same figures.
@@ -149,13 +149,15 @@ tags: [vendor-landscape, siem, query-engine, iceberg, security-data, cost-compar
 
 **Measured pipeline-engine throughput (Tier B, first-party).** The capability language above is vendor-stated, so for the OSS pipeline engines I ran my own throughput bench rather than take the marketing numbers at face value. The workload is a light filter-and-route over 1,000,000 Zeek conn.log NDJSON events (0.397 GB), parse the JSON, drop three `conn_state` values, on a single 14-vCPU WSL2 host with warm cache and medians over three trials (sdw-lab-benchmarks `sdpp-ingest-throughput`, run 2026-06-08). The numbers are host-specific absolutes, not universal constants, but the shape is what transfers across hosts. The fair comparison is the JSON-parsing class, where every engine does the same work of lifting the NDJSON and filtering on a parsed field:
 
-| Engine (version) | Discard sink (events/s, no write) | File-write sink (events/s) |
-|---|---|---|
-| Vector 0.40.0 | ~120,337 | ~26,137 |
-| rsyslog 8.2312.0 (`mmjsonparse`) | ~110,627 | ~93,740 |
-| OpenTelemetry Collector Contrib 0.153.0 | ~103,824 | ~30,496 |
-| Tenzir 6.0.0 | ~88,339 | ~89,606 |
-| Grafana Alloy 1.16.3 | ~63,919 | ~22,096 |
+| Engine (version) | Shape | Discard sink (events/s, no write) | File-write sink (events/s) |
+|---|---|---|---|
+| Vector 0.40.0 | stdin | ~120,337 | ~26,137 |
+| rsyslog 8.2312.0 (`mmjsonparse`) | daemon | ~110,627 | ~93,740 |
+| OpenTelemetry Collector Contrib 0.153.0 | daemon | ~103,824 | ~30,496 |
+| Tenzir 6.0.0 | stdin | ~88,339 | ~89,606 |
+| Grafana Alloy 1.16.3 | daemon | ~63,919 | ~22,096 |
+
+Read the shape column before comparing rows, because the two shapes carry different timing models. Vector and Tenzir drain the corpus off a pipe and exit at EOF, so they are timed to process exit, while rsyslog, the OpenTelemetry Collector, and Alloy tail the file as daemons that never exit at EOF and are polled to completion instead, which means you should compare within a shape first and across shapes with care.
 
 The ordering reshuffles once you add the real cost of re-serializing and writing to a file (Tenzir held roughly flat while Vector, OTel Collector, and Alloy each lost most of their headroom), so the engine that wins the read-and-filter race is not the one that wins the full read-filter-write route. Two honesty caveats sit on these numbers. The Tenzir 6.0.0 static build segfaulted intermittently on shutdown (roughly one trial in six, on both sink types), so its row is a reliability finding about that build as much as a throughput number, and the medians are over the trials that completed. And rsyslog has a faster raw-line-match mode (about 206,970 events/s discard, 149,182 to file) that beats everything here, but it substring-matches the raw line instead of parsing the JSON and filtering a field, so it is solving a lighter, different problem and is not in the comparison class. What this is not is a measurement of mapping fidelity, how faithfully any engine normalizes Zeek to OCSF, which is a separate question this bench does not touch.
 
@@ -220,12 +222,12 @@ This vendor landscape is maintained using the following methodology:
 1. **Initial Population**: Vendors identified through literature review, expert interviews, and industry analysis
 2. **Capability Mapping**: Each vendor is summarized here by category, description, deployment model, cost profile, and evidence-quality rating
 3. **Evidence Collection**: Cost and capability claims are checked against available sources and tiered A-D by how well they are corroborated; many capability and list-price claims are vendor-published (Tier C/D) and carry that caveat rather than an independent validation
-4. **Continuous Updates**: Maintained manually; last reviewed July 10, 2026
+4. **Continuous Updates**: Maintained manually; the content and link sweep last ran July 10, 2026, and pricing was re-verified July 13, 2026
 5. **Expert Review**: Quarterly review with industry practitioners for accuracy
 
 **Contributing**: If you identify missing vendors or inaccurate information, please open an issue or PR against this repository.
 
 ---
 
-*This appendix is maintained manually; last reviewed July 10, 2026.*
+*This appendix is maintained manually; the content and link sweep last ran July 10, 2026, and pricing was re-verified July 13, 2026.*
 

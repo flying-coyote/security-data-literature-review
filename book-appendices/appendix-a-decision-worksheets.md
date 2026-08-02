@@ -57,7 +57,7 @@ Check all that apply. Any vendor missing even ONE Tier 1 requirement is immediat
 - [ ] Dual capability: Streaming (real-time) + batch (historical) in same platform
 
 **Data Format:**
-- [ ] Open table format required (Apache Iceberg, V3 spec, or Delta Lake; vendor-neutral migration path)
+- [ ] Open table format required (Apache Iceberg V3 spec or later, or Delta Lake; vendor-neutral migration path)
 - [ ] Proprietary format acceptable (vendor lock-in tolerance)
 - [ ] SQL-queryable format (not raw JSON/CSV without schema)
 
@@ -149,7 +149,7 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 - [ ] Mobile application (on-call incident response)
 
 **Ecosystem Integrations:**
-- [ ] SOAR platform integration (Splunk Phantom, Palo Alto XSOAR)
+- [ ] SOAR platform integration (Splunk SOAR, formerly Phantom; Palo Alto Networks Cortex XSOAR)
 - [ ] Ticketing integration (Jira, ServiceNow)
 - [ ] ChatOps integration (Slack, Teams notifications)
 - [ ] SSO/SAML integration (Okta, Azure AD)
@@ -273,7 +273,7 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 
 **2. Vendor consolidation preference:**
 - [ ] Prefer fewer vendors (limit vendor relationships for procurement simplicity)
-- [ ] Prefer best-of-breed (multiple vendors acceptable if each excels at specific capability)
+- [ ] Prefer specialized point tools (multiple vendors acceptable if each excels at a specific capability)
 - [ ] No preference (agnostic, driven by technical merit)
 
 **3. Open-source tolerance:**
@@ -567,7 +567,7 @@ Extrapolate POC costs to full production volume (actual daily ingest rate, targe
 | Integration Factor | Vendor A | Vendor B | Vendor C |
 |--------------------|----------|----------|----------|
 | **Data source connectors** (EDR, cloud, SaaS, out-of-box vs. custom) | ___/10 supported OOTB | ___/10 | ___/10 |
-| **SOAR integration** (Splunk Phantom, Palo Alto XSOAR, custom) | [ ] Native [ ] API [ ] None | [ ] Native [ ] API [ ] None | [ ] Native [ ] API [ ] None |
+| **SOAR integration** (Splunk SOAR, Palo Alto Networks Cortex XSOAR, custom) | [ ] Native [ ] API [ ] None | [ ] Native [ ] API [ ] None | [ ] Native [ ] API [ ] None |
 | **SSO/SAML** (Okta, Azure AD integration) | [ ] Yes [ ] No | [ ] Yes [ ] No | [ ] Yes [ ] No |
 | **Monitoring/observability** (query performance metrics, cost tracking) | [ ] Built-in [ ] Third-party [ ] None | [ ] Built-in [ ] Third-party [ ] None | [ ] Built-in [ ] Third-party [ ] None |
 | **Operational burden** (team estimate: hours/week for maintenance) | _____ hrs/week | _____ hrs/week | _____ hrs/week |
@@ -716,7 +716,7 @@ Traditional SIEM pricing breaks at petabyte scale. For 7-year compliance retenti
 
 **Published-list anchor (UK G-Cloud 14).** These bands are grounded in Splunk's public-sector framework pricing. The G-Cloud 14 EMEA distributor schedule (April 2024) lists Splunk Cloud platform ingest on a declining per-GB/day curve, from $2,049/GB/day/year at 5-9 GB/day down to $793.50 at the 2,000-4,999 GB/day band (2 TB/day) and $764.75 above 5,000 GB/day, with the self-hosted Enterprise term license on a parallel curve ($598/GB/day/year at 2 TB/day). Splunk Enterprise Security, the correlation and detection-content layer an actual SOC runs, is a separate per-GB/day subscription on top, adding $448.50/GB/day/year at the 2 TB/day band, so two rates matter and they differ by roughly 2×. The platform-only schema-on-read baseline is $598-794/GB/day/year of published list at 2 TB/day, which after the 30-50% enterprise discounting that large multi-year Splunk contracts carry is the $300-400/GB/day/year this model uses, so the $600K above is the discounted-platform floor. The full SOC stack, platform plus Enterprise Security, lists near $1,240/GB/day/year, or roughly $620-870 once discounted, and that is the rate the worked MOAR-variant examples price.
 
-Marcus's modeled $12M SIEM-expansion figure sits at his full 12 TB/day: Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000+ GB/day band is $1,196/GB/day/year, so 12,000 GB/day is about $14.35M of published list, which the multi-year enterprise discounting described above (the Metropolitan Police locked 10%, and larger multi-year commitments run deeper) brings down to the roughly $12M modeled. The Metropolitan Police's Splunk SaaS deal is a named instance of the discounting at work (GLA decision PCD 1331, signed 2022-11-23, published 2023-09-27, at https://www.london.gov.uk/pcd-1331-dps-connect-audit-splunk-saas-bjp-extremis; the year corrected 2026-07-10 from "2024"): the Directorate of Professional Standards bought Splunk through reseller CDW for £780K in 2022/23 plus £1.774M ongoing over five years, and the PCD records verbatim that "Splunk have offered a special offer to the MPS, including an overall 10% discount when signing upfront for a 5 year Splunk SaaS solution" against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
+Marcus's modeled $12M SIEM-expansion figure sits at his full 12 TB/day: Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000+ GB/day band is $1,196/GB/day/year, so 12,000 GB/day is about $14.35M of published list, which the multi-year enterprise discounting described above (the Metropolitan Police locked 10%, and larger multi-year commitments run deeper) brings down to the roughly $12M modeled. The Metropolitan Police's Splunk SaaS deal is a named instance of the discounting at work (GLA decision PCD 1331, signed 2022-11-23, published 2023-09-27; URL in Sources): the Directorate of Professional Standards bought Splunk through reseller CDW for £780K in 2022/23 plus £1.774M ongoing over five years, and the PCD records verbatim that "Splunk have offered a special offer to the MPS, including an overall 10% discount when signing upfront for a 5 year Splunk SaaS solution" against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
 
 ---
 
@@ -740,6 +740,8 @@ Marcus's modeled $12M SIEM-expansion figure sits at his full 12 TB/day: Cloud pl
 | **Trino (self-hosted)** | EC2/EKS cluster | Compute hours | $8K-$20K/month (r6i.4xlarge × 3-5 nodes; directional, Tier C) |
 | **Dremio Cloud** | Managed SaaS | Compute hours + storage | $10K-$25K/month (standard tier; directional, Tier C) |
 | **Starburst Enterprise** | Managed or self-hosted | Compute hours + support | $15K-$35K/month (enterprise support; directional, Tier C) |
+
+SAP completed its acquisition of Dremio in July 2026, so the Dremio Cloud SKU name and packaging may have moved since these rates were gathered; what the row prices is an engine reading open tables rather than a brand, so the capability survives the rebrand even if the product name does not.
 
 **3. Ingestion Pipeline** (Cribl/Tenzir/OSS; directional, Tier C):
 - See the pipeline cost bands below (Cribl/Tenzir/OSS)
@@ -949,6 +951,7 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 **Sources & Validation**:
 - Microsoft Sentinel public pricing: azure.microsoft.com/en-us/pricing/details/microsoft-sentinel/, cross-checked against the Azure Retail Prices API (prices.azure.com/api/retail/prices, serviceName Sentinel), verified 2026-07-06
 - Splunk pricing: UK G-Cloud 14 EMEA distributor pricelist, assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/92220/511766451042724-pricing-document-2024-04-23-1505.pdf, dated 2024-04-23 (validated against public list price + 30-50% enterprise discounting)
+- Metropolitan Police Splunk SaaS discounting: GLA decision PCD 1331, www.london.gov.uk/pcd-1331-dps-connect-audit-splunk-saas-bjp-extremis, signed 2022-11-23 and published 2023-09-27 (the publication year corrected 2026-07-10 from "2024")
 - AWS S3 pricing: aws.amazon.com/s3/pricing
 - AWS Athena pricing: aws.amazon.com/athena/pricing
 - TCO calculation based on AWS S3 pricing (2025) and schema-on-read SIEM list pricing (30-50% enterprise discount applied); the resulting reduction vs SIEM at 10 TB/day scale is a model-derived output of the Steps 2-5 comparison (large, in the high-double-digit percent range; see the Step 5 table and reading note for the band), not a measured invoice-to-invoice result

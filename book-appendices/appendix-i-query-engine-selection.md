@@ -17,7 +17,11 @@ The handbook's platform-selection decision material set up the choice of platfor
 
 This question comes up in almost every security data architecture review, and it's tempting: learn one engine, use it everywhere, simplify operations. The answer is mostly no, though, and the reason is worth working through, because security operations run a few different kinds of query that pull engine design in opposite directions. Different workloads end up demanding different engines.
 
-Organizations that force all workloads through a single query engine pay for it in several ways at once, and the penalty comes from workload mismatch rather than from one modern engine being broadly faster than another: frustrated analysts asking why a dashboard takes 30 seconds to load on a batch-oriented engine, unnecessarily high costs from paying for capabilities they don't use, and operational friction as SOC dashboards compete with threat hunting scans for the same resources.
+Organizations that force all workloads through a single query engine pay for it in several ways at once, and the penalty comes from workload mismatch rather than from one modern engine being broadly faster than another:
+
+- frustrated analysts asking why a dashboard takes 30 seconds to load on a batch-oriented engine
+- unnecessarily high costs from paying for capabilities they don't use
+- operational friction as SOC dashboards compete with threat hunting scans for the same resources
 
 This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (H-ARCH-02: 0.97 confidence; Section I.6.3's worked scenario lands at 63% within that range) compared to single-platform approaches while providing better performance.
 
@@ -59,7 +63,7 @@ Security operations demand a combination of query patterns that no single engine
 
 When an engine can't deliver on that expectation across 30- or 90-day windows, the cost isn't just slow queries; it's what happens to the analyst, which is the incident that opens this book: a month of a skilled person's life spent wrestling data infrastructure because the query layer couldn't interrogate its own telemetry at the depth and duration the investigation actually needed.
 
-See Section I.3.2 for full threat hunting query examples with Trino performance benchmarks.
+See Section I.3.2 for full threat-hunting query examples with illustrative Trino latency estimates, which are not a first-party measured run.
 
 ---
 
@@ -80,7 +84,7 @@ See Section I.3.2 for full threat hunting query examples with Trino performance 
 - **Critical requirement**: ACID guarantees, and only Apache Spark has full Iceberg maintenance procedures
 - **Without maintenance**: Query performance degrades 50-90× over 30-90 days as small files accumulate (Anti-Pattern #10: "Skipping Spark Maintenance")
 
-See Section I.2 for detailed maintenance code, scheduling, and the cost of skipping maintenance.
+See Section I.2 for the maintenance procedures, the security-specific schedule, and the cost of skipping maintenance.
 
 ---
 
@@ -263,7 +267,7 @@ Trino is built for unpredictable, first-time queries with complex WHERE clauses 
 
 "AWS Athena is Starburst/Trino at its core," said a data-platform practitioner [Personal communication, October 2025].
 
-That's a reasonable signal of production maturity, though an existence proof rather than a benchmark: AWS evaluated query engines (Presto, Spark, custom) and selected Trino as Athena's foundation, which tells you it runs at extreme scale (millions of customers, exabyte-scale data) without telling you how it compares head-to-head. My scored join bench does compare head-to-head (Section I.1.5; single host, Tier B, answers oracle-verified), and Trino did not win that contest: it carried the largest join tax of the engines tested, with joined queries running about 4.35× their flat-table equivalents where StarRocks and ClickHouse sat near 1.8×, and it trailed StarRocks by roughly 2.15× on the heaviest six-table join. Every SOC-scale join still came back on Trino in under 1.5 seconds, though, which is comfortably interactive, so the case for Trino in this role rests where this section puts it, on federation, fast startup, and operational fit, rather than on join latency, where StarRocks led the heavier queries but the SOC-scale suite was too compressed to make speed the deciding criterion.
+That's a reasonable signal of production maturity, though an existence proof rather than a benchmark: Athena launched on Presto in 2016 and its engine v3 is Trino-lineage, so the practitioner's shorthand is right about the engine family without being literally right about the product, and what it tells you is that this lineage runs at extreme scale (millions of customers, exabyte-scale data) without telling you how it compares head-to-head. My scored join bench does compare head-to-head (Section I.1.5; single host, Tier B, answers oracle-verified), and Trino did not win that contest: it carried the largest join tax of the engines tested, with joined queries running about 4.35× their flat-table equivalents where StarRocks and ClickHouse sat near 1.8×, and it trailed StarRocks by roughly 2.15× on the heaviest six-table join. Every SOC-scale join still came back on Trino in under 1.5 seconds, though, which is comfortably interactive, so the case for Trino in this role rests where this section puts it, on federation, fast startup, and operational fit, rather than on join latency, where StarRocks led the heavier queries but the SOC-scale suite was too compressed to make speed the deciding criterion.
 
 ### I.3.2 Threat Hunting Query Patterns
 
@@ -455,7 +459,7 @@ REFRESH EVERY 5 MINUTES  -- Incremental refresh
 
 ### I.4.3 Security Use Case: Real-Time Threat Visibility
 
-Typical SOC dashboard tiles (failed authentication at a 15-min window, 30-sec refresh, <500ms; high-risk CloudTrail events at a 1-hour window, 1-min refresh; network anomalies at a 5-min window; risky users at a 24-hour window) all achieve <1 second latency with Dremio Reflections through automatic aggregation management and incremental refresh (process only new data every 5 minutes, not full recompute).
+Typical SOC dashboard tiles (failed authentication at a 15-min window, 30-sec refresh, <500ms; high-risk CloudTrail events at a 1-hour window, 1-min refresh; network anomalies at a 5-min window; risky users at a 24-hour window) all achieve <1 second latency with Dremio Reflections through automatic aggregation management and incremental refresh (process only new data every 5 minutes, not full recompute), though these are illustrative figures carrying the same caveat as the Reflections numbers in I.4.2, which are not a first-party run.
 
 ### I.4.4 When NOT to Use Dremio
 
@@ -679,7 +683,7 @@ Snowflake suspends ALL dependent materialized views on ANY column modification, 
 
 **Failure Mode #3: Complex Queries Force Full Refresh**
 
-The q-hierarchical dichotomy (a result from incremental-view-maintenance theory, which separates queries whose results can be updated incrementally from those that cannot) shows that some patterns can't be maintained incrementally at all:
+The q-hierarchical dichotomy, a result from incremental-view-maintenance theory that separates queries whose results can be updated incrementally from those that cannot, shows that some patterns can't be maintained incrementally at all (Berkholz, Keppeler and Schweikardt, "Answering Conjunctive Queries under Updates", PODS 2017, arXiv:1702.06370; Tier A, and the dichotomy is proved for self-join-free conjunctive queries):
 
 | Query Pattern | Why Full Refresh Required |
 |---------------|---------------------------|
@@ -1182,7 +1186,7 @@ The findings that hold up across the production accounts and my own lab runs con
 | **Iceberg Maintenance** | Spark | Hours (nightly) | File compaction, snapshot expiration (REQUIRED) |
 | **Edge Preprocessing** | DuckDB Lambda | 1-5 minutes | Filter/aggregate before lakehouse (50-80% reduction) |
 
-A handful of implementation principles fall out of all of this. Budget for Spark maintenance from Day 1, because the performance collapse from skipping it is the expensive kind to recover from. Segregate the workloads by cluster so SOC dashboards never compete with threat hunts for the same memory. Invest in edge preprocessing where the data warrants it, since at TB/day scale it pays back 5-10× inside 30 days. And start simple, with Trino and Spark, adding Dremio only once dashboard latency is an actual problem rather than an anticipated one.
+A handful of implementation principles fall out of all of this. Budget for Spark maintenance from Day 1, because the performance collapse from skipping it is the expensive kind to recover from. Segregate the workloads by cluster so SOC dashboards never compete with threat hunts for the same memory. Invest in edge preprocessing where the data warrants it, since once raw volume runs 5-10× larger than the valuable subset it pays for itself within 30 days, which is the threshold Section I.5.4 sets. And start simple, with Trino and Spark, adding Dremio only once dashboard latency is an actual problem rather than an anticipated one.
 
 The harder thing to carry out of this appendix isn't the routing table, which mostly writes itself once you've named the workloads, but the obligation that comes with running several engines over one open table. The portability story sells the engines as interchangeable, and for the SQL and roughly for the latency they are, but answer-equivalence is not something you inherit for free: a fast engine can be silently wrong, as the chDB Bloom-filter undercount and the tail-row-group equality-filter undercount both were, reading clean at 10M and short at 100M with no error raised. So the team that chooses this architecture is the one now accountable for a standing cross-engine equality check on a few known-answer queries, re-run whenever an engine is added or a version bumped, type-aware enough to compare integers exactly and floating-point within a tolerance, and reaching down to the Parquet page checksums that some readers verify and others ignore. That verification discipline is the price of the cost savings and the workload fit, and it's the part no benchmark hands you.
 
@@ -1204,6 +1208,9 @@ The harder thing to carry out of this appendix isn't the routing table, which mo
 - [DuckLake v1.0 release](https://ducklake.select/2026/04/13/ducklake-10/) (April 13, 2026)
 - [DuckLake Data Inlining mechanics](https://ducklake.select/2026/04/02/data-inlining-in-ducklake/)
 - [MotherDuck DuckLake hosted support announcement](https://motherduck.com/blog/announcing-ducklake-1-0-on-motherduck/)
+
+**Academic sources**:
+- Christoph Berkholz, Jens Keppeler, Nicole Schweikardt, ["Answering Conjunctive Queries under Updates"](https://doi.org/10.1145/3034786.3034789), PODS 2017, pp. 303-318 (preprint arXiv:1702.06370): the q-hierarchical dichotomy invoked in Section I.4B.2 (Tier A)
 
 **Validated hypotheses** (from knowledge base):
 - H-ARCH-02: Hybrid architectures inevitable (0.97 confidence)

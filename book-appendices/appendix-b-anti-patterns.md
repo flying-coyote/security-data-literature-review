@@ -145,12 +145,12 @@ The strategic exposure is harder to put a number on but just as real. The vendor
 ### Prevention Strategies
 
 **1. Open Table Format Requirement** (Tier 1 Mandatory, Worksheet A.1):
-- Apache Iceberg (V3) or Delta Lake, vendor-neutral, multi-engine read/write
+- Apache Iceberg (V3 spec or later) or Delta Lake, vendor-neutral, multi-engine read/write
 - Rule out Splunk tsidx, Elasticsearch indices, and other proprietary formats, because they pin you to a single reader
 - The payoff is data portability: you can change query engines without migrating the data
 
 **2. OCSF Schema Standardization** (Appendix H strategy):
-- Normalize security data to the Open Cybersecurity Schema Framework (OCSF v1.x; current release v1.8.0)
+- Normalize security data to the Open Cybersecurity Schema Framework (OCSF v1.x; v1.8.0 at the time of writing, released 2026-03-18)
 - Write detection rules against OCSF fields rather than vendor-specific field names
 - The payoff is that switching platforms lets you reuse the OCSF-based detection content with no rewrite
 
@@ -316,7 +316,7 @@ And the team burns out. Twelve to eighteen months of "we're migrating" with no e
 
 ### Description
 
-Manually mapping security data source schemas to OCSF (v1.x; current release v1.8.0) or another normalized schema without using LLM-assisted tooling. In my experience this runs illustratively 6-16× longer in development time and leaves more semantic validation errors behind, but treat that multiplier as an order-of-magnitude from practitioner experience, consistent with the CISA Zeek-OCSF project, rather than a benchmarked rate.
+Manually mapping security data source schemas to OCSF (v1.x; v1.8.0 at the time of writing, released 2026-03-18) or another normalized schema without using LLM-assisted tooling. In my experience this runs illustratively 6-16× longer in development time and leaves more semantic validation errors behind, but treat that multiplier as an order-of-magnitude from practitioner experience, consistent with the CISA Zeek-OCSF project, rather than a benchmarked rate.
 
 **Symptoms** (the hour figures here are illustrative practitioner estimates, consistent with the rest of this anti-pattern, not a benchmarked rate):
 - Data engineer spends 2-4 hours per data source manually writing transformation logic
@@ -340,7 +340,7 @@ Manually mapping security data source schemas to OCSF (v1.x; current release v1.
 
 **Timeline Impact**:
 - Planned: "OCSF normalization will take 4 weeks"
-- Reality without LLM: 2-4 weeks (manual mapping slower than estimated)
+- Reality without LLM: 2-4 weeks for the mapping alone (the 80-160 hours across 40 sources stated above), so at the high end the schema mapping consumes the entire 4-week plan before validation and testing begin
 - Reality with LLM: 2 weeks (initial mappings generated quickly, validation/refinement remains)
 
 **Quality Impact** (illustrative error rates from practitioner experience, not a formally measured rate; Tier C):
@@ -399,7 +399,7 @@ FROM crowdstrike_raw
 - **Step 2**: Data engineer reviews ambiguous fields (15-30 min)
 - **Step 3**: Test with sample data (10-15 min)
 - **Step 4**: Validate detection rules work correctly (30-45 min)
-- **Total**: 90-150 minutes (vs. 2-4 hours manual)
+- **Total**: 100-150 minutes (vs. 2-4 hours manual)
 
 **3. Iterative Refinement (Not Perfection)**:
 - An LLM gets most mappings right on the first pass in my experience (illustratively the large majority, not a measured rate), so start using the output immediately rather than holding it back for review
@@ -478,7 +478,10 @@ The first priority is the work analysts do dozens of times a day:
 
 The second priority is the detection content that matters: the 50-100 rules that fire frequently and generate actionable alerts, ahead of rules that haven't fired in six months, which can wait for Phase 3.
 
-The third priority is proving value before expanding, and the proof is concrete moments the team can point to: by Week 4, the new platform finds ransomware lateral movement the old SIEM missed; by Month 2, a threat hunt that used to time out at 20 minutes returns in 45 seconds; by Month 3, the CFO sees $200K of savings against the quarterly Splunk spend.
+The third priority is proving value before expanding, and the proof is concrete moments the team can point to:
+- by Week 4, the new platform finds ransomware lateral movement the old SIEM missed
+- by Month 2, a threat hunt that used to time out at 20 minutes returns in 45 seconds
+- by Month 3, the CFO sees $200K of savings against the quarterly Splunk spend
 
 ---
 
@@ -656,7 +659,7 @@ Use OCSF as the portability layer, so the transformation logic stays vendor-agno
 
 **Why OCSF enables portability**:
 - The OCSF field names are the same across Cribl, Tenzir, and Logstash, so the schema travels with you
-- The OCSF v1.x spec (current release v1.8.0) defines the semantics, so any pipeline can implement against it
+- The OCSF v1.x spec (v1.8.0 at the time of writing, released 2026-03-18) defines the semantics, so any pipeline can implement against it
 - Rewriting the transforms to OCSF in a new pipeline goes faster when the target is specified rather than reverse-engineered (illustratively 60-80%, directional)
 
 **Strategy 2: Preserve Raw Data Layer**

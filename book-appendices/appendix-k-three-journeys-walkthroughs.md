@@ -81,8 +81,8 @@ Applying the six mandatory requirements:
 
 ✗ **Eliminated: 56 vendors** (examples with disqualification reasons):
 
-- **Cloud-only platforms** (18 vendors): Snowflake, BigQuery, Databricks Cloud, Confluent Cloud, plus Chronicle (a Google-Cloud-dependent SaaS that cannot run on-prem at all), which cannot support the on-prem PHI requirement
-- **Proprietary data formats** (22 vendors): Splunk, Sumo Logic, Datadog, LogRhythm, whose proprietary storage formats make migration operationally infeasible and violate the open-format requirement
+- **Cloud-only platforms** (18 vendors): Snowflake, BigQuery, Databricks Cloud, Confluent Cloud, plus Google Security Operations (the product formerly sold as Chronicle, a Google-Cloud-dependent SaaS that cannot run on-prem at all), which cannot support the on-prem PHI requirement
+- **Proprietary data formats** (22 vendors): Splunk, Sumo Logic, Datadog, LogRhythm (now part of Exabeam after the 2024 merger), whose proprietary storage formats make migration operationally infeasible and violate the open-format requirement
 - **Complex operational requirements** (12 vendors): Self-managed Kafka + Spark + Trino, Apache Druid clusters, ClickHouse distributed, which exceed 0-1 engineer capacity
 - **Non-SQL primary interface** (4 vendors): Platforms requiring Python/Scala for queries (raw Spark without SQL layer), which violate analyst skill match
 
@@ -123,7 +123,7 @@ Applying the four strongly preferred requirements with 3× scoring weight:
 Jennifer designed proof-of-concept testing realistic threat hunting workflows with actual security data:
 
 **Test Dataset**:
-- 90 days historical logs (8 TB total)
+- 90 days historical logs, sampled to 8 TB (roughly 3.6% of the 225 TB that ninety days at the 2.5 TB/day profile would land)
 - Mix: 20% on-prem clinical systems (simulating PHI), 80% cloud/SaaS
 - Representative sources: CrowdStrike EDR, Zeek network, AWS CloudTrail, Okta
 
@@ -314,7 +314,7 @@ Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an 
 - **Expanding the schema-on-read SIEM to full 2.5 TB/day, 30-day retention**: $1.6M+/year = $4.8M+ over 3 years (roughly 33-71% MORE expensive, with 30-day retention vs 3-year)
 - **Baseline batch lakehouse (from practitioner tools)**: $2.5M over 3 years for generic 2 TB/day deployment
 
-**Why Jennifer's TCO runs roughly 15-45% higher than the $2.5M baseline**: HIPAA compliance premium adds 15-20% to timeline (change control, audit requirements, security validation) and ongoing costs (dedicated security engineer FTE for compliance, professional services for secure Kubernetes deployment, dual environment complexity with hybrid on-prem/cloud split), and the top of the band reflects the fully-staffed 4.5-FTE case rather than additional compliance cost.
+**Why Jennifer's TCO runs roughly 12-44% higher than the $2.5M baseline**: HIPAA compliance premium adds 15-20% to timeline (change control, audit requirements, security validation) and ongoing costs (dedicated security engineer FTE for compliance, professional services for secure Kubernetes deployment, dual environment complexity with hybrid on-prem/cloud split), and the top of the band reflects the fully-staffed 4.5-FTE case rather than additional compliance cost.
 
 The economics here are driven by the batch-first choice: it keeps the team size manageable (3.5-4.5 FTEs against 9-11 for a streaming build) and the budget predictable, and HIPAA adds complexity at the margins without changing the underlying numbers, because the hybrid on-prem/cloud split is operationally workable for a regulated industry where data sovereignty is mandatory rather than optional.
 
@@ -538,7 +538,7 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 
 2. **Team Reality Shifted**: Lost 2 of 3 data engineers to attrition, couldn't hire replacements within 90-day SEC deadline (0 available data engineering capacity for Athena/Iceberg maintenance)
 
-3. **Timeline Pressure**: 90-day SEC compliance deadline impossible with greenfield Athena deployment (3-4 months minimum), but achievable with Splunk turnkey fraud detection rules (day-1 availability)
+3. **Timeline Pressure**: 90-day SEC compliance deadline impossible with greenfield Athena deployment (3-4 months minimum), but achievable with Splunk's pre-built fraud-detection rules (day-1 availability)
 
 4. **Operational Complexity During Crisis**: Troubleshooting the Athena + Starburst + Iceberg stack requires coordinating across AWS support (Athena), Starburst support (connectors), and the internal team (Iceberg maintenance), which is unacceptable during 3 AM fraud incidents vs single Splunk support call
 
@@ -780,7 +780,7 @@ The POC surfaced three lessons worth carrying into the decision. The first is th
 - Infrastructure (regional clusters): $300K/year (AWS + Azure + GCP)
 - Data transfer: $100K/year (cluster-to-cluster communication)
 
-**Cost vs capability trade-off**: 34% cheaper than Denodo ($1.2M vs $1.8M) but higher operational complexity and regional disruption
+**Cost vs capability trade-off**: roughly a third cheaper than Denodo ($1.2M vs $1.8M) but higher operational complexity and regional disruption
 
 On these results Priya selected the Denodo Platform for global virtualization; the five-point decision rationale and the $1.8M/year cost breakdown are in her variant summary in the handbook's variants chapter.
 
@@ -891,7 +891,7 @@ Denodo queries APIs on-demand (when analyst submits SQL). Cannot correlate real-
 **Reality**: Real-time detection remains regional responsibility
 - Regional Splunk/Sentinel/QRadar handle real-time correlation (within their region, <30 second latency)
 - Denodo for historical threat hunting only (cross-region investigation after alert from regional SIEM)
-- No vendor currently solves real-time cross-region correlation with data sovereignty compliance (would require streaming data cross-border, illegal under GDPR/China law)
+- No vendor I have found solves real-time cross-region correlation while holding data-sovereignty compliance, and the obstacle looks structural, since correlating inside a 30-second window would mean streaming raw events across a border, which the sovereignty rules Priya has to satisfy do not permit (Tier D, my own read of the category rather than an exhaustive survey)
 
 **3. Source heterogeneity limits**: Denodo only as good as source API quality
 
@@ -944,15 +944,15 @@ Priya's Denodo virtualization approach for EU/US/China data sovereignty represen
 - Month 4-6: Cross-region query federation testing + GDPR/China law compliance validation with legal team + query pushdown optimization
 - Month 7-9: Security use case migration (threat hunting playbooks adapted for federated queries) + analyst training + compliance audit documentation
 
-**3-Year Total Cost of Ownership (TCO)**: $9.4M-11M
+**3-Year Total Cost of Ownership (TCO)**: $9.3M-10.9M
 - Implementation: $1.2M-1.6M (one-time: 6-9 months × 7-8 FTEs, Denodo Professional Services, compliance validation)
-- Operations: $8.2M-9.4M (3 years × $2.7M-3.1M annual operational budget)
+- Operations: $8.1M-9.3M (3 years × $2.7M-3.1M annual operational budget)
 - Denodo Licensing: $3.6M (3 years × $1.2M)
 - **Note**: Denodo licensing included in operational budget above, not double-counted
 
 **Comparison to Alternatives**:
 - **SIEM Consolidation (schema-on-read SIEM cloud, global)**: $8.5M/year = $25.5M over 3 years (roughly 2.3-2.7× MORE expensive, but **violates GDPR and China Cybersecurity Law**, so not viable)
-- **Lakehouse Federation (Iceberg + Trino multi-cloud)**: $2.1M/year = $6.3M over 3 years (roughly 33-43% CHEAPER, but requires regional S3 export pipelines = high political friction with autonomous regional IT teams, 6-12 month delays)
+- **Lakehouse Federation (Iceberg + Trino multi-cloud)**: $2.1M/year = $6.3M over 3 years (roughly 32-42% CHEAPER, but requires regional S3 export pipelines = high political friction with autonomous regional IT teams, 6-12 month delays)
 - **Manual Coordination (status quo)**: $0 new cost, but 4-6 hours per cross-region investigation (unacceptable operational burden, investigators abandon cross-region hunts)
 - **Baseline batch lakehouse (single-region)**: $2.5M over 3 years for 2 TB/day (from practitioner tools)
 

@@ -116,7 +116,7 @@ def zeek_conn_to_ocsf(zeek_df):
 - No additional tools required (Python/SQL standard skills)
 
 **Cons**:
-- **Does not scale**: at the illustrative 3 hours/source above, 50 log sources works out to roughly 150 hours, on the order of 3-4 weeks full-time (arithmetic from the planning figure, not a measured project total)
+- **Does not scale**: at the midpoint of the 2-4 hours/source above, call it 3 hours, 50 log sources works out to roughly 150 hours, on the order of 3-4 weeks full-time (arithmetic from the planning figure, not a measured project total)
 - Error-prone (field name typos, semantic misalignment)
 - Maintenance burden (OCSF schema updates require manual review + code changes)
 
@@ -273,18 +273,18 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 **Comparison to manual** (illustrative, both figures from the planning estimates above):
 - Manual: 2-4 hours per source
 - LLM-assisted: 15-20 minutes per source
-- **Speedup**: roughly 6-9× faster, the efficiency gain the CISA Zeek-OCSF project reported on its own work rather than the ratio of the two per-source estimates above, which run a little wider (Tier B, self-assessed; not a measured benchmark)
+- **Speedup**: roughly 6-9× faster, the efficiency gain the CISA Zeek-OCSF project reported on its own work rather than the ratio of the two per-source estimates above, which run 6× to 16× on the endpoints (Tier B, self-assessed; not a measured benchmark)
 
 **Accuracy**: roughly 95% field-mapping correctness, as reported by the CISA Zeek-OCSF project across 20 Zeek protocols (the CISA-facing power-query phase set this appendix describes; the repository's full unified set later grew to 101 protocols, so both counts are real in the source) and roughly 2,900 lines of M code; treat that as the project's own working figure (Tier B, self-assessed and illustrative, not an independently published rate) rather than a benchmark you can cite as measured. Appendix H deliberately speaks only directionally about this same project's accuracy, and I keep the worked numbers here because a tactical sizing guide needs planning figures, though they carry the same self-assessed status either way.
 
 **Pros**:
 - Scales: at the illustrative 20 minutes/source, 50 sources is roughly 16 hours, on the order of 2 days against the 3-4 weeks the manual estimate implies (arithmetic from the planning figures, not a measured project total)
-- Accuracy: roughly 95% with semantic validation in the CISA project's own accounting (peer review catches the remainder); an illustrative working figure (Tier B, self-assessed), not a formally published rate
+- Accuracy: roughly 95% with semantic validation in the CISA project's own accounting (peer review catches most of the remainder); an illustrative working figure (Tier B, self-assessed), not a formally published rate
 - Transparent: Power Query M is reviewable by non-programmers (an Excel user can validate)
 - Maintainable: OCSF schema updates → re-run LLM prompt → updated transformations
 
 **Cons**:
-- Requires LLM access (a frontier API, GPT-class or Claude-class; an illustrative order-of-magnitude of $50-$200 total for 50 sources, since per-token pricing shifts over time; treat it as a sizing estimate, not a quoted price)
+- Requires LLM access (a frontier API, GPT-class or Claude-class; on the order of $50-$200 total for 50 sources, which is a sizing estimate rather than a quoted price, since per-token pricing shifts over time)
 - Peer review still required, because you cannot fully automate the semantic validation; that part stays a human judgment call
 - Medium confidence fields need extra validation (illustratively on the order of a fifth to a third of fields, from the CISA project's experience rather than a published measurement)
 
@@ -374,7 +374,7 @@ Field names deceive you if you trust them, because `bytes` in one schema does no
 
 **Without semantic validation**: Detection rule "alert on >1 GB outbound traffic" triggers on wrong field → false negatives (misses exfiltration) or false positives (alerts on download traffic).
 
-Comparing field DESCRIPTIONS rather than names is what catches most mapping errors before they reach production. The CISA Zeek-OCSF project experience suggests roughly 80-85% of errors are caught this way (Tier B, self-assessed), which is best read as an illustrative order-of-magnitude rather than a formally published rate.
+Comparing field DESCRIPTIONS rather than names is what catches most mapping errors before they reach production. Of the errors that survive the LLM pass, the CISA Zeek-OCSF project experience suggests semantic validation catches roughly 80-85% (Tier B, self-assessed), which is best read as an illustrative order-of-magnitude rather than a formally published rate.
 
 ### 5-Step Semantic Validation Process
 
@@ -486,7 +486,7 @@ AddedRcode = Table.AddColumn(Previous, "rcode", each
 - OCSF `rcode` = string (human-readable: "NOERROR", "NXDOMAIN")
 - **Corrected mapping**: `rcode` → `rcode_id`, `rcode_name` → `rcode` ✓
 
-Across the 20 Zeek protocols in the CISA project, semantic validation (comparing descriptions, not names) caught most of the mapping errors before production deployment. The roughly 80-85% figure is an illustrative, self-assessed estimate (Tier B), not a formally published CISA measurement.
+Across the 20 Zeek protocols in the CISA project, semantic validation (comparing descriptions, not names) caught most of the mapping errors before production deployment. The roughly 80-85% figure is the share of the errors surviving the LLM pass that this step caught, and it is an illustrative, self-assessed estimate (Tier B) rather than a formally published CISA measurement.
 
 ---
 

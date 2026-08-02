@@ -27,7 +27,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - [OCSF](#ocsf-open-cybersecurity-schema-framework) | [MITRE ATT&CK](#mitre-attck) | [D3FEND](#d3fend) | [NIST](#nist-cybersecurity-framework)
 
 **Communities**:
-- [Slack Channels](#slack-communities) | [Conferences](#conferences) | [Thought Leaders](#thought-leaders-to-follow) | [Blogs & Newsletters](#blogs--newsletters)
+- [Community Forums](#community-forums) | [Conferences](#conferences) | [Thought Leaders](#thought-leaders-to-follow) | [Blogs & Newsletters](#blogs--newsletters)
 
 **Companion**:
 - [Companion Essays](#companion-essays-security-data-works) (chapter-to-post mapping for further reading)
@@ -124,7 +124,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
   - Evolution: Schema evolution for OCSF v1.7 → v1.8
   - Maintenance: Compaction, snapshot expiration, orphan file cleanup
 
-**Iceberg Blog** (Ryan Blue, creator): https://iceberg.apache.org/blog/
+**Apache Iceberg project blog** (posts from the maintainers, including Iceberg co-creator Ryan Blue): https://iceberg.apache.org/blog/
 - "Why We Built Iceberg" (foundational post)
 - "Iceberg Table Evolution" (schema changes without downtime)
 - "Partition Evolution" (repartition without data rewrite)
@@ -217,8 +217,8 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 **Dremio Community** (Discourse forum, not Slack): https://community.dremio.com/
 - Active community, responsive Dremio engineers
-- #reflections: Dashboard optimization questions
-- #iceberg: Dremio + Iceberg best practices
+- Reflections topics: dashboard optimization questions
+- Iceberg topics: Dremio + Iceberg best practices
 
 **When to Use Dremio**:
 - Dashboard-heavy workload (SOC dashboards refreshing every 30-60 seconds)
@@ -263,7 +263,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 **Athena + Iceberg**: https://docs.aws.amazon.com/athena/latest/ug/querying-iceberg.html
 - Athena v3 reads and writes Iceberg format-version 2 tables (time-travel, partition evolution); confirm current format-version support against the AWS docs before relying on V3-spec features
 
-**Cost Optimization**: $5 per TB scanned → Optimize via partitioning, Parquet columnar format, Iceberg metadata filtering
+**Cost Optimization**: $5 per TB scanned (AWS us-east-1 list rate; confirm current AWS pricing before quoting it) → Optimize via partitioning, Parquet columnar format, Iceberg metadata filtering
 
 **Learning Path**: If AWS-first (Pattern 2, Appendix C), Athena is the primary query engine, so start here
 
@@ -613,9 +613,9 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 ---
 
-## Slack Communities
+## Community Forums
 
-| Community | Slack URL | Primary Topics | Activity Level |
+| Community | Where | Primary Topics | Activity Level |
 |------------------|----------------------------|------------------------------|----------------|
 | **Apache Iceberg** | apache-iceberg.slack.com (invite: iceberg.apache.org/community/) | Iceberg table format, maintenance, multi-engine | High (1,000+ members) |
 | **OCSF** | ocsf.io (invite: info@ocsf.io) | Schema mapping, vendor adoption | High (500+ members) |
@@ -649,7 +649,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 - **Registration**: trino.io/community.html
 
 ### RSA Conference
-- **When**: Annually (April, San Francisco + various)
+- **When**: Annually (late April to early May, San Francisco + various)
 - **Focus**: Cybersecurity industry trends, vendor expo
 - **Security Relevance**: OCSF adoption talks, security data panels
 - **Registration**: rsaconference.com
@@ -671,7 +671,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 - Newsletter: joereis.substack.com
 - Focus: Data engineering principles, anti-patterns, career advice
 
-**Ryan Blue** (Apache Iceberg creator, Tabular co-founder; now at Databricks, 2024)
+**Ryan Blue** (Apache Iceberg co-creator, Tabular co-founder; now at Databricks, 2024)
 - Twitter/X: @rdblue
 - Conference talks: YouTube "Ryan Blue Subsurface" or "Ryan Blue Iceberg"
 - Focus: Iceberg design, table formats, lakehouse architecture
@@ -773,7 +773,7 @@ So use this map as "further reading" for any chapter. Links go to the live essay
 | [The MOAR Stack: Security Data Lakehouse Reference Architecture](https://securitydataworks.com/thesis/moar) | **Appendix C** (component model and reference architecture) |
 | [Apache Iceberg (Why It's Important to Security)](https://securitydataworks.com/writing/lakehouse/iceberg-v3-thesis-shift) † | **Appendix D, Appendix I**, table-format capabilities and the V3/V4 shift |
 | [Iceberg vs Delta Lake for Security Data](https://securitydataworks.com/writing/lakehouse/iceberg-vs-delta) | **the variants chapter**, the decision framework built on Netflix/Insider production evidence |
-| [Unity Catalog vs Polaris vs Nessie](https://securitydataworks.com/writing/catalogs/catalog-decision) | **Appendix I** covers catalog selection for fine-grained security governance |
+| [Unity Catalog vs Polaris vs Nessie](https://securitydataworks.com/writing/catalogs/catalog-decision) | **Appendix D** carries the catalog-selection decision (Unity, Polaris, Nessie, Gravitino) as the governance enforcement point, and **Appendix C** places the catalog as the I component of L-I-G-E-R |
 | [dbt for Security Data Transformation](https://securitydataworks.com/writing/engines/dbt-for-security) | **Appendix D, Appendix H** (OCSF mapping patterns with dbt) |
 | [ETL vs ELT for Security Data](https://securitydataworks.com/writing/pipelines/etl-vs-elt) | **Appendix D**, cost implications at scale and data ownership models |
 | [Iceberg Table Maintenance at Scale](https://securitydataworks.com/writing/lakehouse/iceberg-maintenance) | **Appendix I**, the compaction, snapshot-expiration, and operational-patterns material |
@@ -872,7 +872,7 @@ This directory covers books, documentation, communities, conferences, and though
 ### 30-Day Foundation (Security Architect → Data Engineering Basics)
 
 **Week 1: Foundational Reading**
-- [ ] Read Joe Reis Chapters 1-5 (storage, compute, ingestion basics)
+- [ ] Read Joe Reis Chapters 1-4 (what data engineering is, the lifecycle, architecture, choosing technologies)
 - [ ] Join dbt Slack, Trino Slack, r/dataengineering Reddit
 
 **Week 2: Hands-On Experimentation**

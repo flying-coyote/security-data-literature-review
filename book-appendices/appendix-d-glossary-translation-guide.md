@@ -35,7 +35,7 @@ Consider a representative exchange between a security architect and a data engin
 
 The security architect knows what they need, which is threat detection across data sources with long-term retention, and the data engineer knows how to build it with streaming pipelines, table formats, and query engines. Translation friction is what slows collaboration, and the root cause is that the two disciplines evolved in different problem domains.
 
-**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering (finding rare events in billions of rows) and the latency requirements combine real-time alerting (seconds to a few minutes, depending on detection type) with interactive investigation (under 60 seconds).
+**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes, and the figures teams work to are six years under HIPAA's documentation rule, twelve months of audit log history under PCI DSS, and seven years under the SOX accounting-records regime (D.2 carries the citations and the caveats on each). The query workload is high-cardinality filtering (finding rare events in billions of rows) and the latency requirements combine real-time alerting (seconds to a few minutes, depending on detection type) with interactive investigation (under 60 seconds).
 
 **Business Intelligence** is oriented toward metrics, reporting, and decision-making. Its data is structured, drawn from transactional systems. Retention follows business value, so data is deleted once it's no longer useful. The query workload is aggregation and rollups, summarizing millions of rows to thousands of reporting rows. Batch ETL running hourly or daily is acceptable, and dashboard refresh under 10 seconds satisfies most use cases.
 
@@ -55,7 +55,7 @@ Despite these different profiles, both domains need the same underlying infrastr
 
 **Incident Response**. When a confirmed breach occurs, responders reconstruct attacker activity across weeks or months of historical data. Legal hold requirements mean data must be preserved as evidence, because deletion or modification can create compliance liability. A typical investigation question: "Show me every action taken by this compromised account between August 1 and October 15, across all systems." This requires queryable long-term retention, not just archived storage.
 
-**Compliance Retention**. Retention timeframes are regulatory mandates, not business choices. HIPAA requires 6 years of audit logs (45 CFR 164.316(b)(2)(i); some states require longer, so verify against your state health privacy law). PCI-DSS mandates 1 year. SOX requires 7 years. Auditors will ask for specific records spanning years, and "we archived that to cold storage and can't query it" is not an acceptable answer.
+**Compliance Retention**. Retention timeframes are regulatory mandates, not business choices. HIPAA's Security Rule sets a six-year retention period for the documentation it requires, including written records of required actions, activities, and assessments (45 CFR 164.316(b)(2)(i)), so the six-year figure health-care teams run their logs on comes from a documentation rule that internal policy extends to log retention rather than from an explicit log mandate, and some states require longer, so verify against your state health privacy law. PCI DSS v4.0 Requirement 10.5.1 requires twelve months of audit log history, with at least the most recent three months immediately available for analysis. The seven-year figure people attribute to SOX traces to the accounting-records rule at 18 U.S.C. 1520 rather than to any log-retention statute. Auditors will ask for specific records spanning years, and "we archived that to cold storage and can't query it" is not an acceptable answer.
 
 Real-time alerting (sub-second to a few minutes, depending on detection type), interactive investigation (seconds), and long-term forensics (minutes across years of data) are three fundamentally different query patterns hitting the same underlying data, which is why Appendix I recommends multiple query engines, since no single engine handles all three patterns efficiently.
 
@@ -290,25 +290,25 @@ After building vocabulary, you face concrete decisions: which table format, whic
 
 3. **Transformation Tools (dbt for Security)**: SQL transformations for OCSF normalization, enrichment, detection rules. Security teams standardize on **dbt** (SQL-based, testing framework, version control, documentation auto-generation).
 
-**Detailed Decision Frameworks**: See **Appendix C (Reference Architectures)** for the detailed table format comparison, catalog selection matrix, and dbt implementation patterns for security data.
+**Detailed Decision Frameworks**: **Appendix E** indexes the table-format and catalog documentation behind the Iceberg-versus-Delta and Polaris-versus-Unity-versus-Nessie choices, **Appendix I** works through query-engine selection and complements the catalog choices rather than covering them, and **Appendix H** covers OCSF normalization with dbt, while **Appendix C** shows the five reference architectures those choices compose into.
 
 **Cross-References**:
 - **The what-good-looks-like material** (the variants chapter, Chapter 6 of the handbook): worked examples applying these decision frameworks across the MOAR variants, with the incremental-modernization decisions carried in the modularity chapter (Chapter 7)
 - **Appendix H**: OCSF normalization with dbt (detailed implementation)
 - **Appendix I**: Query engine selection (complements table format + catalog choices)
-- **Appendix C**: Reference architectures (Iceberg + Polaris + dbt in MOAR architecture)
+- **Appendix C**: Reference architectures (Iceberg + Polaris in MOAR architecture)
 
 ---
 
 ## D.6: Engaging the Data Engineering Community
 
-Security architects who speak both languages can use mature tooling, proven design patterns, and operational experience at petabyte scale. Data engineers, in return, get high-cardinality workload challenges, real-time plus historical dual requirements, and schema-on-read use cases they don't encounter in typical BI contexts. The exchange is genuinely bidirectional.
+Security architects who speak both languages can use mature tooling, proven design patterns, and operational experience at petabyte scale. Data engineers, in return, get high-cardinality workload challenges, real-time plus historical dual requirements, and schema-on-read use cases they don't encounter in typical BI contexts, so the trade runs both directions rather than one discipline lending to the other.
 
 **Practical engagement**:
 
 1. **Attend Data Conferences**: Subsurface (Dremio, fall), Trino Summit (September), Data + AI Summit (June), and ask data engineers "How do you handle high-cardinality filtering?" and "What's your approach to 7-year retention with tiered storage?"
 
-2. **Join Online Communities**: dbt Slack (tens of thousands of members), Trino Slack, r/dataengineering Reddit, and frame security problems using data engineering vocabulary (use the translation guide in D.7 below)
+2. **Join Online Communities**: the four listed in D.4, plus Trino Slack, framing security problems in data engineering vocabulary (the translation tables in D.7 give you the words)
 
 3. **Follow Thought Leaders**: Joe Reis (LinkedIn + newsletter), Alex Merced (YouTube tutorials), Ryan Blue (Iceberg roadmap), and comment thoughtfully to build relationships
 
@@ -370,7 +370,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Data Engineering Equivalent**: Materialized view, query results cache, aggregation table, Dremio Reflections
 **Context**:
 - **Security expectation**: "Pre-compute dashboard queries for instant refresh"
-- **Data engineering reality**: "Materialized views can provide dramatic speedups: Snowflake reports roughly a 78% query improvement (a percentage, not a multiplier), a single-developer PostgreSQL case study reports 350×–9,000× (Sid Ngeth, 2025, synthetic Rails dataset), and a practitioner Splunk write-up reports ~270×, but these are best-case figures [Evidence tier C/D; units-and-attribution corrected 2026-07-10, not independently reproduced]; security data frequently hits the failure modes below" (see Appendix I.4B for the conditions under which these figures hold)
+- **Data engineering reality**: "Materialized views can provide dramatic speedups: Snowflake reports roughly a 78% query improvement (a percentage, not a multiplier), a single-developer PostgreSQL case study reports 350×–9,000× (Sid Ngeth, 2025, synthetic Rails dataset), and a practitioner Splunk write-up reports ~270×, but these are best-case figures; security data frequently hits the failure modes below." Evidence tier C/D, not independently reproduced (units and attribution corrected 2026-07-10); see Appendix I.4B for the conditions under which these figures hold.
 - **Three failure modes**:
   1. **High data change rates** (continuous log ingestion) → refresh costs exceed query savings
   2. **Schema volatility** (new log sources, vendor updates) → views invalidated frequently
@@ -463,7 +463,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Definition**: Architectural philosophy for cybersecurity data: composable, vendor-neutral components selected based on organizational constraints rather than vendor bundling
 - **Five design principles**: a vendor-neutral data layer, separation of storage and compute, compression-first design, schema evolution without breaking changes, and query engine specialization
-- **Component model (L-I-G-E-R)**: Lakehouse (Iceberg/Delta) + Index (Polaris/Unity) + Graph (Grafana) + Engine (StarRocks/ClickHouse/Trino/DuckDB) + Route (Cribl/Tenzir/Kafka). Note: this book uses MOAR (Modular Open Architecture) for the architecture itself, and LIGER (L-I-G-E-R) for the specific five-layer reference composition the lab builds and tests, one instance of MOAR rather than a synonym for it. LIGER was also this project's earlier overall working name, so references to LIGER in older notes or drafts may mean either the project or the reference stack.
+- **Component model (L-I-G-E-R)**: Lakehouse (Iceberg/Delta) + Index (Polaris/Unity) + Graph (Grafana) + Engine (StarRocks/ClickHouse/Trino/DuckDB) + Route (Cribl/Tenzir/Kafka). Note: this book uses MOAR (Modular Open Architecture) for the architecture itself, and LIGER (L-I-G-E-R) for the specific five-layer reference composition the lab builds and tests, one instance of MOAR rather than a synonym for it.
 - **Graph (the G) is usually a passthrough** rather than a build decision: the shop almost always already has somewhere its analysts work (Grafana, Superset, a custom hunt UI, or the incumbent SOC consoles such as Splunk, Elastic, or Sentinel, kept for federated read during a transition) and whatever sits on top inherits the trust, connection, and performance properties from the layers underneath rather than creating them, so the book stays exhaustive about the infrastructure below the analytic and deliberately not about the analytic itself. That's also why the lab ships no swap verb for Graph: it's a passthrough, not a component the lab swaps and answer-equality-checks.
 - **Index (the catalog layer) is a scale-and-governance bet**: at single-node SOC scale it earns its place less from query performance (the engines answer sub-second whether or not a separate catalog is brokering metadata) and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake rather than being needed on day one in every deployment.
 - **Contrast with SIEM**: SIEM bundles all capabilities in one platform; MOAR separates concerns into interchangeable layers

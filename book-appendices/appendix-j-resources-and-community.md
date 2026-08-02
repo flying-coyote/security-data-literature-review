@@ -76,7 +76,7 @@ DataStream<AuthEvent> authStream = env
 
 ### J.1.2 Apache Spark Structured Streaming
 
-If a team already runs Spark for batch, structured streaming is usually the streaming engine I'd reach for first, because the win isn't raw latency, it's that you keep one codebase and one operational model instead of standing up a second framework your on-call rotation has to learn. The micro-batch model means you're living in the 2-10 second latency range rather than the sub-second range, and for most security work (OCSF normalization on the way in, continuous CloudTrail enrichment, rolling aggregations) that's fine, so the question I'd actually ask is whether you can tolerate micro-batch latency, and if you can, the unified codebase argument tends to win over Flink's lower latency.
+If a team already runs Spark for batch, structured streaming is usually the streaming engine I'd reach for first, because the win is keeping one codebase and one operational model rather than raw latency, so your on-call rotation doesn't have to learn a second framework. The micro-batch model means you're living in the 2-10 second latency range rather than the sub-second range, and for most security work (OCSF normalization on the way in, continuous CloudTrail enrichment, rolling aggregations) that's fine, so the question I'd actually ask is whether you can tolerate micro-batch latency, and if you can, the unified codebase argument tends to win over Flink's lower latency.
 
 It's best for streaming inside an existing Spark deployment, micro-batch processing where 2-10 second latency is acceptable, and a single batch-plus-streaming codebase.
 
@@ -412,11 +412,13 @@ checks for ocsf_network_activity:
 - Official docs: https://docs.soda.io/
 - Soda Core (open source): https://github.com/sodadata/soda-core
 
+---
+
 ### J.2.4 EvidenceForge (synthetic correlated test corpora)
 
 **Use case**: Generate realistic, cross-source security logs for detection-rule validation, threat-hunting training, and pipeline/mapping testing, without exposing production data.
 
-Cisco Talos's EvidenceForge (MIT) is a deterministic synthetic-log generator: a single canonical `SecurityEvent` model fans out to 20-plus cross-correlated raw formats, including Windows Security Events, Sysmon, Zeek's 13 log types, eCAR, syslog, Snort, and web/proxy logs. Causal event ordering and Hawkes-process timing keep the cross-source consistency and the inter-event gaps plausible enough that an experienced analyst can hunt over the data without immediately spotting it as synthetic, and generation is fully reproducible with no LLM at runtime. A scenario is a YAML file describing the environment, personas, time window, and optional attack narrative; a built-in four-pillar quality evaluation scores the output.
+Cisco Talos's EvidenceForge (MIT) is a deterministic synthetic-log generator: a single canonical `SecurityEvent` model fans out to 20-plus cross-correlated raw formats, including Windows Security Events, Sysmon, Zeek's 13 log types, eCAR, syslog, Snort, and web/proxy logs. The project reports that causal event ordering and Hawkes-process timing keep the cross-source consistency and the inter-event gaps plausible enough that an experienced analyst can hunt over the data without immediately spotting it as synthetic, and that generation is fully reproducible with no LLM at runtime [Tier C, project documentation; I have not run an analyst-blind test against it]. A scenario is a YAML file describing the environment, personas, time window, and optional attack narrative, and the project's own four-pillar quality rubric scores the output.
 
 The catch for a MOAR stack is the same one Chapter 4 makes about the well-connected property: EvidenceForge emits raw per-source formats and does not normalize to OCSF, so it is a *source* corpus, and mapping its output to OCSF (and verifying that mapping) is still yours to do. That makes it well-suited to exercising the mapping-fidelity and cross-source correlation steps on realistic multi-source data rather than single-stream samples.
 
@@ -815,7 +817,7 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 ## J.7: Resource Navigation by Architectural Pattern
 
 ### For Cloud-Native AWS Architecture (the cloud-commitment variant in the what-good-looks-like chapter, §6.2):
-- **Stream processing**: AWS Kinesis Data Firehose → Lambda → Iceberg
+- **Stream processing**: Amazon Data Firehose → Lambda → Iceberg
 - **Query engines**: AWS Athena (primary), Spark (maintenance)
 - **Orchestration**: AWS Step Functions or Managed Airflow (MWAA)
 - **Visualization**: Grafana with Athena data source
@@ -942,6 +944,7 @@ Spark's community is broader and more diluted than Iceberg's, so you'll get answ
 **Where**:
 - Community forum: https://community.dremio.com/
 - Developer hub: https://developer.dremio.com/ (carries the current Slack invite; the invite URLs themselves are tokenized and expire, so go through the hub)
+- Caveat: SAP completed its acquisition of Dremio in July 2026, so these paths may migrate, and the release-notes link in J.13.1 carries the same risk; verify a Dremio URL before relying on it (Appendix E carries the fuller acquisition note)
 
 **What to expect**:
 - **Response time**: 12-24 hours (Dremio employees active)
@@ -1210,8 +1213,8 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 
 **Subsurface Data Conference (Iceberg community; originally organized by Dremio)**
 
-**When**: Fall annually
-**Where**: Virtual
+**When**: September, annually
+**Where**: Virtual, with an in-person track
 **Focus**: Apache Iceberg, lakehouse query engines, data architecture
 
 **Why attend**:
@@ -1223,7 +1226,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 
 **Trino Summit (Starburst)**
 
-**When**: Summer annually
+**When**: Annually, with the date announced on trino.io/community
 **Where**: Virtual
 **Focus**: Trino optimization, federated queries, connector development
 
@@ -1238,7 +1241,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 
 **RSA Conference**
 
-**When**: May annually
+**When**: Late April to early May, annually
 **Where**: San Francisco + regional (Europe, Asia-Pacific)
 **Focus**: Enterprise security, vendor expo, practitioner talks
 
@@ -1329,7 +1332,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 - The general-purpose data-engineering blogs below are excellent on lakehouse internals; they rarely touch detection engineering, OCSF, or SIEM migration, which is the gap this site fills
 
 **Tabular Blog** (Iceberg creators; Tabular acquired by Databricks in June 2024, blog content now at Databricks):
-- Archive: https://tabular.io/blog/ (frozen at 2023 pre-acquisition posts per the 2026-07-10 sweep's live fetch; local DNS intermittently fails to resolve the domain, so **verify before publication**)
+- Archive: https://tabular.io/blog/ (frozen at 2023 pre-acquisition posts per the 2026-07-10 sweep's live fetch, and the domain resolved only intermittently during that sweep, so treat the archive as best-effort)
 - Current: https://www.databricks.com/blog (search "Iceberg" for continuation of Tabular team's work)
 - Deep dives: Iceberg internals, performance optimization
 - Example: "Hidden Partitioning in Iceberg" (explains partition evolution)
@@ -1469,7 +1472,7 @@ Logs: [attach query profile, Reflection definition]
 In my experience, the most engagement comes from posts that lead with a concrete number (cost reduction, retention window, query latency) rather than a tool list. A specific claim invites the practitioners who've seen different numbers to respond, which is usually the conversation worth having.
 
 **Example post** (illustrative template; the figures below are assembled from more than one of the what-good-looks-like reference deployments, so treat them as a fill-in-your-own-numbers pattern rather than one coherent migration, and adapt each to your own measured results and retention profile):
-> "Just completed our schema-on-read SIEM → Iceberg migration: 76% cost reduction, 3-year retention (vs 90 days), and the query story is a split rather than one number — the index still wins the simple lookups, the lakehouse wins the hunting-shaped aggregations (in our lab, 5-62× on those queries, ~47× on a five-query average for ClickHouse-native and ~10× over Iceberg, single host / 10M-row Zeek corpus). Architecture: Trino (queries) + Dremio (dashboards) + Spark (maintenance). DM me if building similar system — happy to share lessons learned. #DataEngineering #SecurityArchitecture #Iceberg"
+> "Just completed our schema-on-read SIEM → Iceberg migration: 76% cost reduction, 3-year retention (vs the 30 days we could afford on the SIEM), and the query story is a split rather than one number — the index still wins the simple lookups, the lakehouse wins the hunting-shaped aggregations (in our lab, 5-62× on those queries, ~47× on a five-query average for ClickHouse-native and ~10× over Iceberg, single host / 10M-row Zeek corpus). Architecture: Trino (queries) + Dremio (dashboards) + Spark (maintenance). DM me if building similar system — happy to share lessons learned. #DataEngineering #SecurityArchitecture #Iceberg"
 
 ---
 
@@ -1549,8 +1552,8 @@ Time invested in community tends to pay back unevenly but substantially: one wel
 
 **Key conferences** (attend or watch recordings):
 - Data + AI Summit (Databricks): June annually
-- Subsurface (Iceberg community): Fall annually
-- RSA Conference (security): May annually
+- Subsurface (Iceberg community): September annually
+- RSA Conference (security): late April to early May annually
 
 **Continuous learning** (stay current):
 - Data Engineering Weekly: https://www.dataengineeringweekly.com/
