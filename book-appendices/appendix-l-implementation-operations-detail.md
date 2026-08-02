@@ -128,37 +128,37 @@ The coalition came in at 58% BU-level participation, 7 of 12 BUs, which counted 
 
 ## L.5 The Roadmap: 30% to 70% in 18 Months
 
-The path from 30% to 70% runs through four phases over 18 months (the phase percentages and per-task time savings below are illustrative of a plausible automation curve, not metered from one production deployment), and the first thing to be honest about is that the early phase doesn't move the number at all. Phase 1, months 1 through 3, is foundation work that stays at 30%:
+The path from 30% to 70% runs through four phases over 18 months (the phase percentages and per-task time savings below are illustrative of a plausible automation curve, not metered from one production deployment), and the first thing to be honest about is that the early phase doesn't move the number at all. Phase 1, months 1 through 3, is foundation work that stays at 30% and consists of:
 
-- Deploy the agent-coordination framework (NANDA-style or a commercial equivalent).
-- Stand up the first 5 to 10 agents for log parsing, ticket creation, and SIEM queries.
-- Establish the agent identity and trust model.
-- Pilot it in a non-production environment.
+- deploying the agent-coordination framework (NANDA-style or a commercial equivalent),
+- standing up the first 5 to 10 agents for log parsing, ticket creation, and SIEM queries,
+- establishing the agent identity and trust model, and
+- piloting the whole thing in a non-production environment.
 
 The milestone is operational infrastructure with no automation improvement yet, so executives will ask where the ROI is, and the honest answer is that this is the foundation quarter and the payoff comes in phases 2 and 3.
 
 Phase 2, months 4 through 9, takes 30% to 50% by replacing brittle point-to-point integrations with agent coordination:
 
-- SIEM-query agents per SIEM, so hunting runs in parallel.
-- AI parser-generator agents that auto-generate parsers for new formats.
-- Isolation agents per EDR with automated evidence collection.
+- SIEM-query agents per SIEM, so hunting runs in parallel,
+- AI parser-generator agents that auto-generate parsers for new formats,
+- isolation agents per EDR with automated evidence collection, and
 - 10 to 15 custom integrations retired in favor of agent discovery.
 
 The milestone is 50% automation worth 2 to 3 hours saved per analyst per day, shown by cross-platform threat-hunt time (2 hours toward 30 seconds), parser creation (2 manual hours toward 2 automated minutes), and incident-response initiation (20 minutes toward 45 seconds).
 
 Where Phase 2 swapped out the integrations, Phase 3 (months 10 through 15) goes after the coordination itself, replacing the human in the middle of multi-step work with multi-agent workflows, and the number moves from 50% to 65% across three workstreams:
 
-- Advanced hunting picks up cross-correlation agents, behavioral analysis, and threat-intel enrichment.
-- Automated investigation picks up timeline reconstruction, lateral-movement tracking, and impact assessment.
-- Detection engineering picks up multi-platform rule deployment, automated rule translation, and performance monitoring.
+- advanced hunting picks up cross-correlation agents, behavioral analysis, and threat-intel enrichment,
+- automated investigation picks up timeline reconstruction, lateral-movement tracking, and impact assessment, and
+- detection engineering picks up multi-platform rule deployment, automated rule translation, and performance monitoring.
 
 The cultural shift at this point is the harder change to manage than the technical one, since analysts move from doing the work to overseeing it, reviewing agent reports, approving exceptions, and refining objectives rather than running each step themselves.
 
 By Phase 4 (months 16 through 18) most of the automatable work is already automated, so the last five points from 65% to 70% are the expensive edge cases, handled with AI-powered decision-making:
 
-- Predictive agents doing attack-path prediction, risk scoring, and priority recommendation.
-- Adaptive response with dynamic playbook selection, automated containment, and self-tuning detection.
-- A continuous-improvement loop of performance monitoring, capability expansion, and feedback tuning.
+- predictive agents doing attack-path prediction, risk scoring, and priority recommendation,
+- adaptive response with dynamic playbook selection, automated containment, and self-tuning detection, and
+- a continuous-improvement loop of performance monitoring, capability expansion, and feedback tuning.
 
 At 70% automation the operation runs at roughly 2.5× the efficiency it started with, the gain that lets 8 analysts cover what took 20, and the illustrative ROI that follows from that headcount math, for a team and tooling spend in this range, is:
 ```

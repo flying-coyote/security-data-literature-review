@@ -824,7 +824,7 @@ A vendor ships an integration that maps its own event logs to the data models th
 - Threat hunt queries against the model return empty results even during active incidents
 - Dashboard coverage metrics look healthy while analyst investigations dead-end
 
-### Why It Happens
+### Why It Fails
 
 Vendor integration authors are rarely the same team that wrote the product's parsers, and the data models they target were often designed by a third party (a SIEM vendor, a schema working group) rather than by the product's own engineers. The mapping decision happens once, gets bundled into a content pack or connector, and ships. No automated test in the integration's CI pipeline checks that events actually reach the intended model after mapping, only that the transformation logic is syntactically valid. So a wrong-but-compiling mapping passes every gate and lands in every customer's environment simultaneously.
 
@@ -832,7 +832,7 @@ Vendor integration authors are rarely the same team that wrote the product's par
 
 The only reliable signal is a count comparison across the boundary. Take a category of activity (authentication attempts, process launches, network connections) count the raw events at the source log level over a fixed window, then count what the data model received for the same category and window. A meaningful gap with no corresponding error is the signature. If the gap is total, the mapping is wrong by construction. If it is partial, a filter predicate or field-presence condition is likely culling events silently. Neither condition surfaces on its own.
 
-### Prevention
+### Prevention Strategies
 
 Verify by measurement before trusting any vendor-shipped mapping in production. Count events at the source and at the data-model boundary and compare; the two numbers should be close, and any material divergence requires an explanation before the integration goes live. "The vendor shipped it" is not an explanation; it is exactly the assumption this anti-pattern breaks. After initial deployment, spot-check the counts on a regular cadence, because integration updates can re-introduce the same class of defect without notice.
 

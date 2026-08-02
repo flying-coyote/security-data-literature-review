@@ -511,10 +511,12 @@ with DAG(
     compact_cloudtrail >> expire_snapshots >> cleanup_orphans
 ```
 
+That example is Airflow 2.x syntax, which matters because the 2-to-3 upgrade is not a no-op: on 3.x the DAG-authoring imports move to the `airflow.sdk` namespace and `schedule_interval` becomes `schedule`, so pin the version you are actually running before you copy any of this.
+
 **When to use Airflow**:
 - Complex workflows (>5 tasks with dependencies)
 - Python ecosystem integration
-- Need monitoring you can page on (task-level alerting, run history, SLA reporting)
+- Need monitoring you can page on (task-level alerting, run history, and late-run alerting, which is the `sla` parameter and `sla_miss_callback` through Airflow 2.x and the Deadline Alerts that arrived experimentally in 3.1 after 3.0 removed SLAs outright, so check which side of that line your deployment sits on)
 - Multiple teams sharing orchestration
 
 **When NOT to use**:
@@ -843,14 +845,16 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 
 **Decision framework** (apply the handbook's tool-evaluation and decision methodology):
 
+This framework is for the components you intend to run in production, the platform pieces that carry live telemetry and that you would later have to migrate off of, so the Tier 1 bar and the red flags below are deliberately strict about scale evidence and maintenance status. Supporting tools get judged differently, because a lab environment or a synthetic-corpus generator like the ones in J.2.4 and J.10.1 never sees production volume and the honest question about one of those is whether it still does its narrow job, which is why a couple of them appear in this appendix with a maintenance caveat attached instead of a recommendation.
+
 **Tier 1 Mandatory Questions**:
 1. Does it integrate with my chosen architecture? (Iceberg support, query engine connectors)
 2. Is production-scale validated? (>1 TB/day deployments documented)
-3. Open format and a vendor-neutral migration path? (can you leave without rewriting the data)
+3. Does it use open formats with a vendor-neutral migration path? (can you leave without rewriting the data)
 4. Is it within budget? (licensing + infrastructure costs)
 
 **Tier 2 Strongly Preferred**:
-1. Is commercial support available if you need it? (vendor, integrator, or a managed service)
+1. Commercial support available if you need it? (vendor, integrator, or a managed service)
 2. Active community? (GitHub stars, commit frequency, issue response time)
 3. Cloud-native or hybrid deployment? (matches your infrastructure)
 4. Operator-friendly? (matches team skillset)

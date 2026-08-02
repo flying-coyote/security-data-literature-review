@@ -319,7 +319,7 @@ Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an 
 - Operations: $2.6M-3.2M (3 years × $860K-1.08M annual operational budget)
 
 **Comparison to Alternatives**:
-- **Expanding the schema-on-read SIEM to full 2.5 TB/day, 30-day retention**: $1.6M+/year = $4.8M+ over 3 years (roughly 33-71% MORE expensive, with 30-day retention vs 3-year)
+- **Expanding the schema-on-read SIEM to full 2.5 TB/day, 30-day retention**: $1.6M+/year in licensing alone = $4.8M+ over 3 years, before the SOC staffing that path still needs, against Jennifer's fully loaded $2.8M-3.6M, and buying 30-day retention where hers buys 3-year
 - **Baseline batch lakehouse (from practitioner tools)**: $2.5M over 3 years for generic 2 TB/day deployment
 
 **Why Jennifer's TCO runs roughly 12-44% higher than the $2.5M baseline**: HIPAA compliance premium adds 15-20% to timeline (change control, audit requirements, security validation) and ongoing costs (dedicated security engineer FTE for compliance, professional services for secure Kubernetes deployment, dual environment complexity with hybrid on-prem/cloud split), and the top of the band reflects the fully-staffed 4.5-FTE case rather than additional compliance cost.
@@ -740,8 +740,8 @@ Performance breakdown:
 
 **Performance trade-off reality**:
 - Native regional SIEM query (Splunk-only, US-only): 10-20 seconds
-- Denodo single-region query (US Splunk via Denodo): 15-30 seconds (1.5× overhead, acceptable)
-- Denodo cross-region query (US + EU + APAC): 45-90 seconds (2-4.5× overhead, acceptable for global visibility)
+- Denodo single-region query (US Splunk via Denodo): 15-30 seconds (1.5× overhead pairing like with like, rising to about 2.5× on the lighter dashboard queries, acceptable at either end)
+- Denodo cross-region query (US + EU + APAC): 45-90 seconds against that same 10-20 second regional baseline, so roughly 2× to 9× depending on which ends of the two ranges you pair and about 4.5× pairing like with like (acceptable for global visibility)
 
 **POC benchmark queries with timing**:
 
@@ -854,7 +854,7 @@ On these results Priya selected the Denodo Platform for global virtualization; t
 | **Dashboard refresh** (regional metrics) | 5-10 sec | 12-25 sec | N/A | 2-2.5× (acceptable for 5-min refresh) |
 | **Compliance audit** (7-year historical, multi-region) | Hours (manual per region) | N/A | 4-8 min | 10-20× faster than manual |
 
-**When is 2-4.5× overhead acceptable?**
+**When is the virtualization overhead acceptable?**
 
 ✓ **Acceptable use cases** (Denodo's strengths):
 - Global threat hunting: Cross-region APT investigation (no alternative exists, manual coordination takes hours)
@@ -883,7 +883,7 @@ Priya's usage guidance to the SOC analysts, which followed directly from that sp
 
 **1. Performance optimization**: Virtualization inherently slower than native storage
 
-Denodo adds roughly 1.5× latency overhead on a single-region query (15-30 seconds against a 10-20 second native Splunk query) and 2-4.5× once the query crosses regions (45-90 seconds, the case this appendix measures throughout). That is the architectural reality of virtualization, because every query has to traverse the abstraction layer, the API call out to the source SIEM, and the data-format translation on the way back, and a cross-region query pays that cost at each regional hop plus the network latency between the regions.
+Denodo adds roughly 1.5× latency overhead on a single-region analyst query (15-30 seconds against a 10-20 second native Splunk query) and closer to 2.5× on the lighter dashboard refreshes, where 5-10 seconds native becomes 12-25 seconds through the virtualization layer, so the single-region penalty runs somewhere between 1.5× and 2.5× depending on how little work the query itself does. A cross-region query lands at 45-90 seconds against that same 10-20 second regional baseline, which works out at roughly 2× to 9× depending on which ends of the two ranges you pair and about 4.5× pairing like with like. That is the architectural reality of virtualization, because every query has to traverse the abstraction layer, the API call out to the source SIEM, and the data-format translation on the way back, and a cross-region query pays that cost at each regional hop plus the network latency between the regions.
 
 **Mitigation**:
 - Denodo caching: Frequently-run queries cached for 30-60 seconds (materialized results, no API call on cache hit)

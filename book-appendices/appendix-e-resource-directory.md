@@ -410,7 +410,12 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 1. **Netflix at scale** (Appendix I.4A): the ClickHouse logging system runs at 5 PB/day on disciplined low-level engineering, which is the reminder that operational simplicity can outweigh performance optimization (the article doesn't discuss materialized views either way, so don't read it as a "zero-MV" endorsement)
 2. **Selective deployment**: Start with 3-5 high-value use cases (compliance dashboards, scheduled reports), measure before expanding
-3. **Economic analysis critical**: the published upside figures decompose into three very different sources, since Snowflake's own number is roughly a 78% query improvement (a percentage, not a multiplier), the 9,000× top end is a single-developer PostgreSQL case study on a synthetic Rails dataset (Sid Ngeth, 2025, 350× to 9,000×), and a practitioner Splunk write-up reports ~270× (Tier C/D throughout, not independently reproduced), while the SDW Lab's own measurement lands at 45.3× to 76.8× on three SOC rollups (Tier B, 20M OCSF events, single host), and any of them only translates to cost savings when query frequency runs well ahead of the data change rate
+3. **Economic analysis critical**: the published upside figures decompose into three very different sources, Tier C/D throughout and none of them independently reproduced:
+   - Snowflake's own number is roughly a 78% query improvement (a percentage, not a multiplier)
+   - the 9,000× top end is a single-developer PostgreSQL case study on a synthetic Rails dataset (Sid Ngeth, 2025, 350× to 9,000×)
+   - a practitioner Splunk write-up reports ~270×
+
+   The SDW Lab's own measurement lands at 45.3× to 76.8× on three SOC rollups (Tier B, 20M OCSF events, single host), and any of these figures only translates to cost savings when query frequency runs well ahead of the data change rate.
 4. **Layered architecture**: Streaming (real-time) → Micro-batch (baselines) → Batch (analytics) → Data lake (hunting). Use right tool for each tier.
 5. **Security data failure modes**: High data change rates, schema volatility, complex correlation requirements make MVs operationally complex vs. general BI analytics
 
@@ -623,7 +628,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 | **Dremio** | community.dremio.com | Dremio Reflections, BI integration | Medium-High (800+ members) |
 | **dbt** | getdbt.com/community | OCSF transformations, data modeling | Very High (10,000+ members) |
 | **Dagster** | dagster.io/slack | Data pipeline orchestration | Medium (2,000+ members) |
-| **r/dataengineering** | reddit.com/r/dataengineering | General data engineering discussions | Very High (Appendix J.9.3 carries the dated member count) |
+| **r/dataengineering** | reddit.com/r/dataengineering | General data engineering discussions | Very High (count in Appendix J.9.3) |
 
 ---
 
