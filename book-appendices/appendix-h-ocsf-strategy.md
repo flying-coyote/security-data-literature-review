@@ -13,7 +13,7 @@ This material moved to the proof appendices so the decision path through the cha
 
 ## Opening: From Platform Selection to Schema Strategy
 
-Parts 1 and 2 of this book focused on platform selection: choosing the right query engine (Dremio, Athena, Trino), storage format (Apache Iceberg, with V3 features shipped through 2025 and now broadly adopted across engines, and the V4 spec still open as milestone #58 rather than finalized), and architectural approach (cloud-native, hybrid, virtualization) based on your organizational requirements.
+Part 1 makes the case that security teams are already doing data engineering and lays out Modular Open Architecture, and Part 2 works through the three properties a security data platform has to hold (trustworthy, well-connected, performant) before turning to the variants and the modularity payoff, so by the time you reach this appendix you have already chosen a query engine (Dremio, Athena, Trino), a storage format (Apache Iceberg, with V3 features shipped through 2025 and now broadly adopted across engines, and the V4 spec still open as milestone #58 rather than finalized), and an architectural approach (cloud-native, hybrid, virtualization) against your organizational requirements.
 
 The appendices that follow are the evidence layer under those chapters, running from query-engine selection and the tools-and-community map through the three architect journeys and the implementation and operations detail to the detection-coverage measurement in Appendix M.
 
@@ -406,7 +406,7 @@ Governance is where an open standard lives or dies, because the only version tha
 4. Approved changes merged into next version (semantic versioning: major.minor.patch)
 5. Rejected proposals documented with rationale (transparency)
 
-**Example**: OCSF v1.3.0 added the `d3fend` attribute (Section H.5) through the project's public pull-request process (ocsf-schema #1066), with the discussion held in the open under Linux Foundation governance.
+**Example**: OCSF v1.3.0 added the `d3fend`, `d3f_tactic`, and `d3f_technique` objects together with the Remediation category (Section H.5) through the project's public pull-request process (ocsf-schema #1066), with the discussion held in the open under Linux Foundation governance.
 
 **Schema versioning discipline**:
 - **Backward compatibility preserved** across minor versions (the 1.x line, now through 1.8.0)
@@ -440,7 +440,7 @@ Coalition size and governance structure matter, but claims require production ev
 - **Data volume**: 2 petabytes/day security telemetry (50+ log sources)
 - **Current state**: Splunk Enterprise (3 TB/day indexed, $3.2M/year), remaining 1.97 PB/day unindexed in cloud storage
 - **Compliance**: FINRA 7-year retention, PCI-DSS, SOX, GDPR
-- **Problem**: Cannot afford Splunk expansion to 2 PB/day ($44M/year projected)
+- **Problem**: Cannot afford Splunk expansion to 2 PB/day. The case study gives no vendor quote for the expansion, and the two anchors available both land in the billions rather than the tens of millions, since the $3.2M line above works out to about $1.07M per TB/day/year and 2,000 TB/day extrapolates linearly from it to roughly $2.1B/year, while the G-Cloud 14 published rate cited in Section H.1 (about $1,240/GB/day/year) puts 2,000,000 GB/day near $2.5B/year. Neither figure survives contact with a real volume discount curve, and no such curve is on file here, so read this as "priced out of reach by at least two orders of magnitude" rather than as a number to quote.
 
 **Solution architecture**:
 
@@ -479,12 +479,12 @@ Coalition size and governance structure matter, but claims require production ev
 
 **Cost**:
 - **Previous**: Splunk $3.2M/year (3 TB/day, 90-day retention)
-- **New**: $2.1M/year total platform cost
-  - Storage: $800K/year (2 PB/day, 7-year retention, tiered)
+- **New**: about $62.3M/year total platform cost at steady state, re-derived below rather than taken from the case study, which stated $2.1M and could not produce it from its own inputs
+  - Storage: about $61M/year, which is a floor. 2 PB/day held for seven years is 5,110 PB resident (2 × 365 × 7), and 5.11 billion GB at the S3 Glacier Deep Archive US-East-1 list rate of $0.00099/GB-month is about $60.7M/year on its own, before the seven-day S3 Standard and ninety-day Intelligent-Tiering rungs of the stated lifecycle sit on top of it
   - Compute (Dremio + Athena): $900K/year
   - Transformation (Lambda OCSF mapping): $300K/year
   - Professional services (Year 1 only): $400K (normalized to $100K/year amortized over 4 years)
-- **Savings**: roughly a third (34%) cost reduction WHILE increasing retention from 90 days to 7 years
+- **Comparison**: the absolute bill goes up roughly nineteenfold, and it has to, because the new platform retains 2 PB/day for seven years where Splunk retained 3 TB/day for ninety days, which is nearly nineteen *thousand* times the resident data. The comparison that actually means something is cost per gigabyte retained, where Splunk's $3.2M against 270 TB resident is about $11.85/GB-year and the new platform's $62.3M against 5,110 PB resident is about $0.012/GB-year, close to a thousandfold reduction per unit retained. I am spelling the arithmetic out because the case study as published reported a 34% cost *reduction*, which its own stated inputs cannot produce, and because the interesting claim was never the total bill anyway.
 
 **Performance**:
 - Threat hunt queries (90 days): 15-45 seconds (Dremio Reflections acceleration)
@@ -667,7 +667,7 @@ Real-world log sources present four recurring challenges. The distribution perce
    - Decision framework: High-value fields → Option A/C, Medium → Option B, Low → Option D
 
 4. **OCSF Class Selection** (per log source): Multiple OCSF event classes could represent same source event
-   - Example: HTTP log could map to Network Activity (4001), HTTP Activity (4002), or Web Resources Activity (6004)
+   - Example: HTTP log could map to Network Activity (4001), HTTP Activity (4002), or Web Resources Activity (6001). Note that 6004, Web Resource Access Activity, is deprecated as of OCSF 1.1.0 in favour of 6001 with the Security Control or Network Proxy profile, so a mapping that still targets it is aiming at a class the schema has retired
    - Decision: Prefer specific class if exists (HTTP → 4002 provides HTTP-specific fields), use generic if no match (unknown protocol → 4001), hybrid via observables if specific class lacks needed fields
 
 **Total effort impact**: LLM-assisted baseline (15-20 min/source) + complexity handling (5-10 min) = **20-30 minutes realistic per log source**
@@ -741,7 +741,7 @@ What the designation establishes is the baseline-standard status of BFO/CCO, and
 - **Result**: Analyst manually correlates (slow, error-prone, doesn't scale to thousands of alerts/day)
 
 **CCO solution**:
-- Both systems align to CCO "Process" ontology (formal definition: "A process is a series of actions or steps taken to achieve an end")
+- Both systems align to the same BFO-grounded process concept that CCO inherits, where a process is an occurrent that unfolds through time rather than a continuant that endures through it, so the shared anchor is the top-level ontology rather than either service's own local wording. I am deliberately not quoting an elucidation string here, because the BFO 2020 text is normative and paraphrasing it into something that merely sounds formal would defeat the point this section is making
 - Unique identifiers reference same ontology concept (Army process XYZ = Navy process XYZ IF same ontology grounding)
 - Automated reasoning: Systems can infer relationships without human analyst manual correlation
 
@@ -766,12 +766,14 @@ Entity (everything that exists)
 
 **CCO extends BFO for defense/intelligence domains**:
 ```
-BFO:Occurrent (ISO standard)
-  → CCO:Event (mid-level ontology: cyber events, kinetic events, financial events)
-    → CCO:CyberEvent (domain-specific: network activity, authentication, malware execution)
+BFO:Occurrent (ISO/IEC 21838-2:2021)
+  → CCO (eleven BFO-aligned mid-level ontologies)
+    → [a domain ontology for security events, which is the layer a mapping has to supply]
 ```
 
-In other words, CCO compliance (required by the DoD mandate) carries BFO grounding with it, and BFO is an ISO/IEC international standard, so systems that align to the DoD mandate inherit international standard compliance through the same dependency chain.
+I have written the third rung as a placeholder on purpose. CCO is a suite of exactly eleven BFO-aligned mid-level ontologies (Jensen et al., arXiv:2404.17758; latest release v2.1, April 2026), and I can find no cyber-specific layer among them and no `CCO:CyberEvent` class in the CCO distribution or in the descriptive paper, so there is nothing there to point a security event at. Earlier drafts of this appendix named one, which was wrong, and the correction matters because the whole argument here is that formal definitions beat plausible-sounding ones. What CCO gives you is a BFO-aligned mid-level layer plus the discipline of mapping into it, and the cyber-specific classes are work someone has to do rather than terms you can cite.
+
+In other words, CCO alignment carries BFO grounding with it, and BFO is the ISO/IEC 21838-2:2021 international standard, so systems that align to the DoD/IC baseline inherit international-standard compliance through the same dependency chain, and they inherit the mapping obligation along with it.
 
 ### H.5.3 D3FEND as the Cybersecurity Bridge
 
@@ -800,7 +802,7 @@ BFO:Occurrent
       → D3FEND:D3-NTA (Network Traffic Analysis)
       → D3FEND:D3-PLA (Process Lineage Analysis)
       → D3FEND:D3-UBA (User Behavior Analysis)
-      → D3FEND:D3-IAM (Identifier Activity Monitoring)
+      → D3FEND:D3-IAA (Identifier Activity Analysis)
 ```
 
 **ATT&CK ↔ D3FEND mapping**:
@@ -814,78 +816,70 @@ The same care applies to the interoperability story. If a DoD system records a D
 
 Set against a proprietary schema, the difference is real. Splunk's CIM `Network_Traffic` data model and Microsoft Sentinel's `NetworkSession` table carry no formal grounding at all, because they are vendor-defined with no CCO mapping, so a DoD system that wants to integrate that data has to build and defend a custom translation layer from scratch. OCSF's D3FEND reference-link grounding gives it a head start on demonstrating DoD/IC interoperability that a proprietary schema has to argue for from nothing, and that head start is the bounded advantage this section is claiming, no more.
 
-### H.5.4 The OCSF D3FEND Integration (added in v1.3.0, carried forward through v1.8.0)
+### H.5.4 The OCSF D3FEND Integration (objects added in v1.3.0, carried forward through v1.8.0)
 
-The `d3fend` attribute landed in OCSF v1.3.0 in August 2024 and has carried forward through the current v1.8.0, defined on the schema for event classes as a formal link between OCSF and the D3FEND ontology. Schema presence means the field is defined and typed, not that any given OCSF record will have it populated, since population is optional, as Section H.5.6 notes.
+OCSF v1.3.0 (August 1, 2024) added the `d3fend`, `d3f_tactic`, and `d3f_technique` objects in pull request #1066, and that same pull request created the Remediation category and its four event classes, which tells you where the link actually sits. The `d3fend` object describes the tactic and technique associated with a *countermeasure*, and the only route a record has into it is the dictionary's `countermeasures` attribute, an array of `d3fend` objects carried by Remediation Activity (class 7001) and its file, process, and network subclasses, and carried indirectly by the findings classes through the `mitigation` object inside `attack`. Network Activity (class 4001) has no `d3fend` attribute, and neither does `base_event`, so this is not a field that every OCSF event class can hold. I had it the other way round in earlier drafts of this appendix and the correction changes what the section can claim. Where a link does run from an ordinary telemetry class toward the ontology, it runs in the opposite direction, through D3FEND's own `rdfs:seeAlso` hyperlinks into schema.ocsf.io, which are D3FEND's curated crosswalk rather than anything the OCSF record carries. Schema presence means the objects are defined and typed, not that any given record populates them, since population is optional, as Section H.5.6 notes.
 
-**Example: OCSF Network Activity (class 4001) with D3FEND grounding**:
+**Example: OCSF Remediation Activity (class 7001) with D3FEND countermeasures**:
 
 ```json
 {
-  "class_uid": 4001,
-  "category_uid": 4,
-  "class_name": "Network Activity",
+  "class_uid": 7001,
+  "category_uid": 7,
+  "class_name": "Remediation Activity",
+  "activity_id": 1,
   "time": "2025-01-10T14:23:45.678Z",
-  "src_endpoint": {
-    "ip": "192.168.1.100",
-    "port": 54321
-  },
-  "dst_endpoint": {
-    "ip": "10.0.0.50",
-    "port": 443
-  },
-  "connection_info": {
-    "protocol_num": 6,
-    "direction_id": 1
-  },
-  "traffic": {
-    "bytes_in": 45000,
-    "bytes_out": 1200
-  },
-  "d3fend": {
-    "technique_id": "D3-NTA",
-    "technique_name": "Network Traffic Analysis",
-    "artifact": "NetworkTraffic",
-    "tactic": "Detect"
-  }
+  "command_uid": "rem-4f21c8",
+  "countermeasures": [
+    {
+      "d3f_tactic": {
+        "name": "Isolate",
+        "src_url": "https://d3fend.mitre.org/tactic/d3f:Isolate/"
+      },
+      "d3f_technique": {
+        "uid": "D3-NTF",
+        "name": "Network Traffic Filtering",
+        "src_url": "https://d3fend.mitre.org/technique/d3f:NetworkTrafficFiltering/"
+      },
+      "version": "1.4.0"
+    }
+  ]
 }
 ```
 
-**What `d3fend` attribute provides**:
+**What the `d3fend` object provides** (three attributes, with a schema constraint requiring at least one of the first two):
 
-**technique_id**: D3-NTA (Network Traffic Analysis)
-- Links this OCSF event to D3FEND defensive technique
-- Enables query: "Show all OCSF events related to D3-NTA technique"
-- Cross-references ATT&CK: D3-NTA detects T1071, T1090, T1095 (C2 techniques)
+**`d3f_technique`**: `uid` D3-NTF, `name` "Network Traffic Filtering", and an optional `src_url` versioned permalink
+- Names the D3FEND defensive technique the remediation carried out
+- Enables the query "show every remediation that applied D3-NTF"
+- Reaches ATT&CK through the `mitigation` object, which is where OCSF points at D3FEND's published ATT&CK-mitigation-to-technique mappings
 
-**artifact**: NetworkTraffic
-- Links to D3FEND Digital Artifact Ontology
-- Formal semantics: This event describes a NetworkTraffic artifact (BFO:Continuant)
-- Ontology reasoning: NetworkTraffic HAS-PARTS Packet, Session, Connection
+**`d3f_tactic`**: `name` "Isolate", with the same `uid` and optional `src_url` shape
+- One of D3FEND's tactics, and Remediation Activity's own `activity_id` enum is keyed to them (Isolate, Evict, Restore, Harden, Detect)
 
-**tactic**: Detect
-- D3FEND tactic (Model, Harden, Detect, Isolate, Deceive, Evict, Restore)
-- Defensive counterpart to ATT&CK tactics (Initial Access, Execution, Persistence...)
+**`version`**: the D3FEND Matrix release the tactic and technique were read from, which is the attribute that saves you when D3FEND renames or retires a technique
+
+There is no artifact attribute here, and that absence is worth naming, because the digital-artifact side of the ontology (NetworkTraffic, File, Process, UserAccount) lives entirely in D3FEND and is reachable only by following the technique link out of OCSF into the D3FEND graph.
 
 **Compliance pathway visualization**:
 
 ```
-OCSF Network Activity (4001) event
-  ↓ [d3fend.technique_id = "D3-NTA"]
-D3FEND Network Traffic Analysis (D3-NTA)
+OCSF Remediation Activity (7001) record
+  ↓ [countermeasures[].d3f_technique.uid = "D3-NTF"]
+D3FEND Network Traffic Filtering (D3-NTF)
   ↓ [rdfs:subClassOf]
 D3FEND DefensiveTechnique
-  ↓ [grounded-in]
-CCO:Process (Common Core Ontology)
+  ↓ [d3fend-cco bridge, core classes only]
+CCO (Common Core Ontologies)
   ↓ [is-a]
-BFO:Occurrent (ISO/IEC 21838-2)
+BFO:Occurrent (ISO/IEC 21838-2:2021)
 ```
 
-Following that chain, an OCSF event references D3FEND, which references CCO, which is grounded in BFO, so where the d3fend attribute is populated the record carries a documented transitive path toward CCO. I'd call that demonstrable CCO alignment via the D3FEND bridge rather than guaranteed compliance, because the path being present is what you point to in a procurement review, and the reviewer still decides whether it satisfies the requirement.
+Following that chain, a remediation record references D3FEND, which bridges into CCO, which is grounded in BFO, so where `countermeasures` is populated the record carries a documented transitive path toward CCO. I'd call that demonstrable CCO alignment via the D3FEND bridge rather than guaranteed compliance, because the path being present is what you point to in a procurement review, the reviewer still decides whether it satisfies the requirement, and the bridge itself grounds only D3FEND's core classes rather than every leaf.
 
-How that plays out in procurement is the part worth seeing concretely. An illustrative RFP clause in the spirit of the DoD Data Strategy 2024 might read something like "Vendor shall provide security data in a format compliant with the Common Core Ontologies (CCO); acceptable formats include CCO-native OWL/RDF, D3FEND-aligned structured data, or OCSF with the d3fend attribute populated" (I am paraphrasing the shape of such a requirement rather than quoting a specific solicitation, since I do not have a primary document in front of me). Against a clause like that, an OCSF-based vendor can answer that its platform exports OCSF with d3fend attributes populated and point to the D3FEND grounding as evidence of CCO alignment, which is a strong starting position even if the contracting officer still has to accept it. A proprietary-schema vendor, by contrast, has to offer a hand-built CCO mapping document, which means manual review, more delay, and more risk that the mapping is found wanting, so the practical effect is that OCSF clears the bar faster on this one axis.
+How that plays out in procurement is the part worth seeing concretely. An illustrative RFP clause in the spirit of the DoD Data Strategy 2024 might read something like "Vendor shall provide security data in a format compliant with the Common Core Ontologies (CCO); acceptable formats include CCO-native OWL/RDF, D3FEND-aligned structured data, or OCSF with D3FEND countermeasures populated" (I am paraphrasing the shape of such a requirement rather than quoting a specific solicitation, since I do not have a primary document in front of me). Against a clause like that, an OCSF-based vendor can answer that its platform emits Remediation Activity and findings records with `countermeasures` populated and point to the D3FEND grounding as evidence of CCO alignment, which is a starting position even if the contracting officer still has to accept it, and a thin one, because those two families are a small slice of what a security platform emits. A proprietary-schema vendor, by contrast, has to offer a hand-built CCO mapping document, which means manual review, more delay, and more risk that the mapping is found wanting, so the practical effect is that OCSF clears the bar faster on this one axis.
 
-I'd describe this as a bounded structural advantage rather than a moat. In DoD/IC and critical-infrastructure procurement specifically, an OCSF vendor can point to the populated d3fend attribute and its reference link into the ontology stack, where a proprietary-schema vendor has to produce a CCO mapping document instead, and that genuinely helps in the procurement. It is an edge on one axis, though, and it does nothing to lock a competitor out once they do the mapping work, so I would not carry it into a strategy deck as anything more durable than a head start.
+I'd describe this as a bounded structural advantage rather than a moat. In DoD/IC and critical-infrastructure procurement specifically, an OCSF vendor can point to populated `countermeasures` and the reference link into the ontology stack, where a proprietary-schema vendor has to produce a CCO mapping document instead, and that genuinely helps in the procurement. It is an edge on one axis, though, and it does nothing to lock a competitor out once they do the mapping work, so I would not carry it into a strategy deck as anything more durable than a head start.
 
 Everything in this section is the *structure* view, the design-time possibility that an OCSF class links to a D3FEND defense. The measured counterpart, which tests whether a detection written against that class actually fires on real telemetry, is Appendix M; the two disagree in instructive ways, and reading them together is how you tell mapped structure from measured firing.
 
@@ -902,7 +896,7 @@ Everything in this section is the *structure* view, the design-time possibility 
 - University B attempts replication using their "network connection" data (different schema)
 - **Result**: Cannot replicate, because of semantic differences in what constitutes "flow" vs "connection" vs "session"
 
-A partial fix runs through OCSF and BFO: if both universities export to OCSF Network Activity (class 4001) and honor the BFO grounding (BFO:Process → CCO:NetworkConnection → OCSF:NetworkActivity), they are at least describing the same concept against a shared definition, which gets them closer to reproducible research, shareable datasets, and comparable benchmarks than two ad-hoc schemas ever would. I say closer rather than solved because the grounding aligns the concept, and the harder reproducibility problems (sampling, labeling, drift) sit outside the schema entirely.
+A partial fix runs through OCSF itself. If both universities export to OCSF Network Activity (class 4001) they are at least describing their data against one published class definition, which gets them closer to reproducible research, shareable datasets, and comparable benchmarks than two ad-hoc schemas ever would. I am claiming the schema here and not the ontology, because there is no CCO network-connection class to route through and OCSF's own D3FEND link does not reach class 4001 (Section H.5.4), so what the two universities share is a common field vocabulary rather than a formal definition either of them can reason over. I say closer rather than solved for that reason and for a bigger one, which is that the harder reproducibility problems (sampling, labeling, drift) sit outside the schema entirely.
 
 **Evidence**: NIST is reportedly exploring OCSF for cybersecurity dataset standardization (2025 initiative, early stage; Tier D, I have not found a public NIST document confirming scope or timeline; verify before citing)
 
@@ -915,10 +909,10 @@ A partial fix runs through OCSF and BFO: if both universities export to OCSF Net
 - **Question**: Does "access" include read-only queries? Metadata access? Schema inspections?
 - **Different vendors interpret differently** → compliance uncertainty
 
-**OCSF + CCO solution**:
-- CCO defines "Access" as a formal ontology concept with sub-types (Read, Write, Execute, Delete, Modify)
-- OCSF File System Activity (1001) and API Activity (6003) can be mapped to that CCO Access concept
-- where that mapping is done, an auditor can lean on ontology-aligned logs to verify compliance against a shared definition, which narrows the room for each vendor to interpret "access" its own way, though it does not remove the auditor's judgment from the loop
+**What OCSF actually helps with here** (and what it does not):
+- The help comes from OCSF, not from an ontology. File System Activity (class 1001) enumerates its `activity_id` as Create, Read, Update, Delete, Rename, Set Attributes, Set Security, Get Attributes, Get Security, Encrypt, Decrypt, Mount and more, and API Activity (class 6003) enumerates Create, Read, Update, Delete, so a control written against `activity_id = 2` on 1001 means "read" in a way both the auditor and the vendor can look up in the same published enum
+- I previously wrote that CCO defines an "Access" class with Read, Write, Execute, Delete, and Modify subtypes. I have not been able to resolve that class or those subtypes against the CCO distribution or the descriptive paper, so I have cut the claim rather than restate it in softer words, and anyone building a compliance argument on a formal definition of "access" should treat that layer as work to be done rather than a term to cite
+- What is left is still worth something, since an auditor working against a published enum has less room to accept each vendor's private reading of "access" than one working against prose, though it narrows the disagreement rather than removing the auditor's judgment from the loop
 
 **3. Cross-Border Data Sharing**
 
@@ -943,17 +937,17 @@ The ontology-grounded version of the fix is a model trained on OCSF with its D3F
 
 **5. Vendor-Neutral Procurement**
 
-Beyond DoD, a commercial enterprise can put OCSF (with or without the ontological grounding) into its own procurement terms. The clause does not have to be elaborate; something like "vendor shall provide security data exports in a current OCSF release with d3fend attributes populated, and may provide additional proprietary formats, but the OCSF export is mandatory for data portability" carries the intent. The effect is not that schema lock-in disappears, because as Section H.1 argues the dependency moves to the pipeline, catalog, and engine rather than vanishing, but it does take the SIEM-schema piece of the $2-6M switching cost off the table and push vendors to compete on capability instead of on whose schema you are stuck with. It also buys some insulation against future churn, since a 2.0 with breaking changes would, under the project's versioning discipline, leave the 1.x line supported for a transition window, though as noted above I would confirm the exact support commitment against current governance docs before relying on it.
+Beyond DoD, a commercial enterprise can put OCSF (with or without the ontological grounding) into its own procurement terms. The clause does not have to be elaborate; something like "vendor shall provide security data exports in a current OCSF release, with D3FEND `countermeasures` populated on the classes that carry them, and may provide additional proprietary formats, but the OCSF export is mandatory for data portability" carries the intent. The effect is not that schema lock-in disappears, because as Section H.1 argues the dependency moves to the pipeline, catalog, and engine rather than vanishing, but it does take the SIEM-schema piece of the $2-6M switching cost off the table and push vendors to compete on capability instead of on whose schema you are stuck with. It also buys some insulation against future churn, since a 2.0 with breaking changes would, under the project's versioning discipline, leave the 1.x line supported for a transition window, though as noted above I would confirm the exact support commitment against current governance docs before relying on it.
 
 ### H.5.6 Limitations and Open Questions
 
 Ontological grounding is powerful and it is not a cure-all, so here are the open questions I would want a reader to carry alongside the upside above.
 
-The first is that OCSF → D3FEND mapping coverage is incomplete. The `d3fend` attribute is defined in the schema, but populating it is optional, and many OCSF event classes do not have an obvious D3FEND technique to map to in the first place, so OCSF Email Activity (class 4009) could plausibly map to D3-MA (Message Analysis) or D3-EF (Email Filtering) depending on context. The practical implication is that real-world OCSF data may not carry the `d3fend` attribute at all, which means the CCO compliance pathway exists as an architectural possibility rather than a guarantee you get for free, and the mitigation is partly out of your hands, since the OCSF community is still working through D3FEND mapping guidance across the 1.x releases.
+The first is that OCSF → D3FEND coverage is narrow by construction rather than merely unpopulated, which is a harder limitation than the one I used to describe here. The `d3fend` object is reachable only through `countermeasures`, so the Remediation Activity family and the findings classes can carry a D3FEND annotation and the ordinary telemetry classes cannot, no matter how obvious the technique would be. Email Activity (class 4009) is the clean example, since a reasonable analyst would tie it to D3-MA (Message Analysis) or D3-EF (Email Filtering) depending on context and the schema gives that record nowhere to put either one. On top of the structural gap, population is optional even where the slot exists, so real-world OCSF data may carry nothing at all, which means the CCO compliance pathway exists as an architectural possibility rather than a guarantee you get for free, and the mitigation is mostly out of your hands, since widening the reach means widening where `countermeasures` is carried, which is a schema change rather than a mapping choice. That surface does move, though, and it has moved in the direction that matters: v1.5.0 added `countermeasures` to the `mitigation` object in pull request #1348 (OCSF CHANGELOG, April 28 2025), which is how the findings classes came to carry a D3FEND annotation at all. So the honest read is a narrow surface that widens slowly through schema releases rather than a frozen one.
 
-The second is the ontology maintenance burden, because BFO, CCO, and D3FEND evolve on their own schedules separately from OCSF, which creates version-skew risk. If a future D3FEND release adds a technique like a Zero Trust Network Analysis defense, an OCSF release whose `d3fend.technique_id` enum predates it cannot represent the new technique until the schema catches up, so ontology evolution turns into schema-update pressure and a coordination cost you carry across all four moving standards.
+The second is the ontology maintenance burden, because BFO, CCO, and D3FEND evolve on their own schedules separately from OCSF, which creates version-skew risk. OCSF handles part of this better than I once gave it credit for, because `d3f_technique.uid` is an open string rather than an enum and the `d3fend` object carries a `version` attribute naming the D3FEND Matrix release it was read from, so a new technique can be written into a record the day D3FEND ships it. What version skew still costs you is on the consuming side, since a query or a dashboard written against last year's technique identifiers will silently stop matching when D3FEND renames or retires one, and you carry that coordination cost across all four moving standards.
 
-The third is that the proprietary vendors may simply not care, because Splunk, Microsoft, and Google have no incentive to adopt CCO/BFO grounding when it works against the lock-in that is their advantage. The likely shape this takes is an ecosystem that splits: OCSF-native vendors like AWS Security Lake and newer startups lean into the ontological grounding, while the legacy SIEMs ship an "OCSF export" feature that satisfies the checkbox without populating the `d3fend` attribute, which leaves you with a market of ontology-grounded OCSF on one side and schema-only OCSF on the other. The practical consequence for a buyer is that "OCSF support" on a datasheet is not enough; you have to verify that a vendor actually populates the attribute rather than merely claiming the format.
+The third is that the proprietary vendors may simply not care, because Splunk, Microsoft, and Google have no incentive to adopt CCO/BFO grounding when it works against the lock-in that is their advantage. The likely shape this takes is an ecosystem that splits: OCSF-native vendors like AWS Security Lake and newer startups lean into the ontological grounding, while the legacy SIEMs ship an "OCSF export" feature that satisfies the checkbox without populating `countermeasures` on anything, which leaves you with a market of ontology-grounded OCSF on one side and schema-only OCSF on the other. The practical consequence for a buyer is that "OCSF support" on a datasheet is not enough, so ask for a sample Remediation Activity or findings record and check whether the countermeasures are there rather than taking the format claim on trust.
 
 The fourth open question is the one this section keeps circling, whether the ontological grounding earns its keep for a commercial enterprise with no DoD/IC compliance requirement, and my honest answer varies by use case. For academic research the reproducibility and dataset-sharing payoff is real. For international data sharing the legal and semantic clarity is worth something concrete. For AI/ML it is a maybe, because the transfer-learning benefit is real in principle but needs an AI investment most teams have not made. For a general commercial enterprise it is genuinely unclear, because schema portability on its own may carry the whole benefit without the full ontology layer. So my recommendation is to adopt OCSF for the schema standardization in Sections H.1 through H.4 first, and to treat the ontological grounding as a bonus for future-proofing rather than the primary reason to adopt, unless you sit in government, defense, or critical infrastructure where the procurement edge is real money.
 

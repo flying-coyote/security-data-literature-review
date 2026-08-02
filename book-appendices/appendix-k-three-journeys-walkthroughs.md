@@ -419,11 +419,11 @@ ORDER BY failed_attempts DESC;
 -- Athena execution: 14 seconds (partition pruning: 1,080 TB → 8 TB scanned)
 ```
 
-✓ **Real-time latency acceptable**: 60-90 seconds ingestion-to-query
+✓ **Real-time latency acceptable**: 80-100 seconds ingestion-to-query
 - Kinesis Firehose buffers logs (60-second batches)
 - S3 write + Glue catalog refresh (15-30 seconds)
 - Iceberg table metadata update (5-10 seconds)
-- Total: 80-130 seconds (slightly above 60-second target, acceptable for fraud detection when combined with separate real-time alerting layer)
+- Total: 80-100 seconds (inside the <2-minute ingestion-to-query criterion, and acceptable for fraud detection when combined with a separate real-time alerting layer)
 
 ✓ **Cost projection: $2.9M/year** (within $3.5M budget, all pricing as of Q4 2025)
 
@@ -527,14 +527,14 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 | Dimension | Path A: Athena greenfield (2022-23 plan) | Path B: Splunk + lakehouse optionality (2024 actual) |
 |---|---|---|
 | Team | 3 FTE (2 data engineers, 1 platform engineer, AWS) | 2 FTE (0 dedicated data engineers; 2 security engineers with Splunk from the existing SOC) |
-| Budget/yr | $600K operational (staffing + AWS infra) | $12M (SIEM licensing $11.4M for the 12 TB/day full-stack tier, list-modeled with multi-year discount, + 2 FTE $600K) |
+| Budget/yr | $3.47M all-in (the $2.9M AWS-native platform from the POC above, plus $573K for 3 FTE at the $191K fully-loaded rate this appendix uses throughout) | $12M all-in (SIEM licensing $11.4M for the 12 TB/day full-stack tier, list-modeled with multi-year discount, + 2 FTE $600K) |
 | Timeline | 3-4 months (Athena serverless, Iceberg tables, Glue ETL) | 1 month (Splunk ES + fraud-detection content, no custom dev) |
-| 3-year TCO | $2.1M ($300K implementation + $1.8M operations) | $36M+ (SIEM licensing dominates) |
-| Performance | 60-90 s latency, historical compliance | <5 s real-time detection (beats SEC <30 s mandate) |
+| 3-year TCO | $10.7M ($300K implementation + $10.4M operations) | $36M+ (SIEM licensing dominates) |
+| Performance | 80-100 s latency, historical compliance | <5 s real-time detection (beats SEC <30 s mandate) |
 
-**Why Path B Won Despite 17× Higher Cost**:
+**Why Path B Won Despite Roughly 3.4× Higher Cost**:
 
-1. **Regulatory Mandate Changed**: New SEC requirement for <30 second fraud detection made 60-90 second Athena latency non-compliant (compliance risk >> cost savings)
+1. **Regulatory Mandate Changed**: New SEC requirement for <30 second fraud detection made 80-100 second Athena latency non-compliant (compliance risk >> cost savings)
 
 2. **Team Reality Shifted**: Lost 2 of 3 data engineers to attrition, couldn't hire replacements within 90-day SEC deadline (0 available data engineering capacity for Athena/Iceberg maintenance)
 
@@ -542,7 +542,7 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 
 4. **Operational Complexity During Crisis**: Troubleshooting the Athena + Starburst + Iceberg stack requires coordinating across AWS support (Athena), Starburst support (connectors), and the internal team (Iceberg maintenance), which is unacceptable during 3 AM fraud incidents vs single Splunk support call
 
-5. **Risk-Adjusted Value**: Real-time fraud prevention worth $9M/year premium given regulatory exposure ($50M+ SEC fines for non-compliance), reputational risk (financial services brand damage), and operational simplicity with 0 data engineers
+5. **Risk-Adjusted Value**: Real-time fraud prevention worth the $8.5M/year premium given regulatory exposure ($50M+ SEC fines for non-compliance), reputational risk (financial services brand damage), and operational simplicity with 0 data engineers
 
 The reading I'd take from this is that the "expensive" SIEM option turned out cheaper once total cost of ownership took in the compliance risk, the team-capacity constraint, and the timeline pressure, and Marcus's decision was driven by realistic team sizing (no data engineers available within the deadline) and by a non-negotiable regulatory threshold (sub-30-second detection) rather than by any technology preference.
 
@@ -552,7 +552,7 @@ The reading I'd take from this is that the "expensive" SIEM option turned out ch
 - Build Athena/Iceberg for historical compliance workloads when team capacity recovers (18-24 month roadmap)
 - Total 3-year cost: schema-on-read SIEM $36M + future Athena $600K = $36.6M, a $600K optionality premium over the $36M pure-SIEM path (Athena-only stays non-compliant)
 
-**Evidence**: Staffing Calculator from the literature review (batch 3 FTEs minimum for lakehouse, streaming 9-11 FTEs), schema-on-read SIEM list pricing (modeled $11.4M/year for the 15 TB/day high-volume tier). Deployment-timeline figures are directional scenario assumptions, not a sourced Gartner rate.
+**Evidence**: Staffing Calculator from the literature review (batch 3 FTEs minimum for lakehouse, streaming 9-11 FTEs), schema-on-read SIEM list pricing (modeled $11.4M/year for the 12 TB/day full-stack tier). Deployment-timeline figures are directional scenario assumptions, not a sourced Gartner rate.
 
 ## K.3 Priya's Multi-National SOC: Multi-Cloud Virtualization
 
@@ -746,7 +746,7 @@ Performance breakdown:
 
 The honest comparison Priya's team drew from this is that the cross-region queries are not fast by Splunk standards, but they replace a process that was previously impossible, coordinating three SOC teams across time zones, manually exporting CSV files, and hoping the field names line up, so the real baseline for the 52-second query is not a faster query, it is "we have never been able to do this at all."
 
-The POC surfaced three lessons worth carrying into the decision. The first is that cache configuration matters more than it looks: Denodo's result caching, on a 30-60 second TTL, made repeated analyst queries 3-5× faster on a cache hit, and during the POC 40% of follow-up queries hit cache, pulling the average response time for an iterative investigation down from 52 seconds to 22. The second is that connector tuning is real work that a vendor demo hides; QRadar's API returned events in a different timestamp format than Splunk and Sentinel, and Priya's team spent three days in Denodo's VQL (Virtual Query Language) normalizing timestamps across sources, a one-time cost that would never show up in a sales POC. The third is that regional IT buy-in was easier than expected, precisely because Denodo connected through the existing APIs with no change to regional infrastructure, so the regional teams approved the POC in a single meeting once they understood there were no agents, no forwarders, and no firewall changes to absorb.
+The POC surfaced three lessons worth carrying into the decision. The first is that cache configuration matters more than it looks: Denodo's result caching, on a 30-60 second TTL, made repeated analyst queries 3-5× faster on a cache hit, and during the POC 40% of follow-up queries hit cache, pulling the average response time for an iterative investigation down from 52 seconds to roughly 36, since the 60% that still miss cache hold the blended average above 31 seconds no matter how fast the hits come back. The second is that connector tuning is real work that a vendor demo hides; QRadar's API returned events in a different timestamp format than Splunk and Sentinel, and Priya's team spent three days in Denodo's VQL (Virtual Query Language) normalizing timestamps across sources, a one-time cost that would never show up in a sales POC. The third is that regional IT buy-in was easier than expected, precisely because Denodo connected through the existing APIs with no change to regional infrastructure, so the regional teams approved the POC in a single meeting once they understood there were no agents, no forwarders, and no firewall changes to absorb.
 
 ✓ **Zero regional disruption**:
 - Denodo connects to existing Splunk/Sentinel/QRadar via REST APIs

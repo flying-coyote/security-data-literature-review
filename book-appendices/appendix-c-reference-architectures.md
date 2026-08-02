@@ -57,7 +57,7 @@ One condition keeps the interchangeability claim narrow: it holds only when encr
 
 These principles are validated at scale:
 - **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup talk, July 2025, written up on the ClickHouse blog 2025-10-23, date corrected 2026-07-10 from "late 2024" per the bibliography's 2026-07-09 correction; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
-- **Okta**: 100K QPS DuckDB, 7.5 trillion records (Okta, Jake Thomas personal account; Tier B) (Principle 5)
+- **Okta**: 7.5 trillion records processed in six months across thousands of concurrent DuckDB Lambda instances (Jake Thomas, Okta, personal account; Tier B, not independently audited) (Principle 5)
 - **Apple**: Petabyte-scale Apache Iceberg (Apple engineers present Iceberg work at Dremio's Subsurface conference, e.g., Russell Spitzer's Subsurface 2024 session on Apple's Iceberg contributions, and Apple holds multiple Iceberg PMC seats; the earlier "Baris Aydın, 'Apple's Journey with Apache Iceberg,' Subsurface Live 2023" attribution could not be located anywhere and was dropped 2026-07-10; Tier C pending a fetched talk page) (Principle 1, 2)
 - **CISA**: Zeek-OCSF mapping, ~95% mapping accuracy as reported by the project itself, an illustrative figure rather than an independently published rate (CISA Zeek-OCSF project; Tier B) (Principle 4)
 
@@ -725,7 +725,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 - Modern stack (Athena): $2.9M/year
 - **Savings: $9.1M/year (76%)**
 
-> **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion/storage but benefit from volume discounts at higher tiers, so actual savings percentages at 12 TB/day may exceed the 85-90% shown for 10 TB/day due to better S3 and compute pricing tiers.
+> **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion and storage, but these tiers are coarse model bands and reading a savings percentage off the nearest one will mislead you, which is why the Marcus scenario lands at 76% while the 10 TB/day row shows 85-90%. His $12M SIEM figure is a licensing-plus-staffing model sitting at the floor of that row's $12M-$20M range, and his $2.9M Athena build sits above the $2.5M ceiling of the modern-stack column, so re-run Worksheet A.6 against your own rates before you quote a savings number.
 
 **When Splunk Still Wins** (Marcus Path B):
 - SEC real-time fraud detection mandate (<30 seconds)

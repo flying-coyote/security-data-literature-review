@@ -23,7 +23,7 @@ Organizations that force all workloads through a single query engine pay for it 
 - unnecessarily high costs from paying for capabilities they don't use
 - operational friction as SOC dashboards compete with threat hunting scans for the same resources
 
-This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (H-ARCH-02: 0.97 confidence; Section I.6.3's worked scenario lands at 63% within that range) compared to single-platform approaches while providing better performance.
+This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (H-ARCH-02: 0.97 confidence; Section I.6.3's worked scenario lands at 60% within that range) compared to single-platform approaches while providing better performance.
 
 The appendix works through the security workload spectrum (real-time dashboards, threat hunting, ETL, and maintenance), why Spark stays necessary for Apache Iceberg maintenance (Iceberg's V3 features shipped through 2025 and the engines have broadly picked them up by mid-2026, while the V4 spec stays open as GitHub milestone #58 with no items merged into it since late 2025; H-ARCH-04: 0.98 confidence), when Trino or Starburst wins for ad-hoc investigations, when Dremio wins for sub-second SOC dashboards (Dremio is SAP-owned as of July 2026; the workload fit is unchanged, though the branding and packaging may shift), and where DuckDB edge preprocessing earns its place (50-80% volume reduction, validated at 7.5 trillion records in Jake Thomas's Tier-B Okta personal account), before pulling the engines together into hybrid architecture patterns. The reason all of that is worth the operational weight is that no single engine handles all security workloads efficiently, so success comes from matching workload characteristics to engine strengths and accepting that you'll run 3-4 engines rather than one.
 
@@ -31,7 +31,7 @@ The appendix works through the security workload spectrum (real-time dashboards,
 
 ### Leadership Takeaway
 
-Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans; the worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. In this appendix's worked Enterprise-SOC scenario (Section I.6.3), hybrid multi-engine architecture shows 63% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, late 2024) and described by Jake Thomas at Okta (7.5 trillion records, Tier B: personal communication).
+Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans; the worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. In this appendix's worked Enterprise-SOC scenario (Section I.6.3), hybrid multi-engine architecture shows 60% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, late 2024) and described by Jake Thomas at Okta (7.5 trillion records, Tier B: personal communication).
 
 **Bottom line**: Multiple specialized engines cost less and fit security's conflicting workloads better than one general-purpose engine; the gain is operational fit and cost, with raw speed the smaller lever at SOC scale.
 
@@ -82,7 +82,7 @@ See Section I.3.2 for full threat-hunting query examples with illustrative Trino
 - **Operations**: File compaction (`rewrite_data_files`), orphan cleanup (`remove_orphan_files`), snapshot expiration (`expire_snapshots`), delete file merging (`rewrite_position_delete_files`)
 - **Frequency**: Daily (hot data), weekly (warm data), monthly (cold data)
 - **Critical requirement**: ACID guarantees, and only Apache Spark has full Iceberg maintenance procedures
-- **Without maintenance**: Query performance degrades 50-90× over 30-90 days as small files accumulate (Anti-Pattern #10: "Skipping Spark Maintenance")
+- **Without maintenance**: Query performance degrades roughly 5× by Day 30 and about 30× by Day 60 as small files accumulate, and the 90× upper end of the reported range belongs to extreme cases at very high write rates (Section I.2.4's composite; Anti-Pattern #10: "Skipping Spark Maintenance")
 
 See Section I.2 for the maintenance procedures, the security-specific schedule, and the cost of skipping maintenance.
 
@@ -97,7 +97,7 @@ Why can't one engine handle all four workload types?
 | **SOC Dashboards** (<1 sec) | ✗ 5-30 sec cold start | ✗ No caching, rescans | ✓ Reflections <1 sec | ✗ Batch-oriented |
 | **Threat Hunting** (5-30 sec) | ⚠ Slow startup | ✓ Fast interactive | ⚠ First-time queries bypass cache | ⚠ Not designed for interactive |
 | **Batch ETL** (hours) | ✓ PySpark ecosystem | ⚠ Limited transformation libs | ⚠ Not ETL-focused | ⚠ Not distributed |
-| **Iceberg Maintenance** | ✓ ONLY option | ✗ No procedures | ✗ No procedures | ✗ No procedures |
+| **Iceberg Maintenance** | ✓ Complete procedure set | ⚠ Partial (`optimize`, `expire_snapshots`, `remove_orphan_files`) | ⚠ Partial (`OPTIMIZE TABLE`, `VACUUM`) | ✗ No procedures |
 
 No single engine gets ✓ across all rows, which is why a hybrid architecture is required.
 
@@ -178,7 +178,7 @@ Apache Iceberg tables accumulate operational overhead over time:
 DuckDB edge preprocessing (Section I.5) writes 1,000-10,000 small Parquet files per day (optimized for serverless Lambda). Without compaction:
 - Day 1: 5,000 files (queries scan 5,000 manifests)
 - Day 7: 35,000 files (queries scan 35,000 manifests)
-- Day 30: 150,000 files (**50-90× query slowdown**)
+- Day 30: 150,000 files (roughly **5× query slowdown** at the comparable point in the I.2.4 composite, which reaches about 350,000 files by Day 30; the 50-90× end of the reported range takes a much higher write rate than this one)
 
 **Problem 2: Snapshot Bloat**
 
@@ -192,32 +192,33 @@ Row-level deletes (GDPR "right to erasure", PCI-DSS data minimization) create de
 - 1,000 delete files × 1 KB each = 1 MB overhead per query
 - Query planner must check every delete file against every data file
 
-### I.2.2 Why ONLY Spark?
+### I.2.2 Why Spark for the Full Maintenance Set
 
-**Trino**: Can query Iceberg, cannot maintain
-- No `CALL system.rewrite_data_files()` procedure
-- No compaction, no orphan cleanup, no snapshot expiration
-- Read-only Iceberg connector
+**Trino**: Read-write connector, partial maintenance coverage
+- Exposes `ALTER TABLE ... EXECUTE optimize`, `optimize_manifests`, `expire_snapshots`, `remove_orphan_files`, and `drop_extended_stats`, so compaction, snapshot expiration, and orphan cleanup are all available
+- No equivalent of Spark's `rewrite_position_delete_files`, so position delete files accumulate unmerged
+- Supports INSERT, UPDATE, DELETE, and MERGE, which means it does part of the maintenance job rather than none of it (Trino Iceberg connector docs, verified 2026-08-01)
 
-**Dremio**: Can query + accelerate, cannot maintain
-- Reflections enable fast queries, but not maintenance
-- No Iceberg maintenance procedures exposed
-- Query engine only, not storage management
+**Dremio**: Query acceleration plus partial maintenance
+- `OPTIMIZE TABLE` compacts small files, splits oversized ones, and cleans up fragmented manifests, while `VACUUM TABLE` and `VACUUM CATALOG` expire snapshots and remove orphaned metadata files
+- Automated maintenance in the Enterprise Catalog runs both on a schedule, which is the capability the Chapter 6 healthcare variant leans on for a team with almost no data-engineering depth
+- What Dremio does not cover is the remainder of the Spark set, since there is no position-delete-file merging and the vacuum path targets orphaned metadata files rather than orphan data files (Dremio table-maintenance docs, verified 2026-08-01)
 
-**Snowflake**: Proprietary format, not Iceberg
-- Uses internal format (not Iceberg metadata)
-- Cannot maintain Iceberg tables (different architecture)
+**Snowflake**: Iceberg support is real, and the maintenance question turns on who holds the catalog
+- Snowflake-managed Iceberg tables write real Iceberg metadata to customer-owned object storage, and Snowflake handles lifecycle maintenance for them, compaction included
+- Externally-managed Iceberg tables carry limited Snowflake platform support and Snowflake assumes no lifecycle management on them, so maintenance stays with whoever owns the catalog and the writer
+- Pin the release you tested, because this surface moved again in 2026 (Snowflake Iceberg tables docs, verified 2026-08-01)
 
 **DuckDB**: Can write Parquet, not Iceberg-aware maintenance
 - Excellent for edge preprocessing (Section I.5)
 - Not distributed (cannot compact TB-scale tables)
 - No Iceberg catalog integration for ACID operations
 
-**ONLY Apache Spark** has:
+**Only Apache Spark** covers the whole set in one engine:
 - Distributed file rewriting (parallel compaction across cluster)
 - Bin-packing algorithms (optimize file sizes to 512 MB target)
 - Transactional Iceberg support (ACID guarantees during maintenance)
-- Native Iceberg procedures (`CALL system.*` commands)
+- Native Iceberg procedures (`CALL system.*` commands), including the `rewrite_position_delete_files` step none of the alternatives above expose
 
 As a data-platform practitioner put it [Personal communication, October 2025], "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance."
 
@@ -230,7 +231,7 @@ As a data-platform practitioner put it [Personal communication, October 2025], "
 | **Monthly** | 30-90 days | Quarterly audit retention | <10,000 files in 90-day window |
 | **Quarterly** | 90+ days | Snapshot expiration (retain 100 most recent) | Metadata overhead minimal |
 
-**Cost optimization**: Spark on spot instances costs $0.05/hour vs $0.25/hour on-demand. Weekly compaction: ~4 hours × $0.05 = **$42/month** (vs $208 on-demand). Compaction is fault-tolerant batch work, so spot interruptions are acceptable.
+**Cost optimization**: Spark on spot instances costs $0.05/hour vs $0.25/hour on-demand. A weekly 4-hour compaction run is $0.20 of instance time on spot, so about **$0.87/month** across 4.33 runs (vs about $4.33/month on-demand), and that figure is per instance, so it scales with however wide the cluster you need for the volume. Compaction is fault-tolerant batch work, so spot interruptions are acceptable.
 
 ### I.2.4 The Cost of Skipping Maintenance
 
@@ -489,7 +490,7 @@ The specific numbers are Netflix's own figures. The architectural lesson (hot/co
 
 Security queries scan millions of rows but touch few columns (timestamps, IPs, usernames). Columnar databases read only needed columns and achieve 10-100× better compression than row-oriented storage. The figures Netflix reported (Tier C: meetup presentation) put ClickHouse at 12-19× better compression than Elasticsearch and 5-100× faster on analytical queries, though these are figures the Netflix team presented to describe their own production system, not independently reproduced.
 
-**Schema-on-read SIEM bake-off (SDW Lab, zeek-flagship-rerun, 2026-06-10; Tier B, single host)**: One measured bake-off on a specific workload, 10M OCSF-normalized Zeek conn.log network-telemetry events run against 5 standardized analytical queries, 7 trials per query, CV-gated, with the answers verified equal across every arm. These numbers reflect that workload and data profile; performance ratios will shift on different query types, data distributions, and tuning states:
+**Schema-on-read SIEM bake-off (SDW Lab, zeek-flagship-rerun, 2026-06-10; Tier B, single host)**: One measured bake-off on a specific workload, 10M OCSF-normalized Zeek conn.log network-telemetry events run against 5 standardized analytical queries, 7 trials per query, CV-gated, with the answers verified equal across the three head-to-head arms (OpenSearch, ClickHouse native, and ClickHouse over Iceberg). These numbers reflect that workload and data profile; performance ratios will shift on different query types, data distributions, and tuning states:
 - ClickHouse native MergeTree (sorted layout): **0.061s average**, 46.8× over the OpenSearch 2.18.0 schema-on-read baseline (2.854s)
 - ClickHouse-over-Iceberg (`icebergS3()`, zstd Parquet): **0.282s average**, 10.1× over the baseline
 - The average hides the finding, which is a two-regime split by query shape: the inverted index wins the cheap index-shaped lookups (a protocol-distribution count 3.4× and a duration filter 1.8× over native) while the columnar engines win the hunting-shaped aggregations by one to two orders of magnitude (a byte-sum group-by at 5.4× Iceberg / 21× native, a distinct-port scan at 14× Iceberg / 62× native). The full engine table is in I.4A.4.
@@ -519,7 +520,7 @@ The same layout-choice argument runs the other direction, which is worth followi
 
 In Netflix's stack ClickHouse is a specialized engine layered on Apache Iceberg, not a monolithic database doing everything. Netflix developed Iceberg (2018-2020) to solve Hive's partition management and schema evolution limitations, then open-sourced it. ClickHouse handles hot-tier real-time queries; Iceberg provides durable storage with multi-engine access.
 
-**Measured bake-off** (SDW Lab, zeek-flagship-rerun, 2026-06-10; Tier B, single host): 10M OCSF-normalized Zeek conn.log events, 5 standardized analytical queries, 7 trials per query, CV-gated, with identical answers verified across every arm. This is one workload at one scale; treat the ratios as directional for network-telemetry-style analytical queries, not as universal performance guarantees:
+**Measured bake-off** (SDW Lab, zeek-flagship-rerun, 2026-06-10; Tier B, single host): 10M OCSF-normalized Zeek conn.log events, 5 standardized analytical queries, 7 trials per query, CV-gated, with identical answers verified across the three head-to-head arms (OpenSearch, ClickHouse native, and ClickHouse over Iceberg), while the StarRocks and Trino rows below ran as a timed-only sidecar with no answer-equality check. This is one workload at one scale; treat the ratios as directional for network-telemetry-style analytical queries, not as universal performance guarantees:
 
 | Engine | Format | Avg of medians (s) | vs OpenSearch 2.18.0 baseline |
 |--------|--------|--------------------|---------------------------|
@@ -531,7 +532,7 @@ In Netflix's stack ClickHouse is a specialized engine layered on Apache Iceberg,
 
 *Source: SDW Lab, zeek-flagship-rerun/results/RESULTS.md + starrocks_trino_arms.json (2026-06-10). Supersedes a retired legacy benchmark (Dec 2025).*
 
-What the bake-off method demonstrates: the three open engines over Iceberg (ClickHouse, StarRocks, and Trino) query byte-identical Iceberg data and return identical answers, which is the architecture argument; ClickHouse-native and the OpenSearch baseline are the two non-Iceberg reference points. The specific multiples are workload-dependent.
+What the bake-off method demonstrates: the three open engines over Iceberg (ClickHouse, StarRocks, and Trino) all read byte-identical Iceberg data, which is the architecture argument, though only the ClickHouse-over-Iceberg arm had its answers checked against the other head-to-head arms, so cross-engine answer equality is what this architecture is supposed to deliver and not something this run measured for StarRocks or Trino. ClickHouse-native and the OpenSearch baseline are the two non-Iceberg reference points, and the specific multiples are workload-dependent.
 
 A companion baseline run on the MOAR reference stack (SDW Lab, 2026-06-07; Tier B) isolates the storage and answer-equality leg of the same comparison at a smaller scale. The baseline puts a lakehouse engine (DuckDB over Parquet) next to an OpenSearch-style schema-on-read SIEM over 200,000 OCSF Network Activity events, with a needle on `dst_port=3389` matching 25,000 of them. The two results worth carrying are the answer-equality and the storage ratio: the lakehouse and the SIEM agree on count, on the needle, and on the group-by, and the lakehouse footprint is 1.6 MB of Parquet against an 11.5 MB SIEM index, so the index is 7.0× the columnar footprint. The lakehouse was also faster on all three queries, with the needle at 3.4 ms against the SIEM's 4.7 ms, but that latency comparison carries a caveat I want to be honest about: at this corpus DuckDB's columnar scan is already under 10 ms and OpenSearch is queried over HTTP while DuckDB runs in-process, so the SIEM pays a round-trip the lakehouse doesn't, and a term index's real advantage is on highly selective needles at much larger scale, which a single-host run at 200k rows does not isolate. The findings that hold independent of scale are the answer-equality and the 7.0× storage ratio, and not the millisecond gap on the needle.
 
@@ -609,7 +610,7 @@ Most security teams store everything in one tier, either an expensive SIEM or a 
 | **Scheduled analytics** | ✓ Optimized for batch | ⚠ Works but not ideal | ⚠ Query engine only |
 | **Ad-hoc threat hunting** | ⚠ Works, not specialized | ✓ Fast interactive | ⚠ First-time bypasses cache |
 | **Hot/cold tiering** | ✓ Native (hot SSD → cold S3) | ✗ No native tiering | ⚠ Via Iceberg, not engine feature |
-| **Iceberg maintenance** | ✗ No procedures | ✗ No procedures | ✗ No procedures |
+| **Iceberg maintenance** | ✗ No procedures | ⚠ Partial (`optimize`, `expire_snapshots`, `remove_orphan_files`) | ⚠ Partial (`OPTIMIZE TABLE`, `VACUUM`) |
 | **High-cardinality aggregations** | ✓ Columnar advantage | ⚠ Slower on massive aggregations | ✓ Reflections help |
 
 **The hybrid pattern** (Netflix-validated MOAR architecture):
@@ -628,14 +629,14 @@ Most security teams store everything in one tier, either an expensive SIEM or a 
 Whether that superlinear scaling generalizes depends on query type and schema, and the rerun doesn't re-measure it. What the rerun does support is the storage inversion (the Iceberg table is the smallest artifact at 440 MB while the OpenSearch index is the largest compressed form at 1,868 MB), so the directional finding that columnar engines compress and aggregate far more efficiently than index-based SIEMs is structurally sound.
 
 **Cost comparison** (petabyte-scale security data, from the TCO model in Appendix A (Worksheet A.6), which the manageability chapter, Chapter 1, points to; pricing as of Q4 2025):
-- **Schema-on-read SIEM**: $1.5M+/TB/year (unsustainable at 1+ PB/day)
-- **Snowflake**: $23/TB/month storage + $2-$4/TB scanned (Section I.6.3: $38K/month for 10 TB/day)
-- **ClickHouse + Iceberg hybrid**: $345-$7,080/month storage (depending on hot/cold ratio) + ~$3K compute
+- **Schema-on-read SIEM**: roughly $620K-$870K per TB/day/year at the discounted full-stack rate of $620-870/GB/day/year (Appendix A, Worksheet A.6 Step 2), so about $6.2M-$8.7M/year at 10 TB/day, which A.6 marks infeasible
+- **Snowflake**: $23/TB/month storage + $2-$4/TB scanned (Section I.6.3: $35K/month for 10 TB/day)
+- **ClickHouse + Iceberg hybrid**: $345-$6,900/month storage (depending on hot/cold ratio) + ~$3K compute
 - **Savings**: 75-95% vs traditional SIEM, 50-70% vs cloud data warehouse
 
 ### I.4A.7 Key Takeaways from Netflix
 
-Netflix's ClickHouse journey lines up with the MOAR architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (H-ARCH-02; Section I.6.3's worked scenario lands at 63% within that range).
+Netflix's ClickHouse journey lines up with the MOAR architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (H-ARCH-02; Section I.6.3's worked scenario lands at 60% within that range).
 
 ### I.4A.8 Sidebar: Vortex, one layer below the engine choice
 
@@ -795,7 +796,7 @@ For detailed platform comparisons, see the Appendix E resource directory. For OC
 
 **Without filtering** (Anti-Pattern #11: "Ignoring Edge Preprocessing"):
 - Ingest: 10 TB/day raw CloudTrail
-- Store: 10 TB/day × $0.023/GB/month = $7,080/month storage
+- Store: 10 TB/day × 30 days = 300,000 GB × $0.023/GB/month = $6,900/month storage
 - Query: Threat hunts scan 10 TB (5 minutes per query)
 
 **With DuckDB filtering**:
@@ -876,7 +877,7 @@ def lambda_handler(event, context):
 
 **Results**:
 - Volume: 10 TB/day raw → 2 TB/day processed (**80% reduction**)
-- Storage: $7,080/month → $1,416/month (**$5,664/month savings**)
+- Storage: $6,900/month → $1,380/month (**$5,520/month savings**)
 - Query speed: 5-minute threat hunts → 1-minute threat hunts (**5× faster**)
 - Cost per Lambda execution: $0.0000167/invocation × 10,000 invocations/day = **~$0.17/day ≈ ~$5/month** (still net savings vs storing unfiltered)
 
@@ -1076,7 +1077,7 @@ def route_query(query_metadata):
 
     elif query_metadata['workload_type'] == 'iceberg_maintenance':
         # Table compaction, snapshot expiration, orphan cleanup
-        return 'spark'  # ONLY option for maintenance
+        return 'spark'  # rewrite_data_files; Trino covers optimize/expire/orphans
 
     elif query_metadata['query_type'] == 'ad_hoc_investigation':
         # Threat hunting: unpredictable, complex WHERE clauses
@@ -1112,7 +1113,7 @@ def route_query(query_metadata):
 |-----------|--------------|-------------|
 | Storage (10 TB/day × 90 days) | $20,700 | 900 TB × $23/TB/month |
 | Compute (dashboards) | $14,400 | 24,000 queries/hour × 30 sec billed compute per refresh cycle × $0.10/hour |
-| Compute (threat hunting) | $3,000 | 1,500 queries/week × 30 sec × $0.10/hour |
+| Compute (threat hunting) | $3,000 | Warehouse held warm for 50 analysts' hunting sessions, priced on the same basis as Option 2's 3-node Trino cluster below |
 | **Total** | **$38,100/month** | **$457,200/year** |
 
 **Option 2: Hybrid Architecture** (optimized multi-engine):
@@ -1121,18 +1122,18 @@ def route_query(query_metadata):
 |-----------|--------|--------------|-------------|
 | Edge preprocessing | DuckDB Lambda | $5,000 | 10 TB/day → 2 TB/day (80% reduction) |
 | Storage (2 TB/day × 90 days effective) | S3 | $4,140 | 180 TB × $23/TB |
-| Maintenance (nightly) | Spark (spot) | $42 | Weekly compaction, 80% spot savings |
+| Maintenance (nightly) | Spark (spot) | $0.87 | Weekly compaction, ~4 hours × $0.05/hour × 4.33 runs (80% spot savings) |
 | SOC dashboards (200 tiles) | Dremio | $1,410 | 4 DCU × $352.50/DCU/month |
 | Threat hunting (50 analysts) | Trino cluster | $3,000 | Self-managed cluster, 3 nodes |
 | Reflection storage | S3 | $460 | 20 TB Dremio reflections |
-| **Total** | | **$14,052/month** | **$168,624/year** |
+| **Total** | | **$14,011/month** | **$168,132/year** |
 
-**Savings**: $288,576/year (63% cost reduction vs Snowflake-only)
+**Savings**: $289,068/year (63% cost reduction vs Snowflake-only)
 
 **Performance improvements** (illustrative, derived from the cost scenario above, not a first-party run):
 - Dashboard latency: 5-15 seconds → <1 second (Dremio Reflections)
 - Threat hunts: 30-60 seconds → 8-15 seconds (80% volume reduction)
-- Query cost: $38,100/month → $14,052/month (63% savings)
+- Query cost: $35,105/month → $14,011/month (60% savings)
 
 ---
 
@@ -1198,7 +1199,7 @@ The harder thing to carry out of this appendix isn't the routing table, which mo
 - A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture patterns, workload segregation, Spark irreplaceable for Iceberg (Tier B)
 - Jake Thomas (Okta) [Personal communication]: DuckDB extreme scale validation (7.5T records in 6 months, $2K/day Snowflake → "dramatically reduced," figures that are Jake's own account and not independently audited) (Tier B)
 - Netflix ClickHouse scale figures [Daniel Muino, ClickHouse meetup presentation, late 2024]: 5 PB/day, 10.6M events/sec, sub-second queries, from a vendor ecosystem presentation not independently reproduced (Tier C)
-- Schema-on-read SIEM bake-off [SDW Lab, zeek-flagship-rerun, 2026-06-10]: a two-regime split over 10M OCSF-normalized Zeek conn.log events, 5 standardized queries, CV-gated, answers verified equal, specifically the OpenSearch 2.18.0 baseline (2.854s avg) against ClickHouse-native (0.061s, 46.8×), ClickHouse-over-Iceberg (0.282s, 10.1×), StarRocks (0.343s, 8.3×), and Trino (0.795s, 3.6×); the index wins the cheap lookups, the lakehouse wins the heavy hunting aggregations. Supersedes a retired legacy benchmark (Dec 2025). One specific workload, directional for network-telemetry analytical queries (Tier B)
+- Schema-on-read SIEM bake-off [SDW Lab, zeek-flagship-rerun, 2026-06-10]: a two-regime split over 10M OCSF-normalized Zeek conn.log events, 5 standardized queries, CV-gated, answers verified equal across the three head-to-head arms with the StarRocks and Trino sidecar timed only, specifically the OpenSearch 2.18.0 baseline (2.854s avg) against ClickHouse-native (0.061s, 46.8×), ClickHouse-over-Iceberg (0.282s, 10.1×), StarRocks (0.343s, 8.3×), and Trino (0.795s, 3.6×); the index wins the cheap lookups, the lakehouse wins the heavy hunting aggregations. Supersedes a retired legacy benchmark (Dec 2025). One specific workload, directional for network-telemetry analytical queries (Tier B)
 
 **Technical documentation**:
 - [Apache Spark Iceberg Procedures](https://iceberg.apache.org/docs/latest/spark-procedures/)
@@ -1218,4 +1219,4 @@ The harder thing to carry out of this appendix isn't the routing table, which mo
 
 **Case studies**:
 - Okta DuckDB serverless (Tier B, Jake Thomas personal account): 7.5 trillion records in 6 months, 50 TB/day peak, $2K/day Snowflake → "dramatically reduced" DuckDB serverless cost
-- Healthcare SOC hybrid (composite model): $38K/month Snowflake → $14K/month hybrid (63% savings, <1 sec dashboards), an illustrative calculation and not a named client
+- Healthcare SOC hybrid (composite model): $35K/month Snowflake → $14K/month hybrid (60% savings, <1 sec dashboards), an illustrative calculation and not a named client
