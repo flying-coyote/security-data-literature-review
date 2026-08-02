@@ -575,7 +575,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 **D3FEND**: https://d3fend.mitre.org/
 - Ontological grounding for OCSF (DoD/IC compliance pathway)
-- OCSF `d3fend` attribute (added v1.3.0) maps events to defensive techniques
+- OCSF `d3fend` object (added v1.3.0) maps remediation and finding records to defensive techniques, reached through the `countermeasures` attribute rather than carried by every event class (see H.5.4)
 
 **Use Case**: OCSF + D3FEND enables "Show me all detection rules mapped to D3FEND Network Traffic Analysis (D3-NTA)"
 

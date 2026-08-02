@@ -58,9 +58,11 @@ DataStream<AuthEvent> authStream = env
 ```
 
 **When to use Flink**:
-- Regulatory requirement: sub-30-second detection, where the threshold comes from your own regulator's text (a PCI-DSS real-time monitoring obligation, for instance) rather than from the SEC fraud-detection mandate this book's Marcus scenario stipulates, which is a constructed premise and not a published rule as of this writing
+- Regulatory or contractual requirement for detection inside a fixed number of seconds (see the note below on where that number comes from)
 - Complex event processing (multi-stage correlation, stateful analysis)
 - High throughput (single-stream rates in the >100K events/second range; the actual ceiling depends on parallelism, key cardinality, and state size, so consult the Flink performance-tuning docs rather than treating one number as a guarantee) [Tier D, order-of-magnitude, not a benchmarked figure]
+
+PCI DSS is the standard people most often reach for on that first bullet, and it will not hand you the number, because Requirement 10.4.1 in version 4.0 obliges a daily review of the relevant audit logs and 10.4.1.1 obliges that review to run through automated mechanisms, which is a logging and review obligation rather than a latency one. The sub-30-second figure this book carries elsewhere comes from the SEC fraud-detection mandate stipulated in the Marcus scenario, which is a constructed premise rather than a published rule as of this writing, so take the threshold you design Flink against from an internal detection service level you can defend or from the text of an obligation that actually binds you, which is also the check that tells you whether you need Flink at all.
 
 **When NOT to use**:
 - Batch-only workloads (use Spark instead)

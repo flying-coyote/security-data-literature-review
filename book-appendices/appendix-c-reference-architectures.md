@@ -608,10 +608,12 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 ### Architecture Overview
 
 **Problem Statement**:
-- Real-time detection regulatory requirement (<30 seconds alert latency)
+- Real-time detection requirement (<30 seconds alert latency), stipulated rather than published (see the note below)
 - 0 data engineers (SOC analysts only, no platform engineering team)
 - Operational simplicity valued over cost optimization
-- SEC fraud detection mandate (financial services) or an equivalent regulatory driver, though the SEC mandate here is a premise of the handbook's Marcus teaching scenario rather than a published rule, since the SEC has issued no such requirement as of this writing (Appendix K.2 states the stipulation in full), so read this bullet as standing in for whichever real obligation binds your own firm
+- SEC fraud detection mandate (financial services) or an equivalent regulatory driver (see the note below)
+
+> **On the regulatory driver**: the SEC fraud-detection mandate and the sub-30-second threshold that travels with it are premises of the handbook's Marcus teaching scenario rather than published rules, since the SEC has issued no such requirement as of this writing, and Appendix K.2 states the stipulation in full. So read both of those bullets as standing in for whichever real obligation binds your own firm, and substitute the latency your own regulator actually specifies before you design against it.
 
 **Solution**: Splunk Enterprise Security (single-vendor platform, ingestion through detection content in one licensed stack)
 
@@ -695,7 +697,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 ### When to Use This Pattern
 
 ✓ **Use If**:
-- **Real-time detection <30 seconds** (driven by a real-time monitoring obligation under a regime such as PCI-DSS or the SWIFT customer security programme, but note that the sub-30-second figure itself comes from the Marcus scenario's SEC fraud-detection premise rather than from any published rule, since the SEC has issued no such mandate as of this writing, so substitute the latency your own regulator actually specifies before you use this as a gate)
+- **Real-time detection** required (threshold set by your own obligations; see the note below)
 - **0 data engineers** (SOC analysts only, no platform engineering team)
 - **Operational simplicity** valued over cost optimization
 - **Budget: $2M-$12M annually** (enterprise scale, 1-10 TB/day)
@@ -706,6 +708,8 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - **Multi-year queryable retention** (Splunk archives to offline, not queryable)
 - **3+ data engineers available** (lakehouse stack viable with team capacity)
 - **Budget <$2M annually** at volume (10+ TB/day unsustainable on Splunk pricing)
+
+> **Where the latency threshold comes from**: the sub-30-second figure this pattern carries is the Marcus scenario's SEC fraud-detection premise rather than a published rule, since the SEC has issued no such mandate as of this writing. The two regimes people commonly reach for here will not supply a replacement number either, because PCI DSS 4.0 obliges a daily review of the relevant audit logs under Requirement 10.4.1 and obliges that review to run through automated mechanisms under 10.4.1.1, while SWIFT's Customer Security Controls Framework requires logging and monitoring of the local SWIFT environment under control 6.4 and recommends intrusion detection under the advisory control 6.5A, so what both of them bind you to is a logging and review obligation rather than a latency one. Take your own threshold from an internal detection service level you can defend or from the text your regulator actually publishes, and read the <30 seconds here as a stipulation of the teaching scenario.
 
 ---
 

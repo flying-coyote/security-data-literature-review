@@ -52,9 +52,11 @@ Check all that apply. Any vendor missing even ONE Tier 1 requirement is immediat
 - [ ] Other: ________________________________
 
 **Real-Time Detection:**
-- [ ] Real-time required: <_______ seconds alert latency (fill this from your own regulator's text, because the <30 sec figure this book carries through the Marcus scenario is a constructed premise and the SEC has published no such fraud-detection mandate as of this writing)
+- [ ] Real-time required: <_______ seconds alert latency (fill from the obligation that binds you; see the note below)
 - [ ] Batch acceptable: _______ minute latency tolerance (e.g., 5-15 min for threat hunting)
 - [ ] Dual capability: Streaming (real-time) + batch (historical) in same platform
+
+**Note on the latency line**: the <30 sec figure this book carries through the Marcus scenario is a constructed premise rather than a published rule, since the SEC has issued no such fraud-detection mandate as of this writing. PCI DSS 4.0 will not fill the blank for you either, because Requirement 10.4.1 obliges a daily review of the relevant audit logs and 10.4.1.1 obliges that review to run through automated mechanisms, which is a logging and review obligation rather than a latency one. So fill the blank from an internal detection service level you can defend, or from the text of whichever obligation your own auditors will hold you to.
 
 **Data Format:**
 - [ ] Open table format required (Apache Iceberg V3 spec or later, or Delta Lake; vendor-neutral migration path)
@@ -814,9 +816,11 @@ TOTAL HYBRID: $60K (SIEM) + $243.6K (Lake) + $310K (Pipeline) = ~$613.6K/year
 
 **When Hybrid Makes Sense**:
 - Existing SIEM investment (sunk cost, but trained team)
-- Real-time regulatory requirement (<30 sec, SIEM-proven)
+- Real-time regulatory requirement (SIEM-proven, at whatever latency binds you; see the note below)
 - Team capacity 0-1 engineers (cannot support full MOAR complexity)
 - See the variants chapter of the handbook (Chapter 6, "What good looks like") for the full hybrid approach
+
+**Note on that latency**: the <30 sec threshold this book carries through the Marcus scenario is a constructed premise rather than a published rule, since the SEC has issued no such fraud-detection mandate as of this writing, which is the same qualification the Why Hybrid list above attaches to its regulatory bullet. So take the number from the text of whichever obligation actually binds you before you let it decide the architecture.
 
 ---
 
