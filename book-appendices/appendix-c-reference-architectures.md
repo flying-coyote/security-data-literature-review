@@ -105,7 +105,7 @@ The budget and cost figures throughout this appendix are outputs of the TCO mode
 | 1. Healthcare Hybrid (on-prem + cloud) | HIPAA, PHI residency, hybrid cloud | 1-2 data engineers; 15-person security team | $774K-1M (platform $300-500K) |
 | 2. Cloud-Native AWS-First | AWS-committed, cloud-first, cost optimization | 3-5 data engineers; 50+ analysts | $408K-$816K |
 | 3. Multi-Cloud Federated (Denodo) | Multi-national, data sovereignty, M&A | 5+ data engineers; distributed teams | $1.04M-$1.98M |
-| 4. Traditional SIEM (Splunk ES) | Real-time mandate, zero data engineers, simplicity | 0 data engineers (SOC analysts) | $2M-12M (volume-dependent) |
+| 4. Traditional SIEM (Splunk ES) | Real-time threshold, zero data engineers, simplicity | 0 data engineers (SOC analysts) | $2M-12M (volume-dependent) |
 | 5. MOAR Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $324K-$588K |
 
 Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus Path A, Priya, Marcus Path B), the "what good looks like" material from Chapter 6 of the handbook; Pattern 5 maps to Appendix I. Full detail for each follows below.

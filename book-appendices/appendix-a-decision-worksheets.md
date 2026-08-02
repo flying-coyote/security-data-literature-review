@@ -788,7 +788,7 @@ Savings increase with data volume and retention period because storage is a marg
 
 **Why Hybrid**:
 - Organizational inertia (existing Splunk investment, trained analysts, operational continuity)
-- Regulatory requirements (SIEM-proven compliance, plus whatever real-time detection threshold actually binds you; the SEC <30 sec figure carried through this book's Marcus scenario is a constructed premise rather than a published rule, since the SEC has issued no such mandate as of this writing)
+- Regulatory requirements (SIEM-proven compliance, plus whatever real-time detection threshold actually binds you; see the note on that latency below)
 - Team capacity constraints (0-1 data engineers, cannot support full MOAR)
 
 **Cost Model** (2 TB/day with 10:1 route-by-value):
@@ -820,7 +820,7 @@ TOTAL HYBRID: $60K (SIEM) + $243.6K (Lake) + $310K (Pipeline) = ~$613.6K/year
 - Team capacity 0-1 engineers (cannot support full MOAR complexity)
 - See the variants chapter of the handbook (Chapter 6, "What good looks like") for the full hybrid approach
 
-**Note on that latency**: the <30 sec threshold this book carries through the Marcus scenario is a constructed premise rather than a published rule, since the SEC has issued no such fraud-detection mandate as of this writing, which is the same qualification the Why Hybrid list above attaches to its regulatory bullet. So take the number from the text of whichever obligation actually binds you before you let it decide the architecture.
+**Note on that latency**: the <30 sec threshold this book carries through the Marcus scenario is stipulated for teaching rather than quoted from a rule, since the SEC has issued no such fraud-detection mandate as of this writing, so both regulatory bullets above stand in for whichever obligation actually binds your own firm. Take the number from the text of that obligation before you let it decide the architecture.
 
 ---
 
