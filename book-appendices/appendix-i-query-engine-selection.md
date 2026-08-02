@@ -25,7 +25,15 @@ Organizations that force all workloads through a single query engine pay for it 
 
 This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (H-ARCH-02: 0.97 confidence; Section I.6.3's worked scenario lands at 60% within that range) compared to single-platform approaches while providing better performance.
 
-The appendix works through the security workload spectrum (real-time dashboards, threat hunting, ETL, and maintenance), why Spark stays necessary for Apache Iceberg maintenance (Iceberg's V3 features shipped through 2025 and the engines have broadly picked them up by mid-2026, while the V4 spec stays open as GitHub milestone #58 with no items merged into it since late 2025; H-ARCH-04: 0.98 confidence), when Trino or Starburst wins for ad-hoc investigations, when Dremio wins for sub-second SOC dashboards (Dremio is SAP-owned as of July 2026; the workload fit is unchanged, though the branding and packaging may shift), and where DuckDB edge preprocessing earns its place (50-80% volume reduction, validated at 7.5 trillion records in Jake Thomas's Tier-B Okta personal account), before pulling the engines together into hybrid architecture patterns. The reason all of that is worth the operational weight is that no single engine handles all security workloads efficiently, so success comes from matching workload characteristics to engine strengths and accepting that you'll run 3-4 engines rather than one.
+The appendix works through:
+
+- the security workload spectrum, from real-time dashboards through ad-hoc threat hunting and batch ETL to Iceberg table maintenance
+- why Spark stays necessary for Apache Iceberg maintenance (H-ARCH-04: 0.98 confidence)
+- when Trino or Starburst wins for ad-hoc investigations
+- when Dremio wins for sub-second SOC dashboards
+- where DuckDB edge preprocessing earns its place
+
+and then it pulls the engines together into hybrid architecture patterns. The reason all of that is worth the operational weight is that no single engine handles all security workloads efficiently, so success comes from matching workload characteristics to engine strengths and accepting that you'll run 3-4 engines rather than one.
 
 ---
 
@@ -169,6 +177,8 @@ Elasticsearch was designed for full-text search over documents, while security a
 
 Even teams using Trino for queries and Dremio for dashboards generally still run Spark for Iceberg table maintenance, because Spark exposes the full set of maintenance procedures while the alternatives cover only part of the job: Athena offers `OPTIMIZE` and `VACUUM`, Trino has its own `OPTIMIZE`, and Dremio can compact, but none of them matches Spark's complete coverage of compaction, snapshot expiration, orphan cleanup, and delete-file merging in one place.
 
+The spec side has been stable enough to plan against, since Iceberg's V3 features shipped through 2025 and the engines have broadly picked them up by mid-2026, while the V4 spec stays open as GitHub milestone #58 with no items merged into it since late 2025.
+
 ### I.2.1 The Maintenance Imperative
 
 Apache Iceberg tables accumulate operational overhead over time:
@@ -194,31 +204,17 @@ Row-level deletes (GDPR "right to erasure", PCI-DSS data minimization) create de
 
 ### I.2.2 Why Spark for the Full Maintenance Set
 
-**Trino**: Read-write connector, partial maintenance coverage
-- Exposes `ALTER TABLE ... EXECUTE optimize`, `optimize_manifests`, `expire_snapshots`, `remove_orphan_files`, and `drop_extended_stats`, so compaction, snapshot expiration, and orphan cleanup are all available
-- No equivalent of Spark's `rewrite_position_delete_files`, so position delete files accumulate unmerged
-- Supports INSERT, UPDATE, DELETE, and MERGE, which means it does part of the maintenance job rather than none of it (Trino Iceberg connector docs, verified 2026-08-01)
+| Engine | Maintenance procedures available | What is missing | Verdict |
+|--------|----------------------------------|-----------------|---------|
+| **Spark** | The whole set as native `CALL system.*` procedures: compaction (`rewrite_data_files`, bin-packed to a 512 MB target file size), snapshot expiration, orphan cleanup, and delete-file merging (`rewrite_position_delete_files`), with the file rewriting distributed across the cluster and ACID guarantees held throughout | Nothing in the maintenance set | The one engine covering all four operations in one place |
+| **Trino** | `ALTER TABLE ... EXECUTE optimize`, `optimize_manifests`, `expire_snapshots`, `remove_orphan_files`, and `drop_extended_stats`, plus INSERT, UPDATE, DELETE and MERGE through the read-write connector | No equivalent of Spark's `rewrite_position_delete_files`, so position delete files accumulate unmerged | Compaction, snapshot expiration and orphan cleanup are all there, so it does part of the maintenance job rather than none of it |
+| **Dremio** | `OPTIMIZE TABLE` compacts small files, splits oversized ones and cleans up fragmented manifests, while `VACUUM TABLE` and `VACUUM CATALOG` expire snapshots and remove orphaned metadata files; the Enterprise Catalog runs both on a schedule | Position-delete-file merging, and orphan data files, since the vacuum path targets orphaned metadata files instead | Query acceleration plus partial maintenance |
+| **Snowflake** | Lifecycle maintenance, compaction included, on Snowflake-managed Iceberg tables, which write real Iceberg metadata to customer-owned object storage | Nothing on externally-managed Iceberg tables, which carry limited Snowflake platform support and no lifecycle management, so maintenance stays with whoever owns the catalog and the writer | Real Iceberg support whose maintenance answer turns on who holds the catalog |
+| **DuckDB** | Parquet writes for edge preprocessing (Section I.5), and Iceberg reads plus catalog-managed writes through the `iceberg` extension, which gained table creation and inserts against an attached Iceberg REST catalog in DuckDB v1.4.0 and MERGE INTO and V3 support by v1.5.3 | Compaction, snapshot expiration, orphan cleanup and delete-file merging, none of which the extension exposes through v1.5.3, and it is single-node besides, so it cannot compact TB-scale tables | Fine as an Iceberg reader and writer, while the maintenance work has to happen somewhere else |
 
-**Dremio**: Query acceleration plus partial maintenance
-- `OPTIMIZE TABLE` compacts small files, splits oversized ones, and cleans up fragmented manifests, while `VACUUM TABLE` and `VACUUM CATALOG` expire snapshots and remove orphaned metadata files
-- Automated maintenance in the Enterprise Catalog runs both on a schedule, which is the capability the Chapter 6 healthcare variant leans on for a team with almost no data-engineering depth
-- What Dremio does not cover is the remainder of the Spark set, since there is no position-delete-file merging and the vacuum path targets orphaned metadata files rather than orphan data files (Dremio table-maintenance docs, verified 2026-08-01)
+*Sources: Trino Iceberg connector docs, Dremio table-maintenance docs and Snowflake Iceberg tables docs, all verified 2026-08-01; the DuckDB 1.4.0 release announcement (2025-09-16), the DuckDB-Iceberg v1.5.3 feature post (2026-05-29) and the `iceberg` extension docs, verified 2026-08-02. This surface moved on more than one of these engines during 2026, so pin the release you actually tested.*
 
-**Snowflake**: Iceberg support is real, and the maintenance question turns on who holds the catalog
-- Snowflake-managed Iceberg tables write real Iceberg metadata to customer-owned object storage, and Snowflake handles lifecycle maintenance for them, compaction included
-- Externally-managed Iceberg tables carry limited Snowflake platform support and Snowflake assumes no lifecycle management on them, so maintenance stays with whoever owns the catalog and the writer
-- Pin the release you tested, because this surface moved again in 2026 (Snowflake Iceberg tables docs, verified 2026-08-01)
-
-**DuckDB**: Can write Parquet, not Iceberg-aware maintenance
-- Excellent for edge preprocessing (Section I.5)
-- Not distributed (cannot compact TB-scale tables)
-- No Iceberg catalog integration for ACID operations
-
-**Only Apache Spark** covers the whole set in one engine:
-- Distributed file rewriting (parallel compaction across cluster)
-- Bin-packing algorithms (optimize file sizes to 512 MB target)
-- Transactional Iceberg support (ACID guarantees during maintenance)
-- Native Iceberg procedures (`CALL system.*` commands), including the `rewrite_position_delete_files` step none of the alternatives above expose
+Spark is the only engine here that covers all four operations in one place, which is a narrower claim than "only Spark does maintenance", because Trino, Dremio and Snowflake each do a real part of the job now and a team already running one of them may need Spark for little beyond the delete-file merging. Dremio's scheduled Enterprise Catalog maintenance is the capability the Chapter 6 healthcare variant leans on for a team with almost no data-engineering depth. Snowflake's answer turns on catalog ownership rather than on the engine, so for a Snowflake shop the maintenance question is really a question about who writes to the table.
 
 As a data-platform practitioner put it [Personal communication, October 2025], "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance."
 
@@ -384,6 +380,8 @@ ORDER BY ct.event_time DESC
 
 ## Section I.4: Dremio for Sub-Second SOC Dashboards
 
+Dremio is SAP-owned as of July 2026, so the workload fit described in this section is unchanged, though the branding and the packaging may shift.
+
 ### I.4.1 The SOC Dashboard Challenge
 
 **Scenario**: 24/7 Security Operations Center with 20 large displays showing real-time threat metrics:
@@ -460,12 +458,21 @@ REFRESH EVERY 5 MINUTES  -- Incremental refresh
 
 ### I.4.3 Security Use Case: Real-Time Threat Visibility
 
-Typical SOC dashboard tiles (failed authentication at a 15-min window, 30-sec refresh, <500ms; high-risk CloudTrail events at a 1-hour window, 1-min refresh; network anomalies at a 5-min window; risky users at a 24-hour window) all achieve <1 second latency with Dremio Reflections through automatic aggregation management and incremental refresh (process only new data every 5 minutes, not full recompute), though these are illustrative figures carrying the same caveat as the Reflections numbers in I.4.2, which are not a first-party run.
+Typical SOC dashboard tiles:
+
+| Tile | Window | Refresh | Latency with Reflections |
+|------|--------|---------|--------------------------|
+| Failed authentication | 15 min | 30 sec | <500 ms |
+| High-risk CloudTrail events | 1 hour | 1 min | <1 sec |
+| Network anomalies | 5 min | not stated | <1 sec |
+| Risky users | 24 hours | not stated | <1 sec |
+
+All four hold under a second with Dremio Reflections through automatic aggregation management and incremental refresh, which processes only the new data every 5 minutes instead of recomputing the whole aggregate, though these are illustrative figures carrying the same caveat as the Reflections numbers in I.4.2, which are not a first-party run. The two blank refresh cells are blank because the appendix never stated a refresh interval for those tiles, and I would rather leave the gap visible than fill it with a plausible number.
 
 ### I.4.4 When NOT to Use Dremio
 
 1. **Ad-hoc threat hunting**: Reflections don't help first-time queries, so Dremio's acceleration story is the Reflections layer rather than the raw engine. Use Trino for investigations.
-2. **Low query frequency**: Dremio licensing ($40K-$200K/year) only cost-effective at >100 queries/day on same patterns.
+2. **Low query frequency**: Dremio subscription licensing ($40K-$200K/year) is only cost-effective above roughly 100 queries/day on the same patterns. Note that the hybrid comparison in Section I.6.3 prices Dremio on consumption alone (DCU), which is the same consumption-only basis as its Snowflake baseline, so a subscription in this range lands on top of the $1,410/month DCU figure there rather than inside it.
 3. **Iceberg maintenance or complex ETL**: Query engine only. Use Spark.
 
 ---
@@ -500,7 +507,7 @@ Security queries scan millions of rows but touch few columns (timestamps, IPs, u
 - Default (LZ4): 5.5× compression (685 MB for 10M events, 68.5 bytes/event)
 - Tuned (blanket ZSTD-22): **9.0× compression** (415 MB for 10M events, 41.5 bytes/event)
 - The codec is a smaller lever than it looks. Tuned ZSTD-22 compresses better than Iceberg's zstd default (9.0× vs 8.5× on the same corpus), but the storage-class decision, block storage for a hot index versus object storage for a lakehouse table, moves the retention bill by about 3.5×, an order of magnitude more than the tens of percent the codec buys. Squeeze harder only after the cold bytes are on object storage.
-- Huntress 50:1 compression ratio (vs raw JSON): achievable with ZSTD(22), not the out-of-box default
+- Huntress reports a 50:1 ratio against raw JSON (Tier C, the same vendor-ecosystem write-up as the case study in Section I.1A), which is more than five times the 9.0× my own blanket ZSTD-22 run reached against a comparable raw baseline, so either their corpus is far more repetitive than flat Zeek `conn` or the comparison basis differs. Treat 50:1 as a corpus-specific figure, measure your own before you size storage on it, and note that whatever ratio you get, the out-of-box default codec will not be the one that gets you there.
 
 ### I.4A.3 Netflix's Three Optimizations (What Security Teams Can Steal)
 
@@ -710,7 +717,7 @@ Daily authentication statistics pre-aggregated overnight, queried throughout the
 
 Behavioral baselines (median file creates per user) computed once, used by 20 different detection rules. The 1× compute cost amortizes across 20 consumers.
 
-**Snowflake production data** (Tier C: Snowflake-published figure, not independently reproduced): a reported 21.3% cost reduction for workloads matching these patterns, which isn't the 95% reduction the headline numbers suggest, but it's worthwhile savings when applied selectively.
+**A Snowflake-published benchmark** (Josh Crittenden, "Snowflake Materialized Views: Snowflake benchmarks hate this one simple trick!", Snowflake Builders Blog, 16 June 2025, retrieved 2026-08-02; Tier C, vendor-affiliated blog, not independently reproduced) ran 17 queries six times each against a roughly one-billion-record synthetic sales table on a Medium warehouse, and reported a combined 21.3% performance and cost improvement across the full set. The 12 queries the materialized view actually covered improved 78.4%, while five carrying `COUNT(DISTINCT ...)` got no benefit at all because Snowflake's materialized views don't support DISTINCT combined with aggregates, and that spread is what matters, because the number to plan with is the one across everything the warehouse runs, which isn't the 95% reduction the headline figures suggest, though it's worthwhile savings when applied selectively.
 
 ### I.4B.4 The Four-Tier Materialization Strategy
 
@@ -745,8 +752,8 @@ Match materialization approach to workload characteristics:
 
 **Vendor recommendations align with selective deployment**:
 
-- **Snowflake**: "Start slowly with this feature (i.e. create only a few materialized views on selected tables) and monitor the costs over time"
-- **Databricks**: Materialized views "well-suited for data processing workloads such as ETL processing," meaning known patterns, not ad-hoc exploration
+- **Snowflake**: "If you are concerned about the cost of maintaining materialized views, Snowflake recommends starting slowly with this feature (i.e. create only a few materialized views on selected tables) and monitor the costs over time" (Snowflake Documentation, "Working with Materialized Views", retrieved 2026-08-02)
+- **Databricks**: materialized views are "well-suited for data processing workloads such as extract, transform, and load (ETL) processing" (Databricks Documentation, "Use materialized views in Databricks SQL", retrieved 2026-08-02), which means known patterns rather than ad-hoc exploration
 - **AWS Redshift AutoMV**: Automatically creates materialized views, **but also automatically drops them when cost-benefit analysis turns negative**
 
 ### I.4B.6 Failure Mode Summary
@@ -775,7 +782,7 @@ For detailed platform comparisons, see the Appendix E resource directory. For OC
 
 **Architecture**:
 ```
-[CloudTrail S3 Events] (raw JSON, 10-50 TB/day variable)
+[CloudTrail S3 Events] (raw JSON, 1-50 TB/day variable)
     ↓
 [Lambda Function Triggered] (1 Lambda per S3 object notification)
     ↓
@@ -788,7 +795,7 @@ For detailed platform comparisons, see the Appendix E resource directory. For OC
 
 **Cost impact**: Jake Thomas described Okta's previous Snowflake approach at approximately $2,000/day. The DuckDB serverless cost he characterized as "dramatically reduced"; the 80-95% savings estimate ($100-$400/day) is a reasonable inference from those numbers, not a figure he stated directly.
 
-**Scalability validation**: 1.5-50 TB/day variable workload (50× peak-to-trough ratio) handled by serverless auto-scaling (thousands of concurrent Lambda functions).
+**Scalability validation**: 1-50 TB/day variable workload (50× peak-to-trough ratio) handled by serverless auto-scaling (thousands of concurrent Lambda functions). The 7.5-trillion-record figure is the part Jake stated directly, so read the band and the ratio as the operating envelope the architecture absorbed rather than as quoted material.
 
 ### I.5.2 CloudTrail Filtering Pattern
 
@@ -968,11 +975,21 @@ The same silent-wrong-answer pattern shows up a layer up from the reader too, at
 
 The caveats that matter for security data architecture: DuckLake is DuckDB-centric on compute. Spark and Trino connectors are listed as in-progress (via MotherDuck and community contributors as of April 2026), but broader multi-engine support is less mature than Iceberg's ecosystem. The catalog database also introduces a new operational dependency, since PostgreSQL or SQLite availability is now a hard requirement for table availability, which changes the failure model compared to object-storage-only Iceberg. Security environments that need ABAC, full audit trails, and provenance maturity will find DuckLake hasn't demonstrated those properties yet.
 
-That new failure model is the part I went and measured rather than asserted, because the fair-broker move is not to argue the vendor's planning-speed headline but to run the failure modes a security team actually hits when it stands DuckLake up on a Postgres catalog. Three verified-real, currently-open `duckdb/ducklake` issues, reproduced (or not) per version (SDW Lab, 2026-06-14, Tier B, single host), and the version-binding is what matters most here, because these verdicts are catalog-layer only and may close the way one of them already did, so re-run them on the next DuckLake release before repeating them. The first is a silent correctness bug. On DuckDB 1.5.3 with the DuckLake extension at commit e6a3bd0a, two concurrent deletes of the same row commit without conflict when one is inlined (under `DATA_INLINING_ROW_LIMIT`) and the other is a Parquet delete file above that limit, because the conflict check never compares the two stores, and the deleted rows then reappear: in both commit orders the repro leaves **29 rows** that a correct system would have deleted to **0**, with no error raised (issue #1215, open). For a security lakehouse that is the worst class of bug, because a deletion that doesn't take effect fails silently under ordinary concurrent SQL, whether that's:
+That new failure model is the part I went and measured rather than asserted, because the fair-broker move is not to argue the vendor's planning-speed headline but to run the failure modes a security team actually hits when it stands DuckLake up on a Postgres catalog. The three I worked through are all verified-real, currently-open `duckdb/ducklake` issues, reproduced (or not) per version (SDW Lab, 2026-06-14, Tier B, single host), and the version-binding is what matters most here, because these verdicts are catalog-layer only and may close the way one of them already did, so re-run them on the next DuckLake release before repeating them.
+
+| Issue | Versions tested | What breaks | Measured result | Status |
+|-------|-----------------|-------------|-----------------|--------|
+| **#1215** | DuckDB 1.5.3, DuckLake extension at commit e6a3bd0a | Two concurrent deletes of the same row commit without conflict when one is inlined (under `DATA_INLINING_ROW_LIMIT`) and the other is a Parquet delete file above that limit, because the conflict check never compares the two stores, and the deleted rows then reappear | In both commit orders the repro leaves **29 rows** that a correct system would have deleted to **0**, with no error raised | Open |
+| **#1184** | Postgres-backed catalog, inlining enabled and disabled | DuckLake unconditionally creates a backing inlined-data table carrying every user column as `BYTEA`, which collides with Postgres's hard 1600-column-per-table limit, and setting the inlining row limit to 0 does not help because the backing schema is still emitted in full | 1,500 columns create fine, while 1,600 and 1,700 both fail with `ERROR: tables can have at most 1600 columns` | Open, identical on the inlining-disabled path |
+| **#1031** | DuckDB 1.5.2 (extension auto-resolves to commit 415a9ebd) against DuckDB 1.5.3 | Creating 60 tables and then running one `information_schema.tables` query exhausts the connection pool at 14 connections, one per worker thread on this 14-thread host, exactly the thread-local-caching mechanism the issue described | **60 s** hang ending in a connection-pool timeout on 1.5.2, against **0.036 s** with no timeout for the identical workload on 1.5.3 | Fixed between 1.5.2 and 1.5.3, though still labeled open upstream with a PR pending |
+
+The first is the worst class of bug for a security lakehouse, because a deletion that doesn't take effect fails silently under ordinary concurrent SQL, whether that's:
 
 - a GDPR erasure
 - a retention expiry
-- a tombstoned false-positive The second is a hard ceiling on wide schemas: DuckLake unconditionally creates a backing inlined-data table carrying every user column as `BYTEA`, which collides with Postgres's hard 1600-column-per-table limit, so 1,500 columns create fine while 1,600 and 1,700 both fail with `ERROR: tables can have at most 1600 columns`, and setting the inlining row limit to 0 does not help because the backing schema is still emitted in full (issue #1184, open, identical on the inlining-disabled path). Security schemas go wide (a fully-flattened OCSF event with all profiles and observables, or a normalized EDR or firewall table, can exceed 1,600 columns), so this is a concrete architectural constraint on the schema-on-write path through a Postgres-backed catalog, and it pairs directly with the flattening-fidelity and nested-OCSF cost the rest of this book documents. The third is the version-currency lesson the chDB answer-equality story (Sections I.1.5 and I.9) already taught in another corner of the stack: on DuckDB 1.5.2, where the extension auto-resolves to commit 415a9ebd, creating 60 tables then one `information_schema.tables` query hangs **60 s** and fails with a connection-pool timeout that exhausts at 14 connections (one per worker thread on this 14-thread host, exactly the thread-local-caching mechanism the issue described), while on DuckDB 1.5.3 the identical workload returns in **0.036 s** with no timeout (issue #1031, fixed between 1.5.2 and 1.5.3). The issue is still labeled open upstream with a PR pending, but the controlled old-version-versus-new comparison shows the fix is effectively in the 1.5.3 release, and that control matters more than the bug itself: "probably fixed" is worthless without running both versions, and the old-version reproduction is what separates a real fix from a repro that simply under-triggers on a given host. So the honest reading of DuckLake's SQL catalog is the one the planning-speed numbers above already pointed at: it buys the flat metadata resolution and pays for it in catalog-layer correctness and operability surface, two gaps open today (#1215, #1184) and one regression a point release already closed (#1031), and the surface is worth pinning to versions precisely because the design is interesting enough to keep watching closely.
+- a tombstoned false-positive
+
+The second is a concrete architectural constraint on the schema-on-write path through a Postgres-backed catalog, because security schemas go wide (a fully-flattened OCSF event with all profiles and observables, or a normalized EDR or firewall table, can exceed 1,600 columns), and it pairs directly with the flattening-fidelity and nested-OCSF cost the rest of this book documents. The third is the version-currency lesson the chDB answer-equality story (Sections I.1.5 and I.9) already taught in another corner of the stack, and the controlled old-version-versus-new comparison matters more than the bug itself, because "probably fixed" is worthless without running both versions, and the old-version reproduction is what separates a real fix from a repro that simply under-triggers on a given host. So the honest reading of DuckLake's SQL catalog is the one the planning-speed numbers above already pointed at, since it buys the flat metadata resolution and pays for it in catalog-layer correctness and operability surface, two gaps open today (#1215, #1184) and one regression a point release already closed (#1031), and the surface is worth pinning to versions precisely because the design is interesting enough to keep watching closely.
 
 What DuckLake does offer that's genuinely useful: data files are Parquet and Iceberg-compatible, so the format isn't a lock-in risk. If DuckLake's multi-engine story matures, and the V1.0 adoption signal (top-10 extension, MotherDuck hosted support, named Apache DataFusion and Spark integrations) suggests it's being actively developed, it's a plausible future option for DuckDB-centric security analytics at smaller scale. For now, the right posture is to track it, not build production pipelines on it.
 
@@ -988,7 +1005,7 @@ The candidates are best read not as competing feature lists but as different bet
 
 | Candidate | The architectural bet | Production validation | Security-workload validation | Core-path verdict |
 |---|---|---|---|---|
-| **Kafka + Iceberg**, incl. Tableflow-style managed materialization | Separation of concerns: an ephemeral row-ordered log, a columnar table for years of retention, and a paid-for materialization layer between them | Netflix at ~5 PB/day and Okta querying 7.5 trillion records (both Tier B, conference/practitioner accounts); Kafka Connect Iceberg Sink at 1,500+ GitHub stars with a conservative 50+ production users | Documented production patterns for EDR telemetry, network flow, and cloud audit logs (Tier B) | **The default.** Migration from plain Kafka is additive and reversible: 2–4 week single-source pilot, 3–6 months full |
+| **Kafka + Iceberg**, incl. Tableflow-style managed materialization | Separation of concerns: an ephemeral row-ordered log, a columnar table for years of retention, and a paid-for materialization layer between them | Netflix at ~5 PB/day (Tier C, vendor-ecosystem meetup presentation) and Okta querying 7.5 trillion records (Tier B, practitioner account); Kafka Connect Iceberg Sink at 1,500+ GitHub stars with a conservative 50+ production users | Documented production patterns for EDR telemetry, network flow, and cloud audit logs (Tier B) | **The default.** Migration from plain Kafka is additive and reversible: 2–4 week single-source pilot, 3–6 months full |
 | **Apache Fluss** | Hybrid tiered storage: hot data on local SSD, cold on object storage, the client stitches the two at read time | Apache Incubator, pre-1.0 as of early 2026; one named deployment (Alibaba, >1 PB); the claimed 80% cost reduction is single-vendor and unverified (Tier C) | None public; the behavioral-analytics fit is theoretical | **Monitor.** Watch for Apache graduation plus three or more non-Alibaba deployments; migration is an all-or-nothing cutover, 6–12 months, high risk |
 | **RisingWave** | Stateless compute over shared storage (the Hummock LSM layer on S3), PostgreSQL-compatible SQL, sub-second-fresh materialized views with native Iceberg writes | Open-sourced 2020, $36M Series A 2022; named references Atome (fraud detection, sub-second) and CVTE (manufacturing) (Tier C, vendor-published named cases); the "1,000+ organizations" figure is an unverified vendor number | Fraud and audit-log analysis validated; no disclosed Fortune 500 security customer and no SIEM-scale benchmark with published methodology | **Pilot-eligible** for greenfield, SQL-first teams whose highest-value use is materialized-view analytics; pilot at ~10% of volume for 3–6 months before trusting it further |
 | **NATS JetStream** | The minimal-footprint log: a single Go binary, sub-second startup, 1–4 GB memory where Kafka wants far more | CNCF incubating, 40K+ GitHub stars; Synadia's named customers include Walmart, Rivian, and FinecoBank (Tier B, vendor announcement) | None, and the durability evidence runs the other way: Jepsen's December 2025 analysis of v2.12.1 (Tier A, independent) measured 14.1% acknowledged-message loss on coordinated power failure, 49.6% from a single-bit corruption on one of five nodes, and up to 78% on individual nodes under split-brain, against a 2-minute default deferred fsync | **Disqualified for the core path** on durability evidence; defensible only as an edge collector that forwards immediately to a durable store |
@@ -998,7 +1015,7 @@ The candidates are best read not as competing feature lists but as different bet
 
 **Kafka + Iceberg** is the production-proven answer, and the objection usually raised against it, that holding the same data in both systems is wasteful, doesn't survive arithmetic: in a modeled 10 TB/day scenario with seven days of Kafka retention against a year of Iceberg, the storage duplication for the overlap is about 0.4% of total pipeline cost (illustrative model on public list pricing, not a quoted deployment). What you actually pay is operational: three systems with three failure modes, and a materialization layer that has to be run as a first-class system. That layer is also where the market is moving fastest, because the copy-based pattern the Kafka Connect Iceberg Sink established now has managed commercial forms, with Confluent's Tableflow materializing Kafka topics as Iceberg or Delta tables inside Confluent Cloud, with catalog integrations spanning AWS Glue, Unity Catalog, Apache Polaris, and Snowflake Open Catalog (Tier C, vendor docs, verified 2026-07-10), and Bufstream shipping a copy-based mode alongside the zero-copy designs (Ursa, presented at VLDB) that argue the copy itself can be engineered away. Jack Vanlightly's October 2025 analysis of the pattern is the piece I'd hand an architect deciding between the copy-based and zero-copy halves (Tier B, expert analysis).
 
-**NATS JetStream** gets the hardest verdict on this table and carries the strongest evidence for it, because Jepsen is independent, transparent-methodology testing (Tier A) and the findings are quantified: the default configuration that produced the 14.1% loss figure is still what a fresh install gets, Synadia's response documented the 2-minute deferred-fsync default as a risk rather than changing it, and a March 2026 GitHub discussion (#7967) surfaced a new consumer-loss regression in v2.12.5, the version line that was meant to incorporate the Jepsen-prompted fixes. No independent post-fix re-test has been published as of May 2026. In a security pipeline, a 14% acknowledged-write loss rate means roughly that fraction of an adversary's activity goes silently undetected, which is why the disqualification is scoped to the core path. The honest remainder is the edge: a single-binary collector at sub-millisecond latency (an Onidel 2025 benchmark puts JetStream at 200–400K messages/second against Kafka's 500K–1M+, Tier C, methodology not fully transparent) that forwards immediately to Kafka or Iceberg is an architecture worth considering, though it is a hypothesis rather than a documented pattern, since no named security operation has published a NATS-edge-plus-Kafka-core deployment (Tier D, stated as such).
+**NATS JetStream** gets the hardest verdict on this table and carries the strongest evidence for it, because Jepsen is independent, transparent-methodology testing (Tier A) and the findings are quantified: the default configuration that produced the 14.1% loss figure is still what a fresh install gets, Synadia's response documented the 2-minute deferred-fsync default as a risk rather than changing it, and a March 2026 `nats-io/nats-server` GitHub discussion (#7967, opened 2026-03-18) surfaced a new consumer-loss regression in v2.12.5, the version line that was meant to incorporate the Jepsen-prompted fixes. No independent post-fix re-test has been published as of May 2026. In a security pipeline, a 14% acknowledged-write loss rate means roughly that fraction of an adversary's activity goes silently undetected, which is why the disqualification is scoped to the core path. The honest remainder is the edge: a single-binary collector at sub-millisecond latency (an Onidel 2025 benchmark puts JetStream at 200–400K messages/second against Kafka's 500K–1M+, Tier C, methodology not fully transparent) that forwards immediately to Kafka or Iceberg is an architecture worth considering, though it is a hypothesis rather than a documented pattern, since no named security operation has published a NATS-edge-plus-Kafka-core deployment (Tier D, stated as such).
 
 **Fluss and RisingWave** are the two genuine collapse-the-pipeline bets, and they sit at different maturity rungs. Fluss's single production reference is Alibaba, its cost claim is the vendor's own, and adopting it means leaving the Kafka ecosystem (no Connect, no Schema Registry, no ksqlDB) in an all-or-nothing cutover, and Vanlightly classified it in September 2025 as "tiered storage with client-side stitching," something specifically new rather than a Kafka clone (Tier B). RisingWave has the cleaner architecture story for analysts (PostgreSQL-compatible SQL, materialized views as the central abstraction) and real named references, but the validated cases are fraud detection and manufacturing observability, and fraud-shaped workloads resemble behavioral security analytics without being SIEM-scale telemetry. A pilot should benchmark its query performance against your existing hot tier on your own partitioning strategy and test materialized-view freshness under the late-event conditions you actually see.
 
@@ -1040,9 +1057,9 @@ The long-form assessments behind this section are on the site: "Streaming Decisi
 │   • Parquet format          │
 └───────────┬─────────────────┘
             │
-            ↓ Daily compaction (REQUIRED)
+            ↓ Compaction (REQUIRED; cadence in I.2.3)
 ┌─────────────────────────────────┐
-│   Spark Maintenance (Nightly)   │
+│   Spark Maintenance (tiered)    │
 │   • Compact small files         │
 │   • Expire old snapshots        │
 │   • Merge delete files          │
@@ -1122,13 +1139,15 @@ def route_query(query_metadata):
 |-----------|--------|--------------|-------------|
 | Edge preprocessing | DuckDB Lambda | $5,000 | 10 TB/day → 2 TB/day (80% reduction) |
 | Storage (2 TB/day × 90 days effective) | S3 | $4,140 | 180 TB × $23/TB |
-| Maintenance (nightly) | Spark (spot) | $0.87 | Weekly compaction, ~4 hours × $0.05/hour × 4.33 runs (80% spot savings) |
-| SOC dashboards (200 tiles) | Dremio | $1,410 | 4 DCU × $352.50/DCU/month |
+| Maintenance (weekly) | Spark (spot) | $0.87 | Weekly warm-tier compaction on the I.2.3 cadence, ~4 hours × $0.05/hour × 4.33 runs (80% spot savings) |
+| SOC dashboards (200 tiles) | Dremio | $1,410 | 4 DCU × $352.50/DCU/month, consumption only |
 | Threat hunting (50 analysts) | Trino cluster | $3,000 | Self-managed cluster, 3 nodes |
 | Reflection storage | S3 | $460 | 20 TB Dremio reflections |
 | **Total** | | **$14,011/month** | **$168,132/year** |
 
 **Savings**: $289,068/year (63% cost reduction vs Snowflake-only)
+
+Both options are priced on consumption alone, so the Snowflake baseline carries storage and compute with no platform fee and the hybrid option carries DCU, instance and storage costs with no Dremio subscription line. A Dremio subscription in the $40K-$200K/year range from Section I.4.4 sits outside this comparison, and adding one at the low end would put the hybrid option at about $17,300/month and cut the saving to roughly 54%, so run the comparison on the licensing basis your own procurement actually uses.
 
 **Performance improvements** (illustrative, derived from the cost scenario above, not a first-party run):
 - Dashboard latency: 5-15 seconds → <1 second (Dremio Reflections)
@@ -1200,6 +1219,14 @@ The harder thing to carry out of this appendix isn't the routing table, which mo
 - Jake Thomas (Okta) [Personal communication]: DuckDB extreme scale validation (7.5T records in 6 months, $2K/day Snowflake → "dramatically reduced," figures that are Jake's own account and not independently audited) (Tier B)
 - Netflix ClickHouse scale figures [Daniel Muino, ClickHouse meetup presentation, late 2024]: 5 PB/day, 10.6M events/sec, sub-second queries, from a vendor ecosystem presentation not independently reproduced (Tier C)
 - Schema-on-read SIEM bake-off [SDW Lab, zeek-flagship-rerun, 2026-06-10]: a two-regime split over 10M OCSF-normalized Zeek conn.log events, 5 standardized queries, CV-gated, answers verified equal across the three head-to-head arms with the StarRocks and Trino sidecar timed only, specifically the OpenSearch 2.18.0 baseline (2.854s avg) against ClickHouse-native (0.061s, 46.8×), ClickHouse-over-Iceberg (0.282s, 10.1×), StarRocks (0.343s, 8.3×), and Trino (0.795s, 3.6×); the index wins the cheap lookups, the lakehouse wins the heavy hunting aggregations. Supersedes a retired legacy benchmark (Dec 2025). One specific workload, directional for network-telemetry analytical queries (Tier B)
+
+**Streaming layer (Section I.5A)**:
+- Kyle Kingsbury, ["Jepsen: NATS 2.12.1"](https://jepsen.io/analyses/nats-2.12.1), 8 December 2025 (Tier A, independent, transparent methodology): the acknowledged-write loss figures and the 2-minute deferred-fsync default behind the core-path disqualification
+- [`nats-io/nats-server` discussion #7967](https://github.com/nats-io/nats-server/discussions/7967), opened 18 March 2026: the post-Jepsen consumer-loss regression in v2.12.5
+- Jack Vanlightly, ["Why I'm not a fan of zero-copy Apache Kafka-Apache Iceberg"](https://jack-vanlightly.com/blog/2025/10/15/why-im-not-a-fan-of-zero-copy-apache-kafka-apache-iceberg), 15 October 2025 (Tier B, expert analysis): the copy-based versus shared-tiering taxonomy
+- Anton Borisov, ["What the Fuss with Fluss: Flink Delta Force"](https://medium.com/fresha-data-engineering/what-the-fuss-with-fluss-flink-delta-force-1ab3d6be5c98), fresha-data-engineering, September 2025 (Tier B, practitioner architect): the philosophies-of-state framing this section extends
+- Onidel, ["NATS JetStream vs RabbitMQ vs Apache Kafka: 2025 benchmarks"](https://onidel.com/blog/nats-jetstream-rabbitmq-kafka-2025-benchmarks) (Tier C, methodology not fully transparent): the 200-400K/s JetStream against 500K-1M+/s Kafka throughput figures
+- Still owed locators, cited inline above and not yet resolved to a retrievable source: the Confluent Tableflow catalog-integration docs, the Bufstream/Ursa VLDB presentation, and RisingWave's Atome and CVTE case pages
 
 **Technical documentation**:
 - [Apache Spark Iceberg Procedures](https://iceberg.apache.org/docs/latest/spark-procedures/)

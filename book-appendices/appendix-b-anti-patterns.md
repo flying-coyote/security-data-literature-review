@@ -7,7 +7,7 @@ tags: [anti-patterns, architecture, security-data, trino, spark, operational-com
 
 # Appendix B: Anti-Patterns Catalog
 
-**Purpose**: Learn from common failures in security data architecture implementations. Each anti-pattern includes: description, why it fails, real-world consequences, and prevention strategies.
+**Purpose**: Learn from common failures in security data architecture implementations. Each anti-pattern includes a description, why it fails, and prevention strategies, with real-world consequences and detection guidance where the evidence supports them.
 
 **How to use**: Review this catalog before making architectural decisions, and if you recognize your own organization heading toward an anti-pattern, course-correct early, because prevention is substantially cheaper than remediation and the later a structural decision gets unwound, the more it costs.
 
@@ -195,7 +195,7 @@ Forcing all security workloads through single query engine when different worklo
 
 The workloads conflict with one another. Real-time dashboards need sub-second query latency, which is ClickHouse or Dremio Reflections territory; threat hunting needs a full-table scan across billions of rows, which is Trino MPP and is not built for sub-second response; and table maintenance (compaction, snapshot expiration) needs Spark, which Trino can't do at all. A single engine has to compromise across all three, so nobody gets the performance their workload actually wants.
 
-The cost follows the same logic. ClickHouse tuned for real-time gets expensive when you point it at billion-row threat-hunting scans; Trino tuned for ad-hoc queries lacks the dashboard-optimized caching that Dremio Reflections provides; and Spark tuned for batch gives analysts a poor interactive experience, leaving them waiting minutes for a result. Each engine is good at the thing it was built for and a poor fit for the things it wasn't.
+ClickHouse tuned for real-time gets expensive when you point it at billion-row threat-hunting scans; Trino tuned for ad-hoc queries lacks the dashboard-optimized caching that Dremio Reflections provides; and Spark tuned for batch gives analysts a poor interactive experience, leaving them waiting minutes for a result, so the cost follows the same logic as the performance, since each engine is good at the thing it was built for and a poor fit for the things it wasn't.
 
 **Example failure** (Appendix I; anonymized practitioner):
 > "We standardized on Spark for 'simplicity.' Analysts hated it. Threat hunting queries took 5-10 minutes versus under 60 seconds with Trino. Dashboards loaded in 20-30 seconds vs. <1 second with Dremio Reflections. We migrated to multi-engine: Spark for maintenance, Dremio for dashboards, Trino for hunting. Same data (Iceberg), different engines. Performance improved 10×, analyst satisfaction recovered, $200K annual cost savings (rightsized engines for workload)."
@@ -267,7 +267,7 @@ The operational risk is concentrated into a single point of failure: if the migr
 
 The dual-platform cost runs longer than anyone plans. The plan is usually a 6-month overlap; the reality is 12-18 months, because a big-bang approach keeps hitting unexpected issues. To put illustrative numbers on it (illustrative scenario, not a measured deployment): run the old SIEM at $1M/year alongside the new platform at $400K/year, and $1.4M annual carried over 18 months is $2.1M against a planned $700K, roughly 3× over budget.
 
-And the team burns out. Twelve to eighteen months of "we're migrating" with no end in sight, analysts juggling two platforms for every investigation, checking Splunk, checking the new platform, reconciling the differences, and the predictable outcome is that key people leave, institutional knowledge walks out with them, and the migration slips further.
+The team burns out under twelve to eighteen months of "we're migrating" with no end in sight, analysts juggling two platforms for every investigation, checking Splunk, checking the new platform, reconciling the differences, and the predictable outcome is that key people leave, institutional knowledge walks out with them, and the migration slips further.
 
 ### Real-World Consequences
 
@@ -424,7 +424,10 @@ Focusing 100% on technology implementation (Iceberg setup, Trino cluster, OCSF t
 
 Technology adoption fails on the people, not the platform (the incremental-modernization material in Chapter 7 of the handbook; the "80% change management, 20% technology" framing is a practitioner rule of thumb associated with change-management frameworks like Prosci's ADKAR, not a measured ratio). You can have full technical success (the platform ingests data, queries return correct results, dashboards display the metrics) and still land in operational failure, because the analysts don't trust the new platform when Splunk is what they know, and leadership doesn't see the ROI when the cost savings haven't shown up in a form they recognize.
 
-The resistance is predictable and it comes in three shapes. There's comfort, the analyst who's used Splunk for seven years and knows SPL cold asking why they should learn SQL. There's risk aversion, the worry about missing a threat while learning a new platform during a live shift. And there's status-quo bias, the sense that the current system works even if it's expensive and slow, so why take on the disruption of changing it.
+The resistance is predictable and it comes in three shapes:
+- comfort, the analyst who's used Splunk for seven years and knows SPL cold asking why they should learn SQL
+- risk aversion, the worry about missing a threat while learning a new platform during a live shift
+- status-quo bias, the sense that the current system works even if it's expensive and slow, so why take on the disruption of changing it
 
 ### Real-World Consequences
 
@@ -471,10 +474,12 @@ The dollar figures in the three pitches below are an illustrative worked example
 
 **3. Migrate Critical Workflows First**:
 
-The first priority is the work analysts do dozens of times a day:
+The first priority is the work analysts do dozens of times a day, rather than the leadership dashboards that get touched once a month:
 - Threat hunting for an IOC
 - Investigating alerts
-- Correlating events rather than the leadership dashboards that get touched once a month. Migrating the daily workflow first is what earns the platform its trust, because that's where the analyst feels whether it's faster or slower than what they had.
+- Correlating events
+
+Migrating the daily workflow first is what earns the platform its trust, because that's where the analyst feels whether it's faster or slower than what they had.
 
 The second priority is the detection content that matters: the 50-100 rules that fire frequently and generate actionable alerts, ahead of rules that haven't fired in six months, which can wait for Phase 3.
 
@@ -501,7 +506,7 @@ Deploying security data platform without operational monitoring, query performan
 
 Without visibility there's nothing to optimize against. Performance degrades gradually (queries slow from 30s to 60s to 120s over months) and without metrics you can't tell the root cause apart, whether it's small-file proliferation, partition skew, or a shift in query patterns. The degradation creeps up slowly enough that the team keeps tolerating it, adjusting expectations a little at a time, until one day the platform is effectively unusable and no one can say exactly when it crossed the line.
 
-The cost surprises work the same way. Cloud charges accumulate invisibly across query scans, storage-tier transitions, and data transfer, and with no alert when the weekly spend jumps from $5K to $15K, the first you hear of it is the month-end bill. By then the overrun forces emergency cost-cutting under pressure (delete data? reduce retention?) which is exactly the kind of decision you don't want to be making in a hurry.
+Cost surprises work the same way, because cloud charges accumulate invisibly across query scans, storage-tier transitions, and data transfer, and with no alert when the weekly spend jumps from $5K to $15K, the first you hear of it is the month-end bill. By then the overrun forces emergency cost-cutting under pressure (delete data? reduce retention?) which is exactly the kind of decision you don't want to be making in a hurry.
 
 ### Real-World Consequences
 
@@ -762,7 +767,7 @@ The whole recovery runs an illustrative $80K-$120K across the four months, again
 Deploying Apache Iceberg without scheduling regular Spark maintenance (compaction, snapshot expiration, orphan file cleanup), causing progressive query degradation.
 
 **Symptoms**:
-- Query performance degrades significantly over 30-90 days (illustratively 5× at 30 days and 32× at 60 days in the example below; the upper end of reported ranges can reach 90× in extreme cases with very high write rates, though the example here demonstrates the more typical progression)
+- Query performance degrades significantly over 30-90 days (illustratively 5× at 30 days and 32× at 60 days in the example below)
 - Analysts complain: "The new platform is worse than Splunk!"
 - Emergency compaction jobs requiring 8-16 hours to catch up
 

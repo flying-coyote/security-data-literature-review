@@ -315,7 +315,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 - **Security Application**: An instructive pattern for tracking MV economics and disabling negative-ROI views
 
 **PostgreSQL Materialized Views**: https://www.postgresql.org/docs/current/rules-materializedviews.html
-- **Reported speedups**: 78× to 9,000× on favorable workloads (Tier C/D: vendor documentation and vendors' own benchmarks, best-case, not independently reproduced)
+- **Reported speedups**: the 9,000× figure that circulates for PostgreSQL comes from a single-developer case study on a synthetic Rails dataset reporting 350× to 9,000× (Sid Ngeth, 2025; Tier D anecdote, not independently reproduced), so treat it as a favorable-workload ceiling rather than a planning number
 - **Refresh**: Manual `REFRESH MATERIALIZED VIEW` command (no automatic incremental refresh)
 - **Security Fit**: Limited, suitable only for small-scale use cases given the manual-refresh operational burden
 
@@ -351,7 +351,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 ### Research Papers & Advanced Topics
 
 **q-Hierarchical Dichotomy for IVM**: Berkholz, Keppeler, Schweikardt, "Answering Conjunctive Queries under Updates" (PODS 2017) - https://arxiv.org/abs/1702.06370
-- **Key Finding**: Some query patterns are **fundamentally impossible** to maintain incrementally in sub-linear time (O(N^1/2) update time required)
+- **Key Finding**: the q-hierarchical conjunctive queries are the ones you can maintain in constant time per update, and for the non-q-hierarchical ones the paper proves a conditional lower bound of roughly N^(1/2) update time (conditional on the OMv conjecture, a standard hardness assumption), so maintenance cost on those grows with the size of the table instead of staying flat
 - **Security Relevance**: Explains why complex correlation rules (non-q-hierarchical queries) force full refresh regardless of platform
 - **Reading Level**: Advanced (computer science theory); skip unless interested in computational complexity foundations
 
@@ -410,7 +410,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 1. **Netflix at scale** (Appendix I.4A): the ClickHouse logging system runs at 5 PB/day on disciplined low-level engineering, which is the reminder that operational simplicity can outweigh performance optimization (the article doesn't discuss materialized views either way, so don't read it as a "zero-MV" endorsement)
 2. **Selective deployment**: Start with 3-5 high-value use cases (compliance dashboards, scheduled reports), measure before expanding
-3. **Economic analysis critical**: the reported 78× to 9,000× best-case speedups (Tier C/D, not independently reproduced) only translate to cost savings when query frequency >> data change rate
+3. **Economic analysis critical**: the published upside figures decompose into three very different sources, since Snowflake's own number is roughly a 78% query improvement (a percentage, not a multiplier), the 9,000× top end is a single-developer PostgreSQL case study on a synthetic Rails dataset (Sid Ngeth, 2025, 350× to 9,000×), and a practitioner Splunk write-up reports ~270× (Tier C/D throughout, not independently reproduced), while the SDW Lab's own measurement lands at 45.3× to 76.8× on three SOC rollups (Tier B, 20M OCSF events, single host), and any of them only translates to cost savings when query frequency runs well ahead of the data change rate
 4. **Layered architecture**: Streaming (real-time) → Micro-batch (baselines) → Batch (analytics) → Data lake (hunting). Use right tool for each tier.
 5. **Security data failure modes**: High data change rates, schema volatility, complex correlation requirements make MVs operationally complex vs. general BI analytics
 
@@ -423,7 +423,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 ### Polaris (Apache Iceberg Catalog)
 
 **Official Repository**: https://github.com/apache/polaris
-- **Status**: Apache top-level project since 2026-02-19 (entered incubation October 2024); v1.5.0 released 2026-05-18, production-ready
+- **Status**: Apache top-level project since 2026-02-19 (entered incubation October 2024), with v1.5.0 released 2026-05-18
 - **Why Important**: Iceberg-native catalog (vs. Hive Metastore legacy compatibility)
 
 **Snowflake Open Catalog** (managed Apache Polaris, GA; formerly "Polaris Cloud"), docs at https://docs.snowflake.com/en/user-guide/opencatalog/overview (the old `data-cloud/workloads/apache-polaris/` marketing URL 404s as of the July 2026 re-check, and the `open-catalog` marketing page now redirects into Snowflake Horizon)
@@ -623,7 +623,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 | **Dremio** | community.dremio.com | Dremio Reflections, BI integration | Medium-High (800+ members) |
 | **dbt** | getdbt.com/community | OCSF transformations, data modeling | Very High (10,000+ members) |
 | **Dagster** | dagster.io/slack | Data pipeline orchestration | Medium (2,000+ members) |
-| **r/dataengineering** | reddit.com/r/dataengineering | General data engineering discussions | Very High (100K+ members) |
+| **r/dataengineering** | reddit.com/r/dataengineering | General data engineering discussions | Very High (Appendix J.9.3 carries the dated member count) |
 
 ---
 
@@ -693,6 +693,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 **A data-platform practitioner** (Practitioner validation in the variants chapter and Appendix I)
 - Focus: Starburst/Athena for security, Denodo virtualization, hybrid architectures
 - **Book Validation**: Provided practitioner validation for multi-engine patterns, hybrid architectures
+- **Note**: this source is anonymized under the disclosure rules, so it is cited rather than followable, and it sits here because the validation shaped the multi-engine material rather than because you can go read them
 
 **Jake Thomas** (Practitioner, Security data engineering)
 - Focus: Edge preprocessing with DuckDB, volume reduction patterns
@@ -828,7 +829,7 @@ So use this map as "further reading" for any chapter. Links go to the live essay
 | [The Capability Matrix](https://securitydataworks.com/matrix) | **the handbook's vendor-evaluation/decision material**, the evidence-tiered vendor-evaluation method (method and scores public; paid work is the services engagement that acts on a finding) |
 | [AI-Native vs AI-Augmented: the Threat Timeline](https://securitydataworks.com/research/ai-native-vs-augmented) † | **cross-cutting companion essay (not part of the seven-chapter spine)** is an earlier blog-draft candidate, retained here for its threat-timeline argument on why defensive infrastructure must match AI-speed operations rather than anchored to a specific chapter |
 
-**Note**: these essays are continuously updated; external standards are current as of March 2026 (OCSF v1.8.0), while the manuscript itself is edition v0.2.0, June 2026, and the site captures developments past both dates. † marks a best-fit mapping from a retired post number to its closest current essay (worth confirming the destination is the intended one). ‡ marks a post with no single successor essay yet; the link goes to the writing index.
+**Note**: these essays are continuously updated, external standards are current as of March 2026 (OCSF v1.8.0), and the manuscript is whichever edition and date the copyright page prints, so the site captures developments past both. † marks a best-fit mapping from a retired post number to its closest current essay (worth confirming the destination is the intended one). ‡ marks a post with no single successor essay yet; the link goes to the writing index.
 
 ---
 
@@ -906,7 +907,7 @@ This directory covers books, documentation, communities, conferences, and though
 
 ---
 
-### 180-Day Mastery (Production-Ready Architecture)
+### 180-Day Mastery (A Pilot You'd Run on Real Data)
 
 **Months 3-6: Deep Dive**
 - [ ] Implement proof-of-concept with real security data (network flows, endpoint logs)

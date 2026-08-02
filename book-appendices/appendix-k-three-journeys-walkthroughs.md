@@ -7,7 +7,15 @@ tags: [vendor-selection, architecture-decision, hipaa, dremio, iceberg, security
 
 # Appendix K: The Three Journeys, Full Walkthroughs
 
-The handbook's variants chapter (Chapter 6, "What good looks like") carries the decision-relevant summaries of the three architect journeys, the situation and constraints, the decision each architect made, and the outcome with its trade-offs, and this appendix carries the complete walkthroughs behind them: the full requirement tiers, the vendor elimination lists and scoring matrices, the POC designs and per-vendor results, the limitation registers with their mitigations, and the staffing and budget reality checks. Each section below picks up where the corresponding variant summary leaves off, so read the journey's summary in the variants chapter first for the organizational context and the decision rationale, then come here when you want to see the machinery turn.
+The handbook's variants chapter (Chapter 6, "What good looks like") carries the decision-relevant summaries of the three architect journeys, the situation and constraints, the decision each architect made, and the outcome with its trade-offs, and this appendix carries the complete walkthroughs behind them:
+
+- the full requirement tiers
+- the vendor elimination lists and scoring matrices
+- the POC designs and per-vendor results
+- the limitation registers with their mitigations
+- the staffing and budget reality checks
+
+Each section below picks up where the corresponding variant summary leaves off, so read the journey's summary in the variants chapter first for the organizational context and the decision rationale, then come here when you want to see the machinery turn.
 
 ## K.1 Jennifer's Healthcare SOC: On-Prem/Hybrid Priority
 
@@ -280,7 +288,7 @@ Open Cybersecurity Schema Framework (OCSF) standardizes security event schemas a
 **Mitigation options**:
 1. **Vector log shipper OCSF transformation**: Deploy Vector (open-source log processor) for OCSF mapping at ingestion, so before data reaches Dremio, it is transformed to OCSF schema
 2. **SQL views in Dremio**: Create OCSF-mapped views translating vendor schemas to OCSF in query layer (fields aliased at read time)
-3. **LLM-assisted mapping** (Appendix H pattern): Use GPT-4 to generate OCSF mapping configurations from vendor documentation (which, in the mapping work I've done, cut the drafting time substantially against hand-writing each field map, though a human still has to validate every result)
+3. **LLM-assisted mapping** (Appendix H pattern): Use a frontier LLM to generate OCSF mapping configurations from vendor documentation (which, in the mapping work I've done on GPT-4-class models, cut the drafting time substantially against hand-writing each field map, though a human still has to validate every result)
 
 **Jennifer's approach**: Start with SQL views (quickest implementation, 2-3 days effort), migrate to Vector transformation incrementally (6-month roadmap as OCSF adoption increases).
 
@@ -324,7 +332,7 @@ The economics here are driven by the batch-first choice: it keeps the team size 
 
 Marcus's journey is the worked example in the handbook's variants chapter, so the organizational context, the Tier 1 mandatory requirements, the Tier 2 scoring matrix with finalists, the Path A decision with its rationale, and the full Path B re-run are all in his variant summary there. This section carries the step-by-step detail beyond that treatment: the Tier 2 and Tier 3 requirements, the organizational constraints, the Tier 1 elimination detail, the full POC design and per-vendor results, and the staffing and budget comparison of the two paths.
 
-Marcus is a composite teaching scenario, so the POC latencies, the per-vendor cost projections (the $2.9M Athena baseline, the Starburst, Databricks, and Splunk figures), the FTE counts, and the 3-year TCO numbers below are illustrative figures from the author's TCO model (Appendix A, Worksheet A.6) applied to a 12 TB/day financial-services profile, not a measured deployment. The AWS unit prices (S3 tiers, Athena $/TB scanned, Kinesis $/GB) are list rates as of Q4 2025; the Splunk $11.4M/year licensing is list-modeled from the G-Cloud 14 anchor in Worksheet A.6, not a quoted contract. Vendor-specific capability claims (Databricks Photon, Delta UniForm, Starburst connectors) are vendor representations at Tier C unless separately sourced.
+Marcus is a composite teaching scenario, so the POC latencies, the per-vendor cost projections (the $2.9M Athena baseline, the Starburst, Databricks, and Splunk figures), the FTE counts, and the 3-year TCO numbers below are illustrative figures from the author's TCO model (Appendix A, Worksheet A.6) applied to a 12 TB/day financial-services profile, not a measured deployment. The AWS unit prices (S3 tiers, Athena $/TB scanned, Kinesis $/GB) are list rates as of Q4 2025; the Splunk $11.4M/year licensing is list-modeled from the G-Cloud 14 anchor in Worksheet A.6, not a quoted contract. Vendor-specific capability claims (Databricks Photon, Delta UniForm, Starburst connectors) are vendor representations at Tier C unless separately sourced. The regulatory trigger behind Path B is a scenario premise on the same footing, since the sub-30-second fraud-detection mandate, its 90-day implementation clock, and the "$50M+ SEC fines" exposure cited in the Path B rationale below are constructed constraints written to make the trade-off legible, and the SEC has published no such rule as of this writing, so read them as stipulations of Marcus's scenario rather than as a compliance requirement you can design against.
 
 ### Tier 2 and Tier 3 Requirements and Organizational Constraints
 
@@ -534,7 +542,7 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 
 **Why Path B Won Despite Roughly 3.4× Higher Cost**:
 
-1. **Regulatory Mandate Changed**: New SEC requirement for <30 second fraud detection made 80-100 second Athena latency non-compliant (compliance risk >> cost savings)
+1. **Regulatory Mandate Changed**: In this scenario a new SEC requirement for sub-30-second fraud detection made the 80-100 second Athena latency non-compliant, and compliance risk outweighed cost savings by a wide margin. No such rule exists at the SEC as of this writing, and the 90-day clock in the two points below is a constructed constraint of the teaching scenario rather than a deadline you can look up.
 
 2. **Team Reality Shifted**: Lost 2 of 3 data engineers to attrition, couldn't hire replacements within 90-day SEC deadline (0 available data engineering capacity for Athena/Iceberg maintenance)
 
@@ -875,7 +883,7 @@ Priya's usage guidance to the SOC analysts, which followed directly from that sp
 
 **1. Performance optimization**: Virtualization inherently slower than native storage
 
-Denodo adds 50-200% latency overhead (1.5-3× slower than querying data directly). This is architectural reality of virtualization, since the query must traverse abstraction layer, API calls, data format translation.
+Denodo adds roughly 1.5× latency overhead on a single-region query (15-30 seconds against a 10-20 second native Splunk query) and 2-4.5× once the query crosses regions (45-90 seconds, the case this appendix measures throughout). That is the architectural reality of virtualization, because every query has to traverse the abstraction layer, the API call out to the source SIEM, and the data-format translation on the way back, and a cross-region query pays that cost at each regional hop plus the network latency between the regions.
 
 **Mitigation**:
 - Denodo caching: Frequently-run queries cached for 30-60 seconds (materialized results, no API call on cache hit)

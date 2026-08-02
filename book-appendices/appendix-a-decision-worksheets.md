@@ -826,11 +826,13 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 | Platform Architecture | 500 GB/day | 2 TB/day | 10 TB/day | 7-Year Retention Support | Team Capacity Required |
 |-----------------------|------------|----------|-----------|-------------------------|------------------------|
-| **Traditional SIEM (schema-on-read)** | $310K-$435K/year | $1.24M-$1.74M/year | $6.2M-$8.7M/year | ✗ Hot only (30-90 days) | 0 data engineers (SOC-managed) |
+| **Traditional SIEM (schema-on-read, platform + Enterprise Security)** | $310K-$435K/year | $1.24M-$1.74M/year | $6.2M-$8.7M/year | ✗ Hot only (30-90 days) | 0 data engineers (SOC-managed) |
 | **Traditional SIEM (Sentinel)** | $0.95M-$1.7M/year | $3.7M-$6.9M/year | $19M-$34M/year | ✓ Queryable (slow cold tier) | 0 data engineers (cloud-managed) |
 | **MOAR (OSS)** | $180K-$280K/year | $360K-$534K/year | $548K-$848K/year | ✓ Full query transparency | 3-5 data engineers (self-hosted) |
 | **MOAR (Cloud-Managed)** | $220K-$350K/year | $380K-$650K/year | $950K-$1.5M/year | ✓ Full query transparency | 1-2 data engineers (managed services) |
 | **Hybrid (SIEM + Lake)** | $280K-$450K/year | $500K-$850K/year | $2M-$3.5M/year | ✓ Lake queryable, SIEM hot | 1-2 data engineers + SOC analysts |
+
+**Which schema-on-read rate this row uses**: the schema-on-read bands above are the discounted full-stack rate from the Step 2 anchor note, $620-870/GB/day/year for platform plus Enterprise Security, while Steps 3 and 6 compare MOAR against the platform-only floor of $684K/year at 2 TB/day, so the $219K annual savings, the 32% figure, and the 2.6-year payback are the conservative case, and running that same $465K MOAR total against this row's $1.24M-$1.74M band puts the modeled saving nearer 62-73% instead.
 
 **Cold-tier assumption at 10 TB/day**: the 10 TB/day MOAR (OSS) band assumes the 7-year cold tier moves to S3 Glacier Deep Archive (~$0.00099/GB-month) rather than the Glacier Flexible rate Step 3 prices at 2 TB/day, because at 10× the volume the ~25 PB cold accumulation only fits inside the $548K-$848K band at the Deep Archive rate (Glacier Flexible alone would run roughly $92K/month there), so read Step 3's Glacier-Flexible cold line as the 2 TB/day case and this column as its 10 TB/day counterpart, which is what keeps Step 3 and Step 5 consistent.
 

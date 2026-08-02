@@ -1,15 +1,15 @@
 ---
 type: essay-draft
-title: "Appendix H: OCSF as a Normalization Baseline (Strategy, Economics, and Failure Modes)"
+title: "Appendix H: OCSF Strategy and Economics, a Normalization Baseline Adopted With Eyes Open"
 created: 2026-06-10
 tags: [ocsf, schema-lock-in, normalization, splunk-cim, security-data, detection-content]
 ---
 
-# Appendix H: OCSF Strategy - A Normalization Baseline, Adopted With Eyes Open
+# Appendix H: OCSF Strategy and Economics, a Normalization Baseline Adopted With Eyes Open
 
 This material moved to the proof appendices so the decision path through the chapters stays short. Nothing was cut for length, though later passes tightened a few claims for accuracy, so where a figure has been sharpened the reasoning around it is unchanged (see Section H.4.2).
 
-> **Version pin**: where this appendix cites OCSF v1.3.0 it is describing work done against that release, chiefly the CISA Zeek-OCSF mappings in Section H.3.2 and the case study in Section H.3.1, though the same v1.3.0 basis carries into the Zeek coverage-gap claims later in H.4 and the integration material in H.5.4, so read those class names and gap claims as a snapshot of the schema at that point rather than as the current contract. The current release as I write is OCSF v1.8.0 (March 2026), and class UIDs, enum values, and field names drift between versions, so verify anything you intend to build on against schema.ocsf.io.
+> **Version pin**: where this appendix cites OCSF v1.3.0 it is describing work done against that release, chiefly the CISA Zeek-OCSF mappings in Section H.3.2 and the case study in Section H.3.1, though the same v1.3.0 basis carries into the Zeek coverage-gap claims later in H.4 and the integration material in H.5.4, so read those class names and gap claims as a snapshot of the schema at that point, since they are not the current contract. The current release as I write is OCSF v1.8.0 (March 2026), and class UIDs, enum values, and field names drift between versions, so verify anything you intend to build on against schema.ocsf.io.
 
 ## Opening: From Platform Selection to Schema Strategy
 
@@ -25,9 +25,9 @@ You've selected an open storage format (Iceberg) and a vendor-neutral query engi
 - AWS CloudTrail: AWS-specific with `eventName`, `sourceIPAddress`, `userIdentity.principalId`
 - Okta authentication: Okta schema with `actor.alternateId`, `target.displayName`, `outcome.result`
 
-Without normalization, security analysts write source-specific queries, so "show me CrowdStrike process executions" is a different query than "show me Sysmon process executions," detection rules fragment across data sources, and cross-source correlation turns into join gymnastics. With proprietary normalization (Splunk CIM, Microsoft Sentinel KQL, Google Chronicle UDM) you gain query consistency but buy schema lock-in, because changing platforms means rebuilding all of the detection content against the new schema.
+Without normalization, security analysts write source-specific queries, so "show me CrowdStrike process executions" is a different query than "show me Sysmon process executions," detection rules fragment across data sources, and cross-source correlation turns into join gymnastics. With proprietary normalization (Splunk CIM, Microsoft Sentinel KQL, or the Unified Data Model in Google Security Operations, which is the platform Google renamed from Chronicle in 2024 while the schema kept the UDM name I use for it throughout this appendix) you gain query consistency but buy schema lock-in, because changing platforms means rebuilding all of the detection content against the new schema.
 
-OCSF (Open Cybersecurity Schema Framework) offers a third option, and I want to set the stance up front because mine has shifted while I was writing this book. OCSF is a worthwhile normalization-hygiene baseline. It is an open, vendor-neutral schema, it is backed by a large multi-vendor coalition, and it has been run at large production volumes. None of that makes it the schema everyone agrees on, and none of it dissolves lock-in, because lock-in does not disappear when you normalize, it moves down to the pipeline and catalog layer where the data actually lives. So I read OCSF as measured-bearish: its value is real but bounded, and the most expensive mistake you can make with it is to treat a populated OCSF field as a guarantee that the value sitting in it is correct, which it is not. The appendix spends as much time on that failure mode as on the mechanics, because in the environments I have worked, the failure mode is where the money and the missed detections are.
+OCSF (Open Cybersecurity Schema Framework) offers a third option, and I want to set the stance up front because mine has shifted while I was writing this book. OCSF is a worthwhile normalization-hygiene baseline. It is an open, vendor-neutral schema, it is backed by a large multi-vendor coalition, and it has been deployed at large volumes according to vendor-published case studies, which is much the weakest of those three legs because the case study this appendix leans on has no primary on file (Section H.3.1). None of that makes it the schema everyone agrees on, and none of it dissolves lock-in, because lock-in does not disappear when you normalize, it moves down to the pipeline and catalog layer where the data actually lives. So I read OCSF as measured-bearish, in the sense that what it delivers stops well short of what the early pitch claimed and is genuine inside that smaller boundary, and the most expensive mistake you can make with it is to treat a populated OCSF field as a guarantee that the value sitting in it is correct, which it is not. The appendix spends as much time on that failure mode as on the mechanics, because in the environments I have worked, the failure mode is where the money and the missed detections are.
 
 This appendix covers:
 1. **Why schema lock-in is a real switching cost, and where it actually lives** (Section H.1)
@@ -35,7 +35,7 @@ This appendix covers:
 3. **Production claims at enterprise scale, labeled by evidence tier** (Section H.3)
 4. **Practical implementation patterns** (Section H.4)
 5. **The failure mode: mapping that is wrong by construction and invisible above it** (Section H.4.4)
-6. **Ontological grounding: real but partial** (Section H.5)
+6. **Ontological grounding reaches only as far as reference links** (Section H.5)
 7. **When OCSF may not fit** (Section H.6)
 
 This is not vendor promotion, and it is also not an OCSF sales pitch. It is an attempt to say where the standard genuinely reduces friction, where the portability benefit is bounded, and where adopting it without verifying the semantics of every mapping will hurt you. The deep failure narratives live in the trustworthy-security-data material (Chapter 3 of the handbook); here I reference them briefly and keep the focus on the schema decision itself.
@@ -66,7 +66,7 @@ The answer came back six weeks later:
 - **Dual-platform overlap**: $2.1 million (6 months running both systems)
 - **Total migration cost**: $6.9 million
 
-Of that $6.9 million, $2.7 million, nearly 40%, was the cost of re-mapping security content from Splunk CIM to Microsoft's proprietary schema.
+Re-mapping seven years of security content from Splunk CIM to Microsoft's proprietary schema was the largest single driver inside that implementation cost. I am deliberately not putting a separate dollar figure on the re-mapping here, because the three-layer model later in this section builds that cost from stated rule, dashboard, and automation counts, and a second number carried in the story would only invite a comparison the story cannot support.
 
 So they stayed with Splunk, and the reason had nothing to do with which product was better. A switch would have lowered the license bill, but the migration was dominated by re-mapping seven years of detection content, and the team judged that the resulting multi-million switching cost, the eighteen months of degraded operations, and the risk of detection gaps were not a trade worth making. The interesting part is not the SIEM-vendor competition; it is the way a proprietary data schema creates a strategic dependency that outweighs product quality, feature set, and even price.
 
@@ -74,13 +74,16 @@ So they stayed with Splunk, and the reason had nothing to do with which product 
 
 Every major security platform normalizes raw security telemetry into a proprietary schema designed to entrench platform dependency:
 
-**Microsoft Sentinel**: Azure-native schema
-- Custom tables: `SecurityEvent`, `Syslog`, `CommonSecurityLog`, `AzureActivity`
-- Query language: Kusto Query Language (KQL), Microsoft proprietary
-- Field names: `IpAddress`, `Account`, `Computer`, `EventID`
-- Lock-in mechanism: Detection rules written in KQL against Azure-specific tables
+| Platform | Normalized model | Query language | Representative fields | Where the lock-in bites |
+|---|---|---|---|---|
+| Microsoft Sentinel | Azure-native tables `SecurityEvent`, `Syslog`, `CommonSecurityLog`, `AzureActivity` | Kusto Query Language (KQL), Microsoft proprietary | `IpAddress`, `Account`, `Computer`, `EventID` | Detection rules written in KQL against Azure-specific tables |
+| Google Security Operations | Unified Data Model (UDM), with Google-controlled event types `NETWORK_CONNECTION`, `USER_LOGIN`, `PROCESS_LAUNCH` | UDM Detection Engine, Google proprietary | `principal.hostname`, `target.ip`, `security_result.action` | All detection logic references UDM field paths |
+| Splunk Enterprise Security | Common Information Model (CIM) data models `Authentication`, `Network_Traffic`, `Malware`, `Web`, `Email` | Search Processing Language (SPL), Splunk proprietary | `src`, `dest`, `user`, `signature`, `action` | Enterprise Security Framework, correlation searches, and dashboards all depend on CIM |
+| AWS Security Hub | AWS Security Finding Format (ASFF) | None of its own, since Security Hub aggregates findings rather than offering a search language | `AwsAccountId`, `Resources[].Type`, `Severity.Label` | Security Hub aggregation requires ASFF, and GuardDuty, AWS Config, and Macie all normalize to it |
 
-Example detection rule (Sentinel KQL):
+Three of the four ship a detection language of their own, and the same brute-force rule looks like this in each of them.
+
+Sentinel KQL:
 ```kql
 SecurityEvent
 | where EventID == 4625  // Failed authentication
@@ -88,13 +91,7 @@ SecurityEvent
 | where FailedAttempts > 5
 ```
 
-**Google Chronicle**: Unified Data Model (UDM)
-- Google-controlled event types: `NETWORK_CONNECTION`, `USER_LOGIN`, `PROCESS_LAUNCH`
-- Field hierarchy: `principal.hostname`, `target.ip`, `security_result.action`
-- Query language: Chronicle Detection Engine (proprietary)
-- Lock-in mechanism: All detection logic references UDM field paths
-
-Example detection (Chronicle UDM):
+UDM:
 ```
 rule brute_force_attempt {
   events:
@@ -107,22 +104,11 @@ rule brute_force_attempt {
 }
 ```
 
-**Splunk Enterprise Security**: Common Information Model (CIM)
-- Data models: `Authentication`, `Network_Traffic`, `Malware`, `Web`, `Email`
-- Normalized fields: `src`, `dest`, `user`, `signature`, `action`
-- Query language: Search Processing Language (SPL), Splunk proprietary
-- Lock-in mechanism: Enterprise Security Framework, Correlation Searches, dashboards all depend on CIM
-
-Example correlation search (Splunk CIM):
+Splunk CIM:
 ```
 | tstats count from datamodel=Authentication where Authentication.action=failure by Authentication.src Authentication.user
 | where count > 5
 ```
-
-**AWS Security Hub**: AWS Security Finding Format (ASFF)
-- AWS-specific structure: `AwsAccountId`, `Resources[].Type`, `Severity.Label`
-- Integration: GuardDuty, AWS Config, Macie all normalize to ASFF
-- Lock-in mechanism: Security Hub aggregation requires ASFF format
 
 The pattern is the same across all of them: adopt the platform, normalize to that platform's schema, build detection content against those field names, and leaving means rebuilding all of it.
 
@@ -135,8 +121,8 @@ Proprietary schemas create compounding switching costs across three operational 
 A typical enterprise SIEM contains 500-5,000 detection rules. Each rule references platform-specific field names and query syntax.
 
 Migration complexity:
-- Field name translation: `src_ip` (Splunk) → `IpAddress` (Sentinel) → `principal.ip` (Chronicle)
-- Query language conversion: SPL → KQL → Chronicle Detection Engine
+- Field name translation: `src_ip` (Splunk) → `IpAddress` (Sentinel) → `principal.ip` (UDM)
+- Query language conversion: SPL → KQL → the UDM Detection Engine
 - Logic validation: Does translated rule produce same alert behavior?
 - False positive tuning: Re-baseline thresholds for new environment
 
@@ -156,17 +142,17 @@ Security operations centers rely on 50-300 dashboards for:
 - Investigation workflows (drill-down from alert to evidence)
 
 Migration complexity:
-- Field mapping: Network dashboard using `src_ip`, `dest_ip`, `src_port`, `dest_port` (Splunk) becomes `principal.ip`, `target.ip`, `principal.port`, `target.port` (Chronicle UDM)
+- Field mapping: Network dashboard using `src_ip`, `dest_ip`, `src_port`, `dest_port` (Splunk) becomes `principal.ip`, `target.ip`, `principal.port`, `target.port` (UDM)
 - Hierarchy restructuring: Flat field names vs nested JSON paths
 - Visualization re-creation: Platform-specific charting libraries, not portable
-- Data model changes: Splunk's `| tstats` acceleration vs Chronicle's time-based indexing
+- Data model changes: Splunk's `| tstats` acceleration vs the time-based indexing in Google SecOps
 
 Time estimate: 40-80 hours per complex dashboard
 
 Cost calculation:
 - 150 dashboards × 60 hours average = 9,000 hours
 - Analyst + dashboard developer: $100-$175/hour
-- **Total**: $900K-$1.575M (often outsourced at lower rate, $600K-$1M realistic)
+- **Total**: $900K-$1.575M at in-house rates. Dashboard rebuilding is commonly outsourced, and at an outsourced $65-$110/hour the same 9,000 hours land at $585K-$990K, which I round to the $600K-$1M this layer and the summary table below both carry
 
 **Layer 3: Integration and Automation Re-Engineering** ($360K-$600K)
 
@@ -192,8 +178,8 @@ email_quarantine(sender=suspicious_email['src_email'])
 
 Migration impact:
 - Field name changes: `src_user` → `Account` → `principal.user.userid` (every SOAR integration breaks)
-- Query syntax changes: SPL → KQL → Chronicle (automation scripts must be rewritten)
-- API changes: Splunk REST API → Sentinel REST API → Chronicle API (authentication, pagination, rate limits all different)
+- Query syntax changes: SPL → KQL → UDM (automation scripts must be rewritten)
+- API changes: Splunk REST API → Sentinel REST API → Google SecOps API (authentication, pagination, rate limits all different)
 
 Time estimate: 20-40 hours per automation/integration
 
@@ -225,7 +211,7 @@ Cost calculation:
 - Technical debt from "quick and dirty" migrations (poor rule translations, incomplete coverage)
 - Opportunity cost (security team focused on migration vs new threat detection capabilities)
 
-**This is why the modeled institution stayed with Splunk**: a $6.9M migration dominated by content re-mapping, plus 18 months of degraded operations and the risk of detection gaps, was judged not worth it, even though switching to Sentinel would have lowered the annual license bill. What drove the decision was the switching cost and the disruption rather than the sticker price. The sticker price is not trivial either, since the G-Cloud 14 published list (April 2024) puts Splunk Cloud platform plus Enterprise Security near $1,240/GB/day/year in the 2,000-4,999 GB/day band and about $1,196 in the 5,000-9,999 GB/day band above it; the switching cost outweighing even that recurring premium is exactly what makes the lock-in hold.
+**This is why the modeled institution stayed with Splunk**: a $6.9M migration dominated by content re-mapping, plus 18 months of degraded operations and the risk of detection gaps, was judged not worth it, even though switching to Sentinel would have lowered the annual license bill. What drove the decision was the switching cost and the disruption, with the recurring price pushing the other way the whole time. The sticker price is not trivial either, since the G-Cloud 14 published list (April 2024) puts Splunk Cloud platform plus Enterprise Security near $1,240/GB/day/year in the 2,000-4,999 GB/day band and about $1,196 in the 5,000-9,999 GB/day band above it; the switching cost outweighing even that recurring premium is exactly what makes the lock-in hold.
 
 ---
 
@@ -233,7 +219,7 @@ Cost calculation:
 
 Beyond portability, **schema normalization at ingestion eliminates repeated parsing costs**.
 
-Schema-on-read platforms (Splunk, Elasticsearch) apply field extraction at query time, so every dashboard refresh, every correlation rule, and every investigation re-parses raw data. A single authentication dashboard refreshing every 5 minutes triggers 288 parses/day of the same data. Across 20 dashboards and 100 correlation rules, the repeated parsing tax reaches **$370,000+/month** (modeled estimate: 20 dashboards × $8,640/month + 100 correlation rules continuous execution; a modeled illustrative estimate, Tier C/D, not an audited figure).
+Schema-on-read platforms (Splunk, Elasticsearch) apply field extraction at query time, so every dashboard refresh, every correlation rule, and every investigation re-parses raw data. A single authentication dashboard refreshing every 5 minutes triggers 288 parses/day of the same data, which the model prices at $8,640/month per dashboard, so across 20 dashboards the repeated parsing tax reaches **$172,800/month** (a modeled illustrative estimate, Tier C/D, not an audited figure). The 100 correlation rules executing continuously on top of that add roughly $200,000/month more on the same model, which is what carries the combined figure to an upper bound near $370,000/month once the whole environment is counted rather than one panel (the decomposition I published at securitydataworks.com/writing/ocsf/schema-read-vs-write; same Tier C/D modeled basis, so read it as an illustrative ceiling). Note too that this parsing model does not state the ingest volume it assumes, so it and the 1 TB/day comparison below are illustrating different scenarios and should not be read against each other.
 
 **Schema-on-write alternative**: Parse raw events **once at ingestion**, store structured OCSF fields, query without runtime parsing.
 
@@ -245,7 +231,7 @@ Schema-on-read platforms (Splunk, Elasticsearch) apply field extraction at query
 | Schema-on-read SIEM (DMA accelerated) | $12,000-18,000 | 42-61% |
 | Normalized lakehouse (OCSF → ClickHouse) | $8,000-12,000 | 61-74% |
 
-Any schema-on-write approach provides this economic benefit, and OCSF's contribution here is that you get it against an open schema rather than a proprietary one (Elastic ECS, Microsoft ASIM, and Chronicle UDM are each tied to their platform). That is a real benefit, and it is also bounded: parse-once-query-forever is a property of writing structured data at ingestion, not of OCSF specifically, so the schema choice buys you portability of the field names, while the engine, the catalog, and the pipeline that did the parsing remain a dependency you still own.
+Any schema-on-write approach provides this economic benefit, and OCSF's contribution here is that you get it against an open schema rather than a proprietary one (Elastic ECS, Microsoft ASIM, and UDM are each tied to their platform). That is a real benefit, and it is also bounded: parse-once-query-forever is a property of writing structured data at ingestion, not of OCSF specifically, so the schema choice buys you portability of the field names, while the engine, the catalog, and the pipeline that did the parsing remain a dependency you still own.
 
 The pattern I'd reach for is dual storage: a raw tier (S3 + Iceberg) for threat hunting and compliance alongside a normalized OCSF tier for detection and dashboards, with the bulk of the volume sitting in compressed raw storage and a small hot slice normalized for the queries that run constantly. As a rough planning split I think in terms of roughly 90% of the volume in the cheap raw tier and 10% in the hot normalized tier, though the real ratio depends on how much of your querying is known-pattern detection versus exploratory hunting, so treat those numbers as a starting estimate rather than a target. Known query patterns hit the fast OCSF tier and exploratory hunting hits the flexible raw tier; Appendix I lays out the multi-engine architecture that implements this.
 
@@ -253,12 +239,12 @@ The pattern I'd reach for is dual storage: a raw tier (S3 + Iceberg) for threat 
 
 ### H.1.2 The Multi-Cloud Security Operations Challenge
 
-The proprietary-schema problem compounds across multi-cloud environments, which the Flexera 2024 State of the Cloud Report puts at roughly 89% of enterprises (Tier C, a vendor survey). The same report breaks the combinations down further, with about two-thirds of enterprises running AWS plus Azure, a smaller share running AWS plus GCP, roughly a third running all three of AWS, Azure, and GCP, and the large majority keeping some on-premises footprint alongside the clouds. The exact percentages are survey self-reports rather than measured infrastructure, so I read them as a directional picture of how common multi-cloud has become rather than as precise market shares.
+The proprietary-schema problem compounds across multi-cloud environments, which the Flexera 2024 State of the Cloud Report puts at roughly 89% of enterprises (Tier C, a vendor survey). The same report breaks the combinations down further, with about two-thirds of enterprises running AWS plus Azure, a smaller share running AWS plus GCP, roughly a third running all three of AWS, Azure, and GCP, and the large majority keeping some on-premises footprint alongside the clouds. The exact percentages are survey self-reports rather than measured infrastructure, so I read them as a directional picture of how common multi-cloud has become and would not treat them as precise market shares.
 
 Each cloud vendor promotes their security platform as the "unified" solution:
 - **AWS**: Security Hub + GuardDuty (normalize to AWS Security Finding Format)
 - **Azure**: Microsoft Sentinel + Defender for Cloud (normalize to Azure Monitor Log Analytics schema)
-- **GCP**: Chronicle + Security Command Center (normalize to Unified Data Model)
+- **GCP**: Google Security Operations + Security Command Center (normalize to UDM)
 
 **The Strategic Trilemma**
 
@@ -268,7 +254,7 @@ An AWS-heavy shop (60% workloads) that adopts AWS Security Hub gets native Guard
 
 The "cloud-agnostic" route (deploying Splunk across all three clouds) gives you one detection rule set and one analyst training program, but the schema is still Splunk CIM, which is not cloud-neutral, so you have shifted the lock-in rather than escaped it. Now Splunk takes a license tax on every GB from every cloud, and switching away still costs $2-6M when you eventually want to leave.
 
-Running separate cloud-native SIEMs for each cloud (Security Hub for AWS, Sentinel for Azure, Chronicle for GCP) eliminates cross-cloud data movement, but now analysts manage three alert queues, learn three query languages, write the same brute-force detection three times in ASFF, KQL, and UDM, and SOX audit reports require merging three SIEM exports. In practice this collapses to de facto lock-in to whichever cloud is largest, with the others getting minimal coverage.
+Running separate cloud-native SIEMs for each cloud (Security Hub for AWS, Sentinel for Azure, Google SecOps for GCP) eliminates cross-cloud data movement, but now analysts manage three alert queues, learn three query languages, write the same brute-force detection three times in ASFF, KQL, and UDM, and SOX audit reports require merging three SIEM exports. In practice this collapses to de facto lock-in to whichever cloud is largest, with the others getting minimal coverage.
 
 None of these options is a comfortable long-term position; each trades one dependency for another, and all of them constrain architecture decisions, weaken your bargaining position, and accumulate switching costs over time.
 
@@ -286,7 +272,9 @@ Every vendor-centric approach forces the same trade-off: data from non-primary c
 | Microsoft Sentinel primary | ~$20.2M/year | KQL + Azure schema | 70% of data |
 | Vendor-neutral lakehouse + OCSF | ~$715K/year | Schema is open; dependency shifts to pipeline + catalog + engine | $0 (stays in region) |
 
-The vendor-neutral approach stores data in each cloud's native object storage (S3, Blob, GCS), normalizes to OCSF, and queries via federated engines (Dremio, Trino, Athena), so there is no cross-cloud data movement and detection rules are portable across query engines. I want to be careful about that last column, though, because the honest entry for the OCSF row is not "no lock-in." The schema is open, which is the part OCSF actually fixes, but you have taken on a dependency on whatever produces the OCSF (the transformation layer, the dbt or Lambda code, the people who maintain the mappings), on the Iceberg catalog that governs the tables, and on the engine you standardize queries against. That is a better dependency than a proprietary SIEM schema, because the data and the field names stay portable and you can swap the engine, but it is a dependency, and pretending it is zero is the kind of overclaim this appendix is trying to avoid.
+A word on the vintage of that table, since the Q4 2025 stamp sits in an appendix that also cites OCSF v1.8.0 from March 2026 and lab work from June 2026. The claim I am making is the ranking of the three approaches and the order of magnitude between them, both of which I think survive repricing. The absolute annual figures do not carry that confidence, because Sentinel in particular has repriced since the stamp with its data-lake tiering, so re-derive the absolutes against current list prices before you put any of them in front of a buyer.
+
+The vendor-neutral approach stores data in each cloud's native object storage (S3, Blob, GCS), normalizes to OCSF, and queries via federated engines (Dremio, Trino, Athena), so there is no cross-cloud data movement and detection rules are portable across query engines. I want to be careful about that last column, though, because the entry for the OCSF row is not "no lock-in." The schema is open, which is the part OCSF actually fixes, but you have taken on a dependency on whatever produces the OCSF (the transformation layer, the dbt or Lambda code, the people who maintain the mappings), on the Iceberg catalog that governs the tables, and on the engine you standardize queries against. That is a better dependency than a proprietary SIEM schema, because the data and the field names stay portable and you can swap the engine, but it is a dependency, and pretending it is zero is the kind of overclaim this appendix is trying to avoid.
 
 **Trade-offs accepted**: Custom OCSF transformation layer required (~15-20 minutes per log source with LLM-assisted mapping, Section H.4). No turnkey vendor detection content, and you now own the correctness of every mapping (Section H.4.4), which is the cost that does not show up in this table.
 
@@ -321,19 +309,19 @@ OCSF (Open Cybersecurity Schema Framework) sits in a roughly comparable competit
 **Proprietary vendor landscape** (2020-2022):
 - **Splunk CIM**: Splunk-controlled schema evolution
 - **Microsoft Sentinel** (2019 launch): Azure-specific normalization
-- **Google Chronicle UDM**: Google-proprietary
+- **Google SecOps UDM**: Google-proprietary
 - **AWS ASFF**: AWS-specific finding format
 - **Market fragmentation**: Each vendor's schema incompatible, switching costs high
 
 **Open standard coalition response** (2022-2024):
 - **OCSF Project founded** (2022): Linux Foundation governance
-- **180+ organizations join** (exact count drifts; see H.2.1): AWS, Splunk, IBM, Rapid7, Cloudflare, IronNet, Securonix, others
-- **Production validation**: petabyte-per-day deployments documented (vendor case studies, Tier C)
+- **180+ organizations join** (exact count drifts; see H.2.1): AWS, Splunk, IBM, Rapid7, Cloudflare, Securonix, others
+- **Production validation**: petabyte-per-day deployments are vendor-reported and, in the case this appendix works through, uncited (Tier C, Section H.3.1)
 - **Schema evolution**: v1.0.0 through the current v1.8.0 (released 2026-03-16), with backward compatibility preserved across minor versions
 
 **Strategic question for industry**: can a vendor-neutral open schema with broad coalition backing reduce schema lock-in enough to matter, even if it cannot do what an open operating system did to a platform monopoly?
 
-**My read** (developed across Section H.2 onward): the coalition scale, the production volumes (Tier B/C, see Section H.3), Linux Foundation governance, and partial DoD/IC ontological grounding (Section H.5) make OCSF a credible normalization baseline worth adopting with eyes open. It reduces friction at the schema layer and it is the most defensible open option on offer. It is not a cure for vendor lock-in, and it is not the schema everyone has agreed on, so I would adopt it for the bounded benefit it actually delivers, not for the savior framing the early OCSF marketing reached for.
+**My read** (developed across Section H.2 onward): the coalition scale, the vendor-reported production volumes (Tier C and uncited, see Section H.3.1), Linux Foundation governance, and partial DoD/IC ontological grounding (Section H.5) make OCSF a credible normalization baseline worth adopting with eyes open. It reduces friction at the schema layer and it is the most defensible open option on offer. It is not a cure for vendor lock-in, and it is not the schema everyone has agreed on, so I would adopt it for what it actually delivers and leave the savior framing the early OCSF marketing reached for where it belongs.
 
 The rest of the appendix pressure-tests that read: does it hold at enterprise scale, how complex is implementation, where does the mapping silently go wrong, and when does it not fit? Sections H.2 through H.6 work through each, with evidence tiers labeled.
 
@@ -351,8 +339,8 @@ OCSF is not a single vendor's schema proposal. It's an industry coalition spanni
 
 **Cloud Vendors**:
 - Amazon Web Services (AWS Security Lake native OCSF)
-- Google Cloud (Chronicle UDM convergence discussions)
-- Microsoft (Microsoft Sentinel OCSF connectors under development)
+- Google Cloud (UDM convergence discussions)
+- Microsoft (Microsoft Sentinel; when I last checked in August 2026 I could not confirm a shipped first-party OCSF export path in Microsoft's own documentation, and the OCSF-shaped Sentinel tables I did find are built by customer-written data-collection-rule transformations, so re-confirm the current state before you quote this)
 
 **SIEM Vendors**:
 - Splunk (OCSF app for Enterprise Security)
@@ -361,7 +349,6 @@ OCSF is not a single vendor's schema proposal. It's an industry coalition spanni
 
 **Security Tool Vendors**:
 - Cloudflare (WAF and DDoS logs OCSF export)
-- IronNet (network detection OCSF format)
 - Securonix (UEBA platform OCSF integration)
 - CrowdStrike (EDR logs OCSF schema discussions)
 
@@ -410,7 +397,7 @@ Governance is where an open standard lives or dies, because the only version tha
 
 **Schema versioning discipline**:
 - **Backward compatibility preserved** across minor versions (the 1.x line, now through 1.8.0)
-- **Breaking changes reserved for a major version** (1.x → 2.0), with a documented migration path the expectation rather than a guarantee, since 2.0 has not landed
+- **Breaking changes reserved for a major version** (1.x → 2.0), with a documented migration path as the expectation and no guarantee behind it, since 2.0 has not landed
 - **Long-term-support designation** is the kind of structural protection enterprises ask for; whether OCSF formally designates LTS releases with a fixed support window is worth confirming against the project's current governance docs before you write it into a procurement term
 
 **Transparency**:
@@ -418,13 +405,13 @@ Governance is where an open standard lives or dies, because the only version tha
 - No "vendor-only steering committee" backroom deals
 - Community can fork if governance fails (ultimate protection against capture)
 
-This is the same Linux Foundation governance model that runs Kubernetes (CNCF), Node.js, and Hyperledger, so it comes with a track record of holding a standard vendor-neutral rather than letting one member capture it. That matters here because an enterprise investing detection content against OCSF needs some confidence the schema won't drift into AWS-controlled (or Splunk-controlled, or Microsoft-controlled) hands over time, and the Linux Foundation structure is the protection against that, with the community's ability to fork the project as the last resort if the governance ever fails.
+This is the same Linux Foundation governance model that runs Kubernetes (CNCF), Node.js, and Hyperledger, so it comes with a track record of holding a standard vendor-neutral instead of letting one member capture it. That matters here because an enterprise investing detection content against OCSF needs some confidence the schema won't drift into AWS-controlled (or Splunk-controlled, or Microsoft-controlled) hands over time, and the Linux Foundation structure is the protection against that, with the community's ability to fork the project as the last resort if the governance ever fails.
 
 ---
 
 ## Section H.3: Production Deployments and Case Studies
 
-Coalition size and governance structure matter, but claims require production evidence. Unlike failed predecessors (STIX/TAXII complexity, CEF vendor lock-in), OCSF has run at production volumes, which those earlier schema efforts never really reached before the adoption argument ran ahead of the deployments.
+Coalition size and governance structure matter, but claims require production evidence. OCSF is not the first attempt at a common security format, though the earlier ones were built for narrower jobs and several of them are still doing those jobs well. STIX and TAXII normalize threat intelligence and the indicator-sharing traffic around it rather than event telemetry, they remain live OASIS standards, and they carry real production traffic through CISA's Automated Indicator Sharing programme and the MISP ecosystem, so calling them a failed predecessor gets both their health and their scope wrong. CEF gave ArcSight a syslog-shaped envelope for events, which travels almost anywhere and is genuinely useful for that, and it leaves the meaning of each extension key to whoever emitted it, so what it standardizes is the wrapper more than the content. OCSF is reaching for something wider than either, a typed event schema across the whole telemetry surface, and a wider reach is exactly what makes production evidence the question worth asking of it.
 
 ### H.3.1 The 2 Petabyte/Day Enterprise Deployment
 
@@ -440,7 +427,7 @@ Coalition size and governance structure matter, but claims require production ev
 - **Data volume**: 2 petabytes/day security telemetry (50+ log sources)
 - **Current state**: Splunk Enterprise (3 TB/day indexed, $3.2M/year), remaining 1.97 PB/day unindexed in cloud storage
 - **Compliance**: FINRA 7-year retention, PCI-DSS, SOX, GDPR
-- **Problem**: Cannot afford Splunk expansion to 2 PB/day. The case study gives no vendor quote for the expansion, and the two anchors available both land in the billions rather than the tens of millions, since the $3.2M line above works out to about $1.07M per TB/day/year and 2,000 TB/day extrapolates linearly from it to roughly $2.1B/year, while the G-Cloud 14 published rate cited in Section H.1 (about $1,240/GB/day/year) puts 2,000,000 GB/day near $2.5B/year. Neither figure survives contact with a real volume discount curve, and no such curve is on file here, so read this as "priced out of reach by at least two orders of magnitude" rather than as a number to quote.
+- **Problem**: Cannot afford Splunk expansion to 2 PB/day. The case study gives no vendor quote for the expansion, and the two anchors available both land in the billions rather than the tens of millions, since the $3.2M line above works out to about $1.07M per TB/day/year and 2,000 TB/day extrapolates linearly from it to roughly $2.1B/year, while the G-Cloud 14 published rate cited in Section H.1 (about $1,240/GB/day/year) puts 2,000,000 GB/day near $2.5B/year. Neither figure survives contact with a real volume discount curve, and no such curve is on file here, so read this as "priced out of reach by at least two orders of magnitude" and do not carry the number anywhere.
 
 **Solution architecture**:
 
@@ -520,7 +507,7 @@ Coalition size and governance structure matter, but claims require production ev
   - SMB/RPC: smb_files.log, smb_mapping.log, dce_rpc.log, rdp.log
   - Tunneling: tunnel.log, socks.log, gquic.log
 - **3,442 lines Power Query M code** (transparent transformations)
-- **Semantic validation**: high field-mapping accuracy reported via the Section H.4.2 methodology (Tier B, self-assessed by the project rather than independently audited; I treat the precise percentage as illustrative, not validated)
+- **Semantic validation**: high field-mapping accuracy reported via the Section H.4.2 methodology (Tier B, self-assessed by the project with no independent audit behind it; I treat the precise percentage as illustrative, not validated)
 
 **Phase 2: Community Contribution** (In Progress)
 - CISA publishing Zeek-OCSF mappings to OCSF GitHub (reference implementations)
@@ -568,7 +555,7 @@ in
 
 **A note from doing this work myself, on Zeek**: I have done Zeek-to-OCSF mapping by hand, and the renames above are the easy 80%, the part a tool gets right and a reviewer skims past. The test that actually matters is whether a value lands in the right OCSF field with the right *meaning*, not merely in a correctly-shaped field, and you only know that if you verify the semantic round-trip. By round-trip I mean: take a value you understand at the Zeek source, follow it into the OCSF field you mapped it to, read that field's published definition rather than its name, and confirm the OCSF meaning is the same fact you started with, then go the other way and confirm the value you would reconstruct from OCSF still matches the Zeek source. The Zeek `orig_bytes` reversal in Section H.4.2 is exactly the kind of thing that survives a name-based mapping and fails a round-trip, because `bytes_out` is a perfectly valid OCSF field that happens to mean the opposite of what the rename assumed. So I do not assume the round-trip closes; I check it, field by field, on the values I care about, and I treat any field where I cannot close it as unmapped rather than mapped-and-wrong.
 
-**Government collaboration, tiered honestly** (Tier B): the CISA Zeek-OCSF work is a real, public, transparent-transformation collaboration, and that is a strong signal for commercial adopters weighing OCSF, because a federal compliance bar is higher than most enterprises carry. I would not stretch it into "validation" in the sense of a measured fidelity result, since what it demonstrates is that transparent, peer-reviewable mappings are achievable and acceptable to a government reviewer, which is a different and more modest claim than "the mappings are semantically correct everywhere."
+**What the government collaboration does and does not prove** (Tier B): the CISA Zeek-OCSF work is a real, public, transparent-transformation collaboration, and that is a strong signal for commercial adopters weighing OCSF, because a federal compliance bar is higher than most enterprises carry. I would not stretch it into "validation" in the sense of a measured fidelity result, since what it demonstrates is that transparent, peer-reviewable mappings are achievable and acceptable to a government reviewer, which is a different and more modest claim than "the mappings are semantically correct everywhere."
 
 ### H.3.3 Broader Adoption Patterns
 
@@ -578,7 +565,7 @@ Beyond the financial services and CISA deployments above, OCSF adoption spans in
 - **Splunk OCSF App**: available on Splunkbase (download counts I had cited here were unverified; check the current Splunkbase listing). Maps CIM ↔ OCSF bidirectionally, enabling hybrid architectures (Splunk real-time + lakehouse historical, unified schema)
 - **Multi-cloud SOC pattern**: Separate Iceberg tables per cloud, all normalized to OCSF, federated queries via Dremio or Starburst. New clouds are added by mapping to OCSF, so existing detection rules work immediately.
 
-**Adoption timeline** (Tier C, drawn from project membership counts and vendor roadmap announcements, which lag actual production support): 50+ organizations (2023, v1.0.0) → 180+ organizations (2024, v1.3.0 with the D3FEND attribute) (exact count drifts; see H.2.1) → broadening vendor-ecosystem integration through the v1.8.0 release of March 2026 (Splunk/Dremio/Snowflake roadmaps + CISA collaboration). I read OCSF as past proof-of-concept, with the honest qualifier that a roadmap commitment and a populated, semantically-correct OCSF export are not the same thing, so "adoption" here means stated support more than verified-in-production fidelity.
+**Adoption timeline** (Tier C, drawn from project membership counts and vendor roadmap announcements, which lag actual production support): 50+ organizations (2023, v1.0.0) → 180+ organizations (2024, v1.3.0 with the D3FEND objects) (exact count drifts; see H.2.1) → broadening vendor-ecosystem integration through the v1.8.0 release of March 2026 (Splunk/Dremio/Snowflake roadmaps + CISA collaboration). I read OCSF as past proof-of-concept, with the qualifier that a roadmap commitment and a populated, semantically-correct OCSF export are not the same thing, so "adoption" here means stated support more than verified-in-production fidelity.
 
 ---
 
@@ -622,7 +609,7 @@ Organizations adopting OCSF normalization use one of three approaches based on s
 - **3-5 data engineers**: LLM-assisted primary (full transparency, enterprise scale)
 - **5+ data engineers**: Any approach viable (manual for learning/critical sources acceptable)
 
-### H.4.2 The Semantic Validation Challenge - Why Field Names Deceive
+### H.4.2 The Semantic Validation Challenge: Why Field Names Deceive
 
 The most common way an OCSF implementation goes wrong is naive name-based mapping with no semantic validation behind it, where two fields share a word and get matched on that alone. The Zeek conn.log → OCSF Network Activity case is the cleanest example.
 
@@ -662,7 +649,7 @@ Real-world log sources present four recurring challenges. The distribution perce
    - Solution: Array consolidation with semantic preservation (+5 min/field effort impact)
 
 3. **No Direct OCSF Equivalent** (5-10% of fields): Source field has no matching OCSF field in current schema version
-   - Example: Zeek `weird.log` (protocol anomalies) has no OCSF Network Anomaly class in v1.3.0
+   - Example: Zeek `weird.log` (protocol anomalies) had no OCSF Network Anomaly class in v1.3.0, and re-walking the network event classes through v1.7.0 still turns up no such class, so this is a standing gap rather than a v1.3.0 snapshot artifact; confirm against v1.8.0 before you build on it
    - Solution options: (A) Use `unmapped{}` extension object (preserves data), (B) Map to closest OCSF field + confidence flag, (C) Propose OCSF schema extension via GitHub RFC (3-6 month timeline), (D) Accept data loss with documentation
    - Decision framework: High-value fields → Option A/C, Medium → Option B, Low → Option D
 
@@ -672,11 +659,11 @@ Real-world log sources present four recurring challenges. The distribution perce
 
 **Total effort impact**: LLM-assisted baseline (15-20 min/source) + complexity handling (5-10 min) = **20-30 minutes realistic per log source**
 
-**50 log sources**: 16-25 hours total (2-3 days) vs. 100-200 hours manual (2.5-5 weeks), a roughly 6-9× efficiency gain reported on the CISA project (Tier B, self-assessed on that project; the per-source time estimates above are illustrative rather than measured across a large sample, Tier C/D). The efficiency is the part I am most comfortable standing behind, because it is just arithmetic on time-per-source; the correctness of what those faster mappings produce is the part Section H.4.4 says you still have to earn.
+**50 log sources**: 16-25 hours total (2-3 days) vs. 100-200 hours manual (2.5-5 weeks), a roughly 6-9× efficiency gain reported on the CISA project (Tier B, self-assessed on that project; the per-source time estimates above are illustrative, with no measurement across a large sample behind them, Tier C/D). The efficiency is the part I am most comfortable standing behind, because it is just arithmetic on time-per-source; the correctness of what those faster mappings produce is the part Section H.4.4 says you still have to earn.
 
 ---
 
-### H.4.4 The Failure Mode That Costs the Most - A Field Is Not a Guarantee
+### H.4.4 The Failure Mode That Costs the Most: A Field Is Not a Guarantee
 
 If you take one thing from this appendix, take this: OCSF gives you a *place to put a value*; it does not guarantee that the value landing there is correct, or that it means what the field name implies. The standard normalizes the shape of your data, which is genuinely useful, and the shape can be perfect while the content is wrong, and when that happens it tends to be wrong by construction and invisible at every tier above the mapping, because every dashboard, detection, and audit query downstream trusts the field name. This is the failure mode I have seen cost real money and real detections, and it is why my stance on OCSF is measured rather than enthusiastic. The full narratives live in the trustworthy-security-data material (Chapter 3 of the handbook); here are the two shapes it takes, briefly.
 
@@ -686,9 +673,9 @@ The second is data that is present, well-formed, in a plausible OCSF field, and 
 
 Both failures share a structure: the schema is satisfied and the meaning is not, and because the schema is satisfied, every layer above it, the dashboards, the correlation rules, the compliance exports, the ML features, inherits the error and presents it with confidence. This is why I push the semantic round-trip from the Zeek note up into a standing practice rather than a one-time validation step. You verify that a value lands in the right OCSF field with the right meaning, on the fields your decisions depend on, and you do not assume the round-trip closes just because the field is populated and the types line up. OCSF is a worthwhile normalization baseline precisely because it gives you well-defined places to put values; it is not a correctness guarantee, and treating it as one is where the dangerous, invisible failures come from.
 
-I built a small runnable demonstrator of this argument, because the claim that a valid field is not a correct value is easier to believe when you can watch a detection miss because of it. It uses CloudTrail console logins, where the presence of multi-factor authentication is carried in nested structure rather than a flat boolean, and the interesting cases are the logins where the MFA field is absent entirely rather than set to a value. Flatten that structure naively and "MFA field absent" collapses into the same NULL as a present-but-other value, so a detection written against the flattened view as `mfa = 'false'` reads as clean and quietly skips every login where the field was never there to begin with. In the demonstrator that is 200 of 320 unprotected logins the flat query never flags, while a structure-aware query that distinguishes absent from present catches all of them. The schema was satisfied at every step; the flattened field was well-formed and populated; the detection ran without error and was wrong, which is the same shape as the encoding artifact above, made measurable. I want to be honest about scope: it is a synthetic single-host demonstrator, not a production CloudTrail deployment, so read it as a clean reproduction of the failure rather than a field measurement of its frequency.
+I built a small runnable demonstrator of this argument, because the claim that a valid field is not a correct value is easier to believe when you can watch a detection miss because of it. It uses CloudTrail console logins, where the presence of multi-factor authentication is carried in nested structure and never in a flat boolean, and the interesting cases are the logins where the MFA field is absent entirely, which is a different state from being set to some other value. Flatten that structure naively and "MFA field absent" collapses into the same NULL as a present-but-other value, so a detection written against the flattened view as `mfa = 'false'` reads as clean and quietly skips every login where the field was never there to begin with. In the demonstrator that is 200 of 320 unprotected logins the flat query never flags, while a structure-aware query that distinguishes absent from present catches all of them. The schema was satisfied at every step; the flattened field was well-formed and populated; the detection ran without error and was wrong, which is the same shape as the encoding artifact above, made measurable. I want to be honest about scope: it is a synthetic single-host demonstrator, not a production CloudTrail deployment, so read it as a clean reproduction of the failure rather than a field measurement of its frequency.
 
-The cleanest illustration I have, though, is not one I wrote. It is what a shipped, published mapping does on its own, which removes the "you mapped it badly" objection entirely. I ran a vendor's own library OCSF mapping unedited over a pinned Zeek conn corpus (Tier B, single host, synthetic corpus; Tenzir 6.0.0, library commit `671e049`, target OCSF 1.8.0) and scored the output against a faithful gold. The mapping does the easy part well: it picks the right OCSF class on every record (Network Activity, class 4001) and reproduces most of the values, which is exactly the part a name-based reviewer would skim and approve. Where it comes apart is the part that matters for detection. It does not derive the OCSF activity from Zeek's `conn_state`, so the activity classification matches the gold on only 17% of records, which means a consumer filtering on `activity_id` to separate an opened connection from a close, a reset, or a failed attempt would mis-bucket 83% of the connections it reads, a populated, well-typed `activity_id` field carrying the wrong distinction on most rows. A handful of fields (`history`, `service`, `uid`) also land in `unmapped` rather than in a typed OCSF attribute, so the field-level fidelity is 80% rather than complete. None of this errors; the table fills, the class is right, and the gap is invisible above the mapping in precisely the way the failures above are. I am describing the *method* here and one shipped mapping's behavior on it, not handing out a per-vendor grade, and the point is that "maps to OCSF" is a coverage claim and not a fidelity guarantee, so the only way to tell the two apart is to score the activity, not just the class. These figures are bound to that library commit; re-run them against a newer release before repeating, because the shipped mapping is exactly the kind of thing that gets fixed quietly between versions, and a stale verdict would be unfair to the tool.
+The cleanest illustration I have, though, is not one I wrote. It is what a shipped, published mapping does on its own, which removes the "you mapped it badly" objection entirely. I ran a vendor's own library OCSF mapping unedited over a pinned Zeek conn corpus (Tier B, single host, synthetic corpus; Tenzir 6.0.0, library commit `671e049`, target OCSF 1.8.0) and scored the output against a faithful gold. The mapping does the easy part well: it picks the right OCSF class on every record (Network Activity, class 4001) and reproduces most of the values, which is exactly the part a name-based reviewer would skim and approve. Where it comes apart is the part that matters for detection. It does not derive the OCSF activity from Zeek's `conn_state`, so the activity classification matches the gold on only 17% of records, which means a consumer filtering on `activity_id` to separate an opened connection from a close, a reset, or a failed attempt would mis-bucket 83% of the connections it reads, a populated, well-typed `activity_id` field carrying the wrong distinction on most rows. A handful of fields (`history`, `service`, `uid`) also land in `unmapped` instead of a typed OCSF attribute, so the field-level fidelity comes to 80%. None of this errors; the table fills, the class is right, and the gap is invisible above the mapping in precisely the way the failures above are. I am describing the *method* here and one shipped mapping's behavior on it, not handing out a per-vendor grade, and the point is that "maps to OCSF" is a coverage claim and not a fidelity guarantee, so the only way to tell the two apart is to score the activity, not just the class. These figures are bound to that library commit; re-run them against a newer release before repeating, because the shipped mapping is exactly the kind of thing that gets fixed quietly between versions, and a stale verdict would be unfair to the tool.
 
 There is a version of this that originates before your OCSF mapping begins, in the vendor's own published field specification. The extraction that turns a raw log into named fields is written against that spec, and if the spec disagrees with what the appliance actually emits, the mapping inherits fields that are misaligned by construction, no matter how careful the OCSF work on top of it is. In 2023 I fixed Palo Alto's Splunk app in a public pull request (PR #294); the deeper issue was that the app was faithfully following Palo Alto's published syslog field reference, and for the config log that reference and the emitted data didn't agree. A canonical spec that disagrees with the data it describes, and stays that way, silently misaligns every parser built to it, across every consumer of that feed, not just one app. So the trust boundary isn't only your mapping; it's the published spec your mapping rests on, and an uncorrected spec is a data-quality failure one layer deeper than the one this section has been describing.
 
@@ -706,15 +693,15 @@ There is a version of this that originates before your OCSF mapping begins, in t
 
 ---
 
-## Section H.5: Ontological Foundation - OCSF → D3FEND → CCO → BFO
+## Section H.5: The Ontological Foundation, from OCSF Through D3FEND and CCO to BFO
 
-OCSF is the cybersecurity schema with the strongest published links to the Department of Defense and Intelligence Community ontology stack, because its event classes cross-reference D3FEND, which is itself grounded in CCO and BFO. That grounding is real but partial: OCSF carries reference links rather than formal equivalence axioms, and the links are anchored near the top of the class hierarchy rather than at every leaf, so the honest claim is a compliance and interoperability edge over proprietary schemas rather than a finished formal-semantic guarantee. For a defense contractor, a government agency, or anyone who has to demonstrate DoD/IC interoperability, that edge is worth real money and this section is the part to read closely. For a commercial practitioner without a government compliance requirement, the takeaway is more modest, that anchoring on OCSF today may reduce rework if formal semantic interoperability ever becomes an industry expectation, and the "if" there is doing most of the work, so you can skim H.5.1 for the schema-versus-ontology distinction and move on to Section H.6.
+OCSF is the cybersecurity schema with the strongest published links to the Department of Defense and Intelligence Community ontology stack, because its event classes cross-reference D3FEND, which is itself grounded in CCO and BFO. That grounding is real but partial. OCSF carries reference links where formal equivalence axioms would be the strong form, and those links are anchored near the top of the class hierarchy while the leaves below carry none, so the claim I will defend is a compliance and interoperability edge over proprietary schemas, which stops well short of a finished formal-semantic guarantee. For a defense contractor, a government agency, or anyone who has to demonstrate DoD/IC interoperability, that edge is worth real money and this section is the part to read closely. For a commercial practitioner without a government compliance requirement, the takeaway is more modest, that anchoring on OCSF today may reduce rework if formal semantic interoperability ever becomes an industry expectation, and the "if" there is doing most of the work, so you can skim H.5.1 for the schema-versus-ontology distinction and move on to Section H.6.
 
 ### H.5.1 Schema vs Ontology: Why the Distinction Matters
 
-A schema defines how to store data: field names, types, hierarchies. An ontology defines what concepts *mean* and how they relate formally. Proprietary schemas (Splunk CIM, Sentinel, Chronicle UDM) give you field-name consistency without formal semantics, so Splunk's "authentication event" and Microsoft's "authentication event" are field names that look alike without being guaranteed equivalents at the level of meaning.
+A schema defines how to store data: field names, types, hierarchies. An ontology defines what concepts *mean* and how they relate formally. Proprietary schemas (Splunk CIM, Sentinel, UDM) give you field-name consistency without formal semantics, so Splunk's "authentication event" and Microsoft's "authentication event" are field names that look alike without being guaranteed equivalents at the level of meaning.
 
-OCSF's links into D3FEND/CCO/BFO add a layer of formal semantics on top of the field names, so an OCSF `authentication` event (class 3002, caption "Authentication") is referenced as an `Event` in CCO terms and relates to D3FEND's authentication-side defensive techniques, without resolving to any single named D3FEND class. Where those links are populated and a consuming system is CCO-aligned, the two systems can reason about an OCSF event by its formal definition rather than by string-matching the field name, which is the part that enables cross-agency queries to work by meaning. The qualifier matters and I keep coming back to it: the grounding is reference links rather than equivalence axioms and it is not populated everywhere, so this is a capability the architecture makes possible, not one every OCSF record delivers by default.
+OCSF's links into D3FEND/CCO/BFO add a layer of formal semantics on top of the field names, so an OCSF `authentication` event (class 3002, caption "Authentication") is referenced as an `Event` in CCO terms and relates to D3FEND's authentication-side defensive techniques, without resolving to any single named D3FEND class. Where those links are populated and a consuming system is CCO-aligned, the two systems can reason about an OCSF event by its formal definition rather than by string-matching the field name, which is the part that enables cross-agency queries to work by meaning. The qualifier matters and I keep coming back to it: the grounding stops at reference links and it is not populated everywhere, so this is a capability the architecture makes possible, not one every OCSF record delivers by default.
 
 ### H.5.2 The DoD/IC Ontology Baseline Standard
 
@@ -741,7 +728,7 @@ What the designation establishes is the baseline-standard status of BFO/CCO, and
 - **Result**: Analyst manually correlates (slow, error-prone, doesn't scale to thousands of alerts/day)
 
 **CCO solution**:
-- Both systems align to the same BFO-grounded process concept that CCO inherits, where a process is an occurrent that unfolds through time rather than a continuant that endures through it, so the shared anchor is the top-level ontology rather than either service's own local wording. I am deliberately not quoting an elucidation string here, because the BFO 2020 text is normative and paraphrasing it into something that merely sounds formal would defeat the point this section is making
+- Both systems align to the same BFO-grounded process concept that CCO inherits, where a process is an occurrent that unfolds through time while a continuant endures through it, so the shared anchor becomes the top-level ontology instead of either service's own local wording. I am deliberately not quoting an elucidation string here, because the BFO 2020 text is normative and paraphrasing it into something that merely sounds formal would defeat the point this section is making
 - Unique identifiers reference same ontology concept (Army process XYZ = Navy process XYZ IF same ontology grounding)
 - Automated reasoning: Systems can infer relationships without human analyst manual correlation
 
@@ -812,7 +799,7 @@ BFO:Occurrent
 
 Why this chain matters for DoD work comes down to where the grounding leads. D3FEND is grounded in CCO, CCO is grounded in BFO, and BFO is the ISO/IEC 21838-2 standard, so a record that carries D3FEND links inherits a documented path back toward CCO that a vendor-defined schema simply does not have. I want to be careful with the word "automatically," though, because the path being present is not the same as the alignment being complete: where OCSF populates its D3FEND attribute it can point to that path and use it to demonstrate CCO alignment in procurement (Section H.5.4), and where the attribute is absent or the link is a reference rather than an equivalence axiom, the demonstration still takes work. So the right framing is that the grounding gives OCSF a documented head start on CCO alignment, not that any D3FEND-tagged record is finished and compliant on arrival.
 
-The same care applies to the interoperability story. If a DoD system records a D3FEND NetworkTraffic artifact and a commercial OCSF-based SIEM records an OCSF Network Activity event (class 4001), the question is whether those are the same thing, and the ontology gives you a principled way to answer it, since OCSF Network Activity references D3FEND NetworkTraffic, which references CCO Event, which is a BFO Occurrent. Where those references are populated and both systems honor them, the two can exchange data with the meaning preserved instead of round-tripping through a hand-written schema translation. The honest limit is the one from the top of the section: this is a reference-link path, not a proof of formal equivalence at every leaf, so it reduces translation work rather than eliminating it.
+The same care applies to the interoperability story. If a DoD system records a D3FEND NetworkTraffic artifact and a commercial OCSF-based SIEM records an OCSF Network Activity event (class 4001), the question is whether those are the same thing, and the ontology gives you a principled way to answer it, since OCSF Network Activity references D3FEND NetworkTraffic, which references CCO Event, which is a BFO Occurrent. Where those references are populated and both systems honor them, the two can exchange data with the meaning preserved instead of round-tripping through a hand-written schema translation. The limit is the one from the top of the section: this is a reference-link path, not a proof of formal equivalence at every leaf, so it reduces translation work rather than eliminating it.
 
 Set against a proprietary schema, the difference is real. Splunk's CIM `Network_Traffic` data model and Microsoft Sentinel's `NetworkSession` table carry no formal grounding at all, because they are vendor-defined with no CCO mapping, so a DoD system that wants to integrate that data has to build and defend a custom translation layer from scratch. OCSF's D3FEND reference-link grounding gives it a head start on demonstrating DoD/IC interoperability that a proprietary schema has to argue for from nothing, and that head start is the bounded advantage this section is claiming, no more.
 
@@ -875,7 +862,7 @@ CCO (Common Core Ontologies)
 BFO:Occurrent (ISO/IEC 21838-2:2021)
 ```
 
-Following that chain, a remediation record references D3FEND, which bridges into CCO, which is grounded in BFO, so where `countermeasures` is populated the record carries a documented transitive path toward CCO. I'd call that demonstrable CCO alignment via the D3FEND bridge rather than guaranteed compliance, because the path being present is what you point to in a procurement review, the reviewer still decides whether it satisfies the requirement, and the bridge itself grounds only D3FEND's core classes rather than every leaf.
+Following that chain, a remediation record references D3FEND, which bridges into CCO, which is grounded in BFO, so where `countermeasures` is populated the record carries a documented transitive path toward CCO. I'd call that demonstrable CCO alignment via the D3FEND bridge rather than guaranteed compliance, because the path being present is what you point to in a procurement review, the reviewer still decides whether it satisfies the requirement, and the bridge itself grounds D3FEND's core classes only, with the leaves below them uncovered.
 
 How that plays out in procurement is the part worth seeing concretely. An illustrative RFP clause in the spirit of the DoD Data Strategy 2024 might read something like "Vendor shall provide security data in a format compliant with the Common Core Ontologies (CCO); acceptable formats include CCO-native OWL/RDF, D3FEND-aligned structured data, or OCSF with D3FEND countermeasures populated" (I am paraphrasing the shape of such a requirement rather than quoting a specific solicitation, since I do not have a primary document in front of me). Against a clause like that, an OCSF-based vendor can answer that its platform emits Remediation Activity and findings records with `countermeasures` populated and point to the D3FEND grounding as evidence of CCO alignment, which is a starting position even if the contracting officer still has to accept it, and a thin one, because those two families are a small slice of what a security platform emits. A proprietary-schema vendor, by contrast, has to offer a hand-built CCO mapping document, which means manual review, more delay, and more risk that the mapping is found wanting, so the practical effect is that OCSF clears the bar faster on this one axis.
 
@@ -896,7 +883,7 @@ Everything in this section is the *structure* view, the design-time possibility 
 - University B attempts replication using their "network connection" data (different schema)
 - **Result**: Cannot replicate, because of semantic differences in what constitutes "flow" vs "connection" vs "session"
 
-A partial fix runs through OCSF itself. If both universities export to OCSF Network Activity (class 4001) they are at least describing their data against one published class definition, which gets them closer to reproducible research, shareable datasets, and comparable benchmarks than two ad-hoc schemas ever would. I am claiming the schema here and not the ontology, because there is no CCO network-connection class to route through and OCSF's own D3FEND link does not reach class 4001 (Section H.5.4), so what the two universities share is a common field vocabulary rather than a formal definition either of them can reason over. I say closer rather than solved for that reason and for a bigger one, which is that the harder reproducibility problems (sampling, labeling, drift) sit outside the schema entirely.
+A partial fix runs through OCSF itself. If both universities export to OCSF Network Activity (class 4001) they are at least describing their data against one published class definition, which gets them closer to reproducible research, shareable datasets, and comparable benchmarks than two ad-hoc schemas ever would. I am claiming the schema here and not the ontology, because there is no CCO network-connection class to route through and OCSF's own D3FEND link does not reach class 4001 (Section H.5.4), so what the two universities share is a common field vocabulary, which falls short of a formal definition either of them could reason over. I say closer for that reason and for a bigger one, which is that the harder reproducibility problems (sampling, labeling, drift) sit outside the schema entirely.
 
 **Evidence**: NIST is reportedly exploring OCSF for cybersecurity dataset standardization (2025 initiative, early stage; Tier D, I have not found a public NIST document confirming scope or timeline; verify before citing)
 
@@ -911,7 +898,7 @@ A partial fix runs through OCSF itself. If both universities export to OCSF Netw
 
 **What OCSF actually helps with here** (and what it does not):
 - The help comes from OCSF, not from an ontology. File System Activity (class 1001) enumerates its `activity_id` as Create, Read, Update, Delete, Rename, Set Attributes, Set Security, Get Attributes, Get Security, Encrypt, Decrypt, Mount and more, and API Activity (class 6003) enumerates Create, Read, Update, Delete, so a control written against `activity_id = 2` on 1001 means "read" in a way both the auditor and the vendor can look up in the same published enum
-- I previously wrote that CCO defines an "Access" class with Read, Write, Execute, Delete, and Modify subtypes. I have not been able to resolve that class or those subtypes against the CCO distribution or the descriptive paper, so I have cut the claim rather than restate it in softer words, and anyone building a compliance argument on a formal definition of "access" should treat that layer as work to be done rather than a term to cite
+- I previously wrote that CCO defines an "Access" class with Read, Write, Execute, Delete, and Modify subtypes. I have not been able to resolve that class or those subtypes against the CCO distribution or the descriptive paper, so I have cut the claim rather than restate it in softer words, and anyone building a compliance argument on a formal definition of "access" should treat that layer as work still to be done, since there is no term there to cite
 - What is left is still worth something, since an auditor working against a published enum has less room to accept each vendor's private reading of "access" than one working against prose, though it narrows the disagreement rather than removing the auditor's judgment from the loop
 
 **3. Cross-Border Data Sharing**
@@ -937,25 +924,25 @@ The ontology-grounded version of the fix is a model trained on OCSF with its D3F
 
 **5. Vendor-Neutral Procurement**
 
-Beyond DoD, a commercial enterprise can put OCSF (with or without the ontological grounding) into its own procurement terms. The clause does not have to be elaborate; something like "vendor shall provide security data exports in a current OCSF release, with D3FEND `countermeasures` populated on the classes that carry them, and may provide additional proprietary formats, but the OCSF export is mandatory for data portability" carries the intent. The effect is not that schema lock-in disappears, because as Section H.1 argues the dependency moves to the pipeline, catalog, and engine rather than vanishing, but it does take the SIEM-schema piece of the $2-6M switching cost off the table and push vendors to compete on capability instead of on whose schema you are stuck with. It also buys some insulation against future churn, since a 2.0 with breaking changes would, under the project's versioning discipline, leave the 1.x line supported for a transition window, though as noted above I would confirm the exact support commitment against current governance docs before relying on it.
+Beyond DoD, a commercial enterprise can put OCSF (with or without the ontological grounding) into its own procurement terms. The clause does not have to be elaborate; something like "vendor shall provide security data exports in a current OCSF release, with D3FEND `countermeasures` populated on the classes that carry them, and may provide additional proprietary formats, but the OCSF export is mandatory for data portability" carries the intent. The effect is not that schema lock-in disappears, because as Section H.1 argues the dependency moves to the pipeline, catalog, and engine instead of vanishing, but it does take the SIEM-schema piece of the $2-6M switching cost off the table and push vendors to compete on capability instead of on whose schema you are stuck with. It also buys some insulation against future churn, since a 2.0 with breaking changes would, under the project's versioning discipline, leave the 1.x line supported for a transition window, though as noted above I would confirm the exact support commitment against current governance docs before relying on it.
 
 ### H.5.6 Limitations and Open Questions
 
 Ontological grounding is powerful and it is not a cure-all, so here are the open questions I would want a reader to carry alongside the upside above.
 
-The first is that OCSF → D3FEND coverage is narrow by construction rather than merely unpopulated, which is a harder limitation than the one I used to describe here. The `d3fend` object is reachable only through `countermeasures`, so the Remediation Activity family and the findings classes can carry a D3FEND annotation and the ordinary telemetry classes cannot, no matter how obvious the technique would be. Email Activity (class 4009) is the clean example, since a reasonable analyst would tie it to D3-MA (Message Analysis) or D3-EF (Email Filtering) depending on context and the schema gives that record nowhere to put either one. On top of the structural gap, population is optional even where the slot exists, so real-world OCSF data may carry nothing at all, which means the CCO compliance pathway exists as an architectural possibility rather than a guarantee you get for free, and the mitigation is mostly out of your hands, since widening the reach means widening where `countermeasures` is carried, which is a schema change rather than a mapping choice. That surface does move, though, and it has moved in the direction that matters: v1.5.0 added `countermeasures` to the `mitigation` object in pull request #1348 (OCSF CHANGELOG, April 28 2025), which is how the findings classes came to carry a D3FEND annotation at all. So the honest read is a narrow surface that widens slowly through schema releases rather than a frozen one.
+The first is that OCSF → D3FEND coverage is narrow by construction rather than merely unpopulated, which is a harder limitation than the one I used to describe here. The `d3fend` object is reachable only through `countermeasures`, so the Remediation Activity family and the findings classes can carry a D3FEND annotation and the ordinary telemetry classes cannot, no matter how obvious the technique would be. Email Activity (class 4009) is the clean example, since a reasonable analyst would tie it to D3-MA (Message Analysis) or D3-EF (Email Filtering) depending on context and the schema gives that record nowhere to put either one. On top of the structural gap, population is optional even where the slot exists, so real-world OCSF data may carry nothing at all, which means the CCO compliance pathway exists as an architectural possibility and never as a guarantee you get for free, and the mitigation is mostly out of your hands, since widening the reach means widening where `countermeasures` is carried, which puts it in schema-change territory, beyond anything a mapping choice can reach. That surface does move, though, and it has moved in the direction that matters: v1.5.0 added `countermeasures` to the `mitigation` object in pull request #1348 (OCSF CHANGELOG, April 28 2025), which is how the findings classes came to carry a D3FEND annotation at all. So what this comes to is a narrow surface that widens slowly through schema releases, so it is not frozen.
 
 The second is the ontology maintenance burden, because BFO, CCO, and D3FEND evolve on their own schedules separately from OCSF, which creates version-skew risk. OCSF handles part of this better than I once gave it credit for, because `d3f_technique.uid` is an open string rather than an enum and the `d3fend` object carries a `version` attribute naming the D3FEND Matrix release it was read from, so a new technique can be written into a record the day D3FEND ships it. What version skew still costs you is on the consuming side, since a query or a dashboard written against last year's technique identifiers will silently stop matching when D3FEND renames or retires one, and you carry that coordination cost across all four moving standards.
 
 The third is that the proprietary vendors may simply not care, because Splunk, Microsoft, and Google have no incentive to adopt CCO/BFO grounding when it works against the lock-in that is their advantage. The likely shape this takes is an ecosystem that splits: OCSF-native vendors like AWS Security Lake and newer startups lean into the ontological grounding, while the legacy SIEMs ship an "OCSF export" feature that satisfies the checkbox without populating `countermeasures` on anything, which leaves you with a market of ontology-grounded OCSF on one side and schema-only OCSF on the other. The practical consequence for a buyer is that "OCSF support" on a datasheet is not enough, so ask for a sample Remediation Activity or findings record and check whether the countermeasures are there rather than taking the format claim on trust.
 
-The fourth open question is the one this section keeps circling, whether the ontological grounding earns its keep for a commercial enterprise with no DoD/IC compliance requirement, and my honest answer varies by use case. For academic research the reproducibility and dataset-sharing payoff is real. For international data sharing the legal and semantic clarity is worth something concrete. For AI/ML it is a maybe, because the transfer-learning benefit is real in principle but needs an AI investment most teams have not made. For a general commercial enterprise it is genuinely unclear, because schema portability on its own may carry the whole benefit without the full ontology layer. So my recommendation is to adopt OCSF for the schema standardization in Sections H.1 through H.4 first, and to treat the ontological grounding as a bonus for future-proofing rather than the primary reason to adopt, unless you sit in government, defense, or critical infrastructure where the procurement edge is real money.
+The fourth open question is the one this section keeps circling, whether the ontological grounding earns its keep for a commercial enterprise with no DoD/IC compliance requirement, and my answer varies by use case. For academic research the reproducibility and dataset-sharing payoff is real. For international data sharing the legal and semantic clarity is worth something concrete. For AI/ML it is a maybe, because the transfer-learning benefit is real in principle but needs an AI investment most teams have not made. For a general commercial enterprise it is genuinely unclear, because schema portability on its own may carry the whole benefit without the full ontology layer. So my recommendation is to adopt OCSF for the schema standardization in Sections H.1 through H.4 first, and to treat the ontological grounding as a bonus for future-proofing rather than the primary reason to adopt, unless you sit in government, defense, or critical infrastructure where the procurement edge is real money.
 
-I have now measured a version of this question directly, and the result tightens the "unclear" verdict above rather than overturning it (SDW Lab, 2026-06-08; Tier B, first-party). The first test ran 705 prompts (141 hand-curated vendor-field-to-OCSF gold mappings across six log sources, each posed under five context conditions), varying what grounding the model saw: nothing, the OCSF class's valid attribute paths as a schema constraint, a correct conceptual note about what the class means, a deliberately-wrong conceptual note, and an ontology-thinking reasoning discipline. The metric that matters here is the silent-error rate, a field mapped to an OCSF path that does not exist in 1.8.0, because that one validates and ships as a real mapping while being wrong. On the frontier-proxy leg (claude-opus-4-8, which is how the lab result labels it) the grounding prose did almost no work, in that a correct conceptual note did not beat a deliberately wrong one (formal minus wrong was -0.021, inside the noise), while the schema constraint was the lever that cut silent errors by about eleven points (schema minus none was -0.113). So the part of the ontology story that earns its keep here is the deterministic check that enforces schema-validity, rather than the conceptual prose about what the class means.
+I have now measured a version of this question directly, and the result tightens the "unclear" verdict above rather than overturning it (SDW Lab, 2026-06-08; Tier B, first-party). The first test ran 705 prompts (141 hand-curated vendor-field-to-OCSF gold mappings across six log sources, each posed under five context conditions), varying what grounding the model saw: nothing, the OCSF class's valid attribute paths as a schema constraint, a correct conceptual note about what the class means, a deliberately-wrong conceptual note, and an ontology-thinking reasoning discipline. The metric that matters here is the silent-error rate, a field mapped to an OCSF path that does not exist in 1.8.0, because that one validates and ships as a real mapping while being wrong. On the frontier-proxy leg (claude-opus-4-8, which is how the lab result labels it) the grounding prose did almost no work, in that a correct conceptual note did not beat a deliberately wrong one (formal minus wrong was -0.021, inside the noise), while the schema constraint was the lever that cut silent errors by about eleven points (schema minus none was -0.113). So the part of the ontology story that earns its keep here is the deterministic check that enforces schema-validity, while the conceptual prose about what the class means did nothing measurable.
 
-The same runs show capability doing most of the safety work, with grounding staying inert at every rung of the ladder. In the realistic schema-in-context condition the silent-error rate fell with model strength, from about 69% for a weak local model (phi3, 3.8B) to about 18% for a mid-size local model (gemma4:26b) to about 13% on the frontier-proxy leg, and at each rung a correct conceptual note still failed to beat a wrong one. A second, separate test posed nine incident-reconstruction questions and had the model answer each from a retrieved context, and it pointed the same way on failure mode, with the frontier model more often refusing the hardest questions outright than returning a confident wrong answer, which is the same fail-loud-versus-fail-silent distinction Section H.4.4 draws about mappings, now showing up in the query layer. That test also carried a pre-registered control that handed the model a flat list of the same facts instead of the graph structure, and the structure changed the answer on only one of the nine questions, the one that turns on collapsing several identifiers for a single actor before counting distinct assets, and made no difference elsewhere. I read all of this as consistent with the appendix's stance: schema-conformance and model capability do the safety work, the concept-graph and grounding layer's value is real but narrow, and a commercial adopter without a government interoperability requirement should buy the schema discipline and the validity-enforcing check first, and treat the ontological prose as the bonus it is.
+The same runs show capability doing most of the safety work, with grounding staying inert at every rung of the ladder. In the realistic schema-in-context condition the silent-error rate fell with model strength, from about 69% for a weak local model (phi3, 3.8B) to about 18% for a mid-size local model (gemma4:26b) to about 13% on the frontier-proxy leg, and at each rung a correct conceptual note still failed to beat a wrong one. A second, separate test posed nine incident-reconstruction questions and had the model answer each from a retrieved context, and it pointed the same way on failure mode, with the frontier model more often refusing the hardest questions outright than returning a confident wrong answer, which is the same fail-loud-versus-fail-silent distinction Section H.4.4 draws about mappings, now showing up in the query layer. That test also carried a pre-registered control that handed the model a flat list of the same facts instead of the graph structure, and the structure changed the answer on only one of the nine questions, the one that turns on collapsing several identifiers for a single actor before counting distinct assets, and made no difference elsewhere. I read all of this as consistent with the appendix's stance: schema-conformance and model capability do the safety work, the concept-graph and grounding layer earns its keep on a narrow band, and a commercial adopter without a government interoperability requirement should buy the schema discipline and the validity-enforcing check first, and treat the ontological prose as the bonus it is.
 
-That discipline now has an operable form rather than living only in this appendix's prose, because I built a read-only `scg` MCP server (sdw-lab-benchmarks, shipped 2026-06-08) over a concept-only context graph of 1,442 nodes and 7,618 deduped edges across the same public spine this appendix discusses (OCSF, D3FEND, ATT&CK, NIST 800-53, CCI), where every edge carries a proxy_quality from measured down to the intent-blind artifact_cooccurrence inferences that make up the largest class at roughly 6,000 of the 7,618, so a multi-hop path reports its trust as the weakest edge it leans on and flags when it crosses one of those inferred offense-to-defense joins. It is honest navigation with provenance, since the grounding test above measured the conceptual layer as roughly inert and the graph structure changed only one of the nine retrieval answers, so the server's job is to keep a cheap inferred join from being read as an established fact rather than to make any model's mapping more correct.
+That discipline now has an operable form and no longer lives only in this appendix's prose, because I built a read-only `scg` MCP server (sdw-lab-benchmarks, shipped 2026-06-08) over a concept-only context graph of 1,442 nodes and 7,618 deduped edges across the same public spine this appendix discusses (OCSF, D3FEND, ATT&CK, NIST 800-53, CCI), where every edge carries a proxy_quality from measured down to the intent-blind artifact_cooccurrence inferences that make up the largest class at roughly 6,000 of the 7,618, so a multi-hop path reports its trust as the weakest edge it leans on and flags when it crosses one of those inferred offense-to-defense joins. It is navigation with its provenance attached, since the grounding test above measured the conceptual layer as roughly inert and the graph structure changed only one of the nine retrieval answers, so the server's job is to keep a cheap inferred join from being read as an established fact rather than to make any model's mapping more correct.
 
 ### H.5.7 A worked case: the #424 repair the reasoner refused
 
@@ -971,7 +958,7 @@ D3FEND issue #424 reports a false entailment: 922 digital classes, 20.9% of the 
 
 The retarget removes the false entailment almost completely and breaks the ontology while doing it, and the reason is that the `DigitalArtifact` subtree was never ontologically uniform to begin with. Three different BFO commitments already live inside it: `d3f:Identifier` and its subclasses (URLs, IP addresses, hostnames) are modeled as *carriers* through an existing `BFO:is-carrier-of` restriction, which makes them material bearers; `d3f:DigitalEvent` is committed as an *occurrent*, a BFO process, which is not a continuant of either kind; and the remainder, file contents, user accounts, registry values, genuinely is information content. A blanket re-homing under ICE contradicts the first two commitments at once, because in BFO a generically dependent continuant is disjoint from the material things and the processes. D3FEND's own mapping file hedges in a comment that it "tentatively" considers all DigitalArtifact subclasses information bearers, and the reasoner run is that hedge cashing out: the broad stroke was wrong for the carriers and the occurrents, and only a machine check over the full closure makes the wrongness undeniable rather than arguable.
 
-So the honest repair is not a two-line patch, and that re-scoping is the real finding. The subtree needs a partition by BFO category, content classes to `InformationContentEntity`, identifier and carrier classes staying on the bearer side where their existing restrictions already put them, event classes to `BFO:Process`, plus the one clean edit that survives the reasoner today, narrowing the artifact equivalence, and every step of that partition needs its own consistency run because each re-home can collide with another commitment exactly the way the retarget did. That partition also lines up with where CCO itself is heading in its own information-artifact refactor, so the contribution that went upstream to #424 is the measured analysis, the partition proposal, and the consistency-gate method rather than a patch that removes the entailment and silently breaks the build. The method is reproducible with standard tooling: merge the D3FEND release ontology, the candidate mapping, and merged CCO with imports dropped, then `robot reason --reasoner ELK` (ROBOT 1.9.10, Java 17); the original exits clean, the equivalence-narrowing exits clean with 920 remaining, and the retarget reports inconsistency.
+So the repair is not a two-line patch, and that re-scoping is the real finding. The subtree needs a partition by BFO category, content classes to `InformationContentEntity`, identifier and carrier classes staying on the bearer side where their existing restrictions already put them, event classes to `BFO:Process`, plus the one clean edit that survives the reasoner today, narrowing the artifact equivalence, and every step of that partition needs its own consistency run because each re-home can collide with another commitment exactly the way the retarget did. That partition also lines up with where CCO itself is heading in its own information-artifact refactor, so the contribution that went upstream to #424 is the measured analysis, the partition proposal, and the consistency-gate method rather than a patch that removes the entailment and silently breaks the build. The method is reproducible with standard tooling: merge the D3FEND release ontology, the candidate mapping, and merged CCO with imports dropped, then `robot reason --reasoner ELK` (ROBOT 1.9.10, Java 17); the original exits clean, the equivalence-narrowing exits clean with 920 remaining, and the retarget reports inconsistency.
 
 The reason this case sits in a strategy appendix rather than a changelog is what it demonstrates about the layer this whole section describes. A flat tag list would have accepted the retarget without complaint, and the error would have surfaced months later as subtly wrong inferences in whatever consumed the graph. The formal grounding is what made the wrong fix *detectable before shipping*, and the discipline it enforces, build the fix, reason over it, report what the reasoner says even when it contradicts the expert recommendation, is the same fail-loud-over-fail-silent posture Section H.4.4 argues for at the mapping layer, arrived at from the ontology side.
 
@@ -1013,7 +1000,7 @@ A book that spends a whole appendix arguing for a baseline owes you the cases wh
 
 1. **Schema lock-in is a real switching cost, modeled here in the low millions** (illustrative, Tier C/D), and it is enough to keep enterprises with an incumbent even when license math favors leaving.
 
-2. **OCSF is a worthwhile normalization baseline, adopted with eyes open.** Multi-vendor coalition, Linux Foundation governance, large production volumes (Tier B/C). It reduces friction at the schema layer; it does not dissolve lock-in, which shifts to the pipeline, catalog, and engine.
+2. **OCSF is a worthwhile normalization baseline, adopted with eyes open.** Multi-vendor coalition, Linux Foundation governance, and large production volumes that are vendor-reported and uncited (Tier C, Section H.3.1). It reduces friction at the schema layer; it does not dissolve lock-in, which shifts to the pipeline, catalog, and engine.
 
 3. **Implementation is tractable**: LLM-assisted mapping is roughly 6-9× faster than manual and reports high field-shape accuracy (Tier B), with the standing caveat that field-shape correctness is not semantic correctness.
 
@@ -1033,4 +1020,42 @@ A book that spends a whole appendix arguing for a baseline owes you the cases wh
 
 **Modular Open Architecture (MOAR) for Cybersecurity Data** = Open Standards (Iceberg + OCSF) + Transparent Transformations + Multi-Vendor Interoperability, with the standing caveat that open standards move the dependency rather than erase it, and that verified semantic correctness (Section H.4.4) is what makes the openness worth anything.
 
-**Next**: Appendix I (Query Engine Selection), Appendix J (Resources & Community), the incremental-modernization material (Chapter 7 of the handbook)
+---
+
+## Appendix H Sources
+
+The chapters of the handbook carry no endnotes by design, and the companion appendices are the evidence layer under them, so the external claims in this appendix get their locators here, keyed by section. Verification dates refer to the repository's own sweep record (VERIFICATION-SWEEP-PART3, 2026-07-10), where a locator was fetched and the claim compared against it. Where a locator was not fetched I say so, because an unverified anchor presented in a sources list is worse than no list at all.
+
+**Section H.1 (switching costs and the cost models)**
+- Splunk list pricing: UK Crown Commercial Service G-Cloud 14 published pricelist (April 2024). Rates quoted verbatim and verified 2026-07-10: Splunk Cloud Platform $793.50/GB/day/year in the 2,000-4,999 GB/day band and $764.75 in the 5,000-9,999 band; Enterprise Security $448.50 and $431.25 in the same two bands. The ~$1,240 and ~$1,196 platform-plus-ES figures are those pairs summed.
+- Flexera 2024 State of the Cloud Report, the roughly 89% multi-cloud figure and the combination breakdown: Tier C vendor survey, **not fetched**, hedged at the claim site.
+- W3Techs 2024, Linux at roughly 96% of the top 1M websites: **not fetched**, hedged at the claim site as a web-server methodology.
+- The three-layer switching-cost stack, the summary table, the parsing-tax model, the 12 TB/day comparison, and the migration narrative are author-modeled from published labor rates and list pricing, Tier C/D, and are labeled as such at each claim.
+
+**Section H.2 (coalition and governance)**
+- OCSF releases: v1.3.0 released 2024-08-01, v1.8.0 released 2026-03-16, both verified against the project's GitHub releases page 2026-07-10.
+- The `d3fend`, `d3f_tactic`, and `d3f_technique` objects plus the Remediation category: ocsf-schema pull request #1066.
+- Contributing-organization count: the OCSF project's contributing-organizations list under Linux Foundation governance. The count drifts and the project publishes no fixed figure, which is why the text hedges it. I could not resolve a current organization list at the schema repository when I checked in August 2026, so treat the 180+ number as an artifact of the 2024 counts.
+
+**Section H.3 (production evidence)**
+- The 2 PB/day case study has **no primary on file**. No URL or bibliography entry exists for it anywhere in the repository, which is recorded in the banner at the head of Section H.3.1 and is why the summary now describes the production volumes as vendor-reported and uncited.
+- CISA Zeek-OCSF collaboration: the documentation package and the Power Query M transformations described here, self-assessed by the project, Tier B.
+- Splunkbase download counts for the Splunk OCSF app: previously cited, unverified, withdrawn from the text.
+
+**Section H.4 (implementation and the failure mode)**
+- PR #294 to the Palo Alto Networks Splunk app (2023). The PaloAltoNetworks/Splunk-Apps repository was verified archived read-only on 2024-12-14 (checked 2026-07-10); the pull-request page itself was not individually fetched.
+- The shipped-mapping fidelity result: Tenzir 6.0.0, library commit `671e049`, target OCSF 1.8.0, single host, synthetic pinned Zeek conn corpus, first-party (Tier B). Bound to that commit.
+- The CloudTrail MFA demonstrator: first-party, synthetic, single host.
+
+**Section H.5 (ontological grounding)**
+- DoD, ODNI, and CDAO designation of BFO and CCO as baseline standards, January 2024: reported by the University at Buffalo, verified 2026-07-10 (Tier B). No primary policy document supports the FY2027 deadline or the ATO-contingency rule sometimes attached to it, which is why the text refuses both.
+- BFO: ISO/IEC 21838-2:2021, *Information technology, Top-level ontologies (TLO), Part 2: Basic Formal Ontology (BFO)*. The ontology release is named BFO 2020 and the standard document is dated 2021; do not write 21838-2:2020.
+- CCO: Jensen et al., arXiv:2404.17758, describing the eleven mid-level ontologies; release v2.1, April 2026.
+- D3FEND: 1.0 GA January 2025; ontology release 1.4.0 dated 2026-03-31 per d3fend.mitre.org/version, verified 2026-07-10.
+- `countermeasures` added to the `mitigation` object: ocsf-schema pull request #1348, OCSF CHANGELOG entry dated 2025-04-28.
+- The grounding experiment (705 prompts, 141 gold mappings, five context conditions), the nine-question retrieval test, the `scg` context-graph server, and the D3FEND issue #424 reasoner runs (ROBOT 1.9.10, ELK, Java 17) are all first-party SDW Lab work from June 2026 (Tier B).
+- The NIST dataset-standardization, NATO threat-intelligence, and MITRE explainable-AI items are Tier D at the claim site, with no public document located for any of them.
+
+---
+
+**Next**: Appendix I (Query Engine Selection), Appendix J (Resources and Community), the incremental-modernization material (Chapter 7 of the handbook)

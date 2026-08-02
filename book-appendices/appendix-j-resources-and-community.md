@@ -433,7 +433,7 @@ The catch for a MOAR stack is the same one Chapter 4 makes about the well-connec
 
 ### J.3.1 Apache Airflow
 
-Airflow is what I'd reach for once the orchestration is genuinely a graph, the kind where Iceberg maintenance has to compact before it expires snapshots before it cleans orphans and enrichment fans out and joins back, and once more than one team needs to see and rerun those jobs from one place. It's overkill for a handful of independent cron jobs, and I've watched teams stand up an Airflow cluster to run three nightly scripts and then own a scheduler that needs more babysitting than the scripts did, so the honest test I'd apply is whether you have real inter-task dependencies and a backfill story; if you do, Airflow's monitoring and its provider library are worth the operational cost, and if you don't, a managed option like Step Functions will hurt less.
+Airflow is what I'd reach for once the orchestration is genuinely a graph, the kind where Iceberg maintenance has to compact before it expires snapshots before it cleans orphans and enrichment fans out and joins back, and once more than one team needs to see and rerun those jobs from one place. It's overkill for a handful of independent cron jobs, and I've watched teams stand up an Airflow cluster to run three nightly scripts and then own a scheduler that needs more babysitting than the scripts did, so the test I'd apply is whether you have real inter-task dependencies and a backfill story; if you do, Airflow's monitoring and its provider library are worth the operational cost, and if you don't, a managed option like Step Functions will hurt less.
 
 It's best for complex DAGs, Python-based workflows, a deep integration library, and production scheduling.
 
@@ -514,7 +514,7 @@ with DAG(
 **When to use Airflow**:
 - Complex workflows (>5 tasks with dependencies)
 - Python ecosystem integration
-- Need production-grade monitoring
+- Need monitoring you can page on (task-level alerting, run history, SLA reporting)
 - Multiple teams sharing orchestration
 
 **When NOT to use**:
@@ -556,7 +556,7 @@ It's best for serverless workflows, orchestrating AWS services, a visual builder
 
 ### J.4.1 Grafana
 
-Grafana is what I'd put in front of a SOC for the always-on operational view, the wall of time-series panels with thresholds wired to PagerDuty or Slack, because that's the job it was built for and it does it without a per-seat bill. The fit for security data is that it already speaks to the query engines you're likely running, Dremio and Trino and Athena among them, so it sits on top of the lakehouse rather than asking you to copy data into yet another store. I'd be honest about the boundary, though: Grafana is a monitoring surface, not an investigation surface, so once an analyst is pivoting and asking open-ended questions, that work belongs in a notebook (J.4.2), not in a dashboard panel.
+Grafana is what I'd put in front of a SOC for the always-on operational view, the wall of time-series panels with thresholds wired to PagerDuty or Slack, because that's the job it was built for and it does it without a per-seat bill. The fit for security data is that it already speaks to the query engines you're likely running, Dremio and Trino and Athena among them, so it sits on top of the lakehouse rather than asking you to copy data into yet another store. I'd be honest about the boundary, though: Grafana is built for the standing view, the panels and thresholds you set up once and leave running, so once an analyst is pivoting and asking open-ended questions, that work belongs in a notebook (J.4.2) rather than a dashboard panel.
 
 It's best for real-time monitoring dashboards, time-series visualization, alerting, and open-source flexibility.
 
@@ -777,7 +777,7 @@ It's best for experiment tracking, a model registry, deployment orchestration, a
 
 ### J.6.1 Apache Iceberg
 
-Iceberg is the one tool in this appendix I'd argue for without much hedging, because it's the format the whole architecture in this book rests on: it lets Trino, Dremio, Spark, and Athena read the same tables without copying data or locking you to one engine, and for security that multi-engine freedom is the difference between a lakehouse you can evolve and a vendor you can't leave. The features I lean on most are the ones that matter specifically for security work: ACID so reads stay consistent while ingestion writes, and time-travel so the historical snapshot you query during forensics is the data as it actually stood, not as it's been rewritten since. The Iceberg V3 features that shipped through 2025 (deletion vectors, row lineage, table encryption) are worth tracking for security in particular, and by mid-2026 the engines have mostly caught up: Snowflake's Iceberg V3 support went GA in early May 2026, and DuckDB's iceberg extension reads and writes V3 deletion vectors as Puffin sidecar files as of its 1.5.3 release, which tells you the format has moved from spec to something you can actually build on [Tier C, vendor release notes/announcements; verify current version support before relying on it]. The V4 spec is a different story, because milestone #58 on GitHub has sat at two open proposals with nothing closed since late 2025, so the milestone itself looks dormant even though the real V4 design work (manifest write support, the adaptive metadata tree, single-file commits) has been moving in pull requests outside it; treat V4 as something to watch rather than plan around, and pin to the version your engines actually support before you count on any one feature. The performant-architecture chapter of the handbook makes the full case; this is the short version.
+Iceberg is the one tool in this appendix I'd argue for without much hedging, because it's the format the whole architecture in this book rests on: it lets Trino, Dremio, Spark, and Athena read the same tables without copying data or locking you to one engine, and for security that multi-engine freedom is the difference between a lakehouse you can evolve and a vendor you can't leave. The features I lean on most are the ones that matter specifically for security work: ACID so reads stay consistent while ingestion writes, and time-travel so the historical snapshot you query during forensics is the data as it actually stood, not as it's been rewritten since. The Iceberg V3 features that shipped through 2025 (deletion vectors, row lineage, table encryption) are worth tracking for security in particular, and by mid-2026 the engines have mostly caught up. Snowflake's Iceberg V3 support went GA in early May 2026, and DuckDB's iceberg extension reads and writes V3 deletion vectors as Puffin sidecar files as of its 1.5.3 release, so the format has moved from spec to something you can actually build on [Tier C, vendor release notes/announcements; verify current version support before relying on it]. The V4 spec is a different story, because milestone #58 on GitHub has sat at two open proposals with nothing closed since late 2025, so the milestone itself looks dormant even though the real V4 design work (manifest write support, the adaptive metadata tree, single-file commits) has been moving in pull requests outside it; treat V4 as something to watch rather than plan around, and pin to the version your engines actually support before you count on any one feature. The performant-architecture chapter of the handbook makes the full case; this is the short version.
 
 It's best for a multi-engine lakehouse, ACID guarantees, schema evolution, and production-scale security data.
 
@@ -797,7 +797,7 @@ It's best for a multi-engine lakehouse, ACID guarantees, schema evolution, and p
 
 ### J.6.2 Delta Lake
 
-I'd reach for Delta over Iceberg in one fairly specific situation: you've committed to Databricks and your workload is Spark-only, so the multi-engine argument that makes me default to Iceberg just doesn't apply to you, and inside that world Delta's Spark integration and its CDC story are genuinely strong. The honest move if you're unsure is to use Delta UniForm, which keeps a table readable as both Delta and Iceberg at once, so you get Databricks-native performance now without burning the migration bridge later. That's the option I'd take over betting everything on a single-format future.
+I'd reach for Delta over Iceberg in one fairly specific situation: you've committed to Databricks and your workload is Spark-only, so the multi-engine argument that makes me default to Iceberg just doesn't apply to you, and inside that world Delta's Spark integration and its CDC story are genuinely strong. The move if you're unsure is to use Delta UniForm, which keeps a table readable as both Delta and Iceberg at once, so you get Databricks-native performance now without burning the migration bridge later. That's the option I'd take over betting everything on a single-format future.
 
 It's best for Databricks-centric environments, unified batch and streaming, and tight Spark integration.
 
@@ -846,11 +846,11 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 **Tier 1 Mandatory Questions**:
 1. Does it integrate with my chosen architecture? (Iceberg support, query engine connectors)
 2. Is production-scale validated? (>1 TB/day deployments documented)
-3. Does vendor provide enterprise support? (SLA, 24/7 availability)
+3. Open format and a vendor-neutral migration path? (can you leave without rewriting the data)
 4. Is it within budget? (licensing + infrastructure costs)
 
 **Tier 2 Strongly Preferred**:
-1. Open source or vendor-neutral? (migration optionality)
+1. Is commercial support available if you need it? (vendor, integrator, or a managed service)
 2. Active community? (GitHub stars, commit frequency, issue response time)
 3. Cloud-native or hybrid deployment? (matches your infrastructure)
 4. Operator-friendly? (matches team skillset)
@@ -862,7 +862,7 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 
 **Red flags** (eliminate immediately):
 - Proprietary data format (vendor lock-in)
-- No enterprise support option (production risk)
+- No support path at all, no vendor, no integrator, and no active maintainer
 - Abandoned project (last commit >1 year ago)
 - No production case studies (unvalidated at scale)
 
@@ -1187,7 +1187,7 @@ Of all the communities in this appendix, the OCSF Slack is the one where I think
 
 **Use case**: Learn from practitioners, network with peers, stay current on emerging patterns.
 
-If I had to spend a limited conference budget, I wouldn't split it evenly across this list. The data-engineering conferences below (Subsurface and Trino Summit especially) are where the lakehouse internals you actually need get taught, and they're virtual and cheap, so they're the easy first call. The big security conferences are a different value proposition: I go to RSA and Black Hat more for who's in the room than for the talks, because the security-data architecture content there is thin and the genuine signal is in the hallway and the practitioner case studies rather than the vendor floor. The directory entries that follow note what each one is good for; the honest framing is that the data conferences teach the architecture and the security conferences are where you find the people running it.
+If I had to spend a limited conference budget, I wouldn't split it evenly across this list. The data-engineering conferences below (Subsurface and Trino Summit especially) are where the lakehouse internals you actually need get taught, and they're virtual and cheap, so they're the easy first call. The big security conferences are a different value proposition: I go to RSA and Black Hat more for who's in the room than for the talks, because the security-data architecture content there is thin and the genuine signal is in the hallway and the practitioner case studies rather than the vendor floor. The directory entries that follow note what each one is good for, and across the list, the data conferences teach the architecture while the security conferences are where you find the people running it.
 
 ### J.12.1 Data Engineering Conferences
 
@@ -1335,27 +1335,27 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 - Archive: https://tabular.io/blog/ (frozen at 2023 pre-acquisition posts per the 2026-07-10 sweep's live fetch, and the domain resolved only intermittently during that sweep, so treat the archive as best-effort)
 - Current: https://www.databricks.com/blog (search "Iceberg" for continuation of Tabular team's work)
 - Deep dives: Iceberg internals, performance optimization
-- Example: "Hidden Partitioning in Iceberg" (explains partition evolution)
+- Look for: their table-internals write-ups (hidden partitioning, partition evolution, metadata layout)
 
 **Dremio Blog**:
 - https://www.dremio.com/blog/
 - Lakehouse architectures, query optimization
-- Example: "Reflections Deep Dive" (how accelerations work)
+- Look for: their Reflections write-ups (how an acceleration gets picked, refreshed, and invalidated)
 
 **Starburst Blog**:
 - https://www.starburst.io/blog/
 - Trino optimization, federated query patterns
-- Example: "Cost-Based Optimizer in Trino" (query planning internals)
+- Look for: their query-planning write-ups (cost-based optimization, join reordering, connector pushdown)
 
 **Netflix Tech Blog**:
 - https://netflixtechblog.com/
 - Production Iceberg usage (Netflix built Iceberg)
-- Example: "Iceberg at Netflix: 1 Petabyte Scale"
+- Look for: their Iceberg-at-scale write-ups (partition layout, metadata handling at petabyte volume)
 
 **Uber Engineering Blog**:
 - https://www.uber.com/blog/engineering/
 - Data platform architectures, real-time processing
-- Example: "Building Reliable Data Pipelines at Uber Scale"
+- Look for: their data-platform write-ups (pipeline reliability, real-time processing at scale)
 
 ---
 
@@ -1366,10 +1366,10 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 **Host**: Tobias Macey
 **Where**: https://www.dataengineeringpodcast.com/
 **Format**: Weekly interviews (data engineers, tool creators, practitioners)
-**Relevant episodes**:
-- "Apache Iceberg with Ryan Blue" (Iceberg co-creator)
-- "Building Security Data Lakes" (practitioner case studies)
-- "Trino at Scale" (query optimization)
+**Look for episodes on**:
+- Iceberg internals and roadmap (the back catalogue is searchable by topic)
+- Security data lake builds (practitioner case studies)
+- Trino and query optimization at scale
 
 **Listen when**: Commute, exercise (stay current passively)
 

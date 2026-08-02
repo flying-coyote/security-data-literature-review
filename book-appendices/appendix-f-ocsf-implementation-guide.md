@@ -124,7 +124,7 @@ def zeek_conn_to_ocsf(zeek_df):
 
 ---
 
-### Approach 2: LLM-Assisted Mapping (Recommended for Most Organizations)
+### Approach 2: LLM-Assisted Mapping (The Default for Custom and Non-Standard Sources)
 
 **When to use**:
 - Medium-scale: 10-100 log sources
@@ -275,6 +275,8 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 - LLM-assisted: 15-20 minutes per source
 - **Speedup**: roughly 6-9× faster, the efficiency gain the CISA Zeek-OCSF project reported on its own work rather than the ratio of the two per-source estimates above, which run 6× to 16× on the endpoints (Tier B, self-assessed; not a measured benchmark)
 
+Chapter 2 prices the same work at the better part of an engineer-year for a big deployment mapping hundreds of sources, which looks incompatible with the rate above until you notice the two figures cover different things. The chapter's figure is the manual shape of the job, and 300 sources at 2 to 4 hours each is already 600 to 1,200 hours before you add the schema-learning time, the peer review, and the re-mapping that every OCSF release forces, none of which the per-source rate here includes. So read the 15 to 20 minutes as the marginal cost of one more source once a team is fluent, and read the engineer-year as what the program costs end to end.
+
 **Accuracy**: roughly 95% field-mapping correctness, as reported by the CISA Zeek-OCSF project across 20 Zeek protocols (the CISA-facing power-query phase set this appendix describes; the repository's full unified set later grew to 101 protocols, so both counts are real in the source) and roughly 2,900 lines of M code; treat that as the project's own working figure (Tier B, self-assessed and illustrative, not an independently published rate) rather than a benchmark you can cite as measured. Appendix H deliberately speaks only directionally about this same project's accuracy, and I keep the worked numbers here because a tactical sizing guide needs planning figures, though they carry the same self-assessed status either way.
 
 **Pros**:
@@ -342,7 +344,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 | Approach | Sources | Effort | Transparency | Customization | Best Fit |
 |----------|---------|--------|--------------|---------------|----------|
 | **Manual** | <10 | 2-4 hr/src | ✓ Full | ✓ Complete | POC, compliance-critical, learning |
-| **LLM-Assisted** | 10-100 | 15-20 min/src | ✓ Full | ✓ Complete | **Enterprise deployments (recommended)** |
+| **LLM-Assisted** | 10-100 | 15-20 min/src | ✓ Full | ✓ Complete | **Custom sources at enterprise scale (recommended)** |
 | **Vendor** | Standard only | Min to hours | ✗ Black box | ✗ Limited | Fast POC, standard sources, no resources |
 
 **Hybrid approach** (the split I most often see in practice, an author's assessment with illustrative proportions rather than a surveyed distribution):

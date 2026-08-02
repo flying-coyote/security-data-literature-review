@@ -58,10 +58,10 @@ One condition keeps the interchangeability claim narrow: it holds only when encr
 These principles are validated at scale:
 - **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup talk, July 2025, written up on the ClickHouse blog 2025-10-23, date corrected 2026-07-10 from "late 2024" per the bibliography's 2026-07-09 correction; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
 - **Okta**: 7.5 trillion records processed in six months across thousands of concurrent DuckDB Lambda instances (Jake Thomas, Okta, personal account; Tier B, not independently audited) (Principle 5)
-- **Apple**: Petabyte-scale Apache Iceberg (Apple engineers present Iceberg work at Dremio's Subsurface conference, e.g., Russell Spitzer's Subsurface 2024 session on Apple's Iceberg contributions, and Apple holds multiple Iceberg PMC seats; the earlier "Baris Aydın, 'Apple's Journey with Apache Iceberg,' Subsurface Live 2023" attribution could not be located anywhere and was dropped 2026-07-10; Tier C pending a fetched talk page) (Principle 1, 2)
+- **Apple**: Apache Iceberg maintained upstream from inside Apple, which is the part of this row I can actually evidence (Anton Okolnychyi has been on the Iceberg PMC since May 2020 and has been at Apple throughout, and Szehon Ho joined the PMC in 2023 while on Apple's data-tables team, so the seats are plural and the contributions are public in the project's own commit and announcement history; ASF Iceberg community and dev-list records, Tier B) (Principle 1, 2). The petabyte-scale figure is Apple-sourced and peer-reviewed: Okolnychyi, Sun, Tanimura, Spitzer, Ho, Gu, Lakkundi and Tsai (all Apple) with Ryan Blue (Tabular), "Petabyte-Scale Row-Level Operations in Data Lakehouses," PVLDB 17(12):4159-4172, 2024, doi 10.14778/3685800.3685834, whose abstract describes extensions enhancing data lakehouses on Apache Iceberg and Apache Spark with performant petabyte-scale row-level operations (Tier A). An earlier attribution in this row, "Baris Aydın, 'Apple's Journey with Apache Iceberg,' Subsurface Live 2023," could not be located anywhere and was dropped 2026-07-10, and the PVLDB paper supersedes it on better evidence.
 - **CISA**: Zeek-OCSF mapping, ~95% mapping accuracy as reported by the project itself, an illustrative figure rather than an independently published rate (CISA Zeek-OCSF project; Tier B) (Principle 4)
 
-Those are external deployments that validate the principles at scale; the interchangeability claim itself I verified first-party in a runnable reference stack, because "the layers are swappable" is the kind of assertion that deserves a measurement rather than a diagram. What follows is the one place in this book where I state the swap-clean claim in full and say exactly how much of it is measured.
+Those are external deployments and upstream contributions that validate the principles at scale; the interchangeability claim itself I verified first-party in a runnable reference stack, because "the layers are swappable" is the kind of assertion that deserves a measurement rather than a diagram. What follows is the one place in this book where I state the swap-clean claim in full and say exactly how much of it is measured.
 
 ### The swap-clean claim, stated once
 
@@ -721,16 +721,16 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 **Variants-chapter case study** (Marcus Financial Services, from the "what good looks like" material, Chapter 6 of the handbook):
 - Volume: 12 TB/day (Path A: full lakehouse migration to Iceberg on S3 + Athena)
-- Schema-on-read SIEM renewal: $12M/year
-- Modern stack (Athena): $2.9M/year
-- **Savings: $9.1M/year (76%)**
+- Schema-on-read SIEM renewal: $12M/year all-in (licensing plus staffing)
+- Modern stack (Athena): $2.9M/year platform, $3.47M/year all-in with 3 FTE
+- **Savings: $8.5M/year (71%)**, comparing both paths all-in. The platform-only $2.9M is the headline figure K.2 carries for Marcus, so quote it as the platform number rather than against the SIEM's all-in total.
 
 > **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion and storage, but these tiers are coarse model bands and reading a savings percentage off the nearest one will mislead you, which is why the Marcus scenario lands at 76% while the 10 TB/day row shows 85-90%. His $12M SIEM figure is a licensing-plus-staffing model sitting at the floor of that row's $12M-$20M range, and his $2.9M Athena build sits above the $2.5M ceiling of the modern-stack column, so re-run Worksheet A.6 against your own rates before you quote a savings number.
 
 **When Splunk Still Wins** (Marcus Path B):
 - SEC real-time fraud detection mandate (<30 seconds)
 - Team capacity dropped from 3 → 1 engineer
-- **Decision**: Accept $9.1M/year premium for operational simplicity + real-time compliance
+- **Decision**: Accept an $8.5M/year all-in premium for operational simplicity and real-time compliance. That is Path B's $12M against Path A's $3.47M once both paths carry their staffing, so it runs below the $9.1M a mixed-basis comparison would show gap above, which prices the $2.9M Athena build without the three engineers it needs (Appendix K.2 works the same two paths on that one basis).
 
 ---
 
@@ -870,7 +870,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 **Applies to**: Pattern 1 (Healthcare Hybrid), Pattern 2 (AWS-First), Pattern 5 (Multi-Engine)
 
-Appendix I.4B works through the trade-off in detail, and the short version is that the published upside claims decompose into three very different sources (units-and-attribution corrected 2026-07-10 against the SDW essay): Snowflake's own figure is roughly a 78% query improvement with 21% cost reduction on single-table aggregations (a percentage, not a multiplier; vendor docs, Tier C), the 9,000× top end comes from a single-developer PostgreSQL case study (Sid Ngeth, 2025: 350×–9,000× on a synthetic Rails dataset; Tier D anecdote, not vendor literature), and a practitioner Splunk write-up reports ~270× (unsafehex.com, Tier C), while the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth; SDW Lab, `ocsf-mv-acceleration/results/RESULTS.md`, 20M OCSF events across 20 streaming batches), which is the independently-reproduced anchor for the claim, but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
+Appendix I.4B works through the trade-off in detail, and the short version is that the published upside claims decompose into three very different sources (units-and-attribution corrected 2026-07-10 against the SDW essay): Snowflake's own figure is roughly a 78% query improvement with 21% cost reduction on single-table aggregations (a percentage, not a multiplier; vendor docs, Tier C), the 9,000× top end comes from a single-developer PostgreSQL case study (Sid Ngeth, 2025: 350×–9,000× on a synthetic Rails dataset; Tier D anecdote, not vendor literature), and a practitioner Splunk write-up reports ~270× (unsafehex.com, Tier C), while the SDW Lab's own first-party measurement (medians over repeated trials, single host, Tier B, with the run-to-run spread reported per panel and the base scans landing between 7% and 40% coefficient of variation) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth; SDW Lab, `ocsf-mv-acceleration/results/RESULTS.md`, 20M OCSF events across 20 streaming batches), which is the independently-reproduced anchor for the claim, but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
 
 ### When to Add Materialized Views to Your Architecture
 
