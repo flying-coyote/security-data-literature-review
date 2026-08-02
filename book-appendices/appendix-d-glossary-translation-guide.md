@@ -5,7 +5,7 @@ created: 2025-10-15
 tags: [security-data, data-engineering, terminology, siem, etl, translation]
 ---
 
-# Appendix D: Glossary — Security ↔ Data Engineering Translation Guide
+# Appendix D: The Security ↔ Data Engineering Translation Glossary
 
 I have watched a lot of security architects walk into the data engineering world for the first time, and the scene that follows is a composite of those conversations rather than any single person. Picture a security architect with fifteen years of SOC experience standing in the hallway at Data + AI Summit with their RSA Conference badge still in the laptop bag. They have been to dozens of cybersecurity conferences, but this is a different room: everyone is talking about medallion architectures, reverse ETL, and semantic layers, terms that never showed up in any threat model they have built.
 
@@ -35,9 +35,9 @@ Consider a representative exchange between a security architect and a data engin
 
 The security architect knows what they need, which is threat detection across data sources with long-term retention, and the data engineer knows how to build it with streaming pipelines, table formats, and query engines. Translation friction is what slows collaboration, and the root cause is that the two disciplines evolved in different problem domains.
 
-**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering — finding rare events in billions of rows — and the latency requirements combine real-time alerting (seconds to a few minutes, depending on detection type) with interactive investigation (under 60 seconds).
+**Security Operations** is oriented toward threat detection and incident response. Its data is unstructured or semi-structured logs arriving from hundreds of heterogeneous sources. Retention is driven by compliance mandates with fixed timeframes: 6 years for HIPAA, 1 year for PCI-DSS, 7 years for SOX. The query workload is high-cardinality filtering (finding rare events in billions of rows) and the latency requirements combine real-time alerting (seconds to a few minutes, depending on detection type) with interactive investigation (under 60 seconds).
 
-**Business Intelligence** is oriented toward metrics, reporting, and decision-making. Its data is structured, drawn from transactional systems. Retention follows business value — delete when data is no longer useful. The query workload is aggregation and rollups, summarizing millions of rows to thousands of reporting rows. Batch ETL running hourly or daily is acceptable, and dashboard refresh under 10 seconds satisfies most use cases.
+**Business Intelligence** is oriented toward metrics, reporting, and decision-making. Its data is structured, drawn from transactional systems. Retention follows business value, so data is deleted once it's no longer useful. The query workload is aggregation and rollups, summarizing millions of rows to thousands of reporting rows. Batch ETL running hourly or daily is acceptable, and dashboard refresh under 10 seconds satisfies most use cases.
 
 Despite these different profiles, both domains need the same underlying infrastructure: object storage (S3, Azure Blob, GCS), SQL-based query engines, pipeline orchestration (Airflow, Dagster, Prefect), and table formats (Iceberg, Delta). Security architects can use mature data engineering patterns directly, but first the vocabulary has to align.
 
@@ -47,17 +47,17 @@ Despite these different profiles, both domains need the same underlying infrastr
 
 *If you're a security professional, skip ahead to D.3. This primer is for data engineers entering the security domain who need context on how security teams operate day-to-day.*
 
-**The SOC Floor**. Security Operations Centers run 24/7 with tiered analyst teams. Tier 1 analysts triage thousands of alerts daily, escalating suspicious events to Tier 2 investigators who correlate across data sources. Tier 3 analysts handle confirmed incidents — forensic analysis with legal implications where data preservation is mandatory, not optional. Think of it as a 24/7 on-call rotation, but every page may involve an active adversary.
+**The SOC Floor**. Security Operations Centers run 24/7 with tiered analyst teams. Tier 1 analysts triage thousands of alerts daily, escalating suspicious events to Tier 2 investigators who correlate across data sources. Tier 3 analysts handle confirmed incidents, forensic analysis with legal implications where data preservation is mandatory, not optional. Think of it as a 24/7 on-call rotation, but every page may involve an active adversary.
 
-**Detection Engineering**. Detection engineers write rules that fire when suspicious patterns appear in telemetry data. A rule might say: "Alert when a process accesses lsass.exe memory AND the parent process is not an authorized security tool." These are analogous to data quality checks that page on-call engineers — except the "data quality issue" is an attacker inside your network. Organizations maintain hundreds to thousands of these rules, each tuned to minimize false positives while catching real threats.
+**Detection Engineering**. Detection engineers write rules that fire when suspicious patterns appear in telemetry data. A rule might say: "Alert when a process accesses lsass.exe memory AND the parent process is not an authorized security tool." These are analogous to data quality checks that page on-call engineers, except that the "data quality issue" is an attacker inside your network. Organizations maintain hundreds to thousands of these rules, each tuned to minimize false positives while catching real threats.
 
 **Threat Hunting**. Hypothesis-driven ad-hoc queries across weeks or months of historical data. A threat hunter might ask: "Show me all DNS queries to domains registered in the last 30 days, grouped by source host, over the past 90 days." This is exploratory data analysis, but the goal is finding adversaries who evaded automated detection. Queries are interactive (analysts iterate in real-time), high-cardinality (filtering rare events from billions of rows), and unpredictable (you can't pre-aggregate what you don't know you'll need).
 
-**Incident Response**. When a confirmed breach occurs, responders reconstruct attacker activity across weeks or months of historical data. Legal hold requirements mean data must be preserved as evidence — deletion or modification can create compliance liability. A typical investigation question: "Show me every action taken by this compromised account between August 1 and October 15, across all systems." This requires queryable long-term retention, not just archived storage.
+**Incident Response**. When a confirmed breach occurs, responders reconstruct attacker activity across weeks or months of historical data. Legal hold requirements mean data must be preserved as evidence, because deletion or modification can create compliance liability. A typical investigation question: "Show me every action taken by this compromised account between August 1 and October 15, across all systems." This requires queryable long-term retention, not just archived storage.
 
-**Compliance Retention**. Retention timeframes are regulatory mandates, not business choices. HIPAA requires 6 years of audit logs (45 CFR 164.316(b)(2)(i); some states require longer — verify against your state health privacy law). PCI-DSS mandates 1 year. SOX requires 7 years. Auditors will ask for specific records spanning years, and "we archived that to cold storage and can't query it" is not an acceptable answer.
+**Compliance Retention**. Retention timeframes are regulatory mandates, not business choices. HIPAA requires 6 years of audit logs (45 CFR 164.316(b)(2)(i); some states require longer, so verify against your state health privacy law). PCI-DSS mandates 1 year. SOX requires 7 years. Auditors will ask for specific records spanning years, and "we archived that to cold storage and can't query it" is not an acceptable answer.
 
-Real-time alerting (sub-second to a few minutes, depending on detection type), interactive investigation (seconds), and long-term forensics (minutes across years of data) are three fundamentally different query patterns hitting the same underlying data, which is why Appendix I recommends multiple query engines — no single engine handles all three patterns efficiently.
+Real-time alerting (sub-second to a few minutes, depending on detection type), interactive investigation (seconds), and long-term forensics (minutes across years of data) are three fundamentally different query patterns hitting the same underlying data, which is why Appendix I recommends multiple query engines, since no single engine handles all three patterns efficiently.
 
 ---
 
@@ -84,8 +84,8 @@ S3/Blob/GCS                 → Query Engine (Trino, Dremio, Spark)
 
 **Advantages for Security**:
 1. **Cost optimization**: Scale storage independently (cheap object storage), scale compute only when querying
-2. **Vendor flexibility**: Swap query engines without data migration (try Trino, switch to Dremio — same Iceberg tables)
-3. **Multi-workload support**: Use Trino for ad-hoc queries, Spark for batch processing, Dremio for BI dashboards — all reading same data
+2. **Vendor flexibility**: Swap query engines without data migration (try Trino, switch to Dremio, same Iceberg tables underneath)
+3. **Multi-workload support**: Use Trino for ad-hoc queries, Spark for batch processing, Dremio for BI dashboards, all reading the same data
 
 ---
 
@@ -110,7 +110,7 @@ Table format approach (Iceberg/Delta) addresses all three via a metadata layer t
 - **Multi-writer coordination**: Real-time ingestion (Kafka → Flink) + batch enrichment (Spark) write to same table safely
 - **Compliance audit trail**: Time-travel enables "show me data as it existed on audit date"
 
-> **Note — DuckLake (April 2026)**: DuckDB Labs shipped DuckLake v1.0 on April 13, 2026, an alternative catalog-and-format design that stores table metadata in a SQL database (DuckDB or any Postgres-compatible store) rather than in a file manifest, while the data files themselves remain Parquet and are compatible with Iceberg readers. The benchmark headline at v1.0 was roughly 100–900× faster streaming ingest than Iceberg's file-manifest approach on the DuckLake team's own tests, which is a significant gap if it holds at scale and across workloads. DuckLake is now shipping and worth tracking, though the SQL-metadata trade-off (metadata durability and multi-engine access depend on the backing database) is a real architectural difference from Iceberg's self-describing file manifests. For a security data lake, it is an emerging option rather than a settled choice; Iceberg and Delta Lake have years of production scale behind them. Watch DuckLake v1.x releases for independent validation of the performance claims before committing to it in a production architecture — an initial independent reproduction now exists (a modest 2–4× streaming advantage on a single host rather than the headline 100–900×, with reads neutral on byte-identical Parquet), covered in Appendix I.
+> **Note on DuckLake (April 2026)**: DuckDB Labs shipped DuckLake v1.0 on April 13, 2026, an alternative catalog-and-format design that stores table metadata in a SQL database (DuckDB or any Postgres-compatible store) rather than in a file manifest, while the data files themselves remain Parquet and are compatible with Iceberg readers. The benchmark headline at v1.0 was roughly 100–900× faster streaming ingest than Iceberg's file-manifest approach on the DuckLake team's own tests, which is a significant gap if it holds at scale and across workloads. DuckLake is now shipping and worth tracking, though the SQL-metadata trade-off (metadata durability and multi-engine access depend on the backing database) is a real architectural difference from Iceberg's self-describing file manifests. For a security data lake, it is an emerging option rather than a settled choice; Iceberg and Delta Lake have years of production scale behind them. Watch DuckLake v1.x releases for independent validation of the performance claims before committing to it in a production architecture, since an initial independent reproduction now exists (a modest 2–4× streaming advantage on a single host rather than the headline 100–900×, with reads neutral on byte-identical Parquet), covered in Appendix I.
 
 ---
 
@@ -150,7 +150,7 @@ WHERE s.alert_name = 'Suspicious PowerShell'
   AND s.timestamp > NOW() - INTERVAL '24 hours'
 ```
 
-Three sources (Splunk, PostgreSQL, S3) queried in a single SQL statement — no data movement required.
+Three sources (Splunk, PostgreSQL, S3) queried in a single SQL statement, with no data movement required.
 
 ---
 
@@ -179,7 +179,7 @@ The problem with Lambda is maintaining two codebases (batch + streaming) for the
 
 **Kappa Architecture** (stream-only):
 
-A single stream processing pipeline reprocesses historical data by replaying the stream, which simplifies maintenance to one codebase — though the operational discipline to reprocess large histories on demand is a real cost.
+A single stream processing pipeline reprocesses historical data by replaying the stream, which simplifies maintenance to one codebase, though the operational discipline to reprocess large histories on demand is a real cost.
 
 ---
 
@@ -240,19 +240,19 @@ Raw Logs (S3)  →  Load to Iceberg (raw table)  →  dbt transforms to OCSF (no
               Keep raw + normalized (both queryable)
 ```
 
-**A note on the parsing layer nobody owns**. Before you can normalize a field, someone has to extract it correctly, and that step is less reliable than you'd expect. In 2023, as a customer of Palo Alto (not an employee or vendor), I submitted [PR #294](https://github.com/PaloAltoNetworks/Splunk-Apps/pull/294) to Palo Alto's own Splunk app, fixing roughly 142 broken field extractions. The PAN-OS TRAFFIC and CONFIG logs are positional comma-separated records: one wrong field assignment cascades, and every field after it slides one position into the wrong column. Because it was a public PR, the fix would have shipped to every other customer of that app, not just my organization. It was never merged; the repository is now archived. Parsing is a layer nobody in the chain is paid to own, which means correctness here gets decided — or not — before any normalization framework touches the data. Chapter 3 gives the fuller first-hand account with a figure, and Appendix B catalogs the same failure mode as Anti-Pattern #12, "Mapping Wrong by Construction."
+**A note on the parsing layer nobody owns**. Before you can normalize a field, someone has to extract it correctly, and that step is less reliable than you'd expect. In 2023, as a customer of Palo Alto (not an employee or vendor), I submitted [PR #294](https://github.com/PaloAltoNetworks/Splunk-Apps/pull/294) to Palo Alto's own Splunk app, fixing roughly 142 broken field extractions. The PAN-OS TRAFFIC and CONFIG logs are positional comma-separated records: one wrong field assignment cascades, and every field after it slides one position into the wrong column. Because it was a public PR, the fix would have shipped to every other customer of that app, not just my organization. It was never merged; the repository is now archived. Parsing is a layer nobody in the chain is paid to own, which means correctness here gets decided (or not) before any normalization framework touches the data. Chapter 3 gives the fuller first-hand account with a figure, and Appendix B catalogs the same failure mode as Anti-Pattern #12, "Mapping Wrong by Construction."
 
 ---
 
 ## D.4: Resource Quick Reference
 
-The full resource directory lives in **Appendix E**, and the by-topic tool guides and community landscape are carried in full in **Appendix J**, with detailed learning paths, documentation links, community channels, and recommended reading orders by background. This section provides the essential starting points — follow those pointers for everything deeper.
+The full resource directory lives in **Appendix E**, and the by-topic tool guides and community landscape are carried in full in **Appendix J**, with detailed learning paths, documentation links, community channels, and recommended reading orders by background. This section provides the essential starting points, so follow those pointers for everything deeper.
 
 ### Foundational Books
 
 | Book | Author | Why It Matters for Security |
 |------|--------|---------------------------|
-| *Fundamentals of Data Engineering* | Joe Reis & Matt Housley (2022) | **Start here.** Chapters 6-10 cover storage, ingestion, queries, and orchestration — the foundation this book builds on |
+| *Fundamentals of Data Engineering* | Joe Reis & Matt Housley (2022) | **Start here.** Chapters 6-10 cover storage, ingestion, queries, and orchestration, the foundation this book builds on |
 | *Designing Data-Intensive Applications* | Martin Kleppmann (2017) | Deep dive into storage engines, batch/stream processing. Read after Reis. |
 | *Apache Iceberg: The Definitive Guide* | Tomer Shiran, Jason Hughes & Alex Merced (O'Reilly, 2024) | Table format most security architectures will use. Multi-engine support, schema evolution. |
 
@@ -269,10 +269,10 @@ The full resource directory lives in **Appendix E**, and the by-topic tool guide
 
 ### Communities to Join First
 
-- **dbt Slack** (tens of thousands of members) — Frame security problems using data engineering vocabulary
-- **Apache Iceberg Slack** — Table format questions, production patterns
-- **OCSF Slack** — Schema mapping, vendor adoption discussions
-- **r/dataengineering** (Reddit) — Daily questions, practitioner experiences
+- **dbt Slack** (tens of thousands of members) frames security problems in data engineering vocabulary
+- **Apache Iceberg Slack** covers table format questions and production patterns
+- **OCSF Slack** covers schema mapping and vendor adoption discussions
+- **r/dataengineering** (Reddit) carries daily questions and practitioner experiences
 
 For detailed documentation links, thought leaders, conferences, learning paths, and reading orders by experience level, see **Appendix J: Resources and Community**.
 
@@ -286,7 +286,7 @@ After building vocabulary, you face concrete decisions: which table format, whic
 
 1. **Table Format (Iceberg vs. Delta Lake)**: Determines query engine flexibility, metadata scalability, vendor lock-in risk, CDC maturity. Most security teams: **Apache Iceberg** (vendor-neutral, multi-engine support) unless Databricks-committed (then Delta Lake).
 
-2. **Catalog Selection (Unity, Polaris, Nessie, Gravitino)**: Your governance enforcement point — determines row-level security capability, rollback options, catalog federation. Greenfield security teams: **Polaris** (vendor-neutral, table-level security) unless you need fine-grained access (Unity) or Git workflows (Nessie) or managing multiple catalog types (Gravitino).
+2. **Catalog Selection (Unity, Polaris, Nessie, Gravitino)**: Your governance enforcement point, determining row-level security capability, rollback options, and catalog federation. Greenfield security teams: **Polaris** (vendor-neutral, table-level security) unless you need fine-grained access (Unity) or Git workflows (Nessie) or managing multiple catalog types (Gravitino).
 
 3. **Transformation Tools (dbt for Security)**: SQL transformations for OCSF normalization, enrichment, detection rules. Security teams standardize on **dbt** (SQL-based, testing framework, version control, documentation auto-generation).
 
@@ -306,17 +306,17 @@ Security architects who speak both languages can use mature tooling, proven desi
 
 **Practical engagement**:
 
-1. **Attend Data Conferences**: Subsurface (Dremio, fall), Trino Summit (September), Data + AI Summit (June) — ask data engineers "How do you handle high-cardinality filtering?" and "What's your approach to 7-year retention with tiered storage?"
+1. **Attend Data Conferences**: Subsurface (Dremio, fall), Trino Summit (September), Data + AI Summit (June), and ask data engineers "How do you handle high-cardinality filtering?" and "What's your approach to 7-year retention with tiered storage?"
 
-2. **Join Online Communities**: dbt Slack (tens of thousands of members), Trino Slack, r/dataengineering Reddit — frame security problems using data engineering vocabulary (use the translation guide in D.7 below)
+2. **Join Online Communities**: dbt Slack (tens of thousands of members), Trino Slack, r/dataengineering Reddit, and frame security problems using data engineering vocabulary (use the translation guide in D.7 below)
 
-3. **Follow Thought Leaders**: Joe Reis (LinkedIn + newsletter), Alex Merced (YouTube tutorials), Ryan Blue (Iceberg roadmap) — comment thoughtfully to build relationships
+3. **Follow Thought Leaders**: Joe Reis (LinkedIn + newsletter), Alex Merced (YouTube tutorials), Ryan Blue (Iceberg roadmap), and comment thoughtfully to build relationships
 
-4. **Experiment Hands-On**: DuckDB (duckdb.org), AWS Athena Free Tier, Iceberg Docker (github.com/databricks/iceberg-rest-image — the old tabular-io path redirects there since Databricks acquired Tabular; verified live 2026-07-10) — breaking things teaches more than documentation
+4. **Experiment Hands-On**: DuckDB (duckdb.org), AWS Athena Free Tier, Iceberg Docker (github.com/databricks/iceberg-rest-image, where the old tabular-io path redirects since Databricks acquired Tabular; verified live 2026-07-10), since breaking things teaches more than documentation
 
 ---
 
-## D.7: Glossary — Full Bidirectional Reference
+## D.7: The Full Bidirectional Glossary
 
 ### Alphabetical Index (Security → Data Engineering)
 
@@ -330,7 +330,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Batch alerting** = Scheduled query (Airflow DAG runs query every 5 minutes, alerts if threshold exceeded)
 - **Real-time alerting** = Stream processing (Flink/Spark Streaming processes events continuously, emits alert on match)
-**Why It Matters**: Data engineers don't say "alert" — they say "query output exceeds threshold" or "stream processor emits event"
+**Why It Matters**: Data engineers don't say "alert"; they say "query output exceeds threshold" or "stream processor emits event"
 
 ---
 
@@ -351,7 +351,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Security use case**: "Correlate process creation (EDR) with network connection (Zeek) by host_id and timestamp window"
 - **Data engineering translation**: `SELECT * FROM edr_processes p JOIN network_flows n ON p.host_id = n.host_id WHERE p.timestamp BETWEEN n.timestamp - INTERVAL '5 minutes' AND n.timestamp`
-**Why It Matters**: Data engineers use standard SQL JOINs — no special "correlation" language (except in proprietary SIEM query languages such as SPL, KQL, and AQL)
+**Why It Matters**: Data engineers use standard SQL JOINs, with no special "correlation" language (except in proprietary SIEM query languages such as SPL, KQL, and AQL)
 
 ---
 
@@ -370,7 +370,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Data Engineering Equivalent**: Materialized view, query results cache, aggregation table, Dremio Reflections
 **Context**:
 - **Security expectation**: "Pre-compute dashboard queries for instant refresh"
-- **Data engineering reality**: "Materialized views can provide dramatic speedups — Snowflake reports roughly a 78% query improvement (a percentage, not a multiplier), a single-developer PostgreSQL case study reports 350×–9,000× (Sid Ngeth, 2025, synthetic Rails dataset), and a practitioner Splunk write-up reports ~270× — but these are best-case figures [Evidence tier C/D; units-and-attribution corrected 2026-07-10, not independently reproduced]; security data frequently hits the failure modes below" (see Appendix I.4B for the conditions under which these figures hold)
+- **Data engineering reality**: "Materialized views can provide dramatic speedups: Snowflake reports roughly a 78% query improvement (a percentage, not a multiplier), a single-developer PostgreSQL case study reports 350×–9,000× (Sid Ngeth, 2025, synthetic Rails dataset), and a practitioner Splunk write-up reports ~270×, but these are best-case figures [Evidence tier C/D; units-and-attribution corrected 2026-07-10, not independently reproduced]; security data frequently hits the failure modes below" (see Appendix I.4B for the conditions under which these figures hold)
 - **Three failure modes**:
   1. **High data change rates** (continuous log ingestion) → refresh costs exceed query savings
   2. **Schema volatility** (new log sources, vendor updates) → views invalidated frequently
@@ -378,7 +378,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Decision Framework (from Appendix I.4B)**:
 - **Deploy when**: Query frequency >> data change rate (12:1 ratio), refresh cost < query cost savings (10× benefit), schema stable (<1 change/month), simple aggregations only
 - **Avoid when**: Unpredictable query patterns (threat hunting), complex correlation rules (window functions), schema changes weekly, insufficient operational expertise
-**Why It Matters**: Data engineers say "let's materialize this" when they see repeated queries — security architects must evaluate if benefits outweigh operational complexity for security workloads
+**Why It Matters**: Data engineers say "let's materialize this" when they see repeated queries, so security architects must evaluate whether the benefits outweigh the operational complexity for security workloads
 
 ---
 
@@ -389,7 +389,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 - **Security focus**: "Does this rule detect lateral movement?"
 - **Data engineering focus**: "Does this query scan minimal data?" (performance + cost optimization)
 - **Overlap**: Both care about false positives (security) = wasted compute (data engineering)
-**Why It Matters**: Data engineers prioritize query efficiency; security prioritizes detection accuracy — collaborate on both
+**Why It Matters**: Data engineers prioritize query efficiency; security prioritizes detection accuracy, so the two sides need to collaborate on both
 
 ---
 
@@ -399,7 +399,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Security pattern**: "Enrich IP address with GeoIP country code + threat intel reputation score"
 - **Data engineering pattern**: `SELECT e.*, g.country, t.reputation FROM events e LEFT JOIN geoip g ON e.src_ip = g.ip LEFT JOIN threat_intel t ON e.src_ip = t.ip`
-**Why It Matters**: Data engineers use standard JOINs for enrichment, not "enrichment frameworks" — simpler than expected
+**Why It Matters**: Data engineers use standard JOINs for enrichment, not "enrichment frameworks," which is simpler than it sounds
 
 ---
 
@@ -410,7 +410,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 - **Security**: "Process execution event from EDR"
 - **Data engineering**: "Row in `edr_processes` table"
 - **No translation needed**: Both disciplines use "event" interchangeably
-**Why It Matters**: One of the few terms with 1:1 mapping — no confusion
+**Why It Matters**: one of the few terms with a 1:1 mapping, so there's no confusion
 
 ---
 
@@ -420,7 +420,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Security pattern**: "Last 7 days queried 100× per day (hot), older data queried 2× per week (cold)"
 - **Data engineering solution**: S3 Standard (hot, $0.023/GB/month) for 7 days, transition to S3 Glacier Deep Archive (~$0.001/GB/month; tier named 2026-07-10 for consistency with A.6, which prices Glacier Flexible Retrieval separately at $0.0036) for older data
-**Why It Matters**: Data engineers design tiered storage based on access patterns — tell them your query frequency to optimize cost
+**Why It Matters**: Data engineers design tiered storage based on access patterns, so tell them your query frequency to optimize cost
 
 ---
 
@@ -431,7 +431,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 - **Security**: "Check if IP matches IOC list (10M malicious IPs)"
 - **Data engineering**: "JOIN events ON threat_intel_lookup WHERE ip IN (SELECT ip FROM ioc_table)"
 - **Optimization**: Broadcast join for small IOC lists (threshold varies by engine: Spark default ~10MB, configurable higher; Trino and DuckDB handle larger in-memory sets but depend on cluster RAM), partition pruning (date-based IOC refresh)
-**Why It Matters**: IOC lookups = standard database JOINs — data engineers optimize via indexing, partitioning, caching
+**Why It Matters**: IOC lookups = standard database JOINs, which data engineers optimize via indexing, partitioning, and caching
 
 ---
 
@@ -452,7 +452,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Security tools**: Splunk Universal Forwarder, Filebeat, Logstash
 - **Data engineering tools**: Fivetran, Airbyte, Kafka, AWS Kinesis
-- **Overlap**: Both move data from source to destination — data engineering tools often cheaper + more scalable
+- **Overlap**: Both move data from source to destination, though data engineering tools are often cheaper and more scalable
 **Why It Matters**: Data engineers say "ETL" or "ingestion pipeline," not "log forwarding"
 
 ---
@@ -463,11 +463,11 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Definition**: Architectural philosophy for cybersecurity data: composable, vendor-neutral components selected based on organizational constraints rather than vendor bundling
 - **Five design principles**: a vendor-neutral data layer, separation of storage and compute, compression-first design, schema evolution without breaking changes, and query engine specialization
-- **Component model (L-I-G-E-R)**: Lakehouse (Iceberg/Delta) + Index (Polaris/Unity) + Graph (Grafana) + Engine (StarRocks/ClickHouse/Trino/DuckDB) + Route (Cribl/Tenzir/Kafka). Note: this book uses MOAR (Modular Open Architecture) for the architecture itself, and LIGER (L-I-G-E-R) for the specific five-layer reference composition the lab builds and tests — one instance of MOAR, not a synonym for it. LIGER was also this project's earlier overall working name, so references to LIGER in older notes or drafts may mean either the project or the reference stack.
-- **Graph (the G) is usually a passthrough** rather than a build decision: the shop almost always already has somewhere its analysts work — Grafana, Superset, a custom hunt UI, or the incumbent SOC consoles (Splunk, Elastic, Sentinel) kept for federated read during a transition — and whatever sits on top inherits the trust, connection, and performance properties from the layers underneath rather than creating them, so the book stays exhaustive about the infrastructure below the analytic and deliberately not about the analytic itself. That's also why the lab ships no swap verb for Graph: it's a passthrough, not a component the lab swaps and answer-equality-checks.
-- **Index (the catalog layer) is a scale-and-governance bet**: at single-node SOC scale it earns its place less from query performance — the engines answer sub-second whether or not a separate catalog is brokering metadata — and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake rather than being needed on day one in every deployment.
+- **Component model (L-I-G-E-R)**: Lakehouse (Iceberg/Delta) + Index (Polaris/Unity) + Graph (Grafana) + Engine (StarRocks/ClickHouse/Trino/DuckDB) + Route (Cribl/Tenzir/Kafka). Note: this book uses MOAR (Modular Open Architecture) for the architecture itself, and LIGER (L-I-G-E-R) for the specific five-layer reference composition the lab builds and tests, one instance of MOAR rather than a synonym for it. LIGER was also this project's earlier overall working name, so references to LIGER in older notes or drafts may mean either the project or the reference stack.
+- **Graph (the G) is usually a passthrough** rather than a build decision: the shop almost always already has somewhere its analysts work (Grafana, Superset, a custom hunt UI, or the incumbent SOC consoles such as Splunk, Elastic, or Sentinel, kept for federated read during a transition) and whatever sits on top inherits the trust, connection, and performance properties from the layers underneath rather than creating them, so the book stays exhaustive about the infrastructure below the analytic and deliberately not about the analytic itself. That's also why the lab ships no swap verb for Graph: it's a passthrough, not a component the lab swaps and answer-equality-checks.
+- **Index (the catalog layer) is a scale-and-governance bet**: at single-node SOC scale it earns its place less from query performance (the engines answer sub-second whether or not a separate catalog is brokering metadata) and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake rather than being needed on day one in every deployment.
 - **Contrast with SIEM**: SIEM bundles all capabilities in one platform; MOAR separates concerns into interchangeable layers
-**Why It Matters**: MOAR is the organizing framework of this book — understanding it bridges security architects ("I need detection and response") with data engineers ("I need composable, open-format storage and compute")
+**Why It Matters**: MOAR is the organizing framework of this book, and understanding it bridges security architects ("I need detection and response") with data engineers ("I need composable, open-format storage and compute")
 **See**: About This Book (definition), Appendix C (reference architectures), and the manageability-over-extreme-performance material that opens the handbook (Chapter 1) for the opportunity framing
 
 ---
@@ -479,7 +479,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 - **Security pattern**: "Normalize CrowdStrike EDR (vendor schema) to OCSF Process Activity (standard schema)"
 - **Data engineering pattern**: "Transform source schema to target schema via dbt models or Spark SQL"
 - **Tool**: dbt (data build tool) = preferred data engineering approach for transformations
-**Why It Matters**: Data engineers use dbt for schema transformations — OCSF mapping fits naturally into dbt workflow
+**Why It Matters**: Data engineers use dbt for schema transformations, so OCSF mapping fits naturally into the dbt workflow
 
 ---
 
@@ -523,7 +523,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 - **Security**: "Search for IOC across 90 days of data"
 - **Data engineering**: "Run ad-hoc query on 90-day partition"
 - **Performance concern**: Full-table scan (security: "search everything") vs. partition pruning (data engineering: "search only relevant partitions")
-**Why It Matters**: Data engineers optimize queries via partitioning, indexing, columnar storage — help them by specifying filters ("always filter by date")
+**Why It Matters**: Data engineers optimize queries via partitioning, indexing, columnar storage, so help them by specifying filters ("always filter by date")
 
 ---
 
@@ -533,7 +533,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Security requirement**: "7-year retention for compliance"
 - **Data engineering solution**: S3 lifecycle policy (90-day Standard → Glacier transition), Iceberg snapshot retention
-**Why It Matters**: Data engineers automate retention via lifecycle policies — specify queryable vs. archival retention
+**Why It Matters**: Data engineers automate retention via lifecycle policies, so specify queryable versus archival retention
 
 ---
 
@@ -542,8 +542,8 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Data Engineering Equivalent**: Data lake, lakehouse, data platform
 **Context**:
 - **SIEM = Proprietary data lake**: Splunk (tsidx storage + SPL query) = specialized data lake for security
-- **Modern approach**: Open data lake (Iceberg on S3) + query engine (Trino/Dremio) = SIEM-equivalent at 32–93% lower cost depending on volume and the SIEM being replaced — see Appendix A.6 for the full cost model
-**Why It Matters**: SIEMs are data lakes with security-specific features — data engineers can build equivalent using open-source tools
+- **Modern approach**: Open data lake (Iceberg on S3) + query engine (Trino/Dremio) = SIEM-equivalent at 32–93% lower cost depending on volume and the SIEM being replaced (see Appendix A.6 for the full cost model)
+**Why It Matters**: SIEMs are data lakes with security-specific features, so data engineers can build the equivalent using open-source tools
 
 ---
 
@@ -553,7 +553,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Context**:
 - **Security**: "40 log sources (EDR, cloud, network, SaaS)"
 - **Data engineering**: "40 upstream producers writing to data lake"
-**Why It Matters**: No translation needed — both use "data source" identically
+**Why It Matters**: no translation is needed, since both disciplines use "data source" identically
 
 ---
 
@@ -564,7 +564,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 - **Security threat hunting**: "Hunt for lateral movement patterns (SMB connections between internal hosts)"
 - **Data engineering EDA**: "Explore network_flows table for connection patterns WHERE src_ip LIKE '10.%' AND dest_ip LIKE '10.%'"
 - **Tooling**: Jupyter notebooks (data science), SQL workbenches (data engineering), Splunk (security)
-**Why It Matters**: Data engineers optimize for ad-hoc query performance (Trino/Dremio excel at this) — threat hunting fits naturally
+**Why It Matters**: Data engineers optimize for ad-hoc query performance (Trino/Dremio excel at this), so threat hunting fits naturally
 
 ---
 
@@ -575,7 +575,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 - **Speed layer** = Real-time SIEM (Splunk, Sentinel) for sub-30-second alerting
 - **Batch layer** = Historical data lake (Iceberg, Athena) for 90-day threat hunting
 **Data Engineering Context**: Dual processing pipelines (real-time + batch) for same logic
-**Why It Matters**: Many SOCs use Lambda architecture without knowing the term — data engineers recognize this pattern
+**Why It Matters**: Many SOCs use Lambda architecture without knowing the term, though data engineers recognize the pattern
 
 ---
 
@@ -591,8 +591,8 @@ Security architects who speak both languages can use mature tooling, proven desi
 
 #### Star Schema / Dimensional Model
 **Security Context**: Fact table + dimension tables
-- **Fact table** = Events (process executions, network connections — high cardinality, billions of rows)
-- **Dimension tables** = Entities (hosts, users, IPs — low cardinality, thousands of rows)
+- **Fact table** = Events (process executions, network connections; high cardinality, billions of rows)
+- **Dimension tables** = Entities (hosts, users, IPs; low cardinality, thousands of rows)
 **Data Engineering Context**: Ralph Kimball dimensional modeling (data warehousing standard)
 **Why It Matters**: Data engineers suggest star schema for dashboard queries (fast aggregations via dimension joins)
 
@@ -604,7 +604,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 |---------------------|----------------------------|-------------------------|
 | **Splunk** | Proprietary data lake + query engine | Splunk = tsidx storage + SPL = specialized lakehouse |
 | **Elasticsearch** | Document store + inverted index | Elasticsearch = JSON storage + search engine, not optimized for columnar analytics |
-| **Logstash** | ETL pipeline / data ingestion tool | Logstash = Ruby-based ETL; data engineers commonly reach for Kafka, Airbyte, dbt, or Spark depending on the pattern — Fivetran is one option, not the default |
+| **Logstash** | ETL pipeline / data ingestion tool | Logstash = Ruby-based ETL; data engineers commonly reach for Kafka, Airbyte, dbt, or Spark depending on the pattern, with Fivetran as one option, not the default |
 | **Kibana** | BI dashboard tool | Kibana = Elasticsearch-specific, data engineers use Tableau/Grafana/QuickSight |
 | **Sysmon** | Data source / telemetry producer | Sysmon = Windows endpoint monitoring (data source, not processing tool) |
 | **Zeek** | Data source / telemetry producer | Zeek = Network monitoring (produces logs, not SIEM) |
@@ -684,7 +684,7 @@ For data engineers reading this book, here are security terms translated into da
 
 **What security architects often assume**: Data engineers need to be taught what security requires before they can help.
 
-**How data engineers think about it**: They understand query patterns, access patterns, and performance requirements immediately — the translation problem is vocabulary, not concept. Frame security needs in data engineering terms and the conversation changes:
+**How data engineers think about it**: They understand query patterns, access patterns, and performance requirements immediately, so the translation problem is one of vocabulary, not concept. Frame security needs in data engineering terms and the conversation changes:
 - Unclear: "We need correlation capability"
 - Actionable: "We need multi-table JOINs with <60 second latency on billions of rows"
 
@@ -694,8 +694,8 @@ For data engineers reading this book, here are security terms translated into da
 
 **What security architects often assume**: SIEM capabilities are too specialized to replicate with general-purpose data engineering tools.
 
-**How data engineers think about it**: SIEMs are specialized data lakes — the features are real, but they're not magic. For most SOC workflows, a MOAR stack covers most of the structured-analytics ground, with named gaps — streaming subsearch, the transaction model — that decide specific shops [*qualifier: this book's assessment based on production architecture patterns; no independent third-party study has benchmarked this coverage claim specifically*]:
-- **SPL core detection queries** largely translate to standard SQL (GROUP BY, window functions, time-bucketing) — but SPL's streaming subsearch and transaction model have no direct SQL equivalent and require workarounds in stream processors such as Flink
+**How data engineers think about it**: SIEMs are specialized data lakes, and the features are real, though they're not magic. For most SOC workflows, a MOAR stack covers most of the structured-analytics ground, with named gaps (streaming subsearch, the transaction model) that decide specific shops [*qualifier: this book's assessment based on production architecture patterns; no independent third-party study has benchmarked this coverage claim specifically*]:
+- **SPL core detection queries** largely translate to standard SQL (GROUP BY, window functions, time-bucketing), but SPL's streaming subsearch and transaction model have no direct SQL equivalent and require workarounds in stream processors such as Flink
 - **Real-time alerting** = Stream processing (Kafka + Flink = proven at scale)
 - **Investigation workflow** = SQL workbench + Jupyter notebooks (familiar to data engineers)
 
@@ -705,7 +705,7 @@ For data engineers reading this book, here are security terms translated into da
 
 **What security architects often assume**: Data engineers will deprioritize access control and audit requirements unless pushed.
 
-**How data engineers think about it**: They care deeply about access control, audit logging, and compliance — just under different terminology:
+**How data engineers think about it**: They care deeply about access control, audit logging, and compliance, just under different terminology:
 - Security: "Row-level security" → Data engineering: "Predicate pushdown filtering by user role"
 - Security: "Audit trail" → Data engineering: "Query logs, access logs, change tracking"
 - Security: "Data sovereignty" → Data engineering: "Regional data residency, partition by geography"

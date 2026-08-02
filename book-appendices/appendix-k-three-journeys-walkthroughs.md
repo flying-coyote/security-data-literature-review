@@ -1,13 +1,13 @@
 ---
 type: essay-draft
-title: "Appendix K: Three Architect Journeys — Full Decision Walkthroughs"
+title: "Appendix K: Three Architect Journeys, Full Decision Walkthroughs"
 created: 2026-06-10
 tags: [vendor-selection, architecture-decision, hipaa, dremio, iceberg, security-data]
 ---
 
-# Appendix K: The Three Journeys — Full Walkthroughs
+# Appendix K: The Three Journeys, Full Walkthroughs
 
-The handbook's variants chapter — Chapter 6, "What good looks like" — carries the decision-relevant summaries of the three architect journeys, the situation and constraints, the decision each architect made, and the outcome with its trade-offs, and this appendix carries the complete walkthroughs behind them: the full requirement tiers, the vendor elimination lists and scoring matrices, the POC designs and per-vendor results, the limitation registers with their mitigations, and the staffing and budget reality checks. Each section below picks up where the corresponding variant summary leaves off, so read the journey's summary in the variants chapter first for the organizational context and the decision rationale, then come here when you want to see the machinery turn.
+The handbook's variants chapter (Chapter 6, "What good looks like") carries the decision-relevant summaries of the three architect journeys, the situation and constraints, the decision each architect made, and the outcome with its trade-offs, and this appendix carries the complete walkthroughs behind them: the full requirement tiers, the vendor elimination lists and scoring matrices, the POC designs and per-vendor results, the limitation registers with their mitigations, and the staffing and budget reality checks. Each section below picks up where the corresponding variant summary leaves off, so read the journey's summary in the variants chapter first for the organizational context and the decision rationale, then come here when you want to see the machinery turn.
 
 ## K.1 Jennifer's Healthcare SOC: On-Prem/Hybrid Priority
 
@@ -15,7 +15,7 @@ Jennifer's organizational context and constraints, the final architecture decisi
 
 [^sap-dremio]: SAP completed its acquisition of Dremio in July 2026, so the "Dremio Cloud" product name and packaging may shift; the pattern Jennifer relies on, querying across an on-prem regulated slice and cloud object storage without moving either, is a capability of the engine reading open tables rather than a product SKU, so it survives the rebrand.
 
-Jennifer is a composite teaching scenario rather than a single named deployment, so the POC timings, the per-vendor cost projections, the staffing counts, and the multi-year TCO bands below are illustrative figures generated from the author's TCO model (Appendix A, Worksheet A.6) applied to a 2.5 TB/day healthcare profile — not measured numbers from one production system. The model's cost inputs, including the discounted Splunk platform rate, trace back to the published G-Cloud 14 pricing anchor documented in Worksheet A.6. Where a figure instead comes from a first-party SDW lab run or a named source, that is called out at the figure. The per-vendor capability claims (Dremio Reflections' acceleration, Iceberg maintenance tooling, Kubernetes HA requirements) are vendor representations at Tier C unless separately sourced.
+Jennifer is a composite teaching scenario rather than a single named deployment, so the POC timings, the per-vendor cost projections, the staffing counts, and the multi-year TCO bands below are illustrative figures generated from the author's TCO model (Appendix A, Worksheet A.6) applied to a 2.5 TB/day healthcare profile, not measured numbers from one production system. The model's cost inputs, including the discounted Splunk platform rate, trace back to the published G-Cloud 14 pricing anchor documented in Worksheet A.6. Where a figure instead comes from a first-party SDW lab run or a named source, that is called out at the figure. The per-vendor capability claims (Dremio Reflections' acceleration, Iceberg maintenance tooling, Kubernetes HA requirements) are vendor representations at Tier C unless separately sourced.
 
 ### Requirements Mapping: The Decision Framework Applied
 
@@ -41,7 +41,7 @@ These requirements created hard filters, so any vendor missing even one gets eli
 
 These requirements aren't disqualifying, but heavily weighted in vendor scoring:
 
-- The **Apache Iceberg table format** (3 points), because the industry momentum toward Iceberg provides future flexibility. "Every enterprise is either using Iceberg or it's on their roadmap" — a data-platform practitioner [Personal communication, October 2024]. Delta Lake is acceptable (2 points), proprietary formats score 0.
+- The **Apache Iceberg table format** (3 points), because the industry momentum toward Iceberg provides future flexibility. "Every enterprise is either using Iceberg or it's on their roadmap" (a data-platform practitioner, personal communication, October 2024). Delta Lake is acceptable (2 points), proprietary formats score 0.
 
 - Time-series partitioning (3 points), because almost every security query I've watched analysts run is time-bounded, since a hunt or an investigation works over a window rather than the whole corpus. Platforms with date-based partition pruning (scan days, not years) cut the data scanned by roughly the ratio of the window to the retention period, so a 30-day query against three years of history reads on the order of a few percent of the table (Apache Iceberg documentation, partition pruning). Native support scores 3, manual partition management scores 1.
 
@@ -238,7 +238,7 @@ Dremio batch queries update every 5-15 minutes, adequate for threat hunting ("sh
 
 Apache Iceberg requires periodic maintenance operations: data file compaction (combining small files into optimized sizes), orphan file cleanup (removing unreferenced files from failed jobs), and snapshot expiration (managing time-travel history). These often require Apache Spark for a self-managed deployment, though Athena (OPTIMIZE/VACUUM), Trino (OPTIMIZE), and Dremio (managed maintenance) can also perform compaction and maintenance, so Spark is the common path rather than the only one.
 
-"Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance." — a data-platform practitioner [Personal communication, October 2025]
+"Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance." (a data-platform practitioner, personal communication, October 2025)
 
 **Jennifer's situation**: Healthcare IT team lacks Spark expertise. Learning Spark cluster management, PySpark development, and maintenance job scheduling would require months of training.
 
@@ -318,7 +318,7 @@ Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an 
 
 The economics here are driven by the batch-first choice: it keeps the team size manageable (3.5-4.5 FTEs against 9-11 for a streaming build) and the budget predictable, and HIPAA adds complexity at the margins without changing the underlying numbers, because the hybrid on-prem/cloud split is operationally workable for a regulated industry where data sovereignty is mandatory rather than optional.
 
-**Evidence**: Staffing Calculator from the literature review (batch 3.5 FTEs baseline, +1 FTE for compliance/governance). The deployment-timeline and HIPAA-compliance premiums are directional scenario assumptions — a regulated-industry build carries change-control, audit, and security-validation overhead a generic one doesn't — not figures from a specific sourced rate.
+**Evidence**: Staffing Calculator from the literature review (batch 3.5 FTEs baseline, +1 FTE for compliance/governance). The deployment-timeline and HIPAA-compliance premiums are directional scenario assumptions (a regulated-industry build carries change-control, audit, and security-validation overhead a generic one doesn't), not figures from a specific sourced rate.
 
 ## K.2 Marcus's Financial Services SOC: Enterprise Cloud Commitment
 
@@ -332,7 +332,7 @@ Marcus is a composite teaching scenario, so the POC latencies, the per-vendor co
 
 - AWS-native integration (3 points): deep integration with IAM (identity and access), VPC (network isolation), S3 lifecycle (automated tiering to Glacier), and CloudWatch (monitoring and metrics). Platforms built on AWS-native services score highest, multi-cloud platforms with "good" AWS integration score medium, platforms requiring manual configuration score low.
 
-- An **open table format, Iceberg or Delta** (3 points), to prevent vendor lock-in. "Every enterprise is either using Iceberg or it's on their roadmap" — a data-platform practitioner [Personal communication, October 2024]. Iceberg scores 3 (multi-engine support: Athena, Dremio, Trino, Spark), Delta scores 2 (Databricks-centric but convertible), proprietary formats score 0.
+- An **open table format, Iceberg or Delta** (3 points), to prevent vendor lock-in. "Every enterprise is either using Iceberg or it's on their roadmap" (a data-platform practitioner, personal communication, October 2024). Iceberg scores 3 (multi-engine support: Athena, Dremio, Trino, Spark), Delta scores 2 (Databricks-centric but convertible), proprietary formats score 0.
 
 - A managed service (3 points), to minimize operational overhead. Fully managed (no infrastructure to operate) scores 3, partially managed (managed compute, self-managed storage) scores 2, self-managed scores 0. The team can handle moderate complexity but prefers managed.
 
@@ -429,9 +429,9 @@ ORDER BY failed_attempts DESC;
 
 Detailed cost breakdown:
 - **S3 storage (7-year tiered retention)**: $1.2M/year
-  - Year 1: S3 Standard ($0.023/GB/month) — $1.0M/year for 3.6 PB
-  - Year 2-3: S3 Infrequent Access ($0.0125/GB/month) — $0.15M/year incremental
-  - Year 4-7: S3 Glacier Flexible Retrieval ($0.0036/GB/month) — $0.05M/year incremental
+  - Year 1: S3 Standard ($0.023/GB/month) runs $1.0M/year for 3.6 PB
+  - Year 2-3: S3 Infrequent Access ($0.0125/GB/month) adds $0.15M/year incremental
+  - Year 4-7: S3 Glacier Flexible Retrieval ($0.0036/GB/month) adds $0.05M/year incremental
 - **Athena query costs**: $800K/year
   - 500 TB scanned/day average (analysts, dashboards, compliance)
   - $5/TB scanned = $2,500/day × 365 days = $913K/year
@@ -445,7 +445,7 @@ Detailed cost breakdown:
 
 **Total AWS-native stack**: $2.9M/year (17% buffer below $3.5M budget)
 
-This $2.9M is the Athena-native baseline carried as Marcus's headline figure throughout the book. The architecture Marcus actually selected adds a Starburst Enterprise license (~$400K/year) for the ~10% of advanced federation and high-concurrency workloads, with Athena's query spend dropping as the heaviest queries move off it, so the all-in hybrid lands at roughly $3.0M/year (see Marcus's variant summary in the handbook's variants chapter) — still inside the $3.5M budget.
+This $2.9M is the Athena-native baseline carried as Marcus's headline figure throughout the book. The architecture Marcus actually selected adds a Starburst Enterprise license (~$400K/year) for the ~10% of advanced federation and high-concurrency workloads, with Athena's query spend dropping as the heaviest queries move off it, so the all-in hybrid lands at roughly $3.0M/year (see Marcus's variant summary in the handbook's variants chapter), still inside the $3.5M budget.
 
 ✓ **Multi-cloud federation validated**:
 - Athena federated queries to Azure Synapse via connectors
@@ -550,7 +550,7 @@ The reading I'd take from this is that the "expensive" SIEM option turned out ch
 - Export Splunk data to S3 in Parquet format (creates lakehouse-ready archive for compliance queries)
 - Use Splunk for real-time detection ONLY (10-15% of total queries)
 - Build Athena/Iceberg for historical compliance workloads when team capacity recovers (18-24 month roadmap)
-- Total 3-year cost: schema-on-read SIEM $36M + future Athena $600K = $36.6M — a $600K optionality premium over the $36M pure-SIEM path (Athena-only stays non-compliant)
+- Total 3-year cost: schema-on-read SIEM $36M + future Athena $600K = $36.6M, a $600K optionality premium over the $36M pure-SIEM path (Athena-only stays non-compliant)
 
 **Evidence**: Staffing Calculator from the literature review (batch 3 FTEs minimum for lakehouse, streaming 9-11 FTEs), schema-on-read SIEM list pricing (modeled $11.4M/year for the 15 TB/day high-volume tier). Deployment-timeline figures are directional scenario assumptions, not a sourced Gartner rate.
 
@@ -558,7 +558,7 @@ The reading I'd take from this is that the "expensive" SIEM option turned out ch
 
 Priya's organizational context and constraints, the final decision (Denodo Platform for global virtualization) with its rationale and cost breakdown, and the Architecture Decision Summary she put in front of the executive sponsors are in her variant summary in the handbook's variants chapter. This walkthrough picks up at the requirements mapping.
 
-Priya is a composite teaching scenario, so the POC query timings, the Denodo and Starburst cost figures, the staffing counts, and the multi-year TCO and cost-comparison bands below are illustrative figures from the author's TCO model (Appendix A, Worksheet A.6) applied to an 18 TB/day multi-region profile, not a measured deployment. The Denodo licensing band is an author-modeled estimate (see the Evidence line — Denodo public pricing not verified); the per-vendor capability claims (Denodo query pushdown behavior, QRadar/Splunk/Sentinel API limits) are vendor representations at Tier C unless separately sourced.
+Priya is a composite teaching scenario, so the POC query timings, the Denodo and Starburst cost figures, the staffing counts, and the multi-year TCO and cost-comparison bands below are illustrative figures from the author's TCO model (Appendix A, Worksheet A.6) applied to an 18 TB/day multi-region profile, not a measured deployment. The Denodo licensing band is an author-modeled estimate (see the Evidence line; Denodo public pricing not verified); the per-vendor capability claims (Denodo query pushdown behavior, QRadar/Splunk/Sentinel API limits) are vendor representations at Tier C unless separately sourced.
 
 ### Requirements Mapping: The Decision Framework Applied
 
@@ -966,4 +966,4 @@ Data sovereignty changes the architecture economics from the ground up, and the 
 
 Denodo earns the spend in an organization that has all three of these at once: multi-region data-sovereignty mandates, decentralized IT with genuine regional autonomy, and a real need for unified cross-region visibility. An organization missing those constraints should consolidate on a lakehouse (Iceberg + Athena/Dremio) instead and take the roughly 4× lower cost and the better performance that come with it.
 
-**Evidence**: Staffing Calculator from literature review (batch 3.5 FTEs baseline, +2-3 FTEs for multi-region governance), a directional 6-8 FTE band for multi-region data platform management (scenario assumption, not a sourced rate — the former "Gartner" attribution had no primary anywhere in the repo and was dropped 2026-07-10, matching the K.2 fix; the Gartner staffing/timeline family has failed every one of these audits), and an author-modeled Denodo licensing band of $1.2M/year for multi-region deployment with 8 connectors ("validated" retracted 2026-07-10 — no Denodo pricing entry exists in MASTER-BIBLIOGRAPHY; a Denodo AWS-Marketplace listing at this shape would be a citable public anchor if one exists).
+**Evidence**: Staffing Calculator from literature review (batch 3.5 FTEs baseline, +2-3 FTEs for multi-region governance), a directional 6-8 FTE band for multi-region data platform management (scenario assumption, not a sourced rate; the former "Gartner" attribution had no primary anywhere in the repo and was dropped 2026-07-10, matching the K.2 fix; the Gartner staffing/timeline family has failed every one of these audits), and an author-modeled Denodo licensing band of $1.2M/year for multi-region deployment with 8 connectors ("validated" retracted 2026-07-10, since no Denodo pricing entry exists in MASTER-BIBLIOGRAPHY; a Denodo AWS-Marketplace listing at this shape would be a citable public anchor if one exists).

@@ -1,6 +1,6 @@
 ---
 type: essay-draft
-title: "Appendix A: Decision Worksheets — Security Data Platform Selection"
+title: "Appendix A: Decision Worksheets for Security Data Platform Selection"
 created: 2025-10-15
 tags: [moar-book, decision-framework, vendor-evaluation, tco, worksheets]
 ---
@@ -187,7 +187,7 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 **3. Can you hire specialized data engineering talent?**
 - [ ] Yes, with budget allocated ($150K-$180K annual per engineer)
 - [ ] Yes, but timeline is critical (6-12 month recruitment acceptable?)
-- [ ] No—hiring freeze, budget constraints, or >12 month timeline unacceptable
+- [ ] No, due to a hiring freeze, budget constraints, or a >12 month timeline being unacceptable
 
 **4. Operational burden tolerance:**
 - [ ] Minimal (prefer managed SaaS, no cluster management)
@@ -208,7 +208,7 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 - [ ] <$500K (cost-sensitive, traditional SIEM economically infeasible at volume)
 - [ ] $500K-$2M (moderate budget, balance cost vs. capability)
 - [ ] $2M-$10M (enterprise budget, cost important but not sole factor)
-- [ ] $10M+ (large enterprise, cost less constrained—focus on capability/team fit)
+- [ ] $10M+ (large enterprise, cost less constrained, so the focus shifts to capability/team fit)
 
 **2. Cost model organizationally acceptable:**
 - [ ] CapEx / On-premises (hardware purchase, depreciation, data center costs)
@@ -226,9 +226,9 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 - [ ] Acceptable ROI timeline: [ ] 1 year [ ] 2 years [ ] 3+ years
 
 **Constraint 2 Implication**:
-- **<$500K budget** → MOAR (Iceberg + OSS Trino) or cloud-native serverless (Athena)—traditional SIEM infeasible
-- **$500K-$2M budget** → All options viable—decision shifts to team capacity, not cost
-- **$2M+ budget** → Cost less constraining—focus on operational fit, vendor relationship strategy
+- **<$500K budget** → MOAR (Iceberg + OSS Trino) or cloud-native serverless (Athena), since traditional SIEM is infeasible at this budget
+- **$500K-$2M budget** → All options viable, and the decision shifts to team capacity rather than cost
+- **$2M+ budget** → Cost less constraining, so the focus shifts to operational fit and vendor relationship strategy
 
 ---
 
@@ -243,22 +243,22 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 
 **2. Can security data leave on-premises environment?**
 - [ ] Yes / Cloud-first (security data can move to AWS/Azure/GCP)
-- [ ] Hybrid (some data cloud-acceptable, some must stay on-premises—e.g., PHI, PCI)
+- [ ] Hybrid (some data cloud-acceptable, some must stay on-premises, e.g., PHI, PCI)
 - [ ] No / On-premises only (all security data must remain in owned data centers)
 
 **3. Regulatory audit frequency:**
 - [ ] Annual SOC 2 Type II (standard compliance, once yearly, predictable)
-- [ ] Quarterly audits (financial services, healthcare—frequent, rigorous)
-- [ ] Continuous / Real-time (federal, defense—ongoing audit trail, immutable logs)
+- [ ] Quarterly audits (financial services, healthcare, frequent and rigorous)
+- [ ] Continuous / Real-time (federal, defense, with an ongoing audit trail and immutable logs)
 
 **4. Immutability requirements:**
 - [ ] Append-only logs required (cannot delete/modify historical events for compliance)
 - [ ] Time-travel required ("show me data as of audit date October 1, 2024")
-- [ ] Query-level audit trail (who queried what data when—for compliance evidence)
+- [ ] Query-level audit trail (who queried what data when, kept for compliance evidence)
 
 **Constraint 3 Implication**:
 - **Multi-region sovereignty** → Denodo virtualization or regional Iceberg deployments (cannot consolidate to single cloud region)
-- **On-premises required** → Self-hosted stack (Iceberg on MinIO, Trino on-prem) or traditional SIEM on-prem—cloud-native eliminated
+- **On-premises required** → Self-hosted stack (Iceberg on MinIO, Trino on-prem) or traditional SIEM on-prem, which eliminates cloud-native options
 - **High-frequency audits** → Iceberg snapshot isolation (immutable, versioned) or Splunk with comprehensive audit logging
 
 ---
@@ -278,13 +278,13 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 
 **3. Open-source tolerance:**
 - [ ] High / OSS-first (comfortable with Apache projects, community support, self-managed)
-- [ ] Medium / OSS with commercial support (OSS acceptable if vendor provides support—Starburst for Trino, Dremio)
+- [ ] Medium / OSS with commercial support (OSS acceptable if vendor provides support, e.g. Starburst for Trino, Dremio)
 - [ ] Low / Commercial only (require vendor SLA, 24/7 support, legal accountability)
 
 **4. Migration tolerance:**
-- [ ] High (willing to migrate from incumbent SIEM if savings/capability justify—$500K-$2M migration cost acceptable)
+- [ ] High (willing to migrate from incumbent SIEM if savings/capability justify it, with a $500K-$2M migration cost acceptable)
 - [ ] Medium (consider migration if payback <2 years)
-- [ ] Low (prefer operational continuity over cost savings—migration risk > cost optimization)
+- [ ] Low (prefer operational continuity over cost savings, since migration risk outweighs cost optimization)
 
 **Constraint 4 Implication**:
 - **Splunk incumbent + low migration tolerance** → Stay with Splunk (a large migration cost and a multi-quarter timeline plus operational risk; model your own migration figure with the A.6 Step 6 worksheet rather than assuming a fixed band here)
@@ -303,22 +303,22 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 **Workload Description**: Detect threats within seconds/minutes of occurrence (brute force, malware execution, data exfiltration)
 
 **Workload Tier** (check one):
-- [ ] Tier 1 (critical—regulatory mandate or operational requirement)
-- [ ] Tier 2 (important—preferred but can tolerate 5-15 min delay)
-- [ ] Tier 3 (occasional—batch detection acceptable)
+- [ ] Tier 1 (critical, a regulatory mandate or operational requirement)
+- [ ] Tier 2 (important, preferred but able to tolerate a 5-15 min delay)
+- [ ] Tier 3 (occasional; batch detection is acceptable here)
 
 **If Tier 1, required capabilities** (all must be supported):
-- [ ] Streaming ingestion (Kafka, Flink, Spark Streaming—continuous event processing)
+- [ ] Streaming ingestion (Kafka, Flink, Spark Streaming, for continuous event processing)
 - [ ] Windowed aggregation (5-min, 15-min time-based grouping for counts/thresholds)
 - [ ] Stateful processing (maintain baseline state: per-host/user behavior, known-good hashes)
 - [ ] Low-latency alerting (<30 seconds from ingestion to notification)
 
-**Candidate Platforms** (auto-filtered based on capabilities; the latencies in parentheses are illustrative architecture characterizations, not measured benchmark results — validate them in your own POC, Worksheet A.5):
+**Candidate Platforms** (auto-filtered based on capabilities; the latencies in parentheses are illustrative architecture characterizations, not measured benchmark results, so validate them in your own POC, Worksheet A.5):
 - ✓ Splunk SIEM (real-time forwarding, SPL streaming, <1 min alert latency)
 - ✓ Iceberg + Apache Flink (Kafka → Flink → Iceberg, <30 sec latency)
 - ✓ ClickHouse (materialized views, streaming aggregation, <5 sec latency)
-- ✗ AWS Athena batch (hourly/daily scheduled queries—disqualified for Tier 1 real-time)
-- ⚠ Dremio + Iceberg (batch ingestion via Spark Streaming, 2-5 min Reflection refresh—marginal for Tier 1)
+- ✗ AWS Athena batch (hourly/daily scheduled queries, disqualified for Tier 1 real-time)
+- ⚠ Dremio + Iceberg (batch ingestion via Spark Streaming, 2-5 min Reflection refresh, marginal for Tier 1)
 
 ---
 
@@ -327,21 +327,21 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 **Workload Description**: Hunt for IOCs across 90 days, correlate multi-source events, filter high-cardinality fields
 
 **Workload Tier**:
-- [ ] Tier 1 (critical—primary SOC function)
-- [ ] Tier 2 (important—weekly threat hunts)
-- [ ] Tier 3 (occasional—ad-hoc investigations)
+- [ ] Tier 1 (critical, the primary SOC function)
+- [ ] Tier 2 (important, with weekly threat hunts)
+- [ ] Tier 3 (occasional; ad-hoc investigations only)
 
 **If Tier 1, required capabilities**:
-- [ ] Columnar storage (Parquet/Arrow—scan billions of rows for specific fields 10-100× faster than row storage)
-- [ ] Partition pruning (date-based partitioning with metadata elimination—read only relevant days, not full 7-year table)
+- [ ] Columnar storage (Parquet/Arrow, which scans billions of rows for specific fields 10-100× faster than row storage)
+- [ ] Partition pruning (date-based partitioning with metadata elimination, reading only relevant days rather than the full 7-year table)
 - [ ] Predicate pushdown (filter at storage layer: `WHERE command_line LIKE '%mimikatz%'` reads only matching files)
-- [ ] Distributed MPP (massively parallel processing across 10-50 workers—<60 sec query on 3B rows)
+- [ ] Distributed MPP (massively parallel processing across 10-50 workers, delivering <60 sec queries on 3B rows)
 
-**Candidate Platforms** (the timings noted are illustrative architecture characterizations, not measured benchmark results — validate in your own POC, Worksheet A.5):
+**Candidate Platforms** (the timings noted are illustrative architecture characterizations, not measured benchmark results, so validate in your own POC, Worksheet A.5):
 - ✓ Trino + Iceberg (Parquet native, Iceberg metadata pruning, connector pushdown, MPP)
 - ✓ Dremio + Iceberg (Arrow in-memory, Gandiva LLVM pushdown, Reflections, MPP)
-- ⚠ Splunk (tsidx indexed but not columnar, time buckets, distributed search heads—acceptable but not optimized)
-- ✗ PostgreSQL (row-oriented heap storage, no MPP—20-45 min queries on billions of rows—disqualified for Tier 1)
+- ⚠ Splunk (tsidx indexed but not columnar, time buckets, distributed search heads, acceptable but not optimized)
+- ✗ PostgreSQL (row-oriented heap storage, no MPP, so 20-45 min queries on billions of rows, which disqualifies it for Tier 1)
 - ✓ AWS Athena + Iceberg (Parquet on S3, Iceberg metadata, Presto/Trino engine, serverless auto-scaling)
 
 ---
@@ -351,21 +351,21 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 **Workload Description**: Retrieve every event for specific host/user/timeframe with 50+ fields, sub-second retrieval for recent data
 
 **Workload Tier**:
-- [ ] Tier 1 (critical—active incident response)
-- [ ] Tier 2 (important—post-incident investigation)
-- [ ] Tier 3 (occasional—historical forensics)
+- [ ] Tier 1 (critical, active incident response)
+- [ ] Tier 2 (important, for post-incident investigation)
+- [ ] Tier 3 (occasional; historical forensics only)
 
 **If Tier 1, required capabilities**:
-- [ ] Indexed point queries (fast retrieval by host_id, user_id, timestamp—not full-table scan)
+- [ ] Indexed point queries (fast retrieval by host_id, user_id, timestamp, not a full-table scan)
 - [ ] Row-level retrieval (return complete events with all 50+ fields, not just aggregated counts)
 - [ ] Time-travel capability (query "as of" specific timestamp for compliance: "show me October 1 snapshot")
-- [ ] Hot tier optimization (SSD/NVMe for 7-30 days—<1 sec query, vs. minutes for cold Glacier)
+- [ ] Hot tier optimization (SSD/NVMe for 7-30 days, delivering <1 sec queries versus minutes for cold Glacier)
 
 **Candidate Platforms**:
 - ✓ Iceberg + Dremio (partition filters + Reflections for point queries, full row SELECT *, snapshot isolation, S3 Standard hot / Glacier cold)
 - ✓ ClickHouse (primary key index, fast row retrieval, ReplacingMergeTree for manual snapshots, NVMe/SSD tiering)
 - ✓ AWS Athena + Iceberg (partition pruning, full row SELECT *, Iceberg TIMESTAMP AS OF, S3 Standard query speed)
-- ✓ Elasticsearch (inverted index for _id and term queries, document _source retrieval, hot/warm nodes—no native time-travel but custom snapshots)
+- ✓ Elasticsearch (inverted index for _id and term queries, document _source retrieval, hot/warm nodes; no native time-travel, but custom snapshots are possible)
 
 ---
 
@@ -374,21 +374,21 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 **Workload Description**: 7-year queryable retention, query transparency across tiers, immutable audit trail, cost-optimized cold storage
 
 **Workload Tier**:
-- [ ] Tier 1 (critical—regulatory mandate: SOC 2, HIPAA, FINRA)
-- [ ] Tier 2 (important—business requirement)
-- [ ] Tier 3 (occasional—rarely query old data)
+- [ ] Tier 1 (critical, a regulatory mandate covering SOC 2, HIPAA, FINRA)
+- [ ] Tier 2 (important, a business requirement)
+- [ ] Tier 3 (occasional; rarely querying old data)
 
 **If Tier 1, required capabilities**:
 - [ ] Multi-tier lifecycle policies (automated S3 Standard → Glacier transition, NVMe → HDD, policy-driven not manual)
-- [ ] Cold storage queryability (query engine reads Glacier/cold tier—not "archived offline to tape")
-- [ ] Immutable table format (versioned, append-only: Iceberg snapshots, Delta versions—compliance audit trail)
-- [ ] Compression efficiency (ZSTD, Snappy codecs materially reduce cold-storage cost; the exact ratio is workload-dependent — measure it on your own data, and see the SDW Lab compression results in Appendix C for measured figures rather than relying on an illustrative one here)
+- [ ] Cold storage queryability (query engine reads Glacier/cold tier, not "archived offline to tape")
+- [ ] Immutable table format (versioned, append-only: Iceberg snapshots, Delta versions, forming a compliance audit trail)
+- [ ] Compression efficiency (ZSTD, Snappy codecs materially reduce cold-storage cost; the exact ratio is workload-dependent, so measure it on your own data, and see the SDW Lab compression results in Appendix C for measured figures rather than relying on an illustrative one here)
 
 **Candidate Platforms**:
 - ✓ Iceberg + S3 (S3 lifecycle automated, Athena/Trino query Glacier slowly but functional, snapshot isolation immutable, Parquet codecs)
-- ⚠ Splunk (archive to S3 separate from indexed, archived data NOT queryable via SPL—disqualified for "queryable 7-year retention")
+- ⚠ Splunk (archive to S3 separate from indexed, archived data NOT queryable via SPL, which disqualifies it for "queryable 7-year retention")
 - ✓ Delta Lake + Cloud (Azure/AWS/GCS lifecycle, Spark on cold tiers, versioned Delta transaction log, Parquet codecs)
-- ⚠ ClickHouse (manual TTL policies, cold tier query slow without tier transparency, DELETE supported so not immutable by default—audit risk for compliance-first)
+- ⚠ ClickHouse (manual TTL policies, cold tier query slow without tier transparency, DELETE supported so not immutable by default; an audit risk for compliance-first use)
 
 ---
 
@@ -489,7 +489,7 @@ For each Tier 3 requirement, score: 1 = supported, 0 = not supported. Add direct
 
 **Data Preparation**:
 - [ ] Identify 3-5 representative data sources (EDR, network logs, cloud logs, SaaS apps)
-- [ ] Extract 30-90 day sample (1-2 TB total—enough to test performance, not full production)
+- [ ] Extract 30-90 day sample (1-2 TB total, enough to test performance without running full production)
 - [ ] Anonymize PII/PHI if required for vendor POC environment
 - [ ] Document data characteristics (volume, schema, cardinality, query patterns)
 
@@ -566,7 +566,7 @@ Extrapolate POC costs to full production volume (actual daily ingest rate, targe
 
 | Integration Factor | Vendor A | Vendor B | Vendor C |
 |--------------------|----------|----------|----------|
-| **Data source connectors** (EDR, cloud, SaaS—out-of-box vs. custom) | ___/10 supported OOTB | ___/10 | ___/10 |
+| **Data source connectors** (EDR, cloud, SaaS, out-of-box vs. custom) | ___/10 supported OOTB | ___/10 | ___/10 |
 | **SOAR integration** (Splunk Phantom, Palo Alto XSOAR, custom) | [ ] Native [ ] API [ ] None | [ ] Native [ ] API [ ] None | [ ] Native [ ] API [ ] None |
 | **SSO/SAML** (Okta, Azure AD integration) | [ ] Yes [ ] No | [ ] Yes [ ] No | [ ] Yes [ ] No |
 | **Monitoring/observability** (query performance metrics, cost tracking) | [ ] Built-in [ ] Third-party [ ] None | [ ] Built-in [ ] Third-party [ ] None | [ ] Built-in [ ] Third-party [ ] None |
@@ -623,7 +623,7 @@ Based on Tier 1 filtering (_______ vendors eliminated), Tier 2-3 scoring (top 3-
 
 **Implementation Timeline**: _______ months (Pilot → Production → Optimization)
 
-**Total Cost of Ownership**: $__________/year (vs. current $__________/year—$__________ savings, __________% reduction)
+**Total Cost of Ownership**: $__________/year (vs. current $__________/year, for $__________ savings, __________% reduction)
 
 **Risk Mitigation**: ________________________________ (vendor lock-in prevention: open table format, SQL standard, multi-engine capability)
 
@@ -635,15 +635,15 @@ Based on Tier 1 filtering (_______ vendors eliminated), Tier 2-3 scoring (top 3-
 1. **Assemble team** (2-3 hour workshop): CISO, SOC leadership, analysts, data engineering, compliance, IT operations, CFO rep
 2. **Complete Worksheets A.1-A.3** as group (requirements classification, constraints, workload mapping)
 3. **Research vendors** individually (1-2 weeks): Each stakeholder researches 2-3 vendors against requirements
-4. **Complete Worksheet A.4** as group (vendor filtering matrix—apply Tier 1 filters, score Tier 2-3)
+4. **Complete Worksheet A.4** as group (the vendor filtering matrix, applying Tier 1 filters and scoring Tier 2-3)
 5. **POC execution** (2-4 weeks): Top 3-5 finalists conduct proof-of-concept with YOUR actual data
-6. **Complete Worksheet A.5** as group (POC evaluation—performance, usability, cost, integration, support)
+6. **Complete Worksheet A.5** as group (POC evaluation covering performance, usability, cost, integration, support)
 7. **Final recommendation** to executive sponsor (CISO, CIO, CFO) with completed worksheets as evidence
 
 **Solo Architect Approach** (if no stakeholder workshop possible):
 1. Complete worksheets individually based on knowledge of organizational constraints
 2. Validate assumptions with key stakeholders asynchronously (email, Slack, quick meetings)
-3. Use worksheets as communication tool: "Here's my requirements analysis—do these Tier 1 mandatory requirements match your understanding?"
+3. Use worksheets as communication tool: "Here's my requirements analysis; do these Tier 1 mandatory requirements match your understanding?"
 4. Iterate based on feedback, then proceed to vendor filtering and POC
 
 ---
@@ -688,11 +688,11 @@ Total Retention = Hot + Warm + Cold
 
 ### Step 2: Traditional SIEM Cost Model
 
-**SIEM Pricing Reality** (Splunk G-Cloud 14 anchor dated 2024-04-23; Sentinel rates verified live against the Azure Retail Prices API on 2026-07-06, both reproducing the figures below exactly; reconfirm before procurement, since list prices move). The schema-on-read and Sentinel rates are the two that feed the model below and are anchored — the schema-on-read band against the G-Cloud 14 published list (see the anchor note after Step 2), Sentinel against Microsoft's public list (Sources, below). The Elastic and QRadar rows are directional vendor-shape figures (Tier C), included for orientation and not used in any calculation:
+**SIEM Pricing Reality** (Splunk G-Cloud 14 anchor dated 2024-04-23; Sentinel rates verified live against the Azure Retail Prices API on 2026-07-06, both reproducing the figures below exactly; reconfirm before procurement, since list prices move). The schema-on-read and Sentinel rates are the two that feed the model below and are anchored, the schema-on-read band against the G-Cloud 14 published list (see the anchor note after Step 2), Sentinel against Microsoft's public list (Sources, below). The Elastic and QRadar rows are directional vendor-shape figures (Tier C), included for orientation and not used in any calculation:
 
 | SIEM Platform | Pricing Model | Cost Range (per GB/day) | 7-Year Retention Support |
 |---------------|---------------|------------------------|-------------------------|
-| **Schema-on-read SIEM** | Ingest volume licensing | $300-$400/GB/day/year (platform; +ES ~2×) — G-Cloud-14-anchored, see note after Step 2 | ⚠ Hot only (archive to S3 not queryable) |
+| **Schema-on-read SIEM** | Ingest volume licensing | $300-$400/GB/day/year (platform; +ES ~2×), G-Cloud-14-anchored, see note after Step 2 | ⚠ Hot only (archive to S3 not queryable) |
 | **Microsoft Sentinel** | Consumption (GB ingested + GB retained) | $2.96-$5.22/GB ingested, plus retention per GB-month (Microsoft public list, see Sources) | ✓ Cold tier queryable (slow) |
 | **Elastic SIEM** | Self-hosted or cloud, node-based | $15K-$50K/month base + storage (directional, Tier C) | ⚠ Warm/hot only (cold archive manual) |
 | **IBM QRadar** | EPS (events per second) licensing | 10,000 EPS = $80K-$150K/year (directional, Tier C) | ⚠ Hot only |
@@ -701,13 +701,13 @@ Total Retention = Hot + Warm + Cold
 - Base licensing: 2,000 GB/day × $300/GB/day/year = **$600,000/year**
 - Hot retention only: 30-90 days (compliance gap for 7-year requirement)
 - Archive to S3: Additional $7K/month S3 storage for 5.1 PB cold = $84K/year
-- **Problem**: Archived data NOT queryable via Splunk SPL—requires separate tooling
+- **Problem**: Archived data NOT queryable via Splunk SPL, so it requires separate tooling
 - **Total**: $684K/year (but fails 7-year queryable retention requirement)
 
 **Microsoft Sentinel Cost Calculation** (2 TB/day example; ingestion and retention priced separately):
-- Ingestion (analytics tier, ~90 days included): 2,000 GB/day × 30 days × $2.96-$5.22/GB = **$178K-$313K/month** (~$2.1M-$3.8M/year) — the dominant, recurring charge
+- Ingestion (analytics tier, ~90 days included): 2,000 GB/day × 30 days × $2.96-$5.22/GB = **$178K-$313K/month** (~$2.1M-$3.8M/year), the dominant, recurring charge
 - Retention beyond the included window: the warm/cold archive accumulating toward 5.1 PB over 7 years is priced per GB-month at long-term/archive rates well below the ingestion rate (~$0.026-$0.05/GB/month), adding **~$130K-$255K/month** as it fills (~$1.6M-$3.1M/year at steady state)
-- **Total**: roughly **$3.7M-$6.9M/year** as retention accumulates — expensive at scale, but driven by ingestion, not by re-charging accumulated storage at the ingestion rate
+- **Total**: roughly **$3.7M-$6.9M/year** as retention accumulates, expensive at scale, but driven by ingestion, not by re-charging accumulated storage at the ingestion rate
 
 Traditional SIEM pricing breaks at petabyte scale. For 7-year compliance retention (these bands are the discounted full-stack rate from the anchor note below, $620-870/GB/day/year for platform plus Enterprise Security, multiplied by daily volume; the S3 archive workaround adds on the order of $84K/year at 2 TB/day on top, per the worked example above, without making the archive queryable):
 - **500 GB/day**: $310K-$435K/year (SIEM acceptable)
@@ -716,7 +716,7 @@ Traditional SIEM pricing breaks at petabyte scale. For 7-year compliance retenti
 
 **Published-list anchor (UK G-Cloud 14).** These bands are grounded in Splunk's public-sector framework pricing. The G-Cloud 14 EMEA distributor schedule (April 2024) lists Splunk Cloud platform ingest on a declining per-GB/day curve, from $2,049/GB/day/year at 5-9 GB/day down to $793.50 at the 2,000-4,999 GB/day band (2 TB/day) and $764.75 above 5,000 GB/day, with the self-hosted Enterprise term license on a parallel curve ($598/GB/day/year at 2 TB/day). Splunk Enterprise Security, the correlation and detection-content layer an actual SOC runs, is a separate per-GB/day subscription on top, adding $448.50/GB/day/year at the 2 TB/day band, so two rates matter and they differ by roughly 2×. The platform-only schema-on-read baseline is $598-794/GB/day/year of published list at 2 TB/day, which after the 30-50% enterprise discounting that large multi-year Splunk contracts carry is the $300-400/GB/day/year this model uses, so the $600K above is the discounted-platform floor. The full SOC stack, platform plus Enterprise Security, lists near $1,240/GB/day/year, or roughly $620-870 once discounted, and that is the rate the worked MOAR-variant examples price.
 
-Marcus's modeled $12M SIEM-expansion figure sits at his full 12 TB/day: Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000+ GB/day band is $1,196/GB/day/year, so 12,000 GB/day is about $14.35M of published list, which the multi-year enterprise discounting described above (the Metropolitan Police locked 10%, and larger multi-year commitments run deeper) brings down to the roughly $12M modeled. The Metropolitan Police's Splunk SaaS deal is a named instance of the discounting at work (GLA decision PCD 1331, signed 2022-11-23, published 2023-09-27 — https://www.london.gov.uk/pcd-1331-dps-connect-audit-splunk-saas-bjp-extremis; the year corrected 2026-07-10 from "2024"): the Directorate of Professional Standards bought Splunk through reseller CDW for £780K in 2022/23 plus £1.774M ongoing over five years, and the PCD records verbatim that "Splunk have offered a special offer to the MPS, including an overall 10% discount when signing upfront for a 5 year Splunk SaaS solution" against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
+Marcus's modeled $12M SIEM-expansion figure sits at his full 12 TB/day: Cloud platform ($764.75) plus Enterprise Security ($431.25) at the 5,000+ GB/day band is $1,196/GB/day/year, so 12,000 GB/day is about $14.35M of published list, which the multi-year enterprise discounting described above (the Metropolitan Police locked 10%, and larger multi-year commitments run deeper) brings down to the roughly $12M modeled. The Metropolitan Police's Splunk SaaS deal is a named instance of the discounting at work (GLA decision PCD 1331, signed 2022-11-23, published 2023-09-27, at https://www.london.gov.uk/pcd-1331-dps-connect-audit-splunk-saas-bjp-extremis; the year corrected 2026-07-10 from "2024"): the Directorate of Professional Standards bought Splunk through reseller CDW for £780K in 2022/23 plus £1.774M ongoing over five years, and the PCD records verbatim that "Splunk have offered a special offer to the MPS, including an overall 10% discount when signing upfront for a 5 year Splunk SaaS solution" against dollar-denominated list prices. The rate this cost model uses is therefore the conservative floor, platform-only and deeply discounted, sitting beneath a published curve whose full-stack list runs three to four times higher.
 
 ---
 
@@ -733,7 +733,7 @@ Marcus's modeled $12M SIEM-expansion figure sits at his full 12 TB/day: Cloud pl
 - Warm tier (S3 Standard-IA): $0.0125/GB/month
 - Cold tier (S3 Glacier Flexible): $0.0036/GB/month
 
-**2. Query Engine Options** (the Athena $/TB-scanned rate is AWS public list, see Sources; the cluster/managed monthly bands are directional model inputs, Tier C — they depend on your query frequency and node sizing, which the worksheet asks you to fill in):
+**2. Query Engine Options** (the Athena $/TB-scanned rate is AWS public list, see Sources; the cluster/managed monthly bands are directional model inputs, Tier C, since they depend on your query frequency and node sizing, which the worksheet asks you to fill in):
 | Engine | Deployment | Cost Model | Typical Monthly Cost (2 TB/day use case) |
 |--------|-----------|------------|----------------------------------------|
 | **AWS Athena** | Serverless | $5/TB scanned (AWS public list) | $2.5K-$15K/month (depends on query frequency; the worked example below assumes a light 500 TB/month scan) |
@@ -820,7 +820,7 @@ TOTAL HYBRID: $60K (SIEM) + $243.6K (Lake) + $310K (Pipeline) = ~$613.6K/year
 
 ### Step 5: Cost Comparison Summary Table
 
-The dollar bands in this table are outputs of the cost models in Steps 2-4, not measured invoices — every figure is computed from the rate assumptions above (the discounted G-Cloud-anchored Splunk floor, Microsoft's Sentinel list, AWS storage and Athena list, and the directional engine/pipeline inputs). Read them as a modeled comparison, and re-run the worksheet with your own rates before relying on any single number.
+The dollar bands in this table are outputs of the cost models in Steps 2-4, not measured invoices, since every figure is computed from the rate assumptions above (the discounted G-Cloud-anchored Splunk floor, Microsoft's Sentinel list, AWS storage and Athena list, and the directional engine/pipeline inputs). Read them as a modeled comparison, and re-run the worksheet with your own rates before relying on any single number.
 
 | Platform Architecture | 500 GB/day | 2 TB/day | 10 TB/day | 7-Year Retention Support | Team Capacity Required |
 |-----------------------|------------|----------|-----------|-------------------------|------------------------|
@@ -830,9 +830,9 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 | **MOAR (Cloud-Managed)** | $220K-$350K/year | $380K-$650K/year | $950K-$1.5M/year | ✓ Full query transparency | 1-2 data engineers (managed services) |
 | **Hybrid (SIEM + Lake)** | $280K-$450K/year | $500K-$850K/year | $2M-$3.5M/year | ✓ Lake queryable, SIEM hot | 1-2 data engineers + SOC analysts |
 
-**Cold-tier assumption at 10 TB/day**: the 10 TB/day MOAR (OSS) band assumes the 7-year cold tier moves to S3 Glacier Deep Archive (~$0.00099/GB-month) rather than the Glacier Flexible rate Step 3 prices at 2 TB/day, because at 10× the volume the ~25 PB cold accumulation only fits inside the $548K-$848K band at the Deep Archive rate — Glacier Flexible alone would run roughly $92K/month there — so read Step 3's Glacier-Flexible cold line as the 2 TB/day case and this column as its 10 TB/day counterpart, which is what keeps Step 3 and Step 5 consistent.
+**Cold-tier assumption at 10 TB/day**: the 10 TB/day MOAR (OSS) band assumes the 7-year cold tier moves to S3 Glacier Deep Archive (~$0.00099/GB-month) rather than the Glacier Flexible rate Step 3 prices at 2 TB/day, because at 10× the volume the ~25 PB cold accumulation only fits inside the $548K-$848K band at the Deep Archive rate (Glacier Flexible alone would run roughly $92K/month there), so read Step 3's Glacier-Flexible cold line as the 2 TB/day case and this column as its 10 TB/day counterpart, which is what keeps Step 3 and Step 5 consistent.
 
-**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM — the modeled gap is roughly 90-91% at 10 TB/day and 36-42% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between: its modeled savings versus a full-volume SIEM are roughly 10% at the 2 TB/day worked example in Step 4, widening at higher volumes against the full-stack bands above, and it solves the retention gap while staying workable for a team with zero or one data engineer.
+**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM, and the modeled gap is roughly 90-91% at 10 TB/day and 36-42% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between: its modeled savings versus a full-volume SIEM are roughly 10% at the 2 TB/day worked example in Step 4, widening at higher volumes against the full-stack bands above, and it solves the retention gap while staying workable for a team with zero or one data engineer.
 
 ---
 
@@ -951,7 +951,7 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 - Splunk pricing: UK G-Cloud 14 EMEA distributor pricelist, assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/92220/511766451042724-pricing-document-2024-04-23-1505.pdf, dated 2024-04-23 (validated against public list price + 30-50% enterprise discounting)
 - AWS S3 pricing: aws.amazon.com/s3/pricing
 - AWS Athena pricing: aws.amazon.com/athena/pricing
-- TCO calculation based on AWS S3 pricing (2025) and schema-on-read SIEM list pricing (30-50% enterprise discount applied); the resulting reduction vs SIEM at 10 TB/day scale is a model-derived output of the Steps 2-5 comparison (large, in the high-double-digit percent range — see the Step 5 table and reading note for the band), not a measured invoice-to-invoice result
+- TCO calculation based on AWS S3 pricing (2025) and schema-on-read SIEM list pricing (30-50% enterprise discount applied); the resulting reduction vs SIEM at 10 TB/day scale is a model-derived output of the Steps 2-5 comparison (large, in the high-double-digit percent range; see the Step 5 table and reading note for the band), not a measured invoice-to-invoice result
 
 ---
 
@@ -974,7 +974,7 @@ Payback Period = Migration Cost ÷ Annual Savings = __________ years
 
 ## Worksheet A.8: Initial Vendor Research Card
 
-**Instructions**: Fill one card per vendor before you build the Worksheet A.4 filtering matrix. The card captures the at-a-glance facts — deployment model, pricing shape, company stage — that decide whether a vendor is even worth scoring.
+**Instructions**: Fill one card per vendor before you build the Worksheet A.4 filtering matrix. The card captures the at-a-glance facts that decide whether a vendor is even worth scoring: deployment model, pricing shape, company stage.
 
 ```
 Vendor: _______________________
@@ -1124,8 +1124,8 @@ Potential Concerns:
 - [ ] Organizational constraints documented (budget, team, vendor, political)
 
 **Vendor Filtering** ✓:
-- [ ] Started with IT Harvest security data platform categories (order of 80-100 vendors as of mid-2025 — directional, Tier C; check the current IT Harvest count for your category before relying on it)
-- [ ] Applied Tier 1 filters (typically reduces to roughly 10-25 vendors — illustrative, your filters and category set will move this)
+- [ ] Started with IT Harvest security data platform categories (order of 80-100 vendors as of mid-2025, directional, Tier C; check the current IT Harvest count for your category before relying on it)
+- [ ] Applied Tier 1 filters (typically reduces to roughly 10-25 vendors, illustrative, since your filters and category set will move this)
 - [ ] Optional: IT Harvest research on finalists (funding, maturity, positioning)
 
 **Finalist Scoring** ✓:

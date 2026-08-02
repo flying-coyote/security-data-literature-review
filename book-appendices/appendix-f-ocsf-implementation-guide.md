@@ -37,7 +37,7 @@ tags: [moar-book, ocsf, field-mapping, implementation, semantic-validation]
 5. Test with sample data (validate OCSF schema compliance)
 6. Peer review (domain expert validates semantic preservation)
 
-**Effort**: 2-4 hours per log source (illustrative planning figure — experienced engineer, straightforward schema), which I use here as a rough estimate for sizing, not a measured rate
+**Effort**: 2-4 hours per log source (an illustrative planning figure that assumes an experienced engineer and a straightforward schema), which I use here as a rough estimate for sizing, not a measured rate
 
 **Example**: Zeek conn.log → OCSF Network Activity (4001)
 
@@ -268,14 +268,14 @@ Semantic validation catches the majority of the mapping errors that do slip thro
 
 Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) for production transformation pipeline.
 
-**Effort**: 15-20 minutes per log source (illustrative — LLM generation 5 min + peer review 10-15 min), the working figure from the CISA Zeek-OCSF project's own accounting rather than an independently measured rate (Tier B, self-assessed)
+**Effort**: 15-20 minutes per log source (an illustrative breakdown of LLM generation at 5 min plus peer review at 10-15 min), the working figure from the CISA Zeek-OCSF project's own accounting rather than an independently measured rate (Tier B, self-assessed)
 
 **Comparison to manual** (illustrative, both figures from the planning estimates above):
 - Manual: 2-4 hours per source
 - LLM-assisted: 15-20 minutes per source
 - **Speedup**: roughly 6-9× faster, the efficiency gain the CISA Zeek-OCSF project reported on its own work rather than the ratio of the two per-source estimates above, which run a little wider (Tier B, self-assessed; not a measured benchmark)
 
-**Accuracy**: roughly 95% field-mapping correctness, as reported by the CISA Zeek-OCSF project across 20 Zeek protocols (the CISA-facing power-query phase set this appendix describes; the repository's full unified set later grew to 101 protocols, so both counts are real in the source) and roughly 2,900 lines of M code; treat that as the project's own working figure (Tier B, self-assessed — illustrative, not an independently published rate) rather than a benchmark you can cite as measured. Appendix H deliberately speaks only directionally about this same project's accuracy, and I keep the worked numbers here because a tactical sizing guide needs planning figures, though they carry the same self-assessed status either way.
+**Accuracy**: roughly 95% field-mapping correctness, as reported by the CISA Zeek-OCSF project across 20 Zeek protocols (the CISA-facing power-query phase set this appendix describes; the repository's full unified set later grew to 101 protocols, so both counts are real in the source) and roughly 2,900 lines of M code; treat that as the project's own working figure (Tier B, self-assessed and illustrative, not an independently published rate) rather than a benchmark you can cite as measured. Appendix H deliberately speaks only directionally about this same project's accuracy, and I keep the worked numbers here because a tactical sizing guide needs planning figures, though they carry the same self-assessed status either way.
 
 **Pros**:
 - Scales: at the illustrative 20 minutes/source, 50 sources is roughly 16 hours, on the order of 2 days against the 3-4 weeks the manual estimate implies (arithmetic from the planning figures, not a measured project total)
@@ -284,7 +284,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 - Maintainable: OCSF schema updates → re-run LLM prompt → updated transformations
 
 **Cons**:
-- Requires LLM access (a frontier API, GPT-class or Claude-class; an illustrative order-of-magnitude of $50-$200 total for 50 sources, since per-token pricing shifts over time — treat it as a sizing estimate, not a quoted price)
+- Requires LLM access (a frontier API, GPT-class or Claude-class; an illustrative order-of-magnitude of $50-$200 total for 50 sources, since per-token pricing shifts over time; treat it as a sizing estimate, not a quoted price)
 - Peer review still required, because you cannot fully automate the semantic validation; that part stays a human judgment call
 - Medium confidence fields need extra validation (illustratively on the order of a fifth to a third of fields, from the CISA project's experience rather than a published measurement)
 
@@ -309,7 +309,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 
 **Examples**:
 
-**AWS Security Lake** (the OCSF class names and UIDs below are spec facts — verify each against the OCSF schema at schema.ocsf.io for the version you target, since UIDs drift between releases):
+**AWS Security Lake** (the OCSF class names and UIDs below are spec facts, so verify each against the OCSF schema at schema.ocsf.io for the version you target, since UIDs drift between releases):
 - Natively ingests AWS sources in OCSF format:
   - CloudTrail → OCSF API Activity (class_uid 6003)
   - VPC Flow Logs → OCSF Network Activity (4001)
@@ -325,7 +325,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 **Pros**:
 - Quickest path to a working pipeline (no transformation development)
 - The vendor maintains the mappings, so schema updates are handled for you
-- Tested at scale, with the vendor validating mappings against a large customer base (vendor claim, Tier C — not independently verified)
+- Tested at scale, with the vendor validating mappings against a large customer base (vendor claim, Tier C, not independently verified)
 
 **Cons**:
 - Limited customization (the vendor decides field mappings, and you cannot override them)
@@ -345,7 +345,7 @@ Power Query M code → AWS Lambda (Python equivalent) or dbt (SQL equivalent) fo
 | **LLM-Assisted** | 10-100 | 15-20 min/src | ✓ Full | ✓ Complete | **Enterprise deployments (recommended)** |
 | **Vendor** | Standard only | Min to hours | ✗ Black box | ✗ Limited | Fast POC, standard sources, no resources |
 
-**Hybrid approach** (the split I most often see in practice — author's assessment, illustrative proportions rather than a surveyed distribution):
+**Hybrid approach** (the split I most often see in practice, an author's assessment with illustrative proportions rather than a surveyed distribution):
 - Vendor automation for the bulk of standard sources: CloudTrail, VPC Flow, Office 365, Azure AD
 - LLM-assisted for custom sources: Application logs, custom tools, legacy systems
 - Manual for the handful of critical or complex sources: Unusual schemas, compliance-sensitive, learning cases
@@ -413,7 +413,7 @@ Read OCSF schema definitions (GitHub schema repository, JSON Schema docs).
 
 **Key semantic question**: What is "the endpoint" in OCSF Network Activity?
 
-**Paraphrase of OCSF schema intent** (not a verbatim quotation — confirm against the live schema):
+**Paraphrase of OCSF schema intent** (not a verbatim quotation; confirm against the live schema):
 > Network Activity describes communication between two endpoints. The `src_endpoint` field identifies the initiator (connection originator), and `dst_endpoint` identifies the responder (connection receiver). Traffic metrics are measured from the perspective of the destination endpoint.
 
 **Step 3: Compare Semantics (Not Names)**
@@ -690,7 +690,7 @@ For non-critical fields, accept they won't map to OCSF:
 
 ---
 
-**Mapping complexity summary** (the frequency and effort columns are illustrative planning figures from the CISA project's experience, not a published measurement — use them to size work, not to benchmark):
+**Mapping complexity summary** (the frequency and effort columns are illustrative planning figures from the CISA project's experience, not a published measurement, so use them to size work, not to benchmark):
 
 | Challenge | Frequency (illustrative) | Recommended Approach | Effort Impact (illustrative) |
 |-----------|-----------|---------------------|---------------|

@@ -30,7 +30,7 @@ Selecting platform based on resume-building, industry hype, or "cool factor" rat
 The failure is a mismatch between technology complexity and team capacity. Bleeding-edge tooling needs ongoing maintenance, troubleshooting, and version upgrades, and when the team lacks the expertise to keep up, the result is operational failures, outages, and frustrated analysts. A platform nobody on staff can operate is an expensive thing that mostly sits there, because the cleverness of the architecture does no good once the one person who understood it is on vacation or gone.
 
 **Example failure** (from practitioner validation):
-> "We selected Apache Iceberg + self-hosted Trino because it was architecturally elegant and I wanted to learn distributed query engines. Six months later, our sole data engineer left for AWS. The remaining security team (20 SOC analysts, 3 security engineers) couldn't maintain Trino cluster—query planning optimization, connector debugging, JVM tuning. We migrated to Dremio Cloud at 2× monthly cost but 10× operational burden reduction. The 'resume-driven' decision cost us $300K in migration plus 6 months of degraded operations."
+> "We selected Apache Iceberg + self-hosted Trino because it was architecturally elegant and I wanted to learn distributed query engines. Six months later, our sole data engineer left for AWS. The remaining security team (20 SOC analysts, 3 security engineers) couldn't maintain Trino cluster (query planning optimization, connector debugging, JVM tuning). We migrated to Dremio Cloud at 2× monthly cost but 10× operational burden reduction. The 'resume-driven' decision cost us $300K in migration plus 6 months of degraded operations."
 
 ### Real-World Consequences
 
@@ -41,7 +41,7 @@ The failure is a mismatch between technology complexity and team capacity. Bleed
 
 ### Prevention Strategies
 
-**1. Constraints-First Decision Making** (the constraints-first decision material — Chapter 1 of the handbook, where manageability and the foreground constraints lead the architecture decision):
+**1. Constraints-First Decision Making** (the constraints-first decision material, Chapter 1 of the handbook, where manageability and the foreground constraints lead the architecture decision):
 - Start with Worksheet A.2: Organizational Constraints Assessment
 - **Team capacity** (0-1 engineers) → Managed services only, not self-hosted Trino/Spark
 - **Budget constraints** ($300K-$500K) → Eliminates vendors with prohibitive pricing
@@ -76,7 +76,7 @@ Building infrastructure for 10× future scale when current scale is 1/10th, resu
 
 ### Why It Fails
 
-Operational complexity scales with the infrastructure you stand up, not with the load you actually put on it. A 15-broker Kafka cluster takes the same maintenance effort as a 3-broker cluster — the upgrades, the monitoring, the troubleshooting are all the same — so the extra brokers buy you nothing but more to keep alive, and complex architectures accumulate technical debt faster than simple ones, which means the team ends up spending its time maintaining unused capacity instead of improving security operations.
+Operational complexity scales with the infrastructure you stand up, not with the load you actually put on it. A 15-broker Kafka cluster takes the same maintenance effort as a 3-broker cluster (the upgrades, the monitoring, the troubleshooting are all the same) so the extra brokers buy you nothing but more to keep alive, and complex architectures accumulate technical debt faster than simple ones, which means the team ends up spending its time maintaining unused capacity instead of improving security operations.
 
 The cost side is just as direct. You pay for 10× capacity you don't use, with cloud compute running 24/7 at 10% utilization, when the whole point of cloud pricing is that you pay for what you run and scale up when you need it rather than pre-provisioning for a future that may not arrive.
 
@@ -88,7 +88,7 @@ The cost side is just as direct. You pay for 10× capacity you don't use, with c
 - Illustratively $100K-$300K annual overspend on unused infrastructure (directional, Tier C)
 - Engineering time consumed maintaining complexity nobody needs
 - 6 months building "scalable" infrastructure vs. 2 weeks building "adequate for today"
-- **Analyst frustration**: "We've been waiting 6 months for a threat hunting platform—why is it taking so long?"
+- **Analyst frustration**: "We've been waiting 6 months for a threat hunting platform. Why is it taking so long?"
 
 ### Prevention Strategies
 
@@ -193,12 +193,12 @@ Forcing all security workloads through single query engine when different worklo
 
 ### Why It Fails
 
-The workloads conflict with one another. Real-time dashboards need sub-second query latency, which is ClickHouse or Dremio Reflections territory; threat hunting needs a full-table scan across billions of rows, which is Trino MPP and is not built for sub-second response; and table maintenance — compaction, snapshot expiration — needs Spark, which Trino can't do at all. A single engine has to compromise across all three, so nobody gets the performance their workload actually wants.
+The workloads conflict with one another. Real-time dashboards need sub-second query latency, which is ClickHouse or Dremio Reflections territory; threat hunting needs a full-table scan across billions of rows, which is Trino MPP and is not built for sub-second response; and table maintenance (compaction, snapshot expiration) needs Spark, which Trino can't do at all. A single engine has to compromise across all three, so nobody gets the performance their workload actually wants.
 
 The cost follows the same logic. ClickHouse tuned for real-time gets expensive when you point it at billion-row threat-hunting scans; Trino tuned for ad-hoc queries lacks the dashboard-optimized caching that Dremio Reflections provides; and Spark tuned for batch gives analysts a poor interactive experience, leaving them waiting minutes for a result. Each engine is good at the thing it was built for and a poor fit for the things it wasn't.
 
 **Example failure** (Appendix I; anonymized practitioner):
-> "We standardized on Spark for 'simplicity.' Analysts hated it—threat hunting queries took 5-10 minutes vs. <60 seconds with Trino. Dashboards loaded in 20-30 seconds vs. <1 second with Dremio Reflections. We migrated to multi-engine: Spark for maintenance, Dremio for dashboards, Trino for hunting. Same data (Iceberg), different engines. Performance improved 10×, analyst satisfaction recovered, $200K annual cost savings (rightsized engines for workload)."
+> "We standardized on Spark for 'simplicity.' Analysts hated it. Threat hunting queries took 5-10 minutes versus under 60 seconds with Trino. Dashboards loaded in 20-30 seconds vs. <1 second with Dremio Reflections. We migrated to multi-engine: Spark for maintenance, Dremio for dashboards, Trino for hunting. Same data (Iceberg), different engines. Performance improved 10×, analyst satisfaction recovered, $200K annual cost savings (rightsized engines for workload)."
 
 ### Real-World Consequences
 
@@ -233,7 +233,7 @@ def route_query(query_metadata):
 ```
 
 **2. Accept Multi-Engine Reality** (practitioner validation, Appendix I):
-> "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance. Multi-engine is not failure—it's optimization."
+> "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance. Multi-engine is not failure; it's optimization."
 
 **Multi-Engine Architecture Benefits**:
 - **Dremio**: Dashboards (<1 sec Reflections), BI integration (Tableau, Power BI)
@@ -263,20 +263,20 @@ Attempting complete SIEM replacement in single migration event instead of iterat
 
 ### Why It Fails
 
-The operational risk is concentrated into a single point of failure: if the migration fails, you have no security visibility at all, because the old platform is shut down and the new one isn't working. The analysts are overwhelmed because they're learning a new platform, rewriting all the detection content, and maintaining live investigations at the same time, and the hidden integration dependencies — SOAR playbooks, ticketing workflows, compliance reports — all break at once instead of one at a time where you could catch them.
+The operational risk is concentrated into a single point of failure: if the migration fails, you have no security visibility at all, because the old platform is shut down and the new one isn't working. The analysts are overwhelmed because they're learning a new platform, rewriting all the detection content, and maintaining live investigations at the same time, and the hidden integration dependencies (SOAR playbooks, ticketing workflows, compliance reports) all break at once instead of one at a time where you could catch them.
 
 The dual-platform cost runs longer than anyone plans. The plan is usually a 6-month overlap; the reality is 12-18 months, because a big-bang approach keeps hitting unexpected issues. To put illustrative numbers on it (illustrative scenario, not a measured deployment): run the old SIEM at $1M/year alongside the new platform at $400K/year, and $1.4M annual carried over 18 months is $2.1M against a planned $700K, roughly 3× over budget.
 
-And the team burns out. Twelve to eighteen months of "we're migrating" with no end in sight, analysts juggling two platforms for every investigation — check Splunk, check the new platform, reconcile the differences — and the predictable outcome is that key people leave, institutional knowledge walks out with them, and the migration slips further.
+And the team burns out. Twelve to eighteen months of "we're migrating" with no end in sight, analysts juggling two platforms for every investigation, checking Splunk, checking the new platform, reconciling the differences, and the predictable outcome is that key people leave, institutional knowledge walks out with them, and the migration slips further.
 
 ### Real-World Consequences
 
 **Case Study** (practitioner validation):
-> "We attempted big-bang Splunk→Dremio migration: All 35 data sources, 1,800 rules, 140 dashboards in 6-month timeline. Reality: 18 months, $2.3M over budget (dual-platform overlap), 40% team turnover (burnout), and we STILL hadn't migrated 10 'legacy' data sources. If we'd done phased rollout—5 sources at a time, prove value incrementally—we'd have completed in 12 months with 1/3 the cost and no team turnover."
+> "We attempted big-bang Splunk→Dremio migration: All 35 data sources, 1,800 rules, 140 dashboards in 6-month timeline. Reality: 18 months, $2.3M over budget (dual-platform overlap), 40% team turnover (burnout), and we STILL hadn't migrated 10 'legacy' data sources. If we'd done a phased rollout (5 sources at a time, proving value incrementally), we'd have completed in 12 months with 1/3 the cost and no team turnover."
 
 ### Prevention Strategies
 
-**1. Phased Implementation Roadmap** (the incremental-modernization material — Chapter 7 of the handbook):
+**1. Phased Implementation Roadmap** (the incremental-modernization material, Chapter 7 of the handbook):
 
 **Phase 1: Pilot (Months 1-3)**
 - **Scope**: 3-5 high-value data sources (EDR, cloud logs, network flows)
@@ -403,7 +403,7 @@ FROM crowdstrike_raw
 
 **3. Iterative Refinement (Not Perfection)**:
 - An LLM gets most mappings right on the first pass in my experience (illustratively the large majority, not a measured rate), so start using the output immediately rather than holding it back for review
-- Refine the edge cases over time as detection rules surface them ("the rule didn't fire — is that a field-mapping issue?")
+- Refine the edge cases over time as detection rules surface them ("the rule didn't fire. Is that a field-mapping issue?")
 - Waiting for a perfect mapping costs you more than shipping a good-enough one and improving it, because the rule failures that tell you where the mapping is wrong only show up once the mappings are in use
 
 ---
@@ -415,25 +415,25 @@ FROM crowdstrike_raw
 Focusing 100% on technology implementation (Iceberg setup, Trino cluster, OCSF transformations) and 0% on organizational change management (training, stakeholder buy-in, workflow adaptation). Results in technical success but operational failure.
 
 **Symptoms**:
-- "Platform is deployed—why aren't analysts using it?"
+- "Platform is deployed. Why aren't analysts using it?"
 - Analysts revert to old SIEM: "New platform is too complicated"
 - Management skeptical: "We spent $400K and I don't see value"
 - 3 months post-deployment, platform usage: <20% of team
 
 ### Why It Fails
 
-Technology adoption fails on the people, not the platform (the incremental-modernization material in Chapter 7 of the handbook; the "80% change management, 20% technology" framing is a practitioner rule of thumb associated with change-management frameworks like Prosci's ADKAR, not a measured ratio). You can have full technical success — the platform ingests data, queries return correct results, dashboards display the metrics — and still land in operational failure, because the analysts don't trust the new platform when Splunk is what they know, and leadership doesn't see the ROI when the cost savings haven't shown up in a form they recognize.
+Technology adoption fails on the people, not the platform (the incremental-modernization material in Chapter 7 of the handbook; the "80% change management, 20% technology" framing is a practitioner rule of thumb associated with change-management frameworks like Prosci's ADKAR, not a measured ratio). You can have full technical success (the platform ingests data, queries return correct results, dashboards display the metrics) and still land in operational failure, because the analysts don't trust the new platform when Splunk is what they know, and leadership doesn't see the ROI when the cost savings haven't shown up in a form they recognize.
 
 The resistance is predictable and it comes in three shapes. There's comfort, the analyst who's used Splunk for seven years and knows SPL cold asking why they should learn SQL. There's risk aversion, the worry about missing a threat while learning a new platform during a live shift. And there's status-quo bias, the sense that the current system works even if it's expensive and slow, so why take on the disruption of changing it.
 
 ### Real-World Consequences
 
 **Failed Implementation Case** (anonymized practitioner):
-> "We deployed Iceberg + Dremio + Trino architecture. Technically perfect—queries ran 5× faster than the previous SIEM, cost 70% less. But analysts ignored it. Six months later, usage: 15% of team. Why? We didn't train them (2-hour workshop isn't training). We didn't get SOC manager buy-in (mandated from top-down). We didn't migrate their critical dashboards (expected them to rebuild). Result: $500K technical investment, 15% adoption, project declared 'failure' despite working perfectly."
+> "We deployed Iceberg + Dremio + Trino architecture. Technically perfect. Queries ran 5× faster than the previous SIEM and cost 70% less. But analysts ignored it. Six months later, usage: 15% of team. Why? We didn't train them (2-hour workshop isn't training). We didn't get SOC manager buy-in (mandated from top-down). We didn't migrate their critical dashboards (expected them to rebuild). Result: $500K technical investment, 15% adoption, project declared 'failure' despite working perfectly."
 
 ### Prevention Strategies
 
-**1. Stakeholder Buy-In BEFORE Technology Selection** (the incremental-modernization material — Chapter 7 of the handbook):
+**1. Stakeholder Buy-In BEFORE Technology Selection** (the incremental-modernization material, Chapter 7 of the handbook):
 
 The dollar figures in the three pitches below are an illustrative worked example, not a measured deployment; the cost model behind figures of this shape is in Appendix A.6.
 
@@ -471,11 +471,14 @@ The dollar figures in the three pitches below are an illustrative worked example
 
 **3. Migrate Critical Workflows First**:
 
-The first priority is the work analysts do dozens of times a day — threat hunting for an IOC, investigating alerts, correlating events — rather than the leadership dashboards that get touched once a month. Migrating the daily workflow first is what earns the platform its trust, because that's where the analyst feels whether it's faster or slower than what they had.
+The first priority is the work analysts do dozens of times a day:
+- Threat hunting for an IOC
+- Investigating alerts
+- Correlating events rather than the leadership dashboards that get touched once a month. Migrating the daily workflow first is what earns the platform its trust, because that's where the analyst feels whether it's faster or slower than what they had.
 
 The second priority is the detection content that matters: the 50-100 rules that fire frequently and generate actionable alerts, ahead of rules that haven't fired in six months, which can wait for Phase 3.
 
-The third priority is proving value before expanding, and the proof is concrete moments the team can point to — by Week 4, the new platform finds ransomware lateral movement the old SIEM missed; by Month 2, a threat hunt that used to time out at 20 minutes returns in 45 seconds; by Month 3, the CFO sees $200K of savings against the quarterly Splunk spend.
+The third priority is proving value before expanding, and the proof is concrete moments the team can point to: by Week 4, the new platform finds ransomware lateral movement the old SIEM missed; by Month 2, a threat hunt that used to time out at 20 minutes returns in 45 seconds; by Month 3, the CFO sees $200K of savings against the quarterly Splunk spend.
 
 ---
 
@@ -486,21 +489,21 @@ The third priority is proving value before expanding, and the proof is concrete 
 Deploying security data platform without operational monitoring, query performance metrics, or cost tracking. Results in silent performance degradation, unexpected cost overruns, and "mystery slowdowns."
 
 **Symptoms**:
-- "Queries used to run in 30 seconds, now they take 5 minutes—what changed?"
-- Month-end AWS bill: $25K expected, $75K actual (3× budget—why?)
+- "Queries used to run in 30 seconds, now they take 5 minutes. What changed?"
+- Month-end AWS bill: $25K expected, $75K actual (3× budget; why?)
 - Analysts complain platform is slow; data engineers have no metrics to investigate
 - "We don't know how many queries are running, who's using the platform, or what it costs"
 
 ### Why It Fails
 
-Without visibility there's nothing to optimize against. Performance degrades gradually — queries slow from 30s to 60s to 120s over months — and without metrics you can't tell the root cause apart, whether it's small-file proliferation, partition skew, or a shift in query patterns. The degradation creeps up slowly enough that the team keeps tolerating it, adjusting expectations a little at a time, until one day the platform is effectively unusable and no one can say exactly when it crossed the line.
+Without visibility there's nothing to optimize against. Performance degrades gradually (queries slow from 30s to 60s to 120s over months) and without metrics you can't tell the root cause apart, whether it's small-file proliferation, partition skew, or a shift in query patterns. The degradation creeps up slowly enough that the team keeps tolerating it, adjusting expectations a little at a time, until one day the platform is effectively unusable and no one can say exactly when it crossed the line.
 
-The cost surprises work the same way. Cloud charges accumulate invisibly across query scans, storage-tier transitions, and data transfer, and with no alert when the weekly spend jumps from $5K to $15K, the first you hear of it is the month-end bill. By then the overrun forces emergency cost-cutting under pressure — delete data? reduce retention? — which is exactly the kind of decision you don't want to be making in a hurry.
+The cost surprises work the same way. Cloud charges accumulate invisibly across query scans, storage-tier transitions, and data transfer, and with no alert when the weekly spend jumps from $5K to $15K, the first you hear of it is the month-end bill. By then the overrun forces emergency cost-cutting under pressure (delete data? reduce retention?) which is exactly the kind of decision you don't want to be making in a hurry.
 
 ### Real-World Consequences
 
 **Cost Overrun Case**:
-> "We deployed Dremio Cloud + Iceberg on S3. First month: $12K (baseline). Third month: $42K (3.5× increase—CFO furious). Root cause: Analyst built daily dashboard that scanned full 90-day table (3 TB) instead of 1-day partition (30 GB). Query ran 300× per day (5-min auto-refresh) = 900 TB scanned daily vs. 9 TB planned. No cost monitoring → 8 weeks of 100× overspend before discovery. Fix: Dashboard uses 1-day partition. Cost drops to $14K/month."
+> "We deployed Dremio Cloud + Iceberg on S3. First month: $12K (baseline). Third month: $42K (3.5× increase, and the CFO was furious). Root cause: Analyst built daily dashboard that scanned full 90-day table (3 TB) instead of 1-day partition (30 GB). Query ran 300× per day (5-min auto-refresh) = 900 TB scanned daily vs. 9 TB planned. No cost monitoring → 8 weeks of 100× overspend before discovery. Fix: Dashboard uses 1-day partition. Cost drops to $14K/month."
 
 **Performance Degradation Case**:
 > "Queries started timing out (>5 min). No metrics. Data engineer spent 2 weeks investigating: Spark compaction job? Iceberg metadata bloat? Query engine version? Root cause: Small file proliferation (10,000 files × 10 MB instead of 100 files × 1 GB). Would've been obvious if we had file count monitoring. Fix: Ran compaction job, query performance restored. Lesson: Deploy monitoring Day 1, not after problem discovered."
@@ -516,7 +519,7 @@ The cost surprises work the same way. Cloud charges accumulate invisibly across 
 - **Slow queries**: Queries exceeding threshold (e.g., >2 minutes)
 - **Data scanned per query**: Identifies inefficient queries (scanning TB when GB sufficient)
 
-**Alerting thresholds** (illustrative example values — set yours from your own measured baseline):
+**Alerting thresholds** (illustrative example values; set yours from your own measured baseline):
 - P95 query latency >2 minutes (vs. baseline 45 seconds) → Alert data engineering team
 - Failed query rate >5% → Investigate (query syntax errors? Permission issues?)
 - Data scanned >500 GB per query → Alert (likely unpartitioned scan, inefficient)
@@ -544,7 +547,7 @@ ORDER BY 1 DESC
 - **Cost per GB scanned**: Efficiency metric (increasing = queries less optimized)
 - **Storage tier costs**: S3 Standard vs. Glacier (lifecycle policies working as expected?)
 
-**Alerting thresholds** (illustrative example values — set yours from your own measured baseline):
+**Alerting thresholds** (illustrative example values; set yours from your own measured baseline):
 - Daily cost >$2K (baseline $800/day) → Alert (anomaly requiring investigation)
 - Weekly cost >$12K (vs. budget $10K) → Alert (on track for monthly overrun)
 - Storage growth >15% month-over-month (vs. expected 10%) → Investigate (unexpected data source? Retention issue?)
@@ -593,10 +596,10 @@ spark.sql("""
 
 ### Description
 
-An organization adopts a commercial pipeline platform (Cribl Stream, an observability pipeline) for route-by-value cost optimization — illustratively 70-90% savings against SIEM-only ingestion, with the economics in Appendix A.6 — and over 2-3 years builds 400+ proprietary transformation rules, custom routing logic, and vendor-specific integrations on top of it, with no OCSF standardization, no documented escape path, and the raw data not preserved. When the pipeline cost then jumps 3× on a price increase or an acquisition, switching has become a $500K-plus migration project.
+An organization adopts a commercial pipeline platform (Cribl Stream, an observability pipeline) for route-by-value cost optimization (illustratively 70-90% savings against SIEM-only ingestion, with the economics in Appendix A.6) and over 2-3 years builds 400+ proprietary transformation rules, custom routing logic, and vendor-specific integrations on top of it, with no OCSF standardization, no documented escape path, and the raw data not preserved. When the pipeline cost then jumps 3× on a price increase or an acquisition, switching has become a $500K-plus migration project.
 
 **Symptom Quotes**:
-- "Our pipeline license went from $800K to $2.4M after the vendor got acquired—can we switch to Tenzir?" (Answer: $680K rewrite, 6-month timeline)
+- "Our pipeline license went from $800K to $2.4M after the vendor got acquired. Can we switch to Tenzir?" (Answer: $680K rewrite, 6-month timeline)
 - "We have 600 Cribl Packs, none documented. How do we migrate to open-source Logstash?" (Answer: Manual reverse-engineering, 40% semantic loss risk)
 - "Our S3 bucket only has normalized data, so if we leave the pipeline vendor, we lose raw logs for re-processing"
 
@@ -604,7 +607,7 @@ An organization adopts a commercial pipeline platform (Cribl Stream, an observab
 
 **1. Transformation Logic Becomes a Proprietary Asset**
 
-Commercial pipeline platforms run on vendor-specific DSLs — Cribl's JavaScript-based transform functions and proprietary routing expressions, or another vendor's observability data model — and none of it is portable to Tenzir, Logstash, or Vector without a complete rewrite. Accumulate 400+ transforms over 2-3 years and you've built a substantial body of technical debt that exists only in one vendor's dialect.
+Commercial pipeline platforms run on vendor-specific DSLs (Cribl's JavaScript-based transform functions and proprietary routing expressions, or another vendor's observability data model) and none of it is portable to Tenzir, Logstash, or Vector without a complete rewrite. Accumulate 400+ transforms over 2-3 years and you've built a substantial body of technical debt that exists only in one vendor's dialect.
 
 **2. No Standard Schema Means Vendor Coupling**
 
@@ -616,9 +619,9 @@ The common mistake is storing only the pipeline-transformed output and deleting 
 
 ### Real-World Consequences
 
-**Fortune 500 Retail** (8 TB/day; illustrative composite — the acquisition event is hypothetical, and an earlier draft wrongly named it as "Cisco acquires Cribl," which never happened; Cisco acquired Splunk, completed 2024-03-18, and Cribl remains independent — corrected 2026-07-10):
+**Fortune 500 Retail** (8 TB/day; illustrative composite, meaning the acquisition event is hypothetical, and an earlier draft wrongly named it as "Cisco acquires Cribl," which never happened; Cisco acquired Splunk, completed 2024-03-18, and Cribl remains independent (corrected 2026-07-10):
 - Deployed a commercial pipeline platform in 2020 ($800K/year), built 540 transformation rules
-- Vendor acquired; list price tripled at renewal ($2.4M/year) — the strategic-exposure scenario from the section above, played out
+- Vendor acquired; list price tripled at renewal ($2.4M/year), the strategic-exposure scenario from the section above, played out
 - **Migration analysis**: incumbent pipeline → Tenzir = $680K (rewrite transforms) + $120K (documentation)
 - **Timeline**: 6 months (400 transforms to Tenzir, 140 to open-source as-is)
 - **Outcome**: Stayed with the incumbent, because switching cost + risk exceeded the 2-year price premium
@@ -658,7 +661,7 @@ Use OCSF as the portability layer, so the transformation logic stays vendor-agno
 
 **Strategy 2: Preserve Raw Data Layer**
 
-**Dual storage pattern** (from the trustworthy-data material — Chapter 3 of the handbook):
+**Dual storage pattern** (from the trustworthy-data material, Chapter 3 of the handbook):
 
 ```
 Security Logs → Pipeline (Cribl/Tenzir)
@@ -692,7 +695,7 @@ pipeline-transforms/
   README.md                         # Transform inventory + migration guide
 ```
 
-**Value during migration** (illustrative cost ranges, directional — not modeled in Appendix A.6):
+**Value during migration** (illustrative cost ranges, directional, not modeled in Appendix A.6):
 - **Documented**: $200K-$400K rewrite (Cribl → Tenzir, 60-80% of work is "understand Cribl logic")
 - **Undocumented**: $500K-$800K rewrite (reverse-engineering Cribl Packs, 40% semantic error risk)
 
@@ -769,7 +772,7 @@ Small-file accumulation is inevitable, because DuckDB edge preprocessing, stream
 
 ### Prevention Strategies
 
-Schedule weekly Spark compaction from Day 1, not as an emergency response after degradation. Use spot instances for the work — compaction is fault-tolerant batch processing and pays for itself at roughly 80% cost savings vs. on-demand (directional, Tier C; spot pricing is vendor-stated and varies by instance type and region). Monitor file counts per partition and alert when a partition exceeds 1,000 files. A tiered schedule works well in practice: compact the last 7 days daily, days 8-30 weekly, and days 30-90 monthly.
+Schedule weekly Spark compaction from Day 1, not as an emergency response after degradation. Use spot instances for the work, since compaction is fault-tolerant batch processing and pays for itself at roughly 80% cost savings vs. on-demand (directional, Tier C; spot pricing is vendor-stated and varies by instance type and region). Monitor file counts per partition and alert when a partition exceeds 1,000 files. A tiered schedule works well in practice: compact the last 7 days daily, days 8-30 weekly, and days 30-90 monthly.
 
 See Appendix I, Section I.2 for detailed maintenance procedures and scheduling.
 
@@ -790,12 +793,12 @@ Ingesting raw security telemetry (CloudTrail, VPC Flow Logs, DNS logs) without f
 
 At TB/day scale the volume overwhelms the economics, because storing and querying unfiltered data costs illustratively 3-5× more than preprocessing it first (directional, consistent with the Jake Thomas / Okta account below), and the security team ends up paying for compute and storage on data it never analyzes.
 
-**Example failure** (practitioner validation, Jake Thomas (Okta) — Tier B):
+**Example failure** (practitioner validation, Jake Thomas (Okta), Tier B):
 > Previous approach: Snowflake ingesting raw CloudTrail at roughly $2,000/day. After deploying DuckDB Lambda edge preprocessing, the volume dropped 50-80%, with an estimated 80-95% cost savings (down to $100-$400/day). Jake Thomas reports validating this pattern at 7.5 trillion records over six months.
 
 ### Prevention Strategies
 
-Deploy DuckDB Lambda for CloudTrail filtering to exclude read-only operations (illustratively 80% volume reduction, directional). Aggregate VPC Flow Logs to connection-level summaries rather than packet-level (illustratively a 200× reduction, directional). Keep raw data in S3 Glacier for forensics — preprocess only what enters the lakehouse. A useful decision rule of thumb: if raw data volume is several times larger than the subset that carries security value, edge preprocessing tends to pay for itself quickly.
+Deploy DuckDB Lambda for CloudTrail filtering to exclude read-only operations (illustratively 80% volume reduction, directional). Aggregate VPC Flow Logs to connection-level summaries rather than packet-level (illustratively a 200× reduction, directional). Keep raw data in S3 Glacier for forensics, and preprocess only what enters the lakehouse. A useful decision rule of thumb: if raw data volume is several times larger than the subset that carries security value, edge preprocessing tends to pay for itself quickly.
 
 See Appendix I, Section I.5 for implementation patterns and code examples.
 
@@ -805,7 +808,7 @@ See Appendix I, Section I.5 for implementation patterns and code examples.
 
 ### Description
 
-A vendor ships an integration that maps its own event logs to the data models those events are supposed to populate — and gets the mapping wrong. Events still flow, the pipeline never errors, dashboards show healthy record counts, and the data model appears populated. But the mapped events are the wrong ones, so the data model never receives the category of activity it was built around. Correlation searches and SOAR playbooks that depend on that model produce no results not because the detections are bad but because the data they require was silently routed elsewhere from day one. Because the defect lives in the shipped integration rather than any local customization, it is identical across every installation that accepted the defaults.
+A vendor ships an integration that maps its own event logs to the data models those events are supposed to populate, and gets the mapping wrong. Events still flow, the pipeline never errors, dashboards show healthy record counts, and the data model appears populated. But the mapped events are the wrong ones, so the data model never receives the category of activity it was built around. Correlation searches and SOAR playbooks that depend on that model produce no results not because the detections are bad but because the data they require was silently routed elsewhere from day one. Because the defect lives in the shipped integration rather than any local customization, it is identical across every installation that accepted the defaults.
 
 **Symptoms**:
 - A data model reports non-zero event volume, but correlation searches built on it never fire
@@ -819,15 +822,15 @@ Vendor integration authors are rarely the same team that wrote the product's par
 
 ### Detection
 
-The only reliable signal is a count comparison across the boundary. Take a category of activity — authentication attempts, process launches, network connections — count the raw events at the source log level over a fixed window, then count what the data model received for the same category and window. A meaningful gap with no corresponding error is the signature. If the gap is total, the mapping is wrong by construction. If it is partial, a filter predicate or field-presence condition is likely culling events silently. Neither condition surfaces on its own.
+The only reliable signal is a count comparison across the boundary. Take a category of activity (authentication attempts, process launches, network connections) count the raw events at the source log level over a fixed window, then count what the data model received for the same category and window. A meaningful gap with no corresponding error is the signature. If the gap is total, the mapping is wrong by construction. If it is partial, a filter predicate or field-presence condition is likely culling events silently. Neither condition surfaces on its own.
 
 ### Prevention
 
-Verify by measurement before trusting any vendor-shipped mapping in production. Count events at the source and at the data-model boundary and compare; the two numbers should be close, and any material divergence requires an explanation before the integration goes live. "The vendor shipped it" is not an explanation — it is exactly the assumption this anti-pattern breaks. After initial deployment, spot-check the counts on a regular cadence, because integration updates can re-introduce the same class of defect without notice.
+Verify by measurement before trusting any vendor-shipped mapping in production. Count events at the source and at the data-model boundary and compare; the two numbers should be close, and any material divergence requires an explanation before the integration goes live. "The vendor shipped it" is not an explanation; it is exactly the assumption this anti-pattern breaks. After initial deployment, spot-check the counts on a regular cadence, because integration updates can re-introduce the same class of defect without notice.
 
 The trustworthy-data material (Chapter 3 of the handbook) carries the full account of this failure mode, including the specific measurement approach and the organizational dynamics that let a vendor-wide defect stay invisible across an entire install base for years. The core principle there applies generally: the event count at the source and the event count at the downstream boundary should match, and verifying that match is measurement work, not configuration work.
 
-The same defect shows up one layer up, in detection coverage. A green coverage cell sitting over an OCSF field that never populates is mapping wrong by construction in exactly this sense — the inventory says the technique is covered, the data says nothing fires — and the only reliable signal is again a measured count or firing comparison rather than a trusted map. Appendix M is the coverage-side instrument for that comparison.
+The same defect shows up one layer up, in detection coverage. A green coverage cell sitting over an OCSF field that never populates is mapping wrong by construction in exactly this sense, where the inventory says the technique is covered but the data says nothing fires and the only reliable signal is again a measured count or firing comparison rather than a trusted map. Appendix M is the coverage-side instrument for that comparison.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 type: design
-title: "Appendix C: MOAR Reference Architectures — L-I-G-E-R Component Model and Five Patterns"
+title: "Appendix C: MOAR Reference Architectures, L-I-G-E-R Component Model and Five Patterns"
 created: 2025-10-15
 tags: [moar, liger, iceberg, architecture-design, multi-engine, security-data]
 ---
@@ -17,21 +17,21 @@ tags: [moar, liger, iceberg, architecture-design, multi-engine, security-data]
 
 Modular Open Architecture (MOAR) is a composable, vendor-neutral approach to security data infrastructure. Rather than selecting a monolithic SIEM that bundles storage, query, visualization, and pipeline into a single vendor's stack, MOAR separates these concerns into interchangeable layers so an organization can pick the strongest component for each one.
 
-![The MOAR reference architecture: security data flows from Source through Ingest, Store, and Analysis to security Tasks, built on open standards—Apache Arrow and Apache Iceberg for data, OCSF for schema, and Sigma for portable detection logic—with every layer independently swappable.](figures/moar-architecture.png){ width=95% }
+![The MOAR reference architecture: security data flows from Source through Ingest, Store, and Analysis to security Tasks, built on open standards (Apache Arrow and Apache Iceberg for data, OCSF for schema, and Sigma for portable detection logic), with every layer independently swappable.](figures/moar-architecture.png){ width=95% }
 
 ### Five MOAR Design Principles
 
 Every reference architecture in this appendix (except Pattern 4: Traditional SIEM) applies these principles to varying degrees:
 
-1. **Vendor-Neutral Data Layer** — Use open table formats (Apache Iceberg, Delta Lake) with vendor-neutral catalogs. *Validation test*: Can you swap Trino for Dremio without rewriting queries or migrating data? (SAP acquired Dremio in July 2026, which is exactly the kind of event this principle exists to absorb: when the query engine you standardized on gets bought, an open table layer lets you swap the engine out while the data stays put; the swap still costs you query-dialect and cutover work, but not a data migration.)
+1. **Vendor-Neutral Data Layer**. Use open table formats (Apache Iceberg, Delta Lake) with vendor-neutral catalogs. *Validation test*: Can you swap Trino for Dremio without rewriting queries or migrating data? (SAP acquired Dremio in July 2026, which is exactly the kind of event this principle exists to absorb: when the query engine you standardized on gets bought, an open table layer lets you swap the engine out while the data stays put; the swap still costs you query-dialect and cutover work, but not a data migration.)
 
-2. **Separation of Storage and Compute** — Store data in object storage (~$0.023/GB/month S3) while scaling compute independently based on workload demands. *Validation test*: Can you turn off all compute and still access your data via different tools?
+2. **Separation of Storage and Compute**. Store data in object storage (~$0.023/GB/month S3) while scaling compute independently based on workload demands. *Validation test*: Can you turn off all compute and still access your data via different tools?
 
-3. **Compression-First Design** — Security logs achieve 8.5× (Iceberg Parquet, pyiceberg zstd defaults) to 9.7× (tuned cold Parquet zstd-19) compression with proper encoding (Parquet + ZSTD/SNAPPY for Iceberg, optimized codecs for ClickHouse; first-party lab measurement on OCSF-normalized Zeek and EDR corpora, per cost-to-serve-retention/results/RESULTS.md). *Validation test*: 1 TB/day of raw logs should cost ~$1,000/month for S3 storage with 365-day retention.
+3. **Compression-First Design**. Security logs achieve 8.5× (Iceberg Parquet, pyiceberg zstd defaults) to 9.7× (tuned cold Parquet zstd-19) compression with proper encoding (Parquet + ZSTD/SNAPPY for Iceberg, optimized codecs for ClickHouse; first-party lab measurement on OCSF-normalized Zeek and EDR corpora, per cost-to-serve-retention/results/RESULTS.md). *Validation test*: 1 TB/day of raw logs should cost ~$1,000/month for S3 storage with 365-day retention.
 
-4. **Schema Evolution Without Breaking Changes** — Use Iceberg schema evolution and OCSF normalization (OCSF v1.x, current release v1.8.0) to onboard new log sources without system downtime. *Validation test*: Adding a new log source doesn't require downtime or data migration.
+4. **Schema Evolution Without Breaking Changes**. Use Iceberg schema evolution and OCSF normalization (OCSF v1.x, current release v1.8.0) to onboard new log sources without system downtime. *Validation test*: Adding a new log source doesn't require downtime or data migration.
 
-5. **Query Engine Specialization** — No single engine is optimal for real-time alerting, ad-hoc investigations, and scheduled reporting. Deploy the right engine for each workload. *Validation test*: You can choose the right tool for each workload without creating data silos.
+5. **Query Engine Specialization**. No single engine is optimal for real-time alerting, ad-hoc investigations, and scheduled reporting. Deploy the right engine for each workload. *Validation test*: You can choose the right tool for each workload without creating data silos.
 
 ### MOAR Component Model (L-I-G-E-R)
 
@@ -45,33 +45,33 @@ The reference implementation organizes components into five interchangeable laye
 | **E**ngine | Query engines matched to workloads | DuckDB, Trino, ClickHouse, StarRocks, Dremio |
 | **R**oute | Data pipelines and transformation | Vector, Cribl Stream, Tenzir, Fluent Bit, Kafka, Flink |
 
-The Graph layer is usually a passthrough rather than a build decision, because the shop almost always already has somewhere its analysts work — Grafana, Superset, a custom hunt UI, or the incumbent SOC consoles (Splunk, Elastic, Sentinel) kept for federated read during a transition — and you can go many directions from here, including the AI tooling that increasingly sits above or beside the analytics. I don't try to be exhaustive about that overlying analytic layer, because it isn't where the trust problem lives and it changes faster than anything underneath it. The intent of this book runs the other way, to be exhaustive about the optional infrastructures underneath the analytic (storage, table format, catalog, engine, routing) that decide whether the analytic they feed is trustworthy, well-connected, and performant in the first place, and whatever interface sits on top inherits those properties rather than creating them.
+The Graph layer is usually a passthrough rather than a build decision, because the shop almost always already has somewhere its analysts work, such as Grafana, Superset, a custom hunt UI, or the incumbent SOC consoles (Splunk, Elastic, Sentinel) kept for federated read during a transition, and you can go many directions from here, including the AI tooling that increasingly sits above or beside the analytics. I don't try to be exhaustive about that overlying analytic layer, because it isn't where the trust problem lives and it changes faster than anything underneath it. The intent of this book runs the other way, to be exhaustive about the optional infrastructures underneath the analytic (storage, table format, catalog, engine, routing) that decide whether the analytic they feed is trustworthy, well-connected, and performant in the first place, and whatever interface sits on top inherits those properties rather than creating them.
 
-One honest caveat on where the catalog/Index layer earns its place: at the single-node SOC scale I test, it pulls its weight less from query performance — the engines answer sub-second whether or not a separate catalog is brokering metadata — and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake, which makes the catalog a scale-and-governance bet rather than a layer every deployment needs on day one.
+One honest caveat on where the catalog/Index layer earns its place: at the single-node SOC scale I test, it pulls its weight less from query performance (the engines answer sub-second whether or not a separate catalog is brokering metadata) and more from governance, lineage, and letting several engines read the same tables without stepping on each other, so its weight in the decision rises with scale and with the number of engines sharing the lake, which makes the catalog a scale-and-governance bet rather than a layer every deployment needs on day one.
 
 Each pattern below represents a different combination of these components, optimized for specific organizational constraints. The five patterns form a spectrum from fully monolithic (Pattern 4: Traditional SIEM) to fully composable (Pattern 5: MOAR Multi-Engine).
 
-One caveat keeps the interchangeability honest: it holds only when encryption stays *outside* the open file format. Parquet's own modular encryption (PME) ties an encrypted file to the library that wrote it; in lab testing, a PME-encrypted file produced by one reader was unreadable by DuckDB, Polars, DataFusion, and ClickHouse, so encrypting inside the file silently revokes the swap-any-engine property the layer model depends on (Principle 1's "swap Trino for Dremio" test fails outright). For regulated data that must be encrypted at rest, encrypt at the volume or object-store layer (SSE-S3/SSE-KMS, dm-crypt, LUKS) so the bytes the engines read stay portable, rather than inside the Parquet file — or accept that the encrypting engine becomes the only one that can read the data.
+One caveat keeps the interchangeability honest: it holds only when encryption stays *outside* the open file format. Parquet's own modular encryption (PME) ties an encrypted file to the library that wrote it; in lab testing, a PME-encrypted file produced by one reader was unreadable by DuckDB, Polars, DataFusion, and ClickHouse, so encrypting inside the file silently revokes the swap-any-engine property the layer model depends on (Principle 1's "swap Trino for Dremio" test fails outright). For regulated data that must be encrypted at rest, encrypt at the volume or object-store layer (SSE-S3/SSE-KMS, dm-crypt, LUKS) so the bytes the engines read stay portable, rather than inside the Parquet file, or accept that the encrypting engine becomes the only one that can read the data.
 
 ### Production Validation
 
 These principles are validated at scale:
-- **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup talk, July 2025, written up on the ClickHouse blog 2025-10-23 — date corrected 2026-07-10 from "late 2024" per the bibliography's 2026-07-09 correction; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
+- **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup talk, July 2025, written up on the ClickHouse blog 2025-10-23, date corrected 2026-07-10 from "late 2024" per the bibliography's 2026-07-09 correction; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
 - **Okta**: 100K QPS DuckDB, 7.5 trillion records (Okta, Jake Thomas personal account; Tier B) (Principle 5)
-- **Apple**: Petabyte-scale Apache Iceberg (Apple engineers present Iceberg work at Dremio's Subsurface conference — e.g., Russell Spitzer's Subsurface 2024 session on Apple's Iceberg contributions — and Apple holds multiple Iceberg PMC seats; the earlier "Baris Aydın, 'Apple's Journey with Apache Iceberg,' Subsurface Live 2023" attribution could not be located anywhere and was dropped 2026-07-10; Tier C pending a fetched talk page) (Principle 1, 2)
+- **Apple**: Petabyte-scale Apache Iceberg (Apple engineers present Iceberg work at Dremio's Subsurface conference, e.g., Russell Spitzer's Subsurface 2024 session on Apple's Iceberg contributions, and Apple holds multiple Iceberg PMC seats; the earlier "Baris Aydın, 'Apple's Journey with Apache Iceberg,' Subsurface Live 2023" attribution could not be located anywhere and was dropped 2026-07-10; Tier C pending a fetched talk page) (Principle 1, 2)
 - **CISA**: Zeek-OCSF mapping, ~95% mapping accuracy as reported by the project itself, an illustrative figure rather than an independently published rate (CISA Zeek-OCSF project; Tier B) (Principle 4)
 
 Those are external deployments that validate the principles at scale; the interchangeability claim itself I verified first-party in a runnable reference stack, because "the layers are swappable" is the kind of assertion that deserves a measurement rather than a diagram. What follows is the one place in this book where I state the swap-clean claim in full and say exactly how much of it is measured.
 
 ### The swap-clean claim, stated once
 
-The promise underneath MOAR is that each layer can be replaced with an alternative and the data — and the answers you get back from it — survive the change. That is the whole reversibility argument: if a layer choice turns out wrong, you swap the part and the data stays, which is a sentence a monolith vendor cannot say, and it is why the architecture can defend itself even where any single component choice is debatable. The L-I-G-E-R reference composition (the table above) is *one* instantiation of MOAR at a stated scale, not MOAR itself; the durable claim is that maintained open-standard parts compose over open formats, and the specific parts I name below are the composition I happen to defend on a single host, each of them falsifiable on its own. The reference stack ships a swap verb per layer that writes or reads the same OCSF data through the alternative component and checks that the answer doesn't move:
+The promise underneath MOAR is that each layer can be replaced with an alternative and the data, and the answers you get back from it, survive the change. That is the whole reversibility argument: if a layer choice turns out wrong, you swap the part and the data stays, which is a sentence a monolith vendor cannot say, and it is why the architecture can defend itself even where any single component choice is debatable. The L-I-G-E-R reference composition (the table above) is *one* instantiation of MOAR at a stated scale, not MOAR itself; the durable claim is that maintained open-standard parts compose over open formats, and the specific parts I name below are the composition I happen to defend on a single host, each of them falsifiable on its own. The reference stack ships a swap verb per layer that writes or reads the same OCSF data through the alternative component and checks that the answer doesn't move:
 
-- **L — store**: MinIO ↔ SeaweedFS, both speaking S3, same OCSF batch, identical answer (`./moar swap-store`).
-- **I — catalog**: the Iceberg REST reference fixture ↔ Nessie ↔ Lakekeeper, three independent codebases (Java reference, Java/Quarkus, Rust/Postgres) implementing the same Iceberg REST contract, identical answer across all three (`./moar swap-catalog`).
-- **I — table format**: Iceberg ↔ DuckLake, the same logical OCSF batch on the same object store, identical answer (`./moar swap-format`).
-- **E — engine**: DuckDB, Trino, ClickHouse, StarRocks, and Dremio over one Iceberg table, run through a cross-engine answer-equality gate (`./moar verify`).
-- **R — router**: Vector/VRL ↔ Tenzir/TQL ↔ Fluent Bit/Lua, the same raw Okta event normalized to the same OCSF Authentication record (`./moar swap-router`).
+- **L (store)**: MinIO ↔ SeaweedFS, both speaking S3, same OCSF batch, identical answer (`./moar swap-store`).
+- **I (catalog)**: the Iceberg REST reference fixture ↔ Nessie ↔ Lakekeeper, three independent codebases (Java reference, Java/Quarkus, Rust/Postgres) implementing the same Iceberg REST contract, identical answer across all three (`./moar swap-catalog`).
+- **I (table format)**: Iceberg ↔ DuckLake, the same logical OCSF batch on the same object store, identical answer (`./moar swap-format`).
+- **E (engine)**: DuckDB, Trino, ClickHouse, StarRocks, and Dremio over one Iceberg table, run through a cross-engine answer-equality gate (`./moar verify`).
+- **R (router)**: Vector/VRL ↔ Tenzir/TQL ↔ Fluent Bit/Lua, the same raw Okta event normalized to the same OCSF Authentication record (`./moar swap-router`).
 
 The Graph layer carries no swap verb here, and that absence is by design rather than an omission, because it's a passthrough to whatever interface the shop already runs rather than a component the lab swaps and answer-equality-checks, so there's nothing for `./moar` to hold constant across an alternative.
 
@@ -88,11 +88,11 @@ $ ./moar swap-router   # R — router: one raw Okta event → three normalizers
   vector / tenzir / fluent-bit → identical OCSF Authentication (class_uid 3002)   ✓ identical
 ```
 
-*Figure C-1 — the swap verbs run live on the reference stack (single-host, Tier B): the answer does not move when the store, the router, or the engine is swapped. This is the reversibility claim measured, not asserted.*
+*Figure C-1. The swap verbs run live on the reference stack (single-host, Tier B): the answer does not move when the store, the router, or the engine is swapped. This is the reversibility claim measured, not asserted.*
 
-The honest part is how unevenly that claim is backed, and the layers are not equal. The **engine layer is the one I have actually pressure-tested for answer-equivalence** rather than asserted it, and it's the one where the gate earns its keep: a broader run across twelve publishable Parquet readers on byte-identical data found ten correct and two silently wrong (engines selected by distinct reader, because the divergence lives in the Parquet reader rather than the engine wrapped around it): a version-scoped chDB Bloom-filter undercount that reproduced with the Parquet row-group structure rather than at one fixed scale (at 10M rows under `ROW_GROUP_SIZE` 12288 as well as at 100M) and was fixed in the next point release (wrong on chDB 4.1.8, correct on 4.1.9), and a fastparquet `PLAIN_DICTIONARY` decode bug still live on the latest version (2026.5.0), so on the engine layer answer-equivalence is a measured, mechanism-isolated finding (SDW Lab, `clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md`, first-party Tier B; see Appendix I.1.5 and `H-ENGINE-ANSWER-EQUIVALENCE-01`), and the lesson is that a fast engine can return a wrong answer with no error, so the cross-engine check is a standing control, not optional ceremony. The other four layers, store and catalog and table format and router, I verify with a swap-and-confirm demonstration (one batch through each alternative, answer held constant) and otherwise rest on the open-format contract: the same Parquet bytes flow through, so a different store or catalog or router is reading or writing the same data, and the answer should not move. I have not run those layers through the same characterized at-scale, multi-implementation divergence probe that found the engine bugs, so the accurate statement is *answer-equivalence verified for the engine layer; the store, catalog, format, and router swaps are confirmed on a single batch and otherwise asserted from the open-format contract.* The reason the engine layer needed more than the contract is that an open table format guarantees every engine can *read* the bytes, not that two engines compute the *same answer* over them — the divergence lives in the read path, not the file — which is exactly where a swap can pass the "it runs" test and still be wrong.
+The honest part is how unevenly that claim is backed, and the layers are not equal. The **engine layer is the one I have actually pressure-tested for answer-equivalence** rather than asserted it, and it's the one where the gate earns its keep: a broader run across twelve publishable Parquet readers on byte-identical data found ten correct and two silently wrong (engines selected by distinct reader, because the divergence lives in the Parquet reader rather than the engine wrapped around it): a version-scoped chDB Bloom-filter undercount that reproduced with the Parquet row-group structure rather than at one fixed scale (at 10M rows under `ROW_GROUP_SIZE` 12288 as well as at 100M) and was fixed in the next point release (wrong on chDB 4.1.8, correct on 4.1.9), and a fastparquet `PLAIN_DICTIONARY` decode bug still live on the latest version (2026.5.0), so on the engine layer answer-equivalence is a measured, mechanism-isolated finding (SDW Lab, `clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md`, first-party Tier B; see Appendix I.1.5 and `H-ENGINE-ANSWER-EQUIVALENCE-01`), and the lesson is that a fast engine can return a wrong answer with no error, so the cross-engine check is a standing control, not optional ceremony. The other four layers, store and catalog and table format and router, I verify with a swap-and-confirm demonstration (one batch through each alternative, answer held constant) and otherwise rest on the open-format contract: the same Parquet bytes flow through, so a different store or catalog or router is reading or writing the same data, and the answer should not move. I have not run those layers through the same characterized at-scale, multi-implementation divergence probe that found the engine bugs, so the accurate statement is *answer-equivalence verified for the engine layer; the store, catalog, format, and router swaps are confirmed on a single batch and otherwise asserted from the open-format contract.* The reason the engine layer needed more than the contract is that an open table format guarantees every engine can *read* the bytes, not that two engines compute the *same answer* over them (the divergence lives in the read path, not the file), which is exactly where a swap can pass the "it runs" test and still be wrong.
 
-One file-format facet to track sits a layer below the table format: Vortex (now a Linux Foundation project, installable as `vortex-data`) claims large read speedups over Parquet. Measured against zstd-Parquet on an OCSF corpus, the gain was real but single-digit (roughly 1.7–2.6× on a full decode, 3.3–4× on a needle) rather than the headline 10–100×, with a scale-dependent footprint and identical answers. It is not yet an Iceberg data file format — Iceberg 1.11.0 shipped the pluggable File Format API but the Vortex plugin is still open — so for now it is a standalone datapoint, a candidate third answer to the read-speed question alongside the V4 metadata work and DuckLake if that plugin lands.
+One file-format facet to track sits a layer below the table format: Vortex (now a Linux Foundation project, installable as `vortex-data`) claims large read speedups over Parquet. Measured against zstd-Parquet on an OCSF corpus, the gain was real but single-digit (roughly 1.7–2.6× on a full decode, 3.3–4× on a needle) rather than the headline 10–100×, with a scale-dependent footprint and identical answers. It is not yet an Iceberg data file format (Iceberg 1.11.0 shipped the pluggable File Format API, but the Vortex plugin is still open), so for now it is a standalone datapoint, a candidate third answer to the read-speed question alongside the V4 metadata work and DuckLake if that plugin lands.
 
 ---
 
@@ -108,7 +108,7 @@ The budget and cost figures throughout this appendix are outputs of the TCO mode
 | 4. Traditional SIEM (Splunk ES) | Real-time mandate, zero data engineers, simplicity | 0 data engineers (SOC analysts) | $2M-12M (volume-dependent) |
 | 5. MOAR Multi-Engine | Workload optimization, 50-75% cost savings | 3-5 data engineers; hybrid-tolerant | $324K-$588K |
 
-Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus Path A, Priya, Marcus Path B) — the "what good looks like" material, Chapter 6 of the handbook; Pattern 5 to Appendix I. Full detail for each follows below.
+Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus Path A, Priya, Marcus Path B), the "what good looks like" material from Chapter 6 of the handbook; Pattern 5 maps to Appendix I. Full detail for each follows below.
 
 ---
 
@@ -388,7 +388,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 **Security Considerations**:
 - **IAM least privilege**: SOC analysts query via Athena (SELECT only, no DELETE/UPDATE)
 - **S3 bucket encryption**: SSE-S3 or SSE-KMS (compliance requirement)
-- **VPC endpoints**: Private connectivity (Athena, S3, Glue—no internet traffic)
+- **VPC endpoints**: Private connectivity (Athena, S3, Glue) with no internet traffic
 - **CloudTrail logging**: Audit all Athena queries (who queried what data when)
 
 ---
@@ -405,7 +405,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Data Transfer** | $12K-$24K/year | Cross-region (if multi-region), VPC endpoints |
 | **QuickSight** | $12K-$24K/year | 50 users × $24/user/month |
 | **Personnel** (3-5 data engineers) | N/A | Existing headcount |
-| **TOTAL** | **$408K-$816K/year** | A.6-modeled; vs. schema-on-read SIEM $1.5M-$4.4M/year at 2 TB/day (Worksheet A.6, Step 2) — the $12M Splunk figure belongs to Pattern 4's 12 TB/day Marcus case (Ch.6), a different volume tier, not this pattern's |
+| **TOTAL** | **$408K-$816K/year** | A.6-modeled; vs. schema-on-read SIEM $1.5M-$4.4M/year at 2 TB/day (Worksheet A.6, Step 2); the $12M Splunk figure belongs to Pattern 4's 12 TB/day Marcus case (Ch.6), a different volume tier, not this pattern's |
 
 **ROI**: 12-18 month payback, illustrative (A.6 model, vs. Splunk expansion cost avoided)
 
@@ -422,7 +422,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 
 ✗ **Don't Use If**:
 - Multi-cloud requirement (Azure + GCP alongside AWS)
-- Real-time detection <30 seconds required (Athena's batch ingestion path adds roughly a minute or more of latency — illustrative, pipeline-dependent — so it misses a sub-30-second target)
+- Real-time detection <30 seconds required (Athena's batch ingestion path adds roughly a minute or more of latency, illustrative and pipeline-dependent, so it misses a sub-30-second target)
 - On-premises data residency required (HIPAA PHI, air-gapped)
 - 0-1 data engineers (even AWS-managed requires some operational support)
 
@@ -592,7 +592,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - Establish baseline: regional queries work correctly, analysts comfortable
 
 **Phase 2: EU-US Federation (Months 7-9)**
-- Deploy Denodo in US + EU (not China—isolated by design)
+- Deploy Denodo in US + EU (not China, which is isolated by design)
 - Configure federated queries (EU analysts query EU + US)
 - Test cross-region correlation use cases (lateral movement spanning regions)
 
@@ -686,7 +686,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 | **Ingestion** | Universal/Heavy Forwarders | Filebeat, Logstash | Real-time (<5 sec), agent-based, mature connectors |
 | **Storage** | Splunk tsidx | Iceberg, Parquet | Indexed (not columnar) optimized for SPL queries |
 | **Query Language** | SPL | SQL, KQL | Purpose-built for security (streamstats, transaction, tstats) |
-| **Detection** | ES Correlation Searches | Custom rules | Extensive pre-built library: the ESCU security-content project publishes ~2,113 non-deprecated detections (GitHub-derived 2026-07-10; ES additionally bundles correlation searches — the older un-sourced "~1,700 correlation rules" figure conflated the two and was replaced) |
+| **Detection** | ES Correlation Searches | Custom rules | Extensive pre-built library: the ESCU security-content project publishes ~2,113 non-deprecated detections (GitHub-derived 2026-07-10; ES additionally bundles correlation searches, and the older un-sourced "~1,700 correlation rules" figure conflated the two and was replaced) |
 | **SOAR** | Splunk Phantom | Third-party | Native integration, single-vendor support |
 | **ML** | MLTK (Machine Learning Toolkit) | Separate ML platform | Built-in, no integration required |
 
@@ -702,7 +702,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - **Risk-averse culture** ("nobody got fired for buying Splunk")
 
 ✗ **Don't Use If**:
-- **Cost optimization priority** (on the A.6 model, schema-on-read SIEM runs several times more expensive than a lakehouse stack of Iceberg on S3 + Athena or Trino — the 3-10× figure tracks the savings tiers in this appendix's cost tables)
+- **Cost optimization priority** (on the A.6 model, schema-on-read SIEM runs several times more expensive than a lakehouse stack of Iceberg on S3 + Athena or Trino, and the 3-10× figure tracks the savings tiers in this appendix's cost tables)
 - **Multi-year queryable retention** (Splunk archives to offline, not queryable)
 - **3+ data engineers available** (lakehouse stack viable with team capacity)
 - **Budget <$2M annually** at volume (10+ TB/day unsustainable on Splunk pricing)
@@ -719,13 +719,13 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 | **5 TB/day** | $6M-$10M/year | $800K-$1.5M/year | 75-85% |
 | **10 TB/day** | $12M-$20M/year | $1.2M-$2.5M/year | 85-90% |
 
-**Variants-chapter case study** (Marcus Financial Services, from the "what good looks like" material — Chapter 6 of the handbook):
+**Variants-chapter case study** (Marcus Financial Services, from the "what good looks like" material, Chapter 6 of the handbook):
 - Volume: 12 TB/day (Path A: full lakehouse migration to Iceberg on S3 + Athena)
 - Schema-on-read SIEM renewal: $12M/year
 - Modern stack (Athena): $2.9M/year
 - **Savings: $9.1M/year (76%)**
 
-> **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion/storage but benefit from volume discounts at higher tiers — actual savings percentages at 12 TB/day may exceed the 85-90% shown for 10 TB/day due to better S3 and compute pricing tiers.
+> **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion/storage but benefit from volume discounts at higher tiers, so actual savings percentages at 12 TB/day may exceed the 85-90% shown for 10 TB/day due to better S3 and compute pricing tiers.
 
 **When Splunk Still Wins** (Marcus Path B):
 - SEC real-time fraud detection mandate (<30 seconds)
@@ -870,7 +870,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 
 **Applies to**: Pattern 1 (Healthcare Hybrid), Pattern 2 (AWS-First), Pattern 5 (Multi-Engine)
 
-Appendix I.4B works through the trade-off in detail, and the short version is that the published upside claims decompose into three very different sources (units-and-attribution corrected 2026-07-10 against the SDW essay): Snowflake's own figure is roughly a 78% query improvement with 21% cost reduction on single-table aggregations (a percentage, not a multiplier; vendor docs, Tier C), the 9,000× top end comes from a single-developer PostgreSQL case study (Sid Ngeth, 2025: 350×–9,000× on a synthetic Rails dataset; Tier D anecdote, not vendor literature), and a practitioner Splunk write-up reports ~270× (unsafehex.com, Tier C) — while the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth), which is the honest independently-reproduced anchor for the claim — but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
+Appendix I.4B works through the trade-off in detail, and the short version is that the published upside claims decompose into three very different sources (units-and-attribution corrected 2026-07-10 against the SDW essay): Snowflake's own figure is roughly a 78% query improvement with 21% cost reduction on single-table aggregations (a percentage, not a multiplier; vendor docs, Tier C), the 9,000× top end comes from a single-developer PostgreSQL case study (Sid Ngeth, 2025: 350×–9,000× on a synthetic Rails dataset; Tier D anecdote, not vendor literature), and a practitioner Splunk write-up reports ~270× (unsafehex.com, Tier C), while the SDW Lab's own first-party measurement (CV-gated, single host, Tier B) lands far more modestly, at 45–77× on three SOC rollups (76.8× class-rollup, 53.6× time-series, 45.3× failed-auth), which is the honest independently-reproduced anchor for the claim, but security data's own characteristics (high data change rates, schema volatility, complex correlation requirements) create failure modes that make selective deployment the right default rather than turning views on everywhere.
 
 ### When to Add Materialized Views to Your Architecture
 
@@ -925,7 +925,7 @@ Appendix I.4B works through the trade-off in detail, and the short version is th
 - **Platform**: Iceberg tables with Trino/Dremio (Pattern 1, 5), Athena (Pattern 2)
 - **Use case**: Ad-hoc threat hunting, unpredictable query patterns
 - **Example**: "Show me all DNS queries to domains registered in the last 48 hours"
-- **Deployment**: Default—most queries go here (90-95%), materialized views selective (5-10%)
+- **Deployment**: The default routes most queries here (90-95%), with materialized views selective (5-10%)
 
 ### Implementation Guidance by Pattern
 
@@ -946,12 +946,12 @@ The per-month cost and ROI figures in this section are A.6-model projections for
 **Pattern 5 (Multi-Engine Modern Stack)**:
 - Use Dremio Reflections for dashboards (Tier 2)
 - Use Spark for batch materialized views (Tier 3)
-- Keep Trino for ad-hoc hunting (Tier 4—no materialization)
+- Keep Trino for ad-hoc hunting (Tier 4, with no materialization)
 - Cost: Already included in Dremio Cloud + Spark costs
 - ROI: Incremental, since it enables <1 second dashboards without additional infrastructure
 
 **Pattern 4 (Traditional SIEM)**: N/A
-- Schema-on-read SIEM Data Model Acceleration = built-in materialized views (~270× reported in a practitioner write-up — unsafehex.com, "tstats: afterburners for your Splunk threat hunting," Tier C; re-attributed 2026-07-10 from "docs.splunk.com," which documents the mechanism but not that figure, and the unlocatable "51×" low end dropped)
+- Schema-on-read SIEM Data Model Acceleration = built-in materialized views (~270× reported in a practitioner write-up, unsafehex.com, "tstats: afterburners for your Splunk threat hunting," Tier C; re-attributed 2026-07-10 from "docs.splunk.com," which documents the mechanism but not that figure, and the unlocatable "51×" low end dropped)
 - Enable for high-value use cases (CIM-compliant dashboards)
 - Cost: Included in Splunk licensing
 - ROI: Performance improvement only (no separate cost)
@@ -1023,7 +1023,7 @@ Both examples below are illustrative arithmetic on A.6-model assumptions (assume
 
 ### When materialization earns its keep
 
-The Netflix 5 PB/day deployment (Appendix I.4A) is a useful reminder that running the query layer without leaning on materialized views can be a valid and durable choice — the public Netflix material reaches sub-second queries through base-table and ingest-path engineering rather than materialization, and operational simplicity and schema flexibility can outweigh query performance optimization, particularly when the data changes fast enough that refresh cost exceeds the query savings. The published materialized-view speedups (Snowflake ~78% improvement; a single-developer PostgreSQL case study at 350×–9,000×; practitioner Splunk ~270× — Tier C/D, not independently reproduced) only translate to real cost reduction when query frequency materially exceeds the data change rate, so the right entry point is a pilot of 3-5 high-value, stable use cases (compliance dashboards, scheduled reports) with measured ROI before any broader rollout. Security data creates failure modes that general BI analytics don't face, the high change rates and schema volatility and multi-table correlation patterns that IVM implementations don't handle, which is why the four-tier model above (streaming → micro-batch → batch → data lake) distributes work across the right tool for each tier rather than applying materialization as a universal pattern.
+The Netflix 5 PB/day deployment (Appendix I.4A) is a useful reminder that running the query layer without leaning on materialized views can be a valid and durable choice, because the public Netflix material reaches sub-second queries through base-table and ingest-path engineering rather than materialization, and operational simplicity and schema flexibility can outweigh query performance optimization, particularly when the data changes fast enough that refresh cost exceeds the query savings. The published materialized-view speedups (Snowflake ~78% improvement; a single-developer PostgreSQL case study at 350×–9,000×; practitioner Splunk ~270×, Tier C/D, not independently reproduced) only translate to real cost reduction when query frequency materially exceeds the data change rate, so the right entry point is a pilot of 3-5 high-value, stable use cases (compliance dashboards, scheduled reports) with measured ROI before any broader rollout. Security data creates failure modes that general BI analytics don't face, the high change rates and schema volatility and multi-table correlation patterns that IVM implementations don't handle, which is why the four-tier model above (streaming → micro-batch → batch → data lake) distributes work across the right tool for each tier rather than applying materialization as a universal pattern.
 
 **For detailed platform comparisons** (Dremio Reflections vs Snowflake Dynamic Tables vs Databricks MVs vs Materialize vs ksqlDB vs Flink), see ["Materialized Views for Security Data: What Actually Works at Petabyte Scale"](https://securitydataworks.com/writing/engines/materialized-views) on securitydataworks.com.
 
