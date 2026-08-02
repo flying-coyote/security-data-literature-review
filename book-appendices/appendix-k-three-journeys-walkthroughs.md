@@ -540,7 +540,7 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 | 3-year TCO | $10.7M ($300K implementation + $10.4M operations) | $36M+ (SIEM licensing dominates) |
 | Performance | 80-100 s latency, historical compliance | <5 s real-time detection (beats SEC <30 s mandate) |
 
-**Why Path B Won Despite Roughly 3.4× Higher Cost**:
+**Why Path B Won Despite Roughly 3.5× Higher Annual Cost**:
 
 1. **Regulatory Mandate Changed**: In this scenario a new SEC requirement for sub-30-second fraud detection made the 80-100 second Athena latency non-compliant, and compliance risk outweighed cost savings by a wide margin. No such rule exists at the SEC as of this writing, and the 90-day clock in the two points below is a constructed constraint of the teaching scenario rather than a deadline you can look up.
 
@@ -550,7 +550,7 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 
 4. **Operational Complexity During Crisis**: Troubleshooting the Athena + Starburst + Iceberg stack requires coordinating across AWS support (Athena), Starburst support (connectors), and the internal team (Iceberg maintenance), which is unacceptable during 3 AM fraud incidents vs single Splunk support call
 
-5. **Risk-Adjusted Value**: Real-time fraud prevention worth the $8.5M/year premium given regulatory exposure ($50M+ SEC fines for non-compliance), reputational risk (financial services brand damage), and operational simplicity with 0 data engineers
+5. **Risk-Adjusted Value**: Real-time fraud prevention worth the $8.5M/year premium, which is the gap between two all-in figures that both carry platform and staffing ($12M against $3.47M), given regulatory exposure ($50M+ SEC fines for non-compliance), reputational risk (financial services brand damage), and operational simplicity with 0 data engineers
 
 The reading I'd take from this is that the "expensive" SIEM option turned out cheaper once total cost of ownership took in the compliance risk, the team-capacity constraint, and the timeline pressure, and Marcus's decision was driven by realistic team sizing (no data engineers available within the deadline) and by a non-negotiable regulatory threshold (sub-30-second detection) rather than by any technology preference.
 
@@ -870,14 +870,14 @@ Priya's usage guidance to the SOC analysts, which followed directly from that sp
 
 **Cost Comparison vs Alternatives**:
 
-| Approach | Description | Annual Cost | Performance | Data Sovereignty | Regional Disruption |
+| Approach | Description | Annual platform cost | Performance | Data Sovereignty | Regional Disruption |
 |----------|-------------|-------------|-------------|------------------|-------------------|
 | **Denodo Virtualization** (selected) | API-based federation, query pushdown | $1.8M/year | 45-90 sec cross-region | ✓ Compliant (query pushdown) | ✓ Zero (API-only) |
 | **SIEM Consolidation** (schema-on-read SIEM global) | Migrate all regions to a single schema-on-read SIEM cloud | $8.5M/year | 10-20 sec (native) | ✗ Violates GDPR, China law | ✗ High (force migration) |
 | **Lakehouse Federation** (Iceberg + Trino multi-cloud) | Export all SIEMs to Iceberg, Trino federation | $2.1M/year | 60-120 sec cross-region | ⚠ Complex (requires regional S3 export) | ⚠ Medium (S3 export pipelines) |
 | **Manual Coordination** (status quo) | Analysts query each SIEM separately, manual correlation | $0 new cost | 5-10 min per region (4-6 hours for all regions) | ✓ Compliant (no automation) | ✓ Zero (no changes) |
 
-**Denodo value proposition**: $1.8M/year to gain first-time capability (unified cross-region visibility) without data sovereignty violations or regional disruption. Alternative approaches either violate compliance (consolidation), create operational burden (lakehouse export), or provide no improvement (manual status quo).
+**Denodo value proposition**: $1.8M/year in platform cost, before the 7-8 FTEs the staffing section below carries, to gain first-time capability (unified cross-region visibility) without data sovereignty violations or regional disruption. Alternative approaches either violate compliance (consolidation), create operational burden (lakehouse export), or provide no improvement (manual status quo).
 
 **What Denodo Does NOT Solve**:
 
@@ -915,15 +915,15 @@ Denodo queries regional SIEMs via APIs:
 
 **4. Cost structure**: Per-connector + per-user licensing (not consumption-based)
 
-Denodo pricing: $1.2M/year for 3 regions, 50 users, 8 data source connectors
+Denodo pricing: $1.2M/year in licensing for 3 regions, 50 users, 8 data source connectors, which is the licence line inside the $1.8M/year platform cost the comparison above uses and inside the $2.7M-3.1M fully loaded annual budget below
 
 - Small queries pay same as large queries (not Athena-style $5/TB scanned)
 - Adding 4th region: +$250K/year (regardless of query volume)
 - Flat cost structure benefits high-query-volume use cases, penalizes low-volume
 
-**Cost reality check**:
+**Cost reality check** (platform cost before staffing, so the three lines compare like with like):
 - **Denodo**: $1.8M/year for 18 TB/day federated access = $100K per TB/day of federated capacity
-- **SIEM consolidation**: $8.5M/year = $472K per TB/day of federated capacity (4.7× more expensive, but violates compliance)
+- **SIEM consolidation**: $8.5M/year = $472K per TB/day of federated capacity (4.7× more expensive on platform alone, but violates compliance)
 - **Lakehouse (if consolidation were legal)**: $2.1M/year = $117K per TB/day of federated capacity (slightly more expensive, requires regional disruption)
 
 So Denodo comes out cost-effective against the alternatives that are actually compliant, and it only looks expensive when you compare it to consolidation, which is cheaper per terabyte but isn't legal under the data-sovereignty rules Priya has to satisfy.
@@ -959,7 +959,7 @@ Priya's Denodo virtualization approach for EU/US/China data sovereignty represen
 - **Note**: Denodo licensing included in operational budget above, not double-counted
 
 **Comparison to Alternatives**:
-- **SIEM Consolidation (schema-on-read SIEM cloud, global)**: $8.5M/year = $25.5M over 3 years (roughly 2.3-2.7× MORE expensive, but **violates GDPR and China Cybersecurity Law**, so not viable)
+- **SIEM Consolidation (schema-on-read SIEM cloud, global)**: $8.5M/year = $25.5M over 3 years in platform cost alone, against Priya's fully loaded $9.3M-10.9M, which works out at roughly 2.3-2.7× more expensive. Read that multiple as a floor rather than a like-for-like figure, because the $25.5M carries no SOC staffing while Priya's number carries 7-8 FTEs and implementation, and the platform-only comparison above puts the same gap at 4.7×. It **violates GDPR and China Cybersecurity Law** either way, so it is not viable at any multiple
 - **Lakehouse Federation (Iceberg + Trino multi-cloud)**: $2.1M/year = $6.3M over 3 years (roughly 32-42% CHEAPER, but requires regional S3 export pipelines = high political friction with autonomous regional IT teams, 6-12 month delays)
 - **Manual Coordination (status quo)**: $0 new cost, but 4-6 hours per cross-region investigation (unacceptable operational burden, investigators abandon cross-region hunts)
 - **Baseline batch lakehouse (single-region)**: $2.5M over 3 years for 2 TB/day (from practitioner tools)
