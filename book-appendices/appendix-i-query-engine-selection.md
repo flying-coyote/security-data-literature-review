@@ -23,7 +23,7 @@ Organizations that force all workloads through a single query engine pay for it 
 - unnecessarily high costs from paying for capabilities they don't use
 - operational friction as SOC dashboards compete with threat hunting scans for the same resources
 
-This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (H-ARCH-02: 0.97 confidence; Section I.6.3's worked scenario lands at 60% within that range) compared to single-platform approaches while providing better performance.
+This appendix addresses **Anti-Pattern #4: "One Engine for Everything"** and shows you how to build hybrid architectures that route each security workload to its optimal engine, which delivers 50-75% cost savings (H-ARCH-02: 0.97 confidence; Section I.6.3's worked scenario lands at 63% within that range) compared to single-platform approaches while providing better performance.
 
 The appendix works through:
 
@@ -39,7 +39,7 @@ and then it pulls the engines together into hybrid architecture patterns. The re
 
 ### Leadership Takeaway
 
-Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans; the worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. In this appendix's worked Enterprise-SOC scenario (Section I.6.3), hybrid multi-engine architecture shows 60% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, late 2024) and described by Jake Thomas at Okta (7.5 trillion records, Tier B: personal communication).
+Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans; the worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. In this appendix's worked Enterprise-SOC scenario (Section I.6.3), hybrid multi-engine architecture shows 63% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, late 2024) and described by Jake Thomas at Okta (7.5 trillion records, Tier B: personal communication).
 
 **Bottom line**: Multiple specialized engines cost less and fit security's conflicting workloads better than one general-purpose engine; the gain is operational fit and cost, with raw speed the smaller lever at SOC scale.
 
@@ -637,13 +637,13 @@ Whether that superlinear scaling generalizes depends on query type and schema, a
 
 **Cost comparison** (petabyte-scale security data, from the TCO model in Appendix A (Worksheet A.6), which the manageability chapter, Chapter 1, points to; pricing as of Q4 2025):
 - **Schema-on-read SIEM**: roughly $620K-$870K per TB/day/year at the discounted full-stack rate of $620-870/GB/day/year (Appendix A, Worksheet A.6 Step 2), so about $6.2M-$8.7M/year at 10 TB/day, which A.6 marks infeasible
-- **Snowflake**: $23/TB/month storage + $2-$4/TB scanned (Section I.6.3: $35K/month for 10 TB/day)
+- **Snowflake**: $23/TB/month storage + $2-$4/TB scanned (Section I.6.3: $38K/month for 10 TB/day)
 - **ClickHouse + Iceberg hybrid**: $345-$6,900/month storage (depending on hot/cold ratio) + ~$3K compute
 - **Savings**: 75-95% vs traditional SIEM, 50-70% vs cloud data warehouse
 
 ### I.4A.7 Key Takeaways from Netflix
 
-Netflix's ClickHouse journey lines up with the MOAR architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (H-ARCH-02; Section I.6.3's worked scenario lands at 60% within that range).
+Netflix's ClickHouse journey lines up with the MOAR architectural pattern for security data on five points, and what makes them worth carrying over isn't the headline scale but the engineering choices underneath it. Ingestion-path performance compounds, so the generated parsers that beat regex (216μs → 23μs) and the native protocols that beat generic APIs (30%+ gain) both come back to measuring per-event latency rather than trusting the framework. Data layout did more for them than clever algorithms, since sharding the tag-metadata maps took a query from 3s to 700ms by doing less work through better schema design. Hot/cold tiering stops being optional once you're at petabyte scale, where ClickHouse over the recent 30 days in front of Iceberg holding the cold years buys a 10-50× cost reduction. Columnar storage is what makes the analytics affordable, with the 12-19× compression against Elasticsearch and the 5-100× faster analytical queries that Netflix reported. And the lakehouse-plus-specialized-engines shape is the one this appendix argues for throughout, because the multi-engine architecture is where the 50-75% cost savings against single-platform come from (H-ARCH-02; Section I.6.3's worked scenario lands at 63% within that range).
 
 ### I.4A.8 Sidebar: Vortex, one layer below the engine choice
 
@@ -1152,7 +1152,7 @@ Both options are priced on consumption alone, so the Snowflake baseline carries 
 **Performance improvements** (illustrative, derived from the cost scenario above, not a first-party run):
 - Dashboard latency: 5-15 seconds → <1 second (Dremio Reflections)
 - Threat hunts: 30-60 seconds → 8-15 seconds (80% volume reduction)
-- Query cost: $35,105/month → $14,011/month (60% savings)
+- Query cost: $38,100/month → $14,011/month (63% savings)
 
 ---
 
@@ -1248,4 +1248,4 @@ The harder thing to carry out of this appendix isn't the routing table, which mo
 
 **Case studies**:
 - Okta DuckDB serverless (Tier B, Jake Thomas personal account): 7.5 trillion records in 6 months, 50 TB/day peak, $2K/day Snowflake → "dramatically reduced" DuckDB serverless cost
-- Healthcare SOC hybrid (composite model): $35K/month Snowflake → $14K/month hybrid (60% savings, <1 sec dashboards), an illustrative calculation and not a named client
+- Healthcare SOC hybrid (composite model): $38K/month Snowflake → $14K/month hybrid (63% savings, <1 sec dashboards), an illustrative calculation and not a named client

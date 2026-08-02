@@ -52,7 +52,7 @@ Check all that apply. Any vendor missing even ONE Tier 1 requirement is immediat
 - [ ] Other: ________________________________
 
 **Real-Time Detection:**
-- [ ] Real-time required: <_______ seconds alert latency (e.g., <30 sec for SEC fraud detection)
+- [ ] Real-time required: <_______ seconds alert latency (fill this from your own regulator's text, because the <30 sec figure this book carries through the Marcus scenario is a constructed premise and the SEC has published no such fraud-detection mandate as of this writing)
 - [ ] Batch acceptable: _______ minute latency tolerance (e.g., 5-15 min for threat hunting)
 - [ ] Dual capability: Streaming (real-time) + batch (historical) in same platform
 
@@ -786,7 +786,7 @@ Savings increase with data volume and retention period because storage is a marg
 
 **Why Hybrid**:
 - Organizational inertia (existing Splunk investment, trained analysts, operational continuity)
-- Regulatory requirements (SEC <30 sec real-time detection, SIEM-proven compliance)
+- Regulatory requirements (SIEM-proven compliance, plus whatever real-time detection threshold actually binds you; the SEC <30 sec figure carried through this book's Marcus scenario is a constructed premise rather than a published rule, since the SEC has issued no such mandate as of this writing)
 - Team capacity constraints (0-1 data engineers, cannot support full MOAR)
 
 **Cost Model** (2 TB/day with 10:1 route-by-value):
@@ -836,7 +836,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 
 **Cold-tier assumption at 10 TB/day**: the 10 TB/day MOAR (OSS) band assumes the 7-year cold tier moves to S3 Glacier Deep Archive (~$0.00099/GB-month) rather than the Glacier Flexible rate Step 3 prices at 2 TB/day, because at 10× the volume the ~25 PB cold accumulation only fits inside the $548K-$848K band at the Deep Archive rate (Glacier Flexible alone would run roughly $92K/month there), so read Step 3's Glacier-Flexible cold line as the 2 TB/day case and this column as its 10 TB/day counterpart, which is what keeps Step 3 and Step 5 consistent.
 
-**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM, and the modeled gap is roughly 90-91% at 10 TB/day and 36-42% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between: its modeled savings versus a full-volume SIEM are roughly 10% at the 2 TB/day worked example in Step 4, widening at higher volumes against the full-stack bands above, and it solves the retention gap while staying workable for a team with zero or one data engineer.
+**Reading the table**: the savings widen as volume grows, because in this model storage is a marginal cost for MOAR but a fixed license cost for the SIEM, and the modeled gap between the schema-on-read full-stack SIEM row and the MOAR (OSS) row is roughly 90-91% at 10 TB/day and 36-42% at 500 GB/day. The 7-year retention requirement is where the traditional SIEM tends to break, since it cannot economically hold petabyte-scale compliance data the way a tiered lake can. Team capacity shifts which row you land on: OSS is the cheapest but assumes 3-5 data engineers, while the cloud-managed option costs roughly 2× more and gets by with 1-2 engineers. The hybrid pattern sits in between: its modeled savings versus a full-volume SIEM are roughly 10% at the 2 TB/day worked example in Step 4, widening at higher volumes against the full-stack bands above, and it solves the retention gap while staying workable for a team with zero or one data engineer.
 
 ---
 
@@ -866,7 +866,7 @@ The dollar bands in this table are outputs of the cost models in Steps 2-4, not 
 **When NOT to Migrate** (stay with incumbent SIEM):
 - Payback > 3 years (savings too small to justify disruption)
 - Team capacity 0 engineers (no one to operate MOAR)
-- Operational continuity critical (SEC real-time requirement, cannot tolerate migration risk)
+- Operational continuity critical (a real-time detection requirement you cannot pause, and no tolerance for migration risk; the SEC threshold used in the Marcus scenario is a premise of that scenario rather than a published rule)
 - See the variants chapter of the handbook (Chapter 6, "What good looks like") for the "When Splunk Wins" case where staying with the incumbent is the valid approach
 
 ---

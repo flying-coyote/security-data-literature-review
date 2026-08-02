@@ -58,7 +58,7 @@ DataStream<AuthEvent> authStream = env
 ```
 
 **When to use Flink**:
-- Regulatory requirement: <30 second detection (SEC fraud, PCI-DSS real-time)
+- Regulatory requirement: sub-30-second detection, where the threshold comes from your own regulator's text (a PCI-DSS real-time monitoring obligation, for instance) rather than from the SEC fraud-detection mandate this book's Marcus scenario stipulates, which is a constructed premise and not a published rule as of this writing
 - Complex event processing (multi-stage correlation, stateful analysis)
 - High throughput (single-stream rates in the >100K events/second range; the actual ceiling depends on parallelism, key cardinality, and state size, so consult the Flink performance-tuning docs rather than treating one number as a guarantee) [Tier D, order-of-magnitude, not a benchmarked figure]
 

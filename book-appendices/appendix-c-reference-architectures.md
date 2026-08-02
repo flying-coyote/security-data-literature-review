@@ -57,7 +57,7 @@ One condition keeps the interchangeability claim narrow: it holds only when encr
 
 These principles are validated at scale:
 - **Netflix**: 5 PB/day ClickHouse + Apache Iceberg (Daniel Muino, ClickHouse meetup talk, July 2025, written up on the ClickHouse blog 2025-10-23, date corrected 2026-07-10 from "late 2024" per the bibliography's 2026-07-09 correction; Tier C (vendor-ecosystem event, self-reported)) (Principle 2, 5)
-- **Okta**: 7.5 trillion records processed in six months across thousands of concurrent DuckDB Lambda instances (Jake Thomas, Okta, personal account; Tier B, not independently audited) (Principle 5)
+- **Okta**: 7.5 trillion records processed in six months across thousands of concurrent DuckDB Lambda instances, 50 TB/day peak (Jake Thomas, Okta, personal account; Tier B, not independently audited) (Principle 5)
 - **Apple**: petabyte-scale row-level operations on Apache Iceberg, which Apple also maintains upstream (Okolnychyi et al. of Apple with Ryan Blue of Tabular, "Petabyte-Scale Row-Level Operations in Data Lakehouses," PVLDB 17(12):4159-4172, 2024, doi 10.14778/3685800.3685834, Tier A; the Iceberg PMC seats are plural and public in the ASF community and dev-list records, Anton Okolnychyi since May 2020 and Szehon Ho since 2023, Tier B; an earlier "Baris Aydın, 'Apple's Journey with Apache Iceberg,' Subsurface Live 2023" attribution could not be located and was dropped 2026-07-10 as superseded) (Principle 1, 2)
 - **CISA**: Zeek-OCSF mapping, ~95% mapping accuracy as reported by the project itself, an illustrative figure rather than an independently published rate (CISA Zeek-OCSF project; Tier B) (Principle 4)
 
@@ -611,7 +611,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - Real-time detection regulatory requirement (<30 seconds alert latency)
 - 0 data engineers (SOC analysts only, no platform engineering team)
 - Operational simplicity valued over cost optimization
-- SEC fraud detection mandate (financial services) or equivalent regulatory driver
+- SEC fraud detection mandate (financial services) or an equivalent regulatory driver, though the SEC mandate here is a premise of the handbook's Marcus teaching scenario rather than a published rule, since the SEC has issued no such requirement as of this writing (Appendix K.2 states the stipulation in full), so read this bullet as standing in for whichever real obligation binds your own firm
 
 **Solution**: Splunk Enterprise Security (single-vendor platform, ingestion through detection content in one licensed stack)
 
@@ -695,7 +695,7 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 ### When to Use This Pattern
 
 ✓ **Use If**:
-- **Real-time detection <30 seconds** (regulatory requirement: SEC fraud, PCI-DSS, SWIFT)
+- **Real-time detection <30 seconds** (driven by a real-time monitoring obligation under a regime such as PCI-DSS or the SWIFT customer security programme, but note that the sub-30-second figure itself comes from the Marcus scenario's SEC fraud-detection premise rather than from any published rule, since the SEC has issued no such mandate as of this writing, so substitute the latency your own regulator actually specifies before you use this as a gate)
 - **0 data engineers** (SOC analysts only, no platform engineering team)
 - **Operational simplicity** valued over cost optimization
 - **Budget: $2M-$12M annually** (enterprise scale, 1-10 TB/day)
@@ -728,7 +728,7 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 > **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion and storage, but these tiers are coarse model bands and reading a savings percentage off the nearest one will mislead you, which is why the Marcus scenario lands at 71% on the all-in basis while the 10 TB/day row shows 85-90%. His $12M SIEM figure is a licensing-plus-staffing model sitting at the floor of that row's $12M-$20M range, and his $2.9M Athena build sits above the $2.5M ceiling of the modern-stack column, so re-run Worksheet A.6 against your own rates before you quote a savings number.
 
 **When Splunk Still Wins** (Marcus Path B):
-- SEC real-time fraud detection mandate (<30 seconds)
+- SEC real-time fraud detection mandate (<30 seconds), which is a constructed constraint of Marcus's teaching scenario rather than a published rule, since the SEC has issued no such requirement as of this writing, so treat it as a stipulation that makes the trade-off legible (Appendix K.2 carries the premise in full)
 - Team capacity dropped from 3 → 1 engineer
 - **Decision**: Accept an $8.5M/year all-in premium for operational simplicity and real-time compliance. That is Path B's $12M against Path A's $3.47M once both paths carry their staffing, so it runs below the $9.1M a mixed-basis comparison would show, since that larger figure prices the $2.9M Athena build without the three engineers it needs (Appendix K.2 works the same two paths on that one basis).
 
