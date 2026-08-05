@@ -422,9 +422,11 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 
 ✗ **Don't Use If**:
 - Multi-cloud requirement (Azure + GCP alongside AWS)
-- Real-time detection <30 seconds required (Athena's batch ingestion path adds roughly a minute or more of latency, illustrative and pipeline-dependent, so it misses a sub-30-second target)
+- Real-time detection <30 seconds required (Athena's ingestion path is slower; see below)
 - On-premises data residency required (HIPAA PHI, air-gapped)
 - 0-1 data engineers (even AWS-managed requires some operational support)
+
+> **Why Athena misses that target**: the batch ingestion path adds roughly a minute or more before an event is queryable, and how much more depends on the ingestion pipeline in front of it, so read that figure as an order of magnitude. Either way it misses a sub-30-second target, so a pattern built on Athena is the wrong starting point when the detection budget is that tight.
 
 ---
 
@@ -608,12 +610,12 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 ### Architecture Overview
 
 **Problem Statement**:
-- Real-time detection requirement (<30 seconds alert latency), stipulated rather than published (see the note below)
+- Real-time detection requirement (<30 seconds alert latency), a premise of the teaching scenario (see the note below)
 - 0 data engineers (SOC analysts only, no platform engineering team)
 - Operational simplicity valued over cost optimization
 - SEC fraud detection mandate (financial services) or an equivalent regulatory driver (see the note below)
 
-> **On the regulatory driver**: the SEC fraud-detection mandate and the sub-30-second threshold that travels with it are premises of the handbook's Marcus teaching scenario rather than published rules, since the SEC has issued no such requirement as of this writing, and Appendix K.2 states the stipulation in full. So read both of those bullets as standing in for whichever real obligation binds your own firm, and substitute the latency your own regulator actually specifies before you design against it.
+> **On the regulatory driver**: both of those bullets belong to the handbook's Marcus teaching scenario, where the SEC fraud-detection mandate and the sub-30-second threshold that travels with it were written in so the trade-off between his two paths stays legible on the page. The SEC has published no rule of that kind to date, and Appendix K.2 states the stipulation in full, so read the two bullets as standing in for whichever real obligation binds your own firm, and substitute the latency your own regulator specifies before you design against it.
 
 **Solution**: Splunk Enterprise Security (single-vendor platform, ingestion through detection content in one licensed stack)
 
@@ -704,12 +706,14 @@ Patterns 1-4 map to the variants chapter's architect journeys (Jennifer, Marcus 
 - **Risk-averse culture** ("nobody got fired for buying Splunk")
 
 ✗ **Don't Use If**:
-- **Cost optimization priority** (on the A.6 model, schema-on-read SIEM runs several times more expensive than a lakehouse stack of Iceberg on S3 + Athena or Trino, and the 3-10× figure tracks the savings tiers in this appendix's cost tables)
+- **Cost optimization priority** (schema-on-read SIEM costs several times a lakehouse stack; see below)
 - **Multi-year queryable retention** (Splunk archives to offline, not queryable)
 - **3+ data engineers available** (lakehouse stack viable with team capacity)
 - **Budget <$2M annually** at volume (10+ TB/day unsustainable on Splunk pricing)
 
-> **Where the latency threshold comes from**: the sub-30-second figure this pattern carries is the Marcus scenario's SEC fraud-detection premise rather than a published rule, since the SEC has issued no such mandate as of this writing. The two regimes people commonly reach for here will not supply a replacement number either, because PCI DSS 4.0 obliges a daily review of the relevant audit logs under Requirement 10.4.1 and obliges that review to run through automated mechanisms under 10.4.1.1, while SWIFT's Customer Security Controls Framework requires logging and monitoring of the local SWIFT environment under control 6.4 and recommends intrusion detection under the advisory control 6.5A, so what both of them bind you to is a logging and review obligation rather than a latency one. Take your own threshold from an internal detection service level you can defend or from the text your regulator actually publishes, and read the <30 seconds here as a stipulation of the teaching scenario.
+> **Where the latency threshold comes from**: the sub-30-second figure this pattern carries is the Marcus scenario premise described at the top of this pattern, and the two regimes people commonly reach for here will not supply a replacement number either, because PCI DSS 4.0 obliges a daily review of the relevant audit logs under Requirement 10.4.1 and obliges that review to run through automated mechanisms under 10.4.1.1, while SWIFT's Customer Security Controls Framework requires logging and monitoring of the local SWIFT environment under control 6.4 and recommends intrusion detection under the advisory control 6.5A, so both regimes bind you to logging and review while neither one names a latency. Take your own threshold from an internal detection service level you can defend or from the text your regulator actually publishes.
+
+> **On the cost bullet**: the size of that gap is set by the savings column in the tier table below, which runs from 50-75% at 1 TB/day to 85-90% at 10 TB/day, so on the A.6 model a schema-on-read SIEM costs roughly twice a comparable lakehouse stack of Iceberg on S3 with Athena or Trino over it at the low end of that range and roughly ten times at the high end. Every figure in that table is model output for the stated volumes, which makes the multiple a sizing estimate you should reproduce on your own rates before it goes into a business case.
 
 ---
 
@@ -732,9 +736,11 @@ The tiers below are A.6-model outputs: the SIEM column derives from schema-on-re
 > **Note on volume differences**: The cost comparison table above uses standard volume tiers (1/5/10 TB/day) as reference points. The variants chapter's Marcus scenario uses 12 TB/day specific to his financial services organization. Cost estimates scale roughly linearly for ingestion and storage, but these tiers are coarse model bands and reading a savings percentage off the nearest one will mislead you, which is why the Marcus scenario lands at 71% on the all-in basis while the 10 TB/day row shows 85-90%. His $12M SIEM figure is a licensing-plus-staffing model sitting at the floor of that row's $12M-$20M range, and his $2.9M Athena build sits above the $2.5M ceiling of the modern-stack column, so re-run Worksheet A.6 against your own rates before you quote a savings number.
 
 **When Splunk Still Wins** (Marcus Path B):
-- SEC real-time fraud detection mandate (<30 seconds), which is a constructed constraint of Marcus's teaching scenario rather than a published rule, since the SEC has issued no such requirement as of this writing, so treat it as a stipulation that makes the trade-off legible (Appendix K.2 carries the premise in full)
+- SEC real-time fraud detection mandate (<30 seconds), stipulated by the scenario
 - Team capacity dropped from 3 → 1 engineer
-- **Decision**: Accept an $8.5M/year all-in premium for operational simplicity and real-time compliance. That is Path B's $12M against Path A's $3.47M once both paths carry their staffing, so it runs below the $9.1M a mixed-basis comparison would show, since that larger figure prices the $2.9M Athena build without the three engineers it needs (Appendix K.2 works the same two paths on that one basis).
+- **Decision**: Accept an $8.5M/year all-in premium for operational simplicity and real-time compliance
+
+> **Reading Path B**: the <30 second mandate in that first bullet is the scenario's own number and carries the qualification set out in the note at the top of this pattern, while the $8.5M premium is Path B's $12M against Path A's $3.47M once both paths carry their staffing, so it runs below the $9.1M a mixed-basis comparison would show, since that larger figure prices the $2.9M Athena build without the three engineers it needs (Appendix K.2 works the same two paths on that one basis).
 
 ---
 
