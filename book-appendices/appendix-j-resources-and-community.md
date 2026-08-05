@@ -810,7 +810,7 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 - Spark-only workload (no multi-engine requirement)
 - Change Data Capture (CDC) critical (Delta CDC features)
 
-**Interoperability**: Delta UniForm (Appendix K.2) maintains Delta + Iceberg simultaneously (migration path).
+**Interoperability**: Delta UniForm maintains Delta + Iceberg simultaneously, which is the migration path back out if the Databricks bet stops paying, and the price of keeping both formats live is weighed as a lock-in trade-off in the Databricks arm of Marcus's composite POC in Appendix K.2.
 
 **Resources**:
 - Official docs: https://docs.delta.io/

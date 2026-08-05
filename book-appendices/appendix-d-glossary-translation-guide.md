@@ -542,7 +542,7 @@ Security architects who speak both languages can use mature tooling, proven desi
 **Data Engineering Equivalent**: Data lake, lakehouse, data platform
 **Context**:
 - **SIEM = Proprietary data lake**: Splunk (tsidx storage + SPL query) = specialized data lake for security
-- **Modern approach**: Open data lake (Iceberg on S3) + query engine (Trino/Dremio) = SIEM-equivalent at 32–93% lower cost depending on volume and the SIEM being replaced (see Appendix A.6 for the full cost model)
+- **Modern approach**: Open data lake (Iceberg on S3) + query engine (Trino/Dremio) = SIEM-equivalent at a modeled 32-91% lower cost, depending on volume and on which SIEM baseline you price against. Worksheet A.6 models the saving at 36-42% at 500 GB/day and 90-91% at 10 TB/day against the full-stack schema-on-read SIEM row, while 32% is the conservative floor from its Step 6 worked example, which prices MOAR against a platform-license-only SIEM at 2 TB/day (see Appendix A.6 for the full cost model, whose figures are computed from published rates rather than taken from measured invoices)
 **Why It Matters**: SIEMs are data lakes with security-specific features, so data engineers can build the equivalent using open-source tools
 
 ---
