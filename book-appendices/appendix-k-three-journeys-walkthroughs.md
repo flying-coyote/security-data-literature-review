@@ -7,7 +7,7 @@ tags: [vendor-selection, architecture-decision, hipaa, dremio, iceberg, security
 
 # Appendix K: The Three Journeys, Full Walkthroughs
 
-The handbook's variants chapter (Chapter 6, "What good looks like") carries the decision-relevant summaries of the three architect journeys, the situation and constraints, the decision each architect made, and the outcome with its trade-offs, and this appendix carries the complete walkthroughs behind them:
+The handbook's variants chapter (Chapter 6, "What good looks like") carries the decision-relevant summaries of the three architect journeys, the situation and constraints, the decision each architect made, and the outcome with its trade-offs. This appendix carries the complete walkthroughs behind them:
 
 - the full requirement tiers
 - the vendor elimination lists and scoring matrices
@@ -222,7 +222,7 @@ On these results Jennifer selected Dremio Cloud + on-prem Dremio for PHI; the fi
 
 ### Critical Limitations and Honest Trade-Offs
 
-Jennifer documented the limitations explicitly for the executive sponsors and SOC leadership, because the open lakehouse approach carries its own set of trade-offs against Splunk and is not free of them; the honest case for it depends on naming what it does not do.
+Jennifer documented the limitations explicitly for the executive sponsors and SOC leadership, because the open lakehouse approach carries its own set of trade-offs against Splunk. The honest case for it depends on naming what it does not do.
 
 **What This Architecture Does NOT Solve**:
 
@@ -296,7 +296,7 @@ The Architecture Optimization Statement Jennifer put in front of the executive s
 
 ### Staffing & Budget Reality Check: HIPAA Hybrid Architecture
 
-Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an on-premises object store, represents a common mid-sized security operations pattern for regulated industries, and the staffing and budget for a 2.5 TB/day healthcare deployment with 3-year retention and HIPAA compliance shake out roughly as follows:
+Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an on-premises object store, represents a common mid-sized security operations pattern for regulated industries. The staffing and budget for a 2.5 TB/day healthcare deployment with 3-year retention and HIPAA compliance shake out roughly as follows:
 
 **Team Composition** (3.5-4.5 FTEs):
 - 2 Data Engineers (Dremio query optimization, Iceberg table management, OCSF normalization)
@@ -322,9 +322,9 @@ Jennifer's Dremio hybrid architecture, with cloud logs on S3 and PHI logs on an 
 - **Expanding the schema-on-read SIEM to full 2.5 TB/day, 30-day retention**: $1.6M+/year in licensing alone = $4.8M+ over 3 years, before the SOC staffing that path still needs, against Jennifer's fully loaded $2.8M-3.6M, and buying 30-day retention where hers buys 3-year
 - **Baseline batch lakehouse (from practitioner tools)**: $2.5M over 3 years for generic 2 TB/day deployment
 
-**Why Jennifer's TCO runs roughly 12-44% higher than the $2.5M baseline**: HIPAA compliance premium adds 15-20% to timeline (change control, audit requirements, security validation) and ongoing costs (dedicated security engineer FTE for compliance, professional services for secure Kubernetes deployment, dual environment complexity with hybrid on-prem/cloud split), and the top of the band reflects the fully-staffed 4.5-FTE case rather than additional compliance cost.
+**Why Jennifer's TCO runs roughly 12-44% higher than the $2.5M baseline**: HIPAA compliance premium adds 15-20% to timeline (change control, audit requirements, security validation) and ongoing costs (dedicated security engineer FTE for compliance, professional services for secure Kubernetes deployment, dual environment complexity with hybrid on-prem/cloud split). The top of the band reflects the fully-staffed 4.5-FTE case rather than additional compliance cost.
 
-The economics here are driven by the batch-first choice: it keeps the team size manageable (3.5-4.5 FTEs against 9-11 for a streaming build) and the budget predictable, and HIPAA adds complexity at the margins without changing the underlying numbers, because the hybrid on-prem/cloud split is operationally workable for a regulated industry where data sovereignty is mandatory rather than optional.
+The economics here are driven by the batch-first choice: it keeps the team size manageable (3.5-4.5 FTEs against 9-11 for a streaming build) and the budget predictable. HIPAA adds complexity at the margins without changing the underlying numbers, because the hybrid on-prem/cloud split is operationally workable for a regulated industry where data sovereignty is mandatory rather than optional.
 
 **Evidence**: Staffing Calculator from the literature review (batch 3.5 FTEs baseline, +1 FTE for compliance/governance). The deployment-timeline and HIPAA-compliance premiums are directional scenario assumptions (a regulated-industry build carries change-control, audit, and security-validation overhead a generic one doesn't), not figures from a specific sourced rate.
 
@@ -332,7 +332,7 @@ The economics here are driven by the batch-first choice: it keeps the team size 
 
 Marcus's journey is the worked example in the handbook's variants chapter, so the organizational context, the Tier 1 mandatory requirements, the Tier 2 scoring matrix with finalists, the Path A decision with its rationale, and the full Path B re-run are all in his variant summary there. This section carries the step-by-step detail beyond that treatment: the Tier 2 and Tier 3 requirements, the organizational constraints, the Tier 1 elimination detail, the full POC design and per-vendor results, and the staffing and budget comparison of the two paths.
 
-Marcus is a composite teaching scenario, so the POC latencies, the per-vendor cost projections (the $2.9M Athena baseline, the Starburst, Databricks, and Splunk figures), the FTE counts, and the 3-year TCO numbers below are illustrative figures from the author's TCO model (Appendix A, Worksheet A.6) applied to a 12 TB/day financial-services profile, not a measured deployment. The AWS unit prices (S3 tiers, Athena $/TB scanned, Kinesis $/GB) are list rates as of Q4 2025; the Splunk $11.4M/year licensing is list-modeled from the G-Cloud 14 anchor in Worksheet A.6, not a quoted contract. Vendor-specific capability claims (Databricks Photon, Delta UniForm, Starburst connectors) are vendor representations at Tier C unless separately sourced. The regulatory trigger behind Path B is a scenario premise on the same footing, since the sub-30-second fraud-detection mandate, its 90-day implementation clock, and the "$50M+ SEC fines" exposure cited in the Path B rationale below are constructed constraints written to make the trade-off legible, and the SEC has published no such rule as of this writing, so read them as stipulations of Marcus's scenario rather than as a compliance requirement you can design against.
+Marcus is a composite teaching scenario, so the POC latencies, the per-vendor cost projections (the $2.9M Athena baseline, the Starburst, Databricks, and Splunk figures), the FTE counts, and the 3-year TCO numbers below are illustrative figures from the author's TCO model (Appendix A, Worksheet A.6) applied to a 12 TB/day financial-services profile, not a measured deployment. The AWS unit prices (S3 tiers, Athena $/TB scanned, Kinesis $/GB) are list rates as of Q4 2025; the Splunk $11.4M/year licensing is list-modeled from the G-Cloud 14 anchor in Worksheet A.6, not a quoted contract. Vendor-specific capability claims (Databricks Photon, Delta UniForm, Starburst connectors) are vendor representations at Tier C unless separately sourced. The regulatory trigger behind Path B is a scenario premise on the same footing, since the sub-30-second fraud-detection mandate, its 90-day implementation clock, and the "$50M+ SEC fines" exposure cited in the Path B rationale below are constructed constraints written to make the trade-off legible. The SEC has published no such rule as of this writing, so read them as stipulations of Marcus's scenario rather than as a compliance requirement you can design against.
 
 ### Tier 2 and Tier 3 Requirements and Organizational Constraints
 
@@ -453,7 +453,7 @@ Detailed cost breakdown:
 
 **Total AWS-native stack**: $2.9M/year (17% buffer below $3.5M budget)
 
-This $2.9M is the Athena-native baseline carried as Marcus's headline figure throughout the book. The architecture Marcus actually selected adds a Starburst Enterprise license (~$400K/year) for the ~10% of advanced federation and high-concurrency workloads, with Athena's query spend dropping as the heaviest queries move off it, so the all-in hybrid lands at roughly $3.0M/year (see Marcus's variant summary in the handbook's variants chapter), still inside the $3.5M budget.
+This $2.9M is the Athena-native baseline carried as Marcus's headline figure throughout the book. The architecture Marcus actually selected adds a Starburst Enterprise license (~$400K/year) for the ~10% of advanced federation and high-concurrency workloads, with Athena's query spend dropping as the heaviest queries move off it. That lands the all-in hybrid at roughly $3.0M/year (see Marcus's variant summary in the handbook's variants chapter), still inside the $3.5M budget.
 
 ✓ **Multi-cloud federation validated**:
 - Athena federated queries to Azure Synapse via connectors
@@ -530,7 +530,7 @@ On these results Marcus selected the AWS Athena + Starburst Enterprise hybrid; t
 
 ### Staffing & Budget Reality Check: Greenfield vs SIEM Parallel Path
 
-Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path with future lakehouse optionality (Path B) illustrates the staffing and budget implications of changing requirements mid-stream, and the way team capacity and regulatory constraints reshaped the economics is worth tracing through both paths side by side:
+Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path with future lakehouse optionality (Path B) illustrates the staffing and budget implications of changing requirements mid-stream. The way team capacity and regulatory constraints reshaped the economics is worth tracing through both paths side by side:
 
 | Dimension | Path A: Athena greenfield (2022-23 plan) | Path B: Splunk + lakehouse optionality (2024 actual) |
 |---|---|---|
@@ -552,7 +552,7 @@ Marcus's journey from AWS Athena greenfield (Path A) to Splunk parallel path wit
 
 5. **Risk-Adjusted Value**: Real-time fraud prevention worth the $8.5M/year premium, which is the gap between two all-in figures that both carry platform and staffing ($12M against $3.47M), given regulatory exposure ($50M+ SEC fines for non-compliance), reputational risk (financial services brand damage), and operational simplicity with 0 data engineers
 
-The reading I'd take from this is that the "expensive" SIEM option turned out cheaper once total cost of ownership took in the compliance risk, the team-capacity constraint, and the timeline pressure, and Marcus's decision was driven by realistic team sizing (no data engineers available within the deadline) and by a non-negotiable regulatory threshold (sub-30-second detection) rather than by any technology preference.
+The reading I'd take from this is that the "expensive" SIEM option turned out cheaper once total cost of ownership took in the compliance risk, the team-capacity constraint, and the timeline pressure. Marcus's decision was driven by realistic team sizing (no data engineers available within the deadline) and by a non-negotiable regulatory threshold (sub-30-second detection) rather than by any technology preference.
 
 **Path B Includes Optionality**: Marcus designed Splunk deployment to preserve future lakehouse migration:
 - Export Splunk data to S3 in Parquet format (creates lakehouse-ready archive for compliance queries)
@@ -752,9 +752,9 @@ Performance breakdown:
 | Privileged access audit (all global admins, 30 days) | 3 regions, ~12K admin events | 1 min 24 sec | Manual: 4-6 hours per region, 3 separate reports |
 | Single-region deep forensic (US Splunk, 90-day threat hunt) | 1 region, ~450 TB | 28 seconds | Splunk native: 18 seconds (1.6× overhead) |
 
-The honest comparison Priya's team drew from this is that the cross-region queries are not fast by Splunk standards, but they replace a process that was previously impossible, coordinating three SOC teams across time zones, manually exporting CSV files, and hoping the field names line up, so the real baseline for the 52-second query is not a faster query, it is "we have never been able to do this at all."
+The honest comparison Priya's team drew from this is that the cross-region queries are not fast by Splunk standards, but they replace a process that was previously impossible, coordinating three SOC teams across time zones, manually exporting CSV files, and hoping the field names line up. So the real baseline for the 52-second query is not a faster query, it is "we have never been able to do this at all."
 
-The POC surfaced three lessons worth carrying into the decision. The first is that cache configuration matters more than it looks: Denodo's result caching, on a 30-60 second TTL, made repeated analyst queries 3-5× faster on a cache hit, and during the POC 40% of follow-up queries hit cache, pulling the average response time for an iterative investigation down from 52 seconds to roughly 36, since the 60% that still miss cache hold the blended average above 31 seconds no matter how fast the hits come back. The second is that connector tuning is real work that a vendor demo hides; QRadar's API returned events in a different timestamp format than Splunk and Sentinel, and Priya's team spent three days in Denodo's VQL (Virtual Query Language) normalizing timestamps across sources, a one-time cost that would never show up in a sales POC. The third is that regional IT buy-in was easier than expected, precisely because Denodo connected through the existing APIs with no change to regional infrastructure, so the regional teams approved the POC in a single meeting once they understood there were no agents, no forwarders, and no firewall changes to absorb.
+The POC surfaced three lessons worth carrying into the decision. The first is that cache configuration matters more than it looks: Denodo's result caching, on a 30-60 second TTL, made repeated analyst queries 3-5× faster on a cache hit. During the POC 40% of follow-up queries hit cache, pulling the average response time for an iterative investigation down from 52 seconds to roughly 36, since the 60% that still miss cache hold the blended average above 31 seconds no matter how fast the hits come back. The second is that connector tuning is real work that a vendor demo hides. QRadar's API returned events in a different timestamp format than Splunk and Sentinel, and Priya's team spent three days in Denodo's VQL (Virtual Query Language) normalizing timestamps across sources, a one-time cost that would never show up in a sales POC. The third is that regional IT buy-in was easier than expected, precisely because Denodo connected through the existing APIs with no change to regional infrastructure. So the regional teams approved the POC in a single meeting once they understood there were no agents, no forwarders, and no firewall changes to absorb.
 
 ✓ **Zero regional disruption**:
 - Denodo connects to existing Splunk/Sentinel/QRadar via REST APIs
@@ -883,7 +883,7 @@ Priya's usage guidance to the SOC analysts, which followed directly from that sp
 
 **1. Performance optimization**: Virtualization inherently slower than native storage
 
-Denodo adds roughly 1.5× latency overhead on a single-region analyst query (15-30 seconds against a 10-20 second native Splunk query) and closer to 2.5× on the lighter dashboard refreshes, where 5-10 seconds native becomes 12-25 seconds through the virtualization layer, so the single-region penalty runs somewhere between 1.5× and 2.5× depending on how little work the query itself does. A cross-region query lands at 45-90 seconds against that same 10-20 second regional baseline, which works out at roughly 2× to 9× depending on which ends of the two ranges you pair and about 4.5× pairing like with like. That is the architectural reality of virtualization, because every query has to traverse the abstraction layer, the API call out to the source SIEM, and the data-format translation on the way back, and a cross-region query pays that cost at each regional hop plus the network latency between the regions.
+Denodo adds roughly 1.5× latency overhead on a single-region analyst query (15-30 seconds against a 10-20 second native Splunk query) and closer to 2.5× on the lighter dashboard refreshes, where 5-10 seconds native becomes 12-25 seconds through the virtualization layer. That puts the single-region penalty somewhere between 1.5× and 2.5× depending on how little work the query itself does. A cross-region query lands at 45-90 seconds against that same 10-20 second regional baseline, which works out at roughly 2× to 9× depending on which ends of the two ranges you pair and about 4.5× pairing like with like. That is the architectural reality of virtualization, because every query has to traverse the abstraction layer, the API call out to the source SIEM, and the data-format translation on the way back. A cross-region query pays that cost at each regional hop plus the network latency between the regions.
 
 **Mitigation**:
 - Denodo caching: Frequently-run queries cached for 30-60 seconds (materialized results, no API call on cache hit)
@@ -932,7 +932,7 @@ The Architecture Decision Summary Priya put in front of the executive sponsors, 
 
 ### Staffing & Budget Reality Check: Data Sovereignty Virtualization
 
-Priya's Denodo virtualization approach for EU/US/China data sovereignty represents the most complex staffing and budget scenario in the book, and the cost of multi-region security operations when regulatory compliance and political constraints drive the architecture works out roughly like this:
+Priya's Denodo virtualization approach for EU/US/China data sovereignty represents the most complex staffing and budget scenario in the book. The cost of multi-region security operations when regulatory compliance and political constraints drive the architecture works out roughly like this:
 
 **Team Composition** (7-8 FTEs):
 - 3 Data Engineers (Denodo virtualization layer configuration, per-region connector optimization, API integration, query pushdown tuning)
@@ -970,7 +970,7 @@ Priya's Denodo virtualization approach for EU/US/China data sovereignty represen
 - Denodo premium: Virtualization licensing ($1.2M/year) vs open-source Trino federation ($0 licensing, but requires regional data export buy-in)
 - Political cost: API-only integration avoids regional disruption (avoiding 6-12 month negotiation delays worth $600K-1.2M in delayed value)
 
-Data sovereignty changes the architecture economics from the ground up, and the thing driving the change is regulatory and political complexity rather than a technology problem, which is why it takes additional team capacity (7-8 FTEs against a 3.5 baseline) and premium tooling (Denodo at $1.2M/year against open-source alternatives) to satisfy legal and political constraints that a lakehouse consolidation cannot satisfy at any price.
+Data sovereignty changes the architecture economics from the ground up, and the thing driving the change is regulatory and political complexity rather than a technology problem. That is why it takes additional team capacity (7-8 FTEs against a 3.5 baseline) and premium tooling (Denodo at $1.2M/year against open-source alternatives) to satisfy legal and political constraints that a lakehouse consolidation cannot satisfy at any price.
 
 Denodo earns the spend in an organization that has all three of these at once: multi-region data-sovereignty mandates, decentralized IT with genuine regional autonomy, and a real need for unified cross-region visibility. An organization missing those constraints should consolidate on a lakehouse (Iceberg + Athena/Dremio) instead and take the roughly 4× lower cost and the better performance that come with it.
 

@@ -7,7 +7,7 @@ tags: [stream-processing, community, tools-catalog, flink, spark, iceberg]
 
 # Appendix J: Resources and Community
 
-These were the two navigation chapters that closed Part 3 of the original manuscript, one a tool-by-tool guide for implementing the architecture, the other a map of the communities and forums where that architecture keeps evolving. They belong in the back half now so the decision path through the handbook's core chapters (the trustworthy-data material, what good looks like, and incremental modernization) stays short and forward-moving, but the material itself is worth carrying in full: J.1 through J.8 cover the essential tools across six topic areas (stream processing, data quality, orchestration, analytics, ML/AI, and storage formats) along with the resource-navigation shortcuts by architectural pattern and the framework for evaluating new tools, and J.9 through J.16 cover the community landscape:
+These were the two navigation chapters that closed Part 3 of the original manuscript, one a tool-by-tool guide for implementing the architecture, the other a map of the communities and forums where that architecture keeps evolving. They belong in the back half now so the decision path through the handbook's core chapters (the trustworthy-data material, what good looks like, and incremental modernization) stays short and forward-moving, but the material itself is worth carrying in full. J.1 through J.8 cover the essential tools across six topic areas (stream processing, data quality, orchestration, analytics, ML/AI, and storage formats), along with the resource-navigation shortcuts by architectural pattern and the framework for evaluating new tools. J.9 through J.16 cover the community landscape:
 
 - where to ask questions
 - which standards bodies matter
@@ -27,7 +27,13 @@ J.17 then closes on the resource summary. The companion learning directory (book
 
 ### J.1.1 Apache Flink
 
-Flink earns its operational complexity for teams with a genuine sub-5-second detection requirement and stateful logic that has to survive failures, and in my experience most security teams don't actually have that requirement even when they think they do. Where it pays is the narrow case: you need exactly-once semantics so a retry can't double-fire an alert, you're keeping real per-entity state like rolling user baselines or session windows, and the latency budget is tight enough that a micro-batch model won't clear it. If those three things are true, Flink is the right tool and the JVM/Scala learning curve is a cost worth paying. If they're not, you'll spend the complexity budget and get latency you didn't need.
+Flink earns its operational complexity for teams with a genuine sub-5-second detection requirement and stateful logic that has to survive failures. In my experience, though, most security teams don't actually have that requirement even when they think they do. Where it pays is the narrow case:
+
+- you need exactly-once semantics so a retry can't double-fire an alert
+- you're keeping real per-entity state like rolling user baselines or session windows
+- the latency budget is tight enough that a micro-batch model won't clear it
+
+If those three things are true, Flink is the right tool and the JVM/Scala learning curve is a cost worth paying. If they're not, you'll spend the complexity budget and get latency you didn't need.
 
 It's best for mission-critical real-time detection at sub-5-second latency, stateful stream processing, and exactly-once delivery.
 
@@ -62,7 +68,7 @@ DataStream<AuthEvent> authStream = env
 - Complex event processing (multi-stage correlation, stateful analysis)
 - High throughput (single-stream rates in the >100K events/second range; the actual ceiling depends on parallelism, key cardinality, and state size, so consult the Flink performance-tuning docs rather than treating one number as a guarantee) [Tier D, order-of-magnitude, not a benchmarked figure]
 
-PCI DSS is the standard people most often reach for on that first bullet, and it will not hand you the number, because Requirement 10.4.1 in version 4.0 obliges a daily review of the relevant audit logs while 10.4.1.1 obliges that review to run through automated mechanisms, so what it binds you to is a review obligation on a daily cadence and nothing in it names a detection latency. The sub-30-second figure this book carries elsewhere belongs to the Marcus scenario worked through in Appendix K.2, where an SEC fraud-detection mandate is written in to make the trade-off between his two paths legible and the SEC has issued no such requirement as of this writing, so take the threshold you design Flink against from an internal detection service level you can defend or from the text of an obligation that actually binds you, which is also the check that tells you whether you need Flink at all.
+PCI DSS is the standard people most often reach for on that first bullet, and it will not hand you the number, because Requirement 10.4.1 in version 4.0 obliges a daily review of the relevant audit logs while 10.4.1.1 obliges that review to run through automated mechanisms. So what it binds you to is a review obligation on a daily cadence, and nothing in it names a detection latency. The sub-30-second figure this book carries elsewhere belongs to the Marcus scenario worked through in Appendix K.2, where an SEC fraud-detection mandate is written in to make the trade-off between his two paths legible, and the SEC has issued no such requirement as of this writing. So take the threshold you design Flink against from an internal detection service level you can defend or from the text of an obligation that actually binds you. That is also the check that tells you whether you need Flink at all.
 
 **When NOT to use**:
 - Batch-only workloads (use Spark instead)
@@ -78,7 +84,7 @@ PCI DSS is the standard people most often reach for on that first bullet, and it
 
 ### J.1.2 Apache Spark Structured Streaming
 
-If a team already runs Spark for batch, structured streaming is usually the streaming engine I'd reach for first, because the win is keeping one codebase and one operational model rather than raw latency, so your on-call rotation doesn't have to learn a second framework. The micro-batch model means you're living in the 2-10 second latency range rather than the sub-second range, and for most security work (OCSF normalization on the way in, continuous CloudTrail enrichment, rolling aggregations) that's fine, so the question I'd actually ask is whether you can tolerate micro-batch latency, and if you can, the unified codebase argument tends to win over Flink's lower latency.
+If a team already runs Spark for batch, structured streaming is usually the streaming engine I'd reach for first, because the win is keeping one codebase and one operational model rather than raw latency, so your on-call rotation doesn't have to learn a second framework. The micro-batch model means you're living in the 2-10 second latency range rather than the sub-second range, and for most security work (OCSF normalization on the way in, continuous CloudTrail enrichment, rolling aggregations) that's fine. So the question I'd actually ask is whether you can tolerate micro-batch latency, and if you can, the unified codebase argument tends to win over Flink's lower latency.
 
 It's best for streaming inside an existing Spark deployment, micro-batch processing where 2-10 second latency is acceptable, and a single batch-plus-streaming codebase.
 
@@ -148,7 +154,7 @@ query = aggregated.writeStream \
 
 ### J.1.3 Amazon Data Firehose (formerly AWS Kinesis Data Firehose)
 
-Firehose is what I'd default to when the job is "get this AWS log source into S3 or Iceberg reliably and stop thinking about it," because there's no cluster to run, it scales itself, and a small Lambda covers the light enrichment most pipelines actually need. The trade is latency: Firehose buffers before it delivers, so you're paying a delivery delay that's a documented characteristic of the service rather than a tuning failure, and if your detection budget is tighter than that buffer you've picked the wrong tool. So I reach for it on CloudTrail, VPC Flow, WAF, and GuardDuty delivery where near-real-time is good enough, and I reach for Flink instead when it isn't.
+Firehose is what I'd default to when the job is "get this AWS log source into S3 or Iceberg reliably and stop thinking about it," because there's no cluster to run, it scales itself, and a small Lambda covers the light enrichment most pipelines actually need. The trade is latency: Firehose buffers before it delivers, so you're paying a delivery delay that's a documented characteristic of the service rather than a tuning failure. If your detection budget is tighter than that buffer, you've picked the wrong tool. So I reach for it on CloudTrail, VPC Flow, WAF, and GuardDuty delivery where near-real-time is good enough, and I reach for Flink instead when it isn't.
 
 It's best for serverless ingestion to S3/Iceberg, simple transformations, no infrastructure to manage, and AWS-native environments.
 
@@ -256,7 +262,7 @@ validator.save_expectation_suite("ocsf_network_activity_validation")
 
 ### J.2.2 dbt (Data Build Tool)
 
-dbt is the one I'd reach for when the transformation logic itself is the thing that needs version control, testing, and lineage, which describes OCSF normalization almost exactly, because a source-to-OCSF mapping is a long pile of SQL that changes whenever a vendor changes its log, and you want every change reviewed in git with tests attached. The pull I'd weigh it against is Great Expectations: GX validates data that already exists, whereas dbt builds the transformation and tests it in the same place, so if your team thinks in SQL and lives in git, dbt tends to be the better home for OCSF pipelines and GX becomes the heavier external validator you add on top when you need it.
+dbt is the one I'd reach for when the transformation logic itself is the thing that needs version control, testing, and lineage, and that describes OCSF normalization almost exactly. A source-to-OCSF mapping is a long pile of SQL that changes whenever a vendor changes its log, and you want every change reviewed in git with tests attached. The pull I'd weigh it against is Great Expectations: GX validates data that already exists, whereas dbt builds the transformation and tests it in the same place. So if your team thinks in SQL and lives in git, dbt tends to be the better home for OCSF pipelines, and GX becomes the heavier external validator you add on top when you need it.
 
 It's best for transformation testing, SQL-based workflows, version-controlled pipelines, and generated documentation.
 
@@ -364,7 +370,7 @@ models:
 
 ### J.2.3 Soda
 
-Soda is where I'd land when I want continuous monitoring without the weight of Great Expectations and without writing Python, because the checks are YAML and SQL, which means an analyst can own them, and the volume-anomaly detection is the part that earns its keep on a security pipeline because a sudden drop in ingested rows is often the first visible sign that a collector died. So I think of it less as a competitor to dbt and more as the thing watching the pipeline dbt builds, and the fact that it speaks to Spark, Trino, and DuckDB alike makes it easy to point at whatever engine you're already running.
+Soda is where I'd land when I want continuous monitoring without the weight of Great Expectations and without writing Python, because the checks are YAML and SQL, which means an analyst can own them. The volume-anomaly detection is the part that earns its keep on a security pipeline, because a sudden drop in ingested rows is often the first visible sign that a collector died. So I think of it less as a competitor to dbt and more as the thing watching the pipeline dbt builds. It speaks to Spark, Trino, and DuckDB alike, which makes it easy to point at whatever engine you're already running.
 
 It's best for lightweight data quality monitoring, SQL-based checks, dropping into an existing pipeline, and alerting on data anomalies.
 
@@ -435,7 +441,7 @@ The catch for a MOAR stack is the same one Chapter 4 makes about the well-connec
 
 ### J.3.1 Apache Airflow
 
-Airflow is what I'd reach for once the orchestration is genuinely a graph, the kind where Iceberg maintenance has to compact before it expires snapshots before it cleans orphans and enrichment fans out and joins back, and once more than one team needs to see and rerun those jobs from one place. It's overkill for a handful of independent cron jobs, and I've watched teams stand up an Airflow cluster to run three nightly scripts and then own a scheduler that needs more babysitting than the scripts did, so the test I'd apply is whether you have real inter-task dependencies and a backfill story; if you do, Airflow's monitoring and its provider library are worth the operational cost, and if you don't, a managed option like Step Functions will hurt less.
+Airflow is what I'd reach for once the orchestration is genuinely a graph (the kind where Iceberg maintenance has to compact before it expires snapshots before it cleans orphans, and enrichment fans out and joins back) and once more than one team needs to see and rerun those jobs from one place. It's overkill for a handful of independent cron jobs, and I've watched teams stand up an Airflow cluster to run three nightly scripts and then own a scheduler that needs more babysitting than the scripts did. So the test I'd apply is whether you have real inter-task dependencies and a backfill story. If you do, Airflow's monitoring and its provider library are worth the operational cost, and if you don't, a managed option like Step Functions will hurt less.
 
 It's best for complex DAGs, Python-based workflows, a deep integration library, and production scheduling.
 
@@ -534,7 +540,7 @@ That example is Airflow 2.x syntax, which matters because the 2-to-3 upgrade is 
 
 ### J.3.2 AWS Step Functions
 
-Step Functions is the orchestrator I'd choose when the workflow is mostly chaining AWS services together, Lambda to Glue to ECS, and the team would rather not run an Airflow cluster at all, which is a common and reasonable position for a small security-data team on AWS. The reason it fits incident-response and enrichment automation so well is that there's no scheduler to keep alive, so the thing wakes up, runs the steps, and goes back to costing nothing, and that's exactly the profile of work that fires irregularly. Where it stops fitting is heavy Python logic or anything multi-cloud, and at that point Airflow is the better answer.
+Step Functions is the orchestrator I'd choose when the workflow is mostly chaining AWS services together, Lambda to Glue to ECS, and the team would rather not run an Airflow cluster at all, which is a common and reasonable position for a small security-data team on AWS. The reason it fits incident-response and enrichment automation so well is that there's no scheduler to keep alive, so the thing wakes up, runs the steps, and goes back to costing nothing. That's exactly the profile of work that fires irregularly. Where it stops fitting is heavy Python logic or anything multi-cloud, and at that point Airflow is the better answer.
 
 It's best for serverless workflows, orchestrating AWS services, a visual builder, and low-maintenance operations.
 
@@ -560,7 +566,7 @@ It's best for serverless workflows, orchestrating AWS services, a visual builder
 
 ### J.4.1 Grafana
 
-Grafana is what I'd put in front of a SOC for the always-on operational view, the wall of time-series panels with thresholds wired to PagerDuty or Slack, because that's the job it was built for and it does it without a per-seat bill. The fit for security data is that it already speaks to the query engines you're likely running, Dremio and Trino and Athena among them, so it sits on top of the lakehouse rather than asking you to copy data into yet another store. I'd be honest about the boundary, though: Grafana is built for the standing view, the panels and thresholds you set up once and leave running, so once an analyst is pivoting and asking open-ended questions, that work belongs in a notebook (J.4.2) rather than a dashboard panel.
+Grafana is what I'd put in front of a SOC for the always-on operational view, the wall of time-series panels with thresholds wired to PagerDuty or Slack, because that's the job it was built for and it does it without a per-seat bill. The fit for security data is that it already speaks to the query engines you're likely running, Dremio and Trino and Athena among them, so it sits on top of the lakehouse rather than asking you to copy data into yet another store. I'd be honest about the boundary, though: Grafana is built for the standing view, the panels and thresholds you set up once and leave running. So once an analyst is pivoting and asking open-ended questions, that work belongs in a notebook (J.4.2) rather than a dashboard panel.
 
 It's best for real-time monitoring dashboards, time-series visualization, alerting, and open-source flexibility.
 
@@ -615,7 +621,7 @@ It's best for real-time monitoring dashboards, time-series visualization, alerti
 
 ### J.4.2 Jupyter Notebooks
 
-The notebook is the other half of the visualization story, and it's where I'd send the open-ended work: the threat hunt that doesn't know its own shape yet, the forensic dig through one incident, the model prototype, because mixing live SQL, Python, charts, and narrative in one document is exactly how investigation actually proceeds, and committing the notebook to git turns a one-off hunt into something a colleague can rerun and check. So the split I'd draw is clean enough to plan around: Grafana watches the known metrics on a wall, the notebook answers the questions you didn't know to ask, and the same Trino or DuckDB connection feeds both.
+The notebook is the other half of the visualization story, and it's where I'd send the open-ended work: the threat hunt that doesn't know its own shape yet, the forensic dig through one incident, the model prototype. It fits that work because mixing live SQL, Python, charts, and narrative in one document is exactly how investigation actually proceeds, and committing the notebook to git turns a one-off hunt into something a colleague can rerun and check. So the split I'd draw is clean enough to plan around: Grafana watches the known metrics on a wall, the notebook answers the questions you didn't know to ask, and the same Trino or DuckDB connection feeds both.
 
 It's best for exploratory analysis, threat hunting, data science investigations, and documenting the work as you go.
 
@@ -688,7 +694,7 @@ fig.show()
 
 ### J.5.1 AWS SageMaker (docs now titled "Amazon SageMaker AI")
 
-SageMaker is the one I'd reach for when a team has committed to AWS and has the data-science skill to actually use it, because the moment you need distributed training, managed endpoints, and a feature store wired into the rest of your AWS environment, building that yourself is rarely the better trade. I'd add the caution I give every team that gets here, though: ML in security earns its place after the foundation is stable, not before, because an isolation forest on top of badly normalized data just produces confident nonsense, so the order that matters is get the lakehouse and the OCSF mapping right first, then put a model on top of clean data, and SageMaker is a fine home for that model once you're there.
+SageMaker is the one I'd reach for when a team has committed to AWS and has the data-science skill to actually use it, because the moment you need distributed training, managed endpoints, and a feature store wired into the rest of your AWS environment, building that yourself is rarely the better trade. I'd add the caution I give every team that gets here, though: ML in security earns its place after the foundation is stable, not before, because an isolation forest on top of badly normalized data just produces confident nonsense. So the order that matters is get the lakehouse and the OCSF mapping right first, then put a model on top of clean data, and SageMaker is a fine home for that model once you're there.
 
 It's best for ML training and deployment, AWS-integrated workflows, scalable infrastructure, and MLOps.
 
@@ -749,7 +755,7 @@ predictions = predictor.predict(new_events)  # Anomaly scores
 
 ### J.5.2 MLflow
 
-MLflow is what I'd choose when I don't want the ML lifecycle welded to one cloud, because it tracks experiments, holds a model registry, and deploys to SageMaker or Kubernetes or Azure ML without picking the destination for you, which is the right default for a team that's multi-cloud or simply wants to keep its options open. It's Databricks-backed but genuinely vendor-neutral, so I tend to pair it with SageMaker rather than treat the two as either/or: train where the compute is, register and version in MLflow so the lineage outlives any one platform decision.
+MLflow is what I'd choose when I don't want the ML lifecycle welded to one cloud, because it tracks experiments, holds a model registry, and deploys to SageMaker or Kubernetes or Azure ML without picking the destination for you. That's the right default for a team that's multi-cloud or simply wants to keep its options open. It's Databricks-backed but genuinely vendor-neutral, so I tend to pair it with SageMaker rather than treat the two as either/or: train where the compute is, register and version in MLflow so the lineage outlives any one platform decision.
 
 It's best for experiment tracking, a model registry, deployment orchestration, and staying vendor-neutral.
 
@@ -781,7 +787,7 @@ It's best for experiment tracking, a model registry, deployment orchestration, a
 
 ### J.6.1 Apache Iceberg
 
-Iceberg is the one tool in this appendix I'd argue for without much hedging, because it's the format the whole architecture in this book rests on: it lets Trino, Dremio, Spark, and Athena read the same tables without copying data or locking you to one engine, and for security that multi-engine freedom is the difference between a lakehouse you can evolve and a vendor you can't leave. The features I lean on most are the ones that matter specifically for security work: ACID so reads stay consistent while ingestion writes, and time-travel so the historical snapshot you query during forensics is the data as it actually stood, not as it's been rewritten since. The Iceberg V3 features that shipped through 2025 (deletion vectors, row lineage, table encryption) are worth tracking for security in particular, and by mid-2026 the engines have mostly caught up. Snowflake's Iceberg V3 support went GA in early May 2026, and DuckDB's iceberg extension reads and writes V3 deletion vectors as Puffin sidecar files as of its 1.5.3 release, so the format has moved from spec to something you can actually build on [Tier C, vendor release notes/announcements; verify current version support before relying on it]. The V4 spec is a different story, because milestone #58 on GitHub has sat at two open proposals with nothing closed since late 2025, so the milestone itself looks dormant even though the real V4 design work (manifest write support, the adaptive metadata tree, single-file commits) has been moving in pull requests outside it; treat V4 as something to watch rather than plan around, and pin to the version your engines actually support before you count on any one feature. The performant-architecture chapter of the handbook makes the full case; this is the short version.
+Iceberg is the one tool in this appendix I'd argue for without much hedging, because it's the format the whole architecture in this book rests on: it lets Trino, Dremio, Spark, and Athena read the same tables without copying data or locking you to one engine. For security, that multi-engine freedom is the difference between a lakehouse you can evolve and a vendor you can't leave. The features I lean on most are the ones that matter specifically for security work: ACID so reads stay consistent while ingestion writes, and time-travel so the historical snapshot you query during forensics is the data as it actually stood, not as it's been rewritten since. The Iceberg V3 features that shipped through 2025 (deletion vectors, row lineage, table encryption) are worth tracking for security in particular, and by mid-2026 the engines have mostly caught up. Snowflake's Iceberg V3 support went GA in early May 2026, and DuckDB's iceberg extension reads and writes V3 deletion vectors as Puffin sidecar files as of its 1.5.3 release [Tier C, vendor release notes/announcements; verify current version support before relying on it]. So the format has moved from spec to something you can actually build on. The V4 spec is a different story, because milestone #58 on GitHub has sat at two open proposals with nothing closed since late 2025. So the milestone itself looks dormant even though the real V4 design work (manifest write support, the adaptive metadata tree, single-file commits) has been moving in pull requests outside it. Treat V4 as something to watch rather than plan around, and pin to the version your engines actually support before you count on any one feature. The performant-architecture chapter of the handbook makes the full case; this is the short version.
 
 It's best for a multi-engine lakehouse, ACID guarantees, schema evolution, and production-scale security data.
 
@@ -801,7 +807,7 @@ It's best for a multi-engine lakehouse, ACID guarantees, schema evolution, and p
 
 ### J.6.2 Delta Lake
 
-I'd reach for Delta over Iceberg in one fairly specific situation: you've committed to Databricks and your workload is Spark-only, so the multi-engine argument that makes me default to Iceberg just doesn't apply to you, and inside that world Delta's Spark integration and its CDC story are genuinely strong. The move if you're unsure is to use Delta UniForm, which keeps a table readable as both Delta and Iceberg at once, so you get Databricks-native performance now without burning the migration bridge later. That's the option I'd take over betting everything on a single-format future.
+I'd reach for Delta over Iceberg in one fairly specific situation: you've committed to Databricks and your workload is Spark-only, so the multi-engine argument that makes me default to Iceberg just doesn't apply to you. Inside that world, Delta's Spark integration and its CDC story are genuinely strong. The move if you're unsure is to use Delta UniForm, which keeps a table readable as both Delta and Iceberg at once, so you get Databricks-native performance now without burning the migration bridge later. That's the option I'd take over betting everything on a single-format future.
 
 It's best for Databricks-centric environments, unified batch and streaming, and tight Spark integration.
 
@@ -847,7 +853,7 @@ It's best for Databricks-centric environments, unified batch and streaming, and 
 
 **Decision framework** (apply the handbook's tool-evaluation and decision methodology):
 
-This framework is for the components you intend to run in production, the platform pieces that carry live telemetry and that you would later have to migrate off of, so the Tier 1 bar and the red flags below are deliberately strict about scale evidence and maintenance status. Supporting tools get judged differently, because a lab environment or a synthetic-corpus generator like the ones in J.2.4 and J.10.1 never sees production volume and the honest question about one of those is whether it still does its narrow job, which is why a couple of them appear in this appendix with a maintenance caveat attached instead of a recommendation.
+This framework is for the components you intend to run in production, the platform pieces that carry live telemetry and that you would later have to migrate off of. So the Tier 1 bar and the red flags below are deliberately strict about scale evidence and maintenance status. Supporting tools get judged differently, because a lab environment or a synthetic-corpus generator like the ones in J.2.4 and J.10.1 never sees production volume, and the honest question about one of those is whether it still does its narrow job. That's why a couple of them appear in this appendix with a maintenance caveat attached instead of a recommendation.
 
 **Tier 1 Mandatory Questions**:
 1. Does it integrate with my chosen architecture? (Iceberg support, query engine connectors)
@@ -1193,7 +1199,7 @@ Of all the communities in this appendix, the OCSF Slack is the one where I think
 
 **Use case**: Learn from practitioners, network with peers, stay current on emerging patterns.
 
-If I had to spend a limited conference budget, I wouldn't split it evenly across this list. The data-engineering conferences below (Subsurface and Trino Summit especially) are where the lakehouse internals you actually need get taught, and they're virtual and cheap, so they're the easy first call. The big security conferences are a different value proposition: I go to RSA and Black Hat more for who's in the room than for the talks, because the security-data architecture content there is thin and the genuine signal is in the hallway and the practitioner case studies rather than the vendor floor. The directory entries that follow note what each one is good for, and across the list, the data conferences teach the architecture while the security conferences are where you find the people running it.
+If I had to spend a limited conference budget, I wouldn't split it evenly across this list. The data-engineering conferences below (Subsurface and Trino Summit especially) are where the lakehouse internals you actually need get taught, and they're virtual and cheap, so they're the easy first call. The big security conferences are a different value proposition: I go to RSA and Black Hat more for who's in the room than for the talks, because the security-data architecture content there is thin and the genuine signal is in the hallway and the practitioner case studies rather than the vendor floor. The directory entries that follow note what each one is good for. Across the list, the data conferences teach the architecture while the security conferences are where you find the people running it.
 
 ### J.12.1 Data Engineering Conferences
 
