@@ -2872,8 +2872,23 @@ and nothing may be attributed to one. See the hub relationship registry at
 
 **Authors**: Anonymized practitioner
 **Date**: October 2025
-**URL**: Personal communication (Practitioner validation)
+**URL**: Personal communication (Practitioner validation), anonymized per the Boundary rule
 **Evidence Level**: A (Practitioner validation, production security implementations)
+
+> **Tier flagged, NOT changed, 2026-08-12 — this needs an owner decision, because
+> fixing it alone would be misleading.** Under the canonical A/B/C/D scale,
+> practitioner validation and first-party production measurement are Tier **B**;
+> Tier A is peer-reviewed research and official standards. So this entry is
+> mis-tiered. But it is not mis-tiered alone: 31 of the 95 Level-A entries in this
+> file describe practitioner, production, deployment or benchmark sources in their
+> own Evidence Level line. Re-tiering just this one would move the published
+> Level-A share from 41.9% to 41.5% and imply the rest are correct. Re-tiering all
+> 31 would take it to roughly 28%, which is a material change to a headline metric
+> that 19 gated surfaces and the publication manuscript all state. Either is a
+> defensible call and both are the owner's, so nothing has been changed here.
+> (The entry itself is sound: this is a REAL conversation, unlike the Jake Thomas
+> entry corrected the same day, and anonymization is the sanctioned handling for a
+> communication in a public repo.)
 **Relevance**:
 - Query engine viability for security operations at scale
 - Book Chapter 4 (Three Architect Journeys)
