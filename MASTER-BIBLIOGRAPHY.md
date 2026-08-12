@@ -16,6 +16,7 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
+**Personal communications are NOT eligible under that boundary, and one got in anyway (removed 2026-08-12).** The "Okta Security Analytics — Isolation-First Architecture" entry cited Jake Thomas as a 2025 personal communication at Evidence Level B. No such communication happened: outreach to him was drafted and never sent. Because this file is the citation source-of-truth, the fabrication propagated — appendix B's Okta figures chained to it. The entry now cites his public Data Council 2024 talk and the claims the talk does not support are withdrawn rather than re-sourced. Two rules follow. A source whose URL field reads "personal communication" fails the Boundary test on its face and does not belong in this file at all. And before any named person is added as a source, check `02-projects/external-engagements/relationship-registry.md` in the private hub, which is the only record of who has actually been spoken to — as of 2026-08-12 that is Matt Mullins alone; Lisa Cao and Paul Agbabian have open or stalled outreach and have said nothing to us.
 
 ---
 
@@ -24,7 +25,7 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 This bibliography consolidates all literature sources from:
 1. Best practices document (2024-04-15) - **283 footnotes extracted** (COMPLETE)
 2. Archived manuscript (74 files assessed - citations reference best practices doc footnotes)
-3. Expert network validation (Lisa Cao, Jake Thomas interviews)
+3. Expert network validation — see the guard below; the only conversation actually held is with Matt Mullins (Coginiti). Entries formerly sourced to Lisa Cao or Jake Thomas interviews were fabricated and have been re-sourced to public material or withdrawn.
 4. Ongoing research (2024-2025)
 
 **Format**: Organized by topic with standardized entries including evidence level, relevance to book chapters/hypotheses, and validation status.
@@ -1111,43 +1112,58 @@ This bibliography consolidates all literature sources from:
 **Relevance**:
 - Hypothesis (DuckDB edge processing - to be formalized)
 - Book Chapter (emerging patterns)
-- Expert validation: Jake Thomas (Okta)
+- Public production report: Jake Thomas, Data Council 2024 (no interview held)
 - Best Practices Doc footnote [^144]
 
 **Key Findings**:
 - Embedded analytics capabilities
 - SQLite alternative for analytical workloads
 
-**Citations**: Chapter on emerging patterns, Jake Thomas interview
-**Notes**: **HIGH PRIORITY** - Jake Thomas validation in progress
+**Citations**: Chapter on emerging patterns
+**Notes**: no interview has happened; cite the Data Council 2024 talk entry instead
 
 **Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md ("Why DuckDB" supports the OLAP positioning). Stale-by-date, not by content.
 
 ---
 
-#### Okta Security Analytics - Isolation-First Architecture with DuckDB + Iceberg
+#### Okta Security Analytics with DuckDB — Data Council 2024 talk
 
-**Authors**: Jake Thomas (Okta, expert validation)
-**Date**: 2025
-**URL**: Personal communication (expert validation)
-**Evidence Level**: B (Expert validation, production deployment)
+> **Corrected 2026-08-12.** This entry previously cited "Jake Thomas (Okta, expert
+> validation)", dated 2025, with URL "Personal communication (expert validation)"
+> and Evidence Level B. **No such communication ever took place.** Outreach to Jake
+> Thomas was drafted and never sent, so the personal-communication citation was
+> fabricated, and downstream documents chained to it as though it were a source of
+> record (appendix B's Okta figures trace here). What is real is his PUBLIC
+> conference talk, which needs no permission and can be cited by anyone. The entry
+> below is what the evidence actually supports. Claims this entry previously
+> carried that the talk does NOT support have been removed rather than re-sourced.
+
+**Authors**: Jake Thomas (then at Okta; now Blue Water Autonomy)
+**Date**: 2024
+**Source**: Data Council 2024, public conference talk
+**Evidence Level**: B (practitioner reporting a production deployment, publicly)
 **Relevance**:
 - **Research Question RQ7** (Isolation patterns and performance)
-- **Research Question RQ10** (Catalog governance decisions)
 - Hypothesis H-EDGE-01 (DuckDB edge processing)
 - Book Chapter 9 (Query engines - DuckDB)
-- Isolation-first security architecture pattern
 
-**Key Findings**:
-- DuckDB + Iceberg on isolated platform for defensive cyber operations at scale
-- Table-level permissions only (no column masking, row-level security)
-- Performance-first approach - avoids fine-grained access control overhead
-- Validates isolation-first security pattern for single-tenant enterprise SOC
+**Key Findings** (as reported in the talk):
+- 7.5 trillion records processed in six months using thousands of concurrent DuckDB
+  Lambda instances, 50 TB/day peak
+- DuckDB viable for security analytics at genuine production volume
 
-**Citations**: **CRITICAL** - RQ7 isolation-first performance validation, H-EDGE-01 DuckDB validation, RQ10 catalog selection
-**Notes**: Expert validation from Okta production security analytics deployment. Confirms isolation-first pattern viability for enterprise SOCs. Interview scheduled for Q1 2026 quarterly deep dive (deferred from October 2025).
+**Not supported by this source** (previously asserted here, now withdrawn): the
+table-level-permissions-only detail, the "performance-first, avoids fine-grained
+access control overhead" characterisation, and the isolation-first pattern
+validation. Those came from the invented interview, not from the talk. Do not cite
+them to Jake Thomas. RQ7 and RQ10 need another source.
 
-**Validation Status**: ⚐ Expert validation (2025), formal interview pending Q1 2026
+**Citations**: H-EDGE-01 DuckDB production-volume evidence
+**Notes**: A public talk is citable without permission. There has been no interview,
+and nothing may be attributed to one. See the hub relationship registry at
+`02-projects/external-engagements/relationship-registry.md`.
+
+**Validation Status**: ✅ Public source, no permission required
 
 ---
 

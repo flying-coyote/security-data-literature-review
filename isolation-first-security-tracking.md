@@ -40,7 +40,7 @@ tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection,
 **Evidence Collection**:
 - [x] Netflix (isolated VPC + Polaris, table-level RBAC) - ADDED
 - [x] Huntress (isolated AWS, Iceberg + table-level RBAC, 93% cost reduction) - ADDED
-- [x] Okta (Jake Thomas validation, DuckDB + Iceberg, isolated platform) - ADDED
+- [x] Okta (Jake Thomas, Data Council 2024 public talk; DuckDB at production volume) - ADDED
 - [ ] Unity Catalog RLS overhead benchmarks (target: 5-30% query latency)
 - [ ] Iceberg metadata encryption overhead (target: 10-20% query latency, Alex Merced validation)
 - [ ] Column masking overhead (target: 3-10% query latency)
@@ -141,12 +141,15 @@ tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection,
 
 ### Okta Security Analytics (Evidence Level B)
 
-**Architecture**: DuckDB + Iceberg, isolated platform
-**Catalog**: Table-level permissions only
-**Approach**: Performance-first (no fine-grained access overhead)
-**Source**: Jake Thomas (expert validation, 2025)
+**Architecture**: DuckDB at production volume (7.5T records in six months, 50 TB/day peak)
+**Source**: Jake Thomas, Data Council 2024 — public talk
 
-**Validates**: RQ7 (performance), RQ10 (catalog choice)
+**Validates**: H-EDGE-01 (DuckDB at production volume)
+
+**WITHDRAWN 2026-08-12**: the "table-level permissions only", "performance-first, no
+fine-grained access overhead" and RQ7/RQ10 validation claims were sourced to a Jake
+Thomas expert validation in 2025 that never happened. The public talk does not
+support them. RQ7 and RQ10 need a different source.
 
 ---
 
@@ -275,12 +278,12 @@ tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection,
 **Iceberg & Catalogs**:
 - **Alex Merced** (Dremio): Metadata encryption, Polaris catalog, performance trade-offs
 - **Daniel Muino** (Netflix): ClickHouse + Iceberg + Polaris isolated security platform
-- **Lisa Cao** (DataStrato): Gravitino meta-catalog, Polaris adoption for isolated deployments
+- **Lisa Cao** (Databricks, ex-Datastrato): Gravitino meta-catalog, per her published work. Thread stalled 2026-04-23, no response; no interview has happened.
 
 **Security Analytics**:
-- **Jake Thomas** (Okta): DuckDB + Iceberg isolated platform validation (interview Q1 2026)
+- **Jake Thomas** (Blue Water Autonomy, ex-Okta): DuckDB at production volume, per his public Data Council 2024 talk. No interview has happened; outreach is drafted and unsent.
 - **Chris Bisnett** (Huntress): Isolation-first architecture, 93% cost reduction validation
-- **Paul Agbabian**: OCSF compliance requirements, production deployments
+- **Paul Agbabian** (Cisco, ex-Splunk; OCSF Steering Committee co-founder): OCSF schema design. Outreach sent 2026-06-01, no reply; nothing may be attributed to him.
 
 **Compliance & Standards**:
 - **CISA**: Zero trust architecture, enhanced monitoring guidance
@@ -308,7 +311,7 @@ tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection,
 
 **Target**: Evidence Tier A/B for RQ7-RQ10
 **Requirements**:
-- [ ] Expert validation interviews (Jake Thomas, Lisa Cao)
+- [ ] Expert validation interviews — none scheduled; outreach unsent (Thomas) and unanswered (Cao)
 - [ ] Quantitative benchmarks (Unity RLS overhead, Iceberg encryption overhead)
 - [ ] Compliance framework validation (SOC 2 auditor acceptance)
 - [ ] MSSP multi-tenant case studies (Arctic Wolf, Expel, Red Canary)
@@ -354,7 +357,7 @@ tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection,
 
 ### Q1 2026 Quarterly Deep Dive
 
-- [ ] Expert validation interviews completed (Jake Thomas, Lisa Cao)
+- [ ] Expert validation interviews completed — none held
 - [ ] Evidence Tier B achieved for RQ7 and RQ10
 - [ ] Evidence Tier B/C achieved for RQ8 and RQ9
 - [ ] Blog posts #11 and #12 incorporate isolation-first findings
@@ -388,7 +391,7 @@ tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection,
 ### Short-Term (Q1 2026)
 
 1. **Expert Validation**:
-   - [ ] Jake Thomas interview (DuckDB + Iceberg, Okta production architecture)
+   - [ ] Jake Thomas interview — outreach not yet sent
    - [ ] Lisa Cao interview (Gravitino + Polaris, meta-catalog patterns)
 
 2. **MSSP Case Studies**:

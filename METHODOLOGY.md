@@ -60,7 +60,7 @@ The systematic extraction process identified two primary source categories:
 
 Beyond the primary extraction from archived manuscripts:
 
-1. **Expert Network Validation**: Practitioner interviews (Lisa Cao - Datastrato/Apache Gravitino, Jake Thomas - Okta, a data-platform practitioner, Paul Agbabian) providing production deployment validation
+1. **Expert Network Validation**: one practitioner conversation has actually taken place (Matt Mullins, Coginiti). Outreach to Lisa Cao, Jake Thomas and Paul Agbabian is drafted, sent-unanswered or stalled — none was interviewed, and no claim in this review may be sourced to those conversations. Their PUBLIC work is citable and is cited as such.
 2. **Blog Integration**: Ongoing source identification through security-data-commons blog (3×/week cadence)
 3. **Vendor Documentation**: Official technical documentation from Apache Software Foundation, AWS, Microsoft, Google, Confluent, Databricks
 4. **Government Standards**: CISA, MITRE, DARPA, NSA, SANS Institute publications
@@ -298,7 +298,7 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 - **Question**: How do isolation patterns affect security data architecture performance?
 - **Hypothesis**: Network isolation + IAM provides sufficient security boundary, eliminating need for fine-grained catalog access (RLS, column masking, metadata encryption) and achieving 15-50% faster query performance
 - **Validation Metrics**: Query latency comparison, TCO comparison, operational hours
-- **Data Sources**: Netflix (isolated VPC), Huntress (isolated AWS), Okta (Jake Thomas), Unity Catalog benchmarks, Iceberg metadata encryption overhead
+- **Data Sources**: Netflix (isolated VPC), Huntress (isolated AWS), Okta (Jake Thomas, Data Council 2024 public talk), Unity Catalog benchmarks, Iceberg metadata encryption overhead
 - **Evidence Tier Target**: B
 
 **RQ8: Compliance Trade-offs of Isolation-First Architecture**
@@ -319,7 +319,7 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 - **Question**: Does isolation-first security elevate Polaris and Nessie to top-tier catalog choices by changing selection criteria from "fine-grained access" to "vendor neutrality" and "version control"?
 - **Hypothesis**: Isolated security platforms prioritize different catalog features: Unity Catalog wins for shared platforms (fine-grained access essential), Polaris (vendor neutrality) or Nessie (Git workflows) win for isolated platforms (table-level RBAC sufficient)
 - **Validation Metrics**: Catalog adoption patterns, feature prioritization, migration patterns, decision criteria ranking
-- **Data Sources**: Netflix Polaris adoption rationale, Unity Catalog case studies, Nessie production deployments, Lisa Cao Gravitino interviews, Jake Thomas Okta validation, catalog feature comparison matrices
+- **Data Sources**: Netflix Polaris adoption rationale, Unity Catalog case studies, Nessie production deployments, Lisa Cao's published Gravitino work, Jake Thomas's Data Council 2024 talk, catalog feature comparison matrices (no interviews held with either)
 - **Evidence Tier Target**: B
 
 **Integration with Existing Research**:
@@ -341,13 +341,13 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 
 **Qualitative Synthesis**:
 - **Implementation Patterns**: Cross-case analysis of production deployments (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom; the Shell entry was removed in the 2026-06-05 audit — dead URL, unverifiable)
-- **Expert Validation**: Practitioner interviews for hypothesis validation (Lisa Cao, Jake Thomas, a data-platform practitioner)
+- **Expert Validation**: none held with Lisa Cao or Jake Thomas; their published work is used instead
 - **Contradiction Analysis**: When sources conflict, document both perspectives with evidence quality assessment
 
 ### 6.2 Gap Analysis
 
 **Literature Gaps Identified**:
-1. **DuckDB Edge Processing** (H-EDGE-01): Limited production security deployments documented (pending Jake Thomas validation)
+1. **DuckDB Edge Processing** (H-EDGE-01): Limited production security deployments documented beyond Jake Thomas's public Data Council 2024 report
 2. **Catalog Meta-Catalog Adoption** (H-ARCH-03): Emerging technology, adoption data sparse (pending Lisa Cao validation)
 3. **OCSF Production Deployments**: Schema standard adoption unclear beyond vendor claims (expert interviews needed)
 

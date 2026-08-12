@@ -355,7 +355,7 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 5. **Create PRISMA flowchart**: Document systematic extraction methodology
 6. **Develop figures/tables**: Quantitative summaries and visualizations
 7. **Draft abstract**: 150-250 words positioning contribution
-8. **Identify co-authors**: Consider Lisa Cao, Jake Thomas, Paul Agbabian (expert validation contributors)
+8. **Identify co-authors**: none of Lisa Cao, Jake Thomas or Paul Agbabian has contributed anything; do not list them. Approach a candidate co-author first, and only after the relationship registry shows a live thread.
 
 ---
 
