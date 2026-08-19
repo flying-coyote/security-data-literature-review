@@ -33,7 +33,7 @@ plt.rcParams['figure.dpi'] = 300
 # MASTER-BIBLIOGRAPHY.md on 2026-08-19 (231 blocks / 229 tiered / 2 stubs).
 TALLY_DATE = '2026-08-19'
 TIERED_TOTAL = 229
-TALLY = {'A': 58, 'B': 139, 'C': 32}
+TALLY = {'A': 39, 'B': 156, 'C': 34}
 TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}

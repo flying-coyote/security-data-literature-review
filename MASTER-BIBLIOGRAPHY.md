@@ -12,7 +12,7 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
 **Total Sources**: 231 catalogued `#### ` blocks (229 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 25.3% Evidence Level A (live-derived 2026-08-19: 58 of 229 tiered entries; 139 B, 32 C, across 231 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 38 more and took it to 25.3%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. A further 22 entries are held pending an owner ruling on whether "official standards" covers MITRE frameworks, Apache Software Foundation project documentation, and government advisories; upholding those too would take the share to 15.7%. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
+**Evidence Quality**: 17.0% Evidence Level A (live-derived 2026-08-19: 39 of 229 tiered entries; 156 B, 34 C, across 231 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 57 more and took it to 17.0%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. The root cause was not sloppy tiering but a wrong rule applied faithfully: METHODOLOGY.md's own Level-A criteria read "Production deployments, peer-reviewed research, government standards" and named SK Telecom, CISA, SANS and the Apache Software Foundation as Level-A examples, which contradicts the definition this project actually uses. The criteria have been corrected at source. Three MITRE reference frameworks (D3FEND x2, ATLAS) were held at A by owner ruling as normative specifications from a neutral non-commercial body, each carrying a scope note that they are primary for taxonomy and silent on efficacy. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -105,7 +105,7 @@ This bibliography consolidates all literature sources from:
 **Date**: 2022-2024
 **URL**: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
 **Alt URL**: https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf (presentation slides)
-**Evidence Level**: A (Production deployment, quantitative benchmarks)
+**Evidence Level**: B (Production deployment, quantitative benchmarks) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Hypothesis H-ARCH-01 (Iceberg dominance)
 - Book Chapter 8 (Storage Formats)
@@ -1703,7 +1703,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: 2024-2026 (updated January 2026)
 **URL**: https://www.dremio.com/press-releases/state-of-the-data-lakehouse-2024-businesses-are-leaving-cloud-data-warehouses-for-data-lakehouses/
 **Alt URL**: https://amdatalakehouse.substack.com/p/2025-year-in-review-apache-iceberg
-**Evidence Level**: A (Industry survey + vendor support validation)
+**Evidence Level**: C (Industry survey + vendor support validation) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - **Hypothesis H-ARCH-01** (Iceberg dominance)
 - Book Chapter 8 (Storage formats)
@@ -1732,7 +1732,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **URL**: Multiple vendor announcements
 **Alt URL**: https://www.theregister.com/2024/10/14/apache_iceberg_feature_announcements/
 **Alt URL 2**: https://www.databricks.com/blog/announcing-full-apache-iceberg-support-databricks
-**Evidence Level**: A (Vendor public commitments — date corrected to 2025 when full cross-vendor support was achieved)
+**Evidence Level**: C (Vendor public commitments — date corrected to 2025 when full cross-vendor support was achieved) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Hypothesis H-ARCH-01 (Iceberg dominance)
 - Book Chapter 8 (Format ecosystem)
@@ -1756,7 +1756,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Apache Software Foundation
 **Date**: 2024
 **URL**: https://iceberg.apache.org/community/
-**Evidence Level**: A (Official ASF project metrics)
+**Evidence Level**: B (Official ASF project metrics) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Hypothesis H-ARCH-01 (Open governance advantage)
 - Book Chapter 8 (Format selection criteria)
@@ -1779,7 +1779,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Apache Iceberg Community
 **Date**: 2024-2026 (continuously updated)
 **URL**: https://iceberg.apache.org/
-**Evidence Level**: A (Official open-source project documentation)
+**Evidence Level**: B (Official open-source project documentation) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Blog post: "Apache Iceberg - Yes, It's Important to Security"
 - Book Chapter 8 (Storage Formats)
@@ -1803,7 +1803,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Apache Iceberg Community
 **Date**: 2024-2026 (continuously updated)
 **URL**: https://iceberg.apache.org/docs/latest/maintenance/
-**Evidence Level**: A (Official documentation)
+**Evidence Level**: B (Official documentation) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Blog post: "Spark Persistence Reality: Hybrid Architectures"
 - Book Chapter 8 (Storage Formats - operational considerations)
@@ -1827,7 +1827,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Apache Iceberg Community
 **Date**: 2024-2026 (continuously updated)
 **URL**: https://iceberg.apache.org/docs/latest/spark-procedures/
-**Evidence Level**: A (Official documentation)
+**Evidence Level**: B (Official documentation) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Blog post: "Spark Persistence Reality: Hybrid Architectures"
 - Book Chapter 8 (Storage Formats - Spark integration)
@@ -1948,7 +1948,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: 2024-2025 (updated February 2026)
 **URL**: https://www.sans.org/white-papers/sans-2024-ai-survey-ai-growing-role-cybersecurity-lessons-learned-path-forward
 **Alt URL**: https://www.sans.org/white-papers/sans-2025-soc-survey
-**Evidence Level**: A (Security research authority, industry survey)
+**Evidence Level**: B (Security research authority, industry survey) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Security ML operations and automation
 - Book Chapter (Advanced analytics)
@@ -1976,7 +1976,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: CISA (Cybersecurity and Infrastructure Security Agency)
 **Date**: 2023-2024
 **URL**: https://www.cisa.gov/news-events/alerts/2023/07/12/cisa-and-fbi-release-cybersecurity-advisory-enhanced-monitoring-detect-apt-activity-targeting
-**Evidence Level**: A (Government security authority)
+**Evidence Level**: B (Government security authority) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Enhanced monitoring and logging requirements
 - Book Chapter (Advanced analytics)
@@ -2100,7 +2100,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Open Cybersecurity Alliance (OASIS Open Project)
 **Date**: 2019-2024
 **URL**: https://github.com/opencybersecurityalliance (re-pointed 2026-07-16 — opencybersecurityalliance.org is gone at the root per the 2026-07-16 link check; OCA is an OASIS Open Project and its GitHub organization is the live canonical presence, verified 200 on re-point day)
-**Evidence Level**: A (Industry standards consortium)
+**Evidence Level**: B (Industry standards consortium) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Cybersecurity tool interoperability
 - Book Chapter (Advanced analytics, integration)
@@ -2126,7 +2126,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: 2019-2025 (ongoing program, updated February 2026)
 **URL**: https://evals.mitre.org/
 **Alt URL**: https://evals.mitre.org/enterprise/er7
-**Evidence Level**: A (Framework authority, rigorous methodology)
+**Evidence Level**: B (Framework authority, rigorous methodology) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - ML model evaluation standards and threat coverage
 - Book Chapter (Advanced analytics)
@@ -2209,7 +2209,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: February 2024 (updated February 2026)
 **URL**: https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-analytics-ocsf-iceberg/
 **Alt URL**: https://aws.amazon.com/security-lake/features/
-**Evidence Level**: A (AWS production service, enterprise deployment)
+**Evidence Level**: B (AWS production service, enterprise deployment) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - OCSF v1.1.0 integration with Apache Iceberg
 - Production validation at scale
@@ -2820,7 +2820,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Snowflake / Apache Software Foundation
 **Date**: 2024
 **URL**: https://polaris.apache.org/
-**Evidence Level**: A (Official documentation, production-ready catalog)
+**Evidence Level**: B (Official documentation, production-ready catalog) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - **Research Question RQ7** (Isolation patterns and performance)
 - **Research Question RQ10** (Catalog governance decisions)
@@ -3495,7 +3495,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Date**: November 19, 2024 (updated February 2026)
 **URL**: https://www.linuxfoundation.org/press/open-cybersecurity-schema-framework-ocsf-joins-the-linux-foundation-to-optimize-critical-security-data
 **Alt URL**: https://ocsf.io/
-**Evidence Level**: A (Linux Foundation official, consortium milestone)
+**Evidence Level**: B (Linux Foundation official, consortium milestone) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - RQ11: LIGER Stack schema standardization
 - OCSF adoption trajectory
@@ -3915,7 +3915,7 @@ from the Second Brain entry pending the freshness sweep.
 **Date**: 2024-2026 (ongoing). Milestones: v1.0 launched 2025-01-16 (research-project → production ontology); OT extension + v1.3.0 line 2025-12 (267 techniques, 7 tactical categories). See the dedicated "MITRE D3FEND for OT" entry in the 2026 Format & Standards section.
 **URL**: https://d3fend.mitre.org/
 **Alt URL**: https://d3fend.mitre.org/changelog/ (release history) · https://www.mitre.org/news-insights/news-release/mitre-launches-d3fend-10-milestone-cybersecurity-ontology (v1.0 launch)
-**Evidence Level**: A (framework authority, formal ontology — OWL 2 DL)
+**Evidence Level**: A (framework authority, formal ontology — OWL 2 DL) — HELD AT A 2026-08-19 (owner ruling): a normative reference document from a neutral, non-commercial body, published as a versioned formal specification, which is the same evidentiary position as a NIST or ISO document. SCOPE: primary for taxonomy and structure, and silent on efficacy — it is authoritative about what the framework says, never evidence that following it works.
 **Relevance**:
 - Defensive-technique ontology; the defensive counterpart to ATT&CK
 - The OCSF ↔ D3FEND grounding chain (D3FEND → CCO → BFO) central to the grounding work — Chapter 3, Chapter 8, Appendix F
@@ -3932,7 +3932,7 @@ from the Second Brain entry pending the freshness sweep.
 **Authors**: MITRE
 **Date**: 2024-2025 (AI-agent techniques added Oct 2024)
 **URL**: https://atlas.mitre.org/
-**Evidence Level**: A (framework authority)
+**Evidence Level**: A (framework authority) — HELD AT A 2026-08-19 (owner ruling): a normative reference document from a neutral, non-commercial body, published as a versioned formal specification, which is the same evidentiary position as a NIST or ISO document. SCOPE: primary for taxonomy and structure, and silent on efficacy — it is authoritative about what the framework says, never evidence that following it works.
 **Relevance**:
 - AI/ML version of ATT&CK; threat taxonomy for AI-powered tools and agents
 - New AI-agent techniques: AML.T0080 (context poisoning), AML.T0082 (RAG credential harvesting), AML.T0084, AML.T0086
@@ -4045,7 +4045,7 @@ from the Second Brain entry pending the freshness sweep.
 **Date**: D3FEND 1.0 launched 2025-01-16 (research project → production ontology). The v1.3.0 line (Dec 2025) adds the OT extension — see the dedicated "MITRE D3FEND for OT" entry.
 **URL**: https://d3fend.mitre.org/
 **Alt URL**: https://www.mitre.org/news-insights/news-release/mitre-launches-d3fend-10-milestone-cybersecurity-ontology (1.0 launch) · https://github.com/d3fend/d3fend-ontology (ontology distribution source)
-**Evidence Level**: A (framework authority + formal ontology — OWL 2 DL; the 1.0 milestone is the official MITRE production release framing)
+**Evidence Level**: A (framework authority + formal ontology — OWL 2 DL; the 1.0 milestone is the official MITRE production release framing) — HELD AT A 2026-08-19 (owner ruling): a normative reference document from a neutral, non-commercial body, published as a versioned formal specification, which is the same evidentiary position as a NIST or ISO document. SCOPE: primary for taxonomy and structure, and silent on efficacy — it is authoritative about what the framework says, never evidence that following it works.
 **Relevance**:
 - The defensive-technique ontology cross-referenced in the book appendix's D3FEND cross-ref; the grounding chain D3FEND → CCO → BFO
 - D3FEND 1.0 ships D3FEND Core Classes, an interface enabling alignment to major upper ontologies — the design hook that lets the grounding chain reach BFO
@@ -4370,7 +4370,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 **Authors**: Apache Iceberg project (GitHub)
 **Date**: Open / proposal-stage as of 2026-06-05
 **URL**: https://github.com/apache/iceberg/milestone/58
-**Evidence Level**: A (official project tracker)
+**Evidence Level**: B (official project tracker) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - The V4 format effort the book tracks as a milestone; proposal-stage, NOT adopted
 - Chapter 9; user's top format-war tracking priority
@@ -4492,7 +4492,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 **Date**: May 27, 2026 (post date verified at primary; entry formerly said May 19)
 **URL**: https://opensource.googleblog.com/2026/05/announcing-apache-iceberg-1110.html
 **Alt URL**: https://iceberg.apache.org/releases/ (official releases index; 1.11.0 is latest)
-**Evidence Level**: A (official ASF release)
+**Evidence Level**: B (official ASF release) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - The latest Iceberg release. Pairs with the Iceberg-v3-spec entry above; Chapter 9 (format war); user's top format-war tracking priority.
 
@@ -4507,7 +4507,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 **Authors**: Rod Wallace (Director of Security Services, AWS); reporting an ITU / OCSF (Linux Foundation) development
 **Date**: March 24, 2026 (article); ITU member-state support December 2025; ratification slated by June 2026
 **URL**: https://aws.amazon.com/blogs/opensource/ocsf-achieves-itu-support-powering-ai-ready-security-operations/
-**Evidence Level**: A (official standards-body milestone — ITU is the UN's telecommunication standards body; report is from the AWS Open Source team, an OCSF founding contributor)
+**Evidence Level**: B (official standards-body milestone — ITU is the UN's telecommunication standards body; report is from the AWS Open Source team, an OCSF founding contributor) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - The standards-tier step-change for OCSF: in December 2025 ITU member states unanimously supported OCSF for ratification as an ITU X-series ("x.***") international standard, slated for June 2026. This moves OCSF from an industry-consortium schema (its Linux Foundation status, already catalogued) toward a formally ratified international standard that governments fold into national cyber policy.
 - Chapter 8 (OCSF / schema standards); strengthens the "OCSF as lingua franca" thread the book and the crosswalk corpus track (cite alongside the bearish-on-lingua-franca caveat — ITU ratification is governance momentum, not field-level adoption).
@@ -4631,7 +4631,7 @@ The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide
 **Date**: Graduated to ASF Top-Level Project, February 2026 (official Polaris blog Feb 19, 2026; IPMC graduation-recommendation vote passed Feb 16, 2026; Dremio press-release dateline Feb 18, 2026)
 **URL**: https://polaris.apache.org/blog/2026/02/19/apache-polaris-graduates-to-top-level-project/
 **Alt URL**: https://polaris.apache.org/releases/1.0.0/
-**Evidence Level**: A for the graduation fact (ASF-official); B for the credential-vending feature docs
+**Evidence Level**: B for the graduation fact (ASF-official); B for the credential-vending feature docs — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Zero-trust catalog / credential vending (RQ10 catalog governance): the vendor-neutral Iceberg REST catalog is now an ASF Top-Level Project, and vends temporary, scoped storage credentials so engines need no standing cloud-storage access. The catalog leg of [[reference_matrix_decision_graph]].
 - Chapter on catalogs; complements the Snowflake-Polaris and Databricks-ABAC entries.
@@ -4700,7 +4700,7 @@ The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide
 **Date**: ASF incubation June 2026 (proposal thread June 19–22); OSI initiative announced 2025-09-23; spec v0.1.1 released 2025-12-11; ontology layer added 2026-05-29 (0.2.0.dev0 draft)
 **URL**: https://incubator.apache.org/clutch/ossie.html
 **Alt URL**: https://github.com/apache/ossie
-**Evidence Level**: A (official ASF incubation record + the project's own spec repository)
+**Evidence Level**: B (official ASF incubation record + the project's own spec repository) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - The candidate interchange standard for the semantic data layer — governed metric definitions bound to tables — which the MOAR architecture names as deliberately open (book Ch2 §2.2 forward pointer, 2026-07-23; MATRIX.md standards catalog row)
 - Security-greenfield finding (2026-07-23): zero security presence across the project's issues, discussions, dev list, and 60+ member coalition, and no open machine-readable security metrics layer exists in any semantic-layer format; hub draft model at project1 `02-projects/ossie-security-semantic-model/`

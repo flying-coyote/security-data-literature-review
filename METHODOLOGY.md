@@ -96,19 +96,23 @@ Everything in §2.1-§2.3 is curation, which PRISMA 2020 accommodates as the "id
 
 ### 3.1 Evidence Level Classification
 
-All sources are classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research:
+All sources are classified using a four-tier evidence system. Level A is reserved for peer-reviewed research and official standards; production evidence, however good, is Level B.
 
-#### Evidence Level A (Target: >70%; live share 25.3% at 2026-08-19 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 tier audit re-tiered 38 further entries off A)
-**Criteria**: Production deployments, peer-reviewed research, government standards
+#### Evidence Level A (Target: >70%; live share 17.0% at 2026-08-19 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 tier audit re-tiered 57 further entries off A once the criteria below were corrected)
+**Criteria**: Peer-reviewed research, and official standards. Nothing else.
 **Examples**:
-- Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks (the Shell entry was removed in the 2026 audit — dead URL, unverifiable)
+- Peer-reviewed publications at a named venue with real review (USENIX Security, IEEE S&P, NDSS, CCS, VLDB, SIGMOD, ICSE, NeurIPS, ICML, ACL, KDD, TMLR, or a peer-reviewed journal). An arXiv preprint with no named venue is **not** peer-reviewed and does not qualify, however eminent its authors
+- Standards-body documents: NIST (SP/IR/FIPS), ISO/IEC, IETF RFC, W3C, OASIS ratified standards
+- The formal specification document of an open standard (the Iceberg *table spec*, the OCSF *schema spec*) — the specification itself, not the project's documentation, release notes, governance pages or issue trackers
+- **Normative reference frameworks** from a neutral, non-commercial body, published as a versioned formal specification (MITRE D3FEND, MITRE ATLAS). Owner ruling, 2026-08-19: these hold the same evidentiary position as a NIST or ISO document. Their scope is the same too — primary for taxonomy and structure, and silent on efficacy. A framework is authoritative about what it says, never evidence that following it works
+- **NOT Level A**, and this is where the corpus went wrong before 2026-08-19: production case studies and deployment writeups, vendor engineering blogs, industry-conference talks, trade books, analyst and vendor-commissioned reports, government *advisories* (as distinct from standards), consortium and foundation announcements, and official project documentation. All are Level B. (The earlier Shell entry was removed in the 2026 audit — dead URL, unverifiable)
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 58 of 229 tiered entries (25.3%), live-derived 2026-08-19 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 39 of 229 tiered entries (17.0%), live-derived 2026-08-19 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
-#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 47.6%)
-**Criteria**: Industry analyst reports, expert consensus, verified vendor documentation
+#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 68.1%)
+**Criteria**: Practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation. Real evidence, not independently reviewed.
 **Examples**:
 - Gartner, IDC, Forrester quantitative research
 - Expert practitioner validation (personal communication with production deployment details)
@@ -429,7 +433,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | >70% | 25.3% (58/229 tiered; live-derived 2026-08-19) | ❌ Below target |
+| Evidence Level A | >70% | 17.0% (39/229 tiered; live-derived 2026-08-19) | ❌ Below target |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
@@ -496,7 +500,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 227 tiered sources on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: Level-A share live-derived per entry (25.3% at 2026-08-19; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 38 entries that were not peer-reviewed research or official standards)
+1. **Evidence Quality**: Level-A share live-derived per entry (17.0% at 2026-08-19; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
 2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations
