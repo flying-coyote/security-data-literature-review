@@ -12,7 +12,7 @@ This directory contains Python scripts and LaTeX TikZ code to convert text-based
 
 **Figures Generated**:
 1. **Figure 1**: PRISMA flowchart (LaTeX TikZ) - Literature extraction process
-2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (25.3% Level A, 58/229 tiered, derived 2026-07-23; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
+2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (25.3% Level A, 58/229 tiered, derived 2026-08-19; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
 3. **Figure 3**: Source Type Taxonomy (Python matplotlib) - Source diversity and geographic distribution
 4. **Figure 4**: Hypothesis Validation Confidence (Python matplotlib) - post-audit rescored confidence scoring (2026-07-13 rubric rescore)
 
