@@ -30,16 +30,16 @@ plt.rcParams['axes.linewidth'] = 0.8
 plt.rcParams['figure.dpi'] = 300
 
 # Live tally — source: scripts/count_reconcile.py Counter 2, derived from
-# MASTER-BIBLIOGRAPHY.md on 2026-07-23 (231 blocks / 229 tiered / 2 stubs).
-TALLY_DATE = '2026-07-23'
+# MASTER-BIBLIOGRAPHY.md on 2026-08-19 (231 blocks / 229 tiered / 2 stubs).
+TALLY_DATE = '2026-08-19'
 TIERED_TOTAL = 229
-TALLY = {'A': 96, 'B': 109, 'C': 24}
+TALLY = {'A': 58, 'B': 139, 'C': 32}
 TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}
 DESCRIPTIONS = {
-    'A': 'Production deployments,\npeer-reviewed research,\ngovernment standards',
-    'B': 'Industry analysts,\nexpert validation,\nvendor technical docs',
+    'A': 'Peer-reviewed research\nand official standards',
+    'B': 'Practitioners, production\ndeployments, conference\ntalks, vendor docs',
     'C': 'Blog posts / vendor content\n(held provisionally,\nbias flagged)',
 }
 

@@ -13,7 +13,7 @@
 This repository contains a **living literature review** that is the shared evidence backbone for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the essays and research at securitydataworks.com, and the applied-bridge positioning all cite it. The review bridges cybersecurity and data engineering with evidence-tiered, source-verified research (each entry carries an A/B/C/D tier and a validation verdict in RESEARCH-JOURNAL.md). Published openly (first released October 22, 2025; the original Substack was retired 2026-05-24 and writing moved to securitydataworks.com) with ongoing monthly updates and quarterly deep dives.
 
 **Current Status - June 2026** 🔄:
-- **231 sources catalogued** (229 tiered + 2 documented stubs; 41.9% Evidence Level A, live 2026-07-23 — 96/229; the systematic-search incorporation added 26 peer-reviewed studies on 2026-07-13, after a critical appraisal refused 14 of the 40 the search returned — eight of them in predatory or compromised venues. The Level-A share barely moved, because most of what survived appraisal tiers at B or C; that is the honest result and not a disappointing one — see MASTER-BIBLIOGRAPHY.md § Systematic Search Arm; a 27th study was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same gate)
+- **231 sources catalogued** (229 tiered + 2 documented stubs; 25.3% Evidence Level A, live 2026-07-23 — 58/229; the systematic-search incorporation added 26 peer-reviewed studies on 2026-07-13, after a critical appraisal refused 14 of the 40 the search returned — eight of them in predatory or compromised venues. The Level-A share barely moved, because most of what survived appraisal tiers at B or C; that is the honest result and not a disappointing one — see MASTER-BIBLIOGRAPHY.md § Systematic Search Arm; a 27th study was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same gate)
 - **17 formal research questions** (RQ1-RQ14, plus RQ15-RQ17 adopted 2026-06-13 in Gap 12 — RQ16 substantively benchmarked, RQ15/RQ17 Tier-D unvalidated; roster ruled 17 on 2026-07-16)
 - **Fabrication audit + freshness sweep complete** (2026-06-05 to 2026-06-21; Version 1.22.0, best-practices score 92/100 — see RESEARCH-JOURNAL.md)
 - **Now the Tier-3 evidence backbone of the MOAR handbook campaign** (handbook on-page footnotes resolve to this repo's sources + their RESEARCH-JOURNAL verdicts)
@@ -36,7 +36,7 @@ This repository contains a **living literature review** that is the shared evide
 ## Current Repository Contents
 
 **Core Documentation Files**:
-1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 231 catalogued sources (229 tiered), 41.9% Evidence Level A (live, 96/229)
+1. **MASTER-BIBLIOGRAPHY.md** - Complete bibliography with 231 catalogued sources (229 tiered), 25.3% Evidence Level A (live, 58/229)
 2. **METHODOLOGY.md** - 10 research questions (RQ1-RQ10) including isolation-first security architecture (note 2026-07-16: the full roster is 17 — METHODOLOGY.md formalizes RQ1-RQ10, RQ11-RQ14 live in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gap 11, and RQ15-RQ17 in Gap 12, the last two Tier-D unvalidated)
 3. **PUBLICATION-MANUSCRIPT.md** - COMPLETE academic journal manuscript (~15.3k words main text, measured 2026-07-16; derived at build, see the manuscript's MANUSCRIPT METADATA block)
 4. **REFERENCES.md** - IEEE/ACM formatted references (78 numbered sources, of which 12 are withdrawn in place; superseded 2026-07-16 by the manuscript's embedded reference section, and the file carries a superseded banner)
@@ -180,8 +180,8 @@ As the vendor landscape and platform coverage expands, the repository may grow t
 - H-IMPL-01 (Streaming TCO): PRELIMINARY, 5/25 - quantitative legs withdrawn in the 2026-06/07 audits; no scoreable leg, instrument floor; directional pending re-sourcing
 
 **Quality Metrics** (2026-07-12 — honest post-audit baseline, live-computed via `scripts/automation_dashboard.py` and gated by `scripts/count_reconcile.py`):
-- **Evidence Level A: 41.9%** (96 of 229 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; the 2026-07-13 systematic-search incorporation added 11 Level-A studies but 15 at B/C, so the share held flat. This is the honest baseline, not the pre-audit 78% claim
-- Evidence Level B: 109 of 229 · Evidence Level C: 24 of 229 (across 231 `#### ` blocks incl. 2 documented stubs)
+- **Evidence Level A: 25.3%** (58 of 229 tiered sources) — the 2026-06-05 fabrication audit re-tiered ~26 entries off A, and the denominator has since grown faster than the A-count as Tier-B practitioner/framing anchors were added; the 2026-07-13 systematic-search incorporation added 11 Level-A studies but 15 at B/C, so the share held flat. This is the honest baseline, not the pre-audit 78% claim
+- Evidence Level B: 139 of 229 · Evidence Level C: 32 of 229 (across 231 `#### ` blocks incl. 2 documented stubs)
 - The Tier-A floor (60%) is intentionally breached and surfaced, not silenced — a breach that reflects real corpus quality is the dashboard working (see `scripts/weekly_scheduled_check.py`)
 - Every >12-month source now carries a 2026-06-05 validation or freshness marker; 9 fabricated entries removed, 3 dead links recorded (see RESEARCH-JOURNAL.md)
 - Production-deployment anchors (Shell, Cloudflare, SK Telecom, Huntress, etc.) are vendor case studies — Tier C under the global tiers; verify each primary before load-bearing use

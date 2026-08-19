@@ -19,7 +19,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Fact 1: Phase 1-2C Complete, 76+ Sources Documented ✅
 **CONFIRMED**: Phase 1 (Literature Extraction) complete with 76+ sources documented
 - 283 footnotes extracted from best practices document
-- Level-A share: 41.9% live-computed 2026-07-23 (96/229 tiered) — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
+- Level-A share: 25.3% live-computed 2026-07-23 (58/229 tiered) — the earlier "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit; target recovery is open work
 - 9 analysis bundles created (170,100 words evidence synthesis)
 - All book chapters have supporting source citations
 - **Source**: README.md lines 15-23, archive/REPOSITORY-STATUS.md (archived 2026-07-10), CLAUDE.md lines 33-44
@@ -430,7 +430,7 @@ tags: [project-brief, literature-review, decisions-log, assumptions, project-sco
 ### Phase 1 Success Metrics (ACHIEVED ✅)
 - ✅ 283 footnotes extracted from best practices document
 - ✅ 76+ sources documented with standardized format
-- ✅ 41.9% Evidence Level A (live-derived 2026-07-23: 96 of 229 tiered; the Phase-1 "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit)
+- ✅ 25.3% Evidence Level A (live-derived 2026-07-23: 58 of 229 tiered; the Phase-1 "79% — EXCEEDS 73% target" self-grade was withdrawn in the 2026-06 audit)
 - ✅ 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10) with quantitative confidence scoring
 - ✅ All book chapters have supporting citations
 - ✅ Blog integration demonstrated (1 post, 4-6× speedup)

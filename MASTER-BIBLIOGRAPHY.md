@@ -12,7 +12,7 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
 **Total Sources**: 231 catalogued `#### ` blocks (229 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 41.9% Evidence Level A (live-derived 2026-07-23: 96 of 229 tiered entries; 109 B, 24 C, across 231 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the Level-A share has hovered in the low forties since. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
+**Evidence Quality**: 25.3% Evidence Level A (live-derived 2026-08-19: 58 of 229 tiered entries; 139 B, 32 C, across 231 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 38 more and took it to 25.3%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. A further 22 entries are held pending an owner ruling on whether "official standards" covers MITRE frameworks, Apache Software Foundation project documentation, and government advisories; upholding those too would take the share to 15.7%. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -183,7 +183,7 @@ This bibliography consolidates all literature sources from:
 **Date**: October 2022 (2nd Edition)
 **URL**: https://www.oreilly.com/library/view/trino-the-definitive/9781098137229/
 **Alt URL**: https://trino.io/trino-the-definitive-guide.html
-**Evidence Level**: A (Authoritative technical book, O'Reilly publication)
+**Evidence Level**: B (Authoritative technical book, O'Reilly publication) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Blog post: "Starburst vs Dremio vs AWS Athena"
 - Book Chapter 9 (Query Engines - Trino architecture)
@@ -281,7 +281,7 @@ This bibliography consolidates all literature sources from:
 **Date**: 2018-03-06 (verified at primary 2026-07-09; entry formerly said "2024-2025, updated February 2026" — a bulk-stamp artifact. Alt-URL material is Oct 2025)
 **URL**: https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/
 **Alt URL**: https://clickhouse.com/blog/cloudflare
-**Evidence Level**: A (Production deployment at massive scale)
+**Evidence Level**: B (Production deployment at massive scale) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse OLAP performance)
 - Book Chapter 9 (Query Engines)
@@ -308,7 +308,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Cloudflare Engineering Blog
 **Date**: 2022-09-02 (ClickHouse-hosted Cloudflare blog byline; catalogued "2024" was wrong — corrected 2026-07-09, verified at primary)
 **URL**: https://blog.cloudflare.com/log-analytics-using-clickhouse/
-**Evidence Level**: A (Production deployment)
+**Evidence Level**: B (Production deployment) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01
 - Book Chapter 9 (Query Engines)
@@ -356,7 +356,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Jay Kreps (Kafka creator)
 **Date**: July 2014
 **URL**: https://www.oreilly.com/radar/questioning-the-lambda-architecture/
-**Evidence Level**: A (Foundational thought leadership)
+**Evidence Level**: B (Foundational thought leadership) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 2 (Data Engineering Foundation)
 - Book Chapter 7 (Ingestion patterns)
@@ -379,7 +379,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Uber Engineering (Confluent Current 2025 session)
 **Date**: 2025 (Confluent Current 2025; re-verified 2026-06-05)
 **URL**: https://current.confluent.io/post-conference-videos-2025/inside-ubers-large-scale-real-time-analytics-platform-bng25
-**Evidence Level**: A (Production platform, public conference talk with specific scale figures)
+**Evidence Level**: B (Production platform, public conference talk with specific scale figures) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 7 (Ingestion) — streaming-at-scale example (general analytics, not security-specific)
 - Best Practices Doc footnote [^19]
@@ -427,7 +427,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Kai Waehner
 **Date**: January 2025
 **URL**: https://www.kai-waehner.de/blog/2025/01/27/the-role-of-data-streaming-in-mcafees-cybersecurity-evolution/
-**Evidence Level**: A (Vendor architecture, industry expert)
+**Evidence Level**: C (Vendor architecture, industry expert) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 7 (Ingestion)
 - Best Practices Doc footnote [^1]
@@ -526,7 +526,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Prosci
 **Date**: 2024 (12th Edition)
 **URL**: https://www.prosci.com/blog/change-management-best-practices
-**Evidence Level**: A (Industry standard framework, research-based)
+**Evidence Level**: C (Industry standard framework, research-based) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 4 (Implementation journeys)
 - Best Practices Doc footnote [^13]
@@ -552,7 +552,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: DevOps Research and Assessment (DORA) / Google Cloud
 **Date**: 2024-2025 (10th anniversary 2024 + inaugural AI report 2025)
 **URL**: https://dora.dev/research/2024/dora-report/
-**Evidence Level**: A (Industry research, 39,000+ professionals surveyed)
+**Evidence Level**: B (Industry research, 39,000+ professionals surveyed) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 4 (Implementation challenges)
 - Best Practices Doc footnotes [^31], [^33], [^43]
@@ -663,7 +663,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: LinkedIn Engineering / Confluent
 **Date**: 2023 (updated February 2026)
 **URL**: https://www.linkedin.com/blog/engineering/infrastructure/introducing-northguard-and-xinfra
-**Evidence Level**: A (Production deployment at scale)
+**Evidence Level**: B (Production deployment at scale) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 7 (Ingestion - streaming)
 - Best Practices Doc footnote [^68]
@@ -805,7 +805,7 @@ This bibliography consolidates all literature sources from:
 **Date**: December 2025
 **URL**: https://github.com/flying-coyote/splunk-db-connect-benchmark
 **⚠️ VERIFICATION (2026-06-05)**: Repository is PRIVATE by design (NDA-gated reference implementation) — the 404 is expected, NOT a broken link. Public methodology only; do not treat as dead.
-**Evidence Level**: A (Tier 1 production benchmark, 10M OCSF events)
+**Evidence Level**: B (Tier 1 production benchmark, 10M OCSF events) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse 145x faster than Splunk)
 - Hypothesis H3-PERFORMANCE-02 (StarRocks vs Dremio comparison)
@@ -931,7 +931,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: ClickHouse Documentation Team
 **Date**: 2024-2026 (continuously updated)
 **URL**: https://clickhouse.com/docs/optimize/query-optimization
-**Evidence Level**: A (Vendor technical documentation) — *tier note (2026-06-05): vendor product docs usually score B under the re-tier discipline (no independent benchmark on the page); kept A pending Jeremy's call, FLAGGED.*
+**Evidence Level**: B (Vendor technical documentation) — *tier note (2026-06-05): vendor product docs usually score B under the re-tier discipline (no independent benchmark on the page); kept A pending Jeremy's call, FLAGGED.* — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Blog post: "ClickHouse Compression Reality"
 - Book Chapter 9 (Query Engines)
@@ -954,7 +954,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: ClickHouse (case study of Exabeam, SIEM/UEBA vendor)
 **Date**: 2025 (published Sep 11, 2025)
 **URL**: https://clickhouse.com/blog/exabeam-clickhouse-security-analytics
-**Evidence Level**: A (Production deployment with quantitative operational metrics; ClickHouse-published — vendor bias flagged)
+**Evidence Level**: B (Production deployment with quantitative operational metrics; ClickHouse-published — vendor bias flagged) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse for security analytics)
 - Research Question RQ11 (LIGER stack vs traditional SIEM — from the incumbent-SIEM side)
@@ -979,7 +979,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Huntress / ClickHouse
 **Date**: 2024
 **URL**: https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse
-**Evidence Level**: A (Production deployment, validated metrics)
+**Evidence Level**: B (Production deployment, validated metrics) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - **Research Question RQ7** (Isolation patterns and performance)
 - **Research Question RQ8** (Compliance trade-offs)
@@ -1011,7 +1011,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Chris Bisnett (Huntress CTO)
 **Date**: 2024
 **URL**: https://www.youtube.com/watch?v=lhsWNofOcdk
-**Evidence Level**: A (Production deployment presentation)
+**Evidence Level**: B (Production deployment presentation) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Blog post: "Sparking an Architecture: RSA Conversations"
 - Hypothesis H-IMPL-01 (TCO Reality)
@@ -1083,7 +1083,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: Microsoft Azure Blog
 **Date**: 2019-02-05 (verified at primary 2026-07-09; entry formerly said 2024)
 **URL**: https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/
-**Evidence Level**: A (Microsoft production deployment)
+**Evidence Level**: B (Microsoft production deployment) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 7 (Kafka scalability)
 - Best Practices Doc footnote [^72]
@@ -1108,7 +1108,7 @@ This bibliography consolidates all literature sources from:
 **Authors**: DuckDB Labs
 **Date**: 2024
 **URL**: https://duckdb.org/why_duckdb.html
-**Evidence Level**: A (Official documentation)
+**Evidence Level**: C (Official documentation) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis (DuckDB edge processing - to be formalized)
 - Book Chapter (emerging patterns)
@@ -1256,7 +1256,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Cloudera Engineering Blog
 **Date**: 2022-02-22 (cited page dated Feb 22, 2022; catalogued "2024" corrected 2026-07-09 — A→B re-tier flagged in review packet: the "10x" is a vendor-relayed single-customer anecdote)
 **URL**: https://www.cloudera.com/blog/technical/introducing-apache-iceberg-in-cloudera-data-platform.html
-**Evidence Level**: A (Production benchmarks)
+**Evidence Level**: B (Production benchmarks) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H-ARCH-01 (Iceberg dominance)
 - Book Chapter 8 (Storage formats)
@@ -1375,7 +1375,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Frederick P. Brooks Jr.
 **Date**: 1995 (Anniversary Edition)
 **URL**: https://www.pearson.com/en-us/subject-catalog/p/mythical-man-month-essays-on-software-engineering-anniversary-edition-the/P200000000149
-**Evidence Level**: A (Seminal work, widely cited)
+**Evidence Level**: B (Seminal work, widely cited) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Implementation patterns
 - Book Chapter 4 (Pilot-first approach)
@@ -1398,7 +1398,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Netflix Technology Blog
 **Date**: 2025
 **URL**: https://netflixtechblog.com/building-a-resilient-data-platform-with-write-ahead-log-at-netflix-127b6712359a
-**Evidence Level**: A (Production implementation at scale)
+**Evidence Level**: B (Production implementation at scale) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Resilient data platform patterns
 - Book Chapter 7 (Migration patterns)
@@ -1449,7 +1449,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Forrester Consulting (commissioned by Cloudera)
 **Date**: 2021-10 (PDF date verified 2026-07-09; formerly conflated into a single "2024" entry)
 **URL**: Cloudera Public Cloud TEI PDF (linked from Cloudera's TEI resources; direct PDF URL to be catalogued — the 2026-07-09 sweep verified the figures against the PDF itself)
-**Evidence Level**: A (Commissioned research, quantitative — flag vendor-commissioned bias where cited)
+**Evidence Level**: C (Commissioned research, quantitative — flag vendor-commissioned bias where cited) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book Chapter 1 (Cost comparisons)
 
@@ -1468,7 +1468,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Forrester Consulting (commissioned by Cloudera)
 **Date**: 2024-05
 **URL**: https://tei.forrester.com/go/cloudera/onPremises/
-**Evidence Level**: A (Commissioned research, quantitative - 6 organizations interviewed; flag vendor-commissioned bias where cited)
+**Evidence Level**: C (Commissioned research, quantitative - 6 organizations interviewed; flag vendor-commissioned bias where cited) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - **Hypothesis H-IMPL-01** (Hidden costs)
 - Book Chapter 1 (Cost comparisons)
@@ -1515,7 +1515,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: 2022-2026 (updated January 2026)
 **URL**: https://www.databricks.com/databricks-vs-snowflake
 **Alt URL**: https://dateonic.com/databricks-vs-snowflake-a-ctos-guide-to-total-cost-of-ownership-tco/
-**Evidence Level**: A (Vendor analysis + independent benchmarks, quantitative data)
+**Evidence Level**: C (Vendor analysis + independent benchmarks, quantitative data) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Cost comparisons
 - Book Chapter 1 (Platform economics)
@@ -1543,7 +1543,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: 2024-2026 (updated February 2026)
 **URL**: https://www.gartner.com/en/newsroom/press-releases/2025-07-29-gartner-forecasts-worldwide-end-user-spending-on-information-security-to-total-213-billion-us-dollars-in-2025
 **Alt URL**: https://www.gartner.com/en/newsroom/press-releases/2024-08-28-gartner-forecasts-global-information-security-spending-to-grow-15-percent-in-2025
-**Evidence Level**: A (Authoritative industry research)
+**Evidence Level**: B (Authoritative industry research) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H1-VOLUME-07 (Data volume claims)
 - Book Chapter 2 (Volume trends)
@@ -1852,7 +1852,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: 2022-12 (Trino Summit 2022)
 **URL**: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
 **Alt URL**: https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf (presentation slides — the precise figures below are in the slides, verified 2026-07-09; the recap page carries only approximations)
-**Evidence Level**: A (Production deployment)
+**Evidence Level**: B (Production deployment) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H-ARCH-01 (Performance advantage)
 - Book Chapter 8 (Iceberg performance)
@@ -1876,7 +1876,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: ClickHouse Benchmarks
 **Date**: 2024
 **URL**: https://clickhouse.com/blog/clickhouse_vs_elasticsearch_the_billion_row_matchup
-**Evidence Level**: A (Benchmark study)
+**Evidence Level**: B (Benchmark study) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse advantages)
 - Book Chapter 9 (Query engines)
@@ -2449,7 +2449,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Ramesh Raskar (MIT Media Lab)
 **Date**: 2024-2025
 **URL**: https://nanda.media.mit.edu/, https://arxiv.org/pdf/2507.14263
-**Evidence Level**: A (MIT research, 10 years development, arXiv paper)
+**Evidence Level**: B (MIT research, 10 years development, arXiv paper) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Agent infrastructure for security operations
 - Decentralized agent registry ("DNS for agents")
@@ -2556,7 +2556,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Date**: 2025
 **URL**: https://www.rippling.com/blog/engineering-siem-part-3
 **Alt URLs**: https://www.rippling.com/blog/engineering-siem-part-1, https://www.rippling.com/blog/engineering-siem-part-2
-**Evidence Level**: A (Production deployment with quantitative cost data)
+**Evidence Level**: B (Production deployment with quantitative cost data) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ13: Pipeline vs query detection economics
 - Security data lakehouse architecture
@@ -2584,7 +2584,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Monad Security Team
 **Date**: 2025
 **URL**: https://www.monad.com/blog/a-detection-engineers-guide-to-cutting-siem-costs
-**Evidence Level**: A (Quantitative cost analysis with production data)
+**Evidence Level**: B (Quantitative cost analysis with production data) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ13: Pipeline vs query detection economics
 - SIEM cost optimization
@@ -2873,7 +2873,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Authors**: Anonymized practitioner
 **Date**: October 2025
 **URL**: Personal communication (Practitioner validation), anonymized per the Boundary rule
-**Evidence Level**: A (Practitioner validation, production security implementations)
+**Evidence Level**: B (Practitioner validation, production security implementations) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 
 > **Tier flagged, NOT changed, 2026-08-12 — this needs an owner decision, because
 > fixing it alone would be misleading.** Under the canonical A/B/C/D scale,
@@ -3279,7 +3279,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Authors**: Cloud Security Alliance, Google Cloud
 **Date**: December 2025
 **URL**: https://cloudsecurityalliance.org/artifacts/the-state-of-ai-security-and-governance
-**Evidence Level**: A (Industry survey, independent research, major vendors)
+**Evidence Level**: B (Industry survey, independent research, major vendors) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ12: AI Governance Maturity Gates
 - Governance prerequisites for AI success
@@ -3306,7 +3306,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Authors**: Cloud Security Alliance
 **Date**: December 18, 2025
 **URL**: https://cloudsecurityalliance.org/press-releases/2025/12/18/csa-and-google-cloud-study-finds-governance-maturity-is-strongest-predictor-of-ai-readiness
-**Evidence Level**: A (Industry consortium, Google Cloud partnership)
+**Evidence Level**: B (Industry consortium, Google Cloud partnership) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ12: AI Governance Maturity Gates
 - Quantitative validation of governance-success correlation
@@ -3356,7 +3356,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Authors**: HyperFRAME Research
 **Date**: October 2025
 **URL**: https://hyperframeresearch.com/2025/10/07/databricks-releases-data-intelligence-for-cyber-defense/
-**Evidence Level**: A (Production deployment, quantitative results)
+**Evidence Level**: B (Production deployment, quantitative results) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ11: LIGER Stack TCO validation
 - Security lakehouse cost reduction
@@ -3379,7 +3379,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Authors**: ClickHouse
 **Date**: 2025 (page byline Oct 21, 2025; catalogued "2024" corrected 2026-07-09, verified at primary)
 **URL**: https://clickhouse.com/blog/how-gitlab-uses-clickhouse-to-scale-analytical-workloads
-**Evidence Level**: A (Production deployment, quantitative benchmarks)
+**Evidence Level**: B (Production deployment, quantitative benchmarks) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ11: LIGER Stack "E" (Engine) component
 - Query performance for security analytics
@@ -3572,7 +3572,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Authors**: Google Cloud
 **Date**: September 2025
 **URL**: https://cloud.google.com/transform/roi-of-ai-how-agents-help-business
-**Evidence Level**: A (Major vendor, survey data)
+**Evidence Level**: C (Major vendor, survey data) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ14: Agentic Security Automation ROI
 - Agent deployment rates
@@ -3642,7 +3642,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 **Date**: 2025
 **URL**: https://arcticwolf.com/resources/press-releases/arctic-wolf-2025-security-operations-report-reveals-threat-landscape-acceleration-majority-of-security-alerts-now-occur-outside-working-hours/
 **Alt URL**: https://arcticwolf.com/resources/blog/2025-year-in-review/
-**Evidence Level**: A (Production platform, quantitative metrics)
+**Evidence Level**: C (Production platform, quantitative metrics) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - RQ9: Multi-tenant MSSP architecture
 - OCSF integration patterns
@@ -3787,7 +3787,7 @@ from the Second Brain entry pending the freshness sweep.
 **Date**: 2025 (arXiv 2506.17512; entry formerly said 2024)
 **URL**: https://people.eecs.berkeley.edu/~julien.piet/matryoshka.pdf
 **Alt URL**: https://arxiv.org/abs/2506.17512
-**Evidence Level**: A (peer-reviewed academic research)
+**Evidence Level**: B (peer-reviewed academic research) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Semantic-aware parsing methodology directly applicable to Zeek → OCSF transformation
 - Book Chapter 8 (OCSF mapping), Appendix F (mapping implementation)
@@ -4197,7 +4197,7 @@ from the Second Brain entry pending the freshness sweep.
 **Authors**: Julien Hurault (Ju Data Engineering Newsletter)
 **Date**: May 1, 2024
 **URL**: https://juhache.substack.com/
-**Evidence Level**: A (Tier-1 production validation, named deployment with metrics)
+**Evidence Level**: B (Tier-1 production validation, named deployment with metrics) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Okta serverless DuckDB: 1M Lambda invocations/day, 250 GB/min peak; AWS Lambda + DuckDB + Snowflake + S3
 - Upstream preprocessing to cut warehouse compute; Chapter 10 (cost), Chapter 9 (serverless patterns)
@@ -4541,7 +4541,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 **Date**: 2025 assessment
 **URL**: https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/whitepapers/compliance/Amazon-S3-Compliance-Assessment-2025.pdf
 **Alt URL**: https://aws.amazon.com/compliance/secrule17a-4f/
-**Evidence Level**: A (independent third-party compliance attestation against named SEC/FINRA/CFTC rules)
+**Evidence Level**: B (independent third-party compliance attestation against named SEC/FINRA/CFTC rules) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - The strongest compliance anchor for the lakehouse-on-object-storage thesis in regulated financial services: an independent assessor's WORM attestation that object storage can satisfy the same broker-dealer record-retention rules historically used to justify a proprietary archival SIEM/archive tier. Supports the FSI/compliance and retention hypotheses (immutability without vendor lock-in).
 - Chapter on compliance/retention; pairs with the Amazon S3 Tables and Iceberg-on-S3 entries.

@@ -98,14 +98,14 @@ Everything in §2.1-§2.3 is curation, which PRISMA 2020 accommodates as the "id
 
 All sources are classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research:
 
-#### Evidence Level A (Target: >70%; live share 41.9% at 2026-07-16 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
+#### Evidence Level A (Target: >70%; live share 25.3% at 2026-08-19 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 tier audit re-tiered 38 further entries off A)
 **Criteria**: Production deployments, peer-reviewed research, government standards
 **Examples**:
 - Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks (the Shell entry was removed in the 2026 audit — dead URL, unverifiable)
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 96 of 229 tiered entries (41.9%), live-derived 2026-07-23 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 58 of 229 tiered entries (25.3%), live-derived 2026-07-23 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
 #### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 47.6%)
 **Criteria**: Industry analyst reports, expert consensus, verified vendor documentation
@@ -429,7 +429,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | >70% | 41.9% (96/229 tiered; live-derived 2026-07-23) | ❌ Below target |
+| Evidence Level A | >70% | 25.3% (58/229 tiered; live-derived 2026-07-23) | ❌ Below target |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
@@ -496,7 +496,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 227 tiered sources on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: Level-A share live-derived per entry (41.9% at 2026-07-16; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit)
+1. **Evidence Quality**: Level-A share live-derived per entry (25.3% at 2026-08-19; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 38 entries that were not peer-reviewed research or official standards)
 2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations

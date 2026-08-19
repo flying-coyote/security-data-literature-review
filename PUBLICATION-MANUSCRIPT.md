@@ -208,7 +208,7 @@ The curated-arm criteria above were written in October 2025 to describe a corpus
 
 Sources classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research (adapted from evidence-based medicine):
 
-**Evidence Level A** (target >70%; live 41.9%, 96 of 229 tiered):
+**Evidence Level A** (target >70%; live 25.3%, 58 of 229 tiered):
 - Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks
 - Peer-reviewed academic publications in venues whose peer review has been verified to exist
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
@@ -475,7 +475,7 @@ The 2026-06 fabrication audit this review documents (§2.8) is, in part, a recor
 
 **Source statistics** (derived per entry on 2026-07-13, not self-reported):
 - **Total sources**: 229 catalogued entries, of which 227 carry an evidence tier and 2 are documented no-primary stubs
-- **Evidence levels**: Level A 41.9% (96/229), Level B 47.6% (109/229), Level C 10.5% (24/229), Level D 0%
+- **Evidence levels**: Level A 25.3% (58/229), Level B 60.7% (139/229), Level C 14.0% (32/229), Level D 0%
 
 **Source type distribution** (Figure 3; derived by `scripts/derive_source_taxonomy.py` and reconciled against the bibliography):
 - **Vendor engineering blogs and product documentation**: 63 (28.5%)
@@ -948,9 +948,9 @@ Alt text: A PRISMA 2020 flow diagram with two identification arms converging on 
 
 ### Figure 2: Evidence Level Distribution
 
-![Figure 2: Evidence level distribution, per-source tally derived 2026-07-23 — 41.9% Level A (96/229 tiered), 47.6% Level B (109/229), 10.5% Level C (24/229); below the >70% Level A target, stated honestly in place of the withdrawn 79% self-grade.](publication-graphics/figure2_evidence_distribution.png){ width=85% }
+![Figure 2: Evidence level distribution, per-source tally derived 2026-07-23 — 25.3% Level A (58/229 tiered), 60.7% Level B (139/229), 14.0% Level C (32/229); below the >70% Level A target, stated honestly in place of the withdrawn 79% self-grade.](publication-graphics/figure2_evidence_distribution.png){ width=85% }
 
-Alt text: Bar chart of the evidence-level distribution across the 229 tiered sources as derived on 2026-07-23: Level A 41.9% (96 sources), Level B 47.6% (109 sources), Level C 10.5% (24 sources). A reference line marks the greater-than-70-percent Level-A target, and the chart annotates the shortfall against it — the honest derived figure stated in place of the 79% self-grade withdrawn in the 2026-06 audit.
+Alt text: Bar chart of the evidence-level distribution across the 229 tiered sources as derived on 2026-07-23: Level A 25.3% (58 sources), Level B 60.7% (139 sources), Level C 14.0% (32 sources). A reference line marks the greater-than-70-percent Level-A target, and the chart annotates the shortfall against it — the honest derived figure stated in place of the 79% self-grade withdrawn in the 2026-06 audit.
 
 **Shows**:
 - Bar chart of the tier mix (A: 41.9%, B: 47.6%, C: 10.6% of 227 tiered entries; derived from MASTER-BIBLIOGRAPHY.md by `scripts/count_reconcile.py` on 2026-07-16, not self-graded)
@@ -989,7 +989,7 @@ Alt text: Horizontal bar chart of confidence scores on the 25-point rubric for a
 |--------|--------|----------|--------|
 | Total Sources | 100+ | 231 catalogued (229 tiered; live-derived 2026-07-23) | Met |
 | Peer-reviewed share | (none set) | 21.8% (50/229; was 11.8% before the 2026-07-13 search incorporation) | Reported, not targeted |
-| Evidence Level A | >70% | 41.9% (96/229 tiered; live-derived 2026-07-23) | Below target (honest live figure; was a withdrawn 79% self-grade) |
+| Evidence Level A | >70% | 25.3% (58/229 tiered; live-derived 2026-07-23) | Below target (honest live figure; was a withdrawn 79% self-grade) |
 | URL Validation (hypothesis-critical citations) | 90%+ | Phase-1 (Oct 2025) grade withdrawn — several of the 16 "critical" URLs (DORA, Forrester TEI) later failed source verification; per-citation verification now continuous via RESEARCH-JOURNAL.md | Superseded by per-item verification |
 | Geographic Diversity | 2+ regions | 3 regions (US, EU, APAC) | Met |
 | Organizational Types | 3+ types | 5 types | Exceeded |
@@ -1059,7 +1059,7 @@ Levels C (limited evidence) and D (unreliable evidence) were designed as exclusi
 
 **Classification process.** Sources move through four steps: initial assessment (source type, URL, publication metadata), quality evaluation (quantitative evidence present, production validation, reproducibility, methodological transparency), evidence-level assignment against the criteria above, and cross-validation, where corroboration from an independent source type is preferred for any claim feeding hypothesis validation.
 
-**Post-audit state of the tier mix.** The original classification pass assigned a large majority of sources to Level A, targeting a greater-than-70-percent Level-A share. The 2026-06 fabrication audit and the 2026-07 verification sweep re-checked surviving inline figures against their cited sources and found that a substantial share of the originally Level-A entries carried statistics not actually present in the source, or had entries removed outright. The live, derived tally as of 2026-07-23 is 96 of 229 tiered entries at Level A (41.9 percent), 109 at Level B (47.6 percent), and 24 at Level C (10.5 percent) — below the target, and reported here honestly in place of the withdrawn 79 percent self-graded figure (see Table 1). Per-source evidence levels remain provisional pending further re-verification.
+**Post-audit state of the tier mix.** The original classification pass assigned a large majority of sources to Level A, targeting a greater-than-70-percent Level-A share. The 2026-06 fabrication audit and the 2026-07 verification sweep re-checked surviving inline figures against their cited sources and found that a substantial share of the originally Level-A entries carried statistics not actually present in the source, or had entries removed outright. The live, derived tally as of 2026-07-23 is 58 of 229 tiered entries at Level A (25.3 percent), 139 at Level B (60.7 percent), and 32 at Level C (14.0 percent) — below the target, and reported here honestly in place of the withdrawn 79 percent self-graded figure (see Table 1). Per-source evidence levels remain provisional pending further re-verification.
 
 The systematic-search incorporation of 2026-07-13 is worth reading against that target rather than as progress toward it. It added 26 peer-reviewed studies, which nearly doubled the corpus's peer-reviewed share, and it left the Level-A percentage essentially flat (41.8 to 41.9 under the corrected counter; the 43.0-to-42.9 figures reported at the time predate the 2026-07-16 heading fix that surfaced eight uncounted grey entries). Only 11 of the 26 tier at Level A: the rest are conference work whose review depth could not be independently established, or papers in venues too weak to carry a Level-A claim. The lesson is not that the search failed — it is that Level A in this scheme is a demanding grade that most of the indexed literature at this intersection does not meet, and that a corpus cannot be raised to a 70-percent Level-A share by adding peer-reviewed papers unless the papers are good ones.
 
