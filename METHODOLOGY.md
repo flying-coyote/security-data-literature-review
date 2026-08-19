@@ -98,7 +98,7 @@ Everything in §2.1-§2.3 is curation, which PRISMA 2020 accommodates as the "id
 
 All sources are classified using a four-tier evidence system. Level A is reserved for peer-reviewed research and official standards; production evidence, however good, is Level B.
 
-#### Evidence Level A (Target: >70%; live share 17.0% at 2026-08-19 — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 tier audit re-tiered 57 further entries off A once the criteria below were corrected)
+#### Evidence Level A (live share 17.0% at 2026-08-19; NO target — see 8.1a — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 tier audit re-tiered 57 further entries off A once the criteria below were corrected)
 **Criteria**: Peer-reviewed research, and official standards. Nothing else.
 **Examples**:
 - Peer-reviewed publications at a named venue with real review (USENIX Security, IEEE S&P, NDSS, CCS, VLDB, SIGMOD, ICSE, NeurIPS, ICML, ACL, KDD, TMLR, or a peer-reviewed journal). An arXiv preprint with no named venue is **not** peer-reviewed and does not qualify, however eminent its authors
@@ -433,11 +433,42 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | >70% | 17.0% (39/229 tiered; live-derived 2026-08-19) | ❌ Below target |
+| Evidence Level A | retired 2026-08-19 (see 8.1a) | 17.0% (39/229 tiered; live-derived 2026-08-19) | ✅ Measured, not targeted |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
 | Book Chapters Cited | 11/11 | 11/11 | ✅ 100% |
+
+### 8.1a Why the Level-A share is no longer a target (owner ruling, 2026-08-19)
+
+The >70% Level-A target is retired. It was set against the older Level-A criteria, which
+counted production deployments and government publications as Level A; under the corrected
+criteria in section 3.1 it was never reachable, because peer-reviewed research on security
+data engineering barely exists. A corpus that is roughly two-thirds practitioner evidence is
+not a deficient corpus, it is an accurate description of where the evidence in this field
+actually lives.
+
+The target also pointed the wrong way. The Level-A share falls as the corpus gets more
+honest: the 2026-08-19 audit moved 57 entries down and the share went from 41.9% to 17.0%.
+A metric that rewards the appearance of rigour over accurate labelling does not belong on a
+public repository. The share is still derived and still reported; it is a description, not
+a goal, and it should be read as "17.0% of this corpus is peer-reviewed or standards work",
+which is a fact about the field rather than a grade.
+
+These are the measures that replace it. Each rises as the corpus gets more accurate.
+
+| Accuracy measure | Value (2026-08-19) | What it means |
+|---|---|---|
+| Tier accuracy | **229 of 229 (100%)** | every tiered entry checked against the section 3.1 definition — 96 audited downward from Level A, 190 audited upward from B/C |
+| Claim–source integrity | **184 of 229 (80.3%)** | entries whose cited claim has been verified present in the cited source and marked ✅; 200 of 229 (87.3%) carry a validation record of some kind |
+| Ineligible sources | **0** | personal communications as a cited source, the boundary breach found and removed 2026-08-12 |
+| Outstanding fabrications | **0** | claims traced to a source that does not contain them, unresolved |
+
+The tier-accuracy figure is worth one caveat so it is not over-read. It records that every
+entry has been assessed against the definition, not that every assessment is correct. The
+downward audit had one verdict overturned on adversarial review out of 61, and the upward
+audit proposed two upgrades and upheld neither — so the error rate is low and measured
+rather than assumed, which is the most that can honestly be claimed.
 | Metadata Completeness | 95%+ | 97% | ✅ |
 
 ### 8.2 Phase 2 Metrics (PENDING - IT Harvest Partnership)
@@ -500,7 +531,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 227 tiered sources on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: Level-A share live-derived per entry (17.0% at 2026-08-19; the >70% target is not yet met — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
+1. **Evidence Quality**: Level-A share live-derived per entry (17.0% at 2026-08-19; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
 2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations

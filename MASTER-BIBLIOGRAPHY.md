@@ -3744,12 +3744,12 @@ The following papers have been identified for future analysis:
 
 ---
 
-#### Xor Filters: Faster and Smaller than Bloom Filters
+#### Xor Filters: Faster and Smaller Than Bloom and Cuckoo Filters
 
-**Authors**: Academic paper
-**Date**: TBD
+**Authors**: Thomas Mueller Graf, Daniel Lemire (verified at the arXiv record 2026-08-19; entry formerly said "Academic paper"/"TBD", the same placeholder defect the 2026-07 sweep fixed on the DBSP entry and missed here)
+**Date**: 2020 (Journal of Experimental Algorithmics 25(1), 2020; arXiv v3 27 Jan 2020, submitted 17 Dec 2019)
 **URL**: https://arxiv.org/abs/1912.08258
-**Evidence Level**: A (Academic research - pending verification)
+**Evidence Level**: A (peer-reviewed — ACM Journal of Experimental Algorithmics; the arXiv record names the journal in its Journal-reference field, so this is not a venue-less preprint)
 **Relevance**:
 - Indexing optimization
 - Log analytics performance
@@ -3766,6 +3766,9 @@ The following papers have been identified for future analysis:
 **Source**: Identified via "Humio Clone" reference collection (December 2025)
 **Status**: 📚 QUEUED - Not yet read
 **Added**: 2026-01-02
+
+**Citations**: Graf, T. M., & Lemire, D. (2020). *Xor Filters: Faster and Smaller Than Bloom and Cuckoo Filters*. Journal of Experimental Algorithmics, 25(1). arXiv:1912.08258.
+**Validation Status**: ✅ Authors, title, date and venue verified at the arXiv record 2026-08-19. Claim-vs-source was already checked in the 2026-07 sweep (RESEARCH-JOURNAL.md: Graf & Lemire; the entry's "8.2 bits" reads ~9.2-9.8 in the paper, logged as a minor mismatch) — that verification was never written back into this entry, which is why it still carried a placeholder byline.
 
 ---
 

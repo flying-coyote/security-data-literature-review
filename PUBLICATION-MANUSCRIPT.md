@@ -208,7 +208,7 @@ The curated-arm criteria above were written in October 2025 to describe a corpus
 
 Sources classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research (adapted from evidence-based medicine):
 
-**Evidence Level A** (target >70%; live 17.0%, 39 of 229 tiered):
+**Evidence Level A** (live 17.0%, 39 of 229 tiered; the >70% target was retired 2026-08-19 — see METHODOLOGY 8.1a, the share describes the field's evidence base rather than grading the corpus):
 - Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks
 - Peer-reviewed academic publications in venues whose peer review has been verified to exist
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)

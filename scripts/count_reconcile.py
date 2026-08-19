@@ -238,8 +238,8 @@ def build_allowlist(T, bib):
         ("manuscript tier-mix prose", MANUSCRIPT,
          r"The live, derived tally as of [0-9-]+ is (\d+) of (\d+) tiered entries at Level A \(([\d.]+) percent\), (\d+) at Level B \(([\d.]+) percent\), and (\d+) at Level C \(([\d.]+) percent\)",
          (A, TIER, PCT, B, PCT_B, C, PCT_C), False),
-        ("manuscript 2.3 tier shares", MANUSCRIPT,
-         r"\*\*Evidence Level A\*\* \(target >70%; live ([\d.]+)%, (\d+) of (\d+) tiered\)",
+        ("manuscript 2.3 tier shares", MANUSCRIPT,  # target retired 2026-08-19 (METHODOLOGY 8.1a)
+         r"\*\*Evidence Level A\*\* \(live ([\d.]+)%, (\d+) of (\d+) tiered; the >70% target was retired",
          (PCT, A, TIER), False),
         ("manuscript 3.1 source statistics", MANUSCRIPT,
          r"\*\*Evidence levels\*\*: Level A ([\d.]+)% \((\d+)/(\d+)\), Level B ([\d.]+)% \((\d+)/(\d+)\), Level C ([\d.]+)% \((\d+)/(\d+)\)",
@@ -247,8 +247,8 @@ def build_allowlist(T, bib):
         ("METHODOLOGY Level-A achievement", "METHODOLOGY.md",
          r"\*\*Current Achievement\*\*: (\d+) of (\d+) tiered entries \(([\d.]+)%\), live-derived",
          (A, TIER, PCT), False),
-        ("METHODOLOGY target table", "METHODOLOGY.md",
-         r"\| Evidence Level A \| >70% \| ([\d.]+)% \((\d+)/(\d+) tiered; live-derived [0-9-]+\) \|",
+        ("METHODOLOGY target table", "METHODOLOGY.md",  # target retired 2026-08-19 (METHODOLOGY 8.1a): share is measured, not graded
+         r"\| Evidence Level A \| retired [0-9-]+ \(see 8\.1a\) \| ([\d.]+)% \((\d+)/(\d+) tiered; live-derived [0-9-]+\) \|",
          (PCT, A, TIER), False),
         ("publication-graphics README fig2", "publication-graphics/README.md",
          r"live per-source tier tally \(([\d.]+)% Level A, (\d+)/(\d+) tiered, derived",
