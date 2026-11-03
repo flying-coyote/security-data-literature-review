@@ -334,9 +334,10 @@ Convenient but not decision-driving. Don't let Tier 3 features override Tier 1-2
 - [ ] Tier 3 (occasional; ad-hoc investigations only)
 
 **If Tier 1, required capabilities**:
-- [ ] Columnar storage (Parquet/Arrow, which scans billions of rows for specific fields 10-100× faster than row storage)
+- [ ] Columnar storage (Parquet/Arrow, which reads only the columns a hunt touches across billions of rows; the speedup over row storage depends on the corpus and the query, so measure it in the POC rather than assuming a multiplier)
 - [ ] Partition pruning (date-based partitioning with metadata elimination, reading only relevant days rather than the full 7-year table)
-- [ ] Predicate pushdown (filter at storage layer: `WHERE command_line LIKE '%mimikatz%'` reads only matching files)
+- [ ] Predicate pushdown (filter at storage layer: `WHERE dst_port = 3389 AND event_date >= DATE '2026-01-01'` skips every file and row group whose min/max statistics can't match; a leading-wildcard filter like `command_line LIKE '%mimikatz%'` can't be pushed down this way and reads every file's `command_line` column)
+- [ ] Text search over `command_line` and other free text, which is the text-search regime from Chapter 5: route it to a search index or a columnar text index, since on 10M EDR rows the index answered a `command_line` text search 144× faster than a ClickHouse scan (SDW Lab `edr-two-regime`, Tier B, single host)
 - [ ] Distributed MPP (massively parallel processing across 10-50 workers, delivering <60 sec queries on 3B rows)
 
 **Candidate Platforms** (the timings noted are illustrative architecture characterizations, not measured benchmark results, so validate in your own POC, Worksheet A.5):
