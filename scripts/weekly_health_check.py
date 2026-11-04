@@ -22,8 +22,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Tuple
 from dataclasses import dataclass, field
+import http.client
+import urllib.error
+import urllib.request
 from urllib.parse import urlparse
-import requests
+# Stdlib-only on purpose: `requests` was the script's one third-party import, and the weekly
+# routine runs under whichever python3 the lane provides (cloud image, cron, venv). When that
+# interpreter lacked `requests` the whole check died at import. urllib removes the dependency.
 
 # Canonical hypothesis-count parser, imported not reimplemented (same pattern
 # scripts/weekly_scheduled_check.py already uses for parse_master_bibliography): a
@@ -212,17 +217,26 @@ class LiteratureReviewHealthCheck:
         ua = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
         bot_blocked = {403, 405, 406, 429, 999}
+        def fetch(method, extra=None):
+            req = urllib.request.Request(url, method=method,
+                                         headers={"User-Agent": ua, **(extra or {})})
+            try:
+                with urllib.request.urlopen(req, timeout=10) as r:
+                    return r.status
+            except urllib.error.HTTPError as e:  # 4xx/5xx arrive as exceptions in urllib
+                return e.code
+
         try:
-            r = requests.head(url, timeout=8, allow_redirects=True, headers={"User-Agent": ua})
-            if r.status_code in bot_blocked or r.status_code >= 500:
-                r = requests.get(url, timeout=10, allow_redirects=True, stream=True,
-                                 headers={"User-Agent": ua, "Range": "bytes=0-2047"})
-            if r.status_code in (404, 410):
-                return "broken", r.status_code
-            if r.status_code >= 500:
-                return "broken", r.status_code  # persistent server error after GET retry
-            return "ok", r.status_code
-        except requests.RequestException as e:
+            code = fetch("HEAD")
+            if code in bot_blocked or code >= 500:
+                code = fetch("GET", {"Range": "bytes=0-2047"})  # body is never read
+            if code in (404, 410):
+                return "broken", code
+            if code >= 500:
+                return "broken", code  # persistent server error after GET retry
+            return "ok", code
+        except (OSError, http.client.HTTPException, ValueError) as e:
+            # URLError, timeouts and connection resets are OSError subclasses.
             return "unreachable", type(e).__name__
 
     def check_evidence_freshness(self):
