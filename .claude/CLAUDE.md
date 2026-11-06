@@ -9,10 +9,10 @@
 
 ## Current Status
 **Phase**: 2 (Monthly Updates + Quarterly Deep Dives) | **Version**: 1.23.0 (+ [Unreleased])
-**Counts**: run `python3 scripts/automation_dashboard.py` — this file no longer states them (they drifted twice while hand-maintained here; the derive-don't-state gotcha below applies to this file too). Snapshot at last edit (2026-07-16): 229 `#### ` blocks / 227 tiered / 41.9% Level A (95/227), after the 2026-07-16 heading fix surfaced 8 entries invisible to the counter since Nov 2025.
+**Counts**: run `python3 scripts/automation_dashboard.py` — this file no longer states them (they drifted twice while hand-maintained here; the derive-don't-state gotcha below applies to this file too). Snapshot 2026-11-05: 231 blocks / 229 tiered / 17.0% Level A (39/229). The 41.9% of 2026-07-16 fell to 17.0% when the 2026-08-19 audit moved 57 entries down; the upward re-audit found nothing under-tiered, so 17.0% is the measurement and the Level-A target is retired (c1f5d66).
 **Hypotheses**: 9 assessed under the 2026-07-13 rubric rescore (1 strong / 2 high / 2 moderate / 4 preliminary, per `count_reconcile.py` Counter 1). The "N validated" vocabulary is retired pending the owner's canonical-status ruling.
 See `PROJECT-BRIEF.md` for scope; live metrics are README.md's Quality Metrics block (live-computed via `scripts/automation_dashboard.py`). REPOSITORY-STATUS.md was archived 2026-07-10 → `archive/` (it was a fourth hand-synced copy of the same numbers).
-> The 80% Level-A figure was self-reported; the honest live number is ~42% after the 2026-06-05 audit
+> The 80% Level-A figure was self-reported; the honest live number was ~42% after the 2026-06-05 audit and is 17.0% after the 2026-08-19 audit
 > folded corrections in and re-tiered ~25 entries off A (their headline stats weren't in the cited
 > source). The freshness sweep + 2026 production sources are the path back toward the 75% target — the
 > gap is now visible, not masked.
