@@ -37,3 +37,4 @@ Thumbs.db
 .env
 .env.local
 __pycache__/
+methods/snowball-2026-11.json

@@ -60,6 +60,14 @@ ADDED_1107 = REPO_ROOT / "methods" / "added-2026-11-07.json"
 # Madani (C&ESAR 2026) from the Jenova citation-check harvest, in their own dated
 # record so the earlier same-day file stays frozen.
 ADDED_1107_JENOVA = REPO_ROOT / "methods" / "added-2026-11-07-jenova.json"
+# Ninth dated input (2026-11-07, snowball pass): nine peer-reviewed admissions.
+ADDED_1107_SNOWBALL = REPO_ROOT / "methods" / "added-2026-11-07-snowball.json"
+# Eighth dated input (2026-11-07): the first record that MOVES entries between
+# categories instead of adding them. It introduces the 'preprint' category and moves
+# Shukla (arXiv 2509.00115) and Zou (arXiv 2507.20526) out of the peer-reviewed bucket.
+RETIER_PREPRINT_1107 = REPO_ROOT / "methods" / "retier-preprint-2026-11-07.json"
+# Records whose 'moves' list is applied after every additive record above.
+MOVE_RECORDS = [RETIER_PREPRINT_1107]
 OUT = REPO_ROOT / "methods" / "source-taxonomy.json"
 
 ACADEMIC = "academic_peer_reviewed"
@@ -77,6 +85,7 @@ DISPLAY = [
     ("book", "Books"),
     ("expert_interview_or_personal_communication", "Expert interviews"),
     ("first_party_lab_measurement", "First-party lab\nmeasurement"),
+    ("preprint", "Preprints\n(arXiv, no venue)"),
     ("no_primary_retired_or_declined", "Retired / declined\n(no primary)"),
 ]
 
@@ -111,6 +120,22 @@ def load_counts():
     if ADDED_1107_JENOVA.exists():
         for entry in json.loads(ADDED_1107_JENOVA.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
+
+    if ADDED_1107_SNOWBALL.exists():
+        for entry in json.loads(ADDED_1107_SNOWBALL.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    # Dated reclassifications: each move takes one entry out of 'from' and into 'to'.
+    # A move whose source bucket is already empty means the record and the frozen
+    # inputs disagree, which is a reconciliation failure, not something to clamp.
+    for path in MOVE_RECORDS:
+        if not path.exists():
+            continue
+        for move in json.loads(path.read_text(encoding="utf-8"))["moves"]:
+            if counts[move["from"]] < 1:
+                raise SystemExit(f"FATAL: move of {move['title']!r} from empty bucket {move['from']}")
+            counts[move["from"]] -= 1
+            counts[move["to"]] += 1
 
     return counts, len(added)
 

@@ -372,3 +372,34 @@ citations that had been un-recorded here.
 
 *Next validation due with the cadence (`SCHEDULING.md`). When the worklist items above are re-sourced or
 stripped, append a dated row moving each to VERIFIED or removing it — do not silently re-litigate settled rows.*
+
+---
+
+## 2026-11-07 — Phase 1 upgrade pass: two re-tiers and nine snowball admissions
+
+### Re-tiers (A → B, against METHODOLOGY §3.1)
+
+| Entry | Was | Now | Method | Finding |
+|---|---|---|---|---|
+| Apache Arrow Flight SQL | A | B | cross-ref (§3.1 definition) | Evidence was project documentation plus a project blog post, which §3.1 names Level B; survived the 2026-08-19 downward audit. Key Findings unchanged. |
+| Mining Temporal Attack Patterns from Cyberthreat Intelligence Reports (arXiv 2401.01883) | A | B | arXiv API record | arXiv preprint with no venue; the arXiv comment says a modified version is under review at IEEE TSE. Author list (Rahman, Wroblewski, Matthews, Morgan, Menzies, Williams) filled from the record. |
+
+### Snowball admissions (all Tier A, all VERIFIED)
+
+Identification: one hop backward (Crossref reference lists) and forward (OpenCitations) from 35 DOI-resolved peer-reviewed seeds, 2,812 unique DOIs, metadata via keyed OpenAlex; ranking and screening recorded in `methods/snowball-candidates-2026-11.md`. "Targeted" marks a known-item lookup against a named thin claim.
+
+| Entry | Found via | Method | Finding |
+|---|---|---|---|
+| Kokulu et al., *Matched and Mismatched SOCs* (CCS 2019) | targeted | Crossref + abstract at Semantic Scholar, matched to OpenAlex copy (ACM DL 403) | 18 semi-structured interviews; technical and non-technical SOC issues; manager–analyst disagreements. |
+| Rigger & Su, *Query Partitioning* (OOPSLA 2020) | targeted | Crossref + abstract at Semantic Scholar, matched to OpenAlex copy (ACM DL 403) | Logic bugs return incorrect results unnoticed; 175 bugs found, 125 fixed, 77 logic bugs. |
+| Raasveldt & Mühleisen, *Don't Hold My Data Hostage* (PVLDB 2017) | targeted | VLDB PDF page 1 + Crossref | Result-set serialization can dominate query time; columnar serialization improves transmission by an order of magnitude. |
+| Zhu et al., *Tools and Benchmarks for Automated Log Parsing* (ICSE-SEIP 2019) | backward from Petrescu | arXiv abstract page + Crossref | 13 parsers on 16 datasets; accuracy, robustness, efficiency; tools and benchmarks released. |
+| Zeng et al., *Empirical Evaluation of Columnar Storage Formats* (PVLDB 2023) | backward from F3 / FastLanes | VLDB PDF text + Crossref | Parquet/ORC internals benchmarked; dictionary encoding by default, decode speed over ratio, optional block compression. |
+| Durner, Leis & Neumann, *Exploiting Cloud Object Storage* (PVLDB 2023) | backward from F3, forward from Delta Lake | VLDB PDF text + Crossref | Cost- and performance-optimal object-store retrieval; AnyBlob; uncached Umbra comparable to SSD-caching warehouses. |
+| Hassan et al., *NoDoze* (NDSS 2019) | backward from hyperdimensional host-IDS entry (IEEE BigData 2024) | NDSS paper page + Crossref | Threat alert fatigue; provenance-graph triage; 364 alerts; estimated 84% false-alarm volume reduction. |
+| Valeur et al., *Alert Correlation* (IEEE TDSC 2004) | backward from AIDA (ARES 2019) | author-hosted TDSC PDF page 1 + Crossref | Component model of correlation; effective alert reduction; effectiveness depends heavily on the dataset. |
+| Kuschewski et al., *BtrBlocks* (SIGMOD 2023) | backward from F3 | author-hosted version-of-record PDF page 1 + Crossref | Parquet not optimized for remote data lakes; decompression makes scans CPU-bound; lightweight-encoding format. |
+
+### Held, not admitted
+
+Julisch (TISSEC 2003), Bhatt et al. (IEEE S&P magazine 2014), Oliner et al. (CACM 2012) and Wang & Strong (JMIS 1996) are real (Crossref-resolved) and ranked high, but their publisher pages returned 403 and no independent abstract page was reached this session (the Semantic Scholar records carried no abstract), so they stay in the candidates file until read at a primary.

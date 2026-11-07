@@ -23,19 +23,21 @@ Please provide:
 
 I will classify the source using the Evidence Tier system:
 
-### Tier 1: Production Deployments (Evidence Level A)
-- Measured outcomes from real production systems
-- Quantitative performance data from operational environments
-- Direct practitioner validation with metrics
+Evidence Level A is defined by METHODOLOGY §3.1 (corrected 2026-08-19): **peer-reviewed research and official standards, nothing else.** Production deployments, practitioner measurements, vendor benchmarks and official project documentation are Level B however good they are, and an arXiv preprint with no published venue is Level B too.
 
-### Tier 2: Peer-Reviewed Research (Evidence Level A)
-- Published in peer-reviewed journals or top-tier conferences
-- Reproducible methodology documented
-- Results independently validated
+### Tier 1: Peer-Reviewed Research and Official Standards (Evidence Level A)
+- Published in a peer-reviewed journal or conference proceedings (venue confirmed at the publisher or DOI record, not inferred)
+- Or an official standard or framework from a standards body (NIST, ISO, IETF RFC, and similar)
+- Preprints, workshop papers whose proceedings are not yet published, and theses: Level B until the venue is confirmed
+
+### Tier 2: Production Deployments and Practitioner Evidence (Evidence Level B)
+- Measured outcomes from real production systems, with the measurement disclosed
+- First-party lab benchmarks, named-practitioner talks, engineering blogs from the operating team
+- Official project documentation (Apache, CNCF) for what a feature does
 
 ### Tier 3: Expert Consensus (Evidence Level B)
 - Multiple domain experts agree (vendor-neutral)
-- Industry-recognized authority (NIST, MITRE, etc.)
+- Industry-recognized authority that is not itself a published standard (MITRE guidance, CISA advisories, analyst syntheses); a published NIST or ISO standard is Tier 1
 - Documented reasoning provided
 
 ### Tier 4: Vendor Claims (Evidence Level C)
@@ -57,7 +59,7 @@ I will classify the source using the Evidence Tier system:
    - Authors: [Complete author list]
    - Published: [Date] in [Venue]
    - URL/DOI: [Permanent link]
-   - Quality: Tier [N] (Evidence Level [A/B/C/D]) - [rationale]
+   - Quality: Evidence Level [A/B/C] - [rationale against METHODOLOGY §3.1]
    - Status: [Read/Referenced/Validated]
    - Key Insights: [1-2 sentence summary]
    - Related Hypotheses: [H-XX references]
@@ -68,6 +70,4 @@ I will classify the source using the Evidence Tier system:
 
 ## Quality Target
 
-Maintain 75%+ Evidence Level A (Tier 1+2 sources).
-
-Current distribution will be checked after adding source.
+There is no Level-A share target. The >70% target was retired by owner ruling 2026-08-19 (METHODOLOGY §8.1a): the share describes where evidence in this field lives and can fall as honest practitioner evidence is added. Tier each source accurately against §3.1, verify the cited claim at the primary, then run `python3 scripts/count_reconcile.py` and `python3 scripts/derive_source_taxonomy.py --check` (a new entry needs a dated taxonomy record under `methods/`).

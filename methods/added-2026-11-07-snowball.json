@@ -1,0 +1,41 @@
+{
+  "note": "Ninth dated taxonomy input: nine peer-reviewed entries admitted 2026-11-07 from the citation-graph snowball pass (methods/snowball-candidates-2026-11.md), six identified by the one-hop Crossref/OpenCitations walk and three by targeted known-item lookup against a named thin claim (Kokulu, Rigger & Su, Raasveldt & Mühleisen). Each was verified at a publisher, proceedings, author-hosted or abstract page named in its Validation Status line. All are classified academic_peer_reviewed and tiered A. Earlier same-day records stay frozen per the never-retro-edit convention.",
+  "entries": [
+    {
+      "title": "Matched and Mismatched SOCs: A Qualitative Study on Security Operations Center Issues (Kokulu et al., ACM CCS 2019)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "Finding Bugs in Database Systems via Query Partitioning (Rigger & Su, OOPSLA 2020)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "Don't Hold My Data Hostage: A Case for Client Protocol Redesign (Raasveldt & Mühleisen, PVLDB 2017)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "Tools and Benchmarks for Automated Log Parsing (Zhu et al., ICSE-SEIP 2019)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "An Empirical Evaluation of Columnar Storage Formats (Zeng et al., PVLDB 2023)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "Exploiting Cloud Object Storage for High-Performance Analytics (Durner, Leis & Neumann, PVLDB 2023)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "NoDoze: Combatting Threat Alert Fatigue with Automated Provenance Triage (Hassan et al., NDSS 2019)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "A Comprehensive Approach to Intrusion Detection Alert Correlation (Valeur et al., IEEE TDSC 2004)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "BtrBlocks: Efficient Columnar Compression for Data Lakes (Kuschewski et al., SIGMOD 2023)",
+      "category": "academic_peer_reviewed"
+    }
+  ]
+}

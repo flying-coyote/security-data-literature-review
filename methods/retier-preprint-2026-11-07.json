@@ -1,0 +1,15 @@
+{
+  "note": "Eighth dated taxonomy input, and the first that moves entries rather than adding them. A new source-type category, 'preprint', is introduced 2026-11-07 for arXiv research papers that have no confirmed peer-reviewed venue, so that the 'Peer-reviewed academic' bucket counts only peer-reviewed work. Two entries move from academic_peer_reviewed to preprint: Shukla, 'Adaptive Monitoring and Real-World Evaluation of Agentic AI Systems' (arXiv 2509.00115), classified academic in the frozen reconciliation record, and Zou et al., 'Security Challenges in AI Agent Deployment' (arXiv 2507.20526), classified academic in the frozen added-2026-11-07.json record by the Shukla precedent. Both bibliography entries already record Evidence Level B as preprints; tier and taxonomy bucket remain separate axes. Frozen prior records stay unedited per the never-retro-edit convention; scripts/derive_source_taxonomy.py applies each move as from -= 1, to += 1. Other arXiv-only entries still sit in the academic bucket (for example Piet et al. arXiv 2506.17512 and Rahman et al. arXiv 2401.01883) and are candidates for a later dated move, not moved here.",
+  "moves": [
+    {
+      "title": "Adaptive Monitoring and Real-World Evaluation of Agentic AI Systems (arXiv 2509.00115)",
+      "from": "academic_peer_reviewed",
+      "to": "preprint"
+    },
+    {
+      "title": "Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition (arXiv 2507.20526)",
+      "from": "academic_peer_reviewed",
+      "to": "preprint"
+    }
+  ]
+}

@@ -20,8 +20,8 @@ for 96 days.
 3. decides escalation, and
 4. prints a short notification + a `VERDICT: OK | ESCALATE` line. Exit `0` = OK, `10` = escalate.
 
-Escalation fires when **red** — status critical, any confirmed-broken link, Level-A below the 60%
-floor (`TIER_A_FLOOR`, recalibrated from the old self-reported 75% to the honest post-merge baseline),
+Escalation fires when **red** — status critical, any confirmed-broken link,
+(the Level-A floor `TIER_A_FLOOR` was removed 2026-11-07: the share target was retired 2026-08-19, METHODOLOGY §8.1a, so the share is reported as a description alongside the derived claim-integrity counts and never escalates),
 or more than 40% of sources older than 12 months — **or monthly**, on the weekly run that lands in
 the first 7 days of a calendar month. The script only DECIDES and NOTIFIES; it never edits the bibliography. A
 real refresh is the supervised `/monthly-update` job, because this is a source-of-truth artifact and

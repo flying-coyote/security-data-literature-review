@@ -109,7 +109,7 @@ All sources are classified using a four-tier evidence system. Level A is reserve
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 40 of 232 tiered entries (17.2%), live-derived 2026-08-19 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 47 of 241 tiered entries (19.5%), live-derived 2026-11-07 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
 #### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 68.3%)
 **Criteria**: Practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation. Real evidence, not independently reviewed.
@@ -433,11 +433,11 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | retired 2026-08-19 (see 8.1a) | 17.2% (40/232 tiered; live-derived 2026-08-19) | ✅ Measured, not targeted |
+| Evidence Level A | retired 2026-08-19 (see 8.1a) | 19.5% (47/241 tiered; live-derived 2026-11-07) | ✅ Measured, not targeted |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
-| Book Chapters Cited | 11/11 | 11/11 | ✅ 100% |
+| Book Chapters Cited | 7/7 (current seven-chapter book; the old 11/11 was the retired outline, remapped 2026-11-07 in `methods/chapter-remap-2026-11.md`) | 7/7 | ✅ 100% |
 
 ### 8.1a Why the Level-A share is no longer a target (owner ruling, 2026-08-19)
 
@@ -469,6 +469,16 @@ entry has been assessed against the definition, not that every assessment is cor
 downward audit had one verdict overturned on adversarial review out of 61, and the upward
 audit proposed two upgrades and upheld neither — so the error rate is low and measured
 rather than assumed, which is the most that can honestly be claimed.
+
+**Correction (2026-11-07).** The 229-of-229 row above is a dated 2026-08-19 measurement and
+stays as recorded, but it was not fully right. Two Level-A entries that the downward audit
+passed fail the section 3.1 definition: "Apache Arrow Flight SQL" (official project
+documentation and a project blog post, which section 3.1 names as Level B) and "Mining
+Temporal Attack Patterns from Cyberthreat Intelligence Reports" (an arXiv preprint tiered A
+with no author list and no venue). Both were re-tiered A → B on 2026-11-07 with a dated note
+in each entry. Read against the 229 entries the audit covered, that is 227 of 229 correct
+(99.1%), which is a measured error rate for the audit itself; the live tier counts are derived
+by `scripts/count_reconcile.py` and the denominator has since moved on as entries were added.
 | Metadata Completeness | 95%+ | 97% | ✅ |
 
 ### 8.2 Phase 2 Metrics (PENDING - IT Harvest Partnership)
