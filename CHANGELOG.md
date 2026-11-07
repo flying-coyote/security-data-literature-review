@@ -9,6 +9,12 @@ and this project adheres to semantic versioning for documentation releases.
 
 ## [Unreleased]
 
+### 2026-11-07 (evening): thin-claim legs, Conway and Sigma companions, Figure 2 target removed
+
+- Nine entries added under "Thin-Claim Legs and Handbook Companions, Second Pass (2026-11-07)", each verified at a primary: CLP, USENIX OSDI 2021 (A; YScope affiliation flagged); LogGrep, EuroSys 2023, doi:10.1145/3552326.3567484 (A); Zibak, Sauerwein & Simpson, ACM DTRAP 2022, doi:10.1145/3484202 (A); Inam et al. SoK, IEEE S&P 2023, doi:10.1109/SP46215.2023.10179405 (A); Michael et al., ACSAC 2020, doi:10.1145/3427228.3427272 (A); SPA, ICDE 2023, doi:10.1109/ICDE55515.2023.00302 (A, vision paper); Dodds 2020 blog tally of the "80%" surveys (C); Conway, *Datamation* 1968 (C, trade magazine); SigmaHQ Sigma Rules Specification v2.1.0 (B, community spec). Eleventh taxonomy input `methods/added-2026-11-07-thin-claims.json`.
+- Figure 2: the retired ">70% Level-A target" line and "pts below target" annotation removed from `figure2_evidence_distribution.py`; manuscript Figure 2 caption, alt text and Shows block updated to match (the Shows block also carried a stale 41.9%/227 tally).
+- Counts now 261 blocks / 259 tiered / A 54 (20.8%) / B 168 / C 37; peer-reviewed 68 of 261 (26.1%); Figures 2, 3 and 4 regenerated; ungated Figure 3 caption, alt text and §3.1 category list hand-updated from `methods/source-taxonomy.json`.
+
 ### 2026-11-07 (late): handbook footnote companions, taxonomy prose gated, dashboard target retired
 
 - Nine entries added under "Handbook Footnote Companions (2026-11-07)", each verified at a primary page: Reis, *Mixed Model Arts* (B); [un]prompted talks by Nagarajan and Saxe (March 2026) and Ovando, Mountrouidou & Wilson, Kovalsky & Arshad, Chismon (October 2026) (B); Humio Staff on the CrowdStrike blog, 2021-09-28 / humio.com 2020-01-06 (C, vendor bias flagged); Marwick & boyd 2011, doi:10.1177/1461444810365313 (A). Tenth taxonomy input `methods/added-2026-11-07-book-footnotes.json`.

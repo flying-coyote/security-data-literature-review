@@ -1,0 +1,14 @@
+{
+  "note": "Eleventh dated taxonomy input: nine entries added 2026-11-07 under MASTER-BIBLIOGRAPHY.md section 'Thin-Claim Legs and Handbook Companions, Second Pass (2026-11-07)': six peer-reviewed papers the handbook now footnotes after the thin-claims scout (CLP OSDI 2021, LogGrep EuroSys 2023, Zibak DTRAP 2022, Inam S&P 2023, Michael ACSAC 2020, SPA ICDE 2023; academic_peer_reviewed, Tier A); the Dodds blog tally behind ch01's softened data-preparation range (practitioner_talk_or_personal_blog, Tier C); Conway 1968 in Datamation, a practitioner's trade-magazine essay (practitioner_talk_or_personal_blog, Tier C); and the SigmaHQ Sigma specification, a community spec published as an open-source repository (open_source_project_docs_or_repo, Tier B). Each verified at the primary named in its Validation Status line. Earlier same-day records stay frozen per the never-retro-edit convention.",
+  "entries": [
+    {"title": "CLP: Efficient and Scalable Search on Compressed Text Logs (Rodrigues, Luo & Yuan, USENIX OSDI 2021)", "category": "academic_peer_reviewed"},
+    {"title": "LogGrep: Fast and Cheap Cloud Log Storage by Exploiting both Static and Runtime Patterns (Wei et al., EuroSys 2023)", "category": "academic_peer_reviewed"},
+    {"title": "Threat Intelligence Quality Dimensions for Research and Practice (Zibak, Sauerwein & Simpson, ACM DTRAP 2022)", "category": "academic_peer_reviewed"},
+    {"title": "SoK: History is a Vast Early Warning System: Auditing the Provenance of System Intrusions (Inam et al., IEEE S&P 2023)", "category": "academic_peer_reviewed"},
+    {"title": "On the Forensic Validity of Approximated Audit Logs (Michael et al., ACSAC 2020)", "category": "academic_peer_reviewed"},
+    {"title": "SPA: Economical and Workload-Driven Indexing for Data Analytics in the Cloud (Boncz et al., IEEE ICDE 2023)", "category": "academic_peer_reviewed"},
+    {"title": "Do Data Scientists Spend 80% of Their Time Cleaning Data? Turns Out, No? (Dodds, blog 2020)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "How Do Committees Invent? (Conway, Datamation 1968)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "Sigma Rules Specification (SigmaHQ, sigma-specification v2.1.0)", "category": "open_source_project_docs_or_repo"}
+  ]
+}

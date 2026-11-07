@@ -9,8 +9,10 @@ the chart not return without a re-verified per-source tally.
 
 That condition is now met: the corpus reconciles to 195 blocks / 193 tiered and
 the tier mix is computed from per-entry Evidence-Level markers. This chart states
-the honest figure — 43.0% Level A, BELOW the 70% target — rather than a
-self-grade. Update the TALLY constants from the canonical counter before
+the honest figure rather than a self-grade. (An earlier version also drew a
+">70% Level-A target" line and a "pts below target" gap; the target was retired by
+owner ruling on 2026-08-19, METHODOLOGY 8.1a, so the share is plotted as a
+measurement and graded against nothing.) Update the TALLY constants from the canonical counter before
 regenerating; do not hand-edit percentages.
 
 Canonical source for TIERED_TOTAL and TALLY: scripts/count_reconcile.py
@@ -35,9 +37,8 @@ plt.rcParams['figure.dpi'] = 300
 # and Madani C&ESAR 2026 (B) additions; then again after the 2026-11-07 phase 1 pass
 # (two A→B re-tiers, nine snowball admissions at A): 243 blocks / 241 tiered / 2 stubs).
 TALLY_DATE = '2026-11-07'
-TIERED_TOTAL = 250
-TALLY = {'A': 48, 'B': 167, 'C': 35}
-TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
+TIERED_TOTAL = 259
+TALLY = {'A': 54, 'B': 168, 'C': 37}
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}
 DESCRIPTIONS = {
@@ -48,7 +49,7 @@ DESCRIPTIONS = {
 
 
 def create_evidence_distribution():
-    """Render the live evidence-level distribution with the honest target gap."""
+    """Render the live evidence-level distribution as a measurement."""
 
     fig, ax = plt.subplots(figsize=(12, 6.5))
 
@@ -72,20 +73,6 @@ def create_evidence_distribution():
                 ha='center', va='center', fontsize=9, color='white',
                 fontweight='bold', linespacing=1.4)
 
-    ax.axhline(y=TARGET_A_PCT, color='#B71C1C', linestyle='--', linewidth=1.5,
-               alpha=0.8)
-    ax.text(2.35, TARGET_A_PCT + 1.5, f'Level-A target (>{TARGET_A_PCT}%)',
-            ha='right', va='bottom', fontsize=10, color='#B71C1C',
-            fontweight='bold')
-
-    gap = TARGET_A_PCT - pcts[0]
-    ax.annotate('', xy=(0, TARGET_A_PCT), xytext=(0, pcts[0]),
-                arrowprops=dict(arrowstyle='<->', color='#B71C1C', lw=1.2))
-    ax.text(0.12, (TARGET_A_PCT + pcts[0]) / 2,
-            f'−{gap:.1f} pts\nbelow target',
-            ha='left', va='center', fontsize=9.5, color='#B71C1C',
-            fontweight='bold')
-
     ax.set_xticks(range(len(levels)))
     ax.set_xticklabels([f'Level {k}' for k in levels], fontsize=12,
                        fontweight='bold')
@@ -104,7 +91,7 @@ def create_evidence_distribution():
 
     pct_a = round(TALLY['A'] / TIERED_TOTAL * 100, 1)
     fig.suptitle(f'Figure 2: Evidence Level Distribution — {pct_a}% Level A '
-                 '(below the 70% target; honest live tally)',
+                 '(live per-source tally)',
                  fontsize=14, fontweight='bold', y=0.97)
     plt.tight_layout(rect=[0, 0, 1, 0.93])
 

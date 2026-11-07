@@ -69,6 +69,10 @@ RETIER_PREPRINT_1107 = REPO_ROOT / "methods" / "retier-preprint-2026-11-07.json"
 # Tenth dated input (2026-11-07, handbook footnote companions): Reis (book), six
 # [un]prompted talks, the Humio post (vendor blog) and Marwick & boyd 2011 (peer-reviewed).
 ADDED_1107_BOOKFN = REPO_ROOT / "methods" / "added-2026-11-07-book-footnotes.json"
+# Eleventh dated input (2026-11-07, thin-claim legs second pass): six peer-reviewed
+# papers (CLP, LogGrep, Zibak, Inam, Michael, SPA), the Dodds blog, Conway 1968 and the
+# SigmaHQ specification.
+ADDED_1107_THIN = REPO_ROOT / "methods" / "added-2026-11-07-thin-claims.json"
 # Records whose 'moves' list is applied after every additive record above.
 MOVE_RECORDS = [RETIER_PREPRINT_1107]
 OUT = REPO_ROOT / "methods" / "source-taxonomy.json"
@@ -130,6 +134,10 @@ def load_counts():
 
     if ADDED_1107_BOOKFN.exists():
         for entry in json.loads(ADDED_1107_BOOKFN.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    if ADDED_1107_THIN.exists():
+        for entry in json.loads(ADDED_1107_THIN.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
 
     # Dated reclassifications: each move takes one entry out of 'from' and into 'to'.

@@ -8,11 +8,11 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
-**Last Updated**: November 7, 2026 (nine handbook-footnote companions added under § Handbook Footnote Companions; earlier the same day, nine snowball admissions and two A→B re-tiers; prior: July 23, 2026, Apache Ossie entry added to § 2026 Format & Standards Developments — semantic-data-layer standards tracking; prior: July 13 systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
+**Last Updated**: November 7, 2026 (nine entries added under § Thin-Claim Legs and Handbook Companions, Second Pass: six peer-reviewed thin-claim legs, the Dodds blog, Conway 1968 and the Sigma specification; earlier, nine handbook-footnote companions added under § Handbook Footnote Companions; earlier the same day, nine snowball admissions and two A→B re-tiers; prior: July 23, 2026, Apache Ossie entry added to § 2026 Format & Standards Developments — semantic-data-layer standards tracking; prior: July 13 systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 252 catalogued `#### ` blocks (250 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
+**Total Sources**: 261 catalogued `#### ` blocks (259 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 19.2% Evidence Level A (live-derived 2026-11-07: 48 of 250 tiered entries; 167 B, 35 C, across 252 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 57 more and took it to 17.0%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. The root cause was not sloppy tiering but a wrong rule applied faithfully: METHODOLOGY.md's own Level-A criteria read "Production deployments, peer-reviewed research, government standards" and named SK Telecom, CISA, SANS and the Apache Software Foundation as Level-A examples, which contradicts the definition this project actually uses. The criteria have been corrected at source. Three MITRE reference frameworks (D3FEND x2, ATLAS) were held at A by owner ruling as normative specifications from a neutral non-commercial body, each carrying a scope note that they are primary for taxonomy and silent on efficacy. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
+**Evidence Quality**: 20.8% Evidence Level A (live-derived 2026-11-07: 54 of 259 tiered entries; 168 B, 37 C, across 261 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 57 more and took it to 17.0%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. The root cause was not sloppy tiering but a wrong rule applied faithfully: METHODOLOGY.md's own Level-A criteria read "Production deployments, peer-reviewed research, government standards" and named SK Telecom, CISA, SANS and the Apache Software Foundation as Level-A examples, which contradicts the definition this project actually uses. The criteria have been corrected at source. Three MITRE reference frameworks (D3FEND x2, ATLAS) were held at A by owner ruling as normative specifications from a neutral non-commercial body, each carrying a scope note that they are primary for taxonomy and silent on efficacy. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -5722,5 +5722,163 @@ Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) n
 **Citations**: Marwick, A.E., & boyd, d. (2011). I tweet honestly, I tweet passionately: Twitter users, context collapse, and the imagined audience. *New Media & Society*, 13(1), 114-133.
 **Notes**: Social-media research, not security; carries no claim the handbook relies on beyond the term's origin. boyd styles her name in lower case.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, both authors, journal, volume 13, issue 1, pages 114-133, DOI; Crossref's issued date 2010-07-07 is the online-first date).
+
+---
+## Thin-Claim Legs and Handbook Companions, Second Pass (2026-11-07)
+
+Added 2026-11-07 after the Gemini Flash thin-claims scout (project hub, `automation/jenova-queries/results/gemini/thin-claims-2026-11-07.md`) and the owner's approval of the resulting handbook edits. Six peer-reviewed papers now carry handbook footnotes as the outside leg for a mechanism the book previously stated on first-hand or lab evidence alone; one practitioner blog carries the softened data-preparation range in ch01; and two sources the handbook already footnoted, Conway (1968) and the Sigma specification, get the companion entries they lacked. Flash's raw answers are Tier C and were not used: each one-line finding below was re-read at the abstract or primary page named in its Validation Status line, and venue identity was confirmed at the Crossref record (container title and event) plus the publisher or conference page, because DBLP returned HTTP 429 during this pass. Several Flash numbers for these papers (CLP "1.75:1 vs 32:1", LogGrep "5% of Elasticsearch / 20×") are body-level or invented and are not carried.
+
+---
+
+#### CLP: Efficient and Scalable Search on Compressed Text Logs (Rodrigues, Luo & Yuan, USENIX OSDI 2021)
+
+**Authors**: Kirk Rodrigues, Yu Luo, Ding Yuan (University of Toronto and YScope Inc.)
+**Date**: July 2021 (15th USENIX Symposium on Operating Systems Design and Implementation, OSDI '21, pp. 183-198)
+**URL**: https://www.usenix.org/conference/osdi21/presentation/rodrigues
+**DOI**: none (USENIX open-access proceedings)
+**Evidence Level**: A (peer-reviewed, USENIX OSDI 2021)
+**Relevance**:
+- Handbook ch02 §2.3: the peer-reviewed leg for the index-size half of the storage floor, that a search index carries bytes on the order of the raw logs while a compressed structured layout carries far fewer.
+- Scope limit: no SIEM-versus-object-storage price ratio; the multiple stays the author's desk calculation (C) and lab floor (B).
+
+**Key Findings** (abstract): Elasticsearch and Splunk Enterprise index logs for fast search, "yet the size of the index is within the same order of magnitude as the raw log size"; CLP compresses losslessly at a significantly higher ratio than common compressors while searching comparably to or faster than both, ingests over 13x faster than them, and is shown scaling to petabytes.
+**Citations**: Rodrigues, K., Luo, Y., & Yuan, D. (2021). CLP: Efficient and Scalable Search on Compressed Text Logs. *15th USENIX Symposium on Operating Systems Design and Implementation (OSDI 21)*, 183-198.
+**Notes**: Bias flag: the authors list YScope Inc., the company that builds on CLP, so the comparison against Elasticsearch and Splunk is by an interested party, though peer-reviewed. The handbook cites only the abstract-level index-size statement.
+**Validation Status**: ✅ Verified 2026-11-07 (USENIX presentation page fetched: title, authors, affiliation, abstract text, pp. 183-198 in the BibTeX).
+
+---
+
+#### LogGrep: Fast and Cheap Cloud Log Storage by Exploiting both Static and Runtime Patterns (Wei et al., EuroSys 2023)
+
+**Authors**: Junyu Wei, Guangyan Zhang, Junchao Chen, Yang Wang, Weimin Zheng, Tingtao Sun, Jiesheng Wu, Jiangwei Jiang (Tsinghua University, The Ohio State University, Alibaba Group)
+**Date**: May 2023 (Proceedings of the Eighteenth European Conference on Computer Systems, EuroSys '23, pp. 452-468)
+**URL**: https://doi.org/10.1145/3552326.3567484
+**DOI**: 10.1145/3552326.3567484
+**Evidence Level**: A (peer-reviewed, ACM EuroSys 2023)
+**Relevance**:
+- Handbook ch02 §2.3: second peer-reviewed leg for the storage mechanism; structured, compressed log storage cuts overall cost by an order of magnitude in a production setting.
+
+**Key Findings** (abstract): parses logs into variable vectors by static patterns, extracts runtime patterns within each vector, and splits them into stamped "Capsules" that queries can skip without decompressing; on 21 production log types from Alibaba Cloud and 16 public log types, it reduces query latency and overall cost (storage plus compression and query compute) by an order of magnitude compared to state-of-the-art works.
+**Citations**: Wei, J., Zhang, G., Chen, J., Wang, Y., Zheng, W., Sun, T., Wu, J., & Jiang, J. (2023). LogGrep: Fast and Cheap Cloud Log Storage by Exploiting both Static and Runtime Patterns. *EuroSys '23*, 452-468.
+**Notes**: The abstract's comparators are "state-of-the-art works" in log compression, not named SIEMs or Elasticsearch; Flash's "5% of Elasticsearch / 20x" is not in the abstract and is not carried. Three co-authors are Alibaba Group employees.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, eight authors, EuroSys '23 event, pages, DOI; abstract read on page 1 of the author-hosted camera-ready PDF at yangwang83.github.io; ACM DL returned a bot challenge).
+
+---
+
+#### Threat Intelligence Quality Dimensions for Research and Practice (Zibak, Sauerwein & Simpson, ACM DTRAP 2022)
+
+**Authors**: Adam Zibak, Clemens Sauerwein, Andrew C. Simpson
+**Date**: 2022 (Digital Threats: Research and Practice 3(4), pp. 1-22; published March 10, 2022)
+**URL**: https://doi.org/10.1145/3484202
+**DOI**: 10.1145/3484202
+**Evidence Level**: A (peer-reviewed journal, ACM DTRAP)
+**Relevance**:
+- Handbook ch03 §3.1: the closest peer-reviewed application of data-quality dimensions to security data, beside the DAMA-DMBOK2 framework (B) the chapter leans on.
+- Scope limit: threat intelligence, not telemetry; the handbook does not claim their dimension list matches its six.
+
+**Key Findings** (abstract): data quality is one of the most common barriers to effective threat-intelligence sharing and research and practice lack a common understanding of expected quality; a systematic literature review followed by a modified Delphi study with 30 threat-intelligence experts in Europe produced a set of threat-intelligence quality dimensions and revised definitions of threat data, information and intelligence.
+**Citations**: Zibak, A., Sauerwein, C., & Simpson, A.C. (2022). Threat Intelligence Quality Dimensions for Research and Practice. *Digital Threats: Research and Practice*, 3(4), 1-22.
+**Notes**: Flash gave the year as 2021; Crossref gives 2022.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, three authors, journal, volume 3, issue 4, pages 1-22, 2022-03-10, and the abstract text).
+
+---
+
+#### SoK: History is a Vast Early Warning System: Auditing the Provenance of System Intrusions (Inam et al., IEEE S&P 2023)
+
+**Authors**: Muhammad Adil Inam, Yinfang Chen, Akul Goyal, Jason Liu, Jaron Mink, Noor Michael, Sneha Gaur, Adam Bates, Wajih Ul Hassan
+**Date**: May 2023 (2023 IEEE Symposium on Security and Privacy, pp. 2620-2638)
+**URL**: https://doi.org/10.1109/SP46215.2023.10179405
+**DOI**: 10.1109/SP46215.2023.10179405
+**Evidence Level**: A (peer-reviewed, IEEE S&P 2023)
+**Relevance**:
+- Handbook ch04 §4.2 (context collapse under field coarsening): an independent, peer-reviewed measurement that lossy reduction of security telemetry costs detection, in provenance audit logs rather than OCSF.
+
+**Key Findings** (abstract): surveys provenance-based system auditing in a layered taxonomy, then independently evaluates 8 exemplar log-reduction techniques against the DARPA Transparent Computing datasets; past approaches frequently prune an overlapping set of activities, there is "an inverse relation between storage efficiency and anomaly detection performance", and reduction combined with compression could cut log retention costs by multiple orders of magnitude.
+**Citations**: Inam, M.A., Chen, Y., Goyal, A., Liu, J., Mink, J., Michael, N., Gaur, S., Bates, A., & Hassan, W.U. (2023). SoK: History is a Vast Early Warning System: Auditing the Provenance of System Intrusions. *2023 IEEE Symposium on Security and Privacy (SP)*, 2620-2638.
+**Notes**: Flash described this paper as showing detection invariant to reduction, which reverses the abstract; the abstract supports the handbook's direction. The retention-cost finding is carried in the handbook footnote as the other side of the trade.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, nine authors, IEEE S&P 2023 event, pages, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### On the Forensic Validity of Approximated Audit Logs (Michael et al., ACSAC 2020)
+
+**Authors**: Noor Michael, Jaron Mink, Jason Liu, Sneha Gaur, Wajih Ul Hassan, Adam Bates (University of Illinois Urbana-Champaign)
+**Date**: December 2020 (Annual Computer Security Applications Conference, ACSAC '20, pp. 189-202)
+**URL**: https://doi.org/10.1145/3427228.3427272
+**Alt URL**: https://acsac.org/2020/program/final/s238.html
+**DOI**: 10.1145/3427228.3427272
+**Evidence Level**: A (peer-reviewed, ACSAC 2020)
+**Relevance**:
+- Handbook ch04 §4.2: supports and bounds the context-collapse claim; how much forensic evidence survives a reduction depends on what the reduction keeps.
+
+**Key Findings** (abstract): formalizes metrics for the forensic validity of approximated audit logs; LogApprox aggressively approximates benign file I/O while preserving anomalous events losslessly, and retains 100% of attack-associated log events at reduction rates comparable to prior techniques, which "retain as little as 7.3% of forensic evidence in certain attack scenarios".
+**Citations**: Michael, N., Mink, J., Liu, J., Gaur, S., Hassan, W.U., & Bates, A. (2020). On the Forensic Validity of Approximated Audit Logs. *Annual Computer Security Applications Conference (ACSAC '20)*, 189-202.
+**Notes**: Flash read this as "80-90% can be discarded harmlessly", which reverses the abstract.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, six authors, ACSAC '20 event, pages, DOI; full abstract and affiliations read on the ACSAC 2020 program page).
+
+---
+
+#### SPA: Economical and Workload-Driven Indexing for Data Analytics in the Cloud (Boncz et al., IEEE ICDE 2023)
+
+**Authors**: Peter Boncz, Yannis Chronis, Jan Finis, Stefan Halfpap, Viktor Leis, Thomas Neumann, Anisoara Nica, Caetano Sauer, Knut Stolze, Marcin Żukowski (publisher order, alphabetical)
+**Date**: April 2023 (2023 IEEE 39th International Conference on Data Engineering, pp. 3740-3746)
+**URL**: https://doi.org/10.1109/ICDE55515.2023.00302
+**DOI**: 10.1109/ICDE55515.2023.00302
+**Evidence Level**: A (peer-reviewed, IEEE ICDE 2023; short vision paper)
+**Relevance**:
+- Handbook ch05 §5.3a: a peer-reviewed statement of the point-lookup weakness of lakes, cited alongside the Kumar LinkedIn post (C) the section already carried.
+
+**Key Findings** (abstract): because of their size, expensive maintenance and difficulty to tune and automate, secondary indexes "are typically not used in modern cloud data warehouses or data lakes", which rely on full scans and min/max filtering whose effectiveness depends on data layout and value distributions; proposes SPA as the vision for adaptive, workload-driven partial indexing of immutable copy-on-write formats, usable as an accelerator over cloud data lakes.
+**Citations**: Boncz, P., Chronis, Y., Finis, J., Halfpap, S., Leis, V., Neumann, T., Nica, A., Sauer, C., Stolze, K., & Żukowski, M. (2023). SPA: Economical and Workload-Driven Indexing for Data Analytics in the Cloud. *2023 IEEE 39th International Conference on Data Engineering (ICDE)*, 3740-3746.
+**Notes**: A vision paper: the problem statement is the evidence the handbook uses; the proposed design carries no benchmark in the abstract. The scout file listed the authors as "Chronis, Finis, Halfpap, Boncz et al."; Crossref and OpenAlex both give the alphabetical order above.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, ten authors, ICDE 2023 event, pages, DOI; full abstract and author order read at the OpenAlex record).
+
+---
+
+#### Do Data Scientists Spend 80% of Their Time Cleaning Data? Turns Out, No? (Dodds, blog 2020)
+
+**Author**: Leigh Dodds
+**Date**: January 31, 2020 (updated September 29, 2020)
+**URL**: https://blog.ldodds.com/2020/01/31/do-data-scientists-spend-80-of-their-time-cleaning-data-turns-out-no/
+**Evidence Level**: C (personal blog; a secondary tally of vendor and platform surveys, each self-reported)
+**Relevance**:
+- Handbook ch01 §1.1: the low end (about 26%) of the softened data-preparation range that replaces the bare "80%" figure; the high end is Anaconda's 2020 survey (45%), already cited in the same footnote.
+
+**Key Findings**: traces the 80% figure to CrowdFlower 2016 (cleaning and organizing 60%, collecting data sets 19%); CrowdFlower 2017 reports 51% for collecting, labelling, cleaning and organizing combined; Kaggle 2018 reports about 11% gathering and 15% cleaning.
+**Citations**: Dodds, L. (2020, January 31; updated 2020, September 29). *Do data scientists spend 80% of their time cleaning data? Turns out, no?* Blog post.
+**Notes**: The Kaggle 2018 figures are read through this tally, not at Kaggle, and the handbook footnote says so.
+**Validation Status**: ✅ Verified 2026-11-07 (post fetched: title, author, dates and the three survey figures quoted above).
+
+---
+
+#### How Do Committees Invent? (Conway, Datamation 1968)
+
+**Author**: Melvin E. Conway
+**Date**: April 1968 (*Datamation* 14(4), pp. 28-31)
+**URL**: https://www.melconway.com/Home/Committees_Paper.html
+**Evidence Level**: C (computer-industry trade magazine article, not peer-reviewed; widely cited, but below the Level-A bar by venue)
+**Relevance**:
+- Handbook ch07 (story time): the origin of Conway's law, applied to a parallel-SIEM build that copied its two owning teams; also the point Stojkovski applies to SIEM deployments, cited in ch01 via Chuvakin.
+
+**Key Findings**: the paper's conclusion states that "organizations which design systems (in the broad sense used here) are constrained to produce designs which are copies of the communication structures of these organizations."
+**Citations**: Conway, M.E. (1968). How Do Committees Invent? *Datamation*, 14(4), 28-31.
+**Notes**: The author's reprint opens with a note written 42 years after publication restating the thesis informally. The handbook footnote labels it Tier C, matching this entry (the claim-evidence matrix had flagged an earlier Tier A label).
+**Validation Status**: ✅ Verified 2026-11-07 (author's reprint fetched: title, author's note, the conclusion sentence quoted above, and the reprint notice "Copyright 1968, F. D. Thompson Publications, Inc. Reprinted by permission of Datamation magazine, where it appeared April, 1968"; volume 14(4) and pp. 28-31 are as given in the handbook footnote and were not independently confirmed this pass).
+
+---
+
+#### Sigma Rules Specification (SigmaHQ, sigma-specification v2.1.0)
+
+**Author**: SigmaHQ project (Sigma originated with Florian Roth and Thomas Patzke)
+**Date**: Sigma Rules Specification version 2.1.0, release date 2025-08-02 (repository release v2.1.0 published 2025-09-12)
+**URL**: https://github.com/SigmaHQ/sigma-specification
+**Evidence Level**: B (community specification maintained by an open-source project, not a formal standards body)
+**Relevance**:
+- Handbook ch04 §4.3 and the `sigma` footnote: Sigma as an open YAML detection format that compiles through pySigma to many backends, and the SigmaHQ public ruleset the lab's context-collapse benchmark ran unmodified.
+
+**Key Findings**: the repository publishes the Sigma Rules, Correlation Rules and Filters specifications, appendices for modifiers, tags and taxonomy, and JSON schemas for each rule type; the SigmaHQ rule and filename conventions in the same repository are marked as not part of the specification. The specification is released into the public domain per the repository LICENSE.
+**Citations**: SigmaHQ. (2025). *Sigma Rules Specification* (Version 2.1.0). https://github.com/SigmaHQ/sigma-specification
+**Notes**: Tier B on the specification as a definition of the format; it carries no claim about detection efficacy. The Roth and Patzke attribution is carried from the handbook footnote and was not re-checked against a SigmaHQ page this pass. The handbook's backend count ("roughly thirty other backends") is a pySigma plugin count, not a specification claim.
+**Validation Status**: ✅ Verified 2026-11-07 (GitHub API: repository description, README, `specification/` listing, sigma-rules-specification.md header for version and release date, latest release tag v2.1.0, LICENSE).
 
 ---

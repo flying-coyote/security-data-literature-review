@@ -12,7 +12,7 @@ This directory contains Python scripts and LaTeX TikZ code to convert text-based
 
 **Figures Generated**:
 1. **Figure 1**: PRISMA flowchart (LaTeX TikZ) - Literature extraction process
-2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (19.2% Level A, 48/250 tiered, derived 2026-08-19; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
+2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (20.8% Level A, 54/259 tiered, derived 2026-08-19; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
 3. **Figure 3**: Source Type Taxonomy (Python matplotlib) - Source diversity and geographic distribution
 4. **Figure 4**: Hypothesis Validation Confidence (Python matplotlib) - post-audit rescored confidence scoring (2026-07-13 rubric rescore)
 
@@ -82,15 +82,14 @@ rm *.aux *.log
 ### Python Scripts
 
 #### `figure2_evidence_distribution.py`
-**Purpose**: Evidence Level Distribution chart (live tier tally against the >70% Level-A target)
+**Purpose**: Evidence Level Distribution chart (live per-source tier tally, shown as a measurement; the >70% Level-A target line and "pts below target" gap were removed 2026-11-07 after the target was retired on 2026-08-19, METHODOLOGY 8.1a)
 
 **Features**:
-- Horizontal bar chart with hatching for accessibility
-- Comparison to academic standards (typical reviews 50-60%, medical 60-70%, this review 79%)
-- Color palette: Green (#2E7D32) for Level A, Blue (#1976D2) for Level B
-- "EXCEEDS TARGET" annotation with +6 percentage points
+- Vertical bar chart (Levels A, B, C) with hatching for accessibility
+- Count and percentage labels per bar; an inset noting the chart replaces the withdrawn 79% self-grade
+- Color palette: dark green (#1B5E20) for Level A, green (#388E3C) for Level B, orange (#F57C00) for Level C
 
-**Data Source**: MASTER-BIBLIOGRAPHY.md (live tier tally, derived; 42.9% Level A, 94 of 219 tiered sources as of 2026-07-13). Figure 3 is likewise derived, from methods/source-taxonomy.json via scripts/derive_source_taxonomy.py — it was hand-maintained until 2026-07-13, when it was found still charting a 74-source corpus.
+**Data Source**: MASTER-BIBLIOGRAPHY.md (live tier tally, derived by `scripts/count_reconcile.py` and gated against the script's `TALLY` constants; read the current figures from that counter rather than from this README). Figure 3 is likewise derived, from methods/source-taxonomy.json via scripts/derive_source_taxonomy.py — it was hand-maintained until 2026-07-13, when it was found still charting a 74-source corpus.
 
 ---
 
