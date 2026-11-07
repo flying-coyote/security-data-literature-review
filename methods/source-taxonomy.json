@@ -1,27 +1,27 @@
 {
   "derived_by": "scripts/derive_source_taxonomy.py",
-  "total_entries": 231,
-  "peer_reviewed": 51,
-  "peer_reviewed_percent": 22.1,
+  "total_entries": 232,
+  "peer_reviewed": 52,
+  "peer_reviewed_percent": 22.4,
   "added_by_incorporation_pass": 26,
   "categories": [
     {
       "category": "academic_peer_reviewed",
       "label": "Peer-reviewed\nacademic",
-      "count": 51,
-      "percent": 22.1
+      "count": 52,
+      "percent": 22.4
     },
     {
       "category": "vendor_engineering_blog_or_product_docs",
       "label": "Vendor blogs /\nproduct docs",
       "count": 67,
-      "percent": 29.0
+      "percent": 28.9
     },
     {
       "category": "open_source_project_docs_or_repo",
       "label": "Open-source\nproject docs",
       "count": 35,
-      "percent": 15.2
+      "percent": 15.1
     },
     {
       "category": "practitioner_talk_or_personal_blog",
@@ -39,19 +39,19 @@
       "category": "big_tech_engineering_blog",
       "label": "Big-tech\nengineering blogs",
       "count": 14,
-      "percent": 6.1
+      "percent": 6.0
     },
     {
       "category": "analyst_or_industry_report",
       "label": "Analyst /\nindustry reports",
       "count": 14,
-      "percent": 6.1
+      "percent": 6.0
     },
     {
       "category": "book",
       "label": "Books",
       "count": 8,
-      "percent": 3.5
+      "percent": 3.4
     },
     {
       "category": "expert_interview_or_personal_communication",
@@ -72,5 +72,5 @@
       "percent": 0.9
     }
   ],
-  "note": "Composed from the retro-run classification of the pre-existing corpus plus the studies added by the incorporation pass. Percentages are of all 231 catalogued blocks, which includes the two documented stubs the tier counts exclude, so this denominator is the block count and not the tiered count."
+  "note": "Composed from the retro-run classification of the pre-existing corpus plus the studies added by the incorporation pass. Percentages are of all 232 catalogued blocks, which includes the two documented stubs the tier counts exclude, so this denominator is the block count and not the tiered count."
 }

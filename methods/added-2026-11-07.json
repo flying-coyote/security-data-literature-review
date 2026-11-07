@@ -1,0 +1,9 @@
+{
+  "note": "Sixth dated taxonomy input: Zou et al., 'Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition' (arXiv 2507.20526), added 2026-11-07 (Evidence Level B), found via the [un]prompted March 2026 Stripe deck and verified at the arXiv abstract page. Classified academic_peer_reviewed to match the precedent the frozen reconciliation record set for arXiv research preprints (Shukla, arXiv 2509.00115, sits in corpus_academic_entries); the bibliography's own Evidence Level line records that it is a preprint and not a peer-reviewed venue. The same session's Bonifield edit added ISBN details to an existing block and adds no entry. Frozen prior records stay unedited per the never-retro-edit convention.",
+  "entries": [
+    {
+      "title": "Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition (arXiv 2507.20526)",
+      "category": "academic_peer_reviewed"
+    }
+  ]
+}

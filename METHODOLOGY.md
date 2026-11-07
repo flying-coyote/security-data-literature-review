@@ -109,9 +109,9 @@ All sources are classified using a four-tier evidence system. Level A is reserve
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 39 of 229 tiered entries (17.0%), live-derived 2026-08-19 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 39 of 230 tiered entries (17.0%), live-derived 2026-08-19 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
-#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 68.1%)
+#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 68.3%)
 **Criteria**: Practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation. Real evidence, not independently reviewed.
 **Examples**:
 - Gartner, IDC, Forrester quantitative research
@@ -433,7 +433,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | retired 2026-08-19 (see 8.1a) | 17.0% (39/229 tiered; live-derived 2026-08-19) | ✅ Measured, not targeted |
+| Evidence Level A | retired 2026-08-19 (see 8.1a) | 17.0% (39/230 tiered; live-derived 2026-08-19) | ✅ Measured, not targeted |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |

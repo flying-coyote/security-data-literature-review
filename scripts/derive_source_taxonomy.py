@@ -52,6 +52,10 @@ HEADFIX = REPO_ROOT / "methods" / "heading-fix-2026-07-16.json"
 # Fifth dated input (2026-07-23): the Apache Ossie entry added by the
 # semantic-data-layer standards pass, classified in its own dated record.
 ADDED_0723 = REPO_ROOT / "methods" / "added-2026-07-23.json"
+# Sixth dated input (2026-11-07): Zou et al. arXiv 2507.20526, classified in its
+# own dated record (arXiv preprint, bucketed with the academic entries per the
+# reconciliation record's precedent for arXiv research papers).
+ADDED_1107 = REPO_ROOT / "methods" / "added-2026-11-07.json"
 OUT = REPO_ROOT / "methods" / "source-taxonomy.json"
 
 ACADEMIC = "academic_peer_reviewed"
@@ -94,6 +98,10 @@ def load_counts():
 
     if ADDED_0723.exists():
         for entry in json.loads(ADDED_0723.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    if ADDED_1107.exists():
+        for entry in json.loads(ADDED_1107.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
 
     return counts, len(added)
