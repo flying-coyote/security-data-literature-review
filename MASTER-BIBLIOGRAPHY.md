@@ -8,11 +8,11 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
-**Last Updated**: November 7, 2026 (two ch01 survey companions added under § Handbook Chapter 1 Survey Companions, Anaconda 2020 and the Forbes report of CrowdFlower 2016, and Conway 1968's volume, issue and pages confirmed at the scanned issue; earlier, nine entries added under § Thin-Claim Legs and Handbook Companions, Second Pass: six peer-reviewed thin-claim legs, the Dodds blog, Conway 1968 and the Sigma specification; earlier, nine handbook-footnote companions added under § Handbook Footnote Companions; earlier the same day, nine snowball admissions and two A→B re-tiers; prior: July 23, 2026, Apache Ossie entry added to § 2026 Format & Standards Developments — semantic-data-layer standards tracking; prior: July 13 systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
+**Last Updated**: November 7, 2026 (eight entries added under § Handbook Footnote Legs, Third Pass: seven peer-reviewed papers now footnoted in handbook ch01, ch03, ch04 and ch07, and CardinalOps's 2024 SIEM detection-risk release at Tier C; the Anaconda and Forbes notes updated for the corrected ch01 footnote; earlier, two ch01 survey companions added under § Handbook Chapter 1 Survey Companions, Anaconda 2020 and the Forbes report of CrowdFlower 2016, and Conway 1968's volume, issue and pages confirmed at the scanned issue; earlier, nine entries added under § Thin-Claim Legs and Handbook Companions, Second Pass: six peer-reviewed thin-claim legs, the Dodds blog, Conway 1968 and the Sigma specification; earlier, nine handbook-footnote companions added under § Handbook Footnote Companions; earlier the same day, nine snowball admissions and two A→B re-tiers; prior: July 23, 2026, Apache Ossie entry added to § 2026 Format & Standards Developments — semantic-data-layer standards tracking; prior: July 13 systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 263 catalogued `#### ` blocks (261 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
+**Total Sources**: 271 catalogued `#### ` blocks (269 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 20.7% Evidence Level A (live-derived 2026-11-07: 54 of 261 tiered entries; 168 B, 39 C, across 263 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 57 more and took it to 17.0%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. The root cause was not sloppy tiering but a wrong rule applied faithfully: METHODOLOGY.md's own Level-A criteria read "Production deployments, peer-reviewed research, government standards" and named SK Telecom, CISA, SANS and the Apache Software Foundation as Level-A examples, which contradicts the definition this project actually uses. The criteria have been corrected at source. Three MITRE reference frameworks (D3FEND x2, ATLAS) were held at A by owner ruling as normative specifications from a neutral non-commercial body, each carrying a scope note that they are primary for taxonomy and silent on efficacy. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong, which is the honest reading of the live figure above, and that figure is reported descriptively, with no target attached since the owner retired the former >70% goal.
+**Evidence Quality**: 22.7% Evidence Level A (live-derived 2026-11-07: 61 of 269 tiered entries; 168 B, 40 C, across 271 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 57 more and took it to 17.0%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. The root cause was not sloppy tiering but a wrong rule applied faithfully: METHODOLOGY.md's own Level-A criteria read "Production deployments, peer-reviewed research, government standards" and named SK Telecom, CISA, SANS and the Apache Software Foundation as Level-A examples, which contradicts the definition this project actually uses. The criteria have been corrected at source. Three MITRE reference frameworks (D3FEND x2, ATLAS) were held at A by owner ruling as normative specifications from a neutral non-commercial body, each carrying a scope note that they are primary for taxonomy and silent on efficacy. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong, which is the honest reading of the live figure above, and that figure is reported descriptively, with no target attached since the owner retired the former >70% goal.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -5901,7 +5901,7 @@ Added 2026-11-07 because the handbook's ch01 `[^wrangle]` footnote already cited
 
 **Key Findings**: 2,360 people from more than 100 countries took the online survey; respondents "reported that almost half of their time is spent on the combined tasks of data loading and cleansing", which the landing page states as "on average 45% of their time is spent getting data ready (loading and cleansing)". The time-allocation question that produces the figure has n=1,099 in the report's chart, which gives the two tasks as 19% and 26%, with data visualization about 21% and the three modeling tasks 11–12% each.
 **Citations**: Anaconda. (2020). *The State of Data Science 2020: Moving from Hype Toward Maturity*. Anaconda, Inc.
-**Notes**: Bias flag: Anaconda sells data-science tooling, and respondents were recruited via social media and Anaconda's own email database, so the sample leans toward its user base. The 45% comes from the 1,099 respondents who answered the time-allocation question, not all 2,360; the handbook footnote attributes it to the full sample.
+**Notes**: Bias flag: Anaconda sells data-science tooling, and respondents were recruited via social media and Anaconda's own email database, so the sample leans toward its user base. The 45% comes from the 1,099 respondents who answered the time-allocation question, not all 2,360; the handbook footnote attributed it to the full sample until the 2026-11-07 fix, and now names the 1,099 and the 19% plus 26% split.
 **Validation Status**: ✅ Verified 2026-11-07 (landing page fetched: title, 2,360 responses, 45% loading and cleansing; report PDF fetched: field dates, recruitment, the time-allocation chart with n=1,099, and the "almost half" sentence quoted above).
 
 ---
@@ -5918,7 +5918,153 @@ Added 2026-11-07 because the handbook's ch01 `[^wrangle]` footnote already cited
 
 **Key Findings**: reports CrowdFlower's survey of "about 80 data scientists", conducted for the second year in a row: "Data scientists spend 60% of their time on cleaning and organizing data. Collecting data sets comes second at 19% of their time, meaning data scientists spend around 80% of their time on preparing and managing data for analysis." The same piece reports that 76% of respondents view data preparation as the least enjoyable part of the work.
 **Citations**: Press, G. (2016, March 23). Cleaning Big Data: Most Time-Consuming, Least Enjoyable Data Science Task, Survey Says. *Forbes*.
-**Notes**: Bias flag: CrowdFlower sold a "data enrichment" platform for data scientists, so the vendor running the survey benefits from the finding, and the sample is small (about 80). The page title is "Cleaning Big Data: …" while the URL slug reads "data-preparation-…"; the handbook footnote uses the slug wording as the title. The figures are shares of time as Forbes reports them, whereas the handbook footnote describes them as shares of respondents naming a task.
+**Notes**: Bias flag: CrowdFlower sold a "data enrichment" platform for data scientists, so the vendor running the survey benefits from the finding, and the sample is small (about 80). The page title is "Cleaning Big Data: …" while the URL slug reads "data-preparation-…". Until the 2026-11-07 fix the handbook footnote used the slug wording as the title and described the figures as shares of respondents naming a task; it now carries the page title and gives them as shares of time from about 80 data scientists.
 **Validation Status**: ✅ Verified 2026-11-07 (live forbes.com returned HTTP 403; the Wayback snapshot of 2016-04-06 was read: og:title, author meta "Gil Press", publication timestamp 2016-03-23T13:17:00-04:00, and the passage quoted above).
 
 ---
+
+---
+## Handbook Footnote Legs, Third Pass (2026-11-07)
+
+Added 2026-11-07 when the owner approved a second set of handbook footnotes drawn from the Gemini Flash thin-claims scout (project hub, `automation/jenova-queries/results/gemini/thin-claims-2026-11-07.md`). Seven peer-reviewed papers carry the outside leg for a mechanism or kind of claim the book previously stated on first-hand evidence, and none of them supplies the book's own percentages, which the footnotes say. One vendor release carries a bound on ch07's dead-rule tail. Flash's raw answers are Tier C and were not carried; every entry below was re-read at Crossref and its abstract (OpenAlex) or the vendor's own release, and Flash's sample sizes were replaced with the abstracts' (Wixom & Watson 111 organizations, not 454; Khadka 26 interviews plus 198 survey respondents, not 310).
+
+---
+
+#### "Everyone wants to do the model work, not the data work": Data Cascades in High-Stakes AI (Sambasivan et al., CHI 2021)
+
+**Authors**: Nithya Sambasivan, Shivani Kapania, Hannah Highfill, Diana Akrong, Praveen Paritosh, Lora M Aroyo
+**Date**: May 2021 (Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems, pp. 1-15)
+**URL**: https://doi.org/10.1145/3411764.3445518
+**DOI**: 10.1145/3411764.3445518
+**Evidence Level**: A (peer-reviewed, ACM CHI 2021)
+**Relevance**:
+- Handbook ch01 §1.1 (`[^sambasivan-ch1]`): supports the claim that data work decides AI outcomes, beside the softened data-preparation range in `[^wrangle]`.
+- Scope limit: gives no time share; the handbook footnote says so.
+
+**Key Findings** (abstract): interviews with 53 AI practitioners in India, East and West African countries, and the USA; defines data cascades as compounding events causing negative downstream effects from data issues, triggered by practices that undervalue data quality, and finds them pervasive (92% prevalence), invisible, delayed, but often avoidable; describes data as "the most under-valued and de-glamorised aspect of AI."
+**Citations**: Sambasivan, N., Kapania, S., Highfill, H., Akrong, D., Paritosh, P., & Aroyo, L.M. (2021). "Everyone wants to do the model work, not the data work": Data Cascades in High-Stakes AI. *Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems*, 1-15.
+**Notes**: High-stakes AI domains (health, conservation, lending), not security; the transfer to security AI is the handbook author's.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, six authors, CHI 2021 proceedings, pages, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### An Empirical Investigation of the Factors Affecting Data Warehousing Success (Wixom & Watson, MIS Quarterly 2001)
+
+**Authors**: Barbara H. Wixom, Hugh J. Watson
+**Date**: March 2001 (MIS Quarterly 25(1), pp. 17-42)
+**URL**: https://doi.org/10.2307/3250957
+**DOI**: 10.2307/3250957
+**Evidence Level**: A (peer-reviewed journal, MIS Quarterly)
+**Relevance**:
+- Handbook ch07 (`[^orgwork-ch7]`): supports the kind of claim that much of a data-platform effort is organizational, in the closest information-systems analogue to a SIEM migration.
+- Scope limit: no split of effort between organizational and technical work; the body's more-than-half figure stays the author's estimate.
+
+**Key Findings** (abstract): a cross-sectional survey of data-warehousing managers and data suppliers from 111 organizations (paired mail questionnaires), analysed with Partial Least Squares; management support and resources help address organizational issues during warehouse implementations; resources, user participation, and highly skilled project team members raise the likelihood of on-time, on-budget delivery; diverse, unstandardized source systems and poor development technology increase technical issues; success with organizational and project issues in turn influences system quality.
+**Citations**: Wixom, B.H., & Watson, H.J. (2001). An Empirical Investigation of the Factors Affecting Data Warehousing Success. *MIS Quarterly*, 25(1), 17-42.
+**Notes**: Flash gave the sample as 454 projects; the abstract gives 111 organizations. Crossref appends a footnote marker ("Success1") to the title, dropped here.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, two authors, journal, volume 25, issue 1, pages 17-42, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### How Do Professionals Perceive Legacy Systems and Software Modernization? (Khadka et al., ICSE 2014)
+
+**Authors**: Ravi Khadka, Belfrit V. Batlajery, Amir M. Saeidi, Slinger Jansen, Jurriaan Hage
+**Date**: May 2014 (Proceedings of the 36th International Conference on Software Engineering, pp. 36-47)
+**URL**: https://doi.org/10.1145/2568225.2568318
+**DOI**: 10.1145/2568225.2568318
+**Evidence Level**: A (peer-reviewed, ICSE 2014)
+**Relevance**:
+- Handbook ch07 (`[^orgwork-ch7]`): second leg, with Wixom & Watson, for the kind of claim that modernization difficulty is organizational as well as technical.
+- Scope limit: no effort share.
+
+**Key Findings** (abstract): an exploratory study interviewing 26 industrial practitioners on what makes a system legacy, what drives modernization, and what challenges arise, validated by a survey with 198 respondents; practitioners value their legacy systems highly, and the challenges "are not just technical, but also include business and organizational aspects."
+**Citations**: Khadka, R., Batlajery, B.V., Saeidi, A.M., Jansen, S., & Hage, J. (2014). How do professionals perceive legacy systems and software modernization? *Proceedings of the 36th International Conference on Software Engineering (ICSE 2014)*, 36-47.
+**Notes**: Flash gave a wrong DOI (it resolves to an unrelated ICSE 2014 paper), a sample of 310, and read the paper as contradicting the claim; the abstract supports it.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, five authors, ICSE 2014 proceedings, pages, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### A Brief Study of Time (Buchholz & Tjaden, Digital Investigation 2007)
+
+**Authors**: Florian Buchholz, Brett Tjaden
+**Date**: September 2007 (Digital Investigation 4, Supplement, pp. 31-42; DFRWS 2007)
+**URL**: https://doi.org/10.1016/j.diin.2007.06.004
+**DOI**: 10.1016/j.diin.2007.06.004
+**Evidence Level**: A (peer-reviewed journal, Digital Investigation)
+**Relevance**:
+- Handbook ch04 §4.2 (`[^clock-ch4]`): measured evidence that host clocks are often wrong, the second way a stored time lies beside a dropped offset.
+- Scope limit: clock correctness, not offset loss; supports the mechanism, not the lab's recall figures.
+
+**Key Findings** (abstract): the first large-scale, long-term study of how Internet hosts manage their clocks, motivated by forensic correlation of events from disparate sources; over 8,000 web servers sampled regularly for more than six months; only about 74% were within 10 seconds of UTC, and the rest showed a wide variety of clock behaviours.
+**Citations**: Buchholz, F., & Tjaden, B. (2007). A brief study of time. *Digital Investigation*, 4, 31-42.
+**Notes**: A 2007 sample of web servers, so the 74% is historical; the handbook uses it for the mechanism only.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, two authors, journal, volume 4, pages 31-42, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### Was the Clock Correct? Exploring Timestamp Interpretation through Time Anchors for Digital Forensic Event Reconstruction (Vanini et al., FSI: Digital Investigation 2024)
+
+**Authors**: Céline Vanini, Christopher J. Hargreaves, Harm van Beek, Frank Breitinger
+**Date**: July 2024 (Forensic Science International: Digital Investigation 49, article 301759)
+**URL**: https://doi.org/10.1016/j.fsidi.2024.301759
+**DOI**: 10.1016/j.fsidi.2024.301759
+**Evidence Level**: A (peer-reviewed journal, FSI: Digital Investigation)
+**Relevance**:
+- Handbook ch04 §4.2 (`[^clock-ch4]`): when system time is skewed, recorded timestamps do not reflect when events happened, which is the reconstruction problem the chapter's correlation argument rests on.
+
+**Key Findings** (abstract): timestamps derive from a system clock, so skew from tampering, natural drift, or malfunction makes recorded times diverge from when events occurred; defines time anchors, anchoring and non-anchoring events, and time anomalies to test whether the system time was correct, illustrated with a Google search and a file creation in correct and skewed versions.
+**Citations**: Vanini, C., Hargreaves, C.J., van Beek, H., & Breitinger, F. (2024). Was the clock correct? Exploring timestamp interpretation through time anchors for digital forensic event reconstruction. *Forensic Science International: Digital Investigation*, 49, 301759.
+**Notes**: Worked examples, no prevalence or recall figure.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, four authors, journal, volume 49, article 301759, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### Troubleshooting an Intrusion Detection Dataset: the CICIDS2017 Case Study (Engelen, Rimmer & Joosen, IEEE SPW 2021)
+
+**Authors**: Gints Engelen, Vera Rimmer, Wouter Joosen
+**Date**: May 2021 (2021 IEEE Security and Privacy Workshops, SPW, pp. 7-12)
+**URL**: https://doi.org/10.1109/SPW53761.2021.00009
+**DOI**: 10.1109/SPW53761.2021.00009
+**Evidence Level**: A (peer-reviewed workshop, IEEE S&P Workshops)
+**Relevance**:
+- Handbook ch03 (`[^dqbound-ch3]`): the closest peer-reviewed analogue to a "share silently wrong" figure, beside the author's first-hand roughly 30%.
+- Scope limit: a research dataset, not a production pipeline.
+
+**Key Findings** (abstract): revisits CICIDS2017 and its data collection pipeline and finds problems with traffic generation, flow construction, feature extraction and labelling that severely affect correctness, validity and utility; an improved processing methodology reconstructs or relabels more than 20 percent of the original traffic traces, and ML benchmarks on the corrected dataset improve significantly.
+**Citations**: Engelen, G., Rimmer, V., & Joosen, W. (2021). Troubleshooting an Intrusion Detection Dataset: the CICIDS2017 Case Study. *2021 IEEE Security and Privacy Workshops (SPW)*, 7-12.
+**Notes**: Workshop paper (WTMC at IEEE S&P); tiered A as refereed.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, three authors, SPW 2021 proceedings, pages 7-12, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### Impact of Log Parsing on Deep Learning-Based Anomaly Detection (Khan, Shin, Bianculli & Briand, Empirical Software Engineering 2024)
+
+**Authors**: Zanis Ali Khan, Donghwan Shin, Domenico Bianculli, Lionel C. Briand
+**Date**: August 2024 (Empirical Software Engineering 29(6), article 139)
+**URL**: https://doi.org/10.1007/s10664-024-10533-w
+**DOI**: 10.1007/s10664-024-10533-w
+**Evidence Level**: A (peer-reviewed journal, Empirical Software Engineering)
+**Relevance**:
+- Handbook ch03 (`[^dqbound-ch3]`): bounds "unusable"; badly parsed data is not always fatal to a given downstream task.
+- Scope limit: software-system logs, not security telemetry.
+
+**Key Findings** (abstract): an empirical study of 13 log parsing techniques and seven anomaly detection techniques (five deep-learning, two traditional machine learning) on three public log datasets; "there is no strong correlation between log parsing accuracy and anomaly detection accuracy, regardless of the metric used for measuring log parsing accuracy," and a property the authors call distinguishability in parsing results, rather than their accuracy, plays the essential role.
+**Citations**: Khan, Z.A., Shin, D., Bianculli, D., & Briand, L.C. (2024). Impact of log parsing on deep learning-based anomaly detection. *Empirical Software Engineering*, 29(6), 139.
+**Notes**: The scout file described the detectors as "7 detectors"; the abstract's five plus two split is carried here and in the handbook.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, four authors, journal, volume 29, issue 6, article 139, DOI; full abstract read at the OpenAlex record).
+
+---
+
+#### Fourth Annual Report on the State of SIEM Detection Risk (CardinalOps, press release 2024)
+
+**Author**: CardinalOps
+**Date**: June 13, 2024
+**URL**: https://prnewswire.com/news-releases/enterprise-siems-cover-only-19-of-mitre-attck-techniques-used-by-adversaries-302171478.html
+**Evidence Level**: C (vendor report announced by the vendor's own release; bias flagged: CardinalOps sells detection-posture tooling, so a high broken-rule share suits its pitch)
+**Relevance**:
+- Handbook ch07 §7.3 (`[^cardinalops-ch7]`): a production measurement of the broken slice of a SIEM rule set, used as a bound on the body's "often around half" dead tail rather than as confirmation.
+
+**Key Findings**: across "more than 3,000 detection rules, 1.2 million log sources and hundreds of unique log source types" in customer SIEMs, "18% of SIEM rules will never fire due to a common issue like misconfigured data sources and missing fields."
+**Citations**: CardinalOps. (2024, June 13). *Fourth Annual Report on the State of SIEM Detection Risk* [Press release]. PR Newswire.
+**Notes**: The release, not the gated report PDF, was read. Other editions (about 15% in 2022, about 12% in 2023, about 13% in 2025) appear in press coverage and were not read at a CardinalOps primary; the 2022 report PDF mirror returned HTTP 403. "Never fire" is narrower than the handbook's dead tail, which also counts noisy rules analysts ignore. The scout file notes cardinalops.com redirecting to cribl.io; not checked this pass.
+**Validation Status**: ✅ Verified 2026-11-07 (PR Newswire release fetched: date, "Fourth Annual" title line, dataset sentence and the 18% sentence quoted above).

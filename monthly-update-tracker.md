@@ -16,7 +16,7 @@ tags: [literature-review, monthly-cadence, time-tracking, quality-metrics, autom
 
 | Metric | Baseline/Goal | Status |
 |--------|--------|--------|
-| **Quality**: Evidence Level A | target retired 2026-08-19 | ✅ 20.7% live (54/261 tiered, recounted 2026-11-07) — measured, not targeted. Both directions audited 2026-08-19: 96 entries checked downward from A and all 190 checked upward from B/C, which found nothing under-tiered, so this is the corpus's actual peer-reviewed/standards share rather than a floor |
+| **Quality**: Evidence Level A | target retired 2026-08-19 | ✅ 22.7% live (61/269 tiered, recounted 2026-11-07) — measured, not targeted. Both directions audited 2026-08-19: 96 entries checked downward from A and all 190 checked upward from B/C, which found nothing under-tiered, so this is the corpus's actual peer-reviewed/standards share rather than a floor |
 | **Time Investment**: Monthly effort | Track for awareness | ⏳ 5.9 hours/update avg |
 | **Blog Support**: Writing speedup | 4-6× sustained | 🟢 Demonstrated |
 | **Community Engagement**: Feedback/corrections | Develop workflow | ⏳ Tracking started |

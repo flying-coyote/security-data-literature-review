@@ -37,8 +37,8 @@ plt.rcParams['figure.dpi'] = 300
 # and Madani C&ESAR 2026 (B) additions; then again after the 2026-11-07 phase 1 pass
 # (two A→B re-tiers, nine snowball admissions at A): 243 blocks / 241 tiered / 2 stubs).
 TALLY_DATE = '2026-11-07'
-TIERED_TOTAL = 261
-TALLY = {'A': 54, 'B': 168, 'C': 39}
+TIERED_TOTAL = 269
+TALLY = {'A': 61, 'B': 168, 'C': 40}
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}
 DESCRIPTIONS = {

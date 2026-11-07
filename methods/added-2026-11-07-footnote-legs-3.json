@@ -1,0 +1,13 @@
+{
+  "note": "Thirteenth dated taxonomy input: eight entries added 2026-11-07 under MASTER-BIBLIOGRAPHY.md section 'Handbook Footnote Legs, Third Pass (2026-11-07)'. Seven peer-reviewed papers now footnoted in the handbook (Sambasivan CHI 2021, Wixom & Watson MISQ 2001, Khadka ICSE 2014, Buchholz & Tjaden Digital Investigation 2007, Vanini FSI:DI 2024, Engelen IEEE SPW 2021, Khan EMSE 2024) classified academic_peer_reviewed, and CardinalOps's 2024 State of SIEM Detection Risk release classified analyst_or_industry_report (Tier C, vendor bias flagged), following the Anaconda precedent for vendor-run reports. Each verified at the primary named in its Validation Status line. Earlier same-day records stay frozen per the never-retro-edit convention.",
+  "entries": [
+    {"title": "\"Everyone wants to do the model work, not the data work\": Data Cascades in High-Stakes AI (Sambasivan et al., CHI 2021)", "category": "academic_peer_reviewed"},
+    {"title": "An Empirical Investigation of the Factors Affecting Data Warehousing Success (Wixom & Watson, MIS Quarterly 2001)", "category": "academic_peer_reviewed"},
+    {"title": "How Do Professionals Perceive Legacy Systems and Software Modernization? (Khadka et al., ICSE 2014)", "category": "academic_peer_reviewed"},
+    {"title": "A Brief Study of Time (Buchholz & Tjaden, Digital Investigation 2007)", "category": "academic_peer_reviewed"},
+    {"title": "Was the Clock Correct? Exploring Timestamp Interpretation through Time Anchors for Digital Forensic Event Reconstruction (Vanini et al., FSI: Digital Investigation 2024)", "category": "academic_peer_reviewed"},
+    {"title": "Troubleshooting an Intrusion Detection Dataset: the CICIDS2017 Case Study (Engelen, Rimmer & Joosen, IEEE SPW 2021)", "category": "academic_peer_reviewed"},
+    {"title": "Impact of Log Parsing on Deep Learning-Based Anomaly Detection (Khan, Shin, Bianculli & Briand, Empirical Software Engineering 2024)", "category": "academic_peer_reviewed"},
+    {"title": "Fourth Annual Report on the State of SIEM Detection Risk (CardinalOps, press release 2024)", "category": "analyst_or_industry_report"}
+  ]
+}

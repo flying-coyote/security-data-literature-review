@@ -9,6 +9,13 @@ and this project adheres to semantic versioning for documentation releases.
 
 ## [Unreleased]
 
+### 2026-11-07 (night): handbook footnote legs, third pass
+
+- Eight entries added under "Handbook Footnote Legs, Third Pass (2026-11-07)", each verified at Crossref plus its OpenAlex abstract or the vendor's own release: Sambasivan et al., CHI 2021, doi:10.1145/3411764.3445518 (A); Wixom & Watson, MIS Quarterly 25(1) 2001, doi:10.2307/3250957 (A; 111 organizations, not Flash's 454); Khadka et al., ICSE 2014, doi:10.1145/2568225.2568318 (A; 26 interviews + 198 survey, not 310); Buchholz & Tjaden, Digital Investigation 4 (2007), doi:10.1016/j.diin.2007.06.004 (A); Vanini et al., FSI: Digital Investigation 49 (2024), doi:10.1016/j.fsidi.2024.301759 (A); Engelen, Rimmer & Joosen, IEEE SPW 2021, doi:10.1109/SPW53761.2021.00009 (A); Khan, Shin, Bianculli & Briand, EMSE 29(6) 2024, doi:10.1007/s10664-024-10533-w (A); CardinalOps, Fourth Annual State of SIEM Detection Risk release, 2024-06-13 (C, vendor bias flagged; other editions secondary only).
+- Thirteenth dated taxonomy input `methods/added-2026-11-07-footnote-legs-3.json` wired into `scripts/derive_source_taxonomy.py` (seven academic_peer_reviewed, one analyst_or_industry_report).
+- Anaconda 2020 and Forbes/CrowdFlower 2016 entry notes updated: the handbook ch01 footnote now carries the Forbes page title, time shares from about 80 data scientists, and Anaconda's n=1,099 time-allocation base.
+- Counts now 271 blocks / 269 tiered / A 61 (22.7%) / B 168 / C 40; peer-reviewed 75 of 271 (27.7%); Figures 2 and 3 regenerated (Figure 4 PDF restored, byte churn only); ungated Figure 3 caption, alt text and §3.1 category list hand-updated from `methods/source-taxonomy.json`.
+
 ### 2026-11-07 (evening): thin-claim legs, Conway and Sigma companions, Figure 2 target removed
 
 - Nine entries added under "Thin-Claim Legs and Handbook Companions, Second Pass (2026-11-07)", each verified at a primary: CLP, USENIX OSDI 2021 (A; YScope affiliation flagged); LogGrep, EuroSys 2023, doi:10.1145/3552326.3567484 (A); Zibak, Sauerwein & Simpson, ACM DTRAP 2022, doi:10.1145/3484202 (A); Inam et al. SoK, IEEE S&P 2023, doi:10.1109/SP46215.2023.10179405 (A); Michael et al., ACSAC 2020, doi:10.1145/3427228.3427272 (A); SPA, ICDE 2023, doi:10.1109/ICDE55515.2023.00302 (A, vision paper); Dodds 2020 blog tally of the "80%" surveys (C); Conway, *Datamation* 1968 (C, trade magazine); SigmaHQ Sigma Rules Specification v2.1.0 (B, community spec). Eleventh taxonomy input `methods/added-2026-11-07-thin-claims.json`.
