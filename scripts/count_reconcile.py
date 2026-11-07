@@ -256,6 +256,58 @@ def build_allowlist(T, bib):
         ("PUBLICATION-VENUE-RECOMMENDATIONS header", "PUBLICATION-VENUE-RECOMMENDATIONS.md",
          r"MASTER-BIBLIOGRAPHY\.md \((\d+) catalogued sources, (\d+) tiered; ([\d.]+)% Evidence Level A live-derived",
          (N, TIER, PCT), False),
+        ("manuscript 3.1 total sources", MANUSCRIPT,
+         r"\*\*Total sources\*\*: (\d+) catalogued entries, of which (\d+) carry an evidence tier and (\d+) are",
+         (N, TIER, S), False),
+    ] + taxonomy_surfaces()
+
+
+def taxonomy_surfaces():
+    """Surfaces that state source-type counts (Figure 3 family), gated against
+    methods/source-taxonomy.json. Added 2026-11-07 after the vendor-bloc and
+    peer-reviewed figures sat at 81/229 and 50/229 for four months while the
+    corpus grew to 252: the taxonomy was derived, but the prose quoting it was not
+    gated. check_source_taxonomy() separately ties the taxonomy total to the
+    bibliography block count, so these inherit that reconciliation."""
+    import json
+
+    path = REPO_ROOT / "methods" / "source-taxonomy.json"
+    if not path.exists():
+        return []
+    tax = json.loads(path.read_text(encoding="utf-8"))
+    by = {c["category"]: c["count"] for c in tax["categories"]}
+    NT = tax["total_entries"]
+    V = by.get("vendor_engineering_blog_or_product_docs", 0)
+    BT = by.get("big_tech_engineering_blog", 0)
+    VB = V + BT
+    PR = by.get("academic_peer_reviewed", 0)
+    PCT_VB = round(VB / NT * 100, 1)
+    PCT_PR = round(PR / NT * 100, 1)
+    vendor_bloc = (r"vendor-authored material \((\d+) vendor blogs and product docs, plus (\d+) "
+                   r"big-tech engineering blogs\) is (\d+) of (\d+) entries \(([\d.]+)%; live per")
+    return [
+        ("manuscript limitations vendor bloc", MANUSCRIPT, vendor_bloc,
+         (V, BT, VB, NT, PCT_VB), False),
+        ("METHODOLOGY limitations vendor bloc", "METHODOLOGY.md", vendor_bloc,
+         (V, BT, VB, NT, PCT_VB), False),
+        ("manuscript 3.1 vendor-bloc observation", MANUSCRIPT,
+         r"plus the big-tech engineering blogs — is (\d+) of (\d+) entries \(([\d.]+)%\)",
+         (VB, NT, PCT_VB), False),
+        ("manuscript 3.1 peer-reviewed line", MANUSCRIPT,
+         r"- \*\*Peer-reviewed academic\*\*: (\d+) \(([\d.]+)%\)",
+         (PR, PCT_PR), False),
+        ("manuscript 3.1 peer-reviewed observation", MANUSCRIPT,
+         r"\(it stands at (\d+) of (\d+), ([\d.]+)%, after",
+         (PR, NT, PCT_PR), False),
+        ("manuscript Figure 3 shows vendor bloc", MANUSCRIPT,
+         r"plus big-tech engineering blogs\) is (\d+) of (\d+) entries \(([\d.]+)%\) — the single largest",
+         (VB, NT, PCT_VB), False),
+        ("manuscript Figure 3 shows peer-reviewed", MANUSCRIPT,
+         r"Peer-reviewed academic work is (\d+) of (\d+) \(([\d.]+)%\) as of",
+         (PR, NT, PCT_PR), False),
+        ("manuscript Table 1 peer-reviewed share", MANUSCRIPT,
+         r"\| Peer-reviewed share \| \(none set\) \| ([\d.]+)% \((\d+)/(\d+); live-derived",
+         (PCT_PR, PR, NT), False),
     ]
 
 

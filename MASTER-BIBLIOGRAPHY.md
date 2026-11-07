@@ -8,11 +8,11 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 # Master Bibliography - Living Literature Review
 
 **Purpose**: Citation source-of-truth for the Security Data Works program — the book *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays/research, and the applied-bridge positioning (each cites this repo as its evidence backbone)
-**Last Updated**: July 23, 2026 (Apache Ossie entry added to § 2026 Format & Standards Developments — semantic-data-layer standards tracking; prior: July 13 systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
+**Last Updated**: November 7, 2026 (nine handbook-footnote companions added under § Handbook Footnote Companions; earlier the same day, nine snowball admissions and two A→B re-tiers; prior: July 23, 2026, Apache Ossie entry added to § 2026 Format & Standards Developments — semantic-data-layer standards tracking; prior: July 13 systematic-search incorporation: 26 peer-reviewed studies added via the PRISMA database arm, after a critical appraisal refused 14 of the 40 the search returned — eight of them published in predatory or compromised venues, including one hijacked journal. Appraisal record: `methods/prisma-appraisal-2026-07-13.json`)
 **Last Reviewed**: June 5, 2026 (merge from Second Brain corpus; stranded Feb refresh recovered)
-**Total Sources**: 243 catalogued `#### ` blocks (241 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
+**Total Sources**: 252 catalogued `#### ` blocks (250 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). Derived live by `scripts/count_reconcile.py`, never hand-typed: this header is itself a gated surface, because it spent several months describing a 179-block corpus that had already grown past it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies (see § Systematic Search Arm), which is the largest single addition in the corpus's history and the first that did not come from curation; a 27th was admitted 2026-07-16 when the second-screen adjudication reversed one exclusion through the same appraisal gate.
 **Extraction Status**: 283 of 283 footnotes extracted from best practices document (100%)
-**Evidence Quality**: 19.5% Evidence Level A (live-derived 2026-08-19: 47 of 241 tiered entries; 160 B, 34 C, across 243 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 57 more and took it to 17.0%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. The root cause was not sloppy tiering but a wrong rule applied faithfully: METHODOLOGY.md's own Level-A criteria read "Production deployments, peer-reviewed research, government standards" and named SK Telecom, CISA, SANS and the Apache Software Foundation as Level-A examples, which contradicts the definition this project actually uses. The criteria have been corrected at source. Three MITRE reference frameworks (D3FEND x2, ATLAS) were held at A by owner ruling as normative specifications from a neutral non-commercial body, each carrying a scope note that they are primary for taxonomy and silent on efficacy. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
+**Evidence Quality**: 19.2% Evidence Level A (live-derived 2026-11-07: 48 of 250 tiered entries; 167 B, 35 C, across 252 `#### ` blocks incl. 2 documented stubs — recompute any time via `scripts/count_reconcile.py`, which counts tiers per block and computes this live instead of reading a self-reported header). The 2026-06-05 audit re-tiered ~26 entries off A because their headline statistics were not supported by the cited source, and the share then sat in the low forties until the 2026-08-19 tier audit, which re-tiered 57 more and took it to 17.0%. That audit asked a different question from the 2026-06 one: not whether the cited statistic is in the source, but whether the source meets the Level-A definition at all. It does not, for a vendor engineering blog, an O'Reilly trade book, an industry-conference talk, or a vendor-commissioned TEI report, however good the evidence in them is. The root cause was not sloppy tiering but a wrong rule applied faithfully: METHODOLOGY.md's own Level-A criteria read "Production deployments, peer-reviewed research, government standards" and named SK Telecom, CISA, SANS and the Apache Software Foundation as Level-A examples, which contradicts the definition this project actually uses. The criteria have been corrected at source. Three MITRE reference frameworks (D3FEND x2, ATLAS) were held at A by owner ruling as normative specifications from a neutral non-commercial body, each carrying a scope note that they are primary for taxonomy and silent on efficacy. The 2026-07-13 search incorporation did not move it: 26 peer-reviewed studies went in and the share fell one tenth of a point (43.0 → 42.9), because only 11 of the 26 tier at A and the denominator grew faster than the A-count. Adding peer-reviewed work does not raise a Level-A share unless the work is strong; that is the honest reading, and the >70% target remains unmet.
 **Link Status**: Broken-link sweep done (1 further fix 2026-06-05: ClickHouse query-optimization docs path 404 → re-pointed to current `/docs/optimize/query-optimization`). Content freshness sweep of the sources >12 months old: the 37 stale entries audited in the earlier passes carry `Validation (2026-06-05)` markers; the remaining 15 stale-but-verified entries now carry a compact `Freshness (2026-06-05)` marker recording their RESEARCH-JOURNAL.md disposition (stale-by-date, content-current). No stale entry is now un-annotated.
 **Content-Audit Status (2026-06-05)**: a deeper claim-vs-source audit of all entries is UNDERWAY. The original 2025-10-15 bulk-generated corpus systematically attached specific stats to sources that don't contain them. 9 confirmed fabrications removed so far; ~35 entries flagged for a stat-mismatch fix (real source, the number isn't in it) and ~22 for weak/placeholder sourcing. Until the cleanup pass completes, treat any single quantitative claim here as provisional unless its source is marked verified. **Per-reference validation trail (method/verdict/finding, externally reviewable): [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md)** — append-only; do not re-validate a settled row without cause. Cleanup worklist + propagation map: private register.
 **Boundary**: Public repo. Only published works are catalogued here. Relationship / communication-status tracking (outreach state, availability, partnership posture) stays in the private Second Brain repo and is never reproduced here.
@@ -5566,5 +5566,161 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Kuschewski, M., Sauerwein, D., Alhomssi, A., Leis, V. (2023). *BtrBlocks: Efficient Columnar Compression for Data Lakes*. Proc. ACM Manag. Data 1(2), Article 118.
 **Notes**: Snowball, backward from F3 (SIGMOD 2025); the FastLanes entry already mentions BtrBlocks in passing, and this is its first standalone entry.
 **Validation Status**: ✅ Verified 2026-11-07 (author-hosted version of record PDF, page 1 title, authors and abstract; Crossref record for DOI).
+
+---
+## Handbook Footnote Companions (2026-11-07)
+
+Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) now footnotes has a verified companion entry for the style handbook's JIT check: the Reis modeling book behind the *Mixed Model Arts* integration, six [un]prompted talks (March 2026 and October 2026) cited in ch03 and ch04, the Humio post cited in ch05, and the social-media paper that coined "context collapse." Each was checked at the primary page named in its Validation Status line. Talks are Tier B practitioner evidence: the presenters' own builds and experiments, not independently replicated.
+
+---
+
+#### Mixed Model Arts: The Building Blocks of Cross-Disciplinary Data Modeling (Reis, Practical Data Media 2026)
+
+**Author**: Joe Reis (foreword by Bill Inmon)
+**Date**: 2026 (First Edition, first printing 2026; publisher site gives September 27, 2026)
+**Publisher**: Practical Data Media, Salt Lake City, Utah (Book 1 in the Mixed Model Arts series)
+**ISBN**: 979-8-952478-00-8 (paperback); 979-8-952478-01-5 (ebook), as printed on the copyright page
+**URL**: https://mixedmodelarts.com
+**Alt URL**: https://practicaldata.media
+**Evidence Level**: B (authoritative practitioner book; conceptual modeling reference, not a quantitative source)
+**Relevance**:
+- Handbook ch04 §4.2: the four kinds of time (event, ingestion, processing, valid; Ch 10) and the term "context collapse" as data modelers use it (Ch 13).
+- Handbook ch03 §3.6: the grain audit checklist, `COUNT(*)` against `COUNT(DISTINCT grain key)` and per-join grain effect (Ch 8).
+- Handbook front matter ("About this book"): the recommended companion for modeling fundamentals.
+
+**Key Findings**: a general data-modeling book with no security material; distinguishes event, ingestion, processing and valid time and recommends naming columns for the time they hold; describes context collapse as a failure mode "often described as" such, usually "a byproduct of optimizing for speed or storage efficiency"; gives a grain audit checklist for hidden duplicates and join fan-out.
+**Citations**: Reis, J. (2026). *Mixed Model Arts: The Building Blocks of Cross-Disciplinary Data Modeling*. Practical Data Media.
+**Notes**: Every application to security telemetry in the handbook is the handbook author's transfer, and the footnotes say so. Reis does not claim the term "context collapse"; see the Marwick & boyd entry below for its origin. The publisher site hyphenates the ISBNs as 979-8-95247-800-8 / 979-8-95247-801-5 (same digits); the copyright page is treated as primary. Carries no headline statistic.
+**Validation Status**: ✅ Verified 2026-11-07 (copyright and title pages of the book text: title, subtitle, author, publisher, city, edition, both ISBNs; mixedmodelarts.com fetched for subtitle, foreword, 2026-09-27 date, 474-page paperback; practicaldata.media lists it as the publisher's first release).
+
+---
+
+#### Exploring the AI Automation Boundary for Threat Hunting at Datadog (Nagarajan, [un]prompted March 2026)
+
+**Speaker**: Arthi Nagarajan (Software Engineer for Internal Threat Detection, Datadog)
+**Date**: March 4, 2026 ([un]prompted, San Francisco, Day 2, Stage 1, 15:05-15:30)
+**URL**: https://unpromptedcon.org/day-2/
+**Alt URL**: https://citation.thinkst.com/talk/101336
+**Evidence Level**: B (practitioner conference talk; the team's own build and evaluation)
+**Relevance**:
+- Handbook ch03 §3.4: an LLM hunting copilot that writes syntactically valid queries against the wrong fields, the gap between query syntax accuracy and semantic accuracy, and schema discovery as the fix.
+
+**Key Findings** (deck pp. 6, 7, 17, 20): Datadog's Hunting Copilot evolved from a single agent with basic tooling into an orchestrator-subagent system centered on field discovery and dynamic log-schema exploration; the deck reports 92% syntax accuracy against 72% semantic accuracy for generated queries.
+**Citations**: Nagarajan, A. (2026, March 4). *Exploring the AI Automation Boundary for Threat Hunting at Datadog*. [un]prompted, San Francisco.
+**Notes**: The deck's title page drops "at Datadog" ("Exploring the AI Automation Boundary for Threat Hunting"); the handbook footnote uses the deck title. Tier B for what the team built and measured; Datadog's claims about its own MCP server are Tier C for how well it works (vendor, bias flagged). The twenty-point gap in the handbook is the handbook author's subtraction; the deck does not report how the two failure sets overlap.
+**Validation Status**: ✅ Verified 2026-11-07 (official Day 2 agenda page fetched: title, speaker, affiliation, date, slot; Thinkst Citation listing for title and speaker; deck text read for the title page and the cited pages).
+
+---
+
+#### The Hard Part Isn't Building the Agent: On Measuring Agent Effectiveness to Improve It (Saxe, [un]prompted March 2026)
+
+**Speaker**: Joshua Saxe (listed as AI Security Technical Lead, Meta; the deck says he had left Meta to co-found a startup days before the talk)
+**Date**: March 3, 2026 ([un]prompted, San Francisco, Day 1, Stage 1, 09:35-10:00)
+**URL**: https://unpromptedcon.org/day-1/
+**Evidence Level**: B (practitioner conference talk; argument and the speaker's own evaluation experience)
+**Relevance**:
+- Handbook ch03 §3.6: ground truth in security is noisy, so evaluation sets a noise ceiling; seed known answers and score the misses rather than trusting labels.
+
+**Key Findings** (deck): argues that rigorous evaluation, not building, is the bottleneck for deploying autonomous cyber defenses; deck p. 12 states that "every supposed source of truth has a significant error rate, including human sources," which is the noisy-ground-truth point the handbook cites.
+**Citations**: Saxe, J. (2026, March 3). *The Hard Part Isn't Building the Agent: On Measuring Agent Effectiveness to Improve It*. [un]prompted, San Francisco.
+**Notes**: The deck's title page reads "Evaluation is the hard part (in building the autonomous cyber defenses we need)", which is the title the handbook footnote cites; both refer to this one talk. The handbook's "formerly Meta" follows the deck's speaker slide.
+**Validation Status**: ✅ Verified 2026-11-07 (official Day 1 agenda page fetched: title, speaker, affiliation, date, slot; deck text read for the title page, speaker slide and p. 12).
+
+---
+
+#### The Model Is NOT a Security Control: Prompt Injection Dies at the Token Sampler (Ovando, [un]prompted II October 2026)
+
+**Speaker**: Vince Ovando (AI Security Researcher & Engineer, IOActive per the deck; the agenda lists no organization)
+**Date**: October 2026 ([un]prompted II, San Francisco, October 27-29, 2026; main agenda, Stage 2, 13:55-14:20)
+**URL**: https://unpromptedcon.org/agenda-10-2026/
+**Evidence Level**: B (practitioner conference talk; self-run experiment)
+**Relevance**:
+- Handbook ch03 §3.5: constrain the output space before generation (grammar-constrained decoding at the sampler) instead of relying on the model or a classifier gate as the control.
+
+**Key Findings** (deck and transcript): per-control attack success rates for a secret-exfiltration objective, a Qwen3-1.7B comparison of a classifier gate against grammar-constrained decoding (282,000 attacks each), and valid-tool-call rates under constraint; run size stated on the deck as "~6M inference calls" and "2.46M attack trials" on the presenter's own hardware.
+**Citations**: Ovando, V. (2026, October). *The Model Is NOT a Security Control: Prompt Injection Dies at the Token Sampler*. [un]prompted II, San Francisco.
+**Notes**: One attack objective, one author's hardware, not independently replicated; the handbook footnote carries the same scope limit.
+**Validation Status**: ✅ Verified 2026-11-07 (official October 2026 agenda page fetched: title verbatim, speaker, slot, conference dates; deck text read for the IOActive affiliation and run-size figures; transcript held locally).
+
+---
+
+#### We Don't Need an LLM for That (Mountrouidou & Wilson, [un]prompted II October 2026)
+
+**Speakers**: Xenia Mountrouidou (Principal Applied AI Scientist, AppGate); Casey Wilson (Principal Software Engineer, BusinessLoans.com)
+**Date**: October 2026 ([un]prompted II, San Francisco, October 27-29, 2026; Villages programme, Stage 2, 12:00-12:25)
+**URL**: https://unpromptedcon.org/agenda-10-2026/
+**Evidence Level**: B (practitioner conference talk; the presenters' own experiment)
+**Relevance**:
+- Handbook ch03 §3.5: the right-sized model; language models win on text-heavy tasks such as phishing, while gradient-boosted trees and tabular models win on structured network data.
+
+**Key Findings** (transcript): compared zero-shot LLMs, fine-tuned small models, XGBoost and tabular transformers on phishing and network-intrusion datasets, with class-prior baselines; language models led on phishing text and tree-based models on tabular network data.
+**Citations**: Mountrouidou, X., & Wilson, C. (2026, October). *We Don't Need an LLM for That*. [un]prompted II, San Francisco.
+**Notes**: The agenda capitalizes the title "We don't need an LLM for That"; the handbook uses that form. Per-dataset scores appear on slides; the transcript gives the phishing percentages and baselines in words, without the network-data figures.
+**Validation Status**: ✅ Verified 2026-11-07 (official October 2026 agenda page fetched: title, both speakers with affiliations, slot; transcript held locally).
+
+---
+
+#### Your AI Analyst Is Confidently Wrong: Adversarial QC for Agentic Security Analysis (Kovalsky & Arshad, [un]prompted II October 2026)
+
+**Speakers**: Maxim Kovalsky (Managing Director, AI Security CoE, Consortium Networks); Ali Arshad (Senior Security Consultant, Consortium Networks)
+**Date**: October 2026 ([un]prompted II, San Francisco, October 27-29, 2026; Villages programme, Stage 2, 14:20-14:45)
+**URL**: https://unpromptedcon.org/agenda-10-2026/
+**Evidence Level**: B (practitioner conference talk; one team's experiments)
+**Relevance**:
+- Handbook ch03 §3.6: as analytic workload grows, model errors are dominated by missed findings (recall loss) rather than hallucination, so QC should seed known answers and score misses.
+
+**Key Findings** (transcript): tested several models on increasingly heavy security-analysis tasks; accuracy degraded mainly through recall loss, with models missing details in the documents they were given, and compared error-correction strategies including adversarial review.
+**Citations**: Kovalsky, M., & Arshad, A. (2026, October). *Your AI Analyst Is Confidently Wrong: Adversarial QC for Agentic Security Analysis*. [un]prompted II, San Francisco.
+**Notes**: The talk itself does not name the employer; the agenda does (Consortium Networks).
+**Validation Status**: ✅ Verified 2026-11-07 (official October 2026 agenda page fetched: title verbatim, both speakers with affiliations, slot; transcript held locally).
+
+---
+
+#### What Designing a Cyber Ontology for Agents Taught Us About Governance (Chismon, [un]prompted II October 2026)
+
+**Speaker**: David Chismon (Chief Security Architect, UK National Cyber Security Centre)
+**Date**: October 2026 ([un]prompted II, San Francisco, October 27-29, 2026; Villages programme, Stage 1, 13:55-14:20)
+**URL**: https://unpromptedcon.org/agenda-10-2026/
+**Evidence Level**: B (practitioner conference talk by a government security architect; experience report, not official NCSC guidance)
+**Relevance**:
+- Handbook ch04 §4.1: orders of controls for agent access (privileged access workstations as the analogy) and ablation as the way to learn which control is doing the work.
+
+**Key Findings** (transcript and slides): NCSC's experience designing a cyber ontology for agent use, and the governance lessons it produced about which controls agents need and in what order.
+**Citations**: Chismon, D. (2026, October). *What Designing a Cyber Ontology for Agents Taught Us About Governance*. [un]prompted II, San Francisco.
+**Notes**: Tier B rather than A because it is a conference talk, not a published NCSC standard or guidance document. The transcript renders "PAWs" as "pause"; the handbook footnote records the fix.
+**Validation Status**: ✅ Verified 2026-11-07 (official October 2026 agenda page fetched: title verbatim, speaker, affiliation, slot; slides and transcript held locally).
+
+---
+
+#### How Humio Leverages Kafka and Brute-Force Search to Get Blazing-Fast Search Results (Humio Staff, CrowdStrike blog 2021)
+
+**Author**: Humio Staff
+**Date**: September 28, 2021 (CrowdStrike blog; originally published on humio.com January 6, 2020)
+**URL**: https://www.crowdstrike.com/en-us/blog/how-humio-leverages-kafka-and-brute-force-search-to-get-blazing-fast-search-results/
+**Evidence Level**: C (vendor blog; bias flagged: CrowdStrike sells Falcon LogScale, formerly Humio, so every speed figure is the vendor's own and unmeasured. Per the 2026-11-03 vendor-documentation ruling the description of the index-free design is B-grade, and the speed claims are C; the entry is tiered C because the handbook cites its figures.)
+**Relevance**:
+- Handbook ch05 §5.3a: the named counter-example to index-first SIEM design, a needle hunt served by time-scoped brute-force scan over compressed data instead of an index lookup.
+
+**Key Findings**: "While we consider Humio to be index-free, we do index time series information so all ingested data can be found based on its time"; streaming querying gives "no time to apply complex indexes that could make searching faster"; worked example of a 1 GB search taking 1.1 seconds that "now takes 0.7 seconds" once the data is compressed 10x.
+**Citations**: Humio Staff (2021, September 28). *How Humio Leverages Kafka and Brute-Force Search to Get Blazing-Fast Search Results*. CrowdStrike blog. (Originally humio.com, 2020-01-06.)
+**Notes**: The post's "30-40x the speed of a regular search" claim is unanchored and is not cited by the handbook.
+**Validation Status**: ✅ Verified 2026-11-07 (CrowdStrike URL fetched: byline, 2021-09-28 date, the "originally published Jan. 6, 2020 on humio.com" note, and the three quoted sentences).
+
+---
+
+#### I Tweet Honestly, I Tweet Passionately: Twitter Users, Context Collapse, and the Imagined Audience (Marwick & boyd, New Media & Society 2011)
+
+**Authors**: Alice E. Marwick, danah boyd
+**Date**: 2011 (New Media & Society 13(1), pp. 114-133; online first 2010-07-07)
+**URL**: https://doi.org/10.1177/1461444810365313
+**DOI**: 10.1177/1461444810365313
+**Evidence Level**: A (peer-reviewed journal article)
+**Relevance**:
+- Handbook ch04 §4.2: the origin of the term "context collapse," which Reis borrows into data modeling and the handbook applies to field coarsening in security telemetry. Cited for the term's provenance only.
+
+**Key Findings**: introduces context collapse as the flattening of multiple audiences into one on social media, and how users manage an imagined audience in response.
+**Citations**: Marwick, A.E., & boyd, d. (2011). I tweet honestly, I tweet passionately: Twitter users, context collapse, and the imagined audience. *New Media & Society*, 13(1), 114-133.
+**Notes**: Social-media research, not security; carries no claim the handbook relies on beyond the term's origin. boyd styles her name in lower case.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, both authors, journal, volume 13, issue 1, pages 114-133, DOI; Crossref's issued date 2010-07-07 is the online-first date).
 
 ---

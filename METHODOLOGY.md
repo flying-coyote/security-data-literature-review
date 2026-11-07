@@ -109,7 +109,7 @@ All sources are classified using a four-tier evidence system. Level A is reserve
 - Peer-reviewed academic publications
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 47 of 241 tiered entries (19.5%), live-derived 2026-11-07 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 48 of 250 tiered entries (19.2%), live-derived 2026-11-07 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
 #### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 68.3%)
 **Criteria**: Practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation. Real evidence, not independently reviewed.
@@ -409,7 +409,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
    - *Mitigation*: Supplemented with expert validation, blog integration, vendor documentation, and — since 2026-07-13 — the systematic database search of §2.4, whose 26 surviving studies entered the corpus through a route the original curation did not control
    - *Residual*: measured recall of the curated corpus against that search was zero (0/40; see §2.4 and PUBLICATION-MANUSCRIPT.md §2.8)
 
-2. **Vendor Documentation Prevalence**: vendor-authored material (67 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 81 of 229 entries (35.4%; live per `methods/source-taxonomy.json`) — the largest single bloc *(the "33 of 75 (44%)" formerly stated here was the October-2025 figure at a 75-source corpus)*
+2. **Vendor Documentation Prevalence**: vendor-authored material (68 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 82 of 252 entries (32.5%; live per `methods/source-taxonomy.json`) — the largest single bloc *(the "33 of 75 (44%)" formerly stated here was the October-2025 figure at a 75-source corpus)*
    - *Mitigation*: Prioritize production-validated vendor sources (Netflix, Uber, Cloudflare), exclude marketing materials, flag bias per entry, never rest a hypothesis on a vendor source alone
 
 3. **Recency Bias**: 70% of sources from 2023-2025
@@ -433,7 +433,7 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | retired 2026-08-19 (see 8.1a) | 19.5% (47/241 tiered; live-derived 2026-11-07) | ✅ Measured, not targeted |
+| Evidence Level A | retired 2026-08-19 (see 8.1a) | 19.2% (48/250 tiered; live-derived 2026-11-07) | ✅ Measured, not targeted |
 | URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
 | Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |

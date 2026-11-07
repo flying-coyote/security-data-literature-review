@@ -1,0 +1,14 @@
+{
+  "note": "Tenth dated taxonomy input: nine entries added 2026-11-07 as companions for sources the handbook now footnotes (MASTER-BIBLIOGRAPHY.md section 'Handbook Footnote Companions (2026-11-07)'): Reis, Mixed Model Arts (book, Tier B); six [un]prompted talks, Nagarajan and Saxe (March 2026) and Ovando, Mountrouidou & Wilson, Kovalsky & Arshad, Chismon (October 2026) (practitioner talks, Tier B); the Humio Staff post on the CrowdStrike blog (vendor blog, Tier C, bias flagged); Marwick & boyd 2011 (peer-reviewed, Tier A). Each verified at the primary page named in its Validation Status line. Earlier same-day records stay frozen per the never-retro-edit convention.",
+  "entries": [
+    {"title": "Mixed Model Arts: The Building Blocks of Cross-Disciplinary Data Modeling (Reis, Practical Data Media 2026)", "category": "book"},
+    {"title": "Exploring the AI Automation Boundary for Threat Hunting at Datadog (Nagarajan, [un]prompted March 2026)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "The Hard Part Isn't Building the Agent: On Measuring Agent Effectiveness to Improve It (Saxe, [un]prompted March 2026)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "The Model Is NOT a Security Control: Prompt Injection Dies at the Token Sampler (Ovando, [un]prompted II October 2026)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "We Don't Need an LLM for That (Mountrouidou & Wilson, [un]prompted II October 2026)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "Your AI Analyst Is Confidently Wrong: Adversarial QC for Agentic Security Analysis (Kovalsky & Arshad, [un]prompted II October 2026)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "What Designing a Cyber Ontology for Agents Taught Us About Governance (Chismon, [un]prompted II October 2026)", "category": "practitioner_talk_or_personal_blog"},
+    {"title": "How Humio Leverages Kafka and Brute-Force Search to Get Blazing-Fast Search Results (Humio Staff, CrowdStrike blog 2021)", "category": "vendor_engineering_blog_or_product_docs"},
+    {"title": "I Tweet Honestly, I Tweet Passionately: Twitter Users, Context Collapse, and the Imagined Audience (Marwick & boyd, New Media & Society 2011)", "category": "academic_peer_reviewed"}
+  ]
+}

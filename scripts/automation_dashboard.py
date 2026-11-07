@@ -233,9 +233,12 @@ def print_dashboard():
     biblio = parse_master_bibliography()
     if biblio and biblio['evidence_quality'] is not None:
         eq = biblio['evidence_quality']
-        evidence_status = f"{Colors.GREEN}✅ AT/ABOVE TARGET" if eq >= 75 else f"{Colors.YELLOW}⚠️ BELOW TARGET (honest post-audit floor)"
-        print(f"Evidence Level A: {Colors.BOLD}{eq}%{Colors.END} {evidence_status}{Colors.END}")
-        print(f"  Target: ≥75% | Current: {eq}% (live-computed, not self-reported)")
+        # The 75% Level-A target was retired by owner ruling 2026-08-19 (METHODOLOGY §8.1a):
+        # the share falls as the corpus gets more honest, so it is reported as a description
+        # and never graded or gated (same treatment as TIER_A_FLOOR, removed 2026-11-07 from
+        # weekly_scheduled_check.py).
+        print(f"Evidence Level A: {Colors.BOLD}{eq}%{Colors.END} (descriptive; no target, see METHODOLOGY §8.1a)")
+        print(f"  Current: {eq}% (live-computed, not self-reported)")
         print(f"  Tier mix: {Colors.BOLD}{biblio['level_a_count']}A{Colors.END} / {biblio['level_b_count']}B / {biblio['level_c_count']}C "
               f"across {biblio['tiered_total']} tiered sources ({biblio['total_entries']} #### blocks, "
               f"{biblio['untiered_stubs']} rejection stub{'s' if biblio['untiered_stubs'] != 1 else ''})")
@@ -323,13 +326,13 @@ def print_dashboard():
 
     # Calculate readiness score
     ready_count = 0
-    total_checks = 6
+    total_checks = 5
 
-    if biblio and biblio['evidence_quality'] and biblio['evidence_quality'] >= 75:
-        print(f"{Colors.GREEN}✅ Quality Target Met{Colors.END} ({biblio['evidence_quality']}% ≥ 75%)")
-        ready_count += 1
-    else:
-        print(f"{Colors.RED}❌ Quality Below Target{Colors.END}")
+    # Level-A share is shown for context only; it is not a readiness check since the
+    # target's retirement (2026-08-19, METHODOLOGY §8.1a), so it does not count toward
+    # total_checks.
+    if biblio and biblio['evidence_quality'] is not None:
+        print(f"ℹ️  Level-A share {biblio['evidence_quality']}% (descriptive, not scored)")
 
     if tracker and tracker['average_time'] is not None and tracker['average_time'] <= 10:
         print(f"{Colors.GREEN}✅ Time Sustainable{Colors.END} ({tracker['average_time']} hours ≤ 10 hours, {tracker['section_label']})")
@@ -365,7 +368,7 @@ def print_dashboard():
 
     # Overall readiness
     print(f"\n{Colors.BOLD}Overall Readiness: {ready_count}/{total_checks} checks passed{Colors.END}")
-    if ready_count >= 5:
+    if ready_count >= total_checks - 1:
         print(f"{Colors.GREEN}✅ READY FOR NEXT UPDATE{Colors.END}")
     elif ready_count >= 3:
         print(f"{Colors.YELLOW}⚠️  PARTIALLY READY - Minor improvements needed{Colors.END}")

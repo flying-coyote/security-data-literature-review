@@ -9,6 +9,13 @@ and this project adheres to semantic versioning for documentation releases.
 
 ## [Unreleased]
 
+### 2026-11-07 (late): handbook footnote companions, taxonomy prose gated, dashboard target retired
+
+- Nine entries added under "Handbook Footnote Companions (2026-11-07)", each verified at a primary page: Reis, *Mixed Model Arts* (B); [un]prompted talks by Nagarajan and Saxe (March 2026) and Ovando, Mountrouidou & Wilson, Kovalsky & Arshad, Chismon (October 2026) (B); Humio Staff on the CrowdStrike blog, 2021-09-28 / humio.com 2020-01-06 (C, vendor bias flagged); Marwick & boyd 2011, doi:10.1177/1461444810365313 (A). Tenth taxonomy input `methods/added-2026-11-07-book-footnotes.json`.
+- `scripts/automation_dashboard.py`: the retired 75% Level-A target no longer grades the quality section or scores readiness (now 5 checks; Level-A share shown as descriptive).
+- Stale source-type prose (vendor bloc "81 of 229", peer-reviewed "50 of 229, 21.8%") brought to derived counts in the manuscript (limitations list, §3.1, Figure 3 caption/alt/Shows, Table 1) and METHODOLOGY, with the 2026-07-13 doubling kept as a dated event; `count_reconcile.py` now gates nine more surfaces against `methods/source-taxonomy.json` (54 total).
+- Counts now 252 blocks / 250 tiered / A 48 (19.2%) / B 167 / C 35; peer-reviewed 62 of 252 (24.6%); Figures 2 and 3 regenerated.
+
 ### 2026-11-07 (phase 1 upgrade pass): preconditions fixed, claim matrix built, nine snowball admissions at A
 
 - Re-tiered A → B, each with a dated note in its entry: Apache Arrow Flight SQL (project docs and blog are Level B under §3.1) and Mining Temporal Attack Patterns (arXiv preprint, no venue; author list filled from the arXiv record). METHODOLOGY §8.1a carries a dated correction under the 229-of-229 tier-accuracy row (227 of 229 against the audit's own set).

@@ -453,7 +453,7 @@ Confluent:      ~~4.5M events/second on 9-node clusters~~ [WITHDRAWN —
 
 | Metric | Target | Achieved | Status | Notes |
 |--------|--------|----------|--------|-------|
-| **Total Sources** | 100+ | ~~75+~~ 243 catalogued / 241 tiered (recounted 2026-11-07) | ✅ Sufficient | Quality over quantity: rigorous evidence standards [2026-07-16: the corpus outgrew the draft figure; counts derive from `scripts/automation_dashboard.py`] |
+| **Total Sources** | 100+ | ~~75+~~ 252 catalogued / 250 tiered (recounted 2026-11-07) | ✅ Sufficient | Quality over quantity: rigorous evidence standards [2026-07-16: the corpus outgrew the draft figure; counts derive from `scripts/automation_dashboard.py`] |
 | **Evidence Level A** | >70% (retired 2026-08-19) | ~~79% (57/72)~~ **WITHDRAWN** | — | 2026-06-14 audit: aggregate self-grade withdrawn; per-source levels provisional |
 | **Evidence Level B** | <30% | ~~21% (15/72)~~ **WITHDRAWN** | — | 2026-06-14 audit: aggregate withdrawn pending re-verification |
 | **Evidence Level C/D** | 0% | ~~0% (0/72)~~ | ~~✅ Met~~ — | ~~Marketing materials excluded at intake~~ [2026-07-16: the intake policy changed — Level C sources are catalogued with bias flagged, not excluded; live corpus carries 24 Level C of 227 tiered (10.6%)] |
