@@ -1,0 +1,7 @@
+{
+  "note": "Twelfth dated taxonomy input: two entries added 2026-11-07 under MASTER-BIBLIOGRAPHY.md section 'Handbook Chapter 1 Survey Companions (2026-11-07)', both sources the handbook's ch01 [^wrangle] footnote already cited without a bibliography entry: Anaconda's 2020 State of Data Science survey (a vendor-run practitioner survey) and Gil Press's 2016 Forbes report of the CrowdFlower Data Science Report (press coverage of a vendor survey). Both are classified analyst_or_industry_report, Tier C with the vendor-survey bias flagged. Each verified at the primary named in its Validation Status line. Earlier same-day records stay frozen per the never-retro-edit convention.",
+  "entries": [
+    {"title": "The State of Data Science 2020: Moving from Hype Toward Maturity (Anaconda, vendor survey 2020)", "category": "analyst_or_industry_report"},
+    {"title": "Cleaning Big Data: Most Time-Consuming, Least Enjoyable Data Science Task, Survey Says (Press, Forbes 2016, reporting CrowdFlower)", "category": "analyst_or_industry_report"}
+  ]
+}

@@ -73,6 +73,10 @@ ADDED_1107_BOOKFN = REPO_ROOT / "methods" / "added-2026-11-07-book-footnotes.jso
 # papers (CLP, LogGrep, Zibak, Inam, Michael, SPA), the Dodds blog, Conway 1968 and the
 # SigmaHQ specification.
 ADDED_1107_THIN = REPO_ROOT / "methods" / "added-2026-11-07-thin-claims.json"
+# Twelfth dated input (2026-11-07, ch01 survey companions): Anaconda's 2020 State of
+# Data Science survey and the 2016 Forbes report of the CrowdFlower survey, both
+# analyst_or_industry_report.
+ADDED_1107_CH01 = REPO_ROOT / "methods" / "added-2026-11-07-ch01-surveys.json"
 # Records whose 'moves' list is applied after every additive record above.
 MOVE_RECORDS = [RETIER_PREPRINT_1107]
 OUT = REPO_ROOT / "methods" / "source-taxonomy.json"
@@ -138,6 +142,10 @@ def load_counts():
 
     if ADDED_1107_THIN.exists():
         for entry in json.loads(ADDED_1107_THIN.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    if ADDED_1107_CH01.exists():
+        for entry in json.loads(ADDED_1107_CH01.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
 
     # Dated reclassifications: each move takes one entry out of 'from' and into 'to'.
