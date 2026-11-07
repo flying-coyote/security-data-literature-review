@@ -31,10 +31,11 @@ plt.rcParams['figure.dpi'] = 300
 
 # Live tally — source: scripts/count_reconcile.py Counter 2, derived from
 # MASTER-BIBLIOGRAPHY.md (tier audit 2026-08-19; recounted 2026-11-07 after the Zou
-# arXiv 2507.20526 addition: 232 blocks / 230 tiered / 2 stubs).
+# arXiv 2507.20526 addition, and again later that day after the Petrescu ISSRE 2023 (A)
+# and Madani C&ESAR 2026 (B) additions: 234 blocks / 232 tiered / 2 stubs).
 TALLY_DATE = '2026-08-19'
-TIERED_TOTAL = 230
-TALLY = {'A': 39, 'B': 157, 'C': 34}
+TIERED_TOTAL = 232
+TALLY = {'A': 40, 'B': 158, 'C': 34}
 TARGET_A_PCT = 70  # manuscript Table 1 target (>70% Level A)
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}

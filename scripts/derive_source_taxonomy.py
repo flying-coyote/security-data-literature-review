@@ -56,6 +56,10 @@ ADDED_0723 = REPO_ROOT / "methods" / "added-2026-07-23.json"
 # own dated record (arXiv preprint, bucketed with the academic entries per the
 # reconciliation record's precedent for arXiv research papers).
 ADDED_1107 = REPO_ROOT / "methods" / "added-2026-11-07.json"
+# Seventh dated input (2026-11-07, later the same day): Petrescu (ISSRE 2023) and
+# Madani (C&ESAR 2026) from the Jenova citation-check harvest, in their own dated
+# record so the earlier same-day file stays frozen.
+ADDED_1107_JENOVA = REPO_ROOT / "methods" / "added-2026-11-07-jenova.json"
 OUT = REPO_ROOT / "methods" / "source-taxonomy.json"
 
 ACADEMIC = "academic_peer_reviewed"
@@ -102,6 +106,10 @@ def load_counts():
 
     if ADDED_1107.exists():
         for entry in json.loads(ADDED_1107.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    if ADDED_1107_JENOVA.exists():
+        for entry in json.loads(ADDED_1107_JENOVA.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
 
     return counts, len(added)

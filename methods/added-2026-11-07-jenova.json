@@ -1,0 +1,13 @@
+{
+  "note": "Seventh dated taxonomy input: two entries harvested from the 2026-11-07 Jenova academic citation check (decision-review item 12), each verified at its primary the same day. Petrescu et al., 'Log Parsing Evaluation in the Era of Modern Software Systems' (IEEE ISSRE 2023, DOI 10.1109/ISSRE59848.2023.00019, Crossref-confirmed; Evidence Level A). Madani, Ameur and Bouzefrane, 'From Attack Scenario to Measurable Detection Improvement' (C&ESAR 2026, HAL hal-05743354, listed on the C&ESAR 2026 accepted-papers page; Evidence Level B until the CEUR-WS proceedings publish, abstract figures only). Both are classified academic_peer_reviewed as research papers; tier and taxonomy bucket are separate axes (the Matryoshka and Zou precedents). The earlier same-day record added-2026-11-07.json is frozen and stays unedited per the never-retro-edit convention.",
+  "entries": [
+    {
+      "title": "Log Parsing Evaluation in the Era of Modern Software Systems (Petrescu et al., ISSRE 2023)",
+      "category": "academic_peer_reviewed"
+    },
+    {
+      "title": "From Attack Scenario to Measurable Detection Improvement: A Knowledge-Driven ATT&CK/D3FEND Framework for Instrumented Purple Teaming (Madani et al., C&ESAR 2026)",
+      "category": "academic_peer_reviewed"
+    }
+  ]
+}
