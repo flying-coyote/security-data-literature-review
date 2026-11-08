@@ -9,6 +9,12 @@ and this project adheres to semantic versioning for documentation releases.
 
 ## [Unreleased]
 
+### 2026-11-08: agent harness benchmarking references
+
+- Two entries added under "Agent Harness Benchmarking (2026-11-08)", each read at its pinned Hugging Face Space commit: Niklaus, *Harness Leaderboard* v0.1.1 (B; headline numbers re-read from the board's own `/api/index` JSON, generated 2026-11-08T17:39:25Z, and the changelog's own caveats on harness default context windows, Claude Code's missing reasoning on router models, and the Codex/OpenCode re-run recorded in the entry); harness-hub, *Harness Lens* (B; source-linked documentation only, 37 harness folders on 2026-11-08 against "17" in its README and "34" in the announcing post).
+- Fourteenth dated taxonomy input `methods/added-2026-11-08-harness-benchmarking.json` wired into `scripts/derive_source_taxonomy.py` (two open_source_project_docs_or_repo).
+- Counts now 273 blocks / 271 tiered / A 61 (22.5%) / B 170 / C 40; peer-reviewed 75 of 273 (27.5%); Figures 2 and 3 regenerated; ungated Figure 3 caption, alt text and §3.1 category list hand-updated from `methods/source-taxonomy.json`.
+
 ### 2026-11-07 (night): handbook footnote legs, third pass
 
 - Eight entries added under "Handbook Footnote Legs, Third Pass (2026-11-07)", each verified at Crossref plus its OpenAlex abstract or the vendor's own release: Sambasivan et al., CHI 2021, doi:10.1145/3411764.3445518 (A); Wixom & Watson, MIS Quarterly 25(1) 2001, doi:10.2307/3250957 (A; 111 organizations, not Flash's 454); Khadka et al., ICSE 2014, doi:10.1145/2568225.2568318 (A; 26 interviews + 198 survey, not 310); Buchholz & Tjaden, Digital Investigation 4 (2007), doi:10.1016/j.diin.2007.06.004 (A); Vanini et al., FSI: Digital Investigation 49 (2024), doi:10.1016/j.fsidi.2024.301759 (A); Engelen, Rimmer & Joosen, IEEE SPW 2021, doi:10.1109/SPW53761.2021.00009 (A); Khan, Shin, Bianculli & Briand, EMSE 29(6) 2024, doi:10.1007/s10664-024-10533-w (A); CardinalOps, Fourth Annual State of SIEM Detection Risk release, 2024-06-13 (C, vendor bias flagged; other editions secondary only).

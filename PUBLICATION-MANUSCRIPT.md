@@ -208,7 +208,7 @@ The curated-arm criteria above were written in October 2025 to describe a corpus
 
 Sources classified using a four-tier evidence system prioritizing production deployments and peer-reviewed research (adapted from evidence-based medicine):
 
-**Evidence Level A** (live 22.7%, 61 of 269 tiered; the >70% target was retired 2026-08-19 — see METHODOLOGY 8.1a, the share describes the field's evidence base rather than grading the corpus):
+**Evidence Level A** (live 22.5%, 61 of 271 tiered; the >70% target was retired 2026-08-19 — see METHODOLOGY 8.1a, the share describes the field's evidence base rather than grading the corpus):
 - Production case studies (Netflix, Uber, LinkedIn, Cloudflare, SK Telecom) with quantitative benchmarks
 - Peer-reviewed academic publications in venues whose peer review has been verified to exist
 - Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
@@ -405,7 +405,7 @@ Wiley, J. (2025). Modern Data Stack for Cybersecurity: Living Literature Review
 1. **Source Document Dependency**: the corpus began as an extraction of 283 footnotes from a single best-practices document, and that origin shaped it
    - *Mitigation*: supplemented with expert validation, vendor documentation, standards material, and — since 2026-07-13 — a systematic database search whose 26 surviving studies entered the corpus through a route the original curation did not control (27 after the 2026-07-16 second-screen adjudication admitted one reversed exclusion through the same gate)
    - *Residual*: the search measured the size of the problem before it fixed it. Recall of the curated corpus against a systematic search of its own subject was **zero of 40**.
-2. **Vendor Documentation Prevalence**: vendor-authored material (68 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 82 of 271 entries (30.3%; live per `methods/source-taxonomy.json`) — the largest single bloc, and larger than the peer-reviewed literature
+2. **Vendor Documentation Prevalence**: vendor-authored material (68 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 82 of 273 entries (30.0%; live per `methods/source-taxonomy.json`) — the largest single bloc, and larger than the peer-reviewed literature
    - *Mitigation*: prioritize production-validated vendor sources (Netflix, Uber, Cloudflare); exclude marketing materials; flag bias per entry; never rest a hypothesis on a vendor source alone
    - *Residual*: a review that urges practitioners to distrust vendor accounts is itself, by source count, substantially built from them
 
@@ -474,25 +474,25 @@ The 2026-06 fabrication audit this review documents (§2.8) is, in part, a recor
 ### 3.1 Overview of Evidence Base
 
 **Source statistics** (derived per entry, not self-reported; recounted 2026-11-07):
-- **Total sources**: 271 catalogued entries, of which 269 carry an evidence tier and 2 are documented no-primary stubs
-- **Evidence levels**: Level A 22.7% (61/269), Level B 62.5% (168/269), Level C 14.9% (40/269), Level D 0%
+- **Total sources**: 273 catalogued entries, of which 271 carry an evidence tier and 2 are documented no-primary stubs
+- **Evidence levels**: Level A 22.5% (61/271), Level B 62.7% (170/271), Level C 14.8% (40/271), Level D 0%
 
 **Source type distribution** (Figure 3; derived by `scripts/derive_source_taxonomy.py` and reconciled against the bibliography):
-- **Peer-reviewed academic**: 75 (27.7%)
-- **Vendor engineering blogs and product documentation**: 68 (25.1%)
-- **Open-source project documentation, specs, and repositories**: 36 (13.3%)
-- **Practitioner talks and personal blogs**: 26 (9.6%)
+- **Peer-reviewed academic**: 75 (27.5%)
+- **Vendor engineering blogs and product documentation**: 68 (24.9%)
+- **Open-source project documentation, specs, and repositories**: 38 (13.9%)
+- **Practitioner talks and personal blogs**: 26 (9.5%)
 - **Standards, frameworks, and government publications**: 18 (6.6%)
-- **Analyst and industry reports**: 17 (6.3%)
-- **Big-tech engineering blogs**: 14 (5.2%)
+- **Analyst and industry reports**: 17 (6.2%)
+- **Big-tech engineering blogs**: 14 (5.1%)
 - **Books**: 9 (3.3%)
 - **Expert interviews, first-party lab measurements, arXiv preprints without a venue, documented no-primary stubs**: 2 each
 
 Two observations follow from that distribution, and both cut against the review rather than for it.
 
-The first is that vendor-authored material — vendor blogs and product documentation, plus the big-tech engineering blogs — is 82 of 271 entries (30.3%), which makes it the largest bloc in the corpus and larger than the peer-reviewed literature. A review arguing that security teams should evaluate data platforms on measured evidence rather than vendor accounts is itself, by source count, substantially built on vendor accounts. The mitigation is real but partial: vendor sources are tiered, their bias is flagged per entry, and no hypothesis rests on one alone. The imbalance remains.
+The first is that vendor-authored material — vendor blogs and product documentation, plus the big-tech engineering blogs — is 82 of 273 entries (30.0%), which makes it the largest bloc in the corpus and larger than the peer-reviewed literature. A review arguing that security teams should evaluate data platforms on measured evidence rather than vendor accounts is itself, by source count, substantially built on vendor accounts. The mitigation is real but partial: vendor sources are tiered, their bias is flagged per entry, and no hypothesis rests on one alone. The imbalance remains.
 
-The second is that the peer-reviewed share roughly doubled on 2026-07-13, from 24 of 203 (11.8%) to 50 of 229 (21.8%), when the systematic search's surviving 26 studies were incorporated (it stands at 75 of 271, 27.7%, after the 2026-11-07 additions) — and that the corpus had, before that date, a *measured* recall of zero against a systematic search of its own subject. The peer-reviewed base of this review is younger than the review.
+The second is that the peer-reviewed share roughly doubled on 2026-07-13, from 24 of 203 (11.8%) to 50 of 229 (21.8%), when the systematic search's surviving 26 studies were incorporated (it stands at 75 of 273, 27.5%, after the 2026-11-07 additions) — and that the corpus had, before that date, a *measured* recall of zero against a systematic search of its own subject. The peer-reviewed base of this review is younger than the review.
 
 **Geographic/organizational diversity**:
 - **Regions**: United States, Europe, Asia-Pacific (SK Telecom); the search arm added Brazilian, Japanese, Thai, Ukrainian, Czech and Slovak work
@@ -824,7 +824,7 @@ The scoring, count-reconciliation, and validation scripts used to derive every c
 
 ## REFERENCES
 
-*Generated 2026-07-09 from MASTER-BIBLIOGRAPHY.md, restricted to works cited inline in this manuscript; every entry below was verified against its primary during the 2026-06/2026-07 source audits or on generation day. The full living-review corpus (271 entries, 269 of them carrying evidence-tier classifications, derived 2026-07-23) is maintained in MASTER-BIBLIOGRAPHY.md in this repository and is the citable corpus this review synthesises; see Appendix D. Expert-interview inputs (L. Cao, J. Thomas, P. Agbabian) are personal communications and are not listed. First-party artifacts are labeled.*
+*Generated 2026-07-09 from MASTER-BIBLIOGRAPHY.md, restricted to works cited inline in this manuscript; every entry below was verified against its primary during the 2026-06/2026-07 source audits or on generation day. The full living-review corpus (273 entries, 271 of them carrying evidence-tier classifications, derived 2026-07-23) is maintained in MASTER-BIBLIOGRAPHY.md in this repository and is the citable corpus this review synthesises; see Appendix D. Expert-interview inputs (L. Cao, J. Thomas, P. Agbabian) are personal communications and are not listed. First-party artifacts are labeled.*
 
 [1] Apache Arrow Community, "Introducing Apache Arrow Flight SQL: Accelerating Database Access," Apache Arrow Blog, Feb. 16, 2022. [Online]. Available: https://arrow.apache.org/blog/2022/02/16/introducing-arrow-flight-sql/
 
@@ -948,9 +948,9 @@ Alt text: A PRISMA 2020 flow diagram with two identification arms converging on 
 
 ### Figure 2: Evidence Level Distribution
 
-![Figure 2: Evidence level distribution, per-source tally derived 2026-11-07 — 22.7% Level A (61/269 tiered), 62.5% Level B (168/269), 14.9% Level C (40/269); a measured share graded against no target (the >70% target was retired 2026-08-19), stated in place of the withdrawn 79% self-grade.](publication-graphics/figure2_evidence_distribution.png){ width=85% }
+![Figure 2: Evidence level distribution, per-source tally derived 2026-11-07 — 22.5% Level A (61/271 tiered), 62.7% Level B (170/271), 14.8% Level C (40/271); a measured share graded against no target (the >70% target was retired 2026-08-19), stated in place of the withdrawn 79% self-grade.](publication-graphics/figure2_evidence_distribution.png){ width=85% }
 
-Alt text: Bar chart of the evidence-level distribution across the 269 tiered sources as derived on 2026-11-07: Level A 22.7% (61 sources), Level B 62.5% (168 sources), Level C 14.9% (40 sources). The chart draws no target line, because the Level-A target was retired in 2026-08; an inset notes that this derived figure replaces the 79% self-grade withdrawn in the 2026-06 audit.
+Alt text: Bar chart of the evidence-level distribution across the 271 tiered sources as derived on 2026-11-07: Level A 22.5% (61 sources), Level B 62.7% (170 sources), Level C 14.8% (40 sources). The chart draws no target line, because the Level-A target was retired in 2026-08; an inset notes that this derived figure replaces the 79% self-grade withdrawn in the 2026-06 audit.
 
 **Shows**:
 - Bar chart of the tier mix (A: 20.8%, B: 64.9%, C: 14.3% of 259 tiered entries; derived from MASTER-BIBLIOGRAPHY.md by `scripts/count_reconcile.py` on 2026-11-07, not self-graded)
@@ -959,13 +959,13 @@ Alt text: Bar chart of the evidence-level distribution across the 269 tiered sou
 
 ### Figure 3: Source Type Taxonomy
 
-![Figure 3: Source-type taxonomy of the 271-entry corpus, derived per entry rather than estimated — peer-reviewed academic 75 (27.7%), vendor blogs and product documentation 68 (25.1%), open-source project documentation 36 (13.3%), practitioner talks and personal blogs 26 (9.6%), standards and government 18 (6.6%), analyst and industry reports 17 (6.3%), big-tech engineering blogs 14 (5.2%), books 9 (3.3%), and expert interviews, first-party lab measurements, arXiv preprints without a venue, and documented no-primary stubs at 2 each](publication-graphics/figure3_source_taxonomy.png){ width=85% }
+![Figure 3: Source-type taxonomy of the 273-entry corpus, derived per entry rather than estimated — peer-reviewed academic 75 (27.5%), vendor blogs and product documentation 68 (24.9%), open-source project documentation 38 (13.9%), practitioner talks and personal blogs 26 (9.5%), standards and government 18 (6.6%), analyst and industry reports 17 (6.2%), big-tech engineering blogs 14 (5.1%), books 9 (3.3%), and expert interviews, first-party lab measurements, arXiv preprints without a venue, and documented no-primary stubs at 2 each](publication-graphics/figure3_source_taxonomy.png){ width=85% }
 
-Alt text: Horizontal bar chart of the source-type taxonomy across the 271 catalogued entries, ordered largest to smallest: peer-reviewed academic 75 sources (27.7%), vendor blogs and product documentation 68 (25.1%), open-source project documentation 36 (13.3%), practitioner talks and personal blogs 26 (9.6%), standards and government publications 18 (6.6%), analyst and industry reports 17 (6.3%), big-tech engineering blogs 14 (5.2%), books 9 (3.3%), and expert interviews, first-party lab measurements, arXiv preprints without a venue, and documented no-primary stubs at 2 sources each. Peer-reviewed work is drawn in a distinct colour and vendor-authored categories in another, because the contrast between them is the point of the chart.
+Alt text: Horizontal bar chart of the source-type taxonomy across the 273 catalogued entries, ordered largest to smallest: peer-reviewed academic 75 sources (27.5%), vendor blogs and product documentation 68 (24.9%), open-source project documentation 38 (13.9%), practitioner talks and personal blogs 26 (9.5%), standards and government publications 18 (6.6%), analyst and industry reports 17 (6.2%), big-tech engineering blogs 14 (5.1%), books 9 (3.3%), and expert interviews, first-party lab measurements, arXiv preprints without a venue, and documented no-primary stubs at 2 sources each. Peer-reviewed work is drawn in a distinct colour and vendor-authored categories in another, because the contrast between them is the point of the chart.
 
 **Shows**:
-- Vendor-authored material (vendor blogs and product docs, plus big-tech engineering blogs) is 82 of 271 entries (30.3%) — the single largest bloc, and larger than the peer-reviewed literature
-- Peer-reviewed academic work is 75 of 271 (27.7%) as of 2026-11-07; the 2026-07-13 systematic-search incorporation roughly doubled it, from 24 of 203 (11.8%) to 50 of 229 (21.8%)
+- Vendor-authored material (vendor blogs and product docs, plus big-tech engineering blogs) is 82 of 273 entries (30.0%) — the single largest bloc, and larger than the peer-reviewed literature
+- Peer-reviewed academic work is 75 of 273 (27.5%) as of 2026-11-08; the 2026-07-13 systematic-search incorporation roughly doubled it, from 24 of 203 (11.8%) to 50 of 229 (21.8%)
 - Every count is derived per entry by `scripts/derive_source_taxonomy.py` and reconciled against the bibliography's block count, so a source added without a classification fails the build rather than silently vanishing from the chart. The previous version of this figure was hand-maintained, summed to 74, and described a corpus that had not existed since October 2025.
 
 ### Figure 4: Hypothesis Validation Confidence Levels
@@ -987,9 +987,9 @@ Alt text: Horizontal bar chart of confidence scores on the 25-point rubric for a
 
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
-| Total Sources | 100+ | 271 catalogued (269 tiered; live-derived 2026-11-07) | Met |
-| Peer-reviewed share | (none set) | 27.7% (75/271; live-derived 2026-11-07; was 11.8% before the 2026-07-13 search incorporation) | Reported, not targeted |
-| Evidence Level A | >70% | 22.7% (61/269 tiered; live-derived 2026-11-07) | Below target (honest live figure; was a withdrawn 79% self-grade) |
+| Total Sources | 100+ | 273 catalogued (271 tiered; live-derived 2026-11-07) | Met |
+| Peer-reviewed share | (none set) | 27.5% (75/273; live-derived 2026-11-07; was 11.8% before the 2026-07-13 search incorporation) | Reported, not targeted |
+| Evidence Level A | >70% | 22.5% (61/271 tiered; live-derived 2026-11-07) | Below target (honest live figure; was a withdrawn 79% self-grade) |
 | URL Validation (hypothesis-critical citations) | 90%+ | Phase-1 (Oct 2025) grade withdrawn — several of the 16 "critical" URLs (DORA, Forrester TEI) later failed source verification; per-citation verification now continuous via RESEARCH-JOURNAL.md | Superseded by per-item verification |
 | Geographic Diversity | 2+ regions | 3 regions (US, EU, APAC) | Met |
 | Organizational Types | 3+ types | 5 types | Exceeded |
@@ -1059,7 +1059,7 @@ Levels C (limited evidence) and D (unreliable evidence) were designed as exclusi
 
 **Classification process.** Sources move through four steps: initial assessment (source type, URL, publication metadata), quality evaluation (quantitative evidence present, production validation, reproducibility, methodological transparency), evidence-level assignment against the criteria above, and cross-validation, where corroboration from an independent source type is preferred for any claim feeding hypothesis validation.
 
-**Post-audit state of the tier mix.** The original classification pass assigned a large majority of sources to Level A, targeting a greater-than-70-percent Level-A share. Two audits since have moved it, and they asked different questions. The 2026-06 fabrication audit and the 2026-07 verification sweep re-checked surviving inline figures against their cited sources and found that a substantial share of the originally Level-A entries carried statistics not actually present in the source, or had entries removed outright; that work brought the share to 41.9 percent. The 2026-08-19 tier audit then asked whether the remaining Level-A sources meet the Level-A definition at all, rather than whether their numbers check out, and re-tiered a further 38 that are vendor engineering blogs, trade books, industry-conference talks or vendor-commissioned analyst reports — good evidence, but neither peer-reviewed research nor official standards. A further 22 entries are held pending a decision on whether "official standards" extends to MITRE frameworks, Apache Software Foundation project documentation and government advisories; resolving those against the strict reading would take the share to 15.7 percent. The live, derived tally as of 2026-08-19 is 61 of 269 tiered entries at Level A (22.7 percent), 168 at Level B (62.5 percent), and 40 at Level C (14.9 percent) — below the target, and reported here honestly in place of the withdrawn 79 percent self-graded figure (see Table 1). Per-source evidence levels remain provisional pending further re-verification.
+**Post-audit state of the tier mix.** The original classification pass assigned a large majority of sources to Level A, targeting a greater-than-70-percent Level-A share. Two audits since have moved it, and they asked different questions. The 2026-06 fabrication audit and the 2026-07 verification sweep re-checked surviving inline figures against their cited sources and found that a substantial share of the originally Level-A entries carried statistics not actually present in the source, or had entries removed outright; that work brought the share to 41.9 percent. The 2026-08-19 tier audit then asked whether the remaining Level-A sources meet the Level-A definition at all, rather than whether their numbers check out, and re-tiered a further 38 that are vendor engineering blogs, trade books, industry-conference talks or vendor-commissioned analyst reports — good evidence, but neither peer-reviewed research nor official standards. A further 22 entries are held pending a decision on whether "official standards" extends to MITRE frameworks, Apache Software Foundation project documentation and government advisories; resolving those against the strict reading would take the share to 15.7 percent. The live, derived tally as of 2026-08-19 is 61 of 271 tiered entries at Level A (22.5 percent), 170 at Level B (62.7 percent), and 40 at Level C (14.8 percent) — below the target, and reported here honestly in place of the withdrawn 79 percent self-graded figure (see Table 1). Per-source evidence levels remain provisional pending further re-verification.
 
 The systematic-search incorporation of 2026-07-13 is worth reading against that target rather than as progress toward it. It added 26 peer-reviewed studies, which nearly doubled the corpus's peer-reviewed share, and it left the Level-A percentage essentially flat (41.8 to 41.9 under the corrected counter; the 43.0-to-42.9 figures reported at the time predate the 2026-07-16 heading fix that surfaced eight uncounted grey entries). Only 11 of the 26 tier at Level A: the rest are conference work whose review depth could not be independently established, or papers in venues too weak to carry a Level-A claim. The lesson is not that the search failed — it is that Level A in this scheme is a demanding grade that most of the indexed literature at this intersection does not meet, and that a corpus cannot be raised to a 70-percent Level-A share by adding peer-reviewed papers unless the papers are good ones.
 

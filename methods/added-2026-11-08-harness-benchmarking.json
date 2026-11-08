@@ -1,0 +1,7 @@
+{
+  "note": "Fourteenth dated taxonomy input: two entries added 2026-11-08 under MASTER-BIBLIOGRAPHY.md section 'Agent Harness Benchmarking (2026-11-08)'. The Harness Leaderboard (Niklaus, Hugging Face Space v0.1.1) and Harness Lens (harness-hub) are open-source Spaces (code, method and data public) and are classified open_source_project_docs_or_repo, both Tier B. Each verified at the Space commit named in its Validation Status line. Earlier records stay frozen per the never-retro-edit convention.",
+  "entries": [
+    {"title": "Harness Leaderboard: Which coding-agent harness should you run your open model in? (Niklaus, Hugging Face Space, v0.1.1, 2026)", "category": "open_source_project_docs_or_repo"},
+    {"title": "Harness Lens: an interactive comparison of coding-agent harnesses (harness-hub, Hugging Face Space, 2026)", "category": "open_source_project_docs_or_repo"}
+  ]
+}
