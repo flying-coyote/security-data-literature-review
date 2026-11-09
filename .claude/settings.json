@@ -5,6 +5,18 @@
       "Bash(git diff*)",
       "Bash(git log*)",
       "Bash(git branch*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git remote add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(gh repo edit:*)",
+      "Bash(gh repo create:*)",
+      "Bash(curl * | bash)",
+      "Bash(curl * | sh)",
+      "Bash(wget * | bash)",
+      "Bash(wget * | sh)"
     ]
   },
   "hooks": {
@@ -25,7 +37,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'if ! git diff --quiet 2>/dev/null; then echo \"⚠️ Uncommitted changes\"; fi; UNPUSHED=$(git log origin/main..HEAD --oneline 2>/dev/null | wc -l); if [ \"$UNPUSHED\" -gt 0 ]; then echo \"⚠️ $UNPUSHED unpushed commit(s)\"; fi'"
+            "command": "bash -c 'if ! git diff --quiet 2>/dev/null; then echo \"\u26a0\ufe0f Uncommitted changes\"; fi; UNPUSHED=$(git log origin/main..HEAD --oneline 2>/dev/null | wc -l); if [ \"$UNPUSHED\" -gt 0 ]; then echo \"\u26a0\ufe0f $UNPUSHED unpushed commit(s)\"; fi'"
           }
         ]
       }
