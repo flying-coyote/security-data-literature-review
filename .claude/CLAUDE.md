@@ -63,3 +63,7 @@ monthly-update-tracker.md           # Rolling monthly cadence (Q1 plan archived 
 
 - **apply_now** (edit without staging for Jeremy) requires ALL of: mechanically derivable from a named source; reversible in one commit; no narrative, voice or framing change; no price, tier or taxonomy choice; not touching a settled decision in the hub's DO-NOT-REFLAG list. Anything else is staged for the owner in the hub.
 - **Numbers**: every quantitative claim in agent-drafted, publication-bound prose is re-derived by a different agent from the named source before commit; unverifiable means stage it, never ship it.
+
+## Cloud sessions and Claude Code Projects (2026-11-15)
+
+A cloud session, a Claude Code Projects thread or a cloud routine loads this file and `.claude/rules/` only. It does not load this repo's skills, commands, hooks, `settings.json` permission rules or `.mcp.json`, and a fresh clone has no git hooks, so these local gates do not run there: the pre-commit hook (`pre-commit.sh`) and the repo skills ([Projects docs](https://code.claude.com/docs/en/claude-projects), "What threads pick up from your repositories"). From a cloud thread, work on a branch and open a draft pull request, never push to `main` and never merge, and say in the pull request which of these local gates still need a local run before merge.
