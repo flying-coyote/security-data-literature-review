@@ -1,0 +1,3 @@
+### Added (2026-11-17, quality pass U6)
+
+- `docs/figures/`: two reader figures with SVG source, PNG render, generator (`build_figures.py`), a source table that traces every number and label to a file and line (`README.md`), and visual-gestalt glance-check output per figure (`glance/`). The figures are the review method (curation arm, the July 2026 database arm, the appraisal gate that refused 14 of the 40 database finds, with the one record a second screen of the exclusions admitted through the same gate, then tiering and the standing rule that carried numbers are checked at the primary) and the evidence-tier ladder from METHODOLOGY.md section 3.1 with no corpus percentages. The repository map stays a linked table in README.md.

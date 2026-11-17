@@ -17,16 +17,14 @@ python3 scripts/weekly_health_check.py
 ```
 Review output for:
 - Broken links requiring fixes
-- Outdated sources (>12 months) flagged for refresh
+- Outdated sources (>12 months) flagged for refresh; refresh the flagged ones that still carry a cited claim
 - Evidence level distribution
 
 ### 2. Check Automation Dashboard
 ```bash
 python3 scripts/automation_dashboard.py
 ```
-Verify:
-- Evidence Level A percentage (target: >= 75%)
-- All readiness checks pass
+Note the Level-A share as a description (there is no target since the 2026-08-19 ruling, METHODOLOGY §8.1a) and confirm the readiness checks pass. `python3 scripts/count_reconcile.py` gives the exact counts.
 
 ### 3. Review External Inputs
 - [ ] Review securitydataworks.com/writing feedback and comments for reader-surfaced sources
@@ -40,11 +38,11 @@ Verify:
 ## Update Tasks (4-6 hours)
 
 ### 1. Add New Sources (2-3 sources typical)
-For each new source, apply Evidence Tier Classifier:
-- Tier 1: Production deployments (Evidence Level A)
-- Tier 2: Peer-reviewed (Evidence Level A)
-- Tier 3: Expert consensus (Evidence Level B)
-- Tier 4/5: Avoid unless necessary
+For each new source, apply the Evidence Level under METHODOLOGY §3.1 (`/add-source` walks it):
+- A: peer-reviewed research at a confirmed venue, standards-body documents, formal open-standard specifications, MITRE D3FEND / ATLAS
+- B: production and practitioner evidence, talks, analyst reports, project documentation, venue-less preprints
+- C: vendor material with no production measurement, bias flagged, never carrying a hypothesis alone
+- D: excluded
 
 Update MASTER-BIBLIOGRAPHY.md with:
 - Full citation metadata
@@ -65,11 +63,8 @@ Address any links flagged in health check:
 - Mark as [Archived] if no replacement available
 - Document in source notes
 
-### 4. Update Evidence Percentages
-If source distribution changed:
-- Recalculate Evidence Level A percentage
-- Update CLAUDE.md if threshold changed
-- Update README.md metrics
+### 4. Re-derive the counts
+Run `python3 scripts/count_reconcile.py`. If a gated surface disagrees, update the line it names (README.md, PROJECT-BRIEF.md, the manuscript and the others in its ALLOWLIST); never type a count into a file the gate does not cover. Add the dated taxonomy record under `methods/` and run `python3 scripts/derive_source_taxonomy.py --check`.
 
 ## Post-Update Verification (30-45 min)
 
@@ -79,14 +74,14 @@ python3 scripts/weekly_health_check.py
 ```
 Confirm:
 - No new broken links introduced
-- Evidence Level A maintained or improved
+- `count_reconcile.py` and `repoint_moved_paths.py --check` pass
 
 ### 2. Update Tracking Documents
 Update monthly-update-tracker.md with:
 - Date and version
 - Time invested (hours)
 - Sources added/refreshed
-- Evidence Level A percentage
+- Counts from `count_reconcile.py`
 - Key changes summary
 
 ### 3. Update CHANGELOG.md
@@ -102,31 +97,25 @@ Add new version entry:
 - Refreshed [count] outdated sources
 - Fixed [count] broken links
 
-### Quality Metrics
-- Evidence Level A: XX% (target: >= 75%)
-- Total sources: XXX
+### Counts
+- [paste the first two lines of `python3 scripts/count_reconcile.py`]
 ```
 
-### 4. Commit and Push
-```bash
-git add -A
-git commit -m "Monthly update: Version 1.XX.0 - [brief summary]"
-git push
-```
+### 4. Commit
+Stage the files you changed by name (not `git add -A`), commit, and let the pre-commit gate run. From a cloud thread, open a draft pull request instead of pushing (see `.claude/CLAUDE.md`).
 
 ## Quality Targets
 
 | Metric | Target | Action if Below |
 |--------|--------|-----------------|
-| Evidence Level A | >= 75% | Add Tier 1-2 sources |
 | Time Investment | <= 10 hours | Streamline workflow |
 | Sources Added | 2-5 per month | Increase if gaps found |
 
 ## Session Complete Checklist
 
 - [ ] Health check passes
-- [ ] Evidence Level A >= 75%
+- [ ] `count_reconcile.py` passes
 - [ ] monthly-update-tracker.md updated
 - [ ] CHANGELOG.md updated
-- [ ] Changes committed and pushed
+- [ ] Changes committed
 - [ ] Time tracked for this session

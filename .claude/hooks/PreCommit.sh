@@ -13,8 +13,9 @@ for file in $STAGED_FILES; do
             SIGNIFICANT_CHANGES=true
             ;;
         *.md)
-            # Check if it's a core documentation file (not archive)
-            if [[ ! "$file" =~ ^archive/ ]] && [[ ! "$file" =~ ^archived/ ]]; then
+            # Core documentation only: archive/ is history and working/ holds dated
+            # working records (audits, intake, proposals), neither version-worthy
+            if [[ ! "$file" =~ ^archive/ ]] && [[ ! "$file" =~ ^working/ ]]; then
                 SIGNIFICANT_CHANGES=true
             fi
             ;;
@@ -37,8 +38,7 @@ if [ "$SIGNIFICANT_CHANGES" = true ]; then
         echo "To update CHANGELOG, add an entry like:"
         echo "  ## [1.XX.0] - $(date +%Y-%m-%d)"
         echo ""
-        # Note: This is a reminder, not a blocker
-        # Remove 'exit 1' below to make it non-blocking
+        # A reminder, not a blocker: the script always exits 0 below
     fi
 fi
 

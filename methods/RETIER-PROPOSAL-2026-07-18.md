@@ -10,7 +10,7 @@ tags: [monthly-update, re-tier, catalog, adjudication, staged]
 **Status: STAGED 2026-07-18.** Every row below awaits an owner verdict — mark APPROVE or STRIKE
 per row; I execute only approved rows, each through the standard instrument (claim verified at
 the primary before any bibliography edit), then run the full count ripple and gates. Sources:
-the July research packet remainder (`MONTHLY-2026-07-RESEARCH-PACKET.md` §2-§4, primary-verified
+the July research packet remainder (`working/intake/MONTHLY-2026-07-RESEARCH-PACKET.md` §2-§4, primary-verified
 2026-07-09) plus the vendor-docs tier class the 2026-Q3-c vendor regeneration surfaced
 (`vendor-landscape/quarterly-updates/2026-Q3-regen-2026-07-18.md`). Current baseline: 230 blocks
 / 228 tiered / 95 A (41.7%).

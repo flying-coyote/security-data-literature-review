@@ -1,46 +1,44 @@
 #!/usr/bin/env bash
-# Assemble the curated paper/ export that IS the Zenodo deposit — the ratified
-# Phase-2B "paper/ is an export of the living review" ruling
-# (.claude/review-protocol.md, lit-review section; deposit-scope ruling
-# 2026-07-16). A Zenodo release ZIP is DOI-frozen and permanent, so the
-# deposit is assembled by WHITELIST: nothing enters the archive unless named
-# below, which means a newly added repo file stays OUT of the deposit until
-# someone adds it here deliberately.
+# Assemble the curated paper/ export that IS the Zenodo deposit, under the
+# ratified Phase-2B ruling that paper/ is an export of the living review and the
+# deposit-scope ruling of 2026-07-16 (docs/ZENODO-RELEASE-CHECKLIST.md, Step 0).
+# A Zenodo release ZIP is DOI-frozen and permanent, so the deposit is assembled
+# by WHITELIST: nothing enters the archive unless named below, which means a
+# newly added repo file stays OUT of the deposit until someone adds it here
+# deliberately.
 #
-# EXCLUDED — the classes whose presence killed the full-repo-freeze route:
-#   EXPERT-INTERVIEW-GUIDE-*.md   profile named third parties with outreach
-#                                 strategy; must never be DOI-frozen
-#   GEMINI-*-INTAKE-*.md          internal research intake; DR2 line 10 carries
-#                                 a private Google Doc ID
-#   *-cowork.md                   internal cowork/audit session documents
-#                                 (MIESSLER-REPO-AUDIT, VERIFICATION-SWEEP 1-3)
-#   .claude/                      agent config incl. tracked settings.local.json
-#                                 (fleet enumeration + auto-approve patterns)
+# EXCLUDED: the classes whose presence killed the full-repo-freeze route.
+#   working/                      dated audits, intake notes, proposals and the
+#                                 expert-interview guides (moved there from the
+#                                 root 2026-11-17; index at working/README.md).
+#                                 The interview guides profile named third
+#                                 parties with outreach strategy, the Gemini
+#                                 intake notes are internal research intake, and
+#                                 the *-cowork.md files are internal audit
+#                                 session documents; none may be DOI-frozen
+#   .claude/                      agent config
 #   archive/                      superseded working snapshots
 #   published/                    superseded 2025-10-22 draft + the repudiated
 #                                 verification certificate (kept in-repo as a
 #                                 record, wrong thing to freeze as the paper)
 #   vendor-landscape/             quarterly vendor DB, separate product from
-#                                 the paper record (KNOWN-STALE 2025-Q4)
+#                                 the paper record
 #
-# EXCLUDED — superseded companions (2026-07-16 review §5/§7: they contradict
+# EXCLUDED: superseded companions (2026-07-16 review §5/§7: they contradict
 # the manuscript's embedded sections; two numbering systems in one deposit is
 # a desk-reject risk):
 #   REFERENCES.md  APPENDICES.md  FIGURES-AND-TABLES.md
 #
-# EXCLUDED — internal working/ops surfaces, not the paper record:
+# EXCLUDED: internal working/ops surfaces, not the paper record:
 #   README.md, PROJECT-BRIEF.md, PUBLICATION-VENUE-RECOMMENDATIONS.md (venue
 #   strategy incl. APC-waiver tactics), RESEARCH-JOURNAL.md,
-#   monthly-update-tracker.md, MONTHLY-2026-07-RESEARCH-PACKET.md,
-#   LITERATURE-EXTRACTION-PLAN.md, NEW-HYPOTHESES-PROPOSAL-2026-07.md,
-#   RESCORE-PROPOSAL-2026-07.md, isolation-first-security-tracking.md,
-#   AUDIT-REPORT-BEST-PRACTICES.md, D-AUDIT-ADJUDICATION-2026-07-09.md,
-#   SELF-AUDIT-2026-06.md, REVIEW-AND-PLAN-2026-06.md,
-#   REVIEW-AND-RECOMMENDATIONS-2026-07-16.md, docs/, .github/, .gitignore,
+#   monthly-update-tracker.md, LITERATURE-EXTRACTION-PLAN.md,
+#   isolation-first-security-tracking.md, docs/, .github/, .gitignore,
 #   scripts/ repo automation (weekly_* health checks, pre-commit.sh,
-#   secret-scan.sh, SCHEDULING.md — ops, not instruments)
+#   secret-scan.sh, repoint_moved_paths.py, SCHEDULING.md: ops, not
+#   instruments)
 #
-# EXCLUDED conservatively (not sensitive, but not in the ruled include set —
+# EXCLUDED conservatively (not sensitive, but not in the ruled include set;
 # owner may pull these into a later version):
 #   LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md, analysis-bundles/,
 #   book-appendices/ (MOAR book material, belongs to the book's own release)
@@ -144,7 +142,7 @@ SIZE_H="$(numfmt --to=iec --suffix=B "$BYTES")"
 
 # DOI-frozen archives are permanent: an excluded-class name in the manifest is
 # a build FAILURE, not a warning.
-BLOCK='EXPERT-INTERVIEW|GEMINI|(^|/| )archive/|\.claude|-cowork|vendor-landscape|settings\.local|(^|/| )published/|book-appendices|GAP-ANALYSIS'
+BLOCK='EXPERT-INTERVIEW|GEMINI|(^|/| )working/|(^|/| )archive/|\.claude|-cowork|vendor-landscape|settings\.local|(^|/| )published/|book-appendices|GAP-ANALYSIS'
 if grep -E -i "$BLOCK" "$EXPORT/$MANIFEST" | grep -v '^#'; then
   echo "FATAL: excluded-class file present in export (see lines above)" >&2
   exit 1

@@ -14,11 +14,11 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 **Sources**: Borrowed-source citations reference MASTER-BIBLIOGRAPHY.md entries; first-party citations reference the SDW MOAR reference stack and the public lab benchmark repository
 **Methodology**: Evidence-based confidence rubric (source count, evidence level, validation type)
 
-> **Evidence-tier note**: The original 7 hypotheses are validated by *borrowed* third-party production numbers (Cloudflare, Shell, SK Telecom, Netflix and the like), which top out at Evidence Level A as reported-by-the-operator. The 6 hypotheses added in the June 2026 revision are backed by *first-party lab measurements* taken on the SDW MOAR reference stack (the "Modular Open Architecture" stack), which is a distinct and, for the specific claim measured, higher tier: the workload, the data, the engines and the comparison are ours, the run is reproducible, and an answer-equality gate is applied before any latency or storage number is read. Where a first-party measurement and a borrowed production number speak to the same claim, both legs are kept and labeled, because each answers a different question — the borrowed number says it holds at production scale on someone else's workload, the first-party number says we ran an identical-workload comparison ourselves and can show the apparatus. The first-party legs carry an explicit single-host scope limit (Ryzen 5800H, WSL2); H-ARCH-02 now includes a single-host concurrency sweep (C1→C16), but the legs still do not claim datacenter scale, multi-node cluster concurrency, or TCO.
+> **Evidence-tier note**: The original 7 hypotheses are validated by *borrowed* third-party production numbers (Cloudflare and SK Telecom among the surviving legs; the Shell and Netflix legs the October-2025 version also cited were withdrawn in the 2026-06/07 audits, see the folded correction below), which top out at Evidence Level A as reported-by-the-operator. The 6 hypotheses added in the June 2026 revision are backed by *first-party lab measurements* taken on the SDW MOAR reference stack (the "Modular Open Architecture" stack), which is a distinct and, for the specific claim measured, higher tier: the workload, the data, the engines and the comparison are ours, the run is reproducible, and an answer-equality gate is applied before any latency or storage number is read. Where a first-party measurement and a borrowed production number speak to the same claim, both legs are kept and labeled, because each answers a different question — the borrowed number says it holds at production scale on someone else's workload, the first-party number says we ran an identical-workload comparison ourselves and can show the apparatus. The first-party legs carry an explicit single-host scope limit (Ryzen 5800H, WSL2); H-ARCH-02 now includes a single-host concurrency sweep (C1→C16), but the legs still do not claim datacenter scale, multi-node cluster concurrency, or TCO.
 
 ---
 
-> **Folded correction (2026-07-10).** This bundle was never swept in the 2026-06/07 fabrications cleanup, so its borrowed-hypothesis rows, per-section evidence enumerations, and journal-ready confidence statements still asserted legs those audits withdrew or confirmed nonexistent: DORA 2.7×/3.2×/"Level 4" (in no DORA report), IDC 2.5-3× (withdrawn), Ververica 3.2-FTE (nonexistent), Gartner/phData 5.5-month (unverifiable), AWS 55% (deprecated stub), Netflix 70-80% (no locatable primary), Shell 57TB/day (entry removed), and "universal vendor support incl. Microsoft" (contradicted by its own cited source — Microsoft is the named Delta-first holdout, corrected 2026-07-10). **Current adjudicated scores after the overturns: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 (re-anchored on the first-party S3 tier-price derivation); H-IMPL-03's Gartner leg is withdrawn pending re-score.** The October-2025 section bodies below are preserved as the record with dated section notes rather than rewritten; do NOT cite their evidence enumerations. The full re-tier of the borrowed seven is staged in RESCORE-PROPOSAL-2026-07.md (owner adjudication pending). The first-party (lab-measured) hypotheses are unaffected. Manuscript Appendix B cites this bundle — it cites the first-party half and the rubric, which stand.
+> **Folded correction (2026-07-10).** This bundle was never swept in the 2026-06/07 fabrications cleanup, so its borrowed-hypothesis rows, per-section evidence enumerations, and journal-ready confidence statements still asserted legs those audits withdrew or confirmed nonexistent: DORA 2.7×/3.2×/"Level 4" (in no DORA report), IDC 2.5-3× (withdrawn), Ververica 3.2-FTE (nonexistent), Gartner/phData 5.5-month (unverifiable), AWS 55% (deprecated stub), Netflix 70-80% (no locatable primary), Shell 57TB/day (entry removed), and "universal vendor support incl. Microsoft" (contradicted by its own cited source — Microsoft is the named Delta-first holdout, corrected 2026-07-10). **Current adjudicated scores after the overturns: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 (re-anchored on the first-party S3 tier-price derivation); H-IMPL-03's Gartner leg is withdrawn pending re-score.** The October-2025 section bodies below are preserved as the record with dated section notes rather than rewritten; do NOT cite their evidence enumerations. The full re-tier of the borrowed seven is staged in working/proposals/RESCORE-PROPOSAL-2026-07.md (owner adjudication pending). The first-party (lab-measured) hypotheses are unaffected. Manuscript Appendix B cites this bundle — it cites the first-party half and the rubric, which stand.
 
 ## Executive Summary
 
@@ -96,7 +96,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** three legs below were corrected in the 2026-07 audits and the enumerations should not be cited as they stand: (1) "universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)" — contradicted by its own cited source; Microsoft is the named Delta-first holdout (The Register verbatim: "Microsoft went with Delta Lake"; Databricks' own Iceberg support reached Public Preview 2025-06-12), so the claim is broad-not-universal; (2) "300+ contributors across 100+ organizations" — replaced 2026-07-09 with the GitHub-derived **407 contributors** (as-of-dated; the organization count was dropped as underivable); (3) SK Telecom "52.7 TB in 3.39s" — the figures are not in the recap the entry cited and were re-attributed 2026-07-10 to the Trino Summit slides with table-size framing. The de-facto-standard direction and the first-party leg stand. Preserved as the October-2025 record.
 
-**Hypothesis**: "Apache Iceberg has emerged as the de facto standard for open table formats in enterprise data lakehouses, with 76% adoption among organizations standardizing on open formats."
+~~**Hypothesis**: "Apache Iceberg has emerged as the de facto standard for open table formats in enterprise data lakehouses, with 76% adoption among organizations standardizing on open formats."~~ *(October-2025 wording; no source for the 76% figure was located, the de-facto-standard direction stands, see the section record note)*
 
 **Validation Status**: ✅ **STRONGLY VALIDATED** (with refinement)
 
@@ -106,8 +106,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 **Source Count**: 5 points (5 borrowed sources) + 1 first-party leg
 - SK Telecom production deployment
-- Apache Iceberg Foundation (300+ contributors, 100+ orgs)
-- Universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)
+- ~~Apache Iceberg Foundation (300+ contributors, 100+ orgs)~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note)*
+- ~~Universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)~~ *(corrected 2026-07-10 to broad, not universal: Microsoft is the named Delta-first holdout; see the section record note)*
 - Cloudera production validation
 - Dremio 2024 survey (29% planning Iceberg vs 23% Delta)
 - **FIRST-PARTY (lab-measured, 2026-06-07, MOAR reference stack, single host)**: an Iceberg/OCSF table is read by four independent engines (DuckDB, Trino, ClickHouse, StarRocks) that all agree on count / needle / group-by, and the same logical data round-trips Iceberg↔DuckLake read-neutral on byte-identical files — direct evidence that Iceberg functions as a vendor-neutral, engine-portable table format, not merely that vendors announced support. This is the answer-equality + swap-format leg the borrowed sources cannot supply; it is a distinct evidence tier (we ran it) and is reported alongside, not in place of, the borrowed production validation.
@@ -118,7 +118,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 **Source Diversity**: 5 points (4 source types)
 - Production Deployment: SK Telecom, Cloudera
 - Standards Body: Apache Software Foundation
-- Vendor: Universal vendor commitments
+- ~~Vendor: Universal vendor commitments~~ *(corrected 2026-07-10 to broad, not universal: Microsoft is the named Delta-first holdout; see the section record note)*
 - Industry Survey: Dremio 2024
 
 **Quantitative Precision**: 3 points (range estimate, not precise)
@@ -130,18 +130,18 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 - SK Telecom (South Korea)
 - Cloudera (US)
 - AWS, Google, Snowflake, Databricks, Microsoft (global)
-- Apache Software Foundation (300+ contributors, 100+ orgs worldwide)
+- ~~Apache Software Foundation (300+ contributors, 100+ orgs worldwide)~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note)*
 
-**Total Confidence**: **23/25 points** = ⭐⭐⭐⭐⭐ **STRONG**
+**Total Confidence**: **23/25 points** = ⭐⭐⭐⭐⭐ **STRONG** *(October-2025 record; for the current standing see the section record note and `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
 #### Confidence Drivers
 
-✅ **Universal vendor support**: AWS, Google, Snowflake, Databricks, Microsoft all announced Iceberg compatibility
+✅ ~~**Universal vendor support**: AWS, Google, Snowflake, Databricks, Microsoft all announced Iceberg compatibility~~ *(corrected 2026-07-10 to broad, not universal: Microsoft is the named Delta-first holdout; see the section record note)*
 ✅ **Apache Software Foundation governance**: Open, vendor-neutral governance (vs Delta = Databricks-led)
-✅ **Production validation at scale**: SK Telecom (52.7 TB in 3.39s), Cloudera (10× vs Hive)
-✅ **Community strength**: 300+ contributors across 100+ organizations
+✅ **Production validation at scale**: SK Telecom (52.7 TB in 3.39s), Cloudera (10× vs Hive) *(the SK Telecom figures are not in the recap originally cited and were re-attributed 2026-07-10 to the Trino Summit slides; see the section record note)*
+✅ ~~**Community strength**: 300+ contributors across 100+ organizations~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note)*
 ✅ **FIRST-PARTY engine portability (lab-measured, 2026-06-07)**: four engines return identical answers over one Iceberg/OCSF table, and the data swaps Iceberg↔DuckLake read-neutral on identical bytes — we verified the format's vendor-neutrality ourselves rather than inferring it from vendor announcements (single-host apparatus; see H-ENGINE-ANSWER-EQUIVALENCE-01 and H-DUCKLAKE-02)
 
 ---
@@ -149,17 +149,17 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 #### Confidence Limiters
 
 ⚠️ **"76%" statistic not located**: Web searches found Dremio survey (29% vs 23%), but not specific "76%" claim
-⚠️ **Refinement required**: Recommend changing claim from "76% adoption" to "industry consensus as de facto standard, with universal vendor support and growing momentum (Dremio: 29% planning Iceberg vs 23% Delta)"
+⚠️ ~~**Refinement required**: Recommend changing claim from "76% adoption" to "industry consensus as de facto standard, with universal vendor support and growing momentum (Dremio: 29% planning Iceberg vs 23% Delta)"~~ *(the 76% refinement is superseded and "universal" is corrected to broad, with Microsoft the named Delta-first holdout; the Dremio 29% vs 23% figure stands; see the section record note)*
 
 ---
 
 #### Recommended Book Language
 
 **Strong Confidence Statement**:
-> "Apache Iceberg has emerged as the industry consensus choice for open table formats, with universal support from all major cloud providers (AWS, Google, Microsoft) and data platforms (Snowflake, Databricks). The Apache Software Foundation governance model—with 300+ contributors across 100+ organizations—provides vendor-neutral leadership that Delta Lake's Databricks-led model cannot match. Dremio's 2024 survey confirms growing momentum: 29% of organizations planning to adopt an open table format chose Iceberg vs 23% for Delta Lake."
+> ~~"Apache Iceberg has emerged as the industry consensus choice for open table formats, with universal support from all major cloud providers (AWS, Google, Microsoft) and data platforms (Snowflake, Databricks). The Apache Software Foundation governance model—with 300+ contributors across 100+ organizations—provides vendor-neutral leadership that Delta Lake's Databricks-led model cannot match. Dremio's 2024 survey confirms growing momentum: 29% of organizations planning to adopt an open table format chose Iceberg vs 23% for Delta Lake."~~ *(corrected 2026-07-10 to broad, not universal: Microsoft is the named Delta-first holdout; see the section record note)*
 
 **Citations**:
-- Universal vendor support: MASTER-BIBLIOGRAPHY.md:1312-1332
+- ~~Universal vendor support: MASTER-BIBLIOGRAPHY.md:1312-1332~~ *(corrected 2026-07-10 to broad, not universal: Microsoft is the named Delta-first holdout; see the section record note)*
 - Apache Software Foundation governance: MASTER-BIBLIOGRAPHY.md:1337-1355
 - Dremio 2024 survey: Web search results (October 15, 2025)
 - SK Telecom production: MASTER-BIBLIOGRAPHY.md:49-69
@@ -170,54 +170,54 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** every quantitative leg below (IDC 2.5-3×, DORA 2.7×/'Level 4', Confluent 45-55%) was withdrawn or confirmed nonexistent in the 2026-06/07 audits; current score **1/5** — the qualitative streaming-carries-an-ops-premium direction survives, no multiplier does. Preserved as the October-2025 record; do not cite.
 
-**Hypothesis**: "Streaming architectures incur 2.5-3× higher operational costs vs batch processing due to specialized expertise, 24/7 monitoring, and incident management complexity."
+~~**Hypothesis**: "Streaming architectures incur 2.5-3× higher operational costs vs batch processing due to specialized expertise, 24/7 monitoring, and incident management complexity."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 1/5, see the section record note)*
 
-**Validation Status**: ✅ **HIGH CONFIDENCE**
+~~**Validation Status**: ✅ **HIGH CONFIDENCE**~~ *(October-2025 record; the current score is in the section record note)*
 
 ---
 
 #### Confidence Scoring
 
 **Source Count**: 5 points (5 sources)
-- IDC Research (2.5-3× operational staffing)
-- DORA 2024 Report (2.7× staff, 3.2× incidents)
-- Enterprise Data Quarterly (1.5-2× infrastructure)
-- Confluent (45-55% ops complexity)
-- Cloudera TCO (39% licensing, 32% hardware, 29% operational)
+- ~~IDC Research (2.5-3× operational staffing)~~ *(withdrawn; see the section record note)*
+- ~~DORA 2024 Report (2.7× staff, 3.2× incidents)~~ *(withdrawn; see the section record note)*
+- ~~Enterprise Data Quarterly (1.5-2× infrastructure)~~ *(withdrawn; see the section record note)*
+- ~~Confluent (45-55% ops complexity)~~ *(withdrawn; see the section record note)*
+- ~~Cloudera TCO (39% licensing, 32% hardware, 29% operational)~~ *(withdrawn; see the section record note)*
 
 **Evidence Level Quality**: 4 points (80% Level A)
-- Level A: IDC, DORA, Cloudera (3 of 5)
-- Level B: Enterprise Data Quarterly, Confluent (2 of 5)
+- ~~Level A: IDC, DORA, Cloudera (3 of 5)~~ *(withdrawn; see the section record note)*
+- ~~Level B: Enterprise Data Quarterly, Confluent (2 of 5)~~ *(withdrawn; see the section record note)*
 
 **Source Diversity**: 5 points (4 source types)
-- Industry Analyst: IDC
-- Industry Research: DORA
-- Production Data: Confluent (thousands of deployments)
-- Commissioned Research: Cloudera/Forrester TEI
+- ~~Industry Analyst: IDC~~ *(withdrawn; see the section record note)*
+- ~~Industry Research: DORA~~ *(withdrawn; see the section record note)*
+- ~~Production Data: Confluent (thousands of deployments)~~ *(withdrawn; see the section record note)*
+- ~~Commissioned Research: Cloudera/Forrester TEI~~ *(withdrawn; see the section record note)*
 
 **Quantitative Precision**: 5 points (precise convergence)
-- IDC: 2.5-3× operational staffing
-- DORA: 2.7× operational staff
-- Enterprise Data Quarterly: 1.5-2× infrastructure
-- Confluent: 45-55% ops complexity
-- **Convergence**: Multiple independent sources all cite **2-3× range**
+- ~~IDC: 2.5-3× operational staffing~~ *(withdrawn; see the section record note)*
+- ~~DORA: 2.7× operational staff~~ *(withdrawn; see the section record note)*
+- ~~Enterprise Data Quarterly: 1.5-2× infrastructure~~ *(withdrawn; see the section record note)*
+- ~~Confluent: 45-55% ops complexity~~ *(withdrawn; see the section record note)*
+- ~~**Convergence**: Multiple independent sources all cite **2-3× range**~~ *(withdrawn; see the section record note)*
 
 **Geographic/Organizational Diversity**: 3 points (US-centric)
-- IDC (US-based research)
-- DORA (global survey, but US-heavy)
-- Confluent (US vendor, global customers)
-- Cloudera (US vendor)
+- ~~IDC (US-based research)~~ *(withdrawn; see the section record note)*
+- ~~DORA (global survey, but US-heavy)~~ *(withdrawn; see the section record note)*
+- ~~Confluent (US vendor, global customers)~~ *(withdrawn; see the section record note)*
+- ~~Cloudera (US vendor)~~ *(withdrawn; see the section record note)*
 
-**Total Confidence**: **22/25 points** = ⭐⭐⭐⭐ **HIGH**
+**Total Confidence**: **22/25 points** = ⭐⭐⭐⭐ **HIGH** *(October-2025 record; for the current standing see the section record note and `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
 #### Confidence Drivers
 
-✅ **Independent source convergence**: IDC (2.5-3×), DORA (2.7×), Confluent (45-55%) all validate 2-3× range
-✅ **Mixed source types**: Industry analyst + industry research + vendor production data
-✅ **Quantitative precision**: Not directional ("costs more"), but precise multipliers
-✅ **Operational vs infrastructure split**: Multiple sources differentiate staffing (2.5-3×) from infrastructure (1.5-2×)
+✅ ~~**Independent source convergence**: IDC (2.5-3×), DORA (2.7×), Confluent (45-55%) all validate 2-3× range~~ *(withdrawn; see the section record note)*
+✅ ~~**Mixed source types**: Industry analyst + industry research + vendor production data~~ *(withdrawn; see the section record note)*
+✅ ~~**Quantitative precision**: Not directional ("costs more"), but precise multipliers~~ *(withdrawn; see the section record note)*
+✅ ~~**Operational vs infrastructure split**: Multiple sources differentiate staffing (2.5-3×) from infrastructure (1.5-2×)~~ *(withdrawn; see the section record note)*
 
 ---
 
@@ -231,12 +231,12 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 #### Recommended Book Language
 
 **High Confidence Statement**:
-> "Streaming architectures incur 2.5-3× higher operational costs vs batch processing, validated by independent sources: IDC research (2.5-3× operational staffing), DORA 2024 (2.7× staff, 3.2× incident rates), and Confluent production data (45-55% of TCO from operational complexity). The premium stems from specialized expertise requirements (fault-tolerance = 'Level 4' skill per DORA, available in top 5% of organizations only), 24/7 monitoring demands, and incident management complexity."
+> ~~"Streaming architectures incur 2.5-3× higher operational costs vs batch processing, validated by independent sources: IDC research (2.5-3× operational staffing), DORA 2024 (2.7× staff, 3.2× incident rates), and Confluent production data (45-55% of TCO from operational complexity). The premium stems from specialized expertise requirements (fault-tolerance = 'Level 4' skill per DORA, available in top 5% of organizations only), 24/7 monitoring demands, and incident management complexity."~~ *(withdrawn; see the section record note)*
 
 **Citations**:
-- IDC: MASTER-BIBLIOGRAPHY.md:569-586
-- DORA: MASTER-BIBLIOGRAPHY.md:357-376
-- Confluent: MASTER-BIBLIOGRAPHY.md:1056-1076
+- ~~IDC: MASTER-BIBLIOGRAPHY.md:569-586~~ *(withdrawn; see the section record note)*
+- ~~DORA: MASTER-BIBLIOGRAPHY.md:357-376~~ *(withdrawn; see the section record note)*
+- ~~Confluent: MASTER-BIBLIOGRAPHY.md:1056-1076~~ *(withdrawn; see the section record note)*
 
 ---
 
@@ -244,70 +244,70 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** all four legs below (DORA 2.7×, IDC 2.5-3×, Ververica 3.2-FTE, McKinsey tiger-teams) are withdrawn or nonexistent; current score **2/5**. The Gartner seat-access check remains the only literature route to re-quantify. Preserved as the record; do not cite.
 
-**Hypothesis**: "Organizations implementing streaming architectures require 2.7× operational staff vs batch alternatives, with fault-tolerance expertise representing 'Level 4' specialized skills available in only the top 5% of organizations."
+~~**Hypothesis**: "Organizations implementing streaming architectures require 2.7× operational staff vs batch alternatives, with fault-tolerance expertise representing 'Level 4' specialized skills available in only the top 5% of organizations."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 2/5, see the section record note)*
 
-**Validation Status**: ✅ **STRONGLY VALIDATED**
+~~**Validation Status**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 record; the current score is in the section record note)*
 
 ---
 
 #### Confidence Scoring
 
 **Source Count**: 5 points (4 sources)
-- DORA 2024 (2.7× staff, Level 4 skills)
-- IDC Research (2.5-3× operational staffing)
-- Ververica (3.2 FTEs for Flink)
-- McKinsey (tiger teams, 35-40% acceleration)
+- ~~DORA 2024 (2.7× staff, Level 4 skills)~~ *(withdrawn; see the section record note)*
+- ~~IDC Research (2.5-3× operational staffing)~~ *(withdrawn; see the section record note)*
+- ~~Ververica (3.2 FTEs for Flink)~~ *(withdrawn; see the section record note)*
+- ~~McKinsey (tiger teams, 35-40% acceleration)~~ *(withdrawn; see the section record note)*
 
 **Evidence Level Quality**: 5 points (100% Level A)
-- All 4 sources = Level A
+- ~~All 4 sources = Level A~~ *(withdrawn; see the section record note)*
 
 **Source Diversity**: 5 points (4 source types)
-- Industry Research: DORA
-- Industry Analyst: IDC
-- Production Case Study: Ververica (Klaviyo)
-- Consulting: McKinsey
+- ~~Industry Research: DORA~~ *(withdrawn; see the section record note)*
+- ~~Industry Analyst: IDC~~ *(withdrawn; see the section record note)*
+- ~~Production Case Study: Ververica (Klaviyo)~~ *(withdrawn; see the section record note)*
+- ~~Consulting: McKinsey~~ *(withdrawn; see the section record note)*
 
 **Quantitative Precision**: 5 points (precise convergence)
-- DORA: 2.7× staff
-- IDC: 2.5-3× operational staffing
-- Ververica: 3.2 average FTEs for Flink
-- All sources cite **2-3× range** or **3+ FTE minimum**
+- ~~DORA: 2.7× staff~~ *(withdrawn; see the section record note)*
+- ~~IDC: 2.5-3× operational staffing~~ *(withdrawn; see the section record note)*
+- ~~Ververica: 3.2 average FTEs for Flink~~ *(withdrawn; see the section record note)*
+- ~~All sources cite **2-3× range** or **3+ FTE minimum**~~ *(withdrawn; see the section record note)*
 
 **Geographic/Organizational Diversity**: 3 points (US-centric, some international)
-- DORA: Global survey
-- Ververica: Klaviyo (US case study)
-- McKinsey: International consulting firm
+- ~~DORA: Global survey~~ *(withdrawn; see the section record note)*
+- ~~Ververica: Klaviyo (US case study)~~ *(withdrawn; see the section record note)*
+- ~~McKinsey: International consulting firm~~ *(withdrawn; see the section record note)*
 
-**Total Confidence**: **23/25 points** = ⭐⭐⭐⭐⭐ **STRONG**
+**Total Confidence**: **23/25 points** = ⭐⭐⭐⭐⭐ **STRONG** *(October-2025 record; for the current standing see the section record note and `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
 #### Confidence Drivers
 
-✅ **Independent validation**: DORA, IDC, Ververica all converge on 2-3× staffing multiplier
-✅ **Skills classification**: DORA "Level 4" provides formal taxonomy (not anecdotal "skills are scarce")
-✅ **100% Evidence Level A**: Exceptional source quality
-✅ **Production validation**: Ververica 3.2 FTEs from real Flink deployment (not survey)
+✅ ~~**Independent validation**: DORA, IDC, Ververica all converge on 2-3× staffing multiplier~~ *(withdrawn; see the section record note)*
+✅ ~~**Skills classification**: DORA "Level 4" provides formal taxonomy (not anecdotal "skills are scarce")~~ *(withdrawn; see the section record note)*
+✅ ~~**100% Evidence Level A**: Exceptional source quality~~ *(withdrawn; see the section record note)*
+✅ ~~**Production validation**: Ververica 3.2 FTEs from real Flink deployment (not survey)~~ *(withdrawn; see the section record note)*
 
 ---
 
 #### Confidence Limiters
 
 ⚠️ **Mid-market data limited**: Most sources focus on enterprise (500TB+)
-⚠️ **Platform-specific**: Ververica 3.2 FTEs is **Flink-specific**, may not generalize to all streaming
+⚠️ ~~**Platform-specific**: Ververica 3.2 FTEs is **Flink-specific**, may not generalize to all streaming~~ *(withdrawn; see the section record note)*
 
 ---
 
 #### Recommended Book Language
 
 **Strong Confidence Statement**:
-> "Streaming architectures require 2.7× operational staff vs batch processing (DORA 2024), with fault-tolerance expertise classified as a 'Level 4' specialized skill available in only the top 5% of organizations. Production validation confirms these staffing requirements: Ververica case study shows 3.2 average FTEs required for production Flink pipelines, while IDC research cites 2.5-3× higher operational staffing costs. McKinsey research on tiger teams (cross-functional expert groups) provides a mitigation strategy: short-term specialized staffing can accelerate implementation 35-40%, enabling knowledge transfer to internal teams."
+> ~~"Streaming architectures require 2.7× operational staff vs batch processing (DORA 2024), with fault-tolerance expertise classified as a 'Level 4' specialized skill available in only the top 5% of organizations. Production validation confirms these staffing requirements: Ververica case study shows 3.2 average FTEs required for production Flink pipelines, while IDC research cites 2.5-3× higher operational staffing costs. McKinsey research on tiger teams (cross-functional expert groups) provides a mitigation strategy: short-term specialized staffing can accelerate implementation 35-40%, enabling knowledge transfer to internal teams."~~ *(withdrawn; see the section record note)*
 
 **Citations**:
-- DORA: MASTER-BIBLIOGRAPHY.md:357-376
-- IDC: MASTER-BIBLIOGRAPHY.md:569-586
-- Ververica: MASTER-BIBLIOGRAPHY.md:871-892
-- McKinsey: MASTER-BIBLIOGRAPHY.md:1010-1030
+- ~~DORA: MASTER-BIBLIOGRAPHY.md:357-376~~ *(withdrawn; see the section record note)*
+- ~~IDC: MASTER-BIBLIOGRAPHY.md:569-586~~ *(withdrawn; see the section record note)*
+- ~~Ververica: MASTER-BIBLIOGRAPHY.md:871-892~~ *(withdrawn; see the section record note)*
+- ~~McKinsey: MASTER-BIBLIOGRAPHY.md:1010-1030~~ *(withdrawn; see the section record note)*
 
 ---
 
@@ -315,71 +315,71 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10, corrected same day):** the Gartner/phData 5.5-month leg below is withdrawn (the cited phData post carries no such figure) — and the SANS 15-30% security-premium leg does NOT stand either: the bibliography records it as removed in the 2026-06-05 audit (not present in the cited sources). The hypothesis has **zero surviving quantitative legs**; the RESCORE-PROPOSAL adjudication should reflect that. The qualitative direction (security constraints extend timelines) survives unquantified. Do not cite the enumerations below.
 
-**Hypothesis**: "Security-focused data lakehouse implementations require 15-30% longer timelines vs general data engineering due to compliance validation, security tool integrations, and detection logic migration."
+~~**Hypothesis**: "Security-focused data lakehouse implementations require 15-30% longer timelines vs general data engineering due to compliance validation, security tool integrations, and detection logic migration."~~ *(October-2025 wording; its quantitative legs are withdrawn and the qualitative direction stands, see the section record note)*
 
-**Validation Status**: ✅ **VALIDATED** (moderate confidence)
+~~**Validation Status**: ✅ **VALIDATED** (moderate confidence)~~ *(October-2025 record; the current score is in the section record note)*
 
 ---
 
 #### Confidence Scoring
 
 **Source Count**: 3 points (3 sources)
-- Gartner/phData (5.5 months security-focused)
-- Confluent (4-6 months Kafka deployment)
-- SANS Institute (security timeline premium vs general data engineering)
+- ~~Gartner/phData (5.5 months security-focused)~~ *(withdrawn; see the section record note)*
+- ~~Confluent (4-6 months Kafka deployment)~~ *(withdrawn; see the section record note)*
+- ~~SANS Institute (security timeline premium vs general data engineering)~~ *(withdrawn; see the section record note)*
 
 **Evidence Level Quality**: 3 points (67% Level A)
-- Level A: SANS (2 of 3)
-- Level B: phData (1 of 3)
-- Note: Gartner = Level A, but phData implementation details = Level B
+- ~~Level A: SANS (2 of 3)~~ *(withdrawn; see the section record note)*
+- ~~Level B: phData (1 of 3)~~ *(withdrawn; see the section record note)*
+- ~~Note: Gartner = Level A, but phData implementation details = Level B~~ *(withdrawn; see the section record note)*
 
 **Source Diversity**: 3 points (3 source types)
-- Industry Analyst: Gartner
-- Practitioner: phData
-- Security Authority: SANS Institute
-- Vendor: Confluent
+- ~~Industry Analyst: Gartner~~ *(withdrawn; see the section record note)*
+- ~~Practitioner: phData~~ *(withdrawn; see the section record note)*
+- ~~Security Authority: SANS Institute~~ *(withdrawn; see the section record note)*
+- ~~Vendor: Confluent~~ *(withdrawn; see the section record note)*
 
 **Quantitative Precision**: 3 points (range estimate)
-- Gartner/phData: 5.5 months average (specific)
-- SANS: 15-30% premium (range)
-- Confluent: 4-6 months Kafka (general, not security-specific)
+- ~~Gartner/phData: 5.5 months average (specific)~~ *(withdrawn; see the section record note)*
+- ~~SANS: 15-30% premium (range)~~ *(withdrawn; see the section record note)*
+- ~~Confluent: 4-6 months Kafka (general, not security-specific)~~ *(withdrawn; see the section record note)*
 
 **Geographic/Organizational Diversity**: 1 point (limited)
-- All sources US-centric
-- No international security lakehouse timeline data
+- ~~All sources US-centric~~ *(withdrawn; see the section record note)*
+- ~~No international security lakehouse timeline data~~ *(withdrawn; see the section record note)*
 
-**Total Confidence**: **13/25 points** = ⭐⭐⭐ **MODERATE**
+**Total Confidence**: **13/25 points** = ⭐⭐⭐ **MODERATE** *(October-2025 record; for the current standing see the section record note and `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
 #### Confidence Drivers
 
-✅ **SANS security-specific validation**: Authoritative source on security timeline differences
-✅ **Quantitative precision**: 5.5 months (Gartner/phData) provides specific benchmark
-✅ **15-30% premium validated**: SANS confirms security constraints add time vs general data engineering
+✅ ~~**SANS security-specific validation**: Authoritative source on security timeline differences~~ *(withdrawn; see the section record note)*
+✅ ~~**Quantitative precision**: 5.5 months (Gartner/phData) provides specific benchmark~~ *(withdrawn; see the section record note)*
+✅ ~~**15-30% premium validated**: SANS confirms security constraints add time vs general data engineering~~ *(withdrawn; see the section record note)*
 
 ---
 
 #### Confidence Limiters
 
 ⚠️ **Source count limited**: Only 3 sources (vs 4-5 for stronger hypotheses)
-⚠️ **Geographic diversity weak**: All US-centric (European/APAC data protection timelines may differ)
-⚠️ **phData = Level B**: Implementation partner perspective (practitioner, not research)
-⚠️ **General vs security timeline split unclear**: Confluent 4-6 months is general Kafka, not security-specific
+⚠️ ~~**Geographic diversity weak**: All US-centric (European/APAC data protection timelines may differ)~~ *(withdrawn; see the section record note)*
+⚠️ ~~**phData = Level B**: Implementation partner perspective (practitioner, not research)~~ *(withdrawn; see the section record note)*
+⚠️ ~~**General vs security timeline split unclear**: Confluent 4-6 months is general Kafka, not security-specific~~ *(withdrawn; see the section record note)*
 
 ---
 
 #### Recommended Book Language
 
 **Moderate Confidence Statement**:
-> "Security-focused data lakehouse implementations average 5.5 months (Gartner/phData research), representing a 15-30% timeline premium vs general data engineering (SANS Institute validation). The premium stems from security-specific constraints: compliance validation gates (HIPAA, PCI-DSS, SOC 2 reviews add 2-4 weeks), security tool integrations (EDR, SIEM, threat intel platforms add 1-2 weeks), and detection logic migration (translating existing rules, validating accuracy adds 2-3 weeks). Confluent's 4-6 month Kafka deployment timeline provides a general baseline, with security use cases trending toward the longer end of the range."
+> ~~"Security-focused data lakehouse implementations average 5.5 months (Gartner/phData research), representing a 15-30% timeline premium vs general data engineering (SANS Institute validation). The premium stems from security-specific constraints: compliance validation gates (HIPAA, PCI-DSS, SOC 2 reviews add 2-4 weeks), security tool integrations (EDR, SIEM, threat intel platforms add 1-2 weeks), and detection logic migration (translating existing rules, validating accuracy adds 2-3 weeks). Confluent's 4-6 month Kafka deployment timeline provides a general baseline, with security use cases trending toward the longer end of the range."~~ *(withdrawn; see the section record note)*
 
 **Confidence Caveat**: "Timeline data is predominantly from US implementations; European GDPR or APAC data localization requirements may extend timelines further."
 
 **Citations**:
-- Gartner/phData: MASTER-BIBLIOGRAPHY.md:940-960
-- SANS: MASTER-BIBLIOGRAPHY.md:482-499
-- Confluent: MASTER-BIBLIOGRAPHY.md:917-937
+- ~~Gartner/phData: MASTER-BIBLIOGRAPHY.md:940-960~~ *(withdrawn; see the section record note)*
+- ~~SANS: MASTER-BIBLIOGRAPHY.md:482-499~~ *(withdrawn; see the section record note)*
+- ~~Confluent: MASTER-BIBLIOGRAPHY.md:917-937~~ *(withdrawn; see the section record note)*
 
 ---
 
@@ -387,64 +387,64 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** the AWS 55% and Netflix 70-80% legs below are dead (deprecated stub / no locatable primary — marked do-not-cite in MASTER-BIBLIOGRAPHY); current score **4/5**, re-anchored on the first-party S3 storage-class price derivation (−45.7% IA / −82.6% Glacier Instant / −84.3% Flexible / −95.7% Deep Archive) plus the Insider and Kozlovski legs.
 
-**Hypothesis**: "Tiered storage strategies (hot/warm/cold) deliver 55-80% cost savings for multi-year security data retention, with AWS documenting 55% average savings and Netflix achieving 70-80% for Kafka tiered storage."
+~~**Hypothesis**: "Tiered storage strategies (hot/warm/cold) deliver 55-80% cost savings for multi-year security data retention, with AWS documenting 55% average savings and Netflix achieving 70-80% for Kafka tiered storage."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 4/5, see the section record note)*
 
-**Validation Status**: ✅ **STRONGLY VALIDATED**
+~~**Validation Status**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 record; the current score is in the section record note)*
 
 ---
 
 #### Confidence Scoring
 
 **Source Count**: 3 points (3 sources)
-- AWS Storage Optimization Whitepaper (55%)
-- Netflix Kafka Tiered Storage (70-80%)
-- AWS Well-Architected (35% conservative estimate, 30-40% range)
+- ~~AWS Storage Optimization Whitepaper (55%)~~ *(withdrawn; see the section record note)*
+- ~~Netflix Kafka Tiered Storage (70-80%)~~ *(withdrawn; see the section record note)*
+- ~~AWS Well-Architected (35% conservative estimate, 30-40% range)~~ *(withdrawn; see the section record note and cost-reality-reference.md §2.1, where the 35% / 30-40% figures are withdrawn with the deprecated AWS whitepaper)*
 
 **Evidence Level Quality**: 5 points (100% Level A)
-- All 3 sources = Level A (AWS official docs, Netflix production)
+- ~~All 3 sources = Level A (AWS official docs, Netflix production)~~ *(withdrawn; see the section record note)*
 
 **Source Diversity**: 3 points (2 source types)
-- Cloud Provider: AWS (official documentation)
-- Production Deployment: Netflix (authoritative streaming source)
+- ~~Cloud Provider: AWS (official documentation)~~ *(withdrawn; see the section record note)*
+- ~~Production Deployment: Netflix (authoritative streaming source)~~ *(withdrawn; see the section record note)*
 
 **Quantitative Precision**: 5 points (precise range)
-- AWS: 55% average, 30-40% range (conservative)
-- Netflix: 70-80% for multi-year Kafka retention
-- Range: **55-80% validated**
+- ~~AWS: 55% average, 30-40% range (conservative)~~ *(withdrawn; see the section record note)*
+- ~~Netflix: 70-80% for multi-year Kafka retention~~ *(withdrawn; see the section record note)*
+- ~~Range: **55-80% validated**~~ *(withdrawn; see the section record note)*
 
-**Geographic/Organizational Diversity**: 3 points (US-centric, but Netflix = global scale)
-- AWS: Global cloud provider
-- Netflix: Global streaming platform
+**Geographic/Organizational Diversity**: 3 points (US-centric, but ~~Netflix~~ = global scale) *(October-2025 record; the Netflix leg is withdrawn, see the section record note)*
+- ~~AWS: Global cloud provider~~ *(withdrawn; see the section record note)*
+- ~~Netflix: Global streaming platform~~ *(withdrawn; see the section record note)*
 
-**Total Confidence**: **19/25 points** = ⭐⭐⭐⭐⭐ **STRONG**
+**Total Confidence**: **19/25 points** = ⭐⭐⭐⭐⭐ **STRONG** *(October-2025 record; for the current standing see the section record note and `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
 #### Confidence Drivers
 
-✅ **Production validation**: Netflix 70-80% savings is **real production deployment**, not theoretical
-✅ **AWS authoritative**: Cloud provider official documentation (not marketing)
-✅ **Convergent range**: AWS (55%) + Netflix (70-80%) establish **55-80% range**
-✅ **100% Evidence Level A**: Exceptional source quality
+✅ ~~**Production validation**: Netflix 70-80% savings is **real production deployment**, not theoretical~~ *(withdrawn; see the section record note)*
+✅ ~~**AWS authoritative**: Cloud provider official documentation (not marketing)~~ *(withdrawn; see the section record note)*
+✅ ~~**Convergent range**: AWS (55%) + Netflix (70-80%) establish **55-80% range**~~ *(withdrawn; see the section record note)*
+✅ ~~**100% Evidence Level A**: Exceptional source quality~~ *(withdrawn; see the section record note)*
 
 ---
 
 #### Confidence Limiters
 
 ⚠️ **Source count moderate**: 3 sources (adequate, but not extensive)
-⚠️ **Use case specific**: Netflix 70-80% is **Kafka tiered storage for multi-year retention** (not general lakehouse)
-⚠️ **AWS conservative vs aggressive**: AWS cites both 35% (conservative) and 55% (average), creating ambiguity
+⚠️ ~~**Use case specific**: Netflix 70-80% is **Kafka tiered storage for multi-year retention** (not general lakehouse)~~ *(withdrawn; see the section record note)*
+⚠️ ~~**AWS conservative vs aggressive**: AWS cites both 35% (conservative) and 55% (average), creating ambiguity~~ *(withdrawn; see the section record note)*
 
 ---
 
 #### Recommended Book Language
 
 **Strong Confidence Statement**:
-> "Tiered storage strategies deliver 55-80% cost savings for multi-year security data retention, validated by AWS official documentation (55% average savings) and Netflix production deployment (70-80% for Kafka tiered storage). The architecture separates hot data (recent 7-90 days, frequent access, S3 Standard or Kafka brokers) from cold data (historical 1-7 years, compliance retention, S3 Glacier). AWS provides a conservative 35% estimate (30-40% range) for general workloads, while security-specific use cases with multi-year compliance retention achieve Netflix-level savings (70-80%)."
+> ~~"Tiered storage strategies deliver 55-80% cost savings for multi-year security data retention, validated by AWS official documentation (55% average savings) and Netflix production deployment (70-80% for Kafka tiered storage). The architecture separates hot data (recent 7-90 days, frequent access, S3 Standard or Kafka brokers) from cold data (historical 1-7 years, compliance retention, S3 Glacier). AWS provides a conservative 35% estimate (30-40% range) for general workloads, while security-specific use cases with multi-year compliance retention achieve Netflix-level savings (70-80%)."~~ *(withdrawn; see the section record note)*
 
 **Citations**:
-- AWS Storage Optimization: MASTER-BIBLIOGRAPHY.md:287-306, 1173-1194
-- Netflix: MASTER-BIBLIOGRAPHY.md:523-542
+- ~~AWS Storage Optimization: MASTER-BIBLIOGRAPHY.md:287-306, 1173-1194~~ *(withdrawn; see the section record note)*
+- ~~Netflix: MASTER-BIBLIOGRAPHY.md:523-542~~ *(withdrawn; see the section record note)*
 
 ---
 
@@ -472,7 +472,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 - Cloudflare 6M req/sec = Level A (production); first-party lab leg = measured A; the ClickHouse-vs-Elasticsearch comparison is a vendor-published benchmark (Level B)
 
 **Source Diversity**: 3 points (2 source types)
-- Production Deployment: Cloudflare (2 sources), Shell
+- Production Deployment: Cloudflare (2 sources), ~~Shell~~ *(removed 2026-06-05)*
 - Benchmark: ClickHouse vs Elasticsearch comparison
 
 **Quantitative Precision**: 4 points (recomputed 2026-07-11; was 5) — precise on the surviving legs
@@ -502,7 +502,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 #### Confidence Limiters
 
 ⚠️ **Source diversity moderate**: 2 production deployments + 1 benchmark (adequate, not extensive)
-⚠️ **Vendor benchmark skepticism**: ClickHouse vs Elasticsearch comparison is ClickHouse-published (but Cloudflare/Shell validate claims)
+⚠️ **Vendor benchmark skepticism**: ClickHouse vs Elasticsearch comparison is ClickHouse-published (Cloudflare corroborates in production; the Shell leg once cited here was removed 2026-06-05)
 
 ---
 
@@ -516,7 +516,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 **Citations**:
 - Cloudflare (6M req/sec): MASTER-BIBLIOGRAPHY.md:74-94
 - Cloudflare (compression): MASTER-BIBLIOGRAPHY.md:97-116
-- Shell: MASTER-BIBLIOGRAPHY.md:119-141
+- ~~Shell: MASTER-BIBLIOGRAPHY.md:119-141~~ *(removed 2026-06-05; see the section record note)*
 - ClickHouse vs Elasticsearch: MASTER-BIBLIOGRAPHY.md:1382-1401
 
 ---
@@ -525,44 +525,44 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** both quantitative legs below have been corrected since October 2025. The LinkedIn "terabytes of state with millisecond access" claim was orphaned (no locatable primary) and re-anchored 2026-07-09 on **Samza — "Stateful Scalable Stream Processing at LinkedIn" (VLDB 2017)**, whose verified figures are hundreds of TB of local state across applications and millions of requests/sec — the paper's local-state figure is THROUGHPUT; do not cite a millisecond latency number to it. The Uber "thousands of views / sub-second refresh" figures are recorded as withdrawn (cost-reality-reference §4.1 cross-reference). The bibliography line anchors cited below (502-520 / 681-699) predate the July edits and have drifted. Re-score pending; do not cite the enumerations or the Recommended Book Language below as they stand.
 
-**Hypothesis**: "Kafka Streams enables production-scale stateful security processing: LinkedIn maintains terabytes of state with millisecond access times, Uber operates thousands of real-time security views with sub-second refresh rates."
+~~**Hypothesis**: "Kafka Streams enables production-scale stateful security processing: LinkedIn maintains terabytes of state with millisecond access times, Uber operates thousands of real-time security views with sub-second refresh rates."~~ *(October-2025 wording; its quantitative legs are corrected and the re-score is pending, see the section record note)*
 
-**Validation Status**: ✅ **HIGH CONFIDENCE**
+~~**Validation Status**: ✅ **HIGH CONFIDENCE**~~ *(October-2025 record; the current score is in the section record note)*
 
 ---
 
 #### Confidence Scoring
 
 **Source Count**: 3 points (3 sources)
-- LinkedIn: Kafka Streams state management (terabytes of state, ms access)
-- Uber: Real-time security views (thousands of views, sub-second refresh)
+- ~~LinkedIn: Kafka Streams state management (terabytes of state, ms access)~~ *(re-anchored 2026-07-09 on Samza VLDB 2017, which supports hundreds of TB of state as a throughput figure but not the millisecond-access clause; see the section record note)*
+- ~~Uber: Real-time security views (thousands of views, sub-second refresh)~~ *(withdrawn; see the section record note)*
 - Confluent: Kafka Streams best practices
 
 **Evidence Level Quality**: 5 points (100% Level A)
-- All 3 sources = Level A (production deployments)
+- ~~All 3 sources = Level A (production deployments)~~ *(withdrawn; see the section record note)*
 
 **Source Diversity**: 3 points (2 source types)
-- Production Deployment: LinkedIn, Uber
+- Production Deployment: LinkedIn, ~~Uber~~ *(the Uber leg is withdrawn; see the section record note)*
 - Vendor Best Practices: Confluent
 
 **Quantitative Precision**: 5 points (precise metrics)
-- Terabytes of state (LinkedIn)
-- Millisecond access times (LinkedIn)
-- Thousands of views (Uber)
-- Sub-second refresh (Uber)
+- ~~Terabytes of state (LinkedIn)~~ *(re-anchored 2026-07-09 on Samza VLDB 2017: hundreds of TB of state, a throughput figure; see the section record note)*
+- ~~Millisecond access times (LinkedIn)~~ *(withdrawn; see the section record note)*
+- ~~Thousands of views (Uber)~~ *(withdrawn; see the section record note)*
+- ~~Sub-second refresh (Uber)~~ *(withdrawn; see the section record note)*
 
 **Geographic/Organizational Diversity**: 1 point (US-centric)
-- LinkedIn, Uber, Confluent all US-based
+- LinkedIn, ~~Uber,~~ Confluent all US-based *(the Uber leg is withdrawn; see the section record note)*
 
-**Total Confidence**: **17/25 points** = ⭐⭐⭐⭐ **HIGH**
+**Total Confidence**: **17/25 points** = ⭐⭐⭐⭐ **HIGH** *(October-2025 record; the section record note says re-score pending, and `methods/RESCORE-2026-07-13.md` carries the rubric recompute)*
 
 ---
 
 #### Confidence Drivers
 
-✅ **Production security validation**: Both LinkedIn and Uber are **security-specific use cases**, not general streaming
-✅ **Quantitative precision**: Not "scales well," but "terabytes of state" and "sub-second refresh"
-✅ **100% Evidence Level A**: Exceptional
+✅ ~~**Production security validation**: Both LinkedIn and Uber are **security-specific use cases**, not general streaming~~ *(withdrawn; see the section record note)*
+✅ ~~**Quantitative precision**: Not "scales well," but "terabytes of state" and "sub-second refresh"~~ *(withdrawn; see the section record note)*
+✅ ~~**100% Evidence Level A**: Exceptional~~ *(withdrawn; see the section record note)*
 
 ---
 
@@ -570,18 +570,18 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ⚠️ **Source count moderate**: 3 sources (adequate, but not extensive)
 ⚠️ **US-centric**: All sources US-based (no European/APAC validation)
-⚠️ **Large enterprise only**: LinkedIn, Uber = massive scale (mid-market validation limited)
+⚠️ **Large enterprise only**: LinkedIn, ~~Uber~~ = massive scale *(the Uber leg is withdrawn; see the section record note)* (mid-market validation limited)
 
 ---
 
 #### Recommended Book Language
 
 **High Confidence Statement**:
-> "Kafka Streams enables production-scale stateful security processing, validated by deployments at LinkedIn (maintaining terabytes of state with millisecond access times for security entity tracking) and Uber (operating thousands of real-time security views with sub-second refresh rates). These production deployments prove that stateful stream processing—previously considered too complex for security operations—is not only feasible but operationally superior to batch re-processing for entity behavior analytics."
+> ~~"Kafka Streams enables production-scale stateful security processing, validated by deployments at LinkedIn (maintaining terabytes of state with millisecond access times for security entity tracking) and Uber (operating thousands of real-time security views with sub-second refresh rates). These production deployments prove that stateful stream processing—previously considered too complex for security operations—is not only feasible but operationally superior to batch re-processing for entity behavior analytics."~~ *(withdrawn; see the section record note)*
 
 **Citations**:
-- LinkedIn: MASTER-BIBLIOGRAPHY.md:502-520
-- Uber: MASTER-BIBLIOGRAPHY.md:681-699
+- ~~LinkedIn: MASTER-BIBLIOGRAPHY.md:502-520~~ *(withdrawn; see the section record note)*
+- ~~Uber: MASTER-BIBLIOGRAPHY.md:681-699~~ *(withdrawn; see the section record note)*
 
 ---
 
@@ -775,7 +775,7 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 ✅ Controlled, reproducible join on a known schema key (`src_ip`)
 
 **Confidence Limiters**:
-⚠️ Single host; constructed two-source scenario, not a production NDR estate
+⚠️ Single host; constructed two-source scenario, not a production NDR deployment
 ⚠️ Demonstrates the join surfaces the pattern; does not measure detection rate, false-positive cost, or scale behavior
 
 **Recommended Language**:
@@ -785,13 +785,13 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 
 ### H-CROSS-TOOL-ASSURANCE-01: Cross-Tool Data-Health Gap (band annotation)
 
-**Hypothesis**: "Assurance lives in the cross-tool view — the merged, freshness/authority-ranked picture of an estate recovers materially more true state than any single tool, and a residual gap remains that no tool covers correctly."
+**Hypothesis**: "Assurance lives in the cross-tool view — the merged, freshness/authority-ranked picture of an environment recovers materially more true state than any single tool, and a residual gap remains that no tool covers correctly." *(wording adapted from the hypothesis record)*
 
 **Validation Status**: ✅ **VALIDATED (first-party, single host, synthetic corpus)**
 
 **Evidence Tier**: First-party lab measurement (`ocsf-data-health/`, public Tier-B; DuckDB 1.5.3, seed 20260601). This is the first-party benchmark behind the fourth layer (the cross-tool gap) of the data-health framework the Capability Matrix scores. Added here as a confidence annotation — not a fully rubric-scored row — because its discriminating dimensions are the same single-apparatus reproducibility / determinism-gate profile as the other first-party legs rather than independent-source diversity.
 
-**Measurement (point → band)**: a synthetic estate of 20,000 assets × 7 attributes = 140,000 ground-truth cells, observed by four source tools through deterministic flaw models, scored by exact set-based measures. The canonical run (truth=701, obs=702) reports best-single-tool recovery **47.7%** and cross-tool best-context recovery **75.6%** (+27.9% over best single, 24.4% residual gap no tool covers correctly). A 12-seed re-draw of the whole corpus (EXT-3) bands those two headline magnitudes: best-single **47.4% ± 0.15%** (range 47.1–47.7%, CV 0.3%) and cross-tool **75.4% ± 0.21%** (range 75.0–75.6%, CV 0.3%), so the canonical 47.7/75.6 point sits at the top edge of each band — a real reproducible draw of a tight distribution, not a fragile single seed. EXT-1 separately holds the three orderings (cross-tool > best-single, residual > 0, scored merge > naive) at every point of a 3×3 staleness×coverage grid; the parameter-independent finding is the *order*, the magnitudes are corpus parameters.
+**Measurement (point → band)**: a synthetic environment of 20,000 assets × 7 attributes = 140,000 ground-truth cells, observed by four source tools through deterministic flaw models, scored by exact set-based measures. The canonical run (truth=701, obs=702) reports best-single-tool recovery **47.7%** and cross-tool best-context recovery **75.6%** (+27.9% over best single, 24.4% residual gap no tool covers correctly). A 12-seed re-draw of the whole corpus (EXT-3) bands those two headline magnitudes: best-single **47.4% ± 0.15%** (range 47.1–47.7%, CV 0.3%) and cross-tool **75.4% ± 0.21%** (range 75.0–75.6%, CV 0.3%), so the canonical 47.7/75.6 point sits at the top edge of each band — a real reproducible draw of a tight distribution, not a fragile single seed. EXT-1 separately holds the three orderings (cross-tool > best-single, residual > 0, scored merge > naive) at every point of a 3×3 staleness×coverage grid; the parameter-independent finding is the *order*, the magnitudes are corpus parameters.
 
 **Confidence Drivers**:
 ✅ The headline is banded across 12 independent corpus re-draws (CV 0.3% on both magnitudes), inoculating against a single-draw rebuttal
@@ -803,13 +803,13 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 ⚠️ The bandable result is the magnitude of two measures on the easiest entity (assets, one clean key); a contested join key (EXT-2 identities) costs a measured −10.1% entity-resolution tax that the asset headline does not carry
 
 **Recommended Language**:
-> "Across a 20k-asset synthetic estate, the cross-tool merge recovers 75.4% of true state (±0.21% over 12 corpus re-draws, CV 0.3%) against the best single tool's 47.4% (±0.15%, CV 0.3%), leaving a residual ~24% no tool covers correctly — assurance lives in the cross-tool view, the magnitude is a tight reproducible band rather than one lucky seed, and the parameter-independent finding is the ordering (first-party, single host, synthetic; github.com/flying-coyote/sdw-lab-benchmarks, ocsf-data-health/)."
+> "Across a 20k-asset synthetic environment, the cross-tool merge recovers 75.4% of true state (±0.21% over 12 corpus re-draws, CV 0.3%) against the best single tool's 47.4% (±0.15%, CV 0.3%), leaving a residual ~24% no tool covers correctly — assurance lives in the cross-tool view, the magnitude is a tight reproducible band rather than one lucky seed, and the parameter-independent finding is the ordering (first-party, single host, synthetic; github.com/flying-coyote/sdw-lab-benchmarks, ocsf-data-health/)."
 
 ---
 
 ## Consolidated Confidence Assessment
 
-> **⛔ Record note (2026-07-10).** The borrowed-seven table below was never re-scored when the Executive Summary was, and every row still instructs the book to lead with withdrawn legs (2.7×/Level 4, 5.5 months, AWS+Netflix 55-80%, Shell, LinkedIn+Uber sub-second views). It is struck and preserved as the October-2025 record — the CURRENT adjudicated guidance is the banner at the top of this file (H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 re-anchored first-party, H-IMPL-03 zero quantitative legs pending re-score) and RESCORE-PROPOSAL-2026-07.md. The first-party table below it stands unmodified.
+> **⛔ Record note (2026-07-10).** The borrowed-seven table below was never re-scored when the Executive Summary was, and every row still instructs the book to lead with withdrawn legs (2.7×/Level 4, 5.5 months, AWS+Netflix 55-80%, Shell, LinkedIn+Uber sub-second views). It is struck and preserved as the October-2025 record — the CURRENT adjudicated guidance is the banner at the top of this file (H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 re-anchored first-party, H-IMPL-03 zero quantitative legs pending re-score) and working/proposals/RESCORE-PROPOSAL-2026-07.md. The first-party table below it stands unmodified.
 
 ### Overall Validation Strength
 
@@ -839,7 +839,7 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 
 ### Confidence Distribution Analysis
 
-> **⛔ Record note (2026-07-10):** pre-overturn material, struck — the post-overturn distribution is 1 strong (H-ARCH-01, with corrected legs) / 2 high (H3-PERFORMANCE-01 corrected, H-COST-09 4/5 re-anchored) / the rest 1-2/5 or pending re-score. See the banner and RESCORE-PROPOSAL-2026-07.md.
+> **⛔ Record note (2026-07-10):** pre-overturn material, struck — the post-overturn distribution is 1 strong (H-ARCH-01, with corrected legs) / 2 high (H3-PERFORMANCE-01 corrected, H-COST-09 4/5 re-anchored) / the rest 1-2/5 or pending re-score. See the banner and working/proposals/RESCORE-PROPOSAL-2026-07.md.
 
 ~~**Strong Confidence (⭐⭐⭐⭐⭐)**: 3 hypotheses — H-ARCH-01 (Iceberg dominance), H-IMPL-02 (Staffing scarcity), H-COST-09 (Tiered storage)~~
 
@@ -858,23 +858,23 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 > **⛔ DO NOT USE (2026-07-10).** Every statement below asserts withdrawn or corrected figures — the DORA/IDC/Ververica staffing multipliers (nonexistent), the AWS/Netflix tiered-storage legs (dead), and "universal vendor support across AWS, Google, Microsoft..." (contradicted by its own source; Microsoft is the named Delta-first holdout). They are preserved verbatim as the October-2025 record of what was ALMOST submitted — the strongest argument this corpus has for verify-at-primary-before-publishing. Draft replacements only after the RESCORE-PROPOSAL adjudication lands.
 
 **Strong Confidence Hypotheses** (suitable for primary claims):
-> "Our systematic review strongly validates that Apache Iceberg has emerged as the industry consensus choice for open table formats, with universal vendor support across AWS, Google, Microsoft, Snowflake, and Databricks (5 sources, 100% Evidence Level A)."
+> ~~"Our systematic review strongly validates that Apache Iceberg has emerged as the industry consensus choice for open table formats, with universal vendor support across AWS, Google, Microsoft, Snowflake, and Databricks (5 sources, 100% Evidence Level A)."~~ *(withdrawn 2026-07-10; preserved as the October-2025 record under the banner above)*
 
-> "Streaming architectures require 2.7× operational staff vs batch processing, with fault-tolerance expertise classified as 'Level 4' specialized skills (DORA, IDC, Ververica, McKinsey validation; 4 sources, 100% Evidence Level A)."
+> ~~"Streaming architectures require 2.7× operational staff vs batch processing, with fault-tolerance expertise classified as 'Level 4' specialized skills (DORA, IDC, Ververica, McKinsey validation; 4 sources, 100% Evidence Level A)."~~ *(withdrawn 2026-07-10; preserved as the October-2025 record under the banner above)*
 
-> "Tiered storage strategies deliver 55-80% cost savings for multi-year security data retention, validated by AWS official documentation and Netflix production deployment (3 sources, 100% Evidence Level A)."
+> ~~"Tiered storage strategies deliver 55-80% cost savings for multi-year security data retention, validated by AWS official documentation and Netflix production deployment (3 sources, 100% Evidence Level A)."~~ *(withdrawn 2026-07-10; preserved as the October-2025 record under the banner above)*
 
 ---
 
 **High Confidence Hypotheses** (suitable for supporting claims):
-> "Streaming architectures incur 2.5-3× higher operational costs vs batch processing, with convergent validation from industry analyst (IDC), industry research (DORA), and production data (Confluent) (5 sources, 80% Evidence Level A)."
+> ~~"Streaming architectures incur 2.5-3× higher operational costs vs batch processing, with convergent validation from industry analyst (IDC), industry research (DORA), and production data (Confluent) (5 sources, 80% Evidence Level A)."~~ *(withdrawn 2026-07-10; preserved as the October-2025 record under the banner above)*
 
 > "ClickHouse delivers strong OLAP performance for security workloads: 6M req/sec throughput (Cloudflare), with a first-party lab measurement of ~7.0× storage efficiency vs an OpenSearch SIEM index (single host, answers verified equal). ~~96% of queries <1s~~ [WITHDRAWN 2026-07-11 — not in source] and the ~~Shell 57 TB/day~~ [REMOVED 2026-06-05] leg no longer support this; recomputed 17/25 High (was 21/25, 100% Level A no longer holds)."
 
 ---
 
 **Moderate Confidence Hypotheses** (require caveat):
-> "Security-focused data lakehouse implementations average 5.5 months (Gartner/phData), representing a 15-30% timeline premium vs general data engineering (SANS validation). However, this finding is based on predominantly US implementations; European GDPR or APAC data localization requirements may extend timelines further (3 sources, 67% Evidence Level A)."
+> ~~"Security-focused data lakehouse implementations average 5.5 months (Gartner/phData), representing a 15-30% timeline premium vs general data engineering (SANS validation). However, this finding is based on predominantly US implementations; European GDPR or APAC data localization requirements may extend timelines further (3 sources, 67% Evidence Level A)."~~ *(withdrawn 2026-07-10; preserved as the October-2025 record under the banner above)*
 
 ---
 
@@ -886,7 +886,7 @@ DuckDB's throughput is flat at ~46 q/s across every C while its p95 climbs from 
 | 1.1 | 2026-06-07 | Added 6 first-party (MOAR reference-stack) hypotheses; re-grounded two borrowed cells |
 | 1.2 | 2026-06-07 | Upgraded H-ARCH-02 with the measured 100M-row crossover (stronger leg): ClickHouse wins full-scan count, DuckDB wins needle + group-by; 1M table kept as baseline (DuckDB swept at 1M/10M), 1M→100M progression documented as the evidence that specialization is a scale property |
 | 1.3 | 2026-06-07 | Added the H-ARCH-02 concurrency-sweep leg (`lab/concurrency_sweep.py`, C1→C16 over a shared 10M-row OCSF table): DuckDB flat ~46 q/s (p95 57→689 ms), ClickHouse 20→58 q/s overtaking by C16 (gentlest p95 59→355 ms), StarRocks 16→42 q/s plateauing ~C8, Trino flat-low 9→13 q/s (p95→1736 ms, single-host coordinator penalty). Closes the concurrency half of "no single engine wins" that the single-client scale legs only hinted at — the single-query winner (DuckDB) and the concurrent-throughput winner (ClickHouse) differ, so specialization is by concurrency as well as workload shape. Single-host limiter updated: single-host concurrency now measured, remaining gap is multi-node cluster concurrency |
-| 1.4 | 2026-06-14 | Re-anchored H-OCSF-CONTEXT-COLLAPSE-01 on the **de-gamed APT29** result (+0.188 adversary-vs-routine recall-loss delta, sweep +0.094 to +0.205, ~2× recall/blind, 1.799× storage to keep fidelity) from `ocsf-context-collapse-apt29/`; labelled the synthetic-testbed **+0.719** (`bench-a-context-collapse/`, robust +0.710–0.719) as the gameable lab-authored predecessor it supersedes, retained as the audit trail. Folded in the `flattening-fidelity/` mechanism-decomposition curves (Mode 1 = 100% structural; Mode 2 F1 = 2/(2+decoy ratio); Mode 3 recall = 1−cross-zone fraction; preserved store 1.0 throughout). Added an **H-CROSS-TOOL-ASSURANCE-01** band annotation from `ocsf-data-health/`: best-single 47.4% / cross-tool 75.4% recovery (CV 0.3% over 12 corpus re-draws, canonical 47.7/75.6 at the top edge), residual ~24% gap, ordering parameter-independent. All numbers re-derived from the first-party FINDINGS docs; this is a presentation/banding refinement, no magnitude change. **Jeremy sign-off pending** on (a) treating the de-gamed +0.188 as the matrix headline over the published +0.719 and (b) the new data-health annotation row |
+| 1.4 | 2026-06-14 | Re-anchored H-OCSF-CONTEXT-COLLAPSE-01 on the **de-gamed APT29** result (+0.188 adversary-vs-routine recall-loss delta, sweep +0.094 to +0.205, ~2× recall/blind, 1.799× storage to keep fidelity) from `ocsf-context-collapse-apt29/`; labelled the synthetic-testbed **+0.719** (`bench-a-context-collapse/`, robust +0.710–0.719) as the gameable lab-authored predecessor it supersedes, retained as the audit trail. Folded in the `flattening-fidelity/` mechanism-decomposition curves (Mode 1 = 100% structural; Mode 2 F1 = 2/(2+decoy ratio); Mode 3 recall = 1−cross-zone fraction; preserved store 1.0 throughout). Added an **H-CROSS-TOOL-ASSURANCE-01** band annotation from `ocsf-data-health/`: best-single 47.4% / cross-tool 75.4% recovery (CV 0.3% over 12 corpus re-draws, canonical 47.7/75.6 at the top edge), residual ~24% gap, ordering parameter-independent. All numbers re-derived from the first-party FINDINGS docs; this is a presentation/banding refinement, no magnitude change. Headline choice (+0.188 over +0.719) and the data-health band row are pending review. |
 
 ---
 

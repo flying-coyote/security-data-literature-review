@@ -7,9 +7,9 @@ tags: [vendor-database, mcp-server, evidence-quality, security-siem, automation]
 
 # MCP Vendor Database Integration Summary
 
-> **⚠️ STALE 2026-07-16 — DATED RECORD, FIGURES SUPERSEDED**: This is the October 23, 2025 integration record for the MCP server repo, and that repo was archived 2026-07-01, so the operational claims below did not survive it: no automated weekly refresh exists (the `weekly_vendor_refresh.py` cron described in the executive summary and under "Automation & Maintenance" did not continue past the archive — the actual sync cadence is quarterly, per vendor-database.json `meta`), and the "✅ COMPLETE — 71 vendors, 110 evidence sources, 84% Tier A (92 Tier A sources)" rollup is the October-2025 snapshot, superseded. The Shell 57TB/day ClickHouse leg listed under Query Engine was removed from vendor-database.json on 2026-07-10 as fabricated-class (the altinity URL 404s, no discoverable trace). Live vendor data is `vendor-landscape/vendor-database.json`, whose evidence_summary reads 85 sources / 70 Tier A = 82.4% — but its meta.notes flags those rollups as not recomputed pending the quarterly regeneration, so quote no current rollup number at all (not even the ones in this banner) until that lands. Body preserved unchanged as the historical record; individual lines are not struck because this banner carries the whole correction.
+> **Historical record (bannered 2026-11-17).** This page documents the October 2025 integration between this vendor database and the `security-architect-mcp-server` repository. That repository was archived on 2026-07-01 and the integration ended with it, so nothing below describes a running process: there is no sync script, no weekly refresh and no monthly GitHub-metrics job. The body is kept unchanged as the record of what was claimed at the time, and its figures (110 evidence sources, 84% Tier A, 46.5% analyst coverage, 35.2% production validation, the 92.7/100 quality grade) are October 2025 self-reported values that the 2026-Q3-c regeneration replaced; do not cite them. One evidence leg the body lists under Query Engine, the Shell 57 TB/day ClickHouse figure, was removed from the database on 2026-07-10 as fabricated (the cited altinity URL returns 404 and has no discoverable trace).
 >
-> **UPDATE 2026-07-18: the regeneration landed (version 2026-Q3-c).** Rollups are now DERIVED per vendor by `scripts/derive_vendor_rollups.py` (pre-commit/CI gated) — current aggregates come from `--stats`, snapshot at this edit: 92 logical sources, 38 Tier A (41.3%), 30/71 vendors with analyst coverage (42.3%), 18/71 with a production deployment (25.4%). The October-2025 figures in the body (110 sources / 84% Tier A / 46.5% / 35.2%) are the archived-repo snapshot only. Full regeneration account: `quarterly-updates/2026-Q3-regen-2026-07-18.md`.
+> The database itself lives on in `vendor-database.json`, maintained in this repository on a quarterly cadence. Its evidence rollups are derived per vendor by `scripts/derive_vendor_rollups.py`, which runs as a pre-commit and CI gate, so current aggregates come from `python3 scripts/derive_vendor_rollups.py --stats` rather than from any page; see `README.md` in this folder for how the mechanism runs now, and `quarterly-updates/2026-Q3-regen-2026-07-18.md` for the regeneration that replaced the figures below. Paths in the "Files & References" section that pointed at a local checkout of the archived repository were rewritten to repository-relative names on 2026-11-17.
 
 **Integration Date**: October 23, 2025 (Session 2)
 **Context**: MCP Server vendor database enrichment provides ready-made baseline for vendor landscape population
@@ -349,12 +349,12 @@ The MCP vendor database uses a Tier A/B/C/D classification that aligns with the 
 
 ### Source Files
 
-**Master Database**: `~/security-data-literature-review/vendor-landscape/vendor-database.json`
+**Master Database**: `vendor-landscape/vendor-database.json` (this repository)
 - 71 vendors
 - 79 vendor-level evidence sources
 - 84% Tier A quality (corrected evidence_summary metadata)
 
-**MCP Server Database**: `~/security-architect-mcp-server/data/vendor_database.json`
+**MCP Server Database**: `security-architect-mcp-server/` (archived repository) `data/vendor_database.json`
 - Synced via `scripts/sync_from_literature_review.py`
 - 71 vendors
 - 110 evidence sources (79 vendor-level + ~31 capability-level)
@@ -362,35 +362,35 @@ The MCP vendor database uses a Tier A/B/C/D classification that aligns with the 
 
 ### Automation Scripts
 
-**Sync Script**: `~/security-architect-mcp-server/scripts/sync_from_literature_review.py`
+**Sync Script**: `security-architect-mcp-server/` (archived repository) `scripts/sync_from_literature_review.py`
 - Bidirectional sync (literature review ↔ MCP server)
 - Evidence tier validation
 - Schema transformation (integrated → MCP format)
 - Generates INTEGRATION_STATUS.md
 
-**Weekly Refresh**: `~/security-architect-mcp-server/scripts/weekly_vendor_refresh.py`
+**Weekly Refresh**: `security-architect-mcp-server/` (archived repository) `scripts/weekly_vendor_refresh.py`
 - Validates analyst URLs (Gartner MQ, Forrester Wave)
 - Checks for new publications
 - Updates timestamps
 - Auto-syncs to MCP server
 
-**Monthly GitHub Metrics**: `~/security-architect-mcp-server/scripts/github_metrics_tracker.py`
+**Monthly GitHub Metrics**: `security-architect-mcp-server/` (archived repository) `scripts/github_metrics_tracker.py`
 - Fetches stars, forks, watchers for 24 OSS repos
 - Updates adoption metrics evidence
 - Generates monthly trends report
 
 ### Documentation
 
-**Quality Review**: `~/security-architect-mcp-server/docs/QUALITY-REVIEW-FINAL-SESSION-2.md`
+**Quality Review**: `security-architect-mcp-server/` (archived repository) `docs/QUALITY-REVIEW-FINAL-SESSION-2.md`
 - Comprehensive quality assessment
 - Grade: A (Excellent) - 92.7/100
 - 5 dimensions analyzed (evidence quality, vendor expansion, production readiness, blog recommendations, strategic decisions)
 
-**Session Archive**: `~/security-architect-mcp-server/docs/SESSION-2025-10-23-SESSION-2-VENDOR-EXPANSION.md`
+**Session Archive**: `security-architect-mcp-server/` (archived repository) `docs/SESSION-2025-10-23-SESSION-2-VENDOR-EXPANSION.md`
 - Complete session archive with work completed, decisions made, metrics achieved
 - Files created/modified, git commits, next steps & recommendations
 
-**Integration Recommendations**: `~/security-architect-mcp-server/docs/LITERATURE-REVIEW-UPDATE-RECOMMENDATIONS.md`
+**Integration Recommendations**: `security-architect-mcp-server/` (archived repository) `docs/LITERATURE-REVIEW-UPDATE-RECOMMENDATIONS.md`
 - Priority-ranked updates for literature review repository
 - Integration benefits, files to create/modify, strategic value
 

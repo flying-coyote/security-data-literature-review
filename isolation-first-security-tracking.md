@@ -1,410 +1,68 @@
 ---
 type: tracker
-title: "Isolation-First Security Architecture Research Tracking (RQ7–RQ10)"
+title: "Isolation-First Security Architecture: Evidence Tracker (RQ7–RQ10)"
 created: 2025-11-14
+updated: 2026-11-17
 tags: [isolation-first-security, rq7-rq10, evidence-tracking, catalog-selection, compliance]
 ---
 
-# Isolation-First Security Architecture Pattern - Research Tracking
+# Isolation-First Security Architecture: Evidence Tracker (RQ7–RQ10)
 
-**Purpose**: Track evidence collection and validation for RQ7-RQ10 isolation-first security research questions
-**Created**: November 14, 2025
-**Status**: Active - Evidence Collection Phase
-**Integration**: November 2025 Monthly Rolling Update
+*Isolation-first* is the architectural idea that security telemetry can live on its own infrastructure (a dedicated account, VPC or VNet, separate from the corporate data platform that holds customer PII and financial data), so that network isolation and coarse IAM, granted per table, do the access-control work that a shared platform has to do with row-level security, column masking and fine-grained catalog policy. If that holds, an isolated security platform could skip a layer of policy machinery, pick its catalog on other grounds (vendor neutrality, versioning) and avoid the query overhead fine-grained controls add. This tracker follows the evidence on four research questions about that idea, which `METHODOLOGY.md` §5.4 formalizes.
 
----
-
-## Overview
-
-**Isolation-First Security Architecture**: Security data lives on dedicated infrastructure (isolated VPC/VNet) separate from corporate data platforms containing PII/financial data. This architectural pattern simplifies security, reduces complexity, and can improve performance by eliminating fine-grained catalog access controls.
-
-**Key Hypothesis**: Network isolation + IAM as primary security boundary eliminates need for:
-- Row-level security (RLS)
-- Column masking
-- Metadata encryption
-
-**Performance Impact**: 15-50% query latency savings by avoiding catalog overhead
-
-**TCO Impact**: 79% savings (500TB security data lake) by eliminating Unity Catalog licensing + compute overhead
+The short version of where the evidence stands is that the idea is still a hypothesis. The production case studies first logged as support for it turned out, on checking, not to describe isolation-first designs at all, and the one measured number the review now has, a first-party engine-side benchmark, shows that the cost of row-level security depends on query shape rather than being a fixed penalty that isolation removes.
 
 ---
 
-## Research Questions (RQ7-RQ10)
+## Status by research question (as of 2026-11-17)
 
-### RQ7: Isolation Patterns and Performance
+| RQ | Question | Evidence the corpus holds | Standing |
+|---|---|---|---|
+| RQ7 | How do isolation patterns affect query performance? | One first-party engine-side measurement of RLS cost (below); no third-party benchmark of catalog-layer RLS, masking or metadata-encryption overhead | Open; the 15-50% figure first stated here was a hypothesis with no source and has been withdrawn as a claim |
+| RQ8 | Does isolation as the primary control satisfy SOC 2, ISO 27001 and NIST CSF? | None yet; no control mapping has been done | Open |
+| RQ9 | Where is the threshold between multi-tenant MSSP designs that need RLS and single-tenant SOCs that can isolate? | No MSSP architecture source; no single-tenant source that documents an isolation decision | Open |
+| RQ10 | Does isolation change catalog selection toward Polaris or Nessie? | Catalog documentation only; no deployment that ties catalog choice to isolation | Open |
 
-**Question**: How do isolation patterns affect security data architecture performance?
+### The measured evidence: engine-side RLS cost
 
-**Hypothesis**: Network isolation + IAM provides sufficient security boundary, achieving 15-50% faster query performance vs fine-grained catalog access
+The review's first-party benchmark (`ocsf-rls-overhead` in the public lab repository, https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/ocsf-rls-overhead/results/RESULTS.md, run 2026-06-08 on DuckDB 1.5.3 over a 1,000,000-row, 100-tenant OCSF corpus, seven trials after two warm-ups) enforces tenant isolation two ways, as an appended `WHERE tenant_id` predicate and as a secured view, and both return identical answers on every query. At 1% selectivity a full-scan `count_all` goes from a 0.7 ms median to 1.3 ms, 81% slower under the predicate and 94% slower under the view though the difference is well under a millisecond, while a high-cardinality `top_talkers` aggregation goes from 33.0 ms to 4.8 ms, 86% faster under either, because the tenant filter discards about 99% of the rows before the expensive grouping. So whether RLS costs or saves time depends on whether the predicate adds work to the plan or removes it, and a single "RLS adds N%" figure is the wrong shape of answer. The measurement is a lower bound on the RLS side, since catalogs such as Apache Polaris, Unity Catalog and AWS Lake Formation enforce policy before the engine plans and add token validation and policy evaluation that DuckDB's predicate does not, and it is cited at Tier B as a single-host result (bibliography entry "OCSF RLS Overhead, SDW Lab First-Party Measurement").
 
-**Evidence Collection**:
-- [x] Netflix (isolated VPC + Polaris, table-level RBAC) - ADDED
-- [x] Huntress (isolated AWS, Iceberg + table-level RBAC, 93% cost reduction) - ADDED
-- [x] Okta (Jake Thomas, Data Council 2024 public talk; DuckDB at production volume) - ADDED
-- [ ] Unity Catalog RLS overhead benchmarks (target: 5-30% query latency)
-- [ ] Iceberg metadata encryption overhead (target: 10-20% query latency, Alex Merced validation)
-- [ ] Column masking overhead (target: 3-10% query latency)
+### What the earlier case studies do and do not show
 
-**Evidence Tier**: B (3 production case studies, benchmarks needed)
+Three production deployments were logged as isolation-first case studies in November 2025, and on checking none of them documents the pattern.
 
-**Status**: ⚠️ Partial - Case studies documented, quantitative benchmarks pending
-
----
-
-### RQ8: Compliance Trade-offs of Isolation-First Architecture
-
-**Question**: Does isolation-first security meet SOC 2, ISO 27001, NIST CSF requirements without fine-grained catalog access?
-
-**Hypothesis**: Network isolation as primary control meets compliance for most enterprise security teams, with exceptions for multi-tenant MSSPs
-
-**Evidence Collection**:
-- [x] Netflix (SOC 2/ISO 27001 via network isolation + CloudTrail) - ADDED
-- [ ] ISO 27001 control mapping (Annex A.13.1 network segmentation)
-- [ ] NIST CSF network isolation guidance (PR.AC-5: Network integrity)
-- [ ] SOC 2 access control requirements (CC6.1: Logical access controls)
-- [ ] CISA zero-trust architecture maturity model (network segmentation pillar)
-- [ ] Financial services SOC deployments (compliance acceptance validation)
-
-**Evidence Tier**: C (1 case study, compliance framework mapping pending)
-
-**Status**: ⚠️ Limited - Compliance framework analysis needed
+- **Netflix** (ClickHouse + Iceberg logging platform): the source is a ClickHouse blog post dated 2025-10-23, based on a July 2025 talk, describing roughly 5 PB/day of logs. It names Polaris only as one of several pluggable Iceberg catalogs and says nothing about an isolated security platform, compliance or table-level RBAC. The isolation framing was withdrawn on 2026-07-09 as a mis-attribution, and the entry is now Tier B.
+- **Huntress** (Elasticsearch to ClickHouse migration): the primary (https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse, 2024-11-19) reports cutting costs "by more than 90%", from "upwards of $70,000 per month" to "around $5,000 per month", across "more than 3 million endpoints" at "up to 200,000 records per second". It does not mention Iceberg, VPC isolation or table-level RBAC (checked 2026-11-17), so it is evidence for ClickHouse cost at security scale, not for isolation-first.
+- **Okta** (DuckDB at production volume): the public Data Council 2024 talk supports DuckDB processing at production volume, the subject of H-EDGE-01. The isolation claims were attributed to a 2025 expert validation that never took place, and were withdrawn on 2026-08-12.
 
 ---
 
-### RQ9: Multi-Tenant MSSP vs Isolation-First Architecture
+## What would move each question
 
-**Question**: What are architectural decision thresholds for multi-tenant MSSP platforms vs single-tenant enterprise SOCs?
+**RQ7, performance.** A catalog-layer measurement on the same corpus (Polaris principal roles, Unity Catalog row filters, Lake Formation cell-level permissions) to set against the engine-side floor above, and vendor documentation that states masking or row-filter overhead with a method. Databricks documents row filters and column masks; whether it publishes overhead figures with a method has not been checked. Iceberg metadata encryption is a second measurement target, since its query-latency cost has no source in the corpus yet.
 
-**Hypothesis**: Multi-tenant MSSPs require RLS (Unity Catalog), while single-tenant SOCs (500TB - 5PB) benefit from isolation-first (Polaris/Nessie)
+**RQ8, compliance.** A mapping of isolation-as-primary-control against current control sets. The original plan named ISO 27001 Annex A.13.1 and NIST CSF PR.AC-5, and both have since been renumbered:
+- ISO/IEC 27001:2022 restructured Annex A into four themes; segregation of networks is now control 8.22 (it was A.13.1.3 in the 2013 edition), with network security at 8.20 and information access restriction at 8.3
+- NIST CSF 2.0 (February 2024) removed the PR.AC category; NIST's CSF FAQ says its content moved to PR.AA and was re-sequenced, and network protection now sits under PR.IR-01 ("networks and environments are protected from unauthorized logical access and usage"). The PR.AC-5 to PR.IR-01 correspondence here is by subject; confirm it against NIST's official CSF 2.0 informative references before relying on it
+- NIST CSF 1.1 PR.DS-5 (protections against data leaks), which the original plan also cited, was renumbered as well; a third-party listing of NIST's informative references maps it to PR.DS-10 (data in use), and whether the data-at-rest and data-in-transit outcomes at PR.DS-01 and PR.DS-02 also take it over is unconfirmed. Confirm against NIST's official crosswalk before relying on it
+- SOC 2 CC6.1 (logical access) and NIST SP 800-207 (Zero Trust Architecture, 2020) and CISA's Zero Trust Maturity Model (version 2.0, 2023) remain the current references for the access-control and segmentation arguments
 
-**Evidence Collection**:
-- [x] Netflix (single-tenant, isolated VPC, Polaris) - ADDED
-- [x] Huntress (single-tenant, isolated AWS, 3M endpoints) - ADDED
-- [x] Okta (single-tenant, isolated platform) - ADDED
-- [ ] MSSP case studies (Arctic Wolf, Expel, Red Canary architecture patterns)
-- [ ] Unity Catalog multi-tenant patterns (Databricks documentation)
-- [ ] AWS multi-tenant SaaS guidance (VPC isolation vs row-level security)
-- [ ] Cost per tenant analysis (Unity DBU costs vs dedicated VPC)
-- [ ] IT Harvest MSSP landscape (tenant counts, scale thresholds)
+**RQ9, multi-tenancy.** A published architecture from a multi-tenant security service provider describing how it separates tenant data (per-tenant accounts or clusters versus shared tables with RLS), and AWS's SaaS tenant-isolation guidance as the vendor-neutral baseline. The candidates first named for this were Arctic Wolf, Expel and Red Canary, whose published architectures, if they describe tenant separation, would be the place to start. None is catalogued yet.
 
-**Evidence Tier**: C (3 single-tenant case studies, 0 MSSP case studies)
+**RQ10, catalog choice.** A deployment write-up in which the choice of Polaris, Nessie or Unity Catalog is explained by the isolation decision. The leads first noted were Nessie production deployments, where Git-style versioning of tables would be the selection reason, and Apache Gravitino as a federating meta-catalog over several of these. Feature comparison alone cannot answer this, since it says what each catalog offers rather than why a team chose one.
 
-**Status**: ⚠️ One-sided - MSSP multi-tenant examples needed
+### Search terms in use
 
----
-
-### RQ10: Isolation Patterns Influence on Catalog Governance
-
-**Question**: Does isolation-first elevate Polaris/Nessie to top-tier catalog choices by changing selection criteria?
-
-**Hypothesis**: Isolated platforms prioritize vendor neutrality (Polaris) or Git workflows (Nessie) over fine-grained access (Unity Catalog)
-
-**Evidence Collection**:
-- [x] Netflix (Polaris adoption for vendor neutrality, isolated platform) - ADDED
-- [ ] Unity Catalog → Polaris migration patterns (when isolating infrastructure)
-- [ ] Nessie production deployments (Git-like version control for OCSF)
-- [ ] Lisa Cao Gravitino interviews (meta-catalog federation patterns)
-- [ ] Catalog feature comparison matrices (Unity vs Polaris vs Nessie)
-- [ ] Decision criteria ranking survey (fine-grained access vs vendor lock-in vs version control)
-
-**Evidence Tier**: C (1 case study, catalog adoption patterns pending)
-
-**Status**: ⚠️ Limited - Catalog comparison and migration patterns needed
+- Isolation: "dedicated security data lake", "isolated security account", "network isolation as security boundary", "separation of duties security data"
+- Performance: "row-level security overhead", "column masking performance", "row filter performance", "catalog access overhead", "Iceberg encryption overhead"
+- Compliance: "ISO 27001 8.22 data lake", "SOC 2 CC6.1 data lake", "CSF 2.0 PR.IR segmentation", "zero trust security data"
+- Architecture: "multi-tenant MSSP architecture", "tenant isolation data lake", "catalog selection criteria", "Polaris catalog adoption", "Nessie catalog production", "Gravitino meta-catalog"
 
 ---
 
-## Production Case Studies
+## History
 
-### Netflix Security Observability (Evidence Level A)
-
-**Architecture**: ClickHouse (hot tier) + Iceberg (cold tier), dedicated VPC
-**Catalog**: Polaris (table-level RBAC only)
-**Compliance**: SOC 2/ISO 27001 via network isolation + CloudTrail
-**Performance**: 0% RLS overhead
-**Source**: Daniel Muino (QCon 2024)
-
-**Validates**: RQ7 (performance), RQ8 (compliance), RQ10 (catalog choice)
+This tracker was created on 2025-11-14 alongside RQ7-RQ10, during the November 2025 monthly update. As first written it stated two headline figures, "15-50% query latency savings by avoiding catalog overhead" and "79% savings (500TB security data lake) by eliminating Unity Catalog licensing + compute overhead", neither of which had a source; they were planning targets written as findings and are withdrawn as claims (re-checked 2026-11-17: no bibliography entry, research-journal row or primary carries either). It also listed Netflix, Huntress and Okta as validating case studies, a Huntress scale figure of 1M EPS that the cited blog does not support (removed from the bibliography in the 2026-06 audit), and a Q1 2026 plan that depended on expert interviews which did not take place. The planned blog posts, the MCP-server recommendation logic and the mid-2026 journal target it referred to were overtaken by the retirement of the Substack (2026-05-24), the archiving of the MCP server repository (2026-07-01) and the choice of the Journal of Cybersecurity as the venue (2026-07-10). The November 2025 text is in the repository's git history; the change record is in `CHANGELOG.md`.
 
 ---
-
-### Huntress EDR Data Lake (Evidence Level A)
-
-**Architecture**: Iceberg data lake, isolated AWS VPC
-**Catalog**: Table-level RBAC (no Unity Catalog)
-**TCO Impact**: 93% cost reduction ($70K → $5K monthly)
-**Scale**: 3M endpoints, 16B events/day, 1M EPS
-**Source**: Chris Bisnett (CTO), RSA 2025, ClickHouse case study
-
-**Validates**: RQ7 (performance + TCO), RQ8 (simplified compliance)
-
----
-
-### Okta Security Analytics (Evidence Level B)
-
-**Architecture**: DuckDB at production volume (7.5T records in six months, 50 TB/day peak)
-**Source**: Jake Thomas, Data Council 2024 — public talk
-
-**Validates**: H-EDGE-01 (DuckDB at production volume)
-
-**WITHDRAWN 2026-08-12**: the "table-level permissions only", "performance-first, no
-fine-grained access overhead" and RQ7/RQ10 validation claims were sourced to a Jake
-Thomas expert validation in 2025 that never happened. The public talk does not
-support them. RQ7 and RQ10 need a different source.
-
----
-
-## Data Sources to Search
-
-### Performance Benchmarks (RQ7)
-
-**Unity Catalog Overhead**:
-- Databricks Unity Catalog documentation (RLS + column masking benchmarks)
-- Industry benchmarks for catalog access overhead
-- Comparative analysis: Polaris table-level vs Unity row-level
-
-**Iceberg Metadata Encryption**:
-- Alex Merced (Dremio) articles on metadata integrity and encryption trade-offs
-- Apache Iceberg documentation (metadata encryption overhead)
-- Target: 10-20% query latency overhead
-
-**Column Masking**:
-- Databricks column masking performance documentation
-- Query rewriting overhead analysis
-- Target: 3-10% query latency overhead
-
----
-
-### Compliance Frameworks (RQ8)
-
-**ISO 27001 Control Mapping**:
-- Annex A.13.1 (Network Segmentation)
-- Control A.9.4.1 (Information access restriction)
-- Comparison: Network isolation vs catalog RLS
-
-**NIST CSF Guidance**:
-- PR.AC-5 (Network integrity is protected)
-- PR.DS-5 (Protections against data leaks)
-- Zero Trust Architecture (SP 800-207)
-
-**SOC 2 Requirements**:
-- CC6.1 (Logical and physical access controls)
-- Audit trail completeness: CloudTrail (table-level) vs Unity Catalog (row-level)
-- Financial services acceptance validation
-
-**CISA Zero Trust**:
-- Zero Trust Maturity Model (network segmentation pillar)
-- Enhanced monitoring best practices
-- Paul Agbabian OCSF production deployments (compliance requirements)
-
----
-
-### MSSP Architecture Patterns (RQ9)
-
-**Multi-Tenant MSSPs**:
-- Arctic Wolf (architecture pattern documentation)
-- Expel (customer isolation approach)
-- Red Canary (tenant segmentation)
-- IT Harvest MSSP landscape (typical customer counts, scale thresholds)
-
-**Unity Catalog Multi-Tenant**:
-- Databricks Unity Catalog multi-tenant best practices
-- Row-level security for customer isolation
-- Cost per tenant analysis
-
-**AWS Multi-Tenant SaaS**:
-- VPC isolation patterns
-- Network segmentation vs row-level security
-- Cost-effectiveness thresholds
-
----
-
-### Catalog Adoption Patterns (RQ10)
-
-**Polaris Adoption**:
-- Netflix rationale (vendor-neutral, Apache governance)
-- Isolated platform catalog selection criteria
-- Migration patterns: Unity → Polaris when isolating
-
-**Nessie Production Deployments**:
-- Git-like version control for OCSF transformations
-- Security data versioning use cases
-- Branching strategies for schema evolution
-
-**Gravitino Meta-Catalog**:
-- Lisa Cao interviews (scheduled Q1 2026)
-- Federation patterns across multiple catalogs
-- Isolation-first architecture integration
-
-**Catalog Feature Matrices**:
-- Unity Catalog vs Polaris vs Nessie comparison
-- Decision criteria ranking: Fine-grained access vs vendor neutrality vs version control
-- Market adoption trends for isolated vs shared platforms
-
----
-
-## Keywords to Monitor
-
-**Isolation Patterns**:
-- "Dedicated security infrastructure"
-- "Isolated security data lake"
-- "Network isolation as security boundary"
-- "Separation of duties security data"
-
-**Performance**:
-- "Row-level security overhead"
-- "Column masking performance"
-- "Metadata encryption performance"
-- "Unity Catalog performance"
-- "Catalog access overhead"
-
-**Compliance**:
-- "Network isolation compliance"
-- "SOC 2 security data lake"
-- "ISO 27001 network segmentation"
-- "NIST CSF network isolation"
-- "Zero trust security data"
-
-**Architecture**:
-- "Multi-tenant MSSP architecture"
-- "Single-tenant SOC architecture"
-- "Catalog selection criteria"
-- "Polaris catalog adoption"
-- "Nessie catalog deployment"
-
----
-
-## Thought Leaders to Monitor
-
-**Iceberg & Catalogs**:
-- **Alex Merced** (Dremio): Metadata encryption, Polaris catalog, performance trade-offs
-- **Daniel Muino** (Netflix): ClickHouse + Iceberg + Polaris isolated security platform
-- **Lisa Cao** (Databricks, ex-Datastrato): Gravitino meta-catalog, per her published work. Thread stalled 2026-04-23, no response; no interview has happened.
-
-**Security Analytics**:
-- **Jake Thomas** (Blue Water Autonomy, ex-Okta): DuckDB at production volume, per his public Data Council 2024 talk. No interview has happened; outreach is drafted and unsent.
-- **Chris Bisnett** (Huntress): Isolation-first architecture, 93% cost reduction validation
-- **Paul Agbabian** (Cisco, ex-Splunk; OCSF Steering Committee co-founder): OCSF schema design. Outreach sent 2026-06-01, no reply; nothing may be attributed to him.
-
-**Compliance & Standards**:
-- **CISA**: Zero trust architecture, enhanced monitoring guidance
-- **NIST**: CSF network isolation, SP 800-207 zero trust
-- **Financial Services SOC Practitioners**: Compliance acceptance validation
-
----
-
-## Evidence Quality Targets
-
-### Phase 1 (November 2025 - Q4 Monthly Update)
-
-**Target**: Evidence Tier B for RQ7-RQ10
-**Requirements**:
-- [x] 3 production case studies documented (Netflix, Huntress, Okta) ✅
-- [ ] Performance benchmarks collected (Unity RLS, Iceberg encryption, column masking)
-- [ ] Compliance framework mapping initiated (ISO 27001, SOC 2, NIST CSF)
-- [ ] Catalog comparison matrix created (Unity vs Polaris vs Nessie)
-
-**Expected Achievement**: Tier C (case studies only) → Tier B (case studies + benchmarks)
-
----
-
-### Phase 2 (Q1 2026 - Quarterly Deep Dive)
-
-**Target**: Evidence Tier A/B for RQ7-RQ10
-**Requirements**:
-- [ ] Expert validation interviews — none scheduled; outreach unsent (Thomas) and unanswered (Cao)
-- [ ] Quantitative benchmarks (Unity RLS overhead, Iceberg encryption overhead)
-- [ ] Compliance framework validation (SOC 2 auditor acceptance)
-- [ ] MSSP multi-tenant case studies (Arctic Wolf, Expel, Red Canary)
-
-**Expected Achievement**: Tier B (benchmarks + expert validation) for RQ7/RQ10, Tier B/C for RQ8/RQ9
-
----
-
-## Integration Points
-
-### Blog Posts
-
-**Support**:
-- **Post #11** (Iceberg vs Delta): Isolation-first architecture advantages with Iceberg
-- **Post #12** (Unity vs Polaris vs Nessie): Catalog selection criteria for isolated vs shared platforms
-- **FUTURE-POST-IDEAS.md**: Q2 2026 post on performance optimization trade-offs (RLS/masking/encryption overhead)
-
-### MCP Server
-
-**Recommendation Logic**:
-- RQ7 findings inform performance trade-off recommendations
-- RQ9 findings determine MSSP vs enterprise SOC architecture recommendations
-- RQ10 findings guide catalog selection based on isolation vs shared platform context
-
-### Book Manuscript
-
-**Chapter Integration**:
-- **Chapter 8** (Storage Formats): Iceberg catalog selection, isolation-first architecture patterns
-- **Chapter 9** (Query Engines): ClickHouse + DuckDB performance benefits in isolated architectures
-- **Chapter 11** (Governance): Compliance framework mapping, isolation vs fine-grained access trade-offs
-
----
-
-## Success Metrics
-
-### November 2025 Monthly Update
-
-- [x] RQ7-RQ10 added to METHODOLOGY.md ✅
-- [x] Case studies documented in MASTER-BIBLIOGRAPHY.md (Netflix, Huntress, Okta) ✅
-- [x] Gap analysis updated in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md ✅
-- [ ] Performance benchmarks collected (3 data points minimum)
-- [ ] Compliance framework mapping initiated (2 frameworks minimum)
-
-### Q1 2026 Quarterly Deep Dive
-
-- [ ] Expert validation interviews completed — none held
-- [ ] Evidence Tier B achieved for RQ7 and RQ10
-- [ ] Evidence Tier B/C achieved for RQ8 and RQ9
-- [ ] Blog posts #11 and #12 incorporate isolation-first findings
-- [ ] MCP server isolation pattern recommendations integrated
-
-### Mid-2026 Academic Submission
-
-- [ ] Evidence Tier A/B for all RQ7-RQ10
-- [ ] Quantitative validation across 5+ production deployments
-- [ ] Peer-reviewed publication readiness (ACM CSUR, USENIX Security, IEEE S&P)
-
----
-
-## Next Actions
-
-### Immediate (November 2025)
-
-1. **Search for Performance Benchmarks**:
-   - [ ] Unity Catalog RLS overhead (Databricks documentation)
-   - [ ] Iceberg metadata encryption overhead (Apache docs, Alex Merced articles)
-   - [ ] Column masking performance (Databricks + Dremio documentation)
-
-2. **Compliance Framework Mapping**:
-   - [ ] ISO 27001 Annex A.13.1 network segmentation controls
-   - [ ] NIST CSF PR.AC-5 network integrity guidance
-
-3. **Catalog Comparison Matrix**:
-   - [ ] Unity Catalog vs Polaris vs Nessie feature comparison
-   - [ ] Decision criteria ranking for isolation vs shared platforms
-
-### Short-Term (Q1 2026)
-
-1. **Expert Validation**:
-   - [ ] Jake Thomas interview — outreach not yet sent
-   - [ ] Lisa Cao interview (Gravitino + Polaris, meta-catalog patterns)
-
-2. **MSSP Case Studies**:
-   - [ ] Arctic Wolf, Expel, Red Canary architecture pattern research
-   - [ ] Multi-tenant isolation patterns documentation
-
-3. **Blog Integration**:
-   - [ ] Post #11 (Iceberg vs Delta) - isolation-first architecture advantages
-   - [ ] Post #12 (Unity vs Polaris vs Nessie) - catalog selection for isolated platforms
-
----
-
-**Maintained by**: Jeremy Wiley
-**Last Updated**: November 14, 2025
-**Status**: Active - Evidence Collection Phase
-**Next Review**: December 2025 (monthly update) / January 2026 (quarterly deep dive)
+**Last updated**: 2026-11-17 (rewritten to current evidence; case studies re-checked at their primaries)

@@ -7,6 +7,8 @@ tags: [anti-patterns, architecture, security-data, trino, spark, operational-com
 
 # Appendix B: Anti-Patterns Catalog
 
+This appendix answers how security data platforms usually go wrong, cataloging the failure patterns that keep recurring in implementations along with how each one shows up and how to head it off before it hardens. It grounds the constraints-first decision argument in Chapter 1, the rollout and change-management material in Chapter 7 and the data-trust failure mode in Chapter 3, so most entries are the long form of a warning those chapters give in a sentence.
+
 **Purpose**: Learn from common failures in security data architecture implementations. Each anti-pattern includes a description, why it fails, and prevention strategies, with real-world consequences and detection guidance where the evidence supports them.
 
 **How to use**: Review this catalog before making architectural decisions, and if you recognize your own organization heading toward an anti-pattern, course-correct early, because prevention is substantially cheaper than remediation and the later a structural decision gets unwound, the more it costs.
@@ -150,7 +152,7 @@ The strategic exposure is harder to put a number on but just as real. The vendor
 - The payoff is data portability: you can change query engines without migrating the data
 
 **2. OCSF Schema Standardization** (Appendix H strategy):
-- Normalize security data to the Open Cybersecurity Schema Framework (OCSF v1.x; v1.8.0 at the time of writing, released 2026-03-18)
+- Normalize security data to the Open Cybersecurity Schema Framework (OCSF v1.x; v1.9.0 as of 2026-11-17, released 2026-08-03)
 - Write detection rules against OCSF fields rather than vendor-specific field names
 - The payoff is that switching platforms lets you reuse the OCSF-based detection content with no rewrite
 
@@ -316,7 +318,7 @@ The team burns out under twelve to eighteen months of "we're migrating" with no 
 
 ### Description
 
-Manually mapping security data source schemas to OCSF (v1.x; v1.8.0 at the time of writing, released 2026-03-18) or another normalized schema without using LLM-assisted tooling. In my experience this runs illustratively 6-16× longer in development time and leaves more semantic validation errors behind, but treat that multiplier as an order-of-magnitude from practitioner experience, consistent with the CISA Zeek-OCSF project, rather than a benchmarked rate.
+Manually mapping security data source schemas to OCSF (v1.x; v1.9.0 as of 2026-11-17, released 2026-08-03) or another normalized schema without using LLM-assisted tooling. In my experience this runs illustratively 6-16× longer in development time and leaves more semantic validation errors behind, but treat that multiplier as an order-of-magnitude from practitioner experience, consistent with the CISA Zeek-OCSF project, rather than a benchmarked rate.
 
 **Symptoms** (the hour figures here are illustrative practitioner estimates, consistent with the rest of this anti-pattern, not a benchmarked rate):
 - Data engineer spends 2-4 hours per data source manually writing transformation logic
@@ -664,7 +666,7 @@ Use OCSF as the portability layer, so the transformation logic stays vendor-agno
 
 **Why OCSF enables portability**:
 - The OCSF field names are the same across Cribl, Tenzir, and Logstash, so the schema travels with you
-- The OCSF v1.x spec (v1.8.0 at the time of writing, released 2026-03-18) defines the semantics, so any pipeline can implement against it
+- The OCSF v1.x spec (v1.9.0 as of 2026-11-17, released 2026-08-03) defines the semantics, so any pipeline can implement against it
 - Rewriting the transforms to OCSF in a new pipeline goes faster when the target is specified rather than reverse-engineered (illustratively 60-80%, directional)
 
 **Strategy 2: Preserve Raw Data Layer**

@@ -7,11 +7,12 @@ tags: [literature-review, evidence-classification, hypothesis-confidence, expert
 
 # Appendices - Modern Data Architecture for Cybersecurity Operations
 
-> **⛔ SUPERSEDED — 2026-07-16.** This is the October-2025 pre-rescore appendix set, retained as a record; the appendices of record are `PUBLICATION-MANUSCRIPT.md`'s embedded Appendices A–D, and nothing below should be used to re-derive scores or intake policy. Known contradictions with the current instruments, named so nobody re-derives from the wrong one:
-> - the **Level C/D "0% of sources - EXCLUDED"** headers (~lines 116, 135) contradict the corrected intake policy, which catalogues Level C sources with bias flagged rather than excluding them — the live corpus carries 24 Level C of 227 tiered (10.6%, 2026-07-16);
+> **⛔ SUPERSEDED — 2026-07-16.** This is the October-2025 pre-rescore appendix set, retained as a record; the appendices of record are `PUBLICATION-MANUSCRIPT.md`'s embedded Appendices A–E, and nothing below should be used to re-derive scores or intake policy. Known contradictions with the current instruments, named so nobody re-derives from the wrong one:
+> - the **Level C/D "0% of sources - EXCLUDED"** headers (~lines 116, 135) contradict the corrected intake policy, which catalogues Level C sources with bias flagged rather than excluding them — the corpus carried 24 Level C of 227 tiered (10.6%) on 2026-07-16 and carries 40 of 271 (14.8%) on 2026-11-17;
 > - **"all 7 hypotheses"** (~lines 189, 432) contradicts the corpus of record, which assesses nine (two added post-audit 2026-07-10: H-LOGCOMP-01, H-SOC-BASELINE-01);
 > - the **Appendix B rubric anchors with 2- and 4-point values** (~lines 211–241) contradict the instrument of record, the 1/3/5 anchor-only rubric in `methods/scoring-rubric.md`, under which the 2026-07-13 rescore in manuscript §3.7 was scored;
-> - citations in **REFERENCES.md numbering** ([51], [68], and the Appendix D chapter maps) use a numbering that is parallel to and incompatible with the manuscript's embedded [1]–[38] list, which is the only list the manuscript's inline citations resolve against.
+> - citations in **REFERENCES.md numbering** ([51], [68], and the Appendix D chapter maps) use a numbering that is parallel to and incompatible with the manuscript's embedded list ([1]–[49] as of 2026-11-17), which is the only list the manuscript's inline citations resolve against.
+> - the **Level A definition** below (production deployments, government publications and Apache project material at Level A) is the pre-2026-08-19 criterion; the 2026-08-19 tier audit restricted Level A to peer-reviewed research and official standards and moved 57 entries off it (METHODOLOGY.md §3.1, §8.1a), so no tier assignment should be re-derived from this file *(added 2026-11-17)*.
 >
 > Body preserved below, unedited. Do NOT bundle this file into any submission package.
 

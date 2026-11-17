@@ -81,7 +81,7 @@
     title and year.
 };
 
-\node (l-excl) [sidebox, fill=screening!25] at (7.4,-7.4) {
+\node (l-excl) [sidebox, fill=screening!25] at (7.4,-8.6) {
     \textbf{Records excluded (n = 355)}\\[3pt]
     \footnotesize
     E2 subject is not a security-telemetry data architecture: 137\\
@@ -96,7 +96,7 @@
 };
 
 % ==================== LEFT ARM: ELIGIBILITY ====================
-\node (l-elig) [box, fill=eligibility!50] at (0,-11.6) {
+\node (l-elig) [box, fill=eligibility!50] at (0,-12.0) {
     \textbf{Reports assessed for eligibility}\\[2pt]
     n = 40\\[3pt]
     \footnotesize Eligibility was assessed at title and
@@ -109,7 +109,7 @@
 % ==================== LEFT ARM: CRITICAL APPRAISAL ====================
 % Screening was TOPICAL only. Nothing had yet asked whether the venues were real
 % peer-reviewed venues, and a fifth of the yield turned out not to be.
-\node (l-appr) [box, fill=eligibility!30] at (0,-15.2) {
+\node (l-appr) [box, fill=eligibility!30] at (0,-16.6) {
     \textbf{Studies critically appraised}\\[2pt]
     n = 40\\[3pt]
     \footnotesize Venue identity resolved at the DOI; publisher, DOAJ, Scopus and Web of
@@ -118,7 +118,7 @@
     proposed citation. Per-record verdicts and evidence: prisma-appraisal-2026-07-13.json.
 };
 
-\node (l-appr-excl) [sidebox, fill=eligibility!15] at (7.4,-15.9) {
+\node (l-appr-excl) [sidebox, fill=eligibility!15] at (7.4,-17.2) {
     \textbf{Studies excluded at appraisal (n = 14)}\\[3pt]
     \footnotesize
     A1 predatory or compromised venue: 8\\
@@ -131,14 +131,14 @@
 };
 
 % ==================== LEFT ARM: INCLUDED ====================
-\node (l-incl) [box, fill=included!50] at (0,-19.3) {
+\node (l-incl) [box, fill=included!50] at (0,-21.6) {
     \textbf{Studies included from databases}\\[2pt]
     n = 26\\[3pt]
-    \footnotesize 11 Level A, 12 Level B, 3 Level C. The 26 resolve to 23 independent
-    author groups. Full-text retrieval pass (2026-07-16): 19 of 26 read at full text,
-    7 at abstract only, none unretrievable. Second-screen adjudication (2026-07-16):
-    one 2026-07-13 exclusion reversed and admitted through the same appraisal and
-    verification gate (Level B), so the arm contributes 27 (11 A, 13 B, 3 C).
+    \footnotesize 11 Level A, 12 Level B, 3 Level C. Full-text retrieval pass
+    (2026-07-16): 19 of 26 read at full text, 7 at abstract only, none unretrievable.
+    \textbf{+1 second-screen admission (2026-07-16)}: one 2026-07-13 exclusion reversed
+    and admitted through the same appraisal and verification gate (Level B), so the arm
+    contributes \textbf{27 studies} (11 A, 13 B, 3 C) from 24 independent author groups.
 };
 
 % ==================== RIGHT ARM: IDENTIFICATION ====================
@@ -174,9 +174,9 @@
 };
 
 % ==================== CONVERGENCE ====================
-\node (total) [box, fill=included!70, text width=14.4cm, minimum width=15cm] at (9.3,-24.2) {
+\node (total) [box, fill=included!70, text width=14.4cm, minimum width=15cm] at (9.3,-28.2) {
     \textbf{\large Studies synthesised in this edition: n = 228}\\[3pt]
-    201 tiered entries via the other-methods arm $+$ 26 via the database arm. The corpus
+    201 tiered entries via the other-methods arm $+$ 27 via the database arm (2026-07-16 edition; curation through 2026-11-08 has since added 43 entries via the other-methods arm, for 273 blocks and 271 tiered). The corpus
     carries 230 catalogued blocks, of which 228 hold an evidence tier and 2 are documented
     no-primary stubs.\\[3pt]
     \footnotesize Overlap between the two arms: n = 0. No database-included record matched a
@@ -185,7 +185,7 @@
     was 0 of 40 \emph{before} this incorporation. The two arms reach disjoint literatures, and
     that separation is a finding of the review rather than an artifact of the diagram: the
     curated arm holds the vendor and practitioner material a database cannot return, and the
-    database arm holds the indexed literature the curation never reached. The 26 studies added
+    database arm holds the indexed literature the curation never reached. The 27 studies added
     here close the gap the retro-run exposed; the 14 the appraisal refused are recorded rather
     than quietly dropped, because a systematic review that reports only what it kept is not
     reporting its search.
@@ -208,10 +208,9 @@
 
 % ==================== AUDIT BANNER ====================
 \node (audit) [box, fill=white, text width=14.4cm, minimum width=15cm, draw=bordercolor,
-               line width=1.0pt] at (9.3,-28.8) {
-    \textbf{Audit banner (2026-06-14).} The aggregate Level-A self-grade is WITHDRAWN and no
-    aggregate percentage is claimed pending re-verification; per-source evidence levels remain
-    provisional. Of the 230 bibliography blocks, 228 carry an evidence level.
+               line width=1.0pt] at (9.3,-32.8) {
+    \textbf{Note (2026-11-17).} The earlier aggregate Level-A self-grade was withdrawn in the
+    2026-06 audit; the live, derived evidence-tier shares are reported in Figure 2.
 };
 
 % ==================== TITLE ====================

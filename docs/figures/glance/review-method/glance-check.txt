@@ -1,0 +1,9 @@
+review-method.png
+  size 1080x1738  ratio 0.621  (non-standard ratio)
+  feed: TOO TALL for a LinkedIn single photo (taller than 4:5); likely cropped, re-crop to 4:5
+  phone scale at 375px wide: 0.347
+  text floor at source (about 11px on phone): ~32 px; body-size read (about 16px): ~47 px
+  link card: not an og:image as is (needs about 1.91:1 and at least 1200x627)
+  saturated hue families by area (screen only): azure 4.77%
+  most common non-white colours (5-bit buckets, approximate hex; compare with the Diagram standard and feed to a contrast checker): #1c8ce4 2.4%, #ccdcec 0.4%, #2494e4 0.4%, #d4dce4 0.3%, #e4ecf4 0.3%, #d4dcec 0.3%, #c4ccd4 0.3%, #bcd4e4 0.3%
+  wrote glance/review-method/review-method-{phone,blur,gray,deutan,crop-4x5,crop-1x1,crop-1.91x1}.png

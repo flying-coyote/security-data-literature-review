@@ -7,6 +7,8 @@ tags: [moar-book, decision-framework, vendor-evaluation, tco, worksheets]
 
 # Appendix A: Decision Worksheets
 
+The handbook's decision chapters leave you holding a practical question, which is how to turn the requirements framework into a platform choice for your own organization, and the worksheets here answer it with tables you fill in with your stakeholders rather than with more argument. This appendix grounds the decision framework and TCO discussion in Chapter 1, the variant cost examples in Chapter 6 and the business case in Chapter 7, so most worksheets here are the working version of a table you met in one of those chapters.
+
 **Purpose**: Actionable templates for applying the handbook's requirements framework and decision methodology to YOUR organization.
 
 **How to use**: Print or copy these worksheets. Work through them with your stakeholder group (security leadership, SOC analysts, data engineering, compliance, finance). Your completed worksheets become your platform selection criteria.

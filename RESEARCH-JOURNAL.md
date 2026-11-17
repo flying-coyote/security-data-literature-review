@@ -30,9 +30,9 @@ support the specific stat (the number was stapled on) · `WEAK-SOURCE` no real/r
 or the claim is invented (removed) · `DEAD` URL broken, no replacement · `FIRST-PARTY` Jeremy's own
 model/measurement (sound, but self-authored — label, don't treat as external evidence).
 
-The cleanup worklist for everything not `VERIFIED` lives in the private register
-`project1/FABRICATIONS-REGISTER-2026-06.md` (categorized + propagation-mapped). This journal is the
-evidence; that register is the to-do.
+The cleanup worklist for everything not `VERIFIED` is kept in a private register outside this
+repository (categorized + propagation-mapped). This journal is the evidence; that register is the to-do.
+From 2026-11-17 the per-number record for the whole bibliography is `methods/verification-2026-11/ledger.json`.
 
 ---
 
@@ -403,3 +403,68 @@ Identification: one hop backward (Crossref reference lists) and forward (OpenCit
 ### Held, not admitted
 
 Julisch (TISSEC 2003), Bhatt et al. (IEEE S&P magazine 2014), Oliner et al. (CACM 2012) and Wang & Strong (JMIS 1996) are real (Crossref-resolved) and ranked high, but their publisher pages returned 403 and no independent abstract page was reached this session (the Semantic Scholar records carried no abstract), so they stay in the candidates file until read at a primary.
+
+---
+
+## 2026-11-17 — Verification sweep of all 273 entries (existence and number fidelity)
+
+Every entry was checked for existence at its DOI, arXiv ID or URL, and every number quoted in its Key Findings or Notes was searched for in the cited source. The full per-number record, with the URL and the sentence each figure was found in, is `methods/verification-2026-11/ledger.json`, summarized in `methods/verification-2026-11/README.md`. Rows below cover only the entries whose verdict or text changed. Verdict mapping to this journal's vocabulary: `verified-at-primary` is VERIFIED, `not-in-source` is MISMATCH, `unverifiable-no-primary` is WEAK-SOURCE, `dead-link` is DEAD, and `unverifiable-paywall` (the page blocks an automated reader) has no older equivalent and is recorded as such.
+
+| Entry | Method | Finding |
+|---|---|---|
+| Data Engineering for Cybersecurity (No Starch Press Book) | link | URL placeholder replaced by the No Starch product page; edition, date and ISBN match. |
+| ClickHouse at Cloudflare - 6M Requests/Second | claim↔source | MISMATCH: the Alt URL post (clickhouse.com/blog/cloudflare) is dated 18 February 2026, not October 2025, and date mentions corrected; the 1,000-replica and hundreds-of-millions-of-rows line is on neither cited page and was removed (not-in-source). |
+| Prosci Change Management Best Practices (12th Edition) | claim↔source | Labelled unverified in the entry: 93%, 15%, 183% (not-in-source). |
+| 2024-2025 State of DevOps Report - DORA | claim↔source | Labelled unverified in the entry: 39,000+ (unverifiable-paywall: the fetched page is a landing shell with no report text, and the report PDF was not read). |
+| Confluent Data Streaming Report (2025) | claim↔source | Labelled unverified in the entry: 93% (unverifiable-paywall: only the landing pages were read; the report sits behind registration). |
+| Retired December 2025 multi-engine benchmark (superseded by SDW Lab zeek-flagship-rerun) | archaeology | FIRST-PARTY: retired named-vendor timings removed on the 0165a38 precedent; successor figures re-read in the public SDW Lab repo; entry retitled without the retired benchmark's name and its URL re-pointed from the private repository to the public `zeek-flagship-rerun` folder. |
+| How Exabeam uses ClickHouse for scalable, searchable security analytics (ClickHouse case study, 2025) | claim↔source | MISMATCH: "~17.5×" divided PB by TiB; corrected to about 16×, with a dated correction note on the 2026-07-09 "every figure confirmed" Validation Status line. |
+| Huntress - ClickHouse Migration Case Study (Isolation-First Security) | claim↔source | Labelled unverified in the entry: 16 billion (unverifiable-paywall; the figure comes from the named ClickHouse video, which was not re-checked). |
+| Chris Bisnett - Huntress ClickHouse Migration (Video) | claim↔source | Labelled unverified in the entry: 93%, 3M (unverifiable-paywall). |
+| Okta Security Analytics with DuckDB — Data Council 2024 talk | claim↔source | Talk abstract located at duckdb.org and Data Council; 7.5 trillion records and 1.5-50 TB/day confirmed; unsupported "Lambda" detail dropped. |
+| Cloudera Total Economic Impact — Public Cloud (Forrester TEI, October 2021) | claim↔source | PDF URL catalogued; it now redirects to a gated landing page, where the 194% ROI was confirmed; $35.54M and the October 2021 cover date are carried from the 2026-07-09 PDF check. |
+| Confluent - Kafka Architecture & Sizing | claim↔source | Labelled unverified in the entry: 40-60% (unverifiable-no-primary: the entry attributes it to a Confluent TCO page it does not name, and Confluent's cost-effectiveness page says "up to 60%"). |
+| Gartner - Security Data Growth Rates & Spending Forecast 2024-2029 | claim↔source | Labelled unverified in the entry: $193B, $213B, $244B, $323B, 13.3%, $49B, $160B, $95B, $106B, $121B, 25.9%, $9.0B, $22.6B, 15.0%, $24.1B, $42.1B, 14.1%, $78.8B, $132.4B, 13.1%, $31.3B, $51.2B, 25-35%, $212B (unverifiable-paywall). |
+| AWS Well-Architected - Compute Optimization | claim↔source | Labelled unverified in the entry: 15-25% (not-in-source). |
+| Apache Iceberg - Universal Vendor Support | link | "Multiple vendor announcements" replaced by The Register article as the URL. |
+| Uber - Palette Feature Store for ML | claim↔source | Labelled unverified in the entry: 95% (unverifiable-paywall). |
+| SANS Institute - AI Survey & SOC Automation Research | claim↔source | Labelled unverified in the entry: 100%, 50%, 79% (unverifiable-paywall: only the landing pages were read; the reports sit behind registration). |
+| CISA - Enhanced Security Monitoring Best Practices | claim↔source | Labelled unverified in the entry: 12 months (unverifiable-paywall). |
+| MITRE Corporation - Insider Threat Research & Framework | claim↔source | Labelled unverified in the entry: 15+ (unverifiable-paywall). |
+| MITRE Engenuity - ATT&CK Evaluations Framework | claim↔source | Labelled unverified in the entry: 100% (unverifiable-paywall). |
+| StarRocks vs ClickHouse Production Benchmarks | claim↔source | 1.87× verified at the StarRocks SSB page (vendor-run); 100× concurrency and 30K-PR figures removed, no primary. MISMATCH → partially VERIFIED. |
+| MOAR Stack - Security Data Lakehouse Reference Architecture | claim↔source | Labelled unverified in the entry: 70-90%, $31-100K, 10-12×, 10-50×, 12 months (not-in-source; unverifiable-no-primary). |
+| Gartner AI Maturity and Success Metrics | claim↔source | Gartner 2024-07-29 press release named as the URL; its headline is the 30% prediction. |
+| AI Governance Maturity Gate - Prerequisites for AI Success | claim↔source | WEAK-SOURCE: LinkedIn discussion only; four numbers removed; withdrawal staged. |
+| RAPTOR Security Automation Framework - Production AI Patching | claim↔source | Repository located; author list corrected to the README; FFmpeg-patch claim not in README, labelled unverified. |
+| Tenzir Security Data Pipeline Platform | claim↔source | Labelled unverified in the entry: 30% (not-in-source). |
+| Rippling - Engineering a Cost-Effective SIEM (3-Part Series) | claim↔source | Labelled unverified in the entry: 50-70 MB, 5 minutes, 75GB, 1 minute (unverifiable-paywall). |
+| Navan - SIEM-less Detection Engineering (Anvilogic Case Study) | link | Page returned 404 to an automated fetch but remains search-indexed with the quoted wording; recorded as unconfirmed, not dead. |
+| SOC Automation ROI and AI Implementation | claim↔source | 40% verified at the securityinfowatch report of the Prophet survey; SOAR $2.3B/16.3% removed, no primary. |
+| Tenzir Streaming Fabric - Policy vs. Pipe Layer Framework | claim↔source | WEAK-SOURCE: LinkedIn post, not fetched; 100+ Gbps labelled unverified. |
+| Cribl Pipeline Economics - Route, Reshape, Reduce Pattern | claim↔source | WEAK-SOURCE: 88-98% and 10x claims not found in Cribl's CriblCon 2025 press material; labelled; engagement metric removed. |
+| Vortex File Format - Emerging Columnar Format | claim↔source | README located; claims restated exactly (100× random access, 10-20× scans, 5× writes). |
+| Databricks MCP Catalog - Unity Catalog for AI Agents | claim↔source | Blog located; date corrected to 2025-06-18; "vector search indexes" corrected to the blog's "AI Search indexes"; Claude/ChatGPT integration list not in blog, labelled. |
+| Anonymized practitioner - Security Data Platform Practitioner Validation | cross-ref | WEAK-SOURCE: personal communication is ineligible under the file's Boundary rule; withdrawal staged. |
+| Apache Iceberg 2025 Performance Analysis | claim↔source | MISMATCH: the docs' 10x is about split elimination on clustered data, not a comparison with Hive; reworded. |
+| Security Data Lakehouse Implementation Patterns | claim↔source | WEAK-SOURCE: composite with no named primary; three numbers removed; withdrawal or split staged. |
+| Data Catalog Wars 2025 - Polaris vs Unity vs Nessie vs Gravitino | link | Composite URL replaced by the onehouse.ai comparison quoted in the entry; projectnessie.org as Alt URL. |
+| Row-Level Security Performance Impact Studies | claim↔source | PostgreSQL docs support the per-row evaluation bullet; SQL Server 2025 claim removed, no primary. |
+| OCSF RLS Overhead, SDW Lab First-Party Measurement (engine-side, DuckDB) | claim↔source | FIRST-PARTY: public results URL catalogued; +81%, +94%, -86% re-read in the results table. |
+| Streaming vs Batch Cost Analysis 2025 | claim↔source | Confluent release confirms 86% ("important strategic priority", wording corrected), 44% at 5x, n=4,175. |
+| CSA/Google Cloud - The State of AI Security and Governance | claim↔source | Labelled unverified in the entry: 26%, 54%, 60%, 12 months, 46%, 12% (unverifiable-paywall: only the artifact landing page was read; the report sits behind registration). |
+| Databricks Data Intelligence for Cyber Defense - Barracuda & Palo Alto | claim↔source | Labelled unverified in the entry: 75%, 5 minutes, 3×, 70-90% (unverifiable-paywall). |
+| Apache Gravitino - Production Adoption | claim↔source | Labelled unverified in the entry: 100K, 150K, 70% (unverifiable-paywall). |
+| MITRE D3FEND 1.0 (Cybersecurity Countermeasures Ontology) | link | Currency: site badge now 1.6.0 (release 2026-08-31); 400+ artifacts not on the page, labelled. Labelled unverified: 400+. |
+| Architecting an Apache Iceberg Lakehouse — Alex Merced | claim↔source | Labelled unverified in the entry: 90% (unverifiable-paywall: the book text is not openly accessible; only Manning's product page was read). |
+| Okta's Multi-Engine Data Stack — Julien Hurault | claim↔source | Labelled unverified in the entry: 1M, 250 GB (unverifiable-paywall). |
+| Kingpin: How One Hacker Took Over the Billion-Dollar Cybercrime Underground | link | Open Library record catalogued as the URL; its publish_date is 2010 (LCCN 2010027952, with LC call numbers for both 2010 and 2011), so the entry's 2011 is noted as not confirmed by the record. |
+| DuckLake v1.0: The Lakehouse Format Built on SQL | claim↔source | FIRST-PARTY: 2.9–3.6 ms verified at the public lab file `ocsf-format-planning/results/RESULTS.md` (2.94, 3.57, 3.56 ms), now linked in the entry. |
+| Stream-Based IP Flow Analysis (IFIP/IEEE IM 2021, Dissertation Digest) | claim↔source | 31%, 26%, 4%, 1%, 0.4% are Fig. 3 image values that a text search cannot see; carried as verified from the page-render check the entry's Provenance line records, and no label. |
+| Machine Learning on Distributed Stream-Processing Platforms — Storm, Spark Streaming and Flink (SBRC Short Courses, 2018, in Portuguese) | link | Author-hosted PDF located; two missing authors added from the title page. |
+| The Data-Centric Revolution + Incremental Stealth Legacy Modernization (Dave McComb) | link | DEAD: the dataversity.net Alt URL returns HTTP 404 and the Wayback Machine has no snapshot; marked dead in the entry, primary URL live. |
+| ClickHouse - Performance Optimization Guide | cross-ref | Stale 2026-06-05 tier flag replaced with a note that the 2026-08-19 re-tier to B resolved it. |
+
+### Currency notes added (checked at each project's own release record, 2026-11-17)
+
+OCSF v1.9.0 current (v1.8.0 and v1.1.0 mentions noted); Apache Iceberg 1.12.0 current, spec v4 still not adopted; DuckDB v2.0.0 released 2026-10-21 (1.5.3-pinned lab figures noted as version-bound); DuckLake 1.0 still current; D3FEND 1.6.0 current; Kafka on the 4.x line; Flink 2.3.0 latest stable; Apache Polaris 1.9.0; OpenSearch 3.9.0 (the lab foil was 3.7.0). Each note sits under the entry's Validation Status line.

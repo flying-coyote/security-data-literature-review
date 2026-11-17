@@ -7,6 +7,8 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 
 # Appendix E: Consolidated Resource Directory
 
+This appendix answers where to go to learn each technology in the stack, organized by topic with recommended paths through documentation, books, essays and community. It is the entry point to the learning path the handbook sketches in Chapter 1, and it also maps the companion essays on securitydataworks.com to the chapters and appendices they extend, which is the part to check first if you came here from a specific chapter.
+
 **Purpose**: Curated list of learning resources for building MOAR security data architectures. Compiled from the translation and navigation material (now Appendices D and J) with organization by topic.
 
 **How to use**: Start with your learning goal (e.g., "Learn Apache Iceberg") → Find topic section → Follow recommended path (docs → blog posts → videos → community). External URLs spot-checked October 2025 and fully re-checked July 2026, and though core recommendations are still current, several links have moved: Snowflake's managed Polaris is now Open Catalog (its old workload URL 404s), Dremio was acquired by SAP (close completed July 2026, so its docs, University, and community URLs are migrating), the OCSF Slack now takes invites through ocsf.io, and one research citation's arXiv ID was corrected. Verify a specific link before relying on it.
@@ -68,7 +70,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Why Relevant**: If considering Delta Lake table format (Databricks-centric architecture)
 - **Security-Relevant Topics**:
   - Chapter 2: Delta Lake architecture (ACID transactions, time-travel)
-  - Chapter 5: Schema evolution (OCSF v1.7 → v1.8 migrations)
+  - Chapter 5: Schema evolution (OCSF v1.8 → v1.9 migrations, for example the Account Change and User Access → User Management move)
   - Chapter 7: Streaming with Delta (real-time ingestion patterns) <!-- lint-ignore-xref -->
 - **Alternative**: If choosing Iceberg (multi-engine), prioritize Iceberg docs over this book
 - **Where to Buy**: oreilly.com, databricks.com/resources
@@ -121,7 +123,7 @@ tags: [moar-book, resource-directory, learning-paths, ocsf, iceberg]
 - **Key Sections**:
   - Table Spec: Understand metadata, manifests, data files
   - Partitioning: Hidden partitioning for security (date-based partitioning without exposing to users)
-  - Evolution: Schema evolution for OCSF v1.7 → v1.8
+  - Evolution: Schema evolution for OCSF v1.8 → v1.9 (for example the Account Change and User Access → User Management move)
   - Maintenance: Compaction, snapshot expiration, orphan file cleanup
 
 **Apache Iceberg project blog** (posts from the maintainers, including Iceberg co-creator Ryan Blue): https://iceberg.apache.org/blog/
@@ -298,12 +300,12 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 - **Schema Change Behavior**: Column modification suspends ALL materialized views on that table (even if column not referenced in view)
 - **Security Fit**: Moderate, best for stable schemas and high-frequency queries
 
-**Snowflake Dynamic Tables**: https://docs.snowflake.com/en/user-guide/dynamic-tables-about
+**Snowflake Dynamic Tables**: https://docs.snowflake.com/en/user-guide/dynamic-tables/overview
 - **Advantages over MVs**: Supports JOINs, window functions, target lag settings
 - **Limitations**: Recreation required for schema changes, ~5% data change threshold for efficient incremental refresh
 - **Security Fit**: Better than Snowflake MVs, but schema changes still problematic
 
-**Databricks Materialized Views**: https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html
+**Databricks Materialized Views**: https://docs.databricks.com/aws/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view
 - **Key Feature**: Cost analysis automatically chooses incremental vs. full refresh
 - **Schema Change Behavior**: Full recompute triggered on ANY schema change (a 500 GB table at 30-90 min is an illustrative estimate, not a measured deployment)
 - **Security Fit**: Good if using Databricks Unity Catalog, schema changes costly
@@ -341,7 +343,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 - **Learning Path**: If already using Kafka, ksqlDB is natural choice for simple streaming MVs
 
 **Apache Flink SQL Materialized Tables**: https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/table/materialized-table/
-- **Status**: Materialized Table feature (Flink 1.20+)
+- **Status**: Materialized Table feature (introduced in Flink 1.20; Flink is at 2.3.0 as of 2026-11-17)
 - **Complexity**: Operationally complex (Kafka + Flink + serving layer required)
 - **Security Fit**: Best for large enterprises with dedicated stream processing teams
 - **When to Use**: Real-time detection <30 seconds required, complex stateful processing needed
@@ -445,7 +447,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 ### Unity Catalog (Databricks)
 
-**Official Documentation**: https://docs.databricks.com/data-governance/unity-catalog/
+**Official Documentation**: https://docs.databricks.com/aws/en/data-governance/unity-catalog
 - **When to Use**: Databricks-committed, Delta Lake primary table format
 - **Features**: Multi-cloud catalog (AWS + Azure + GCP), fine-grained access control
 - **Limitation**: Databricks-centric (not multi-engine like Polaris)
@@ -515,7 +517,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 ### Dagster
 
-**Official Documentation**: https://docs.dagster.io/
+**Official Documentation**: https://dagster.io/docs
 - **Differentiator**: Software-defined assets (data pipeline as code)
 - **Security Application**: OCSF transformation pipelines (asset = OCSF table)
 - **Status**: Growing adoption (less mature than Airflow, more modern design)
@@ -524,7 +526,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 ### Prefect
 
-**Official Documentation**: https://docs.prefect.io/
+**Official Documentation**: https://www.prefect.io/docs/v3/get-started
 - **Philosophy**: "Negative engineering" (handle failures gracefully)
 - **When to Use**: Simpler than Airflow for basic workflows, hybrid execution model
 
@@ -534,7 +536,7 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 
 ### Official Resources
 
-**OCSF Schema Website**: https://schema.ocsf.io/ (current release v1.8.0, March 2026; the schema browser lets you pick the version)
+**OCSF Schema Website**: https://schema.ocsf.io/ (current release v1.9.0, August 2026, checked 2026-11-17; the schema browser lets you pick the version)
 - **Start Here**: Browse event classes (Authentication, Network Activity, Process Activity)
 - **Key Sections**:
   - Class Browser: Explore field mappings
@@ -834,7 +836,7 @@ So use this map as "further reading" for any chapter. Links go to the live essay
 | [The Capability Matrix](https://securitydataworks.com/matrix) | **the handbook's vendor-evaluation/decision material**, the evidence-tiered vendor-evaluation method (method and scores public; paid work is the services engagement that acts on a finding) |
 | [AI-Native vs AI-Augmented: the Threat Timeline](https://securitydataworks.com/research/ai-native-vs-augmented) † | **cross-cutting companion essay (not part of the seven-chapter spine)** is an earlier blog-draft candidate, retained here for its threat-timeline argument on why defensive infrastructure must match AI-speed operations rather than anchored to a specific chapter |
 
-**Note**: these essays are continuously updated, external standards are current as of March 2026 (OCSF v1.8.0), and the manuscript is whichever edition and date the copyright page prints, so the site captures developments past both. † marks a best-fit mapping from a retired post number to its closest current essay (worth confirming the destination is the intended one). ‡ marks a post with no single successor essay yet; the link goes to the writing index.
+**Note**: these essays are continuously updated, external standards are current as of March 2026 (OCSF v1.8.0; v1.9.0 followed on 2026-08-03), and the manuscript is whichever edition and date the copyright page prints, so the site captures developments past both. † marks a best-fit mapping from a retired post number to its closest current essay (worth confirming the destination is the intended one). ‡ marks a post with no single successor essay yet; the link goes to the writing index.
 
 ---
 

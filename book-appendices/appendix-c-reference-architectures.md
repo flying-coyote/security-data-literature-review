@@ -7,6 +7,8 @@ tags: [moar, liger, iceberg, architecture-design, multi-engine, security-data]
 
 # Appendix C: MOAR Reference Architectures
 
+What does a Modular Open Architecture actually look like once you draw it? The answer here is the L-I-G-E-R component model and five reference patterns, each with its stack, deployment considerations and cost profile. This appendix grounds the MOAR framework in Chapter 2 and the architect-journey patterns in Chapter 6, and the pattern you start from usually follows from the constraints you recorded in Worksheet A.2.
+
 **Purpose**: Visual diagrams and detailed implementation patterns for validated security data architectures based on Modular Open Architecture (MOAR) principles. Each pattern includes: architecture diagram, technology stack, deployment considerations, cost profile, and when to use.
 
 **How to use**: Find the pattern that matches YOUR organizational constraints (from Worksheet A.2). Use as starting template, adapt for your specific requirements.
@@ -29,7 +31,7 @@ Every reference architecture in this appendix (except Pattern 4: Traditional SIE
 
 3. **Compression-First Design**. Security logs achieve 8.5× (Iceberg Parquet, pyiceberg zstd defaults) to 9.7× (tuned cold Parquet zstd-19) compression with proper encoding (Parquet + ZSTD/SNAPPY for Iceberg, optimized codecs for ClickHouse; first-party lab measurement on OCSF-normalized Zeek and EDR corpora, per cost-to-serve-retention/results/RESULTS.md). *Validation test*: 1 TB/day of raw logs should cost ~$1,000/month for S3 storage with 365-day retention.
 
-4. **Schema Evolution Without Breaking Changes**. Use Iceberg schema evolution and OCSF normalization (OCSF v1.x, current release v1.8.0) to onboard new log sources without system downtime. *Validation test*: Adding a new log source doesn't require downtime or data migration.
+4. **Schema Evolution Without Breaking Changes**. Use Iceberg schema evolution and OCSF normalization (OCSF v1.x, current release v1.9.0 as of 2026-11-17) to onboard new log sources without system downtime. *Validation test*: Adding a new log source doesn't require downtime or data migration.
 
 5. **Query Engine Specialization**. No single engine is optimal for real-time alerting, ad-hoc investigations, and scheduled reporting. Deploy the right engine for each workload. *Validation test*: You can choose the right tool for each workload without creating data silos.
 

@@ -8,25 +8,34 @@ tags: [vendor-database, schema, evidence-tiers, security-data, quarterly-update]
 # Vendor Database Schema - Literature Review
 
 **Purpose**: Master vendor database schema for security data platforms
-**Status**: Active - Source of Truth for MCP Server
-**Last Updated**: 2025-10-22
-**Integration**: Syncs to `security-architect-mcp-server/data/vendor_database.json`
+**Status**: Active. This schema governs `vendor-database.json`, and `scripts/derive_vendor_rollups.py --check` enforces its Evidence Tier Requirements table as a pre-commit and CI gate.
+**Last Updated**: 2025-10-22 (status lines revised 2026-11-17)
+**Integration**: none since 2026-07-01. The schema was written to sync into `security-architect-mcp-server/data/vendor_database.json`; that repository is archived and the sync ended, so this repository's JSON is the only live copy.
 
 ---
 
 ## Overview
 
-This file defines the authoritative vendor database schema. The MCP server `vendor_database.json` is a **generated artifact** - all edits must be made here.
+This file defines the authoritative vendor database schema. *(Note 2026-11-17: the MCP server copy this sentence once called a generated artifact no longer exists as a live target; edits go to `vendor-database.json` here.)*
 
-**Quarterly Update Cycle**: January, April, July, October (planned cadence — not yet started; no quarterly update produced as of 2026-07)
+**Quarterly Update Cycle**: January, April, July, October. The first full regeneration under this schema landed 2026-07-18 (version 2026-Q3-c, `quarterly-updates/2026-Q3-regen-2026-07-18.md`); the October 2026 regeneration has not yet run and is overdue.
 
-**Current Version**: no quarterly snapshot produced yet (the "2025-Q4 (in development)" target did not ship)
+**Current Version**: 2026-Q3-c (2026-07-18), per `meta.version` in `vendor-database.json`; the planned 2025-Q4 snapshot never shipped.
+
+---
+
+## Dated fields
+
+Some records carry dated fields that sit outside the scored schema, named with the date they were added so that a later regeneration can tell when each fact was checked. They never change capability scores or the derived `evidence_summary` block.
+
+- `currency_check_YYYY_MM_DD`: a light check between regenerations of whether the product still exists under the recorded name (acquisitions, renames, end-of-life). It holds `status` (for example `current`, `renamed`, `acquired`, `discontinued`), a `note` stating what changed, `primary_sources` (the URLs the note rests on) and `checked` (ISO date). The 2026-11-17 check added it to 16 records; where it found a factual change, only the `name` and `website` fields were edited alongside it.
+- `dr2_fold_YYYY_MM_DD`: a verified vendor change folded in from a dated research intake during a regeneration (the 2026-07-18 regeneration added `dr2_fold_2026_07_18`), recorded on the affected record rather than in the scored evidence.
 
 ---
 
 ## Schema Documentation
 
-See `~/security-architect-mcp-server/docs/INTEGRATION-SCHEMA.md` for complete schema definition.
+The complete schema definition was kept in `security-architect-mcp-server/docs/INTEGRATION-SCHEMA.md`, in a repository archived 2026-07-01; this file and the checks in `scripts/derive_vendor_rollups.py` are the working definition now.
 
 **Key Principles**:
 1. **Evidence-Based**: All capability scores 4-5 require Evidence Tier A/B sources

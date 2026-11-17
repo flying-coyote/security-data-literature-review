@@ -2,6 +2,7 @@
 type: operating-doc
 title: "Add Source to Bibliography — Evidence Tier Procedure"
 created: 2026-01-02
+updated: 2026-11-17
 tags: [literature-review, bibliography, evidence-tiers, source-classification, citation-format]
 ---
 
@@ -23,47 +24,32 @@ Please provide:
 
 I will classify the source using the Evidence Tier system:
 
-Evidence Level A is defined by METHODOLOGY §3.1 (corrected 2026-08-19): **peer-reviewed research and official standards, nothing else.** Production deployments, practitioner measurements, vendor benchmarks and official project documentation are Level B however good they are, and an arXiv preprint with no published venue is Level B too.
+METHODOLOGY §3.1 is the canonical definition (corrected 2026-08-19); in short:
 
-### Tier 1: Peer-Reviewed Research and Official Standards (Evidence Level A)
-- Published in a peer-reviewed journal or conference proceedings (venue confirmed at the publisher or DOI record, not inferred)
-- Or an official standard or framework from a standards body (NIST, ISO, IETF RFC, and similar)
-- Preprints, workshop papers whose proceedings are not yet published, and theses: Level B until the venue is confirmed
-
-### Tier 2: Production Deployments and Practitioner Evidence (Evidence Level B)
-- Measured outcomes from real production systems, with the measurement disclosed
-- First-party lab benchmarks, named-practitioner talks, engineering blogs from the operating team
-- Official project documentation (Apache, CNCF) for what a feature does
-
-### Tier 3: Expert Consensus (Evidence Level B)
-- Multiple domain experts agree (vendor-neutral)
-- Industry-recognized authority that is not itself a published standard (MITRE guidance, CISA advisories, analyst syntheses); a published NIST or ISO standard is Tier 1
-- Documented reasoning provided
-
-### Tier 4: Vendor Claims (Evidence Level C)
-- Vendor marketing or white papers
-- Case studies without independent validation
-- **Use sparingly, mark bias**
-
-### Tier 5: Speculation (Evidence Level D)
-- Theoretical only, no empirical support
-- **Do NOT use for literature review claims**
+- **A**: peer-reviewed research at a confirmed venue (checked at the publisher or DOI record, not inferred), standards-body documents (NIST, ISO/IEC, IETF RFC, W3C, OASIS), formal open-standard specifications (the Iceberg table spec, the OCSF schema spec), and the MITRE D3FEND and ATLAS frameworks, which are authoritative on structure and silent on efficacy
+- **B**: production deployments and case studies with real numbers, first-party lab benchmarks, vendor engineering blogs from the operating team, conference talks, trade books, analyst reports, expert interviews, government advisories (as distinct from standards), official project documentation, and preprints, theses and workshop papers whose venue is not confirmed
+- **C**: vendor material with no production measurement behind it, and vendor-authored pieces quoting a practitioner; bias flagged, and never carrying a hypothesis on its own
+- **D**: marketing, unverified claims and speculation; not catalogued
 
 ## Process
 
 1. **Classify** the source using criteria above
 2. **Check** MASTER-BIBLIOGRAPHY.md for duplicates
-3. **Add** entry with standardized format:
+3. **Add** a `#### ` entry block in the format of the most recent blocks in MASTER-BIBLIOGRAPHY.md (the count gate counts only `#### ` blocks, so an entry in any other shape is invisible to it):
    ```markdown
-   **"[Title]"**
-   - Authors: [Complete author list]
-   - Published: [Date] in [Venue]
-   - URL/DOI: [Permanent link]
-   - Quality: Evidence Level [A/B/C] - [rationale against METHODOLOGY §3.1]
-   - Status: [Read/Referenced/Validated]
-   - Key Insights: [1-2 sentence summary]
-   - Related Hypotheses: [H-XX references]
-   - Notes: [Methodology notes, limitations]
+   #### [Title] ([Author], [Venue], [Year])
+
+   **Authors**: [list]
+   **Date**: [publication date; date read]
+   **URL**: [link, or DOI]
+   **Evidence Level**: [A/B/C] ([rationale against METHODOLOGY §3.1])
+   **Relevance**:
+   - [what the source supports, per hypothesis or topic]
+
+   **Key Findings**: [each number with its locator at the primary]
+   **Citations**: [formatted citation]
+   **Notes**: [limitations, bias, edition or version bounds]
+   **Validation Status**: ✅ Verified [date] ([what was read at the primary])
    ```
 4. **Link** to relevant hypotheses (H-ARCH-01, H-IMPL-01, etc.)
 5. **Update** evidence distribution if needed

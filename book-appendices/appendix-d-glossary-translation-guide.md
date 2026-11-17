@@ -15,7 +15,7 @@ The recognition usually comes in a hallway conversation. A data engineer describ
 
 ---
 
-**Purpose**: Bridge the terminology gap between cybersecurity and data engineering disciplines. Each entry includes: security term, data engineering equivalent, context notes, and when/why the translation matters.
+**Purpose**: Bridge the terminology gap between cybersecurity and data engineering disciplines, which is the manageability problem Chapter 1 frames and the one Chapters 6 and 7 keep running into in practice. Each entry includes: security term, data engineering equivalent, context notes, and when/why the translation matters.
 
 **How to use**: When reading data engineering documentation (Iceberg docs, Trino blogs, Spark tutorials), reference this glossary to translate concepts into security context. When communicating with data engineering teams, use their terminology for clarity.
 
@@ -106,7 +106,7 @@ The problems: no schema evolution (adding a new field requires rewriting all his
 Table format approach (Iceberg/Delta) addresses all three via a metadata layer that tracks schema versions, file locations, and partitioning strategy; ACID transactions that allow multiple writers (a Spark batch job and a Trino analyst query) to coordinate safely; time-travel (`SELECT * FROM network_flows TIMESTAMP AS OF '2025-10-01 00:00:00'`); and schema evolution that adds fields without rewriting (backward compatible).
 
 **Security Value**:
-- **Safe schema changes**: OCSF schema evolves across minor releases (the current line is v1.8.0, released March 2026) without breaking existing queries
+- **Safe schema changes**: OCSF schema evolves across minor releases (the current release is v1.9.0, August 2026, as of 2026-11-17) without breaking existing queries
 - **Multi-writer coordination**: Real-time ingestion (Kafka → Flink) + batch enrichment (Spark) write to same table safely
 - **Compliance audit trail**: Time-travel enables "show me data as it existed on audit date"
 
@@ -634,7 +634,7 @@ For data engineers reading this book, here are security terms translated into da
 
 #### OCSF (Open Cybersecurity Schema Framework)
 **Data Engineering Translation**: Industry-standard schema (like Parquet format for security data)
-**Context**: OCSF = Target schema for security log normalization, vendor-agnostic; current release v1.8.0 (March 2026)
+**Context**: OCSF = Target schema for security log normalization, vendor-agnostic; current release v1.9.0 (August 2026, as of 2026-11-17)
 **Benefit**: Analogous to Apache Iceberg table format, enabling multi-tool compatibility without vendor lock-in
 
 ---

@@ -4,7 +4,7 @@
 # sections (ABSTRACT … APPENDICES), normalizing heading levels and dropping
 # only the internal MANUSCRIPT METADATA block. The former companion stitches
 # (REFERENCES.md, APPENDICES.md) are retired: those files are superseded by
-# the manuscript's embedded REFERENCES [1]–[38] and Appendices A–D.
+# the manuscript's embedded REFERENCES and APPENDICES sections.
 set -euo pipefail
 
 # Repo root derived from this script's location, so the build works from any
@@ -39,7 +39,7 @@ pagebreak() { printf '\n```{=latex}\n\\newpage\n```\n\n'; }
   # Tables (real GFM tables embedded in the manuscript).
   awk '/^## TABLES/{f=1} /^## APPENDICES/{f=0} f' "$SRC_M" | decr
   pagebreak
-  # The manuscript's own embedded Appendices A–D; stop before the internal
+  # The manuscript's own embedded APPENDICES section; stop before the internal
   # MANUSCRIPT METADATA block, which is repo bookkeeping, not publication content.
   awk '/^## APPENDICES/{f=1} /^## MANUSCRIPT METADATA/{f=0} f' "$SRC_M" | decr
 } > "$OUT"

@@ -11,8 +11,8 @@
 This directory contains Python scripts and LaTeX TikZ code to convert text-based figures from FIGURES-AND-TABLES.md into publication-ready graphics for journal submission.
 
 **Figures Generated**:
-1. **Figure 1**: PRISMA flowchart (LaTeX TikZ) - Literature extraction process
-2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (22.5% Level A, 61/271 tiered, derived 2026-08-19; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
+1. **Figure 1**: PRISMA 2020 two-arm flow diagram (LaTeX TikZ) - database search and curation arms, as of the 2026-07-16 edition, with a bridge to the live corpus
+2. **Figure 2**: Evidence Level Distribution (Python matplotlib) - live per-source tier tally (22.5% Level A, 61/271 tiered, derived 2026-11-17; the earlier "79% Level A" was a self-grade withdrawn in the 2026-06 audit)
 3. **Figure 3**: Source Type Taxonomy (Python matplotlib) - Source diversity and geographic distribution
 4. **Figure 4**: Hypothesis Validation Confidence (Python matplotlib) - post-audit rescored confidence scoring (2026-07-13 rubric rescore)
 
@@ -123,17 +123,17 @@ rm *.aux *.log
 ### LaTeX TikZ Code
 
 #### `figure1_prisma_flowchart.tex`
-**Purpose**: PRISMA-aligned systematic literature review flowchart
+**Purpose**: PRISMA 2020 two-arm flow diagram (identification via databases, identification via other methods)
 
 **Features**:
-- 4 stages: IDENTIFICATION → SCREENING → ELIGIBILITY → INCLUDED
-- Color-coded stages (Light Blue, Orange, Yellow, Green)
-- Exclusion annotations with dashed lines
-- Comprehensive inclusion statistics (79% Level A, 100% hypothesis-critical URLs validated, 86% High/Strong confidence)
+- Database arm: 400 identified, 5 duplicates, 395 screened, 355 excluded by criterion, 40 appraised, 14 refused, 26 included plus one second-screen admission (27)
+- Other-methods arm: the 203 curated entries of the 2026-07-16 edition by source type; the convergence box bridges to the live 273/271 corpus
+- Every number traces to `methods/prisma-results/`, `methods/prisma-appraisal-2026-07-13.json` and `methods/second-screen-adjudication-2026-07-16.json`
+- *(The earlier description of this file, with 79% Level A and 86% High/Strong confidence, described the withdrawn October-2025 flowchart and was replaced 2026-11-17.)*
 
-**Compilation**: Standalone LaTeX document (can be compiled independently or included in manuscript)
+**Compilation**: Standalone LaTeX document (`pdflatex figure1_prisma_flowchart.tex`); last compiled 2026-11-17 after the left-arm boxes were re-spaced so none overlap.
 
-**Data Source**: FIGURES-AND-TABLES.md Figure 1 (PRISMA flowchart text representation)
+**Data Source**: `methods/PRISMA-RETRO-RUN-2026-07-13.md` and the JSON records above
 
 ---
 

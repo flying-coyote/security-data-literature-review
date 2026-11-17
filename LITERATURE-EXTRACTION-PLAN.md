@@ -1,10 +1,12 @@
 # Literature Review Extraction Plan
 
+> **Current status (2026-11-17).** This is the October 2025 plan for the curation arm's first pass, which extracted the footnotes of an earlier best-practices document into what became `MASTER-BIBLIOGRAPHY.md`; it stays at this path because the 2025-10-22 snapshots in `published/` cite it. The extraction is finished and the method has since grown a second, systematic arm: a database search of OpenAlex and dblp, run on 2026-07-13 and described in `METHODOLOGY.md` §2.4 and `PUBLICATION-MANUSCRIPT.md` §2.2, which are now the method of record. Corpus counts are derived by `scripts/count_reconcile.py` and the Level-A target this plan aimed at was retired on 2026-08-19 (`METHODOLOGY.md` §8.1a), so read every percentage and source count below as what the October 2025 pass reported about itself, not as a current figure. The "IT Harvest" integration and the topic-directory structure the plan proposed were never built, and the expert interviews it scheduled did not take place.
+
 > **Dated correction banner (2026-07-10, part-3 verification sweep).** Everything below is the **historical record of the October-2025 extraction as it graded itself at the time** — read the self-grades as that record, NOT as current achievement, because the 2026-06/07 fabrication audits overturned several of them:
-> - **"73% Evidence Level A"** (asserted three times below): the live, dashboard-computed figure is **41.6% (77/185)** as of 2026-07-10 — the October self-grade is the masked number the audit exposed (see README/CLAUDE.md for the current derivation).
-> - **"All 7 hypotheses validated with verified sources" / "All hypothesis-critical sources verified"**: contradicted by the post-overturn standing (roughly 1 strong / 2 high / the rest at 1-2/5 or pending re-score; several formerly "critical" sources — DORA multipliers, Ververica, IDC, MIT-TR, AWS/Netflix tiered-storage — were confirmed nonexistent or withdrawn). See `analysis-bundles/hypothesis-confidence-matrix.md` (banner) and `RESCORE-PROPOSAL-2026-07.md`.
-> - **Count inconsistency, unreconciled**: "6 hypotheses formalized" (Total Work) vs "All 7 hypotheses validated" (Final Statistics) vs "6 new hypotheses (26→32)" (Deliverables) — the validated-hypothesis count was never reconciled (CLAUDE.md flags this too).
-> - **MASTER-HYPOTHESIS-TRACKER.md is NOT in this repository** — it lives in the project1 hub repo (`~/project1/01-knowledge-base/MASTER-HYPOTHESIS-TRACKER.md`); the Deliverables pointer below is external.
+> - **"73% Evidence Level A"** (asserted three times below): the live, dashboard-computed figure was **41.6% (77/185)** as of 2026-07-10 — the October self-grade is the masked number the audit exposed. *(Note 2026-11-17: 41.6% is itself superseded, by the 2026-08-19 tier correction and later additions; the current share is derived by `scripts/count_reconcile.py` and stated in README.md.)*
+> - **"All 7 hypotheses validated with verified sources" / "All hypothesis-critical sources verified"**: contradicted by the post-overturn standing (roughly 1 strong / 2 high / the rest at 1-2/5 or pending re-score; several formerly "critical" sources — DORA multipliers, Ververica, IDC, MIT-TR, AWS/Netflix tiered-storage — were confirmed nonexistent or withdrawn). See `analysis-bundles/hypothesis-confidence-matrix.md` (banner) and `working/proposals/RESCORE-PROPOSAL-2026-07.md`.
+> - **Count inconsistency, unreconciled**: "6 hypotheses formalized" (Total Work) vs "All 7 hypotheses validated" (Final Statistics) vs "6 new hypotheses (26→32)" (Deliverables) — the validated-hypothesis count was never reconciled. *(Pointer to the repository's agent instructions removed 2026-11-17.)*
+> - **MASTER-HYPOTHESIS-TRACKER.md is NOT in this repository** — it lives in the author's private research notes outside this repository, so the Deliverables pointer below cannot be followed from here. *(Path removed 2026-11-17.)*
 > - The source-material claims (283 footnotes; 74 archive manuscripts) reference an archive external to this repo and have not been re-verified — treat as the October-2025 record, not checked facts.
 > - "16 of 22 URLs validated (73%)" is historical and fine as record under this banner.
 
@@ -324,13 +326,12 @@ def extract_citations(file_path):
 
 ---
 
-## Next Actions (Immediate)
+## Next Actions (as planned in October 2025, all completed or superseded)
 
 1. Extract footnotes from best practices document (207 lines)
 2. Scan archive/manuscript/part-1-crisis/ for citations
 3. Create foundations/table-formats-iceberg-delta-hudi.md with initial sources
 4. Begin MASTER-BIBLIOGRAPHY.md with standardized format
 
-**Owner**: Jeremy Wiley
-**Timeline**: Week 1-4 (Oct 14 - Nov 8)
-**Dependencies**: Archive access, IT Harvest partnership, expert interviews (Week 3)
+**Timeline**: Week 1-4 (Oct 14 - Nov 8, 2025; completed October 10, 2025)
+**Dependencies (as planned)**: Archive access, IT Harvest partnership, expert interviews (Week 3). *(Note 2026-11-17: the partnership and the interviews did not happen; neither was needed to finish the extraction.)*

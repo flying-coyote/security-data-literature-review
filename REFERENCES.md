@@ -7,7 +7,9 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 # References - Modern Data Architecture for Cybersecurity Operations
 
-> **⛔ SUPERSEDED — 2026-07-16.** This file is no longer the manuscript's reference section. Its 78-entry numbering is a PARALLEL, INCOMPATIBLE numbering to the reference list embedded in `PUBLICATION-MANUSCRIPT.md` ([1]–[38]) — this file's [8] is the Apache Iceberg documentation while the manuscript's [8] is DORA 2024, so resolving a manuscript citation against this file silently swaps the source. The manuscript's inline citations resolve ONLY against its embedded list. This file is retained as the full IEEE-formatted corpus listing (78 numbered entries, 12 withdrawn in place), it must NOT be bundled into any submission package, and the build pipeline was repointed off it 2026-07-16.
+> **⛔ SUPERSEDED — 2026-07-16.** This file is no longer the manuscript's reference section. Its 78-entry numbering is a PARALLEL, INCOMPATIBLE numbering to the reference list embedded in `PUBLICATION-MANUSCRIPT.md` ([1]–[49] as of 2026-11-17; [1]–[38] when this banner was written) — this file's [8] is the Apache Iceberg documentation while the manuscript's [8] is DORA 2024, so resolving a manuscript citation against this file silently swaps the source. The manuscript's inline citations resolve ONLY against its embedded list. This file is retained as the full IEEE-formatted corpus listing (78 numbered entries, 12 withdrawn in place), it must NOT be bundled into any submission package, and the build pipeline was repointed off it 2026-07-16.
+>
+> **Note — 2026-11-17.** This listing is also no longer the full corpus: it holds the 78 entries of the October-2025 catalogue, while MASTER-BIBLIOGRAPHY.md now carries 273 catalogued entries (271 tiered, derived 2026-11-17). Its alphabetical ordering and its evidence-level labels predate the 2026-08-19 tier audit. Use MASTER-BIBLIOGRAPHY.md for the corpus and the manuscript's embedded list for anything the manuscript cites.
 
 **Purpose**: IEEE/ACM formatted references for systematic literature review publication
 **Created**: October 21, 2025

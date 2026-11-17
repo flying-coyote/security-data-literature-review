@@ -5,8 +5,9 @@
 #   printf '#!/usr/bin/env bash\nexec bash "$(git rev-parse --show-toplevel)/scripts/pre-commit.sh"\n' \
 #     > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 #
-# Order: secret-scan first (cheaper, security-relevant), count-reconcile second.
-# A non-zero exit from either blocks the commit. count_reconcile.py runs in
+# Order: secret-scan first (cheaper, security-relevant), count-reconcile second,
+# then the moved-path and relative-link check on staged files. A non-zero exit
+# from any of them blocks the commit. count_reconcile.py runs in
 # --staged mode so only a staged file whose stated count disagrees with the live
 # derivation blocks; stale counts in untouched files are reported, not blocking.
 set -u
@@ -16,5 +17,16 @@ python3 "$root/scripts/count_reconcile.py" --staged || exit 1
 # Vendor rollup gate: only when the vendor database itself is staged (cheap otherwise-skip)
 if git diff --cached --name-only | grep -q '^vendor-landscape/vendor-database.json$'; then
   python3 "$root/scripts/derive_vendor_rollups.py" --check || exit 1
+fi
+# Moved-path mentions and relative links: only the staged text files are checked,
+# so an untouched file elsewhere cannot block an unrelated commit (CI runs the
+# repo-wide check).
+# Portable fill (no mapfile), so the hook also runs under macOS's stock bash 3.2.
+staged=()
+while IFS= read -r f; do staged+=("$f"); done < <(git diff --cached --name-only --diff-filter=ACMR \
+  | grep -E '\.(md|py|sh|ya?ml|json|cff|txt|tex)$' || true)
+if [ "${#staged[@]}" -gt 0 ]; then
+  python3 "$root/scripts/repoint_moved_paths.py" --check --paths "${staged[@]}" >/dev/null \
+    || { python3 "$root/scripts/repoint_moved_paths.py" --paths "${staged[@]}"; exit 1; }
 fi
 exit 0

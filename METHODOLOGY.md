@@ -10,13 +10,15 @@ tags: [prisma, methodology, systematic-review, evidence-tiers, literature-review
 **Purpose**: Academic methodology documentation for "Modern Data Stack for Cybersecurity" literature review
 **Framework**: PRISMA-aligned systematic extraction and quality assessment
 **Review Type**: Living literature review with quarterly updates
-**Last Updated**: July 16, 2026
+**Last Updated**: November 17, 2026
 
 ---
 
 ## 1. Overview
 
 This systematic literature review employs a PRISMA-aligned methodology to consolidate research on modern data stack architectures for cybersecurity applications. The review bridges two distinct domains—cybersecurity and data engineering—to provide an evidence-based foundation for practitioners and researchers.
+
+The document reads in the order the method runs: the question and its scope (§1, with the isolation-first research questions added in November 2025 kept at §5.4 because other files cite them there), the two search arms (§2.1-§2.3 curation, §2.4 the database search), critical appraisal of what the search returned (§2.5), tiering and credibility assessment (§3), extraction (§4), hypothesis scoring (§5), synthesis (§6), and limitations with the reproducibility record (§7). Sections 8-9 hold the quality measures and the book integration, and PUBLICATION-MANUSCRIPT.md §2 remains the methods statement of record wherever the two differ.
 
 ### 1.1 Research Objectives
 
@@ -27,7 +29,7 @@ This systematic literature review employs a PRISMA-aligned methodology to consol
 ### 1.2 Scope and Boundaries
 
 **In Scope**:
-- Modern data stack technologies (2018-2025): Apache Iceberg, query engines (Trino, Dremio, ClickHouse, DuckDB), streaming platforms (Kafka, Flink)
+- Modern data stack technologies (2018 onward): Apache Iceberg, query engines (Trino, Dremio, ClickHouse, DuckDB), streaming platforms (Kafka, Flink)
 - Security-specific applications: SIEM alternatives, security data lakes, detection engineering platforms
 - Implementation evidence: Total cost of ownership (TCO), staffing requirements, deployment timelines
 - Production deployments: Enterprise case studies, performance benchmarks, operational patterns
@@ -38,7 +40,7 @@ This systematic literature review employs a PRISMA-aligned methodology to consol
 - Operational tooling implementations (focus on research/evidence)
 - Vendor marketing materials (unless supported by production data)
 
-**Time Period**: Primary focus 2018-2025 (modern data stack era), with pre-2018 sources for foundational context only.
+**Time Period**: 2018 onward (the database arm's date floor), with no fixed end-date because the review is living, and pre-2018 sources for named foundational context only.
 
 ---
 
@@ -60,11 +62,11 @@ The systematic extraction process identified two primary source categories:
 
 Beyond the primary extraction from archived manuscripts:
 
-1. **Expert Network Validation**: one practitioner conversation has actually taken place (Matt Mullins, Coginiti). Outreach to Lisa Cao, Jake Thomas and Paul Agbabian is drafted, sent-unanswered or stalled — none was interviewed, and no claim in this review may be sourced to those conversations. Their PUBLIC work is citable and is cited as such.
-2. **Blog Integration**: Ongoing source identification through security-data-commons blog (3×/week cadence)
+1. **Expert Network Validation**: one practitioner conversation has taken place (anonymized, as in the manuscript's acknowledgments). Further expert interviews are prepared but have not been held, so no claim in this review is sourced to them; the public work of the practitioners approached is citable and is cited as such.
+2. **Blog Integration**: source identification through the security-data-commons blog, an October-2025 channel since retired
 3. **Vendor Documentation**: Official technical documentation from Apache Software Foundation, AWS, Microsoft, Google, Confluent, Databricks
 4. **Government Standards**: CISA, MITRE, DARPA, NSA, SANS Institute publications
-5. **Industry Analysts**: Gartner, IDC, Forrester research reports (peer-reviewed quality assessment)
+5. **Industry Analysts**: Gartner, IDC, Forrester research reports with disclosed methodology
 
 ### 2.3 Extraction Execution (Curation Arm, October 2025)
 
@@ -74,11 +76,12 @@ Beyond the primary extraction from archived manuscripts:
 - Performance benchmark identification
 - Expert quote attribution verification
 
-**Extraction Coverage**:
-- 283 of 283 footnotes extracted (100% completion)
-- 229 sources catalogued with a standardized format (227 tiered; live-derived 2026-07-16)
-- 16 of 22 URLs validated (73% overall, 100% hypothesis-critical sources)
+**Extraction Coverage** (October-2025 record; the source documents sit outside this repository and these figures are not re-verified):
+- 283 of 283 footnotes extracted
+- 16 of 22 URLs validated (73%); the "100% of hypothesis-critical sources" grade that accompanied it was withdrawn when several of those sources failed later verification
 - Archive manuscripts: 74 files assessed (no independent sources found)
+
+The catalogue has since grown by curation and the database search to 273 catalogued entries, 271 of them tiered (derived 2026-11-17 by `scripts/count_reconcile.py`).
 
 ### 2.4 Database Arm: Retrospective Systematic Search (2026-07-13)
 
@@ -88,7 +91,9 @@ Everything in §2.1-§2.3 is curation, which PRISMA 2020 accommodates as the "id
 
 **Reconciliation**: none of the 40 included records was already in the curated corpus — measured recall of the corpus against a systematic search of its own subject was zero (0/40; `methods/prisma-results/reconciliation.json`). The corpus and the indexed literature had been reaching nearly disjoint bodies of work, which is reported as a finding rather than softened, though the search carries a disclosed blind spot of its own: its conjunctive query cannot reach the storage-side papers (PVLDB/CIDR/SIGMOD) that the review leans on hardest, so it tested one half of the review's subject and was structurally blind to the other. A 2026-07-16 addendum to the run report corrects the run-time corpus count (eight bibliography entries were invisible to the run's block counter through a heading-level defect, fixed the same day) without affecting the 0/40 finding.
 
-**Critical appraisal and incorporation**: the 40 then went through critical appraisal, a stage the topical screening had skipped — venue identity resolved at the DOI, publisher and DOAJ/Scopus/Web-of-Science status established from primaries, predatory-list and delisting checks run, and each proposed citation put to an independent second reviewer instructed to refuse under uncertainty. Fourteen did not survive: eight were published in predatory, hijacked, or delisted venues, three were not peer-reviewed at all, one could not be read at any price, and two were refused on other appraisal grounds, with the per-record reason for every disposition in `methods/prisma-appraisal-2026-07-13.json`. The surviving 26 are incorporated into the corpus (`methods/incorporated-2026-07-13.json`).
+### 2.5 Critical Appraisal of the Database Arm
+
+**Critical appraisal and incorporation**: the 40 then went through critical appraisal, a stage the topical screening had skipped — venue identity resolved at the DOI, publisher and DOAJ/Scopus/Web-of-Science status established from primaries, predatory-list and delisting checks run, and each proposed citation put to an independent second reviewer instructed to refuse under uncertainty. Fourteen did not survive: eight were published in predatory, hijacked, or delisted venues, three were not peer-reviewed at all, one could not be read at any price, and two were refused on other appraisal grounds, with the per-record reason for every disposition in `methods/prisma-appraisal-2026-07-13.json`. The surviving 26 are incorporated into the corpus (`methods/incorporated-2026-07-13.json`), and a 2026-07-16 second screen of the 355 exclusions admitted one more through the same gate, for 27 (`methods/second-screen-adjudication-2026-07-16.json`).
 
 ---
 
@@ -98,7 +103,7 @@ Everything in §2.1-§2.3 is curation, which PRISMA 2020 accommodates as the "id
 
 All sources are classified using a four-tier evidence system. Level A is reserved for peer-reviewed research and official standards; production evidence, however good, is Level B.
 
-#### Evidence Level A (live share 17.0% at 2026-08-19; NO target — see 8.1a — the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 tier audit re-tiered 57 further entries off A once the criteria below were corrected)
+#### Evidence Level A (live share 22.5% at 2026-11-17, 17.0% immediately after the 2026-08-19 tier audit re-tiered 57 entries off A once the criteria below were corrected; NO target, see 8.1a; the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
 **Criteria**: Peer-reviewed research, and official standards. Nothing else.
 **Examples**:
 - Peer-reviewed publications at a named venue with real review (USENIX Security, IEEE S&P, NDSS, CCS, VLDB, SIGMOD, ICSE, NeurIPS, ICML, ACL, KDD, TMLR, or a peer-reviewed journal). An arXiv preprint with no named venue is **not** peer-reviewed and does not qualify, however eminent its authors
@@ -106,23 +111,21 @@ All sources are classified using a four-tier evidence system. Level A is reserve
 - The formal specification document of an open standard (the Iceberg *table spec*, the OCSF *schema spec*) — the specification itself, not the project's documentation, release notes, governance pages or issue trackers
 - **Normative reference frameworks** from a neutral, non-commercial body, published as a versioned formal specification (MITRE D3FEND, MITRE ATLAS). Owner ruling, 2026-08-19: these hold the same evidentiary position as a NIST or ISO document. Their scope is the same too — primary for taxonomy and structure, and silent on efficacy. A framework is authoritative about what it says, never evidence that following it works
 - **NOT Level A**, and this is where the corpus went wrong before 2026-08-19: production case studies and deployment writeups, vendor engineering blogs, industry-conference talks, trade books, analyst and vendor-commissioned reports, government *advisories* (as distinct from standards), consortium and foundation announcements, and official project documentation. All are Level B. (The earlier Shell entry was removed in the 2026 audit — dead URL, unverifiable)
-- Peer-reviewed academic publications
-- Government/standards body publications (CISA, MITRE, DARPA, NSA, SANS, Apache Software Foundation)
 
-**Current Achievement**: 61 of 271 tiered entries (22.5%), live-derived 2026-11-07 — BELOW target. The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 61 of 271 tiered entries (22.5%), live-derived 2026-11-17, reported as a measurement rather than against a target (§8.1a). The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
-#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 68.3%)
+#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 62.7%)
 **Criteria**: Practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation. Real evidence, not independently reviewed.
 **Examples**:
 - Gartner, IDC, Forrester quantitative research
-- Expert practitioner validation (personal communication with production deployment details)
+- Production case studies and deployment write-ups (Netflix, Uber, Cloudflare, SK Telecom)
 - Vendor technical documentation (if production-validated)
 
-**Live share**: 108 of 227 tiered entries (47.6%), derived 2026-07-16. *(Note, 2026-07-16: the <27% figure is the October-2025 design bound, and it is currently breached — a documented consequence of the 2026-06/07 audits moving inflated Level-A entries down to B (headline stats not present in the cited source, first-person practitioner authorship on vendor channels re-tiered B), not of quality decay in the incoming sources. The original "Achieved: 21% (15 of 72)" was the October-2025 self-grade at a 72-source corpus and is preserved here as history.)*
+**Live share**: 170 of 271 tiered entries (62.7%), derived 2026-11-17. *(Note, 2026-07-16, when the share was 47.6% (108 of 227): the <27% figure is the October-2025 design bound, and it is currently breached — a documented consequence of the 2026-06/07 audits moving inflated Level-A entries down to B (headline stats not present in the cited source, first-person practitioner authorship on vendor channels re-tiered B), not of quality decay in the incoming sources. The original "Achieved: 21% (15 of 72)" was the October-2025 self-grade at a 72-source corpus and is preserved here as history.)*
 
-#### Evidence Level C (live share 10.6% — 24 of 227 tiered; original design intent was "Rejected: 0%")
+#### Evidence Level C (live share 14.8% — 40 of 271 tiered; original design intent was "Rejected: 0%")
 **Criteria**: Vendor blog posts, product documentation, and conference talks not backed by production measurement
-**Policy** *(corrected 2026-07-16 to match the manuscript §2.3 and the corpus)*: Level C sources ARE catalogued, with their bias flagged and their tier stated, where they are the only available account of a system's behaviour; they never carry a hypothesis on their own. The original October-2025 protocol declared Level C "Rejected: 0% — not included in bibliography unless upgraded to Level A/B with supporting evidence", and the corpus has never matched that claim (24 of 227 tiered entries are Level C). The policy is corrected here to describe what the review actually does, because a stated inclusion policy that the bibliography visibly contradicts is worse than a permissive one stated plainly; the original design intent is preserved in this note as history.
+**Policy** *(corrected 2026-07-16 to match the manuscript §2.3 and the corpus)*: Level C sources ARE catalogued, with their bias flagged and their tier stated, where they are the only available account of a system's behaviour; they never carry a hypothesis on their own. The original October-2025 protocol declared Level C "Rejected: 0% — not included in bibliography unless upgraded to Level A/B with supporting evidence", and the corpus has never matched that claim (40 of 271 tiered entries are Level C, derived 2026-11-17). The policy is corrected here to describe what the review actually does, because a stated inclusion policy that the bibliography visibly contradicts is worse than a permissive one stated plainly; the original design intent is preserved in this note as history.
 
 #### Evidence Level D (Rejected: 0%)
 **Criteria**: Marketing materials, unverified claims, speculation
@@ -133,7 +136,7 @@ All sources are classified using a four-tier evidence system. Level A is reserve
 Each source undergoes multi-dimensional credibility evaluation:
 
 **Quantitative Validation**:
-- Specific metrics cited (e.g., "97% query time reduction" vs "significant improvement")
+- Specific metrics cited (e.g., "6 million requests/second" vs "significant improvement")
 - Reproducible benchmarks with methodology disclosure
 - Production scale indicators (data volumes, request rates, enterprise names)
 
@@ -148,7 +151,7 @@ Each source undergoes multi-dimensional credibility evaluation:
 - 2018-2023 sources accepted if still relevant (foundational technologies)
 - Pre-2018 sources only for historical context (e.g., Brooks' "Mythical Man-Month")
 
-**Metadata Completeness**:
+**Metadata Completeness** (October-2025 self-assessment, not re-derived):
 - 97% of entries include: Title, Author, Date, URL, Evidence Level, Hypothesis Links, Key Findings
 - Missing metadata flagged for validation or downgrade
 
@@ -161,7 +164,7 @@ Each source undergoes multi-dimensional credibility evaluation:
 Each source is documented with structured metadata:
 
 ```markdown
-## [Source Title]
+#### [Source Title]
 
 **Authors**: [Names/Organization]
 **Date**: [Publication/Access Date]
@@ -184,7 +187,7 @@ Each source is documented with structured metadata:
 
 ### 4.2 Extraction Categories
 
-Sources organized into topical categories aligned with book structure:
+Sources organized into topical categories aligned with the October-2025 book structure (tallies from that catalogue, kept as record only; superseded by the per-entry source taxonomy in `methods/source-taxonomy.json`, and the sub-counts were never reconciled to the category totals):
 
 1. **Foundational Architecture** (18 sources)
    - Table Formats (Iceberg, Delta, Hudi): 8 sources
@@ -220,13 +223,13 @@ Sources organized into topical categories aligned with book structure:
 3. **Wayback Machine**: Recovery of dead links where feasible
 4. **Update Protocol**: Replace with current vendor documentation if original source unavailable
 
-**Validation Results** (Phase 1):
+**Validation Results** (Phase 1, October 2025; the hypothesis-critical grade was later withdrawn, see §2.3):
 - ✅ Active URLs: 16 of 22 (73%)
-- ✅ Hypothesis-critical sources: 16 of 16 (100%)
+- ~~✅ Hypothesis-critical sources: 16 of 16 (100%)~~ (withdrawn)
 - ⚠️ Paywalls (expected): 3 sources (Gartner, IDC, Forrester)
 - ⚠️ Placeholders with corroborating evidence: 3 sources (non-critical)
 
-**Validation Priority**: All hypothesis-validating sources verified before publication. Non-critical placeholders acceptable if supported by related evidence.
+**Current practice**: link checking runs through `scripts/link_check.py` (latest record `methods/link-check-2026-08-05.md`), and per-citation verification is logged in RESEARCH-JOURNAL.md.
 
 ---
 
@@ -235,11 +238,12 @@ Sources organized into topical categories aligned with book structure:
 ### 5.1 Hypothesis Formulation
 
 The literature review validates quantitative hypotheses derived from:
-1. **Book manuscript claims** (29 hypotheses): Performance assertions, cost estimates, adoption rates
-2. **Literature gap analysis** (3 hypotheses): Patterns identified during extraction not previously formalized
-3. **Isolation-first security pattern** (4 research questions): RQ7-RQ10 examining isolation-based architecture patterns
+1. **Book manuscript claims**: performance assertions, cost estimates, adoption rates
+2. **Literature gap analysis**: patterns identified during extraction not previously formalized
+3. **Isolation-first security pattern**: research questions RQ7-RQ10 (§5.4)
+4. **Post-audit literature intake**: two hypotheses formulated 2026-07-10 from peer-reviewed primaries (H-LOGCOMP-01, H-SOC-BASELINE-01)
 
-**Total Hypotheses**: 36 (29 from book, 3 from literature review, 4 from isolation-first security research)
+The wider hypothesis population these come from is tracked externally in the project's hypothesis tracker and is not counted here, because nothing in this repository enumerates it; the scored roster of this review is the set in PUBLICATION-MANUSCRIPT.md §3.7.
 
 ### 5.2 Hypothesis Validation Framework
 
@@ -276,7 +280,7 @@ Each hypothesis is classified using a 5-level confidence scale:
 
 > **Correction (2026-07-10, part-2 sweep; amended 2026-07-16 to add H3-PERFORMANCE-01)**: this table is the October-2025 Phase-1 record, preserved as-written — but several of its Key Evidence legs were later confirmed fabricated or unsupported and formally overturned: H-IMPL-01's IDC 2.5-3×, Confluent 45-55%, and Cloudera 39%/32% legs (hypothesis now scores 1/5), H-IMPL-02's DORA 2.7× and Ververica 3.2-FTE legs (now 2/5), H-IMPL-03's Gartner/phData 5.5-month leg, H-COST-09's Netflix 70-80% and AWS ~35% legs (replaced by the first-party S3 tier-price derivation; now 4/5), H-STREAM-01's LinkedIn "terabytes state" phrasing, and H3-PERFORMANCE-01's Shell 57TB/day leg (entry removed 2026-06-05, fabricated-class), its "96% <1s queries" figure (withdrawn 2026-07-11 — not in the cited Cloudflare article), and its "5-10× storage efficiency vs Elasticsearch" figure (corrected 2026-07-11, part-1 sweep: the benchmark's verified storage figure is 12-19×, the 5-12× multipliers on that page being query speed — see hypothesis-confidence-matrix.md's H3 section note). H3's surviving legs are Cloudflare's 6M req/sec and the first-party SDW lab CIDR probe, scoring 19/25 (High) under the 2026-07-13 rescore. (The x/5 values in this note are the 2026-07-10 interim scores; the 2026-07-13 rubric rescore supersedes them — H-IMPL-01/02/03 5/25, H-COST-09 9/25, H-STREAM-01 15/25, per PUBLICATION-MANUSCRIPT.md §3.7.) Do NOT cite this table's evidence column — current scores and verified legs live in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md and MASTER-BIBLIOGRAPHY.md.
 
-**7 Hypotheses Validated** with quantitative evidence *(Phase-1 claim — see correction above; the hypothesis-count adjudication is separately pending)*:
+**7 Hypotheses Validated** with quantitative evidence *(Phase-1 claim — see correction above; the roster was extended to nine on 2026-07-10)*:
 
 | Hypothesis | Status | Sources | Confidence | Key Evidence |
 |------------|--------|---------|------------|--------------|
@@ -289,7 +293,7 @@ Each hypothesis is classified using a 5-level confidence scale:
 | **H-STREAM-01**: Kafka Streams for security analytics | VALIDATED | 3 | ⭐⭐⭐⭐ | LinkedIn (terabytes state), Uber (thousands of views), Confluent (sub-second latency) |
 
 **Validation Quality Metrics**:
-- Average sources per validated hypothesis: 4.1
+- Average sources per validated hypothesis: 4.1 *(October-2025 figure; the Sources column above averages 3.9)*
 - ~~Quantitative evidence in all 9 hypotheses: 100% (7 original plus 2 added in the 2026-07-10 audit)~~ *(corrected 2026-07-16: false after the 2026-06/07 withdrawals. Under the 2026-07-13 rescore (PUBLICATION-MANUSCRIPT.md §3.7), five of the nine hold verified quantitative legs — H-ARCH-01 23/25, H3-PERFORMANCE-01 19/25, H-LOGCOMP-01 17/25, H-STREAM-01 15/25, H-SOC-BASELINE-01 13/25 — while H-COST-09 (9/25) holds only a first-party bound on the achievable saving and H-IMPL-01/02/03 (5/25 each) sit at the instrument's zero-scoreable-leg floor with no surviving quantitative support)*
 - Production deployment validation: 6 of the 7 Phase-1 hypotheses (86%)
 - Government/standards validation: 2 of the 7 Phase-1 hypotheses (29%)
@@ -309,7 +313,7 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 - **Question**: Does isolation-first security meet SOC 2, ISO 27001, NIST CSF requirements without fine-grained catalog access?
 - **Hypothesis**: Network isolation as primary security control meets compliance requirements for most enterprise security teams, with exceptions for multi-tenant MSSPs and federated global teams
 - **Validation Metrics**: Compliance framework coverage, audit trail completeness, regulatory acceptance, gap analysis
-- **Data Sources**: Netflix compliance (SOC 2 with Polaris), Financial services SOC deployments, CISA zero-trust guidance, Paul Agbabian OCSF deployments, ISO 27001/NIST CSF mappings
+- **Data Sources**: Netflix compliance (SOC 2 with Polaris), Financial services SOC deployments, CISA zero-trust guidance, OCSF deployment case studies, ISO 27001/NIST CSF mappings
 - **Evidence Tier Target**: B
 
 **RQ9: Multi-Tenant MSSP vs Isolation-First Architecture Decision Thresholds**
@@ -360,14 +364,9 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 - Edge processing viability for security analytics (DuckDB)
 - Table format interoperability (XTable) adoption timelines
 
-### 6.3 Temporal Analysis (Planned - Phase 2)
+### 6.3 Temporal Analysis
 
-**Quarterly Update Methodology**:
-1. **Month 1**: IT Harvest vendor data refresh + platform capability updates
-2. **Month 2**: Expert validation cycle + blog synthesis
-3. **Month 3**: Publication of versioned snapshot (YYYY-QX-update.md)
-
-**Versioned Snapshots**: Each quarterly update creates new markdown file (e.g., 2026-Q1-update.md) preserving citation stability for academic references.
+The living-review cadence is the one the manuscript commits to in §2.7: monthly surveillance, quarterly incorporation, and an off-cycle update when a new Level-A source contradicts a scored hypothesis or moves it across a band boundary. The October-2025 plan for a month-by-month quarterly cycle built on an IT Harvest vendor-data partnership and per-quarter `YYYY-QX-update.md` files was not carried out in that form; versions are cut as tagged repository releases instead (§7.1).
 
 ---
 
@@ -379,14 +378,14 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 
 **Solution**: Git-based version control with quarterly snapshots
 - **CHANGELOG.md**: Documents all revisions with timestamps and rationale
-- **Versioned Files**: YYYY-QX-update.md snapshots enable citation of specific review versions
+- **Versioned Releases**: tagged repository releases, archived with a DOI once the first Zenodo release is minted, enable citation of a specific review version
 - **Never Edit Published Versions**: Once published, create new version rather than edit existing
 
 **Academic Citation Format**:
 ```
-Wiley, J. (2025). Modern Data Stack for Cybersecurity: Living Literature Review
-(Version 2025-Q4). Retrieved from https://github.com/flying-coyote/
-security-data-literature-review/blob/main/2025-Q4-update.md
+Wiley, J. (2026). Modern Data Architecture for Cybersecurity Operations: A Systematic
+Literature Review (version 2026-Q3-v1.0 or later tag).
+https://github.com/flying-coyote/security-data-literature-review (DOI to follow on the Zenodo release)
 ```
 
 ### 7.2 Transparency and Documentation
@@ -398,8 +397,8 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 
 **Reproducibility**:
 - All extraction from source documents (best practices doc, archive manuscripts)
-- Automated URL validation scripts (planned)
-- Expert interview guides publicly documented (EXPERT-INTERVIEW-GUIDE-*.md)
+- Link checking by `scripts/link_check.py`; every stated count derived by `scripts/count_reconcile.py`
+- The expert-interview protocol is summarized in PUBLICATION-MANUSCRIPT.md Appendix C
 
 ### 7.3 Limitations and Biases
 
@@ -412,16 +411,16 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 2. **Vendor Documentation Prevalence**: vendor-authored material (68 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 82 of 273 entries (30.0%; live per `methods/source-taxonomy.json`) — the largest single bloc *(the "33 of 75 (44%)" formerly stated here was the October-2025 figure at a 75-source corpus)*
    - *Mitigation*: Prioritize production-validated vendor sources (Netflix, Uber, Cloudflare), exclude marketing materials, flag bias per entry, never rest a hypothesis on a vendor source alone
 
-3. **Recency Bias**: 70% of sources from 2023-2025
+3. **Recency Bias**: an October-2025 estimate put 70% of sources in 2023-2025 (not re-derived for the current corpus)
    - *Justification*: Modern data stack technologies evolved rapidly 2018-2025, recency ensures relevance
 
-4. **English-Language Sources**: All sources in English
+4. **English-Language Sources**: the synthesized corpus is in English, with one catalogued Portuguese short-course chapter from the database arm
    - *Impact*: May miss regional deployments (Asia-Pacific, Europe), though major vendors and standards bodies publish in English
 
 5. **Publication Bias**: Production failures underreported in public case studies
-   - *Mitigation*: Expert interviews capture implementation challenges not in public documentation
+   - *Mitigation*: the prepared interviews (manuscript Appendix C) are meant to capture implementation challenges absent from public documentation; until they are held, this mitigation is planned rather than applied
 
-**Conflicts of Interest**: None. Literature review independent of vendor funding.
+**Conflicts of Interest**: the review has no vendor funding. The author operates Security Data Works LLC, a consultancy whose commercial interests relate to the open, modular security-data architectures the review evaluates; the declaration of record is the Conflict of Interest statement in PUBLICATION-MANUSCRIPT.md, and the re-derivable rubric and tiers exist so a reader need not rely on the author's judgment.
 
 ---
 
@@ -432,11 +431,12 @@ security-data-literature-review/blob/main/2025-Q4-update.md
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
-| Unique Sources Documented | 100+ | 229 catalogued (227 tiered) | ✅ Met |
-| Evidence Level A | retired 2026-08-19 (see 8.1a) | 22.5% (61/271 tiered; live-derived 2026-11-07) | ✅ Measured, not targeted |
-| URL Validation (Overall) | 80%+ | 73% | ⚠️ Near Target |
-| URL Validation (Hypothesis-Critical) | 100% | 100% | ✅ |
-| Hypotheses Validated | 5+ | 7 | ✅ EXCEEDS |
+| Unique Sources Documented | 100+ | 273 catalogued (271 tiered; derived 2026-11-17) | ✅ Met |
+| Evidence Level A | retired 2026-08-19 (see 8.1a) | 22.5% (61/271 tiered; live-derived 2026-11-17) | ✅ Measured, not targeted |
+| URL Validation (Overall) | 80%+ | 73% (October 2025) | ⚠️ Near Target |
+| URL Validation (Hypothesis-Critical) | 100% | ~~100%~~ withdrawn (see §2.3) | Superseded by per-citation verification |
+| Hypotheses Assessed | 5+ | 9 (7 Phase-1, 2 added 2026-07-10) | ✅ |
+| Metadata Completeness | 95%+ | 97% (October-2025 self-assessment) | ✅ |
 | Book Chapters Cited | 7/7 (current seven-chapter book; the old 11/11 was the retired outline, remapped 2026-11-07 in `methods/chapter-remap-2026-11.md`) | 7/7 | ✅ 100% |
 
 ### 8.1a Why the Level-A share is no longer a target (owner ruling, 2026-08-19)
@@ -479,9 +479,8 @@ with no author list and no venue). Both were re-tiered A → B on 2026-11-07 wit
 in each entry. Read against the 229 entries the audit covered, that is 227 of 229 correct
 (99.1%), which is a measured error rate for the audit itself; the live tier counts are derived
 by `scripts/count_reconcile.py` and the denominator has since moved on as entries were added.
-| Metadata Completeness | 95%+ | 97% | ✅ |
 
-### 8.2 Phase 2 Metrics (PENDING - IT Harvest Partnership)
+### 8.2 Phase 2 Metrics (planned October 2025; the IT Harvest partnership they assumed is still pending)
 
 **Planned Metrics**:
 - Quarterly updates published: 4 per year (Jan, Apr, Jul, Oct)
@@ -493,7 +492,7 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 **Suitability Assessment**:
 - ✅ PRISMA-aligned methodology documented
-- ⚠️ Evidence quality below the Level-A target (41.9% live at 2026-07-16; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
+- Reported, not targeted: evidence quality stated as a measured Level-A share rather than against a target (22.5% derived 2026-11-17; §8.1a; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
 - ✅ Quantitative hypothesis validation with multiple sources
 - ✅ Reproducible extraction process
 - ✅ Version control for citation stability
@@ -511,7 +510,7 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 ### 9.1 Book Manuscript Integration
 
-**Purpose**: Literature review provides evidence foundation for "Modern Data Stack for Cybersecurity" (115,500-word manuscript)
+**Purpose**: Literature review provides evidence foundation for "Modern Data Stack for Cybersecurity". *(The integration points below are the October-2025 plan against the retired eleven-chapter outline; the current seven-chapter mapping is `methods/chapter-remap-2026-11.md` and the per-chapter claim-evidence matrix is `methods/claim-evidence-matrix-2026-11.md`.)*
 
 **Integration Points**:
 - **Chapter 1 (Cost Comparisons)**: 12 sources validating SIEM alternatives economics
@@ -525,9 +524,9 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 ### 9.2 Blog Integration (Feedback Loop)
 
-**Security Data Commons Blog** (3×/week cadence):
+**Security Data Commons Blog** (October-2025 channel, since retired; the feedback loop below describes how it worked):
 - **Blog → Literature Review**: Blog posts identify new sources requiring literature review integration
-- **Literature Review → Blog**: Evidence-based writing with authoritative citations (4-6× speedup demonstrated)
+- **Literature Review → Blog**: Evidence-based writing with authoritative citations
 
 **Example Workflow**:
 1. Blog post on "ClickHouse vs Elasticsearch for Security Logs" cites literature review sources
@@ -539,16 +538,16 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 ## 10. Conclusion
 
-This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 227 tiered sources on modern data stack technologies for cybersecurity. The approach prioritizes:
+This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 271 tiered sources (derived 2026-11-17) on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: Level-A share live-derived per entry (17.0% at 2026-08-19; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
+1. **Evidence Quality**: Level-A share live-derived per entry (22.5% at 2026-11-17, 17.0% immediately after the 2026-08-19 audit; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
 2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations
 
-**Phase 1 Success**: Extraction complete with all book chapters cited, 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit); publication readiness is assessed honestly in §8.3, with the Level-A share still below target.
+**Phase 1 Success**: Extraction complete with all book chapters cited, 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit); publication readiness is assessed in §8.3.
 
-**Phase 2 Planned**: Quarterly updates integrating IT Harvest vendor landscape data, expert validation cycles, and blog-literature feedback loop.
+**Ongoing cadence**: monthly surveillance, quarterly incorporation, and tagged repository releases (first: 2026-Q3-v1.0), as set out in §6.3.
 
 **Methodological Contribution**: Demonstrates living literature review infrastructure for rapidly-evolving technology domains requiring both academic rigor and practitioner currency.
 
@@ -556,6 +555,6 @@ This systematic literature review employs a PRISMA 2020 two-arm methodology to c
 
 **Maintained by**: Jeremy Wiley
 **Project Repository**: https://github.com/flying-coyote/security-data-literature-review
-**Last Updated**: July 16, 2026 (reconciled with PUBLICATION-MANUSCRIPT.md methods: two-arm search description in §2, corrected Level-B/C policy statements, rescored confidence examples, H3-PERFORMANCE-01 corrections in §5.3)
-**Version**: 1.2 (2026-07-16 reconciliation pass; 1.1 was Phase 1 Complete + RQ7-RQ10 Isolation-First Security, November 14, 2025)
-**Next Review**: 2026-Q4 (quarterly cadence)
+**Last Updated**: November 17, 2026 (counts re-derived, tier definitions aligned with the 2026-08-19 audit, appraisal given its own section, stale October-2025 claims labelled)
+**Version**: 1.3 (1.2 was the 2026-07-16 reconciliation pass; 1.1 added RQ7-RQ10, November 14, 2025)
+**Next Review**: 2027-Q1 (quarterly cadence)

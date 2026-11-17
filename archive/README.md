@@ -4,6 +4,8 @@
 **Created**: October 21, 2025
 **Maintenance**: Reference only - no active updates
 
+Dated working records that are newer than this folder's contents (the 2026 audits, research-intake notes, scoring proposals and the expert-interview guides) live in [`working/`](../working/README.md), which has its own index.
+
 ---
 
 ## Contents
@@ -30,9 +32,9 @@ Historical session documentation from Phase 1 completion and Phase 2A-2C executi
 
 4. **SESSION-2025-10-16-VERSION-1.6.1-QUALITY-ENHANCEMENTS.md** (476 lines)
    - Documented Version 1.6.1: Expert interview preparation + bibliography quality fixes
-   - 2 expert interview guides created (Lisa Cao, Jake Thomas)
-   - Bibliography quality: 79% Evidence Level A (exceeds 73% target)
-   - Key findings integrated into: EXPERT-INTERVIEW-GUIDE-*.md files, REPOSITORY-STATUS.md, CHANGELOG.md
+   - 2 expert interview guides created (Lisa Cao, Jake Thomas), now in `working/expert-interviews/`
+   - Bibliography quality self-graded at 79% Evidence Level A at the time; that self-grade was withdrawn in the 2026-06 audit
+   - Key findings integrated into: the expert interview guides, REPOSITORY-STATUS.md, CHANGELOG.md
 
 **Total Session Logs**: 2,160 lines
 
@@ -66,9 +68,15 @@ Registered 2026-07-10 — the subdir predates this entry (backfilled), and four 
 
 ---
 
+### Bibliography Extraction Log (October 2025)
+
+**bibliography-extraction-log-2025-10.md**: the three process sections that used to sit inside `MASTER-BIBLIOGRAPHY.md` ("Extraction Summary - COMPLETE", "Extraction Progress Update", "Extraction Complete Summary"), moved here verbatim on 2026-11-17 during the November quality pass. They record how the corpus was first assembled; their self-graded counts and the pre-audit hypothesis table were superseded by the 2026-06-05 audit and later re-tiers, and the file's own header says so. Live counts come from `scripts/count_reconcile.py`.
+
+---
+
 ### D-Audit Archive Pass (2026-07-10)
 
-Archived per `D-AUDIT-ADJUDICATION-2026-07-09.md` after local verification of every row (owner sign-off 2026-07-10). Each file carries a top banner naming its live successor and known-stale claims:
+Archived per `working/audits/D-AUDIT-ADJUDICATION-2026-07-09.md` after local verification of every row (owner sign-off 2026-07-10). Each file carries a top banner naming its live successor and known-stale claims:
 
 1. **REPOSITORY-STATUS.md** (679 lines) — June-2026 banner over a Jan-2026-and-earlier body; was a fourth hand-synced metrics surface. Live metrics: README.md Quality Metrics block (`scripts/automation_dashboard.py`)
 2. **PROJECT-PLAN-2026-Q1.md** — expired quarter plan; carries the phantom `2025-Q4-v1.0` tag corrections (all four mentions annotated)
@@ -98,26 +106,14 @@ Archived per `D-AUDIT-ADJUDICATION-2026-07-09.md` after local verification of ev
 
 ## Active Documentation (Not Archived)
 
-Current, actively maintained documentation remains in repository root:
+The live review stays at the repository root; README.md carries the full repository map. In short:
 
-**Core Documentation**:
-- README.md - Repository overview (also the live metrics surface since 2026-07-10)
-- MASTER-BIBLIOGRAPHY.md - 75+ sources with evidence levels
-- PROJECT-BRIEF.md - Project context (Memory Prompts Prompt 3 format)
-- CHANGELOG.md - Version history and change tracking
+- **The review**: PUBLICATION-MANUSCRIPT.md, MASTER-BIBLIOGRAPHY.md, METHODOLOGY.md, RESEARCH-JOURNAL.md, CHANGELOG.md
+- **Method records**: `methods/` (search protocol, PRISMA runs, appraisal, rescore, taxonomy inputs, verification ledgers)
+- **Deep evidence**: `book-appendices/`, `analysis-bundles/` (3 live files; the other 6 are archived here under `analysis-bundles/`), `vendor-landscape/`
+- **Working records**: `working/` (dated audits, intake notes, proposals, interview guides; index at `working/README.md`)
 
-**Planning & Methodology**:
-- LITERATURE-EXTRACTION-PLAN.md - Systematic extraction methodology (PRISMA-aligned)
-- LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md - Gap analysis and new hypotheses
-- PUBLICATION-VENUE-RECOMMENDATIONS.md - Academic publication strategy
-
-**Expert Validation**:
-- EXPERT-INTERVIEW-GUIDE-LISA-CAO.md - Structured interview (catalog landscape)
-- EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md - Structured interview (DuckDB, edge processing)
-
-**Deliverables**:
-- `analysis-bundles/` - 3 live files since 2026-07-10 (hypothesis-confidence-matrix, cost-reality-reference, staffing-budget-calculator); the other 6 are archived here under `analysis-bundles/`
-- `platforms/`, `infrastructure/`, `security-specific/`, `vendor-landscape/` - Phase 2 structure
+The `platforms/`, `infrastructure/` and `security-specific/` stubs listed here before 2026-07-09 were removed that day; they were never populated.
 
 ---
 
@@ -143,7 +139,7 @@ Current version: See CHANGELOG.md
 **What Stays Active**:
 - Core documentation (README, MASTER-BIBLIOGRAPHY, PROJECT-BRIEF, etc.)
 - Planning documents referenced for ongoing work
-- Deliverables used by book/blog (analysis-bundles/, expert guides)
+- Deliverables used by the book and the essays (analysis-bundles/, book-appendices/)
 - Version history (CHANGELOG.md maintains all version records)
 
 **Review Cadence**:
@@ -153,5 +149,5 @@ Current version: See CHANGELOG.md
 
 ---
 
-**Last Updated**: 2026-07-10 (D-audit archive pass + December-2025 backfill + archived/-into-archive/ merge)
-**Archived By**: Documentation cleanup (claude/cleanup-docs-011CUM9Dx4xzwnR54qNvYJvs); D-audit pass per D-AUDIT-ADJUDICATION-2026-07-09.md
+**Last Updated**: 2026-11-17 (bibliography extraction log indexed; working/ cross-linked; active-documentation list brought to the current layout)
+**Archived By**: Documentation cleanup (claude/cleanup-docs-011CUM9Dx4xzwnR54qNvYJvs); D-audit pass per working/audits/D-AUDIT-ADJUDICATION-2026-07-09.md; November 2026 quality pass

@@ -1,0 +1,9 @@
+evidence-tiers.png
+  size 1080x1309  ratio 0.825  (non-standard ratio)
+  feed: inside LinkedIn single-photo range (3:1 to 4:5)
+  phone scale at 375px wide: 0.347
+  text floor at source (about 11px on phone): ~32 px; body-size read (about 16px): ~47 px
+  link card: not an og:image as is (needs about 1.91:1 and at least 1200x627)
+  saturated hue families by area (screen only): azure 11.00%
+  most common non-white colours (5-bit buckets, approximate hex; compare with the Diagram standard and feed to a contrast checker): #1c8ce4 2.4%, #5c8cc4 2.0%, #84accc 1.6%, #34648c 1.5%, #e4e4ec 1.4%, #248ce4 0.5%, #c4ccd4 0.5%, #ccd4dc 0.4%
+  wrote glance/evidence-tiers/evidence-tiers-{phone,blur,gray,deutan,crop-4x5,crop-1x1,crop-1.91x1}.png

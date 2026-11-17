@@ -7,7 +7,7 @@ tags: [stream-processing, community, tools-catalog, flink, spark, iceberg]
 
 # Appendix J: Resources and Community
 
-These were the two navigation chapters that closed Part 3 of the original manuscript, one a tool-by-tool guide for implementing the architecture, the other a map of the communities and forums where that architecture keeps evolving. They belong in the back half now so the decision path through the handbook's core chapters (the trustworthy-data material, what good looks like, and incremental modernization) stays short and forward-moving, but the material itself is worth carrying in full. J.1 through J.8 cover the essential tools across six topic areas (stream processing, data quality, orchestration, analytics, ML/AI, and storage formats), along with the resource-navigation shortcuts by architectural pattern and the framework for evaluating new tools. J.9 through J.16 cover the community landscape:
+Once the architecture is chosen, a team usually asks two more questions, which tools to implement it with and where the people who maintain those tools can be found, so this appendix pairs a tool-by-tool implementation guide with a map of the communities and forums where the architecture keeps evolving. It grounds the tooling judgment in Chapter 5 and the case for Iceberg in Chapter 3, and it serves the whole handbook as its community reference. J.1 through J.8 cover the essential tools across six topic areas (stream processing, data quality, orchestration, analytics, ML/AI, and storage formats), along with the resource-navigation shortcuts by architectural pattern and the framework for evaluating new tools. J.9 through J.16 cover the community landscape:
 
 - where to ask questions
 - which standards bodies matter
@@ -364,7 +364,7 @@ models:
 
 **Resources**:
 - Official docs: https://docs.getdbt.com/
-- Iceberg support: https://docs.getdbt.com/docs/mesh/iceberg/apache-iceberg-support
+- Iceberg support: https://docs.getdbt.com/docs/build/iceberg/apache-iceberg-support
 
 ---
 
@@ -1118,7 +1118,7 @@ Of all the communities in this appendix, the OCSF Slack is the one where I think
 
 **What to expect**:
 - **Governance**: Linux Foundation hosted, multi-vendor TSC
-- **Release cycle**: minor versions on a roughly quarterly cadence (the current release is OCSF v1.8.0, shipped 2026-03-16), major versions less often
+- **Release cycle**: minor versions on a roughly quarterly cadence (the current release is OCSF v1.9.0, shipped 2026-08-03; v1.8.0 shipped 2026-03-18), major versions less often
 - **Community size**: 180+ contributing organizations as of 2024 (Appendix H.2.1); verify the current figure at publication
 - **Contribution model**: RFC process, 30-day community review
 
@@ -1311,7 +1311,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 - Performance improvements (file scanning, metadata handling)
 - Breaking changes (major version upgrades)
 
-**OCSF versions** (https://schema.ocsf.io/, current release v1.8.0 as of 2026-03-16):
+**OCSF versions** (https://schema.ocsf.io/, current release v1.9.0 as of 2026-11-17, shipped 2026-08-03):
 - New event classes (the schema is still adding them, so a class you need for a log source may land in a coming minor release)
 - Field additions across releases (the `d3fend` attribute, added in v1.3.0, ties OCSF classes back to D3FEND defenses, Appendix H.5.4)
 - Backward compatibility notes
@@ -1344,7 +1344,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 - The general-purpose data-engineering blogs below are excellent on lakehouse internals; they rarely touch detection engineering, OCSF, or SIEM migration, which is the gap this site fills
 
 **Tabular Blog** (Iceberg creators; Tabular acquired by Databricks in June 2024, blog content now at Databricks):
-- Archive: https://tabular.io/blog/ (frozen at 2023 pre-acquisition posts per the 2026-07-10 sweep's live fetch, and the domain resolved only intermittently during that sweep, so treat the archive as best-effort)
+- Archive: tabular.io no longer resolves (checked 2026-11-17), so read the frozen pre-acquisition posts through the Wayback Machine snapshot at https://web.archive.org/web/20240601150129/https://tabular.io/blog/
 - Current: https://www.databricks.com/blog (search "Iceberg" for continuation of Tabular team's work)
 - Deep dives: Iceberg internals, performance optimization
 - Look for: their table-internals write-ups (hidden partitioning, partition evolution, metadata layout)

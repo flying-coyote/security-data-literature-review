@@ -15,7 +15,7 @@ tags: [cost-evidence, tiered-storage, tco, streaming-vs-batch, lab-benchmarks, s
 
 > **Revision 1.2 addendum (2026-07-10).** Three "survives the audit" claims in the 1.1 revision are now themselves contradicted by the post-banner bibliography and are struck below where they appear live: (1) the DORA "Level 4 skills" qualitative leg — part 1's fetch found ZERO occurrences of any Level-taxonomy, "top 5%", or fault-tolerance framing in DORA 2024, and the bibliography now says "do not use this source for staffing or incident-rate comparisons"; (2) the Forrester TEI 39/32/29 TCO split — grep-negative in BOTH TEI documents, withdrawn 2026-07-09; (3) the Gartner 28% CAGR — the cited Gartner item is a spending forecast with no volume CAGR, withdrawn 2026-07-09. Also aligned: Huntress wording to the source-verbatim "more than 90%" (93% is derived arithmetic). The 📍 bibliography line anchors throughout predate the July edits and have drifted — re-derive before following any of them.
 
-> **Revision 1.1 audit note (2026-06-14, folded correction).** This bundle (Revision 1.0, untouched since 2025-10-15) was never swept in the 2026-06 fabrications cleanup that corrected MASTER-BIBLIOGRAPHY.md and APPENDICES.md, so it still asserted the exact statistics that audit removed or could not trace to a surviving source. They are marked WITHDRAWN inline (not deleted — the record stays so a future agent does not re-add them), mirroring the APPENDICES.md folded-correction style. Withdrawn here, with the same provenance as the bibliography audit: DORA "2.7× operational staff" and "3.2× higher incident rates" (the 2.7× multiplier is not in the DORA report); IDC "2.5-3× operational staffing" (entry withdrawn); Enterprise Data Quarterly "1.5-2× infrastructure" (entry withdrawn); Confluent "45-55% of TCO" (figure not in the cited course); AWS "35% / 55% tiered-storage savings" (cited whitepaper is a deprecated empty stub); Netflix "70-80% tiered-storage savings" (cited URL is Confluent documentation, not a Netflix source); Microsoft MSRC "350% traffic surge" (sole source withdrawn); Shell "57TB/day" (entry removed, dead URL); the CloudZero "2.8-3.6×" placeholder (no resolvable source — was already self-flagged as a placeholder); and the reliability-economics figures (Google SRE per-nine, Gartner 70% overspend, Uptime Institute four-nines, financial-services five-nines multiplier — placeholder-sourced, no resolvable citations). The cost-REDUCTION framing has been recalibrated to **60-80% median, up to 90%+ in optimal conditions**, anchored to first-party lab byte ratios (2.6× high-entropy → 7.9× EDR → 8.5× flat Zeek, `~/sdw-lab-benchmarks/cost-to-serve-retention`, verified against the FINDINGS doc) and the surviving audit-verified production anchor (Huntress 93% infrastructure-cost reduction, $70K→$5K/month, Chris Bisnett migration video — Level A). The "92% Level A" aggregate self-grade is withdrawn. Do NOT re-flag the named-source audit trail (DORA/IDC/Netflix/AWS/MSRC/Shell etc. appearing in correction notes are records, not new violations).
+> **Revision 1.1 audit note (2026-06-14, folded correction).** This bundle (Revision 1.0, untouched since 2025-10-15) was never swept in the 2026-06 fabrications cleanup that corrected MASTER-BIBLIOGRAPHY.md and APPENDICES.md, so it still asserted the exact statistics that audit removed or could not trace to a surviving source. They are marked WITHDRAWN inline (not deleted — the record stays so a future agent does not re-add them), mirroring the APPENDICES.md folded-correction style. Withdrawn here, with the same provenance as the bibliography audit: DORA "2.7× operational staff" and "3.2× higher incident rates" (the 2.7× multiplier is not in the DORA report); IDC "2.5-3× operational staffing" (entry withdrawn); Enterprise Data Quarterly "1.5-2× infrastructure" (entry withdrawn); Confluent "45-55% of TCO" (figure not in the cited course); AWS "35% / 55% tiered-storage savings" (cited whitepaper is a deprecated empty stub); Netflix "70-80% tiered-storage savings" (cited URL is Confluent documentation, not a Netflix source); Microsoft MSRC "350% traffic surge" (sole source withdrawn); Shell "57TB/day" (entry removed, dead URL); the CloudZero "2.8-3.6×" placeholder (no resolvable source — was already self-flagged as a placeholder); and the reliability-economics figures (Google SRE per-nine, Gartner 70% overspend, Uptime Institute four-nines, financial-services five-nines multiplier — placeholder-sourced, no resolvable citations). The cost-REDUCTION framing has been recalibrated to **60-80% median, up to 90%+ in optimal conditions**, anchored to first-party lab byte ratios (2.6× high-entropy → 7.9× EDR → 8.5× flat Zeek, [`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention), README "Second corpus" table) and the surviving audit-verified production anchor (Huntress 93% infrastructure-cost reduction, $70K→$5K/month, Chris Bisnett migration video — Level A) [2026-11-17: the source's own wording is "more than 90%", and MASTER-BIBLIOGRAPHY re-tiered both Huntress entries to B on 2026-08-19]. The "92% Level A" aggregate self-grade is withdrawn. Do NOT re-flag the named-source audit trail (DORA/IDC/Netflix/AWS/MSRC/Shell etc. appearing in correction notes are records, not new violations).
 
 ---
 
@@ -24,7 +24,7 @@ tags: [cost-evidence, tiered-storage, tco, streaming-vs-batch, lab-benchmarks, s
 Modern data lakehouses for security promise cost savings vs traditional SIEM, but the operational reality is more complex, and after the 2026-06-14 audit most of the borrowed multipliers below are withdrawn — what survives is a recalibrated, lab-anchored range:
 
 - **Streaming architectures**: the borrowed 2.5-3× operational-cost multiplier is WITHDRAWN (DORA/IDC figures not in source); the qualitative claim that streaming carries a higher operational-cost premium than batch stands on the surviving sources, without a specific multiple
-- **Tiered storage / cost reduction**: I'd put the defensible range at **60-80% median, up to 90%+ in optimal conditions** — anchored to the first-party byte ratios (2.6×-8.5× across telemetry shapes) and the audit-verified Huntress 93% migration result, not to the withdrawn AWS 55% / Netflix 70-80% figures
+- **Tiered storage / cost reduction**: I'd put the defensible range at **60-80% median, up to 90%+ in optimal conditions** — anchored to the first-party byte ratios (2.6×-8.5× across telemetry shapes) and the audit-verified Huntress "more than 90%" (93% derived) migration result, not to the withdrawn AWS 55% / Netflix 70-80% figures
 - **Reliability economics**: the "each nine = 10× / 70% overspend" figures are WITHDRAWN (placeholder-sourced); the qualitative point that over-targeting availability wastes budget stands without the magnitudes
 - **Hidden costs**: ~~the Cloudera/Forrester TEI 29% operational TCO survives the audit (the 39% licensing / 32% hardware split is from that same source and stands)~~ — WITHDRAWN 2026-07-10: the 39/32/29 breakdown appears in NEITHER TEI document (grep-negative in both); operational-cost-is-underestimated stands as a qualitative direction only
 - **Security premium**: specialized-skills scarcity stands as practitioner consensus, unattributed — ~~on the surviving DORA research~~ WITHDRAWN 2026-07-10 (DORA 2024 contains no Level-taxonomy or fault-tolerance-skills finding); the specific 15-30% premium is not separately sourced and should be treated as an estimate
@@ -140,7 +140,7 @@ I think the honest read is that operational costs (staffing, complexity, special
 
 ## 2. Tiered Storage Economics
 
-### 2.1 AWS Storage Optimization
+### 2.1 AWS Storage Optimization (withdrawn leg, kept as the record)
 
 **AWS Storage Optimization Whitepaper (2024) — figures WITHDRAWN (2026-06-14 audit)**
 📍 MASTER-BIBLIOGRAPHY.md:287-306
@@ -154,7 +154,7 @@ I think the honest read is that operational costs (staffing, complexity, special
 
 ---
 
-### 2.2 Netflix - Kafka Tiered Storage
+### 2.2 Netflix - Kafka Tiered Storage (withdrawn leg, kept as the record)
 
 **Netflix Technology Blog (2023) — figure WITHDRAWN (2026-06-14 audit)**
 📍 MASTER-BIBLIOGRAPHY.md:523-542
@@ -179,10 +179,10 @@ The per-tier cost multipliers below track the published S3 storage-class price s
 | **90 days - 1 year** | Cool (S3 Glacier Instant) | 0.2× | <5s | Compliance queries, historical analysis |
 | **1-7 years** | Cold (S3 Glacier Deep) | 0.1× | 12-48 hours | Audit, regulatory compliance |
 
-**Synthesis (recalibrated 2026-06-14)**: the borrowed AWS 55% and Netflix 70-80% figures are withdrawn (see §2.1, §2.2). The defensible cost-reduction band is **60-80% median, up to 90%+ in optimal conditions**, and it rests on two surviving anchors rather than the withdrawn vendor figures:
+**Synthesis (recalibrated 2026-06-14)**: the borrowed AWS 55% and Netflix 70-80% figures are withdrawn (see §2.1, §2.2). The defensible cost-reduction band is **60-80% median, up to 90%+ in optimal conditions**, which is the author's own model (Tier C) rather than a measured or published figure, and it rests on two surviving anchors rather than the withdrawn vendor figures:
 
-- *First-party byte ratios* (`~/sdw-lab-benchmarks/cost-to-serve-retention`, verified against its FINDINGS doc): the columnar/compressed-vs-raw storage ratio spans **2.6× (high-entropy security telemetry) → 7.9× (EDR/Sysmon) → 8.5× (flat Zeek conn)** on a single host at 10M rows. The ratio is strongly workload-dependent at the tails, so the cost model must re-measure the byte ratio per workload rather than assume a single constant.
-- *Production literature* (audit-verified): Huntress reported **"more than 90%"** infrastructure-cost reduction (~$70K → ~$5K/month; 93% is the derived arithmetic, not the source's own phrasing) on a ClickHouse migration (Chris Bisnett migration video, Level A) — the upper-end anchor for the "up to 90%+ optimal" tail.
+- *First-party byte ratios* ([`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention), the ratios are in its README, "Second corpus" table): the columnar/compressed-vs-raw storage ratio spans **2.6× (high-entropy security telemetry) → 7.9× (EDR/Sysmon) → 8.5× (flat Zeek conn)** on a single host at 10M rows. The ratio is strongly workload-dependent at the tails, so the cost model must re-measure the byte ratio per workload rather than assume a single constant.
+- *Production literature* (audit-verified): Huntress reported **"more than 90%"** infrastructure-cost reduction (~$70K → ~$5K/month; 93% is the derived arithmetic, not the source's own phrasing) on a ClickHouse migration (Chris Bisnett migration video, Tier B (re-tiered 2026-08-19 in MASTER-BIBLIOGRAPHY)) — the upper-end anchor for the "up to 90%+ optimal" tail.
 
 So the honest framing is a workload-dependent range (60-80% typical, 90%+ when the data compresses well and tiering is aggressive), with the high-entropy floor (~2.6×) noted so the band reads as workload-dependent, not a universal constant.
 
@@ -407,7 +407,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
 ### Tier 1: High Impact, Low Effort
 
 1. **Implement tiered storage** (60-80% median, up to 90%+ optimal — recalibrated §2.3)
-   - Anchors: first-party lab byte ratios (2.6×-8.5×, `~/sdw-lab-benchmarks/cost-to-serve-retention`) + Huntress "more than 90%" migration (~$70K→~$5K/mo, Level A). The borrowed AWS 55% / Netflix 70-80% figures are withdrawn.
+   - Anchors: first-party lab byte ratios (2.6×-8.5×, [`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention)) + Huntress "more than 90%" migration (~$70K→~$5K/mo, Tier B (re-tiered 2026-08-19 in MASTER-BIBLIOGRAPHY)). The borrowed AWS 55% / Netflix 70-80% figures are withdrawn.
    - Effort: 2-4 weeks implementation
    - ROI: Immediate savings on storage costs
 
@@ -490,7 +490,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 **Withdrawn in the 2026 audit** (entries removed or figures not in source):
 - ~~IDC operational costs~~, ~~AWS tiered storage~~, ~~Netflix tiered storage~~, ~~Google SRE reliability~~, ~~Financial-services reliability study~~, ~~Gartner reliability overspend~~, ~~Uptime Institute~~, ~~Microsoft MSRC traffic surge~~, ~~Enterprise Data Quarterly~~ — see the per-claim notes above.
 
-**Surviving cost-reduction anchor (added 2026-06-14)**: first-party lab byte ratios (`~/sdw-lab-benchmarks/cost-to-serve-retention`) + Huntress 93% migration (Level A) → recalibrated 60-80% median, up to 90%+ optimal band (§2.3).
+**Surviving cost-reduction anchor (added 2026-06-14)**: first-party lab byte ratios ([`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention)) + Huntress "more than 90%" migration (Tier B (re-tiered 2026-08-19 in MASTER-BIBLIOGRAPHY); 93% is derived arithmetic) → recalibrated, author-modeled 60-80% median, up to 90%+ optimal band (§2.3).
 
 ---
 
@@ -516,7 +516,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 2. ~~"Tiered storage reduces costs 55-80% (AWS, Netflix)"~~ — RECALIBRATED; say instead: "tiered storage and columnar compression reduce retention cost by roughly 60-80% in typical security workloads and 90%+ in optimal conditions, with the saving driven by a workload-dependent byte ratio (2.6×-8.5×, first-party lab) — re-measure per workload (Huntress reported \"more than 90%\" — ~$70K→~$5K/mo, 93% derived — on a ClickHouse migration, Level A)."
 3. ~~"70% of organizations overspend on reliability (Gartner, Uptime Institute)"~~ — WITHDRAWN (placeholder-sourced); the qualitative right-sizing point stands without the percentage.
 
-**Citation format**: do NOT cite the withdrawn IDC/DORA/AWS/Netflix figures. Cite the first-party byte ratios (`~/sdw-lab-benchmarks/cost-to-serve-retention`) and the audit-verified Huntress migration for cost-reduction claims.
+**Citation format**: do NOT cite the withdrawn IDC/DORA/AWS/Netflix figures. Cite the first-party byte ratios ([`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention)) and the audit-verified Huntress migration for cost-reduction claims.
 
 ---
 
@@ -552,7 +552,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 - **Splunk/Elastic TCO Studies**: Direct SIEM cost comparisons (likely vendor-biased, but quantitative)
 - **Mid-Market Case Studies**: Security teams with 50-200TB workloads
 - **Cloud Provider Economics**: AWS/Azure/GCP cost comparison studies for security workloads
-- **451 Research**: Alternative to Gartner/IDC for independent cost analysis
+- **451 Research**: an alternative to the larger analyst houses for independent cost analysis
 
 ---
 
@@ -562,7 +562,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 |---------|------|---------|-----------------|
 | 1.0 | 2025-10-15 | Initial synthesis | 12 sources consolidated |
 | 1.2 | 2026-07-10 | **Banner-staleness pass (part-3 sweep):** struck the three 1.1-era "survives the audit" claims now contradicted by the bibliography — DORA Level-4 qualitative leg (no Level-taxonomy in DORA 2024 at all), Forrester TEI 39/32/29 (in neither TEI document), Gartner 28% CAGR (spending forecast, no volume CAGR) — at every live site (exec summary, §1.1, §1.3, §5.2, §5.3, §6.2, §9, §10); softened the unsourced "MITRE validated" / "validated by Uber, Netflix, Disney+" attributions to reported; aligned Huntress to source-verbatim "more than 90%" (93% = derived); LinkedIn stateful leg annotated to the Samza/VLDB-2017 re-anchor. 📍 line anchors noted as drifted (mechanical re-anchor deferred). | three retained-A claims withdrawn |
-| 1.1 | 2026-06-14 | **Folded-correction audit** (this bundle was never swept in the 2026-06 fabrications cleanup). Marked WITHDRAWN inline, mirroring APPENDICES.md: DORA 2.7×/3.2×, IDC 2.5-3×, Enterprise Data Quarterly 1.5-2×, Confluent 45-55%, CloudZero 2.8-3.6×, AWS 35%/55%, Netflix 70-80%, MSRC 350%, Shell 57TB, McKinsey 35-40%, and the placeholder-sourced reliability-economics figures (Google SRE per-nine, Gartner 70% overspend, Uptime Institute, financial-services 37×). Recalibrated the cost-reduction framing to 60-80% median / up to 90%+ optimal, anchored to first-party lab byte ratios (2.6×-8.5×, verified against `~/sdw-lab-benchmarks/cost-to-serve-retention` FINDINGS) + the audit-verified Huntress 93% migration. Retained: Cloudera/Forrester TEI 29%, Gartner 28% CAGR, DORA Level-4-skills qualitative. Withdrew the "92% Level A" aggregate self-grade. Audit-trail names left inline as records, not new violations. | borrowed stats withdrawn; lab + Huntress anchors substituted |
+| 1.1 | 2026-06-14 | **Folded-correction audit** (this bundle was never swept in the 2026-06 fabrications cleanup). Marked WITHDRAWN inline, mirroring APPENDICES.md: DORA 2.7×/3.2×, IDC 2.5-3×, Enterprise Data Quarterly 1.5-2×, Confluent 45-55%, CloudZero 2.8-3.6×, AWS 35%/55%, Netflix 70-80%, MSRC 350%, Shell 57TB, McKinsey 35-40%, and the placeholder-sourced reliability-economics figures (Google SRE per-nine, Gartner 70% overspend, Uptime Institute, financial-services 37×). Recalibrated the cost-reduction framing to 60-80% median / up to 90%+ optimal, anchored to first-party lab byte ratios (2.6×-8.5×, verified against [`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention) README) + the audit-verified Huntress 93% migration. Retained: Cloudera/Forrester TEI 29%, Gartner 28% CAGR, DORA Level-4-skills qualitative. Withdrew the "92% Level A" aggregate self-grade. Audit-trail names left inline as records, not new violations. | borrowed stats withdrawn; lab + Huntress anchors substituted |
 
 ---
 

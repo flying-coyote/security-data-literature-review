@@ -21,12 +21,14 @@ Prepared 2026-07-12 as part of the 2B wave (ratified fork 2B-F2: mint a Zenodo D
 
 ## Step 2 — tag and publish a release
 
-- [ ] Pick a version tag that fits the living-review identity (G-R1), e.g. `v2026.07` for the quarterly snapshot. Either create the release in the GitHub Releases UI, or tag locally and push:
+- [ ] Tag with the ruled `YYYY-QX-v1.0` convention (Step 0, ruled 2026-07-16; the `v2026.07` CalVer example that stood here before that ruling is retired). Either create the release in the GitHub Releases UI, or tag locally and push:
 
 ```bash
-git tag -a v2026.07 -m "Living review snapshot 2026-07"
-git push origin v2026.07
+git tag -a YYYY-QX-v1.0 -m "Living review snapshot YYYY-QX"
+git push origin YYYY-QX-v1.0
 ```
+
+(Step 0: re-tag `2026-Q3-v1.0` at the release-ready HEAD, or mint from `2026-Q3-v1.1` as the fallback; which name the first deposit carries is the owner's call.)
 
 then create a GitHub Release from that tag (Zenodo triggers on the *release* webhook, not on the bare tag). Zenodo archives the release tarball within a few minutes and reads `.zenodo.json` for the deposit metadata.
 
@@ -42,7 +44,7 @@ then create a GitHub Release from that tag (Zenodo triggers on the *release* web
 grep -n -i "data availability\|code availability\|10\.5281\|DOI" PUBLICATION-MANUSCRIPT.md
 ```
 
-As of 2026-07-12 these sections do not exist yet, so exact line numbers cannot be named here; once the 2B statement sections are in, the grep above finds them directly (Zenodo DOIs carry the `10.5281/zenodo.` prefix). Both statements point at the same deposit, cited in the DataCite `[dataset]` form the DR-5 intake verified.
+The DATA AVAILABILITY and CODE AVAILABILITY sections exist since commit fea2e05 (Step 0), so the grep above finds both placeholders directly (Zenodo DOIs carry the `10.5281/zenodo.` prefix). Both statements point at the same deposit, cited in the DataCite `[dataset]` form the DR-5 intake verified.
 
 ## Step 5 — back-fill the repo metadata
 

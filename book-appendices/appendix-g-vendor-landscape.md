@@ -7,6 +7,8 @@ tags: [vendor-landscape, siem, query-engine, iceberg, security-data, cost-compar
 
 # Appendix G: Vendor Landscape
 
+The vendor-evaluation material in Chapters 1 and 6 needs a map of who sells what across the modern security data stack, and that map is what follows, with each vendor given a category, a short description, deployment options, a cost profile and an evidence rating. It is meant to be read alongside the Appendix A worksheets, which do the actual scoring against your requirements.
+
 **Purpose**: A reference of vendors across the modern security data stack. Each entry carries a category, a short description, deployment options, a cost profile, and an evidence-quality rating.
 
 **How to use**: Reference this appendix when evaluating vendors for your architecture. Use the Decision Worksheets (Appendix A) to score vendors against your requirements. The evidence ratings (A-D) tell you how well each vendor's claims are validated, so for production work I'd start from the Tier A/B entries and treat C/D as needing your own due diligence first.

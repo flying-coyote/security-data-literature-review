@@ -5,7 +5,7 @@ Figure 4: Hypothesis Validation Confidence Levels — rubric rescore (2026-07-13
 Scores are the mechanical application of methods/scoring-rubric.md (the explicit
 instrument of record, ruling G-R4) to the nine hypotheses, computed in
 methods/RESCORE-2026-07-13.md. They supersede the 2026-07-09 adopted values from
-RESCORE-PROPOSAL-2026-07.md where the two differ: those totals were directionally
+working/proposals/RESCORE-PROPOSAL-2026-07.md where the two differ: those totals were directionally
 right but contained interpolated dimension values with no anchor a reviewer could
 re-derive them from.
 

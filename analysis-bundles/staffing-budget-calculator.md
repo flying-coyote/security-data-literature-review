@@ -42,7 +42,7 @@ This calculator provides author-modeled staffing and budget estimates for securi
 
 ---
 
-### Streaming Architecture Multiplier (2.7×)
+### Streaming Architecture Multiplier (2.7×, author-modeled)
 
 **Formula**: Baseline × 2.7 = Streaming Team Size
 
@@ -65,7 +65,7 @@ This calculator provides author-modeled staffing and budget estimates for securi
 
 **Managed Kafka/Streaming Platforms** (Confluent Cloud, AWS MSK, Azure Event Hubs):
 - Reduce platform engineers by 30-40%
-- Streaming multiplier becomes **2.0-2.2×** instead of 2.7×
+- Streaming multiplier becomes **2.0-2.2×** instead of the modeled 2.7×
 
 **Example**:
 - Baseline: 3.5 FTEs
@@ -318,7 +318,7 @@ Assumptions:
 ### Choose Batch Architecture When:
 - Incident response SLA > 15 minutes acceptable
 - Detection use cases tolerate 5-60 minute data latency
-- Team size < 5 FTEs (insufficient for 2.7× staffing multiplier)
+- Team size < 5 FTEs (insufficient for the modeled 2.7× staffing multiplier)
 - Budget constraints < $2M/year
 - Limited streaming expertise available (specialized streaming skills scarce)
 - Organization risk profile = low-moderate (not critical infrastructure)
@@ -330,7 +330,7 @@ Assumptions:
 ### Choose Managed Streaming When:
 - Real-time detection required (< 1 minute SLA)
 - Incident costs > $1M/year (streaming reduces MTTR by 50-70%)
-- Team size 5-10 FTEs (can absorb 2.7× multiplier with managed platform)
+- Team size 5-10 FTEs (can absorb the modeled 2.7× multiplier with a managed platform)
 - Budget capacity $1.5-2.5M/year
 - Limited streaming expertise (managed platform reduces ops burden)
 - Organization risk profile = moderate-high (compliance-driven, cloud-native)

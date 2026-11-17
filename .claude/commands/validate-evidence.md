@@ -2,126 +2,57 @@
 type: operating-doc
 title: "Evidence Quality Validation Checklist"
 created: 2026-01-02
+updated: 2026-11-17
 tags: [literature-review, evidence-tiers, bibliography, quality-assurance, hypothesis-coverage]
 ---
 
-# Validate Evidence Quality
+# Validate evidence quality
 
-Run evidence quality validation across the bibliography to ensure quality targets are maintained.
+Check that the bibliography's tiers, verification records and hypothesis coverage are honest. There is no Level-A share target to hit: the share targets were retired by owner ruling 2026-08-19 (METHODOLOGY §8.1a), and the share is reported as a description of where evidence in this field lives.
 
-## Quick Validation
+## 1. Counts and gates
 
-Run the automation dashboard for immediate quality assessment:
 ```bash
-python3 scripts/automation_dashboard.py
+python3 scripts/count_reconcile.py           # blocks, tiered entries, A/B/C split, hypothesis count; every gated surface
+python3 scripts/derive_source_taxonomy.py --check
+python3 scripts/automation_dashboard.py      # dashboard view, freshness, health-report summary
 ```
 
-## Quality Targets
+## 2. Tier accuracy
 
-| Metric | Target | Action if Below |
-|--------|--------|-----------------|
-| Evidence Level A (Tier 1+2) | >= 75% | Add production/peer-reviewed sources |
-| Evidence Level B (Tier 3) | <= 25% | Acceptable for expert consensus |
-| Evidence Level C/D (Tier 4-5) | 0% | Remove or replace with higher quality |
+Sample entries at each level and check them against METHODOLOGY §3.1:
 
-## Validation Checklist
+- Level A holds only peer-reviewed research at a confirmed venue, standards-body documents, formal open-standard specifications and the MITRE D3FEND / ATLAS frameworks.
+- Production case studies, engineering blogs, talks, analyst reports, project documentation and venue-less preprints are Level B.
+- Level C entries carry a bias flag and never carry a hypothesis alone.
+- Proposed tier changes are staged for the owner (they change the gated counts and the taxonomy), never applied directly.
 
-### 1. Evidence Distribution Check
-Count sources by tier in MASTER-BIBLIOGRAPHY.md:
-- Tier 1 (Production): Target 20%+
-- Tier 2 (Peer-reviewed): Target 50%+
-- Tier 3 (Expert consensus): Acceptable up to 25%
-- Tier 4-5 (Vendor/Speculation): Should be 0%
+## 3. Hypothesis coverage
 
-### 2. Hypothesis Coverage Check
-Verify each hypothesis has supporting evidence:
+For each hypothesis in PUBLICATION-MANUSCRIPT.md §3.7, list its scoreable legs under `methods/scoring-rubric.md` §1 (catalogued, and either survived primary-source verification or not yet challenged) and check the manuscript cites each. A hypothesis with no scoreable leg sits at the instrument floor of 5/25; say so rather than padding it.
 
-| Hypothesis | Required Evidence | Minimum Tier |
-|------------|------------------|--------------|
-| H-ARCH-01 (Iceberg Dominance) | 3+ sources | Tier 1-2 |
-| H-IMPL-01 (TCO Reality) | 3+ sources | Tier 1-2 |
-| H-IMPL-02 (Staffing Scarcity) | 3+ sources | Tier 1-2 |
-| H-IMPL-03 (Timeline Premium) | 2+ sources | Tier 1-2 |
-| H-COST-09 (Tiered Storage) | 2+ sources | Tier 1-2 |
-| H3-PERFORMANCE-01 (ClickHouse) | 2+ sources | Tier 1 |
-| H-STREAM-01 (Kafka Streams) | 2+ sources | Tier 1-2 |
+## 4. Verification records
 
-### 3. Source Freshness Check
-Run health check for outdated sources:
+Every number in a `**Key Findings**` line needs a primary named with a locator, and a `**Validation Status**` mark is only honest when that is true. Flag entries where the mark sits over a number with no named primary; log verdicts in RESEARCH-JOURNAL.md.
+
+## 5. Freshness and links
+
 ```bash
-python3 scripts/weekly_health_check.py
+python3 scripts/weekly_health_check.py   # samples links, flags sources older than 12 months
+python3 scripts/link_check.py            # every bibliography URL, report under methods/
 ```
 
-Flag sources older than:
-- 24 months: CRITICAL - refresh required
-- 18 months: WARNING - schedule for next update
-- 12 months: MONITOR - add to refresh queue
+Sources the health check flags (older than 12 months) that still carry a cited claim: refresh or find a newer primary. Dead links: repoint to the archived copy with a dated note, or mark the entry.
 
-### 4. Link Validation
-Check for broken links in bibliography:
-- Run health check (includes link validation)
-- Fix or mark as [Archived] with archive.org link
-- Document in source notes
+## Report
 
-### 5. Citation Completeness
-Each source entry must have:
-- [ ] Full title in quotes
-- [ ] Complete author list
-- [ ] Publication date and venue
-- [ ] URL or DOI (permanent link preferred)
-- [ ] Evidence tier classification with rationale
-- [ ] Key insights summary (1-2 sentences)
-- [ ] Related hypotheses (H-XX references)
-
-## Remediation Actions
-
-### If Evidence Level A < 75%
-1. Identify Tier 3-5 sources that can be replaced
-2. Search for production case studies (Tier 1)
-3. Find peer-reviewed papers on same topics (Tier 2)
-4. Prioritize hypothesis-critical sources
-
-### If Hypothesis Lacks Tier 1-2 Evidence
-1. Search academic databases (Google Scholar, ACM DL, IEEE)
-2. Find production deployments via blog posts, conference talks
-3. Request expert validation if empirical data unavailable
-4. Document evidence gap in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md
-
-### If Source Freshness Critical
-1. Check if source URL still active
-2. Search for updated version of same source
-3. Find newer corroborating evidence
-4. Update bibliography entry with refresh date
-
-## Output Report
-
-After validation, document results:
 ```markdown
-## Evidence Validation Report - [DATE]
+## Evidence validation report: [DATE]
 
-### Distribution
-- Tier 1: XX sources (XX%)
-- Tier 2: XX sources (XX%)
-- Tier 3: XX sources (XX%)
-- Tier 4-5: XX sources (XX%)
-- **Evidence Level A: XX%** [✅ PASS / ⚠️ BELOW TARGET]
-
-### Hypothesis Coverage
-- [X/7] hypotheses have Tier 1-2 evidence
-- Gaps identified: [list any]
-
-### Source Freshness
-- Critical (>24mo): X sources
-- Warning (>18mo): X sources
-- Fresh (<12mo): X sources
-
-### Actions Required
-1. [Action item 1]
-2. [Action item 2]
+- Gate output: [paste the first two lines of count_reconcile.py]
+- Tier spot-check: [N sampled, N mis-tiered, staged changes]
+- Hypotheses with no scoreable leg: [list]
+- Numbers without a named primary: [list with line numbers]
+- Freshness: [counts from the health check]
+- Actions: [list]
 ```
-
-## Validation Schedule
-
-- **Weekly**: Run automation_dashboard.py
-- **Monthly**: Full validation checklist (during monthly update)
-- **Quarterly**: Deep validation with hypothesis review (during deep dive)

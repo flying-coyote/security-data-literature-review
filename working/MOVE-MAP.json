@@ -1,0 +1,78 @@
+{
+  "description": "Old path to new path for the 2026-11-17 working-file move. Read by scripts/repoint_moved_paths.py. Paths are repo-root relative.",
+  "moved_on": "2026-11-17",
+  "moves": [
+    {
+      "from": "AUDIT-REPORT-BEST-PRACTICES.md",
+      "to": "working/audits/AUDIT-REPORT-BEST-PRACTICES.md"
+    },
+    {
+      "from": "SELF-AUDIT-2026-06.md",
+      "to": "working/audits/SELF-AUDIT-2026-06.md"
+    },
+    {
+      "from": "MIESSLER-REPO-AUDIT-2026-07-09-cowork.md",
+      "to": "working/audits/MIESSLER-REPO-AUDIT-2026-07-09-cowork.md"
+    },
+    {
+      "from": "D-AUDIT-ADJUDICATION-2026-07-09.md",
+      "to": "working/audits/D-AUDIT-ADJUDICATION-2026-07-09.md"
+    },
+    {
+      "from": "REVIEW-AND-PLAN-2026-06.md",
+      "to": "working/audits/REVIEW-AND-PLAN-2026-06.md"
+    },
+    {
+      "from": "REVIEW-AND-RECOMMENDATIONS-2026-07-16.md",
+      "to": "working/audits/REVIEW-AND-RECOMMENDATIONS-2026-07-16.md"
+    },
+    {
+      "from": "VERIFICATION-SWEEP-2026-07-09-cowork.md",
+      "to": "working/audits/VERIFICATION-SWEEP-2026-07-09-cowork.md"
+    },
+    {
+      "from": "VERIFICATION-SWEEP-PART2-2026-07-10-cowork.md",
+      "to": "working/audits/VERIFICATION-SWEEP-PART2-2026-07-10-cowork.md"
+    },
+    {
+      "from": "VERIFICATION-SWEEP-PART3-2026-07-10-cowork.md",
+      "to": "working/audits/VERIFICATION-SWEEP-PART3-2026-07-10-cowork.md"
+    },
+    {
+      "from": "GEMINI-DR1-INTAKE-2026-07-10.md",
+      "to": "working/intake/GEMINI-DR1-INTAKE-2026-07-10.md"
+    },
+    {
+      "from": "GEMINI-DR2-INTAKE-2026-07-10.md",
+      "to": "working/intake/GEMINI-DR2-INTAKE-2026-07-10.md"
+    },
+    {
+      "from": "GEMINI-DR3-INTAKE-2026-07-10.md",
+      "to": "working/intake/GEMINI-DR3-INTAKE-2026-07-10.md"
+    },
+    {
+      "from": "MONTHLY-2026-07-RESEARCH-PACKET.md",
+      "to": "working/intake/MONTHLY-2026-07-RESEARCH-PACKET.md"
+    },
+    {
+      "from": "NEW-HYPOTHESES-PROPOSAL-2026-07.md",
+      "to": "working/proposals/NEW-HYPOTHESES-PROPOSAL-2026-07.md"
+    },
+    {
+      "from": "RESCORE-PROPOSAL-2026-07.md",
+      "to": "working/proposals/RESCORE-PROPOSAL-2026-07.md"
+    },
+    {
+      "from": "EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md",
+      "to": "working/expert-interviews/EXPERT-INTERVIEW-GUIDE-JAKE-THOMAS.md"
+    },
+    {
+      "from": "EXPERT-INTERVIEW-GUIDE-LISA-CAO.md",
+      "to": "working/expert-interviews/EXPERT-INTERVIEW-GUIDE-LISA-CAO.md"
+    },
+    {
+      "from": ".claude/mcp-server-spec.md",
+      "to": "working/proposals/mcp-server-spec.md"
+    }
+  ]
+}

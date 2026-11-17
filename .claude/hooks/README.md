@@ -1,57 +1,23 @@
-# Session Hooks
+# Session hooks
 
 **Project**: security-data-literature-review
-**Last Updated**: 2026-01-02
+**Last updated**: 2026-11-17
 
-This directory contains session hooks that execute at specific points during Claude Code sessions.
+Two shell scripts live here. Only `SessionStart.sh` is wired into Claude Code, through `.claude/settings.json`; `PreCommit.sh` is an advisory helper you run by hand, because Claude Code has no pre-commit trigger and the repo's real commit gate is `scripts/pre-commit.sh`, installed as the git hook (see README.md, "Reproducing the counts").
 
----
+## `SessionStart.sh`
 
-## Available Hooks
+Runs at the start of every Claude Code session in this repo (`.claude/settings.json`, `hooks.SessionStart`). It prints the git status, the last five commits, the current version heading from CHANGELOG.md and the number of `#### ` entry blocks in MASTER-BIBLIOGRAPHY.md. The block count is a raw heading count and includes the documented stubs; the tiered counts come from `python3 scripts/count_reconcile.py`.
 
-### `SessionStart.sh`
-**Trigger**: Beginning of each Claude Code session
-**Purpose**: Display project context and git status
-**Output**:
-- Git status (staged/unstaged changes)
-- Recent commits (last 5)
-- Current version from CHANGELOG.md
-- Bibliography source count
+## `PreCommit.sh` (manual, advisory)
 
-**Benefit**: Provides immediate context awareness for each session
+Run `bash .claude/hooks/PreCommit.sh` with changes staged and it reminds you to add a CHANGELOG.md entry when a core document is staged without one. It ignores `archive/` and `working/`, because those hold history and dated working records rather than the citable review, and it always exits 0.
 
-### `PreCommit.sh`
-**Trigger**: Before git commits (advisory)
-**Purpose**: Remind to update CHANGELOG.md for significant changes
-**Behavior**:
-- Checks if significant files are being committed (*.md excluding archive/)
-- If CHANGELOG.md is not staged, displays reminder
-- Non-blocking (allows commit to proceed)
+## The gates that actually block
 
-**Benefit**: Maintains version history for academic citation stability
+| Gate | Where it runs | What it blocks |
+|------|---------------|----------------|
+| `scripts/pre-commit.sh` | local git hook, once installed per clone | secrets, a staged file with a stale gated count, a staged vendor DB whose rollups drift, a staged file with a stale moved path or broken relative link |
+| `.github/workflows/gates.yml` | every push and pull request | a stale gated count, a taxonomy mismatch, vendor-rollup drift, invalid metadata, and a stale moved path or broken relative link, all checked repo-wide; the secret scan reads only staged changes, so in a CI checkout it finds nothing to scan and the scan does its work only in the local hook |
 
----
-
-## Hook Execution
-
-Hooks are shell scripts that Claude Code can execute at defined trigger points:
-
-| Hook | Trigger | Blocking |
-|------|---------|----------|
-| SessionStart.sh | Session begins | No |
-| PreCommit.sh | Before git commit | No (advisory) |
-
----
-
-## Adding New Hooks
-
-To add a new hook:
-
-1. Create executable shell script in `.claude/hooks/`
-2. Name according to trigger point (e.g., `PostEdit.sh`)
-3. Make executable: `chmod +x .claude/hooks/<name>.sh`
-4. Document in this README
-
----
-
-**Created**: 2026-01-02 (Best Practices Audit)
+`.claude/settings.json` also carries a `Stop` hook that warns about uncommitted changes and unpushed commits at the end of a session.

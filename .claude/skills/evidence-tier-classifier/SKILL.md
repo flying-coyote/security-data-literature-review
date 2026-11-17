@@ -1,95 +1,85 @@
 ---
 type: spec
 name: Evidence Tier Classifier
-description: Apply Evidence Level classification (Tier 1-5) when user adds sources, references papers, or discusses research quality for literature review. Trigger when user mentions "source", "paper", "add citation", "evidence quality", "bibliography", or evaluates research credibility. Maintain 75%+ Tier 1-2 target for publication-quality literature review.
+description: Classify a source at Evidence Level A, B, C or D under METHODOLOGY §3.1 when the user adds a source to the literature review, cites a paper, or asks about a source's evidence quality. Trigger when the user mentions "source", "paper", "add citation", "evidence level", "tier", "bibliography" or evaluates research credibility. Level A is peer-reviewed research and official standards only; there is no Level-A share target.
 allowed-tools: Read, Grep, Edit
 ---
 
 # Evidence Tier Classifier
 
 ## Purpose
-Classify sources into Evidence Tiers 1-5, maintaining 75%+ Tier 1-2 for publication readiness.
+Give each source the Evidence Level that METHODOLOGY §3.1 defines, with the rationale written into its bibliography entry, so a reader can see why a claim rests where it does. The classifier tiers accurately; it does not aim for a share. The Level-A target was retired by owner ruling 2026-08-19 (METHODOLOGY §8.1a), because the share falls as honest practitioner evidence is added and a floor on it rewards over-tiering.
 
-## Trigger Conditions
+## Trigger conditions
 
-**ACTIVATE when user:**
-- Adds sources, discusses paper quality, mentions "evidence level/tier/source quality"
-- Says "add to bibliography", "cite this source", reviews bibliography entries
+**Activate when the user:**
+- Adds sources, discusses paper quality, mentions "evidence level", "tier" or "source quality"
+- Says "add to bibliography" or "cite this source", or reviews bibliography entries
 
-**DO NOT ACTIVATE for:** Casual reading, internal notes, review-only discussions
+**Do not activate for:** casual reading, internal notes, review-only discussions
 
-## Evidence Tier System
+## Evidence levels (METHODOLOGY §3.1 is canonical)
 
-| Tier | Name | Evidence Level | Criteria | Use |
-|------|------|---------------|----------|-----|
-| **1** | Production | A (highest) | Measured outcomes from live systems with metrics | Primary evidence |
-| **2** | Peer-Reviewed | A (high) | Published in journals/conferences, reproducible methodology | Primary evidence |
-| **3** | Expert Consensus | B (moderate) | Multiple experts agree, vendor-neutral, documented reasoning | Supporting evidence |
-| **4** | Vendor Claims | C (weak) | Marketing, unvalidated case studies, vendor benchmarks | Mark bias, use sparingly |
-| **5** | Speculation | D (insufficient) | No empirical support, social media, opinions | Do NOT use |
+| Level | What qualifies | Use |
+|-------|----------------|-----|
+| **A** | Peer-reviewed research at a named venue (confirmed at the publisher or DOI record); standards-body documents (NIST SP/IR/FIPS, ISO/IEC, IETF RFC, W3C, OASIS); the formal specification of an open standard (the Iceberg table spec, the OCSF schema spec); normative frameworks from a neutral body (MITRE D3FEND, MITRE ATLAS), authoritative on structure and silent on efficacy | Primary evidence |
+| **B** | Production deployments and case studies with real numbers; first-party lab benchmarks; vendor engineering blogs from the operating team; conference talks; trade books; analyst reports; expert interviews; government advisories (as distinct from standards); official project documentation; preprints, theses and workshop papers whose venue is not confirmed | Real evidence, not independently reviewed |
+| **C** | Vendor blog posts, product documentation, white papers and talks with no production measurement behind them; vendor-authored pieces quoting a practitioner | Catalogued with bias flagged; never carries a hypothesis on its own |
+| **D** | Marketing, unverified claims, speculation | Excluded from the review |
 
-**Target**: 75%+ Evidence Level A (Tier 1+2) | **Current**: 78% ✅
+Vendor-channel rule (owner-adjudicated 2026-07-10): first-person practitioner authorship on a vendor channel is Level B with a curation caveat; a vendor-authored piece quoting a practitioner is Level C.
 
-## Classification Workflow
+## Classification workflow
 
-### Step 1: Capture Metadata
-```
+### Step 1: capture metadata
+```text
 Title: [Full title]
 Author(s): [Complete list]
 Published: [Date] in [Venue]
 URL/DOI: [Permanent link]
-Type: [Journal/Conference/Blog/Industry Report/Vendor]
+Type: [Journal/Conference/Standard/Specification/Talk/Blog/Industry Report/Vendor]
 ```
 
-### Step 2: Apply Decision Tree
-```
-Has measured production metrics? → Tier 1
-Peer-reviewed + reproducible? → Tier 2
-Expert consensus + reasoning? → Tier 3
-Vendor material? → Tier 4 (mark bias)
-No empirical support? → Tier 5 (don't use)
+### Step 2: apply the decision tree
+```text
+Peer-reviewed at a confirmed venue, a standards-body document,
+  a formal open-standard specification, or a normative MITRE framework? -> A
+Practitioner or production evidence with the measurement disclosed,
+  a talk, an analyst report, project docs, or an unconfirmed-venue preprint? -> B
+Vendor material with no production measurement behind it? -> C (flag bias)
+No empirical support? -> D (do not catalogue)
 ```
 
-### Step 3: Add to Bibliography
+### Step 3: add to the bibliography
+Use the entry format of the most recent `#### ` blocks in MASTER-BIBLIOGRAPHY.md:
 ```markdown
-**"[Title]"**
-- Authors: [list]
-- Published: [Date] in [Venue]
-- URL/DOI: [link]
-- Quality: Tier [N] (Evidence Level [A/B/C/D]) - [rationale]
-- Status: [Read/Referenced/Validated]
-- Key Insights: [1-2 sentences]
-- Related Hypotheses: [H-XX references]
+#### [Title] ([Author], [Venue], [Year])
+
+**Authors**: [list]
+**Date**: [publication date; date read]
+**URL**: [link, or DOI]
+**Evidence Level**: [A/B/C] ([rationale against METHODOLOGY §3.1])
+**Relevance**:
+- [what the source supports, per hypothesis or topic]
+
+**Key Findings**: [each number with its locator at the primary]
+**Citations**: [formatted citation]
+**Notes**: [limitations, bias, edition or version bounds]
+**Validation Status**: ✅ Verified [date] ([what was read at the primary])
 ```
 
-### Step 4: Verify Distribution
-After adding, check Evidence Level A percentage remains ≥75%.
+### Step 4: check the gates
+Add a dated taxonomy record under `methods/`, then run `python3 scripts/count_reconcile.py` and `python3 scripts/derive_source_taxonomy.py --check`. The new counts propagate through the gated surfaces; nothing is hand-edited to a target.
 
-## Special Cases
+## Anti-patterns
 
-**Vendor Sources (Tier 4)**: Mark bias, use for features not performance, seek corroboration.
+- Inflating a level to make a claim look stronger
+- Treating a production case study, however good, as Level A
+- Marking a number verified without reading it at the primary
+- Letting a Level C source carry a hypothesis alone
 
-**Thought Leader Blogs**:
-- Has production metrics → Tier 1
-- Expert reasoning only → Tier 3
-- Speculation → Tier 5 (don't use)
-
-## Anti-Patterns
-
-❌ Inflate tier to justify claims | ❌ Use Tier 5 for evidence | ❌ Over-rely on Tier 4
-✅ Be honest about classification | ✅ Seek Tier 1-2 for key claims | ✅ Document rationale
-
-## Hypothesis Confidence
-
-- **High**: Multiple Tier 1-2 sources
-- **Medium**: Tier 2-3 sources, limited Tier 1
-- **Low**: Mainly Tier 3-4, no Tier 1-2
-
-## Current Status
-
-- **Sources**: 101 documented
-- **Evidence Level A**: 78% (✅ exceeds 75% target)
-- **File**: `MASTER-BIBLIOGRAPHY.md`
+## Hypothesis confidence
+Confidence is not inferred from tier mix here. It is scored under the five-dimension instrument in `methods/scoring-rubric.md`, and the canonical scores are PUBLICATION-MANUSCRIPT.md §3.7.
 
 ---
-**Version**: 1.1 | **Updated**: 2026-01-02
+**Version**: 2.0 | **Updated**: 2026-11-17 (tier definitions brought to METHODOLOGY §3.1; retired 75% target and Jan-2026 counts removed)

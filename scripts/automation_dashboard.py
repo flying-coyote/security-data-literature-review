@@ -391,7 +391,7 @@ def print_dashboard():
     # 8. FOOTER
     print_header("END OF DASHBOARD")
     print(f"{Colors.BOLD}Last lit-review update:{Colors.END} {biblio['last_updated'] if biblio else 'Unknown'}")
-    print(f"{Colors.BOLD}Cadence:{Colors.END} see REVIEW-AND-PLAN-2026-06.md (cadence + scheduling under decision)")
+    print(f"{Colors.BOLD}Cadence:{Colors.END} see scripts/SCHEDULING.md (weekly check, monthly refresh, decided 2026-06-05)")
     print(f"\n{Colors.CYAN}Run 'python3 scripts/weekly_health_check.py' for detailed health report{Colors.END}\n")
 
 def main():

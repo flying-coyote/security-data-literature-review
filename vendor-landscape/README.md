@@ -1,156 +1,42 @@
-# Vendor Landscape Tracking
+# Vendor Landscape
 
-## Purpose
-Intended to maintain quarterly snapshots of the data lakehouse vendor landscape, powered by IT Harvest partnership data (market trends, capability matrices, vendor evolution tracking).
+This folder holds the review's vendor database: one structured record per platform (two platforms currently have duplicate records, see below) that the handbook and the literature review discuss, covering SIEMs, query engines, streaming platforms, lakehouse table formats, ETL and pipeline tools, object storage, catalogs, observability platforms and data-virtualization layers. Each record carries capability scores, the evidence behind each score with its tier, a cost model where one is published, and a derived summary of how well the record is evidenced. It is a working dataset rather than part of the paper, so it sits outside the Zenodo deposit, and readers who want the vendor narrative will find it in the handbook's Appendix G (`../book-appendices/appendix-g-vendor-landscape.md`), which draws on these records.
 
-> **Status (2026-07-09): mechanism ready, not yet in use.** Zero quarterly updates have been produced. The
-> schema, the update template (`quarterly-updates/TEMPLATE-YYYY-QX-update.md`), and this process doc all
-> exist, but the cadence has not started — it is contingent on the IT Harvest partnership, which is still at
-> the outreach stage (the unfilled coordination checklist was archived 2026-07-10 → `../archive/IT-HARVEST-PARTNERSHIP-CHECKLIST.md`,
-> and the partnership itself is optional per PROJECT-BRIEF.md Blocker 1). Read everything below as the
-> *planned* mechanism, not an active one.
+## What is here
 
-## Update Cadence (planned — not yet started)
-Intended **Quarterly Updates** (January, April, July, October). None produced as of 2026-07.
+| File | What it is |
+|---|---|
+| `vendor-database.json` | The database. `meta.version` names the current regeneration and `meta.vendor_count` the record count; every vendor's `evidence_summary` block is derived, not typed. |
+| `vendor-database-schema.md` | The schema, including the Evidence Tier Requirements table that bounds each capability score by the tier and number of its sources. |
+| `quarterly-updates/` | One dated record per regeneration (never edited after the fact) plus `TEMPLATE-YYYY-QX-update.md`. The first is `2026-Q3-regen-2026-07-18.md`. |
+| `MCP-VENDOR-INTEGRATION-SUMMARY.md` | Historical record of the October 2025 integration with the `security-architect-mcp-server` repository, which was archived on 2026-07-01. Nothing in it describes a running process. |
 
-## Contents
+## How the database is maintained now
 
-> Note (2026-07-10): `capability-matrix.md` and `market-trends.md` below were planned deliverables that were
-> **never created** — descriptions kept as design intent only. What actually exists here: `vendor-database.json`,
-> `vendor-database-schema.md`, `MCP-VENDOR-INTEGRATION-SUMMARY.md`, and `quarterly-updates/` (template only).
+The database is on a quarterly regeneration cadence, in January, April, July and October, run by hand in this repository, though the last regeneration was 2026-07-18 (version 2026-Q3-c) and the October 2026 one is overdue. It is manual because the automated sync and weekly refresh described in the October 2025 integration record ended when the MCP server repository was archived. A regeneration re-checks evidence legs at their live primaries, folds in verified vendor changes (acquisitions, renames, end-of-life dates, pricing terms) as dated fields on the affected record, re-derives capability scores against the schema's tier table, and then recomputes every `evidence_summary` block with `scripts/derive_vendor_rollups.py --apply`. Each regeneration leaves a dated record in `quarterly-updates/` naming what changed and why, so a citation to a particular snapshot can be traced to its state at the time.
 
-### capability-matrix.md
-- **Platform Capabilities**: Feature comparison across vendors
-- **Category Analysis**: Query engines, OLAP platforms, catalogs, security platforms
-- **Maturity Assessment**: Production readiness, enterprise support
-- **Focus**: Objective capability mapping, no promotional content
+The rollup figures are the part most prone to drift, since the October 2025 hand-stated rollups overstated the Tier-A share by about forty points, so they are not stated as a live figure outside dated snapshots. `scripts/derive_vendor_rollups.py --check` recomputes every vendor's rollup from its source objects, compares it with the stored block and enforces the schema's score-to-evidence rules, and it runs both in `scripts/pre-commit.sh` and in the CI workflow `.github/workflows/gates.yml`, so a hand edit that breaks either fails before it lands. To read the current aggregates, run:
 
-### market-trends.md
-- **Adoption Trends**: Technology adoption rates over time
-- **Market Dynamics**: M&A activity, funding, product launches
-- **Technology Evolution**: Feature convergence, differentiation strategies
-- **Focus**: Quantitative trend analysis, market position shifts
+```bash
+python3 scripts/derive_vendor_rollups.py --stats   # totals, tier counts, analyst and production coverage
+python3 scripts/derive_vendor_rollups.py --check   # the gate
+```
 
-### quarterly-updates/
-Intended home for versioned quarterly snapshots (citation stability). **Currently contains only
-`TEMPLATE-YYYY-QX-update.md`** — no dated update has been produced. The files below were targets that did
-not happen:
-- `2025-Q4-update.md` (was "target: first update" — not produced)
-- `2026-Q1-update.md` (not produced)
-- `2026-Q2-update.md` (not produced)
+For orientation only, a `--stats` run on 2026-11-17 reported 71 vendors and 92 logical evidence sources (38 Tier A, 27 Tier B, 27 Tier C, none at Tier D), with 11 vendors carrying no source at all; those 11 say so in their own records (`overall_evidence_quality: unevidenced`). The vendor count can also be read straight from the JSON with `python3 -c "import json; print(len(json.load(open('vendor-landscape/vendor-database.json'))['vendors']))"`, and by category the 71 split into 19 SIEM (one record still labelled "SIEM Platform"), 10 streaming, 9 query engine, 7 lakehouse, 6 ETL/ELT, 5 object storage, 5 catalog and governance, 5 observability, 4 data virtualization and 1 OLAP engine.
 
-## IT Harvest Partnership
-**Status**: Pre-Partnership Planning with MCP Vendor Baseline Complete (October 23, 2025)
+Between full regenerations, a lighter currency check can add a dated `currency_check_YYYY_MM_DD` field to individual records without touching scores or rollups. The 2026-11-17 check covered 16 records and recorded, among other things, that Rockset is discontinued (OpenAI acquisition, 2024), that SAP completed its acquisition of Dremio on 2026-07-06, that Fivetran and dbt Labs completed their merger on 2026-06-01, that Rapid7 launched Incident Command, the successor to its InsightIDR SIEM, in July 2025, and that the open-source MinIO repository was archived on 2026-04-25. Two pairs of records are duplicates kept for continuity (`azure-sentinel` with `microsoft-sentinel`, and `starburst` with `starburst-enterprise`); merging them changes the vendor count and the rollups, so it waits for the next full regeneration.
 
-**Baseline Data Available**: 71-vendor database from MCP Server enrichment provides ready-made foundation:
-- ~~110 evidence sources (84% Tier A quality = 92 Tier A sources)~~ [2026-07-16: Oct-2025 rollup, superseded; quote-none ruling] [2026-07-18: regeneration landed (2026-Q3-c) — rollups now derived by `scripts/derive_vendor_rollups.py --stats` (gated); snapshot at this edit: 92 logical sources, 38 Tier A (41.3%); see `quarterly-updates/2026-Q3-regen-2026-07-18.md`]
-- ~~46.5% analyst coverage (Gartner MQ, Forrester Wave for 33 vendors)~~ [2026-07-18: Oct-2025 figure, superseded — derived analyst coverage is 30/71 vendors (42.3%), and every analyst leg now cites a live public primary at Tier C per the vendor-channel rule]
-- ~~35.2% production validation (Fortune 500 deployments for 25 OSS vendors)~~ [2026-07-18: Oct-2025 figure, superseded — derived production-deployment coverage is 18/71 vendors (25.4%)]
-- ~~Automated maintenance (weekly refresh + monthly GitHub metrics tracking)~~ [2026-07-16: no weekly refresh exists — it lived in the MCP server repo, which was archived 2026-07-01; the sync cadence is quarterly, per vendor-database.json meta]
+## Evidence rules that apply here
 
-**Partnership Acceleration**: MCP vendor baseline enables:
-1. **Pilot Project Validation**: 10 query engine vendors already documented with evidence
-2. **First Quarterly Update**: ~60% effort reduction (baseline data + evidence exists)
-3. **Quality Baseline**: ~~84% Tier A evidence quality sets partnership expectations~~ [2026-07-16: Oct-2025 rollup, superseded] [2026-07-18: derived baseline is 41.3% Tier A (38/92 legs) after the 2026-Q3-c regeneration — the honest number a partnership pitch should carry]
+Vendor-authored material (product documentation, pricing pages, a vendor's own announcement of an analyst placement) describes what a product does and is cited for that, but it is tiered C under the vendor-channel rule when it is the only support for a claim about how well the product works, and analyst placements are read at a public primary because the reports themselves are licensed. A capability score of 5 needs three or more Tier-A sources, which most platforms do not have, so many scores fell to 3 or 4 in the 2026-Q3-c regeneration; that reflects the schema being enforced rather than new doubt about the platforms, and a score goes back up only when new evidence is added.
 
-**Partnership Roadmap**:
-1. **Phase 1: Partnership Establishment**
-   - Initial outreach to Charles Wells
-   - Define pilot project scope (query engines)
-   - Clarify data access terms and attribution
-   - Establish communication channels
+## Open items
 
-2. **Phase 2: Pilot Project - Query Engines**
-   - Vendor list: Trino/Starburst, Dremio, Denodo, Athena, ClickHouse, StarRocks, Druid
-   - Data points: Version updates, capabilities, pricing trends, adoption indicators
-   - Success criteria: Validate data quality and integration workflow
-   - Deliverable: First quarterly update with query engine vendor landscape
+Four things are known and not yet done. The October 2026 regeneration is overdue, so `meta.version` is still 2026-Q3-c and `quarterly-updates/` holds one dated record, from 2026-07-18. Several vendor-documentation legs of the same class as the Sentinel pricing leg still sit at Tier B (the 2026-Q3-c record names eight by id) and need the same vendor-channel review, which belongs to the pending re-tier ratification rather than to a regeneration. The two duplicate pairs above need merging. And the planned derived views, a capability matrix and a market-trends page, were never built; if they are, they should be generated from the JSON so they cannot drift from it.
 
-3. **Phase 3: Full Partnership - All Categories**
-   - Expand to infrastructure layer (table formats, catalogs, object storage)
-   - Add security-specific platforms (OCSF, detection platforms, threat intel)
-   - Establish quarterly update cycle (Jan, Apr, Jul, Oct)
+## History
 
-4. **Phase 4: Ongoing Operations**
-   - Quarterly data refresh → Expert validation → Publication
-   - Continuous improvement feedback loop
-   - Blog integration and book manuscript updates
-
-**Coordination Resources**:
-- **../archive/IT-HARVEST-PARTNERSHIP-CHECKLIST.md** (archived 2026-07-10 — unfilled template, partnership optional): partnership coordination guide
-  - Phase-by-phase checklist (4 phases)
-  - Data collection specifications
-  - Quality assurance standards
-  - Risk mitigation strategies
-
-**Timeline**:
-- Partnership establishment: TBD (pending initial outreach)
-- First quarterly update: originally targeted Q4 2025 / Q1 2026 (post-pilot) — **not produced as of 2026-07**; deferred pending the partnership
-
-## Quality Standards
-- **Vendor-Neutral Analysis**: No promotional content, balanced trade-offs
-- **Quantitative Metrics**: Adoption rates, market share, capability scores
-- **Citation Stability**: Versioned snapshots for academic citation
-- **Expert Validation**: Practitioner review before publication
-
-## Quarterly Update Process
-
-**Month 1: Data Collection**
-- IT Harvest data refresh
-- Platform capability updates
-- Market trend analysis
-
-**Month 2: Validation**
-- Expert network validation
-- Blog synthesis integration
-- Hypothesis validation updates
-
-**Month 3: Publication**
-- Create YYYY-QX-update.md
-- Update CHANGELOG.md
-- Academic citation updates
-
-## Sources
-1. **IT Harvest**: Primary vendor landscape data (partnership pending)
-2. **Expert Network**: Validation interviews
-3. **Blog Integration**: security-data-commons-blog insights
-4. **Industry Analysts**: Gartner, Forrester, IDC reports
-5. **Production Deployments**: Case study validation
-
-## Integration with Book
-Supports Chapter 9 "Technology State Assessment" with quarterly vendor landscape snapshots that remain citable as research evolves.
-
-## Version Control
-- Each quarterly update creates a new `YYYY-QX-update.md` file
-- Previous versions never edited (citation stability)
-- CHANGELOG.md tracks all revisions
-- Enables academic citation: "According to the Q4 2025 vendor landscape snapshot..."
+The folder was set up in October 2025 to hold quarterly vendor snapshots fed by an analyst-data partnership and synchronized with the MCP server repository. The partnership did not go ahead before the integration it was meant to feed was archived, the synchronized repository was archived on 2026-07-01, and no quarterly snapshot shipped until the 2026-Q3-c regeneration on 2026-07-18, which replaced the October 2025 rollups with derived ones. The full change history is in `../CHANGELOG.md`.
 
 ---
-
-## MCP Vendor Database Integration
-
-**Status**: ✅ COMPLETE (October 23, 2025 - Session 2)
-
-**Integration Summary**: See `MCP-VENDOR-INTEGRATION-SUMMARY.md` for comprehensive details
-
-**Quick Facts**:
-- 71 vendors across 9 categories (SIEM, Query Engine, Streaming, Lakehouse, ETL/ELT, Observability, Object Storage, Data Catalog, Data Virtualization)
-- ~~110 evidence sources (84% Tier A quality)~~ [2026-07-16: Oct-2025 rollup, superseded] [2026-07-18: derived — 92 logical sources, 41.3% Tier A (2026-Q3-c regeneration)]
-- Zero Tier D (marketing) sources
-- ~~Automated maintenance: Weekly refresh validates analyst URLs, monthly GitHub metrics tracking~~ [2026-07-16: no weekly refresh exists — it lived in the MCP server repo, which was archived 2026-07-01; the sync cadence is quarterly, per vendor-database.json meta]
-- Quality grade: A (Excellent) - 92.7/100
-
-**Integration Value**:
-- IT Harvest partnership accelerated (10 query engines baseline ready)
-- First quarterly update effort reduced ~60% (baseline data exists)
-- ~~Academic publication validated (110 evidence sources)~~ [2026-07-16: Oct-2025 rollup figure, superseded] [2026-07-18: derived — 92 logical sources after the 2026-Q3-c regeneration]
-- Vendor landscape population ready (vendor-database.json seeds directory)
-
-**Files**:
-- Source: `vendor-database.json` (71 vendors; evidence rollups derived and gated by `scripts/derive_vendor_rollups.py` since the 2026-Q3-c regeneration, 2026-07-18)
-- Integration Summary: `MCP-VENDOR-INTEGRATION-SUMMARY.md` (~25 KB comprehensive documentation)
-- MCP Server: `security-architect-mcp-server/data/vendor_database.json` (sync retired — that repo was archived 2026-07-01; this JSON is now the frozen 71-vendor baseline, with current vendor coverage living in the book's appendix-g)
-
----
-**Last Updated**: 2026-07-18 (2026-Q3-c full regeneration landed: rollups derived and gated, DR-2 deltas folded, under-review legs adjudicated at live primaries — see `quarterly-updates/2026-Q3-regen-2026-07-18.md`); prior: 2026-07-16 stale-rollup strikes; October 23, 2025 (MCP vendor baseline complete)
+**Last updated**: 2026-11-17 (currency check of 16 records; page rewritten to describe the mechanism as it runs)

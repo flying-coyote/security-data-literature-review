@@ -7,12 +7,31 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 
 # Publication Venue Recommendations for Literature Review
 
-> **RULED 2026-07-10 (owner)**: Journal of Cybersecurity (Oxford, open access) is the submission target — the open-access/practitioner-accessibility rationale below carried; the CSUR and IEEE S&P tracks are not being pursued. Submission work is gated post-2026-07-15. ⚠️ This document's corpus statistics predate the 2026-06/07 audits and are STALE — the 283-footnote / 73%-Level-A / 2.7× / 55-80% figures must not be cited; live counts are in README.md (derived by `scripts/automation_dashboard.py` — do not quote a percentage from this banner) and the withdrawn-claims record is in CHANGELOG.md.
+> **Decided 2026-07-10**: Journal of Cybersecurity (Oxford, open access) is the submission target — the open-access/practitioner-accessibility rationale below carried; the CSUR and IEEE S&P tracks are not being pursued. Submission work is gated post-2026-07-15. ⚠️ This document's corpus statistics predate the 2026-06/07 audits and are STALE — the 283-footnote / 73%-Level-A / 2.7× / 55-80% figures must not be cited; live counts are in README.md (derived by `scripts/automation_dashboard.py` — do not quote a percentage from this banner) and the withdrawn-claims record is in CHANGELOG.md.
 
 **Document Purpose**: Identify suitable academic journals and publication venues for literature review on modern data architecture for cybersecurity
 **Created**: October 10, 2025
 **Last Reviewed**: October 15, 2025
 **Literature Review**: MASTER-BIBLIOGRAPHY.md (273 catalogued sources, 271 tiered; 22.5% Evidence Level A live-derived 2026-08-19 — the "73%" figure previously stated here was a withdrawn self-grade, wrong by roughly thirty points)
+
+---
+
+## Journal of Cybersecurity: venue facts checked 2026-11-17
+
+The venue choice above rests on the facts in this section, each read at the journal's own pages on 2026-11-17. Everything further down is the October 2025 comparison as written, and its figures for other venues (rankings, acceptance rates, typical lengths, charges) were not re-checked once the choice was made, so treat them as unverified.
+
+| Fact | What the journal states | Source |
+|---|---|---|
+| Publisher and access | Oxford University Press; fully open access, with articles published under an open-access licence on publication | https://academic.oup.com/cybersecurity/pages/General_Instructions |
+| First issue | Volume 1, Issue 1, September 2015 | https://academic.oup.com/cybersecurity/issue/1/1 |
+| Scope | "accessible articles describing original research in the inherently interdisciplinary cyber domain"; a submission is in scope only if it is interdisciplinary, has broad societal implications that it discusses explicitly, or addresses significant human, organizational or societal challenges | https://academic.oup.com/cybersecurity/pages/About |
+| Length | Papers up to 15,000 words; Perspectives up to 5,000 words; abstract no more than 350 words | General Instructions page |
+| Reference style | Oxford SciMed: numbered in square brackets, in order of first appearance | General Instructions page |
+| Article processing charge | The charges table on the instructions page shows only the book-review charge (USD 3,625) with a 20% society-membership discount; the research-article charge is not displayed there. DOAJ's listing reports charges of up to USD 1,994, but DOAJ blocked a direct read, so that figure is unconfirmed and the charge should be read at submission | General Instructions page; DOAJ record for ISSN 2057-2093 |
+| Waivers | Corresponding authors in OUP's Low and Middle Income Countries initiative receive a discount; Read and Publish agreements may cover charges | General Instructions page |
+| Impact (as the journal reports it) | Clarivate 2025 Impact Factor 4.4 (5-year 5.1); Scopus 2025 CiteScore 6.1 | About page |
+
+The scope line matters for fit more than any other fact here, since a review of data-platform evidence for security operations reads as computer science unless the manuscript states its organizational and economic implications (operating cost, staffing, vendor dependence) explicitly, and the journal says papers that do not meet its scope criteria may be returned without review.
 
 ---
 
@@ -101,17 +120,17 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 **Focus**: Interdisciplinary cybersecurity research
 **URL**: https://academic.oup.com/cybersecurity
 
-**Launched**: 2015 (relatively new, growing rapidly)
+**Launched**: 2015 (first issue September 2015, confirmed 2026-11-17)
 
 **Why This Fits**:
 - ✅ **Open access**: Maximum visibility, broader impact
-- ✅ **Interdisciplinary mandate**: "Computer science approaches alone not sufficient"
+- ✅ **Interdisciplinary mandate**: "Computer science approaches alone not sufficient" *(paraphrase; the About page states "computer science-based approaches, while necessary, are not sufficient to tackle cybersecurity challenges", checked 2026-11-17)*
 - ✅ **Data systems focus**: Covers data protection, secure systems
 - ✅ **Growing impact**: Oxford-backed, increasing reputation
 - ✅ **Accessible articles**: Emphasis on readability
 - ✅ **No paywall**: Aligns with practitioner accessibility goals
 
-**Typical Article Length**: 15-30 pages
+**Typical Article Length**: 15-30 pages *(the journal states a limit of 15,000 words for papers; see the facts table above)*
 
 **Submission Considerations**:
 - Emphasize interdisciplinary bridge (security + data engineering)
@@ -119,9 +138,9 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 - Position as filling practitioner knowledge gap
 - Open access supports broader community impact (IT Harvest partnership, blog strategy)
 
-**Article Processing Charge (APC)**: ~£1,500-2,000 (check current rates)
+**Article Processing Charge (APC)**: ~£1,500-2,000 (check current rates) *(not confirmed at the journal's pages on 2026-11-17; see the facts table above)*
 
-**Acceptance Rate**: ~30-40% (newer journal, still building selectivity)
+**Acceptance Rate**: ~30-40% (newer journal, still building selectivity) *(no source recorded; unverified)*
 
 **Strategic Advantage**: Open access supports book marketing and community building strategy
 
@@ -148,7 +167,7 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 **Submission Considerations**:
 - Frame as systematic literature review (PRISMA methodology)
 - Emphasize risk management implications (H-IMPL-01 hidden costs)
-- Include quantitative findings (2.7× staffing, 55-80% cost savings)
+- ~~Include quantitative findings (2.7× staffing, 55-80% cost savings)~~ *(both figures were withdrawn in the 2026-06/07 audits and must not be used)*
 - Position for security professionals building data systems
 
 **Acceptance Rate**: ~25-30%
@@ -342,7 +361,7 @@ tags: [academic-publication, venue-selection, acm-csur, ieee-sp, strategy]
 2. Supports Security Data Commons blog strategy
 3. Aligns with IT Harvest partnership (vendor landscape accessibility)
 4. Growing impact with Oxford backing
-5. £1,500-2,000 APC reasonable for market reach
+5. £1,500-2,000 APC reasonable for market reach *(charge unconfirmed; see the facts table)*
 
 ---
 

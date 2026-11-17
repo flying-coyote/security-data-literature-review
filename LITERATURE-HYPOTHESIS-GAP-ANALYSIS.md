@@ -80,7 +80,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-ARCH-06: Query Engines Hyper-Specialize by Workload**
 - ✅ **First-party Validation (Tier B, single host)**: SDW Lab `engine-join-specialization` + the workload×engine crossover — StarRocks wins multi-table joins (≈2.7–2.8× over ClickHouse on the heaviest six-table join), ClickHouse wins flat scan-aggregation, DuckDB wins selective lookups; the per-workload winner differs at 100M rows, and the 2026-06 UEBA two-level-aggregation inverts the top (StarRocks 0.207 s > ClickHouse-Iceberg 0.378 s). "No single engine wins; pick the engine for the query shape."
-- **Literature Support**: complements H-ARCH-01 (Iceberg-as-substrate) and H-ARCH-02 (multi-engine inevitability) — specialization is *why* multi-engine is forced
+- **Literature Support**: complements H-ARCH-01 (Iceberg-as-foundation) and H-ARCH-02 (multi-engine inevitability) — specialization is *why* multi-engine is forced
 - **Note**: first-party (self-authored SDW Lab — label as such, not external citation); magnitudes host-specific, the per-shape ordering is the transferable claim
 - **Status**: VALIDATED (first-party Tier B)
 
@@ -90,32 +90,32 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 ### Literature Evidence
 
-> **OVERTURN — 2026-07-10.** All three sources below are confirmed nonexistent by the 2026-07-09/10 fetch-backed hunts: no IDC publication with this title exists, "Enterprise Data Quarterly" is not a real journal, and no DevOps Enterprise Summit incident-economics figure could be located. H-IMPL-01 is now **1/5** with zero verified quantitative legs (project1 `book-critical-hypotheses.md`); the only remaining re-quantification route is a first-party security-specific TCO comparison. The source blocks stay verbatim below as the record of what was claimed.
+> **OVERTURN — 2026-07-10.** All three sources below are confirmed nonexistent by the 2026-07-09/10 fetch-backed hunts: no IDC publication with this title exists, "Enterprise Data Quarterly" is not a real journal, and no DevOps Enterprise Summit incident-economics figure could be located. H-IMPL-01 is now **1/5** with zero verified quantitative legs; the only remaining re-quantification route is a first-party security-specific TCO comparison. The source blocks stay verbatim below as the record of what was claimed.
 
-**Source 1**: IDC - Hidden Costs of Real-Time Data [^59]
-- **Finding**: 2.5-3× higher operational staffing costs for streaming
-- **Cause**: Specialized expertise + 24/7 support requirements
+~~**Source 1**: IDC - Hidden Costs of Real-Time Data [^59]~~ *(confirmed nonexistent; see the OVERTURN note above)*
+- ~~**Finding**: 2.5-3× higher operational staffing costs for streaming~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~**Cause**: Specialized expertise + 24/7 support requirements~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 
-**Source 2**: Enterprise Data Quarterly - Streaming TCO [^57]
-- **Finding**: 1.5-2× higher infrastructure costs
-- **Cause**: Redundancy requirements, continuous processing overhead
+~~**Source 2**: Enterprise Data Quarterly - Streaming TCO [^57]~~ *(confirmed nonexistent; see the OVERTURN note above)*
+- ~~**Finding**: 1.5-2× higher infrastructure costs~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~**Cause**: Redundancy requirements, continuous processing overhead~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 
-**Source 3**: DevOps Enterprise Summit - Incident Economics [^60]
-- **Finding**: Streaming incidents cost 3-4× more annually
-- **Cause**: Business impact, resolution complexity, off-hours response
+~~**Source 3**: DevOps Enterprise Summit - Incident Economics [^60]~~ *(confirmed nonexistent; see the OVERTURN note above)*
+- ~~**Finding**: Streaming incidents cost 3-4× more annually~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~**Cause**: Business impact, resolution complexity, off-hours response~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 
 ### Proposed Hypothesis
 
 **H-IMPL-01: Streaming Architecture Hidden Costs**
 
-**Hypothesis**: Real-time streaming architectures incur 2.5-3× higher operational costs than equivalent batch architectures due to specialized staffing (2.7× more staff), higher infrastructure redundancy (1.5-2× costs), and incident management complexity (3-4× annual costs).
+~~**Hypothesis**: Real-time streaming architectures incur 2.5-3× higher operational costs than equivalent batch architectures due to specialized staffing (2.7× more staff), higher infrastructure redundancy (1.5-2× costs), and incident management complexity (3-4× annual costs).~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 1/5, see the OVERTURN note above)*
 
 **Evidence Level**: ~~A (IDC, DORA, Enterprise Data Quarterly)~~ — ❌ withdrawn 2026-07-10; all three named sources confirmed nonexistent
 
-**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**
-- Blog post "The Streaming Tax" synthesized 8 Level A sources with convergent validation
-- 3-year TCO comparison quantified: Batch $2.5M vs Self-Managed Streaming $7.9M (3.2× multiplier)
-- Break-even analysis: 6.3 years (conservative), 1.3 years (high-value ops)
+~~**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 call, withdrawn 2026-07-10; see the correction note below)*
+- ~~Blog post "The Streaming Tax" synthesized 8 Level A sources with convergent validation~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~3-year TCO comparison quantified: Batch $2.5M vs Self-Managed Streaming $7.9M (3.2× multiplier)~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~Break-even analysis: 6.3 years (conservative), 1.3 years (high-value ops)~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 - Evidence bundles: cost-reality-reference.md, staffing-budget-calculator.md
 
 > **Correction (2026-07-10)**: the v1.6.0 call is withdrawn — the "8 Level A sources" were the IDC/EDQ/DOES/DORA set now confirmed nonexistent, and the $2.5M-vs-$7.9M / 3.2× model inherits their inputs. Current standing **1/5, unvalidated**; the TCO arithmetic survives only as a self-derived illustrative model, and the bundles named above carry their own 2026-06-14 fold-correction notes.
@@ -139,31 +139,31 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 > **OVERTURN — 2026-07-10.** None of the quantitative legs below survived the 2026-07-09/10 hunts: the DORA 2.7× / "Level 4" / 3.2× figures appear in no DORA report (that fabrication was scrubbed repo-wide 2026-07-09), the Ververica 3.2-FTE and 4-9-month figures could not be located in any Ververica or DevOps.com source, and the MIT Technology Review 1.5-2× training figure does not exist. The Gartner Market Guide cited in the hypothesis is real but its <15% figure is unconfirmable without seat access. H-IMPL-02 is now **2/5** with zero verified literature legs; the Gartner seat-access check is the only remaining literature route. Source blocks stay verbatim as the record.
 
-**Source 1**: DORA 2024 State of DevOps [^31], [^33], [^43]
-- **Finding 1**: 2.7× operational staff for streaming vs batch
-- **Finding 2**: Fault-tolerance = "Level 4" specialized skill (top 5% orgs only)
-- **Finding 3**: 3.2× higher incident rates for streaming
+~~**Source 1**: DORA 2024 State of DevOps [^31], [^33], [^43]~~ *(the DORA multipliers are in no DORA report; see the OVERTURN note above)*
+- ~~**Finding 1**: 2.7× operational staff for streaming vs batch~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~**Finding 2**: Fault-tolerance = "Level 4" specialized skill (top 5% orgs only)~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~**Finding 3**: 3.2× higher incident rates for streaming~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 
-**Source 2**: DevOps.com / Ververica [^5], [^6]
-- **Finding**: 3.2 average FTEs required for Flink pipelines
-- **Timeline**: 4-9 months implementation
+~~**Source 2**: DevOps.com / Ververica [^5], [^6]~~ *(confirmed nonexistent; see the OVERTURN note above)*
+- ~~**Finding**: 3.2 average FTEs required for Flink pipelines~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~**Timeline**: 4-9 months implementation~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 
-**Source 3**: MIT Technology Review [^61]
-- **Finding**: 1.5-2× higher training investments
-- **Cause**: Specialized skill requirements, continuous learning
+~~**Source 3**: MIT Technology Review [^61]~~ *(confirmed nonexistent; see the OVERTURN note above)*
+- ~~**Finding**: 1.5-2× higher training investments~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
+- ~~**Cause**: Specialized skill requirements, continuous learning~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 
 ### Proposed Hypothesis
 
 **H-IMPL-02: Streaming Expertise Scarcity**
 
-**Hypothesis**: Enterprise-grade stream processing requires specialized expertise available in <15% of organizations (Gartner [^41]), necessitating 2.7× larger operations teams (DORA [^31]) and 4-9 month implementation timelines (Ververica [^6]) even with experienced staff.
+~~**Hypothesis**: Enterprise-grade stream processing requires specialized expertise available in <15% of organizations (Gartner [^41]), necessitating 2.7× larger operations teams (DORA [^31]) and 4-9 month implementation timelines (Ververica [^6]) even with experienced staff.~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 2/5, see the OVERTURN note above)*
 
 **Evidence Level**: ~~A (DORA, Gartner, Ververica)~~ — ❌ withdrawn 2026-07-10 (see the OVERTURN note above)
 
-**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**
-- Staffing-budget-calculator.md: Batch 3.5 FTEs vs Streaming 9-11 FTEs (2.6-3.1× validated)
-- Blog post quantified Tax #1 (Staffing): $1,304,000/year cost for 2.7× multiplier
-- Implementation timeline: 3-7 months typical, 4-9 months with "Level 4" skills scarcity
+~~**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 call, withdrawn 2026-07-10; see the correction note below)*
+- ~~Staffing-budget-calculator.md: Batch 3.5 FTEs vs Streaming 9-11 FTEs (2.6-3.1× validated)~~ *(validation claim withdrawn; the figures stand only as the calculator's author-modeled illustration, see the correction note below)*
+- ~~Blog post quantified Tax #1 (Staffing): $1,304,000/year cost for 2.7× multiplier~~ *(validation claim withdrawn; the figures stand only as the calculator's author-modeled illustration, see the correction note below)*
+- ~~Implementation timeline: 3-7 months typical, 4-9 months with "Level 4" skills scarcity~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 - Evidence bundles: staffing-budget-calculator.md, implementation-reality-reference.md
 
 > **Correction (2026-07-10)**: the v1.6.0 call is withdrawn with its sources. The calculator's 9-11-FTE / 2.6-3.1× model and the $1,304,000/year figure are self-derived illustrations built on the now-withdrawn 2.7× multiplier — treat as illustrative, not validated — and the "Level 4" scarcity framing carries no verified source. Current standing **2/5**.
@@ -187,12 +187,12 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 > **OVERTURN — 2026-07-10.** Source 1 (SANS Institute) is confirmed nonexistent: the cited "Security Analytics Implementation" whitepaper does not exist and the entry was removed from MASTER-BIBLIOGRAPHY in the 2026-06-05 audit. Source 2's "5.5 month" figure is not in the cited phData post either (see the de-attribution note already on that line). H-IMPL-03 is now **5/25** with zero surviving quantitative legs (PUBLICATION-MANUSCRIPT.md §3.7; METHODOLOGY.md §5.3's correction banner). The source blocks stay verbatim below as the record of what was claimed.
 
-**Source 1**: SANS Institute - Security Analytics Implementation [^51]
-- **Finding**: Security-specific timelines differ from general data engineering
-- **Implication**: Security-specific constraints (compliance, change control, threat landscape)
+~~**Source 1**: SANS Institute - Security Analytics Implementation [^51]~~ *(confirmed nonexistent; see the OVERTURN note above)*
+- ~~**Finding**: Security-specific timelines differ from general data engineering~~ *(confirmed nonexistent; see the OVERTURN note above)*
+- ~~**Implication**: Security-specific constraints (compliance, change control, threat landscape)~~ *(confirmed nonexistent; see the OVERTURN note above)*
 
 **Source 2**: Gartner - Security Data Platforms [^12], [^138]
-- **Finding**: 5.5 month average for security-focused lakehouse (unverified against a primary)
+- ~~**Finding**: 5.5 month average for security-focused lakehouse~~ *(not in the cited phData post; see the OVERTURN note above)*
 - **Comparison**: General lakehouse 6-12 months *(de-attributed from Gartner 2026-07-09 — practitioner estimate, not a Gartner citation)*
 
 **Source 3**: Managed Kafka - Practitioner Experiences [^10]
@@ -226,12 +226,12 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 > **OVERTURN — 2026-07-10.** Source 1 (Netflix 70-80%) has no locatable primary and Source 2's AWS whitepaper link is dead — both marked do-not-cite in MASTER-BIBLIOGRAPHY. The verified replacement is a first-party derivation from live AWS S3 list prices: Standard $0.023/GB-mo vs IA $0.0125 (−45.7%), Glacier Instant Retrieval $0.004 (−82.6%), Glacier Flexible $0.0036 (−84.3%), Deep Archive $0.00099 (−95.7%) — price-floor bounds, manuscript §3.3.2. Confluent's qualitative tiered-storage documentation (Source 3) stands. H-COST-09 is now **4/5** on the Insider + Kozlovski + S3-derivation legs.
 
-**Source 1**: Netflix - Kafka Tiered Storage [^70]
-- **Finding**: 70-80% storage cost reduction for multi-year retention
+~~**Source 1**: Netflix - Kafka Tiered Storage [^70]~~ *(no locatable primary; see the OVERTURN note above)*
+- ~~**Finding**: 70-80% storage cost reduction for multi-year retention~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 - **Technology**: Kafka tiered storage (S3 backend)
 
-**Source 2**: AWS Storage Optimization [^15]
-- **Finding**: 55% average savings with tiered strategies
+~~**Source 2**: AWS Storage Optimization [^15]~~ *(dead link; see the OVERTURN note above)*
+- ~~**Finding**: 55% average savings with tiered strategies~~ *(withdrawn 2026-07-10; see the OVERTURN note above)*
 - **Pattern**: Hot/warm/cold lifecycle management
 
 **Source 3**: Confluent - Tiered Storage Documentation [^78], [^79]
@@ -242,14 +242,14 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-COST-09: Tiered Storage Economics**
 
-**Hypothesis**: Implementing tiered storage architectures (hot/warm/cold) for security data reduces storage costs by 55-80% (AWS [^15], Netflix [^70]) while maintaining compliance retention requirements, with Kafka tiered storage and Iceberg lifecycle policies as primary implementation patterns. *(2026-07-10: the 55-80% band and both citations are withdrawn; the verified per-GB tier deltas are −45.7% to −95.7% — S3 derivation, §3.3.2.)*
+~~**Hypothesis**: Implementing tiered storage architectures (hot/warm/cold) for security data reduces storage costs by 55-80% (AWS [^15], Netflix [^70]) while maintaining compliance retention requirements, with Kafka tiered storage and Iceberg lifecycle policies as primary implementation patterns.~~ *(2026-07-10: the 55-80% band and both citations are withdrawn; the verified per-GB tier deltas are −45.7% to −95.7% — S3 derivation, §3.3.2.)* *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 4/5, see the OVERTURN note above)*
 
 **Evidence Level**: ~~A (Netflix production, AWS whitepapers, Confluent documentation)~~ — revised 2026-07-10: the Netflix and AWS legs are dead; standing is **4/5** on Insider Inc. + Kozlovski + the first-party S3 derivation
 
-**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **VALIDATED**
-- Cost-optimization-playbook.md: Strategy #1 (Tiered Storage) with 55-80% savings validated
-- 15-23× ROI for quick wins (tiered storage, right-size reliability, avoid premature streaming)
-- Total potential savings: $2M-4M/year for mid-sized operations
+~~**Status Update (v1.6.0 - Oct 15, 2025)**: ✅ **VALIDATED**~~ *(October-2025 call, withdrawn 2026-07-10; see the correction note below)*
+- ~~Cost-optimization-playbook.md: Strategy #1 (Tiered Storage) with 55-80% savings validated~~ *(withdrawn with the AWS and Netflix legs 2026-07-10; see the correction note below)*
+- ~~15-23× ROI for quick wins (tiered storage, right-size reliability, avoid premature streaming)~~ *(withdrawn with the AWS and Netflix legs 2026-07-10; see the correction note below)*
+- ~~Total potential savings: $2M-4M/year for mid-sized operations~~ *(withdrawn with the AWS and Netflix legs 2026-07-10; see the correction note below)*
 - Evidence bundles: cost-optimization-playbook.md, cost-reality-reference.md
 
 > **Correction (2026-07-10)**: "55-80% savings validated" overstated — the band's AWS/Netflix anchors are dead. The tiering strategy stands directionally, and quantification now rides the S3 tier-delta derivation in the OVERTURN note above.
@@ -277,7 +277,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Production**: LinkedIn production deployment (Tier A, peer-reviewed)
 
 **Source 2**: Uber - Real-Time Security Views [^69]
-- **Finding**: Thousands of real-time views, sub-second refresh
+- ~~**Finding**: Thousands of real-time views, sub-second refresh~~ *(withdrawn 2026-07-10: no primary located; see the H-STREAM-01 section note in analysis-bundles/hypothesis-confidence-matrix.md)*
 - **Technology**: Kafka Streams for security ops
 
 **Source 3**: Nordstrom - Security Analytics [^86]
@@ -292,9 +292,9 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-STREAM-01: Kafka Streams Security Patterns**
 
-**Hypothesis**: Kafka Streams enables production-grade security analytics with stateful entity tracking (LinkedIn [^68]), sub-second detection latency (Uber [^69], Confluent [^85]), and exactly-once semantics critical for alert fidelity, representing a viable alternative to dedicated stream processors (Flink) for many security use cases.
+**Hypothesis**: Kafka Streams enables production-grade security analytics with stateful entity tracking (LinkedIn [^68]), sub-second detection latency (~~Uber [^69]~~, Confluent [^85]; the Uber figures were withdrawn 2026-07-10), and exactly-once semantics critical for alert fidelity, representing a viable alternative to dedicated stream processors (Flink) for many security use cases.
 
-**Evidence Level**: A (LinkedIn, Uber, Nordstrom production deployments)
+**Evidence Level**: A (LinkedIn, Uber, Nordstrom production deployments) *(as of 2026-11-17 the surviving Tier-A leg is the Samza VLDB 2017 paper, which supports state size and throughput but not latency; the Uber leg is withdrawn and the rescore is pending, so read this grade as the October-2025 record)*
 
 **Relevance**:
 - Book Chapter 7 (Ingestion - streaming options)
@@ -320,11 +320,11 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Source 2**: Expert Network - Jake Thomas (Okta)
 - **Context**: Production DuckDB deployment for security data
 - **Use Case**: Defensive cyber operations at scale
-- **Status**: Interview scheduled (Week 3 per PLAN.md)
+- **Status**: interview scheduled as of October 2025 (no later status recorded here)
 
 ### Current Status
 
-**Existing Knowledge Base**: `01-knowledge-base/duckdb-edge-processing-patterns.md`
+**Existing Knowledge Base**: the author's working note on DuckDB edge-processing patterns (kept outside this repository)
 - Created October 10, 2025
 - Source: Jake Thomas case study + emerging patterns
 
@@ -429,12 +429,12 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **1. Formalize Critical Hypotheses**:
 - [ ] H-IMPL-01: Streaming Architecture Hidden Costs (TCO reality)
-- [ ] H-IMPL-02: Streaming Expertise Scarcity (staffing 2.7×)
+- [ ] H-IMPL-02: Streaming Expertise Scarcity (~~staffing 2.7×~~, multiplier withdrawn 2026-07-10)
 - [ ] H-IMPL-03: Security Implementation Timeline Premium
-- [ ] H-COST-09: Tiered Storage Economics (55-80% savings)
+- [ ] H-COST-09: Tiered Storage Economics (~~55-80% savings~~, band withdrawn 2026-07-10; re-anchored on the S3 tier-price derivation)
 - [ ] H-STREAM-01: Kafka Streams Security Patterns
 
-**Add to**: `01-knowledge-base/MASTER-HYPOTHESIS-TRACKER.md`
+**Add to**: the master hypothesis tracker (kept outside this repository)
 
 **2. Extend Existing Hypothesis**:
 - [ ] H3-PERFORMANCE-01: Add security-specific subsection (ClickHouse)
@@ -501,12 +501,12 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Source 1**: Netflix Security Observability Platform
 - **Finding**: ClickHouse + Iceberg on isolated VPC with Polaris (table-level RBAC only)
 - **Implication**: No row-level security, column masking, or metadata encryption needed
-- **Evidence Level**: A (Production deployment at scale)
+- **Evidence Level**: A (Production deployment at scale) *(2026-11-17: the bibliography entry behind this was retitled 2026-07-09 because its "security observability, isolation-first" framing was a mis-attribution, and it now rests on the Netflix ClickHouse blog post, which describes a logging pipeline rather than a security platform with Polaris; read this source block as the October-2025 record, re-tier pending review)*
 
 **Source 2**: Huntress EDR Data Lake
 - **Finding**: Iceberg on isolated AWS infrastructure, table-level RBAC
 - **Implication**: Simplified security posture, avoided Unity Catalog complexity
-- **Evidence Level**: A (Production case study; "more than 90%" cost reduction — source-verbatim, softened from the derived 93% on 2026-07-09)
+- **Evidence Level**: A *(MASTER-BIBLIOGRAPHY re-tiered both Huntress entries to B on 2026-08-19)* (Production case study; "more than 90%" cost reduction — source-verbatim, softened from the derived 93% on 2026-07-09)
 
 **Source 3**: Okta Security Analytics
 - **Finding**: DuckDB + Iceberg on isolated platform (Jake Thomas validation)
@@ -601,7 +601,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Finding**: AI generates complete OCSF parsers from log samples
 - **Implication**: Shifts integration control from vendors to customers
 - **Evidence Level**: B (Production validation)
-- **Measured follow-up (2026-06-14, #10)**: generating a mapping is not the same as a field-faithful one. Tenzir's *shipped* `zeek::ocsf::map` is class-right but derives `activity_id` on only 17% of records (83% mis-bucketed) and covers 1 of 4 common sources; this measurement is what re-tiers the RQ14 OCSF/parser legs from asserted-A to Tier-B (see OVERTURN under RQ14).
+- **Measured follow-up (2026-06-14, #10)**: generating a mapping is not the same as a field-faithful one. Tenzir's *shipped* `zeek::ocsf::map` is class-right and covers 1 of 4 common sources ~~but derives `activity_id` on only 17% of records (83% mis-bucketed)~~ *(the 17% figure and the `unmapped` description were withdrawn by the lab's 2026-11-15 erratum; see the correction under the RQ14 OVERTURN note)*; this measurement is what re-tiers the RQ14 OCSF/parser legs from asserted-A to Tier-B (see OVERTURN under RQ14).
 
 ### Gap 10 Summary
 
@@ -619,17 +619,17 @@ The emergence of AI/agent architectures requires formal research questions to be
 
 **Hypothesis**: The LIGER Stack (Lakehouse + Index + Graph + Engine + Route) reduces total cost of ownership by **60-80% (median), up to 90%+ in optimal conditions**, compared to traditional SIEMs through:
 - Storage/compute separation ($0.023/GB/month S3 vs bundled SIEM pricing)
-- Compression, but **workload-dependent**: the SDW lab measured the storage byte ratio spanning **~2.6× (high-entropy: base64 payloads, full SHA-256, per-event GUIDs) → 7.9× (EDR/Sysmon proc-creation) → 8.5× (flat Zeek conn)** on a pinned 10M-row corpus (`~/sdw-lab-benchmarks/cost-to-serve-retention/`, commit 3d0539a, Tier B). The headline "10-12×" holds only for moderate-entropy schemas; high-entropy ingest compresses ~3.3× worse, so per-event cost must be re-based on the workload's own raw bytes/event, not a single assumed ratio.
+- Compression, but **workload-dependent**: the SDW lab measured the storage byte ratio spanning **~2.6× (high-entropy: base64 payloads, full SHA-256, per-event GUIDs) → 7.9× (EDR/Sysmon proc-creation) → 8.5× (flat Zeek conn)** on a pinned 10M-row corpus ([`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention), commit 3d0539a, Tier B). The headline "10-12×" holds only for moderate-entropy schemas; high-entropy ingest compresses ~3.3× worse, so per-event cost must be re-based on the workload's own raw bytes/event, not a single assumed ratio.
 - Fixed compute costs (no per-query charges)
 - Vendor-neutral architecture (avoiding lock-in premiums)
 
-**Evidence Level**: A on direction and the production-cluster anchors; the **60-80% median band is Tier C** (Jeremy's own TCO model) anchored to **Tier-B first-party byte ratios** (2.6-8.5×) plus **primary-verified production-cluster economics** (Netflix Iceberg+ClickHouse 5 PB/day hot, 1+ EB Iceberg, $5/TB DataFusion compaction; Rippling $4.50/mo per CloudTrail detection — both Reproducible/Tier B in the 2026-06-14 Gemini reconciliation; Atlassian/Project Banyan 80% ingest-cost reduction, Asserted/public Databricks figure).
+**Evidence Level**: A on direction and the production-cluster anchors; the **60-80% median band is Tier C** (the author's own TCO model) anchored to **Tier-B first-party byte ratios** (2.6-8.5×) plus **primary-verified production-cluster economics** (Netflix Iceberg+ClickHouse 5 PB/day hot, 1+ EB Iceberg, $5/TB DataFusion compaction; Rippling $4.50/mo per CloudTrail detection — both Reproducible/Tier B in the 2026-06-14 Gemini reconciliation; Atlassian/Project Banyan 80% ingest-cost reduction, Asserted/public Databricks figure).
 
 **Current Evidence**:
 - LIGER: $3,560/month for 500GB/day with 365-day retention
 - Azure Sentinel: $31,000-35,000/month (same volume/retention)
 - Splunk Enterprise TCO: $54,167-100,000/month
-- Compression validated: 10-12× (Huntress, Shell, Cloudflare cases)
+- Compression: about 10× at Cloudflare (600→60 bytes/row, the verified figure; the earlier "10-12×" phrasing is a claim mismatch), and ~~Shell~~ was removed 2026-06-05; the first-party byte ratios above (2.6×-8.5×) are the measured range
 
 **January 2026 Research Update** ✅:
 - **Barracuda Networks**: 75% reduction in daily processing and storage costs (Databricks)
@@ -665,7 +665,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 - Level 4 (Managed): 70-85% success
 - Level 5 (Optimized): >90% success
 
-**Evidence Level**: A (CSA/Google Cloud survey + SANS Institute + practitioner consensus)
+**Evidence Level**: A (CSA/Google Cloud survey + SANS Institute + practitioner consensus) *(2026-11-17 note: no source is named at the point of use for the per-level bands above, and they were not checked against the CSA/Google survey or SANS in this pass, so read them as an author hypothesis to test; any re-grade is pending review)*
 
 **Current Evidence**:
 - AI amplifies governance gaps by 10× (poor data → hallucinations)
@@ -748,17 +748,19 @@ The emergence of AI/agent architectures requires formal research questions to be
 
 **Evidence Level**: A on the ROI/triage legs (Google Cloud survey); **Tier B (measured) on the two OCSF/parser legs after the 2026-06-14 overturn** — see below.
 
-> **OVERTURN — 2026-06-14 (first-party measurement supersedes the asserted "Parser generation 100% automation / OCSF normalization 80% achievable, Evidence Level A").** ⚠️ **Re-tiering of a published asserted-A confidence level — flagged for Jeremy's sign-off before any downstream surface cites it.**
+> **OVERTURN — 2026-06-14 (first-party measurement supersedes the asserted "Parser generation 100% automation / OCSF normalization 80% achievable, Evidence Level A").** ⚠️ **This re-tier of a previously published asserted-A confidence level is pending review; until it is ruled, cite the measured Tier-B caveat alongside the original grade, not in place of it.**
 >
-> The asserted Level-A claim ("100% automation via Tenzir MCP" / "80% OCSF normalization achievable") was never a measurement — it was an inference from the *existence* of an AI-generated mapping. The SDW lab's pipeline-normalization-fidelity bench (#10) ran Tenzir's **shipped** library mapping `zeek::ocsf::map` unedited over a pinned corpus and measured what it actually delivers (`~/sdw-lab-benchmarks/pipeline-normalization-fidelity/FINDINGS-2026-06-14.md`, commit 20cf84c). Two things the asserted claim got wrong:
-> - **Fidelity is not coverage.** On the one source Tenzir ships a JSON-consumable mapping for (Zeek conn), the mapping gets the OCSF *class* right (100%, Network Activity 4001) and most *values* (92%), but it does **not** derive `activity_id` from Zeek's `conn_state`, so the activity classification diverges from the faithful gold on **83% of records** (activity_id 17%), and `history` / `service` / `uid` land in `unmapped` rather than typed OCSF attributes (field fidelity 80%). A consumer filtering on `activity_id` (open vs close vs reset vs fail) mis-buckets most connections. "Maps to OCSF" is a coverage claim, not a fidelity guarantee.
+> The asserted Level-A claim ("100% automation via Tenzir MCP" / "80% OCSF normalization achievable") was never a measurement — it was an inference from the *existence* of an AI-generated mapping. The SDW lab's pipeline-normalization-fidelity bench (#10) ran Tenzir's **shipped** library mapping `zeek::ocsf::map` unedited over a pinned corpus and measured what it actually delivers ([`sdw-lab-benchmarks/pipeline-normalization-fidelity/FINDINGS-2026-06-14.md`](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/pipeline-normalization-fidelity/FINDINGS-2026-06-14.md), commit 20cf84c). Two things the asserted claim got wrong:
+> - **Fidelity is not coverage.** On the one source Tenzir ships a JSON-consumable mapping for (Zeek conn), the mapping gets the OCSF *class* right (100%, Network Activity 4001) and most *values* (92%), ~~but it does **not** derive `activity_id` from Zeek's `conn_state`, so the activity classification diverges from the faithful gold on **83% of records** (activity_id 17%), and `history` / `service` / `uid` land in `unmapped` rather than typed OCSF attributes (field fidelity 80%). A consumer filtering on `activity_id` (open vs close vs reset vs fail) mis-buckets most connections.~~ *(the mechanism and the 17%, 83% and 80% figures were withdrawn by the lab's 2026-11-15 erratum; see the correction below)* "Maps to OCSF" is a coverage claim, not a fidelity guarantee.
 > - **Availability is the binding constraint.** Tenzir ships **0% consumable coverage for 3 of the 4 common sources** tested — CloudTrail (no management-events → API Activity operator in the `amazon` package), Sysmon (the shipped `sysmon::ocsf::map` expects raw EVTX/XML, not the pre-parsed JSON most EDR shippers carry), and a generic auth source (no vendor ships a mapping). The second tool, **Vector 0.56.0, ships no OCSF mapping at all** (no OCSF component, function, or binary string), so this is a cross-tool finding, not a Tenzir quirk. Of the two open tools tested, one ships a usable mapping for one of four sources and the other ships none.
 >
-> **Re-tier:** from *asserted Level A* to a **measured Tier-B caveat** — *coverage is a claim, fidelity is not; shipped-mapping availability is the binding constraint on OCSF-normalization-at-source.* **Version-bound:** Tenzir **6.0.0**, library commit **671e049**, OCSF **1.8.0**, synthetic corpus, single host — re-run on a newer library before repeating. The Cribl arm (the one tool advertising a packaged OCSF Pack) is deferred and would test whether the availability gap is tool-specific or general. This is the same lineage as biblio entry #86, where a fabricated Tenzir "100% hands-off" was already corrected to "100% schema-conforming." These first-party fidelity percentages are publishable: they measure open-source tools' shipped mappings and already live in the public sdw-lab-benchmarks repo (#10), carried with their version-bound caveats. The gate that still applies is a different one — named-vendor *comparative* benchmark figures bound by a DeWitt/EULA benchmark-restriction clause (the Splunk head-to-head, the Dremio-attributed numbers) stay genericized on public surfaces. The earlier "Matrix-paid IP" rationale for withholding these is obsolete as of the 2026-07-11 publication ruling.
+> **Correction (2026-11-17, from the lab's 2026-11-15 erratum)**: the first bullet above misdescribes the Zeek conn result. The gold pinned every record to `activity_id` 6 (Traffic) while Tenzir derives the activity from `conn_state`, so the 17% measures agreement with that pin rather than a mapping failure, and `history`, `service` and `uid` landed on valid OCSF 1.8.0 paths with their values intact, not in `unmapped` ([erratum](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/pipeline-normalization-fidelity/FINDINGS-2026-06-14.md)). Re-scored against a gold that accepts those alternates, Tenzir 6.0.0 reaches field fidelity 100%, strict value fidelity 93.24% (the `time` type contract is the only failure) and activity agreement 83.30%, which rests entirely on the frozen rule rejecting Open for S0; accepting Open would give 100% ([`ocsf-1.9-rescore/RESULTS.md`](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/ocsf-1.9-rescore/RESULTS.md), agent-run and independently verified, pending review). The availability finding in the second bullet is unaffected. Whether the re-tier wording below should change is pending review.
+>
+> **Re-tier:** from *asserted Level A* to a **measured Tier-B caveat** — *coverage is a claim, fidelity is not; shipped-mapping availability is the binding constraint on OCSF-normalization-at-source.* **Version-bound:** Tenzir **6.0.0**, library commit **671e049**, OCSF **1.8.0**, synthetic corpus, single host — re-run on a newer library before repeating. The Cribl arm (the one tool advertising a packaged OCSF Pack) is deferred and would test whether the availability gap is tool-specific or general. This is the same lineage as biblio entry #86, where a fabricated Tenzir "100% hands-off" was already corrected to "100% schema-conforming." These first-party fidelity percentages are publishable (the 17% and 80% figures were withdrawn by the lab's 2026-11-15 erratum): they measure open-source tools' shipped mappings and already live in the public sdw-lab-benchmarks repo (#10), carried with their version-bound caveats. The gate that still applies is a different one — named-vendor *comparative* benchmark figures bound by a DeWitt/EULA benchmark-restriction clause (the Splunk head-to-head, the Dremio-attributed numbers) stay genericized on public surfaces. The earlier "Matrix-paid IP" rationale for withholding these is obsolete as of the 2026-07-11 publication ruling.
 
 **Current Evidence**:
 - RAPTOR: Successfully patches vulnerabilities ("duct tape MVP" works)
-- Tenzir: AI generates complete OCSF parsers from samples — but the *shipped* library mapping is class-right/activity-wrong on 83% of Zeek-conn records and absent for 3 of 4 common sources (measured, #10, Tier B; see OVERTURN)
+- Tenzir: AI generates complete OCSF parsers from samples — but the *shipped* library mapping ~~is class-right/activity-wrong on 83% of Zeek-conn records and~~ is absent for 3 of 4 common sources *(the 17% figure and the `unmapped` description were withdrawn by the lab's 2026-11-15 erratum; see the correction under the RQ14 OVERTURN note)* (measured, #10, Tier B; see OVERTURN)
 - NANDA: 1,000+ agents registered, infrastructure emerging
 - Practitioner reports: AI assists but doesn't replace analysts
 
@@ -776,7 +778,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 **Validation Metrics**:
 - [x] 12-month ROI validation (74% achieve ROI in first year - Google Cloud) — ROI/triage legs only
 - [x] ROI quantification (171% average, 192% U.S. enterprises) — ROI/triage legs only
-- [x] Time-to-value measurements (parser generation: manual vs AI) — REFRAMED by #10: the gating metric is shipped-mapping *availability + fidelity*, not generation speed (Tenzir: 1 of 4 sources covered, activity_id 17% on the covered one; Vector: none)
+- [x] Time-to-value measurements (parser generation: manual vs AI) — REFRAMED by #10: the gating metric is shipped-mapping *availability + fidelity*, not generation speed (Tenzir: 1 of 4 sources covered, ~~activity_id 17% on the covered one~~ *(the 17% figure and the `unmapped` description were withdrawn by the lab's 2026-11-15 erratum; see the correction under the RQ14 OVERTURN note)*; Vector: none)
 - [ ] Task automation taxonomy (what can/cannot be automated) — #10 narrows "OCSF normalization" from "80% achievable" to "coverage ≠ fidelity, availability-bound"
 - [ ] Error rates and human oversight requirements
 - [ ] Training data requirements and costs
@@ -802,7 +804,7 @@ These formal research questions address critical gaps in the literature:
 | RQ11 | ✅ STRONG | Barracuda 75%, HSBC 3×, GitLab <1s, Netflix 5PB/day, 50% top banks |
 | RQ12 | ✅ STRONG | CSA/Google survey: 46% vs 12% adoption by governance maturity |
 | RQ13 | ✅ STRONG | Pipeline 50-70% cost reduction, $4.50/rule serverless, SIEM ingest ~$25/GB/day vs S3 storage $0.023/GB/month (unit-mismatched rates, no ratio derivable) |
-| RQ14 | ✅ STRONG (ROI legs) · ⚠️ RE-TIERED (OCSF/parser legs) | Google 74% first-year ROI, 171% average, 192% U.S. enterprises. **OCSF/parser legs overturned 2026-06-14**: asserted-A "100% parser automation / 80% OCSF normalization" → measured Tier-B caveat (Tenzir #10: class-right/activity-wrong-on-83%, 1 of 4 sources covered; Vector ships none). Coverage ≠ fidelity; availability is the binding constraint. |
+| RQ14 | ✅ STRONG (ROI legs) · ⚠️ RE-TIERED (OCSF/parser legs) | Google 74% first-year ROI, 171% average, 192% U.S. enterprises. **OCSF/parser legs overturned 2026-06-14**: asserted-A "100% parser automation / 80% OCSF normalization" → measured Tier-B caveat (Tenzir #10: ~~class-right/activity-wrong-on-83%~~ withdrawn by the 2026-11-15 lab erratum, 1 of 4 sources covered; Vector ships none). Coverage ≠ fidelity; availability is the binding constraint. |
 
 **Evidence Collection Priority** (Updated):
 - **VALIDATED**: RQ11 (LIGER production evidence), RQ12 (CSA/Google governance survey), RQ13 (pipeline economics with quantitative cost data), RQ14 (agent **ROI/triage** legs — agent ROI metrics)
@@ -812,7 +814,7 @@ These formal research questions address critical gaps in the literature:
 
 ## Gap 12: Formal Research Questions RQ15-RQ17 (June 2026)
 
-Three research questions adopted from the 2026-06-13 Gemini Deep Research lit-review sweep (intake + triage in project1 `00-inbox/gemini/gemini-20260613-litreview-deepen-extend.md`). Each is framed as an open question and cross-referenced to existing work. The two named frameworks the sweep cited — an "SETC framework" for RQ16 and "ETDI" for RQ17 — are recorded as **to-confirm**, not asserted, since neither was opened at a primary; the questions are framed around the underlying concepts so they stand even if those names don't.
+Three research questions adopted from the 2026-06-13 Gemini Deep Research lit-review sweep (intake and triage notes are kept outside this repository). Each is framed as an open question and cross-referenced to existing work. The two named frameworks the sweep cited — an "SETC framework" for RQ16 and "ETDI" for RQ17 — are recorded as **to-confirm**, not asserted, since neither was opened at a primary; the questions are framed around the underlying concepts so they stand even if those names don't.
 
 ### RQ15: Wasm-Embedded Decoders as a Storage-Layer Threat Model
 
@@ -840,11 +842,11 @@ Three research questions adopted from the 2026-06-13 Gemini Deep Research lit-re
 **Evidence Level**: B (the context-collapse benchmark is measured, Tier B, in the SDW lab)
 
 **Current Evidence**: The SDW context-collapse / OCSF-flattening benchmarks (sdw-lab-benchmarks) and the six-schema → OCSF 1.8.0 crosswalk corpus already measure mapping fidelity and flattening cost. This RQ formalizes the "intelligence loss" question specifically for high-cardinality endpoint sources. Two first-party measurements now ground it directly:
-- **Detection-relevant loss is measured, de-gamed (Tier B).** The de-gamed BENCH-A re-run (`~/sdw-lab-benchmarks/ocsf-context-collapse-apt29/`, commit 52e4958) runs **unmodified upstream SigmaHQ** rules via pySigma→SQL against real **MITRE ATT&CK APT29** (OTRF/Mordor) telemetry under documented, blind coarsening. Adversary-relevant detections lose **~2× the recall** and go fully blind ~2× as often as routine detections; the headline blinding-recall-loss delta is **+0.188** at the documented 64-char truncation cap, bounded **+0.094 to +0.205** across a coarsening sweep (deterministic, no RNG, so the band is a truncation-cap curve, not a seed band). The blinded rules are the expected ones — Base64/encoded-PowerShell and long-script-block rules killed by command-line/script-block truncation, which is exactly APT29's encoded-PowerShell tradecraft. Earlier R1/R2 runs reported a larger gameable synthetic delta (+0.719); the **de-gamed +0.188 is the figure to cite** for this RQ, with the synthetic value labelled as such. Caveats travel: modest fired-rule sample, one dataset, one coarsening config, recall-loss measured against the fidelity store (not absolute per-event labels), and the independent-reviewer Tier-A gate on "does Store N resemble what shops build" stays open.
-- **Per-source mapping/availability loss is measured (Tier B, #10).** The pipeline-normalization-fidelity bench shows the *normalization step itself* drops detection-relevant structure before any flattening: on Zeek conn the shipped Tenzir mapping leaves `activity_id` correct on only 17% of records and lands `history`/`service`/`uid` in `unmapped` (version-bound: Tenzir 6.0.0, library 671e049, OCSF 1.8.0). So "intelligence loss into OCSF" has two measurable legs — the *coarsening/flattening* leg (BENCH-A, +0.188) and the *mapping-fidelity* leg (#10, the activity-classification and unmapped-field loss).
+- **Detection-relevant loss is measured, de-gamed (Tier B).** The de-gamed BENCH-A re-run ([`sdw-lab-benchmarks/ocsf-context-collapse-apt29`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/ocsf-context-collapse-apt29), commit 52e4958) runs **unmodified upstream SigmaHQ** rules via pySigma→SQL against real **MITRE ATT&CK APT29** (OTRF/Mordor) telemetry under documented, blind coarsening. Adversary-relevant detections lose **~2× the recall** and go fully blind ~2× as often as routine detections; the headline blinding-recall-loss delta is **+0.188** at the documented 64-char truncation cap, bounded **+0.094 to +0.205** across a coarsening sweep (deterministic, no RNG, so the band is a truncation-cap curve, not a seed band). The blinded rules are the expected ones — Base64/encoded-PowerShell and long-script-block rules killed by command-line/script-block truncation, which is exactly APT29's encoded-PowerShell tradecraft. Earlier R1/R2 runs reported a larger gameable synthetic delta (+0.719); the **de-gamed +0.188 is the figure to cite** for this RQ, with the synthetic value labelled as such. Caveats travel: modest fired-rule sample, one dataset, one coarsening config, recall-loss measured against the fidelity store (not absolute per-event labels), and the independent-reviewer Tier-A gate on "does Store N resemble what shops build" stays open.
+- **Per-source mapping/availability loss is measured (Tier B, #10).** The pipeline-normalization-fidelity bench shows the *normalization step itself* drops detection-relevant structure before any flattening: on Zeek conn ~~the shipped Tenzir mapping leaves `activity_id` correct on only 17% of records and lands `history`/`service`/`uid` in `unmapped`~~ *(the 17% figure and the `unmapped` description were withdrawn by the lab's 2026-11-15 erratum; see the correction under the RQ14 OVERTURN note)*, and the re-score puts Tenzir 6.0.0 at field 100%, strict value 93.24% and activity 83.30% (S0-rule dependent; version-bound: Tenzir 6.0.0, library 671e049, OCSF 1.8.0). So "intelligence loss into OCSF" has two measurable legs — the *coarsening/flattening* leg (BENCH-A, +0.188) and the *mapping-fidelity* leg (#10, ~~the activity-classification and unmapped-field loss~~ *(re-scored 2026-11-15; the remaining measured loss is the `time` type contract and the S0 rule)*).
 
 **Validation Metrics**:
-- [x] Quantify field/cardinality loss per source — BENCH-A (recall-loss delta +0.188, de-gamed) + #10 (activity_id 17%, field fidelity 80% on Zeek conn); per-source for high-cardinality EDR/Sysmon remains to run (#10 covered Zeek conn; Sysmon arm was XML-bound)
+- [x] Quantify field/cardinality loss per source — BENCH-A (recall-loss delta +0.188, de-gamed) + #10 (~~activity_id 17%, field fidelity 80% on Zeek conn~~, re-scored 2026-11-15 to activity 83.30%, S0-rule dependent, and field 100%); per-source for high-cardinality EDR/Sysmon remains to run (#10 covered Zeek conn; Sysmon arm was XML-bound)
 - [x] Tie measured loss to missed-detection scenarios — APT29 encoded-PowerShell rules go blind under command-line/script-block truncation (BENCH-A)
 - [ ] Confirm whether a named "SETC framework" exists as a citable primary before referencing it — still to-confirm; the RQ stands on the lab's own measurements regardless
 
@@ -878,6 +880,6 @@ These three June-2026 questions extend the review into storage-layer and agentic
 ---
 
 **Author**: Jeremy Wiley
-**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated), **June 13, 2026** (RQ15-RQ17 adopted from the Gemini DR sweep), **June 14, 2026** (benchmark integration: RQ14 OCSF/parser legs OVERTURNED asserted-A → measured Tier-B caveat per #10 [⚠️ confidence-level change, flagged for sign-off]; RQ16 grounded on the measured BENCH-A de-gamed +0.188 and #10 mapping-fidelity legs; RQ11/RQ13 cost-reduction standardized to 60-80% median / up to 90%+ optimal, anchored to lab byte ratios 2.6-8.5× + production-cluster economics), **July 10, 2026** (correction sweep: Gaps 1/2/4 + H1-COST-08 OVERTURNED per the 2026-07-09/10 fetch-backed hunts — H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 re-anchored on the S3 tier-delta derivation; LinkedIn leg re-anchored on Samza VLDB 2017; Huntress softened to source-verbatim "more than 90%"; SK Telecom re-attributed to the Trino Summit slides)
-**Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from project1, LIGER Stack reference architecture, CSA/Google AI governance study, Forrester, ClickHouse case studies, Google Cloud agent ROI, **SACR Market Guide 2025, Rippling SIEM series, Monad detection cost analysis**
+**Date**: October 10, 2025 (original), updated November 14, 2025 (isolation-first security), December 6, 2025 (AI/agent architectures + LIGER Stack + formal RQ11-RQ14), January 3, 2026 (major evidence update from web research), **February 28, 2026** (RQ13 pipeline detection economics validated), **June 13, 2026** (RQ15-RQ17 adopted from the Gemini DR sweep), **June 14, 2026** (benchmark integration: RQ14 OCSF/parser legs OVERTURNED asserted-A → measured Tier-B caveat per #10 [re-tier pending review]; RQ16 grounded on the measured BENCH-A de-gamed +0.188 and #10 mapping-fidelity legs; RQ11/RQ13 cost-reduction standardized to 60-80% median / up to 90%+ optimal, anchored to lab byte ratios 2.6-8.5× + production-cluster economics), **July 10, 2026** (correction sweep: Gaps 1/2/4 + H1-COST-08 OVERTURNED per the 2026-07-09/10 fetch-backed hunts — H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 re-anchored on the S3 tier-delta derivation; LinkedIn leg re-anchored on Samza VLDB 2017; Huntress softened to source-verbatim "more than 90%"; SK Telecom re-attributed to the Trino Summit slides)
+**Sources**: 150+ footnotes analyzed, MASTER-HYPOTHESIS-TRACKER.md reviewed, isolation-first security pattern from blog, AI/agent patterns from the author's research notes, LIGER Stack reference architecture, CSA/Google AI governance study, Forrester, ClickHouse case studies, Google Cloud agent ROI, **SACR Market Guide 2025, Rippling SIEM series, Monad detection cost analysis**
 **Status**: All RQ11-RQ14 now have strong evidence validation

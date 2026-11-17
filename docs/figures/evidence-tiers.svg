@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1309" width="1080" height="1309" role="img" aria-labelledby="ft-t ft-d">
+<title id="ft-t">Level A is peer review and standards; production evidence, however good, is B</title>
+<desc id="ft-d">Four stacked evidence levels. Level A: peer-reviewed work at a named venue; NIST, ISO/IEC, IETF RFC, W3C and OASIS standards; formal specifications such as the Iceberg table spec and the OCSF schema; and MITRE D3FEND and ATLAS, authoritative on structure but not on efficacy. A highlighted line below Level A marks that no production evidence sits above it. Level B: deployments and case studies with real numbers, vendor engineering blogs, talks, trade books, analyst reports, expert interviews, advisories, official project documentation and preprints with no named venue. Level C: vendor posts, product documentation and talks with no production measurement behind them, kept with bias flagged and never carrying a hypothesis alone. Level D: unverified claims, marketing and speculation, excluded from the review.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6878"/></marker></defs>
+<rect width="1080" height="1309" fill="#ffffff"/>
+<text x="48" y="70.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="42" font-weight="700" fill="#2c4f74" text-anchor="start">Level A is peer review and standards;</text>
+<text x="48" y="122.5" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="42" font-weight="700" fill="#2c4f74" text-anchor="start">production evidence, however good, is B</text>
+<text x="48" y="182" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="26" font-weight="400" fill="#5b6878" text-anchor="start">Evidence levels, METHODOLOGY.md section 3.1</text>
+<rect x="48" y="220" width="984" height="240" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<rect x="48" y="220" width="120" height="240" rx="12" fill="#36608f" stroke="#36608f" stroke-width="2"/>
+<text x="108" y="366.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="76" font-weight="700" fill="#ffffff" text-anchor="middle">A</text>
+<text x="196" y="272" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="34" font-weight="700" fill="#243f5b" text-anchor="start">Peer review and standards</text>
+<text x="196" y="316.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Peer-reviewed work at a named venue</text>
+<text x="196" y="355.15" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">NIST, ISO/IEC, IETF RFC, W3C, OASIS</text>
+<text x="196" y="394.3" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Formal specs (Iceberg table spec, OCSF schema)</text>
+<text x="196" y="433.45" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">MITRE D3FEND, ATLAS: structure, not efficacy</text>
+<rect x="48" y="474" width="984" height="64" rx="10" fill="#1f8fe0"/>
+<text x="540.0" y="517" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="30" font-weight="700" fill="#ffffff" text-anchor="middle">The line: no production evidence above it</text>
+<rect x="48" y="552" width="984" height="279" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<rect x="48" y="552" width="120" height="279" rx="12" fill="#5c8dc5" stroke="#5c8dc5" stroke-width="2"/>
+<text x="108" y="717.5" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="76" font-weight="700" fill="#ffffff" text-anchor="middle">B</text>
+<text x="196" y="604" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="34" font-weight="700" fill="#243f5b" text-anchor="start">Practice and production</text>
+<text x="196" y="648.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Deployments and case studies with real numbers</text>
+<text x="196" y="687.15" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Vendor engineering blogs, talks, trade books</text>
+<text x="196" y="726.3" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Analyst reports, expert interviews</text>
+<text x="196" y="765.45" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Advisories and official project docs</text>
+<text x="196" y="804.6" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Preprints with no named venue</text>
+<rect x="48" y="853" width="984" height="240" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<rect x="48" y="853" width="120" height="240" rx="12" fill="#87aacf" stroke="#87aacf" stroke-width="2"/>
+<text x="108" y="999.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="76" font-weight="700" fill="#243f5b" text-anchor="middle">C</text>
+<text x="196" y="905" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="34" font-weight="700" fill="#243f5b" text-anchor="start">Unmeasured vendor material and talks</text>
+<text x="196" y="949.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Vendor posts, product docs and talks</text>
+<text x="196" y="988.15" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">with no production measurement behind them</text>
+<text x="196" y="1027.3" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Kept with bias flagged; never carries</text>
+<text x="196" y="1066.45" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">a hypothesis on its own</text>
+<rect x="48" y="1115" width="984" height="162" rx="12" fill="#ffffff" stroke="#e2e6ea" stroke-width="2" stroke-dasharray="10 8"/>
+<rect x="48" y="1115" width="120" height="162" rx="12" fill="#e2e6ea" stroke="#e2e6ea" stroke-width="2"/>
+<text x="108" y="1222.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="76" font-weight="700" fill="#243f5b" text-anchor="middle">D</text>
+<text x="196" y="1167" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="34" font-weight="700" fill="#243f5b" text-anchor="start">Marketing and speculation</text>
+<text x="196" y="1211.0" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Unverified claims, marketing, speculation</text>
+<text x="196" y="1250.15" font-family='"DM Sans Variable","DM Sans",Arial,"Liberation Sans",sans-serif' font-size="29" font-weight="400" fill="#243f5b" text-anchor="start">Excluded from the review</text>
+</svg>

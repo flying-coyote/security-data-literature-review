@@ -1,6 +1,7 @@
-# Repo gates — the same three checks the local pre-commit shim runs, enforced
-# on every push and PR so a clone without the hook installed cannot silently
-# land a count drift, a taxonomy mismatch, or a release-breaking metadata file.
+# Repo gates: the checks the local pre-commit shim runs, enforced on every push
+# and PR so a clone without the hook installed cannot silently land a count
+# drift, a taxonomy mismatch, a release-breaking metadata file, or a stale path
+# or broken relative link after files move (working/MOVE-MAP.json).
 # count_reconcile.py runs in full (not --staged) mode here: in CI every stated
 # count must agree with the derived truth, not only the ones a commit touched.
 name: gates
@@ -27,5 +28,7 @@ jobs:
         run: python3 scripts/derive_vendor_rollups.py --check
       - name: Zenodo/CFF metadata validation
         run: python3 scripts/validate_metadata.py
+      - name: Moved-path mentions and relative links
+        run: python3 scripts/repoint_moved_paths.py --check
       - name: Secret scan
         run: bash scripts/secret-scan.sh
