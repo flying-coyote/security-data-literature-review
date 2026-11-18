@@ -241,7 +241,7 @@ def route_query(query_metadata):
 - **Dremio**: Dashboards (<1 sec Reflections), BI integration (Tableau, Power BI)
 - **Trino**: Threat hunting (interactive MPP, federation across SIEM/databases/lake)
 - **Spark**: Table maintenance (compaction, snapshot expiration, schema evolution)
-- **DuckDB**: Edge preprocessing (directional 50-80% volume reduction; see the Jake Thomas / Okta account in AP#11 and Appendix I.5)
+- **DuckDB**: Edge preprocessing (an illustrative 50-80% volume reduction, unverified; see AP#11 and Appendix I.5)
 
 **3. "Can One Engine Do This Well?" Test**:
 - Proposed workload: Real-time SOC dashboard updating every 30 seconds
@@ -792,7 +792,7 @@ See Appendix I, Section I.2 for detailed maintenance procedures and scheduling.
 
 ### Description
 
-Ingesting raw security telemetry (CloudTrail, VPC Flow Logs, DNS logs) without filtering or aggregating at the edge, resulting in illustratively 2-10× higher storage and query costs (directional; the measured anchor is the Jake Thomas / Okta account below).
+Ingesting raw security telemetry (CloudTrail, VPC Flow Logs, DNS logs) without filtering or aggregating at the edge, resulting in illustratively 2-10× higher storage and query costs (directional; no measured anchor is cited, see the correction note below).
 
 **Symptoms** (the volume figures here are illustrative, directional):
 - CloudTrail storage dominated by read-only "Get/List/Describe" operations (illustratively ~80% of volume, low security value)
@@ -801,10 +801,12 @@ Ingesting raw security telemetry (CloudTrail, VPC Flow Logs, DNS logs) without f
 
 ### Why It Fails
 
-At TB/day scale the volume overwhelms the economics, because storing and querying unfiltered data costs illustratively 3-5× more than preprocessing it first (directional, consistent with the Jake Thomas / Okta account below), and the security team ends up paying for compute and storage on data it never analyzes.
+At TB/day scale the volume overwhelms the economics, because storing and querying unfiltered data costs illustratively 3-5× more than preprocessing it first (directional), and the security team ends up paying for compute and storage on data it never analyzes.
 
-**Example failure** (practitioner validation, Jake Thomas (Okta), Tier B):
-> Previous approach: Snowflake ingesting raw CloudTrail at roughly $2,000/day. After deploying DuckDB Lambda edge preprocessing, the volume dropped 50-80%, with an estimated 80-95% cost savings (down to $100-$400/day). Jake Thomas reports validating this pattern at 7.5 trillion records over six months.
+**Example failure** (illustrative, unverified):
+> A team loading raw CloudTrail into a cloud warehouse pays to store and query read-only Get/List/Describe events it never analyzes. Filtering them at the edge with serverless DuckDB before load cuts both volume and cost, by an amount that depends on that team's own event mix.
+
+*Corrected 2026-11-17.* This example was earlier labelled "practitioner validation, Jake Thomas (Okta)" and attributed a roughly $2,000/day Snowflake cost, a 50-80% volume drop and an 80-95% saving to him. No conversation with Jake Thomas took place, his public Data Council 2024 talk abstract carries none of those figures, and Julien Hurault's 2024-05-01 [write-up of the talk](https://juhache.substack.com/p/oktas-multi-engine-data-stack) (Tier C, practitioner blog) says no exact cost figures were given, so the attribution is removed and the figures are withdrawn as unverified. What the talk does support is scale, 7.5 trillion records across 130 million files in six months (see Appendix I.5).
 
 ### Prevention Strategies
 

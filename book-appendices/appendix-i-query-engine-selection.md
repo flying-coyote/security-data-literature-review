@@ -41,7 +41,7 @@ and then it pulls the engines together into hybrid architecture patterns. All of
 
 ### Leadership Takeaway
 
-Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans. The worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. In this appendix's worked Enterprise-SOC scenario (Section I.6.3), hybrid multi-engine architecture shows 63% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, late 2024) and described by Jake Thomas at Okta (7.5 trillion records, Tier B: personal communication).
+Your security team will run 3-4 query engines rather than one, and this is normal architectural practice, not a sign of failure. The alternative (forcing all workloads through a single engine) costs 50-75% more and breaks down operationally where workloads conflict, as when dashboard refreshes queue behind threat-hunting scans. The worst penalties come from workload mismatch rather than engine-vs-engine speed, since in my single-host join bench (Tier B, 2026) every engine tested answered every join in the SOC suite in under 1.5 seconds. In this appendix's worked Enterprise-SOC scenario (Section I.6.3), hybrid multi-engine architecture shows 63% cost savings compared to single-platform approaches while delivering faster analyst response times. If your architect recommends multiple engines, they're following the same pattern reported at Netflix (5 PB/day, Tier C: ClickHouse meetup presentation, July 2025) and at Okta, where Jake Thomas's public Data Council 2024 talk reports serverless DuckDB processing 7.5 trillion records in six months (Tier B, [abstract](https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/)) and a practitioner write-up of the talk describes a multi-engine stack around it (Julien Hurault, 2024-05-01, Tier C practitioner blog, [link](https://juhache.substack.com/p/oktas-multi-engine-data-stack)).
 
 **Bottom line**: Multiple specialized engines cost less and fit security's conflicting workloads better than one general-purpose engine; the gain is operational fit and cost, with raw speed the smaller lever at SOC scale.
 
@@ -504,7 +504,7 @@ While Sections I.3-I.4 covered Trino and Dremio, there's a fifth query engine wo
 
 What makes the choice relevant is how closely observability and security have converged on the same problem. Netflix's logging challenges are the same ones security data hits at enterprise scale: massive write throughput, sub-second queries over long retention, and cost-efficient petabyte storage.
 
-**Netflix's reported scale** (Tier C: ClickHouse meetup presentation by Daniel Muino, late 2024, a vendor ecosystem event, self-reported and not independently audited):
+**Netflix's reported scale** (Tier C: ClickHouse meetup presentation by Daniel Muino, July 2025 (written up on the ClickHouse blog 2025-10-23), a vendor ecosystem event, self-reported and not independently audited):
 - **5 petabytes/day** ingestion across 40,000+ microservices
 - **10.6 million events/second** average (12.5 million peak)
 - **Sub-second query response** for investigations
@@ -530,7 +530,7 @@ Security queries scan millions of rows but touch few columns (timestamps, IPs, u
 
 ### I.4A.3 Netflix's Three Optimizations (What Security Teams Can Steal)
 
-Netflix engineer Daniel Muino presented their ClickHouse optimization journey at a ClickHouse meetup (late 2024). Three bottlenecks and their solutions:
+Netflix engineer Daniel Muino presented their ClickHouse optimization journey at a ClickHouse meetup (July 2025). Three bottlenecks and their solutions:
 
 **Optimization 1: Fingerprinting (216μs → 23μs)**. Log fingerprinting via regex/ML didn't scale at 10M events/sec. Solution: generated lexers using JFlex (precompiled state machines instead of runtime pattern matching). Result: 8-10× throughput increase. **Security takeaway**: If normalizing to OCSF (Appendix H) at petabyte scale, audit parsing pipelines for regex bottlenecks. Consider generated parsers if per-event latency >100μs.
 
@@ -626,7 +626,7 @@ Most security teams store everything in one tier, either an expensive SIEM or a 
 - **Smaller scale** (10s of GB to TBs, not PBs) - DuckDB's embedded simplicity wins
 - **Edge analytics** (queries run where data lives, not centralized) - DuckDB serverless pattern (Section I.5)
 - **Team SQL-familiar but not distributed databases** - DuckDB simpler operational model
-- **Validation**: Jake Thomas at Okta runs DuckDB at 7.5 trillion records for security analytics (Section I.5)
+- **Validation**: Jake Thomas reported Okta running DuckDB at 7.5 trillion records for security analytics in his public Data Council 2024 talk (Section I.5)
 
 **ClickHouse vs Trino/Dremio decision framework**:
 
@@ -797,24 +797,24 @@ For detailed platform comparisons, see the Appendix E resource directory. For OC
 
 ### I.5.1 Validated at Extreme Scale
 
-**Jake Thomas (Okta)** (Tier B: personal communication): "7.5 trillion records processed in 6 months using thousands of concurrent DuckDB Lambda instances." This is Jake's own account of the system he built; it has not been independently audited.
+**Jake Thomas (then at Okta)** (Tier B: public Data Council 2024 talk, [abstract](https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/)): over six months, Okta's defensive cyber operations team processed 7.5 trillion records across 130 million files with thousands of concurrent serverless DuckDB instances, while daily volume swung from 1.5 TB to 50 TB. These figures are his own public account of the system he built and have not been independently audited. *Corrected 2026-11-17: this paragraph earlier attributed a quotation to an unpublished conversation with Jake Thomas that never took place; the attribution now points at the public talk, and the quotation, which the talk abstract does not contain, was removed.*
 
-**Architecture**:
+**Architecture** (an illustrative pattern for this appendix rather than Okta's published design, because the talk abstract names neither the serverless runtime nor a volume-reduction figure):
 ```
 [CloudTrail S3 Events] (raw JSON, 1-50 TB/day variable)
     ↓
 [Lambda Function Triggered] (1 Lambda per S3 object notification)
     ↓
 [DuckDB In-Memory Processing] (filter, normalize, compress)
-    ↓ 50-80% volume reduction
+    ↓ volume reduction (illustrative 50-80%, unmeasured)
 [S3 Parquet Files] (optimized, partitioned)
     ↓
 [Iceberg Tables] ← Query engines (Trino, Dremio, Spark)
 ```
 
-**Cost impact**: Jake Thomas described Okta's previous Snowflake approach at approximately $2,000/day. The DuckDB serverless cost he characterized as "dramatically reduced"; the 80-95% savings estimate ($100-$400/day) is a reasonable inference from those numbers, not a figure he stated directly.
+**Cost impact** (unverified): an earlier version of this section attributed a previous Snowflake cost of about $2,000/day and a "dramatically reduced" serverless cost to Jake Thomas, and derived an 80-95% savings estimate ($100-$400/day) from them. Neither figure appears in the public talk abstract, and Julien Hurault's 2024-05-01 [write-up of the talk](https://juhache.substack.com/p/oktas-multi-engine-data-stack) (Tier C, practitioner blog) says no exact cost figures were given, so the dollar figures and the savings estimate are withdrawn as unverified. Any cost case for this pattern has to be modeled against your own volumes.
 
-**Scalability validation**: 1-50 TB/day variable workload (50× peak-to-trough ratio) handled by serverless auto-scaling (thousands of concurrent Lambda functions). The 7.5-trillion-record figure is the part Jake stated directly, so read the band and the ratio as the operating envelope the architecture absorbed rather than as quoted material.
+**Scalability validation**: the talk abstract reports daily volume spiking from 1.5 TB to 50 TB (roughly a 33× swing) without infrastructure changes, absorbed by thousands of concurrent serverless DuckDB instances. Read that band as the operating envelope Okta reported publicly, not as an independently measured result.
 
 ### I.5.2 CloudTrail Filtering Pattern
 
@@ -1219,7 +1219,7 @@ The Dremio line in Phase 2, and the running total in Phase 3, price Dremio on DC
 
 ## Section I.9: Key Takeaways and Decision Framework
 
-The findings that hold up across the production accounts and my own lab runs converge on a few things. There's no universal engine, so the hybrid architecture is what delivers the 50-75% cost savings against a single engine (H-ARCH-02: 0.97 confidence). The case rests on cost, workload conflict, and operational fit rather than raw speed, because in my single-host join bench (Tier B, 2026) every engine answered every SOC-scale join in well under 1.5 seconds. That's too compressed a spread to choose on. Spark stays irreplaceable for Iceberg maintenance, the one thing you can't skip even after standing up Trino for hunts and Dremio for dashboards (H-ARCH-04: 0.98 confidence, practitioner validation). Segregating workloads is what keeps the noisy-neighbor interference out of security operations, where a queued scan costs you a missed detection rather than a slow report (practitioner validation). And now it's measured: in the workload-interference bench of Section I.7.1 the three columnar/MPP arms hold the interactive p95 flat through 32× the base scheduled rate and knee at a reproduced 64× (single host, Tier B). So the affirmative reason to isolate is that the interference failure arrives suddenly at the knee rather than degrading gently. DuckDB edge preprocessing changes the economics by cutting 50-80% of the volume before it lands, which Jake Thomas validated at 7.5 trillion records at Okta. And Dremio Reflections are what take the dashboard query from the illustrative 5-15 seconds down to under a second (Section I.4.2's worked scenario, not a first-party run).
+The findings that hold up across the production accounts and my own lab runs converge on a few things. There's no universal engine, so the hybrid architecture is what delivers the 50-75% cost savings against a single engine (H-ARCH-02: 0.97 confidence). The case rests on cost, workload conflict, and operational fit rather than raw speed, because in my single-host join bench (Tier B, 2026) every engine answered every SOC-scale join in well under 1.5 seconds. That's too compressed a spread to choose on. Spark stays irreplaceable for Iceberg maintenance, the one thing you can't skip even after standing up Trino for hunts and Dremio for dashboards (H-ARCH-04: 0.98 confidence in the hub tracker, resting on an unpublished practitioner account, so treat it as unverified). Segregating workloads is what keeps the noisy-neighbor interference out of security operations, where a queued scan costs you a missed detection rather than a slow report (an unpublished practitioner account, unverified). And now it's measured: in the workload-interference bench of Section I.7.1 the three columnar/MPP arms hold the interactive p95 flat through 32× the base scheduled rate and knee at a reproduced 64× (single host, Tier B). So the affirmative reason to isolate is that the interference failure arrives suddenly at the knee rather than degrading gently. DuckDB edge preprocessing can change the economics by cutting volume before it lands (the 50-80% band in Section I.5 is illustrative and unverified), and Jake Thomas's public Data Council 2024 talk reports the approach running at 7.5 trillion records at Okta. And Dremio Reflections are what take the dashboard query from the illustrative 5-15 seconds down to under a second (Section I.4.2's worked scenario, not a first-party run).
 
 **Decision framework summary**:
 
@@ -1247,8 +1247,8 @@ That verification discipline is the price of the cost savings and the workload f
 
 **Primary validation sources**:
 - A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture patterns, workload segregation, Spark irreplaceable for Iceberg (Tier B)
-- Jake Thomas (Okta) [Personal communication]: DuckDB extreme scale validation (7.5T records in 6 months, $2K/day Snowflake → "dramatically reduced," figures that are Jake's own account and not independently audited) (Tier B)
-- Netflix ClickHouse scale figures [Daniel Muino, ClickHouse meetup presentation, late 2024]: 5 PB/day, 10.6M events/sec, sub-second queries, from a vendor ecosystem presentation not independently reproduced (Tier C)
+- Jake Thomas (then at Okta), Data Council 2024 public talk ([abstract](https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/)): 7.5 trillion records across 130 million files in six months, daily volume from 1.5 TB to 50 TB, his own account and not independently audited (Tier B). An earlier "$2K/day Snowflake → 'dramatically reduced'" figure was attributed to a conversation that never took place and is withdrawn as unverified (corrected 2026-11-17)
+- Netflix ClickHouse scale figures [Daniel Muino, ClickHouse meetup presentation, July 2025; ClickHouse blog 2025-10-23]: 5 PB/day, 10.6M events/sec, sub-second queries, from a vendor ecosystem presentation not independently reproduced (Tier C)
 - Schema-on-read SIEM bake-off [SDW Lab, zeek-flagship-rerun, 2026-06-10]: a two-regime split over 10M OCSF-normalized Zeek conn.log events, 5 standardized queries, CV-gated, answers verified equal across the three head-to-head arms with the StarRocks and Trino sidecar timed only, specifically the OpenSearch 2.18.0 baseline (2.854s avg) against ClickHouse-native (0.061s, 46.8×), ClickHouse-over-Iceberg (0.282s, 10.1×), StarRocks (0.343s, 8.3×), and Trino (0.795s, 3.6×); the index wins the cheap lookups, the lakehouse wins the heavy hunting aggregations. Supersedes a retired legacy benchmark (Dec 2025). One specific workload, directional for network-telemetry analytical queries (Tier B)
 
 **Streaming layer (Section I.5A)**:
@@ -1276,5 +1276,5 @@ That verification discipline is the price of the cost savings and the workload f
 - H-ARCH-04: Spark irreplaceable for Iceberg maintenance (0.98 confidence)
 
 **Case studies**:
-- Okta DuckDB serverless (Tier B, Jake Thomas personal account): 7.5 trillion records in 6 months, 50 TB/day peak, $2K/day Snowflake → "dramatically reduced" DuckDB serverless cost
+- Okta DuckDB serverless (Tier B, Jake Thomas, Data Council 2024 public talk): 7.5 trillion records across 130 million files in six months, 1.5 TB to 50 TB/day; the earlier Snowflake cost figures are withdrawn as unverified (see Primary validation sources above)
 - Healthcare SOC hybrid (composite model): $38K/month Snowflake → $14K/month hybrid (63% savings, <1 sec dashboards), an illustrative calculation and not a named client

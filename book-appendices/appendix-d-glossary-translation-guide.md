@@ -778,8 +778,9 @@ This appendix provides:
 **Data Engineering Resources Cited**:
 - Joe Reis & Matt Housley: "Fundamentals of Data Engineering" (O'Reilly, 2022)
 - Martin Kleppmann: "Designing Data-Intensive Applications" (O'Reilly, 2017)
-- Official documentation: Apache Iceberg, Trino, Delta Lake, dbt
+- Official documentation: Apache Iceberg, Trino, Delta Lake, dbt, and Apache Gravitino (gravitino.apache.org/docs) for meta-catalog architecture and catalog proliferation management
 
 **Practitioner Validation**:
 - A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture necessity, Starburst/Athena connection, Denodo multi-cloud virtualization
-- Lisa Cao (Datastrato): Gravitino meta-catalog expertise, catalog proliferation management [Personal communication, 2025; Gravitino architecture: gravitino.apache.org/docs]
+
+*Corrected 2026-11-17: this list also attributed Gravitino meta-catalog expertise to a named Gravitino contributor, but no interview with her took place and no published source backed the attribution, so under the bibliography's Boundary rule it was removed and the Gravitino material now points at the project's public documentation above.*

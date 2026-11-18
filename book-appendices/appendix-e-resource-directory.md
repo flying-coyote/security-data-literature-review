@@ -703,13 +703,13 @@ A data-platform practitioner said, in personal communication (October 2025), "Sp
 - **Note**: this source is anonymized under the disclosure rules, so it is cited rather than followable, and it sits here because the validation shaped the multi-engine material rather than because you can go read them
 
 **Jake Thomas** (Practitioner, Security data engineering)
-- Focus: Edge preprocessing with DuckDB, volume reduction patterns
-- **Book Validation**: Provided DuckDB Lambda patterns in Appendix I
+- Focus: Edge preprocessing with DuckDB at scale
+- **Public work**: Data Council 2024 talk, "Processing Trillions of Records at Okta with Mini Serverless Databases" ([abstract](https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/)), cited for scale in Appendix I. No interview has taken place, so nothing in these appendices is attributed to one (corrected 2026-11-17)
 
 **Lisa Cao** (Gravitino contributor; formerly Datastrato)
 - LinkedIn: Search "Lisa Cao Gravitino"
 - Focus: Gravitino meta-catalogs, catalog federation
-- **Topic**: Gravitino for security data source cataloging (Appendix D reference)
+- **Topic**: Gravitino for security data source cataloging (Appendix D points at the public Gravitino documentation; no interview has taken place)
 
 ---
 
@@ -793,7 +793,7 @@ So use this map as "further reading" for any chapter. Links go to the live essay
 | [ClickHouse at Petabyte Scale (Netflix Case Study)](https://securitydataworks.com/writing/engines/clickhouse-petabyte) | **Appendix I** covers the 5 PB/day architecture and operational simplicity at scale |
 | [Query-Engine Specialization: Push vs Pull](https://securitydataworks.com/writing/engines/push-pull-engines) † | **Appendix I** (dual-engine workload optimization) |
 | [Cribl vs Tenzir: Route-by-Value Economics](https://securitydataworks.com/writing/pipelines/cribl-vs-tenzir) | **the what-good pipeline-evaluation material, Appendix B**, pipeline evaluation |
-| [DuckDB for Threat Hunting: 7.5 Trillion Records at Okta](https://securitydataworks.com/writing/engines/duckdb-threat-hunting) | **Appendix I**, the Jake Thomas / Okta Tier-B personal account on edge preprocessing |
+| [DuckDB for Threat Hunting: 7.5 Trillion Records at Okta](https://securitydataworks.com/writing/engines/duckdb-threat-hunting) | **Appendix I**, the Jake Thomas / Okta scale figures from his public Data Council 2024 talk, with the appendix's own illustrative edge-preprocessing pattern |
 | [Kafka to Iceberg: Hidden Integration Costs](https://securitydataworks.com/writing/pipelines/kafka-iceberg-integration) | **Appendix I §I.5A** covers streaming-to-lakehouse architectural challenges (copy-based vs zero-copy) |
 | [Streaming Decision: RisingWave, Fluss, and the Alternatives](https://securitydataworks.com/writing/pipelines/streaming-decision) † | **Appendix I §I.5A** (emerging alternatives to Kafka+Flink, criteria-based assessment matrix) |
 | [NATS JetStream: the lightweight Kafka alternative, and why durability disqualifies it for security data](https://securitydataworks.com/writing/pipelines/nats-jetstream) | **Appendix I §I.5A**, edge-collector assessment and the Jepsen durability evidence |
