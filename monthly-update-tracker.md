@@ -24,7 +24,7 @@ Three cycles run at different speeds, because the bibliography, the hypotheses a
 
 | Measure | Value | Basis |
 |---|---|---|
-| Evidence Level A | 22.5% live (61/271 tiered, recounted 2026-11-17) | Derived by `scripts/count_reconcile.py`. Reported as a description since the target was retired on 2026-08-19 (`METHODOLOGY.md` §8.1a); the 2026-08-19 audit checked 96 entries downward from A and 190 upward from B and C and found nothing under-tiered |
+| Evidence Level A | 22.5% live (61/271 tiered, recounted 2026-11-17) | Derived by `scripts/count_reconcile.py`. Reported as a description since the target was retired on 2026-08-19 (`METHODOLOGY.md` §8.1a); the 2026-08-19 audit checked all 229 tiered entries (96 from Level A downward, of which 57 moved, then the resulting 190 B and C entries upward) and found nothing under-tiered |
 | Sources older than 12 months | 91 flagged | Last health-check run, 2026-07-18 |
 | Hours per update | logged per entry below | `scripts/automation_dashboard.py` averages the latest month |
 
@@ -466,7 +466,7 @@ These sections described the cadence while it was built around a Substack, an MC
 - [ ] Schedule expert interviews (Lisa Cao, Jake Thomas)
 - [ ] Conduct expert interviews
 - [ ] Comprehensive hypothesis validation review
-- [x] Versioned snapshot: Create git tag 2025-Q4-v1.0 ✅ (completed Jan 2)
+- [x] Versioned snapshot: Create git tag 2025-Q4-v1.0 ✅ (completed Jan 2) *[checked 2026-11-22: no 2025-Q4-v1.0 tag exists locally or on the remote; the first tag is 2026-Q3-v1.0, 2026-07-09]*
 - [ ] Quarterly synthesis blog post
 - [ ] Evidence Level A quality maintenance (target: 77-79%)
 

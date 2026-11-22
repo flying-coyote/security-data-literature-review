@@ -56,4 +56,4 @@ METHODOLOGY §3.1 is the canonical definition (corrected 2026-08-19); in short:
 
 ## Quality Target
 
-There is no Level-A share target. The >70% target was retired by owner ruling 2026-08-19 (METHODOLOGY §8.1a): the share describes where evidence in this field lives and can fall as honest practitioner evidence is added. Tier each source accurately against §3.1, verify the cited claim at the primary, then run `python3 scripts/count_reconcile.py` and `python3 scripts/derive_source_taxonomy.py --check` (a new entry needs a dated taxonomy record under `methods/`).
+There is no Level-A share target. The >70% target was retired by owner ruling 2026-08-19 (METHODOLOGY §8.1a): the share describes where evidence in this field lives and can fall as honest practitioner evidence is added. Tier each source accurately against §3.1, verify the cited claim at the primary, then run `python3 scripts/count_reconcile.py` and `python3 scripts/derive_source_taxonomy.py --check` (a new entry needs a dated taxonomy record under `methods/`, wired into `scripts/derive_source_taxonomy.py` as a new ADDED_* input, or `--check` fails on a count mismatch).

@@ -70,7 +70,7 @@ This appendix answers where to go to learn each technology in the stack, organiz
 - **Why Relevant**: If considering Delta Lake table format (Databricks-centric architecture)
 - **Security-Relevant Topics**:
   - Chapter 2: Delta Lake architecture (ACID transactions, time-travel)
-  - Chapter 5: Schema evolution (OCSF v1.8 → v1.9 migrations, for example the Account Change and User Access → User Management move)
+  - Chapter 5: Schema evolution (OCSF v1.8 → v1.9 migrations; the Account Change and User Access Management → User Management consolidation is a class-and-enum remap in the data rather than a table-schema change, so an attribute added or deprecated across a minor release is the closer table-format example)
   - Chapter 7: Streaming with Delta (real-time ingestion patterns) <!-- lint-ignore-xref -->
 - **Alternative**: If choosing Iceberg (multi-engine), prioritize Iceberg docs over this book
 - **Where to Buy**: oreilly.com, databricks.com/resources
@@ -123,7 +123,7 @@ This appendix answers where to go to learn each technology in the stack, organiz
 - **Key Sections**:
   - Table Spec: Understand metadata, manifests, data files
   - Partitioning: Hidden partitioning for security (date-based partitioning without exposing to users)
-  - Evolution: Schema evolution for OCSF v1.8 → v1.9 (for example the Account Change and User Access → User Management move)
+  - Evolution: Schema evolution for OCSF v1.8 → v1.9 (the Account Change and User Access Management → User Management consolidation is a value remap in the data, not a table-schema change; an attribute deprecated across a minor release is the closer example)
   - Maintenance: Compaction, snapshot expiration, orphan file cleanup
 
 **Apache Iceberg project blog** (posts from the maintainers, including Iceberg co-creator Ryan Blue): https://iceberg.apache.org/blog/

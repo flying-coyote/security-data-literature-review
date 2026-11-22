@@ -582,7 +582,7 @@ AddedFlags = Table.AddColumn(Source, "flag_ids", each
 
 **Example**: Zeek `weird.log` (protocol anomalies like "bad_TCP_checksum", "SYN_flood_detected")
 
-**OCSF (CISA-era v1.x)**: No "Network Anomaly" event class existed when the CISA project ran, so anomalies like these had nowhere clean to land; check the current release (v1.9.0 as of 2026-11-17, which still has none) to see whether a later version added one before you settle on a workaround.
+**OCSF (CISA-era v1.x)**: No "Network Anomaly" event class existed when the CISA project ran, so anomalies like these had nowhere clean to land; check the current release (v1.9.0 as of 2026-11-17, which still has none, and v1.10, released 2026-11-20, whose network classes checked 2026-11-22 have none either) to see whether a later version added one before you settle on a workaround.
 
 **Options**:
 

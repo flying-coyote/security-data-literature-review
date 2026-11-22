@@ -18,9 +18,11 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ---
 
-> **Folded correction (2026-07-10).** This bundle was never swept in the 2026-06/07 fabrications cleanup, so its borrowed-hypothesis rows, per-section evidence enumerations, and journal-ready confidence statements still asserted legs those audits withdrew or confirmed nonexistent: DORA 2.7×/3.2×/"Level 4" (in no DORA report), IDC 2.5-3× (withdrawn), Ververica 3.2-FTE (nonexistent), Gartner/phData 5.5-month (unverifiable), AWS 55% (deprecated stub), Netflix 70-80% (no locatable primary), Shell 57TB/day (entry removed), and "universal vendor support incl. Microsoft" (contradicted by its own cited source — Microsoft is the named Delta-first holdout, corrected 2026-07-10). **Current adjudicated scores after the overturns: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 (re-anchored on the first-party S3 tier-price derivation); H-IMPL-03's Gartner leg is withdrawn pending re-score.** The October-2025 section bodies below are preserved as the record with dated section notes rather than rewritten; do NOT cite their evidence enumerations. The full re-tier of the borrowed seven is staged in working/proposals/RESCORE-PROPOSAL-2026-07.md (owner adjudication pending). The first-party (lab-measured) hypotheses are unaffected. Manuscript Appendix B cites this bundle — it cites the first-party half and the rubric, which stand.
+> **Folded correction (2026-07-10).** This bundle was never swept in the 2026-06/07 fabrications cleanup, so its borrowed-hypothesis rows, per-section evidence enumerations, and journal-ready confidence statements still asserted legs those audits withdrew or confirmed nonexistent: DORA 2.7×/3.2×/"Level 4" (in no DORA report), IDC 2.5-3× (withdrawn), Ververica 3.2-FTE (nonexistent), Gartner/phData 5.5-month (unverifiable), AWS 55% (deprecated stub), Netflix 70-80% (no locatable primary), Shell 57TB/day (entry removed), and "universal vendor support incl. Microsoft" (contradicted by its own cited source — Microsoft is the named Delta-first holdout, corrected 2026-07-10). **Current adjudicated scores after the overturns: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 (re-anchored on the first-party S3 tier-price derivation); H-IMPL-03's Gartner leg is withdrawn pending re-score.** The October-2025 section bodies below are preserved as the record with dated section notes rather than rewritten; do NOT cite their evidence enumerations. The full re-tier of the borrowed seven is staged in working/proposals/RESCORE-PROPOSAL-2026-07.md (superseded by `methods/RESCORE-2026-07-13.md`, ruled score canon 2026-07-16). The first-party (lab-measured) hypotheses are unaffected. Manuscript Appendix B cites this bundle — it cites the first-party half and the rubric, which stand.
 
 ## Executive Summary
+
+> **Score-scale note (2026-11-22).** The N/5 standings in this file (H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 and the like) are the 2026-07-10 interim adjudication on a five-point scale. They were superseded by the 25-point rubric rescore of 2026-07-13, ruled score canon on 2026-07-16 (`methods/RESCORE-2026-07-13.md`): H-IMPL-01, H-IMPL-02 and H-IMPL-03 5/25 Preliminary, H-COST-09 9/25 Preliminary, H-STREAM-01 15/25 Moderate, H3-PERFORMANCE-01 19/25 High Confidence, H-ARCH-01 23/25 Strongly Validated. Read any N/5 figure below as that dated interim record; no score moved in this note.
 
 **All 7 hypotheses are validated** *(the October-2025 claim — see the correction note above; the hypothesis-count adjudication and the borrowed-seven re-tier are pending)*, with **varying confidence levels**:
 
@@ -170,9 +172,9 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** every quantitative leg below (IDC 2.5-3×, DORA 2.7×/'Level 4', Confluent 45-55%) was withdrawn or confirmed nonexistent in the 2026-06/07 audits; current score **1/5** — the qualitative streaming-carries-an-ops-premium direction survives, no multiplier does. Preserved as the October-2025 record; do not cite.
 
-~~**Hypothesis**: "Streaming architectures incur 2.5-3× higher operational costs vs batch processing due to specialized expertise, 24/7 monitoring, and incident management complexity."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 1/5, see the section record note)*
+~~**Hypothesis**: "Streaming architectures incur 2.5-3× higher operational costs vs batch processing due to specialized expertise, 24/7 monitoring, and incident management complexity."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis itself is not withdrawn; its current score is in `methods/RESCORE-2026-07-13.md` (an interim 1/5 of 2026-07-10 was superseded by that rescore))*
 
-~~**Validation Status**: ✅ **HIGH CONFIDENCE**~~ *(October-2025 record; the current score is in the section record note)*
+~~**Validation Status**: ✅ **HIGH CONFIDENCE**~~ *(October-2025 record; the current score is in `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
@@ -244,9 +246,9 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** all four legs below (DORA 2.7×, IDC 2.5-3×, Ververica 3.2-FTE, McKinsey tiger-teams) are withdrawn or nonexistent; current score **2/5**. The Gartner seat-access check remains the only literature route to re-quantify. Preserved as the record; do not cite.
 
-~~**Hypothesis**: "Organizations implementing streaming architectures require 2.7× operational staff vs batch alternatives, with fault-tolerance expertise representing 'Level 4' specialized skills available in only the top 5% of organizations."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 2/5, see the section record note)*
+~~**Hypothesis**: "Organizations implementing streaming architectures require 2.7× operational staff vs batch alternatives, with fault-tolerance expertise representing 'Level 4' specialized skills available in only the top 5% of organizations."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis itself is not withdrawn; its current score is in `methods/RESCORE-2026-07-13.md` (an interim 2/5 of 2026-07-10 was superseded by that rescore))*
 
-~~**Validation Status**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 record; the current score is in the section record note)*
+~~**Validation Status**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 record; the current score is in `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
@@ -317,7 +319,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ~~**Hypothesis**: "Security-focused data lakehouse implementations require 15-30% longer timelines vs general data engineering due to compliance validation, security tool integrations, and detection logic migration."~~ *(October-2025 wording; its quantitative legs are withdrawn and the qualitative direction stands, see the section record note)*
 
-~~**Validation Status**: ✅ **VALIDATED** (moderate confidence)~~ *(October-2025 record; the current score is in the section record note)*
+~~**Validation Status**: ✅ **VALIDATED** (moderate confidence)~~ *(October-2025 record; the current score is in `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
@@ -345,8 +347,8 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 - ~~Confluent: 4-6 months Kafka (general, not security-specific)~~ *(withdrawn; see the section record note)*
 
 **Geographic/Organizational Diversity**: 1 point (limited)
-- ~~All sources US-centric~~ *(withdrawn; see the section record note)*
-- ~~No international security lakehouse timeline data~~ *(withdrawn; see the section record note)*
+- ~~All sources US-centric~~ *(still true; the sources it described are withdrawn)*
+- ~~No international security lakehouse timeline data~~ *(still true; the sources it described are withdrawn)*
 
 **Total Confidence**: **13/25 points** = ⭐⭐⭐ **MODERATE** *(October-2025 record; for the current standing see the section record note and `methods/RESCORE-2026-07-13.md`)*
 
@@ -387,9 +389,9 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 > **Section record note (2026-07-10):** the AWS 55% and Netflix 70-80% legs below are dead (deprecated stub / no locatable primary — marked do-not-cite in MASTER-BIBLIOGRAPHY); current score **4/5**, re-anchored on the first-party S3 storage-class price derivation (−45.7% IA / −82.6% Glacier Instant / −84.3% Flexible / −95.7% Deep Archive) plus the Insider and Kozlovski legs.
 
-~~**Hypothesis**: "Tiered storage strategies (hot/warm/cold) deliver 55-80% cost savings for multi-year security data retention, with AWS documenting 55% average savings and Netflix achieving 70-80% for Kafka tiered storage."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 4/5, see the section record note)*
+~~**Hypothesis**: "Tiered storage strategies (hot/warm/cold) deliver 55-80% cost savings for multi-year security data retention, with AWS documenting 55% average savings and Netflix achieving 70-80% for Kafka tiered storage."~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis itself is not withdrawn; its current score is in `methods/RESCORE-2026-07-13.md` (an interim 4/5 of 2026-07-10 was superseded by that rescore))*
 
-~~**Validation Status**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 record; the current score is in the section record note)*
+~~**Validation Status**: ✅ **STRONGLY VALIDATED**~~ *(October-2025 record; the current score is in `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
@@ -527,14 +529,14 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ~~**Hypothesis**: "Kafka Streams enables production-scale stateful security processing: LinkedIn maintains terabytes of state with millisecond access times, Uber operates thousands of real-time security views with sub-second refresh rates."~~ *(October-2025 wording; its quantitative legs are corrected and the re-score is pending, see the section record note)*
 
-~~**Validation Status**: ✅ **HIGH CONFIDENCE**~~ *(October-2025 record; the current score is in the section record note)*
+~~**Validation Status**: ✅ **HIGH CONFIDENCE**~~ *(October-2025 record; the current score is in `methods/RESCORE-2026-07-13.md`)*
 
 ---
 
 #### Confidence Scoring
 
 **Source Count**: 3 points (3 sources)
-- ~~LinkedIn: Kafka Streams state management (terabytes of state, ms access)~~ *(re-anchored 2026-07-09 on Samza VLDB 2017, which supports hundreds of TB of state as a throughput figure but not the millisecond-access clause; see the section record note)*
+- ~~LinkedIn: Kafka Streams state management (terabytes of state, ms access)~~ *(re-anchored 2026-07-09 on Samza VLDB 2017, which supports state size (hundreds of TB) and throughput (millions of requests/sec) but no millisecond-latency claim; see the section record note)*
 - ~~Uber: Real-time security views (thousands of views, sub-second refresh)~~ *(withdrawn; see the section record note)*
 - Confluent: Kafka Streams best practices
 
@@ -546,7 +548,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 - Vendor Best Practices: Confluent
 
 **Quantitative Precision**: 5 points (precise metrics)
-- ~~Terabytes of state (LinkedIn)~~ *(re-anchored 2026-07-09 on Samza VLDB 2017: hundreds of TB of state, a throughput figure; see the section record note)*
+- ~~Terabytes of state (LinkedIn)~~ *(re-anchored 2026-07-09 on Samza VLDB 2017: hundreds of TB of state, a capacity figure; see the section record note)*
 - ~~Millisecond access times (LinkedIn)~~ *(withdrawn; see the section record note)*
 - ~~Thousands of views (Uber)~~ *(withdrawn; see the section record note)*
 - ~~Sub-second refresh (Uber)~~ *(withdrawn; see the section record note)*

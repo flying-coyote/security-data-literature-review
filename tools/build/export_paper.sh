@@ -79,11 +79,14 @@ for f in \
 
 cp "$ROOT/build/litreview.pdf" "$EXPORT/litreview.pdf"
 
-# methods/ ships whole: search protocol, retro-run, appraisal, retrieval,
+# methods/ ships (every tracked file): search protocol, retro-run, appraisal, retrieval,
 # second-screen, link-check, scoring rubric, prisma-results/ — the
 # reproducibility record PRISMA-S expects.
-mkdir -p "$EXPORT/methods"
-cp -R "$ROOT/methods/." "$EXPORT/methods/"
+# Tracked files only (2026-11-22): a gitignored or untracked file under methods/
+# (for example a local snowball cache or an unreviewed link check) must not
+# reach a DOI-frozen deposit, and `git status --porcelain` below does not list
+# ignored files, so the copy itself is limited to what git tracks.
+while IFS= read -r -d '' f; do copy "$f"; done < <(git -C "$ROOT" ls-files -z methods)
 
 # scripts/ ships instruments only (the derive-don't-state toolchain the
 # manuscript's counts depend on); enumerated so repo automation can't leak in.
@@ -97,12 +100,12 @@ for f in \
   scripts/validate_metadata.py \
 ; do copy "$f"; done
 
-# tools/build/ ships whole so the PDF is reproducible from the deposit alone:
+# tools/build/ ships (every tracked file) so the PDF is reproducible from the deposit alone:
 # code under LICENSE-CODE (MIT), redistributed DM Sans / JetBrains Mono fonts
 # under their SIL OFL-1.1 texts (OFL-*.txt travel WITH the fonts — an OFL
 # redistribution constraint, not a courtesy).
-mkdir -p "$EXPORT/tools/build"
-cp -R "$ROOT/tools/build/." "$EXPORT/tools/build/"
+# Tracked files only, for the same reason as methods/ above.
+while IFS= read -r -d '' f; do copy "$f"; done < <(git -C "$ROOT" ls-files -z tools/build)
 
 # publication-graphics/ ships figure sources + rendered figures only; venv/
 # (~188MB) and TeX aux never ship, so files are enumerated by type rather

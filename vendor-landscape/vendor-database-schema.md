@@ -28,7 +28,7 @@ This file defines the authoritative vendor database schema. *(Note 2026-11-17: t
 
 Some records carry dated fields that sit outside the scored schema, named with the date they were added so that a later regeneration can tell when each fact was checked. They never change capability scores or the derived `evidence_summary` block.
 
-- `currency_check_YYYY_MM_DD`: a light check between regenerations of whether the product still exists under the recorded name (acquisitions, renames, end-of-life). It holds `status` (for example `current`, `renamed`, `acquired`, `discontinued`), a `note` stating what changed, `primary_sources` (the URLs the note rests on) and `checked` (ISO date). The 2026-11-17 check added it to 16 records; where it found a factual change, only the `name` and `website` fields were edited alongside it.
+- `currency_check_YYYY_MM_DD`: a light check between regenerations of whether the product still exists under the recorded name (acquisitions, renames, end-of-life). It holds `status` (for example `current`, `renamed`, `acquired`, `discontinued`), a `note` stating what changed, `primary_sources` (the URLs the note rests on) and `checked` (ISO date). The 2026-11-17 check added it to 16 records, 15 checked at a primary and one (`ibm-qradar`, status `not-rechecked`) a pointer to its existing 2026-07-18 field; where it found a factual change, only the `name` and `website` fields were edited alongside it.
 - `dr2_fold_YYYY_MM_DD`: a verified vendor change folded in from a dated research intake during a regeneration (the 2026-07-18 regeneration added `dr2_fold_2026_07_18`), recorded on the affected record rather than in the scored evidence.
 
 ---
@@ -46,6 +46,8 @@ The complete schema definition was kept in `security-architect-mcp-server/docs/I
 ---
 
 ## Evidence Tier Requirements
+
+Vendor tiers in this table still use the pre-2026-08-19 definition, in which a verified production deployment counts as Tier A; under METHODOLOGY.md §3.1 most such legs would be Level B, so vendor Tier-A counts are not comparable with the bibliography's Level-A share (noted 2026-11-22).
 
 | Capability Score | Required Evidence Tier | Minimum Sources | Confidence Level |
 |-----------------|------------------------|-----------------|------------------|

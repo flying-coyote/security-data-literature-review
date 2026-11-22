@@ -367,18 +367,18 @@
     {
      "value": "8M",
      "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
+     "basis": "2026-11-22 second-opinion re-verdict: locator corrected by hand",
      "url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/",
-     "locator": "ser family, extracted from user agent Requests by ip class - containing breakdown by client IP class Write the code gathering data from all 8 materialized views, using two approaches: Querying all 8 materialized views at once using JOIN Querying each one of 8 materialized views sepa",
+     "locator": "On average we process 6M HTTP requests per second, with peaks of upto 8M requests per second.",
      "context": "- 6M req/sec sustained (peak 8M req/sec) on the Cloudflare HTTP analytics pipeline",
      "labelled_unverified_in_file": false
     },
     {
      "value": "3×",
      "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
+     "basis": "2026-11-22 second-opinion re-verdict: locator corrected by hand (storage table for the ClickHouse cluster)",
      "url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/",
-     "locator": "d to scan and return a few rows. It made a huge difference in API performance - query latency decreased by 50% and throughput increased by ~3 times when we changed index granularity 8192 â 32. Not relevant to performance, but we also disabled the min_execution_speed setting, so querie",
+     "locator": "Storage requirements for 1 year 273.93 PiB 60.5 PiB 18.52 PiB (RF x3)",
      "context": "- ~3× replication across 36 nodes for high availability",
      "labelled_unverified_in_file": false
     },
@@ -548,9 +548,9 @@
     {
      "value": "2x",
      "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
+     "basis": "2026-11-22 second-opinion re-verdict: locator corrected by hand",
      "url": "https://www.confluent.io/blog/kafka-fastest-messaging-system/",
-     "locator": "se baseline configurations, along the way for different tests. Disks Specifically, we went with the i3en.2xlarge (with 8 vCores, 64 GB RAM, 2 x 2,500 GB NVMe SSDs ) for its high 25 Gbps network transfer limit that ensures that the test setup is not network bound. This means that the",
+     "locator": "Throughput : Kafka provides the highest throughput of all systems, writing 15x faster than RabbitMQ and 2x faster than Pulsar.",
      "context": "- \"Writing 15x faster than RabbitMQ and 2x faster than Pulsar\" (page verbatim) under the benchmark conditions",
      "labelled_unverified_in_file": false
     },
@@ -566,9 +566,9 @@
     {
      "value": "2×",
      "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
+     "basis": "2026-11-22 second-opinion re-verdict: locator corrected by hand",
      "url": "https://www.confluent.io/blog/kafka-fastest-messaging-system/",
-     "locator": "se baseline configurations, along the way for different tests. Disks Specifically, we went with the i3en.2xlarge (with 8 vCores, 64 GB RAM, 2 x 2,500 GB NVMe SSDs ) for its high 25 Gbps network transfer limit that ensures that the test setup is not network bound. This means that the",
+     "locator": "Throughput : Kafka provides the highest throughput of all systems, writing 15x faster than RabbitMQ and 2x faster than Pulsar.",
      "context": "605 MB/s, 15× RabbitMQ, 2× Pulsar figures are from the cited blog.",
      "labelled_unverified_in_file": false
     }
@@ -981,10 +981,10 @@
     },
     {
      "value": "4+",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://www.confluent.io/resources/report/2025-data-streaming-report/",
-     "locator": " its fourth installment, the 2025 Data Streaming Report: Moving the Needle on AI Adoption, Speed to Market, and ROI taps into insights from 4,175 IT leaders . It unveils how data streaming platforms (DSPs) play a pivotal role in simplifying access to real-time data—and making it e",
+     "verdict": "unverifiable-paywall",
+     "basis": "2026-11-22 second-opinion re-verdict: the 2026-11-17 automated match was the 4,175 sample size; the 4+ benefits figure belongs to the 93% claim, which sits in the gated report",
+     "url": null,
+     "locator": null,
      "context": "- **93%** cite 4+ benefits of shift-left approach (detect/enrich earlier in pipeline)",
      "labelled_unverified_in_file": true
     },
@@ -1317,12 +1317,12 @@
    "numbers": [
     {
      "value": "2 trillion",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://docs.confluent.io/platform/current/kafka/tiered-storage.html",
-     "locator": " details and configurations of the cluster and environment are listed. Cluster Configurations: 6 brokers r5.xlarge AWS instances GP2 disks, 2 TB 104857600 (100 MB) segment.bytes A single topic with 24 partitions and replication factor 3 Producer and Consumer Details: 6 producers eac",
+     "verdict": "unverifiable-paywall",
+     "basis": "2026-11-22 second-opinion re-verdict: the 2026-11-17 automated match was a disk-size string; the cited Confluent page contains neither \"trillion\" nor \"Netflix\", and the Keystone post the entry names returned 403 on 2026-11-22",
+     "url": null,
+     "locator": null,
      "context": "- Netflix ingests 2 trillion messages/day via Kafka (Keystone pipeline — netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb)",
-     "labelled_unverified_in_file": false
+     "labelled_unverified_in_file": true
     }
    ],
    "checked": "2026-11-17"
@@ -1430,7 +1430,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md",
      "locator": " core is triple-validated (tight bands) metric draw-1 draw-2 draw-3 band what it is OpenSearch foil ÷ ClickHouse-Iceberg (scan aggregation) 10.1× 10.6× 11.3× ~10–11× the columnar lakehouse engine beats the inverted-index foil on scan-heavy aggregation ClickHouse-Iceberg ÷ ClickHouse-n",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1439,7 +1439,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md",
      "locator": "is triple-validated (tight bands) metric draw-1 draw-2 draw-3 band what it is OpenSearch foil ÷ ClickHouse-Iceberg (scan aggregation) 10.1× 10.6× 11.3× ~10–11× the columnar lakehouse engine beats the inverted-index foil on scan-heavy aggregation ClickHouse-Iceberg ÷ ClickHouse-native ",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1448,7 +1448,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md",
      "locator": "ple-validated (tight bands) metric draw-1 draw-2 draw-3 band what it is OpenSearch foil ÷ ClickHouse-Iceberg (scan aggregation) 10.1× 10.6× 11.3× ~10–11× the columnar lakehouse engine beats the inverted-index foil on scan-heavy aggregation ClickHouse-Iceberg ÷ ClickHouse-native (open-",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1457,7 +1457,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/VERSION-CURRENCY-2026-06-14.md",
      "locator": "across every engine — not a version effect.) So a current OpenSearch does not flatter or inflate the comparison: the two-regime multiples (~10× Iceberg / ~45× native over the foil, 06-14 same-draw) hold on the current foil. The published numbers are not an artifact of a stale 2.18 i",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1466,7 +1466,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md",
      "locator": " columnar lakehouse engine beats the inverted-index foil on scan-heavy aggregation ClickHouse-Iceberg ÷ ClickHouse-native (open-format tax) 4.6× 4.3× 4.2× ~4.2–4.6× the cost of reading Iceberg over the engine's native store Per-arm avg-of-medians latency (s): arm draw-1 draw-2 draw-3",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1475,7 +1475,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md",
      "locator": "mnar lakehouse engine beats the inverted-index foil on scan-heavy aggregation ClickHouse-Iceberg ÷ ClickHouse-native (open-format tax) 4.6× 4.3× 4.2× ~4.2–4.6× the cost of reading Iceberg over the engine's native store Per-arm avg-of-medians latency (s): arm draw-1 draw-2 draw-3 draw",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1484,7 +1484,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md",
      "locator": "lakehouse engine beats the inverted-index foil on scan-heavy aggregation ClickHouse-Iceberg ÷ ClickHouse-native (open-format tax) 4.6× 4.3× 4.2× ~4.2–4.6× the cost of reading Iceberg over the engine's native store Per-arm avg-of-medians latency (s): arm draw-1 draw-2 draw-3 draws cli",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1493,7 +1493,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md",
      "locator": "lakehouse engine beats the inverted-index foil on scan-heavy aggregation ClickHouse-Iceberg ÷ ClickHouse-native (open-format tax) 4.6× 4.3× 4.2× ~4.2–4.6× the cost of reading Iceberg over the engine's native store Per-arm avg-of-medians latency (s): arm draw-1 draw-2 draw-3 draws cli",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1502,7 +1502,7 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/cost-to-serve-retention/results/measured_footprints.json",
      "locator": "ata and controls Code Blame 43 lines (43 loc) · 1.16 KB Raw Copy raw file Download raw file Open symbols panel Edit and raw actions 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 { \"corpus\" : { \"rows\" : 10000",
-     "context": "Across three independent draws the OpenSearch foil runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
+     "context": "Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift ab",
      "labelled_unverified_in_file": false
     },
     {
@@ -1511,44 +1511,44 @@
      "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
      "url": "https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/VERSION-CURRENCY-2026-06-14.md",
      "locator": "y to 2.18.0 on the 5-query suite. The clean same-draw comparison (both 06-14, same machine state) is OS 2.18 2.5816 s vs OS 3.7 2.5524 s = −1.1% , answer-equality ALL IDENTICAL. (Against the 06-10 published 2.8537 s the 3.7 number looks ~11% faster, but that is the common-mode ~10% m",
-     "context": "- The foil was moved from OpenSearch 2.18.0 to 3.7.0 and the clean same-draw comparison came out 1.1% faster on 3.7.0, so the multiples held on what was the current release in June 2026;",
+     "context": "- The baseline was moved from OpenSearch 2.18.0 to 3.7.0 and the clean same-draw comparison came out 1.1% faster on 3.7.0, so the multiples held on what was the current release in June 2026;",
      "labelled_unverified_in_file": false
     }
    ],
    "checked": "2026-11-17",
    "removed_or_labelled_2026_11_17": [
     {
-     "value": "145×",
+     "value": "retired headline multiple",
      "action": "removed",
      "reason": "retired named-vendor benchmark timing; DeWitt/EULA boundary (precedent: appendix-i scrub of 2026-07-11); private source cannot be re-derived"
     },
     {
-     "value": "27.52s",
+     "value": "retired baseline timing",
      "action": "removed",
      "reason": "same"
     },
     {
-     "value": "28×, 24×, 22×, 18×, 10×",
+     "value": "retired per-engine multiples",
      "action": "removed",
      "reason": "same"
     },
     {
-     "value": "8× degradation",
+     "value": "retired scaling figure",
      "action": "removed",
      "reason": "same"
     },
     {
-     "value": "0.19s, 1.00s, 1.17s, 1.23s, 1.50s, 2.67s",
+     "value": "private per-arm timings",
      "action": "removed",
      "reason": "private December 2025 timings, not re-derivable from public material"
     },
     {
-     "value": "76.6×/85.9×, 0.787s, 3.6×/6.5×",
+     "value": "front-engine arm figures",
      "action": "removed",
      "reason": "front-engine arm results are withheld in the public lab repository under the vendor's benchmark-publication terms"
     }
    ],
-   "note": "2026-11-17 recovery pass: retitled and re-pointed to the public successor on the 0165a38 precedent, which removes the retired benchmark's name and repository slug from public surfaces"
+   "note": "2026-11-17 recovery pass: retitled and re-pointed to the public successor on the 0165a38 precedent, which removes the retired benchmark's name and repository slug from public surfaces; 2026-11-22: the removed values are described here rather than printed, on the same precedent"
   },
   {
    "title": "Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe? (Kester et al., SIGMOD 2017)",
@@ -1905,7 +1905,7 @@
     {
      "value": "16×",
      "verdict": "verified-at-primary",
-     "basis": "carried: the entry records a check of this figure at the primary (verified verbatim); not re-matched on 2026-11-17 because the publisher page blocks automated fetch or the wording differs",
+     "basis": "manual 2026-11-17, derived: 3.5 PB / 200 TiB",
      "url": "https://clickhouse.com/blog/exabeam-clickhouse-security-analytics",
      "locator": "as stated in the entry: - 3.5 PB raw → 200 TiB after compression (about 16×;",
      "context": "- 3.5 PB raw → 200 TiB after compression (about 16×;",
@@ -2083,14 +2083,16 @@
     },
     {
      "value": "16 billion",
-     "verdict": "unverifiable-paywall",
-     "basis": "attributed to a ClickHouse video, not checked 2026-11-17 (video, no transcript fetched)",
+     "verdict": "verified-at-primary",
+     "basis": "2026-11-22 second-opinion re-verdict: read in the description text of the ClickHouse video page the entry names, 2026-11-22",
      "context": "- **16 billion events/day** processed (figure from ClickHouse Huntress video: clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse — not the blog post)",
-     "labelled_unverified_in_file": true,
+     "labelled_unverified_in_file": false,
      "urls_searched": [
       "https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse"
      ],
-     "note": "2026-11-17 recovery pass: re-verdicted from unverifiable-no-primary; the entry names the ClickHouse video URL, and the video was not re-checked"
+     "note": "2026-11-17 recovery pass: re-verdicted from unverifiable-no-primary; the entry names the ClickHouse video URL, and the video was not re-checked",
+     "url": "https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse",
+     "locator": "With over 3 million endpoints and 1 million identities, they've mastered cost-effective data management ... processing 16 billion events a day while slashing costs from $70K to $5K a month by switching to ClickHouse Cloud!"
     }
    ],
    "checked": "2026-11-17"
@@ -2118,17 +2120,21 @@
    "numbers": [
     {
      "value": "93%",
-     "verdict": "unverifiable-paywall",
-     "basis": "the cited page blocks automated access or renders no text (HTTP 200)",
+     "verdict": "verified-at-primary",
+     "basis": "2026-11-22 second-opinion re-verdict, derived: $70K to $5K a month is a 92.9% reduction, read on the ClickHouse video page that embeds the same YouTube video (ID lhsWNofOcdk), 2026-11-22",
      "context": "- 93% cost reduction validation",
-     "labelled_unverified_in_file": true
+     "labelled_unverified_in_file": false,
+     "url": "https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse",
+     "locator": "With over 3 million endpoints and 1 million identities, they've mastered cost-effective data management ... processing 16 billion events a day while slashing costs from $70K to $5K a month by switching to ClickHouse Cloud!"
     },
     {
      "value": "3M",
-     "verdict": "unverifiable-paywall",
-     "basis": "the cited page blocks automated access or renders no text (HTTP 200)",
+     "verdict": "verified-at-primary",
+     "basis": "2026-11-22 second-opinion re-verdict: read on the ClickHouse video page that embeds the same YouTube video (ID lhsWNofOcdk), 2026-11-22",
      "context": "- 3M endpoint scale operational insights",
-     "labelled_unverified_in_file": true
+     "labelled_unverified_in_file": false,
+     "url": "https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse",
+     "locator": "With over 3 million endpoints and 1 million identities, they've mastered cost-effective data management ... processing 16 billion events a day while slashing costs from $70K to $5K a month by switching to ClickHouse Cloud!"
     }
    ],
    "checked": "2026-11-17"
@@ -3289,10 +3295,10 @@
     },
     {
      "value": "30-40%",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://aws.amazon.com/s3/storage-classes/intelligent-tiering/",
-     "locator": "r their data lake with changing access patterns. \"With minimal to no changes to our existing tools, we were able to reduce storage costs by 30% with S3 Intelligent-Tiering for data with unpredictable access patterns. This has helped our data infrastructure team concentrate on our co",
+     "verdict": "n/a-correction-note",
+     "basis": "2026-11-22 second-opinion re-verdict: the number appears only in a dated correction or not-carried note, not as a live claim",
+     "url": null,
+     "locator": null,
      "context": "Correction (2026-07-10, part-2 sweep fix 10): the former \"~35% average savings for non-optimized buckets\" and \"30-40% range\" findings appear nowhere on the page — replaced with the page's actual up-to-40%/68%/95% tier figures and its named customer percentages.",
      "labelled_unverified_in_file": false
     }
@@ -3701,10 +3707,10 @@
     },
     {
      "value": "5-10×",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://clickhouse.com/blog/clickhouse_vs_elasticsearch_the_billion_row_matchup",
-     "locator": "ller and cheaper hardware to be used. Count(*) aggregation queries in ClickHouse utilize hardware highly efficiently, resulting in at least 5 times lower latencies for aggregating large data sets compared to Elasticsearch. This requires smaller and, as we will demonstrate later, 4 times",
+     "verdict": "n/a-correction-note",
+     "basis": "2026-11-22 second-opinion re-verdict: the number appears only in a dated correction or not-carried note, not as a live claim",
+     "url": null,
+     "locator": null,
      "context": "9-12× with Elasticsearch `_source` disabled (verified verbatim at primary 2026-07-09 — the entry's earlier \"5-10×\" matched only the page's query-speed multipliers, not its storage figures)",
      "labelled_unverified_in_file": false
     }
@@ -3734,10 +3740,12 @@
    "numbers": [
     {
      "value": "95%",
-     "verdict": "unverifiable-paywall",
-     "basis": "the cited page blocks automated access or renders no text (HTTP 406)",
+     "verdict": "verified-at-primary",
+     "basis": "2026-11-22 second-opinion re-verdict: read at the primary 2026-11-22 (post dated January 18, 2024)",
      "context": "- >95% onboarding-time reduction for new feature integration (per blog)",
-     "labelled_unverified_in_file": true
+     "labelled_unverified_in_file": false,
+     "url": "https://www.uber.com/blog/palette-meta-store-journey/",
+     "locator": "The result of the Metadata migration was that Palette Onboarding Deployment time has reduced drastically by more than 95%."
     }
    ],
    "checked": "2026-11-17"
@@ -3837,28 +3845,30 @@
     },
     {
      "value": "69%",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://www.sans.org/white-papers/sans-2024-ai-survey-ai-growing-role-cybersecurity-lessons-learned-path-forward",
-     "locator": "ng threat detection in the SOC 58% recognize that AI's effectiveness is heavily dependent on the quality and relevance of its training data 69% say the cybersecurity team plays a role in enabling and governing AI use across the enterprise, but only 34% test AI systems for adversaria",
+     "verdict": "unverifiable-paywall",
+     "basis": "2026-11-22 second-opinion re-verdict: the 2026-11-17 automated match was an unrelated AI-survey sentence; the 2025 SOC Survey landing page carries no percentages (checked 2026-11-22) and the report sits behind registration",
+     "url": null,
+     "locator": null,
      "context": "- **2025 SOC Survey**: 79% operate 24/7 but 69% still rely on manual reporting",
      "labelled_unverified_in_file": true
     },
     {
      "value": "62%",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://www.sans.org/white-papers/sans-2024-ai-survey-ai-growing-role-cybersecurity-lessons-learned-path-forward",
-     "locator": "Close How is AI being used in security operations centers? 82% of organizations using AI find it useful for improving threat detection, and 62% use it to automate incident prioritization and response. Close Has AI adoption affected cybersecurity job satisfaction? 48% of organization",
+     "verdict": "unverifiable-paywall",
+     "basis": "2026-11-22 second-opinion re-verdict: the 2026-11-17 automated match was an unrelated AI-survey sentence; the 2025 SOC Survey landing page carries no percentages (checked 2026-11-22) and the report sits behind registration",
+     "url": null,
+     "locator": null,
      "context": "- 62% say organizations aren't doing enough to retain talent",
-     "labelled_unverified_in_file": false
+     "labelled_unverified_in_file": true
     },
     {
      "value": "40%",
-     "verdict": "n/a-correction-note",
-     "basis": "the number appears only in a dated correction or caveat note, not as a live claim",
+     "verdict": "unverifiable-paywall",
+     "basis": "2026-11-22 second-opinion re-verdict: a live Key Finding, not a correction note; not on the 2025 SOC Survey landing page (checked 2026-11-22), report behind registration",
      "context": "- 40% use AI/ML tools but satisfaction ranks dead last among SOC capabilities",
-     "labelled_unverified_in_file": false
+     "labelled_unverified_in_file": true,
+     "url": null,
+     "locator": null
     }
    ],
    "checked": "2026-11-17"
@@ -4302,21 +4312,21 @@
     },
     {
      "value": "1TB",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://securitydataworks.com/engagements/moar-architecture-design/economics",
-     "locator": "in the provisioned capacity. Long retention periods, where storage scales linearly while compute does not. High data volumes (above roughly 1 TB/day), where SIEM ingestion costs escalate fastest. These are modeled, illustrative numbers at the stated assumptions, not a quote. The publ",
+     "verdict": "not-in-source",
+     "basis": "2026-11-22 second-opinion re-verdict: the 2026-11-17 automated match was a different sentence (20 concurrent analysts; a 1 TB/day volume threshold); the claim as worded is not on the cited page",
+     "url": null,
+     "locator": null,
      "context": "- 10-12× compression with Parquet/ZSTD reducing 1TB/day to <$700/month storage",
      "labelled_unverified_in_file": true
     },
     {
      "value": "20+",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://securitydataworks.com/engagements/moar-architecture-design/economics",
-     "locator": "inite capacity. The compute is fixed at the provisioned 2Ã r5.4xlarge Trino nodes (32 vCPU, 256 GB RAM total). That sizing handles roughly 20 concurrent analysts or about 100 queries/hour. Past that point you get query queuing, not a surprise invoice. The fix is to add Trino nodes ",
+     "verdict": "not-in-source",
+     "basis": "2026-11-22 second-opinion re-verdict: the 2026-11-17 automated match was a different sentence (20 concurrent analysts; a 1 TB/day volume threshold); the claim as worded is not on the cited page",
+     "url": null,
+     "locator": null,
      "context": "- Vendor-neutral architecture (20+ query engines supported via Iceberg)",
-     "labelled_unverified_in_file": false
+     "labelled_unverified_in_file": true
     },
     {
      "value": "10-50×",
@@ -4582,12 +4592,12 @@
    "numbers": [
     {
      "value": "30%",
-     "verdict": "verified-at-primary",
-     "basis": "manual 2026-11-17: the 30% prediction is the headline of the press release (page blocks automated fetch; the release text is reprinted verbatim by trade press)",
+     "verdict": "unverifiable-paywall",
+     "basis": "2026-11-22 second-opinion re-verdict: the 30% appears in the press release URL slug; the page returned 403 on 2026-11-22 and its text was not re-read",
      "url": "https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025",
-     "locator": "press release title",
+     "locator": null,
      "context": "- Gartner (July 2024) predicted ~30% of GenAI projects would be abandoned after PoC by end-2025, citing poor data quality and unclear business value as primary drivers",
-     "labelled_unverified_in_file": false
+     "labelled_unverified_in_file": true
     },
     {
      "value": "42%",
@@ -4827,10 +4837,10 @@
     },
     {
      "value": "50-70%",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://softwareanalyst.substack.com/p/market-guide-2025-the-rise-of-security",
-     "locator": "l-time security analytics console, with its heavy backend abstracted. These “next-gen SIEM” often emphasize analytics speed (queries across 50% more data 150x faster) rather than simply ingesting more data. This implies the SIEM will rely on security data pipelines to pre-filter and",
+     "verdict": "n/a-correction-note",
+     "basis": "2026-11-22 second-opinion re-verdict: the number appears only in a dated correction or not-carried note, not as a live claim",
+     "url": null,
+     "locator": null,
      "context": "Axoflow-specific \"reported log volume reductions of 25–70%, especially for verbose logs like Windows\" — the entry's former blended \"50-70%\" figure appears nowhere on the page (corrected 2026-07-10)",
      "labelled_unverified_in_file": false
     },
@@ -7524,17 +7534,21 @@
    "numbers": [
     {
      "value": "1M",
-     "verdict": "unverifiable-paywall",
-     "basis": "the cited page blocks automated access or renders no text (HTTP 200)",
+     "verdict": "verified-at-primary",
+     "basis": "2026-11-22 second-opinion re-verdict: read at the post 2026-11-22 (published 2024-05-01)",
      "context": "- Okta serverless DuckDB: 1M Lambda invocations/day, 250 GB/min peak;",
-     "labelled_unverified_in_file": true
+     "labelled_unverified_in_file": false,
+     "url": "https://juhache.substack.com/p/oktas-multi-engine-data-stack",
+     "locator": "1 million DuckDB invocations per day in average."
     },
     {
      "value": "250 GB",
-     "verdict": "unverifiable-paywall",
-     "basis": "the cited page blocks automated access or renders no text (HTTP 200)",
+     "verdict": "verified-at-primary",
+     "basis": "2026-11-22 second-opinion re-verdict: read at the post 2026-11-22",
      "context": "- Okta serverless DuckDB: 1M Lambda invocations/day, 250 GB/min peak;",
-     "labelled_unverified_in_file": true
+     "labelled_unverified_in_file": false,
+     "url": "https://juhache.substack.com/p/oktas-multi-engine-data-stack",
+     "locator": "Peaks of up to 250GB of data processed per minute !"
     }
    ],
    "checked": "2026-11-17"
@@ -10051,10 +10065,10 @@
     },
     {
      "value": "100 GB",
-     "verdict": "verified-at-primary",
-     "basis": "re-checked 2026-11-17 (automated text match, snippet recorded)",
-     "url": "https://doi.org/10.14569/ijacsa.2026.0170474",
-     "locator": "rage reduction with sub-second query latency, while the Workload Analyzer automatically identifies the optimal column subset that preserves 100% detection rule coverage at minimum storage cost. ",
+     "verdict": "n/a-correction-note",
+     "basis": "2026-11-22 second-opinion re-verdict: the number appears only in a dated correction or not-carried note, not as a live claim",
+     "url": null,
+     "locator": null,
      "context": "The ~$30,000/year saving is the paper's own back-of-envelope projection for a hypothetical 100 GB/day SOC, not a measured result, and is not carried.",
      "labelled_unverified_in_file": false
     }

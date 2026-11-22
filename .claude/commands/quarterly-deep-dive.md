@@ -19,7 +19,7 @@ Expert interviews involve contacting named people, so the owner decides whether 
 1. Run `python3 scripts/count_reconcile.py` and `python3 scripts/automation_dashboard.py`.
 2. For each hypothesis in PUBLICATION-MANUSCRIPT.md §3.7, list what changed in its legs this quarter: new primaries catalogued, legs withdrawn, numbers re-verified.
 3. Re-run the scoring instrument (`methods/scoring-rubric.md`) for any hypothesis whose evidentiary basis changed. A score change is staged for the owner with the rubric arithmetic shown, not applied.
-4. Record research-question coverage against the roster (RQ1-RQ10 in METHODOLOGY.md; RQ11-RQ17 in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gaps 11 and 12), noting which remain unvalidated.
+4. Record research-question coverage against the roster (RQ1-RQ4 in PUBLICATION-MANUSCRIPT.md §1; RQ7-RQ10 in METHODOLOGY.md §5.4; RQ11-RQ17 in LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md Gaps 11 and 12; RQ5 and RQ6 have no current definition, pending an owner ruling), noting which remain unvalidated.
 
 ## Phase 3: evidence synthesis and quality (4-6 hours)
 

@@ -304,9 +304,9 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 
 **RQ7: Isolation Patterns and Performance**
 - **Question**: How do isolation patterns affect security data architecture performance?
-- **Hypothesis**: Network isolation + IAM provides sufficient security boundary, eliminating need for fine-grained catalog access (RLS, column masking, metadata encryption) and achieving 15-50% faster query performance
+- **Hypothesis**: Network isolation + IAM provides sufficient security boundary, eliminating need for fine-grained catalog access (RLS, column masking, metadata encryption) and achieving faster query performance (the 15-50% figure first stated here is an untested planning figure with no source; the one measurement is the first-party RLS entry in `isolation-first-security-tracking.md`, noted 2026-11-22)
 - **Validation Metrics**: Query latency comparison, TCO comparison, operational hours
-- **Data Sources**: Netflix (isolated VPC), Huntress (isolated AWS), Okta (Jake Thomas, Data Council 2024 public talk), Unity Catalog benchmarks, Iceberg metadata encryption overhead
+- **Data Sources**: Okta (Data Council 2024 public talk, scale only), Unity Catalog benchmarks, Iceberg metadata encryption overhead
 - **Evidence Tier Target**: B
 
 **RQ8: Compliance Trade-offs of Isolation-First Architecture**
@@ -384,7 +384,7 @@ The living-review cadence is the one the manuscript commits to in §2.7: monthly
 **Academic Citation Format**:
 ```
 Wiley, J. (2026). Modern Data Architecture for Cybersecurity Operations: A Systematic
-Literature Review (version 2026-Q3-v1.0 or later tag).
+Literature Review (cite the commit hash, or a tag dated after 2026-11-17; the 2026-Q3-v1.0 tag of 2026-07-09 predates the database arm).
 https://github.com/flying-coyote/security-data-literature-review (DOI to follow on the Zenodo release)
 ```
 
@@ -541,11 +541,11 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 271 tiered sources (derived 2026-11-17) on modern data stack technologies for cybersecurity. The approach prioritizes:
 
 1. **Evidence Quality**: Level-A share live-derived per entry (22.5% at 2026-11-17, 17.0% immediately after the 2026-08-19 audit; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
-2. **Quantitative Validation**: 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
+2. **Quantitative Validation**: 9 hypotheses assessed (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations
 
-**Phase 1 Success**: Extraction complete with all book chapters cited, 9 hypotheses validated (7 original plus 2 added in the 2026-07-10 audit); publication readiness is assessed in §8.3.
+**Phase 1 Success**: Extraction complete with all book chapters cited, 9 hypotheses assessed (7 original plus 2 added in the 2026-07-10 audit); publication readiness is assessed in §8.3.
 
 **Ongoing cadence**: monthly surveillance, quarterly incorporation, and tagged repository releases (first: 2026-Q3-v1.0), as set out in §6.3.
 

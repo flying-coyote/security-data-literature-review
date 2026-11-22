@@ -799,7 +799,7 @@ For detailed platform comparisons, see the Appendix E resource directory. For OC
 
 **Jake Thomas (then at Okta)** (Tier B: public Data Council 2024 talk, [abstract](https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/)): over six months, Okta's defensive cyber operations team processed 7.5 trillion records across 130 million files with thousands of concurrent serverless DuckDB instances, while daily volume swung from 1.5 TB to 50 TB. These figures are his own public account of the system he built and have not been independently audited. *Corrected 2026-11-17: this paragraph earlier attributed a quotation to an unpublished conversation with Jake Thomas that never took place; the attribution now points at the public talk, and the quotation, which the talk abstract does not contain, was removed.*
 
-**Architecture** (an illustrative pattern for this appendix rather than Okta's published design, because the talk abstract names neither the serverless runtime nor a volume-reduction figure):
+**Architecture** (the runtime, AWS Lambda running DuckDB, is named in Julien Hurault's 2024-05-01 [write-up of the talk](https://juhache.substack.com/p/oktas-multi-engine-data-stack), Tier C, while the talk abstract says only "serverless"; the volume-reduction band and the other details of the diagram are an illustrative pattern for this appendix, not Okta's published design; re-sourced 2026-11-22):
 ```
 [CloudTrail S3 Events] (raw JSON, 1-50 TB/day variable)
     ↓
@@ -814,7 +814,7 @@ For detailed platform comparisons, see the Appendix E resource directory. For OC
 
 **Cost impact** (unverified): an earlier version of this section attributed a previous Snowflake cost of about $2,000/day and a "dramatically reduced" serverless cost to Jake Thomas, and derived an 80-95% savings estimate ($100-$400/day) from them. Neither figure appears in the public talk abstract, and Julien Hurault's 2024-05-01 [write-up of the talk](https://juhache.substack.com/p/oktas-multi-engine-data-stack) (Tier C, practitioner blog) says no exact cost figures were given, so the dollar figures and the savings estimate are withdrawn as unverified. Any cost case for this pattern has to be modeled against your own volumes.
 
-**Scalability validation**: the talk abstract reports daily volume spiking from 1.5 TB to 50 TB (roughly a 33× swing) without infrastructure changes, absorbed by thousands of concurrent serverless DuckDB instances. Read that band as the operating envelope Okta reported publicly, not as an independently measured result.
+**Scalability validation**: the talk abstract reports daily volume spiking from 1.5 TB to 50 TB (roughly a 33× swing) without infrastructure changes, absorbed by thousands of concurrent serverless DuckDB instances. Read that band as the operating envelope Okta reported publicly, because no independent measurement of it is cited here.
 
 ### I.5.2 CloudTrail Filtering Pattern
 
@@ -1246,7 +1246,7 @@ That verification discipline is the price of the cost savings and the workload f
 ## References
 
 **Primary validation sources**:
-- A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture patterns, workload segregation, Spark irreplaceable for Iceberg (Tier B)
+- A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture patterns, workload segregation, Spark irreplaceable for Iceberg (unpublished and not eligible as evidence under the bibliography's Boundary rule, so untiered and kept as illustration; corrected 2026-11-22 from "Tier B" to match the summary above)
 - Jake Thomas (then at Okta), Data Council 2024 public talk ([abstract](https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/)): 7.5 trillion records across 130 million files in six months, daily volume from 1.5 TB to 50 TB, his own account and not independently audited (Tier B). An earlier "$2K/day Snowflake → 'dramatically reduced'" figure was attributed to a conversation that never took place and is withdrawn as unverified (corrected 2026-11-17)
 - Netflix ClickHouse scale figures [Daniel Muino, ClickHouse meetup presentation, July 2025; ClickHouse blog 2025-10-23]: 5 PB/day, 10.6M events/sec, sub-second queries, from a vendor ecosystem presentation not independently reproduced (Tier C)
 - Schema-on-read SIEM bake-off [SDW Lab, zeek-flagship-rerun, 2026-06-10]: a two-regime split over 10M OCSF-normalized Zeek conn.log events, 5 standardized queries, CV-gated, answers verified equal across the three head-to-head arms with the StarRocks and Trino sidecar timed only, specifically the OpenSearch 2.18.0 baseline (2.854s avg) against ClickHouse-native (0.061s, 46.8×), ClickHouse-over-Iceberg (0.282s, 10.1×), StarRocks (0.343s, 8.3×), and Trino (0.795s, 3.6×); the index wins the cheap lookups, the lakehouse wins the heavy hunting aggregations. Supersedes a retired legacy benchmark (Dec 2025). One specific workload, directional for network-telemetry analytical queries (Tier B)

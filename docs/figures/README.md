@@ -1,6 +1,6 @@
 # Reader figures
 
-Two figures for the repository's front pages, each drawn as an SVG source with a PNG render beside it. Each one carries only numbers from frozen records rather than live counts, which keeps the images from drifting as the bibliography grows, and the live corpus counts stay in the text, where `scripts/count_reconcile.py` gates them.
+Two figures for the repository's front pages, each drawn as an SVG source with a PNG render beside it. Each one carries only numbers from dated records rather than live counts, which keeps the images from drifting as the bibliography grows, and the live corpus counts stay in the text, where `scripts/count_reconcile.py` gates them.
 
 | Figure | Files | What it shows |
 |---|---|---|
@@ -32,18 +32,18 @@ Paths are relative to the repository root, and line numbers were re-read on 2026
 | Not peer-reviewed | 3 | `methods/prisma-appraisal-2026-07-13.json:10`; records rank 15, 19, 33 (`:562`, `:713`, `:1243`) |
 | Unreadable | 1 | record rank 16, `methods/prisma-appraisal-2026-07-13.json:602` |
 | Refuted by an independent verification pass | 2 | records rank 5 (duplicate publication) and rank 31 (numbers not found at the source), `methods/prisma-appraisal-2026-07-13.json:186`, `:1171`; the pass was a second LLM agent, separate from the one proposing the citation (`methods/prisma-appraisal-2026-07-13.json:4`; `PUBLICATION-MANUSCRIPT.md:184`) |
-| Admitted at the gate | 26 | `methods/prisma-appraisal-2026-07-13.json:7` (`citable` 26); `methods/incorporated-2026-07-13.json:5` |
+| Admitted at the gate (second exit line) | 26 | `methods/prisma-appraisal-2026-07-13.json:7` (`citable` 26); `methods/incorporated-2026-07-13.json:5` |
 | Refusal breakdown, cross-check | 8 + 3 + 1 + 2 = 14 | `METHODOLOGY.md:96`; `PUBLICATION-MANUSCRIPT.md:184` |
 | Built by reading, 2025 to 2026 | label | `methods/PRISMA-RETRO-RUN-2026-07-13.md:13` |
-| 283 footnotes in a 2024 practitioner manuscript | 283; 2024-04-15 | `METHODOLOGY.md:56`, `:73` |
-| Then vendor and project docs, standards, analyst reports, talks | label | `METHODOLOGY.md:65-69` |
-| Mostly grey literature a database cannot index | label (171 grey of 195 blocks at run time, plus 24 indexable academic entries) | `methods/PRISMA-RETRO-RUN-2026-07-13.md:67-68` |
+| Started from the footnotes of a 2024 practitioner manuscript | label; 2024-04-15 (no footnote count is drawn, because METHODOLOGY.md:79 says that October-2025 record is not re-verified; count removed 2026-11-22) | `METHODOLOGY.md:56` |
+| Then vendor and project docs, standards, analyst reports, talks | label | `METHODOLOGY.md:65-69` (vendor documentation, standards, analysts); `README.md:15` and `methods/PRISMA-RETRO-RUN-2026-07-13.md:13` (talks) |
+| Mostly grey literature a database cannot index | label (171 grey of the 195 blocks the run counted, plus 24 indexable academic entries; the 2026-07-16 addendum adds eight more grey entries, 203 at run time) | `methods/PRISMA-RETRO-RUN-2026-07-13.md:67-68`, `:153-157` |
 | Each source tiered A to D; Level A is peer review and official standards only | label | `METHODOLOGY.md:104`, `:107` |
-| Rule: carried numbers checked at the primary | label (a standing rule, drawn dashed, not a completion claim) | `PUBLICATION-MANUSCRIPT.md:444`, `:1052` |
-| Verdict per number in the ledger; paywalled numbers marked unverifiable | label | `methods/verification-2026-11/ledger.json` (`verdict_vocabulary` includes `unverifiable-paywall`) |
+| Rule: carried numbers checked at the primary | label (a standing rule, drawn dashed, not a completion claim) | `README.md:17`; `PUBLICATION-MANUSCRIPT.md:1045` (the 2026-07 re-score rule); re-cited 2026-11-22, because the earlier `PUBLICATION-MANUSCRIPT.md:444`, `:1052` citation pointed at blank lines |
+| Verdict logged in RESEARCH-JOURNAL.md and the verification ledger; paywalled numbers marked unverifiable | label | `README.md:17`; `RESEARCH-JOURNAL.md:35` (the ledger is the per-number record from 2026-11-17); `methods/verification-2026-11/ledger.json` (`verdict_vocabulary` includes `unverifiable-paywall`) |
 | Live counts derived by `scripts/count_reconcile.py` | label | `README.md`, section "Corpus at a glance" |
 
-The 26 admitted at the gate and the one admitted from the second screen make 27 database-arm admissions in all. The figure prints 26 at the gate's exit because that is the gate's own count, and the dashed side note carries the extra record into the same gate so that the 26 + 1 stays visible.
+The 26 admitted at the gate and the one admitted from the second screen make 27 database-arm admissions in all, which matches manuscript Figure 1's convergence box. Because the dashed side note draws the extra record as an input to the gate, the exit is labelled "27 admitted" with "26 of the 40, plus 1" beneath it (corrected 2026-11-22 from "26 admitted").
 
 ### Evidence tiers
 
@@ -76,4 +76,4 @@ The PNGs were rendered from the SVGs with sharp at 1080 px wide on a white backg
 
 ## Glance checks
 
-`glance/<figure>/` holds the visual-gestalt glance-check output for each PNG: the script's text report (`glance-check.txt`) and its 375 px phone, blur, grayscale and deuteranopia views, plus the three centre crops. Each figure was reviewed on those views for a single focal element, legibility at phone width, overlaps and palette conformance (only Harbor Haze colours and the azure focal highlight appear). In the method figure the refusal breakdown sits on a light inset in dark ink inside the azure gate, so the focal box keeps body-text contrast at phone scale. The review-method figure is taller than the 4:5 LinkedIn limit, which its report flags, because it is a page figure and is not meant to travel as a feed image; the evidence-tiers figure (1080 x 1309) sits inside the single-photo range.
+The visual-gestalt glance-check output from 2026-11-17 (phone, blur, grayscale and deuteranopia views and the text reports) is review material and sits in `working/2026-11-17-quality-pass/U6-glance/`. On those views the titles and stage names meet the 11 px phone floor and the grey detail lines do not. The review-method views predate the 2026-11-22 edits to the exit label and the rule box and have not been regenerated.

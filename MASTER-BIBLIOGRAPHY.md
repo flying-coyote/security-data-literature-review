@@ -10,11 +10,11 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Purpose**: The citation record for the Security Data Works evidence program, which covers the handbook *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays and research pages, and this review's own manuscript. Each `#### ` block below is one source, with its evidence level, what it is cited for, what it actually says, and how it was checked.
 **Last Updated**: November 17, 2026 (verification sweep of every entry, recorded in `methods/verification-2026-11/`; the retired December 2025 benchmark entry rewritten to cite the public SDW Lab re-run; the October 2025 extraction log moved to `archive/bibliography-extraction-log-2025-10.md`). Earlier changes are in [CHANGELOG.md](CHANGELOG.md).
 **Total Sources**: 273 catalogued `#### ` blocks (271 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). The counts on this page are derived from the blocks by `scripts/count_reconcile.py`, which fails the build when any gated surface disagrees with them.
-**Evidence Quality**: 22.5% Evidence Level A (live-derived 2026-11-17: 61 of 271 tiered entries; 170 B, 40 C, across 273 `#### ` blocks incl. 2 documented stubs). The share is reported descriptively and has no target attached. It sits where it does because Level A is reserved for peer-reviewed research and official standards, so vendor engineering blogs, trade books, conference talks and production case studies tier at B however good their evidence is, and much of what a practitioner needs to know about security data platforms is only published in those forms.
+**Evidence Quality**: 22.5% Evidence Level A (live-derived 2026-11-17: 61 of 271 tiered entries; 170 B, 40 C, across 273 `#### ` blocks incl. 2 documented stubs). The share is reported descriptively and has no target attached. It sits where it does because Level A is reserved for peer-reviewed research and official standards, so vendor engineering blogs, trade books, conference talks and production case studies tier at B however good their evidence is, and much of what a practitioner needs to know about security data platforms is published mainly in those forms.
 
 **How to read an entry.**
 - **Evidence Level** follows [METHODOLOGY.md §3.1](METHODOLOGY.md). A is peer-reviewed research, an official standard, or a normative framework from a neutral non-commercial body (MITRE D3FEND and ATLAS, which are primary for taxonomy and silent on efficacy). B is "practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation", which is real evidence but not independently reviewed (expert interviews appear in that definition, but this file catalogues only published works, per the Boundary rule below). C is "vendor blog posts, product documentation, and conference talks not backed by production measurement", catalogued with its bias flagged and never carrying a hypothesis on its own, and D (marketing material, unverified claims, speculation) is excluded from the corpus.
-- **Key Findings** state what the source says. A number in Key Findings should trace to the cited primary, and where the 2026-11-17 sweep could not confirm one at its primary, the number is either removed with a dated note or labelled *unverified* with the reason.
+- **Key Findings** state what the source says. A number in Key Findings should trace to the cited primary, and where the 2026-11-17 sweep could not confirm one at its primary, the number is either removed with a dated note or labelled *unverified* with the reason. Numbers stated outside Key Findings and Notes, such as a figure in a Relevance list, were not swept, so treat them as provisional until an entry marks them verified.
 - **Validation Status** and the dated notes beneath it record each check. Where the 2026-11-17 sweep left figures in an entry unconfirmed, the Validation Status line ends with a count of them and each figure carries its own label, so a green mark should be read together with that count, and the ledger below has the per-number verdict.
 
 **Verification record.** The 2026-11-17 sweep wrote one row per entry to [`methods/verification-2026-11/ledger.json`](methods/verification-2026-11/ledger.json), with the identifier checked (DOI, arXiv ID or URL), whether the work exists, and a verdict for each quoted number, and [`methods/verification-2026-11/README.md`](methods/verification-2026-11/README.md) summarizes the verdict counts. Earlier per-reference checks are in [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md), which is append-only.
@@ -31,7 +31,7 @@ The corpus was assembled from these routes, each recorded in its own section bel
 3. The PRISMA database search arm of 2026-07-13 and its second-screen admission (see [METHODOLOGY.md](METHODOLOGY.md)).
 4. The November 2026 citation-graph snowball admissions and the handbook footnote passes.
 
-Sources from practitioner conversations are not catalogued; the earlier entries attributed to expert interviews were re-sourced to public material or withdrawn.
+Sources from practitioner conversations are not eligible; the earlier entries attributed to expert interviews were re-sourced to public material or withdrawn, except that three entries without a citable primary (the anonymized practitioner entry, the AI Governance Maturity Gate entry and the Security Data Lakehouse Implementation Patterns composite) remain catalogued and counted, each with a note against citing it, pending an owner ruling on their withdrawal (noted 2026-11-22).
 
 **Format**: Organized by intake section, with standardized entries including evidence level, relevance to book chapters/hypotheses, and validation status.
 
@@ -299,7 +299,7 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 - 6M req/sec sustained (peak 8M req/sec) on the Cloudflare HTTP analytics pipeline
 - ~3× replication across 36 nodes for high availability
 - −50% query latency achieved via index tuning
-- **February 2026 (Alt URL — ClickHouse blog post of 18 February 2026, describing an August 2025 meetup demo)**: a single query scanned 96 trillion events in an hour and returned in under two seconds
+- **February 2026 (Alt URL — ClickHouse blog post of 18 February 2026, describing an August 2025 meetup demo)**: a single query scanned 96 trillion events in an hour and returned in under two seconds, with a stated margin of error under one percent
 - *Removed 2026-11-17: an "exceeded 1,000 active replicas, hundreds of millions of inserted rows/sec" line, which appears in neither the Alt URL post nor the 2018 primary.*
 - Nearly 10 years running on open-source ClickHouse (one of earliest large-scale adopters)
 - System withstands large-scale outages without collapsing
@@ -611,7 +611,7 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 **Citations**: ch02 §2.3 (economics) [was: Chapter 7] industry validation, RQ13 pipeline economics
 **Notes**: Vendor survey but comprehensive scope; 44% reporting 5× ROI strengthens pipeline-first economics; shift-left aligns with RQ13 pipeline detection hypothesis
 
-**Validation Status**: ✅ Refreshed February 2026 - 2025 report · ⚠️ 1 figure unverified 2026-11-17, see the dated label
+**Validation Status**: ✅ Refreshed February 2026 - 2025 report · ⚠️ 2 figures unverified 2026-11-17 (the 93% and its 4+, corrected 2026-11-22), see the dated label
 
 ---
 
@@ -722,7 +722,7 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 - Best Practices Doc footnote [^70]
 
 **Key Findings**:
-- Netflix ingests 2 trillion messages/day via Kafka (Keystone pipeline — netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb)
+- Netflix ingests 2 trillion messages/day via Kafka (Keystone pipeline — netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb) *(Unverified 2026-11-22: the cited Confluent page carries neither the figure nor Netflix, and the Keystone post blocks automated readers, so it was not re-read.)*
 - Security data retention optimization via tiered storage
 - **2025 update**: Kafka tiered storage marked production-ready in Apache Kafka 3.9.0 (cite Apache release notes, not Confluent docs)
 - Tiered storage enables indefinite retention at minimal cost for compliance use cases
@@ -730,7 +730,7 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 **Citations**: ch02 §2.3 (economics) [was: Chapter 1] cost comparisons, ch02 §2.3 (economics) [was: Chapter 7] tiered storage
 **Notes**: **CRITICAL** - Validates scale and retention feasibility. Cost-reduction percentages (70-80%, 90%+) are not Netflix-published and should not be cited. Use Apache Kafka 3.9.0 release notes for GA tiered-storage claim.
 
-**Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready
+**Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready · ⚠️ 1 figure unverified 2026-11-22, see the dated label
 **Currency (2026-11-17)**: Apache Kafka has moved to the 4.x line (the newest release tag in apache/kafka is 4.4.0); the tiered-storage GA statement for 3.9.0 still stands as history, and current behaviour should be cited from the 4.x documentation at https://kafka.apache.org/documentation/.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
@@ -791,7 +791,7 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 **Date**: December 2025
 **URL**: https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/zeek-flagship-rerun (the public successor)
 **Note (2026-11-17)**: the December 2025 benchmark ran from a private repository that was never published, so the URL above points at the public re-run that supersedes it, and the entry was retitled without the retired benchmark's name.
-**Evidence Level**: B (Tier 1 production benchmark, 10M OCSF events) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
+**Evidence Level**: B (retired first-party lab benchmark; cite the successor) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Hypothesis H3-PERFORMANCE-01 (ClickHouse OLAP performance; its framing after the 2026-06-14 supersession is under review)
 - Hypothesis H3-PERFORMANCE-02 (StarRocks vs Dremio comparison)
@@ -800,10 +800,10 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 - Book ch05 §5.3 + Appendix I [was: Chapter 8] (Query Engine Selection)
 
 **Key Findings** (rewritten 2026-11-17; the December 2025 timings are retired and are not reproduced here):
-- This is a retired December 2025 benchmark, kept as a dated record. Its named-vendor timings and the multiples derived from them were withdrawn from public surfaces on 2026-07-11 under the vendor's licence terms that bar publishing benchmark results (often called a DeWitt clause), and the private repository they came from cannot be re-derived from public material, so no figure from it should be quoted.
-- Its successor is the public SDW Lab re-run on a sha256-pinned 10M-row Zeek conn corpus, which splits into two regimes by query shape rather than producing a single multiple. Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift about 5–10% between draws, so the multiples are what transfer ([FLAGSHIP-TRIPLE-BAND-2026-06-14.md](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md), two-regime table; Tier B, single host). The front-engine arm's results are withheld in that public repository under the vendor's benchmark-publication terms, and they are withheld here too.
-- The baseline was moved from OpenSearch 2.18.0 to 3.7.0 and the clean same-draw comparison came out 1.1% faster on 3.7.0, so the multiples held on what was the current release in June 2026; OpenSearch has since reached 3.9.0 (2026-09-29), which has not been measured ([VERSION-CURRENCY-2026-06-14.md](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/VERSION-CURRENCY-2026-06-14.md), "Flagship foil" section).
-- Compression: the December 2025 4.6× (LZ4) and 8.2× (ZSTD-22) figures are superseded. The lab re-measured the same 10M events at 5.5× for ClickHouse MergeTree with default LZ4 (684,777,971 bytes, about 685 MB) and 9.0× for blanket ZSTD(22) (414,722,162 bytes, about 415 MB) against 374.3 raw bytes per event, and the old 8.2× traced to no lab measurement ([measured_footprints.json](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/cost-to-serve-retention/results/measured_footprints.json), keys `ch_native_lz4` and `ch_zstd22`; [RESULTS.md](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/cost-to-serve-retention/results/RESULTS.md), Layer 1 table; Tier B, measured 2026-06-10).
+- This is a retired December 2025 benchmark, kept as a dated record. Its named-vendor timings and the multiples derived from them were withdrawn from the handbook appendix on 2026-07-11 and from this entry on 2026-11-17 under the vendor's licence terms that bar publishing benchmark results (often called a DeWitt clause), and the private repository they came from cannot be re-derived from public material, so no figure from it should be quoted.
+- Its successor is the public SDW Lab re-run on a sha256-pinned 10M-row Zeek conn corpus, which splits into two regimes by query shape rather than producing a single multiple. Across three independent draws the OpenSearch baseline runs 10.1×, 10.6× and 11.3× slower than ClickHouse over Iceberg on scan aggregation (about 10–11×), and reading Iceberg costs ClickHouse 4.6×, 4.3× and 4.2× over its native store (about 4.2–4.6×), while the absolute single-host milliseconds drift about 5–10% between draws, so the multiples are what transfer. The three draws span two OpenSearch versions, 2.18.0 for the first two and probably 3.7.0 for the third, per the lab's own 2026-11-17 correction to the band file, and the same-day 3.7.0 comparison (2.5524 s against ClickHouse over Iceberg at 0.2438 s) gives about 10.5× ([FLAGSHIP-TRIPLE-BAND-2026-06-14.md](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/zeek-flagship-rerun/FLAGSHIP-TRIPLE-BAND-2026-06-14.md), two-regime table; Tier B, single host). The front-engine arm's results are withheld in that public repository under the vendor's benchmark-publication terms, and they are withheld here too.
+- The baseline was moved from OpenSearch 2.18.0 to 3.7.0 and the clean same-draw comparison came out 1.1% faster on 3.7.0, so the multiples held on what was the current release in June 2026; OpenSearch had reached 3.9.0 by 2026-11-17 (released 2026-09-29), which has not been measured ([VERSION-CURRENCY-2026-06-14.md](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/VERSION-CURRENCY-2026-06-14.md), "Flagship foil" section).
+- Compression: the December 2025 4.6× (LZ4) and 8.2× (ZSTD-22) figures are superseded. The lab re-measured compression on its own sha256-pinned 10M-row Zeek conn corpus at 5.5× for ClickHouse MergeTree with default LZ4 (684,777,971 bytes, about 685 MB) and 9.0× for blanket ZSTD(22) (414,722,162 bytes, about 415 MB) against 374.3 raw bytes per event, and the old 8.2× traced to no lab measurement ([measured_footprints.json](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/cost-to-serve-retention/results/measured_footprints.json), keys `ch_native_lz4` and `ch_zstd22`; [RESULTS.md](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/cost-to-serve-retention/results/RESULTS.md), Layer 1 table; Tier B, measured 2026-06-10).
 
 **Citations**: All 4 hypotheses, Book ch05 §5.1 (table format) [was: Ch 8]
 **Notes**: A first-party multi-engine benchmark on identical OCSF data, now retired. Cite the public SDW Lab re-run above for any performance or compression figure, and quote the two-regime split with its ~10–11× baseline-to-columnar multiple and ~4.2–4.6× open-format tax rather than a single headline multiple. This entry does not change the confidence wording of H3-PERFORMANCE-01, which is under review, so read that wording alongside this entry rather than on its own.
@@ -957,27 +957,24 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 **URL**: https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse
 **Evidence Level**: B (Production deployment, validated metrics) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
-- **Research Question RQ7** (Isolation patterns and performance)
-- **Research Question RQ8** (Compliance trade-offs)
+- ~~Research Question RQ7 (Isolation patterns and performance)~~ *(withdrawn 2026-11-22; the post describes no isolation pattern)*
+- ~~Research Question RQ8 (Compliance trade-offs)~~ *(withdrawn 2026-11-22, same reason)*
 - Blog post: "Sparking an Architecture: RSA Conversations"
 - Blog post: "LIGER Stack Reference Architecture"
 - Book ch05 §5.3 + Appendix I [was: Chapter 9] (Query Engines - ClickHouse)
 - Hypothesis H-IMPL-01 (TCO Reality)
-- Isolation-first security architecture pattern
 
 **Key Findings**:
-- 93% cost reduction: $70K → $5K monthly infrastructure (Elastic → ClickHouse migration)
-- Iceberg data lake on isolated AWS infrastructure
-- Table-level RBAC (no row-level security, column masking, or metadata encryption needed)
-- Simplified security posture via network isolation as primary control
+- Cost cut by "more than 90%" (the post's words): upwards of $70,000 a month on Elasticsearch to around $5,000 a month on ClickHouse Cloud for a comparable workload, about 93% by arithmetic (Elastic → ClickHouse migration)
+- *Withdrawn 2026-11-22: the former "Iceberg data lake on isolated AWS infrastructure", "table-level RBAC" and "network isolation as primary control" findings. Re-read at the cited post on 2026-11-22, it mentions none of Iceberg, isolation, RBAC or RSA.*
 - 3 million+ endpoints monitored; >1 million M365 identities managed
 - Up to 200K records/sec ingest throughput
-- **16 billion events/day** processed (figure from ClickHouse Huntress video: clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse — not the blog post) *(Unverified 2026-11-17: the figure comes from a video, which was not re-checked.)*
+- **16 billion events/day** processed (figure from the description on the ClickHouse Huntress video page, clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse, not the blog post; read there 2026-11-22)
 
-**Citations**: **CRITICAL** - Blog RSA conversations, H-IMPL-01 TCO validation, RQ7 isolation-first performance validation
-**Notes**: Production security deployment, Chris Bisnett (CTO) validation at RSA 2025. Avoided Unity Catalog complexity by using isolation-first architecture with table-level permissions only. "1M EPS / 3×16-core servers" and "20-50× compression" figures are not supported by the cited blog and have been removed.
+**Citations**: Blog RSA conversations, H-IMPL-01 TCO validation
+**Notes**: Production security deployment. The cited post does not describe an isolation-first design, table-level-only permissions or an RSA 2025 validation, so those claims, and the RQ7 isolation-first relevance, are withdrawn (2026-11-22). "1M EPS / 3×16-core servers" and "20-50× compression" figures are not supported by the cited blog and have been removed.
 
-**Validation Status**: ✅ Active (verified Feb 2026) · ⚠️ 1 figure unverified 2026-11-17, see the dated label
+**Validation Status**: ✅ Active (verified Feb 2026); the 16 billion figure, labelled unverified on 2026-11-17, was read at the video page on 2026-11-22
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -995,14 +992,14 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 
 **Key Findings**:
 - First-hand account of Elastic → ClickHouse migration
-- 93% cost reduction validation *(Unverified 2026-11-17: the cited page blocks automated readers, so this could not be re-read.)*
-- 3M endpoint scale operational insights *(Unverified 2026-11-17: the cited page blocks automated readers, so this could not be re-read.)*
+- 93% cost reduction, derived from the $70K to $5K a month the talk's description gives (92.9%), read 2026-11-22 on the ClickHouse video page that embeds this video (https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse)
+- 3M endpoint scale ("over 3 million endpoints", same page)
 - Security data compression and performance
 
 **Citations**: Blog RSA conversations, practitioner validation
 **Notes**: Video presentation from Huntress CTO, RSA 2025 field validation
 
-**Validation Status**: ✅ Active (verified Feb 2026) · ⚠️ 2 figures unverified 2026-11-17, see the dated labels
+**Validation Status**: ✅ Active (verified Feb 2026); both figures, labelled unverified on 2026-11-17, were read at the ClickHouse video page on 2026-11-22
 
 ---
 
@@ -1128,8 +1125,9 @@ Sources from practitioner conversations are not catalogued; the earlier entries 
 **Key Findings** (as reported in the talk):
 - 7.5 trillion records across 130 million files processed in six months using thousands
   of concurrent DuckDB instances, with daily volume spiking from 1.5 TB to 50 TB without
-  infrastructure changes (talk abstract, verified 2026-11-17; the abstract does not name
-  the serverless runtime, so the earlier "Lambda" detail is dropped here)
+  infrastructure changes (talk abstract, verified 2026-11-17). The abstract says only "serverless"; the runtime,
+  AWS Lambda, is named in Julien Hurault's 2024-05-01 write-up of the talk (see the
+  "Okta's Multi-Engine Data Stack" entry; re-sourced 2026-11-22)
 - DuckDB viable for security analytics at genuine production volume
 
 **Not supported by this source** (previously asserted here, now withdrawn): the
@@ -1140,8 +1138,7 @@ them to Jake Thomas. RQ7 and RQ10 need another source.
 
 **Citations**: H-EDGE-01 DuckDB production-volume evidence
 **Notes**: A public talk is citable without permission. There has been no interview,
-and nothing may be attributed to one. See the hub relationship registry at
-`02-projects/external-engagements/relationship-registry.md`.
+and nothing may be attributed to one.
 
 **Validation Status**: ✅ Public source, no permission required
 
@@ -1888,14 +1885,14 @@ and nothing may be attributed to one. See the hub relationship registry at
 - Best Practices Doc footnote [^255]
 
 **Key Findings**:
-- >95% onboarding-time reduction for new feature integration (per blog) *(Unverified 2026-11-17: the cited page blocks automated readers, so this could not be re-read.)*
+- Onboarding deployment time reduced by more than 95% after the metadata migration ("Palette Onboarding Deployment time has reduced drastically by more than 95%", read at the post 2026-11-22)
 - Feature store solution for training/production consistency — eliminates training/serving skew
 - Support for batch and near-real-time feature computation
 
 **Citations**: Advanced analytics chapter, ML patterns
 **Notes**: Production ML feature store at scale, presented at Feature Store Summit 2023
 
-**Validation Status**: ✅ Active URL (verified 2024) · ⚠️ 1 figure unverified 2026-11-17, see the dated label
+**Validation Status**: ✅ Active URL (verified 2024); the 95% figure, labelled unverified on 2026-11-17, was read at the post on 2026-11-22
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1946,12 +1943,12 @@ and nothing may be attributed to one. See the hub relationship registry at
 - 40% use AI/ML tools but satisfaction ranks dead last among SOC capabilities
 - Staff shortages and overwhelming data volumes persist as top challenges
 
-*Unverified 2026-11-17: the 100%, 50% and 79% figures are not on the two survey landing pages, and the reports themselves sit behind registration and were not read.*
+*Unverified 2026-11-17, widened 2026-11-22: the 100%, 50%, 79%, 69%, 62% and 40% figures are not on the two survey landing pages, and the reports themselves sit behind registration and were not read.*
 
 **Citations**: Advanced analytics, MLOps, SOC operations
 **Notes**: 2025 surveys show paradox: universal AI intent (100% plan GenAI) vs. low satisfaction with existing AI tools (ranked last); staff retention crisis (62%) validates H-IMPL-02 streaming expertise scarcity
 
-**Validation Status**: ✅ Refreshed February 2026 - 2025 AI + SOC surveys · ⚠️ 3 figures unverified 2026-11-17, see the dated labels
+**Validation Status**: ✅ Refreshed February 2026 - 2025 AI + SOC surveys · ⚠️ 6 figures unverified 2026-11-17 (widened from 3 on 2026-11-22), see the dated labels
 
 ---
 
@@ -2261,7 +2258,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 - 70-90% cost reduction vs traditional SIEMs ($3,560/month vs $31-100K/month for 500GB/day) *(Unverified 2026-11-17: 70-90% and $31-100K are not on the cited securitydataworks.com pages.)*
 - 10-12× compression with Parquet/ZSTD reducing 1TB/day to <$700/month storage *(Unverified 2026-11-17: not on the cited securitydataworks.com pages.)*
 - Separation of storage ($0.023/GB/month S3) and compute (scale independently)
-- Vendor-neutral architecture (20+ query engines supported via Iceberg)
+- Vendor-neutral architecture (20+ query engines supported via Iceberg) *(Unverified 2026-11-22: not on the cited securitydataworks.com pages.)*
 - Fixed compute costs regardless of query volume (vs per-query SIEM charges)
 - Supports both pipeline-based detection (real-time, 10-50× cost reduction) and query-based (retroactive analysis) *(Unverified 2026-11-17: not on the cited securitydataworks.com pages.)*
 
@@ -2281,7 +2278,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Citations**: Reference architecture, cost optimization, SIEM replacement
 **Notes**: **CRITICAL** - First complete, production-validated security data lakehouse architecture with detailed cost modeling
 
-**Validation Status**: ✅ Production deployments referenced · ⚠️ 5 figures unverified 2026-11-17, see the dated labels
+**Validation Status**: ✅ Production deployments referenced · ⚠️ 7 figures unverified 2026-11-17 (the 20+ and 1TB figures added 2026-11-22), see the dated labels
 
 ---
 
@@ -2390,7 +2387,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Citations**: AI maturity models, governance requirements, failure rates
 **Notes**: Retain for the ~30% PoC-abandonment prediction only; re-source or remove maturity-tier quantification
 
-**Validation Status**: ✅ The ~30% prediction is the headline of the cited Gartner press release (checked 2026-11-17); no other figure is carried
+**Validation Status**: ⚠️ The 30% figure appears in the press release's URL; the page blocks automated readers and its text was not re-read on 2026-11-17 or 2026-11-22, so the "~30%" wording and the drivers clause should be re-read in a browser before they are relied on · 1 figure unverified
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -2893,7 +2890,7 @@ and nothing may be attributed to one. See the hub relationship registry at
 **Citations**: ch07 §7.2-7.3 + Appendix K [was: Chapter 4] (Three Architect Journeys - practitioner validation)
 **Notes**: Practitioner feedback validates query engine architectures for security use cases
 
-**Validation Status**: ✅ Practitioner validation (October 2025)
+**Validation Status**: ⚠️ No citable primary (an unpublished conversation, ineligible under the Boundary rule); do not cite
 
 ---
 
@@ -3645,7 +3642,7 @@ published works are merged here; nothing about outreach or relationships is repr
 **URL**: https://dl.acm.org/doi/10.1145/357830.357849
 **Evidence Level**: A (Peer-reviewed journal, ACM Transactions on Information and System Security)
 **Relevance**:
-- D3FEND Wall AIML-ripeness evidence (02-projects/d3fend-wall/AIML-RIPENESS-EVIDENCE.md): the formal limit on the statistical-anomaly detector tier (PHDURA, UGLPA, anomaly-mode CSPP/PMAD)
+- D3FEND Wall AIML-ripeness evidence: the formal limit on the statistical-anomaly detector tier (PHDURA, UGLPA, anomaly-mode CSPP/PMAD)
 - /research/d3fend-wall essay (securitydataworks.com): "Axelsson named the arithmetic underneath" the anomaly-detection difficulty
 - Foundational anchor for the alert-fatigue / false-positive-scaling argument
 
@@ -3669,7 +3666,7 @@ published works are merged here; nothing about outreach or relationships is repr
 **Alt URL**: https://www.icir.org/robin/papers/oakland10-ml.pdf (author-hosted PDF)
 **Evidence Level**: A (Peer-reviewed, IEEE S&P; 2020 IEEE S&P Test-of-Time Award)
 **Relevance**:
-- D3FEND Wall AIML-ripeness evidence (02-projects/d3fend-wall/AIML-RIPENESS-EVIDENCE.md): why anomaly detection is the hardest place to make ML work, against the structural-optimist 'models belong in the broad base' reading
+- D3FEND Wall AIML-ripeness evidence: why anomaly detection is the hardest place to make ML work, against the structural-optimist 'models belong in the broad base' reading
 - /research/d3fend-wall essay (securitydataworks.com): 'reasons on the record since Sommer and Paxson's 2010 paper' for why ML struggles at network anomaly detection
 - Anchor for the ripe-is-not-solved caveat
 
@@ -3766,8 +3763,9 @@ published works are merged here; nothing about outreach or relationships is repr
 - Digital-artifact / offense-defense inferred matrix; semantic compliance mapping
 
 **Citations**: MITRE. *D3FEND: A Knowledge Graph of Cybersecurity Countermeasures*. https://d3fend.mitre.org/
-**Notes**: A glaring prior gap — absent from this bibliography despite being central to the current grounding research. *Version-line note (2026-06-05, FLAG closed 2026-07-10): the live d3fend.mitre.org version badge reads **v1.4.0** (fetch-confirmed in the part-2 sweep), reconciling the prior tension — v1.3.0 (Dec 2025) carried the OT extension, and v1.4.0 is now current. Quote v1.4.0 as current.* (Superseded 2026-11-17 by the currency note below: 1.6.0 is now current.)
-**Validation Status**: ✅ Active URL (verified 2026-06-05); v1.0/OT milestones verified via WebSearch; exact current version line needs a changelog check
+**Notes**: A glaring prior gap — absent from this bibliography despite being central to the current grounding research. *Version-line note (2026-06-05, FLAG closed 2026-07-10): the live d3fend.mitre.org version badge reads **v1.4.0** (fetch-confirmed in the part-2 sweep), reconciling the prior tension — v1.3.0 (Dec 2025) carried the OT extension, and v1.4.0 is now current. Quote v1.4.0 as current.* (Superseded 2026-11-17 by the Currency line below: 1.6.0 is now current.)
+**Validation Status**: ✅ Active URL (verified 2026-06-05); v1.0/OT milestones verified via WebSearch
+**Currency (2026-11-17)**: the live d3fend.mitre.org version badge reads 1.6.0 (release date 2026-08-31 in the site's version record); quote 1.6.0 as current (line added 2026-11-22, moved from a note in another entry).
 
 ---
 
@@ -3898,7 +3896,7 @@ published works are merged here; nothing about outreach or relationships is repr
 **Citations**: MITRE. *D3FEND: A Knowledge Graph of Cybersecurity Countermeasures*. https://d3fend.mitre.org/ ; MITRE (2025, Jan 16). *MITRE Launches D3FEND 1.0 — A Milestone in Cybersecurity Ontology*.
 **Notes**: "1.0" is the official MITRE release framing (production ontology), confirmed via the MITRE news release. Built on OWL 2 DL; Core Classes provide the upper-ontology alignment interface. CCO mapping is in-progress work, not a shipped 1.0 mapping — do not cite it as complete. Cross-reference: the existing "MITRE D3FEND Framework & Ontology" entry above catalogues the broader framework and the same v1.0/OT version line; this entry is the milestone-specific 1.0-ontology anchor for the grounding-chain work.
 **Validation Status**: ✅ Verified 2026-06-21 (WebSearch: 1.0 launch 2025-01-16 + OWL 2 DL + Core Classes upper-ontology interface confirmed via mitre.org release; Kaloroumakis as project lead confirmed). · ⚠️ 1 figure unverified 2026-11-17, see the dated label
-**Currency (2026-11-17)**: the live d3fend.mitre.org version badge now reads 1.6.0 (release date 2026-08-31 in the site's version record), superseding the v1.4.0 noted above; quote 1.6.0 as current.
+**Currency (2026-11-17)**: the live d3fend.mitre.org version badge reads 1.6.0 (release date 2026-08-31 in the site's version record); quote 1.6.0 as current.
 
 ---
 
@@ -4041,14 +4039,14 @@ published works are merged here; nothing about outreach or relationships is repr
 
 **Authors**: Julien Hurault (Ju Data Engineering Newsletter)
 **Date**: May 1, 2024
-**URL**: https://juhache.substack.com/
+**URL**: https://juhache.substack.com/p/oktas-multi-engine-data-stack (repointed 2026-11-22 from the newsletter root)
 **Evidence Level**: B (Tier-1 production validation, named deployment with metrics) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
-- Okta serverless DuckDB: 1M Lambda invocations/day, 250 GB/min peak; AWS Lambda + DuckDB + Snowflake + S3 *(Unverified 2026-11-17: the cited page blocks automated readers, so this could not be re-read.)*
+- Okta serverless DuckDB: "1 million DuckDB invocations per day in average" and "peaks of up to 250GB of data processed per minute"; AWS Lambda + DuckDB + Snowflake + S3 (read at the post 2026-11-22)
 - Upstream preprocessing to cut warehouse compute; ch02 §2.3 (economics) [was: Chapter 10] (cost), ch05 §5.3 + Appendix I [was: Chapter 9] (serverless patterns)
 
 **Citations**: Hurault, J. (2024, May 1). *Okta's Multi-Engine Data Stack*. Ju Data Engineering Newsletter.
-**Validation Status**: ✅ Active URL (verified 2026-06-05) · ⚠️ 2 figures unverified 2026-11-17, see the dated labels
+**Validation Status**: ✅ Active URL (verified 2026-06-05); both figures, labelled unverified on 2026-11-17, were read at the post on 2026-11-22
 
 ---
 
@@ -4378,7 +4376,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 - Extends the D3FEND defensive ontology (already catalogued for the OCSF↔D3FEND grounding work) to cyber-physical / industrial-control-system defense — relevant to the OT-estate anecdotes and the isolation-first / OT thread. The OT domain is a distinct, separately-citable artifact from the base ATT&CK-mapped enterprise ontology.
 - ch04 §4.1 (D3FEND) [was: Chapter 8]/grounding work; complements the existing "MITRE D3FEND Framework & Ontology" entry, which now reflects the v1.0 (2025-01-16) → v1.3.0 (Dec 2025) line.
 
-**Key Findings**: MITRE extended D3FEND to OT on 2025-12-16, building a structured knowledge base for defending cyber-physical systems, with additional ICS artifacts and implementation guidance expected through 2026. The "267 defensive techniques across seven tactical categories", "v1.3.0", and OWL-2-DL details are secondary-coverage figures (Industrial Cyber et al.), NOT on the cited MITRE news release or the d3fend.mitre.org/domain/ot Alt URL — cite them to the secondary coverage explicitly or not at all (labeled 2026-07-10). Version update: the live d3fend.mitre.org badge now reads **v1.4.0**, superseding the v1.3.0 line this entry tracks.
+**Key Findings**: MITRE extended D3FEND to OT on 2025-12-16, building a structured knowledge base for defending cyber-physical systems, with additional ICS artifacts and implementation guidance expected through 2026. The "267 defensive techniques across seven tactical categories", "v1.3.0", and OWL-2-DL details are secondary-coverage figures (Industrial Cyber et al.), NOT on the cited MITRE news release or the d3fend.mitre.org/domain/ot Alt URL — cite them to the secondary coverage explicitly or not at all (labeled 2026-07-10). Version update: the live d3fend.mitre.org badge read **v1.4.0** on 2026-07-10, superseding the v1.3.0 line this entry tracks.
 **Citations**: MITRE (2025, Dec 16). *MITRE Extends D3FEND Ontology to Operational Technology Cybersecurity*. mitre.org news release.
 **Validation Status**: ✅ Alt URL verified 2026-07-10 (funder title confirmed verbatim; mitre.org news release 403s automated fetch — technique-count figures labeled secondary pending a rendered check)
 **Currency (2026-11-17)**: D3FEND's current release is 1.6.0 (d3fend.mitre.org version badge, release date 2026-08-31); the OT extension described here arrived in v1.3.0.
@@ -4571,7 +4569,7 @@ Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; ever
 
 #### Yang et al. - True Attacks, Attack Attempts, or Benign Triggers? An Empirical Measurement of Network Alerts in a Security Operations Center
 
-**Authors**: Limin Yang, Zhi Chen, Chenxi Wang, Zizhuang Zhang, Sushruth Booma, Phuong Cao, Constantin Adam, Alexander Withers, Zbigniew Kalbarczyk, Ravishankar K. Iyer, Gang Wang (UIUC / NCSA / IBM Research)
+**Authors**: Limin Yang, Zhi Chen, Chenkai Wang, Zhenning Zhang, Sushruth Booma, Phuong Cao, Constantin Adam, Alexander Withers, Zbigniew Kalbarczyk, Ravishankar K. Iyer, Gang Wang (UIUC / NCSA / IBM Research)
 **Date**: 2024 (USENIX Security '24)
 **URL**: https://www.usenix.org/conference/usenixsecurity24/presentation/yang-limin
 **PDF**: https://www.usenix.org/system/files/usenixsecurity24-yang-limin.pdf
@@ -5518,7 +5516,7 @@ Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) n
 ---
 ## Thin-Claim Legs and Handbook Companions, Second Pass (2026-11-07)
 
-Added 2026-11-07 after the Gemini Flash thin-claims scout (project hub, `automation/jenova-queries/results/gemini/thin-claims-2026-11-07.md`) and the owner's approval of the resulting handbook edits. Six peer-reviewed papers now carry handbook footnotes as the outside leg for a mechanism the book previously stated on first-hand or lab evidence alone; one practitioner blog carries the softened data-preparation range in ch01; and two sources the handbook already footnoted, Conway (1968) and the Sigma specification, get the companion entries they lacked. Flash's raw answers are Tier C and were not used: each one-line finding below was re-read at the abstract or primary page named in its Validation Status line, and venue identity was confirmed at the Crossref record (container title and event) plus the publisher or conference page, because DBLP returned HTTP 429 during this pass. Several Flash numbers for these papers (CLP "1.75:1 vs 32:1", LogGrep "5% of Elasticsearch / 20×") are body-level or invented and are not carried.
+Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner's approval of the resulting handbook edits. Six peer-reviewed papers now carry handbook footnotes as the outside leg for a mechanism the book previously stated on first-hand or lab evidence alone; one practitioner blog carries the softened data-preparation range in ch01; and two sources the handbook already footnoted, Conway (1968) and the Sigma specification, get the companion entries they lacked. Flash's raw answers are Tier C and were not used: each one-line finding below was re-read at the abstract or primary page named in its Validation Status line, and venue identity was confirmed at the Crossref record (container title and event) plus the publisher or conference page, because DBLP returned HTTP 429 during this pass. Several Flash numbers for these papers (CLP "1.75:1 vs 32:1", LogGrep "5% of Elasticsearch / 20×") are body-level or invented and are not carried.
 
 ---
 
@@ -5718,7 +5716,7 @@ Added 2026-11-07 because the handbook's ch01 `[^wrangle]` footnote already cited
 ---
 ## Handbook Footnote Legs, Third Pass (2026-11-07)
 
-Added 2026-11-07 when the owner approved a second set of handbook footnotes drawn from the Gemini Flash thin-claims scout (project hub, `automation/jenova-queries/results/gemini/thin-claims-2026-11-07.md`). Seven peer-reviewed papers carry the outside leg for a mechanism or kind of claim the book previously stated on first-hand evidence, and none of them supplies the book's own percentages, which the footnotes say. One vendor release carries a bound on ch07's dead-rule tail. Flash's raw answers are Tier C and were not carried; every entry below was re-read at Crossref and its abstract (OpenAlex) or the vendor's own release, and Flash's sample sizes were replaced with the abstracts' (Wixom & Watson 111 organizations, not 454; Khadka 26 interviews plus 198 survey respondents, not 310).
+Added 2026-11-07 when the owner approved a second set of handbook footnotes drawn from a thin-claims scouting pass (Gemini Flash). Seven peer-reviewed papers carry the outside leg for a mechanism or kind of claim the book previously stated on first-hand evidence, and none of them supplies the book's own percentages, which the footnotes say. One vendor release carries a bound on ch07's dead-rule tail. Flash's raw answers are Tier C and were not carried; every entry below was re-read at Crossref and its abstract (OpenAlex) or the vendor's own release, and Flash's sample sizes were replaced with the abstracts' (Wixom & Watson 111 organizations, not 454; Khadka 26 interviews plus 198 survey respondents, not 310).
 
 ---
 

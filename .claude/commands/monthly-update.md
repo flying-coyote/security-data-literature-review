@@ -28,7 +28,7 @@ Note the Level-A share as a description (there is no target since the 2026-08-19
 
 ### 3. Review External Inputs
 - [ ] Review securitydataworks.com/writing feedback and comments for reader-surfaced sources
-- [ ] Review LinkedIn monitoring for new sources (project1 signal-radar)
+- [ ] Review the owner's LinkedIn saved-items export for new sources
 - [ ] Check the Lab benchmarks (securitydataworks.com/lab) for new first-party measured evidence to cite
 - [ ] Check published essays for citation opportunities
 

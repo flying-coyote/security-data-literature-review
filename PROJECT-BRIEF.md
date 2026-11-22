@@ -10,7 +10,7 @@ tags: [project-brief, literature-review, scope, decisions-log, assumptions]
 
 This repository is a living literature review of the evidence on running security data (logs, events, detections) on modern data platforms: open table formats such as Apache Iceberg, columnar engines such as ClickHouse and DuckDB, streaming systems such as Kafka and Flink, and the schemas and catalogs that sit between them. It serves as the evidence companion to the handbook *Modular Open Architecture (MOAR) for Cybersecurity Data*, which means the handbook's footnotes resolve to entries here and each entry carries an evidence tier and a verification record, so a reader can check a claim against its source rather than taking the handbook's word for it. The same corpus feeds a journal manuscript (`PUBLICATION-MANUSCRIPT.md`) that is being prepared for submission.
 
-This brief states what is true about the project now, what it covers, what is still assumed rather than known, and which decisions are on record. Counts that appear on more than one page are derived from the bibliography and checked by `scripts/count_reconcile.py`, so the figures below are the gated values and will fail the gate if they drift.
+This brief states what is true about the project now, what it covers, what is still assumed rather than known, and which decisions are on record. The corpus and hypothesis counts below (Level-A share, tiered total, the nine scores) are derived from the bibliography and checked by `scripts/count_reconcile.py`; the database-arm figures in Fact 3 are copied from METHODOLOGY.md §2.4 and are not gated, and neither are the research-question count and the other hand-stated figures.
 
 ---
 
@@ -49,7 +49,7 @@ Level A is peer-reviewed research and official standards (including normative fr
 
 ### Fact 5: Research questions
 
-Alongside the scored hypotheses the review tracks 17 research questions (RQ1-RQ17). `METHODOLOGY.md` formalizes RQ1-RQ10, RQ11-RQ14 live in `LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md` Gap 11 and RQ15-RQ17 in Gap 12; RQ15 and RQ17 have no validating evidence yet. The isolation-first questions RQ7-RQ10 have their own working tracker, `isolation-first-security-tracking.md`.
+Alongside the scored hypotheses the review tracks 17 research questions (RQ1-RQ17). RQ1-RQ4 are stated in the manuscript's introduction (`PUBLICATION-MANUSCRIPT.md` §1), `METHODOLOGY.md` §5.4 formalizes RQ7-RQ10, RQ11-RQ14 live in `LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md` Gap 11 and RQ15-RQ17 in Gap 12, and RQ5 and RQ6 have no current definition in the repository (recorded for an owner ruling, 2026-11-22). RQ15 and RQ17 have no validating evidence yet, and the isolation-first questions RQ7-RQ10 are also open: the corpus holds one first-party measurement for RQ7 and nothing citable for RQ8 or RQ9. The isolation-first questions RQ7-RQ10 have their own working tracker, `isolation-first-security-tracking.md`.
 - **Source**: `README.md`, `METHODOLOGY.md` §5.4, `LITERATURE-HYPOTHESIS-GAP-ANALYSIS.md`
 
 ### Fact 6: How the review is maintained
@@ -59,7 +59,7 @@ A weekly health check (`scripts/weekly_scheduled_check.py`) checks links and sou
 
 ### Fact 7: Publication path
 
-The submission target is the *Journal of Cybersecurity* (Oxford University Press, open access), chosen on 2026-07-10 over ACM Computing Surveys and IEEE Security & Privacy. A versioned deposit on Zenodo, assembled by whitelist from this repository by `tools/build/export_paper.sh`, is prepared but its first tagged release and DOI have not been minted. The essays that draw on the review are published at securitydataworks.com/writing; the Substack where the review was first released on 2025-10-22 was retired on 2026-05-24.
+The submission target is the *Journal of Cybersecurity* (Oxford University Press, open access), chosen on 2026-07-10 over ACM Computing Surveys and IEEE Security & Privacy. A versioned deposit on Zenodo, assembled by whitelist from this repository by `tools/build/export_paper.sh`, is prepared, but no GitHub release has been published from the existing `2026-Q3-v1.0` tag (2026-07-09), so no Zenodo deposit or DOI exists yet. The essays that draw on the review are published at securitydataworks.com/writing; the Substack where the review was first released on 2025-10-22 was retired on 2026-05-24.
 - **Source**: `PUBLICATION-VENUE-RECOMMENDATIONS.md`, `docs/ZENODO-RELEASE-CHECKLIST.md`, `tools/build/export_paper.sh`
 
 ### Status at a glance
@@ -87,7 +87,7 @@ The submission target is the *Journal of Cybersecurity* (Oxford University Press
 
 **Boundaries**:
 - **Time window**: published 2018 onward, matching the database arm's date floor, with named pre-2018 foundational exceptions; as a living review there is no fixed end date
-- **Eligibility**: only published, publicly citable works; a personal communication is not an eligible source (enforced since 2026-08-12, when one such citation was found and removed)
+- **Eligibility**: only published, publicly citable works; a personal communication is not an eligible source (enforced since 2026-08-12 for the bibliography, and since 2026-11-17 by a pre-commit check after further unsupported attributions were removed from the appendices)
 - **Public repository**: current outreach and relationship tracking are kept outside this repository; older planning notes that name contacts remain in the dated records
 
 ---
@@ -96,10 +96,10 @@ The submission target is the *Journal of Cybersecurity* (Oxford University Press
 
 These are the places where the review rests on something not yet verified, or where its own method has a known weakness. Each is stated so a reader can discount accordingly.
 
-1. **No independent expert review yet.** The manuscript has not been reviewed by an outside domain expert, and no interview has taken place; nothing in the corpus may be attributed to a person who has not published it. Expert review is planned before submission, and until then the review's quality controls are its own audits and gates.
+1. **No independent expert review yet.** The manuscript has not been reviewed by an outside domain expert, and no expert interview from the prepared guides has taken place; the one practitioner conversation held (October 2025, anonymized) is catalogued as do-not-cite and carries no claim; nothing in the corpus may be attributed to a person who has not published it. Expert review is planned before submission, and until then the review's quality controls are its own audits and gates.
 2. **The implementation hypotheses are directional.** H-IMPL-01, H-IMPL-02 and H-IMPL-03 sit at 5/25 because their quantitative legs were withdrawn. They will move only if citable staffing, timeline or cost evidence is found, and the review says so rather than restating the withdrawn multipliers.
-3. **Single-screener search arm.** LLM screening without a second human screener tends to miss relevant studies (the manuscript cites roughly 13% missed for single screening against about 3% for dual screening), and the database arm's query cannot reach storage-side database venues. Both are disclosed in the manuscript's limitations.
-4. **Vendor-relayed evidence is a large share of the corpus.** Roughly three in ten entries are vendor-authored or vendor-relayed (the gated figure is in `PUBLICATION-MANUSCRIPT.md` §3.1), which is why Level B and C entries never carry a hypothesis on their own.
+3. **Single-screener search arm.** Single screening misses more relevant studies than dual screening (the manuscript cites roughly 13% against about 3% from the one randomized trial that measured it), and this arm was screened once, by an LLM, for which no miss rate has been measured; the database arm's query cannot reach storage-side database venues. Both are disclosed in the manuscript's limitations.
+4. **Vendor-relayed evidence is a large share of the corpus.** Roughly three in ten entries are vendor-authored or vendor-relayed (the gated figure is in `PUBLICATION-MANUSCRIPT.md` §3.1), which is why a Level C entry never carries a hypothesis on its own and no hypothesis rests on a vendor source alone (METHODOLOGY.md §3.1), though some, H3-PERFORMANCE-01 among them, rest on Level B production evidence rather than peer-reviewed work.
 5. **Maintenance has lapsed once already.** The monthly cadence went 96 days without a run in 2026 before the weekly check was added, and the weekly routine's last recorded run is 2026-07-18 (Fact 6). The vendor database has the same problem, since its October 2026 regeneration did not happen and the last one is 2026-07-18.
 
 ---
@@ -119,7 +119,7 @@ These are the places where the review rests on something not yet verified, or wh
 | 2026-08-12 | Personal communications ruled ineligible as sources | `MASTER-BIBLIOGRAPHY.md` header, `CHANGELOG.md` |
 | 2026-08-19 | Level-A target retired; tier criteria corrected and every tiered entry re-audited | `METHODOLOGY.md` §8.1a |
 
-Every stated count is derived rather than typed, which is the rule behind `scripts/count_reconcile.py`: a number that appears on more than one page drifted on seven-plus pages before the gate existed, so the gate now fails a commit that states a count the bibliography does not support.
+The corpus counts are derived rather than typed, which is the rule behind `scripts/count_reconcile.py`: a number that appears on more than one page drifted on seven-plus pages before the gate existed, so the gate now fails a commit (where the local hook is installed) or the CI run on push when a gated page states a count the bibliography does not support.
 
 ---
 

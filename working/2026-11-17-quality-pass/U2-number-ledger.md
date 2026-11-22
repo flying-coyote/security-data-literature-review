@@ -32,7 +32,7 @@ Verdict vocabulary:
 | Abstract, §1.1, §1.4, §3.2.2, §3.5, §3.8, §4.1, §4.4, §5, Table 4 | 6M requests/second (Cloudflare) | https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/ ("On average we process 6M HTTP requests per second, with peaks of upto 8M") | verified-at-primary |
 | Abstract, §3.2.2, §3.5, §3.6, §4.1-§4.3, §5 | ~13-17× CIDR speedup, 20M rows | security-data-that-works docker/README.md:228 (2026-06-07: ~0.010 s vs ~0.166 s, ~13-17×); docker/MOAR-EVIDENCE-RUN-2026-06-15.md:62-72 (canonical re-run: median ~0.007 s vs ~0.120 s, ~17×, conservative 14.5×) | verified-at-primary |
 | Abstract, §4.1, §5 | 6-12 month proficiency ramp | none (labelled practitioner estimate; Gartner attribution withdrawn 2026-07) | author-modelled, labelled |
-| Abstract, §3.7, §4.1 | 24,000-134,000 alerts/day; ~0.01% true attacks | Yang et al. USENIX Security 2024; MASTER-BIBLIOGRAPHY.md:4556 entry, verbatim-verified 2026-07-10 | verified-at-record |
+| Abstract, §3.7, §4.1 | 24,000-134,000 alerts/day; ~0.01% true attacks | Yang et al. USENIX Security 2024; MASTER-BIBLIOGRAPHY.md:4556 entry, verbatim-verified 2026-07-10 | verified-at-record; *2026-11-22: the figures hold, but the study covers one SOC ("a real-world SOC", 2018-2022, USENIX abstract), and the manuscript said "SOCs"; corrected to the singular* |
 | §1.1, §3.2.3, §3.5, Table 4 | Azure "trillions of events daily" | https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/ ("ingest and process 3 trillion events per day") | verified-at-primary |
 | §1.1, §1.4 | "2-3 months" commonly assumed timeline | none located | unverifiable-no-primary; framed as an assumption the text argues against, left as is (staged) |
 | §1.4 | 271 tiered (was 227) | Counter 2 | corrected, derived-gated |
@@ -69,7 +69,7 @@ Verdict vocabulary:
 | §2.8 | vendor bloc 68 + 14 = 82 of 273 (30.0%) | methods/source-taxonomy.json | derived-gated |
 | §2.8 | "a fifth" of search results unusable | 14 of 40 = 35% unusable; 8 of 40 = 20% predatory | corrected to "more than a third ... and a fifth sit in predatory or compromised venues" |
 | §2.8 | 27 studies resolve to 24 independent author groups; CATRACA three studies | MASTER-BIBLIOGRAPHY.md:4713 | verified-at-record |
-| §2.8 | IJACSA removed from DOAJ in 2017 | reference [30] note; prisma-appraisal record | verified-at-record |
+| §2.8 | IJACSA removed from DOAJ in 2017 | reference [30] note; prisma-appraisal record | *2026-11-22: record says unverified (the appraisal record took the 2017 date from a search summary it could not re-verify); the DOAJ API returned 0 results for ISSNs 2158-107X and 2156-5570 on 2026-11-22, so the text now says "not listed in DOAJ" and "ESCI rather than SCIE"* |
 | §2.8 | 24 peer-reviewed entries unreachable by the conjunctive query | reconciliation.json `corpus_academic_indexable: 24` | verified-at-record |
 | §2.8 | 3 analyst sources (Gartner, IDC, Forrester) | October-2025 record | historical-record; IDC entry withdrawal now noted |
 | §2.8 | single-screener misses 13%, dual ~3% [39] | Gartlehner et al. 2020, J Clin Epidemiol 121:20-28, title "Single-reviewer abstract screening missed 13 percent of relevant studies" (Crossref) | verified-at-primary (title); 3% figure verified-at-record |
@@ -98,7 +98,7 @@ Verdict vocabulary:
 | §3.2.3 | Saputra 650,000 msg/s, 172 MB/s | same records | verified-at-record |
 | §3.3.2 | S3 $0.023 / $0.0125 / $0.004 / $0.0036 / $0.00099; 45.7% / 82.6% / 84.3% / 95.7% | MASTER-BIBLIOGRAPHY.md:668 (verbatim list prices fetched 2026-07-09); arithmetic re-done: 45.65, 82.61, 84.35, 95.70 | verified-at-record, arithmetic; live re-check failed (pricing table is script-rendered), stays dated 2026-07-09 |
 | §3.3.2 | hot <100 ms, warm <1 s; cold 12-48 h retrieval | https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html (Deep Archive: standard within 12 h, bulk within 48 h) | verified-at-primary for 12-48 h; tier corrected from "S3 Glacier" to "S3 Glacier Deep Archive" (Flexible Retrieval is 3-5 h / 5-12 h) |
-| §3.3.2 | compliance retention 1-7 years; ~30 days query concentration | none named | unverifiable-no-primary; already labelled illustrative (staged for a primary) |
+| §3.3.2 | compliance retention 1-7 years; ~30 days query concentration | none named | unverifiable-no-primary; *2026-11-22: the illustrative label covered only the 30-day clause, not the stated retention mandate, which is now replaced by OMB M-21-31 [15] plus a labelled practitioner estimate* |
 | §3.3.3 | 99.9% = 8.76 hours/year | 0.001 × 8,760 h | arithmetic |
 | §3.4.1 | 6-12 months proficiency | practitioner estimate | author-modelled, labelled |
 | §3.4.1 | 20-30% salary premium; 15-20% on-call | none | relabelled as author-modelled (§3.4.3) |
@@ -122,7 +122,7 @@ Verdict vocabulary:
 | §3.8 | 50-200 TB mid-market | framing of a gap, not a finding | n/a |
 | §3.8 | engine reading: "DuckDB leads gated small-batch, StarRocks leads high-cardinality distinct" | analysis-bundles/hypothesis-confidence-matrix.md:640-645 (1M table: distinct `src_ip` StarRocks 97.7 ms vs DuckDB 139.7, latency-only, ClickHouse approximate) and :629-637 (100M: ClickHouse 10.5 ms full-scan count vs DuckDB 12.4); archive/analysis-bundles/performance-benchmarks-table.md:158-166 (same 1M table and reading) | verified-at-record (recovery pass 2026-11-17; the first-pass "not-in-source" verdict searched only security-data-that-works, which does not hold the per-workload table). §3.8 now carries both the DuckDB gated sweep and the StarRocks distinct lead, plus the 100M ClickHouse count crossover |
 | §3.8 (replacement) | concurrency 1→16 clients: DuckDB 1.52×, servers 3.7-5.4× | docker/MOAR-EVIDENCE-RUN-2026-06-15.md:77-89 (ClickHouse 3.71×, Trino 4.00×, StarRocks 5.35×) | verified-at-primary |
-| §3.8, §4.4 | "~7.0×" SIEM index footprint | docker/README.md:136 and :221 (1.6 MB Parquet vs 11.5 MB OpenSearch at 200,000 events; 7.19×; "~7×") | corrected to "~7×" with the two sizes; run record not located beyond README prose |
+| §3.8, §4.4 | "~7.0×" SIEM index footprint | docker/README.md:136 and :221 (1.6 MB Parquet vs 11.5 MB OpenSearch at 200,000 events; 7.19×; "~7×") | corrected to "~7×" with the two sizes; run record not located beyond README prose; *2026-11-22: "measured" dropped and the text now says the figure is from the stack's documentation with no captured run record* |
 | §3.8 | Ryzen 5800H, WSL2, single host | docker/README.md:228 | verified-at-primary |
 
 ## §4 Discussion and §5 Conclusion
@@ -160,3 +160,14 @@ Verdict vocabulary:
 | Fig 3 caption, alt, shows | taxonomy counts and shares; 82 of 273; 75 of 273 | taxonomy JSON | derived-gated |
 | Fig 4 caption, alt, shows | nine scores, thresholds 21/16/11 | §3.7; rubric | verified-at-record |
 | Figures note | "Figure 2 carries the live evidence tally (2026-07-09)" | Fig 2 PNG shows 61/170/40 of 271 | corrected to "(271 tiered)" |
+
+## Second-opinion additions (2026-11-22)
+
+| Location | Value | Source locator | Verdict |
+|---|---|---|---|
+| §3.2.2 | "Azure Event Hubs ... trillions of events daily" [12] | https://azure.microsoft.com/en-us/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/ ("Siphon" about 5 times, "HDInsight" about 6, "Event Hubs" 0; "ingest and process 3 trillion events per day") | corrected: the post describes Siphon, Microsoft's internal ingestion service on Apache Kafka on Azure HDInsight |
+| Reference [13] | page date Jul. 14, 2026 | MASTER-BIBLIOGRAPHY.md Netflix petabyte-scale logging entry ("ClickHouse blog dated Oct 23, 2025") | corrected to Oct. 23, 2025, with the 2026 re-dating noted |
+| §3.5 | Gentz et al. C++ "ordering inverts" | MASTER-BIBLIOGRAPHY.md Gentz entry (C++: Protobuf 0.795 ms, MsgPack 0.473 ms, JSON 0.185 ms) | corrected: Protobuf is slowest in both runtimes and only JSON moves, to fastest |
+| §3.6 | training break-even "6 months" | $150K/yr is $12.5K a month against $25K per engineer | arithmetic corrected: about two months for one engineer, six for three |
+
+The remaining record-tier rows (Loganathan, Saputra, Abbasi, CERN) were not re-read at a primary in either pass and are flagged for a primary re-read before submission.

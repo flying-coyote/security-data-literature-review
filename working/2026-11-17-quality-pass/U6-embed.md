@@ -12,7 +12,7 @@ Integration notes for the main session, kept under `working/` so that `docs/figu
 At the first U5 marker in `README.md`, section "How the review was built" (`<!-- U6-FIGURE: review-method ... -->`, line 13 on 2026-11-17), replacing the marker.
 
 ```markdown
-[![Flow of the two routes into the corpus: 400 database records narrowed to 40, of which an appraisal gate refused 14, while the curation arm built most of the corpus by reading; both then pass through tiering before entering the bibliography.](docs/figures/review-method.png)](docs/figures/review-method.svg)
+[![Flow of the two routes into the corpus: 400 database records narrowed to 40, of which an appraisal gate refused 14 and admitted 26, plus one more admitted from a second screen of the exclusions, while the curation arm built most of the corpus by reading; both then pass through tiering before entering the bibliography.](docs/figures/review-method.png)](docs/figures/review-method.svg)
 
 *Figure: how a source reaches the corpus. Numbers are from the July 2026 search run (`methods/PRISMA-RETRO-RUN-2026-07-13.md`) and its appraisal record (`methods/prisma-appraisal-2026-07-13.json`); live corpus counts are in "Corpus at a glance", derived by `scripts/count_reconcile.py`.*
 ```

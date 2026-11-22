@@ -69,7 +69,7 @@ Use the entry format of the most recent `#### ` blocks in MASTER-BIBLIOGRAPHY.md
 ```
 
 ### Step 4: check the gates
-Add a dated taxonomy record under `methods/`, then run `python3 scripts/count_reconcile.py` and `python3 scripts/derive_source_taxonomy.py --check`. The new counts propagate through the gated surfaces; nothing is hand-edited to a target.
+Add a dated taxonomy record under `methods/` and wire it into `scripts/derive_source_taxonomy.py` as a new ADDED_* input (the script reads each record through a hard-coded constant, so an unwired file fails `--check` with a count mismatch), then run `python3 scripts/count_reconcile.py` and `python3 scripts/derive_source_taxonomy.py --check`. The new counts propagate through the gated surfaces; nothing is hand-edited to a target.
 
 ## Anti-patterns
 

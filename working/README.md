@@ -44,6 +44,6 @@ The files moved here from the repository root, and one from `.claude/`, on 2026-
 
 ## Current pass
 
-`2026-11-17-quality-pass/` holds the notes and changelog fragments from the November 2026 quality pass while it is integrated; they are working notes, and the CHANGELOG.md entry for the pass is the record.
+`2026-11-17-quality-pass/` holds the notes, number ledgers, changelog fragments and figure glance-check views (`U6-glance/`) from the November 2026 quality pass. The pass was integrated on 2026-11-17, its fragments were folded into the 2026-11-17 CHANGELOG.md entry on 2026-11-22, and that entry, not these notes, is the record.
 
 For older material (session logs, superseded status reports, the October 2025 extraction log), see [`archive/README.md`](../archive/README.md).

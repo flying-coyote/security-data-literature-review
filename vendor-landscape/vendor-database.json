@@ -1954,8 +1954,8 @@
       ],
       "dr2_fold_2026_07_18": "QRadar SaaS (QROC/SIEM/SOAR/Log Insights) EOL 2026-04-14; remaining PANW-held suite (EDR/XDR/X-Force TI/Advisor) EOL 2026-08-31. Primary: paloaltonetworks.com EOL summary; DR-2 verified 2026-07-10.",
       "currency_check_2026_11_17": {
-        "status": "previously-recorded",
-        "note": "Existing dr2_fold_2026_07_18 field already records the QRadar SaaS divestiture to Palo Alto Networks and the 2026 EOL dates; not re-fetched in this pass.",
+        "status": "not-rechecked",
+        "note": "Existing dr2_fold_2026_07_18 field already records the QRadar SaaS divestiture to Palo Alto Networks and the 2026 EOL dates; not re-fetched in this pass. Counted as a pointer, not as a record checked at a primary (corrected 2026-11-22).",
         "primary_sources": [],
         "checked": "2026-11-17"
       }
@@ -2636,7 +2636,7 @@
       ],
       "currency_check_2026_11_17": {
         "status": "oss-archived",
-        "note": "The open-source minio/minio repository was archived read-only on 2026-04-25 and its README says it is no longer maintained, pointing users to the commercial AIStor Free and AIStor Enterprise editions. Evidence and scores in this record describe the open-source server as it was.",
+        "note": "The open-source minio/minio repository was archived read-only in late April 2026 (GitHub reports archived: true and a last push on 2026-04-24; the exact archive day is not recorded in a dated primary, corrected 2026-11-22) and its README says it is no longer maintained, pointing users to the commercial AIStor Free and AIStor Enterprise editions. Evidence and scores in this record describe the open-source server as it was.",
         "primary_sources": [
           "https://github.com/minio/minio"
         ],
@@ -3599,7 +3599,7 @@
       ],
       "currency_check_2026_11_17": {
         "status": "renamed",
-        "note": "Rapid7 launched Incident Command, the successor to its InsightIDR SIEM, on 2025-07-29 (press release: 'our upgraded next-gen SIEM'); the old /products/insightidr/ page now serves Incident Command and declares /products/siem/ as its canonical URL. Record id kept for continuity; name and website updated.",
+        "note": "Rapid7 launched Incident Command on 2025-07-29 (press release: 'our upgraded next-gen SIEM'; the release does not name InsightIDR, so the succession rests on the redirect below); the old /products/insightidr/ page now serves Incident Command and declares /products/siem/ as its canonical URL. Record id kept for continuity; name and website updated.",
         "primary_sources": [
           "https://www.rapid7.com/about/press-releases/rapid7-launches-incident-command-ai-native-siem-empowers-analysts-to-act-with-speed-and-precision-from-risk-to-response",
           "https://www.rapid7.com/products/insightidr/"

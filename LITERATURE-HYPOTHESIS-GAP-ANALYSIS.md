@@ -13,6 +13,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Last Reviewed**: October 16, 2025 (v1.6.1 - Post-blog/book integration update)
 **Status**: Analysis COMPLETE - 6 new hypotheses identified and proposed. ⚠️ The three 2025 "STRONGLY VALIDATED" upgrades were overturned by the 2026-07 verification hunts — see the dated correction notes at Gaps 1, 2, 4 and H1-COST-08 (current standings: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5)
 
+> **Score-scale note (2026-11-22).** The N/5 standings in this file (H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 and the like) are the 2026-07-10 interim adjudication on a five-point scale. They were superseded by the 25-point rubric rescore of 2026-07-13, ruled score canon on 2026-07-16 (`methods/RESCORE-2026-07-13.md`): H-IMPL-01, H-IMPL-02 and H-IMPL-03 5/25 Preliminary, H-COST-09 9/25 Preliminary, H-STREAM-01 15/25 Moderate, H3-PERFORMANCE-01 19/25 High Confidence, H-ARCH-01 23/25 Strongly Validated. Read any N/5 figure below as that dated interim record; no score moved in this note.
+
 ---
 
 ## Version 1.6.1 Update (October 16, 2025)
@@ -21,7 +23,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **H-IMPL-01 (Streaming TCO)**: Upgraded to STRONGLY VALIDATED (blog post + 8 Level A sources)
 - **H-IMPL-02 (Staffing Scarcity)**: Upgraded to STRONGLY VALIDATED (staffing calculator + blog quantification)
 - **H-COST-09 (Tiered Storage)**: Upgraded to VALIDATED (cost optimization playbook + ROI analysis)
-- **Expert Interview Preparation**: Comprehensive guides created for Lisa Cao (H-ARCH-03, XTable) and Jake Thomas (H-EDGE-01, H1-VOLUME-07)
+- **Expert Interview Preparation**: Comprehensive guides created for Lisa Cao (H-ARCH-03, XTable) and Jake Thomas (H-EDGE-01, H1-VOLUME-07) *(October-2025 plan; no interview was held, noted 2026-11-22)*
 
 **Impact**: 3 of 6 proposed hypotheses now have strong multi-source validation suitable for academic publication.
 
@@ -42,7 +44,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Emerging Concepts** (Need tracking):
 5. **Table Format Interoperability** (Apache XTable)
 6. **Vector Search for Security** (Trino 424+)
-7. **DuckDB Edge Processing** (Jake Thomas validation)
+7. **DuckDB Edge Processing** ~~(Jake Thomas validation)~~ *(no validation took place; struck 2026-11-22)*
 8. **Kafka Streams for Security** (Production patterns)
 
 ---
@@ -108,7 +110,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-IMPL-01: Streaming Architecture Hidden Costs**
 
-~~**Hypothesis**: Real-time streaming architectures incur 2.5-3× higher operational costs than equivalent batch architectures due to specialized staffing (2.7× more staff), higher infrastructure redundancy (1.5-2× costs), and incident management complexity (3-4× annual costs).~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 1/5, see the OVERTURN note above)*
+~~**Hypothesis**: Real-time streaming architectures incur 2.5-3× higher operational costs than equivalent batch architectures due to specialized staffing (2.7× more staff), higher infrastructure redundancy (1.5-2× costs), and incident management complexity (3-4× annual costs).~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis itself is not withdrawn; its current score is in `methods/RESCORE-2026-07-13.md` (an interim 1/5 of 2026-07-10 was superseded by that rescore))*
 
 **Evidence Level**: ~~A (IDC, DORA, Enterprise Data Quarterly)~~ — ❌ withdrawn 2026-07-10; all three named sources confirmed nonexistent
 
@@ -156,7 +158,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-IMPL-02: Streaming Expertise Scarcity**
 
-~~**Hypothesis**: Enterprise-grade stream processing requires specialized expertise available in <15% of organizations (Gartner [^41]), necessitating 2.7× larger operations teams (DORA [^31]) and 4-9 month implementation timelines (Ververica [^6]) even with experienced staff.~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 2/5, see the OVERTURN note above)*
+~~**Hypothesis**: Enterprise-grade stream processing requires specialized expertise available in <15% of organizations (Gartner [^41]), necessitating 2.7× larger operations teams (DORA [^31]) and 4-9 month implementation timelines (Ververica [^6]) even with experienced staff.~~ *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis itself is not withdrawn; its current score is in `methods/RESCORE-2026-07-13.md` (an interim 2/5 of 2026-07-10 was superseded by that rescore))*
 
 **Evidence Level**: ~~A (DORA, Gartner, Ververica)~~ — ❌ withdrawn 2026-07-10 (see the OVERTURN note above)
 
@@ -174,7 +176,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **Validation Needed**:
 - [ ] Security-specific staffing surveys
-- [ ] Expert interviews (Lisa Cao, Jake Thomas on team composition)
+- [ ] Expert interviews (Lisa Cao, Jake Thomas on team composition) *(October-2025 plan; no interview was held, noted 2026-11-22)*
 - [ ] Quantify skills gap in security domain
 
 **Impact**: **HIGH** - Affects staffing plans, implementation timelines, architectural choices
@@ -242,7 +244,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-COST-09: Tiered Storage Economics**
 
-~~**Hypothesis**: Implementing tiered storage architectures (hot/warm/cold) for security data reduces storage costs by 55-80% (AWS [^15], Netflix [^70]) while maintaining compliance retention requirements, with Kafka tiered storage and Iceberg lifecycle policies as primary implementation patterns.~~ *(2026-07-10: the 55-80% band and both citations are withdrawn; the verified per-GB tier deltas are −45.7% to −95.7% — S3 derivation, §3.3.2.)* *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis stands at 4/5, see the OVERTURN note above)*
+~~**Hypothesis**: Implementing tiered storage architectures (hot/warm/cold) for security data reduces storage costs by 55-80% (AWS [^15], Netflix [^70]) while maintaining compliance retention requirements, with Kafka tiered storage and Iceberg lifecycle policies as primary implementation patterns.~~ *(2026-07-10: the 55-80% band and both citations are withdrawn; the verified per-GB tier deltas are −45.7% to −95.7% — S3 derivation, §3.3.2.)* *(October-2025 wording; its quantitative legs are withdrawn, the hypothesis itself is not withdrawn; its current score is in `methods/RESCORE-2026-07-13.md` (an interim 4/5 of 2026-07-10 was superseded by that rescore))*
 
 **Evidence Level**: ~~A (Netflix production, AWS whitepapers, Confluent documentation)~~ — revised 2026-07-10: the Netflix and AWS legs are dead; standing is **4/5** on Insider Inc. + Kozlovski + the first-party S3 derivation
 
@@ -317,16 +319,16 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Positioning**: Embedded analytics, SQLite alternative
 - **Capabilities**: Analytical SQL without external database
 
-**Source 2**: Expert Network - Jake Thomas (Okta)
-- **Context**: Production DuckDB deployment for security data
-- **Use Case**: Defensive cyber operations at scale
-- **Status**: interview scheduled as of October 2025 (no later status recorded here)
+~~**Source 2**: Expert Network - Jake Thomas (Okta)~~
+- ~~**Context**: Production DuckDB deployment for security data~~
+- ~~**Use Case**: Defensive cyber operations at scale~~
+- **Status**: no interview took place (see the Boundary note in MASTER-BIBLIOGRAPHY.md, corrected 2026-08-12, and the "Okta Security Analytics with DuckDB — Data Council 2024 talk" entry); the citable source is the public talk, which supports the production scale only (struck 2026-11-22)
 
 ### Current Status
 
 **Existing Knowledge Base**: the author's working note on DuckDB edge-processing patterns (kept outside this repository)
 - Created October 10, 2025
-- Source: Jake Thomas case study + emerging patterns
+- Source: ~~Jake Thomas case study~~ the public Data Council 2024 talk (scale only) + emerging patterns *(attribution corrected 2026-11-22)*
 
 **Missing**: Formal hypothesis in MASTER-HYPOTHESIS-TRACKER.md
 
@@ -334,17 +336,17 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 **H-EDGE-01: DuckDB for Edge Security Analytics**
 
-**Hypothesis**: DuckDB enables edge/endpoint security analytics with embedded analytical queries, eliminating network round-trips for local investigation while maintaining OLAP-grade performance, validated by production defensive cyber operations deployments (Jake Thomas, Okta).
+**Hypothesis**: DuckDB enables edge/endpoint security analytics with embedded analytical queries, eliminating network round-trips for local investigation while maintaining OLAP-grade performance~~, validated by production defensive cyber operations deployments (Jake Thomas, Okta)~~. *(Struck 2026-11-22: no expert validation took place (see the Boundary note in MASTER-BIBLIOGRAPHY.md, corrected 2026-08-12, and the "Okta Security Analytics with DuckDB — Data Council 2024 talk" entry).)*
 
-**Evidence Level**: B (Expert validation in progress, official documentation)
+**Evidence Level**: B (Expert validation in progress, official documentation) *(2026-11-22: no expert validation took place; the letter is left for an owner ruling, and the support is the public talk for scale only plus the official documentation)*
 
 **Relevance**:
 - Book Chapter (Emerging patterns)
-- Expert network validation (Jake Thomas interview Week 3)
+- ~~Expert network validation (Jake Thomas interview Week 3)~~ *(October-2025 plan; no interview was held, noted 2026-11-22)*
 - Blog post: "DuckDB at Scale: Production Deployments for Defensive Cyber Ops"
 
 **Validation Needed**:
-- [ ] Jake Thomas interview (Week 3) - architecture details
+- [ ] Jake Thomas interview (Week 3) - architecture details *(October-2025 plan; no interview was held, noted 2026-11-22)*
 - [ ] Production deployment patterns
 - [ ] Performance benchmarks for security workloads
 
@@ -373,10 +375,10 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Rationale**:
 - Emerging standard (incubator)
 - Adoption unclear (Gartner survey shows interest, not production usage)
-- Lisa Cao interview (Week 3) may provide adoption insights
+- Lisa Cao interview (Week 3) may provide adoption insights *(October-2025 plan; no interview was held, noted 2026-11-22)*
 
 **Action**:
-- [ ] Lisa Cao validation: Gravitino + XTable relationship
+- [ ] Lisa Cao validation: Gravitino + XTable relationship *(October-2025 plan; no interview was held, noted 2026-11-22)*
 - [ ] Monitor Apache XTable graduation status
 - [ ] Track production adoption (6-12 month timeline)
 
@@ -444,6 +446,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 ### Expert Network Validation (Week 3)
 
+*October-2025 plan; neither interview was held (noted 2026-11-22).*
+
 **Lisa Cao Interview**:
 - [ ] Gravitino adoption metrics (Gap 3 in master tracker)
 - [ ] Table format interoperability (XTable) - production usage?
@@ -459,7 +463,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Completed Actions**:
 - ✅ All 283 footnotes extraction complete (October 10, 2025)
 - ✅ Archive manuscript parts 1-5 assessed (no independent sources)
-- ⏳ Expert network interviews scheduled (Lisa Cao, Jake Thomas - Week 3)
+- ~~⏳ Expert network interviews scheduled (Lisa Cao, Jake Thomas - Week 3)~~ *(October-2025 plan; no interview was held, noted 2026-11-22)*
 
 **Future Gap Monitoring**:
 - Expert network interviews may reveal additional hypothesis gaps
@@ -504,18 +508,19 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Evidence Level**: A (Production deployment at scale) *(2026-11-17: the bibliography entry behind this was retitled 2026-07-09 because its "security observability, isolation-first" framing was a mis-attribution, and it now rests on the Netflix ClickHouse blog post, which describes a logging pipeline rather than a security platform with Polaris; read this source block as the October-2025 record, re-tier pending review)*
 
 **Source 2**: Huntress EDR Data Lake
-- **Finding**: Iceberg on isolated AWS infrastructure, table-level RBAC
-- **Implication**: Simplified security posture, avoided Unity Catalog complexity
+- **Finding**: ~~Iceberg on isolated AWS infrastructure, table-level RBAC~~ *(withdrawn 2026-11-22: the cited post mentions none of Iceberg, isolation or RBAC; see the Huntress entry in MASTER-BIBLIOGRAPHY.md)*
+- **Implication**: ~~Simplified security posture, avoided Unity Catalog complexity~~
 - **Evidence Level**: A *(MASTER-BIBLIOGRAPHY re-tiered both Huntress entries to B on 2026-08-19)* (Production case study; "more than 90%" cost reduction — source-verbatim, softened from the derived 93% on 2026-07-09)
 
-**Source 3**: Okta Security Analytics
-- **Finding**: DuckDB + Iceberg on isolated platform (Jake Thomas validation)
-- **Implication**: Performance-first approach without fine-grained access overhead
-- **Evidence Level**: B (Expert validation)
+~~**Source 3**: Okta Security Analytics~~
+- ~~**Finding**: DuckDB + Iceberg on isolated platform (Jake Thomas validation)~~
+- ~~**Implication**: Performance-first approach without fine-grained access overhead~~
+- ~~**Evidence Level**: B (Expert validation)~~
+- *Struck 2026-11-22: this source block shadows a bibliography entry removed on 2026-08-12; no interview took place (see the Boundary note in MASTER-BIBLIOGRAPHY.md, corrected 2026-08-12, and the "Okta Security Analytics with DuckDB — Data Council 2024 talk" entry), and the public talk abstract carries no Iceberg or isolation claim.*
 
 **Source 4**: Databricks Unity Catalog Overhead
 - **Finding**: Row-level security, column masking, metadata encryption add query overhead
-- **Implication**: 15-50% performance penalty when isolation could suffice
+- **Implication**: a performance penalty when isolation could suffice (the 15-50% figure first stated here is an untested planning figure with no source; see the first-party RLS entry in `isolation-first-security-tracking.md`, noted 2026-11-22)
 - **Evidence Level**: B (Vendor documentation, benchmarks needed)
 
 **Source 5**: Alex Merced (Dremio) - Iceberg Metadata Encryption
@@ -526,7 +531,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 ### Proposed Research Questions
 
 **RQ7: Isolation Patterns and Performance**
-- **Hypothesis**: Network isolation + IAM provides sufficient security boundary, achieving 15-50% faster query performance vs fine-grained catalog access
+- **Hypothesis**: Network isolation + IAM provides sufficient security boundary, achieving faster query performance vs fine-grained catalog access (15-50% was an untested planning figure, labelled 2026-11-22)
 - **Evidence Level**: B (production validation needed)
 - **Relevance**: Book Chapter 8 (Storage formats - Iceberg), Chapter 9 (Query engines - catalog selection)
 - **Validation Needed**:
@@ -619,7 +624,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 
 **Hypothesis**: The LIGER Stack (Lakehouse + Index + Graph + Engine + Route) reduces total cost of ownership by **60-80% (median), up to 90%+ in optimal conditions**, compared to traditional SIEMs through:
 - Storage/compute separation ($0.023/GB/month S3 vs bundled SIEM pricing)
-- Compression, but **workload-dependent**: the SDW lab measured the storage byte ratio spanning **~2.6× (high-entropy: base64 payloads, full SHA-256, per-event GUIDs) → 7.9× (EDR/Sysmon proc-creation) → 8.5× (flat Zeek conn)** on a pinned 10M-row corpus ([`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention), commit 3d0539a, Tier B). The headline "10-12×" holds only for moderate-entropy schemas; high-entropy ingest compresses ~3.3× worse, so per-event cost must be re-based on the workload's own raw bytes/event, not a single assumed ratio.
+- Compression, but **workload-dependent**: the SDW lab measured the storage byte ratio spanning **~2.6× (high-entropy: base64 payloads, full SHA-256, per-event GUIDs) → 7.9× (EDR/Sysmon proc-creation) → 8.5× (flat Zeek conn)** on a pinned 10M-row corpus ([`sdw-lab-benchmarks/cost-to-serve-retention`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/cost-to-serve-retention), commit 3d0539a, Tier B). The measured ratio is 7.9× to 8.5× for moderate-entropy schemas at the zstd default (9.3× to 9.7× at zstd-19) and about 2.6× for high-entropy ingest, so the earlier "10-12×" headline is not reproduced on any corpus here (corrected 2026-11-22); high-entropy ingest compresses ~3.3× worse, so per-event cost must be re-based on the workload's own raw bytes/event, not a single assumed ratio.
 - Fixed compute costs (no per-query charges)
 - Vendor-neutral architecture (avoiding lock-in premiums)
 
@@ -629,7 +634,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 - LIGER: $3,560/month for 500GB/day with 365-day retention
 - Azure Sentinel: $31,000-35,000/month (same volume/retention)
 - Splunk Enterprise TCO: $54,167-100,000/month
-- Compression: about 10× at Cloudflare (600→60 bytes/row, the verified figure; the earlier "10-12×" phrasing is a claim mismatch), and ~~Shell~~ was removed 2026-06-05; the first-party byte ratios above (2.6×-8.5×) are the measured range
+- Storage reduction: about 10× at Cloudflare on an Elasticsearch to ClickHouse migration (600→60 bytes/row), which reflects the schema change as well as the codec and is not a pure compression ratio (the earlier "10-12×" phrasing is a claim mismatch; relabelled 2026-11-22), and ~~Shell~~ was removed 2026-06-05; the first-party byte ratios above (2.6×-8.5×) are the measured range
 
 **January 2026 Research Update** ✅:
 - **Barracuda Networks**: 75% reduction in daily processing and storage costs (Databricks)
@@ -691,7 +696,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 - [ ] ROI model: Governance investment vs AI returns
 
 **Relevance**: Book Chapter 17 (Future Predictions), Appendix D (Readiness Assessment)
-**Interview Prep**: Use CSA findings in Lisa Cao and Jake Thomas interviews
+**Interview Prep**: Use CSA findings in Lisa Cao and Jake Thomas interviews *(October-2025 plan; no interview was held, noted 2026-11-22)*
 
 ---
 
@@ -754,7 +759,7 @@ The emergence of AI/agent architectures requires formal research questions to be
 > - **Fidelity is not coverage.** On the one source Tenzir ships a JSON-consumable mapping for (Zeek conn), the mapping gets the OCSF *class* right (100%, Network Activity 4001) and most *values* (92%), ~~but it does **not** derive `activity_id` from Zeek's `conn_state`, so the activity classification diverges from the faithful gold on **83% of records** (activity_id 17%), and `history` / `service` / `uid` land in `unmapped` rather than typed OCSF attributes (field fidelity 80%). A consumer filtering on `activity_id` (open vs close vs reset vs fail) mis-buckets most connections.~~ *(the mechanism and the 17%, 83% and 80% figures were withdrawn by the lab's 2026-11-15 erratum; see the correction below)* "Maps to OCSF" is a coverage claim, not a fidelity guarantee.
 > - **Availability is the binding constraint.** Tenzir ships **0% consumable coverage for 3 of the 4 common sources** tested — CloudTrail (no management-events → API Activity operator in the `amazon` package), Sysmon (the shipped `sysmon::ocsf::map` expects raw EVTX/XML, not the pre-parsed JSON most EDR shippers carry), and a generic auth source (no vendor ships a mapping). The second tool, **Vector 0.56.0, ships no OCSF mapping at all** (no OCSF component, function, or binary string), so this is a cross-tool finding, not a Tenzir quirk. Of the two open tools tested, one ships a usable mapping for one of four sources and the other ships none.
 >
-> **Correction (2026-11-17, from the lab's 2026-11-15 erratum)**: the first bullet above misdescribes the Zeek conn result. The gold pinned every record to `activity_id` 6 (Traffic) while Tenzir derives the activity from `conn_state`, so the 17% measures agreement with that pin rather than a mapping failure, and `history`, `service` and `uid` landed on valid OCSF 1.8.0 paths with their values intact, not in `unmapped` ([erratum](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/pipeline-normalization-fidelity/FINDINGS-2026-06-14.md)). Re-scored against a gold that accepts those alternates, Tenzir 6.0.0 reaches field fidelity 100%, strict value fidelity 93.24% (the `time` type contract is the only failure) and activity agreement 83.30%, which rests entirely on the frozen rule rejecting Open for S0; accepting Open would give 100% ([`ocsf-1.9-rescore/RESULTS.md`](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/ocsf-1.9-rescore/RESULTS.md), agent-run and independently verified, pending review). The availability finding in the second bullet is unaffected. Whether the re-tier wording below should change is pending review.
+> **Correction (2026-11-17, from the lab's 2026-11-15 erratum)**: the first bullet above misdescribes the Zeek conn result. The gold pinned every record to `activity_id` 6 (Traffic) while Tenzir derives the activity from `conn_state`, so the 17% measures agreement with that pin rather than a mapping failure, and `history`, `service` and `uid` landed on valid OCSF 1.8.0 paths with their values intact, not in `unmapped` ([erratum](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/pipeline-normalization-fidelity/FINDINGS-2026-06-14.md)). Re-scored against a gold that accepts those alternates, Tenzir 6.0.0 reaches field fidelity 100%, strict value fidelity 93.24% (the `time` type contract is the only failure), information-preserving value fidelity 100% and activity agreement 83.30%, which rests entirely on the frozen rule rejecting Open for S0; accepting Open would give 100% ([`ocsf-1.9-rescore/RESULTS.md`](https://github.com/flying-coyote/sdw-lab-benchmarks/blob/master/ocsf-1.9-rescore/RESULTS.md), agent-run and independently verified, pending review). The availability finding in the second bullet is unaffected. Whether the re-tier wording below should change is pending review.
 >
 > **Re-tier:** from *asserted Level A* to a **measured Tier-B caveat** — *coverage is a claim, fidelity is not; shipped-mapping availability is the binding constraint on OCSF-normalization-at-source.* **Version-bound:** Tenzir **6.0.0**, library commit **671e049**, OCSF **1.8.0**, synthetic corpus, single host — re-run on a newer library before repeating. The Cribl arm (the one tool advertising a packaged OCSF Pack) is deferred and would test whether the availability gap is tool-specific or general. This is the same lineage as biblio entry #86, where a fabricated Tenzir "100% hands-off" was already corrected to "100% schema-conforming." These first-party fidelity percentages are publishable (the 17% and 80% figures were withdrawn by the lab's 2026-11-15 erratum): they measure open-source tools' shipped mappings and already live in the public sdw-lab-benchmarks repo (#10), carried with their version-bound caveats. The gate that still applies is a different one — named-vendor *comparative* benchmark figures bound by a DeWitt/EULA benchmark-restriction clause (the Splunk head-to-head, the Dremio-attributed numbers) stay genericized on public surfaces. The earlier "Matrix-paid IP" rationale for withholding these is obsolete as of the 2026-07-11 publication ruling.
 
@@ -843,10 +848,10 @@ Three research questions adopted from the 2026-06-13 Gemini Deep Research lit-re
 
 **Current Evidence**: The SDW context-collapse / OCSF-flattening benchmarks (sdw-lab-benchmarks) and the six-schema → OCSF 1.8.0 crosswalk corpus already measure mapping fidelity and flattening cost. This RQ formalizes the "intelligence loss" question specifically for high-cardinality endpoint sources. Two first-party measurements now ground it directly:
 - **Detection-relevant loss is measured, de-gamed (Tier B).** The de-gamed BENCH-A re-run ([`sdw-lab-benchmarks/ocsf-context-collapse-apt29`](https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/ocsf-context-collapse-apt29), commit 52e4958) runs **unmodified upstream SigmaHQ** rules via pySigma→SQL against real **MITRE ATT&CK APT29** (OTRF/Mordor) telemetry under documented, blind coarsening. Adversary-relevant detections lose **~2× the recall** and go fully blind ~2× as often as routine detections; the headline blinding-recall-loss delta is **+0.188** at the documented 64-char truncation cap, bounded **+0.094 to +0.205** across a coarsening sweep (deterministic, no RNG, so the band is a truncation-cap curve, not a seed band). The blinded rules are the expected ones — Base64/encoded-PowerShell and long-script-block rules killed by command-line/script-block truncation, which is exactly APT29's encoded-PowerShell tradecraft. Earlier R1/R2 runs reported a larger gameable synthetic delta (+0.719); the **de-gamed +0.188 is the figure to cite** for this RQ, with the synthetic value labelled as such. Caveats travel: modest fired-rule sample, one dataset, one coarsening config, recall-loss measured against the fidelity store (not absolute per-event labels), and the independent-reviewer Tier-A gate on "does Store N resemble what shops build" stays open.
-- **Per-source mapping/availability loss is measured (Tier B, #10).** The pipeline-normalization-fidelity bench shows the *normalization step itself* drops detection-relevant structure before any flattening: on Zeek conn ~~the shipped Tenzir mapping leaves `activity_id` correct on only 17% of records and lands `history`/`service`/`uid` in `unmapped`~~ *(the 17% figure and the `unmapped` description were withdrawn by the lab's 2026-11-15 erratum; see the correction under the RQ14 OVERTURN note)*, and the re-score puts Tenzir 6.0.0 at field 100%, strict value 93.24% and activity 83.30% (S0-rule dependent; version-bound: Tenzir 6.0.0, library 671e049, OCSF 1.8.0). So "intelligence loss into OCSF" has two measurable legs — the *coarsening/flattening* leg (BENCH-A, +0.188) and the *mapping-fidelity* leg (#10, ~~the activity-classification and unmapped-field loss~~ *(re-scored 2026-11-15; the remaining measured loss is the `time` type contract and the S0 rule)*).
+- **Per-source mapping/availability loss is measured (Tier B, #10).** *(Read with the correction under the RQ14 OVERTURN note: on the one source re-scored, no information loss was measured; dated pointer added 2026-11-22.)* The pipeline-normalization-fidelity bench shows the *normalization step itself* drops detection-relevant structure before any flattening: on Zeek conn ~~the shipped Tenzir mapping leaves `activity_id` correct on only 17% of records and lands `history`/`service`/`uid` in `unmapped`~~ *(the 17% figure and the `unmapped` description were withdrawn by the lab's 2026-11-15 erratum; see the correction under the RQ14 OVERTURN note)*, and the re-score puts Tenzir 6.0.0 at field 100%, strict value 93.24% and activity 83.30% (S0-rule dependent; version-bound: Tenzir 6.0.0, library 671e049, OCSF 1.8.0). So "intelligence loss into OCSF" has two measurable legs — the *coarsening/flattening* leg (BENCH-A, +0.188) and the *mapping-fidelity* leg (#10, ~~the activity-classification and unmapped-field loss~~ *(re-scored 2026-11-15: no information loss was measured on Zeek conn, since field fidelity is 100% and information-preserving value fidelity is 100%; what remains is a type-contract deviation on `time` and one disagreement about how S0 is classed, and the availability gap, where three of four common sources had no usable shipped mapping, is the leg that stands; corrected 2026-11-22)*).
 
 **Validation Metrics**:
-- [x] Quantify field/cardinality loss per source — BENCH-A (recall-loss delta +0.188, de-gamed) + #10 (~~activity_id 17%, field fidelity 80% on Zeek conn~~, re-scored 2026-11-15 to activity 83.30%, S0-rule dependent, and field 100%); per-source for high-cardinality EDR/Sysmon remains to run (#10 covered Zeek conn; Sysmon arm was XML-bound)
+- [x] Quantify field/cardinality loss per source — BENCH-A (recall-loss delta +0.188, de-gamed) + #10 (~~activity_id 17%, field fidelity 80% on Zeek conn~~, re-scored 2026-11-15 to activity 83.30%, S0-rule dependent, field 100% and information-preserving value fidelity 100%, so no information loss was measured on that source); per-source for high-cardinality EDR/Sysmon remains to run (#10 covered Zeek conn; Sysmon arm was XML-bound)
 - [x] Tie measured loss to missed-detection scenarios — APT29 encoded-PowerShell rules go blind under command-line/script-block truncation (BENCH-A)
 - [ ] Confirm whether a named "SETC framework" exists as a citable primary before referencing it — still to-confirm; the RQ stands on the lab's own measurements regardless
 

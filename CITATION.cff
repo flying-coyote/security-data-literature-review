@@ -1,14 +1,14 @@
 # Citation metadata for the Security Data Works systematic literature review.
-# A Zenodo DOI is minted on the first tagged GitHub release (owner-held step;
-# see docs/ZENODO-RELEASE-CHECKLIST.md). Once minted, the concept DOI is added
+# A Zenodo DOI is planned for the first curated release of the paper export
+# (owner-held deposit; docs/ZENODO-RELEASE-CHECKLIST.md Step 0). Once minted, the concept DOI is added
 # under `identifiers:` below and becomes the citation target.
 cff-version: 1.2.0
 message: >-
   If you cite this literature review, please cite the Zenodo DOI once it is
-  minted on the first tagged release (it will be recorded in this file under
-  identifiers, and the release checklist in docs/ replaces the manuscript's
-  DOI placeholders at the same time); until then, please cite the title and
-  repository URL below.
+  minted; a DOI is planned for the first curated release of the paper export
+  (docs/ZENODO-RELEASE-CHECKLIST.md Step 0), and it will be recorded in this
+  file under identifiers. Until then, please cite the title and repository URL
+  below.
 type: dataset
 title: "Modern Data Architecture for Cybersecurity Operations: A Systematic Literature Review"
 authors:

@@ -29,7 +29,6 @@ N_REFUSED, N_PRED, N_NOTPR = 14, 8, 3
 N_UNREAD, N_REFUTED = 1, 2
 N_CITABLE = 26
 N_SECOND_FLAG, N_SECOND_ADMIT = 11, 1
-N_FOOTNOTES = 283
 
 
 def text(x, y, s, size=28, weight=400, fill=DARK, anchor="start", family=FONT):
@@ -86,7 +85,7 @@ def fig_method():
     CB = 750
     b.append(rect(LX, 268, LW, CB - 268, fill=TINT, stroke=TINT2))
     b.append(lines(LX + 24, 318, ["Built by reading,", "2025 to 2026"], size=30, weight=700, fill=DARK))
-    b.append(lines(LX + 24, 410, [f"Started from {N_FOOTNOTES}", "footnotes in a 2024", "practitioner manuscript"],
+    b.append(lines(LX + 24, 410, ["Started from the", "footnotes of a 2024", "practitioner manuscript"],
                    size=28, fill=DARK))
     b.append(lines(LX + 24, 530, ["Then vendor and", "project docs,", "standards, analyst", "reports, talks"],
                    size=28, fill=DARK))
@@ -135,13 +134,14 @@ def fig_method():
     MY = GY + GH + 80
     b.append(arrow(LX + LW / 2, CB, LX + LW / 2, MY - 4))
     b.append(arrow(RX + RW / 2, GY + GH, RX + RW / 2, MY - 4))
-    b.append(text(RX + RW / 2 + 14, GY + GH + 48, f"{N_CITABLE} admitted", size=26, weight=700, fill=DARK))
+    b.append(text(RX + RW / 2 + 14, GY + GH + 36, f"{N_CITABLE + N_SECOND_ADMIT} admitted", size=26, weight=700, fill=DARK))
+    b.append(text(RX + RW / 2 + 14, GY + GH + 66, f"{N_CITABLE} of the {N_INCL}, plus {N_SECOND_ADMIT}", size=24, fill=MUTED))
 
     merged = [
         ("Each source tiered A to D", ["Level A is peer review and official standards only"], None),
         ("Rule: carried numbers checked at the primary",
-         ["Verdict per number in methods/verification-2026-11/ledger.json;",
-          "paywalled numbers are marked unverifiable"], "10 8"),
+         ["Verdict logged in RESEARCH-JOURNAL.md and the verification",
+          "ledger; paywalled numbers marked unverifiable"], "10 8"),
         ("MASTER-BIBLIOGRAPHY.md", ["Live counts derived by scripts/count_reconcile.py"], None),
     ]
     y = MY
@@ -157,18 +157,18 @@ def fig_method():
         y += h + 40
     H = y - 10
     title = "Two routes into the corpus, and the 40 database finds met an appraisal gate"
-    desc = (f"Flow diagram. The curation arm built most of the corpus by reading, starting from {N_FOOTNOTES} "
-            f"footnotes in a 2024 practitioner manuscript and continuing with vendor and project documentation, "
+    desc = (f"Flow diagram. The curation arm built most of the corpus by reading, starting from the "
+            f"footnotes of a 2024 practitioner manuscript and continuing with vendor and project documentation, "
             f"standards, analyst reports and talks. The database arm searched OpenAlex and dblp on 2026-07-13: "
             f"{N_IDENT} records identified, {N_DUP} duplicates removed, {N_SCREENED} screened, {N_EXCL} excluded "
             f"and {N_INCL} included, none of which was already in the corpus. The {N_INCL} went to an appraisal gate, "
             f"which refused {N_REFUSED} ({N_PRED} predatory or compromised venues, {N_NOTPR} not peer-reviewed, "
             f"{N_UNREAD} unreadable, {N_REFUTED} refuted by an independent verification pass) and admitted {N_CITABLE}. "
             f"Separately, a second screen of all {N_EXCL} exclusions flagged {N_SECOND_FLAG}, and {N_SECOND_ADMIT} of "
-            f"them was later admitted through the same gate. Both arms then pass through tiering A to D before "
+            f"them was later admitted through the same gate, so {N_CITABLE + N_SECOND_ADMIT} database records were admitted in all. Both arms then pass through tiering A to D before "
             f"entering MASTER-BIBLIOGRAPHY.md, whose live counts are derived by scripts/count_reconcile.py. A dashed "
-            f"box marks the standing rule that carried numbers are checked at the primary, with a verdict per number "
-            f"in methods/verification-2026-11/ledger.json and paywalled numbers marked unverifiable.")
+            f"box marks the standing rule that carried numbers are checked at the primary, with the verdict logged "
+            f"in RESEARCH-JOURNAL.md and the verification ledger and paywalled numbers marked unverifiable.")
     return svg(H, title, desc, "\n".join(b), "fm")
 
 

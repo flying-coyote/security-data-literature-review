@@ -172,7 +172,7 @@ Survey (gated), CSA State-of-AI (gated), Hyperscan (homepage); StarRocks vs Clic
 | Entry | Finding |
 |---|---|
 | MOAR Stack reference architecture (#81) | Jeremy's own model; LIGER→MOAR rename intentional; cost figures live on the economics page (transparent assumptions). Renamed + repointed + relabeled A→B (9a24e4e) |
-| Splunk DB Connect Benchmark 145× (#25) | real first-party measurement; repo NDA-gated (404 expected); methodology public |
+| Retired December 2025 multi-engine benchmark (#25) | real first-party measurement; repo NDA-gated (404 expected); methodology public |
 | anonymized practitioner / Okta-Jake-Thomas | genuine private practitioner input; unverifiable as external citation |
 | SDW Lab `zeek-flagship-rerun` (two-regime) | CV-gated first-party; OpenSearch foil ÷ ClickHouse-Iceberg ~10–11× on scan-aggregation, ch-native ÷ foil 46.8×; two-regime split (lakehouse wins hunting aggs, index wins lookups). Self-authored; magnitudes host-specific |
 | SDW Lab `engine-join-specialization` | CV-gated first-party; StarRocks wins joins, ClickHouse wins aggregation (grounds H-ARCH-06) |
@@ -467,4 +467,4 @@ Every entry was checked for existence at its DOI, arXiv ID or URL, and every num
 
 ### Currency notes added (checked at each project's own release record, 2026-11-17)
 
-OCSF v1.9.0 current (v1.8.0 and v1.1.0 mentions noted); Apache Iceberg 1.12.0 current, spec v4 still not adopted; DuckDB v2.0.0 released 2026-10-21 (1.5.3-pinned lab figures noted as version-bound); DuckLake 1.0 still current; D3FEND 1.6.0 current; Kafka on the 4.x line; Flink 2.3.0 latest stable; Apache Polaris 1.9.0; OpenSearch 3.9.0 (the lab foil was 3.7.0). Each note sits under the entry's Validation Status line.
+OCSF v1.9.0 current (v1.8.0 and v1.1.0 mentions noted); Apache Iceberg 1.12.0 current, spec v4 still not adopted; DuckDB v2.0.0 released 2026-10-21 (1.5.3-pinned lab figures noted as version-bound); DuckLake 1.0 still current; D3FEND 1.6.0 current; Kafka on the 4.x line; Flink 2.3.0 latest stable; Apache Polaris 1.9.0; OpenSearch 3.9.0 (the lab baseline was 3.7.0). Each note sits under the entry's Validation Status line.
