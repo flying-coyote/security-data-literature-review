@@ -47,7 +47,7 @@ STARS = {'strong': '*****', 'high': '****', 'moderate': '***',
 HYPOTHESES = {
     'H-ARCH-01\nIceberg Dominance': {
         'score': 23, 'level': 'strong', 'dims': [5, 5, 5, 3, 5],
-        'label': 'Broad vendor support; 407 GitHub contributors; SK Telecom slides-verified'},
+        'label': 'Broad vendor support; 400+ linked GitHub contributors; SK Telecom slides-verified'},
     'H3-PERF-01\nClickHouse': {
         'score': 19, 'level': 'high', 'dims': [5, 3, 3, 5, 3],
         'label': 'Cloudflare 6M req/sec verbatim-verified; 4 legs, 3 at Level A; first-party CIDR probe'},

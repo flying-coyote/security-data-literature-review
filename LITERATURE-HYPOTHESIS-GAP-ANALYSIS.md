@@ -57,8 +57,8 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - ✅ **Strong Validation**: Industry consensus as de facto standard
   - **Dremio 2024 survey**: 29% planning Iceberg vs 23% Delta Lake (next 3 years)
   - **Broad vendor support** *(corrected 2026-07-10 — the cited Register piece contradicts the former "universal" list)*: AWS, Google, Snowflake, Cloudera settled on Iceberg; Databricks added support in Public Preview (June 2025); Microsoft remains Delta-first with only partial Fabric support
-  - **Production validation**: SK Telecom (3.39s on a 52.7TB *table* — table size, not bytes scanned; re-attributed 2026-07-09 to the Trino Summit slides, where the 97% query-time reduction is verbatim)
-  - **Apache governance**: 407 GitHub contributors (Link-header count, verified 2026-07-09) across 100+ organizations
+  - **Production validation**: SK Telecom (3.39s on a 52.7TB *table* — table size, not bytes scanned; re-attributed 2026-07-09 to the Trino Summit slides, where the −97% is the read-data-size reduction and elapsed time fell 96.5%, corrected 2026-11-23; the slides credit a partition redesign, column sorting and daily compaction alongside the format)
+  - **Apache governance**: more than 400 contributors with linked GitHub accounts (406 linked accounts on 2026-11-23, 405 users and 1 bot, re-derived from the contributors API, and 946 entries once anonymous contributors are included) *(restated 2026-11-23: GitHub links only the first 500 author email addresses to accounts, so the linked count is a floor, which the 407 verified on 2026-07-09 also was; the former "across 100+ organizations" is dropped because the bibliography entry dropped it as underivable on 2026-07-09)*
 - **Literature Support**: Footnotes [^3], [^131], [^132], [^243-249]
 - **Note**: Original "76% adoption" claim not found in validation searches (Oct 2025). Updated to "industry consensus" with Dremio survey + vendor support evidence. Confidence remains Strong (⭐⭐⭐⭐⭐).
 - **Status**: STRONGLY VALIDATED
@@ -502,10 +502,10 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 
 ### Literature Evidence
 
-**Source 1**: Netflix Security Observability Platform
-- **Finding**: ClickHouse + Iceberg on isolated VPC with Polaris (table-level RBAC only)
-- **Implication**: No row-level security, column masking, or metadata encryption needed
-- **Evidence Level**: A (Production deployment at scale) *(2026-11-17: the bibliography entry behind this was retitled 2026-07-09 because its "security observability, isolation-first" framing was a mis-attribution, and it now rests on the Netflix ClickHouse blog post, which describes a logging pipeline rather than a security platform with Polaris; read this source block as the October-2025 record, re-tier pending review)*
+**Source 1**: ~~Netflix Security Observability Platform~~ *(record only, 2026-11-23: the entry was retitled "Netflix Petabyte-Scale Logging" on 2026-07-09 and the Finding and Implication below are withdrawn, so nothing in this block is citable for Gap 9)*
+- **Finding**: ~~ClickHouse + Iceberg on isolated VPC with Polaris (table-level RBAC only)~~ *(withdrawn 2026-11-23: the Polaris entry's "production deployments at Netflix" finding is on no Polaris page checked, and the Netflix logging post does not mention Polaris, isolation or RBAC; see the Apache Polaris entry in MASTER-BIBLIOGRAPHY.md)*
+- **Implication**: ~~No row-level security, column masking, or metadata encryption needed~~
+- **Evidence Level**: ~~A (Production deployment at scale)~~ *(2026-11-23: the bibliography entry is now Level B, a ClickHouse-relayed case study, and supports no claim in this block)* *(2026-11-17: the bibliography entry behind this was retitled 2026-07-09 because its "security observability, isolation-first" framing was a mis-attribution, and it now rests on the Netflix ClickHouse blog post, which describes a logging pipeline rather than a security platform with Polaris; read this source block as the October-2025 record, re-tier pending review)*
 
 **Source 2**: Huntress EDR Data Lake
 - **Finding**: ~~Iceberg on isolated AWS infrastructure, table-level RBAC~~ *(withdrawn 2026-11-22: the cited post mentions none of Iceberg, isolation or RBAC; see the Huntress entry in MASTER-BIBLIOGRAPHY.md)*
@@ -519,9 +519,9 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - *Struck 2026-11-22: this source block shadows a bibliography entry removed on 2026-08-12; no interview took place (see the Boundary note in MASTER-BIBLIOGRAPHY.md, corrected 2026-08-12, and the "Okta Security Analytics with DuckDB — Data Council 2024 talk" entry), and the public talk abstract carries no Iceberg or isolation claim.*
 
 **Source 4**: Databricks Unity Catalog Overhead
-- **Finding**: Row-level security, column masking, metadata encryption add query overhead
+- **Finding**: Row-level security, column masking, metadata encryption add query overhead *(Narrowed 2026-11-23: the Databricks ABAC performance and filters-and-masks pages describe overhead from masks and row filters, including a SecureView barrier that can block partition pruning even for a constant-true policy, but publish no figure or method and do not mention metadata encryption.)*
 - **Implication**: a performance penalty when isolation could suffice (the 15-50% figure first stated here is an untested planning figure with no source; see the first-party RLS entry in `isolation-first-security-tracking.md`, noted 2026-11-22)
-- **Evidence Level**: B (Vendor documentation, benchmarks needed)
+- **Evidence Level**: C for the performance claims, B for what the features do (vendor documentation, no benchmark published; relabelled 2026-11-23 under the 2026-11-03 ruling)
 
 **Source 5**: Alex Merced (Dremio) - Iceberg Metadata Encryption
 - **Finding**: Metadata encryption adds 10-20% query latency overhead
@@ -562,7 +562,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 - **Evidence Level**: B (catalog adoption patterns)
 - **Relevance**: Book Chapter 8 (Storage formats - catalog selection), Chapter 9 (Query engines)
 - **Validation Needed**:
-  - [ ] Netflix Polaris adoption rationale (vendor-neutral, isolated platform)
+  - [ ] ~~Netflix Polaris adoption rationale (vendor-neutral, isolated platform)~~ *(withdrawn 2026-11-23: the Polaris pages checked in the 2026-11-23 refresh show no Netflix deployment, and the Netflix logging post does not mention Polaris, so this item has no source behind it; see the Apache Polaris entry)*
   - [ ] Unity Catalog → Polaris migration patterns (when isolating infrastructure)
   - [ ] Decision criteria ranking: Fine-grained access vs vendor lock-in vs version control
 
@@ -641,8 +641,8 @@ The emergence of AI/agent architectures requires formal research questions to be
 - **Palo Alto Networks**: 3× faster AI-powered threat detection (Databricks)
 - **GitLab**: Queries over 100M rows reduced from 30-40s to <1s (ClickHouse)
 - **Netflix**: 5 PB/day log ingestion pipeline (ClickHouse)
-- **HSBC**: 3× more threat hunts with lower TCO (Databricks Lakehouse)
-- **50% of world's 15 largest banks** using security data lakes (Hunters)
+- **HSBC**: 3× more threat hunts with lower TCO (Databricks Lakehouse) *(narrowed 2026-11-23: Databricks' wording relayed by Hunters, Tier C; Databricks' own 2021 post gives 2-3× per analyst in a Lakehouse-plus-SIEM setup)*
+- **50% of world's 15 largest banks** using security data lakes (Hunters) *(narrowed 2026-11-23: one Databricks executive's stated awareness at a Hunters conference, not a survey; Tier C)*
 - **Forrester**: CISOs voting with budget for data-first architecture
 - **OCSF**: 900+ contributors, 200+ orgs, Linux Foundation Project (Nov 2024)
 
@@ -806,7 +806,7 @@ These formal research questions address critical gaps in the literature:
 **January 2026 Evidence Status**:
 | RQ | Status | Key Evidence Added |
 |----|--------|-------------------|
-| RQ11 | ✅ STRONG | Barracuda 75%, HSBC 3×, GitLab <1s, Netflix 5PB/day, 50% top banks |
+| RQ11 | ✅ STRONG | Barracuda 75%, HSBC 3×, GitLab <1s, Netflix 5PB/day, 50% top banks (HSBC and 50% top banks narrowed to Tier C relayed vendor remarks, 2026-11-23) |
 | RQ12 | ✅ STRONG | CSA/Google survey: 46% vs 12% adoption by governance maturity |
 | RQ13 | ✅ STRONG | Pipeline 50-70% cost reduction, $4.50/rule serverless, SIEM ingest ~$25/GB/day vs S3 storage $0.023/GB/month (unit-mismatched rates, no ratio derivable) |
 | RQ14 | ✅ STRONG (ROI legs) · ⚠️ RE-TIERED (OCSF/parser legs) | Google 74% first-year ROI, 171% average, 192% U.S. enterprises. **OCSF/parser legs overturned 2026-06-14**: asserted-A "100% parser automation / 80% OCSF normalization" → measured Tier-B caveat (Tenzir #10: ~~class-right/activity-wrong-on-83%~~ withdrawn by the 2026-11-15 lab erratum, 1 of 4 sources covered; Vector ships none). Coverage ≠ fidelity; availability is the binding constraint. |

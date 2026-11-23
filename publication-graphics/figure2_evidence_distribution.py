@@ -37,9 +37,11 @@ plt.rcParams['figure.dpi'] = 300
 # and Madani C&ESAR 2026 (B) additions; then again after the 2026-11-07 phase 1 pass
 # (two A→B re-tiers, nine snowball admissions at A): 243 blocks / 241 tiered / 2 stubs).
 # Recounted 2026-11-23 after the monthly refresh's six additions: 279 blocks / 277 tiered / 2 stubs.
+# Recounted again 2026-11-23 after the stale-source review's five tier relabels (DuckDB Overview and
+# Purview C to B, Rahman et al. B to A, Unity Catalog and Hunters B to C): A 64 / B 173 / C 40.
 TALLY_DATE = '2026-11-23'
 TIERED_TOTAL = 277
-TALLY = {'A': 63, 'B': 174, 'C': 40}
+TALLY = {'A': 64, 'B': 173, 'C': 40}
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}
 DESCRIPTIONS = {

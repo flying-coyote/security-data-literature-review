@@ -412,7 +412,7 @@
       "doi": "https://doi.org/10.24425/123532",
       "authors": [
         "Mateusz Korona",
-        "K. Skowron",
+        "Krzysztof Skowron",
         "Mateusz Trzepi\u0144ski",
         "Mariusz Rawski"
       ],
@@ -426,8 +426,8 @@
       "method_basis": "real_measurement",
       "numbers_claimed": [
         "prototype: 437.44 Mbit/s for 1500-byte packets (single pipeline, Cyclone II, 86.72 MHz)",
-        "Gateway 2.0 best DES config (8/8/8/16): 10,227.44 Mbit/s for 1500-byte packets at a 128-packet stream",
-        "Gateway 2.0 best AES-CBC config (8/8/12/8): 5,518.80 Mbit/s for 1500-byte packets at a 128-packet stream",
+        "Gateway 2.0 best DES config (8/8/8/16): 10,227.44 Mbit/s for 1500-byte packets at a 128-packet stream (computed by the paper's formula 1 from cycles per packet and the synthesis Fmax; the paper reports no on-the-wire throughput measurement for this design)",
+        "Gateway 2.0 best AES-CBC config (8/8/12/8): 5,518.80 Mbit/s for 1500-byte packets at a 128-packet stream (computed by the paper's formula 1 from cycles per packet and the synthesis Fmax; the paper reports no on-the-wire throughput measurement for this design)",
         "abstract claim: 'data rates of several Gbit/s'"
       ],
       "bears_on": "Hardware-acceleration evidence for the ingest tier, which the corpus does not otherwise cover at all.",

@@ -54,7 +54,7 @@ Each dimension is scored independently at its anchor values only. Four dimension
 | 2 | 3 |
 | 3 or more | 5 |
 
-**Dimension 4 — Quantitative precision** (anchors 1/3/5). Precision attaches to the hypothesis's own claim variable, not to any number in the vicinity. A precise figure that quantifies an adjacent indicator scores as a range estimate: H-ARCH-01's surviving figures (29%-vs-23% planning intent, 407 contributors) are precise, but they quantify adoption momentum and community size, not the dominance share the claim asserts (the original 76% was withdrawn), so the dimension scores 3. A bound is likewise a 3, not a 5: the S3 tier-price deltas are exact arithmetic on list prices, but they bound the achievable saving rather than measure a realized one, and the claim is about realized cost reduction.
+**Dimension 4 — Quantitative precision** (anchors 1/3/5). Precision attaches to the hypothesis's own claim variable, not to any number in the vicinity. A precise figure that quantifies an adjacent indicator scores as a range estimate: H-ARCH-01's surviving figures (29%-vs-23% planning intent, and a contributor count of more than 400 linked GitHub accounts, restated on 2026-11-23 from 407 as a floor under GitHub's 500-email limit) are precise, but they quantify adoption momentum and community size, not the dominance share the claim asserts (the original 76% was withdrawn), so the dimension scores 3. A bound is likewise a 3, not a 5: the S3 tier-price deltas are exact arithmetic on list prices, but they bound the achievable saving rather than measure a realized one, and the claim is about realized cost reduction.
 
 | Verified quantitative support for the claim variable | Points |
 |---|---|
@@ -87,7 +87,7 @@ Ties order by descending total, then alphabetically by hypothesis ID.
 
 ## 4. Worked example: H-ARCH-01 (23/25, Strongly Validated)
 
-Scoreable legs, all cited in §3.2.1 and all catalogued: SK Telecom production deployment (Iceberg with Trino; Evidence Level A — one measurement, documented in two bibliography blocks, counted once), the vendor-support roundup (broad-not-universal per the cited Register piece, Microsoft the named Delta-first holdout; A), ASF governance with the GitHub-derived 407-contributor count as of 2026-07-09 (A), and Dremio's 2024 survey, 29% planning Iceberg vs 23% Delta (A).
+Scoreable legs, all cited in §3.2.1 and all catalogued: SK Telecom production deployment (Iceberg with Trino; Evidence Level A — one measurement, documented in two bibliography blocks, counted once), the vendor-support roundup (broad-not-universal per the cited Register piece, Microsoft the named Delta-first holdout; A), ASF governance with more than 400 contributors with linked GitHub accounts (A; 406 on 2026-11-23, a floor under GitHub's 500-email limit; the 407 recorded on 2026-07-09 is kept here only as history, and the restatement changed no score), and Dremio's 2024 survey, 29% planning Iceberg vs 23% Delta (A).
 
 - Source count: 4 distinct measurements → **5**
 - Evidence Level Quality: 4 of 4 legs tiered A = 100% → **5**

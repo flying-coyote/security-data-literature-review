@@ -300,7 +300,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 - Industry consensus: Dremio 2024 survey (29% Iceberg vs 23% Delta for future adoption)
 - Universal vendor support: AWS, Google, Microsoft, Snowflake, Databricks all announced Iceberg compatibility
 - Production validation: SK Telecom Iceberg deployment (the precise figures are in the Trino Summit slides PDF, not the recap page — verified against the slides and re-attributed 2026-07-09: −97% read size, −96.5% elapsed time on a 52.7 TB table)
-- Community strength: Apache Software Foundation governance (407 GitHub contributors as of 2026-07-09; the community page itself carries no counts — re-sourced 2026-07-09)
+- Community strength: Apache Software Foundation governance (more than 400 contributors with linked GitHub accounts, 406 linked accounts on 2026-11-23 (405 users and 1 bot) and 946 entries once anonymous contributors are included; GitHub links only the first 500 author email addresses to accounts, so the linked count is a floor, which the 407 cited from 2026-07-09 also was; the community page itself carries no counts, re-sourced 2026-07-09 and restated 2026-11-23)
 
 ---
 
@@ -318,7 +318,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 
 **Key Evidence**:
 - The Cloudera/Forrester TEI "29% operational TCO component" formerly listed here was withdrawn in the 2026-07 verification pass — the 39/32/29 breakdown appears in neither TEI document
-- Confluent: operational complexity and specialized talent are major TCO drivers (the 45-55% figure formerly cited here is not in the cited course — removed, 2026 audit)
+- ~~Confluent: operational complexity and specialized talent are major TCO drivers~~ *(withdrawn 2026-11-23: the cited Kafka Architecture & Sizing course page contains none of "TCO", "total cost", "talent" or "operational complexity", so it supports neither this driver claim nor the 45-55% figure the 2026 audit had already removed, and it now serves as architecture background only)*
 - The IDC 2.5-3× and Enterprise Data Quarterly 1.5-2× figures, and the DORA 2.7× staffing multiplier, were removed in the 2026 audit (removed entries / not in the DORA report); the qualitative operational-cost premium stands on the remaining sources
 
 ---
@@ -393,7 +393,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 
 **Key Evidence**:
 - Cloudflare: 6M requests/second, ~10× per-record storage reduction in its ES→ClickHouse migration (600→60 bytes/row; the "10-12×" and "96.3% of queries <1s" figures formerly cited here are not in the cited source — corrected/removed, 2026 audits)
-- ClickHouse vs Elasticsearch: 12-19× storage efficiency at functionally equivalent config, 9-12× with `_source` disabled (vendor benchmark; the earlier "5-10×" matched only the page's query-speed multipliers — corrected 2026-07-09)
+- ClickHouse vs Elasticsearch: 12-19× storage efficiency at functionally equivalent config on 10 billion rows and 9-12× on 1 billion rows, both with `_source` kept (vendor benchmark on PyPI download events, not security logs; the earlier "5-10×" matched only the page's query-speed multipliers, corrected 2026-07-09, and the reading of 9-12× as the `_source`-disabled figure was corrected 2026-11-23)
 - Native IPv4/IPv6 types: a first-party CIDR probe (MOAR reference stack, 20M rows, single host, `lab/cidr_probe.py`, 2026-06-07) measured ~13-17× warm speedup vs string implementations, with ~2.9× IPv4-vs-String storage savings (65.4 MiB vs 188.1 MiB); the vendor "50-100×" band formerly cited here is not on the cited page — removed, 2026 audit
 - The Shell 57TB/day entry was removed in the 2026 audit (dead URL, claims unverifiable)
 
@@ -665,10 +665,10 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ### Table Formats (Apache Iceberg, Delta Lake, Hudi)
 
 **Apache Iceberg - Industry Consensus**:
-- [71] SK Telecom: Iceberg production deployment (Level B — the specific query-time figures formerly cited are not in the cited Trino Summit recap; removed, 2026 audit)
+- [71] SK Telecom: Iceberg production deployment (Level B; the specific query-time figures are not in the Trino Summit recap but are in the presentation slides, now the entry's Alt URL: −97% read data size and 97.2 s to 3.39 s elapsed on a 52.7 TB table, re-read 2026-11-23)
 - [43] Dremio: 29% Iceberg vs 23% Delta Lake future adoption (Level A)
 - [8] Apache Iceberg: Official documentation (Level A)
-- [9] Apache Iceberg: 407 GitHub contributors (as of 2026-07-09; community page carries no counts — re-sourced, org count dropped as underivable) (Level A)
+- [9] Apache Iceberg: more than 400 contributors with linked GitHub accounts (406 linked accounts on 2026-11-23, 405 users and 1 bot, a floor under GitHub's 500-email limit, restated from the 407 of 2026-07-09; community page carries no counts — re-sourced, org count dropped as underivable) (Level B, re-tiered from A on 2026-08-19)
 - [10] Apache Iceberg: Maintenance documentation (Level A)
 - [11] Apache Iceberg: Spark procedures (Level A)
 
@@ -682,7 +682,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 **ClickHouse for Security Analytics**:
 - [15] Cloudflare: 6M requests/second (Level A; the "96.3% queries <1s" figure is not in the cited source — removed, 2026 audit)
 - [16] Cloudflare: ~10× per-record storage reduction, 600→60 bytes/row, plus 8× inserter CPU/memory (ES→CH migration; Level A — the "10-12×" formerly here is not on the page, corrected 2026-07-09)
-- [18] ClickHouse vs Elasticsearch: 12-19× storage efficiency (9-12× with `_source` disabled; vendor benchmark, Level A — corrected from "5-10×" 2026-07-09)
+- [18] ClickHouse vs Elasticsearch: 12-19× storage efficiency (12-19× at 10 billion rows and 9-12× at 1 billion, both with `_source` kept, `_source` attribution corrected 2026-11-23; vendor benchmark, Level A — corrected from "5-10×" 2026-07-09)
 - [19] ClickHouse: Compression codecs documentation (Level A)
 - [20] ClickHouse: Vectorized query execution documentation (Level A; the "8-10× CPU efficiency" figure is not on the cited page — removed, 2026 audit)
 - [21] ClickHouse: Performance optimization guide (Level A)
@@ -695,7 +695,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 - [73] Starburst: Official documentation (Level B)
 - [72] Starburst: AWS Athena integration (Level B)
 - [42] Dremio: Official documentation (Level B)
-- [41] Dremio: Data lakehouse architecture guide (Level B)
+- [41] Dremio: What is a data lakehouse (lakehouse explainer, storage and compute separation; names no table format, checked 2026-11-23) (Level B)
 - [56] Alex Merced: Dremio YouTube channel (Level B)
 
 ---
@@ -725,7 +725,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 
 **Streaming vs Batch Cost Differential**:
 - [39] DORA 2024: Accelerate State of DevOps research (Level A; the "2.7× operational staff" multiplier formerly cited here is not in the report — removed, 2026 audit)
-- [28] Confluent: Kafka TCO and operational-complexity documentation (Level B; the "45-55% of TCO" figure is not in the cited course — removed, 2026 audit)
+- [28] Confluent: Kafka architecture course, architecture background only (Level B; the "45-55% of TCO" figure was removed in the 2026 audit, and the TCO and operational-complexity finding was withdrawn on 2026-11-23 because the cited course page contains neither)
 - [25] Cloudera/Forrester TEI: the 39/32/29 TCO breakdown formerly cited here appears in NEITHER TEI document — withdrawn, 2026-07 verification pass (the studies' verified figures: Public Cloud PDF, Oct 2021 — 194% ROI, $35.54M benefits)
 - [37] Databricks: TCO documentation (Level B; specific licensing percentages not independently verifiable — gated source)
 
@@ -762,7 +762,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 
 **Organizational Readiness**:
 - [68] Prosci: 13/39/73/88% of initiatives meet or exceed objectives as change-management effectiveness rises from poor to excellent (Prosci best-practices correlation data; replaces the "30/60/80% adoption pattern" formerly cited here, which does not match Prosci's published figures — corrected 2026-07-09) (Level B, vendor research)
-- [14] Brooks: "Plan to throw one away" throwaway prototype principle (Level A)
+- [14] Brooks: "Plan to throw one away" throwaway prototype principle (Level B; the 1995 edition's ch. 19 is reported to revise it as too simplistic, unverified at the primary 2026-11-23)
 - [66] Netflix: Shadow infrastructure validation approach with WAL (cited URL is a bare conference homepage — specifics unverified; downgraded, 2026 audit)
 
 ---

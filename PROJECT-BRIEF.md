@@ -19,7 +19,7 @@ This brief states what is true about the project now, what it covers, what is st
 ### Fact 1: The corpus
 
 `MASTER-BIBLIOGRAPHY.md` is the corpus. Each entry is a `#### ` block that is meant to carry an evidence tier, a URL or identifier, the findings it is cited for and a validation record; two are documented no-primary stubs without a tier, and entries still missing a primary are listed by the bibliography sweep.
-- Level-A share: 22.7% live-computed 2026-11-23 (63/277 tiered). This is a description of the corpus rather than a grade, since the Level-A target was retired (Fact 4).
+- Level-A share: 23.1% live-computed 2026-11-23 (64/277 tiered). This is a description of the corpus rather than a grade, since the Level-A target was retired (Fact 4).
 - Full tier mix, stub count and source-type breakdown: run `python3 scripts/count_reconcile.py`, which derives them from the bibliography and checks every page that states them.
 - **Source**: `MASTER-BIBLIOGRAPHY.md`, `scripts/count_reconcile.py`, `scripts/automation_dashboard.py`
 
@@ -63,7 +63,7 @@ The submission target is the *Journal of Cybersecurity* (Oxford University Press
 - **Source**: `PUBLICATION-VENUE-RECOMMENDATIONS.md`, `docs/ZENODO-RELEASE-CHECKLIST.md`, `tools/build/export_paper.sh`
 
 ### Status at a glance
-- ✅ 22.7% Evidence Level A (live-derived 2026-11-23: 63 of 277 tiered; reported as a description, the target having been retired 2026-08-19)
+- ✅ 23.1% Evidence Level A (live-derived 2026-11-23: 64 of 277 tiered; reported as a description, the target having been retired 2026-08-19)
 - ✅ 9 hypotheses assessed (7 original + 2 added post-audit 2026-07-10), scored under `methods/scoring-rubric.md`
 - Database arm run and incorporated (2026-07-13, second screen 2026-07-16)
 - The count and vendor-rollup gates run in pre-commit, and those two plus the source-taxonomy and metadata checks run in CI (`.github/workflows/gates.yml`)

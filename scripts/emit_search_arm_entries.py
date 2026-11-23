@@ -32,7 +32,7 @@ CURATION = {
             "Hypothesis H-STREAM-01 (stateful stream processing at scale) — a peer-reviewed instance of detection embedded in the streaming pipeline rather than bolted on after it",
             "Book Chapter 7 (Ingestion — streaming)",
         ],
-        note="A deployed, evaluated system (not a proposal), with concept-drift handling — the pattern the rest of the corpus sources from vendor material.",
+        note="A working prototype deployed on OPNFV and evaluated against three datasets, with concept-drift handling — the pattern the rest of the corpus sources from vendor material.",
     ),
     2: dict(
         section="streaming",
@@ -272,8 +272,12 @@ CURATION = {
             "Background for the engine-comparison discussion (Storm vs Spark Streaming vs Flink), including lambda-architecture treatment",
         ],
         note=(
-            "A short-course/tutorial chapter, not a primary study. Every figure in it is quoted from third parties, so no "
-            "number is carried. Shares authors with records 1 and 2 above (the CATRACA group)."
+            "A short-course/tutorial chapter, not a primary study. The introduction's figures are third-party citations, and "
+            "the section 3.3 throughput and node-failure benchmark (Storm 0.9.4, Flink 0.10.2, Spark Streaming 1.6.1 on eight "
+            "VMs on one host) is the group's own earlier work: its versions, hardware and loss figures match the authors' "
+            "GLOBECOM 2016 paper (10.1109/GLOCOM.2016.7841533, not catalogued here), though the chapter cites their "
+            "MobiSecServ 2018 paper for it. The detection-accuracy results in section 3.4 are also the group's own. No number "
+            "is carried here. Shares authors with records 1 and 2 above (the CATRACA group)."
         ),
     ),
     # ---- recorded, not currently supporting a claim ----

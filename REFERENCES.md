@@ -36,7 +36,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [8] Apache Iceberg Community, "Apache Iceberg Documentation," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/
 
-[9] Apache Iceberg Community, "Apache Iceberg Governance & Contributors," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/community/ (page carries no contributor counts; for the contributor figure cite https://github.com/apache/iceberg — 407 as of 2026-07-09)
+[9] Apache Iceberg Community, "Apache Iceberg Governance & Contributors," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/community/ (page carries no contributor counts; for the contributor figure cite https://github.com/apache/iceberg — more than 400 contributors with linked accounts as of 2026-11-23, a floor because GitHub links only the first 500 author email addresses to accounts)
 
 [10] Apache Iceberg Community, "Maintenance Documentation," Apache Software Foundation, 2024. [Online]. Available: https://iceberg.apache.org/docs/latest/maintenance/
 
@@ -46,7 +46,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [13] C. Bisnett, "Huntress ClickHouse Migration," YouTube presentation, 2024. [Online]. Available: https://www.youtube.com/watch?v=lhsWNofOcdk
 
-[14] F. P. Brooks Jr., *The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition*. Boston, MA: Pearson, 1995.
+[14] F. P. Brooks Jr., *The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition*. Addison-Wesley Professional (Pearson), 1995. (Ch. 19 of this edition is reported to revise the ch. 11 "plan to throw one away" advice; unverified at the primary, see the bibliography entry, 2026-11-23.)
 
 [15] A. Bocharov, "HTTP Analytics for 6M Requests per Second Using ClickHouse," Cloudflare Engineering Blog, 2018. [Online]. Available: https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/ (date corrected from "2024" 2026-07-09)
 
@@ -100,7 +100,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [40] Disney Streaming Tech Blog, "How Disney+ Built Scalable Real-Time Security Analytics," Medium, 2023 (archived - Medium 403). [Online]. Alt: https://www.kai-waehner.de/blog/2025/02/28/data-streaming-with-apache-kafka-and-flink-in-the-media-industry-disney-hotstar-and-jiocinema/
 
-[41] Dremio Corporation, "Data Lakehouse Architecture Guide," 2024. [Online]. Available: https://www.dremio.com/blog/what-is-a-data-lakehouse/
+[41] D. Mazumdar (Dremio), "What Is a Data Lakehouse? Merging Data Lakes and Warehouses," 2023-09-06. [Online]. Available: https://www.dremio.com/blog/what-is-a-data-lakehouse/
 
 [42] Dremio Corporation, "Dremio Documentation," 2024. [Online]. Available: https://docs.dremio.com
 
@@ -118,7 +118,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [49] Reference withdrawn 2026-07-09 — cited for a "28% security-data-volume CAGR" that appears in no locatable Gartner source (the repo's verified Gartner item is a security-*spending* forecast); the document number is unverifiable (see the project fabrications register).
 
-[50] Google Site Reliability Engineering Team, "Site Reliability Engineering: Reliability Economics," Google SRE Book, 2024.
+[50] M. Alvidrez, "Embracing Risk," in B. Beyer et al., *Site Reliability Engineering*. O'Reilly Media/Google, 2017. [Online]. Available: https://sre.google/sre-book/embracing-risk/
 
 [51] Huntress and ClickHouse, "How Huntress Improved Performance and Slashed Costs with ClickHouse," 2024. [Online]. Available: https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse
 
@@ -130,7 +130,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [55] K. Waehner, "Top Trends for Data Streaming with Apache Kafka and Flink in 2025," Kai Waehner Blog, Dec. 2024. [Online]. Available: https://www.kai-waehner.de/blog/2024/12/02/top-trends-for-data-streaming-with-apache-kafka-and-flink-in-2025/
 
-[56] M. Merced, "Dremio YouTube Channel," YouTube, 2023-2024. [Online]. Available: https://www.youtube.com/@alexmercedcoder
+[56] A. Merced, "Code, Data and Tech with Alex Merced" (YouTube channel), YouTube, 2023-2024. [Online]. Available: https://www.youtube.com/@alexmercedcoder
 
 [57] Anonymized practitioner, "Security Data Platform Practitioner Validation," Personal communication, Oct. 2025. Unpublished, so it is not an eligible source under the bibliography's Boundary rule and is kept as illustration only (marked 2026-11-23).
 
@@ -172,7 +172,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [76] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
-[77] Uptime Institute, "Reliability Tier Economics," Uptime Institute Research, 2024.
+[77] Uptime Institute, "Tier Classification System," Uptime Institute. [Online]. Available: https://uptimeinstitute.com/tiers (open page, accessed 2026-11-23)
 
 [78] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 
@@ -182,7 +182,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 **Citation Format**: IEEE style with alphabetical ordering by first author surname
 **URL Validation**: superseded by the 2026-06 source audit; entries whose sources could not be verified were withdrawn in place on 2026-06-09 (see the project fabrications register)
-**Paywall Sources**: Gartner (#48, #49), Uptime Institute (#77) - expected for industry analyst reports, though these citations remain unverified pending the weak-source pass
+**Paywall Sources**: Gartner (#48, #49) - expected for industry analyst reports, though these citations remain unverified pending the weak-source pass. Uptime Institute (#77) was listed here until 2026-11-23, when its Tier Classification System page was found to be open, not paywalled
 **Evidence Quality**: prior evidence-level percentages withdrawn pending re-audit after the 2026-06 source verification pass
 
 **Source Distribution**:

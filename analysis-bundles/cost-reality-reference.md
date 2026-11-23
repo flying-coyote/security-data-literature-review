@@ -86,15 +86,15 @@ I think the honest read is that operational costs (staffing, complexity, special
 
 ### 1.3 Total Cost of Ownership (TCO) Breakdown
 
-**Confluent - Kafka Architecture & Sizing (2024) — figure WITHDRAWN (2026-06-14 audit)**
+**Confluent - Kafka Architecture & Sizing (2024) — figure WITHDRAWN (2026-06-14 audit), driver claim withdrawn 2026-11-23**
 📍 MASTER-BIBLIOGRAPHY.md:1056-1076
 
-~~**Finding**: 45-55% of TCO = operational complexity + specialized talent~~ — **WITHDRAWN: the 45-55% figure is not in the cited Confluent course. The qualitative claim — operational complexity and specialized talent are major TCO drivers — stands on the surviving source; the specific split does not.**
+~~**Finding**: 45-55% of TCO = operational complexity + specialized talent~~ — **WITHDRAWN: the 45-55% figure is not in the cited Confluent course.** ~~The qualitative claim — operational complexity and specialized talent are major TCO drivers — stands on the surviving source; the specific split does not.~~ *(Withdrawn 2026-11-23: the course page contains none of "TCO", "total cost", "talent" or "operational complexity", so it does not carry the qualitative driver claim either; see the Confluent entry in MASTER-BIBLIOGRAPHY.md.)*
 
-**Evidence Level**: B for the qualitative driver claim; the 45-55% figure is withdrawn
-**Confidence**: Moderate on the qualitative point; n/a for the magnitude
+**Evidence Level**: ~~B for the qualitative driver claim~~ none for TCO, since both the 45-55% figure and the driver claim are withdrawn (2026-11-23); B as Kafka architecture background
+**Confidence**: ~~Moderate on the qualitative point~~ none, since the driver claim was withdrawn on 2026-11-23; n/a for the magnitude
 
-**Book Application**: still illustrates why "cheap" streaming infrastructure can carry high TCO — but cite the operational-complexity driver qualitatively, not the withdrawn 45-55% number
+**Book Application**: still illustrates why "cheap" streaming infrastructure can carry high TCO — ~~but cite the operational-complexity driver qualitatively, not the withdrawn 45-55% number~~ *(2026-11-23: this source no longer supports the driver either, so cite neither the number nor the driver from it until another catalogued source carries the driver)*
 
 ---
 
@@ -431,7 +431,7 @@ The cost-multiplier column below traces to the withdrawn Google SRE "10× per ni
    - ROI: Avoid continuously provisioning for peak
 
 5. **Managed services for operational complexity** (reduce the staffing premium)
-   - The IDC/DORA/Confluent multipliers that quantified the premium are withdrawn (§1); the qualitative driver stands.
+   - The IDC/DORA/Confluent multipliers that quantified the premium are withdrawn (§1); ~~the qualitative driver stands~~. *(2026-11-23: the cited Confluent course page no longer supports even the qualitative driver, so the driver needs another catalogued source before it is cited as standing; staged for the owner.)*
    - Effort: Vendor evaluation + migration (8-12 weeks)
    - ROI: Shift ops burden, redirect staff to higher-value security work
 
@@ -484,7 +484,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 - ~~Cloudera TCO / Forrester TEI (29% operational TCO split) — retained, A~~ — WITHDRAWN 2026-07-10 (in neither TEI document)
 - ~~Gartner 28% security-data CAGR — retained, A~~ — WITHDRAWN 2026-07-10 (spending forecast, no volume CAGR)
 - ~~DORA "Level 4 skills" qualitative finding — retained, A~~ — WITHDRAWN 2026-07-10 (no Level-taxonomy in DORA 2024)
-- Confluent operational-complexity driver (qualitative) — B (the 45-55% figure is withdrawn)
+- ~~Confluent operational-complexity driver (qualitative) — B (the 45-55% figure is withdrawn)~~ *(withdrawn 2026-11-23: the cited course page does not contain the driver claim)*
 - Databricks TCO (vendor analysis) — B
 
 **Withdrawn in the 2026 audit** (entries removed or figures not in source):
@@ -523,7 +523,7 @@ Both the Netflix and AWS figures are withdrawn (the "Netflix" URL is Confluent d
 ### Chapter 4: Implementation Journeys
 
 **Key messages** (post-audit):
-1. "Operational costs (staffing, training, complexity) are a major share of total TCO" — qualitative only as of 2026-07-10: ~~the Cloudera/Forrester TEI breakdown puts operational at 29% (retained, A)~~ withdrawn (in neither TEI document); the Confluent 45-55% figure was already withdrawn. Cite no percentage split.
+1. "Operational costs (staffing, training, complexity) are a major share of total TCO" — qualitative only as of 2026-07-10: ~~the Cloudera/Forrester TEI breakdown puts operational at 29% (retained, A)~~ withdrawn (in neither TEI document); the Confluent 45-55% figure was already withdrawn, and the Confluent course's qualitative driver claim was withdrawn on 2026-11-23 as not on the cited course page. Cite no percentage split.
 2. ~~"Specialized streaming expertise is a scarce 'Level 4' skill (DORA, qualitative — retained)."~~ — WITHDRAWN 2026-07-10; say "specialized streaming expertise is scarce" without the Level-4 taxonomy or the DORA attribution.
 3. ~~"Hybrid architectures achieve 60-70% cost savings vs pure streaming (Uber, Netflix)"~~ — WITHDRAWN (derived from the withdrawn streaming premium); the qualitative point (apply the premium only to the real-time slice) stands.
 

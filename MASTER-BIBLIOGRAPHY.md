@@ -10,7 +10,7 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 **Purpose**: The citation record for the Security Data Works evidence program, which covers the handbook *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays and research pages, and this review's own manuscript. Each `#### ` block below is one source, with its evidence level, what it is cited for, what it actually says, and how it was checked.
 **Last Updated**: November 23, 2026 (monthly refresh: six sources added under "Monthly Refresh Additions (2026-11-23)", eight older entries re-read at their primaries with dated refresh notes, two dead links moved to archived copies). November 17, 2026: verification sweep of every entry, recorded in `methods/verification-2026-11/`; the retired December 2025 benchmark entry rewritten to cite the public SDW Lab re-run; the October 2025 extraction log moved to `archive/bibliography-extraction-log-2025-10.md`). Earlier changes are in [CHANGELOG.md](CHANGELOG.md).
 **Total Sources**: 279 catalogued `#### ` blocks (277 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). The counts on this page are derived from the blocks by `scripts/count_reconcile.py`, which fails the build when any gated surface disagrees with them.
-**Evidence Quality**: 22.7% Evidence Level A (live-derived 2026-11-23: 63 of 277 tiered entries; 174 B, 40 C, across 279 `#### ` blocks incl. 2 documented stubs). The share is reported descriptively and has no target attached. It sits where it does because Level A is reserved for peer-reviewed research and official standards, so vendor engineering blogs, trade books, conference talks and production case studies tier at B however good their evidence is, and much of what a practitioner needs to know about security data platforms is published mainly in those forms.
+**Evidence Quality**: 23.1% Evidence Level A (live-derived 2026-11-23: 64 of 277 tiered entries; 173 B, 40 C, across 279 `#### ` blocks incl. 2 documented stubs). The share is reported descriptively and has no target attached. It sits where it does because Level A is reserved for peer-reviewed research and official standards, so vendor engineering blogs, trade books, conference talks and production case studies tier at B however good their evidence is, and much of what a practitioner needs to know about security data platforms is published mainly in those forms.
 
 **How to read an entry.**
 - **Evidence Level** follows [METHODOLOGY.md §3.1](METHODOLOGY.md). A is peer-reviewed research, an official standard, or a normative framework from a neutral non-commercial body (MITRE D3FEND and ATLAS, which are primary for taxonomy and silent on efficacy). B is "practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation", which is real evidence but not independently reviewed (expert interviews appear in that definition, but this file catalogues only published works, per the Boundary rule below). C is "vendor blog posts, product documentation, and conference talks not backed by production measurement", catalogued with its bias flagged and never carrying a hypothesis on its own, and D (marketing material, unverified claims, speculation) is excluded from the corpus.
@@ -84,7 +84,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Citations**: Applied-bridge framing (the relabel + inclusion moves); the modern-data-stack maturation narrative; Joe Reis is the "modern data stack" voice in the origin narrative's cold open (securitydataworks.com/thesis/origin)
 **Notes**: Framing/conceptual anchor for the applied-bridge positioning (securitydataworks.com/thesis). Carries no headline statistic — catalogued for the lifecycle framework, not a number, so it is not exposed to the 2026 stat-mismatch audit. Tier B under the strict tiers in METHODOLOGY.md §3.1 (authoritative practitioner book; A is reserved for peer-reviewed research / official standards).
 
-**Validation Status**: ✅ Verified 2026-06-09 (WebSearch: O'Reilly Media, published 2022-07-26, ISBN-13 978-1098108304, Joe Reis & Matt Housley; the data-engineering-lifecycle framework confirmed against the publisher and author listings).
+**Validation Status**: ✅ Verified 2026-06-09 (WebSearch: O'Reilly Media, published 2022-07-26, ISBN-13 978-1098108304, Joe Reis & Matt Housley; the data-engineering-lifecycle framework confirmed against the publisher and author listings). · Refresh (2026-11-23): still the only edition. Reis's retrospective, 'The Data Engineering Lifecycle and Undercurrents, 4 Years Later' (joereis.substack.com/p/the-data-engineering-lifecycle-and, 2026-07-27, Tier B, same author), restates the same five stages, says he would write the book the same way 'mostly yes. With some caveats', names more data-modeling depth and FinOps as a possible seventh undercurrent as what he would add, and says of a second edition 'I'm not ruling it out'. The quoted 'remained essentially unchanged...' sentence in Key Findings could not be confirmed verbatim on 2026-11-23 (O'Reilly blocks automated fetch), so treat it as a paraphrase until it is checked against a licensed copy.
 
 ---
 
@@ -110,7 +110,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 #### Apache Iceberg Performance Tuning - SK Telecom
 
 **Authors**: SK Telecom Tech Blog (Jaechang Song, Jennifer Oh)
-**Date**: 2022-2024
+**Date**: 2022-12-19 (Trino Summit 2022 talk and recap; the former '2022-2024' range had no 2024 primary behind it, corrected 2026-11-23)
 **URL**: https://trino.io/blog/2022/12/19/trino-summit-2022-sk-telecom-recap.html
 **Alt URL**: https://trino.io/assets/blog/trino-summit-2022/Trino@SK-Telecom.pdf (presentation slides)
 **Evidence Level**: B (Production deployment, quantitative benchmarks) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
@@ -129,7 +129,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Citations**: ch05 §5.1 (table format) [was: Chapter 8] performance benchmarks
 **Notes**: High-credibility source, production deployment, quantitative data; Medium URL returns 403, replaced with Trino Summit recap. **Source split (2026-07-09)**: the precise figures (209 GB, 6.11 GB, 97.2 s, 3.39 s, 52.7 TB, −80%) are in the Trino Summit slides PDF (Alt URL) — verified against the PDF 2026-07-09; the recap page carries only the approximations. Cite the slides for the precise numbers.
 
-**Validation Status**: ✅ Figures re-verified against slides PDF (Alt URL) 2026-07-09; recap URL live (Medium link blocked, replaced January 2026)
+**Validation Status**: ✅ Figures re-verified against slides PDF (Alt URL) 2026-07-09; recap URL live (Medium link blocked, replaced January 2026) · Refresh (2026-11-23): both URLs live. The precise figures were re-verified verbatim against the slides PDF and the two approximations against the recap page. SK Telecom's follow-up talk, 'Efficient Kappa Architecture with Trino' (Sanghyun Lee, Trino Summit 2023, https://trino.io/assets/blog/trino-summit-2023/efficient-kappa-architecture-sk-telecom.pdf, HTTP 200), is a candidate companion source that has not been read for figures yet.
 
 ---
 
@@ -202,12 +202,12 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 - Query optimization techniques
 - Federation patterns for security data
 - Production deployment best practices
-- 2nd Edition covers: Kubernetes deployment (Helm), Iceberg/Delta Lake connectors, fault-tolerant execution, Java 17
+- 2nd Edition (October 2022) is updated to Trino release 392 and adds Java 17 usage, the Iceberg and Delta Lake connectors, the lakehouse architecture, dbt and Metabase (trino.io announcement, 2022-10-03). A Helm chart for Kubernetes deployment is listed in the table of contents per library catalog records seen only as search summaries. Fault-tolerant execution could not be confirmed for the English edition on 2026-11-23.
 
 **Citations**: Blog query engine deep-dive, ch05 §5.3 + Appendix I [was: Chapter 9] Trino fundamentals
 **Notes**: **CRITICAL** - Authoritative Trino reference, Matt Fuller = Starburst co-founder; ISBN 978-1-098-13723-6 (print/paperback, confirmed via ISBN registry 2026-07-10; the cited O'Reilly platform URL carries the digital-edition identifier 978-1-098-13722-9 — both valid, label whichever you cite)
 
-**Validation Status**: ✅ Updated January 2026 - Corrected to 2nd Edition URL
+**Validation Status**: ✅ Updated January 2026 - Corrected to 2nd Edition URL · Refresh (2026-11-23): still the latest edition, with no third edition found. The book is pinned to Trino 392 (2022), so version-specific configuration may lag current releases.
 
 ---
 
@@ -249,20 +249,20 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Key Findings**:
 - Data lakehouse architecture principles
 - Separation of storage and compute
-- Open table formats (Iceberg, Delta, Hudi)
-- Query engine layer architecture
+- Open file formats (Apache Parquet) on cloud object storage. The article body does not name Iceberg, Delta Lake or Hudi (checked 2026-11-23 against the live page, where Iceberg appears only in site navigation and promo cards), so cite another entry for table formats.
+- A data management layer and a data processing layer serving SQL analytics and machine learning, with no named query-engine layer.
 
 **Citations**: Blog query engine context, ch05 §5.1 (table format) [was: Chapter 2] lakehouse fundamentals
-**Notes**: Educational resource from Dremio, vendor perspective
+**Notes**: Educational resource from Dremio, vendor perspective Page title is 'What Is a Data Lakehouse? Merging Data Lakes and Warehouses' (2023-09-06). Dremio has been part of SAP since 2026-07-06 (news.sap.com/2026/07/sap-completes-dremio-acquisition/), which is ownership context only. The Wayback Machine holds no capture of this URL later than 2023-06-02, so there is no archived copy of the current article.
 
-**Validation Status**: ✅ Active (verified Feb 2026)
+**Validation Status**: ✅ Active (verified Feb 2026) · Refresh (2026-11-23): live page read, and the table-format and query-engine findings narrowed to what the body says.
 
 ---
 
 #### Alex Merced - Dremio YouTube Channel
 
-**Authors**: Alex Merced (Dremio Developer Advocate)
-**Date**: 2023-2024 (ongoing series)
+**Authors**: Alex Merced (Head of DevRel, Dremio, per Dremio's author page 2026-11-23)
+**Date**: 2023-2024 (ongoing series; channel page live 2026-11-23, upload recency not confirmed in the check pass)
 **URL**: https://www.youtube.com/@alexmercedcoder
 **Evidence Level**: B (Vendor educational content, practitioner tutorials)
 **Relevance**:
@@ -274,12 +274,12 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 - Data lakehouse architecture tutorials
 - Apache Iceberg hands-on guides
 - Dremio query optimization
-- Practical security data examples
+- No security-data examples found (a channel search for 'security' on 2026-11-23 returns web-auth, JWT and SSH tutorials; finding removed 2026-11-23)
 
 **Citations**: Blog query engine resources, ch05 §5.3 + Appendix I [was: Chapter 9] learning resources
-**Notes**: Educational YouTube channel, vendor-affiliated but practical
+**Notes**: Educational YouTube channel, personal and not an official Dremio channel ('Code, Data and Tech with Alex Merced'). Dremio has been part of SAP since 2026-07-06. A second channel, @alexmerceddata ('Understanding Data with Alex Merced'), is the handle cited in appendix-e. For a citable Iceberg reference, prefer the existing entry 'Architecting an Apache Iceberg Lakehouse' (Manning) in this bibliography, or Apache Iceberg: The Definitive Guide (Shiran, Hughes and Merced, O'Reilly, May 2024), which has no entry yet and was not opened in this pass.
 
-**Validation Status**: ✅ Active (verified Feb 2026)
+**Validation Status**: ✅ Active (verified Feb 2026) · Refresh (2026-11-23): both channel URLs live, and the security-examples finding removed.
 
 ---
 
@@ -362,8 +362,8 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 
 #### Questioning the Lambda Architecture - Jay Kreps
 
-**Authors**: Jay Kreps (Kafka creator)
-**Date**: July 2014
+**Authors**: Jay Kreps (Kafka co-creator, with Neha Narkhede and Jun Rao; the article itself says only 'We built Kafka')
+**Date**: 2014-07-02
 **URL**: https://www.oreilly.com/radar/questioning-the-lambda-architecture/
 **Evidence Level**: B (Foundational thought leadership) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
@@ -379,7 +379,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Citations**: ch02 §2.2 + Appendix D [was: Chapter 2] Lambda vs Kappa, ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] architecture patterns
 **Notes**: **FOUNDATIONAL SOURCE** - Widely cited, shaped industry thinking
 
-**Validation Status**: ✅ Active URL, O'Reilly publication
+**Validation Status**: ✅ Active URL, O'Reilly publication · Refresh (2026-11-23): re-read at the primary. The Kappa proposal and the two-code-paths critique are as stated.
 
 ---
 
@@ -486,20 +486,20 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Date**: 2024
 **URL**: https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-storage-optimization/cost-optimization-storage-optimization.pdf (serves an official "DEPRECATED" stub as of 2026-07-10)
 **Alt URL**: https://aws.amazon.com/whitepapers (current Whitepapers & Guides index, per the stub's own redirect notice); tier figures live at https://aws.amazon.com/s3/storage-classes/intelligent-tiering/ (see the standalone "AWS Storage Optimization - Tiered Storage" entry)
-**Evidence Level**: B (Vendor documentation; cited PDF deprecated, tier figures sourced from S3 Intelligent-Tiering page)
+**Evidence Level**: B for what the tiers do; C with vendor bias flagged for the savings percentages, per the 2026-11-03 vendor-documentation ruling (cited PDF deprecated, tier figures sourced from the S3 Intelligent-Tiering page)
 **Relevance**:
 - Hypothesis H1-COST-08 (SIEM vs storage costs)
 - Book ch02 §2.3 (economics) [was: Chapter 1] (Cost comparisons)
 - Best Practices Doc footnote [^15]
 
 **Key Findings**:
-- S3 tiered storage cost savings (from AWS S3 Intelligent-Tiering documentation): up to 40% with Infrequent Access tier, up to 68% with Archive Instant Access tier, up to 95% with Deep Archive tier
+- S3 tiered storage cost savings (from AWS S3 Intelligent-Tiering documentation): up to 40% with Infrequent Access tier, up to 68% with Archive Instant Access tier, up to 95% with Deep Archive tier (the page gives 71% for the opt-in Archive Access tier; added 2026-11-23)
 - Storage cost optimization patterns depend on access frequency and tier selection
 
 **Citations**: ch02 §2.3 (economics) [was: Chapter 1] cost section, H1-COST-08 validation
 **Notes**: Original PDF (cited URL) is a deprecated stub; tier-specific savings figures are from the AWS S3 Intelligent-Tiering product page. Cite individual tiers with "up to" language rather than a single average.
 
-**Validation Status**: ✅ Active URL (AWS docs)
+**Validation Status**: ⚠️ Cited PDF is a deprecated 4-page stub (re-checked 2026-11-23; it now redirects to the docs.aws.amazon.com/pdfs/ path). Tier figures were re-verified verbatim on the S3 Intelligent-Tiering page on 2026-11-23. This entry duplicates 'AWS Storage Optimization - Tiered Storage' and is a candidate to merge into it.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -527,33 +527,34 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Citations**: The bridge relief moves (compose-don't-build, incremental-not-big-bang); the migration-as-a-sequence framing in the origin narrative and the Subsurface talk
 **Notes**: Framing/conceptual anchor for the applied-bridge positioning (securitydataworks.com/thesis). Carries no headline statistic — catalogued for the method and the data-centric model, not a number, so it is not exposed to the stat-mismatch audit. McComb has authored *The Data-Centric Revolution*, *Software Wasteland*, and *Semantics in Business Systems*; Semantic Arts has been Data-Centric-focused since 2000.
 
-**Validation Status**: ✅ Verified 2026-06-09 (WebSearch: McComb authorship of the three books confirmed; "Incremental Stealth Legacy Modernization" confirmed as a TDAN.com column and a named Semantic Arts method).
+**Validation Status**: ✅ Verified 2026-06-09 (WebSearch: McComb authorship of the three books confirmed; "Incremental Stealth Legacy Modernization" confirmed as a TDAN.com column and a named Semantic Arts method). · Re-verified 2026-11-23: the TDAN column (Dave McComb, March 2, 2022) was read at the Wayback 2024-03-01 snapshot with the 'green light' sentence verbatim, and the Technics Publications page is live selling the McComb duology.
 
 ---
 
 #### Prosci Change Management Best Practices (12th Edition)
 
 **Authors**: Prosci
-**Date**: 2024 (12th Edition)
+**Date**: 2023 (12th Edition; executive summary '© 2023', and Prosci's own 2026 materials cite it as 'Prosci, 2023'; corrected 2026-11-23)
 **URL**: https://www.prosci.com/blog/change-management-best-practices
+**Alt URL**: https://prosci.com/hubfs/Website_English/2.downloads/webinars/EN-EUR%20Webinar/Best-Practices-in-Change-Management-12th-Edition-Executive-Summary.pdf (12th Edition executive summary, © 2023); https://www.prosci.com/hubfs/Website_English/2.downloads/webinars/Prosci-BPCM-12th-Edition-Highlights-and-Insights-slides-2023.pdf (Highlights slides)
 **Evidence Level**: C (Industry standard framework, research-based) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - Book ch07 §7.2-7.3 + Appendix K [was: Chapter 4] (Implementation journeys)
 - Best Practices Doc footnote [^13]
 
 **Key Findings**:
-- **Effectiveness**: Projects with effective change management met/exceeded objectives 93% vs 15% with poor change management *(Unverified 2026-11-17: neither figure is on the cited blog page.)*
-- 7× more likely to reach objectives with effective change management
-- **2024 Trends**: AI technology, digital transformation, regulatory compliance, talent retention
-- **183% increase** in pace of change over last four years *(Unverified 2026-11-17: not on the cited blog page.)*
+- **Effectiveness**: Prosci's Feb 2026 PDF, Can You Afford for Your Change to Fail?, says projects with poor change management 'meet success targets only 15% of the time' and those with excellent change management 'achieve success 93% of the time', citing the 12th Edition. The 12th Edition executive summary's own chart of respondents who met or exceeded project objectives gives 88% (excellent), 73% (good), 39% (fair) and 13% (poor). The two pairs come from Prosci documents citing the same edition and were not reconciled on 2026-11-23, so cite whichever document you quote and prefer the executive summary. *(Re-sourced 2026-11-23; neither pair is on the cited blog page.)*
+- 7× more likely to meet objectives with excellent versus poor change management (12th Edition executive summary, 'Excellent Change Management Drives 7X Success'; U.S. subset 8X)
+- **2024 Trends**: AI technology, digital transformation, regulatory compliance, talent retention *(Not found 2026-11-23 on the cited page, in the 12th Edition executive summary or in the Highlights slides.)*
+- ~~183% increase in pace of change over last four years~~ *(Withdrawn 2026-11-23: not found in the cited page, the 12th Edition executive summary, the Highlights slides or Prosci's Feb 2026 PDF; the figure appears verbatim in Accenture's Pulse of Change 2024 Index release, 2024-01-12, https://newsroom.accenture.com/news/2024/businesses-anticipate-unprecedented-rate-of-change-in-2024-new-accenture-pulse-of-change-index-shows.)*
 - **Sponsorship**: Active and visible sponsorship is top contributor to success
-- **Notable shift**: Change management office now most commonly located in PMO (vs HR previously)
+- **Notable shift**: Change management office now most commonly located in PMO (vs HR previously) *(Verified 2026-11-23 in Prosci's 12th Edition Highlights and Insights slides, 2023: 'The PMO replaced HR as the most common location of the Change Management Office'.)*
 - The "30/60/80% adoption pattern" formerly listed here does not match Prosci's published figures (their correlation data runs 13/39/73/88% meeting objectives by change-management effectiveness) — removed 2026-07-09
 
 **Citations**: ch07 §7.2-7.3 + Appendix K [was: Chapter 4] organizational readiness, implementation best practices
 **Notes**: Industry-standard change management source, 12th edition reflects latest research
 
-**Validation Status**: ✅ Active (verified Feb 2026) · ⚠️ 3 figures unverified 2026-11-17, see the dated labels
+**Validation Status**: ✅ Active (page updated 2026-11-04) · Refresh (2026-11-23): edition year corrected to 2023, 93%/15% re-sourced to Prosci's Feb 2026 PDF alongside the executive summary's 88%/13%, 7× and the PMO shift verified, 183% withdrawn and traced to Accenture, and the 2024 Trends bullet labelled not found.
 
 ---
 
@@ -621,21 +622,22 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Authors**: Databricks
 **Date**: 2024
 **URL**: https://web.archive.org/web/20250122143448/https://www.databricks.com/resources/ebook/state-of-data-ai (archived snapshot of the 2024 report page — the live URL now serves Databricks' 2026 "State of AI Agents" report instead)
-**Evidence Level**: B (Vendor survey, 10,000 customers)
+**Alt URL**: https://www.databricks.com/sites/default/files/2024-06/state-of-data-ai-report.pdf (full 2024 report, ungated, 36 pp, verified 2026-11-23)
+**Evidence Level**: B (vendor first-party platform usage data from 10,000+ Databricks customers, Feb 2023 to Mar 2024, not a survey; vendor bias flagged for any generalisation beyond Databricks customers)
 **Relevance**:
-- Book ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] (Flink adoption, streaming trends)
+- Book ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] (AI/ML adoption context; the report carries no Flink or streaming data, checked 2026-11-23)
 - Best Practices Doc footnote [^24]
 
 **Key Findings**:
 - AI models in production: 11x growth year-over-year — archive-verified verbatim ("Why 11x more AI models were put into production year over year")
-- RAG adoption direction confirmed on the archived page ("customizing them with their private data through retrieval augmented generation"); the specific 377% year-over-year figure sits in the gated report body, not landing-page-verifiable
-- 76% open-source LLM preference and 88% financial-services GPU growth: report-body figures, not verifiable on the archived landing page — cite with that caveat or not at all
-- Survey base: "more than 10,000 companies — now including over 300 of the Fortune 500" (archived page verbatim)
+- RAG direction confirmed; the 377% figure is year-over-year growth in the number of customers using vector databases (printed pp. 21 and 23 of the report), not RAG adoption itself (narrowed 2026-11-23)
+- 76% of companies using LLMs choose open source models, often alongside proprietary ones; Financial Services has the highest GPU growth, 88% over six months (both verified in the full report 2026-11-23)
+- Customer base (usage data, not survey respondents): "more than 10,000 companies — now including over 300 of the Fortune 500" (archived page verbatim)
 
 **Citations**: ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] technology adoption trends, AI/ML integration patterns
-**Notes**: Correction (2026-07-10, part-2 sweep fix 3): the live URL was silently repurposed for the 2026 State of AI Agents report (published 2026-01-09), orphaning all four cited figures; re-sourced to the Jan-2025 archive.org snapshot of the 2024 page rather than retiring the entry. Only 11x and the survey base verify verbatim at the snapshot; the other three figures live inside the gated ebook.
+**Notes**: Correction (2026-07-10, part-2 sweep fix 3): the live URL was silently repurposed for the 2026 State of AI Agents report (published 2026-01-09), orphaning all four cited figures; re-sourced to the Jan-2025 archive.org snapshot of the 2024 page rather than retiring the entry. Only 11x and the survey base verify verbatim at the snapshot; the other three figures live inside the gated ebook. Refresh (2026-11-23): the full report PDF is public at the Alt URL, so all four figures now verify at the primary.
 
-**Validation Status**: ⚠️ Re-sourced to archive snapshot 2026-07-10; live URL serves a different (2026) report
+**Validation Status**: ✅ All four figures verified 2026-11-23 against the full 2024 report PDF; 377% narrowed to vector-database growth; the live landing URL still serves the 2026 State of AI Agents report
 
 ---
 
@@ -703,10 +705,11 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 - Partitioned local state + low-overhead changelog "allowing it to scale to massive state sizes (hundreds of TB) per application" (abstract, verified verbatim 2026-07-09)
 - "When using local state we perform millions of requests/s" (§6 evaluation, verified verbatim 2026-07-09)
 - Host Affinity makes recovery time near-constant independent of state size
-- Production deployment table spans LinkedIn datacenters; one deployment cited at 100s of TB total data across 200+ machines
+- LinkedIn production deployment: "100s of TB total data" across "more than 200 applications on over 10,000 containers processing Trillions of events per day" (§1, verified verbatim 2026-11-23; the former "200+ machines" misread applications as machines)
 
 **Citations**: H-STREAM-01 validation; manuscript §3.2.3/3.5/3.6/4.2
 **Notes**: Added 2026-07-09 to replace the orphaned "LinkedIn Kafka Streams: terabytes of state with millisecond access" claim — LinkedIn's stream processor is Samza (Kafka-backed changelog + local RocksDB state, same design family as Kafka Streams), and these are the verified figures. Do not cite a millisecond latency number to this paper; its stated local-state figure is throughput (millions of requests/s).
+**Refresh (2026-11-23)**: PDF re-read (HTTP 200); the scale, throughput and Host Affinity findings are unchanged and verbatim, and the deployment bullet is corrected to the paper wording. No superseding paper from the same authors was found. Apache Samza 1.8.0 (announced 2023-01-17 on samza.apache.org) is the latest release listed on the project site and the project is not in the Apache Attic, so the paper stays the reference for the changelog-plus-local-state design rather than for current LinkedIn practice.
 
 **Validation Status**: ✅ Added + verified against the PDF 2026-07-09
 
@@ -768,9 +771,9 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 
 #### ClickHouse - IP Address Types Performance
 
-**Authors**: ClickHouse Technical Blog
-**Date**: 2024
-**URL**: https://clickhouse.com/docs/sql-reference/data-types/ipv6
+**Authors**: ClickHouse documentation
+**Date**: 2024-2026 (continuously updated)
+**URL**: https://clickhouse.com/docs/reference/data-types/ipv6
 **Evidence Level**: B (Vendor documentation; qualitative storage-efficiency claim only — no benchmarked multiplier in source)
 **Relevance**:
 - Book ch05 §5.3 + Appendix I [was: Chapter 9] (ClickHouse security use cases)
@@ -781,6 +784,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 
 **Citations**: ch05 §5.3 + Appendix I [was: Chapter 9] security-specific optimizations
 **Notes**: Documentation confirms native IP type support; no throughput or speed multiplier is published on this page. Do not cite a specific CIDR-query speedup factor from this source.
+**Refresh (2026-11-23)**: the docs moved from /docs/sql-reference/ to /docs/reference/ (the old path redirects here, HTTP 308); the page still reads "Stored in 16 bytes as UInt128 big-endian" and still publishes no performance figure. Evidence Level stays B for what the type does, per the 2026-11-03 vendor-documentation ruling.
 
 **Validation Status**: ✅ Active URL
 
@@ -820,6 +824,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Date**: 2017 (ACM SIGMOD International Conference on Management of Data)
 **URL**: https://stratos.seas.harvard.edu/publications/access-path-selection-main-memory-optimized-data-systems-should-i-scan-or
 **Alt URL**: https://dl.acm.org/doi/abs/10.1145/3035918.3064049 (DOI 10.1145/3035918.3064049)
+**Alt URL 2**: https://cs-people.bu.edu/mathan/publications/sigmod17-kester.pdf (author-hosted PDF; fetches when the Harvard and ACM pages bot-block)
 **Evidence Level**: A (peer-reviewed, SIGMOD)
 **Relevance**:
 - The academic "why" behind the lab's two-regime / Needle result (`zeek-flagship-rerun/results/NEEDLE-FINDINGS-2026-06-14.md`): a point lookup wins on a secondary index over an unsorted store but ties a sorted columnar store, so the lakehouse point-lookup weakness is a layout choice, not a hard limit. Kester et al. is the formal version of that argument — in a main-memory column store, modern vectorized/SIMD/multi-core sequential scans have become competitive across a much wider selectivity range than the textbook assumes, yet access-path selection is still required because both paths remain useful under varying workloads.
@@ -828,6 +833,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Key Findings**: Sequential scans in main-memory-optimized columnar systems benefit from column-group storage, vectorized execution, shared scans, operating directly over compressed data, and SIMD + multi-core execution, which together make scans the better access path in more cases than older cost models assumed; secondary-index probes still win in a region, so the optimizer must still choose between scan and probe rather than defaulting to one. **FLAG CLOSED (2026-07-10, part-2 sweep fix 40)**: the previously 403-blocked PDF now fetches, and the paper's scoped crossover reads verbatim: "the index is preferable when selectivity drops below 0.5−1%" (single-query, column-at-a-time baseline; the threshold rises to ~8% for 10-column groups and falls toward 0.4% under concurrency). The relayed "~1%" claim was directionally right but unscoped — cite the scoped figure, never a bare "~1%". Authorship/venue confirmed earlier (Harvard DASLab + dblp SIGMOD 2017 + ACM DOI); the ACM page itself was also browser-confirmed live 2026-07-10 for the Axelsson-style bot-block reason.
 **Citations**: Kester, M. S., Athanassoulis, M., & Idreos, S. (2017). *Access Path Selection in Main-Memory Optimized Data Systems: Should I Scan or Should I Probe?* SIGMOD '17, 715–730. DOI 10.1145/3035918.3064049.
 **Validation Status**: ✅ Authorship/title/venue/DOI verified 2026-06-14; ✅ scoped selectivity crossover (0.5–1%, ~8% for 10-column groups, ~0.4% under concurrency) verified at the now-fetchable PDF 2026-07-10 — FLAG closed.
+**Refresh (2026-11-23)**: re-read at the BU-hosted PDF because the Harvard and ACM pages returned 403 to automated fetch; the scoped crossover figures (0.5 to 1%, 8% for ten-column groups, toward 0.4% under concurrency) are unchanged and verbatim. Foundational result, still accurate.
 
 ---
 
@@ -845,6 +851,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Key Findings**: Adapts TPC-DS to the lakehouse setting on AWS EMR across Iceberg, Hudi, and Delta Lake. Headline: Delta Lake ran ~1.4× faster than Hudi and ~1.7× faster than Iceberg on end-to-end TPC-DS queries (vendor-affiliated authorship — Databricks ships Delta, so read the cross-format ordering with that incentive in mind). The large-file-count test (the `store_sales` table split into 10MB files, 1,000→200,000 files) is the more durable contribution: it isolates metadata-processing strategy, with the paper's exact figure: Delta Lake's distributed planning "improves performance by 7–12× for a 200K file table" (p.5 §3.4 verbatim — the entry's former "~7×–20×" appears nowhere in the paper; corrected 2026-07-10). Note this is a 2023 result on the then-current format versions; Iceberg V3/1.11.0 and Hudi have moved since, so cite the *method and the metadata-is-the-differentiator finding*, not the 2023 cross-format ranking as current.
 **Citations**: Jain, P., et al. (2023). *Analyzing and Comparing Lakehouse Storage Systems*. CIDR 2023. cidrdb.org/cidr2023/papers/p92-jain.pdf.
 **Validation Status**: ✅ Verified at the PDF 2026-07-10 (part-2 sweep fix 8): full author roster + Stanford affiliation added; 7–12× metadata figure corrected to paper verbatim; Delta 1.4×/1.7× headline re-confirmed.
+**Refresh (2026-11-23)**: PDF re-read (HTTP 200); the 1.4×, 1.7× and 7 to 12× figures are unchanged. Pin the versions when citing: Spark on AWS EMR 6.9.0 with Delta Lake 2.2.0, Hudi 0.12.0 and Iceberg 1.1.0 (Iceberg 0.14.0 for merge-on-read after S3 timeouts). No LHBench follow-up paper was found. Newer cross-format numbers measure different workloads and point different ways: the Apache Hudi blog (Narayanan, 2026-08-13, Tier C, Hudi maintainer) reports that on an upsert-heavy fact-table workload "Hudi averaged ~4x lower incremental write latency than Iceberg and ~6x lower than Delta Lake" on Hudi 1.1.1, Iceberg 1.10.0 and Delta Lake 3.3.2 with LakeLoader, so the format ordering depends on read versus write workload and on version.
 
 ---
 
@@ -853,14 +860,16 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Authors**: Jesús Camacho-Rodríguez, Ashvin Agrawal, Anja Gruenheid, Ashit Gosalia, Cristian Petculescu, Josep Aguilar-Saborit, Avrilia Floratou, Carlo Curino, Raghu Ramakrishnan (Microsoft)
 **Date**: 2024 (SIGMOD 2024 / Proc. ACM Manag. Data, Vol. 2, No. 1)
 **URL**: https://github.com/microsoft/lst-bench
+**Alt URL**: https://arxiv.org/abs/2305.01120 (technical report, v3 2024-01-19); DOI 10.1145/3639314
 **Evidence Level**: A (peer-reviewed, SIGMOD; framework is Microsoft OSS)
 **Relevance**:
 - The complement to LHBench: a Microsoft framework + paper for benchmarking log-structured tables (Delta Lake, Apache Hudi, Apache Iceberg) with workloads that stress longevity/maintenance behavior (compaction, time-travel, concurrent writes) rather than only point-in-time TPC-DS reads — the dimension the SDW compaction-recovery and interference benches probe.
 - Book ch05 §5.1 (table format) [was: Chapter 8] (table formats), ch05 §5.1 (table format) [was: Chapter 9]; second external anchor for the "the table-format choice shows up under maintenance and concurrency, not just on a cold read" argument.
 
 **Key Findings**: A configurable framework for evaluating log-structured tables (LSTs — Delta/Hudi/Iceberg) under cloud workloads, designed to capture longevity and operational behavior (degradation over many write/compaction cycles) that single-shot benchmarks miss. Cite for the methodology and the operational-dimension framing; specific per-format numbers were not extracted at primary, so do not quote LST-Bench multipliers without reading the paper.
-**Citations**: Camacho-Rodríguez, J., Agrawal, A., Gruenheid, A., Gosalia, A., Petculescu, C., Aguilar-Saborit, J., Floratou, A., Curino, C., & Ramakrishnan, R. (2024). *LST-Bench: Benchmarking Log-Structured Tables in the Cloud*. SIGMOD 2024 / Proc. ACM Manag. Data 2(1).
+**Citations**: Camacho-Rodríguez, J., Agrawal, A., Gruenheid, A., Gosalia, A., Petculescu, C., Aguilar-Saborit, J., Floratou, A., Curino, C., & Ramakrishnan, R. (2024). *LST-Bench: Benchmarking Log-Structured Tables in the Cloud*. SIGMOD 2024 / Proc. ACM Manag. Data 2(1). DOI 10.1145/3639314.
 **Validation Status**: ✅ Verified 2026-06-14 (microsoft/lst-bench GitHub: title/author roster/SIGMOD-2024 venue/three-format scope confirmed via fetch); specific result figures not extracted at primary.
+**Refresh (2026-11-23)**: repo README (HTTP 200) and arXiv v3 re-read; venue Proc. ACM Manag. Data 2(1), DOI 10.1145/3639314, confirmed from the README BibTeX. The same team presented a follow-up at the DBTest 2024 workshop (June 2024, slides linked from the README, not read). Per-format figures are still not extracted.
 
 ---
 
@@ -955,7 +964,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 #### Huntress - ClickHouse Migration Case Study
 
 **Authors**: Huntress / ClickHouse
-**Date**: 2024
+**Date**: 2024-11-19
 **URL**: https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse
 **Evidence Level**: B (Production deployment, validated metrics) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
@@ -977,6 +986,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Notes**: Production security deployment. The cited post does not describe an isolation-first design, table-level-only permissions or an RSA 2025 validation, so those claims, and the RQ7 isolation-first relevance, are withdrawn (2026-11-22). "1M EPS / 3×16-core servers" and "20-50× compression" figures are not supported by the cited blog and have been removed.
 
 **Validation Status**: ✅ Active (verified Feb 2026); the 16 billion figure, labelled unverified on 2026-11-17, was read at the video page on 2026-11-22
+**Refresh (2026-11-23)**: post re-read (HTTP 200, datePublished 2024-11-19); the cost, endpoint, identity and 200,000 records per second figures are unchanged and verbatim, and the video page still carries the 16 billion events a day. A later Huntress engineering post (Coyne, 2025-04-01, https://www.huntress.com/blog/scalable-edr-advanced-agent-analytics-with-clickhouse, Tier B, read at the 2026-07-16 Wayback snapshot because the live page returns 403 to automated fetch) confirms continued ClickHouse use at "millions of endpoints generating billions of data points per day" and says ClickHouse "can automatically take terabytes of data and compress it down to a couple of dozen gigabytes" for its EDR agent analytics data; it gives no ratio for the SIEM workload, so it does not restore the removed 20 to 50× figure.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -996,12 +1006,13 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 - First-hand account of Elastic → ClickHouse migration
 - 93% cost reduction, derived from the $70K to $5K a month the talk's description gives (92.9%), read 2026-11-22 on the ClickHouse video page that embeds this video (https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse)
 - 3M endpoint scale ("over 3 million endpoints", same page)
-- Security data compression and performance
+- Compression and performance discussion: unconfirmed (the video description gives no compression figure, and the talk was not watched or transcribed as of 2026-11-23; do not cite a compression ratio to this talk until it is)
 
 **Citations**: Blog RSA conversations, practitioner validation
 **Notes**: Video of a ClickHouse New York meetup talk by the Huntress CTO (uploaded 2024-10-02, per the ClickHouse video page) *(Corrected 2026-11-23: the former "RSA 2025 field validation" is withdrawn, because the video page describes a NY meetup talk and gives no RSA connection.)*
 
 **Validation Status**: ✅ Active (verified Feb 2026); both figures, labelled unverified on 2026-11-17, were read at the ClickHouse video page on 2026-11-22
+**Refresh (2026-11-23)**: video (HTTP 200, uploaded 2024-10-02) and the ClickHouse video page re-read; the 93% and 3 million endpoint figures are unchanged. The auto-caption track returned an empty body to automated fetch, so the compression item, and the pending Huntress 50:1 check at appendix-i line 529, still need a human viewing.
 
 ---
 
@@ -1081,9 +1092,9 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 #### DuckDB Labs - DuckDB Overview
 
 **Authors**: DuckDB Labs
-**Date**: 2024
-**URL**: https://duckdb.org/why_duckdb.html
-**Evidence Level**: C (Official documentation) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
+**Date**: 2024-2026 (continuously updated)
+**URL**: https://duckdb.org/why_duckdb
+**Evidence Level**: B (official project documentation, cited for what DuckDB is; METHODOLOGY §3.1 and the 2026-11-03 vendor-documentation ruling; re-tiered from A 2026-08-19)
 **Relevance**:
 - Hypothesis (DuckDB edge processing - to be formalized)
 - Book Chapter (emerging patterns)
@@ -1098,6 +1109,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Notes**: no interview has happened; cite the Data Council 2024 talk entry instead
 
 **Validation Status**: ✅ Active URL · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md ("Why DuckDB" supports the OLAP positioning). Stale-by-date, not by content.
+**Refresh (2026-11-23)**: content re-verified, closing the 2026-06-05 date-only triage. The page still says DuckDB "does not run as a separate process but is completely embedded within a host process" by default and is "designed to support analytical query workloads", so both findings hold.
 
 ---
 
@@ -1117,10 +1129,10 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Date**: 2024
 **Source**: Data Council 2024, public conference talk
 **URL**: https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/ (talk abstract, dated 2024-04-18)
-**Alt URL**: https://www.datacouncil.ai/talks/processing-trillions-of-records-at-okta-with-mini-serverless-databases
+**Alt URL**: https://www.aicouncil.com/talks/processing-trillions-of-records-at-okta-with-mini-serverless-databases (the old datacouncil.ai path redirects here)
 **Evidence Level**: B (practitioner reporting a production deployment, publicly)
 **Relevance**:
-- **Research Question RQ7** (Isolation patterns and performance)
+- ~~Research Question RQ7 (Isolation patterns and performance)~~ *(withdrawn 2026-11-23; the talk carries no isolation claim, per the Not-supported block below)*
 - Hypothesis H-EDGE-01 (DuckDB edge processing)
 - Book ch05 §5.3 + Appendix I [was: Chapter 9] (Query engines - DuckDB)
 
@@ -1141,6 +1153,8 @@ them to Jake Thomas. RQ7 and RQ10 need another source.
 **Citations**: H-EDGE-01 DuckDB production-volume evidence
 **Notes**: A public talk is citable without permission. There has been no interview,
 and nothing may be attributed to one.
+
+**Refresh (2026-11-23)**: abstract re-read (HTTP 200); all four figures unchanged and verbatim. The same speaker gave a follow-up, "Embedding OLAP, Everywhere: Lessons from Okta" (Data Council 2025, 2025-05-29, https://duckdb.org/library/embedding-olap-everywhere-lessons-from-okta/, Tier B), whose abstract describes how Okta "shifted from traditional data processing systems to embedded database systems across multiple workloads" and gives no new figures, so it corroborates continued production use without replacing the 2024 numbers.
 
 **Validation Status**: ✅ Public source, no permission required
 
@@ -1257,7 +1271,7 @@ and nothing may be attributed to one.
 #### Apache Flink Checkpointing - Fault Tolerance Patterns
 
 **Authors**: Apache Flink Documentation
-**Date**: 2024
+**Date**: 2024-2026 (continuously updated; v2.3.0 docs read 2026-11-23)
 **URL**: https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/datastream/fault-tolerance/checkpointing/
 **Evidence Level**: B (Official documentation; prescribes mechanism, not security-specific intervals or recovery SLAs)
 **Relevance**:
@@ -1282,9 +1296,9 @@ and nothing may be attributed to one.
 #### Microsoft Purview - Retention Policies and Labels
 
 **Authors**: Microsoft Learn
-**Date**: 2024
+**Date**: 2024-2026 (continuously updated; page ms.date 2026-07-22)
 **URL**: https://learn.microsoft.com/en-us/purview/retention
-**Evidence Level**: C (Vendor documentation — general retention-policy/label reference only)
+**Evidence Level**: B (vendor documentation cited for what the feature does, per the 2026-11-03 ruling; general retention-policy/label reference only)
 **Relevance**:
 - Compliance retention requirements
 - Book ch06 §6.1 (sovereignty) + Appendix J [AMBIGUOUS] [was: Chapter 11] (Governance)
@@ -1297,6 +1311,7 @@ and nothing may be attributed to one.
 
 **Citations**: ch06 §6.1 (sovereignty) + Appendix J [AMBIGUOUS] [was: Chapter 11] compliance patterns
 **Notes**: Generic retention-policy/label reference. Security-specific figures (session durations, entity-profile windows, NIST alignment) are not present in this source and have been removed.
+**Refresh (2026-11-23)**: page re-read (HTTP 200, last updated 2026-07-22). It still sets policies at "a site or mailbox level" and labels "at an item level (folder, document, email)", with retain-only, delete-only and retain-then-delete outcomes, so the findings hold; it also lists "Microsoft Copilot experiences" among the locations retention covers.
 
 **Validation Status**: ✅ Active URL
 
@@ -1315,14 +1330,15 @@ and nothing may be attributed to one.
 - Best Practices Doc footnotes [^170], [^171]
 
 **Key Findings**:
-- Confluent publishes a structured, multi-stage learning path for Apache Kafka adoption
-- The course covers core concepts, producers/consumers, and cluster operations as a methodical progression toward streaming maturity
+- Confluent publishes Apache Kafka 101, an introductory developer course of 16 lessons, 11 topic lessons and 5 hands-on exercises (topics, partitions, brokers, replication, producers, consumers, Schema Registry, Kafka Connect, stream processing with a Flink SQL exercise, Confluent's offerings)
+- The course is ordered from concepts to client code to integration, but it is a learning sequence for developers, with no adoption or implementation roadmap and nothing about maturity stages; its operations content is limited to the Brokers and Replication lessons
 - No specific deployment-timeline figures are disclosed in this source; specific month estimates have been removed
 
 **Citations**: ch02 §2.2 (components: collection and pipeline) [was: Chapter 4] streaming implementation journey
 **Notes**: Supports the qualitative point that vendor-structured learning paths exist; not a source for quantitative timeline claims.
 
 **Validation Status**: ✅ Active URL
+**Refresh (2026-11-23)**: URL redirects to the course's first lesson (/courses/apache-kafka/events/), status 200. The course is Apache Kafka 101 with 16 lessons (5 of them hands-on exercises), and it now links Kafka 4.0 material, so it was revised after 2024. The heading's "Implementation Roadmap" framing goes beyond the source: the page is an introductory course with no adoption stages or timelines, and the findings were narrowed to match.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1363,14 +1379,15 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^183]
 
 **Key Findings**:
-- "Plan to throw one away" principle
+- "Plan to throw one away" principle (1975 essay, ch. 11). In the 1995 Anniversary Edition's added ch. 19, "The Mythical Man-Month after 20 Years", Brooks is reported to revise it as "too simplistic" because it assumes a waterfall sequence, and to favour incremental build *(Unverified at the primary 2026-11-23: wording via a Tier C secondary source, a 2008 blog comment quoting p. 265 of ISBN 0-201-83595-9; confirm against the book before quoting)*
 - Complex systems require experiential learning
 - Pilot architecture reduces risk
 
 **Citations**: ch07 §7.2-7.3 + Appendix K [was: Chapter 4] implementation methodology
-**Notes**: Classic reference, data architecture applicability
+**Notes**: Classic reference, data architecture applicability Cite the pilot-first point to ch. 11 and state the 1995 revision wherever the throwaway principle is used, because the edition cited here is reported to contain Brooks's own revision of it.
 
 **Validation Status**: ✅ Active URL (book available) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but content-current — re-sourced 2026-06-05 (Pearson product code corrected — the prior URL resolved to a different book); see RESEARCH-JOURNAL.md. Stale-by-date, not by content.
+**Refresh (2026-11-23)**: Pearson page live (200), 1995 Anniversary Edition confirmed (paperback ISBN 9780201835953). The ch. 19 revision of the throwaway advice is corroborated by a secondary source only and was added to Key Findings with an unverified label.
 
 ---
 
@@ -1406,15 +1423,15 @@ and nothing may be attributed to one.
 **Evidence Level**: B (ClickHouse-published case study of a Netflix production deployment; vendor-relayed, no first-party Netflix primary found)
 **Relevance**:
 - **Research Question RQ7** (Isolation patterns and performance)
-- **Research Question RQ10** (Catalog governance decisions)
-- Book ch05 §5.1 (table format) [was: Chapter 8] (Storage formats - catalog selection)
+- ~~**Research Question RQ10** (Catalog governance decisions)~~ *(2026-11-23: the blog body says nothing about catalogs, so this entry carries no catalog-governance evidence)*
+- Book ch05 §5.1 (table format) [was: Chapter 8] (Storage formats - ~~catalog selection~~ Iceberg cold tier only, per the 2026-11-23 note under Key Findings)
 - Book ch05 §5.3 + Appendix I [was: Chapter 9] (Query engines - ClickHouse architecture)
 
 **Key Findings** (figures verified at the ClickHouse blog primary, 2026-07-09):
 - ClickHouse hot tier + Apache Iceberg cold tier, handling ~5 PB/day of logs
 - 10.6M events/sec average (12.5M peak), ~5 KB/event; 40,000+ microservices
 - 500–1,000 queries/sec; logs usually searchable within ~20 seconds vs a 5-minute SLA
-- Iceberg metadata catalog is pluggable — the blog names Apache Polaris, Unity Catalog OSS, Nessie, and Hive Metastore as options; "Polaris" is one catalog choice, not the platform name
+- ~~Iceberg metadata catalog is pluggable — the blog names Apache Polaris, Unity Catalog OSS, Nessie, and Hive Metastore as options; "Polaris" is one catalog choice, not the platform name~~ *(Not in page, 2026-11-23: the blog body, live and in Wayback copies of 2025-10-31 and 2026-07-18, contains none of "Polaris", "Nessie", "Hive Metastore", "Unity Catalog", "pluggable" or "catalog"; whether the underlying July 2025 talk named these catalogs is unconfirmed, so cite nothing about catalogs from this entry without a talk-level source.)*
 - The blog does not use "isolation-first"; the earlier security/isolation framing was a mis-attribution and has been removed (entry retitled 2026-07-09)
 
 **Citations**: RQ7/RQ10 qualitative architecture reference, ch05 §5.3 + Appendix I [was: Chapter 8/9] ClickHouse + Iceberg pattern
@@ -1449,21 +1466,23 @@ and nothing may be attributed to one.
 **Authors**: Forrester Consulting (commissioned by Cloudera)
 **Date**: 2024-05
 **URL**: https://tei.forrester.com/go/cloudera/onPremises/
-**Evidence Level**: C (Commissioned research, quantitative - 6 organizations interviewed; flag vendor-commissioned bias where cited) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
+**Evidence Level**: C (Commissioned research, quantitative, six representatives of five organizations interviewed, results modelled on a composite organization; flag vendor-commissioned bias where cited) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
 **Relevance**:
 - **Hypothesis H-IMPL-01** (Hidden costs)
 - Book ch02 §2.3 (economics) [was: Chapter 1] (Cost comparisons)
 - Best Practices Doc footnote [^187]
 
 **Key Findings**:
-- 35% cost savings with modern architecture (not re-verified this pass — interactive TEI study)
-- 80% faster time to value worth $11.5M over 3 years (not re-verified this pass)
-- 20% enhanced data team productivity, $1.6M over 3 years (not re-verified this pass)
+- 35% cost savings with modern architecture
+- 80% faster time to value worth $11.5M over 3 years
+- 20% enhanced data team productivity, $1.6M over 3 years
+- Headline: 254% ROI and $12.77M NPV over three years for the composite; the 35% saving is against a $6M annual storage-and-compute baseline and is valued at $4.7M over three years (risk-adjusted present value; verified 2026-11-23)
 
 **Citations**: H-IMPL-01 (directional only — see note), ch02 §2.3 (economics) [was: Chapter 1] cost modeling
 **Notes**: **Split 2026-07-09** from a conflated entry that mixed this study with the October 2021 Public Cloud PDF. The TCO-distribution claim was withdrawn (see the Public Cloud entry); the remaining figures are savings/velocity claims, not a cost-share breakdown.
 
-**Validation Status**: ✅ Active URL (verified Feb 2026, interactive TEI study); figures not re-verified in the 2026-07-09 sweep
+**Validation Status**: ✅ Active URL; all figures verified on the TEI page 2026-11-23
+**Refresh (2026-11-23)**: page live (200), May 2024 date confirmed; no newer Cloudera TEI found; interviewee count corrected to six representatives of five organizations. A financial-services spotlight of the same study exists at tei.forrester.com/go/cloudera/financialspotlight/ and repeats the 254% and $12.77M figures; it is the same May 2024 study, not new evidence.
 
 ---
 
@@ -1474,7 +1493,7 @@ and nothing may be attributed to one.
 **URL**: https://developer.confluent.io/courses/architecture/get-started/
 **Evidence Level**: B (Vendor best practices)
 **Relevance**:
-- **Hypothesis H-IMPL-01** (Streaming TCO)
+- ~~**Hypothesis H-IMPL-01** (Streaming TCO)~~ *(2026-11-23: the page carries no TCO content, so it supports no H-IMPL-01 leg)*
 - Book ch02 §2.3 (economics) [was: Chapter 7] (Kafka sizing)
 - Best Practices Doc footnote [^188]
 
@@ -1482,8 +1501,8 @@ and nothing may be attributed to one.
 - Operational complexity and specialized talent dominate self-managed Kafka TCO (qualitative consensus; specific 45-55% figure is not in this source) *(Withdrawn 2026-11-23, not in source: the course page contains none of "TCO", "total cost", "talent", "operational complexity" or "sizing", and its two mentions of cost concern choosing a Confluent Cloud cluster type for the exercises.)*
 - Sizing methodology covering partition counts, replication, and broker capacity *(Narrowed 2026-11-23: the page explains topics, partitions and what sits inside a broker, and notes that a partition can exceed "the capacity of a single broker" in Confluent's implementation, but it gives no sizing method; read it as architecture background.)*
 
-**Citations**: H-IMPL-01 TCO validation, ch02 §2.3 (economics) [was: Chapter 7] capacity planning
-**Notes**: **CRITICAL** - Streaming operational cost driver. The "45-55% of TCO" figure has been removed as unsupported by this source. For a quantified reduction claim, Confluent's TCO page cites "up to 40-60% TCO reduction" with managed Kafka. Correction (2026-07-10, part-2 sweep fix 9): the "infrastructure cost benchmarks for capacity planning" finding was dropped — the cited course covers Kafka internals/architecture only and carries no cost or capacity-cost content at all. *(Unverified 2026-11-17: the TCO page this figure is attributed to is not named by URL, and Confluent's cost-effectiveness page, confluent.io/project-metamorphosis/cost-effective/, says "up to 60%" and gives no 40-60% range.)*
+**Citations**: ~~H-IMPL-01 TCO validation~~ *(withdrawn 2026-11-23)*, ch02 §2.3 (economics) [was: Chapter 7] capacity planning
+**Notes**: ~~**CRITICAL** - Streaming operational cost driver.~~ *(Withdrawn 2026-11-23 with the driver finding above; the course page is architecture background only.)* The "45-55% of TCO" figure has been removed as unsupported by this source. For a quantified reduction claim, Confluent's TCO page cites "up to 40-60% TCO reduction" with managed Kafka. Correction (2026-07-10, part-2 sweep fix 9): the "infrastructure cost benchmarks for capacity planning" finding was dropped — the cited course covers Kafka internals/architecture only and carries no cost or capacity-cost content at all. *(Unverified 2026-11-17: the TCO page this figure is attributed to is not named by URL, and Confluent's cost-effectiveness page, confluent.io/project-metamorphosis/cost-effective/, says "up to 60%" and gives no 40-60% range. Re-read 2026-11-23: the cost-effective page still says "Reduce TCO of Kafka by up to 60% using Confluent" and gives no 40-60% range; cite it as "up to 60%", vendor claim, Tier C.)*
 
 **Validation Status**: ✅ Verified at primary 2026-07-10; cost-benchmark finding removed as unsupported · ⚠️ 1 figure unverified 2026-11-17, see the dated label
 
@@ -1563,8 +1582,8 @@ and nothing may be attributed to one.
 #### AWS Well-Architected - Compute Optimization
 
 **Authors**: Amazon Web Services
-**Date**: 2024
-**URL**: https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html
+**Date**: 2026-11-16 (Framework 'Last updated', per the Framework welcome page; the standalone Cost Optimization Pillar whitepaper is marked historical and slated for deprecation)
+**URL**: https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html
 **Evidence Level**: B (Cloud provider framework guidance — prescriptive methodology without a specific quantified savings figure)
 **Relevance**:
 - Cost optimization patterns
@@ -1572,14 +1591,15 @@ and nothing may be attributed to one.
 - Best Practices Doc footnotes [^194], [^198]
 
 **Key Findings**:
-- AWS Well-Architected Cost Optimization Pillar prescribes right-sizing compute to workload demand as a primary cost-reduction mechanism
-- Industry estimates for right-sizing savings range approximately 15-25%; the specific "22% average" figure cited previously originates from CloudZero, not this AWS source, and has been removed *(Unverified 2026-11-17: the range names no source and is not on the cited AWS page.)*
-- Workload-appropriate instance selection (e.g., Graviton, Spot, Savings Plans) covered as complementary levers
+- The AWS Well-Architected Framework's cost optimization pillar prescribes right-sizing compute to workload demand as a primary cost-reduction mechanism
+- No savings figure appears in the Well-Architected cost-optimization guidance for right-sizing. AWS's own Compute Optimizer marketing claims recommendations can "reduce costs by up to 25%" (amazonaws.cn/en/compute-optimizer, read 2026-11-23; vendor ceiling, Tier C, bias flagged); the unsourced 15-25% range and the CloudZero 22% are not citable from this entry
+- Pricing-model selection ("Select the best pricing model", COST07) is a separate practice in the same area; COST07-BP01 names Savings Plans, Reserved Instances and Spot Instances as the models to match to usage patterns. Graviton is not named on the pages read 2026-11-23
 
 **Citations**: ch02 §2.3 (economics) [was: Chapter 1] cost optimization tactics
-**Notes**: Cloud cost optimization baseline. The 22% figure has been removed; use the 15-25% range as a conservative industry estimate or cite CloudZero separately for the specific number.
+**Notes**: Cloud cost optimization baseline. The 22% figure has been removed; do not cite a right-sizing percentage from this entry; cite CloudZero separately for its 22%, or the Compute Optimizer 'up to 25%' as a vendor ceiling.
 
-**Validation Status**: ✅ URL available (AWS docs) · ⚠️ 1 figure unverified 2026-11-17, see the dated label
+**Validation Status**: ✅ URL available (AWS docs) · the 2026-11-17 unverified range was removed 2026-11-23, see the Refresh note
+**Refresh (2026-11-23)**: cited URL redirects to the Framework's cost-optimization page (Framework last updated 2026-11-16), which regroups the pillar into four areas; the standalone pillar whitepaper is now historical. Right-sizing guidance unchanged in substance.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1611,7 +1631,7 @@ and nothing may be attributed to one.
 
 #### Google SRE - Reliability Economics (Exponential Cost of Nines)
 
-**Authors**: Google Site Reliability Engineering Team
+**Authors**: Marc Alvidrez (ed. Kavita Guliani), in Beyer et al., Site Reliability Engineering, O'Reilly/Google
 **Date**: 2017 (book copyright, per the page footer — entry formerly said 2024)
 **URL**: https://sre.google/sre-book/embracing-risk/
 **Evidence Level**: B (Authoritative public text; bracketed placeholder URL corrected — cite as expert-consensus reference, not a quantified production study)
@@ -1621,14 +1641,15 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^222]
 
 **Key Findings**:
-- Each additional "nine" of availability costs approximately ~100× more than the previous increment (not 10×), per Google SRE's Embracing Risk chapter
-- Exponential scaling applies across infrastructure and operations
-- Industry-consensus guidance: match reliability target to business need rather than pursuing maximum possible uptime
+- Cost does not rise linearly with reliability: an incremental improvement in reliability "may cost 100x more than the previous increment" (Embracing Risk). This is a hedged illustration and the chapter gives no per-nine multiplier; its nines sentence ("Each additional nine corresponds to an order of magnitude improvement toward 100% availability") is about availability and says nothing about cost
+- The chapter names two cost dimensions, redundant machine/compute resources and the opportunity cost of engineering time spent on reliability in place of features; it calls the risk continuum nonlinear and never uses the word exponential
+- Match the reliability target to business need: "We strive to make a service reliable enough, but no more reliable than it needs to be."
 
 **Citations**: ch02 §2.3 (economics) [was: Chapter 1] reliability economics, cost optimization
-**Notes**: URL updated to sre.google/sre-book/embracing-risk/. The original "10×" multiplier was incorrect; the SRE book describes ~100× per increment. Security-specific reliability guidance is not in this source; remove that framing.
+**Notes**: URL updated to sre.google/sre-book/embracing-risk/. The original "10×" multiplier was incorrect; the SRE book says an increment "may cost 100x more" and gives no ~100× per nine figure. Security-specific reliability guidance is not in this source; remove that framing.
 
 **Validation Status**: ✅ SRE book available
+**Refresh (2026-11-23)**: page live (200), © 2017 confirmed. The ~100×-per-nine wording and 'exponential' were narrowed to the chapter's 'may cost 100x' and 'nonlinear'. The heading's 'Exponential' is kept as an anchor only.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1636,8 +1657,8 @@ and nothing may be attributed to one.
 #### Gartner - Reliability Overinvestment Analysis
 
 **Authors**: Gartner Research
-**Date**: 2024
-**URL**: [Gartner reliability research — doc 3906266, paywalled]
+**Date**: 2024 *(Unconfirmed 2026-11-23: the document page could not be read; an earlier pass reported a Wayback capture of the page dated 2022-12-24, which would put the document before 2024, but that capture was not re-read)*
+**URL**: https://www.gartner.com/en/documents/3906266 (paywalled; returns 403 to automated fetch; title and existence of the document not confirmed 2026-11-23)
 **Evidence Level**: B (Analyst advisory; specific "70% overspend" statistic is not findable in any Gartner source — entry retained as paywalled-analyst-consensus reference only)
 **Relevance**:
 - Infrastructure investment optimization
@@ -1645,14 +1666,15 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^237]
 
 **Key Findings**:
-- Gartner advises aligning resilience investment to actual business need to avoid overspend on reliability that exceeds genuine requirements
-- Resources committed to excess reliability headroom are unavailable for higher-value security initiatives
-- Tiered reliability targets, matched to workload criticality, are the recommended approach (topic anchor: Gartner doc 3906266)
+- Gartner advises aligning resilience investment to actual business need to avoid overspend on reliability that exceeds genuine requirements *(Unverified 2026-11-23: the document's title and content could not be read; paraphrase only.)*
+- Resources committed to excess reliability headroom are unavailable for higher-value security initiatives *(Unverified 2026-11-23: the document's title and content could not be read; paraphrase only.)*
+- Tiered reliability targets, matched to workload criticality, are the recommended approach (topic anchor: Gartner doc 3906266) *(Unverified 2026-11-23: the document's title and content could not be read; paraphrase only.)*
 
 **Citations**: ch02 §2.3 (economics) [was: Chapter 1] optimization recommendations
 **Notes**: The specific "70% of orgs overspend" figure is not verifiably sourced in any Gartner publication and has been removed. Cite this entry as paywalled-analyst guidance only.
 
 **Validation Status**: ⚠️ Paywall (Gartner research)
+**Refresh (2026-11-23)**: document page returns 403 to automated fetch; no public title or abstract found by search. Owner decision needed on whether a paraphrase of an unread paywalled document stays in the bibliography; the Google SRE entry carries the same 'reliable enough, no more' point verbatim and can stand in for it.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1669,14 +1691,15 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^232]
 
 **Key Findings**:
-- Uptime Institute's tier classification (Tier I–IV) provides a cost-benefit framework for matching reliability investment to workload criticality
-- Higher tiers carry substantially greater infrastructure and operational cost; the framework is designed to prevent over-engineering for workloads that do not require it
-- Mission-critical components may warrant upper-tier investment; general-purpose workloads typically do not
+- Uptime Institute's Tier I-IV classification rates data-center facility infrastructure (power, cooling, maintenance, fault tolerance) and is presented as a way of "aligning infrastructure investments to business goals"; the page says a higher tier is not better in itself ("This progression does not mean that a Tier IV data center is better than a Tier II") and that "It is ultimately up to the owner to determine which Tier is best for their business needs."
+- *(Narrowed 2026-11-23: the tiers page states no cost figures or cost comparison between tiers and does not discuss over-engineering; the cost gradient is an inference and has no cited source here.)*
+- *(Inference, absent from the page 2026-11-23: applying facility tiers to workload criticality is this bibliography's extrapolation.)*
 
 **Citations**: ch02 §2.3 (economics) [was: Chapter 1] reliability guidance
-**Notes**: The specific "98% of orgs cannot economically justify beyond four nines" figure is not findable and has been removed. Cite this entry as the Uptime Institute tier-classification framework only (uptimeinstitute.com/tiers).
+**Notes**: The specific "98% of orgs cannot economically justify beyond four nines" figure is not findable and has been removed. Cite this entry as the Uptime Institute tier-classification framework only (uptimeinstitute.com/tiers). The heading's 'Reliability Tier Economics' is not a document title; the cited source is the Tier Classification System page, which is open and not paywalled.
 
 **Validation Status**: ⚠️ URL updated to uptimeinstitute.com/tiers; original specific statistic not sourced
+**Refresh (2026-11-23)**: page live (200); claims narrowed to the page's 'aligning infrastructure investments to business goals' and 'Tier IV is not better than Tier II' wording; the tiers concern facility infrastructure and say nothing about software reliability.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1748,14 +1771,14 @@ and nothing may be attributed to one.
 **Key Findings**:
 - 407 contributors on apache/iceberg (GitHub deduplicated count, as of 2026-07-09) — re-sourced 2026-07-09: the cited community page carries no contributor or organization counts, so the earlier "300+ contributors across 100+ organizations" was replaced with the GitHub-derived figure and the organization count dropped as underivable *(Superseded 2026-11-23: the count was a floor set by the API limit and the "deduplicated" reading was mistaken; see the next bullet.)*
 - Refreshed 2026-11-23: the GitHub contributors endpoint for apache/iceberg (read through `gh api`) now lists 406 linked accounts, 405 users and 1 bot, and with `anon=1` it lists 946 entries, 540 of them anonymous. GitHub's documentation for the endpoint says "only the first 500 author email addresses in the repository link to GitHub users" and that "The rest will appear as anonymous contributors without associated GitHub user information" (https://docs.github.com/en/rest/repos/repos#list-repository-contributors). The repository has more than 500 author email addresses, so the linked-account count is a floor set by that limit, and the 2026-07-09 reading that 407 was uncapped because it sat under 500 was mistaken. The distinct contributor count lies somewhere between 406 and 946, because anonymous entries are per email address and can repeat a person, and the API cannot narrow it further. Cite it as "more than 400 contributors with linked GitHub accounts (2026-11-23)" with the limit stated, and drop the bare "407".
-- Open governance model
-- Iceberg Foundation for dedicated advancement
+- Open governance under the Apache Software Foundation: the community page describes the path from contributor to committer, with committers nominated and discussed by the PMC (the page does not use the word 'governance')
+- ~~Iceberg Foundation for dedicated advancement~~ *(Withdrawn 2026-11-23: no 'Iceberg Foundation' appears on the community page or in a web search; the project is governed by the Apache Iceberg PMC under the Apache Software Foundation.)*
 
 **Citations**: H-ARCH-01 sustainability validation
-**Notes**: Community strength = long-term viability. For the contributor count, cite GitHub (https://github.com/apache/iceberg) with an as-of date, not the community page.
+**Notes**: Community strength = long-term viability. For the contributor count, cite GitHub (https://github.com/apache/iceberg) with an as-of date, not the community page. The heading's 'Apache Iceberg Foundation' is a misnomer kept as an anchor; read it as 'Apache Iceberg (ASF project)'.
 
 **Validation Status**: ✅ Re-verified 2026-07-09: community page live but count-free; contributor figure re-sourced to GitHub API (407, under the API's 500-entry cap, so uncapped). *(Corrected 2026-11-23: the 500 limit applies to author email addresses, which exceed 500 here, so the figure was capped.)*
-**Refresh (2026-11-23)**: contributor count re-derived and the cap reading corrected (see Key Findings); the community page text was read and still gives no contributor or organization count.
+**Refresh (2026-11-23)**: contributor count re-derived and the cap reading corrected (see Key Findings); the community page text was read and still gives no contributor or organization count. The governance findings were re-read the same day: no 'Iceberg Foundation' appears on the community page or in a web search, and the Iceberg Summit 2026 announcement (2026-01-10) says the summit is sanctioned by the Apache Software Foundation with oversight from the Apache Iceberg PMC, so the foundation finding is withdrawn and the open-governance finding is narrowed to what the page says. Latest release apache-iceberg-1.12.0, published 2026-09-30 (GitHub releases API, 2026-11-23).
 
 ---
 
@@ -1845,20 +1868,21 @@ and nothing may be attributed to one.
 
 **Key Findings**:
 - Case 1: −97% read data size (209 GB → 6.11 GB) on a 52.7 TB Iceberg table; elapsed time 97.2 s → 3.39 s (−96.5%)
-- Partition evolution + predicate pushdown enable the data-pruning gains
-- Headline improvement across cases: ~−80%
+- The slides credit a partition redesign for partition pruning (33,942 Hive partitions to 109,765 Iceberg partitions, with hidden partitioning on days(event_time)) and column sorting for predicate pushdown, kept in order by a daily rewrite_data_files compaction; partition evolution is not mentioned. The before and after therefore compares a Hive table with a redesigned, sorted and compacted Iceberg table, so the gain cannot be assigned to the format alone
+- Headline: "Reduced query elapsed time by 80%" (slides; the accompanying chart shows −82% total drivers, −91% read data size and −76% elapsed time); the same slides report storage reduced 75% and cores and memory reduced 60%
 
 **Citations**: H-ARCH-01 performance validation
 **Notes**: Quantitative production validation
 
 **Validation Status**: ✅ Active URL
+**Refresh (2026-11-23)**: recap and slides live (200); Case 1 figures re-verified verbatim; mechanism narrowed (predicate pushdown and partition pruning are in the slides, partition evolution is not). A separate SK Telecom Trino Summit 2023 deck (efficient Kappa architecture) exists but was not read and does not update these figures.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### ClickHouse vs Elasticsearch - Storage Efficiency
 
-**Authors**: ClickHouse Benchmarks
+**Authors**: Tom Schreiber (ClickHouse)
 **Date**: 2024
 **URL**: https://clickhouse.com/blog/clickhouse_vs_elasticsearch_the_billion_row_matchup
 **Evidence Level**: B (Benchmark study) — re-tiered from A 2026-08-19: not peer-reviewed research and not an official standard
@@ -1868,15 +1892,15 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^208]
 
 **Key Findings**:
-- 12-19× less storage than Elasticsearch at functionally equivalent configuration; 9-12× with Elasticsearch `_source` disabled (verified verbatim at primary 2026-07-09 — the entry's earlier "5-10×" matched only the page's query-speed multipliers, not its storage figures)
+- 12-19× less storage than Elasticsearch on the 10-billion-row data set and 9-12× on the 1-billion-row data set, both at functionally equivalent configuration (Elasticsearch `_source` kept, same compression level); with `_source` disabled the gap is about 7× (LZ4) to 10× (ZSTD) at 1 billion rows and 9× to over 14× at 10 billion (re-read 2026-11-23; the earlier "9-12× with `_source` disabled" reading was wrong, and the earlier "5-10×" matched only query-speed multipliers)
 - Billion-row performance comparison
-- Security log format optimization
+- Security log format optimization *(Not on the cited page, 2026-11-23: the benchmark uses PyPI download events and has no security content.)*
 
 **Citations**: H3-PERFORMANCE-01 extension, ch05 §5.3 + Appendix I [was: Chapter 9] ELK migration
-**Notes**: Direct performance comparison for security logs; vendor benchmark — label as such where cited
+**Notes**: Vendor benchmark on PyPI download-event data (analytics and observability workload, count(*) aggregations); not a security-log test, label as such where cited
 
 **Validation Status**: ✅ Re-verified at primary 2026-07-09: page (dated 2024-05-07 at fetch) states 12-19× / 9-12× storage reduction. The earlier freshness note's "2026-03-03 update / 5x realistic-OTel / 9-19×" claims are not on this page (the ~5×/OTel figures belong to a different 2026 ClickHouse post) and were removed.
-**Refresh (2026-11-23)**: storage figures re-read verbatim ("12 to 19 times less storage space"; "9 to 12 times less storage space" with `_source` disabled), the same as on 2026-07-09. The byline is Tom Schreiber (ClickHouse), May 7, 2024, so cite him as author. The page's structured data also carries `dateModified` 2026-03-03T12:30:30Z, which is probably where the removed "2026-03-03 update" note came from. The figures read the same as at the 2026-07-09 check.
+**Refresh (2026-11-23)**: storage figures re-read verbatim ("12 to 19 times less storage space" at 10 billion rows; "9 to 12 times less storage space" at 1 billion rows, both with `_source` kept), the same as on 2026-07-09. The byline is Tom Schreiber (ClickHouse), May 7, 2024, so cite him as author. The page's structured data also carries `dateModified` 2026-03-03T12:30:30Z, which is probably where the removed "2026-03-03 update" note came from. The figures read the same as at the 2026-07-09 check. The `_source`-disabled attribution carried since 2026-07-09 is corrected in this pass.
 
 ---
 
@@ -1906,7 +1930,7 @@ and nothing may be attributed to one.
 
 #### DARPA XAI - Explainable Artificial Intelligence Program
 
-**Authors**: DARPA (David Gunning, David W. Aha)
+**Authors**: DARPA (program page); David Gunning and David W. Aha (AI Magazine 2019); David Gunning, Eric Vorm, Jennifer Yunyan Wang and Matt Turek (Applied AI Letters 2021 retrospective)
 **Date**: 2017-2021 (program), published 2019
 **URL**: https://www.darpa.mil/research/programs/explainable-artificial-intelligence
 **Evidence Level**: B (Government research program; headline budget/ranking claims unsupported — retained claims are program-scope facts)
@@ -1918,12 +1942,13 @@ and nothing may be attributed to one.
 **Key Findings**:
 - Development of XAI toolkit for future systems — program page verbatim: "the final delivery will be a toolkit library consisting of machine learning and human-computer interface software modules that could be used to develop future explainable AI systems"
 - Defense and national security focus areas; false positives/negatives have high operational consequences
-- 4-year program (2017-2021), ~11 research teams, David Gunning as program manager — attribute these to the retrospective (Gunning & Aha 2021, *Applied AI Letters*, doi 10.1002/ail2.61), NOT the program page, which carries neither the team count, nor Gunning's name, nor the 2017-2021 span (verified 2026-07-10)
+- 4-year program (2017-2021), ~11 research teams, David Gunning as program manager — attribute these to the retrospective (Gunning, Vorm, Wang & Turek 2021, *Applied AI Letters* 2(4), doi 10.1002/ail2.61), NOT the program page, which carries neither the team count, nor Gunning's name, nor the 2017-2021 span (verified 2026-07-10)
 
 **Citations**: Advanced analytics, ML governance, regulatory compliance
 **Notes**: Definitive government source on explainability requirements for security AI. Correction (2026-07-10, part-2 sweep fix 11): program-metadata claims re-attributed from the DARPA page to the retrospective the entry already lists.
 
 **Validation Status**: ✅ Verified at primary 2026-07-10; toolkit claim page-verbatim, metadata re-attributed
+**Refresh (2026-11-23)**: program page 200 and the toolkit sentence re-read verbatim. The retrospective at doi 10.1002/ail2.61 is by Gunning, Vorm, Wang and Turek per Crossref, not Gunning and Aha, whose paper is AI Magazine 40(2), 2019, doi 10.1609/aimag.v40i2.2850, so the author credit is corrected. The ~11 teams, the 2017-2021 span and the program-manager credit could not be re-read at the retrospective, which blocks automated readers, so they stay as attributed and unconfirmed this pass. For a standards anchor on explainability, see NIST IR 8312 (Four Principles of Explainable Artificial Intelligence, 2021-09-29, Tier A).
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1962,8 +1987,9 @@ and nothing may be attributed to one.
 #### CISA - Enhanced Security Monitoring Best Practices
 
 **Authors**: CISA (Cybersecurity and Infrastructure Security Agency)
-**Date**: 2023-2024
+**Date**: 2023-07-12 (updated 2023-07-14)
 **URL**: https://www.cisa.gov/news-events/alerts/2023/07/12/cisa-and-fbi-release-cybersecurity-advisory-enhanced-monitoring-detect-apt-activity-targeting
+**Alt URL**: https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-193a (advisory, source of the findings)
 **Evidence Level**: B (Government security authority) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Enhanced monitoring and logging requirements
@@ -1975,12 +2001,13 @@ and nothing may be attributed to one.
 - Baseline establishment for outlier detection
 - MailItemsAccessed events monitoring (Microsoft 365)
 - Continuous monitoring of cloud environments
-- ~12 month retention for behavioral baselines (per advisory aa23-193a) *(Unverified 2026-11-17: the 12-month figure could not be re-read, because the advisory page blocks automated readers.)*
+- Quotes OMB M-21-31: Microsoft audit logs retained for at least twelve months in active storage plus eighteen months in cold storage (a federal civilian requirement, not a baseline-specific figure; read at advisory aa23-193a 2026-11-23)
 
 **Citations**: Advanced analytics chapter, data retention, threat detection
 **Notes**: Government authority on security monitoring practices, joint CISA/FBI guidance
 
-**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023) · Freshness (2026-06-05): publication date pre-2025 (>12mo), freshness-triaged (date-stale). Content correction 2026-06-22: the earlier "24-36 month retention" figure was an embellishment beyond the ~12mo the source supports — corrected to ~12mo. · ⚠️ 1 figure unverified 2026-11-17, see the dated label
+**Validation Status**: ✅ Active URL (verified CISA advisory, July 2023) · Freshness (2026-06-05): publication date pre-2025 (>12mo), freshness-triaged (date-stale). Content correction 2026-06-22: the earlier "24-36 month retention" figure was an embellishment beyond the ~12mo the source supports — corrected to ~12mo.
+**Refresh (2026-11-23)**: advisory aa23-193a read (it blocks curl, a reader tool got through); MailItemsAccessed, Purview Audit (Premium), baseline/outlier and the M-21-31 12+18-month retention lines all read. The retention figure is the federal log-retention rule the advisory quotes, so it is no longer framed as a baseline window. The alert URL in this entry is only the announcement and carries none of these lines. Follow-up: CISA Microsoft Expanded Cloud Logs Implementation Playbook (released 2025-01-15, page revised 2026-05-01) covers the same logs, now in Purview Audit (Standard) for E3/G3 and above.
 
 ---
 
@@ -1989,29 +2016,30 @@ and nothing may be attributed to one.
 **Authors**: MITRE Insider Threat Research & Solutions
 **Date**: 2024
 **URL**: https://insiderthreat.mitre.org/
-**Evidence Level**: B (Research authority with 15+ years program; headline detection-rate stats were invented — retained claims are framework-scope facts)
+**Evidence Level**: B (Research authority, over 20 years of program work per its homepage; headline detection-rate stats were invented — retained claims are framework-scope facts)
 **Relevance**:
 - Security ML training requirements
 - Book Chapter (Advanced analytics - insider threat)
 - Best Practices Doc footnote [^261]
 
 **Key Findings**:
-- 15+ years of insider threat research program at MITRE, multi-disciplinary InT Lab *(Unverified 2026-11-17: the cited page blocks automated readers, so this could not be re-read.)*
+- Over 20 years of insider threat research and program stand-up work, multi-disciplinary team (homepage, read via Wayback snapshot 2026-10-05)
 - 47 ATT&CK techniques, 29 sub-techniques for insider threats — source is the MITRE Engenuity Insider Threat Knowledge Base 2.0 announcement (medium.com/mitre-engenuity/insider-threat-knowledge-base-2-0-more-techniques-new-mitigations-and-the-human-touch-d246f5ef1135, verbatim "47 ATT&CK techniques and 29 sub-techniques"), a distinct property from the cited insiderthreat.mitre.org page, which carries no technique counts (repointed 2026-07-10)
-- Bi-Directional Loyalty (BDL) as key behavioral risk measure
+- Bi-Directional Loyalty (BDL) defined by MITRE as a more practical risk measure than organizational commitment; measurement methods and the BDL-to-insider-threat link are still being developed and validated, and the homepage lists it under work seeking funding
 
 **Citations**: Advanced analytics, insider threat detection, behavioral analytics
-**Notes**: MITRE = definitive authority on insider threat research, multi-disciplinary InT Lab
+**Notes**: MITRE = definitive authority on insider threat research, multi-disciplinary team
 
-**Validation Status**: ✅ Active URL (verified MITRE official site, 2024 data) · ⚠️ 1 figure unverified 2026-11-17, see the dated label
+**Validation Status**: ✅ Active URL (verified MITRE official site, 2024 data)
+**Refresh (2026-11-23)**: live page blocks automated readers; read via Wayback 2026-10-05. Tenure is now stated as over 20 years; the InT Lab name is not on the homepage; BDL narrowed to in-development. The 47/29 technique counts belong to the CTID Insider Threat TTP Knowledge Base v2.0.0 (center-for-threat-informed-defense.github.io/insider-threat-ttp-kb) and its announcement post, which could not be re-read this pass.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Microsoft Security - Threat Modeling & Data Security for AI/ML
 
-**Authors**: Microsoft Security Engineering
-**Date**: November 2019
+**Authors**: Andrew Marshall, Jugal Parikh, Emre Kiciman, Ram Shankar Siva Kumar (Microsoft, with the AETHER Security Engineering Workstream)
+**Date**: November 2019 (page ms.date 2025-03-12)
 **URL**: https://learn.microsoft.com/en-us/security/engineering/threat-modeling-aiml
 **Evidence Level**: B (Vendor engineering guidance; incident-rate stat removed — retained claims are the documented threat taxonomy)
 **Relevance**:
@@ -2020,15 +2048,16 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^264]
 
 **Key Findings**:
-- 11-category AI/ML threat taxonomy: adversarial perturbation, data poisoning, model inversion, model inference, model stealing, supply-chain compromise, backdoor attacks, and related attack classes
+- 11-category AI/ML threat taxonomy: adversarial perturbation, data poisoning, model inversion, membership inference, model stealing, neural net reprogramming, physical-domain adversarial examples, malicious ML providers recovering training data, ML supply-chain attacks, backdoor ML, and exploited software dependencies
 - Training data from public datasets poses supply chain risks
-- Inference data requires validation and audit
-- Data collection documentation and ownership requirements
+- Inference queries require input validation
+- Training-data documentation (Datasheets for Datasets) and provenance tracking
 
 **Citations**: Advanced analytics, data management, AI security
 **Notes**: Microsoft = authoritative source on enterprise AI/ML security practices
 
 **Validation Status**: ✅ Active URL (verified Microsoft Learn documentation)
+**Refresh (2026-11-23)**: page 200, ms.date 2025-03-12; all 11 headings read, and the fourth is membership inference, not model inference. For a current Tier A taxonomy, see NIST AI 100-2 E2025 (Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations, March 2025).
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -2046,14 +2075,15 @@ and nothing may be attributed to one.
 
 **Key Findings**:
 - Broad production adoption across major platforms (Apache Spark, Dremio, VAST, ClickHouse, pandas, Polars, and others per powered_by list — Snowflake and Streamlit are no longer on the current list, verified 2026-07-10)
-- Columnar in-memory format eliminates serialization overhead for analytics workloads
-- VAST network telemetry: high-bandwidth path for security investigations
-- High-cardinality features (IP addresses, domains) optimized by columnar layout
+- Shared columnar in-memory format avoids the serialization and deserialization cost of moving data between systems (arrow.apache.org/overview/)
+- VAST network telemetry: high-bandwidth path for security investigations (VAST is now Tenzir; the powered_by list still uses the old name)
+- High-cardinality features (IP addresses, domains) optimized by columnar layout *(Not on the cited page or the Arrow overview, 2026-11-23; needs its own source.)*
 
 **Citations**: Advanced analytics, data formats, security telemetry
 **Notes**: Reference for adoption breadth; specific performance figures require per-platform benchmarks, not the powered_by page
 
 **Validation Status**: ✅ Active URL (verified Apache Arrow official site)
+**Refresh (2026-11-23)**: powered_by 200, adoption names re-read; current release apache-arrow-26.0.1 (2026-11-03).
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -2085,26 +2115,27 @@ and nothing may be attributed to one.
 
 #### Open Cybersecurity Alliance - Standards & Interoperability
 
-**Authors**: Open Cybersecurity Alliance (OASIS Open Project)
-**Date**: 2019-2024
-**URL**: https://github.com/opencybersecurityalliance (re-pointed 2026-07-16 — opencybersecurityalliance.org is gone at the root per the 2026-07-16 link check; OCA is an OASIS Open Project and its GitHub organization is the live canonical presence, verified 200 on re-point day)
+**Authors**: Open Cybersecurity Alliance (OASIS Open Project to 2026-03-31; now an OASIS-governed community initiative)
+**Date**: 2019-2026
+**URL**: https://github.com/opencybersecurityalliance (re-pointed 2026-07-16 — opencybersecurityalliance.org is gone at the root per the 2026-07-16 link check; OCA was an OASIS Open Project until 2026-03-31 and its GitHub organization is the live canonical presence, 200 again on 2026-11-23)
 **Evidence Level**: B (Industry standards consortium) — re-tiered from A 2026-08-19: neither peer-reviewed research nor an official standard
 **Relevance**:
 - Cybersecurity tool interoperability
 - Book Chapter (Advanced analytics, integration)
-**Best Practices Doc footnote [^269]
+- Best Practices Doc footnote [^269]
 
 **Key Findings**:
 - Standardized data interfaces for security tool interoperability
 - Open ecosystem without custom integrations
-- STIX, OpenC2, OpenDXL, STIX Shifter standards
+- Builds tooling aligned with OASIS standards such as STIX: STIX Shifter, Kestrel, CACAO Roaster, IoB STIX extensions; the OpenDXL Ontology repos are archived
 - Threat management lifecycle coverage
 - Federated data operations
 
 **Citations**: Advanced analytics, deployment standards, tool integration
-**Notes**: OCA = OASIS project for cybersecurity interoperability standards
+**Notes**: OCA = community-led interoperability effort under OASIS governance; the OASIS Open Project model was sunset on 2026-03-31
 
 **Validation Status**: ✅ Active URL (verified OCA official site) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (site real; interop framing holds). Stale-by-date, not by content.
+**Refresh (2026-11-23)**: GitHub org 200, 28 repos, IoB and STIX Shifter pushed in Oct-Nov 2026. The OASIS Open Project was sunset 2026-03-31 per the archived oasis-open-project README, and OCA continues as an OASIS-governed community initiative without guaranteed staff support or funding. opencybersecurityalliance.org still does not answer.
 
 ---
 
@@ -2139,8 +2170,8 @@ and nothing may be attributed to one.
 
 #### Microsoft - Concept Drift Detection & Monitoring
 
-**Authors**: Microsoft Azure Machine Learning Team & Research
-**Date**: 2022-2024
+**Authors**: James Croft (Microsoft, FastTrack for Azure blog; page handle james_croft); security framing from Kuppa & Le-Khac 2022
+**Date**: 2024-01-26 (updated 2024-02-22); arXiv paper 2022-06-15
 **URL**: https://techcommunity.microsoft.com/blog/fasttrackforazureblog/identifying-drift-in-ml-models-best-practices-for-generating-consistent-reliable/4040531
 **Evidence Level**: B (Vendor platform guidance + academic citation; quantified rate-of-drift claim removed)
 **Relevance**:
@@ -2149,23 +2180,24 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^275]
 
 **Key Findings**:
-- Ever-evolving threat landscape creates non-stationary data — security ML requires active drift monitoring
-- Azure ML Observability for scalable drift detection
+- Ever-evolving threat landscape creates non-stationary data — security ML requires active drift monitoring (from Kuppa & Le-Khac, arXiv 2206.07581; not stated in the Microsoft post)
+- Azure Machine Learning provides tools for monitoring and managing model drift
 - Four drift varieties: sudden, gradual, incremental, reoccurring
-- Academic research: "Learn to adapt: Robust drift detection in security domain" (arXiv 2206.07581)
+- Separate academic source: Kuppa & Le-Khac, "Learn to Adapt: Robust Drift Detection in Security Domain" (arXiv 2206.07581, 2022)
 
 **Citations**: Advanced analytics, model maintenance, MLOps
-**Notes**: Security-specific drift characteristics covered in both Microsoft platform docs and arXiv 2206.07581
+**Notes**: Generic drift taxonomy from the Microsoft post; security-specific drift characteristics from arXiv 2206.07581 only
 
 **Validation Status**: ✅ Updated February 2026 - URL format corrected to /blog/ path
+**Refresh (2026-11-23)**: post 200; four-variety taxonomy read verbatim; the post has no security content, so the security claims are re-attributed to the arXiv paper, whose abstract carries them. Current Azure ML model-monitoring doc (ms.date 2026-01-27) lists data drift, prediction drift, data quality, feature attribution drift and model performance signals.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
 
 #### Confluent - Machine Learning with Apache Kafka
 
-**Authors**: Confluent Engineering (Kai Waehner et al.)
-**Date**: 2018-2024 (ongoing series)
+**Authors**: Kai Waehner (Confluent)
+**Date**: 2018-11-19 (page modified 2025-06-17)
 **URL**: https://www.confluent.io/blog/using-apache-kafka-drive-cutting-edge-machine-learning/
 **Evidence Level**: B (Vendor best practices, production patterns)
 **Relevance**:
@@ -2174,16 +2206,17 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^280]
 
 **Key Findings**:
-- KSQL for feature engineering (filtering, enrichment, transformation)
+- KSQL (now ksqlDB) for feature engineering (filtering, enrichment, transformation)
 - Kafka Streams embeds ML into microservices
-- Same preprocessing for training and inference
+- Kafka Streams or KSQL preprocessing in one pipeline that feeds both model training and in-stream inference (architecture described, parity not measured)
 - ~~Current 2023: Building real-time ML apps on generative AI with Kafka Streams~~ (removed 2026-07-10 — the cited page is a single 2018-11-19 Kai Waehner post with no generative-AI content; the other findings verify against it)
-- Production-validated scalable ML workflows
+- Vendor-described scalable ML architecture; names Uber, Netflix and PayPal platforms as examples but reports no measured results
 
 **Citations**: ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] + Advanced analytics integration, streaming ML architecture
-**Notes**: Comprehensive series on Kafka + ML integration, links streaming to ML workflows
+**Notes**: Single 2018 post on Kafka + ML integration, links streaming to ML workflows
 
-**Validation Status**: ✅ Active URL (verified Confluent blog, 2018-2024 series) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (KSQL / embedded-ML confirmed). Stale-by-date, not by content.
+**Validation Status**: ✅ Active URL (single 2018 post)
+**Refresh (2026-11-23)**: post 200; KSQL feature-engineering and Kafka Streams model-embedding lines read verbatim. Confluent's current documented path for in-stream inference is Flink SQL ML_PREDICT in Confluent Cloud (docs page 200), so the 2018 KSQL framing is historical.
 
 ---
 
@@ -2503,8 +2536,8 @@ and nothing may be attributed to one.
 #### Tenzir Security Data Pipeline Platform
 
 **Authors**: Tenzir Team
-**Date**: 2024
-**URL**: https://tenzir.com/product/comparisons/cribl
+**Date**: 2024 (live page read 2026-11-23; 30% figure and the two phrases below archived 2026-06-17)
+**URL**: https://tenzir.com/product/comparisons/cribl/
 **Evidence Level**: C (Vendor self-claim on comparison page; no independent methodology disclosed)
 **Relevance**:
 - Pipeline-based detection architecture
@@ -2512,17 +2545,18 @@ and nothing may be attributed to one.
 - Unified platform vs fragmented tools
 
 **Key Findings**:
-- Tenzir claims ~30% lower TCO vs Cribl's pipeline-plus-separate-SIEM model (vendor self-claim, no methodology; baseline is Cribl's combined stack, not query-based architectures generally) *(Unverified 2026-11-17: not on the cited Tenzir comparison page.)*
-- "Shift detection left" - detect in pipeline before storage
-- Single platform eliminates separate SIEM layer costs
-- Open-core architecture (C++ foundation) vs closed-source competitors
+- Tenzir's comparison page claimed 30% lower TCO vs Cribl's pipeline-plus-separate-SIEM model as of the 2026-06-17 Wayback snapshot and claims 50% lower TCO, 75% fewer tools and 2x faster threat detection on the live page (2026-11-23); vendor self-claims, no methodology, baseline is Cribl's combined stack and not query-based architectures generally
+- In-stream detection in the pipeline, which Tenzir says Cribl Stream lacks (live wording; the "shifting detection left" phrase is on the 2026-06-17 snapshot and gone from the live page)
+- Single platform eliminates separate SIEM layer costs (wording from the 2026-06-17 snapshot; the live page folds this into its 50% TCO line)
+- Open-source engine (tenzir/tenzir, C++, BSD-3-Clause) with a commercial platform
 - Deploys in minutes with single lightweight binary
-- Unified detection workflow vs Cribl's fragmented suite (Stream, Edge, Search, Lake)
+- Unified detection workflow vs Cribl's fragmented suite (Stream, Search, Lake on the live page; the 2026-06-17 snapshot also listed Edge)
 
 **Citations**: Pipeline detection economics, TCO reduction, architecture simplification
 **Notes**: Validates RQ13 pipeline vs query detection economics hypothesis; cite with vendor-bias caveat
 
-**Validation Status**: ✅ Production deployments documented · ⚠️ 1 figure unverified 2026-11-17, see the dated label
+**Validation Status**: ⚠️ Vendor comparison page whose claims changed between 2026-06-17 and 2026-11-23; no documented deployments on the page
+**Refresh (2026-11-23)**: live page re-read; the TCO claim moved from 30% to 50%, and the 30% line, the shift-left phrase and the separate-SIEM line are confirmed in the 2026-06-17 Wayback snapshot. Single-binary deploy claim verbatim. Engine language and license checked on GitHub.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -2626,6 +2660,7 @@ and nothing may be attributed to one.
 
 **Citations**: ch02 [^cost-corroboration-ch2]
 **Validation Status**: ✅ Verified at primary 2026-07-10 (part-2 follow-up, 5-agent cite hunt); author affiliation cross-checked
+**Refresh (2026-11-23)**: page 200; the 11x cost and 10x p99 sentence re-read verbatim, byline Ryad Zenine, published 2022-10-11 (page modified 2026-03-03, figures unchanged).
 
 ---
 
@@ -2643,6 +2678,7 @@ and nothing may be attributed to one.
 
 **Citations**: ch02 [^cost-corroboration-ch2]
 **Validation Status**: ✅ Verified at primary 2026-07-10
+**Refresh (2026-11-23)**: re-fetched at the same URL (HTTP 200), and both quoted figures are still on the page verbatim ("the machine cost of ClickHouse has decreased by 30%", query speed "improved by about 4 times"). The post is still dated 19 April 2024. A search for a 2025 or 2026 follow-up by Didi found none. The figure is a hardware-cost reduction for a general logging workload, not a security one, which matches how ch02 holds it apart.
 
 ---
 
@@ -2662,6 +2698,7 @@ and nothing may be attributed to one.
 
 **Citations**: ch02 [^cost-corroboration-ch2] (which correctly frames it as 8x compute / 10x per-document storage)
 **Validation Status**: ✅ Verified at primary 2026-07-10 (fetched twice, second pass scanning specifically for cost/percentage/dollar language — none found)
+**Refresh (2026-11-23)**: re-fetched (HTTP 200), and the 600-bytes-to-60-bytes and eight-times inserter figures are verbatim on the page. A third scan for cost language found percentages only in operational contexts (0.1%, 1%, 10%, 99%, 100%) and no dollar figures, so the phantom "85-90% cost reduction" note still holds. A search found no 2025 or 2026 Cloudflare follow-up on this logging pipeline. The nearest newer Cloudflare data-pipeline posts (Jetflow, July 2025) describe a different system and are not substitutes.
 
 ---
 
@@ -2679,7 +2716,7 @@ and nothing may be attributed to one.
 
 **Citations**: ch02 [^cost-corroboration-ch2]
 **Validation Status**: ✅ Verified at the case-study page 2026-07-10; no publication date on page, not in Wayback. On 2026-11-17 the page returned 404 to an automated fetch but is still indexed by search engines with the same 70–80% wording, so it is recorded as live-but-unconfirmed rather than dead
-**Refresh (2026-11-23)**: the page returned HTTP 404 again on 2026-11-23, this time to a browser-header request as well as to the link checker, so the entry is marked Archived. The Wayback Machine does hold a copy (snapshot 2026-07-20), and that copy carries the Karanth quote above verbatim, including "cost savings of close to 70–80%", so the 2026-07-10 note that the page was not in Wayback no longer holds. The snapshot is now the URL above.
+**Refresh (2026-11-23)**: the page returned HTTP 404 again on 2026-11-23, this time to a browser-header request as well as to the link checker, so the entry is marked Archived. The Wayback Machine does hold a copy (snapshot 2026-07-20), and that copy carries the Karanth quote above verbatim, including "cost savings of close to 70–80%", so the 2026-07-10 note that the page was not in Wayback no longer holds. The snapshot is now the URL above. The same snapshot's headline and body restate the figure more firmly than Karanth does ("Navan saved 70-80% in cost", "Navan has achieved 70-80% cost savings and saved over 15K hours"); those are Anvilogic's words, not his, and are not cited.
 
 ---
 
@@ -2843,19 +2880,20 @@ and nothing may be attributed to one.
 - No row-level security or column masking overhead - table-level permissions only
 
 **Citations**: **CRITICAL** - RQ7 and RQ10 isolation-first catalog validation
-**Notes**: Production validation of vendor-neutral catalog choice for isolated security platforms. *(Withdrawn 2026-11-23: the former "Complements Netflix and Huntress isolation-first architecture patterns" sentence, because neither source describes an isolation-first design; see the Netflix Petabyte-Scale Logging entry ("The blog does not use 'isolation-first'") and the Huntress entry's 2026-11-22 note.)*
+**Notes**: ~~Production validation of vendor-neutral catalog choice for isolated security platforms.~~ *(Withdrawn 2026-11-23 with the Netflix production-deployment finding above, which was the only production claim behind it.)* *(Withdrawn 2026-11-23: the former "Complements Netflix and Huntress isolation-first architecture patterns" sentence, because neither source describes an isolation-first design; see the Netflix Petabyte-Scale Logging entry ("The blog does not use 'isolation-first'") and the Huntress entry's 2026-11-22 note.)*
 
 **Validation Status**: ✅ Active (verified Feb 2026, Apache project)
-**Refresh (2026-11-23)**: checked against the Polaris 1.9.0 documentation (release published 2026-11-14), https://polaris.apache.org/releases/1.9.0/managing-security/access-control/. Its RBAC model grants privileges on catalogs, namespaces, tables, views, policies and semantic models, and the page names no row-level security or column masking, so the table-level reading above holds for 1.9.0. One addition since the February check: "Polaris supports integration with external Policy Decision Points (PDPs) such as Open Policy Agent (OPA)", which is where a deployment that needs finer-grained decisions would put them.
+**Refresh (2026-11-23)**: checked against the Polaris 1.9.0 documentation (release published 2026-11-14), https://polaris.apache.org/releases/1.9.0/managing-security/access-control/. Its RBAC model grants privileges on catalogs, namespaces, tables, views, policies (as of 1.9.0 the predefined types are maintenance only: compaction, snapshot expiry, orphan-file removal; custom policy types are described as in progress) and semantic models, and the page names no row-level security or column masking, so the table-level reading above holds for 1.9.0. One addition since the February check: "Polaris supports integration with external Policy Decision Points (PDPs) such as Open Policy Agent (OPA)", which is where a deployment that needs finer-grained decisions would put them.
 
 ---
 
 #### Unity Catalog - Row-Level Security Performance Analysis
 
 **Authors**: Unity Catalog Community / Databricks Documentation
-**Date**: 2024 (performance analysis published September 2024)
-**URL**: https://docs.databricks.com/en/data-governance/unity-catalog/index.html
-**Evidence Level**: B (Performance analysis, documented caching limitations)
+**Date**: 2024 (as catalogued; the "performance analysis published September 2024" could not be located on 2026-11-23; the ABAC performance page now cited was last updated 2026-10-08 and the filters-and-masks page 2026-11-06)
+**URL**: https://docs.databricks.com/aws/en/data-governance/unity-catalog/abac/performance
+**Alt URL**: https://docs.databricks.com/aws/en/data-governance/unity-catalog/filters-and-masks/
+**Evidence Level**: C for the performance claims (vendor documentation on how a feature performs, per the 2026-11-03 ruling in METHODOLOGY.md §3.1); B for what row filters and column masks do
 **Relevance**:
 - **Research Question RQ7** (Isolation patterns and performance)
 - Book ch05 §5.1 (table format) [was: Chapter 8] (Storage formats - catalog selection)
@@ -2863,8 +2901,8 @@ and nothing may be attributed to one.
 
 **Key Findings**:
 - Column masking introduces computational overhead for query execution
-- Row-level security can prevent effective query result caching
-- Performance impact varies by query complexity and cardinality
+- Two separate documented costs. Caching depends on how the filter or mask UDF is written: "Non-deterministic functions and expressions that can throw errors reduce the optimizer's ability to cache results and reorder operations". Pruning depends on the policy being present at all: row filters and column masks put a SecureView barrier on the table that stops predicates with side effects from being pushed down, which "can also block partition pruning and liquid clustering optimizations, which can force full table scans", and "This applies even when the policy UDF resolves to a constant true" (narrowed 2026-11-23 from "Row-level security can prevent effective query result caching", which the docs do not state as a general rule)
+- Performance impact varies with UDF complexity, the number of distinct masks and lookup-table size (ABAC performance page), and with the number of UDF arguments and AND conjuncts in a row filter (filters-and-masks page). This is Databricks guidance; neither page publishes an overhead figure or a method, and neither names cardinality
 - Table-level permissions (isolation-first approach) avoids fine-grained overhead
 - Multi-tenant architectures may require Unity Catalog features, but isolation-first SOCs can avoid complexity
 
@@ -2872,6 +2910,7 @@ and nothing may be attributed to one.
 **Notes**: Supports isolation-first architecture pattern - network isolation with table-level permissions avoids Unity Catalog overhead. *(Withdrawn 2026-11-23: the former "Relevant for Huntress, Okta, Netflix patterns", because the Huntress and Netflix sources describe no isolation-first design (Huntress entry's 2026-11-22 note; Netflix Petabyte-Scale Logging entry); the Okta leg was not re-checked in this pass and is not carried without a source.)*
 
 **Validation Status**: ✅ Active (verified Feb 2026, official Databricks docs)
+**Refresh (2026-11-23)**: the catalogued URL now redirects to the Unity Catalog overview, which carries none of these claims, so the entry points at the ABAC performance-considerations page and the filters-and-masks page instead. Databricks gives tuning guidance and no measured overhead, so the review's own engine-side RLS measurement (isolation-first-security-tracking.md, ocsf-rls-overhead, DuckDB, single host) is still the only measured figure in the corpus. Bullets 4 and 5 are the review's inference and are not Databricks statements; the SecureView point above cuts partly in their favour, because the docs say a policy's presence alone can cost pruning for some query shapes.
 
 ---
 
@@ -3231,8 +3270,8 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 #### Netflix ClickHouse Pipeline - 5 PB/Day Ingestion
 
-**Authors**: ClickHouse
-**Date**: 2024
+**Authors**: Tom Schreiber (ClickHouse)
+**Date**: 2025-12-22 (page byline; metadata 2025-12-17; catalogued "2024" corrected 2026-11-23)
 **URL**: https://clickhouse.com/blog/what-really-matters-for-performance-lessons-from-a-year-of-benchmarks
 **Evidence Level**: B (ClickHouse benchmark retrospective reporting Netflix's described result — secondhand, not a Netflix primary source)
 **Relevance**:
@@ -3246,9 +3285,10 @@ The reading that matters for the architecture argument is the lower-bound caveat
 - FastFormats benchmark drove optimization decisions
 
 **Citations**: High-volume ingestion, ClickHouse production patterns
-**Notes**: Validates ClickHouse for extreme-scale security data. The cited page is a ClickHouse benchmarking retrospective that uses Netflix as a case study, not a Netflix-authored source.
+**Notes**: Shows ClickHouse ingesting general application logs at ~5 PB/day; the page does not describe a security workload (narrowed 2026-11-23). The cited page is a ClickHouse benchmarking retrospective that uses Netflix as a case study, not a Netflix-authored source.
 
 **Validation Status**: ✅ Active URL (ClickHouse blog citing Netflix) · Freshness (2026-06-05): publication date pre-2025 (>12mo), freshness-triaged (date-stale). Content correction 2026-06-22 (WebFetch-verified): ~5 PB/day IS stated on the page (secondhand report of Netflix's result); the "10.6M events/sec" figure is NOT on the page — removed; Evidence Level corrected A→B (ClickHouse retrospective, not a Netflix primary).
+**Refresh (2026-11-23)**: re-fetched (HTTP 200). The ~5 PB/day, Go-client reverse-engineering, LZ4 native-protocol and FastFormats points are verbatim on the page, and 10.6M events/sec is still absent from it. The page is a December 2025 retrospective by Tom Schreiber, so the entry is no longer date-stale. Its Netflix passage links to the ClickHouse post catalogued here as "Netflix Petabyte-Scale Logging, ClickHouse + Iceberg (Muino, 2025)" (byline 23 October 2025), which carries the 10.6M and 12.5M events/sec figures; cite that entry for the figures and this one only for the FastFormats-to-native-protocol link. The two entries overlap, as that entry's Notes already say.
 
 ---
 
@@ -3276,24 +3316,25 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 #### Hunters Security - Why Companies Are Adopting Security Data Lakes
 
-**Authors**: Hunters Security
-**Date**: 2024
+**Authors**: Hunters Security (vendor blog reporting remarks by Omar Khawaja, Field CISO, Databricks, at Hunters Con)
+**Date**: 2023-11-27 (page metadata, and the earliest Wayback capture, 2024-03-05, shows the same date; catalogued "2024" corrected 2026-11-23)
 **URL**: https://www.hunters.security/en/blog/why-companies-are-adopting-security-data-lakes
-**Evidence Level**: B (Vendor analysis with industry data)
+**Evidence Level**: C (vendor blog relaying a second vendor's executive; flag bias: both Hunters and Databricks sell security data lake products)
 **Relevance**:
 - RQ11: Security data lake adoption
 - Enterprise case studies
 
 **Key Findings**:
-- 50% of world's 15 largest banks using security data lakes
-- **HSBC**: 3× more threat hunts with lower TCO on Databricks Lakehouse
+- Khawaja (Databricks) said that "of the world's 15 largest banks, he's aware that half of them are using a security data lake" (one vendor executive's awareness, not a survey; narrowed 2026-11-23)
+- **HSBC**: "3x more hunts while lowering the total cost of ownership", relayed from a 2023 Databricks blog; an earlier Databricks post (2021) gives "2-3x more threat hunts per analyst" and describes a Lakehouse-alongside-SIEM setup. Both figures are Databricks' wording and no HSBC-authored source was found (narrowed 2026-11-23)
 - Security data lakes emerged to address SIEM limitations and high costs
 - ~~Skills shortage affects security data lake projects~~ (removed 2026-07-10 — absent from the cited page; the bank and HSBC figures above verify verbatim)
 
 **Citations**: Enterprise adoption, banking sector case studies
-**Notes**: HSBC case study provides strong production validation
+**Notes**: HSBC is a named production deployment, but every figure reaches us through Databricks. The two Databricks posts give different figures (3x in 2023, 2-3x per analyst in 2021), so cite the lower, per-analyst wording (https://www.databricks.com/blog/2021/07/23/augment-your-siem-for-cybersecurity-at-cloud-scale.html) and treat the deployment as SIEM augmentation, since that post frames it as Lakehouse plus SIEM.
 
-**Validation Status**: ✅ Industry data (2024) · Freshness (2026-06-05): publication date pre-2025 (>12mo) but freshness-triaged (date-stale; content NOT re-verified against source) in RESEARCH-JOURNAL.md (half of 15 largest banks, HSBC confirmed). Stale-by-date, not by content.
+**Validation Status**: ✅ Re-verified at the page 2026-11-23 (both figures present as relayed remarks; see narrowed bullets)
+**Refresh (2026-11-23)**: dated 2023-11-27, not 2024. The bank figure is Khawaja's stated awareness at a vendor conference. The HSBC figure is relayed from a 2023 Databricks post that says 3x, and Databricks' 2021 post says 2-3x per analyst, so both findings are narrowed and the entry is re-tiered B to C.
 
 ---
 
@@ -3510,7 +3551,7 @@ The following papers have been identified for future analysis:
 
 #### Hyperscan: A Fast Multi-pattern Regex Matcher for Modern CPUs
 
-**Authors**: Xiang Wang, Yang Hong, Harry Chang, KyoungSoo Park, Geoff Langdale, Jiayu Hu, Heqing Zhu (Intel / KAIST — roster corrected 2026-07-10 from a garbled name-order list; verified vs NSDI '19 listing, pp. 631-648)
+**Authors**: Xiang Wang, Yang Hong, Harry Chang, KyoungSoo Park, Geoff Langdale, Jiayu Hu, Heqing Zhu (Intel / KAIST / branchfree.org — roster corrected 2026-07-10 from a garbled name-order list; verified vs NSDI '19 listing, pp. 631-648)
 **Date**: 2019
 **URL**: https://www.usenix.org/conference/nsdi19/presentation/wang-xiang
 **Evidence Level**: A (Peer-reviewed, USENIX NSDI '19)
@@ -3528,6 +3569,7 @@ The following papers have been identified for future analysis:
 **Source**: Identified via "Humio Clone" reference collection (December 2025)
 **Status**: 📚 QUEUED - Not yet read
 **Added**: 2026-01-02
+**Refresh (2026-11-23)**: the NSDI '19 page is live (HTTP 200) and its abstract supports the generic findings above, with one figure, an 8.7x Snort speed-up on a real traffic trace. The implementation's status has changed since publication. The intel/hyperscan GitHub repository's last tagged release is v5.4.2 (2023-04-19). The Vectorscan README quotes an Intel document saying "The latest open-source version (BSD-3 license) of Hyperscan on Github is 5.4" and that Intel delivers later releases under an Intel Proprietary License from 5.5; that Intel document was not opened here. The open-source line continues as VectorCamp's Vectorscan (BSD, release 5.4.14 on 2026-11-09), which "aims to be ABI and API compatible with the last open source version of Intel Hyperscan 5.4". A stack built on open components would use Vectorscan, and the paper's design description still applies to the 5.4 code it forked from.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -3538,6 +3580,7 @@ The following papers have been identified for future analysis:
 **Date**: 2023 (PVLDB 16(7): 1601-1614; VLDB 2023, Vancouver, August 2023)
 **URL**: https://www.vldb.org/pvldb/vol16/p1601-budiu.pdf
 **Alt URL**: https://github.com/feldera/feldera (implementation)
+**Extended edition**: Budiu, M., Ryzhyk, L., Zellweger, G., Pfaff, B., Suresh, L., Kassing, S., Gyawali, A., Budiu, M., Chajed, T., McSherry, F., Tannen, V. (2025). DBSP: automatic incremental view maintenance for rich query languages. The VLDB Journal 34(4), article 39. https://doi.org/10.1007/s00778-025-00922-y (published online 2025-05-08)
 **Evidence Level**: A (Peer-reviewed, PVLDB)
 **Relevance**:
 - Streaming database patterns
@@ -3554,6 +3597,7 @@ The following papers have been identified for future analysis:
 **Source**: Identified via "Humio Clone" reference collection (December 2025)
 **Status**: 📚 QUEUED - Not yet read
 **Added**: 2026-01-02
+**Refresh (2026-11-23)**: the PVLDB 2023 paper is still the original and is still live. An extended journal edition appeared in The VLDB Journal in 2025 (Crossref, DOI above). Per the author's manuscript at mihaibudiu.github.io/work/budiu-vldb25.pdf, it adds new incremental-program examples, standard-SQL semantics, a longer implementation section and a preliminary evaluation, and it says the proofs are formalized in Lean in a separate cited work. Read the journal edition first when this entry moves out of the queue. Both editions are Level A.
 
 ---
 
@@ -3582,6 +3626,7 @@ The following papers have been identified for future analysis:
 
 **Citations**: Graf, T. M., & Lemire, D. (2020). *Xor Filters: Faster and Smaller Than Bloom and Cuckoo Filters*. Journal of Experimental Algorithmics, 25(1). arXiv:1912.08258.
 **Validation Status**: ✅ Authors, title, date and venue verified at the arXiv record 2026-08-19. Claim-vs-source was already checked in the 2026-07 sweep (RESEARCH-JOURNAL.md: Graf & Lemire; the entry's "8.2 bits" reads ~9.2-9.8 in the paper, logged as a minor mismatch) — that verification was never written back into this entry, which is why it still carried a placeholder byline.
+**Refresh (2026-11-23)**: arXiv record live; the venue (ACM JEA 25, 2020, DOI 10.1145/3376122) is confirmed at Crossref. The same authors published a follow-up, Graf, T. M., & Lemire, D. (2022). *Binary Fuse Filters: Fast and Smaller Than Xor Filters*. ACM Journal of Experimental Algorithmics 27. https://doi.org/10.1145/3510449. By its title it claims a faster and smaller filter for the same membership-testing job, so a reader choosing a filter today should read it alongside this paper; its text was not read in this pass. This paper is still accurate and is not superseded as a citation for xor filters.
 
 ---
 
@@ -3615,16 +3660,18 @@ published works are merged here; nothing about outreach or relationships is repr
 #### Mining Temporal Attack Patterns from Cyberthreat Intelligence Reports
 
 **Authors**: Md Rayhanur Rahman, Brandon Wroblewski, Quinn Matthews, Brantley Morgan, Tim Menzies, Laurie Williams (author list verified at the arXiv record 2026-11-07)
-**Date**: 2024-01-03 (arXiv v1)
-**URL**: https://arxiv.org/abs/2401.01883
-**Evidence Level**: B (arXiv preprint; the arXiv comment records a modified version under review at IEEE Transactions on Software Engineering, no published venue found, so it does not meet the §3.1 Level A definition)
+**Date**: 2025 (Knowledge and Information Systems 67(10), published online 2025-07-22; arXiv v1 2024-01-03)
+**URL**: https://doi.org/10.1007/s10115-025-02491-6
+**Alt URL**: https://arxiv.org/abs/2401.01883 (preprint v1)
+**Evidence Level**: A (peer-reviewed journal, Knowledge and Information Systems, 2025; re-tiered B to A 2026-11-23 once the published venue was found)
 **Relevance**:
 - Temporal attack-pattern detection from CTI narrative reports
 - Threat-modeling and detection-engineering research foundation
 
-**Citations**: Rahman, M.R., Wroblewski, B., Matthews, Q., Morgan, B., Menzies, T., Williams, L. (2024). *Mining Temporal Attack Patterns from Cyberthreat Intelligence Reports*. arXiv:2401.01883.
+**Citations**: Rahman, M.R., Wroblewski, B., Matthews, Q., Morgan, B., Menzies, T., Williams, L. (2025). Mining temporal attack patterns from cyberthreat intelligence reports. *Knowledge and Information Systems*, 67(10), 8941-8981. https://doi.org/10.1007/s10115-025-02491-6. Preprint arXiv:2401.01883.
 **Validation Status**: ✅ Active URL (verified 2026-06-05)
 **Re-tiered (2026-11-07)**: A → B. The entry was tiered A as "academic research, preprint" with no author list and no venue, which §3.1 says does not qualify; authors filled from the arXiv record, description unchanged.
+**Refresh (2026-11-23)**: the paper was published in Knowledge and Information Systems (Crossref record, same six authors, online 2025-07-22), so the entry returns to Level A on the journal version. The 2026-11-07 re-tier was right about the entry as it then stood, an arXiv record with no venue, but it missed the journal version, which was already online and which the arXiv record still does not link. The journal abstract at Crossref keeps the preprint's figures (713 reports, 124 patterns, nine categories) and adds that ChronoCTI "demonstrates higher precision but lower recall performance on a real-world dataset of 94 CTI reports". The journal full text was not read.
 
 ---
 
@@ -3663,9 +3710,9 @@ published works are merged here; nothing about outreach or relationships is repr
 - Formal backbone of what operators experience as alert fatigue
 
 **Citations**: AIML-RIPENESS-EVIDENCE.md (statistical-anomaly tier limit); /research/d3fend-wall essay (the base-rate arithmetic under anomaly detection)
-**Notes**: Cited inline in already-public content (the d3fend-wall essay) — catalogued here 2026-06-21 to close that citation breach. Tier A under the strict tiers in METHODOLOGY.md §3.1 (peer-reviewed ACM journal).
+**Notes**: Cited inline in already-public content (the d3fend-wall essay) — catalogued here 2026-06-21 to close that citation breach. Tier A under the strict tiers in METHODOLOGY.md §3.1 (peer-reviewed ACM journal). Refresh (2026-11-23): Erbacher, 'Base-Rate Fallacy Redux and a Deep Dive Review in Cybersecurity' (arXiv:2203.08801, 2022, single version, no journal reference on arXiv) re-examines Axelsson's argument and argues that false positives deserve the same depth of analysis as true positives; abstract read only, so cite it for direction.
 
-**Validation Status**: ✅ Verified 2026-06-21 (DBLP rec journals/tissec/Axelsson00: ACM TISSEC vol 3, issue 3, pp.186-205, 2000, DOI 10.1145/357830.357849).
+**Validation Status**: ✅ Verified 2026-06-21 (DBLP rec journals/tissec/Axelsson00: ACM TISSEC vol 3, issue 3, pp.186-205, 2000, DOI 10.1145/357830.357849). · Re-verified 2026-11-23: abstract read at a hosted copy of the TISSEC PDF (profsandhu.com/cs6393_s20/p186-axelsson.pdf); 'the false alarm rate is the limiting factor for the performance of an intrusion detection system' is verbatim, and the paper's worked scenario requires a detection rate of 0.7 at a false alarm rate of 1/100,000 per event. The ACM DOI page returns 403 to automated fetch, so Crossref (TISSEC 3(3):186-205) stands in for the landing page.
 
 ---
 
@@ -3686,13 +3733,13 @@ published works are merged here; nothing about outreach or relationships is repr
 - Error costs in NIDS are extreme and asymmetric
 - A wide semantic gap separates 'an anomaly' from 'an attack'
 - Network traffic has no stable notion of 'normal' to learn
-- Sound evaluation is nearly impossible for lack of realistic labeled data
-- Recommendation: narrow the scope and keep a human in the loop, not abandon ML
+- Training data is scarce, and sound evaluation is fundamentally difficult, with the lack of appropriate public datasets named as the biggest evaluation obstacle (the authors list training data and evaluation as two separate challenges)
+- Recommendations (Section IV): understand the threat model, keep the scope narrow, reduce the cost of errors (including giving the analyst more context to speed manual inspection), and evaluate soundly; the authors 'do not consider machine-learning an inappropriate tool for intrusion detection'
 
 **Citations**: AIML-RIPENESS-EVIDENCE.md (anomaly-detection difficulty); /research/d3fend-wall essay (the on-the-record reasons ML is hardest at anomaly detection)
 **Notes**: Cited inline in already-public content (the d3fend-wall essay) — catalogued here 2026-06-21 to close that citation breach. Tier A (peer-reviewed IEEE S&P; 2020 Test-of-Time Award). Authors are the Corelight/Zeek co-founders.
 
-**Validation Status**: ✅ Verified 2026-06-21 (DBLP rec conf/sp/SommerP10: IEEE S&P 2010, pp.305-316, DOI 10.1109/SP.2010.25; 2020 Test-of-Time Award confirmed via ICSI Berkeley and the IEEE-Security SP2020 awards page).
+**Validation Status**: ✅ Verified 2026-06-21 (DBLP rec conf/sp/SommerP10: IEEE S&P 2010, pp.305-316, DOI 10.1109/SP.2010.25; 2020 Test-of-Time Award confirmed via ICSI Berkeley and the IEEE-Security SP2020 awards page). · Re-verified 2026-11-23 at the author-hosted PDF: the five challenges and the 'not an inappropriate tool' sentence are verbatim; 'keep a human in the loop' is not a stated recommendation in the paper and was replaced with the Section IV recommendation headings.
 
 ---
 
@@ -3736,8 +3783,8 @@ published works are merged here; nothing about outreach or relationships is repr
 
 **Key Findings** (read at the arXiv preprint text, Finding 1 and the Finding 3 discussion; Tables II and III): 14 widely used log parsers were assessed. "Previous studies obtained parsing accuracy average results of 0.73 [10]; however, under the considered metric, an average log template accuracy of 0.2 is obtained" (about 400 of 2,000 templates matched rather than the 1,460 the grouping metric implies). On the bank's industry dataset "the highest log template accuracy is roughly 0.05", about 100 of 2,000 messages parsed correctly. The 0.73 is the earlier literature's reported grouping accuracy that the paper re-evaluates, not a new measurement by these authors.
 **Citations**: Petrescu, S., Den Hengst, F., Uta, A., & Rellermeyer, J. S. (2023). *Log Parsing Evaluation in the Era of Modern Software Systems*. 2023 IEEE 34th International Symposium on Software Reliability Engineering (ISSRE), 379-390. DOI 10.1109/ISSRE59848.2023.00019.
-**Notes**: Found via the 2026-11-07 Jenova academic citation check (row 9, verdict V). Figures were read at the arXiv preprint (2308.09003); the IEEE version of record was not fetched, so the wording of the quoted sentences may differ slightly in the published text.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref API record for title, four authors, venue, pages 379-390 and DOI; figures at the arXiv preprint text).
+**Notes**: Found via the 2026-11-07 Jenova academic citation check (row 9, verdict V). Figures were read at the arXiv preprint (2308.09003); the IEEE version of record was not fetched, so the wording of the quoted sentences may differ slightly in the published text. Refresh (2026-11-23): no follow-up by the same authors found. Two later studies sit beside it: Jiang et al., 'A Large-Scale Evaluation for Log Parsing Techniques: How Far Are We?' (ISSTA 2024, DOI 10.1145/3650212.3652123, which introduces Loghub-2.0), and Beck, Landauer, Wurzenberger, Skopik and Rauber, 'System Log Parsing with Large Language Models: A Review' (arXiv:2504.04877, 2025), which reviews 29 LLM-based parsers, benchmarks seven, and critically assesses the comparability and reproducibility of reported results. Neither was read for figures, so cite them for direction only.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref API record for title, four authors, venue, pages 379-390 and DOI; figures at the arXiv preprint text). · Figures re-read at the arXiv PDF and DOI confirmed to redirect to IEEE Xplore document 10301279 (2026-11-23).
 
 ---
 
@@ -3822,7 +3869,8 @@ published works are merged here; nothing about outreach or relationships is repr
 - Vendor-filtering and capability-mapping (NIST CSF 2.0 functions)
 
 **Citations**: NIST. *Cybersecurity Framework 2.0* (2024). https://www.nist.gov/cyberframework
-**Validation Status**: ✅ Active URL (verified 2026-06-05)
+**Notes**: Refresh (2026-11-23): CSF 2.0 (2024) is still the current version. NIST's Cyber AI Profile, NIST IR 8596 (initial preliminary draft dated 2025-12-16, comment period closed 2026-01-30, https://csrc.nist.gov/pubs/ir/8596/iprd), is a CSF 2.0 Community Profile with three focus areas: securing AI system components, conducting AI-enabled cyber defense, and thwarting AI-enabled cyber attacks. It was still a preliminary draft on 2026-11-23, so cite it as in-progress guidance and never as a standard.
+**Validation Status**: ✅ Active URL (verified 2026-06-05; re-verified 2026-11-23, still the CSF 2.0 Resource Center, no successor version)
 
 ---
 
@@ -3859,7 +3907,7 @@ published works are merged here; nothing about outreach or relationships is repr
 #### MITRE Cyber Analytics Repository (CAR) — Analytics Mapped to ATT&CK
 
 **Authors**: MITRE Corporation (MITRE ATT&CK team)
-**Date**: 2015–present (continuously updated)
+**Date**: 2015 onward; newest analytic CAR-2022-03-001 (merged 2022-04), analytics last edited 2023-08, repository last changed 2025-05 (checked 2026-11-23)
 **URL**: https://car.mitre.org/
 **Alt URL**: https://github.com/mitre-attack/car (analytics + data model, Apache-2.0)
 **Evidence Level**: B (official MITRE practitioner/operational catalogue; not peer-reviewed research)
@@ -3867,10 +3915,10 @@ published works are merged here; nothing about outreach or relationships is repr
 - Detection-coverage measurement: each CAR analytic carries an explicit mapping to one or more ATT&CK technique IDs, so a detection corpus can be scored by which techniques its analytics cover. This is the analytic-to-technique side of a coverage corpus (the rules), complementary to a malicious-test catalogue (the needles).
 - Supports the ATT&CK-coverage / detection-engineering threads and the D3FEND-coverage work (analytics expressed against a CAR-style abstract data model travel across telemetry schemas).
 
-**Key Findings**: CAR is a knowledge base of analytics organized around the ATT&CK adversary model. Each analytic includes a description, the ATT&CK technique(s)/tactic(s) it addresses, pseudocode, and — where available — reference implementations (e.g., Splunk SPL, EQL) plus a unit/coverage note. Analytics are written against the **CAR Data Model (CARDM)**, an abstraction of host/network telemetry (objects like process, flow, file) that decouples the analytic logic from any one product's field names. A coverage view maps the analytic set onto the ATT&CK matrix. Treat CAR as a curated reference set, not an exhaustive one — it covers a subset of ATT&CK techniques, so "covered by CAR" is a floor, not the universe.
+**Key Findings**: CAR is a knowledge base of analytics organized around the ATT&CK adversary model. Each analytic includes a description, the ATT&CK technique(s)/tactic(s) it addresses, pseudocode, and — where available — reference implementations (e.g., Splunk SPL, EQL) plus a unit/coverage note. Analytics are written against the **CAR Data Model (CARDM)**, an abstraction of host/network telemetry (objects like process, flow, file) that decouples the analytic logic from any one product's field names. A coverage view maps the analytic set onto the ATT&CK matrix. Treat CAR as a curated reference set, not an exhaustive one — it covers a subset of ATT&CK techniques, so "covered by CAR" is a floor, not the universe. Refresh (2026-11-23): the repository holds 102 analytics and has added none since April 2022, so treat CAR as a stable reference set and not a growing one. ATT&CK v18 (October 2025) replaced in-technique detections with Detection Strategies and Analytics objects and deprecated Data Sources; Enterprise ATT&CK carried 691 Detection Strategies, 1,739 Analytics and 106 Data Components at v18 and 703, 1,770 and 106 at v20 (October 2026, current on the check date), per MITRE's update notes, which makes ATT&CK's own analytics the larger MITRE analytic-to-technique corpus.
 **Citations**: ATT&CK-coverage / detection-engineering framing; the analytic↔technique mapping that anchors detection-coverage scoring.
 **Notes**: Tier B under the strict tiers — authoritative operational catalogue from MITRE, but a curated analytics repository rather than peer-reviewed research or a ratified standard. Cite the analytic's ATT&CK technique ID(s) and the CAR analytic ID (e.g., CAR-2013-xx-xxx); confirm an analytic's current implementations at the repo before citing one, since CAR is updated over time.
-**Validation Status**: ✅ Verified from knowledge (MITRE ATT&CK Cyber Analytics Repository; car.mitre.org and github.com/mitre-attack/car; analytics mapped to ATT&CK with pseudocode + CAR Data Model). Confirm the live analytic count and per-analytic implementations at the primary before quoting a number — no count is asserted here.
+**Validation Status**: ✅ Verified at primary 2026-11-23 (GitHub API: 102 analytics, newest CAR-2022-03-001 merged 2022-04-18, last repository commit 2025-05-16; ATT&CK counts from the attack.mitre.org October 2025 and October 2026 update pages). Confirm per-analytic implementations at the primary before citing one.
 
 ---
 
@@ -3888,7 +3936,7 @@ published works are merged here; nothing about outreach or relationships is repr
 **Key Findings**: A library of executable tests organized by ATT&CK technique ID. Each test is "atomic" — small, self-contained, dependency-light, and meant to exercise a single technique (often via command-line / scripted execution across Windows, macOS, Linux). Tests are defined in a structured YAML format and can be driven by the companion **Invoke-AtomicRedTeam** (PowerShell) execution framework. MIT-licensed and community-maintained under Red Canary. Coverage is broad but not total across the ATT&CK matrix, and a passing atomic exercises one variant of a technique, so "the atomic fired a detection" measures that variant, not the whole technique — frame catch rate as injected-and-tested, not field-validated.
 **Citations**: Detection-coverage / detection-engineering threads; the technique-keyed adversary-activity side that complements CAR/Sigma analytics in a coverage corpus.
 **Notes**: Tier B under the strict tiers — widely-used operational testing library from a credible vendor, but an open-source test catalogue rather than peer-reviewed research or a standard. Cite the atomic's ATT&CK technique ID and the test name/GUID; confirm a given test's current definition at the repo before citing specifics, since the library changes. Synthetic/benign-by-design execution only — do not pipe raw execution telemetry into context.
-**Validation Status**: ✅ Verified from knowledge (Red Canary's Atomic Red Team; github.com/redcanaryco/atomic-red-team, MIT License; per-technique atomic tests in YAML mapped to ATT&CK, with the Invoke-AtomicRedTeam runner). Confirm any technique-coverage count or specific test GUID at the primary before quoting — none is asserted here.
+**Validation Status**: ✅ Verified at primary 2026-11-23 (GitHub README and API: MIT, active maintenance, README badge read 1,950 atomics that day; Invoke-Atomic runner repository last pushed 2025-09-08). Confirm any technique-coverage count or specific test GUID at the primary before quoting one.
 
 ---
 
@@ -3916,7 +3964,7 @@ published works are merged here; nothing about outreach or relationships is repr
 **Authors**: ISO/IEC JTC 1 (joint ISO + IEC committee); BFO authored by Barry Smith et al. (BFO 2020 release standardized by the document)
 **Date**: Published November 2021 (ISO/IEC 21838-2:2021). Note the version distinction: the ontology release is named "BFO 2020"; the ISO/IEC standard document is dated 2021 — cite the standard as 21838-2:2021.
 **URL**: https://www.iso.org/standard/74572.html
-**Alt URL**: https://github.com/BFO-ontology/BFO-2020 (artifacts specified in ISO 21838-2:2020/2021) · https://en.wikipedia.org/wiki/Basic_Formal_Ontology
+**Alt URL**: https://github.com/BFO-ontology/BFO-2020 (artifacts specified in ISO 21838-2:2020/2021) · https://en.wikipedia.org/wiki/Basic_Formal_Ontology · https://webstore.iec.ch/en/publication/72703 (IEC catalogue record, fetchable)
 **Evidence Level**: A (official ISO/IEC international standard)
 **Relevance**:
 - The top-level (upper) ontology at the base of the grounding chain D3FEND → CCO → BFO referenced in the book appendix
@@ -3924,8 +3972,8 @@ published works are merged here; nothing about outreach or relationships is repr
 - Anchors the formal-ontology rigor the grounding work imports into the OCSF ↔ D3FEND mapping
 
 **Citations**: ISO/IEC 21838-2:2021. *Information technology — Top-level ontologies (TLO) — Part 2: Basic Formal Ontology (BFO)*.
-**Notes**: BFO adopted as a foundational ontology by 650+ projects (biomedical, defense/security, industry). The "BFO 2020" name (ontology release) and "21838-2:2021" (standard publication date) are distinct — do not write "ISO/IEC 21838-2:2020". Part 1 of the 21838 family specifies the requirements for top-level ontologies; Part 2 is BFO specifically.
-**Validation Status**: ✅ Verified 2026-06-21 (WebSearch + ISO catalogue: standard number 21838-2, Part 2 = BFO, published Nov 2021, standardizes BFO 2020). ISO landing page returns HTTP 403 to automated fetch; number/title/date corroborated via ISO catalogue listing, the BFO-2020 GitHub repo, and the bfo-discuss announcement.
+**Notes**: BFO is used as the top-level ontology by a large number of ontology projects in biomedicine, defense and intelligence, and industry: the official users list at basic-formal-ontology.org/users.html named 731 ontologies and about 100 institutions and groups when counted on 2026-11-23. The page states no total, and the earlier '650+' figure could not be traced to a primary, so quote the dated count. The "BFO 2020" name (ontology release) and "21838-2:2021" (standard publication date) are distinct — do not write "ISO/IEC 21838-2:2020". Part 1 of the 21838 family specifies the requirements for top-level ontologies; Part 2 is BFO specifically.
+**Validation Status**: ✅ Verified 2026-06-21 (WebSearch + ISO catalogue: standard number 21838-2, Part 2 = BFO, published Nov 2021, standardizes BFO 2020). ISO landing page returns HTTP 403 to automated fetch; number/title/date corroborated via ISO catalogue listing, the BFO-2020 GitHub repo, and the bfo-discuss announcement. · Re-verified 2026-11-23: IEC webstore lists ISO/IEC 21838-2 Edition 1.0, published 2021-11-30, with no edition listed as under development; users-list count taken from basic-formal-ontology.org/users.html the same day.
 
 ---
 
@@ -3938,12 +3986,12 @@ published works are merged here; nothing about outreach or relationships is repr
 **Evidence Level**: B (widely-adopted community/defense ontology suite with an arXiv descriptive paper; not itself an ISO/IEC standard — proposed as a candidate standard mid-level ontology, so A is not yet warranted)
 **Relevance**:
 - The mid-level link in the grounding chain D3FEND → CCO → BFO referenced in the book appendix
-- BFO-aligned suite of exactly eleven ontologies (page verbatim "a widely-used suite of eleven ontologies"; latest release v2.1, April 2026 — refreshed 2026-07-10); used across defense/intelligence for interoperability and automated reasoning
+- BFO-aligned suite of exactly eleven ontologies (page verbatim "a widely-used suite of eleven ontologies"; latest release v2.2, 2026-08-14 (refreshed 2026-11-23; v2.1 was April 2026)); used across defense/intelligence for interoperability and automated reasoning
 - The reusable middle layer the D3FEND-to-BFO grounding routes through rather than mapping D3FEND straight to a top-level ontology
 
 **Citations**: Jensen, M., et al. *The Common Core Ontologies* (arXiv:2404.17758). CUBRC, Inc. CCO open-source distribution.
-**Notes**: CCO is explicitly designed to extend BFO (the top-level ontology) — confirming the BFO-alignment the grounding chain depends on. Owner/maintainer is CUBRC (Buffalo-based R&D company), not the University at Buffalo philosophy department, though the two are closely connected (Barry Smith/NCOR). "Mid-level" is the correct register — CCO sits between BFO (top-level) and mission/domain ontologies. Tier B not A: CCO is *proposed* as a standard mid-level ontology but is not an adopted ISO/IEC standard the way BFO is.
-**Validation Status**: ✅ Verified 2026-06-21 (WebSearch: CUBRC origin + IARPA funding + 2017 open release + BFO-extension/mid-level framing confirmed via NCOR, CUBRC, and the arXiv CCO paper).
+**Notes**: CCO is explicitly designed to extend BFO (the top-level ontology) — confirming the BFO-alignment the grounding chain depends on. Owner/maintainer is CUBRC (Buffalo-based R&D company), not the University at Buffalo philosophy department, though the two are closely connected (Barry Smith/NCOR). "Mid-level" is the correct register — CCO sits between BFO (top-level) and mission/domain ontologies. Tier B not A: CCO is *proposed* as a standard mid-level ontology but is not an adopted ISO/IEC standard the way BFO is. Refresh (2026-11-23): the CCO README states CCO is under evaluation as a mid-level ontology standard by IEEE SA under PAR P3195.1 (an active PAR approved 2022-09-21, not an approved standard), so the Tier B rating holds until that standard is approved. The Governance Board expects structural release 3.0 by 2026-12-31 and 4.0 by 2027-06-30 and recommends users wait for 4.0 before updating, so any class-level citation should name the CCO version.
+**Validation Status**: ✅ Verified 2026-06-21 (WebSearch: CUBRC origin + IARPA funding + 2017 open release + BFO-extension/mid-level framing confirmed via NCOR, CUBRC, and the arXiv CCO paper). · Re-verified 2026-11-23 (GitHub releases: v2.2 2026-08-14; README on the develop branch: eleven ontologies, IEEE P3195.1; IEEE SA page: Active PAR).
 
 ---
 
@@ -4057,7 +4105,8 @@ published works are merged here; nothing about outreach or relationships is repr
 - Upstream preprocessing to cut warehouse compute; ch02 §2.3 (economics) [was: Chapter 10] (cost), ch05 §5.3 + Appendix I [was: Chapter 9] (serverless patterns)
 
 **Citations**: Hurault, J. (2024, May 1). *Okta's Multi-Engine Data Stack*. Ju Data Engineering Newsletter.
-**Validation Status**: ✅ Active URL (verified 2026-06-05); both figures, labelled unverified on 2026-11-17, were read at the post on 2026-11-22
+**Notes**: Refresh (2026-11-23): both figures re-read verbatim at the post. Hurault relays them from a Data Council 2024 talk by Jake Thomas of Okta, 'Processing Trillions of Records at Okta with Mini Serverless Databases' (2024-04-18). The post names the speaker only as 'Jake' and its link to the talk page now returns 404; the speaker and event are confirmed at https://duckdb.org/library/processing-trillions-of-records-at-okta-with-mini-serverless-databases/. That talk is the primary for the figures and is worth citing beside this post, though the recording was not watched.
+**Validation Status**: ✅ Active URL (verified 2026-06-05); both figures, labelled unverified on 2026-11-17, were read at the post on 2026-11-22 · re-read 2026-11-23
 
 ---
 
@@ -4140,29 +4189,29 @@ published works are merged here; nothing about outreach or relationships is repr
 #### Ryan Stillions — The DML (Detection Maturity Level) Model
 
 **Authors**: Ryan Stillions
-**Date**: 2014-04 (URL path indicates April 2014; entry previously said May 2014 — exact day unconfirmed, Blogger page is JS-shelled to fetchers)
+**Date**: 2014-04-21 (confirmed via the Blogger post feed, 2026-11-23)
 **URL**: https://ryanstillions.blogspot.com/2014/04/the-dml-model_21.html
 **Evidence Level**: C (practitioner blog-published conceptual model; widely cited in the detection-engineering community but not peer-reviewed or a standards document — cite as a framing model, not as an empirical result)
 **Relevance**:
 - Anchors the "detection maturity is about *abstraction level*, not coverage count" framing used in the D3FEND-coverage / detection-engineering line of argument — a control's value depends on *what altitude* of adversary behavior it observes (goals/strategy/TTPs vs. atomic indicators), not merely on how many techniques it nominally touches.
-- Conceptual complement to MITRE ATT&CK (which enumerates techniques) and to the ATT&CK↔D3FEND coverage work: the DML levels give a vocabulary for *why* a high-abstraction detection (DML-6/7/8: tactics/techniques/intent) is more durable than a low-abstraction one (DML-1/2: host/network artifacts, atomic IOCs).
+- Conceptual complement to MITRE ATT&CK (which enumerates techniques) and to the ATT&CK↔D3FEND coverage work: the DML levels give a vocabulary for *why* a high-abstraction detection (DML-5 Techniques, DML-6 Tactics, and the largely subjective DML-7 Strategy and DML-8 Goals) is more durable than a low-abstraction one (DML-1 Atomic IOCs, DML-2 Host & Network Artifacts).
 
 **Key Findings**:
-- A nine-level model (DML-0 None through DML-8 Goals, descending in abstraction): Identity, Goals, Strategy, Tactics, Techniques, Procedures, Tools, Host & Network Artifacts, Atomic Indicators.
+- A nine-level model, DML-0 to DML-8, with the lowest levels the most technically specific: DML-8 Goals, DML-7 Strategy, DML-6 Tactics, DML-5 Techniques, DML-4 Procedures, DML-3 Tools, DML-2 Host & Network Artifacts, DML-1 Atomic IOCs, DML-0 None or Unknown.
 - Core claim: an organization's detection maturity is measured by the *highest abstraction level at which it can reliably detect adversary activity*, not by the raw number of indicators or signatures it maintains. Detecting at the Tactics/Techniques level survives an adversary changing tools or infrastructure; detecting only at the Atomic-Indicator level does not.
 - Frequently paraphrased alongside David Bianco's "Pyramid of Pain" (the two are complementary: Pyramid of Pain frames adversary cost, DML frames defender abstraction level).
 
 **Citations**: Detection-engineering / coverage-quality framing; supports the argument that D3FEND/ATT&CK coverage must be read by abstraction level, not technique count.
 **Notes**: Tier C under the strict tiers in METHODOLOGY.md §3.1 — a single-author practitioner blog post, durable and community-canonical but not peer-reviewed. Cite Stillions by name + 2014 for the model; do not attribute specific empirical detection-rate numbers to it (it publishes none).
 
-**Validation Status**: ✅ Real, knowledge-confirmed (Stillions' 2014 DML blog model is a well-established detection-engineering reference; the nine-level abstraction ladder is its defining content). URL is the canonical Blogspot post; confirm live before publication-grade citation.
+**Validation Status**: ✅ Verified at primary 2026-11-23 (full post text via the Blogger JSON feed: nine levels 0-8 as listed, published 2014-04-21). Corrected that day: an 'Identity' level the post does not contain was removed, and the Relevance level numbers were fixed.
 
 ---
 
 #### SCYTHE — Purple Team Exercise Framework (PTEF)
 
-**Authors**: Jorge Orchilles, Bryson Bort, Christopher Peacock, et al. (SCYTHE)
-**Date**: 2020 (v1; iteratively updated)
+**Authors**: SCYTHE. Per the PTEFv4 Contributors section: v1 names no author and credits reviewers and contributors including Jorge Orchilles and Bryson Bort; v2 authored by Christopher Peacock, Jorge Orchilles, Tim Schulz and Shawn Edwards; v3 authored by Jorge Orchilles; v4 contributors Trey Bilbrey, Tyler Casey and Jarrad Pemberton
+**Date**: 2020 (v1); current PTEFv4, dated January 2026 in the document and merged to the repository 2026-04-09
 **URL**: https://github.com/scythe-io/purple-team-exercise-framework
 **Evidence Level**: C (vendor-published operational practice framework — SCYTHE is an adversary-emulation vendor, so flag the author-incentive; the *methodology* is community-adopted and credible, but it is not peer-reviewed or a neutral standard)
 **Relevance**:
@@ -4174,9 +4223,9 @@ published works are merged here; nothing about outreach or relationships is repr
 - Frames detection effectiveness as something *measured by emulation*, against known TTPs, rather than assumed from control coverage — the operational counterpart to ATT&CK Evaluations' threat-informed purple-teaming (see the MITRE Engenuity ATT&CK Evaluations entry, which uses the same purple-team methodology at vendor-evaluation scale).
 
 **Citations**: Detection-validation / measured-coverage framing; supports the claim that coverage must be tested by adversary emulation, not asserted.
-**Notes**: Tier C — credible, named, community-adopted operational framework, but vendor-published (SCYTHE) so flag the incentive when citing. The named-practitioner anchor (Orchilles, Bort, Peacock) keeps this above Tier-D speculation; Orchilles is also a SANS author on purple teaming / adversary emulation, which corroborates the practitioner authority. Do not attach empirical detection-rate statistics to this source.
+**Notes**: Tier C — credible, named, community-adopted operational framework, but vendor-published (SCYTHE) so flag the incentive when citing. The named-practitioner anchor (Orchilles, Bort, Peacock) keeps this above Tier-D speculation; Orchilles is also a SANS author on purple teaming / adversary emulation, which corroborates the practitioner authority. Do not attach empirical detection-rate statistics to this source. Refresh (2026-11-23): cite PTEFv4 (PTEFv4.md in the repository) for current wording. v4 adopts ATT&CK v18 Detection Strategies and Analytics terminology, classifies each missed detection into one of five gap types (visibility, detection logic, alert suppression, process, timeliness), adds metrics such as Detection Coverage Growth, and covers AI/ML targets with reference to MITRE ATLAS and the OWASP Top 10 for LLM Applications. Bryson Bort appears only as a v1 reviewer and contributor, so the practitioner anchor is better stated as Orchilles and Peacock. The repository README calls PTEF 'the industry standard for Purple Team Exercises'; treat that as vendor self-description.
 
-**Validation Status**: ✅ Real, knowledge-confirmed (SCYTHE's PTEF is a real, named purple-team methodology published on GitHub; Orchilles/Bort/Peacock are real, verifiable practitioners in adversary emulation). GitHub URL is the canonical home; confirm live before publication-grade citation.
+**Validation Status**: ✅ Verified at primary 2026-11-23 (GitHub repo, README and PTEFv4.md read; MIT license; v1 to v3 archived under Archive/; contributor list per version).
 
 ---
 
@@ -4187,13 +4236,14 @@ published works are merged here; nothing about outreach or relationships is repr
 **Authors**: Kevin Poulsen
 **Date**: 2011
 **URL**: https://openlibrary.org/books/OL24438892M (catalog record; print ISBN 978-0307588685, Crown, 2011)
+**Alt URL**: https://www.penguinrandomhouse.com/books/197890/kingpin-by-kevin-poulsen/ (publisher title page)
 **Evidence Level**: B (non-fiction, investigative)
 **Relevance**:
 - Attack-surface economics; attackers optimize for ROI, not capability (Max Butler abandoned exploitable bank-network access for faster carding monetization)
 - Threat-actor behavior and monetization patterns
 
 **Citations**: Poulsen, K. (2011). *Kingpin*. Crown.
-**Validation Status**: ✅ Open Library record found 2026-11-17 (Crown, first edition, ISBN 978-0307588685). The record's publish_date is 2010 (its LCCN is 2010027952), and its LC call numbers carry both 2010 and 2011, so the 2011 year given here is not confirmed by that record.
+**Validation Status**: ✅ Open Library record found 2026-11-17 (Crown, first edition, ISBN 978-0307588685). The record's publish_date is 2010 and its LCCN is 2010027952, which probably reflects the cataloging-in-publication year, and its LC call numbers carry both 2010 and 2011. Refresh (2026-11-23): the Penguin Random House title page lists the Crown ebook (ISBN 978-0307588708) as published Feb 22, 2011 and the paperback (ISBN 978-0307588692) as Feb 7, 2012, which supports a 2011 first release; that page does not list the hardcover ISBN 978-0307588685, so the hardcover date itself is inferred. The Open Library HTML page now sits behind a bot-check interstitial, so the record was read through its .json endpoint. The Butler ROI anecdote was not re-checked against the book text in this pass.
 
 ---
 
@@ -4438,7 +4488,7 @@ The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide
 
 **Authors**: Cribl (vendor case study); customer Finality, Inc. (CEO Eric Jeanmaire quoted)
 **Date**: April 22, 2024
-**URL**: https://cribl.io/customers/finality/
+**URL**: https://cribl.io/resources/cs/finality/
 **Alt URL**: https://docs.cribl.io/stream/usecase-win-xml/
 **Evidence Level**: C (vendor-published, single-customer self-reported)
 **Relevance**:
@@ -4447,7 +4497,7 @@ The 2026-06-13 Gemini-DR lit-review intake surfaced an EITT Academy vendor-guide
 
 **Key Findings**: Finality — an IT and security consulting firm helping US Federal agencies meet log-management/M-21-31 obligations — is a Cribl Stream customer. CEO Eric Jeanmaire, verbatim: "Being able to get a 47% reduction on average in our Windows Events by dropping repetitive fields is huge." Also documented: "10x faster" data extractions / Splunk CIM compliance, and a 250% month-over-month increase in SIEM detection-content (new-rule) delivery; CPU-intensive work (CMDB, threat enrichment) shifted off SIEM indexers onto Cribl Stream. No dollar-savings figure published. Cribl's own docs give a broader 34–70% range for Windows XML event reduction generally. **Correction to the Gemini-DR intake**: "Finality" is a Cribl *customer* (a consulting firm), not a Cribl product/feature; the 47% is a single-customer self-report qualified "on average … by dropping repetitive fields," not an independent benchmark.
 **Citations**: Cribl (2024, Apr 22). *Finality customer case study*. cribl.io.
-**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — 47% CEO quote, 10× and 250% figures, and the customer-not-product correction confirmed)
+**Validation Status**: ✅ Active (verified 2026-06-13 via WebFetch — 47% CEO quote, 10× and 250% figures, and the customer-not-product correction confirmed) Refresh (2026-11-23): old /customers/ path now redirects to /resources/cs/finality/; 47%, 10x, 250% and the 34-70% docs range re-read verbatim; the page title and section headings frame the 250% as faster threat detection or faster content delivery while the body gives it as a month-over-month increase in new detection rules, and the entry follows the body.
 
 ---
 
@@ -4595,7 +4645,7 @@ Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; ever
 - "a significant portion of the alerts are related to 'attack attempts' (attacks that did not lead to true compromises, 27%), and 'benign triggers' (correctly matched security events but had business-justified explanations, 49%)" (verbatim)
 - 4 of 11 investigated true compromises went undetected by network-level alerts — network telemetry alone misses initial endpoint compromise and stealthy lateral movement
 
-**Validation Status**: ✅ Verified at primary 2026-07-10 (abstract page + PDF; full author list from citation metadata)
+**Validation Status**: ✅ Verified at primary 2026-07-10 (abstract page + PDF; full author list from citation metadata) Refresh (2026-11-23): both URLs live; 24K–134K/day, 0.01%, 27% and 49%, and 4 of 11 re-read verbatim in the USENIX PDF. The body states the attack-attempt share as "at least 27%" (27.37%, about 3.9 million alerts, per Section 6.2), and the data comes from a single SOC at NCSA.
 
 ---
 
@@ -4619,9 +4669,10 @@ Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; ever
 #### PBC: High-Ratio Compression for Machine-Generated Data
 
 **Authors**: Jiujing Zhang, Zhitao Shen, Shiyu Yang, Lingkai Meng, Chuan Xiao, Wei Jia, Yue Li, Qinhui Sun, Wenjie Zhang, Xuemin Lin (Ant Group / Guangzhou University / UNSW)
-**Date**: 2024 (ACM SIGMOD / PACMMOD)
+**Date**: December 2023 (PACMMOD 1(4), DOI 10.1145/3626732; the issue presented at ACM SIGMOD 2024)
 **URL**: https://arxiv.org/pdf/2311.13947
 **Code**: https://github.com/antgroup/pbc
+**DOI**: https://doi.org/10.1145/3626732
 **Evidence Level**: A (SIGMOD/PACMMOD, top-tier peer-reviewed)
 **Relevance**:
 - Pattern-based per-record log compression enabling random point-lookups without full block decompression — machine-generated-log structure exploited beyond generic Zstd/Snappy
@@ -4629,7 +4680,7 @@ Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; ever
 **Key Findings**:
 - "PBC, on average, achieves a compression ratio twice as high as the state-of-the-art techniques while maintaining competitive compression and decompression speeds" (verbatim)
 
-**Validation Status**: ✅ Verified at primary 2026-07-10 (arXiv PDF; venue + author list confirmed)
+**Validation Status**: ✅ Verified at primary 2026-07-10 (arXiv PDF; venue + author list confirmed) Refresh (2026-11-23): arXiv and code links live; "twice as high" re-read verbatim; DOI and PACMMOD issue (vol. 1, no. 4, published 2023-12-08) resolved at Crossref. The published title is "High-Ratio Compression for Machine-Generated Data" without the "PBC:" prefix, and the SIGMOD 2024 pairing follows the PACMMOD issue convention and was not read at a primary in this pass.
 
 ---
 
@@ -4653,7 +4704,9 @@ Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; ever
 
 **Authors**: Yiming Qiao, Yihan Gao, Huanchen Zhang (Tsinghua University)
 **Date**: 2024, PVLDB 17(10):2528-2540
-**URL**: https://www.vldb.org/pvldb/volumes/17/paper/Blitzcrank%3A%20Fast%20Semantic%20Compression%20for%20In-Memory%20Online%20Transaction%20Processing
+**URL**: https://www.vldb.org/pvldb/vol17/p2528-zhang.pdf
+**Alt URL**: https://www.vldb.org/pvldb/volumes/17/paper/Blitzcrank%3A%20Fast%20Semantic%20Compression%20for%20In-Memory%20Online%20Transaction%20Processing (landing page, script-rendered)
+**DOI**: https://doi.org/10.14778/3675034.3675044
 **Evidence Level**: A (PVLDB, peer-reviewed)
 **Relevance**:
 - The row-oriented/OLTP counterpoint in the columnar-vs-row storage story: semantic compression with random-tuple access — what row stores can do that block-compressed columnar can't
@@ -4662,23 +4715,24 @@ Six Tier-A additions from the DR-3 hunt (external Gemini Deep Research run; ever
 **Key Findings**:
 - "BLITZCRANK achieves a sub-microsecond latency for decompressing a random tuple while obtaining high compression factors. This leads to an 85% memory reduction in the TPC-C evaluation with a moderate (19%) throughput degradation" (verbatim)
 
-**Validation Status**: ✅ Verified at primary 2026-07-10 (correct paper located and fetched; misattribution documented in the intake doc)
+**Validation Status**: ✅ Verified at primary 2026-07-10 (correct paper located and fetched; misattribution documented in the intake doc) Refresh (2026-11-23): quote re-read verbatim in the PVLDB PDF; the volume-page URL returns only the site shell to a plain fetch (the abstract is script-rendered), so the PDF is the primary link.
 
 ---
 
 #### Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores
 
-**Authors**: Michael Armbrust, Tathagata Das, Liwen Sun, Burak Yavuz, Shixiong Zhu, Mukul Murthy, Joseph Torres, Herman van Hovell, Adrian Ionescu, Alicja Łuszczak, Michał Świtakowski, et al. (21 authors, Databricks / Stanford)
+**Authors**: Michael Armbrust, Tathagata Das, Liwen Sun, Burak Yavuz, Shixiong Zhu, Mukul Murthy, Joseph Torres, Herman van Hovell, Adrian Ionescu, Alicja Łuszczak, Michał Świtakowski, et al. (21 authors, Databricks / CWI / UC Berkeley / Stanford)
 **Date**: 2020, PVLDB 13(12):3411-3424
 **URL**: https://www.vldb.org/pvldb/vol13/p3411-armbrust.pdf
+**DOI**: https://doi.org/10.14778/3415478.3415560
 **Evidence Level**: A (PVLDB, peer-reviewed; industry-authored)
 **Relevance**:
 - The foundational peer-reviewed description of the transaction-log-over-object-store design (log compacted into Parquet checkpoints, ACID + time travel) that the book's table-format chapters describe — a citable primary underneath vendor documentation
 
 **Key Findings**:
-- The transaction log is compacted into Apache Parquet checkpoint files, providing ACID properties, time travel, and faster metadata operations for large tabular datasets on cloud object stores (abstract, near-verbatim; the paper is the definitional source rather than a benchmark)
+- The transaction log is compacted into Apache Parquet checkpoint files, providing ACID properties, time travel, and faster metadata operations for large tabular datasets on cloud object stores (paraphrase; the abstract's own words are "uses a transaction log that is compacted into Apache Parquet format to provide ACID properties, time travel, and significantly faster metadata operations for large tabular datasets"; the paper is the definitional source rather than a benchmark)
 
-**Validation Status**: ✅ Verified at primary 2026-07-10 (PDF fetched, title + full author list confirmed)
+**Validation Status**: ✅ Verified at primary 2026-07-10 (PDF fetched, title + full author list confirmed) Refresh (2026-11-23): PDF live, abstract re-read; affiliations corrected and DOI added; a foundational design paper that still describes the log-over-object-store design accurately, while current protocol features live in the delta-io PROTOCOL.md, not this paper.
 
 ---
 
@@ -4748,12 +4802,13 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - The resulting Stream4Flow stack (IPFIXcol → Kafka → Spark → Elastic Stack, open-sourced) ran experimentally on the Masaryk University campus network: 24,000 active IPs, 12,000 flows/s average
 - PatternFinder attributed the attacking tool for roughly a third of detected SSH dictionary attacks (31% pattern match: Ncrack-1 26%, Ncrack-2 4%, Hydra 1%, Medusa 0.4%)
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (originally excluded E2 at title/abstract screening; the 2026-07-16 independent second screen flagged the exclusion as a misread, and the owner-ruled adjudication admitted it through the same critical-appraisal + adversarial-verification gate as the original 40 — see `methods/second-screen-adjudication-2026-07-16.json`). All cited numbers verified at the IFIP DL full text, including a page-render check of the Fig. 3 percentages.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (originally excluded E2 at title/abstract screening; the 2026-07-16 independent second screen flagged the exclusion as a misread, and the owner-ruled adjudication admitted it through the same critical-appraisal + adversarial-verification gate as the original 40 — see `methods/second-screen-adjudication-2026-07-16.json`). All cited numbers verified at the IFIP DL full text, including a page-render check of the Fig. 3 percentages. Refresh (2026-11-23): IFIP PDF live; 500k/300k flows/s, Samza caveat, 24,000 IPs / 12,000 flows/s and the cannot-fully-replace-batch conclusion re-read verbatim; the Fig. 3 PatternFinder percentages were not re-extracted in this pass.
 
 #### Intrusion Detection Streaming Transactions Using Apache Kafka and Spark Streaming (IEEE ICAIT, 2019)
 
 **Authors**: May Thet Tun, Dim En Nyaung, Myat Pwint Phyu
-**Date**: 2019 (2019 International Conference on Advanced Information Technologies (ICAIT) — 3rd edition, Univ. of Information Technology, Yangon, Myanmar, 6-7 Nov 2019)
+**Full title**: Performance Evaluation of Intrusion Detection Streaming Transactions Using Apache Kafka and Spark Streaming
+**Date**: 2019 (2019 International Conference on Advanced Information Technologies (ICAIT) — 3rd edition, Univ. of Information Technology, Yangon, Myanmar, 6-7 Nov 2019), pp. 25-30
 **URL**: https://doi.org/10.1109/aitc.2019.8920960
 **Evidence Level**: B (Legitimate IEEE-published conference proceedings from a real, ongoing university-run series with no predatory or integrity flags found — so this is not a DROP-on-venue case)
 **Relevance**:
@@ -4762,14 +4817,15 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 **Key Findings**:
 - Carried for the existence of the measurement only. No number may be quoted from it: the readable abstract contains no figures, and its one directional statement (that Kafka partitions *increase* processing time) contradicts the paper's own stated aim, which the full text — IEEE-paywalled and unread — would have to resolve. A metadata trap worth recording: Semantic Scholar mis-assigns this paper to the unrelated IEEE International Conference on Advanced Infocomm Technology; the venue here is the Yangon ICAIT series, per Crossref.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 0 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 0 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check. Refresh (2026-11-23): DOI resolves to IEEE Xplore 8920960; full title and pages from Crossref; abstract re-read at OpenAlex, still no figures.
 
 #### CATRACA — Stream-Processing Threat Detection as a Virtual Network Function (Concurrency and Computation, 2019)
 
 **Authors**: Martin Andreoni Lopez, Diogo M. F. Mattos, Otto Carlos M. B. Duarte, Guy Pujolle
+**Full title**: Toward a monitoring and threat detection system based on stream processing as a virtual network function for big data (vol. 31, no. 20, e5344)
 **Date**: 2019 (Concurrency and Computation: Practice and Experience)
 **URL**: https://doi.org/10.1002/cpe.5344
-**Evidence Level**: A (Established, currently Scopus/WoS-SCIE-indexed Wiley journal with no integrity flags found; real deployed-system measurement (not simulation) with concrete accuracy figures in the abstract)
+**Evidence Level**: A (Established, currently Scopus/WoS-SCIE-indexed Wiley journal with no integrity flags found; a prototype deployed on OPNFV and evaluated on three datasets, with concrete accuracy figures in the abstract)
 **Relevance**:
 - Hypothesis H-STREAM-01 (stateful stream processing at scale) — a peer-reviewed instance of detection embedded in the streaming pipeline rather than bolted on after it
 - Book ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] (Ingestion — streaming)
@@ -4777,14 +4833,15 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 **Key Findings**:
 - over 95% accuracy distinguishing normal traffic from DoS attacks and vulnerability probes, across three different datasets
 - more than 85% accuracy handling streaming data under concept-drift detection
-- A deployed, evaluated system (not a proposal), with concept-drift handling — the pattern the rest of the corpus sources from vendor material.
+- A working prototype deployed on OPNFV and evaluated against three datasets, with concept-drift handling — the pattern the rest of the corpus sources from vendor material.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 1 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 1 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source. Refresh (2026-11-23): 95% and 85% re-read verbatim in the Crossref abstract; the abstract calls the system a prototype and says "we propose", so the deployed-system wording was narrowed to match, which also applies the method-basis correction recorded in methods/prisma-appraisal-2026-07-13.json. The figures are bare accuracy at abstract level; the full text was not read.
 
 #### Virtual Network Function for Real-Time Threat Detection Using Stream Processing (MobiSecServ, 2018)
 
 **Authors**: Martin Andreoni Lopez, Antonio Gonzalez Pastana Lobato, Otto Carlos M. B. Duarte, Guy Pujolle
-**Date**: 2018 (2018 Fourth International Conference on Mobile and Secure Services (MobiSecServ), Miami Beach, FL, 24-25 Feb 2018)
+**Full title**: An evaluation of a virtual network function for real-time threat detection using stream processing
+**Date**: 2018 (2018 Fourth International Conference on Mobile and Secure Services (MobiSecServ), Miami Beach, FL, 24-25 Feb 2018), pp. 1-5
 **URL**: https://doi.org/10.1109/mobisecserv.2018.8311440
 **Evidence Level**: B (Legitimate, multi-year IEEE conference with no predatory or integrity flags — and I actively disconfirmed the one apparent red flag in the record set (the OpenAlex 'preprint' type tag), so this is not an unreviewed preprint)
 **Relevance**:
@@ -4795,12 +4852,13 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - more than five million messages per second (scaling test, hardware/test conditions not stated in the abstract)
 - Earlier conference statement of the CATRACA line of work; shares authors with the 2019 journal paper above and with the SBRC short-course chapter below, so the three are one research group and not three independent confirmations.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 2 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 2 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source. Refresh (2026-11-23): DOI resolves to IEEE Xplore 8311440; "more than five million messages per second" re-read in the OpenAlex abstract; OpenAlex now types the record as a conference paper, so the preprint tag noted in the Evidence Level is gone.
 
 #### Flink vs Spark Streaming for Machine-Learning NIDS on Data Streams (ACIS SNPD Winter, 2021)
 
 **Authors**: Aymen Yahyaoui, Haithem Lakhdhar, Takoua Abdellatif, Rabah Attia
-**Date**: 2021 (2021 21st ACIS International Winter Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD-Winter), Ho Chi Minh City, Vietnam, 28-30 Jan 2021)
+**Full title**: Machine learning based network intrusion detection for data streaming IoT applications
+**Date**: 2021 (2021 21st ACIS International Winter Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD-Winter), Ho Chi Minh City, Vietnam, 28-30 Jan 2021), pp. 51-56
 **URL**: https://doi.org/10.1109/snpdwinter52325.2021.00019
 **Evidence Level**: B (Long-running (21-edition), IEEE/ACIS-published conference series with no predatory or integrity flags — a defensible venue)
 **Relevance**:
@@ -4808,9 +4866,9 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Answers, in part, the head-to-head engine comparison this review names as open work (Section 4.4, Future Direction 4)
 
 **Key Findings**:
-- A direct peer-reviewed Flink-versus-Spark-Streaming comparison on a security workload. The abstract's headline claim is qualitative, so the paper is carried for the existence and direction of the comparison, not for a throughput number.
+- A direct peer-reviewed Flink-versus-Spark-Streaming comparison on an IoT intrusion-detection workload (two public datasets), whose abstract leans toward Flink ("considerable throughputs and high detection accuracy especially for Apache Flink"). The abstract's headline claim is qualitative, so the paper is carried for the existence and direction of the comparison, not for a throughput number.
 
-**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 3 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Provenance**: PRISMA database-arm search, 2026-07-13 (search record 3 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check. Refresh (2026-11-23): full title, pages and abstract direction confirmed at Crossref and OpenAlex; full text paywalled and unread.
 
 #### Adaptive and Auto-Scaling Stream Processing for Real-Time Intrusion Detection (IEEE GLOBECOM, 2018)
 
@@ -4829,6 +4887,7 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Uses the Wisdom CEP engine; the auto-scaling deployment is reported to use fewer resources than a monolithic one at the same load, which is the architectural claim the review makes from vendor sources elsewhere.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 4 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: DOI resolves to IEEE Xplore 8647489 (paywalled, so this pass checked the abstract only, not the full text). The three figures are verbatim in the abstract ('an average precision of 99.98% and an average recall of 93.42% while processing over 2.5 million events per second'), and so is the resource claim ('consumes significantly fewer system resources than the monolithic deployment of CEP rules'). The qualifier 'at the same load' was not re-checked against the full text. The published title is 'Real-Time Intrusion Detection in Network Traffic Using Adaptive and Auto-Scaling Stream Processor'. No journal follow-up was found. A longer treatment of the same Wisdom work is Gobinath Loganathan's University of Western Ontario thesis, 'Real-time Intrusion Detection using Multidimensional Sequence-to-Sequence Machine Learning and Adaptive Stream Processing' (https://ir.lib.uwo.ca/etd/5523), and the Wisdom code (https://github.com/slgobinath/wisdom) was last pushed 2022-12-14.
 
 #### AIDA Framework — Real-Time Correlation and Prediction of Intrusion Detection Alerts (ARES, 2019)
 
@@ -4841,10 +4900,10 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Book ch04 §4.3-4.5 (Sigma, coverage) + Appendix M [was: Chapter 9] (Detection) — pipeline-side correlation
 
 **Key Findings**:
-- Deployed as a live analytical component of the SABU platform, a production multi-peer alert-sharing infrastructure (not a lab testbed)
-- Notable because it is deployed inside SABU, a production multi-peer alert-sharing platform, rather than evaluated on a testbed.
+- Deployed as an analytical component of SABU, an alert-sharing platform in which a community of peer organizations exchange alerts from intrusion detection systems and honeypots, on a live feed of around 1.7 million alerts per day (first half of 2019). The authors call it an experimental deployment, run on one commodity server (Xeon E5520, 16 GB RAM) with Kafka 2.2.0, Spark 2.2.0 and Esper 8.0.0. The paper does not itself use the word 'production' for SABU.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 13 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: re-read in the authors' version (Wayback copy of https://is.muni.cz/publication/1540256/2019-CyberTIM-AIDA-Framework-paper.pdf), which describes 'the experimental deployment' receiving 'around 1.7 million alerts per day'. A follow-up from the same group, Husák, Bajtoš, Kašpar, Bou-Harb and Čeleda, 'Predictive Cyber Situational Awareness and Personalized Blacklisting', ACM TMIS 11(4), 2020 (https://doi.org/10.1145/3386250), processes '12 million alerts from 34 intrusion detection systems in 3 organizations gathered in an alert sharing platform' with what its abstract calls 'our analytical framework' (the abstract does not name AIDA or SABU), and reports a predictive blacklist 'the size of only 3% of the raw data' with 'more than 60% of its entries' predicting accurately 'in operational, real-world settings'. Code: https://github.com/CSIRT-MU/AIDA-Framework (last pushed 2021-11-11).
 
 #### Cloud-Based Snort NIDS Using Containers and Big Data (Big Data and Cognitive Computing, 2022)
 
@@ -4860,9 +4919,10 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 **Key Findings**:
 - Apache Kafka achieved a maximum message rate of 650,000 messages/sec
 - Maximum throughput of 172 MBps streaming data into Spark and Hadoop
-- Kafka message-rate and throughput figures measured on a lambda-architecture backend.
+- Kafka message-rate and throughput figures measured on a single Kafka broker feeding a lambda-architecture (Spark and Hadoop) backend.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 14 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: re-read at the MDPI article page. Both figures are verbatim, and the results section scopes them to one broker ('a single broker can process about 100 million messages, with a maximum message rate of 650,000 messages/s, and the maximum throughput was 172 MBps'). The published title is 'The Next-Generation NIDS Platform: Cloud-Based Snort NIDS Using Containers and Big Data'. No newer edition or same-group follow-up on this platform was found.
 
 #### Faust vs Streamz — Complex Event Processing Engines for IoT Intrusion Detection (Computers, MDPI, 2026)
 
@@ -4905,6 +4965,7 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Authored at Lawrence Berkeley National Laboratory. The only record in the search set to receive a clean CITE with no venue caveat.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 24 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: all twelve Table I timings re-checked verbatim in the open-access copy (https://escholarship.org/content/qt3pj19498/qt3pj19498.pdf). The table times one second of PMU data (6,304 bytes raw) on a BeagleBone Black. The published title is 'SPARCS: Stream-Processing Architecture Applied in Real-Time Cyber-Physical Security' (pp. 199-202, a short paper). No newer edition or follow-up was found.
 
 #### Practical Performance of a Distributed Processing Framework for ML-Based NIDS (IEEE COMPSAC, 2024)
 
@@ -4923,11 +4984,12 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - SVM: 8,413 sessions/sec (~3.0 Gbps), ~530 ms latency
 - kNN: 723 sessions/sec (~250 Mbps), ~1.5 s latency
 - Baseline (no classifier): 23,596 sessions/sec
-- F1 scores after parameter search of 0.967 / 0.964 / 0.972 for Decision Tree / Naive Bayes / Random Forest (Table VI; at default NB is only 0.599) despite large throughput gaps
+- F1 scores of 0.967 / 0.964 / 0.974 for the Decision Tree / Naive Bayes / Random Forest configurations actually benchmarked (Table VI; §V-B runs each algorithm's highest-F1 classifier, which is the tuned one for NB, up from 0.599 at default, the default one for RF because the parameter search lowered it to 0.972, and either one for DT, which the search left at 0.967) despite large throughput gaps
 - Bottlenecks identified in Zeek, Logstash, and Elasticsearch processes
-- Separates framework performance from model accuracy and locates the bottlenecks in Zeek, Logstash and Elasticsearch — the three fastest classifiers, once tuned, land within ~0.008 of each other on F1 (0.964–0.972). The arXiv deposit of this paper (record 33) is the same work and was removed as a duplicate.
+- Separates framework performance from model accuracy and locates the bottlenecks in Zeek, Logstash and Elasticsearch — the three fastest classifiers, in the configurations benchmarked, land within about 0.010 of each other on F1 (0.964 to 0.974). The arXiv deposit of this paper (record 33) is the same work and was removed as a duplicate.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 26 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: throughputs, latencies and bottlenecks re-checked verbatim in arXiv 2405.13066v1 (the IEEE version of record is paywalled and was not re-read). The F1 spread is corrected because §V-B benchmarks each algorithm's highest-F1 classifier, which for RF is the default setting (0.974). No 2025-2026 follow-up by the same authors was found.
 
 ---
 
@@ -4949,6 +5011,7 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Valuable for what it is rather than what it measures: the corpus's production-scale evidence is otherwise almost entirely big-tech engineering blogs, and this is a named public-research deployment with no product to sell.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 9 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: 1 TB/day and the 5 TB/day goal re-checked verbatim in the PoS PDF (published title 'Building a large scale Intrusion Detection System using Big Data technologies'). Newer context from the same team (Tier B, conference slides): Vâlsan, 'Zeek and the Balance between Academic Freedom, Industrial Operations & Security', Zeek Workshop CERN, 2026-03-25 (https://zeek.org/wp-content/uploads/2026/04/Zeek-and-the-Balance-between-Academic-Freedom-Industrial-Operations-Security.pdf). It reports a Zeek 'cluster of 16 nodes (12 production, 4 QA)', '~2.5 billion daily connections' and '~1.2 TB of daily Zeek logs', on a stack of Apache Flume and Fluent Bit, Kafka, Spark and Go, Hadoop HDFS and OpenSearch. The 1.2 TB is Zeek logs only, while the 2018 figure covers the whole pipeline, so the two are not a like-for-like progress measure against the 5 TB goal. A 2020 CERN computing seminar gives the Kafka layer as '6 Kafka brokers, 3 Zookeeper nodes' at '~100,000 messages / sec on average' with a '72 hours retention period' (https://indico.cern.ch/event/927793/attachments/2073576/3485397/2020-07-08__Computing_Seminar__CERN_SOC.pdf).
 
 #### INFN-CNAF — General-Purpose Data-Streaming Platform for Log Analysis and Security Protection (EPJ Web of Conferences, CHEP 2023)
 
@@ -4963,6 +5026,7 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - A platform description rather than an evaluation: it reports the architecture in production but publishes no throughput or latency measurement, so it supports the deployment claim and not a performance claim.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 25 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Refresh (2026-11-23)**: full text re-read by the refresh pass (the independent check reached only the abstract page, so the quote below is single-checked). Production status is quoted from the Conclusions ('in production since Spring 2023 and receives log data from tens of servers running at INFN-CNAF data centre'), on a three-node Kafka cluster with OpenSearch and Wazuh. A search of the text found no platform throughput or latency figure, so the deployment claim stands and no performance claim is supported. The scale described is tens of servers, which is worth keeping in mind where this entry is grouped with 'production-scale' deployments. The published title is 'General purpose data streaming platform for log analysis, anomaly detection and security protection' (published online 2024-05-06). No CHEP 2024 or later follow-up by the same group was found.
 
 ---
 
@@ -4982,13 +5046,14 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Compares three timestamp-storage models for query performance. The finding is comparative and qualitative — the simplest model also yields the simplest queries — so no figure is carried.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 8 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Refresh (2026-11-23)**: re-checked at abstract level only (the publisher's full text is bot-blocked this session). The abstract concludes that the simplest model 'is also the one yielding the simplest and fastest queries', and names its own limit: 'only one graph database was studied'. The same four authors published an earlier conference paper on the topic, 'On Applying Graph Database Time Models for Security Log Analysis' (FDSE 2020, Springer LNCS, https://doi.org/10.1007/978-3-030-63924-2_5), which this journal article appears to extend. The published title is 'A study on time models in graph databases for security log analysis'. No later follow-up on time models was found.
 
 #### Efficient Host Intrusion Detection Using Hyperdimensional Computing (IEEE BigData, 2024)
 
 **Authors**: Yujin Nam, Rachel King, Quinn Burke, Minxuan Zhou, Patrick McDaniel, Tajana Rosing
 **Date**: 2024 (2024 IEEE International Conference on Big Data (IEEE BigData 2024), Washington DC, pp. 2645-2652)
 **URL**: https://doi.org/10.1109/bigdata62323.2024.10825247
-**Evidence Level**: A (Real-world-dataset evaluation (not simulation), from a rigorously and competitively peer-reviewed IEEE conference (18)
+**Evidence Level**: A (Real-world-dataset evaluation (not simulation), from a rigorously and competitively peer-reviewed IEEE conference (18.4% acceptance for the 2024 edition per the 2026-07-13 appraisal record), with no integrity concerns found; the verification note in the same record disputes this basis, finding a CyberHunt workshop paper at IEEE BigData 2024 to which the 18.4% regular-paper rate does not apply and recommending Tier B, which is left for an owner ruling)
 **Relevance**:
 - Book ch04 §4.3-4.5 (Sigma, coverage) + Appendix M [was: Chapter 9] (Detection) — cited for its statement of the provenance-graph query-latency problem, which the review's cost-to-serve argument depends on
 
@@ -4997,6 +5062,7 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - The paper's headline speedups (up to 4,242x on CPU, up to 18,000x on a hardware accelerator, and power figures quoted in orders of magnitude) are measured against different baselines and different hardware than anything this review compares, and are deliberately NOT carried. What is carried is the framing: state-of-the-art provenance-graph query latencies are described as impractical for modern threat detection, from an authorship group including Patrick McDaniel and Tajana Rosing.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 10 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: '>90% detection accuracy', 'up to 4,242× speedups' and the carried sentence on 'query latencies that are impractical for modern threat detection' are verbatim in the abstract (IEEE Xplore 10825247, paywalled, so the full text was not re-read). The uncarried hardware-accelerator and power figures were not re-checked. No newer version by the same authors was found.
 
 #### Workload-Aware Storage Reduction for Multi-Tenant SIEM on ClickHouse (IJACSA, 2026)
 
@@ -5048,10 +5114,10 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 #### Data-Lake-Based Security Transmission and Storage Scheme for Streaming Big Data (Cluster Computing, 2024)
 
 **Authors**: Xiaoyan Zhao, Conghui Zhang, Shaopeng Guan
-**Date**: 2024 (Cluster Computing (Springer))
+**Date**: 2024 (Cluster Computing (Springer), Vol. 27, Issue 4, pp. 4741-4755; published online 2023-12-09)
 **URL**: https://doi.org/10.1007/S10586-023-04201-9
-**Evidence Level**: B (Venue is legitimate and currently indexed (Scopus/WoS, IF 7)
-**Venue appraisal (2026-07-13)**: Springer Science and Business Media LLC (Springer Nature) — class `established_journal`. Context only, not disqualifying for this article: Cluster Computing has a documented history of paper-mill infiltration via guest-edited special issues; Springer Nature's Research Integrity department has been retracting affected articles, and the journal appointed a dedicated Editor-in-Chief for Special Issues and capped concurrent guest-edited collections in response. I found no evidence this specific article (regular Vol 27, Issue 9, 2024) came from a flagged special issue, and the journal remains actively Scopus/WoS-indexed with a 2024 IF of 7.31 — it was never delisted.
+**Evidence Level**: B (Venue is legitimate and currently indexed (Scopus/WoS, IF 7.31, not delisted), and no evidence ties this specific article to the journal's known special-issue paper-mill problem, so it is not disqualified on integrity grounds; the 2026-07-13 appraisal downgraded it from A because the full text could not be read)
+**Venue appraisal (2026-07-13)**: Springer Science and Business Media LLC (Springer Nature) — class `established_journal`. Context only, not disqualifying for this article: Cluster Computing has a documented history of paper-mill infiltration via guest-edited special issues; Springer Nature's Research Integrity department has been retracting affected articles, and the journal appointed a dedicated Editor-in-Chief for Special Issues and capped concurrent guest-edited collections in response. I found no evidence this specific article (Vol 27, Issue 4, pp. 4741-4755; online 2023-12-09, issue July 2024; a 75-article issue with no special-issue label on the article page or the issue contents page) came from a flagged special issue, and the journal remains actively Scopus/WoS-indexed with a 2024 IF of 7.31 — it was never delisted.
 **Relevance**:
 - Hypothesis H-ARCH-01 (lakehouse/data-lake architecture for security data)
 - Book ch06 (variants) + Appendix C [was: Chapter 6] (Architecture) — secure ingestion and storage of streaming security data
@@ -5060,11 +5126,12 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - An ECC lightweight-encryption interceptor at the data source, an SSL-secured Flume/Kafka transport, and an LZO-compressed Hadoop data-lake storage layer. The published abstract reports roughly an 18% reduction in memory load attributed to the encryption interceptor; the figure was confirmed in the publisher's abstract by an independent check, but no full text was read, so it is recorded and not built upon. Cluster Computing has a documented paper-mill problem confined to guest-edited special issues; this is a regular-issue article, which is why it survives appraisal.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 37 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: the 18% figure re-checked verbatim in the Springer abstract ('reduces memory load by 18%'). The issue number is corrected to 4 per Crossref and OpenAlex. Neither the article page nor the Issue 4 contents page (75 articles) shows a special-issue label, which is consistent with the regular-issue reading but is not a publisher statement of it. The IF figure was not re-checked. The full text is still unread, and an SSRN preprint (https://doi.org/10.2139/ssrn.4134117) is the open route if the figure is ever built on, though that preprint was not opened and is not confirmed to be the same paper.
 
 #### Digital-Forensics Architecture on a Security Lake for Automated Evidence Collection (Journal of Intelligent Systems, 2024)
 
-**Authors**: Wasan Saad Ahmed, Ziyad Tariq Mustafa Al-Ta&apos;l, Tamirat Abegaz, Ghassan Sabeeh Mahmood
-**Date**: 2024 (Journal of Intelligent Systems)
+**Authors**: Wasan Saad Ahmed, Ziyad Tariq Mustafa AL-Ta'I, Tamirat Abegaz, Ghassan Sabeeh Mahmood
+**Date**: 2024 (Journal of Intelligent Systems, Vol. 33, Issue 1, art. 20240109; published 2024-12-09)
 **URL**: https://doi.org/10.1515/JISYS-2024-0109
 **Evidence Level**: B (Legitimate, DOAJ/Scopus/ESCI-indexed venue with documented double-anonymous peer review — no integrity flags found)
 **Relevance**:
@@ -5072,9 +5139,10 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Book ch06 (variants) + Appendix C [was: Chapter 6] (Architecture)
 
 **Key Findings**:
-- A security-lake plus data-lake architecture for real-time forensic evidence collection across multiple cloud accounts and regions, stated to be validated on an actual AWS deployment. Appraised at abstract level only — the publisher's full text was unreachable — so no quantitative result is carried. Venue verified at primaries: DOAJ-listed, Scopus Q2, double-anonymous review, not retracted.
+- A security-lake plus data-lake architecture for real-time forensic evidence collection across multiple cloud accounts and regions, stated to be validated on an actual AWS deployment. The full text (open access, read 2026-11-23) reports lake counts and creation times for the test deployment but no throughput, latency or cost measurement, so no quantitative result is carried. Venue verified at primaries: DOAJ-listed, Scopus Q2, double-anonymous review, not retracted.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 38 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Refresh (2026-11-23)**: full text read at De Gruyter Brill. The architecture is built on Amazon Security Lake (OCSF and Parquet) plus AWS modern data architecture, queried with Athena and Lake Formation and integrated with Wazuh, and validated on a university AWS organization, where it created eight regional lakes and one roll-up lake centralized in a forensics account. It is best read as an AWS-native instance of the security-lake pattern, which matters where the Relevance line calls it the closest published statement of the thesis.
 
 ---
 
@@ -5093,21 +5161,23 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - Argues corporate security is a big-data problem and sketches a security-data-lake-to-'security cockpit' architecture. Ubiquity is ACM's editor-led web magazine, not a peer-reviewed journal — the review it applies to commentary is lighter than a journal's, so this is a framing source and not evidence.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 27 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Refresh (2026-11-23)**: DOI still resolves to the ACM DL, which returns 403 to automated fetch (bot-gating, not a paywall, since Ubiquity is free to read). The abstract was re-read at the OpenAlex record and still supports the architectural framing. The Wayback capture used for the July full-text read was rate-limited today. OpenAlex lists no citing work since 2025, so the entry stands as a 2018 framing source.
 
 #### Machine Learning on Distributed Stream-Processing Platforms — Storm, Spark Streaming and Flink (SBRC Short Courses, 2018, in Portuguese)
 
 **Authors**: Martin Andreoni Lopez, Igor Jochem Sanz, Antonio Gonzalez Pastana Lobato, Diogo M. F. Mattos, Otto Carlos M. B. Duarte (author list corrected 2026-11-17 to the chapter's title page)
 **Date**: 2018 (Minicursos do XXXVI Simpósio Brasileiro de Redes de Computadores e Sistemas Distribuídos (SBRC 2018) — book chapter, SBC OpenLib (SOL))
 **URL**: https://www.gta.ufrj.br/ftp/gta/TechReports/ASL18.pdf (author-hosted copy of the chapter, "Capítulo 3"; no DOI registered)
-**Evidence Level**: B (Legitimate, non-predatory venue — SBC is Brazil's primary computer-science professional society, no integrity flags found — but this is a reviewed-proposal tutorial/survey chapter, not a blind-peer-reviewed original-research paper, and it reports no new measurements of its own: every headline number is a third-party citation embedded in the introduction)
+**Evidence Level**: B (Legitimate, non-predatory venue — SBC is Brazil's primary computer-science professional society, no integrity flags found — but this is a reviewed-proposal tutorial/survey chapter, not a blind-peer-reviewed original-research paper, and its numbers are not carried: the introduction's headline numbers are third-party citations, and the section 3.3 platform benchmark is the authors' own earlier work, matching their GLOBECOM 2016 platform comparison (10.1109/GLOCOM.2016.7841533) although the chapter's in-text citation points to their MobiSecServ 2018 paper; whether any of the chapter's other results are new to it was not established)
 **Venue appraisal (2026-07-13)**: Sociedade Brasileira de Computação (SBC) — class `low_tier_legitimate`. No integrity flags found.
 **Relevance**:
 - Background for the engine-comparison discussion (Storm vs Spark Streaming vs Flink), including lambda-architecture treatment
 
 **Key Findings**:
-- A short-course/tutorial chapter, not a primary study. Every figure in it is quoted from third parties, so no number is carried. Shares authors with records 1 and 2 above (the CATRACA group).
+- A short-course/tutorial chapter, not a primary study. The introduction's figures are third-party citations, and the section 3.3 throughput and node-failure benchmark (Storm 0.9.4, Flink 0.10.2, Spark Streaming 1.6.1 on eight VMs on one host) is the group's own earlier work: its versions, hardware and loss figures match the authors' GLOBECOM 2016 paper (10.1109/GLOCOM.2016.7841533, not catalogued here), though the chapter cites their MobiSecServ 2018 paper for it. The detection-accuracy results in section 3.4 are also the group's own. No number is carried here. Shares authors with records 1 and 2 above (the CATRACA group).
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 28 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: author-hosted PDF re-read (HTTP 200, 56 pages). The earlier 'every figure is third-party' wording was corrected, because section 3.3 presents the authors' own Storm / Flink / Spark Streaming benchmark. The chapter cites the group's MobiSecServ 2018 paper for it, but that paper tests Spark Streaming 1.3.1 only, and the versions, test host and message-loss figures match the group's GLOBECOM 2016 comparison (10.1109/GLOCOM.2016.7841533). The engine versions tested are several major lines old (Flink's stable documentation now serves 2.3, per the checkpointing entry), so the comparison reads as history, not as guidance on current engines.
 
 ---
 
@@ -5127,22 +5197,25 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - A modelling proposal with no evaluation, in a journal not listed in DOAJ, Scopus or Web of Science. Recorded for completeness of the search record; it supports nothing.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 6 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Refresh (2026-11-23)**: DOI and the publisher PDF both resolve (HTTP 200). Crossref gives Vol. 4, No. 4, pp. 987-994. The abstract says testing was done with Pentaho. The July full-text read found that this testing was an ETL build check with no performance or analyst-outcome evaluation, so the 'no evaluation' description stands. DOAJ still returns no match for ISSN 2723-3863. OpenAlex lists no citing work since 2025.
 
 #### High-Performance FPGA Architecture for Data-Stream Processing — IPsec Gateway (International Journal of Electronics and Telecommunications, 2018)
 
-**Authors**: Mateusz Korona, K. Skowron, Mateusz Trzepiński, Mariusz Rawski
+**Authors**: Mateusz Korona, Krzysztof Skowron, Mateusz Trzepiński, Mariusz Rawski
 **Date**: 2018 (International Journal of Electronics and Telecommunications, 2018, Vol. 64, No. 3, pp. 351-356)
 **URL**: https://doi.org/10.24425/123532
+**Alt URL**: http://journals.pan.pl/Content/107747/PDF/48_1444.pdf (publisher PDF; the DOI landing page served a bot-check interstitial on 2026-11-23)
 **Evidence Level**: A (Legitimate, national-academy-backed, Scopus+DOAJ-indexed journal with no integrity flags found)
 **Relevance**:
 - No hypothesis in this edition. Recorded from the systematic search: hardware acceleration of the ingest tier is outside the scope this review sets (software architecture on commodity infrastructure), and is noted as adjacent work rather than folded into a finding
 
 **Key Findings**:
-- Gateway 2.0 best DES config (8/8/8/16): 10,227.44 Mbit/s for 1500-byte packets at a 128-packet stream
-- Gateway 2.0 best AES-CBC config (8/8/12/8): 5,518.80 Mbit/s for 1500-byte packets at a 128-packet stream
+- Gateway 2.0 best DES config (8/8/8/16): 10,227.44 Mbit/s for 1500-byte packets at a 128-packet stream (computed by the paper's formula 1 from cycles per packet and the synthesis Fmax; the paper reports no on-the-wire throughput measurement for this design)
+- Gateway 2.0 best AES-CBC config (8/8/12/8): 5,518.80 Mbit/s for 1500-byte packets at a 128-packet stream (computed by the paper's formula 1 from cycles per packet and the synthesis Fmax; the paper reports no on-the-wire throughput measurement for this design)
 - Peer-reviewed and sound; simply not on any claim this review makes.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 11 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: numbers confirmed in source.
+**Refresh (2026-11-23)**: re-read at the publisher PDF. Both throughput figures are verbatim in Tables V and IX, and section V states they were computed by the prototype's estimation formula from cycle counts and the synthesis clock rate, so they are design-estimate throughputs. OpenAlex lists no citing work since 2025.
 
 #### Hybrid Stream Processing for Runtime Protection in Remote Driving (IEEE ICIN, 2026)
 
@@ -5186,6 +5259,7 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - The comparison method could not be established from the available text, so it is recorded and not relied on.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 32 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Refresh (2026-11-23)**: DOI resolves to IEEE Xplore (paywalled, bot-gated to automated fetch). The abstract was re-read and still names the five stores without stating how they were compared, so the entry's caution stands. Pages 74-79 per Crossref. OpenAlex lists one citing work since 2025, a 2026 Research Square preprint (10.21203/rs.3.rs-10592797/v1) that was not read.
 
 #### Binary-Feature-Extraction Data-Provenance System on Flink (IEEE CyberC, 2018)
 
@@ -5200,6 +5274,7 @@ Two cautions travel with these entries. First, the arm's 27 records resolve to o
 - A pattern the corpus does not otherwise carry; noted for a future edition rather than cited here.
 
 **Provenance**: PRISMA database-arm search, 2026-07-13 (search record 34 of 40). Appraised for venue integrity and content, then independently verified by a second LLM agent's verification pass; number check: no numbers to check.
+**Refresh (2026-11-23)**: DOI resolves to IEEE Xplore (paywalled, bot-gated). The abstract was re-read and still supports the architectural description, with no figures to carry. OpenAlex shows no citing work since 2025.
 
 ---
 
@@ -5225,6 +5300,7 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Kokulu, F.B., Soneji, A., Bao, T., Shoshitaishvili, Y., Zhao, Z., Doupé, A., Ahn, G.-J. (2019). *Matched and Mismatched SOCs: A Qualitative Study on Security Operations Center Issues*. ACM CCS 2019, 1955-1970.
 **Notes**: Identified by targeted known-item lookup for the ch01/ch07 organizational claim, not by the graph walk. ACM DL returned 403 to automated fetch.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record for title, seven authors, venue, pages and DOI; abstract read at the Semantic Scholar record and matched word for word against the OpenAlex copy; the ACM landing page itself was not reachable).
+**Refresh (2026-11-23)**: abstract re-read; Crossref metadata unchanged. OpenAlex counts 96 citing works since 2025, among them Tariq, Chhetri, Nepal and Paris, 'Alert Fatigue in Security Operations Centres: Research Challenges and Opportunities' (ACM Computing Surveys 57(9), 2025, 10.1145/3723158). That is a candidate peer-reviewed review for the organizational-issues thread, not yet admitted or appraised.
 
 ---
 
@@ -5243,6 +5319,7 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Rigger, M., Su, Z. (2020). *Finding Bugs in Database Systems via Query Partitioning*. Proc. ACM Program. Lang. 4(OOPSLA), 1-30.
 **Notes**: Identified by targeted known-item lookup for the ch03 silent-engine claim, not by the graph walk. Its NULL-partition mechanism is the same three-valued-logic hazard the ch03 allowlist case shows. ACM DL returned 403 to automated fetch.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record for title, authors, venue, volume and DOI; full abstract read at the Semantic Scholar record, including the 175 / 125 / 77 counts, and matched against the OpenAlex copy).
+**Refresh (2026-11-23)**: abstract re-read and the 175 / 125 / 77 counts confirmed verbatim. The mechanism is current: Rigger's group continues the line, most recently with SQLancer++ (Zhong and Rigger, 'Scaling Automated Database System Testing', ASPLOS 2026, 10.1145/3779212.3790215), whose abstract reports 196 previously unknown bugs across 18 DBMSs, 180 of them fixed. That abstract does not split logic bugs from crash bugs, so only the qualitative point carries.
 
 ---
 
@@ -5260,6 +5337,7 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Raasveldt, M., Mühleisen, H. (2017). *Don't Hold My Data Hostage: A Case for Client Protocol Redesign*. PVLDB 10(10), 1022-1033.
 **Notes**: Identified by targeted known-item lookup for the ch05 §5.2 claim, not by the graph walk. The paper predates Arrow Flight and does not evaluate it; it supports the mechanism, not any Arrow-specific number.
 **Validation Status**: ✅ Verified 2026-11-07 (VLDB proceedings PDF fetched; title, authors and abstract read on page 1; Crossref record for DOI and pages).
+**Refresh (2026-11-23)**: VLDB PDF re-fetched (HTTP 200) and the abstract sentences confirmed verbatim. The transfer-cost problem is still an active research topic: Gavriilidis, Beedkar, Böhm and Markl, 'Fast and Scalable Data Transfer Across Data Systems' (XDBC, PACMMOD 3(3), 2025, 10.1145/3725294), cites this paper and reports that its transfer framework outperforms state-of-the-art generic transfer tools by up to 5x. That is a different comparison and supports the mechanism only.
 
 ---
 
@@ -5272,12 +5350,13 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **DOI**: 10.1109/ICSE-SEIP.2019.00021
 **Evidence Level**: A (peer-reviewed, ICSE-SEIP 2019)
 **Relevance**:
-- Book ch03 (bad parsing logic): the widely used parser benchmark line that Petrescu et al. (ISSRE 2023, above) argue overstates parser quality under a grouping metric, so the two are best read together, this one for what parsers were reported to achieve and Petrescu for the template-level correction. Petrescu cites this group's work; whether its 0.73 average is this paper's figure was not checked here.
+- Book ch03 (bad parsing logic): the widely used parser benchmark line that Petrescu et al. (ISSRE 2023, above) argue overstates parser quality under a grouping metric, so the two are best read together, this one for what parsers were reported to achieve and Petrescu for the template-level correction. The 0.73 average that Petrescu quotes does not appear in this paper: Petrescu's reference for it is He et al., A Survey on Automated Log Analysis for Reliability Engineering (ACM Computing Surveys 54(6), 2021, 10.1145/3460345), by an overlapping group, while this paper's Table IV reports per-parser average accuracy from 0.482 (LogSig) to 0.865 (Drain) on 2,000-message samples; how the survey arrived at 0.73, and whether it derives from these results, was not checked.
 
 **Key Findings** (abstract, read at the arXiv abstract page): evaluates 13 automated log parsers on 16 log datasets spanning distributed systems, supercomputers, operating systems, mobile systems, server applications and standalone software, reports accuracy, robustness and efficiency, and releases the tools and benchmarks for reuse.
 **Citations**: Zhu, J., He, S., Liu, J., He, P., Xie, Q., Zheng, Z., Lyu, M.R. (2019). *Tools and Benchmarks for Automated Log Parsing*. ICSE-SEIP 2019, 121-130.
-**Notes**: Snowball, backward from Petrescu et al. (ISSRE 2023). No accuracy figure is catalogued here because only the abstract was read.
+**Notes**: Snowball, backward from Petrescu et al. (ISSRE 2023). Table IV was read at the arXiv full text on 2026-11-23; the per-parser averages are recorded in Relevance for provenance and are not carried as a claim.
 **Validation Status**: ✅ Verified 2026-11-07 (arXiv abstract page for title and abstract; Crossref record for venue, seven authors, pages and DOI).
+**Refresh (2026-11-23)**: arXiv full text read. The same group's successor benchmark is Loghub-2.0 (Jiang, Liu, Huang, Li, Huo, Gu, Chen, Zhu and Lyu, 'A Large-Scale Evaluation for Log Parsing Techniques: How Far Are We?', ISSTA 2024, 10.1145/3650212.3652123). Its abstract says the original Loghub 'suffers from limited scale and representativeness', and it re-evaluates 15 parsers on 14 datasets averaging 3.6 million lines each with a metric less sensitive to imbalanced data. That is a scale and representativeness limitation acknowledged by the benchmark's own authors, separate from the template-level metric correction Petrescu makes.
 
 ---
 
@@ -5296,6 +5375,7 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Zeng, X., Hui, Y., Shen, J., Pavlo, A., McKinney, W., Zhang, H. (2023). *An Empirical Evaluation of Columnar Storage Formats*. PVLDB 17(2), 148-161.
 **Notes**: Snowball, backward from F3 (SIGMOD 2025) and FastLanes, and forward from Delta Lake (PVLDB 2020). Same lead author as the F3 entry; a different paper.
 **Validation Status**: ✅ Verified 2026-11-07 (VLDB proceedings PDF fetched; title, six authors and the abstract's design-decision sentence read in the text; Crossref record for DOI and pages).
+**Refresh (2026-11-23)**: VLDB PDF re-fetched (HTTP 200) and the design-decision sentence confirmed verbatim. A follow-up sharing four of these authors, F3, is already catalogued. A further 2025 peer-reviewed comparison, Liu, Pavlenko, Interlandi and Haynes, 'Data formats in analytical DBMSs: performance trade-offs and future directions' (The VLDB Journal 34(3), 2025, 10.1007/s00778-025-00911-1), evaluates Arrow, Parquet and ORC as formats inside an analytical DBMS and finds that each has trade-offs. That is consistent with this entry and not yet admitted.
 
 ---
 
@@ -5314,6 +5394,7 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Durner, D., Leis, V., Neumann, T. (2023). *Exploiting Cloud Object Storage for High-Performance Analytics*. PVLDB 16(11), 2769-2782.
 **Notes**: Snowball, backward from F3 (SIGMOD 2025) and forward from Delta Lake (PVLDB 2020).
 **Validation Status**: ✅ Verified 2026-11-07 (VLDB proceedings PDF fetched; title, authors and abstract read in the text; Crossref record for DOI and pages).
+**Refresh (2026-11-23)**: VLDB PDF re-read (HTTP 200); abstract unchanged and every Key Findings clause is verbatim in it, including "even without caching, Umbra with integrated AnyBlob achieves similar performance to state-of-the-art cloud data warehouses that cache data on local SSDs". No newer edition or same-author follow-up paper found in a targeted search; the AnyBlob repository at https://github.com/durner/AnyBlob is not archived and was last pushed 2026-10-28. F3 (SIGMOD 2025, entry above) is later work from a different group (CMU and others) that cites this paper. Foundational and still accurate.
 
 ---
 
@@ -5332,6 +5413,7 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Hassan, W.U., Guo, S., Li, D., Chen, Z., Jee, K., Li, Z., Bates, A. (2019). *NoDoze: Combatting Threat Alert Fatigue with Automated Provenance Triage*. NDSS 2019.
 **Notes**: Snowball, backward from the hyperdimensional-computing host intrusion detection entry (IEEE BigData 2024).
 **Validation Status**: ✅ Verified 2026-11-07 (NDSS paper page for title, seven authors with affiliations and abstract; Crossref record for DOI).
+**Refresh (2026-11-23)**: DOI now resolves straight to the NDSS PDF (HTTP 200); abstract re-read and the 364 alerts, the ranking result and the estimated 84% false-alarm reduction are verbatim ("we estimate that our system decreases the volume of false alarms by 84%"). The paper body restates the 84% without the hedge, so keep the abstract's 'estimate' wording. Newer work on the same alert-fatigue problem: Uetz et al. (arXiv 2026, entry below) evaluate risk-based alert prioritization on eight datasets, a preprint that agrees in direction but measures ranking quality (AUROC), not a false-alarm count. Foundational and still accurate.
 
 ---
 
@@ -5350,6 +5432,7 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Citations**: Valeur, F., Vigna, G., Kruegel, C., Kemmerer, R.A. (2004). *A Comprehensive Approach to Intrusion Detection Alert Correlation*. IEEE TDSC 1(3), 146-169.
 **Notes**: Snowball, backward from the AIDA alert-correlation entry (ARES 2019).
 **Validation Status**: ✅ Verified 2026-11-07 (author-hosted PDF of the TDSC article, page 1 title, authors and abstract; Crossref record for volume, pages and DOI).
+**Refresh (2026-11-23)**: author copy re-read (HTTP 200) and the DOI still resolves to IEEE Xplore document 1366134; the abstract sentence the chapter leans on is verbatim ("the effectiveness of a component depends heavily on the nature of the data set analyzed"). A journal article has no newer edition; later surveys were not searched beyond the AIDA (ARES 2019) entry already held. Foundational and still accurate.
 
 ---
 
@@ -5367,12 +5450,13 @@ Admitted from the 2026-11-07 snowball pass (`methods/snowball-candidates-2026-11
 **Key Findings** (abstract, read at the author version): argues that open formats such as Parquet are not optimized for remotely accessed data lakes and high-throughput networks, that inefficient decompression makes scans CPU-bound and raises query time and cost, and presents BtrBlocks, an open columnar format built on lightweight encoding schemes for fast decompression and high compression ratios.
 **Citations**: Kuschewski, M., Sauerwein, D., Alhomssi, A., Leis, V. (2023). *BtrBlocks: Efficient Columnar Compression for Data Lakes*. Proc. ACM Manag. Data 1(2), Article 118.
 **Notes**: Snowball, backward from F3 (SIGMOD 2025); the FastLanes entry already mentions BtrBlocks in passing, and this is its first standalone entry.
-**Validation Status**: ✅ Verified 2026-11-07 (author-hosted version of record PDF, page 1 title, authors and abstract; Crossref record for DOI).
+**Validation Status**: ✅ Verified 2026-11-07 (author-hosted author version PDF, page 1 title, authors and abstract; Crossref record for DOI).
+**Refresh (2026-11-23)**: TUM author version re-read (HTTP 200); the abstract sentences on Parquet, CPU-bound decompression and lightweight encodings are verbatim, and the PDF labels itself the author's version, not the version of record. Later format work held in this bibliography: the FastLanes file format (PVLDB 2025), which also prefers lightweight cascaded encodings over generic codecs and reports decoding about 7x faster than BtrBlocks on its corpus, and F3 (SIGMOD 2025), from which this entry was snowballed. Foundational and still accurate for the ch05 use.
 
 ---
 ## Handbook Footnote Companions (2026-11-07)
 
-Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) now footnotes has a verified companion entry for the style handbook's JIT check: the Reis modeling book behind the *Mixed Model Arts* integration, six [un]prompted talks (March 2026 and October 2026) cited in ch03 and ch04, the Humio post cited in ch05, and the social-media paper that coined "context collapse." Each was checked at the primary page named in its Validation Status line. Talks are Tier B practitioner evidence: the presenters' own builds and experiments, not independently replicated.
+Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) now footnotes has a verified companion entry for the style handbook's JIT check: the Reis modeling book behind the *Mixed Model Arts* integration, six [un]prompted talks (March 2026 and October 2026) cited in ch03 and ch04, the Humio post cited in ch05, and the social-media paper that is the standard reference for "context collapse." Each was checked at the primary page named in its Validation Status line. Talks are Tier B practitioner evidence: the presenters' own builds and experiments, not independently replicated.
 
 ---
 
@@ -5392,7 +5476,7 @@ Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) n
 
 **Key Findings**: a general data-modeling book with no security material; distinguishes event, ingestion, processing and valid time and recommends naming columns for the time they hold; describes context collapse as a failure mode "often described as" such, usually "a byproduct of optimizing for speed or storage efficiency"; gives a grain audit checklist for hidden duplicates and join fan-out.
 **Citations**: Reis, J. (2026). *Mixed Model Arts: The Building Blocks of Cross-Disciplinary Data Modeling*. Practical Data Media.
-**Notes**: Every application to security telemetry in the handbook is the handbook author's transfer, and the footnotes say so. Reis does not claim the term "context collapse"; see the Marwick & boyd entry below for its origin. The publisher site hyphenates the ISBNs as 979-8-95247-800-8 / 979-8-95247-801-5 (same digits); the copyright page is treated as primary. Carries no headline statistic.
+**Notes**: Every application to security telemetry in the handbook is the handbook author's transfer, and the footnotes say so. Reis does not claim the term "context collapse"; see the Marwick & boyd entry below for its standard reference. The publisher site hyphenates the ISBNs as 979-8-95247-800-8 / 979-8-95247-801-5 (same digits); the copyright page is treated as primary. Carries no headline statistic.
 **Validation Status**: ✅ Verified 2026-11-07 (copyright and title pages of the book text: title, subtitle, author, publisher, city, edition, both ISBNs; mixedmodelarts.com fetched for subtitle, foreword, 2026-09-27 date, 474-page paperback; practicaldata.media lists it as the publisher's first release).
 
 ---
@@ -5507,6 +5591,7 @@ Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) n
 **Citations**: Humio Staff (2021, September 28). *How Humio Leverages Kafka and Brute-Force Search to Get Blazing-Fast Search Results*. CrowdStrike blog. (Originally humio.com, 2020-01-06.)
 **Notes**: The post's "30-40x the speed of a regular search" claim is unanchored and is not cited by the handbook.
 **Validation Status**: ✅ Verified 2026-11-07 (CrowdStrike URL fetched: byline, 2021-09-28 date, the "originally published Jan. 6, 2020 on humio.com" note, and the three quoted sentences).
+**Refresh (2026-11-23)**: CrowdStrike URL re-read (HTTP 200); byline, both dates and the three quoted sentences unchanged. The current product documentation still describes the design: the LogScale page *Index-Free Data Storage* (https://library.humio.com/logscale-architecture/training-arch-op-indexfree.html, HTTP 200) says "LogScale stores the start and end time every segment and will only search the specified time interval" (sic), which is B-grade for what the feature does under the 2026-11-03 ruling; the speed figures stay C.
 
 ---
 
@@ -5518,12 +5603,13 @@ Added 2026-11-07 so that every source the handbook (`moar-cybersecurity-data`) n
 **DOI**: 10.1177/1461444810365313
 **Evidence Level**: A (peer-reviewed journal article)
 **Relevance**:
-- Handbook ch04 §4.2: the origin of the term "context collapse," which Reis borrows into data modeling and the handbook applies to field coarsening in security telemetry. Cited for the term's provenance only.
+- Handbook ch04 §4.2: the standard reference for the term "context collapse," which Reis borrows into data modeling and the handbook applies to field coarsening in security telemetry. Cited as the term's standard reference only, not as its origin.
 
-**Key Findings**: introduces context collapse as the flattening of multiple audiences into one on social media, and how users manage an imagined audience in response.
+**Key Findings**: describes context collapse as the flattening of multiple audiences into one on social media, and how users manage an imagined audience in response.
 **Citations**: Marwick, A.E., & boyd, d. (2011). I tweet honestly, I tweet passionately: Twitter users, context collapse, and the imagined audience. *New Media & Society*, 13(1), 114-133.
-**Notes**: Social-media research, not security; carries no claim the handbook relies on beyond the term's origin. boyd styles her name in lower case.
+**Notes**: Social-media research, not security; carries no claim the handbook relies on beyond the term's standard reference. boyd styles her name in lower case.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, both authors, journal, volume 13, issue 1, pages 114-133, DOI; Crossref's issued date 2010-07-07 is the online-first date).
+**Refresh (2026-11-23)**: metadata unchanged at Crossref. Origin claim narrowed: boyd's own account (zephoria.org, 2013-12-08) says this paper is "the first time that I used 'context collapse' instead of 'collapsed contexts' in published writing", traces the idea to her 2002 MIT thesis on "collapsed contexts", and notes that Michael Wesch published an article with 'context collapse' in its title in 2009 (*Explorations in Media Ecology* 8(2), doi:10.1386/eme.8.2.99_1; Crossref gives pp. 99-114), before this paper appeared. By her account the two were building on common roots in Goffman and Meyrowitz, so the coinage is shared and uncertain; cite this paper as the standard reference, which the handbook footnote already does.
 
 ---
 ## Thin-Claim Legs and Handbook Companions, Second Pass (2026-11-07)
@@ -5547,6 +5633,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Citations**: Rodrigues, K., Luo, Y., & Yuan, D. (2021). CLP: Efficient and Scalable Search on Compressed Text Logs. *15th USENIX Symposium on Operating Systems Design and Implementation (OSDI 21)*, 183-198.
 **Notes**: Bias flag: the authors list YScope Inc., the company that builds on CLP, so the comparison against Elasticsearch and Splunk is by an interested party, though peer-reviewed. The handbook cites only the abstract-level index-size statement.
 **Validation Status**: ✅ Verified 2026-11-07 (USENIX presentation page fetched: title, authors, affiliation, abstract text, pp. 183-198 in the BibTeX).
+**Refresh (2026-11-23)**: USENIX page re-read (HTTP 200); the index-size sentence, the 13x ingest figure and the YScope affiliation are verbatim. Same-group follow-up: Wang et al., "μSlope: High Compression and Fast Search on Semi-Structured Logs," OSDI '24, pp. 529-544 (https://www.usenix.org/conference/osdi24/presentation/wang-rui; YScope, Uber and University of Toronto, so the same interest flag applies), extends the approach to JSON logs and reports "21.9:1 to 186.8:1 compression ratio" against unnamed semi-structured data management systems; it does not restate the index-size claim, so this entry stays the citation for that sentence.
 
 ---
 
@@ -5556,14 +5643,16 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Date**: May 2023 (Proceedings of the Eighteenth European Conference on Computer Systems, EuroSys '23, pp. 452-468)
 **URL**: https://doi.org/10.1145/3552326.3567484
 **DOI**: 10.1145/3552326.3567484
+**Alt URL**: https://yangwang83.github.io/papers/eurosys23-final39.pdf (author camera-ready)
 **Evidence Level**: A (peer-reviewed, ACM EuroSys 2023)
 **Relevance**:
-- Handbook ch02 §2.3: second peer-reviewed leg for the storage mechanism; structured, compressed log storage cuts overall cost by an order of magnitude in a production setting.
+- Handbook ch02 §2.3: second peer-reviewed leg for the storage mechanism; the abstract reports that structured, compressed log storage cut query latency and overall cost by an order of magnitude against the state-of-the-art works it was compared with, evaluated on production log types from Alibaba Cloud (near-line debugging logs) and not in a reported deployment. The paper body splits that result: overall cost is 36% of CLP, 34% of gzip+grep and 7% of ElasticSearch on the Alibaba logs, so the order-of-magnitude cost gap is against the Elasticsearch index and the gap against the compression baselines is about 3x.
 
 **Key Findings** (abstract): parses logs into variable vectors by static patterns, extracts runtime patterns within each vector, and splits them into stamped "Capsules" that queries can skip without decompressing; on 21 production log types from Alibaba Cloud and 16 public log types, it reduces query latency and overall cost (storage plus compression and query compute) by an order of magnitude compared to state-of-the-art works.
 **Citations**: Wei, J., Zhang, G., Chen, J., Wang, Y., Zheng, W., Sun, T., Wu, J., & Jiang, J. (2023). LogGrep: Fast and Cheap Cloud Log Storage by Exploiting both Static and Runtime Patterns. *EuroSys '23*, 452-468.
-**Notes**: The abstract's comparators are "state-of-the-art works" in log compression, not named SIEMs or Elasticsearch; Flash's "5% of Elasticsearch / 20x" is not in the abstract and is not carried. Three co-authors are Alibaba Group employees.
+**Notes**: The abstract's comparators are "state-of-the-art works" in log compression, not named SIEMs or Elasticsearch; Flash's "5% of Elasticsearch / 20x" is not in the abstract and is not carried as a headline; the paper body does name its comparators (CLP, ElasticSearch, gzip+grep) and gives overall cost at 7% of ElasticSearch on the Alibaba logs and 5% on the public logs (§6.2). Three co-authors are Alibaba Group employees.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, eight authors, EuroSys '23 event, pages, DOI; abstract read on page 1 of the author-hosted camera-ready PDF at yangwang83.github.io; ACM DL returned a bot challenge).
+**Refresh (2026-11-23)**: abstract and §6.2 re-read in the author camera-ready PDF (HTTP 200), now added as Alt URL; the 21 production and 16 public log types and the abstract's order-of-magnitude sentence are verbatim, the paper reports an evaluation and no deployment, and the body puts overall cost at 36% of CLP, 34% of gzip+grep and 7% of ElasticSearch, so the Relevance line was narrowed to match. Same-group follow-ups: the journal extension "Exploiting Data-pattern-aware Vertical Partitioning to Achieve Fast and Low-cost Cloud Log Storage" (Wei, Zhang, Chen, Wang et al., ACM Transactions on Storage 20(2), 2024, doi:10.1145/3643641), and LogCloud (Wang, Wei, Aiken, Zhang et al., PVLDB 18(8):2362-2370, 2025, doi:10.14778/3742728.3742733), which searches compressed logs on object storage, uses LogGrep inside its indexing step and takes LogGrep and OpenSearch UltraWarm as its baselines.
 
 ---
 
@@ -5582,6 +5671,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Citations**: Zibak, A., Sauerwein, C., & Simpson, A.C. (2022). Threat Intelligence Quality Dimensions for Research and Practice. *Digital Threats: Research and Practice*, 3(4), 1-22.
 **Notes**: Flash gave the year as 2021; Crossref gives 2022.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, three authors, journal, volume 3, issue 4, pages 1-22, 2022-03-10, and the abstract text).
+**Refresh (2026-11-23)**: Crossref record and abstract re-read; journal, volume 3(4), pages and the 30-expert Delphi finding are unchanged. A Crossref author query found no later quality-dimension paper by the same authors (their adjacent 2021 work is a success model for CTI management platforms, *Computers & Security*, doi:10.1016/j.cose.2021.102466). Still the closest peer-reviewed source held for the ch03 use.
 
 ---
 
@@ -5599,6 +5689,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Citations**: Inam, M.A., Chen, Y., Goyal, A., Liu, J., Mink, J., Michael, N., Gaur, S., Bates, A., & Hassan, W.U. (2023). SoK: History is a Vast Early Warning System: Auditing the Provenance of System Intrusions. *2023 IEEE Symposium on Security and Privacy (SP)*, 2620-2638.
 **Notes**: Flash described this paper as showing detection invariant to reduction, which reverses the abstract; the abstract supports the handbook's direction. The retention-cost finding is carried in the handbook footnote as the other side of the trade.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, nine authors, IEEE S&P 2023 event, pages, DOI; full abstract read at the OpenAlex record).
+**Refresh (2026-11-23)**: Crossref and OpenAlex records re-read; the eight-technique evaluation, the "inverse relation between storage efficiency and anomaly detection performance" and the retention-cost finding are verbatim. This SoK has no newer edition and no successor SoK was found; Hassan's group continues the audit-logging line (for example "Rethinking Tamper-Evident Logging" at ACM CCS 2025, doi:10.1145/3719027.3765024), and those later papers were checked at the metadata level only. Still accurate.
 
 ---
 
@@ -5607,7 +5698,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Authors**: Noor Michael, Jaron Mink, Jason Liu, Sneha Gaur, Wajih Ul Hassan, Adam Bates (University of Illinois Urbana-Champaign)
 **Date**: December 2020 (Annual Computer Security Applications Conference, ACSAC '20, pp. 189-202)
 **URL**: https://doi.org/10.1145/3427228.3427272
-**Alt URL**: https://acsac.org/2020/program/final/s238.html
+**Alt URL**: https://www.acsac.org/2020/program/final/s238.html
 **DOI**: 10.1145/3427228.3427272
 **Evidence Level**: A (peer-reviewed, ACSAC 2020)
 **Relevance**:
@@ -5617,6 +5708,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Citations**: Michael, N., Mink, J., Liu, J., Gaur, S., Hassan, W.U., & Bates, A. (2020). On the Forensic Validity of Approximated Audit Logs. *Annual Computer Security Applications Conference (ACSAC '20)*, 189-202.
 **Notes**: Flash read this as "80-90% can be discarded harmlessly", which reverses the abstract.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, six authors, ACSAC '20 event, pages, DOI; full abstract and affiliations read on the ACSAC 2020 program page).
+**Refresh (2026-11-23)**: ACSAC program page re-read (the bare acsac.org host now redirects to www.acsac.org, Alt URL updated); the 100% attack-event retention and the "as little as 7.3% of forensic evidence" finding are verbatim. The 2023 SoK (Inam et al., entry above), which shares all six of this paper's authors, re-evaluates eight reduction techniques and reports an inverse relation between storage efficiency and anomaly detection, so it agrees in direction but is same-group corroboration, not an independent replication. Still accurate.
 
 ---
 
@@ -5633,7 +5725,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Key Findings** (abstract): because of their size, expensive maintenance and difficulty to tune and automate, secondary indexes "are typically not used in modern cloud data warehouses or data lakes", which rely on full scans and min/max filtering whose effectiveness depends on data layout and value distributions; proposes SPA as the vision for adaptive, workload-driven partial indexing of immutable copy-on-write formats, usable as an accelerator over cloud data lakes.
 **Citations**: Boncz, P., Chronis, Y., Finis, J., Halfpap, S., Leis, V., Neumann, T., Nica, A., Sauer, C., Stolze, K., & Żukowski, M. (2023). SPA: Economical and Workload-Driven Indexing for Data Analytics in the Cloud. *2023 IEEE 39th International Conference on Data Engineering (ICDE)*, 3740-3746.
 **Notes**: A vision paper: the problem statement is the evidence the handbook uses; the proposed design carries no benchmark in the abstract. The scout file listed the authors as "Chronis, Finis, Halfpap, Boncz et al."; Crossref and OpenAlex both give the alphabetical order above.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, ten authors, ICDE 2023 event, pages, DOI; full abstract and author order read at the OpenAlex record).
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, ten authors, ICDE 2023 event, pages, DOI; full abstract and author order read at the OpenAlex record). Refresh (2026-11-23): DOI still resolves to IEEE Xplore document 10184818; abstract re-read at OpenAlex, the quoted sentence unchanged, no retraction. A narrow OpenAlex search found no follow-up by the same authors, which does not show that none exists.
 
 ---
 
@@ -5649,7 +5741,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Key Findings**: traces the 80% figure to CrowdFlower 2016 (cleaning and organizing 60%, collecting data sets 19%); CrowdFlower 2017 reports 51% for collecting, labelling, cleaning and organizing combined; Kaggle 2018 reports about 11% gathering and 15% cleaning.
 **Citations**: Dodds, L. (2020, January 31; updated 2020, September 29). *Do data scientists spend 80% of their time cleaning data? Turns out, no?* Blog post.
 **Notes**: The Kaggle 2018 figures are read through this tally, not at Kaggle, and the handbook footnote says so.
-**Validation Status**: ✅ Verified 2026-11-07 (post fetched: title, author, dates and the three survey figures quoted above).
+**Validation Status**: ✅ Verified 2026-11-07 (post fetched: title, author, dates and the three survey figures quoted above). Refresh (2026-11-23): post re-fetched live; the three survey figures and the September 29, 2020 update date unchanged.
 
 ---
 
@@ -5665,7 +5757,7 @@ Added 2026-11-07 after a thin-claims scouting pass (Gemini Flash) and the owner'
 **Key Findings**: the paper's conclusion states that "organizations which design systems (in the broad sense used here) are constrained to produce designs which are copies of the communication structures of these organizations."
 **Citations**: Conway, M.E. (1968). How Do Committees Invent? *Datamation*, 14(4), 28-31.
 **Notes**: The author's reprint opens with a note written 42 years after publication restating the thesis informally. The handbook footnote labels it Tier C, matching this entry (the claim-evidence matrix had flagged an earlier Tier A label).
-**Validation Status**: ✅ Verified 2026-11-07 (author's reprint fetched: title, author's note, the conclusion sentence quoted above, and the reprint notice "Copyright 1968, F. D. Thompson Publications, Inc. Reprinted by permission of Datamation magazine, where it appeared April, 1968"; volume, issue and pages confirmed later the same day at the scanned April 1968 issue on bitsavers.org (`magazines/Datamation/196804.pdf`): the masthead reads "april 1968, volume 14, number 4", the contents list the article at page 28 with the next article at page 32, and the article's printed folios run 28 to 31. The Crossref reference lists of Nagappan et al. (ICSE 2008, doi:10.1145/1368088.1368160) give 14(4), pp. 28-31, while MacCormack et al. (Research Policy 2012, doi:10.1016/j.respol.2012.04.011) give issue 5, which the scan contradicts).
+**Validation Status**: ✅ Verified 2026-11-07 (author's reprint fetched: title, author's note, the conclusion sentence quoted above, and the reprint notice "Copyright 1968, F. D. Thompson Publications, Inc. Reprinted by permission of Datamation magazine, where it appeared April, 1968"; volume, issue and pages confirmed later the same day at the scanned April 1968 issue on bitsavers.org (`magazines/Datamation/196804.pdf`): the masthead reads "april 1968, volume 14, number 4", the contents list the article at page 28 with the next article at page 32, and the article's printed folios run 28 to 31. The Crossref reference lists of Nagappan et al. (ICSE 2008, doi:10.1145/1368088.1368160) give 14(4), pp. 28-31, while MacCormack et al. (Research Policy 2012, doi:10.1016/j.respol.2012.04.011) give issue 5, which the scan contradicts). Refresh (2026-11-23): author reprint re-fetched live, the conclusion sentence unchanged; tier stays C by venue.
 
 ---
 
@@ -5703,8 +5795,8 @@ Added 2026-11-07 because the handbook's ch01 `[^wrangle]` footnote already cited
 
 **Key Findings**: 2,360 people from more than 100 countries took the online survey; respondents "reported that almost half of their time is spent on the combined tasks of data loading and cleansing", which the landing page states as "on average 45% of their time is spent getting data ready (loading and cleansing)". The time-allocation question that produces the figure has n=1,099 in the report's chart, which gives the two tasks as 19% and 26%, with data visualization about 21% and the three modeling tasks 11–12% each.
 **Citations**: Anaconda. (2020). *The State of Data Science 2020: Moving from Hype Toward Maturity*. Anaconda, Inc.
-**Notes**: Bias flag: Anaconda sells data-science tooling, and respondents were recruited via social media and Anaconda's own email database, so the sample leans toward its user base. The 45% comes from the 1,099 respondents who answered the time-allocation question, not all 2,360; the handbook footnote attributed it to the full sample until the 2026-11-07 fix, and now names the 1,099 and the 19% plus 26% split.
-**Validation Status**: ✅ Verified 2026-11-07 (landing page fetched: title, 2,360 responses, 45% loading and cleansing; report PDF fetched: field dates, recruitment, the time-allocation chart with n=1,099, and the "almost half" sentence quoted above).
+**Notes**: Bias flag: Anaconda sells data-science tooling, and respondents were recruited via social media and Anaconda's own email database, so the sample leans toward its user base. The 45% comes from the 1,099 respondents who answered the time-allocation question, not all 2,360; the handbook footnote attributed it to the full sample until the 2026-11-07 fix, and now names the 1,099 and the 19% plus 26% split. Later editions exist (2022, 3,493 respondents from 133 countries and regions; 2024, described by Anaconda as its 7th annual report); neither landing page states a data-preparation time share, so no later figure is carried.
+**Validation Status**: ✅ Verified 2026-11-07 (landing page fetched: title, 2,360 responses, 45% loading and cleansing; report PDF fetched: field dates, recruitment, the time-allocation chart with n=1,099, and the "almost half" sentence quoted above). Refresh (2026-11-23): landing page and report PDF both return 200; the 45% sentence and the 2,360 count re-read on the landing page, and the almost-half sentence and the n=1,099 chart with the 19% and 26% split re-read in the PDF, all unchanged.
 
 ---
 
@@ -5721,7 +5813,7 @@ Added 2026-11-07 because the handbook's ch01 `[^wrangle]` footnote already cited
 **Key Findings**: reports CrowdFlower's survey of "about 80 data scientists", conducted for the second year in a row: "Data scientists spend 60% of their time on cleaning and organizing data. Collecting data sets comes second at 19% of their time, meaning data scientists spend around 80% of their time on preparing and managing data for analysis." The same piece reports that 76% of respondents view data preparation as the least enjoyable part of the work.
 **Citations**: Press, G. (2016, March 23). Cleaning Big Data: Most Time-Consuming, Least Enjoyable Data Science Task, Survey Says. *Forbes*.
 **Notes**: Bias flag: CrowdFlower sold a "data enrichment" platform for data scientists, so the vendor running the survey benefits from the finding, and the sample is small (about 80). The page title is "Cleaning Big Data: …" while the URL slug reads "data-preparation-…". Until the 2026-11-07 fix the handbook footnote used the slug wording as the title and described the figures as shares of respondents naming a task; it now carries the page title and gives them as shares of time from about 80 data scientists.
-**Validation Status**: ✅ Verified 2026-11-07 (live forbes.com returned HTTP 403; the Wayback snapshot of 2016-04-06 was read: og:title, author meta "Gil Press", publication timestamp 2016-03-23T13:17:00-04:00, and the passage quoted above).
+**Validation Status**: ✅ Verified 2026-11-07 (live forbes.com returned HTTP 403; the Wayback snapshot of 2016-04-06 was read: og:title, author meta "Gil Press", publication timestamp 2016-03-23T13:17:00-04:00, and the passage quoted above). Refresh (2026-11-23): forbes.com returned 403 again; the Wayback snapshot of 2016-04-06 re-read, with the title, the 60/19/80 passage, the about-80 sample and the 76% unchanged.
 
 ---
 
@@ -5746,7 +5838,7 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 **Key Findings** (abstract): interviews with 53 AI practitioners in India, East and West African countries, and the USA; defines data cascades as compounding events causing negative downstream effects from data issues, triggered by practices that undervalue data quality, and finds them pervasive (92% prevalence), invisible, delayed, but often avoidable; describes data as "the most under-valued and de-glamorised aspect of AI."
 **Citations**: Sambasivan, N., Kapania, S., Highfill, H., Akrong, D., Paritosh, P., & Aroyo, L.M. (2021). "Everyone wants to do the model work, not the data work": Data Cascades in High-Stakes AI. *Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems*, 1-15.
 **Notes**: High-stakes AI domains (health, conservation, lending), not security; the transfer to security AI is the handbook author's.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, six authors, CHI 2021 proceedings, pages, DOI; full abstract read at the OpenAlex record).
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, six authors, CHI 2021 proceedings, pages, DOI; full abstract read at the OpenAlex record). Refresh (2026-11-23): DOI resolves to the ACM Digital Library (bot-blocked to curl); abstract re-read at OpenAlex, 53 interviews and 92% prevalence unchanged, no retraction.
 
 ---
 
@@ -5764,7 +5856,7 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 **Key Findings** (abstract): a cross-sectional survey of data-warehousing managers and data suppliers from 111 organizations (paired mail questionnaires), analysed with Partial Least Squares; management support and resources help address organizational issues during warehouse implementations; resources, user participation, and highly skilled project team members raise the likelihood of on-time, on-budget delivery; diverse, unstandardized source systems and poor development technology increase technical issues; success with organizational and project issues in turn influences system quality.
 **Citations**: Wixom, B.H., & Watson, H.J. (2001). An Empirical Investigation of the Factors Affecting Data Warehousing Success. *MIS Quarterly*, 25(1), 17-42.
 **Notes**: Flash gave the sample as 454 projects; the abstract gives 111 organizations. Crossref appends a footnote marker ("Success1") to the title, dropped here.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, two authors, journal, volume 25, issue 1, pages 17-42, DOI; full abstract read at the OpenAlex record).
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, two authors, journal, volume 25, issue 1, pages 17-42, DOI; full abstract read at the OpenAlex record). Refresh (2026-11-23): DOI resolves to the article page at misq.umn.edu (bot-blocked to curl, not read); abstract re-read at OpenAlex, 111 organizations unchanged.
 
 ---
 
@@ -5782,7 +5874,7 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 **Key Findings** (abstract): an exploratory study interviewing 26 industrial practitioners on what makes a system legacy, what drives modernization, and what challenges arise, validated by a survey with 198 respondents; practitioners value their legacy systems highly, and the challenges "are not just technical, but also include business and organizational aspects."
 **Citations**: Khadka, R., Batlajery, B.V., Saeidi, A.M., Jansen, S., & Hage, J. (2014). How do professionals perceive legacy systems and software modernization? *Proceedings of the 36th International Conference on Software Engineering (ICSE 2014)*, 36-47.
 **Notes**: Flash gave a wrong DOI (it resolves to an unrelated ICSE 2014 paper), a sample of 310, and read the paper as contradicting the claim; the abstract supports it.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, five authors, ICSE 2014 proceedings, pages, DOI; full abstract read at the OpenAlex record).
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, five authors, ICSE 2014 proceedings, pages, DOI; full abstract read at the OpenAlex record). Refresh (2026-11-23): DOI resolves to the ACM Digital Library (bot-blocked to curl); abstract re-read at OpenAlex, the 26 interviews, the 198 respondents and the quoted sentence unchanged.
 
 ---
 
@@ -5800,7 +5892,7 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 **Key Findings** (abstract): the first large-scale, long-term study of how Internet hosts manage their clocks, motivated by forensic correlation of events from disparate sources; over 8,000 web servers sampled regularly for more than six months; only about 74% were within 10 seconds of UTC, and the rest showed a wide variety of clock behaviours.
 **Citations**: Buchholz, F., & Tjaden, B. (2007). A brief study of time. *Digital Investigation*, 4, 31-42.
 **Notes**: A 2007 sample of web servers, so the 74% is historical; the handbook uses it for the mechanism only.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, two authors, journal, volume 4, pages 31-42, DOI; full abstract read at the OpenAlex record).
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, two authors, journal, volume 4, pages 31-42, DOI; full abstract read at the OpenAlex record). Refresh (2026-11-23): DOI resolves; abstract re-read at OpenAlex, the 74% within 10 s unchanged. A limited search found no newer large-scale prevalence study, so the figure stays historical and mechanism-only.
 
 ---
 
@@ -5816,8 +5908,8 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 
 **Key Findings** (abstract): timestamps derive from a system clock, so skew from tampering, natural drift, or malfunction makes recorded times diverge from when events occurred; defines time anchors, anchoring and non-anchoring events, and time anomalies to test whether the system time was correct, illustrated with a Google search and a file creation in correct and skewed versions.
 **Citations**: Vanini, C., Hargreaves, C.J., van Beek, H., & Breitinger, F. (2024). Was the clock correct? Exploring timestamp interpretation through time anchors for digital forensic event reconstruction. *Forensic Science International: Digital Investigation*, 49, 301759.
-**Notes**: Worked examples, no prevalence or recall figure.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, four authors, journal, volume 49, article 301759, DOI; full abstract read at the OpenAlex record).
+**Notes**: Worked examples, no prevalence or recall figure. Follow-ups by the same group, neither read in full: Breitinger, Studiawan and Hargreaves, SoK: Timeline based event reconstruction for digital forensics (Forensic Science International: Digital Investigation 53, 301932, July 2025, doi:10.1016/j.fsidi.2025.301932; preprint arXiv 2504.18131), and Vanini, Gruber, Hargreaves, Benenson, Freiling and Breitinger, Understanding Strategies and Challenges of Timestamp Tampering for Improved Digital Forensic Event Reconstruction (Digital Forensics Doctoral Symposium, April 2025, doi:10.1145/3712716.3712727).
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, four authors, journal, volume 49, article 301759, DOI; full abstract read at the OpenAlex record). Refresh (2026-11-23): DOI resolves; abstract re-read at OpenAlex, unchanged; the two follow-up records confirmed at Crossref.
 
 ---
 
@@ -5834,8 +5926,8 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 
 **Key Findings** (abstract): revisits CICIDS2017 and its data collection pipeline and finds problems with traffic generation, flow construction, feature extraction and labelling that severely affect correctness, validity and utility; an improved processing methodology reconstructs or relabels more than 20 percent of the original traffic traces, and ML benchmarks on the corrected dataset improve significantly.
 **Citations**: Engelen, G., Rimmer, V., & Joosen, W. (2021). Troubleshooting an Intrusion Detection Dataset: the CICIDS2017 Case Study. *2021 IEEE Security and Privacy Workshops (SPW)*, 7-12.
-**Notes**: Workshop paper (WTMC at IEEE S&P); tiered A as refereed.
-**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, three authors, SPW 2021 proceedings, pages 7-12, DOI; full abstract read at the OpenAlex record).
+**Notes**: Workshop paper (WTMC at IEEE S&P); tiered A as refereed. A separate group reports further flaws in the same dataset: Lanvin et al., Errors in the CICIDS2017 Dataset and the Significant Differences in Detection Performances It Makes (CRiSIS 2022, LNCS 13857, 2023, pp. 18-33, doi:10.1007/978-3-031-31108-6_2), whose abstract names packet misorder, packet duplication and attacks performed but not correctly labelled; read at abstract level only, and a candidate for its own entry.
+**Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, three authors, SPW 2021 proceedings, pages 7-12, DOI; full abstract read at the OpenAlex record). Refresh (2026-11-23): DOI resolves to IEEE Xplore document 9474286; abstract re-read at OpenAlex, the more-than-20-percent figure unchanged.
 
 ---
 
@@ -5854,6 +5946,7 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 **Citations**: Khan, Z.A., Shin, D., Bianculli, D., & Briand, L.C. (2024). Impact of log parsing on deep learning-based anomaly detection. *Empirical Software Engineering*, 29(6), 139.
 **Notes**: The scout file described the detectors as "7 detectors"; the abstract's five plus two split is carried here and in the handbook.
 **Validation Status**: ✅ Verified 2026-11-07 (Crossref record: title, four authors, journal, volume 29, issue 6, article 139, DOI; full abstract read at the OpenAlex record).
+**Refresh (2026-11-23)**: DOI re-resolved (HTTP 200 at link.springer.com); the article is open access under CC BY 4.0 per its Crossref licence record, and the arXiv preprint 2305.15897 (v4, 2024-08-19) carries the journal reference "Empir Software Eng 29, 139 (2024)". The OpenAlex abstract was re-read and the 13-parser, five-plus-two-detector, three-dataset design and the no-strong-correlation sentence are unchanged. No newer edition or follow-up by the same authors was found in this pass. The LLM-based log parsing work since 2024, for example Beck et al., "System Log Parsing with Large Language Models: A Review" (arXiv 2504.04877, v2 of 2025-05-15, first posted as "SoK: LLM-based Log Parsing"), reviews 29 parsers and benchmarks seven of them on public datasets per its abstract, which does not mention a downstream anomaly-detection measurement, so on the abstract alone it neither corroborates nor contradicts this finding.
 
 ---
 
@@ -5868,9 +5961,9 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 
 **Key Findings**: across "more than 3,000 detection rules, 1.2 million log sources and hundreds of unique log source types" in customer SIEMs, "18% of SIEM rules will never fire due to a common issue like misconfigured data sources and missing fields."
 **Citations**: CardinalOps. (2024, June 13). *Fourth Annual Report on the State of SIEM Detection Risk* [Press release]. PR Newswire.
-**Notes**: The release, not the gated report PDF, was read. Other editions (about 15% in 2022, about 12% in 2023, about 13% in 2025) appear in press coverage and were not read at a CardinalOps primary; the 2022 report PDF mirror returned HTTP 403. "Never fire" is narrower than the handbook's dead tail, which also counts noisy rules analysts ignore. The scout file's note that cardinalops.com redirects to cribl.io was checked on 2026-11-23 and holds (see the refresh line).
+**Notes**: The release, not the gated report PDF, was read. Other editions (about 15% in 2022, about 12% in 2023) appear in press coverage and were not read at a CardinalOps primary; the 2022 report PDF mirror returned HTTP 403. The 2025 edition was read at its primaries on 2026-11-23 (see the refresh line). "Never fire" is narrower than the handbook's dead tail, which also counts noisy rules analysts ignore. The scout file's note that cardinalops.com redirects to cribl.io was checked on 2026-11-23 and holds (see the refresh line).
 **Validation Status**: ✅ Verified 2026-11-07 (PR Newswire release fetched: date, "Fourth Annual" title line, dataset sentence and the 18% sentence quoted above).
-**Refresh (2026-11-23)**: The cardinalops.com home page and its blog both redirect to cribl.io. Cribl announced on 2026-07-14 that it "is acquiring CardinalOps, an Agentic Detection Engineering solution" (https://cribl.io/news/cribl-acquires-cardinalops-to-expand-its-ai-platform-into-security-operations/), so the publisher of this series now sits inside a telemetry-pipeline vendor, which the bias flag above should be read to include. The fifth edition (June 2025) is reported by Help Net Security (2025-06-09, https://www.helpnetsecurity.com/2025/06/09/siem-detection-coverage/) as "leaving 79% of techniques uncovered", with "13% on average" of detection rules "non-functional and will never trigger", and with SIEMs processing "an average of 259 log types and nearly 24,000 unique log sources" (an average per SIEM; the article does not give the study's sample size). No CardinalOps or Cribl primary for that edition was found on 2026-11-23, so the 2024 release stays the cited primary and the 2025 figures stay unverified at a primary.
+**Refresh (2026-11-23)**: The cardinalops.com home page and its blog both redirect to cribl.io. Cribl announced on 2026-07-14 that it "is acquiring CardinalOps, an Agentic Detection Engineering solution" (https://cribl.io/news/cribl-acquires-cardinalops-to-expand-its-ai-platform-into-security-operations/), so the publisher of this series now sits inside a telemetry-pipeline vendor, which the bias flag above should be read to include. The fifth edition (2025) was read at two CardinalOps primaries, and they give different figures for the year. The release of 2025-06-05 (https://www.prnewswire.com/news-releases/enterprise-siems-miss-79-of-mitre-attck-techniques-used-by-adversaries-according-to-cardinalops-5th-annual-report-302473779.html) gives "13% on average" of rules as "non-functional and will never trigger" and coverage of "just 21% of adversary techniques", and compares both with 2024 as year-on-year changes ("a five percent decrease from 2024"). The report itself, now off cardinalops.com and read from a Wayback copy (https://web.archive.org/web/20250714230723/https://cardinalops.com/wp-content/uploads/2025/06/25-CardinalOps-2025-State-of-SIEM-Report.pdf), shows 21% and 13% on a summary page headed "Based on aggregate analysis of all five years of our sample data", and gives this year's figures in the body as 22% coverage and "This year's 10% finding" for broken rules, over "Over 13,000 unique detection rules" and "Nearly 2.5 million total log sources", while noting that "year to year variations could be attributed to sampling differences". How far that summary-page heading reaches is unclear, because the same page carries the 259 log types that the body treats as a 2025 value and the body puts the historical coverage benchmark at 20%, so the safest reading is that the release's 13% and 21% are the summary-page figures and the body's 10% and 22% are the single-year ones. The same report confirms the 2024 value cited here ("a slight regression back to 18% last year"), so the 18% stands, and across the two latest editions the vendor's own never-fire share sits between 10% and 18%. The report's retrospective ("steady improvements from 25% to 15% across the first few years") does not mention the roughly 12% that press coverage gives for 2023, which stays unread at a primary. Help Net Security's write-up (2025-06-09, https://www.helpnetsecurity.com/2025/06/09/siem-detection-coverage/) repeats the release's 13% and 79%.
 
 ## Agent Harness Benchmarking (2026-11-08)
 

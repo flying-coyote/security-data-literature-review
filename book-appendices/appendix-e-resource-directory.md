@@ -683,7 +683,7 @@ A data-platform practitioner said, in personal communication (October 2025; unpu
 - Conference talks: YouTube "Ryan Blue Subsurface" or "Ryan Blue Iceberg"
 - Focus: Iceberg design, table formats, lakehouse architecture
 
-**Alex Merced** (Developer Advocate, Dremio)
+**Alex Merced** (Head of DevRel, Dremio, per Dremio's author page 2026-11-23)
 - YouTube: youtube.com/@alexmerceddata
 - Blog: amdatalakehouse.substack.com (Substack, active) / alexmerced.com
 - Focus: Iceberg, Dremio, Apache Arrow, query engines

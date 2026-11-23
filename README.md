@@ -22,9 +22,9 @@ Whichever route a source takes, it gets an Evidence Level under the rules below,
 
 These lines are checked in CI on every push and, when this file is staged, by the pre-commit gate, using `scripts/count_reconcile.py`, which derives them from [MASTER-BIBLIOGRAPHY.md](MASTER-BIBLIOGRAPHY.md) and fails if any surface disagrees.
 
-- **279 sources catalogued** (277 tiered + 2 documented stubs; 22.7% Evidence Level A, live 2026-11-23 — 63/277)
-- **Evidence Level A: 22.7%** (63 of 277 tiered sources)
-- Evidence Level B: 174 of 277 · Evidence Level C: 40 of 277 (across 279 `#### ` blocks incl. 2 documented stubs)
+- **279 sources catalogued** (277 tiered + 2 documented stubs; 23.1% Evidence Level A, live 2026-11-23 — 64/277)
+- **Evidence Level A: 23.1%** (64 of 277 tiered sources)
+- Evidence Level B: 173 of 277 · Evidence Level C: 40 of 277 (across 279 `#### ` blocks incl. 2 documented stubs)
 
 The Level-A share describes where the evidence in this field lives, and it is not a target. Much of what is known about running security data platforms at scale is in production writeups and practitioner talks rather than peer-reviewed papers, so an honest corpus sits mostly at Level B, and the earlier share targets were retired for that reason (METHODOLOGY §8.1a).
 
@@ -103,7 +103,7 @@ A new surface that states a gated count needs one entry in the ALLOWLIST in `scr
 | Path | What it holds |
 |------|---------------|
 | [PUBLICATION-MANUSCRIPT.md](PUBLICATION-MANUSCRIPT.md) | The paper, with its embedded references and appendices |
-| [MASTER-BIBLIOGRAPHY.md](MASTER-BIBLIOGRAPHY.md) | 279 catalogued sources (277 tiered), 22.7% Evidence Level A (live, 63/277), each with its tier, cited numbers and validation status |
+| [MASTER-BIBLIOGRAPHY.md](MASTER-BIBLIOGRAPHY.md) | 279 catalogued sources (277 tiered), 23.1% Evidence Level A (live, 64/277), each with its tier, cited numbers and validation status |
 | [METHODOLOGY.md](METHODOLOGY.md) | Search strategy, appraisal, the tier definitions (§3.1) and the hypothesis method |
 | [RESEARCH-JOURNAL.md](RESEARCH-JOURNAL.md) | Per-claim verification verdicts |
 | [CHANGELOG.md](CHANGELOG.md) | Every revision, for citation stability |

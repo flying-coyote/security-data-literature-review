@@ -103,7 +103,7 @@ Everything in §2.1-§2.3 is curation, which PRISMA 2020 accommodates as the "id
 
 All sources are classified using a four-tier evidence system. Level A is reserved for peer-reviewed research and official standards; production evidence, however good, is Level B.
 
-#### Evidence Level A (live share 22.7% at 2026-11-23, 17.0% immediately after the 2026-08-19 tier audit re-tiered 57 entries off A once the criteria below were corrected; NO target, see 8.1a; the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
+#### Evidence Level A (live share 23.1% at 2026-11-23, 17.0% immediately after the 2026-08-19 tier audit re-tiered 57 entries off A once the criteria below were corrected; NO target, see 8.1a; the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
 **Criteria**: Peer-reviewed research, and official standards. Nothing else.
 **Examples**:
 - Peer-reviewed publications at a named venue with real review (USENIX Security, IEEE S&P, NDSS, CCS, VLDB, SIGMOD, ICSE, NeurIPS, ICML, ACL, KDD, TMLR, or a peer-reviewed journal). An arXiv preprint with no named venue is **not** peer-reviewed and does not qualify, however eminent its authors
@@ -112,16 +112,16 @@ All sources are classified using a four-tier evidence system. Level A is reserve
 - **Normative reference frameworks** from a neutral, non-commercial body, published as a versioned formal specification (MITRE D3FEND, MITRE ATLAS). Owner ruling, 2026-08-19: these hold the same evidentiary position as a NIST or ISO document. Their scope is the same too — primary for taxonomy and structure, and silent on efficacy. A framework is authoritative about what it says, never evidence that following it works
 - **NOT Level A**, and this is where the corpus went wrong before 2026-08-19: production case studies and deployment writeups, vendor engineering blogs, industry-conference talks, trade books, analyst and vendor-commissioned reports, government *advisories* (as distinct from standards), consortium and foundation announcements, and official project documentation. All are Level B. (The earlier Shell entry was removed in the 2026 audit — dead URL, unverifiable)
 
-**Current Achievement**: 63 of 277 tiered entries (22.7%), live-derived 2026-11-23, reported as a measurement rather than against a target (§8.1a). The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 64 of 277 tiered entries (23.1%), live-derived 2026-11-23, reported as a measurement rather than against a target (§8.1a). The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
-#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 62.8%)
+#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 62.5%)
 **Criteria**: Practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation. Real evidence, not independently reviewed.
 **Examples**:
 - Gartner, IDC, Forrester quantitative research
 - Production case studies and deployment write-ups (Netflix, Uber, Cloudflare, SK Telecom)
 - Vendor technical documentation (if production-validated)
 
-**Live share**: 174 of 277 tiered entries (62.8%), derived 2026-11-23. *(Note, 2026-07-16, when the share was 47.6% (108 of 227): the <27% figure is the October-2025 design bound, and it is currently breached — a documented consequence of the 2026-06/07 audits moving inflated Level-A entries down to B (headline stats not present in the cited source, first-person practitioner authorship on vendor channels re-tiered B), not of quality decay in the incoming sources. The original "Achieved: 21% (15 of 72)" was the October-2025 self-grade at a 72-source corpus and is preserved here as history.)*
+**Live share**: 173 of 277 tiered entries (62.5%), derived 2026-11-23. *(Note, 2026-07-16, when the share was 47.6% (108 of 227): the <27% figure is the October-2025 design bound, and it is currently breached — a documented consequence of the 2026-06/07 audits moving inflated Level-A entries down to B (headline stats not present in the cited source, first-person practitioner authorship on vendor channels re-tiered B), not of quality decay in the incoming sources. The original "Achieved: 21% (15 of 72)" was the October-2025 self-grade at a 72-source corpus and is preserved here as history.)*
 
 #### Evidence Level C (live share 14.4% — 40 of 277 tiered; original design intent was "Rejected: 0%")
 **Criteria**: Vendor blog posts, product documentation, and conference talks not backed by production measurement
@@ -286,7 +286,7 @@ Each hypothesis is classified using a 5-level confidence scale:
 
 | Hypothesis | Status | Sources | Confidence | Key Evidence |
 |------------|--------|---------|------------|--------------|
-| **H-ARCH-01**: Apache Iceberg dominance as de facto standard | STRONGLY VALIDATED | 5 | ⭐⭐⭐⭐⭐ | Dremio survey (29% vs 23% Delta), broad vendor support (AWS, Google, Snowflake, Cloudera; Databricks in Public Preview since June 2025; Microsoft remains Delta-first with partial Fabric support — corrected 2026-07-10), 407 GitHub contributors |
+| **H-ARCH-01**: Apache Iceberg dominance as de facto standard | STRONGLY VALIDATED | 5 | ⭐⭐⭐⭐⭐ | Dremio survey (29% vs 23% Delta), broad vendor support (AWS, Google, Snowflake, Cloudera; Databricks in Public Preview since June 2025; Microsoft remains Delta-first with partial Fabric support — corrected 2026-07-10), 407 GitHub contributors *(2026-11-23: a floor under GitHub's 500-email limit; cite more than 400 contributors with linked accounts)* |
 | **H-IMPL-01**: 2.5-3× operational costs for streaming vs batch | STRONG | 5 | ⭐⭐⭐⭐ | IDC (2.5-3× staffing), Confluent (45-55% TCO = ops), Cloudera (39% licensing, 32% hardware) |
 | **H-IMPL-02**: 2.7× specialized staff for streaming architectures | STRONG | 4 | ⭐⭐⭐⭐⭐ | DORA (2.7× staff), Ververica (3.2 FTEs), McKinsey (tiger teams 35-40% acceleration) |
 | **H-IMPL-03**: 5.5 month average for security data lakehouse | VALIDATED | 3 | ⭐⭐⭐ | Gartner/phData (5.5 months), Confluent (4-6 months), ~~security premium 15-30%~~ (SANS — withdrawn 2026-06-05, entry not present in cited sources) |
@@ -315,7 +315,7 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 - **Question**: Does isolation-first security meet SOC 2, ISO 27001, NIST CSF requirements without fine-grained catalog access?
 - **Hypothesis**: Network isolation as primary security control meets compliance requirements for most enterprise security teams, with exceptions for multi-tenant MSSPs and federated global teams
 - **Validation Metrics**: Compliance framework coverage, audit trail completeness, regulatory acceptance, gap analysis
-- **Data Sources**: Netflix compliance (SOC 2 with Polaris), Financial services SOC deployments, CISA zero-trust guidance, OCSF deployment case studies, ISO 27001/NIST CSF mappings
+- **Data Sources**: ~~Netflix compliance (SOC 2 with Polaris)~~ *(withdrawn 2026-11-23: the 2026-11-23 refresh found no Netflix deployment on the Polaris home, community or 1.9.0 access-control pages, and the Netflix logging post does not mention Polaris or compliance; see the Apache Polaris entry)*, Financial services SOC deployments, CISA zero-trust guidance, OCSF deployment case studies, ISO 27001/NIST CSF mappings
 - **Evidence Tier Target**: B
 
 **RQ9: Multi-Tenant MSSP vs Isolation-First Architecture Decision Thresholds**
@@ -329,7 +329,7 @@ Four new research questions (RQ7-RQ10) examine isolation-first security architec
 - **Question**: Does isolation-first security elevate Polaris and Nessie to top-tier catalog choices by changing selection criteria from "fine-grained access" to "vendor neutrality" and "version control"?
 - **Hypothesis**: Isolated security platforms prioritize different catalog features: Unity Catalog wins for shared platforms (fine-grained access essential), Polaris (vendor neutrality) or Nessie (Git workflows) win for isolated platforms (table-level RBAC sufficient)
 - **Validation Metrics**: Catalog adoption patterns, feature prioritization, migration patterns, decision criteria ranking
-- **Data Sources**: Netflix Polaris adoption rationale, Unity Catalog case studies, Nessie production deployments, Lisa Cao's published Gravitino work, Jake Thomas's Data Council 2024 talk, catalog feature comparison matrices (no interviews held with either)
+- **Data Sources**: ~~Netflix Polaris adoption rationale~~ *(withdrawn 2026-11-23, same reason as RQ8)*, Unity Catalog case studies, Nessie production deployments, Lisa Cao's published Gravitino work, Jake Thomas's Data Council 2024 talk, catalog feature comparison matrices (no interviews held with either)
 - **Evidence Tier Target**: B
 
 **Integration with Existing Research**:
@@ -434,7 +434,7 @@ https://github.com/flying-coyote/security-data-literature-review (DOI to follow 
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
 | Unique Sources Documented | 100+ | 279 catalogued (277 tiered; derived 2026-11-23) | ✅ Met |
-| Evidence Level A | retired 2026-08-19 (see 8.1a) | 22.7% (63/277 tiered; live-derived 2026-11-23) | ✅ Measured, not targeted |
+| Evidence Level A | retired 2026-08-19 (see 8.1a) | 23.1% (64/277 tiered; live-derived 2026-11-23) | ✅ Measured, not targeted |
 | URL Validation (Overall) | 80%+ | 73% (October 2025) | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | ~~100%~~ withdrawn (see §2.3) | Superseded by per-citation verification |
 | Hypotheses Assessed | 5+ | 9 (7 Phase-1, 2 added 2026-07-10) | ✅ |
@@ -494,7 +494,7 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 **Suitability Assessment**:
 - ✅ PRISMA-aligned methodology documented
-- Reported, not targeted: evidence quality stated as a measured Level-A share rather than against a target (22.7% derived 2026-11-23; §8.1a; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
+- Reported, not targeted: evidence quality stated as a measured Level-A share rather than against a target (23.1% derived 2026-11-23; §8.1a; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
 - ✅ Quantitative hypothesis validation with multiple sources
 - ✅ Reproducible extraction process
 - ✅ Version control for citation stability
@@ -542,7 +542,7 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 277 tiered sources (derived 2026-11-23) on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: Level-A share live-derived per entry (22.7% at 2026-11-23, 17.0% immediately after the 2026-08-19 audit; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
+1. **Evidence Quality**: Level-A share live-derived per entry (23.1% at 2026-11-23, 17.0% immediately after the 2026-08-19 audit; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
 2. **Quantitative Validation**: 9 hypotheses assessed (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations

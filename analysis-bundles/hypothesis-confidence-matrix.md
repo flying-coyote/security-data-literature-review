@@ -96,7 +96,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 ### H-ARCH-01: Apache Iceberg Dominance
 
-> **Section record note (2026-07-10):** three legs below were corrected in the 2026-07 audits and the enumerations should not be cited as they stand: (1) "universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)" — contradicted by its own cited source; Microsoft is the named Delta-first holdout (The Register verbatim: "Microsoft went with Delta Lake"; Databricks' own Iceberg support reached Public Preview 2025-06-12), so the claim is broad-not-universal; (2) "300+ contributors across 100+ organizations" — replaced 2026-07-09 with the GitHub-derived **407 contributors** (as-of-dated; the organization count was dropped as underivable); (3) SK Telecom "52.7 TB in 3.39s" — the figures are not in the recap the entry cited and were re-attributed 2026-07-10 to the Trino Summit slides with table-size framing. The de-facto-standard direction and the first-party leg stand. Preserved as the October-2025 record.
+> **Section record note (2026-07-10):** three legs below were corrected in the 2026-07 audits and the enumerations should not be cited as they stand: (1) "universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)" — contradicted by its own cited source; Microsoft is the named Delta-first holdout (The Register verbatim: "Microsoft went with Delta Lake"; Databricks' own Iceberg support reached Public Preview 2025-06-12), so the claim is broad-not-universal; (2) "300+ contributors across 100+ organizations" — replaced 2026-07-09 with the GitHub-derived **407 contributors** (as-of-dated; the organization count was dropped as underivable); (3) SK Telecom "52.7 TB in 3.39s" — the figures are not in the recap the entry cited and were re-attributed 2026-07-10 to the Trino Summit slides with table-size framing. The de-facto-standard direction and the first-party leg stand. Preserved as the October-2025 record. *(2026-11-23: the 407 in (2) was itself a floor, because GitHub links only the first 500 author email addresses to accounts; cite more than 400 contributors with linked accounts, 406 on 2026-11-23, per the bibliography entry.)*
 
 ~~**Hypothesis**: "Apache Iceberg has emerged as the de facto standard for open table formats in enterprise data lakehouses, with 76% adoption among organizations standardizing on open formats."~~ *(October-2025 wording; no source for the 76% figure was located, the de-facto-standard direction stands, see the section record note)*
 
@@ -108,7 +108,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 
 **Source Count**: 5 points (5 borrowed sources) + 1 first-party leg
 - SK Telecom production deployment
-- ~~Apache Iceberg Foundation (300+ contributors, 100+ orgs)~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note)*
+- ~~Apache Iceberg Foundation (300+ contributors, 100+ orgs)~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note. Corrected 2026-11-23: the 407 was itself a floor set by the GitHub API's 500-email limit, and no body called the Iceberg Foundation could be found; the project is governed by its PMC under the Apache Software Foundation, per the bibliography entry's refresh note.)*
 - ~~Universal vendor support (AWS, Google, Snowflake, Databricks, Microsoft)~~ *(corrected 2026-07-10 to broad, not universal: Microsoft is the named Delta-first holdout; see the section record note)*
 - Cloudera production validation
 - Dremio 2024 survey (29% planning Iceberg vs 23% Delta)
@@ -132,7 +132,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 - SK Telecom (South Korea)
 - Cloudera (US)
 - AWS, Google, Snowflake, Databricks, Microsoft (global)
-- ~~Apache Software Foundation (300+ contributors, 100+ orgs worldwide)~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note)*
+- ~~Apache Software Foundation (300+ contributors, 100+ orgs worldwide)~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note. Restated 2026-11-23: the 407 was itself a floor under GitHub's 500-email limit; cite more than 400 contributors with linked accounts.)*
 
 **Total Confidence**: **23/25 points** = ⭐⭐⭐⭐⭐ **STRONG** *(October-2025 record; for the current standing see the section record note and `methods/RESCORE-2026-07-13.md`)*
 
@@ -143,7 +143,7 @@ tags: [hypothesis-validation, evidence-scoring, first-party-benchmarks, ocsf, cl
 ✅ ~~**Universal vendor support**: AWS, Google, Snowflake, Databricks, Microsoft all announced Iceberg compatibility~~ *(corrected 2026-07-10 to broad, not universal: Microsoft is the named Delta-first holdout; see the section record note)*
 ✅ **Apache Software Foundation governance**: Open, vendor-neutral governance (vs Delta = Databricks-led)
 ✅ **Production validation at scale**: SK Telecom (52.7 TB in 3.39s), Cloudera (10× vs Hive) *(the SK Telecom figures are not in the recap originally cited and were re-attributed 2026-07-10 to the Trino Summit slides; see the section record note)*
-✅ ~~**Community strength**: 300+ contributors across 100+ organizations~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note)*
+✅ ~~**Community strength**: 300+ contributors across 100+ organizations~~ *(replaced 2026-07-09 by the GitHub-derived count of 407 contributors; see the section record note. Restated 2026-11-23: the 407 was itself a floor under GitHub's 500-email limit; cite more than 400 contributors with linked accounts.)*
 ✅ **FIRST-PARTY engine portability (lab-measured, 2026-06-07)**: four engines return identical answers over one Iceberg/OCSF table, and the data swaps Iceberg↔DuckLake read-neutral on identical bytes — we verified the format's vendor-neutrality ourselves rather than inferring it from vendor announcements (single-host apparatus; see H-ENGINE-ANSWER-EQUIVALENCE-01 and H-DUCKLAKE-02)
 
 ---

@@ -235,8 +235,9 @@ Vendor Documentation (33 sources)
 • AWS (Storage optimization, ~~55% tiered savings~~ [WITHDRAWN — 2026-06-14
   audit: cited whitepaper is a deprecated empty stub])
 • Confluent (~~45-55% ops complexity~~ [WITHDRAWN — 2026-06-14 audit: figure
-  not in cited course], ~~4.5M events/sec benchmark~~ [WITHDRAWN — 2026-06-14
-  audit: not in cited course])
+  not in cited course; 2026-11-23: the qualitative ops-complexity driver is not
+  on the cited course page either], ~~4.5M events/sec benchmark~~ [WITHDRAWN —
+  2026-06-14 audit: not in cited course])
 • ClickHouse (native IP types ~~50-100× speedup~~ [WITHDRAWN — 2026-06-14 audit:
   vendor 50-100× band not on cited page; first-party MOAR CIDR probe ~13-17×
   warm / ~2.9× IPv4-vs-String storage is the retained anchor], vectorized execution)
@@ -377,7 +378,11 @@ Snowflake ✅ Iceberg support announced
 Databricks✅ Iceberg support announced
 
 Community Strength:
-Apache Software Foundation: 300+ contributors, 100+ organizations
+Apache Software Foundation: ~~300+ contributors, 100+ organizations~~
+             [RESTATED 2026-11-23: more than 400 contributors with
+             linked GitHub accounts (406 on 2026-11-23), a floor because
+             GitHub links only the first 500 author email addresses;
+             the organization count was dropped 2026-07-09 as underivable]
 
 Production Performance:
 SK Telecom:  ~~97% query time reduction, 52.7TB in 3.39s~~ [WITHDRAWN —
@@ -490,8 +495,8 @@ Confluent:      ~~4.5M events/second on 9-node clusters~~ [WITHDRAWN —
 
 | Hypothesis ID | Description | Confidence | Sources | Evidence A % | Key Evidence | Validation Type |
 |--------------|-------------|-----------|---------|-------------|--------------|-----------------|
-| **H-ARCH-01** | Apache Iceberg Dominance as de facto standard | ⭐⭐⭐⭐⭐ | 5 | ~~100%~~ withdrawn | Universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), ASF governance (300+ contributors, 100+ orgs), ~~SK Telecom (97% query time reduction)~~ [WITHDRAWN — not in cited recap], ~~Cloudera (10× vs Hive)~~ [WITHDRAWN — entry removed], Dremio survey (29% vs 23% Delta) | Industry consensus |
-| **H-IMPL-01** | Streaming TCO Reality (~~2.5-3× operational costs vs batch~~ — multiplier withdrawn) | ⭐⭐⭐⭐ | 5 | ~~80%~~ withdrawn | ~~IDC (2.5-3× operational staffing)~~ [WITHDRAWN — entry removed], ~~DORA (2.7× staff, 3.2× incidents)~~ [WITHDRAWN — not in DORA], ~~Confluent (45-55% ops complexity)~~ [WITHDRAWN — not in source], Cloudera (29% operational TCO), ~~Enterprise Data Quarterly (1.5-2× infrastructure)~~ [WITHDRAWN — entry removed] | Convergent evidence (qualitative premium stands; multipliers withdrawn) |
+| **H-ARCH-01** | Apache Iceberg Dominance as de facto standard | ⭐⭐⭐⭐⭐ | 5 | ~~100%~~ withdrawn | Universal vendor support (AWS, Google, Microsoft, Snowflake, Databricks), ASF governance (~~300+ contributors, 100+ orgs~~ [RESTATED 2026-11-23: more than 400 contributors with linked GitHub accounts, a floor under GitHub's 500-email limit; org count underivable]), ~~SK Telecom (97% query time reduction)~~ [WITHDRAWN — not in cited recap], ~~Cloudera (10× vs Hive)~~ [WITHDRAWN — entry removed], Dremio survey (29% vs 23% Delta) | Industry consensus |
+| **H-IMPL-01** | Streaming TCO Reality (~~2.5-3× operational costs vs batch~~ — multiplier withdrawn) | ⭐⭐⭐⭐ | 5 | ~~80%~~ withdrawn | ~~IDC (2.5-3× operational staffing)~~ [WITHDRAWN — entry removed], ~~DORA (2.7× staff, 3.2× incidents)~~ [WITHDRAWN — not in DORA], ~~Confluent (45-55% ops complexity)~~ [WITHDRAWN — not in source; 2026-11-23: the qualitative driver is not on the cited course page either, so Confluent carries no H-IMPL-01 leg], Cloudera (29% operational TCO), ~~Enterprise Data Quarterly (1.5-2× infrastructure)~~ [WITHDRAWN — entry removed] | Convergent evidence (qualitative premium stands; multipliers withdrawn) |
 | **H-IMPL-02** | Staffing Scarcity (~~2.7× operational staff~~, Level 4 skills) | ~~⭐⭐⭐⭐⭐~~ ⚠️ re-validate | 4 | ~~100%~~ withdrawn | ~~DORA (2.7× staff~~ [WITHDRAWN — not in DORA], Level 4 classification), ~~IDC (2.5-3× costs)~~ [WITHDRAWN — entry removed], ~~Ververica (3.2 FTEs for Flink)~~ [WITHDRAWN — fabricated entry removed], ~~McKinsey (tiger teams 35-40% acceleration)~~ [WITHDRAWN — entry removed] | ~~**STRONGEST** (4 independent types)~~ [WITHDRAWN — 2026-06-14 audit: 3 of 4 entries removed; re-validate] |
 | **H-IMPL-03** | Timeline Premium (~~5.5mo avg, 15-30% security premium~~ — figures withdrawn) | ~~⭐⭐⭐~~ ⚠️ re-validate | 3 | ~~67%~~ withdrawn | ~~Gartner/phData (5.5 months security lakehouse)~~ [WITHDRAWN — entry removed; "Gartner" URL was a phData blog], ~~SANS (15-30% security constraints)~~ [WITHDRAWN — entry removed], Confluent (4-6 months Kafka), Gartner (6-12 months proficiency) | Moderate (US-centric) — re-validate |
 | **H-COST-09** | Tiered Storage Economics (~~55-80% cost savings~~ → recalibrated 60-80% median, lab-anchored) | ~~⭐⭐⭐⭐⭐~~ ⚠️ re-validate | 3 | ~~100%~~ withdrawn | ~~AWS (55% average, 35% conservative)~~ [WITHDRAWN — cited whitepaper is a deprecated empty stub], ~~Netflix (70-80% Kafka tiered storage)~~ [WITHDRAWN — cited URL is Confluent docs, not Netflix], Hot/warm/cold tier economics (mechanism stands on Kafka lifecycle docs) | Production validated — re-validate magnitudes |
