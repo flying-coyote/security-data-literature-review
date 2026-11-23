@@ -468,3 +468,10 @@ Every entry was checked for existence at its DOI, arXiv ID or URL, and every num
 ### Currency notes added (checked at each project's own release record, 2026-11-17)
 
 OCSF v1.9.0 current (v1.8.0 and v1.1.0 mentions noted); Apache Iceberg 1.12.0 current, spec v4 still not adopted; DuckDB v2.0.0 released 2026-10-21 (1.5.3-pinned lab figures noted as version-bound); DuckLake 1.0 still current; D3FEND 1.6.0 current; Kafka on the 4.x line; Flink 2.3.0 latest stable; Apache Polaris 1.9.0; OpenSearch 3.9.0 (the lab baseline was 3.7.0). Each note sits under the entry's Validation Status line.
+
+## 2026-11-23: corrections to the 2026-11-22 second-opinion pass
+
+| Entry | Method | Finding |
+|---|---|---|
+| Netflix - Kafka Tiered Storage | claim↔source | MISMATCH: the Keystone post (netflixtechblog.com, 2016), read at its Wayback Machine copy (snapshot 20250119164347), gives "More than 700 billion messages are ingested on an average day" and the word "trillion" does not appear in it. The 2 trillion figure moves from `unverifiable-paywall` to `not-in-source` and is replaced in the entry by the post's own figure, with a dated note. |
+| Huntress - ClickHouse Migration Case Study | cross-ref | Retitled without the "(Isolation-First Security)" parenthetical, in the bibliography, `ledger.json` and `methods/prisma-results/reconciliation.json`; the 2026-11-22 withdrawal of the isolation-first claims is carried to the Bisnett video entry (a 2024 ClickHouse New York meetup talk, not RSA 2025) and to the Polaris and Unity Catalog notes. |

@@ -1293,7 +1293,7 @@
         "section": "ClickHouse Performance (Additional Sources)"
       },
       {
-        "title": "Huntress - ClickHouse Migration Case Study (Isolation-First Security)",
+        "title": "Huntress - ClickHouse Migration Case Study",
         "category": "vendor_engineering_blog_or_product_docs",
         "url": "https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse",
         "evidence_level": "A (Production deployment, validated metrics)",

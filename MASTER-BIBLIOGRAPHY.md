@@ -722,7 +722,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 - Best Practices Doc footnote [^70]
 
 **Key Findings**:
-- Netflix ingests 2 trillion messages/day via Kafka (Keystone pipeline — netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb) *(Unverified 2026-11-22: the cited Confluent page carries neither the figure nor Netflix, and the Keystone post blocks automated readers, so it was not re-read.)*
+- Netflix Keystone: "More than 700 billion messages are ingested on an average day" (Keystone post, 2016, netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb, read 2026-11-23 at the archived copy https://web.archive.org/web/20250119164347/https://netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb) *(Corrected 2026-11-23: this line formerly gave 2 trillion messages/day, a figure that is not in the Keystone post, where the word "trillion" does not appear.)*
 - Security data retention optimization via tiered storage
 - **2025 update**: Kafka tiered storage marked production-ready in Apache Kafka 3.9.0 (cite Apache release notes, not Confluent docs)
 - Tiered storage enables indefinite retention at minimal cost for compliance use cases
@@ -730,7 +730,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Citations**: ch02 §2.3 (economics) [was: Chapter 1] cost comparisons, ch02 §2.3 (economics) [was: Chapter 7] tiered storage
 **Notes**: **CRITICAL** - Validates scale and retention feasibility. Cost-reduction percentages (70-80%, 90%+) are not Netflix-published and should not be cited. Use Apache Kafka 3.9.0 release notes for GA tiered-storage claim.
 
-**Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready · ⚠️ 1 figure unverified 2026-11-22, see the dated label
+**Validation Status**: ✅ Refreshed February 2026 - Kafka 3.9.0 production-ready · the former 2 trillion figure, labelled unverified on 2026-11-22, was replaced on 2026-11-23 by the Keystone post's own figure, see the dated note
 **Currency (2026-11-17)**: Apache Kafka has moved to the 4.x line (the newest release tag in apache/kafka is 4.4.0); the tiered-storage GA statement for 3.9.0 still stands as history, and current behaviour should be cited from the 4.x documentation at https://kafka.apache.org/documentation/.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
@@ -950,7 +950,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 
 ---
 
-#### Huntress - ClickHouse Migration Case Study (Isolation-First Security)
+#### Huntress - ClickHouse Migration Case Study
 
 **Authors**: Huntress / ClickHouse
 **Date**: 2024
@@ -997,7 +997,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 - Security data compression and performance
 
 **Citations**: Blog RSA conversations, practitioner validation
-**Notes**: Video presentation from Huntress CTO, RSA 2025 field validation
+**Notes**: Video of a ClickHouse New York meetup talk by the Huntress CTO (uploaded 2024-10-02, per the ClickHouse video page) *(Corrected 2026-11-23: the former "RSA 2025 field validation" is withdrawn, because the video page describes a NY meetup talk and gives no RSA connection.)*
 
 **Validation Status**: ✅ Active (verified Feb 2026); both figures, labelled unverified on 2026-11-17, were read at the ClickHouse video page on 2026-11-22
 
@@ -2834,7 +2834,7 @@ and nothing may be attributed to one.
 - No row-level security or column masking overhead - table-level permissions only
 
 **Citations**: **CRITICAL** - RQ7 and RQ10 isolation-first catalog validation
-**Notes**: Production validation of vendor-neutral catalog choice for isolated security platforms. Complements Netflix and Huntress isolation-first architecture patterns.
+**Notes**: Production validation of vendor-neutral catalog choice for isolated security platforms. *(Withdrawn 2026-11-23: the former "Complements Netflix and Huntress isolation-first architecture patterns" sentence, because neither source describes an isolation-first design; see the Netflix Petabyte-Scale Logging entry ("The blog does not use 'isolation-first'") and the Huntress entry's 2026-11-22 note.)*
 
 **Validation Status**: ✅ Active (verified Feb 2026, Apache project)
 
@@ -2859,7 +2859,7 @@ and nothing may be attributed to one.
 - Multi-tenant architectures may require Unity Catalog features, but isolation-first SOCs can avoid complexity
 
 **Citations**: RQ7 isolation-first performance validation
-**Notes**: Supports isolation-first architecture pattern - network isolation with table-level permissions avoids Unity Catalog overhead. Relevant for Huntress, Okta, Netflix patterns.
+**Notes**: Supports isolation-first architecture pattern - network isolation with table-level permissions avoids Unity Catalog overhead. *(Withdrawn 2026-11-23: the former "Relevant for Huntress, Okta, Netflix patterns", because the Huntress and Netflix sources describe no isolation-first design (Huntress entry's 2026-11-22 note; Netflix Petabyte-Scale Logging entry); the Okta leg was not re-checked in this pass and is not carried without a source.)*
 
 **Validation Status**: ✅ Active (verified Feb 2026, official Databricks docs)
 
@@ -4718,7 +4718,7 @@ They are not, however, simply 40 new citations. Every included study went throug
 
 That leaves the 26 below. The appraisal record for all 40, including every drop and its reason, is `methods/prisma-appraisal-2026-07-13.json`.
 
-Two cautions travel with these entries. First, the arm's 27 records resolve to only **24 independent author groups** — and the two papers that were supposed to put peer-reviewed footing under the corpus's weakest, vendor-sourced claims (ClickHouse storage reduction; pipeline log-reduction economics) turn out to share a single author, one of them publishing in a journal removed from DOAJ in 2017. They corroborate each other, not the claim. Second, several entries carry figures that are real but not usable as evidence here — speedups measured against unrelated hardware baselines, a percentage that is malformed as written, numbers a paper quotes from someone else. Each such entry says in the open what is carried and what is left behind.
+Two cautions travel with these entries. First, the arm's 27 records resolve to only **24 independent author groups** — and the two papers that were supposed to put peer-reviewed footing under the corpus's weakest, vendor-sourced claims (ClickHouse storage reduction; pipeline log-reduction economics) turn out to share a single author, one of them publishing in a journal that is not listed in DOAJ (a 2017 removal is reported but not confirmed at DOAJ). They corroborate each other, not the claim. Second, several entries carry figures that are real but not usable as evidence here — speedups measured against unrelated hardware baselines, a percentage that is malformed as written, numbers a paper quotes from someone else. Each such entry says in the open what is carried and what is left behind.
 
 ### Streaming Architectures & Engine Comparisons (search arm)
 

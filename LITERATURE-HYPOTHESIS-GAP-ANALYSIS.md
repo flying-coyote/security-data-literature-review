@@ -11,7 +11,7 @@ tags: [hypothesis-validation, research-gaps, security-data, ocsf, streaming-tco,
 **Sources**: 283 footnotes from best practices doc + MASTER-HYPOTHESIS-TRACKER.md (26 existing hypotheses)
 **Date**: October 10, 2025
 **Last Reviewed**: October 16, 2025 (v1.6.1 - Post-blog/book integration update)
-**Status**: Analysis COMPLETE - 6 new hypotheses identified and proposed. ⚠️ The three 2025 "STRONGLY VALIDATED" upgrades were overturned by the 2026-07 verification hunts — see the dated correction notes at Gaps 1, 2, 4 and H1-COST-08 (current standings: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5)
+**Status**: Analysis COMPLETE - 6 new hypotheses identified and proposed. ⚠️ The three 2025 "STRONGLY VALIDATED" upgrades were overturned by the 2026-07 verification hunts — see the dated correction notes at Gaps 1, 2, 4 and H1-COST-08 (interim 2026-07-10 standings: H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5; superseded, see the score-scale note below)
 
 > **Score-scale note (2026-11-22).** The N/5 standings in this file (H-IMPL-01 1/5, H-IMPL-02 2/5, H-COST-09 4/5 and the like) are the 2026-07-10 interim adjudication on a five-point scale. They were superseded by the 25-point rubric rescore of 2026-07-13, ruled score canon on 2026-07-16 (`methods/RESCORE-2026-07-13.md`): H-IMPL-01, H-IMPL-02 and H-IMPL-03 5/25 Preliminary, H-COST-09 9/25 Preliminary, H-STREAM-01 15/25 Moderate, H3-PERFORMANCE-01 19/25 High Confidence, H-ARCH-01 23/25 Strongly Validated. Read any N/5 figure below as that dated interim record; no score moved in this note.
 

@@ -1317,12 +1317,14 @@
    "numbers": [
     {
      "value": "2 trillion",
-     "verdict": "unverifiable-paywall",
-     "basis": "2026-11-22 second-opinion re-verdict: the 2026-11-17 automated match was a disk-size string; the cited Confluent page contains neither \"trillion\" nor \"Netflix\", and the Keystone post the entry names returned 403 on 2026-11-22",
-     "url": null,
-     "locator": null,
+     "verdict": "not-in-source",
+     "basis": "2026-11-23 correction: the Keystone post the entry names (2016) was read at its Wayback Machine copy; it gives \"More than 700 billion messages are ingested on an average day\" and the word \"trillion\" does not appear in it. The 2026-11-22 `unverifiable-paywall` verdict, which recorded the post as unreadable, is superseded. Earlier: the 2026-11-17 automated match was a disk-size string, and the cited Confluent page contains neither \"trillion\" nor \"Netflix\"",
+     "url": "https://web.archive.org/web/20250119164347/https://netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb",
+     "locator": "We currently operate 36 Kafka clusters consisting of 4,000+ broker instances for both Fronting Kafka and Consumer Kafka. More than 700 billion messages are ingested on an average day.",
      "context": "- Netflix ingests 2 trillion messages/day via Kafka (Keystone pipeline — netflixtechblog.com/kafka-inside-keystone-pipeline-dd5aeabaf6bb)",
-     "labelled_unverified_in_file": true
+     "labelled_unverified_in_file": false,
+     "removed_in_file": true,
+     "note": "2026-11-23: the bibliography line now gives the post's own 700 billion figure, with a dated note that 2 trillion is not in the post. The 700 billion figure has no ledger row of its own; the ledger's total stays at 488."
     }
    ],
    "checked": "2026-11-17"
@@ -1995,7 +1997,7 @@
    "checked": "2026-11-17"
   },
   {
-   "title": "Huntress - ClickHouse Migration Case Study (Isolation-First Security)",
+   "title": "Huntress - ClickHouse Migration Case Study",
    "line": 953,
    "tier": "B",
    "url_field": "https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse",
@@ -2085,7 +2087,7 @@
      "value": "16 billion",
      "verdict": "verified-at-primary",
      "basis": "2026-11-22 second-opinion re-verdict: read in the description text of the ClickHouse video page the entry names, 2026-11-22",
-     "context": "- **16 billion events/day** processed (figure from ClickHouse Huntress video: clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse — not the blog post)",
+     "context": "- **16 billion events/day** processed (figure from the description on the ClickHouse Huntress video page, clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse, not the blog post; read there 2026-11-22)",
      "labelled_unverified_in_file": false,
      "urls_searched": [
       "https://clickhouse.com/blog/how-huntress-improved-performance-and-slashed-costs-with-clickHouse"
@@ -2122,7 +2124,7 @@
      "value": "93%",
      "verdict": "verified-at-primary",
      "basis": "2026-11-22 second-opinion re-verdict, derived: $70K to $5K a month is a 92.9% reduction, read on the ClickHouse video page that embeds the same YouTube video (ID lhsWNofOcdk), 2026-11-22",
-     "context": "- 93% cost reduction validation",
+     "context": "- 93% cost reduction, derived from the $70K to $5K a month the talk's description gives (92.9%), read 2026-11-22 on the ClickHouse video page that embeds this video (https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse)",
      "labelled_unverified_in_file": false,
      "url": "https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse",
      "locator": "With over 3 million endpoints and 1 million identities, they've mastered cost-effective data management ... processing 16 billion events a day while slashing costs from $70K to $5K a month by switching to ClickHouse Cloud!"
@@ -2131,7 +2133,7 @@
      "value": "3M",
      "verdict": "verified-at-primary",
      "basis": "2026-11-22 second-opinion re-verdict: read on the ClickHouse video page that embeds the same YouTube video (ID lhsWNofOcdk), 2026-11-22",
-     "context": "- 3M endpoint scale operational insights",
+     "context": "- 3M endpoint scale (\"over 3 million endpoints\", same page)",
      "labelled_unverified_in_file": false,
      "url": "https://clickhouse.com/videos/lessons-learned-building-siem-with-clickhouse",
      "locator": "With over 3 million endpoints and 1 million identities, they've mastered cost-effective data management ... processing 16 billion events a day while slashing costs from $70K to $5K a month by switching to ClickHouse Cloud!"
@@ -3742,7 +3744,7 @@
      "value": "95%",
      "verdict": "verified-at-primary",
      "basis": "2026-11-22 second-opinion re-verdict: read at the primary 2026-11-22 (post dated January 18, 2024)",
-     "context": "- >95% onboarding-time reduction for new feature integration (per blog)",
+     "context": "- Onboarding deployment time reduced by more than 95% after the metadata migration (\"Palette Onboarding Deployment time has reduced drastically by more than 95%\", read at the post 2026-11-22)",
      "labelled_unverified_in_file": false,
      "url": "https://www.uber.com/blog/palette-meta-store-journey/",
      "locator": "The result of the Metadata migration was that Palette Onboarding Deployment time has reduced drastically by more than 95%."
@@ -7536,7 +7538,7 @@
      "value": "1M",
      "verdict": "verified-at-primary",
      "basis": "2026-11-22 second-opinion re-verdict: read at the post 2026-11-22 (published 2024-05-01)",
-     "context": "- Okta serverless DuckDB: 1M Lambda invocations/day, 250 GB/min peak;",
+     "context": "- Okta serverless DuckDB: \"1 million DuckDB invocations per day in average\" and \"peaks of up to 250GB of data processed per minute\"; AWS Lambda + DuckDB + Snowflake + S3 (read at the post 2026-11-22)",
      "labelled_unverified_in_file": false,
      "url": "https://juhache.substack.com/p/oktas-multi-engine-data-stack",
      "locator": "1 million DuckDB invocations per day in average."
@@ -7545,7 +7547,7 @@
      "value": "250 GB",
      "verdict": "verified-at-primary",
      "basis": "2026-11-22 second-opinion re-verdict: read at the post 2026-11-22",
-     "context": "- Okta serverless DuckDB: 1M Lambda invocations/day, 250 GB/min peak;",
+     "context": "- Okta serverless DuckDB: \"1 million DuckDB invocations per day in average\" and \"peaks of up to 250GB of data processed per minute\"; AWS Lambda + DuckDB + Snowflake + S3 (read at the post 2026-11-22)",
      "labelled_unverified_in_file": false,
      "url": "https://juhache.substack.com/p/oktas-multi-engine-data-stack",
      "locator": "Peaks of up to 250GB of data processed per minute !"

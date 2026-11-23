@@ -415,7 +415,7 @@ This appendix documents the multi-dimensional confidence scoring rubric used to 
 
 **Key Evidence**:
 - LinkedIn: Terabytes of state with millisecond access times, security entity tracking (per-user, per-device behavioral analytics)
-- Microsoft Azure: Trillions of events/day (Azure Event Hubs, Kafka-compatible)
+- Microsoft Azure: Trillions of events/day (Azure Event Hubs, Kafka-compatible) (the source describes Siphon on Apache Kafka on HDInsight, not Event Hubs; corrected in the manuscript 2026-11-22)
 - The Uber "thousands of real-time security views / sub-second refresh" figures formerly cited here are not in the cited article (a generic Confluent latency piece) — removed, 2026 audit
 
 **Why High**: Production deployments at scale, security-specific validation (not general streaming).

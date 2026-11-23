@@ -433,6 +433,8 @@ Uber:           ~~Thousands of real-time security views~~ [WITHDRAWN —
                 ~~Sub-second refresh rates, current entity state queries~~
 
 Microsoft Azure:Trillions of events/day (Azure Event Hubs, Kafka-compatible)
+                (the source describes Siphon on Apache Kafka on HDInsight,
+                not Event Hubs; corrected in the manuscript 2026-11-22)
                 ~~350% traffic surges during incidents (elastic capacity required)~~
                 [WITHDRAWN — 2026-06-14 audit: MSRC 350% surge — sole source
                 = withdrawn reference [63]]
