@@ -83,6 +83,10 @@ ADDED_1107_LEGS3 = REPO_ROOT / "methods" / "added-2026-11-07-footnote-legs-3.jso
 # Fourteenth dated input (2026-11-08, agent harness benchmarking): the Harness
 # Leaderboard and Harness Lens Hugging Face Spaces.
 ADDED_1108_HARNESS = REPO_ROOT / "methods" / "added-2026-11-08-harness-benchmarking.json"
+# Fifteenth dated input (2026-11-23, monthly refresh): two PVLDB 2026 papers, the Splunk
+# 10.7 Iceberg REST catalog documentation, the Arroyo 0.16.0 release notes, one preprint and the
+# SDW Lab stream-complexity results.
+ADDED_1123_REFRESH = REPO_ROOT / "methods" / "added-2026-11-23.json"
 # Records whose 'moves' list is applied after every additive record above.
 MOVE_RECORDS = [RETIER_PREPRINT_1107]
 OUT = REPO_ROOT / "methods" / "source-taxonomy.json"
@@ -160,6 +164,10 @@ def load_counts():
 
     if ADDED_1108_HARNESS.exists():
         for entry in json.loads(ADDED_1108_HARNESS.read_text(encoding="utf-8"))["entries"]:
+            counts[entry["category"]] += 1
+
+    if ADDED_1123_REFRESH.exists():
+        for entry in json.loads(ADDED_1123_REFRESH.read_text(encoding="utf-8"))["entries"]:
             counts[entry["category"]] += 1
 
     # Dated reclassifications: each move takes one entry out of 'from' and into 'to'.

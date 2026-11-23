@@ -81,7 +81,7 @@ Beyond the primary extraction from archived manuscripts:
 - 16 of 22 URLs validated (73%); the "100% of hypothesis-critical sources" grade that accompanied it was withdrawn when several of those sources failed later verification
 - Archive manuscripts: 74 files assessed (no independent sources found)
 
-The catalogue has since grown by curation and the database search to 273 catalogued entries, 271 of them tiered (derived 2026-11-17 by `scripts/count_reconcile.py`).
+The catalogue has since grown by curation and the database search to 279 catalogued entries, 277 of them tiered (derived 2026-11-23 by `scripts/count_reconcile.py`).
 
 ### 2.4 Database Arm: Retrospective Systematic Search (2026-07-13)
 
@@ -103,7 +103,7 @@ Everything in §2.1-§2.3 is curation, which PRISMA 2020 accommodates as the "id
 
 All sources are classified using a four-tier evidence system. Level A is reserved for peer-reviewed research and official standards; production evidence, however good, is Level B.
 
-#### Evidence Level A (live share 22.5% at 2026-11-17, 17.0% immediately after the 2026-08-19 tier audit re-tiered 57 entries off A once the criteria below were corrected; NO target, see 8.1a; the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
+#### Evidence Level A (live share 22.7% at 2026-11-23, 17.0% immediately after the 2026-08-19 tier audit re-tiered 57 entries off A once the criteria below were corrected; NO target, see 8.1a; the earlier "79% achieved" self-grade was withdrawn in the 2026-06 audit)
 **Criteria**: Peer-reviewed research, and official standards. Nothing else.
 **Examples**:
 - Peer-reviewed publications at a named venue with real review (USENIX Security, IEEE S&P, NDSS, CCS, VLDB, SIGMOD, ICSE, NeurIPS, ICML, ACL, KDD, TMLR, or a peer-reviewed journal). An arXiv preprint with no named venue is **not** peer-reviewed and does not qualify, however eminent its authors
@@ -112,20 +112,22 @@ All sources are classified using a four-tier evidence system. Level A is reserve
 - **Normative reference frameworks** from a neutral, non-commercial body, published as a versioned formal specification (MITRE D3FEND, MITRE ATLAS). Owner ruling, 2026-08-19: these hold the same evidentiary position as a NIST or ISO document. Their scope is the same too — primary for taxonomy and structure, and silent on efficacy. A framework is authoritative about what it says, never evidence that following it works
 - **NOT Level A**, and this is where the corpus went wrong before 2026-08-19: production case studies and deployment writeups, vendor engineering blogs, industry-conference talks, trade books, analyst and vendor-commissioned reports, government *advisories* (as distinct from standards), consortium and foundation announcements, and official project documentation. All are Level B. (The earlier Shell entry was removed in the 2026 audit — dead URL, unverifiable)
 
-**Current Achievement**: 61 of 271 tiered entries (22.5%), live-derived 2026-11-17, reported as a measurement rather than against a target (§8.1a). The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
+**Current Achievement**: 63 of 277 tiered entries (22.7%), live-derived 2026-11-23, reported as a measurement rather than against a target (§8.1a). The earlier "57 of 72 sources (79%) — EXCEEDS" self-grade was withdrawn in the 2026-06 audit; `scripts/count_reconcile.py` now derives this figure from per-entry markers and gates every surface that states it. The 2026-07-13 systematic-search incorporation added 26 peer-reviewed studies without moving the share, because only 11 of them tier at Level A.
 
-#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 62.7%)
+#### Evidence Level B (October-2025 design bound: <27% — currently BREACHED; live share 62.8%)
 **Criteria**: Practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation. Real evidence, not independently reviewed.
 **Examples**:
 - Gartner, IDC, Forrester quantitative research
 - Production case studies and deployment write-ups (Netflix, Uber, Cloudflare, SK Telecom)
 - Vendor technical documentation (if production-validated)
 
-**Live share**: 170 of 271 tiered entries (62.7%), derived 2026-11-17. *(Note, 2026-07-16, when the share was 47.6% (108 of 227): the <27% figure is the October-2025 design bound, and it is currently breached — a documented consequence of the 2026-06/07 audits moving inflated Level-A entries down to B (headline stats not present in the cited source, first-person practitioner authorship on vendor channels re-tiered B), not of quality decay in the incoming sources. The original "Achieved: 21% (15 of 72)" was the October-2025 self-grade at a 72-source corpus and is preserved here as history.)*
+**Live share**: 174 of 277 tiered entries (62.8%), derived 2026-11-23. *(Note, 2026-07-16, when the share was 47.6% (108 of 227): the <27% figure is the October-2025 design bound, and it is currently breached — a documented consequence of the 2026-06/07 audits moving inflated Level-A entries down to B (headline stats not present in the cited source, first-person practitioner authorship on vendor channels re-tiered B), not of quality decay in the incoming sources. The original "Achieved: 21% (15 of 72)" was the October-2025 self-grade at a 72-source corpus and is preserved here as history.)*
 
-#### Evidence Level C (live share 14.8% — 40 of 271 tiered; original design intent was "Rejected: 0%")
+#### Evidence Level C (live share 14.4% — 40 of 277 tiered; original design intent was "Rejected: 0%")
 **Criteria**: Vendor blog posts, product documentation, and conference talks not backed by production measurement
-**Policy** *(corrected 2026-07-16 to match the manuscript §2.3 and the corpus)*: Level C sources ARE catalogued, with their bias flagged and their tier stated, where they are the only available account of a system's behaviour; they never carry a hypothesis on their own. The original October-2025 protocol declared Level C "Rejected: 0% — not included in bibliography unless upgraded to Level A/B with supporting evidence", and the corpus has never matched that claim (40 of 271 tiered entries are Level C, derived 2026-11-17). The policy is corrected here to describe what the review actually does, because a stated inclusion policy that the bibliography visibly contradicts is worse than a permissive one stated plainly; the original design intent is preserved in this note as history.
+**Policy** *(corrected 2026-07-16 to match the manuscript §2.3 and the corpus)*: Level C sources ARE catalogued, with their bias flagged and their tier stated, where they are the only available account of a system's behaviour; they never carry a hypothesis on their own. The original October-2025 protocol declared Level C "Rejected: 0% — not included in bibliography unless upgraded to Level A/B with supporting evidence", and the corpus has never matched that claim (40 of 277 tiered entries are Level C, derived 2026-11-23). The policy is corrected here to describe what the review actually does, because a stated inclusion policy that the bibliography visibly contradicts is worse than a permissive one stated plainly; the original design intent is preserved in this note as history.
+
+**Vendor product documentation** *(owner ruling 2026-11-03, written into this section 2026-11-23)*: a vendor's documentation is tiered by what it is cited for. It is Level B for what a feature does, because the vendor is the authority on its own product, and Level C, with the bias flagged, for any claim about how well the feature works, how fast it is or how it compares. The Level B example "Vendor technical documentation (if production-validated)" and the Level C criterion on product documentation not backed by production measurement are read under this ruling, and an entry citing vendor documentation says in its Evidence Level line which use it makes.
 
 #### Evidence Level D (Rejected: 0%)
 **Criteria**: Marketing materials, unverified claims, speculation
@@ -408,7 +410,7 @@ https://github.com/flying-coyote/security-data-literature-review (DOI to follow 
    - *Mitigation*: Supplemented with expert validation, blog integration, vendor documentation, and — since 2026-07-13 — the systematic database search of §2.4, whose 26 surviving studies entered the corpus through a route the original curation did not control
    - *Residual*: measured recall of the curated corpus against that search was zero (0/40; see §2.4 and PUBLICATION-MANUSCRIPT.md §2.8)
 
-2. **Vendor Documentation Prevalence**: vendor-authored material (68 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 82 of 273 entries (30.0%; live per `methods/source-taxonomy.json`) — the largest single bloc *(the "33 of 75 (44%)" formerly stated here was the October-2025 figure at a 75-source corpus)*
+2. **Vendor Documentation Prevalence**: vendor-authored material (69 vendor blogs and product docs, plus 14 big-tech engineering blogs) is 83 of 279 entries (29.7%; live per `methods/source-taxonomy.json`) — the largest single bloc *(the "33 of 75 (44%)" formerly stated here was the October-2025 figure at a 75-source corpus)*
    - *Mitigation*: Prioritize production-validated vendor sources (Netflix, Uber, Cloudflare), exclude marketing materials, flag bias per entry, never rest a hypothesis on a vendor source alone
 
 3. **Recency Bias**: an October-2025 estimate put 70% of sources in 2023-2025 (not re-derived for the current corpus)
@@ -431,8 +433,8 @@ https://github.com/flying-coyote/security-data-literature-review (DOI to follow 
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
 | Footnotes Extracted | 283/283 | 283/283 | ✅ 100% |
-| Unique Sources Documented | 100+ | 273 catalogued (271 tiered; derived 2026-11-17) | ✅ Met |
-| Evidence Level A | retired 2026-08-19 (see 8.1a) | 22.5% (61/271 tiered; live-derived 2026-11-17) | ✅ Measured, not targeted |
+| Unique Sources Documented | 100+ | 279 catalogued (277 tiered; derived 2026-11-23) | ✅ Met |
+| Evidence Level A | retired 2026-08-19 (see 8.1a) | 22.7% (63/277 tiered; live-derived 2026-11-23) | ✅ Measured, not targeted |
 | URL Validation (Overall) | 80%+ | 73% (October 2025) | ⚠️ Near Target |
 | URL Validation (Hypothesis-Critical) | 100% | ~~100%~~ withdrawn (see §2.3) | Superseded by per-citation verification |
 | Hypotheses Assessed | 5+ | 9 (7 Phase-1, 2 added 2026-07-10) | ✅ |
@@ -492,7 +494,7 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 **Suitability Assessment**:
 - ✅ PRISMA-aligned methodology documented
-- Reported, not targeted: evidence quality stated as a measured Level-A share rather than against a target (22.5% derived 2026-11-17; §8.1a; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
+- Reported, not targeted: evidence quality stated as a measured Level-A share rather than against a target (22.7% derived 2026-11-23; §8.1a; the "79% exceeds standards" self-grade was withdrawn in the 2026-06 audit)
 - ✅ Quantitative hypothesis validation with multiple sources
 - ✅ Reproducible extraction process
 - ✅ Version control for citation stability
@@ -538,9 +540,9 @@ by `scripts/count_reconcile.py` and the denominator has since moved on as entrie
 
 ## 10. Conclusion
 
-This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 271 tiered sources (derived 2026-11-17) on modern data stack technologies for cybersecurity. The approach prioritizes:
+This systematic literature review employs a PRISMA 2020 two-arm methodology to consolidate 277 tiered sources (derived 2026-11-23) on modern data stack technologies for cybersecurity. The approach prioritizes:
 
-1. **Evidence Quality**: Level-A share live-derived per entry (22.5% at 2026-11-17, 17.0% immediately after the 2026-08-19 audit; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
+1. **Evidence Quality**: Level-A share live-derived per entry (22.7% at 2026-11-23, 17.0% immediately after the 2026-08-19 audit; the share is reported, not targeted — see 8.1a — the earlier 79% self-grade was withdrawn in the 2026-06 audit, and the 2026-08-19 audit re-tiered 57 entries that were not peer-reviewed research or official standards)
 2. **Quantitative Validation**: 9 hypotheses assessed (7 original plus 2 added in the 2026-07-10 audit) — under the 2026-07-13 rubric rescore: 1 strongly validated, 2 high confidence, 2 moderate, and 4 preliminary whose quantitative legs were withdrawn in the 2026-06/07 audits (see PUBLICATION-MANUSCRIPT.md §3.7)
 3. **Citation Stability**: Version control with quarterly snapshots enabling stable academic references
 4. **Reproducibility**: Documented extraction process, standardized formats, transparent limitations

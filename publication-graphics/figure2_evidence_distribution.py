@@ -36,9 +36,10 @@ plt.rcParams['figure.dpi'] = 300
 # arXiv 2507.20526 addition, and again later that day after the Petrescu ISSRE 2023 (A)
 # and Madani C&ESAR 2026 (B) additions; then again after the 2026-11-07 phase 1 pass
 # (two A→B re-tiers, nine snowball admissions at A): 243 blocks / 241 tiered / 2 stubs).
-TALLY_DATE = '2026-11-07'
-TIERED_TOTAL = 271
-TALLY = {'A': 61, 'B': 170, 'C': 40}
+# Recounted 2026-11-23 after the monthly refresh's six additions: 279 blocks / 277 tiered / 2 stubs.
+TALLY_DATE = '2026-11-23'
+TIERED_TOTAL = 277
+TALLY = {'A': 63, 'B': 174, 'C': 40}
 
 COLORS = {'A': '#1B5E20', 'B': '#388E3C', 'C': '#F57C00'}
 DESCRIPTIONS = {

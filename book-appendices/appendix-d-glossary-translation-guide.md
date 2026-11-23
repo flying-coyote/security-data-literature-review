@@ -781,6 +781,6 @@ This appendix provides:
 - Official documentation: Apache Iceberg, Trino, Delta Lake, dbt, and Apache Gravitino (gravitino.apache.org/docs) for meta-catalog architecture and catalog proliferation management
 
 **Practitioner Validation**:
-- A data-platform practitioner [Personal communication, October 2025]: Hybrid architecture necessity, Starburst/Athena connection, Denodo multi-cloud virtualization
+- A data-platform practitioner [Personal communication, October 2025; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23]: Hybrid architecture necessity, Starburst/Athena connection, Denodo multi-cloud virtualization
 
 *Corrected 2026-11-17: this list also attributed Gravitino meta-catalog expertise to a named Gravitino contributor, but no interview with her took place and no published source backed the attribution, so under the bibliography's Boundary rule it was removed and the Gravitino material now points at the project's public documentation above.*

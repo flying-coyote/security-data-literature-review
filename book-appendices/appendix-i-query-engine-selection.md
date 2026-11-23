@@ -233,7 +233,7 @@ Row-level deletes (GDPR "right to erasure", PCI-DSS data minimization) create de
 
 Spark is the only engine here that covers all four operations in one place, which is a narrower claim than "only Spark does maintenance", because Trino, Dremio and Snowflake each do a real part of the job now. A team already running one of them may need Spark for little beyond the delete-file merging. Dremio's scheduled Enterprise Catalog maintenance is the capability the Chapter 6 healthcare variant leans on for a team with almost no data-engineering depth. Snowflake's answer turns on catalog ownership rather than on the engine, so for a Snowflake shop the maintenance question is really a question about who writes to the table.
 
-As a data-platform practitioner put it [Personal communication, October 2025], "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance."
+As a data-platform practitioner put it [Personal communication, October 2025; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23], "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance."
 
 ### I.2.3 Security-Specific Maintenance Schedule
 
@@ -279,7 +279,7 @@ Trino is built for unpredictable, first-time queries with complex WHERE clauses 
    - Every query is a fresh full scan (appropriate for unique investigations)
    - No cache invalidation complexity (vs Dremio Reflections)
 
-"AWS Athena is Starburst/Trino at its core," said a data-platform practitioner [Personal communication, October 2025].
+"AWS Athena is Starburst/Trino at its core," said a data-platform practitioner [Personal communication, October 2025; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23].
 
 That's a reasonable signal of production maturity, though an existence proof rather than a benchmark. Athena launched on Presto in 2016 and its engine v3 is Trino-lineage, so the practitioner's shorthand is right about the engine family without being literally right about the product. What it tells you is that this lineage runs at extreme scale (millions of customers, exabyte-scale data) without telling you how it compares head-to-head. My scored join bench does compare head-to-head (Section I.1.5; single host, Tier B, answers oracle-verified), and Trino did not win that contest. It carried the largest join tax of the engines tested, with joined queries running about 4.35× their flat-table equivalents where StarRocks and ClickHouse sat near 1.8×. It also trailed StarRocks by roughly 2.15× on the heaviest six-table join. Every SOC-scale join still came back on Trino in under 1.5 seconds, though, which is comfortably interactive. So the case for Trino in this role rests where this section puts it, on federation, fast startup, and operational fit, rather than on join latency. StarRocks led the heavier queries there, but the SOC-scale suite was too compressed to make speed the deciding criterion.
 
@@ -526,7 +526,7 @@ Security queries scan millions of rows but touch few columns (timestamps, IPs, u
 - Default (LZ4): 5.5× compression (685 MB for 10M events, 68.5 bytes/event)
 - Tuned (blanket ZSTD-22): **9.0× compression** (415 MB for 10M events, 41.5 bytes/event)
 - The codec is a smaller lever than it looks. Tuned ZSTD-22 compresses better than Iceberg's zstd default (9.0× vs 8.5× on the same corpus), but the storage-class decision, block storage for a hot index versus object storage for a lakehouse table, moves the retention bill by about 3.5×, an order of magnitude more than the tens of percent the codec buys. Squeeze harder only after the cold bytes are on object storage.
-- Huntress reports a 50:1 ratio against raw JSON (Tier C, the same vendor-ecosystem write-up as the case study in Section I.1A), which is more than five times the 9.0× my own blanket ZSTD-22 run reached against a comparable raw baseline, so either their corpus is far more repetitive than flat Zeek `conn` or the comparison basis differs. Treat 50:1 as a corpus-specific figure, measure your own before you size storage on it, and note that whatever ratio you get, the out-of-box default codec will not be the one that gets you there.
+- *Struck 2026-11-23: a bullet comparing the 9.0× above with a Huntress 50:1 ratio against raw JSON, which it attributed to the case-study write-up in Section I.1A. Neither that write-up nor the ClickHouse video page for the Huntress CTO's meetup talk carries the figure (both re-read 2026-11-23), and the bibliography's Huntress entry already records the compression figures as unsupported by the cited post, so the comparison is withdrawn pending a check of the talk video itself, which has not yet been watched for it.*
 
 ### I.4A.3 Netflix's Three Optimizations (What Security Teams Can Steal)
 
@@ -1181,7 +1181,7 @@ Both options are priced on consumption alone, so the Snowflake baseline carries 
 
 ## Section I.7: The Noisy Neighbor Problem
 
-"Segregating workload types vital for noisy neighbor," said a data-platform practitioner [Personal communication, October 2025].
+"Segregating workload types vital for noisy neighbor," said a data-platform practitioner [Personal communication, October 2025; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23].
 
 The problem shows up the moment SOC dashboards and 30-day threat-hunting scans share the same Trino cluster, because a 60-second full table scan queues behind the dashboard refreshes and analysts miss real-time threats during the active attack. This hurts more in security than in general BI analytics because of the cost of the wait. Where a 60-second lag on a business dashboard is merely annoying, threat detection needs the low latency held even while a hunt is running.
 

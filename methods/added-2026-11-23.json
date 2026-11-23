@@ -1,0 +1,29 @@
+{
+ "note": "Fifteenth dated taxonomy input: six entries added 2026-11-23 by the November monthly refresh under MASTER-BIBLIOGRAPHY.md section 'Monthly Refresh Additions (2026-11-23)'. Goetz et al. and Zhang et al. are PVLDB 19(11), July 2026, venue confirmed in the issue front matter (academic_peer_reviewed, Tier A). The Splunk 10.7 Iceberg REST catalog page is vendor product documentation (Tier B). Arroyo 0.16.0 is an open-source project's release notes (Tier B). Uetz et al. is an arXiv preprint submitted to USENIX Security '27 with no confirmed venue (preprint, Tier B). The SDW Lab stream-complexity results are a first-party lab measurement (first_party_lab_measurement, Tier B). Each verified at its primary on 2026-11-23 as its Validation Status line records. Earlier records stay frozen per the never-retro-edit convention.",
+ "entries": [
+  {
+   "title": "Interoperable ACID Transactions for Open Table Formats (Götz, Ritter, El-Hindi & Giceva, PVLDB 2026)",
+   "category": "academic_peer_reviewed"
+  },
+  {
+   "title": "Fugue: Online Elasticity for Distributed Stateful Stream Processing (Zhang, Mao & Jacobsen, PVLDB 2026)",
+   "category": "academic_peer_reviewed"
+  },
+  {
+   "title": "Splunk Cloud Platform 10.7: Federated Search over Amazon S3 datasets backed by an Apache Iceberg REST catalog (Splunk documentation, 2026)",
+   "category": "vendor_engineering_blog_or_product_docs"
+  },
+  {
+   "title": "Arroyo 0.16.0: stateful stream processing with transactional Iceberg ingestion (Wylde, arroyo.dev, 2026)",
+   "category": "open_source_project_docs_or_repo"
+  },
+  {
+   "title": "Can Risk-Based Alerting Mitigate Cybersecurity Alert Fatigue? (Uetz, Bönninghausen, Hackländer-Jansen & Henze, arXiv preprint, 2026)",
+   "category": "preprint"
+  },
+  {
+   "title": "Batch vs Streaming Operational Complexity for One Detection, SDW Lab First-Party Measurement (stream-complexity, 2026)",
+   "category": "first_party_lab_measurement"
+  }
+ ]
+}

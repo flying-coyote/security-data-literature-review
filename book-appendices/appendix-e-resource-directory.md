@@ -197,7 +197,7 @@ This appendix answers where to go to learn each technology in the stack, organiz
 2. **Week 2**: Write threat hunting queries (high-cardinality filtering, multi-table joins)
 3. **Week 3**: Production pilot (self-hosted Trino or Starburst Galaxy trial)
 
-"AWS Athena uses Starburst under the hood—Trino proven at security data scale." (a data-platform practitioner, personal communication, October 2025)
+"AWS Athena uses Starburst under the hood—Trino proven at security data scale." (a data-platform practitioner, personal communication, October 2025; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23)
 
 > **Note**: Athena v3 runs open-source Trino, not Starburst specifically (Starburst is a commercial Trino distribution with additional enterprise features built on top). The underlying point holds, since Athena's Trino foundation is proven at scale, but the "Starburst under the hood" framing overstates the Starburst relationship.
 
@@ -247,7 +247,7 @@ This appendix answers where to go to learn each technology in the stack, organiz
 - **Option 2: Databricks** (Spark + Delta Lake): databricks.com/learn
 - **Option 3: Self-hosted Spark** (advanced): spark.apache.org/docs/latest/cluster-overview.html
 
-A data-platform practitioner said, in personal communication (October 2025), "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance."
+A data-platform practitioner said, in personal communication (October 2025; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23), "Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance."
 
 **Learning Path**:
 1. **Week 1**: Spark SQL basics (DataFrames, SQL syntax)

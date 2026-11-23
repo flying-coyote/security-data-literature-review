@@ -8,9 +8,9 @@ tags: [bibliography, literature-review, security-data, lakehouse, clickhouse, oc
 # Master Bibliography - Living Literature Review
 
 **Purpose**: The citation record for the Security Data Works evidence program, which covers the handbook *Modular Open Architecture (MOAR) for Cybersecurity Data*, the securitydataworks.com essays and research pages, and this review's own manuscript. Each `#### ` block below is one source, with its evidence level, what it is cited for, what it actually says, and how it was checked.
-**Last Updated**: November 17, 2026 (verification sweep of every entry, recorded in `methods/verification-2026-11/`; the retired December 2025 benchmark entry rewritten to cite the public SDW Lab re-run; the October 2025 extraction log moved to `archive/bibliography-extraction-log-2025-10.md`). Earlier changes are in [CHANGELOG.md](CHANGELOG.md).
-**Total Sources**: 273 catalogued `#### ` blocks (271 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). The counts on this page are derived from the blocks by `scripts/count_reconcile.py`, which fails the build when any gated surface disagrees with them.
-**Evidence Quality**: 22.5% Evidence Level A (live-derived 2026-11-17: 61 of 271 tiered entries; 170 B, 40 C, across 273 `#### ` blocks incl. 2 documented stubs). The share is reported descriptively and has no target attached. It sits where it does because Level A is reserved for peer-reviewed research and official standards, so vendor engineering blogs, trade books, conference talks and production case studies tier at B however good their evidence is, and much of what a practitioner needs to know about security data platforms is published mainly in those forms.
+**Last Updated**: November 23, 2026 (monthly refresh: six sources added under "Monthly Refresh Additions (2026-11-23)", eight older entries re-read at their primaries with dated refresh notes, two dead links moved to archived copies). November 17, 2026: verification sweep of every entry, recorded in `methods/verification-2026-11/`; the retired December 2025 benchmark entry rewritten to cite the public SDW Lab re-run; the October 2025 extraction log moved to `archive/bibliography-extraction-log-2025-10.md`). Earlier changes are in [CHANGELOG.md](CHANGELOG.md).
+**Total Sources**: 279 catalogued `#### ` blocks (277 tiered sources + 2 documented stubs — the "Declined — EITT Academy" no-primary record and the retired phantom "Streaming vs Batch Cost Differential" CloudZero placeholder). The counts on this page are derived from the blocks by `scripts/count_reconcile.py`, which fails the build when any gated surface disagrees with them.
+**Evidence Quality**: 22.7% Evidence Level A (live-derived 2026-11-23: 63 of 277 tiered entries; 174 B, 40 C, across 279 `#### ` blocks incl. 2 documented stubs). The share is reported descriptively and has no target attached. It sits where it does because Level A is reserved for peer-reviewed research and official standards, so vendor engineering blogs, trade books, conference talks and production case studies tier at B however good their evidence is, and much of what a practitioner needs to know about security data platforms is published mainly in those forms.
 
 **How to read an entry.**
 - **Evidence Level** follows [METHODOLOGY.md §3.1](METHODOLOGY.md). A is peer-reviewed research, an official standard, or a normative framework from a neutral non-commercial body (MITRE D3FEND and ATLAS, which are primary for taxonomy and silent on efficacy). B is "practitioners and production evidence — production deployments and case studies with real numbers, vendor engineering blogs, industry-conference talks, trade books, analyst reports, expert interviews, government advisories, and official project documentation", which is real evidence but not independently reviewed (expert interviews appear in that definition, but this file catalogues only published works, per the Boundary rule below). C is "vendor blog posts, product documentation, and conference talks not backed by production measurement", catalogued with its bias flagged and never carrying a hypothesis on its own, and D (marketing material, unverified claims, speculation) is excluded from the corpus.
@@ -469,7 +469,8 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Citations**: ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] trends section
 **Notes**: Forward-looking, expert perspective
 
-**Validation Status**: ✅ Active URL, very recent
+**Validation Status**: ✅ Active URL
+**Refresh (2026-11-23)**: superseded by the 2026 edition, *Top Trends for Data Streaming with Apache Kafka and Flink in 2026* (Waehner, 2025-12-10, https://www.kai-waehner.de/blog/2025/12/10/top-trends-for-data-streaming-with-apache-kafka-and-flink-in-2026/), which gives "the six most important trends shaping the streaming space in 2026", among them "Diskless Kafka and Apache Iceberg Create a New Storage Foundation" and "Real-Time Analytics Becomes Part of the Streaming Layer". Cite the 2026 post for current trends and this one as the 2025 snapshot.
 
 ---
 
@@ -510,9 +511,9 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 #### The Data-Centric Revolution + Incremental Stealth Legacy Modernization (Dave McComb)
 
 **Authors**: Dave McComb (President / co-founder, Semantic Arts)
-**Date**: 2019 (*The Data-Centric Revolution*, Technics Publications); "Incremental Stealth Legacy Modernization" (TDAN.com column / Semantic Arts method)
+**Date**: 2019 (*The Data-Centric Revolution*, Technics Publications); "Incremental Stealth Legacy Modernization" (TDAN.com column, published 2022-03-02 / Semantic Arts method)
 **URL**: https://technicspub.com/software_wasteland/ (Technics Publications page for *Software Wasteland* + *The Data-Centric Revolution*)
-**Alt URL**: https://www.dataversity.net/the-data-centric-revolution-incremental-stealth-legacy-modernization/29181 (the incremental-modernization method; re-pointed 2026-07-16 — the TDAN.com original 404s and redirects here after TDAN's absorption into DATAVERSITY, per the 2026-07-16 link check) *Dead link, checked 2026-11-17: this Alt URL now returns HTTP 404 and the Wayback Machine holds no snapshot of it, so the method is cited through the Technics Publications page above.*
+**Alt URL**: https://web.archive.org/web/20240301150721/https://tdan.com/the-data-centric-revolution-incremental-stealth-legacy-modernization/29181 [Archived] (the original TDAN.com column, "The Data-Centric Revolution: Incremental Stealth Legacy Modernization" by Dave McComb, published March 2, 2022, read at the Wayback Machine's 2024-03-01 snapshot on 2026-11-23, where the "no one is going to get the green light to take this on directly" sentence quoted below appears verbatim; re-pointed 2026-11-23). *Correction, 2026-11-23: the dataversity.net address this line carried from 2026-07-16 still returns HTTP 404, and the 2026-11-17 finding that the Wayback Machine holds no snapshot is true for that address only, because the original tdan.com address has snapshots from 2022 through 2024.*
 **Evidence Level**: B (Authoritative practitioner; conceptual framing, not a quantitative source)
 **Relevance**:
 - Book ch07 §7.2-7.3 + Appendix K [was: Chapter 4] (Implementation journeys — migrating off a legacy SIEM one workload at a time)
@@ -684,6 +685,7 @@ Sources from practitioner conversations are not eligible; the earlier entries at
 **Notes**: Added 2026-07-09 executing the re-score's restoration path — replaces nothing; it is the first quantified, verifiable leg under the tiered-storage savings claim since the 2026-06 withdrawal. Prices drift; re-fetch before citing in a submission.
 
 **Validation Status**: ✅ Prices fetched live and quoted verbatim 2026-07-09
+**Refresh (2026-11-23)**: re-read from the AWS Price List API, because the pricing page renders its table in the browser and a text fetch returns no values: offer `AmazonS3`, region us-east-1, publicationDate 2026-11-21T17:29:19Z (https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-1/index.json), and offer `AmazonS3GlacierDeepArchive`, publicationDate 2026-11-20T17:41:33Z, for the Deep Archive storage line. Every price above is unchanged (Standard $0.023, $0.022 and $0.021 per GB-month across the three volume steps; Standard-IA $0.0125; Glacier Instant Retrieval $0.004; Glacier Flexible Retrieval $0.0036; Glacier Deep Archive $0.00099), and the deltas recompute to the same -45.7%, -82.6%, -84.3% and -95.7%.
 
 ---
 
@@ -1270,6 +1272,7 @@ and nothing may be attributed to one.
 
 **Citations**: ch02 §2.2 (components: collection and pipeline) [was: Chapter 7] streaming reliability patterns
 **Notes**: The Flink documentation describes checkpointing mechanics and configuration options without prescribing specific intervals. Do not cite "30-60s for security" or "sub-2min recovery" — these figures are not in this source.
+**Refresh (2026-11-23)**: the `flink-docs-stable` alias now serves the v2.3.0 documentation, so the cited URL moves with each release; the pinned copy is https://nightlies.apache.org/flink/flink-docs-release-2.3/docs/dev/datastream/fault-tolerance/checkpointing/ (HTTP 200). The page still treats the interval as a parameter ("call enableCheckpointing(n) on the StreamExecutionEnvironment, where n is the checkpoint interval in milliseconds") and prescribes no security-specific value. One precision for the second finding: on this page, large state is handled through checkpoint storage ("For proper persistence of large state, Flink supports various approaches for checkpointing state in other locations"), and RocksDB appears only as `EmbeddedRocksDBStateBackend` in the configuration options, so cite Flink's state-backends page for the RocksDB recommendation.
 
 **Validation Status**: ✅ Active URL
 
@@ -1476,8 +1479,8 @@ and nothing may be attributed to one.
 - Best Practices Doc footnote [^188]
 
 **Key Findings**:
-- Operational complexity and specialized talent dominate self-managed Kafka TCO (qualitative consensus; specific 45-55% figure is not in this source)
-- Sizing methodology covering partition counts, replication, and broker capacity
+- Operational complexity and specialized talent dominate self-managed Kafka TCO (qualitative consensus; specific 45-55% figure is not in this source) *(Withdrawn 2026-11-23, not in source: the course page contains none of "TCO", "total cost", "talent", "operational complexity" or "sizing", and its two mentions of cost concern choosing a Confluent Cloud cluster type for the exercises.)*
+- Sizing methodology covering partition counts, replication, and broker capacity *(Narrowed 2026-11-23: the page explains topics, partitions and what sits inside a broker, and notes that a partition can exceed "the capacity of a single broker" in Confluent's implementation, but it gives no sizing method; read it as architecture background.)*
 
 **Citations**: H-IMPL-01 TCO validation, ch02 §2.3 (economics) [was: Chapter 7] capacity planning
 **Notes**: **CRITICAL** - Streaming operational cost driver. The "45-55% of TCO" figure has been removed as unsupported by this source. For a quantified reduction claim, Confluent's TCO page cites "up to 40-60% TCO reduction" with managed Kafka. Correction (2026-07-10, part-2 sweep fix 9): the "infrastructure cost benchmarks for capacity planning" finding was dropped — the cited course covers Kafka internals/architecture only and carries no cost or capacity-cost content at all. *(Unverified 2026-11-17: the TCO page this figure is attributed to is not named by URL, and Confluent's cost-effectiveness page, confluent.io/project-metamorphosis/cost-effective/, says "up to 60%" and gives no 40-60% range.)*
@@ -1601,6 +1604,7 @@ and nothing may be attributed to one.
 **Notes**: **CRITICAL** - Validates tiered storage hypothesis directionally. Correction (2026-07-10, part-2 sweep fix 10): the former "~35% average savings for non-optimized buckets" and "30-40% range" findings appear nowhere on the page — replaced with the page's actual up-to-40%/68%/95% tier figures and its named customer percentages. H-COST-09's independent grounding remains the S3 storage-class price-delta derivation (see the "AWS S3 Storage-Class Pricing" entry).
 
 **Validation Status**: ✅ Verified at primary 2026-07-10; savings figures restated page-verbatim
+**Refresh (2026-11-23)**: page re-read; the three tier figures are unchanged and verbatim. The 95% figure is stated for the Archive Access and Deep Archive Access tiers together ("save up to 95% for rarely accessed objects") and again for Deep Archive Access after 180 days, and the same passage gives "savings of 71%" for objects moved directly to Archive Access at 90 days. The page now names more customers than the five above: Torc Robotics "24% per month", Electronic Arts "30%", Amazon Photos "over 10%", Teespring "more than 30 percent", SimilarWeb "20%" and AppsFlyer "18% per GB stored". All are vendor-curated.
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -1742,14 +1746,16 @@ and nothing may be attributed to one.
 - Best Practices Doc footnotes [^246], [^247], [^249]
 
 **Key Findings**:
-- 407 contributors on apache/iceberg (GitHub deduplicated count, as of 2026-07-09) — re-sourced 2026-07-09: the cited community page carries no contributor or organization counts, so the earlier "300+ contributors across 100+ organizations" was replaced with the GitHub-derived figure and the organization count dropped as underivable
+- 407 contributors on apache/iceberg (GitHub deduplicated count, as of 2026-07-09) — re-sourced 2026-07-09: the cited community page carries no contributor or organization counts, so the earlier "300+ contributors across 100+ organizations" was replaced with the GitHub-derived figure and the organization count dropped as underivable *(Superseded 2026-11-23: the count was a floor set by the API limit and the "deduplicated" reading was mistaken; see the next bullet.)*
+- Refreshed 2026-11-23: the GitHub contributors endpoint for apache/iceberg (read through `gh api`) now lists 406 linked accounts, 405 users and 1 bot, and with `anon=1` it lists 946 entries, 540 of them anonymous. GitHub's documentation for the endpoint says "only the first 500 author email addresses in the repository link to GitHub users" and that "The rest will appear as anonymous contributors without associated GitHub user information" (https://docs.github.com/en/rest/repos/repos#list-repository-contributors). The repository has more than 500 author email addresses, so the linked-account count is a floor set by that limit, and the 2026-07-09 reading that 407 was uncapped because it sat under 500 was mistaken. The distinct contributor count lies somewhere between 406 and 946, because anonymous entries are per email address and can repeat a person, and the API cannot narrow it further. Cite it as "more than 400 contributors with linked GitHub accounts (2026-11-23)" with the limit stated, and drop the bare "407".
 - Open governance model
 - Iceberg Foundation for dedicated advancement
 
 **Citations**: H-ARCH-01 sustainability validation
 **Notes**: Community strength = long-term viability. For the contributor count, cite GitHub (https://github.com/apache/iceberg) with an as-of date, not the community page.
 
-**Validation Status**: ✅ Re-verified 2026-07-09: community page live but count-free; contributor figure re-sourced to GitHub API (407, under the API's 500-entry cap, so uncapped).
+**Validation Status**: ✅ Re-verified 2026-07-09: community page live but count-free; contributor figure re-sourced to GitHub API (407, under the API's 500-entry cap, so uncapped). *(Corrected 2026-11-23: the 500 limit applies to author email addresses, which exceed 500 here, so the figure was capped.)*
+**Refresh (2026-11-23)**: contributor count re-derived and the cap reading corrected (see Key Findings); the community page text was read and still gives no contributor or organization count.
 
 ---
 
@@ -1870,6 +1876,7 @@ and nothing may be attributed to one.
 **Notes**: Direct performance comparison for security logs; vendor benchmark — label as such where cited
 
 **Validation Status**: ✅ Re-verified at primary 2026-07-09: page (dated 2024-05-07 at fetch) states 12-19× / 9-12× storage reduction. The earlier freshness note's "2026-03-03 update / 5x realistic-OTel / 9-19×" claims are not on this page (the ~5×/OTel figures belong to a different 2026 ClickHouse post) and were removed.
+**Refresh (2026-11-23)**: storage figures re-read verbatim ("12 to 19 times less storage space"; "9 to 12 times less storage space" with `_source` disabled), the same as on 2026-07-09. The byline is Tom Schreiber (ClickHouse), May 7, 2024, so cite him as author. The page's structured data also carries `dateModified` 2026-03-03T12:30:30Z, which is probably where the removed "2026-03-03 update" note came from. The figures read the same as at the 2026-07-09 check.
 
 ---
 
@@ -2208,6 +2215,7 @@ and nothing may be attributed to one.
 
 **Validation Status**: ✅ Refreshed February 2026 - Active production service with expanding partner ecosystem
 **Currency (2026-11-17)**: the OCSF v1.1.0 mention describes the schema version Security Lake was built on; the current OCSF schema release is v1.9.0 (https://github.com/ocsf/ocsf-schema/releases, published 2026-08-03), so check Security Lake's documentation for the version it supports today before citing.
+**Refresh (2026-11-23)**: the current OCSF release is now v1.10.0 (2026-11-20, https://github.com/ocsf/ocsf-schema/releases/tag/1.10).
 
 **Validation (2026-06-05, folded)**: corrections applied to findings/tier above; provenance in RESEARCH-JOURNAL.md.
 ---
@@ -2661,7 +2669,7 @@ and nothing may be attributed to one.
 
 **Authors**: Anvilogic (vendor case study quoting Prabhath Karanth, Global Head of Security & Trust, Navan)
 **Date**: Undated page (likely 2023-2024; the related Snowflake Ventures post on the same partnership is 2024-05-21)
-**URL**: https://www.anvilogic.com/case-studies/navan
+**URL**: https://web.archive.org/web/20260720190353/https://www.anvilogic.com/case-studies/navan [Archived] (Wayback Machine snapshot of the case-study page, which returns HTTP 404 at its original address, www.anvilogic.com/case-studies/navan, as of 2026-11-23)
 **Evidence Level**: C (vendor-authored case study quoting a practitioner — C per the 2026-07-10 vendor-channel tier rule; flag marketing bias)
 **Relevance**:
 - Book ch02 cost-corroboration footnote (security-workload outcome)
@@ -2671,6 +2679,7 @@ and nothing may be attributed to one.
 
 **Citations**: ch02 [^cost-corroboration-ch2]
 **Validation Status**: ✅ Verified at the case-study page 2026-07-10; no publication date on page, not in Wayback. On 2026-11-17 the page returned 404 to an automated fetch but is still indexed by search engines with the same 70–80% wording, so it is recorded as live-but-unconfirmed rather than dead
+**Refresh (2026-11-23)**: the page returned HTTP 404 again on 2026-11-23, this time to a browser-header request as well as to the link checker, so the entry is marked Archived. The Wayback Machine does hold a copy (snapshot 2026-07-20), and that copy carries the Karanth quote above verbatim, including "cost savings of close to 70–80%", so the 2026-07-10 note that the page was not in Wayback no longer holds. The snapshot is now the URL above.
 
 ---
 
@@ -2830,13 +2839,14 @@ and nothing may be attributed to one.
 - Table-level RBAC with credential vending
 - Internal/external catalog isolation patterns
 - Vendor-neutral open-source catalog for isolated platforms
-- Production deployments at Netflix (security observability) and other enterprises
+- Production deployments at Netflix (security observability) and other enterprises *(Withdrawn 2026-11-23: no Netflix deployment appears on polaris.apache.org, its community page or its 1.9.0 access-control page, and the Netflix entry this traced to was de-attributed from Polaris on 2026-07-09; see the "Netflix Petabyte-Scale Logging" entry's Notes)*
 - No row-level security or column masking overhead - table-level permissions only
 
 **Citations**: **CRITICAL** - RQ7 and RQ10 isolation-first catalog validation
 **Notes**: Production validation of vendor-neutral catalog choice for isolated security platforms. *(Withdrawn 2026-11-23: the former "Complements Netflix and Huntress isolation-first architecture patterns" sentence, because neither source describes an isolation-first design; see the Netflix Petabyte-Scale Logging entry ("The blog does not use 'isolation-first'") and the Huntress entry's 2026-11-22 note.)*
 
 **Validation Status**: ✅ Active (verified Feb 2026, Apache project)
+**Refresh (2026-11-23)**: checked against the Polaris 1.9.0 documentation (release published 2026-11-14), https://polaris.apache.org/releases/1.9.0/managing-security/access-control/. Its RBAC model grants privileges on catalogs, namespaces, tables, views, policies and semantic models, and the page names no row-level security or column masking, so the table-level reading above holds for 1.9.0. One addition since the February check: "Polaris supports integration with external Policy Decision Points (PDPs) such as Open Policy Agent (OPA)", which is where a deployment that needs finer-grained decisions would put them.
 
 ---
 
@@ -3313,6 +3323,7 @@ The reading that matters for the architecture argument is the lower-bound caveat
 
 **Validation Status**: ✅ Verified at primary 2026-07-10 (part-2 sweep); velocity claims re-sourced to GitHub releases
 **Currency (2026-11-17)**: the current OCSF schema release is v1.9.0 (https://github.com/ocsf/ocsf-schema/releases, published 2026-08-03), with v1.10.0 in development per schema.ocsf.io.
+**Refresh (2026-11-23)**: v1.10.0 was released on 2026-11-20 and is now the current release (https://github.com/ocsf/ocsf-schema/releases/tag/1.10).
 
 ---
 
@@ -4281,6 +4292,7 @@ fetched and confirmed live, and each claim checked against the primary page (202
 **Citations**: OCSF (2026). *OCSF Schema v1.8.0*. https://github.com/ocsf/ocsf-schema/releases
 **Validation Status**: ✅ Active (verified 2026-06-05; day-of-month unconfirmed)
 **Currency (2026-11-17)**: superseded as the current release by OCSF v1.9.0 (https://github.com/ocsf/ocsf-schema/releases, published 2026-08-03; v1.10.0-dev listed at https://schema.ocsf.io/). Findings above describe v1.8.0 and stay version-bound to it.
+**Refresh (2026-11-23)**: OCSF v1.10.0 was released on 2026-11-20 (tag `1.10`, https://github.com/ocsf/ocsf-schema/releases/tag/1.10), so it is now the current release and the "v1.10.0-dev" above is out of date. Its changelog adds a `dns_zone_transfer_activity` event class, an optional `ai_capability` attribute and object for the `ai_operation` profile that v1.8.0 introduced, an `ai_status` object, a `physical_site` profile and a `firewall_rule_evaluation` object.
 
 ---
 
@@ -5856,8 +5868,9 @@ Added 2026-11-07 when the owner approved a second set of handbook footnotes draw
 
 **Key Findings**: across "more than 3,000 detection rules, 1.2 million log sources and hundreds of unique log source types" in customer SIEMs, "18% of SIEM rules will never fire due to a common issue like misconfigured data sources and missing fields."
 **Citations**: CardinalOps. (2024, June 13). *Fourth Annual Report on the State of SIEM Detection Risk* [Press release]. PR Newswire.
-**Notes**: The release, not the gated report PDF, was read. Other editions (about 15% in 2022, about 12% in 2023, about 13% in 2025) appear in press coverage and were not read at a CardinalOps primary; the 2022 report PDF mirror returned HTTP 403. "Never fire" is narrower than the handbook's dead tail, which also counts noisy rules analysts ignore. The scout file notes cardinalops.com redirecting to cribl.io; not checked this pass.
+**Notes**: The release, not the gated report PDF, was read. Other editions (about 15% in 2022, about 12% in 2023, about 13% in 2025) appear in press coverage and were not read at a CardinalOps primary; the 2022 report PDF mirror returned HTTP 403. "Never fire" is narrower than the handbook's dead tail, which also counts noisy rules analysts ignore. The scout file's note that cardinalops.com redirects to cribl.io was checked on 2026-11-23 and holds (see the refresh line).
 **Validation Status**: ✅ Verified 2026-11-07 (PR Newswire release fetched: date, "Fourth Annual" title line, dataset sentence and the 18% sentence quoted above).
+**Refresh (2026-11-23)**: The cardinalops.com home page and its blog both redirect to cribl.io. Cribl announced on 2026-07-14 that it "is acquiring CardinalOps, an Agentic Detection Engineering solution" (https://cribl.io/news/cribl-acquires-cardinalops-to-expand-its-ai-platform-into-security-operations/), so the publisher of this series now sits inside a telemetry-pipeline vendor, which the bias flag above should be read to include. The fifth edition (June 2025) is reported by Help Net Security (2025-06-09, https://www.helpnetsecurity.com/2025/06/09/siem-detection-coverage/) as "leaving 79% of techniques uncovered", with "13% on average" of detection rules "non-functional and will never trigger", and with SIEMs processing "an average of 259 log types and nearly 24,000 unique log sources" (an average per SIEM; the article does not give the study's sample size). No CardinalOps or Cribl primary for that edition was found on 2026-11-23, so the 2024 release stays the cited primary and the 2025 figures stay unverified at a primary.
 
 ## Agent Harness Benchmarking (2026-11-08)
 
@@ -5898,3 +5911,115 @@ Added 2026-11-08 at the owner's request, as outside method references for the la
 **Citations**: harness-hub. (2026). *Harness Lens* [Hugging Face Space]. https://huggingface.co/spaces/harness-hub/harness-lens
 **Notes**: The harness count differs by surface: the README says 17, the announcing post says 34, and the Space's `harnesses/` folder held 37 entries on 2026-11-08 (including Claude Code, Codex, Gemini CLI, OpenHands, Aider and SWE-agent). Cite the folder count with its date.
 **Validation Status**: ✅ Verified 2026-11-08 (README and `harnesses/` listing read through the Hugging Face API at commit d1ad16b).
+
+---
+
+## Monthly Refresh Additions (2026-11-23)
+
+Added in the November 2026 monthly refresh. Each source was published or first committed in or after July 2026, was read at its primary on 2026-11-23, and bears on one of the hypotheses in manuscript §3.7. None of them moves a hypothesis score here; where one could, the question is staged for the owner and the entry says what it can and cannot carry.
+
+---
+
+#### Interoperable ACID Transactions for Open Table Formats (Götz, Ritter, El-Hindi & Giceva, PVLDB 2026)
+
+**Authors**: Tobias Götz, Muhammad El-Hindi, Jana Giceva (Technical University of Munich); Daniel Ritter (SAP)
+**Date**: July 2026 (PVLDB Vol. 19, No. 11, pp. 3216-3230); read 2026-11-23
+**URL**: https://www.vldb.org/pvldb/vol19/p3216-goetz.pdf
+**DOI**: 10.14778/3836663.3836684
+**Evidence Level**: A (peer-reviewed; the venue is confirmed in the PVLDB Vol. 19 No. 11 front matter on vldb.org, dated July 2026, and in the paper's own PVLDB Reference Format block)
+**Relevance**:
+- H-ARCH-01 (context): the paper treats Delta Lake, Apache Iceberg and Apache Hudi together as the open table formats "widely used in modern cloud analytics" and measures a limit they share. It says nothing about Iceberg's share against the other two, so it adds to what the formats can and cannot do and leaves the dominance claim where it was.
+- Lakehouse design for security data: a detection or enrichment job that has to update two tables atomically, such as an alert table and the evidence table behind it, runs into exactly the limit this paper addresses.
+
+**Key Findings**: The abstract states that "existing OTFs provide transactional guarantees only for single-table transactions. Supporting transactions that access multiple tables typically requires external coordination services, which compromise interoperability and deployment independence." The authors present "OTF-native mechanisms for multi-table atomicity, consistency, and isolation that rely solely on object-store primitives", build them into a prototype called LakeVilla, and evaluate it with "formal verification, extensive benchmarks, and an interoperability case study with Trino". Table 1 is captioned "Properties of OTF solutions. Current solutions trade off interoperability to support cross-table transactions", and its rows include DuckLake and Project Nessie.
+**Citations**: Götz, T., Ritter, D., El-Hindi, M., & Giceva, J. (2026). Interoperable ACID Transactions for Open Table Formats. *Proceedings of the VLDB Endowment*, 19(11), 3216-3230. https://doi.org/10.14778/3836663.3836684
+**Notes**: LakeVilla is a research prototype, and the abstract's "low overhead" is the authors' own evaluation, which was not re-derived here. One author is at SAP. The DOI resolves to dl.acm.org, which refused a scripted request (HTTP 403), so the PDF at vldb.org is the copy read.
+**Validation Status**: ✅ Verified 2026-11-23 (PDF read at vldb.org; abstract, Table 1 caption and the PVLDB reference block quoted from it; issue and month confirmed in the Vol. 19 No. 11 front matter)
+
+---
+
+#### Fugue: Online Elasticity for Distributed Stateful Stream Processing (Zhang, Mao & Jacobsen, PVLDB 2026)
+
+**Authors**: Yuqiu Zhang (Confluent Inc.; the paper's footnote reads "Work done while at the University of Toronto"), Yunhao Mao and Hans-Arno Jacobsen (University of Toronto)
+**Date**: July 2026 (PVLDB Vol. 19, No. 11, pp. 3288-3301); read 2026-11-23
+**URL**: https://www.vldb.org/pvldb/vol19/p3288-zhang.pdf
+**DOI**: 10.14778/3836663.3836689
+**Evidence Level**: A (peer-reviewed; venue confirmed in the PVLDB Vol. 19 No. 11 front matter and in the paper's PVLDB Reference Format block)
+**Relevance**:
+- H-STREAM-01 (context): a peer-reviewed measurement of what it costs to change parallelism in a stateful stream engine, which is operational evidence about stateful streaming at scale. It is a benchmark study on Apache Flink with NEXMark queries, with no production deployment and no security workload. The manuscript's restoration path reads "one additional verified, catalogued production or peer-reviewed leg returns the hypothesis to 17/25 and the High band" (`PUBLICATION-MANUSCRIPT.md` §3.7, H-STREAM-01), and on that wording this paper qualifies as a peer-reviewed leg, so the open question is whether a peer-reviewed benchmark with no security workload should count for a hypothesis about stateful security processing. That call is staged for the owner as a two-sided one, and no score moves here.
+- H-IMPL-02 (context): describes Flink's rescaling model as one that "requires halting applications globally for a long time", which is one concrete source of the operational burden the staffing hypothesis is about. It carries no staffing figure.
+
+**Key Findings**: The abstract reports that Fugue, implemented in Apache Flink, "reduces tail reconfiguration latency by up to 98.6% relative to native Flink while maintaining over 90% of peak throughput", and that "Compared to reactive pull-based baselines, Fugue reduces end-to-end migration latency by up to 93.7%." The evaluation uses "the NEXMark benchmarking suite" (Section 5.1, Workloads paragraph). The testbed runs "Apache Flink version 1.18" with "RocksDB as the state backend", "Apache Kafka 3.8.1" as the message broker and a checkpointing interval of 60 seconds (Section 5.1, Testbed Setup paragraph).
+**Citations**: Zhang, Y., Mao, Y., & Jacobsen, H.-A. (2026). Fugue: Online Elasticity for Distributed Stateful Stream Processing. *Proceedings of the VLDB Endowment*, 19(11), 3288-3301. https://doi.org/10.14778/3836663.3836689
+**Notes**: Both percentages are "up to" figures from the authors' own runs of their extension against stock Flink, so they are best cases across those runs. Fugue is a research extension, and whether any of it has reached an Apache Flink release was not checked. The baseline is Flink 1.18, an older line than the Flink 2.2.1 the SDW Lab stream-complexity entry below runs, so the comparison is against Flink 1.18's native rescaling. The first author is at Confluent Inc., and the paper's footnote places the work at the University of Toronto.
+**Validation Status**: ✅ Verified 2026-11-23 (PDF read at vldb.org; abstract, testbed and workload sentences and the author affiliations taken from it; venue confirmed in the front matter)
+
+---
+
+#### Splunk Cloud Platform 10.7: Federated Search over Amazon S3 datasets backed by an Apache Iceberg REST catalog (Splunk documentation, 2026)
+
+**Authors**: Splunk (Cisco), product documentation
+**Date**: 10.7 page last updated 2026-10-23; 10.7 release notes last updated 2026-10-17; the 10.6 version of the page, last updated 2026-09-16, gives the minimum version; read 2026-11-23
+**URL**: https://help.splunk.com/en/splunk-cloud-platform/search/federated-search/10.7/run-federated-searches-over-amazon-s3-datasets/define-an-amazon-s3-dataset/create-an-amazon-s3-dataset-for-federated-search-that-is-backed-by-an-iceberg-rest-catalog
+**Alt URL**: https://help.splunk.com/en/splunk-cloud-platform/release-notes/10.7/splunk-cloud-platform-release-notes/whats-new (10.7 release notes)
+**Evidence Level**: B (vendor technical documentation, cited only for what the feature does, under the 2026-11-03 owner ruling recorded in METHODOLOGY §3.1, which places vendor documentation at B for what a feature does and at C, bias flagged, for how well it works, how fast it is or how it compares; nothing here is cited for speed, cost or reliability)
+**Relevance**:
+- H-ARCH-01: the incumbent SIEM vendor whose product runs on its own index format now reads Iceberg tables in place through a customer-run REST catalog, which extends the vendor-support leg from the lakehouse and cloud vendors to the SIEM side of the market. It shows Splunk reading Iceberg in place and leaves open whether Splunk stores any of its own indexes in Iceberg.
+- ch06 §6.5 (keep the SIEM, federation): the operating documentation behind the Splunk Platform 10.4 and Cisco Data Fabric federated-search announcement catalogued above.
+
+**Key Findings**: The 10.7 page: "The dataset must have an Amazon S3 connection definition that includes the Catalog URL of your Apache Iceberg REST catalog", and at the Configure dataset step the user selects "Apache Iceberg REST as the type of catalog". The 10.6 page: "Your Splunk Cloud Platform deployment must be on version 10.4.2604 or higher." The 10.7 release notes: "You can continuously promote selected Machine Data Lake data into an analytics table for recurring analysis, summary workloads, scheduled alerting, and long-term queryable retention."
+**Citations**: Splunk. (2026). *Create an Amazon S3 dataset for federated search that is backed by an Iceberg REST catalog* (Splunk Cloud Platform 10.7 documentation). help.splunk.com.
+**Notes**: These pages document configuration only, and the cost and speed of a federated search against Iceberg are not on them. The 10.7 release notes do not contain the word "Iceberg", so the Machine Data Lake "analytics table" quote is context on what the release ships and is no evidence about Iceberg. The page's version switcher already lists 10.8, so 10.7 was not the newest documentation on 2026-11-23; the 10.7 pages are cited because they are the ones read. The Machine Data Lake limits pages were not read for this entry, so nothing about promotion limits is catalogued here.
+**Validation Status**: ✅ Verified 2026-11-23 (all three pages fetched at help.splunk.com; quotes taken from the fetched text; "last updated" stamps read from each page title)
+
+---
+
+#### Arroyo 0.16.0: stateful stream processing with transactional Iceberg ingestion (Wylde, arroyo.dev, 2026)
+
+**Authors**: Micah Wylde (byline: "Creator of Arroyo")
+**Date**: November 17, 2026 (post date; GitHub release v0.16.0 published 2026-11-17T00:48:50Z); read 2026-11-23
+**URL**: https://www.arroyo.dev/blog/arroyo-0-16-0
+**Alt URL**: https://github.com/ArroyoSystems/arroyo/releases/tag/v0.16.0
+**Evidence Level**: B (official release notes of an Apache-2.0 open-source project, for what the release ships, which METHODOLOGY §3.1 places at B with vendor engineering blogs and project documentation; bias flagged: the post names Basin Pipelines as Cloudflare's managed Arroyo service, announces its general availability in this release and recruits for Cloudflare's Pipelines team, so the author's team sells the managed product, and the operating-scale statement is the maintainer's own and carries no figure)
+**Relevance**:
+- H-ARCH-01: a stateful stream engine that treats Iceberg as a first-class sink and maintains its commit handling in the main release line, which is ecosystem evidence for Iceberg as the landing format for streamed data.
+- H-STREAM-01 (context only): the post reports operating the engine "at scale across thousands of concurrent pipelines and many GB/s of traffic" in Basin Pipelines, which it calls Cloudflare's managed Arroyo service. With no measured figure and no security workload, that statement cannot be scored as a leg.
+
+**Key Findings**: The release "encompasses almost a year of work and over 140 PRs merged" and marks the general-availability release of Basin Pipelines. The rewritten FileSystem sink is "the sink used for writing files to object storage and performing transactional ingestion into data lake formats, including Delta and Apache Iceberg", designed so that "each incoming event should appear exactly once in the output, even if we crash in the middle". The changelog lists "Populate snapshot summary stats in Iceberg commits", "Add timeouts to Iceberg commit to prevent unbounded checkpoint stalls" and "Classify Iceberg rate limits as external failures". For JSON sources, "With bad_data = 'fail' (the default), the pipeline fails with that error", which matters for security telemetry, where malformed records are routine. The post names 0.17 as the expected "last before 1.0".
+**Citations**: Wylde, M. (2026, November 17). *Announcing Arroyo 0.16.0*. Arroyo blog. https://www.arroyo.dev/blog/arroyo-0-16-0
+**Notes**: No benchmark, latency figure, catalog list or Iceberg format-version detail is in the post, and Arroyo is pre-1.0 software.
+**Validation Status**: ✅ Verified 2026-11-23 (post fetched at arroyo.dev and every quote above taken from it; release tag and Apache-2.0 licence confirmed through the GitHub API)
+
+---
+
+#### Can Risk-Based Alerting Mitigate Cybersecurity Alert Fatigue? (Uetz, Bönninghausen, Hackländer-Jansen & Henze, arXiv preprint, 2026)
+
+**Authors**: Rafael Uetz, Philipp Bönninghausen, Louis Hackländer-Jansen, Martin Henze
+**Date**: 2026-09-02 (arXiv v1); read 2026-11-23
+**URL**: https://arxiv.org/abs/2609.02465
+**Evidence Level**: B (preprint; the arXiv comment reads "Submitted to USENIX Security '27", so no venue is confirmed and the entry sits in the preprint category under METHODOLOGY §3.1)
+**Relevance**:
+- H-SOC-BASELINE-01 (adjacent): the hypothesis rests on one production measurement of alert base rates, and its promotion path is a second independent production study. This paper evaluates alert prioritization on "eight diverse alert datasets, six of which we created or extended" and does not measure a production SOC's base rate, so it does not lift the single-source cap. It bears on the §4.1 inference about where alert volume goes, because it tests whether risk-based scoring can move true attacks to the top of the review queue.
+
+**Key Findings**: The abstract calls the work "the first systematic evaluation of RBA", reformulated as "a continuous alert prioritization problem rather than a binary decision problem", with "five fundamental risk hypotheses" implemented in an experimentation suite named CATS. The best combinations reach "AUROC μ=0.92, σ=0.09 across the eight datasets", against prioritization by severity level at "AUROC μ=0.72, σ=0.21".
+**Citations**: Uetz, R., Bönninghausen, P., Hackländer-Jansen, L., & Henze, M. (2026). *Can Risk-Based Alerting Mitigate Cybersecurity Alert Fatigue?* arXiv:2609.02465.
+**Notes**: Only the arXiv record and abstract were read; the dataset list and method were not. Most of the datasets were built or extended by the authors, so the scores describe those datasets. AUROC measures ranking quality, so it says how well true alerts were ordered and gives no count of false alerts removed. Recheck the venue if the paper is accepted.
+**Validation Status**: ✅ Verified 2026-11-23 (arXiv API record: title, authors, v1 date, comment line and abstract)
+
+---
+
+#### Batch vs Streaming Operational Complexity for One Detection, SDW Lab First-Party Measurement (stream-complexity, 2026)
+
+**Authors**: Jeremy Wiley (SDW Lab), FIRST-PARTY
+**Date**: 2026-07-19 (July run; pre-registration committed before the scored results), extended by the v2 run of 2026-11-03, the freshness sweep of 2026-11-06 and the RisingWave run of 2026-11-07; read 2026-11-23 at lab commit 08f1044 (the URLs below are pinned to it; master has since moved to ba58d65, which changes the README and leaves both results files unchanged)
+**URL**: https://github.com/flying-coyote/sdw-lab-benchmarks/blob/08f10448eced4ba02d591c7aca4a3ddbf7892296/stream-complexity/results/RESULTS.md
+**Alt URL**: https://github.com/flying-coyote/sdw-lab-benchmarks/blob/08f10448eced4ba02d591c7aca4a3ddbf7892296/stream-complexity/results/RESULTS-v2-2026-11-03.md (v2, which supersedes the July freshness framing and reports the falsifier as a knife-edge)
+**Evidence Level**: B (first-party lab measurement under a frozen pre-registration: single host, synthetic seeded corpus, one detection shape, and complexity proxies that are not dollars, headcount or on-call hours)
+**Relevance**:
+- H-IMPL-01 (Streaming TCO): the only measured evidence on the hypothesis's direction since its literature legs were withdrawn. The results file names H-IMPL-01 as its target and states that the run "does not deliver a clean magnitude", so it does not meet the pre-registered bar to move the score.
+- H-IMPL-02 (Staffing premium, context): the fault battery measures operator steps and time to restore, which is the kind of work the staffing claim is about, though the bench carries no staffing figure.
+
+**Key Findings** (July run, `results/RESULTS.md`, with line numbers at lab commit 08f1044): one detection (five or more failed logins per user and source IP inside a 60-second event-time window) over a seeded 500,000-event corpus, batch on DuckDB against Kafka 4.3.1 with Flink 2.2.1 (lines 6-8). Moving parts: "stream 3 containers + 1 host process" with images "totaling ~913 MB", against "batch 0 containers + 1 host process" (line 18). Configuration: "stream 197 LOC vs batch 131 LOC = 1.5×", which fails the pre-registered 3× threshold (line 19). Fault recovery: a Kafka broker kill took 2 steps and 18.1 s and a Flink taskmanager kill 2 steps and 21.5 s to restore infrastructure, against 1 step and 0.02 s for the batch job (lines 27-29); recovery correctness was not cleanly measured (line 31). The v2 run puts the real-clock freshness gap at "about 3.0 s at the median (2.18 vs 5.20 s, roughly 2.4×)" and says July's 8-9× figure came from an accelerated clock (`RESULTS-v2-2026-11-03.md` line 124).
+**Citations**: SDW Lab (2026). *stream-complexity: batch vs streaming operational complexity* [benchmark results]. https://github.com/flying-coyote/sdw-lab-benchmarks/tree/master/stream-complexity
+**Notes**: Self-authored, so it is labelled first-party and cannot stand as independent evidence. The v2 falsifier "sits on a knife-edge that depends on rounding 1.50×" and is "reported rather than resolved" (lab README line 31 at 08f1044), and the confidence move it would trigger is already staged for the owner on the lab side. Quote the complexity proxies with the honesty boundary at line 3 of the July results file attached.
+**Validation Status**: ✅ Verified 2026-11-23 (July and v2 results files read in the public repository at commit 08f1044; every figure above quoted from the line cited; both pinned commit URLs return HTTP 200, and 08f1044 is an ancestor of master)

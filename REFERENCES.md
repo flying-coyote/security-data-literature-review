@@ -132,7 +132,7 @@ tags: [bibliography, ieee-citations, academic-publication, literature-review, re
 
 [56] M. Merced, "Dremio YouTube Channel," YouTube, 2023-2024. [Online]. Available: https://www.youtube.com/@alexmercedcoder
 
-[57] Anonymized practitioner, "Security Data Platform Practitioner Validation," Personal communication, Oct. 2025.
+[57] Anonymized practitioner, "Security Data Platform Practitioner Validation," Personal communication, Oct. 2025. Unpublished, so it is not an eligible source under the bibliography's Boundary rule and is kept as illustration only (marked 2026-11-23).
 
 [58] Reference withdrawn 2026-06-09 — source could not be verified (see the project fabrications register).
 

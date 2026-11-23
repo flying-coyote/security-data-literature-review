@@ -2,7 +2,7 @@
 type: tracker
 title: "Monthly Update Tracker: Maintenance Cadence and Update Log"
 created: 2025-11-14
-updated: 2026-11-17
+updated: 2026-11-23
 tags: [literature-review, monthly-cadence, maintenance, update-log]
 ---
 
@@ -24,8 +24,8 @@ Three cycles run at different speeds, because the bibliography, the hypotheses a
 
 | Measure | Value | Basis |
 |---|---|---|
-| Evidence Level A | 22.5% live (61/271 tiered, recounted 2026-11-17) | Derived by `scripts/count_reconcile.py`. Reported as a description since the target was retired on 2026-08-19 (`METHODOLOGY.md` §8.1a); the 2026-08-19 audit checked all 229 tiered entries (96 from Level A downward, of which 57 moved, then the resulting 190 B and C entries upward) and found nothing under-tiered |
-| Sources older than 12 months | 91 flagged | Last health-check run, 2026-07-18 |
+| Evidence Level A | 22.7% live (63/277 tiered, recounted 2026-11-23) | Derived by `scripts/count_reconcile.py`. Reported as a description since the target was retired on 2026-08-19 (`METHODOLOGY.md` §8.1a); the 2026-08-19 audit checked all 229 tiered entries (96 from Level A downward, of which 57 moved, then the resulting 190 B and C entries upward) and found nothing under-tiered |
+| Sources older than 12 months | 123 of 274 dated entries (44.9%), 2026-11-23 | The freshness rule in `scripts/weekly_health_check.py` (newest year on the Date line before 2025), re-derived after the six November additions; the health-check run of 2026-11-23, before them, read 123 of 268 (45.9%), and the July 2026 run flagged 91. Over the 40% escalation line |
 | Hours per update | logged per entry below | `scripts/automation_dashboard.py` averages the latest month |
 
 **Refresh checklist** (a refresh is complete when each line is true):
@@ -444,6 +444,32 @@ Three cycles run at different speeds, because the bibliography, the hypotheses a
 **Evidence Level A**: 42.9% (76/177) — honest post-audit floor, below the 75% target; the gap is visible, not masked. *[checked 2026-11-17: July 2026 count, superseded by the 2026-08-19 tier correction and later additions; the target was retired 2026-08-19]*
 
 **Key lesson**: the account session limit (resets 7:30pm ET) hard-stopped 17 research agents mid-run. The deterministic local work (instrument fix, reconciliation, docs) is limit-independent and worth front-loading, with web-dependent fan-out scheduled around the reset.
+
+---
+
+## November 2026 Update
+
+### Update: monthly refresh, six admissions and the post-verification corrections (November 23, 2026, Unreleased)
+
+**Time Investment** (Claude Code session, agent-assisted; hours-equivalent as reported by the refresh session, which recorded no per-task breakdown):
+- **Total: ~6 hours** (the independent verification pass and the pass that applied its corrections, count regeneration and this bookkeeping were not timed and are not included)
+
+**What changed**:
+- Six sources added under "Monthly Refresh Additions (2026-11-23)" in `MASTER-BIBLIOGRAPHY.md`: Götz et al. and Zhang et al. (Fugue), both PVLDB 19(11), July 2026, at Level A; the Splunk Cloud Platform 10.7 Iceberg REST catalog documentation, the Arroyo 0.16.0 release post, the Uetz et al. arXiv preprint on risk-based alerting and the SDW Lab stream-complexity results (first-party), all at Level B. The corpus moves from 273 to 279 catalogued entries, 277 tiered, A 63 / B 174 / C 40 (22.7% Level A).
+- Eight entries from the outdated list re-read at their primaries, and three verdicts changed: the Iceberg contributor figure is now stated as API-capped (406 linked accounts, 946 with anonymous contributors), the Polaris "production deployments at Netflix" finding and the Confluent course's TCO finding are withdrawn as not in source. CardinalOps, ClickHouse vs Elasticsearch, S3 Intelligent-Tiering, Flink checkpointing and Waehner 2025 got dated notes with their verdicts unchanged, and the S3 pricing derivation and three OCSF entries got currency notes (OCSF 1.10.0, released 2026-11-20).
+- Two dead links repaired with archived copies (Navan / Anvilogic, and the McComb Alt URL), each confirmed to carry the quoted sentence.
+- Corrections from the independent verification of the refresh, applied the same day: the additions section says its sources were published or first committed in or after July 2026 (PVLDB 19(11) is the July issue and the lab bench was first committed 2026-07-19); the Fugue entry quotes the manuscript's restoration path, which accepts a "production or peer-reviewed leg", gives the author affiliations with a Confluent vendor note, and names its Flink 1.18 and Kafka 3.8.1 testbed; the stream-complexity URLs are pinned to lab commit 08f1044; the Arroyo entry flags that the author's team sells the managed Basin Pipelines service; the Splunk entry notes that its release notes never mention Iceberg and that 10.8 documentation exists; the CardinalOps sample-size parenthesis is reworded; and the 2026-11-03 owner ruling on vendor documentation (B for what a feature does, C for how well it works) is written into `METHODOLOGY.md` §3.1.
+- The anonymized practitioner account cited as [57] is marked unpublished and illustration only in `APPENDICES.md` (twice, withdrawing the "Level B" label there) and `REFERENCES.md`, the same marking the appendices received earlier the same day.
+- Every gated count surface regenerated by `scripts/count_reconcile_fix.py --apply` (55 surfaces in 9 files, after `methods/source-taxonomy.json` was regenerated at 279 entries), with the derivation date on each regenerated line moved to 2026-11-23.
+
+**What was verified**:
+- Each new source was read at its primary on 2026-11-23, and a second, independent pass re-fetched all six and found every quoted figure at its primary (venue and month of both PVLDB papers confirmed in the Vol. 19 No. 11 front matter).
+- The eight refreshed entries were re-read by both passes, including the GitHub API contributor counts, the Polaris 1.9.0 access-control page and the AWS Price List API publication of 2026-11-21, whose deltas recompute to −45.7%, −82.6%, −84.3% and −95.7%.
+- `scripts/count_reconcile.py` (all 79 surfaces agree), `scripts/validate_metadata.py`, `scripts/derive_vendor_rollups.py --check`, `scripts/derive_source_taxonomy.py --check` and `scripts/repoint_moved_paths.py --check` were run after the corrections, as recorded in the CHANGELOG entry.
+
+**Staged for the owner**: whether Fugue, a peer-reviewed streaming benchmark with no security workload, counts as the leg H-STREAM-01's restoration path asks for (which would move it from 15 to 17/25), and the repo-wide rewording of the "407 contributors" figure, the remaining Netflix/Polaris and Confluent TCO repetitions, and the Hurault tier statements in the companions. No hypothesis score moved.
+
+**Freshness**: 123 of 274 dated entries (44.9%) are older than twelve months under the health check's rule, still over the 40% escalation line. The run before the additions read 123 of 268 (45.9%), and the rise from July's 91 has not been traced.
 
 ---
 

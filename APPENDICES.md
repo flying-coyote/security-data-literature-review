@@ -582,7 +582,7 @@ This appendix documents the structured expert validation protocol used to valida
 - Query engine approach viable for security operations
 - Production deployments validate book architectural recommendations
 
-**Citation**: [57] Anonymized practitioner, "Security Data Platform Practitioner Validation," Personal communication, Oct. 2025.
+**Citation**: [57] Anonymized practitioner, "Security Data Platform Practitioner Validation," Personal communication, Oct. 2025. Unpublished, so it is not an eligible source under the bibliography's Boundary rule and is kept as illustration only (marked 2026-11-23).
 
 ---
 
@@ -847,7 +847,7 @@ This appendix organizes all 75+ sources by research theme to facilitate thematic
 ## D.10 Practitioner Validation
 
 **Production Deployment Validation**:
-- [57] Anonymized practitioner: Starburst/Athena viability for security operations (Level B — personal communication, unpublished; not independently verifiable)
+- [57] Anonymized practitioner: Starburst/Athena viability for security operations (untiered: a personal communication, unpublished and not independently verifiable, so illustration only under the bibliography's Boundary rule, marked 2026-11-23; the earlier "Level B" label is withdrawn)
 
 ---
 

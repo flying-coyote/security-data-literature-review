@@ -49,7 +49,7 @@ These requirements created hard filters, so any vendor missing even one gets eli
 
 These requirements aren't disqualifying, but heavily weighted in vendor scoring:
 
-- The **Apache Iceberg table format** (3 points), because the industry momentum toward Iceberg provides future flexibility. "Every enterprise is either using Iceberg or it's on their roadmap" (a data-platform practitioner, personal communication, October 2024). Delta Lake is acceptable (2 points), proprietary formats score 0.
+- The **Apache Iceberg table format** (3 points), because the industry momentum toward Iceberg provides future flexibility. "Every enterprise is either using Iceberg or it's on their roadmap" (a data-platform practitioner, personal communication, October 2024; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23). Delta Lake is acceptable (2 points), proprietary formats score 0.
 
 - Time-series partitioning (3 points), because almost every security query I've watched analysts run is time-bounded, since a hunt or an investigation works over a window rather than the whole corpus. Platforms with date-based partition pruning (scan days, not years) cut the data scanned by roughly the ratio of the window to the retention period, so a 30-day query against three years of history reads on the order of a few percent of the table (Apache Iceberg documentation, partition pruning). Native support scores 3, manual partition management scores 1.
 
@@ -246,7 +246,7 @@ Dremio batch queries update every 5-15 minutes, adequate for threat hunting ("sh
 
 Apache Iceberg requires periodic maintenance operations: data file compaction (combining small files into optimized sizes), orphan file cleanup (removing unreferenced files from failed jobs), and snapshot expiration (managing time-travel history). These often require Apache Spark for a self-managed deployment, though Athena (OPTIMIZE/VACUUM), Trino (OPTIMIZE), and Dremio (managed maintenance) can also perform compaction and maintenance, so Spark is the common path rather than the only one.
 
-"Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance." (a data-platform practitioner, personal communication, October 2025)
+"Spark is essentially the native language of Iceberg. You may deploy Dremio for queries, but Spark may still be necessary for table maintenance." (a data-platform practitioner, personal communication, October 2025; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23)
 
 **Jennifer's situation**: Healthcare IT team lacks Spark expertise. Learning Spark cluster management, PySpark development, and maintenance job scheduling would require months of training.
 
@@ -340,7 +340,7 @@ Marcus is a composite teaching scenario, so the POC latencies, the per-vendor co
 
 - AWS-native integration (3 points): deep integration with IAM (identity and access), VPC (network isolation), S3 lifecycle (automated tiering to Glacier), and CloudWatch (monitoring and metrics). Platforms built on AWS-native services score highest, multi-cloud platforms with "good" AWS integration score medium, platforms requiring manual configuration score low.
 
-- An **open table format, Iceberg or Delta** (3 points), to prevent vendor lock-in. "Every enterprise is either using Iceberg or it's on their roadmap" (a data-platform practitioner, personal communication, October 2024). Iceberg scores 3 (multi-engine support: Athena, Dremio, Trino, Spark), Delta scores 2 (Databricks-centric but convertible), proprietary formats score 0.
+- An **open table format, Iceberg or Delta** (3 points), to prevent vendor lock-in. "Every enterprise is either using Iceberg or it's on their roadmap" (a data-platform practitioner, personal communication, October 2024; unpublished, so illustration only under the bibliography's Boundary rule, marked 2026-11-23). Iceberg scores 3 (multi-engine support: Athena, Dremio, Trino, Spark), Delta scores 2 (Databricks-centric but convertible), proprietary formats score 0.
 
 - A managed service (3 points), to minimize operational overhead. Fully managed (no infrastructure to operate) scores 3, partially managed (managed compute, self-managed storage) scores 2, self-managed scores 0. The team can handle moderate complexity but prefers managed.
 
