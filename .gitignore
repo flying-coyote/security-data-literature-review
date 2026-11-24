@@ -38,3 +38,6 @@ Thumbs.db
 .env.local
 __pycache__/
 methods/snowball-2026-11.json
+
+# Dated config backups (2026-11-24)
+*.bak-*
