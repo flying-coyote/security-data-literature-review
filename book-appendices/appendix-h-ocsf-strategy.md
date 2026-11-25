@@ -9,7 +9,7 @@ tags: [ocsf, schema-lock-in, normalization, splunk-cim, security-data, detection
 
 This appendix answers how to normalize security data arriving in dozens of vendor formats without trading one vendor's lock-in for another's, and why OCSF is a reasonable baseline to adopt as long as you adopt it with its failure modes in view. It grounds the OCSF strategy and the mapping failure mode in Chapter 3 and the cost model in Chapter 1, and where a later accuracy pass sharpened one of its figures, Section H.4.2 records the change while the reasoning around it stays as it was.
 
-> **Version pin**: where this appendix cites OCSF v1.3.0 it is describing work done against that release, chiefly the CISA Zeek-OCSF mappings in Section H.3.2 and the case study in Section H.3.1. The same v1.3.0 basis carries into the Zeek coverage-gap claims later in H.4 and the integration material in H.5.4, so read those class names and gap claims as a snapshot of the schema at that point, since they are not the current contract. The current release when this appendix was drafted was OCSF v1.8.0 (March 2026), and v1.9.0 followed on 2026-08-03 (checked 2026-11-17), deprecating the Account Change and User Access Management classes in favor of User Management, and v1.10 followed on 2026-11-20 (checked 2026-11-22); class UIDs, enum values, and field names drift between versions, so verify anything you intend to build on against schema.ocsf.io.
+> **Version pin**: where this appendix cites OCSF v1.3.0 it is describing work done against that release, chiefly the CISA Zeek-OCSF mappings in Section H.3.2 and the case study in Section H.3.1. The same v1.3.0 basis carries into the Zeek coverage-gap claims later in H.4 and the integration material in H.5.4, so read those class names and gap claims as a snapshot of the schema at that point, since they are not the current contract. The current release when this appendix was drafted was OCSF v1.8.0 (March 2026), and v1.9.0 followed on 2026-08-03 (checked 2026-11-17), deprecating the Account Change and User Access Management classes in favor of User Management, and v1.10.0 followed on 2026-11-20 and is the current release (checked 2026-11-24); class UIDs, enum values, and field names drift between versions, so verify anything you intend to build on against schema.ocsf.io.
 
 ## Opening: From Platform Selection to Schema Strategy
 
@@ -317,7 +317,7 @@ OCSF (Open Cybersecurity Schema Framework) sits in a roughly comparable competit
 - **OCSF Project founded** (2022): Linux Foundation governance
 - **180+ organizations join** (exact count drifts; see H.2.1): AWS, Splunk, IBM, Rapid7, Cloudflare, Securonix, others
 - **Production validation**: petabyte-per-day deployments are vendor-reported and, in the case this appendix works through, uncited (Tier C, Section H.3.1)
-- **Schema evolution**: v1.0.0 through v1.9.0 (released 2026-08-03, the current release as of 2026-11-17; v1.8.0 shipped 2026-03-18, and v1.10 followed on 2026-11-20), with backward compatibility preserved across minor versions
+- **Schema evolution**: v1.0.0 through v1.10.0 (released 2026-11-20, the current release as of 2026-11-24; v1.8.0 shipped 2026-03-18 and v1.9.0 on 2026-08-03), with backward compatibility preserved across minor versions
 
 **Strategic question for industry**: can a vendor-neutral open schema with broad coalition backing reduce schema lock-in enough to matter, even if it cannot do what an open operating system did to a platform monopoly?
 
@@ -396,7 +396,7 @@ Governance is where an open standard lives or dies, because the only version tha
 **Example**: OCSF v1.3.0 added the `d3fend`, `d3f_tactic`, and `d3f_technique` objects together with the Remediation category (Section H.5) through the project's public pull-request process (ocsf-schema #1066), with the discussion held in the open under Linux Foundation governance.
 
 **Schema versioning discipline**:
-- **Backward compatibility preserved** across minor versions (the 1.x line, through 1.9.0 as of 2026-11-17; 1.10 shipped 2026-11-20)
+- **Backward compatibility preserved** across minor versions (the 1.x line, through 1.10.0, released 2026-11-20 and current as of 2026-11-24)
 - **Breaking changes reserved for a major version** (1.x → 2.0), with a documented migration path as the expectation and no guarantee behind it, since 2.0 has not landed
 - **Long-term-support designation** is the kind of structural protection enterprises ask for; whether OCSF formally designates LTS releases with a fixed support window is worth confirming against the project's current governance docs before you write it into a procurement term
 
@@ -646,7 +646,7 @@ Real-world log sources present four recurring challenges. The distribution perce
    - Solution: Array consolidation with semantic preservation (+5 min/field effort impact)
 
 3. **No Direct OCSF Equivalent** (5-10% of fields): Source field has no matching OCSF field in current schema version
-   - Example: Zeek `weird.log` (protocol anomalies) had no OCSF Network Anomaly class in v1.3.0, and re-walking the network event classes in the v1.8.0 release still turns up no such class (and neither the v1.9.0 class list, checked 2026-11-17, nor the v1.10 network classes, checked 2026-11-22, has one), so this is a standing gap rather than a v1.3.0 snapshot artifact; re-check it against whatever release you build on, since the network category keeps gaining classes
+   - Example: Zeek `weird.log` (protocol anomalies) had no OCSF Network Anomaly class in v1.3.0, and re-walking the network event classes in the v1.8.0 release still turns up no such class (and neither the v1.9.0 class list, checked 2026-11-17, nor the network classes in the current v1.10.0 release, checked 2026-11-24, has one), so this is a standing gap rather than a v1.3.0 snapshot artifact; re-check it against whatever release you build on, since the network category keeps gaining classes
    - Solution options: (A) Use `unmapped{}` extension object (preserves data), (B) Map to closest OCSF field + confidence flag, (C) Propose OCSF schema extension via GitHub RFC (3-6 month timeline), (D) Accept data loss with documentation
    - Decision framework: High-value fields → Option A/C, Medium → Option B, Low → Option D
 
@@ -804,7 +804,7 @@ The same care applies to the interoperability story. If a DoD system records a D
 
 Set against a proprietary schema, the difference is real. Splunk's CIM `Network_Traffic` data model and Microsoft Sentinel's `NetworkSession` table carry no formal grounding at all, because they are vendor-defined with no CCO mapping, so a DoD system that wants to integrate that data has to build and defend a custom translation layer from scratch. OCSF's D3FEND reference-link grounding gives it a head start on demonstrating DoD/IC interoperability that a proprietary schema has to argue for from nothing, and that head start is the bounded advantage this section is claiming, no more.
 
-### H.5.4 The OCSF D3FEND Integration (objects added in v1.3.0, carried forward through v1.9.0 as of 2026-11-17)
+### H.5.4 The OCSF D3FEND Integration (objects added in v1.3.0, carried forward through v1.10.0 as of 2026-11-24)
 
 OCSF v1.3.0 (August 1, 2024) added the `d3fend`, `d3f_tactic`, and `d3f_technique` objects in pull request #1066, and that same pull request created the Remediation category and its four event classes, which tells you where the link actually sits. The `d3fend` object describes the tactic and technique associated with a *countermeasure*. The only route a record has into it is the dictionary's `countermeasures` attribute, an array of `d3fend` objects carried by Remediation Activity (class 7001) and its file, process, and network subclasses, and carried indirectly by the findings classes through the `mitigation` object inside `attack`. Network Activity (class 4001) has no `d3fend` attribute, and neither does `base_event`, so this is not a field that every OCSF event class can hold. I had it the other way round in earlier drafts of this appendix and the correction changes what the section can claim. Where a link does run between an ordinary telemetry class and the ontology, it runs through documentation on both sides rather than through data. The v1.8.0 class and object definitions carry `references` entries naming a D3FEND term, so Network Activity points at `d3f:NetworkConnectionEvent`, `process.json` at `d3f:Process`, and `account.json` at `d3f:UserAccount`, while D3FEND publishes its own `rdfs:seeAlso` hyperlinks into schema.ocsf.io from the other end. Both are curated crosswalks living in the schema and the ontology, and neither is anything the OCSF record itself carries. Schema presence means the objects are defined and typed, not that any given record populates them, since population is optional, as Section H.5.6 notes.
 
@@ -1050,7 +1050,7 @@ The chapters of the handbook carry no endnotes by design, and the companion appe
 - The three-layer switching-cost stack, the summary table, the parsing-tax model, the 12 TB/day comparison, and the migration narrative are author-modeled from published labor rates and list pricing, Tier C/D, and are labeled as such at each claim.
 
 **Section H.2 (coalition and governance)**
-- OCSF releases: v1.3.0 released 2024-08-01 and v1.8.0 released 2026-03-18 (the 1.8.0 tag commit and GitHub release are both dated 2026-03-18; an earlier draft gave 2026-03-16), with v1.9.0 released 2026-08-03, checked against the project's GitHub releases 2026-11-17.
+- OCSF releases: v1.3.0 released 2024-08-01 and v1.8.0 released 2026-03-18 (the 1.8.0 tag commit and GitHub release are both dated 2026-03-18; an earlier draft gave 2026-03-16), with v1.9.0 released 2026-08-03 (checked against the project's GitHub releases 2026-11-17) and v1.10.0 released 2026-11-20 under the GitHub release tag `1.10` (checked 2026-11-24).
 - The `d3fend`, `d3f_tactic`, and `d3f_technique` objects plus the Remediation category: ocsf-schema pull request #1066.
 - Contributing-organization count: the OCSF project's contributing-organizations list under Linux Foundation governance. The count drifts and the project publishes no fixed figure, which is why the text hedges it. I could not resolve a current organization list at the schema repository when I checked in August 2026, so treat the 180+ number as an artifact of the 2024 counts.
 

@@ -31,7 +31,7 @@ Every reference architecture in this appendix (except Pattern 4: Traditional SIE
 
 3. **Compression-First Design**. Security logs achieve 8.5× (Iceberg Parquet, pyiceberg zstd defaults) to 9.7× (tuned cold Parquet zstd-19) compression with proper encoding (Parquet + ZSTD/SNAPPY for Iceberg, optimized codecs for ClickHouse; first-party lab measurement on OCSF-normalized Zeek and EDR corpora, per cost-to-serve-retention/results/RESULTS.md). *Validation test*: 1 TB/day of raw logs should cost ~$1,000/month for S3 storage with 365-day retention.
 
-4. **Schema Evolution Without Breaking Changes**. Use Iceberg schema evolution and OCSF normalization (OCSF v1.x, current release v1.9.0 as of 2026-11-17) to onboard new log sources without system downtime. *Validation test*: Adding a new log source doesn't require downtime or data migration.
+4. **Schema Evolution Without Breaking Changes**. Use Iceberg schema evolution and OCSF normalization (OCSF v1.x, current release v1.10.0 as of 2026-11-24) to onboard new log sources without system downtime. *Validation test*: Adding a new log source doesn't require downtime or data migration.
 
 5. **Query Engine Specialization**. No single engine is optimal for real-time alerting, ad-hoc investigations, and scheduled reporting. Deploy the right engine for each workload. *Validation test*: You can choose the right tool for each workload without creating data silos.
 

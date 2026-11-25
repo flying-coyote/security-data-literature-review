@@ -13,7 +13,7 @@ This appendix answers which query engine to run for which security workload, and
 
 ## Opening: The Multi-Engine Reality
 
-The handbook's platform-selection decision material set up the choice of platform. That decision framework is now distributed across the manageability and foreground-decision material in Chapter 1, the engine-selection groundwork in Chapter 5, the what-good decision examples in Chapter 6, and the migration decisions in Chapter 7. Appendix H showed how OCSF (v1.x; the current release is v1.9.0, 2026-08-03 (checked 2026-11-17), per the OCSF schema release notes; Tier A) enables vendor-neutral schema standardization. Now comes a critical architectural question: **Which query engine do you use to actually analyze your security data?**
+The handbook's platform-selection decision material set up the choice of platform. That decision framework is now distributed across the manageability and foreground-decision material in Chapter 1, the engine-selection groundwork in Chapter 5, the what-good decision examples in Chapter 6, and the migration decisions in Chapter 7. Appendix H showed how OCSF (v1.x; the current release is v1.10.0, 2026-11-20 (checked 2026-11-24), per the OCSF schema release notes; Tier A) enables vendor-neutral schema standardization. Now comes a critical architectural question: **Which query engine do you use to actually analyze your security data?**
 
 "Can we just use Spark for everything?"
 

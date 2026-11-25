@@ -15,7 +15,7 @@ This appendix answers how to map your own log sources into OCSF in practice, cov
 
 **Cross-Reference**: Appendix H provides strategic context (why OCSF, lock-in prevention, coalition dynamics). This appendix provides tactical implementation ("how to map Zeek logs to OCSF").
 
-> **Version pin**: The class UIDs and field names in this appendix follow the OCSF v1.x schema the referenced CISA Zeek-OCSF project used, so read them as a worked example from that point in the schema's life rather than as the current contract. The current release as of 2026-11-17 is OCSF v1.9.0 (August 2026), and the schema moves quickly enough that class UIDs, enum values, and field names drift between versions, so verify everything I use here against schema.ocsf.io before you build on it. Where a mapping rides on a specific value, I name the class (for example Network Activity, class_uid 4001) so you can re-check it against whatever version you are targeting.
+> **Version pin**: The class UIDs and field names in this appendix follow the OCSF v1.x schema the referenced CISA Zeek-OCSF project used, so read them as a worked example from that point in the schema's life rather than as the current contract. The current release as of 2026-11-24 is OCSF v1.10.0 (released 2026-11-20), and the schema moves quickly enough that class UIDs, enum values, and field names drift between versions, so verify everything I use here against schema.ocsf.io before you build on it. Where a mapping rides on a specific value, I name the class (for example Network Activity, class_uid 4001) so you can re-check it against whatever version you are targeting.
 
 ---
 
@@ -582,7 +582,7 @@ AddedFlags = Table.AddColumn(Source, "flag_ids", each
 
 **Example**: Zeek `weird.log` (protocol anomalies like "bad_TCP_checksum", "SYN_flood_detected")
 
-**OCSF (CISA-era v1.x)**: No "Network Anomaly" event class existed when the CISA project ran, so anomalies like these had nowhere clean to land; check the current release (v1.9.0 as of 2026-11-17, which still has none, and v1.10, released 2026-11-20, whose network classes checked 2026-11-22 have none either) to see whether a later version added one before you settle on a workaround.
+**OCSF (CISA-era v1.x)**: No "Network Anomaly" event class existed when the CISA project ran, so anomalies like these had nowhere clean to land; check the current release (v1.10.0, released 2026-11-20, whose network classes checked 2026-11-24 still have none, its one new network class being DNS Zone Transfer Activity) to see whether a later version added one before you settle on a workaround.
 
 **Options**:
 

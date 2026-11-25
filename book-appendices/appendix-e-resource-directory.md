@@ -536,7 +536,7 @@ A data-platform practitioner said, in personal communication (October 2025; unpu
 
 ### Official Resources
 
-**OCSF Schema Website**: https://schema.ocsf.io/ (current release v1.9.0, August 2026, checked 2026-11-17; the schema browser lets you pick the version)
+**OCSF Schema Website**: https://schema.ocsf.io/ (current release v1.10.0, November 2026, checked 2026-11-24; the schema browser lets you pick the version)
 - **Start Here**: Browse event classes (Authentication, Network Activity, Process Activity)
 - **Key Sections**:
   - Class Browser: Explore field mappings
@@ -836,7 +836,7 @@ So use this map as "further reading" for any chapter. Links go to the live essay
 | [The Capability Matrix](https://securitydataworks.com/matrix) | **the handbook's vendor-evaluation/decision material**, the evidence-tiered vendor-evaluation method (method and scores public; paid work is the services engagement that acts on a finding) |
 | [AI-Native vs AI-Augmented: the Threat Timeline](https://securitydataworks.com/research/ai-native-vs-augmented) † | **cross-cutting companion essay (not part of the seven-chapter spine)** is an earlier blog-draft candidate, retained here for its threat-timeline argument on why defensive infrastructure must match AI-speed operations rather than anchored to a specific chapter |
 
-**Note**: these essays are continuously updated, external standards are current as of March 2026 (OCSF v1.8.0; v1.9.0 followed on 2026-08-03), and the manuscript is whichever edition and date the copyright page prints, so the site captures developments past both. † marks a best-fit mapping from a retired post number to its closest current essay (worth confirming the destination is the intended one). ‡ marks a post with no single successor essay yet; the link goes to the writing index.
+**Note**: these essays are continuously updated, external standards are current as of March 2026 (OCSF v1.8.0; v1.9.0 followed on 2026-08-03 and v1.10.0 on 2026-11-20), and the manuscript is whichever edition and date the copyright page prints, so the site captures developments past both. † marks a best-fit mapping from a retired post number to its closest current essay (worth confirming the destination is the intended one). ‡ marks a post with no single successor essay yet; the link goes to the writing index.
 
 ---
 

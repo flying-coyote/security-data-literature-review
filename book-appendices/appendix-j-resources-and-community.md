@@ -1118,7 +1118,7 @@ Of all the communities in this appendix, the OCSF Slack is the one where I think
 
 **What to expect**:
 - **Governance**: Linux Foundation hosted, multi-vendor TSC
-- **Release cycle**: minor versions on a roughly quarterly cadence (OCSF v1.10 shipped 2026-11-20, v1.9.0 on 2026-08-03 and v1.8.0 on 2026-03-18; checked 2026-11-22), major versions less often
+- **Release cycle**: minor versions on a roughly quarterly cadence (OCSF v1.10.0 shipped 2026-11-20, v1.9.0 on 2026-08-03 and v1.8.0 on 2026-03-18; checked 2026-11-24), major versions less often
 - **Community size**: 180+ contributing organizations as of 2024 (Appendix H.2.1); verify the current figure at publication
 - **Contribution model**: RFC process, 30-day community review
 
@@ -1311,7 +1311,7 @@ If I had to spend a limited conference budget, I wouldn't split it evenly across
 - Performance improvements (file scanning, metadata handling)
 - Breaking changes (major version upgrades)
 
-**OCSF versions** (https://schema.ocsf.io/, current release v1.9.0 as of 2026-11-17, shipped 2026-08-03):
+**OCSF versions** (https://schema.ocsf.io/, current release v1.10.0 as of 2026-11-24, shipped 2026-11-20):
 - New event classes (the schema is still adding them, so a class you need for a log source may land in a coming minor release)
 - Field additions across releases (the `d3fend` attribute, added in v1.3.0, ties OCSF classes back to D3FEND defenses, Appendix H.5.4)
 - Backward compatibility notes
